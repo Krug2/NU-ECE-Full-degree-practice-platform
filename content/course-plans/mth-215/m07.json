@@ -1,0 +1,63 @@
+{
+  "id": "m07",
+  "title": "Periodic graphs and inverse trigonometry",
+  "requires": ["m02", "m06"],
+  "purpose": "Read and construct periodic models while keeping angle units, phase, and inverse-function ranges explicit.",
+  "bridgeIds": ["b05", "b06"],
+  "lessons": [
+    {
+      "id": "m07-l01",
+      "title": "Sine and cosine parameters",
+      "objective": "Determine amplitude, period, midline, and phase shift and construct a matching sinusoidal function.",
+      "coverage": "A*sin(B*(t-h))+D and cosine equivalents, |A|, 2*pi/|B|, reflections, equivalent phase representations, and key points over a full cycle.",
+      "activity": "Predict a parameter's effect before changing it; enter numeric parameters, compare a five-point table, and inspect the resulting labeled graph.",
+      "families": ["Extract and interpret parameters from a formula", "Construct a sinusoid from a graph description or labeled cycle points"],
+      "generatorRules": "Require nonzero amplitude and frequency in periodic tasks; use explicit time/angle units. Accept equivalent sine/cosine representations through a reviewed normalization rule.",
+      "commonError": "Calling B the period, calling a negative coefficient a negative amplitude, or reading phase from an unfactored argument incorrectly.",
+      "feedback": "Factor the argument into B*(t-h), find one full-turn change, and verify the proposed model at two key points.",
+      "checkpoint": "Amplitude/midline, period, phase, and model reconstruction.",
+      "reading": ["os-8/8.1"]
+    },
+    {
+      "id": "m07-l02",
+      "title": "Tangent and reciprocal graphs",
+      "objective": "Predict periods, asymptotes, and domains of transformed tangent, cotangent, secant, and cosecant functions.",
+      "coverage": "Tangent/cotangent periods, reciprocal relationships to sine/cosine, asymptotes at denominator zeros, and branch behavior between poles.",
+      "activity": "Show the underlying sine or cosine values beside a reciprocal table; predict which zero creates a pole before revealing the graph.",
+      "families": ["Find domains and poles on a stated finite interval", "Match transformed periodic graphs with their periods and key features"],
+      "generatorRules": "Derive poles exactly from denominator zeros, split plot segments at poles, and never connect opposite sides of a discontinuity with a line.",
+      "commonError": "Assigning the same period to all six functions or drawing continuous segments across poles.",
+      "feedback": "Check the denominator and the shortest repeat interval separately.",
+      "checkpoint": "A tangent period, reciprocal asymptotes, a domain list, and a graph interpretation.",
+      "reading": ["os-8/8.2"]
+    },
+    {
+      "id": "m07-l03",
+      "title": "Inverse trigonometric functions and principal values",
+      "objective": "Evaluate arcsine, arccosine, and arctangent within their principal ranges and distinguish them from solving a periodic equation.",
+      "coverage": "Arcsine range [-pi/2,pi/2], arccosine range [0,pi], arctangent range (-pi/2,pi/2), domains, and compositions outside the principal interval.",
+      "activity": "Compare theta with arcsin(sin(theta)) as theta leaves the principal interval and explain why the returned angle changes.",
+      "families": ["Evaluate exact inverse-trig expressions and compositions", "Distinguish one principal value from all solutions on a stated interval"],
+      "generatorRules": "Use exact special values; enforce input ranges for arcsine and arccosine. General periodic solving is introduced here and completed in m08-l03.",
+      "commonError": "Assuming arcsin(sin(theta)) always equals theta or taking an inverse-trig answer as the only periodic solution.",
+      "feedback": "Locate the result inside the inverse function's permitted output range before checking its sine or cosine.",
+      "checkpoint": "Three principal-value/composition items and one comparison with an equation's solution set.",
+      "reading": ["os-8/8.3"]
+    },
+    {
+      "id": "m07-l04",
+      "title": "Signals, frequency, and time shifts",
+      "objective": "Fit a simple periodic signal from extrema and timing information and interpret frequency and phase in consistent units.",
+      "coverage": "Frequency in cycles/second, angular frequency in radians/second, period, offset, time shift, and choosing a model from idealized measurements.",
+      "activity": "Fit a virtual signal with numeric controls, predict its value at a specified time, and compare residuals at provided observations.",
+      "families": ["Recover amplitude, offset, and frequency from extrema and period", "Predict a value or time shift and explain equivalent phase descriptions"],
+      "generatorRules": "Specify enough information for a model up to known periodic equivalence; distinguish ideal exact data from approximate data. Do not introduce sampling theory as a hidden prerequisite.",
+      "commonError": "Mixing milliseconds and seconds, mixing frequency and angular frequency, or using an incorrect phase sign.",
+      "feedback": "Normalize time units, label the coefficient's units, and evaluate the model at a known peak.",
+      "checkpoint": "Parameter recovery, frequency conversion, value prediction, and interpretation of a phase shift.",
+      "reading": ["os-8/8.1", "os-7/7.1"]
+    }
+  ],
+  "anchor": {"prompt":"Analyze v(t)=3*sin(4*pi*(t-0.125))+1 with t in seconds.","answer":"Amplitude 3 V, midline 1 V, period 0.5 s, frequency 2 Hz, and shift right by 0.125 s. v(0.125)=1 V and v(0.25)=4 V.","numericChecks":[3,1,0.5,2,0.125,1,4]},
+  "moduleExit": "The formula, graph, and table must agree on period, units, and phase; accept mathematically equivalent phase choices."
+}

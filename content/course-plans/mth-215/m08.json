@@ -1,0 +1,63 @@
+{
+  "id": "m08",
+  "title": "Trigonometric identities, equations, and applications",
+  "requires": ["m01", "m06", "m07"],
+  "purpose": "Transform trigonometric expressions with valid reasoning and find complete solutions rather than a single calculator answer.",
+  "bridgeIds": ["b03", "b04"],
+  "lessons": [
+    {
+      "id": "m08-l01",
+      "title": "Identities and domain-aware simplification",
+      "objective": "Verify an identity through valid transformations on its common domain and identify invalid proof steps.",
+      "coverage": "Reciprocal, quotient, and Pythagorean identities; rewriting in sine/cosine; factoring; common denominators; and the distinction between identity and equation.",
+      "activity": "Choose a justified next step in a proof, track excluded angles, and test a counterexample to a proposed nonidentity.",
+      "families": ["Complete a short identity proof with justified steps", "Find the first invalid step or missing domain restriction"],
+      "generatorRules": "Use reviewed transformation paths rather than unrestricted generated proofs. Numerical agreement at sample points is supporting evidence, not proof of an identity.",
+      "commonError": "Assuming the desired identity at an intermediate step, canceling terms across addition, or erasing exclusions.",
+      "feedback": "Return to the last justified expression, name the relevant identity, and state its required nonzero denominators.",
+      "checkpoint": "A reciprocal rewrite, a Pythagorean simplification, a proof-step choice, and a domain condition.",
+      "reading": ["os-9/9.1"]
+    },
+    {
+      "id": "m08-l02",
+      "title": "Angle sums and double angles",
+      "objective": "Use sum, difference, and double-angle identities to evaluate exact expressions and explain invalid distributive shortcuts.",
+      "coverage": "Sine/cosine sum and difference identities, tangent denominator restrictions, double-angle forms, and choice of a form that matches available information.",
+      "activity": "Compare sin(a+b) with sin(a)+sin(b), then complete a correct derivation using a supplied identity and known exact values.",
+      "families": ["Evaluate nonstandard exact angles by decomposition", "Compute a double-angle value from a ratio and quadrant or select an equivalent identity"],
+      "generatorRules": "Choose angles built from reviewed special-angle combinations. Include quadrant information when recovering a missing sign. Half-angle and product-to-sum work stays optional.",
+      "commonError": "Distributing sine over addition, using the wrong sign in cosine sums, or choosing the wrong square-root branch.",
+      "feedback": "Use a simple counterexample, then reconstruct the correct formula with signs attached to each term.",
+      "checkpoint": "Exact sum, exact difference, double-angle calculation, and identity selection.",
+      "reading": ["os-9/9.2", "os-9/9.3"]
+    },
+    {
+      "id": "m08-l03",
+      "title": "Complete trigonometric solution sets",
+      "objective": "Find every solution on a stated interval and express general periodic families when requested.",
+      "coverage": "Factoring, substitution with sine/cosine, zero-product reasoning, multiple-angle arguments, periodic families, endpoints, and risks of dividing by a trig factor.",
+      "activity": "Place all predicted solutions in an ordered list, compare them with graph intersections, and identify the root lost by dividing by sin(theta).",
+      "families": ["Solve a basic or factored trig equation on a finite interval", "Express general solutions and detect omitted periodic branches"],
+      "generatorRules": "Specify angle units and interval inclusion explicitly; generate a known complete root set and deduplicate equal boundary values. Include equations with no solutions.",
+      "commonError": "Returning only the principal inverse value, losing a factor-zero solution, or adding an excluded endpoint.",
+      "feedback": "Separate factor branches, identify each period, and list candidate angles before filtering the interval.",
+      "checkpoint": "A basic equation, a factored equation, a multiple-angle interval problem, and a general-solution form.",
+      "reading": ["os-9/9.5", "os-8/8.3"]
+    },
+    {
+      "id": "m08-l04",
+      "title": "Non-right triangles and model ambiguity",
+      "objective": "Choose the law of sines or cosines, solve a non-right triangle, and identify whether supplied measurements permit zero, one, or two triangles.",
+      "coverage": "Side-angle correspondence, included-angle cases, triangle angle sum, triangle inequalities, the ambiguous side-side-angle case, and interpreting a geometric result.",
+      "activity": "Enter side and angle measurements, predict the number of possible triangles, then inspect each valid solution using a diagram and text table.",
+      "families": ["Solve a valid side-angle-side or side-side-side triangle", "Classify and solve ambiguous side-side-angle measurements"],
+      "generatorRules": "Construct valid cases from known triangles and deliberately include impossible and two-solution cases. Reject zero-area triangles and state rounding tolerance only after exact relationships are used.",
+      "commonError": "Pairing an angle with an adjacent side in the sine law, forgetting the second sine solution, or accepting impossible lengths.",
+      "feedback": "Label opposite pairs, test angle sums, and verify the proposed sides against a second relationship.",
+      "checkpoint": "Method choice, cosine-law calculation, sine-law calculation, and ambiguity classification.",
+      "reading": ["os-10/10.1", "os-10/10.2"]
+    }
+  ],
+  "anchor": {"prompt":"Solve 2*sin(x)^2-sin(x)=0 on [0,2*pi).","answer":"Factor sin(x)*(2*sin(x)-1)=0. The complete set is {0, pi/6, 5*pi/6, pi}. The right endpoint 2*pi is excluded.","numericChecks":[0,0.5235987755982988,2.6179938779914944,3.141592653589793]},
+  "moduleExit": "The quiz must include a lost-root trap and a domain-sensitive identity; a single inverse-trig calculator result is insufficient for an interval equation."
+}
