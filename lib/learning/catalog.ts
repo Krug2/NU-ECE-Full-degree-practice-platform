@@ -13,10 +13,10 @@ export const lessonById = (courseId: string, lessonId: string) => lessons.find(l
 
 for (const lesson of lessons) {
   const pack = learningPack(lesson.courseId);
-  const entry = pack?.modules.find(item => item.id === lesson.moduleId)?.lessons.find(item => item.id === lesson.id);
+  const entry = lesson.moduleId === "foundations" ? pack?.bridges.find(item=>item.id===lesson.id) : pack?.modules.find(item => item.id === lesson.moduleId)?.lessons.find(item => item.id === lesson.id);
   if (!entry || entry.objective !== lesson.objective) throw new Error(`Unmapped objective: ${lesson.id}`);
   for (const slot of [...lesson.practice, ...lesson.checkpoint]) if (!availableFamilyIds.has(slot.familyId)) throw new Error(`Unavailable family: ${slot.familyId}`);
 }
 for (const pack of learningPacks) {
-  if (pack.status !== "building" && pack.modules.some(item => item.lessons.some(lesson => !lessonById(pack.courseId,lesson.id)))) throw new Error(`Incomplete pack: ${pack.courseId}`);
+  if (pack.status !== "building" && [...pack.bridges,...pack.modules.flatMap(item=>item.lessons)].some(lesson=>!lessonById(pack.courseId,lesson.id))) throw new Error(`Incomplete pack: ${pack.courseId}`);
 }

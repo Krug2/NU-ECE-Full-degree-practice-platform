@@ -77,6 +77,7 @@ export type Lesson = z.infer<typeof lessonSchema>;
 export const packSchema = z.object({
   courseId: id, title: text, version: z.number().int().positive(), status: z.enum(["building", "preview", "reviewed"]),
   introduction: text,
+  bridges: z.array(z.object({ id, title: text, objective: text }).strict()).default([]),
   modules: z.array(z.object({ id, title: text, requires: z.array(id), lessons: z.array(z.object({ id, title: text, objective: text }).strict()).min(1) }).strict()).min(1),
 }).strict().superRefine((pack, ctx) => {
   const seen = new Set<string>();
@@ -84,6 +85,6 @@ export const packSchema = z.object({
     if (seen.has(courseModule.id) || courseModule.requires.some(required => !seen.has(required))) ctx.addIssue({ code: "custom", message: `Invalid module dependency: ${courseModule.id}` });
     seen.add(courseModule.id);
   }
-  if (!unique(pack.modules.flatMap(module => module.lessons.map(lesson => lesson.id)))) ctx.addIssue({ code: "custom", message: "Duplicate objective IDs" });
+  if (!unique([...pack.bridges.map(bridge=>bridge.id),...pack.modules.flatMap(module => module.lessons.map(lesson => lesson.id))])) ctx.addIssue({ code: "custom", message: "Duplicate objective IDs" });
 });
 export type LearningPack = z.infer<typeof packSchema>;

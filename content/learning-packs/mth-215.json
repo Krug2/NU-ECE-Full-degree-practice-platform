@@ -304,5 +304,37 @@
         }
       ]
     }
+  ],
+  "bridges": [
+    {
+      "id": "b01",
+      "title": "Signed numbers, fractions, and notation",
+      "objective": "Compute with signed fractions; distinguish a negative base from a leading minus; interpret interval endpoints and exact versus approximate answers."
+    },
+    {
+      "id": "b02",
+      "title": "Powers, roots, and scientific notation",
+      "objective": "Integer and rational exponents, scientific notation, even-root domains, and the distinction between sqrt(x^2) and x."
+    },
+    {
+      "id": "b03",
+      "title": "Expansion and factoring",
+      "objective": "Distribute with signs, collect like terms, factor common factors and simple quadratics, and check by expansion."
+    },
+    {
+      "id": "b04",
+      "title": "Fractions containing variables",
+      "objective": "Find common denominators, cancel factors only, state original exclusions, and divide rational expressions without dividing by zero."
+    },
+    {
+      "id": "b05",
+      "title": "Coordinates, lines, and measurement labels",
+      "objective": "Read coordinates and scales, calculate rise over run, distinguish vertical and horizontal lines, and keep units attached to modeled quantities."
+    },
+    {
+      "id": "b06",
+      "title": "Right triangles and calculator use",
+      "objective": "Use the Pythagorean relation, identify the side opposite an angle, enter parentheses correctly, and check degree versus radian mode."
+    }
   ]
 }
