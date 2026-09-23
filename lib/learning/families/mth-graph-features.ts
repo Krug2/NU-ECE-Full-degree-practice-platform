@@ -14,14 +14,15 @@ export function graphFeatureQuestion(familyId:string,variant:string,seed:string,
     if(!["quadratic","sqrt"].includes(variant))throw new Error("Unknown graph matching variant");
     const a=rng.integer(1,3)*(rng.integer(0,1)?1:-1),h=rng.integer(1,3)*(rng.integer(0,1)?1:-1),k=rng.integer(1,3)*(rng.integer(0,1)?1:-1);
     const formula=(gain:number,shift:number,offset:number)=>"g(x)=("+gain+")"+(variant==="quadratic"?"(x-("+shift+"))^2":"\\sqrt{x-("+shift+")}")+"+("+offset+")";
+    const spoken=(gain:number,shift:number,offset:number)=>"g of x equals "+gain+" times the "+(variant==="quadratic"?"square":"square root")+" of (x minus "+shift+"), plus "+offset;
     const model={parent:variant,transform:{a:String(a),b:"1",h:String(h),k:String(k)}};
     return questionSchema.parse({...base,parameters:{a,h,k},prompt:"Choose the formula that agrees with the solid curve and all three exact anchor points. The curve is a transformed "+(variant==="quadratic"?"square":"square-root")+" function on its full real domain.",
       figure:{kind:"transformed-function",title:"Match the graph with a formula",model,extent:12},
       fields:[{id:"formula",kind:"choice",label:"Matching formula",correct:"matching",options:rng.shuffle([
-        {id:"matching",label:"$"+formula(a,h,k)+"$",feedback:"Its horizontal position, vertical position, and output scale agree with all the anchor points."},
-        {id:"horizontal",label:"$"+formula(a,-h,k)+"$",feedback:"This uses the opposite horizontal shift. Compare the turning point or endpoint with the exact anchor table."},
-        {id:"vertical",label:"$"+formula(a,h,-k)+"$",feedback:"This uses the opposite vertical shift. The key point's output does not agree."},
-        {id:"reflection",label:"$"+formula(-a,h,k)+"$",feedback:"This reverses the outside sign, placing the arms or branch on the wrong side of the key point."},
+        {id:"matching",label:"$"+formula(a,h,k)+"$",accessibleLabel:spoken(a,h,k),feedback:"Its horizontal position, vertical position, and output scale agree with all the anchor points."},
+        {id:"horizontal",label:"$"+formula(a,-h,k)+"$",accessibleLabel:spoken(a,-h,k),feedback:"This uses the opposite horizontal shift. Compare the turning point or endpoint with the exact anchor table."},
+        {id:"vertical",label:"$"+formula(a,h,-k)+"$",accessibleLabel:spoken(a,h,-k),feedback:"This uses the opposite vertical shift. The key point's output does not agree."},
+        {id:"reflection",label:"$"+formula(-a,h,k)+"$",accessibleLabel:spoken(-a,h,k),feedback:"This reverses the outside sign, placing the arms or branch on the wrong side of the key point."},
       ])}],
       hints:["Locate the turning point or included endpoint first.","Its coordinates determine the horizontal and vertical shifts. Use another anchor to check the outside multiplier.","The matching rule is $"+formula(a,h,k)+"$."],
       explanation:["The key point is ("+h+", "+k+"). Substituting its input must give output "+k+".","The remaining anchors verify the signed scale "+a+". Use more than one point, because an incorrect formula can happen to agree at a single input."],

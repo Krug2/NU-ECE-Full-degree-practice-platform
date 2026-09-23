@@ -88,14 +88,14 @@ export function compositionQuestion(familyId:string,variant:string,seed:string,i
   if(familyId==="mth-compose-structure"){
     if(!["operations","decompose","unit-order"].includes(variant))throw new Error("Unknown composition structure");
     const options=variant==="operations"?[
-      {id:"compose",label:"$"+a+"(x^2+("+c+"))+("+b+")$",feedback:"Composition substitutes the inner output into the outer rule."},
-      {id:"product",label:"$("+f+")("+g+")$",feedback:"This multiplies f(x) and g(x); it does not compose the functions."},
-      {id:"sum",label:"$("+f+")+("+g+")$",feedback:"This adds outputs evaluated at the same input."},
-      {id:"reverse",label:"$("+f+")^2+("+c+")$",feedback:"This is g(f(x)), which reverses the requested order."}
+      {id:"compose",label:"$"+a+"(x^2+("+c+"))+("+b+")$",accessibleLabel:a+" times (x squared plus "+c+") plus "+b,feedback:"Composition substitutes the inner output into the outer rule."},
+      {id:"product",label:"$("+f+")("+g+")$",accessibleLabel:"("+a+" times x plus "+b+") times (x squared plus "+c+")",feedback:"This multiplies f(x) and g(x); it does not compose the functions."},
+      {id:"sum",label:"$("+f+")+("+g+")$",accessibleLabel:"("+a+" times x plus "+b+") plus (x squared plus "+c+")",feedback:"This adds outputs evaluated at the same input."},
+      {id:"reverse",label:"$("+f+")^2+("+c+")$",accessibleLabel:"("+a+" times x plus "+b+") squared plus "+c,feedback:"This is g(f(x)), which reverses the requested order."}
     ]:variant==="decompose"?[
-      {id:"compose",label:"$g(x)=x^2+("+b+"),\\quad f(u)=\\sqrt{u}$",feedback:"The inner square-plus-constant is evaluated before the outer square root."},
-      {id:"reverse",label:"$g(x)=\\sqrt{x},\\quad f(u)=u^2+("+b+")$",feedback:"This applies the square root first and produces x plus the constant only where the root exists."},
-      {id:"product",label:"$g(x)=x^2,\\quad f(u)=\\sqrt{u}+("+b+")$",feedback:"Adding the constant outside the root gives a different rule."}
+      {id:"compose",label:"$g(x)=x^2+("+b+"),\\quad f(u)=\\sqrt{u}$",accessibleLabel:"g of x equals x squared plus "+b+"; f of u equals the square root of u",feedback:"The inner square-plus-constant is evaluated before the outer square root."},
+      {id:"reverse",label:"$g(x)=\\sqrt{x},\\quad f(u)=u^2+("+b+")$",accessibleLabel:"g of x equals the square root of x; f of u equals u squared plus "+b,feedback:"This applies the square root first and produces x plus the constant only where the root exists."},
+      {id:"product",label:"$g(x)=x^2,\\quad f(u)=\\sqrt{u}+("+b+")$",accessibleLabel:"g of x equals x squared; f of u equals the square root of u, plus "+b,feedback:"Adding the constant outside the root gives a different rule."}
     ]:[
       {id:"compose",label:"g(f(t)): time to temperature to voltage",feedback:"The first output has the unit required by the second input."},
       {id:"reverse",label:"f(g(t)): time to voltage to temperature",feedback:"The stated g function expects temperature, not time, and f expects time, not voltage."},
