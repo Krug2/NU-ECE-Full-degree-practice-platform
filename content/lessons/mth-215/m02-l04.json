@@ -1,0 +1,707 @@
+{
+  "id": "m02-l04",
+  "courseId": "mth-215",
+  "moduleId": "m02",
+  "version": 1,
+  "title": "Rates of change and linear calibration",
+  "objective": "Construct a linear model from two points, interpret its parameters with units, and judge the validity of a prediction.",
+  "why": "A sensor does not usually report the physical quantity directly. You may need to translate a voltage into a temperature, compare changes over unequal time intervals, or decide whether a prediction is supported by the measurements. This lesson connects exact algebra with the assumptions behind a usable model.",
+  "estimatedMinutes": 150,
+  "prerequisites": [
+    {
+      "label": "Coordinates and slope",
+      "lessonId": "b05"
+    },
+    {
+      "label": "Fractions and rational expressions",
+      "lessonId": "b04"
+    },
+    {
+      "label": "Linear equations and formula rearrangement",
+      "lessonId": "m01-l01"
+    },
+    {
+      "label": "Composition and inverse functions",
+      "lessonId": "m02-l03"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "A rate compares two changes",
+      "paragraphs": [
+        "For two distinct inputs, the average rate of change is $\\frac{f(x_2)-f(x_1)}{x_2-x_1}$. The numerator is output change and the denominator is input change. Use the same point order in both. If the output is voltage and the input is temperature, the units are volts per degree C. The quotient $f(x)/x$ is generally a different quantity because it assumes an origin-based comparison.",
+        "Positive rate means the output rises as the input increases; negative rate means it falls. A zero average rate means the two endpoint outputs agree. For a nonlinear function, the output may still vary between those endpoints. In a position-versus-time record, average velocity is signed displacement divided by elapsed time; it is not generally total distance divided by elapsed time."
+      ]
+    },
+    {
+      "heading": "Build a line from two independent inputs",
+      "paragraphs": [
+        "An affine rule, commonly called a linear function in this course, has form $y=mx+b$. Once $x_1\\ne x_2$, compute $m=\\frac{y_2-y_1}{x_2-x_1}$ and then $b=y_1-mx_1$. An equivalent point-slope form is $y-y_1=m(x-x_1)$. Expanding it gives the same slope-intercept rule. Check both observations in the finished formula.",
+        "The slope has output units per input unit. The intercept has output units and is the model's value at zero input. It is not automatically a measured starting value: zero may be outside the calibration or operating interval. A nonzero intercept makes output/input an unreliable shortcut for the slope."
+      ]
+    },
+    {
+      "heading": "Know when two points do not give an inverse calibration",
+      "paragraphs": [
+        "Two equal outputs at distinct inputs give $m=0$ and the constant function $y=b$. It is a valid forward rule, but it cannot identify a unique input on an interval. A target output equal to b has every operating input as a solution; a different target has none. Never divide by the zero slope.",
+        "Two identical observations contain only one distinct point, so infinitely many lines can pass through them. Two different exact outputs at the same input cannot both belong to a function y(x); the line through those points is vertical. Real repeated measurements may differ because of noise, but that is a separate measurement-analysis problem, not a unique two-point fit."
+      ]
+    },
+    {
+      "heading": "A secant rate is not an instantaneous rate",
+      "paragraphs": [
+        "A secant line joins two points on a graph. Its slope is an average rate over that interval. For an exact linear function the average is the same for every pair of distinct inputs. For a nonlinear function, changing the interval can change the average. A zero secant slope does not prove a function is constant.",
+        "When combining adjacent intervals, add their signed output changes and divide by the total input change. If the intervals have different lengths, a simple arithmetic average of their rates generally fails. For two elapsed-time intervals, the correct combined rate is their time-weighted average. Calculus later formalizes instantaneous rates; no limit or derivative is needed here."
+      ]
+    },
+    {
+      "heading": "Treat the difference quotient as a structured substitution",
+      "paragraphs": [
+        "Starting at x and moving by an increment h gives the difference quotient $\\frac{f(x+h)-f(x)}{h}$, with $h\\ne0$. Compute f(x+h) by substituting the entire expression (x+h) wherever the original rule has its input. Then subtract the whole f(x), keeping parentheses until signs have been distributed. In general, f(x+h) is not f(x)+h.",
+        "For $f(x)=mx+b$, the quotient simplifies to m. For $f(x)=ax^2+bx+c$, it simplifies to $2ax+ah+b$. Both identities retain $h\\ne0$. Negative increments are allowed. If f has its own domain restrictions, both x and x+h must be in that domain. Cancellation can simplify a formula without restoring forbidden inputs."
+      ]
+    },
+    {
+      "heading": "Keep the calibration interval and operating interval separate",
+      "paragraphs": [
+        "Between the two calibration inputs, a prediction is interpolation. At either endpoint, it reproduces a calibration observation. Beyond those inputs, it is extrapolation. The operating interval is a separate stated restriction on where the model is intended to be used; a mathematical line itself can have a much larger domain.",
+        "A prediction can be outside the calibration interval while still inside a separately stated operating interval. Label the extrapolation and its assumption. Outside the operating interval, an algebraic answer is not a supported operating reading. In measured-data work, even an interpolation is an estimate; more observations are needed to assess how well the line describes the device."
+      ]
+    },
+    {
+      "heading": "Recover an input only after checking the model",
+      "paragraphs": [
+        "When $m\\ne0$, solve $y=mx+b$ for input: $x=\\frac{y-b}{m}$. Subtract the offset before dividing by the slope. The inverse slope has input units per output unit. A decreasing calibration is still invertible; its negative slope changes the direction in which recovered inputs move.",
+        "Substitute the recovered input back into the forward rule and compare with the target output. Then locate that input relative to both intervals. Equivalently, a target must be in the output range of the restricted model to correspond to an operating input. For a decreasing line, the lower input produces the higher output, so order the range endpoints correctly."
+      ]
+    },
+    {
+      "heading": "Use residuals as evidence about the fit",
+      "paragraphs": [
+        "For a third observation, define residual = observed output minus predicted output. A positive residual places the observation above the fitted line; a negative residual places it below. A zero residual means agreement at that input. Residuals have output units. If an allowed output error is $\\epsilon$, an inclusive tolerance check is $|\\text{residual}|\\le\\epsilon$.",
+        "Exact-model tasks assume the rule in their stated interval. Measured-data tasks fit a rule to recorded observations. Use recorded values exactly when an arithmetic question requests it, while recognizing that the underlying measurements need not be exact. One small residual is local evidence, not proof of universal linearity. A large residual alone does not identify whether the cause is noise, a changed device, or a poor model."
+      ]
+    },
+    {
+      "heading": "Screen scale and unit conversion are different changes",
+      "paragraphs": [
+        "Stretching a graph horizontally or vertically changes its apparent angle on the screen. If coordinates and units stay fixed, the numerical slope stays fixed too. Read axis labels and tick intervals instead of measuring pixel rise over pixel run. The interactive graph provides an exact coordinate table so that display rounding is not used as calculation data.",
+        "Converting units changes numerical coordinates in a known way. Converting volts to millivolts multiplies every output, including the intercept, by 1000. Replacing seconds by minutes substitutes t = 60u, so a per-second slope becomes 60 times as large when expressed per minute. The physical relationship remains the same when conversions are applied consistently."
+      ]
+    },
+    {
+      "heading": "A complete calibration answer includes its scope",
+      "paragraphs": [
+        "Record the observations and units; compute signed changes; fit and check the rule; make the forward or inverse prediction; classify its input; and inspect a separate observation if one is available. State whether the task assumes an exact model or uses measurements. Keep exact fractions in the calculation and round only when an explicitly approximate task asks for it.",
+        "Two points determine one line when their inputs differ, but they do not prove the underlying process is linear. Even several collinear samples can agree with a nonlinear function at those sampled inputs. A formula, a table, and a graph should describe the same model and carry the same restrictions."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Calibrate a temperature sensor and reverse the rule",
+      "prompt": "An exact linear sensor model gives 0.5 V at 0 degrees C and 2.5 V at 100 degrees C. Assume an operating interval of [0, 100] degrees C. Find the rule and the temperature corresponding to 1.7 V.",
+      "steps": [
+        {
+          "math": "m=\\frac{2.5-0.5}{100-0}=\\frac{2}{100}=\\frac1{50}",
+          "reason": "Divide the voltage change by the temperature change. The slope is 1/50 V per degree C."
+        },
+        {
+          "math": "V-0.5=\\frac1{50}(T-0)\\quad\\Longrightarrow\\quad V=\\frac{T}{50}+\\frac12",
+          "reason": "Point-slope and slope-intercept forms describe the same line. The offset is 1/2 V."
+        },
+        {
+          "math": "T=50\\left(V-\\frac12\\right),\\qquad T=50\\left(\\frac{17}{10}-\\frac12\\right)=60",
+          "reason": "Subtract the offset before applying the inverse gain. The recovered input is 60 degrees C."
+        },
+        {
+          "math": "V(60)=\\frac{60}{50}+\\frac12=\\frac{17}{10}",
+          "reason": "The forward check recovers 1.7 V. The temperature lies between calibration inputs and inside the operating interval."
+        }
+      ],
+      "conclusion": "The calibration is V = T/50 + 1/2, and 1.7 V corresponds to 60 degrees C. This inverse prediction is interpolation."
+    },
+    {
+      "title": "A negative slope and an unsupported intercept",
+      "prompt": "An exact model records 4 V at 10 degrees C and 1 V at 50 degrees C. Its operating interval is [10, 50] degrees C. Find the rule and its prediction at 30 degrees C.",
+      "steps": [
+        {
+          "math": "m=\\frac{1-4}{50-10}=-\\frac3{40}",
+          "reason": "The voltage decreases as temperature increases. Reversing both differences gives (4-1)/(10-50), the same negative slope."
+        },
+        {
+          "math": "b=4-\\left(-\\frac3{40}\\right)10=\\frac{19}{4}",
+          "reason": "The intercept is the algebraic output at zero input. Zero is outside the stated operating interval."
+        },
+        {
+          "math": "V(T)=-\\frac3{40}T+\\frac{19}{4},\\qquad V(30)=\\frac52",
+          "reason": "The model predicts 2.5 V at 30 degrees C. Both original observations also satisfy the rule."
+        },
+        {
+          "math": "\\frac52=-\\frac3{40}T+\\frac{19}{4}\\quad\\Longrightarrow\\quad T=30",
+          "reason": "A negative slope still permits a unique inverse. On [10, 50], the model's voltage range is [1, 4]."
+        }
+      ],
+      "conclusion": "The rate is -3/40 V per degree C. The intercept 19/4 V is mathematically meaningful but is not a supported operating reading here."
+    },
+    {
+      "title": "Combine unequal time intervals correctly",
+      "prompt": "An object's recorded positions are 5 m at 0 s, 11 m at 2 s, and -1 m at 8 s. Find average velocity on both intervals and on the entire interval.",
+      "steps": [
+        {
+          "math": "\\overline v_1=\\frac{11-5}{2-0}=3\\ \\mathrm{m/s}",
+          "reason": "The first displacement is +6 m over 2 s."
+        },
+        {
+          "math": "\\overline v_2=\\frac{-1-11}{8-2}=-2\\ \\mathrm{m/s}",
+          "reason": "The second displacement is -12 m over 6 s. The sign records direction."
+        },
+        {
+          "math": "\\overline v=\\frac{-1-5}{8-0}=-\\frac34\\ \\mathrm{m/s}",
+          "reason": "Use total signed displacement over total time, not the arithmetic average of the two rates."
+        },
+        {
+          "math": "\\frac{2(3)+6(-2)}{2+6}=-\\frac34\\ne\\frac{3+(-2)}2",
+          "reason": "A time-weighted average agrees with the endpoint calculation. The intervals have unequal durations."
+        }
+      ],
+      "conclusion": "The average velocity is -3/4 m/s over all eight seconds. The records do not determine the total distance traveled between samples."
+    },
+    {
+      "title": "Compare secants of a nonlinear rule",
+      "prompt": "For $f(x)=2x^2-3x+1$, find the average rate on [1, 4], reverse the observation order, and compare with [0, 1].",
+      "steps": [
+        {
+          "math": "f(1)=0,\\qquad f(4)=21,\\qquad \\frac{21-0}{4-1}=7",
+          "reason": "The secant between inputs 1 and 4 has slope 7."
+        },
+        {
+          "math": "\\frac{f(1)-f(4)}{1-4}=\\frac{-21}{-3}=7",
+          "reason": "Both signed changes reverse, so their ratio is unchanged."
+        },
+        {
+          "math": "\\frac{f(1)-f(0)}{1-0}=\\frac{0-1}{1}=-1",
+          "reason": "The earlier interval has a different secant rate. This quadratic does not have one constant rate on its entire domain."
+        }
+      ],
+      "conclusion": "A secant rate belongs to a chosen interval. Reversing its endpoints preserves the rate, while choosing different endpoints can change it."
+    },
+    {
+      "title": "Simplify a linear difference quotient",
+      "prompt": "Use $f(x)=-\\frac25x+7$. Simplify $\\frac{f(x+h)-f(x)}h$ and keep the allowed increments explicit.",
+      "steps": [
+        {
+          "math": "f(x+h)=-\\frac25(x+h)+7",
+          "reason": "Replace the entire input by x+h. Do not add h to f(x)."
+        },
+        {
+          "math": "f(x+h)-f(x)=-\\frac25x-\\frac25h+7-\\left(-\\frac25x+7\\right)=-\\frac25h",
+          "reason": "Subtract the complete original expression. The x terms and constant terms cancel."
+        },
+        {
+          "math": "\\frac{-\\frac25h}{h}=-\\frac25,\\qquad h\\ne0",
+          "reason": "Cancel the common nonzero increment. The original quotient remains undefined at h=0."
+        }
+      ],
+      "conclusion": "Every permitted secant has slope -2/5. A negative increment is valid; a zero increment is not."
+    },
+    {
+      "title": "Retain the increment in a quadratic quotient",
+      "prompt": "For $f(x)=3x^2-2x+4$, simplify the difference quotient and check it at x=1 with h=-1/2.",
+      "steps": [
+        {
+          "math": "f(x+h)=3x^2+6xh+3h^2-2x-2h+4",
+          "reason": "Expand the squared binomial, including its middle term."
+        },
+        {
+          "math": "f(x+h)-f(x)=6xh+3h^2-2h=h(6x+3h-2)",
+          "reason": "Subtract the whole f(x), then factor out the increment."
+        },
+        {
+          "math": "\\frac{f(x+h)-f(x)}h=6x+3h-2,\\qquad h\\ne0",
+          "reason": "This finite quotient depends on both x and h. No limit has been taken."
+        },
+        {
+          "math": "6(1)+3\\left(-\\frac12\\right)-2=\\frac52=\\frac{f(1/2)-f(1)}{-1/2}=\\frac{15/4-5}{-1/2}",
+          "reason": "Direct substitution gives the same secant rate, including for a negative increment."
+        }
+      ],
+      "conclusion": "In the structured form A*x+B*h+C, the coefficients are 6, 3, and -2, with h nonzero."
+    },
+    {
+      "title": "Carry function restrictions into a difference quotient",
+      "prompt": "Let $f(x)=2/(x-3)$. Find its difference quotient and all original restrictions.",
+      "steps": [
+        {
+          "math": "\\frac{f(x+h)-f(x)}h=\\frac1h\\left(\\frac2{x+h-3}-\\frac2{x-3}\\right)",
+          "reason": "The original expression needs h nonzero, x different from 3, and x+h different from 3."
+        },
+        {
+          "math": "\\frac1h\\cdot\\frac{2(x-3)-2(x+h-3)}{(x-3)(x+h-3)}=\\frac{-2h}{h(x-3)(x+h-3)}",
+          "reason": "A common denominator exposes the negative sign in the numerator."
+        },
+        {
+          "math": "\\frac{-2}{(x-3)(x+h-3)},\\qquad h\\ne0,\\quad x\\ne3,\\quad x+h\\ne3",
+          "reason": "Cancel h while preserving all three conditions. For example, x=4 and h=-1 is invalid because the shifted input is 3."
+        }
+      ],
+      "conclusion": "An algebraically simplified expression does not change the domain of the original difference quotient."
+    },
+    {
+      "title": "Inspect a third observation and an extrapolation",
+      "prompt": "A measured calibration uses (0 degrees C, 0.5 V) and (100 degrees C, 2.5 V), with stated operating interval [-20, 120] degrees C. A third observation at 60 degrees C is 1.76 V. Use an inclusive error tolerance of 0.05 V.",
+      "steps": [
+        {
+          "math": "\\widehat V(T)=\\frac{T}{50}+\\frac12,\\qquad \\widehat V(60)=1.70",
+          "reason": "A hat distinguishes the fitted prediction from a measured voltage. The third input is an interpolation."
+        },
+        {
+          "math": "e=V_{\\mathrm{observed}}-\\widehat V=1.76-1.70=0.06\\ \\mathrm V",
+          "reason": "The positive residual places the observation above the fitted line."
+        },
+        {
+          "math": "|e|=0.06>0.05",
+          "reason": "This observation misses the stated tolerance. It does not, by itself, tell you why the discrepancy occurred."
+        },
+        {
+          "math": "\\widehat V(110)=2.70,\\qquad \\widehat V(150)=3.50",
+          "reason": "110 degrees C is an extrapolation beyond the calibration inputs but inside the stated operating interval. 150 degrees C is outside both intervals, so its value is only an algebraic extension."
+        }
+      ],
+      "conclusion": "A measured-data fit needs evidence about its accuracy. Neither a computable prediction nor one successful observation proves validity everywhere."
+    },
+    {
+      "title": "Diagnose zero slope and repeated inputs",
+      "prompt": "Compare three exact data sets: (0,2) with (100,2); two copies of (0,2); and (0,2) with (0,3).",
+      "steps": [
+        {
+          "math": "m=\\frac{2-2}{100-0}=0,\\qquad y=2",
+          "reason": "Distinct inputs with equal outputs determine a horizontal line."
+        },
+        {
+          "math": "2=0x+2\\ \\text{for every }x,\\qquad 3=0x+2\\ \\text{has no solution}",
+          "reason": "On a nontrivial operating interval, a constant rule has infinitely many matching inputs or none, depending on the target."
+        },
+        {
+          "math": "2=m(0)+b\\quad\\Longrightarrow\\quad b=2",
+          "reason": "Repeating one point determines b but leaves m free. It does not uniquely calibrate a line."
+        },
+        {
+          "math": "f(0)=2\\quad\\text{and}\\quad f(0)=3",
+          "reason": "Different exact outputs at the same input contradict the definition of a function. A vertical relation is not a zero-slope calibration."
+        }
+      ],
+      "conclusion": "Check distinct inputs before computing a slope, and check nonzero slope before trying to recover a unique input."
+    },
+    {
+      "title": "Change units without changing the device",
+      "prompt": "Convert the sensor rule V(T)=0.02T+0.5 from volts to millivolts. Separately, convert the time-based rule V(t)=0.2t+1 from seconds to minutes.",
+      "steps": [
+        {
+          "math": "W(T)=1000V(T)=20T+500",
+          "reason": "Millivolts scale the entire output. The slope is now 20 mV per degree C, and the intercept is 500 mV."
+        },
+        {
+          "math": "t=60u,\\qquad V(60u)=0.2(60u)+1=12u+1",
+          "reason": "When u is time in minutes, the slope is 12 V/min. The voltage intercept remains 1 V."
+        },
+        {
+          "math": "0.2(30)+1=7,\\qquad 12(1/2)+1=7",
+          "reason": "Thirty seconds and half a minute give the same physical prediction."
+        }
+      ],
+      "conclusion": "Unit conversions change numerical coefficients systematically. Stretching a graph with unchanged coordinates changes no coefficient."
+    },
+    {
+      "title": "Test what finite samples can actually prove",
+      "prompt": "Three samples at x=0, 2, and 4 fit $L(x)=2x+1$. Compare them with $G(x)=2x+1+x(x-2)(x-4)$ on [0,4].",
+      "steps": [
+        {
+          "math": "x(x-2)(x-4)=0\\quad\\text{at }x=0,2,4",
+          "reason": "The added term vanishes at every sampled input, so both rules agree with all three records."
+        },
+        {
+          "math": "L(1)=3,\\qquad G(1)=3+1(-1)(-3)=6",
+          "reason": "At an unobserved input, the two predictions disagree despite matching the samples."
+        },
+        {
+          "math": "L(0)=G(0)=1,\\quad L(2)=G(2)=5,\\quad L(4)=G(4)=9",
+          "reason": "Checking the records confirms the counterexample. Both functions are defined throughout the stated interval."
+        }
+      ],
+      "conclusion": "Collinear observations support a linear modeling choice, but do not force an arbitrary underlying function to be linear."
+    }
+  ],
+  "guided": {
+    "title": "Finish a calibration check",
+    "setup": "A measured sensor gives 3.4 V at 20 degrees C and 1.6 V at 80 degrees C. The operating interval is [0, 100] degrees C. At 50 degrees C, a separate recorded observation is 2.6 V. The allowed absolute output error is at most 0.1 V.",
+    "before": [
+      "The input change is $80-20=60$ degrees C, and the voltage change is $1.6-3.4=-1.8$ V.",
+      "Fit the rule before using the third observation. The third observation is a check, not an extra equation that silently changes your two-point model."
+    ],
+    "question": {
+      "id": "m02-l04-guided",
+      "familyId": "guided-calibration",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m02-l04",
+      "category": "application",
+      "critical": true,
+      "prompt": "Complete the calibration, prediction, residual, and interpretation. Use x for temperature in your formula.",
+      "fields": [
+        {
+          "id": "slope",
+          "kind": "rational",
+          "label": "Slope",
+          "expected": "-3/100",
+          "unit": "V per degree C"
+        },
+        {
+          "id": "rule",
+          "kind": "polynomial",
+          "label": "Voltage rule",
+          "expected": "-3*x/100+4",
+          "form": "equivalent",
+          "unit": "V"
+        },
+        {
+          "id": "prediction",
+          "kind": "rational",
+          "label": "Predicted voltage at 50",
+          "expected": "5/2",
+          "unit": "V"
+        },
+        {
+          "id": "residual",
+          "kind": "rational",
+          "label": "Observed minus predicted",
+          "expected": "1/10",
+          "unit": "V"
+        },
+        {
+          "id": "conclusion",
+          "kind": "choice",
+          "label": "Conclusion from this observation",
+          "correct": "local",
+          "options": [
+            {
+              "id": "local",
+              "label": "It meets the inclusive tolerance at this input; further observations are needed to assess the model",
+              "feedback": "The residual equals +0.1 V, exactly at the allowed boundary. One passing interpolation check is local evidence."
+            },
+            {
+              "id": "fail",
+              "label": "It fails because a nonzero residual is never permitted",
+              "feedback": "This task permits errors up to and including 0.1 V."
+            },
+            {
+              "id": "global",
+              "label": "It proves the model is exact for every temperature",
+              "feedback": "A tolerated discrepancy at one input does not prove exactness or validity elsewhere."
+            }
+          ]
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "Divide -1.8 V by 60 degrees C to find the signed slope.",
+        "Substitute the first calibration point into b=y1-m*x1; then evaluate the rule at 50.",
+        "The prediction is 2.5 V. Subtract it from the recorded 2.6 V and compare the absolute residual with 0.1 V."
+      ],
+      "explanation": [
+        "The slope is $-3/100$ V per degree C and the rule is $V(x)=-3x/100+4$.",
+        "At x=50 the model gives 2.5 V, so the residual is +0.1 V.",
+        "The check meets the inclusive tolerance. The third input is inside the calibration and operating intervals, but this one result is not proof of global accuracy."
+      ],
+      "answerSummary": "Slope -3/100 V per degree C; V(x)=-3x/100+4; prediction 5/2 V; residual 1/10 V; local check passes."
+    },
+    "after": "Check that both original calibration observations satisfy your rule. Then explain why the positive residual is compatible with a negative model slope."
+  },
+  "interaction": {
+    "kind": "calibration-lab",
+    "prompt": "Choose or edit a sensor example. Predict its slope, intercept, and third output with signed residual, or switch to recovering an input. Inspect the formula and exact table together, then change one graph span without changing the data. Include a constant-output case and a prediction outside the operating interval.",
+    "cases": [
+      {
+        "title": "Exact rising calibration",
+        "model": {
+          "first": {
+            "x": "0",
+            "y": "1/2"
+          },
+          "second": {
+            "x": "100",
+            "y": "5/2"
+          },
+          "operating": {
+            "lower": "-20",
+            "upper": "120"
+          },
+          "xName": "Temperature",
+          "xUnit": "degrees C",
+          "yName": "Voltage",
+          "yUnit": "V"
+        },
+        "probe": {
+          "x": "60",
+          "y": "17/10"
+        },
+        "dataKind": "exact"
+      },
+      {
+        "title": "Exact falling calibration",
+        "model": {
+          "first": {
+            "x": "10",
+            "y": "4"
+          },
+          "second": {
+            "x": "50",
+            "y": "1"
+          },
+          "operating": {
+            "lower": "10",
+            "upper": "50"
+          },
+          "xName": "Temperature",
+          "xUnit": "degrees C",
+          "yName": "Voltage",
+          "yUnit": "V"
+        },
+        "probe": {
+          "x": "30",
+          "y": "5/2"
+        },
+        "dataKind": "exact"
+      },
+      {
+        "title": "Constant output and inverse limits",
+        "model": {
+          "first": {
+            "x": "0",
+            "y": "2"
+          },
+          "second": {
+            "x": "100",
+            "y": "2"
+          },
+          "operating": {
+            "lower": "0",
+            "upper": "100"
+          },
+          "xName": "Temperature",
+          "xUnit": "degrees C",
+          "yName": "Voltage",
+          "yUnit": "V"
+        },
+        "probe": {
+          "x": "40",
+          "y": "2"
+        },
+        "dataKind": "exact"
+      },
+      {
+        "title": "Measured third-point discrepancy",
+        "model": {
+          "first": {
+            "x": "0",
+            "y": "1/2"
+          },
+          "second": {
+            "x": "100",
+            "y": "5/2"
+          },
+          "operating": {
+            "lower": "-20",
+            "upper": "120"
+          },
+          "xName": "Temperature",
+          "xUnit": "degrees C",
+          "yName": "Voltage",
+          "yUnit": "V"
+        },
+        "probe": {
+          "x": "60",
+          "y": "44/25"
+        },
+        "dataKind": "measured"
+      },
+      {
+        "title": "Observation beyond the operating interval",
+        "model": {
+          "first": {
+            "x": "0",
+            "y": "1/2"
+          },
+          "second": {
+            "x": "100",
+            "y": "5/2"
+          },
+          "operating": {
+            "lower": "-20",
+            "upper": "120"
+          },
+          "xName": "Temperature",
+          "xUnit": "degrees C",
+          "yName": "Voltage",
+          "yUnit": "V"
+        },
+        "probe": {
+          "x": "150",
+          "y": "17/5"
+        },
+        "dataKind": "measured"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-average-rate",
+      "variant": "table-linear"
+    },
+    {
+      "familyId": "mth-average-rate",
+      "variant": "table-changing"
+    },
+    {
+      "familyId": "mth-average-rate",
+      "variant": "formula"
+    },
+    {
+      "familyId": "mth-average-rate",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "mth-calibration-fit",
+      "variant": "slope"
+    },
+    {
+      "familyId": "mth-calibration-fit",
+      "variant": "equation"
+    },
+    {
+      "familyId": "mth-calibration-fit",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "mth-calibration-fit",
+      "variant": "constant"
+    },
+    {
+      "familyId": "mth-difference-quotient",
+      "variant": "linear"
+    },
+    {
+      "familyId": "mth-difference-quotient",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-difference-quotient",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "mth-calibration-predict",
+      "variant": "forward"
+    },
+    {
+      "familyId": "mth-calibration-predict",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "mth-calibration-predict",
+      "variant": "outside"
+    },
+    {
+      "familyId": "mth-calibration-predict",
+      "variant": "zero-match"
+    },
+    {
+      "familyId": "mth-calibration-predict",
+      "variant": "zero-miss"
+    },
+    {
+      "familyId": "mth-calibration-residual",
+      "variant": "positive"
+    },
+    {
+      "familyId": "mth-calibration-residual",
+      "variant": "negative"
+    },
+    {
+      "familyId": "mth-calibration-residual",
+      "variant": "zero"
+    },
+    {
+      "familyId": "mth-calibration-residual",
+      "variant": "outside"
+    },
+    {
+      "familyId": "mth-model-limits",
+      "variant": "finite-data"
+    },
+    {
+      "familyId": "mth-model-limits",
+      "variant": "scale"
+    },
+    {
+      "familyId": "mth-model-limits",
+      "variant": "units-time"
+    },
+    {
+      "familyId": "mth-model-limits",
+      "variant": "units-voltage"
+    },
+    {
+      "familyId": "mth-model-limits",
+      "variant": "duplicate"
+    },
+    {
+      "familyId": "mth-model-limits",
+      "variant": "vertical"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-calibration-fit",
+      "variant": "slope"
+    },
+    {
+      "familyId": "mth-calibration-fit",
+      "variant": "equation"
+    },
+    {
+      "familyId": "mth-calibration-predict",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "mth-calibration-residual",
+      "variant": "positive"
+    }
+  ],
+  "summary": [
+    "Compute $m=\\Delta y/\\Delta x$ with consistent point order and units. Distinct calibration inputs are required.",
+    "Use $y-y_1=m(x-x_1)$ or $y=mx+b$, and verify both calibration observations. The intercept predicts the output at zero input.",
+    "The difference quotient $\\frac{f(x+h)-f(x)}h$ requires $h\\ne0$ and valid function inputs x and x+h, even after simplification.",
+    "For nonzero slope, recover an input with $x=(y-b)/m$ and check its interval. Constant-output rules have no unique inverse on an interval.",
+    "Label interpolation, a calibration endpoint, or extrapolation, and check the separate operating interval.",
+    "Residual means observed minus predicted in output units. A tolerance check is local evidence, not proof of global linearity.",
+    "Changing graph scale preserves data coordinates and numerical slope; changing units transforms numerical coordinates consistently."
+  ],
+  "retrieval": "From memory, calibrate a model using (10,4) and (50,1), state the slope units, and recover the input for output 2.5. Explain what changes if both outputs are equal, why h cannot be zero in a difference quotient, and why one small residual is not proof of a universally exact model.",
+  "readings": [
+    {
+      "title": "OpenStax: Rates of Change and Behavior of Graphs",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-3-rates-of-change-and-behavior-of-graphs",
+      "purpose": "Review average rates and how a secant describes behavior over a specified interval."
+    },
+    {
+      "title": "OpenStax: Linear Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-1-linear-functions",
+      "purpose": "Review representations of linear functions and the interpretation of slope and intercept."
+    },
+    {
+      "title": "OpenStax: Modeling with Linear Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-2-modeling-with-linear-functions",
+      "purpose": "Compare model construction and interpretation in applied situations."
+    }
+  ]
+}
