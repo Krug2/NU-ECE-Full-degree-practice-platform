@@ -85,6 +85,31 @@ test("concurrent answers keep the other tab's draft until an explicit choice",as
   await other.close();
 });
 
+test("copying a completed checkpoint's stale draft creates practice without new evidence",async({page,context})=>{
+  const lesson=lessonSchema.parse(JSON.parse(await readFile(new URL("../../content/lessons/mth-215/m01-l01.json",import.meta.url),"utf8")));
+  const attempt=createAttempt(lesson,"checkpoint","copy-fixture");
+  attempt.position=3;
+  for(const question of attempt.questions)attempt.responses[question.id]=Object.fromEntries(question.fields.map(field=>[field.id,field.kind==="choice"?field.correct:String(field.expected)]));
+  const data={schemaVersion:2,profile:{displayName:"",weeklyHours:5},plan:[],bookmarks:[],notes:{},confidence:{},sessions:[],learning:{attempts:[attempt],evidence:[],notes:{}}};
+  await page.goto("/");await page.evaluate(({key,data})=>localStorage.setItem(key,JSON.stringify(data)),{key,data});
+  await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
+  await expect(page.getByRole("button",{name:"Submit checkpoint",exact:true})).toBeVisible();
+  const other=await context.newPage();await other.goto(route);
+  await other.getByRole("button",{name:"Checkpoint",exact:true}).click();
+  await other.getByRole("button",{name:"Submit checkpoint",exact:true}).click();
+  await expect(other.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
+  await page.getByRole("button",{name:"Keep draft as practice",exact:true}).click();
+  await expect(page.getByRole("button",{name:"Practice",exact:true})).toHaveAttribute("aria-pressed","true");
+  await page.getByRole("button",{name:"Submit practice",exact:true}).click();
+  await expect(page.getByRole("heading",{name:"Practice completed",exact:true})).toBeVisible();
+  const stored=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),key);
+  expect(stored.learning.attempts.at(-1).mode).toBe("practice");
+  expect(stored.learning.attempts.at(-1).questions).toEqual(attempt.questions);
+  expect(stored.learning.evidence).toHaveLength(1);
+  expect(stored.learning.evidence[0].attemptId).toBe(attempt.id);
+  await other.close();
+});
+
 async function accessible(page:Page){
   const result=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21aa"]).analyze();
   expect(result.violations.map(item=>({id:item.id,nodes:item.nodes.map(node=>node.target)}))).toEqual([]);
