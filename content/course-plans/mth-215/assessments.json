@@ -1,0 +1,87 @@
+{
+  "status": "proposed",
+  "principle": "These thresholds are transparent product defaults to pilot and revise, not NU grading rules or statistically validated placement cutoffs.",
+  "foundationScreen": {
+    "items": 12,
+    "distribution": "Two items for each of b01 through b06, with a Not sure option and confidence recorded separately.",
+    "use": "Suggest a bridge when either item exposes a gap. Two correct responses only suggest readiness; they do not award course-level mastery.",
+    "experience": "Optional, untimed, resumable, and skippable. Provide review links immediately after submission; preserve unanswered versus incorrect distinctions."
+  },
+  "courseSurvey": {
+    "items": 20,
+    "distribution": "Two representative items per module, one procedural and one conceptual or interpretive.",
+    "use": "Recommend which module challenges or lessons to open first. Do not skip an entire module based on these two questions.",
+    "experience": "Offer a short subject survey or direct module selection; a returning learner should not have to sit all ten challenges in one session."
+  },
+  "lessonCheckpoint": {
+    "items": 4,
+    "coverage": "Follow the four evidence categories specified in that lesson's checkpoint field. Use at least two distinct item families.",
+    "pass": "At least three of four independent correct answers, plus a correct response to any designated domain, completeness, or validity item. A missed required item receives a fresh targeted follow-up before the objective is demonstrated.",
+    "retry": "Show the relevant explanation and offer a new form. Preserve the original attempt and assistance flags. Unlimited practice is allowed; showing a solution does not count as an independent success."
+  },
+  "moduleQuiz": {
+    "items": 8,
+    "distribution": "Two items per lesson objective: one execution task and one concept, representation, error-analysis, or application task.",
+    "pass": "At least seven of eight correct, at least one correct in every lesson objective, and all designated validity errors repaired on a new targeted item.",
+    "tools": "Label exact/no-calculator and approximate/calculator-permitted items before the attempt. Default to untimed and resumable.",
+    "report": "Show objective evidence, first-attempt versus assisted results, and a specific next action. Avoid a single percentage that hides a completely missed objective."
+  },
+  "moduleChallenge": {
+    "items": 8,
+    "distribution": "Two independently answered items for each of the four lesson objectives, using the same coverage requirements as the module quiz.",
+    "bypass": "Two of two correct without hints provisionally satisfies that objective's initial checkpoint. Objectives below that threshold get their own lesson/checkpoint. Once all four objectives are demonstrated, the learner may advance without repeating the entire module.",
+    "retention": "Challenge evidence enters the same cumulative assessment and delayed-review queue as lesson evidence. Do not label a challenge result permanent mastery."
+  },
+  "customPractice": {
+    "options": ["One or more available modules/objectives", "5, 10, or 20 items", "Routine, mixed, or application emphasis", "Hints during practice or feedback after submission", "Exact work or calculator practice when suitable"],
+    "sampling": "Allocate at least one item to each selected objective when length permits. If the selected scope exceeds item count, explain that it is a rotating sample. Formal assessments keep their fixed coverage blueprint.",
+    "limits": "Never silently duplicate a question when a requested pool is too small. Offer a shorter set or clearly labeled repeat practice. Save the concrete questions and seed when the attempt starts.",
+    "evidence": "User-customized practice contributes practice history. Only a complete approved checkpoint, challenge, quiz, or cumulative blueprint creates the corresponding completion evidence."
+  },
+  "cumulativeAssessment": {
+    "items": 40,
+    "pointsPerItem": 1,
+    "distribution": "One item for each of the forty lesson objectives, exactly four per module. Use sixteen procedural, twelve conceptual/error-analysis, and twelve application/representation items. Each objective has one assigned category per form; later forms can rotate categories.",
+    "formRules": "Use fresh instances and varied representations. Keep exact arithmetic, domain restrictions, all-root reasoning, angle units, and singular-system interpretation visible in the blueprint. A long multipart problem does not silently count as multiple one-point items.",
+    "pass": "At least 34 of 40 overall and at least three of four in every module. All critical validity errors must also be repaired with two new independent targeted items before completion is recorded.",
+    "review": "If one module is weak, prescribe that module's missed objectives and a fresh four-item module reassessment. If the overall threshold is missed, prescribe targeted study and a new cumulative form. Keep all attempts; use the qualifying assessment plus documented repairs, not a fabricated blended exam score.",
+    "experience": "Untimed by default, with an optional suggested 90-minute practice target that does not expire the attempt. Save on every answer and allow pauses. Do not show correctness until submission in assessment mode."
+  },
+  "criticalValidity": [
+    {"objective":"m01-l04","check":"Original restrictions and extraneous-root rejection"},
+    {"objective":"m02-l03","check":"Inverse or composition domain is valid"},
+    {"objective":"m04-l01","check":"Canceled inputs remain excluded"},
+    {"objective":"m05-l03","check":"All original logarithm arguments are positive"},
+    {"objective":"m06-l01","check":"Angle units match the formula"},
+    {"objective":"m07-l03","check":"Principal inverse range is respected"},
+    {"objective":"m08-l01","check":"Identity reasoning preserves its common domain"},
+    {"objective":"m08-l03","check":"The complete periodic solution set is returned"},
+    {"objective":"m09-l01","check":"Unique, inconsistent, and dependent systems are distinguished"},
+    {"objective":"m10-l03","check":"Singular matrices are never inverted"}
+  ],
+  "itemFamilies": {
+    "minimum": 80,
+    "derivation": "Two distinct families for each of forty lessons. This is a minimum; add families whenever a lesson's required branches cannot be covered by its two initial specifications.",
+    "record": ["Stable family ID and version", "Objective ID and subtopic tags", "Procedural/conceptual/application category", "Allowed parameters and exclusions", "Deterministic seed and concrete prompt", "Expected representation and answer", "Domain, units, and tolerance policy", "Worked explanation and graduated hints", "Misconception-specific feedback", "Reference fixtures and independent checks", "Content review status"],
+    "validation": "Before release, check every family on at least fifty reproducible valid seeds plus explicit edge cases. Use an independent method for the answer oracle where practical; reproducing the same faulty expression in a test is insufficient.",
+    "edgeCases": ["Zero and negative values where allowed", "Empty, singleton, and multiple solution sets", "Open/closed and periodic endpoints", "Canceled factors and forbidden denominators", "Repeated and complex roots", "Degree/radian mismatch", "Equivalent expressions with different written forms", "Singular and inconsistent systems", "Rounded values near a tolerance boundary", "Malformed, oversized, or unsupported inputs"],
+    "generationFailure": "Reject invalid parameter draws deterministically with a bounded retry count. If a reviewed family cannot produce enough valid items, report unavailable practice rather than inventing an unchecked problem."
+  },
+  "answerChecking": [
+    {"type":"Exact numbers","rule":"Accept reviewed rational, pi, and simple radical forms through a bounded mathematical parser. Keep exactness separate from display decimals; decimal approximations do not satisfy an exact-answer prompt."},
+    {"type":"Approximate numbers","rule":"Declare absolute/relative tolerance on each item and show required units or an explicit unit selector. Test abs(actual-expected) <= max(absTolerance, relTolerance*abs(expected)); define a positive absolute tolerance near zero."},
+    {"type":"Expressions","rule":"Use typed, bounded expression syntax without eval or executable code. Normalize supported polynomial/rational/trigonometric forms using reviewed rules. Track original domains separately. Random point sampling alone must never prove equivalence."},
+    {"type":"Solution sets and intervals","rule":"Compare normalized sets, endpoint inclusion, exclusions, and duplicate roots independently of input order. State whether multiplicity is requested. Infinity is not a real solution or a closed endpoint."},
+    {"type":"Periodic solutions","rule":"For finite intervals, compare every normalized root and endpoint. For general solutions, use a structured base-angle and period form with an integer parameter and reviewed equivalence cases."},
+    {"type":"Matrices","rule":"Require dimensions and exact or explicitly approximate entries. Check operation compatibility before values; treat undefined operations and singular inverse requests as named outcomes."},
+    {"type":"Graphs","rule":"Score requested mathematical properties or numeric anchors, not pixel closeness. Support keyboard/numeric entry and an accessible tabular equivalent."},
+    {"type":"Reasoning","rule":"Use reviewed step choices, counterexample selections, and labeled justifications for automatic checks. Free-form prose uses a visible rubric and self-review or human review; do not present unverified prose as automatically graded."}
+  ],
+  "retention": {
+    "schedule": "Offer a two-item objective retrieval check about 3 days after initial demonstration, then after approximately 7 and 21 days following successful reviews. These are starting defaults, not a claim about an optimal schedule.",
+    "selection": "Prioritize missed, overdue, and prerequisite objectives. A course-level review samples ten items, one per module, rotating lesson coverage across sessions.",
+    "outcomes": "Independent success records a fresh evidence date. A miss suggests the relevant example and a new practice set. Display review due separately from previously completed work; do not erase course completion merely because time passed.",
+    "reminders": "Show due work when the learner returns. This plan does not create email notifications, background tasks, or an external calendar."
+  },
+  "completion": "Require all forty objectives demonstrated through checkpoints or challenges, ten module completions, a qualifying cumulative assessment with recorded repairs, and the modeling project's required checks and rubric self-review. Show delayed review and independent review status separately."
+}
