@@ -64,7 +64,7 @@ export const lessonSchema = z.object({
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
     z.object({ kind:z.literal("parabola-explorer"),prompt:text,a:z.number().int().min(-3).max(3).refine(value=>value!==0),h:z.number().int().min(-4).max(4),k:z.number().int().min(-5).max(5) }).strict(),
     z.object({kind:z.literal("candidate-audit"),prompt:text,cases:z.array(z.object({id,title:text,equation:text,transformation:text,candidates:z.array(z.object({value:text,outcome:z.enum(["valid","excluded","extraneous"]),reason:text}).strict()).min(1).max(8)}).strict()).min(2).max(8)}).strict(),
-    z.object({kind:z.literal("arithmetic-lab"),prompt:text,examples:z.array(z.object({label:text,expression:rational,explanation:text}).strict()).min(2).max(12)}).strict(),
+    z.object({kind:z.literal("arithmetic-lab"),prompt:text,examples:z.array(z.object({label:text,expression:exact,explanation:text}).strict()).min(2).max(12)}).strict(),
   ]),
   practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
   summary: z.array(text).min(2), retrieval: text,
