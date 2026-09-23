@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { lessons } from "../lib/learning/catalog";
+import { lessonById } from "../lib/learning/catalog";
 import { attemptResult, attemptSchema, createAttempt, emptyLearning, updateAttempt } from "../lib/learning/attempts";
 import { emptyProgress, parseBackup } from "../lib/progress";
 
+const fixtureLesson=lessonById("mth-215","m01-l01")!;
 const answered=()=>{
-  const attempt=createAttempt(lessons[0],"checkpoint","fixture");
+  const attempt=createAttempt(fixtureLesson,"checkpoint","fixture");
   for(const question of attempt.questions)attempt.responses[question.id]=Object.fromEntries(question.fields.map(field=>[field.id,field.kind==="choice"?field.correct:String(field.expected)]));
   return attempt;
 };
@@ -28,7 +29,7 @@ describe("saved learning attempts",()=>{
     const assisted=structuredClone(attempt);assisted.hints[assisted.questions[0].id]=1;
     const result=updateAttempt({...learning,attempts:[assisted]},assisted.id,0,current=>({...current,status:"submitted",submittedAt:new Date().toISOString()}));
     expect(result.evidence).toHaveLength(0);
-    const practice=createAttempt(lessons[0],"practice");practice.status="submitted";practice.submittedAt=new Date().toISOString();
+    const practice=createAttempt(fixtureLesson,"practice");practice.status="submitted";practice.submittedAt=new Date().toISOString();
     expect(attemptResult(practice).passed).toBe(false);
   });
   it("requires critical restriction answers even with a high overall score",()=>{
