@@ -1,0 +1,63 @@
+{
+  "id": "m05",
+  "title": "Exponential and logarithmic reasoning",
+  "requires": ["m01", "m02", "m04"],
+  "purpose": "Recognize multiplicative change, invert it with logarithms, and check the domain and units of a model.",
+  "bridgeIds": ["b02"],
+  "lessons": [
+    {
+      "id": "m05-l01",
+      "title": "Exponential functions and growth factors",
+      "objective": "Distinguish additive from multiplicative change and interpret an exponential model's initial value, base, and asymptote.",
+      "coverage": "a*b^x with b>0 and b!=1, growth versus decay, continuous exponential notation, transformations, and percentages as factors.",
+      "activity": "Compare equal-step differences and ratios in two tables, predict a future value, then reveal linear and exponential graphs on the same labeled axes.",
+      "families": ["Identify or construct an exponential model from equal-step data", "Interpret growth/decay factors and graph transformations"],
+      "generatorRules": "Use positive bases distinct from one and explicitly state the time step. Include fractional decay factors and cases where a fixed offset changes the horizontal asymptote.",
+      "commonError": "Treating a 10 percent increase as a factor of 0.10 or assuming doubling happens after a fixed additive increase.",
+      "feedback": "Write new value as old value plus the percentage change before simplifying to a multiplication factor.",
+      "checkpoint": "Model classification, factor interpretation, prediction, and asymptote/domain analysis.",
+      "reading": ["os-6/6.1", "os-6/6.2"]
+    },
+    {
+      "id": "m05-l02",
+      "title": "Logarithms as inverse functions",
+      "objective": "Convert between exponential and logarithmic statements and determine the domain of a logarithmic expression.",
+      "coverage": "Valid bases, positive arguments, common and natural logarithms, graph reflection, and vertical asymptotes after shifts.",
+      "activity": "Pair an exponent with its output, reverse the mapping, and test why zero or a negative input cannot enter a real logarithm.",
+      "families": ["Convert and evaluate logarithmic statements using exact powers", "Determine domains and graph features of shifted logarithms"],
+      "generatorRules": "Specify the base when writing log unless base 10 is explicitly established. Use log arguments that produce exact powers for hand-evaluation items.",
+      "commonError": "Confusing a logarithm with division by its base or assigning a real logarithm to a nonpositive argument.",
+      "feedback": "Rewrite the statement as base raised to exponent equals argument, then test the argument restriction.",
+      "checkpoint": "Two inverse conversions, an exact value, and a domain with an open boundary.",
+      "reading": ["os-6/6.3", "os-6/6.4"]
+    },
+    {
+      "id": "m05-l03",
+      "title": "Log rules and exponential equations",
+      "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
+      "coverage": "Product, quotient, and power rules; change of base; like-base equations; taking logs; and rejection of candidates that violate original log domains.",
+      "activity": "Audit competing simplification steps, find a counterexample to an invented sum rule, and compare original and transformed domains.",
+      "families": ["Solve an exponential or logarithmic equation with an exact logarithmic answer", "Accept or reject a log rewrite based on both value and domain"],
+      "generatorRules": "Track each original log argument's positivity. For ln(x^2), distinguish 2*ln(abs(x)) on x!=0 from 2*ln(x) on x>0. Keep exact and approximate answer modes separate.",
+      "commonError": "Using log(a+b)=log(a)+log(b), losing the original domain, or rounding an intermediate logarithm too soon.",
+      "feedback": "Substitute a simple positive counterexample or an excluded candidate and return to the original restrictions.",
+      "checkpoint": "A rule application, an invalid identity, an exponential equation, and a domain-sensitive logarithmic equation.",
+      "reading": ["os-6/6.5", "os-6/6.6"]
+    },
+    {
+      "id": "m05-l04",
+      "title": "Decay, thresholds, and logarithmic scales",
+      "objective": "Fit a simple exponential model, solve for a threshold time, and interpret a logarithm of a dimensionless ratio.",
+      "coverage": "Two-point model fitting, half-life and doubling time, continuous decay, a supplied voltage-decay model, and a clearly specified 10*log10(P/P0) power-ratio scale.",
+      "activity": "Choose a decay constant, predict when a signal falls below a threshold, and compare the algebraic solution with a graph and value table.",
+      "families": ["Determine a growth/decay parameter and threshold time", "Translate between a supplied logarithmic ratio scale and the original ratio"],
+      "generatorRules": "Require positive reference and measured quantities; ensure the threshold is reachable in the requested time domain. Supply all physics relationships and never interchange power and amplitude formulas.",
+      "commonError": "Losing the sign of a decay rate, taking a log of a dimensional quantity, or reporting a negative time without checking context.",
+      "feedback": "Predict whether time should be positive, form a dimensionless ratio, and verify the result in the original model.",
+      "checkpoint": "Parameter fitting, threshold solution, ratio-scale conversion, and model-validity interpretation.",
+      "reading": ["os-6/6.7", "os-6/6.8"]
+    }
+  ],
+  "anchor": {"prompt":"For V(t)=8*exp(-t/2) with t in seconds, when does V reach 2 V?", "answer":"t=2*ln(4), approximately 2.772588722 seconds. The exponent is dimensionless because the denominator represents a 2-second time constant.","numericChecks":[2.772588722239781]},
+  "moduleExit": "A threshold answer must include a valid logarithmic step, units, and substitution into the original model."
+}

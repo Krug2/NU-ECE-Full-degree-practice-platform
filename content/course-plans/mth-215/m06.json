@@ -1,0 +1,63 @@
+{
+  "id": "m06",
+  "title": "Angles and trigonometric foundations",
+  "requires": ["m01", "m02"],
+  "purpose": "Connect angle measure, triangle ratios, and circle coordinates so later trigonometric formulas have meaning.",
+  "bridgeIds": ["b02", "b05", "b06"],
+  "lessons": [
+    {
+      "id": "m06-l01",
+      "title": "Radians, rotations, and arc length",
+      "objective": "Convert degree and radian measures, identify coterminal angles, and calculate an arc length with consistent units.",
+      "coverage": "Directed angles, standard position, a full turn, radian definition as arc/radius, reference angles, sector area, and angular versus linear measures.",
+      "activity": "Set a radius and an angle, predict the arc length, and compare the same angle at two radii using a numeric form and a circle diagram.",
+      "families": ["Convert exact pi-fraction angles and locate their quadrant", "Compute arc length or sector area and identify a degree/radian mismatch"],
+      "generatorRules": "Use positive radii and explicit angle units. Include negative angles and rotations exceeding a full turn. Apply s=r*theta only with theta in radians.",
+      "commonError": "Substituting degrees into a radian formula or assuming a negative angle has negative magnitude of physical arc length when a distance is asked.",
+      "feedback": "Compare the requested quantity with a full circumference and distinguish directed displacement from distance.",
+      "checkpoint": "Conversion, coterminal angle, reference angle, and arc-length calculation.",
+      "reading": ["os-7/7.1"]
+    },
+    {
+      "id": "m06-l02",
+      "title": "Right-triangle ratios",
+      "objective": "Choose a trigonometric ratio to solve a right triangle and interpret the solution with the correct reference angle and units.",
+      "coverage": "Opposite/adjacent relative to an angle, hypotenuse, sine/cosine/tangent ratios, complementary angles, special triangles, and angle-of-elevation models.",
+      "activity": "Relabel a fixed triangle from either acute angle and predict how the opposite and adjacent sides swap while the hypotenuse stays fixed.",
+      "families": ["Find a missing side or angle of a right triangle", "Translate a diagram or accessible text description into the appropriate ratio"],
+      "generatorRules": "Generate valid positive triangles; include exact special-angle cases and approximate measured cases. Avoid premature rounding of a side used in a later calculation.",
+      "commonError": "Naming sides independently of the chosen angle or selecting a reciprocal ratio.",
+      "feedback": "Mark the reference angle and locate the hypotenuse before writing any ratio.",
+      "checkpoint": "Ratio selection, exact special-triangle value, side computation, and application with units.",
+      "reading": ["os-7/7.2"]
+    },
+    {
+      "id": "m06-l03",
+      "title": "The unit circle and exact values",
+      "objective": "Determine exact sine and cosine values using coordinates, symmetry, reference angles, and quadrant signs.",
+      "coverage": "The point (cos(theta),sin(theta)), 30/45/60-degree reference triangles, quadrantal angles, periodicity, negative angles, and sin^2+cos^2=1.",
+      "activity": "Predict the coordinate signs and exact pair before moving to a selected angle; all tasks are available through typed angles and a coordinate table.",
+      "families": ["Evaluate exact sine/cosine pairs for special and coterminal angles", "Recover possible coordinates or angle locations from one coordinate and a quadrant"],
+      "generatorRules": "Represent exact values with rational numbers and square roots, not floating-point answer matching. Include axis points and negative angles.",
+      "commonError": "Swapping sine and cosine coordinates or applying the reference-angle magnitude without its quadrant sign.",
+      "feedback": "Locate x and y signs first, then choose the reference-triangle magnitudes.",
+      "checkpoint": "An exact pair, a negative angle, a quadrantal angle, and a coordinate/quadrant reconstruction.",
+      "reading": ["os-7/7.3"]
+    },
+    {
+      "id": "m06-l04",
+      "title": "All six trigonometric functions",
+      "objective": "Calculate the six trigonometric ratios where defined and explain each undefined value using a zero denominator.",
+      "coverage": "Tangent/cotangent as coordinate ratios, secant/cosecant as reciprocals, reciprocal versus inverse-function notation, parity, and period differences.",
+      "activity": "Use a coordinate pair to construct all six values, highlighting the denominators and predicting where a function becomes undefined.",
+      "families": ["Derive the remaining ratios from one ratio and a quadrant", "Classify exact values, undefined cases, and parity/period statements"],
+      "generatorRules": "Keep undefined answers distinct from infinity and from a very large finite approximation. If only one ratio is provided, add enough sign/quadrant information for a unique requested result.",
+      "commonError": "Reporting tan(pi/2) as a large finite calculator value or confusing reciprocal notation with arcsine/arccosine.",
+      "feedback": "Replace the function with its coordinate ratio and inspect the denominator exactly.",
+      "checkpoint": "Ratio reconstruction, undefined value, reciprocal-versus-inverse distinction, and parity/period reasoning.",
+      "reading": ["os-7/7.4"]
+    }
+  ],
+  "anchor": {"prompt":"Find sine, cosine, and tangent at 5*pi/6 radians.","answer":"sin=1/2, cos=-sqrt(3)/2, tan=-sqrt(3)/3. The angle is in quadrant II, so sine is positive and cosine and tangent are negative.","numericChecks":[0.5,-0.8660254037844386,-0.5773502691896257]},
+  "moduleExit": "Demonstrate exact unit-circle values without relying on a calculator and recognize undefined ratios through their denominators."
+}
