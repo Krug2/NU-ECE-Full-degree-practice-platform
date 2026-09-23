@@ -24,6 +24,7 @@ export const questionSchema = z.object({
   id, familyId: id, familyVersion: z.number().int().positive(), courseId: id, objectiveId: id,
   category: z.enum(["procedural", "conceptual", "application"]), critical: z.boolean(),
   prompt: text, fields: z.array(answerFieldSchema).min(1).max(8),
+  parameters: z.record(z.string(), z.number().finite()).default({}),
   hints: z.array(text).length(3), explanation: z.array(text).min(1).max(12),
   answerSummary: text,
 }).strict().refine(item => unique(item.fields.map(field => field.id)), "Duplicate answer fields");
