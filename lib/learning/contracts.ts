@@ -6,6 +6,7 @@ import { degree, parsePolynomial } from "./polynomial";
 import { commonFactorDegree, parseRationalExpression } from "./rational-expression";
 import { questionFigureSchema, piecewiseFigureSchema } from "./figures";
 import { transformedFunctionSchema } from "./transformations";
+import { machineSchema } from "./function-machines";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -16,7 +17,7 @@ const polynomial = z.string().max(200).refine(value => { try { parsePolynomial(v
 const fieldBase = { id, label: text, help: z.string().max(500).default("") };
 const choiceField = z.object({
   ...fieldBase, kind: z.literal("choice"),
-  options: z.array(z.object({ id, label: text, feedback: text }).strict()).min(2).max(8),
+  options: z.array(z.object({ id, label: text, accessibleLabel: z.string().min(1).max(1000).optional(), feedback: text }).strict()).min(2).max(8),
   correct: id,
 }).strict().refine(field => unique(field.options.map(option => option.id)) && field.options.some(option => option.id === field.correct), "Invalid choice options");
 const rationalField = z.object({ ...fieldBase, kind: z.literal("rational"), expected: rational, unit: z.string().max(60).default("") }).strict();
@@ -96,6 +97,7 @@ export const lessonSchema = z.object({
     z.object({kind:z.literal("triangle-calculator"),prompt:text,degrees:z.number().int().min(1).max(89),hypotenuse:z.number().int().min(1).max(20)}).strict(),
     z.object({kind:z.literal("piecewise-lab"),prompt:text,cases:z.array(piecewiseFigureSchema).min(2).max(4),initialInput:rational}).strict(),
     z.object({kind:z.literal("transformation-lab"),prompt:text,model:transformedFunctionSchema,extent:z.number().int().min(2).max(24)}).strict(),
+    z.object({kind:z.literal("composition-lab"),prompt:text,cases:z.array(z.object({title:text,f:machineSchema,g:machineSchema,input:rational,order:z.enum(["fg","gf"])}).strict()).min(3).max(6)}).strict(),
   ]),
   practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
   summary: z.array(text).min(2), retrieval: text,
