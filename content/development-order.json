@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "purpose": "Course development order selected by the project owner; separate from academic prerequisites and each learner's study queue.",
+  "workflow": ["plan one course", "build its complete learning pack", "verify coverage and behavior", "move to the next course"],
+  "courseIds": ["mth-215", "phs-104a", "csc-242", "csc-252", "phs-104", "csc-208", "csc-209", "csc-220"],
+  "firstCourse": "mth-215",
+  "dependencyNote": "PHS 104A is second in development order. NU lists PHS 104 or PHS 171 as its prerequisite. Preserve that prerequisite and provide clearly labeled preparation links when building the lab.",
+  "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/"
+}
