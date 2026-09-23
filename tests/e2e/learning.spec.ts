@@ -76,6 +76,7 @@ test("an independent checkpoint records evidence and survives reload",async({pag
 test("concurrent answers keep the other tab's draft until an explicit choice",async({page,context})=>{
   await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
   const other=await context.newPage();await other.goto(route);
+  await expect(other.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("");
   await page.locator("#practice").getByLabel("x",{exact:true}).fill("7");
   await expect(other.getByRole("alert").filter({hasText:"changed in another tab"})).toBeVisible();
   await expect(other.locator("#practice").getByLabel("x",{exact:true})).toBeDisabled();
