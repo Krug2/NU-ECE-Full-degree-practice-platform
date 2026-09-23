@@ -1,5 +1,6 @@
 .lesson-layout { display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:30px;align-items:start; }
 .lesson-main { min-width:0; }
+.lesson-main .field { min-width:0;grid-template-columns:minmax(0,1fr); }
 .lesson-main section { scroll-margin-top:24px; }
 .lesson-main .panel { margin-bottom:24px;padding:30px; }
 .lesson-main p { line-height:1.85; }
@@ -15,6 +16,7 @@
 .worked-example li { padding:5px 0 12px 6px; }
 .worked-example li p { font-size:14px;color:var(--muted);margin-top:8px; }
 .display-equation { display:block;max-width:100%;overflow-x:auto;padding:6px 0; }
+.display-equation:focus-visible { outline:3px solid #b26035;outline-offset:4px; }
 .display-equation .katex-display { margin:.45em 0;text-align:left; }
 .equation .katex { font-size:1.1em; }
 .balance-display { padding:20px;background:var(--soft);border:1px solid var(--line);border-radius:8px;margin:18px 0; }
