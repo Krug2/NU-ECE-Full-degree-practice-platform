@@ -17,7 +17,7 @@ it("renders every authored formula and supplies complete practice forms", () => 
     for(const text of strings)for(const match of text.matchAll(/\$([^$]+)\$/g))expect(()=>katex.renderToString(match[1],{strict:"error",trust:false})).not.toThrow();
     for(const example of lesson.examples)for(const step of example.steps)expect(()=>katex.renderToString(step.math,{strict:"error",trust:false})).not.toThrow();
     for(let seed=0;seed<50;seed++){
-      expect(generateQuestions(lesson.practice,`practice-${seed}`)).toHaveLength(6);
+      expect(generateQuestions(lesson.practice,`practice-${seed}`)).toHaveLength(lesson.practice.length);
       expect(generateQuestions(lesson.checkpoint,`checkpoint-${seed}`)).toHaveLength(4);
     }
   }
