@@ -1,0 +1,290 @@
+{
+  "id": "b02",
+  "courseId": "mth-215",
+  "moduleId": "foundations",
+  "version": 1,
+  "title": "Powers, roots, and scientific notation",
+  "objective": "Apply exponent rules, simplify radicals within their real domains, and convert scientific notation while preserving signs and exact values.",
+  "why": "Powers describe repeated factors, roots reverse powers under stated conditions, and scientific notation keeps very large or small quantities readable. These conventions appear in almost every later algebra, physics, and circuits calculation. This refresher emphasizes the restrictions that make each rule valid.",
+  "estimatedMinutes": 50,
+  "prerequisites": [
+    {
+      "label": "Signed numbers, fractions, and notation",
+      "lessonId": "b01"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Count factors to understand exponent rules",
+      "paragraphs": [
+        "For a positive integer n, $a^n$ means n factors of a multiplied together. Thus $4^3=4\\cdot4\\cdot4=64$, not $4\\cdot3=12$. In $(-4)^3$, the negative sign belongs to each factor. Keep the base and exponent separate when reading a power.",
+        "With the same base, multiplication combines factor counts: $a^m a^n=a^{m+n}$. Division cancels common factors: $a^m/a^n=a^{m-n}$ for $a\\ne0$. For example, $5^2\\cdot5^3=5^5$, while $5^2/5^3=5^{-1}=1/5$. These are rules for products and quotients, not sums.",
+        "A power of a power multiplies the counts: $(a^m)^n=a^{mn}$ for integer exponents on their allowed domain. The expression $(2^3)^2$ contains two groups of three factors, so it equals $2^6$. In contrast, $2^3\\cdot2^2=2^5$. Identify the outer operation before choosing a rule.",
+        "For integer powers, $(ab)^n=a^n b^n$ and $(a/b)^n=a^n/b^n$ when the expressions are defined. An exponent does not distribute across addition: $(2+3)^2=25$, while $2^2+3^2=13$. Expansion of a squared sum also includes its middle product term."
+      ]
+    },
+    {
+      "heading": "Zero and negative exponents preserve the pattern",
+      "paragraphs": [
+        "For a nonzero base, $a^0=1$. One reason is $a^m/a^m=1$, while subtracting exponents gives $a^{m-m}=a^0$. This argument divides by a power of a, so it cannot establish a value for $0^0$. This course's arithmetic checker leaves $0^0$ undefined rather than applying the nonzero-base rule to it.",
+        "A negative exponent means a reciprocal: $a^{-n}=1/a^n$ for $a\\ne0$. Hence $2^{-4}=1/16$, which is positive. The minus sign is in the exponent, not in front of the value. For a negative base, the power's parity still matters: $(-2)^{-3}=1/(-8)=-1/8$.",
+        "Moving a factor across a fraction bar changes its exponent's sign. For nonzero x, $x^{-2}/x^3=x^{-5}=1/x^5$. Keep the original nonzero restrictions even after rewriting. A formula containing a reciprocal never acquires a value at a forbidden zero merely because the notation changes."
+      ]
+    },
+    {
+      "heading": "The root symbol selects a principal value",
+      "paragraphs": [
+        "The real principal square root $\\sqrt{u}$ is the nonnegative number whose square is u, and it requires $u\\ge0$. Thus $\\sqrt{49}=7$. Solving $z^2=49$ is a different task: both 7 and -7 are solutions. Do not put an automatic plus-or-minus sign in front of a principal-root evaluation.",
+        "For every real x, $\\sqrt{x^2}=|x|$, not always x. At $x=-6$, the left side is $\\sqrt{36}=6$, while x is -6. Absolute value expresses the nonnegative result in a formula that works on both sides of zero. If you already know $x\\ge0$, then the simpler expression x is valid on that restricted domain.",
+        "Odd real roots behave differently: $\\sqrt[3]{-64}=-4$ because $(-4)^3=-64$. A real cube root exists for a negative input. A real square root of a negative input does not; the later complex-number lesson extends the number system rather than changing the real-domain restriction.",
+        "For an even root containing a variable, solve the radicand inequality. The expression $\\sqrt{7-2x}$ requires $7-2x\\ge0$, hence $x\\le7/2$. Equality is permitted because $\\sqrt0=0$. If that same root is a denominator, equality is excluded to avoid division by zero."
+      ]
+    },
+    {
+      "heading": "Simplify radicals with square factors and domain checks",
+      "paragraphs": [
+        "For nonnegative real u and v, $\\sqrt{uv}=\\sqrt u\\sqrt v$. This lets you extract a perfect-square factor: $\\sqrt{80}=\\sqrt{16\\cdot5}=4\\sqrt5$. For a positive denominator, $\\sqrt{u/v}=\\sqrt u/\\sqrt v$ on the real domain.",
+        "For example, $\\sqrt{45/16}=3\\sqrt5/4$. Keep the remaining radical exact when it is irrational. A decimal approximation may help estimate its size, but it is not an exact replacement. Equivalent exact forms, such as $\\sqrt{20}/2$ and $\\sqrt5$, represent the same number.",
+        "The product rule does not become a sum rule: $\\sqrt{a+b}$ generally differs from $\\sqrt a+\\sqrt b$. Nor should a real-domain product rule be applied blindly to negative radicands. Write the domain assumptions before applying a familiar-looking identity.",
+        "A radical denominator can be rewritten without changing the value by multiplying by a suitable form of one. For instance, $1/\\sqrt3=\\sqrt3/3$. Both exact forms are accepted here. Rationalizing can make later combinations easier, but it must preserve the original nonzero denominator restriction."
+      ]
+    },
+    {
+      "heading": "Rational exponents combine roots and powers",
+      "paragraphs": [
+        "For a positive base and a reduced rational exponent $m/n$ with $n>0$, write $a^{m/n}=(\\sqrt[n]{a})^m$. The denominator names the root and the numerator names the power. Thus $81^{3/4}=(\\sqrt[4]{81})^3=3^3=27$.",
+        "For negative real bases, use the real-root interpretation only when the reduced denominator is odd. For example, $(-32)^{2/5}=(\\sqrt[5]{-32})^2=(-2)^2=4$. An even reduced denominator would require a nonreal root, so it is outside the real domain used in this refresher.",
+        "A negative rational exponent adds a reciprocal: $16^{-3/4}=1/(\\sqrt[4]{16})^3=1/8$. The base must be nonzero. Keep the reduction of the fractional exponent and the root's domain explicit when simplifying expressions with variables.",
+        "The investigation supports sqrt(number) and integer powers. For a square-root exponent, rewrite it using sqrt before entering it. The generated rational-exponent questions ask for the resulting exact value, so you can enter a fraction or integer after evaluating the stated real root."
+      ]
+    },
+    {
+      "heading": "Scientific notation records place value explicitly",
+      "paragraphs": [
+        "Normalized scientific notation writes a nonzero number as $a\\times10^n$, where n is an integer and $1\\le|a|<10$. The sign belongs to a. For instance, 0.00072 is $7.2\\times10^{-4}$, while -72000 is $-7.2\\times10^4$.",
+        "A positive power of ten makes a positive coefficient larger by moving its decimal point right. A negative power moves it left. Count the places and verify by reversing the shift. The expression $72\\times10^{-5}$ has the same value as $7.2\\times10^{-4}$, but only the latter has a normalized coefficient.",
+        "To multiply scientific-notation values, multiply coefficients and add exponents, then normalize again. For example, $(6\\times10^3)(4\\times10^{-5})=24\\times10^{-2}=2.4\\times10^{-1}$. For division, divide coefficients and subtract exponents. For addition, first align the powers of ten so you add like-sized units.",
+        "Keep measurement units attached during conversion. Rewriting a stated length from decimal to scientific notation does not change meters to millimeters and does not create more measurement precision. A calculator display such as 7.2E-4 commonly means 7.2 times ten to the negative fourth power; in this app's exact inputs, type 7.2*10^-4."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Combine powers and retain a reciprocal",
+      "prompt": "Evaluate $3^2/3^5$ exactly.",
+      "steps": [
+        {
+          "math": "\\frac{3^2}{3^5}=3^{2-5}=3^{-3}",
+          "reason": "The bases match, so division subtracts the exponent in the denominator from the one in the numerator."
+        },
+        {
+          "math": "3^{-3}=\\frac1{3^3}=\\frac1{27}",
+          "reason": "The negative exponent creates a reciprocal. It does not make the number negative."
+        },
+        {
+          "math": "\\frac1{27}\\cdot3^5=3^2",
+          "reason": "Multiplying the quotient by the denominator recovers the numerator."
+        }
+      ],
+      "conclusion": "The exact result is $1/27$, and the original denominator is nonzero."
+    },
+    {
+      "title": "Extract squares without losing an absolute value",
+      "prompt": "Simplify $\\sqrt{20x^2}$ for a real x, then evaluate at x = -3.",
+      "steps": [
+        {
+          "math": "\\sqrt{20x^2}=\\sqrt{4\\cdot5\\cdot x^2}",
+          "reason": "Separate a perfect square, the remaining factor 5, and the squared variable."
+        },
+        {
+          "math": "\\sqrt{4\\cdot5\\cdot x^2}=2\\sqrt5\\,|x|",
+          "reason": "The square root of x² is |x| for every real x. All factors are nonnegative."
+        },
+        {
+          "math": "x=-3:\\quad 2\\sqrt5\\,|-3|=6\\sqrt5",
+          "reason": "Absolute value gives 3, preserving the nonnegative principal root."
+        }
+      ],
+      "conclusion": "The formula is $2|x|\\sqrt5$. Replacing |x| by x would incorrectly produce a negative result at x = -3."
+    },
+    {
+      "title": "Normalize a small measurement",
+      "prompt": "Rewrite 0.000056 m in normalized scientific notation.",
+      "steps": [
+        {
+          "math": "0.000056=5.6\\times0.00001",
+          "reason": "Move the decimal so the coefficient has one nonzero digit before the decimal point."
+        },
+        {
+          "math": "0.00001=10^{-5}",
+          "reason": "Five places to the left of the ones place correspond to a negative fifth power."
+        },
+        {
+          "math": "0.000056\\ \\mathrm m=5.6\\times10^{-5}\\ \\mathrm m",
+          "reason": "The number's representation changes, but the unit stays meters."
+        }
+      ],
+      "conclusion": "The coefficient is 5.6 and the exponent is -5. Multiplying by $10^{-5}$ recreates the original decimal."
+    }
+  ],
+  "guided": {
+    "title": "Finish an exponent and root check",
+    "setup": "Work through a reciprocal and a principal square root without rounding.",
+    "before": [
+      "For $5^{-2}$, the negative exponent tells you to form a reciprocal.",
+      "For $\\sqrt{(-7)^2}$, evaluate the square inside first.",
+      "Use the principal square root, which is nonnegative."
+    ],
+    "question": {
+      "id": "guided-powers",
+      "familyId": "mth-powers-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "b02",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "Give the exact reciprocal and principal-root values.",
+      "fields": [
+        {
+          "id": "reciprocal",
+          "kind": "rational",
+          "label": "Value of five to the negative second power",
+          "expected": "1/25"
+        },
+        {
+          "id": "root",
+          "kind": "rational",
+          "label": "Principal square root of negative seven squared",
+          "expected": "7"
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "The reciprocal is 1 divided by 5².",
+        "The radicand in the root expression is 49.",
+        "The answers are 1/25 and 7."
+      ],
+      "explanation": [
+        "$5^{-2}=1/5^2=1/25$.",
+        "$\\sqrt{(-7)^2}=\\sqrt{49}=7=|-7|$."
+      ],
+      "answerSummary": "Reciprocal: 1/25. Principal square root: 7."
+    },
+    "after": "The sign in an exponent and the sign inside a squared base perform different jobs."
+  },
+  "interaction": {
+    "kind": "arithmetic-lab",
+    "prompt": "Predict the exact result, reveal it, then change one sign, base, or grouping. Compare sqrt((-4)^2) with -sqrt(4^2), and explain the role of the principal square root.",
+    "examples": [
+      {
+        "label": "Principal root of a squared negative input",
+        "expression": "sqrt((-4)^2)",
+        "explanation": "The radicand is 16, so its principal square root is 4. This equals $|-4|$."
+      },
+      {
+        "label": "A minus outside the principal root",
+        "expression": "-sqrt(4^2)",
+        "explanation": "The principal square root is 4; the minus outside then changes the result to -4."
+      },
+      {
+        "label": "Extract a perfect-square factor",
+        "expression": "sqrt(80)",
+        "explanation": "The factor 16 comes out as 4, leaving $4\\sqrt5$."
+      },
+      {
+        "label": "A negative exponent",
+        "expression": "2^(-3)",
+        "explanation": "The reciprocal is $1/2^3=1/8$."
+      },
+      {
+        "label": "Scientific notation as an exact value",
+        "expression": "5.6*10^(-5)",
+        "explanation": "Moving the decimal five places left gives 0.000056, equivalently 7/125000."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "product"
+    },
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "quotient"
+    },
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "nested"
+    },
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "negative"
+    },
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "real-power"
+    },
+    {
+      "familyId": "mth-root-meaning",
+      "variant": "absolute"
+    },
+    {
+      "familyId": "mth-root-meaning",
+      "variant": "domain"
+    },
+    {
+      "familyId": "mth-radical-simplify",
+      "variant": "integer"
+    },
+    {
+      "familyId": "mth-radical-simplify",
+      "variant": "fraction"
+    },
+    {
+      "familyId": "mth-scientific-notation",
+      "variant": "to"
+    },
+    {
+      "familyId": "mth-scientific-notation",
+      "variant": "from"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "negative"
+    },
+    {
+      "familyId": "mth-root-meaning",
+      "variant": "absolute"
+    },
+    {
+      "familyId": "mth-scientific-notation",
+      "variant": "to"
+    },
+    {
+      "familyId": "mth-exponent-rules",
+      "variant": "real-power"
+    }
+  ],
+  "summary": [
+    "Add exponents for a same-base product, subtract them for a quotient, and multiply them for a power of a power.",
+    "Zero and negative exponent rules need a nonzero base. A negative exponent creates a reciprocal.",
+    "A principal even root is nonnegative. In particular, $\\sqrt{x^2}=|x|$ for real x.",
+    "Apply radical rules on their stated real domains, and keep irrational values exact until approximation is requested.",
+    "Scientific notation preserves the value and units. Normalize the coefficient and verify the exponent by reversing the decimal shift."
+  ],
+  "retrieval": "Explain why 4^-2 is positive, evaluate sqrt((-8)^2), and rewrite 0.00039 in scientific notation. State the real-domain restriction for sqrt(2x-3).",
+  "readings": [
+    {
+      "title": "OpenStax: Exponents and Scientific Notation",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-2-exponents-and-scientific-notation",
+      "purpose": "More detail on integer exponent rules and representing very large or small values."
+    },
+    {
+      "title": "OpenStax: Radicals and Rational Exponents",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-3-radicals-and-rational-exponents",
+      "purpose": "Review principal roots, rational exponents, and exact radical simplification."
+    }
+  ]
+}
