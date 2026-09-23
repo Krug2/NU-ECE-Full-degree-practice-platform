@@ -7,12 +7,14 @@ const key = "ece-study:progress:v1";
 type Snapshot = { data: Progress; ready: boolean; issue: string; locked: boolean };
 const initial: Snapshot = { data: emptyProgress(), ready: false, issue: "", locked: false };
 let snapshot: Snapshot = initial;
+let storedText: string | null = null;
 const listeners = new Set<() => void>();
 
 function load(): Snapshot {
   if (snapshot.ready || typeof window === "undefined") return snapshot;
   try {
     const text = window.localStorage.getItem(key);
+    storedText = text;
     snapshot = { data: text ? parseBackup(text) : emptyProgress(), ready: true, issue: "", locked: false };
   } catch (error) {
     snapshot = { data: emptyProgress(), ready: true, issue: error instanceof Error ? error.message : "Browser storage is unavailable.", locked: true };
@@ -33,9 +35,25 @@ function subscribe(listener: () => void) {
 export function useStudy() {
   return useSyncExternalStore(subscribe, load, () => initial);
 }
+export const getStudySnapshot = () => load();
 
 export function saveProgress(update: (data: Progress) => Progress, replace = false): boolean {
-  const current = load();
+  let current = load();
+  if (!replace && !current.locked) {
+    try {
+      const latest = window.localStorage.getItem(key);
+      if (latest !== storedText) {
+        snapshot = { data: latest ? parseBackup(latest) : emptyProgress(), ready: true, issue: "", locked: false };
+        storedText = latest;
+        current = snapshot;
+        notify();
+      }
+    } catch {
+      snapshot = { ...current, issue: "Stored progress changed or could not be read. Export your current work before reloading.", locked: true };
+      notify();
+      return false;
+    }
+  }
   if (current.locked && !replace) return false;
   const result = progressSchema.safeParse(update(current.data));
   if (!result.success) {
@@ -45,6 +63,7 @@ export function saveProgress(update: (data: Progress) => Progress, replace = fal
   }
   try {
     window.localStorage.setItem(key, JSON.stringify(result.data));
+    storedText = JSON.stringify(result.data);
     snapshot = { data: result.data, ready: true, issue: "", locked: false };
   } catch {
     snapshot = { data: result.data, ready: true, issue: "Browser storage could not save your changes. Export a backup from Settings before closing this page.", locked: false };
