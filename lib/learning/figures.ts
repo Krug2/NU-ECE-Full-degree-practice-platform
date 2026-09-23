@@ -9,6 +9,13 @@ export const coordinateFigureSchema = z.object({
   .refine(figure => !figure.line || figure.points.length === 2 && (figure.points[0].xTicks !== figure.points[1].xTicks || figure.points[0].yTicks !== figure.points[1].yTicks), "A line requires two distinct points");
 export type CoordinateFigure = z.infer<typeof coordinateFigureSchema>;
 export type CoordinatePoint = z.infer<typeof coordinatePointSchema>;
+export const triangleFigureSchema = z.object({
+  kind: z.literal("right-triangle"), title: z.string().min(1).max(100), angleAt: z.enum(["B", "C"]),
+  AB: z.string().min(1).max(120), AC: z.string().min(1).max(120), BC: z.string().min(1).max(120),
+}).strict();
+export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema]);
+export type TriangleFigure = z.infer<typeof triangleFigureSchema>;
+export type QuestionFigureData = z.infer<typeof questionFigureSchema>;
 export const coordinatePixel = (point: Pick<CoordinatePoint, "xTicks" | "yTicks">) => ({ x: 180+26*point.xTicks, y: 170-24*point.yTicks });
 export const coordinateValue = (figure: CoordinateFigure, point: CoordinatePoint) => ({ x: figure.xStep*point.xTicks, y: figure.yStep*point.yTicks });
 export function describeCoordinate(point: CoordinatePoint): string {

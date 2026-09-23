@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { coordinateFigureSchema, coordinatePixel, coordinateValue, describeCoordinate } from "../lib/learning/figures";
+import { coordinateFigureSchema, coordinatePixel, coordinateValue, describeCoordinate, triangleFigureSchema } from "../lib/learning/figures";
 import { generateQuestions } from "../lib/learning/generate";
 
 const figure = { kind: "coordinates", title: "A scaled point", xLabel: "Voltage (V)", yLabel: "Current (mA)", xStep: 2, yStep: 5, points: [{ name: "A", xTicks: -2, yTicks: 3 }] };
@@ -20,4 +20,11 @@ it("treats different saved graphs as distinct questions even when their instruct
   expect(questions).toHaveLength(2);
   expect(questions[0].prompt).toBe(questions[1].prompt);
   expect(questions[0].figure).not.toEqual(questions[1].figure);
+});
+it("distinguishes the reference acute angle from the fixed right angle", () => {
+  const triangle = { kind: "right-triangle", title: "Find a missing side", angleAt: "B", AB: "3 cm", AC: "4 cm", BC: "h cm" };
+  expect(triangleFigureSchema.safeParse(triangle).success).toBe(true);
+  expect(triangleFigureSchema.safeParse({ ...triangle, angleAt: "C" }).success).toBe(true);
+  expect(triangleFigureSchema.safeParse({ ...triangle, angleAt: "A" }).success).toBe(false);
+  expect(triangleFigureSchema.safeParse({ ...triangle, BC: "" }).success).toBe(false);
 });
