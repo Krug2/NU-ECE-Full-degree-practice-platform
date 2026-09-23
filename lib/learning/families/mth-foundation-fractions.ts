@@ -24,14 +24,20 @@ export function foundationFractionQuestion(familyId: string, variant: string, se
       explanation: [`The original denominator is zero at ${excluded.join(" and ")}, so those inputs are excluded.`, variant === "squares" ? `Factoring the difference of squares exposes the common factor x-${n}.` : variant === "factors" ? `Cancel the common factor $${factor(a)}$ only where it is nonzero.` : `Cancel one factor x, leaving power ${power-1} in the numerator.`, `The simplified result is ${expected}, with the original exclusions still attached.`], answerSummary: `${expected}; excluded inputs: ${excluded.join(", ")}.` });
   }
   if (familyId === "mth-rational-operations") {
-    if (!["add", "subtract", "multiply", "divide", "complex"].includes(variant)) throw new Error("Unknown rational operation variant");
-    const u = rng.integer(1, 5), v = rng.integer(1, 5), k = rng.integer(2, 5), subtract = variant === "subtract";
+    if (!["add", "subtract", "shared", "repeated", "multiply", "divide", "complex"].includes(variant)) throw new Error("Unknown rational operation variant");
+    const u = rng.integer(1, 5), v = rng.integer(1, 5)+(variant === "shared" ? u*Math.abs(a-b) : 0), k = rng.integer(2, 5), subtract = variant === "subtract";
     let original: string, expected: string, excluded: string[], reasoning: string[];
     if (variant === "add" || subtract) {
       const signed = subtract ? -v : v, numerator = polynomial([-u*b-signed*a, u+signed]);
       original = `\\frac{${u}}{${factor(a)}}${subtract ? "-" : "+"}\\frac{${v}}{${factor(b)}}`;
       expected = `(${numerator})/((${factor(a)})(${factor(b)}))`; excluded = [String(a), String(b)];
       reasoning = [`Use the common denominator $(${factor(a)})(${factor(b)})$.`, `The new numerator is $${u}(${factor(b)})${subtract ? "-" : "+"}${v}(${factor(a)})=${polynomial([-u*b-signed*a, u+signed], true)}$.`, "Multiply each whole numerator by its missing factor. Subtraction changes every sign in the second numerator."];
+    } else if (variant === "shared" || variant === "repeated") {
+      const repeated = variant === "repeated", numerator = polynomial(repeated ? [u-v*a, v] : [v-u*b, u]);
+      original = repeated ? `\\frac{${u}}{(${factor(a)})^2}+\\frac{${v}}{${factor(a)}}` : `\\frac{${u}}{${factor(a)}}+\\frac{${v}}{(${factor(a)})(${factor(b)})}`;
+      expected = `(${numerator})/(${repeated ? `(${factor(a)})^2` : `(${factor(a)})(${factor(b)})`})`;
+      excluded = repeated ? [String(a)] : [String(a), String(b)];
+      reasoning = [repeated ? `The least common denominator contains two copies of $${factor(a)}$, not three. Only the second fraction needs an extra factor.` : `The second denominator already contains every required factor. Multiply only the first fraction by $(${factor(b)})/(${factor(b)})$.`, `After adding the adjusted numerators, the numerator is ${numerator}.`, "A common denominator needs each distinct factor at the greatest multiplicity required by either original denominator."];
     } else if (variant === "complex") {
       original = `\\frac{\\frac1{${factor(a)}}}{\\frac1{${factor(a)}}+${k}}`;
       expected = `1/(${polynomial([1-k*a, k])})`; excluded = [String(a), formatRational(parseRational(`${a}-1/${k}`))];
@@ -42,7 +48,7 @@ export function foundationFractionQuestion(familyId: string, variant: string, se
       reasoning = variant === "multiply" ? [`The original denominators exclude ${b} and ${c}.`, `Multiplication puts $${factor(b)}$ in the numerator and denominator, so it can be canceled on the original domain.`] : [`The two original denominators exclude ${b}. The divisor equals zero at ${c}, so that input must also be excluded.`, `Multiply by the reciprocal of the second fraction, then cancel $${factor(b)}$.`];
     }
     return questionSchema.parse({ ...base, parameters: { a, b, c, u, v, k }, category: "procedural", prompt: `Write $${original}$ as one simplified expression and give all original excluded inputs.`, fields: [valueField(expected), exclusions(excluded)],
-      hints: ["Begin with the original domain. A divisor must be both defined and nonzero.", variant === "add" || subtract ? "Use the product of the two distinct denominator factors as a common denominator." : variant === "complex" ? "Clear the small denominators in the numerator and denominator of the large fraction." : variant === "divide" ? "Replace division by multiplication by the second fraction's reciprocal." : "Multiply numerators and denominators, then cancel common factors.", `The result is ${expected}; exclusions: ${excluded.join(", ")}.`],
+      hints: ["Begin with the original domain. A divisor must be both defined and nonzero.", variant === "shared" || variant === "repeated" ? "List each denominator factor and take the highest required power of each. Multiply each numerator by only its missing factors." : variant === "add" || subtract ? "Use the product of the two distinct denominator factors as a common denominator." : variant === "complex" ? "Clear the small denominators in the numerator and denominator of the large fraction." : variant === "divide" ? "Replace division by multiplication by the second fraction's reciprocal." : "Multiply numerators and denominators, then cancel common factors.", `The result is ${expected}; exclusions: ${excluded.join(", ")}.`],
       explanation: [...reasoning, `The final expression is ${expected}, defined on the original domain excluding ${excluded.join(" and ")}. A reduced denominator alone may not show every original exclusion.`], answerSummary: `${expected}; excluded inputs: ${excluded.join(", ")}.` });
   }
   if (familyId === "mth-cancel-audit") {
