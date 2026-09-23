@@ -7,7 +7,7 @@ describe("progress portability", () => {
     expect(parseBackup(JSON.stringify(progress))).toEqual(progress);
   });
   it.each([
-    { schemaVersion: 2 }, { plan: ["missing-course"] }, { plan: ["f01", "f01"] },
+    { schemaVersion: 999 }, { plan: ["missing-course"] }, { plan: ["f01", "f01"] },
     { bookmarks: ["unknown"] }, { notes: { "unknown": "private note" } },
     { notes: { "f01": "x".repeat(5001) } }, { sessions: [{ id: "fake", courseId: "f01", minutes: -2, at: "tomorrow" }] },
     { profile: { displayName: "A", weeklyHours: 10000 } }, { extra: "unexpected" },
