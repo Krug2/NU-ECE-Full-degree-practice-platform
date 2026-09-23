@@ -1,0 +1,122 @@
+{
+  "id": "m01-l01",
+  "courseId": "mth-215",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Linear equations and formula rearrangement",
+  "objective": "Isolate a specified variable, state any divisor restrictions, and verify a proposed solution by substitution.",
+  "why": "A sensor gives you a voltage, but you need a temperature. A motion model contains time, but time is the quantity you do not know. Rearranging equations lets you use a relationship in either direction. The essential skill is preserving exactly which values satisfy it.",
+  "estimatedMinutes": 60,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "An equation makes a claim",
+      "paragraphs": [
+        "An expression such as $3x+2$ represents a value once x is chosen. An equation such as $3x+2=11$ claims that two expressions have equal values. A solution is an input that makes that claim true. Here $x=3$ works because $3(3)+2=11$; $x=4$ does not because $14\\ne11$.",
+        "To solve an equation, build a simpler equation with the same solution set. Such equations are equivalent. You are not moving symbols by a special rule: you are applying an operation to both sides and simplifying. This viewpoint becomes especially useful when the unknown is a formula parameter instead of x.",
+        "Numbers and units play different roles. If $V=IR$, then V is the numerical voltage in a stated unit, I is current, and R is resistance. The algebra works on the entire relationship. Later, checking units helps you catch a reversed fraction."
+      ]
+    },
+    {
+      "heading": "Operations that preserve the solution set",
+      "paragraphs": [
+        "Adding or subtracting the same expression on both sides preserves equality when that expression is defined. From $3x+2=11$, subtract 2 from both sides: $3x=9$. Divide both sides by 3: $x=3$. Substitution into the original equation verifies the result.",
+        "Multiplying or dividing both sides by a known nonzero number preserves equivalence. Zero needs special care. Multiplying an equation by zero erases information: both sides become zero even when the original equation was false. Dividing by zero is undefined.",
+        "If the divisor contains an unknown parameter, state the nonzero condition before dividing. From $ax=b$, the expression $x=b/a$ applies only when $a\\ne0$. If $a=0$, inspect the original equation $0=b$. If b is zero, every real x works; otherwise no real x works.",
+        "A reliable workflow is: expand carefully, combine like terms on each side, collect variable terms, collect constants, divide by a nonzero coefficient, and check the answer in the original equation. More than one order of valid steps can work. Choose an order you can explain."
+      ]
+    },
+    {
+      "heading": "Signs, fractions, and distribution",
+      "paragraphs": [
+        "Parentheses describe a whole quantity. In $-2(x-3)$ the factor -2 multiplies both terms, giving $-2x+6$. A common error is writing $-2x-6$ because only the first sign was considered. Expanding back or checking a simple input can expose the error.",
+        "A fraction bar also groups its numerator. In $(x+1)/3=5$, multiply both sides by 3 to obtain $x+1=15$, then subtract 1. In $x+1/3=5$, only the 1 is divided by 3; this is a different equation. When typing, use parentheses to state which expression belongs in the numerator.",
+        "To clear several numeric denominators, multiply every term on both sides by a common multiple of those denominators. For $x/2+x/3=5$, multiplying by 6 gives $3x+2x=30$, hence $x=6$. Check: $6/2+6/3=3+2=5$.",
+        "Keep exact fractions until an approximation is requested. The value $1/3$ is not exactly 0.3333. In this lesson's exact-value fields you may type a fraction, a terminating decimal, or arithmetic such as $(7-2)/3$. An approximate decimal will not be treated as an exact recurring fraction."
+      ]
+    },
+    {
+      "heading": "One solution, every solution, or no solution",
+      "paragraphs": [
+        "A linear equation can be written $ax+b=cx+d$. Subtract cx and b from both sides to obtain $(a-c)x=d-b$. If $a-c\\ne0$, exactly one solution is $x=(d-b)/(a-c)$.",
+        "If the variable coefficients are equal, do not divide by $a-c$: it is zero. Compare the remaining constants instead. For $2(x+3)=2x+6$, expansion leaves $2x+6=2x+6$, so every real x is a solution. This is an identity.",
+        "For $2(x+3)=2x+7$, removing the equal variable terms leaves $6=7$. No choice of x can make that true. This is a contradiction and has no solution. A canceled variable does not automatically mean $x=0$.",
+        "A quick numerical example can disprove a claim, but a single successful input cannot establish an identity. To establish that every real input works in a linear equation, simplify both sides and show that the variable coefficients and constants agree."
+      ]
+    },
+    {
+      "heading": "Rearrange a formula, then interpret it",
+      "paragraphs": [
+        "Consider $v=u+at$, a supplied model for final velocity from initial velocity, acceleration, and time. To isolate t, subtract u from both sides and divide by a: $t=(v-u)/a$, provided $a\\ne0$. Substitution reverses the reasoning: $u+a((v-u)/a)=v$ under that condition.",
+        "If $a=0$, the original formula becomes $v=u$. If the given velocities agree, this model supplies no unique time; if they disagree, no time can satisfy the model. The zero-acceleration case is not solved by putting zero into the denominator.",
+        "For the supplied relation $V=IR$, isolating R gives $R=V/I$ when $I\\ne0$. Algebraically, a negative nonzero I is allowed. Any requirement that a parameter be positive must come from the physical context and should be stated separately.",
+        "After rearranging, check units and plausible signs. A time computed from a velocity difference divided by an acceleration has units of time. A model may also require $t\\ge0$. A mathematically valid solution outside the modeled interval should be reported as outside that model, rather than silently accepted as a physical answer."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Variables on both sides",
+      "prompt": "Solve $3(x-2)+4=2x+7$ and verify the result.",
+      "steps": [
+        {"math":"3x-6+4=2x+7","reason":"Distribute 3 to both terms inside the parentheses."},
+        {"math":"3x-2=2x+7","reason":"Combine the constants on the left."},
+        {"math":"x-2=7","reason":"Subtract 2x from both sides; the solution set stays the same."},
+        {"math":"x=9","reason":"Add 2 to both sides."},
+        {"math":"3(9-2)+4=25=2(9)+7","reason":"Both original sides equal 25, which verifies the solution."}
+      ],
+      "conclusion": "The only solution is $x=9$. The remaining coefficient of x was 1, so this was neither an identity nor a contradiction."
+    },
+    {
+      "title": "Recover a temperature from a calibration formula",
+      "prompt": "A supplied linear model is $V=aT+b$. Solve for T, and then use $a=0.02$, $b=0.5$, and $V=1.7$. Assume V is in volts and T is in degrees Celsius over the calibrated range.",
+      "steps": [
+        {"math":"V-b=aT","reason":"Subtract the offset b from both sides."},
+        {"math":"T=\\frac{V-b}{a},\\quad a\\ne0","reason":"Divide both sides by the nonzero gain a."},
+        {"math":"T=\\frac{1.7-0.5}{0.02}=\\frac{1.2}{0.02}=60","reason":"Substitute the given readings. The gain has units of volts per degree Celsius, so the quotient has temperature units."},
+        {"math":"0.02(60)+0.5=1.7","reason":"Substitute the temperature back into the original calibration formula."}
+      ],
+      "conclusion": "The computed temperature is 60 degrees Celsius. If the gain a were zero, the voltage would not distinguish temperatures; the inverse formula would be unavailable."
+    }
+  ],
+  "guided": {
+    "title": "You finish the reasoning",
+    "setup": "Solve $4x-7=9$. The goal is to undo subtraction first, then undo multiplication.",
+    "before": ["Add 7 to both sides. The left side becomes 4x.", "Fill in the right-hand value, then divide both sides by 4."],
+    "question": {
+      "id":"guided-linear","familyId":"guided-linear","familyVersion":1,"courseId":"mth-215","objectiveId":"m01-l01","category":"procedural","critical":false,
+      "prompt":"Complete both missing values.",
+      "fields":[{"id":"right","kind":"rational","label":"Right side after adding 7","expected":"16"},{"id":"x","kind":"rational","label":"Final value of x","expected":"4"}],
+      "hints":["The right side must receive the same addition as the left.","Compute 9+7, then divide that result by 4.","The right side is 16 and x is 4."],
+      "explanation":["Adding 7 to both sides gives $4x=16$.","Dividing both sides by 4 gives $x=4$. Check: $4(4)-7=9$."],
+      "answerSummary":"Right side 16; x = 4."
+    },
+    "after": "If you needed a hint, that is useful practice. The independent checkpoint comes later with different numbers and no displayed solutions."
+  },
+  "interaction": {"kind":"equation-balance","prompt":"Transform $3x+6=18$ into $x=4$. Predict the effect of each operation before applying it. Try applying an operation to only one side and explain why it cannot be an equivalent step.","coefficient":"3","constant":"6","right":"18"},
+  "practice": [
+    {"familyId":"mth-linear-balance","variant":"unique"},
+    {"familyId":"mth-linear-balance","variant":"unique"},
+    {"familyId":"mth-linear-balance","variant":"classify"},
+    {"familyId":"mth-linear-formula","variant":"isolate"},
+    {"familyId":"mth-linear-formula","variant":"isolate"},
+    {"familyId":"mth-linear-validity","variant":"equivalence"}
+  ],
+  "checkpoint": [
+    {"familyId":"mth-linear-balance","variant":"unique"},
+    {"familyId":"mth-linear-formula","variant":"isolate"},
+    {"familyId":"mth-linear-balance","variant":"classify"},
+    {"familyId":"mth-linear-validity","variant":"equivalence"}
+  ],
+  "summary": [
+    "Equivalent equations have the same solution set. Apply valid operations to both sides.",
+    "Distribute to every term and use parentheses to make fraction numerators clear.",
+    "A nonzero remaining variable coefficient gives one solution. A true constant statement gives all real solutions; a false one gives none.",
+    "State nonzero restrictions before dividing by a parameter, and inspect excluded cases in the original equation.",
+    "Verify by substitution, then check units and any contextual limits."
+  ],
+  "retrieval": "Without reopening the examples, explain the three possibilities for ax=b. Then rearrange a different formula and state the divisor restriction.",
+  "readings": [
+    {"title":"OpenStax Algebra and Trigonometry 2e, sections 2.2 and 2.3","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-introduction-to-equations-and-inequalities","purpose":"Choose section 2.2 for more linear-equation methods and section 2.3 for translating a situation into an equation. This lesson and its original practice work without the external reading."}
+  ]
+}
