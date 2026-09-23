@@ -1,0 +1,186 @@
+{
+  "id": "b03",
+  "courseId": "mth-215",
+  "moduleId": "foundations",
+  "version": 1,
+  "title": "Expansion and factoring",
+  "objective": "Distribute with signs, collect like terms, factor common factors and simple quadratics, and check by expansion.",
+  "why": "The same mathematical relationship can be easier to use in different forms. An expanded expression makes its coefficients visible; a factored expression exposes repeated pieces and possible zeros. Moving between these forms accurately will help you solve equations, simplify fractions containing variables, and interpret function graphs. This refresher develops the operations before you need them inside a longer problem.",
+  "estimatedMinutes": 55,
+  "prerequisites": [
+    {"label": "Signed numbers and fractions", "lessonId": "b01"},
+    {"label": "Powers and roots", "lessonId": "b02"}
+  ],
+  "sections": [
+    {
+      "heading": "Separate terms from factors",
+      "paragraphs": [
+        "A term is one part of a sum. In $4x^2-7x+3$, the terms are $4x^2$, $-7x$, and 3. Their coefficients are 4, -7, and 3. A factor is one part of a product. In $3x(x-2)$, the factors include 3, x, and the entire expression $(x-2)$. The subtraction inside that last factor does not turn the whole product into a sum.",
+        "A polynomial in x contains finitely many terms with whole-number powers of x and fixed numerical coefficients. Its degree is the largest power with a nonzero coefficient after like terms are collected. Thus $2x^3+x-x^3$ has degree 3, while $x^2-x^2+5$ is the constant 5. The zero polynomial has no nonzero term from which to assign an ordinary degree.",
+        "Like terms have the same variable part and exponents. You can combine $5x^2-2x^2$ into $3x^2$, but $5x^2-2x$ stays as two terms. Combining coefficients is addition. Multiplying variable powers is a different operation: $x^2x=x^3$, whereas $x^2+x$ does not become $x^3$.",
+        "An expression by itself does not ask you to find x. Expanding or factoring means writing an equal expression for every permitted input. Solving an equation means finding inputs that make a stated equality true. Keep those tasks separate: factoring $x^2-4$ gives $(x-2)(x+2)$; solving $x^2-4=0$ then uses that factorization to find two roots."
+      ]
+    },
+    {
+      "heading": "Distribute every sign and collect like terms",
+      "paragraphs": [
+        "The distributive property says $a(b+c)=ab+ac$. The outside factor multiplies every term inside the parentheses. For $-2(3x-4)$, the two products are $-6x$ and $+8$. Losing the second sign change would produce a different expression.",
+        "Subtracting a parenthesized polynomial multiplies all of it by -1. For example, $(2x^2-x+4)-(x^2+3x-2)=2x^2-x+4-x^2-3x+2$. Only after changing all three signs should you collect terms, obtaining $x^2-4x+6$.",
+        "A useful routine is to remove one layer of parentheses, list every resulting term with its sign, group terms of the same power, and add their coefficients. Writing terms in descending powers makes the result easier to inspect. Other term orders have the same value, and this app accepts them when the like terms have been collected.",
+        "Cancellation can remove a whole power. In $4(x-2)-4(x+1)$, the x terms cancel and the result is -12. Do not invent an x term just because the original expression contained a variable. Check the result at an input such as x = 0, then confirm the algebra explains why it works for every x."
+      ]
+    },
+    {
+      "heading": "Multiply polynomials without losing cross products",
+      "paragraphs": [
+        "For $(ax+b)(cx+d)$, multiply each term of the first factor by each term of the second: $acx^2+adx+bcx+bd$. Collecting the two middle terms gives $acx^2+(ad+bc)x+bd$. A two-by-two product table can help you account for all four products.",
+        "The same reasoning works for longer factors. Multiplying a two-term polynomial by a three-term polynomial produces six products before collection. A shortcut for two binomials does not replace the requirement to multiply every pair of terms.",
+        "Squaring a sum means multiplying two copies of the entire sum. Therefore $(u+v)^2=u^2+2uv+v^2$ and $(u-v)^2=u^2-2uv+v^2$. The middle term comes from two cross products. In particular, $(x+5)^2$ is $x^2+10x+25$, not $x^2+25$.",
+        "An area provides a concrete check. A rectangle with side lengths x + 3 and x + 5 centimeters, for x > 0, has area $(x+3)(x+5)=x^2+8x+15$ square centimeters. The four products correspond to one x-by-x region, two rectangular strips, and one corner. The physical restriction x > 0 belongs to this measurement model; the polynomial identity itself holds for all real x."
+      ]
+    },
+    {
+      "heading": "Start factoring with the greatest common factor",
+      "paragraphs": [
+        "Factoring reverses distribution. Before trying a quadratic pattern, look for a factor shared by every term. For integer coefficients, take the greatest common divisor of their magnitudes. For each shared variable, take the smallest exponent appearing in all the terms.",
+        "For $12x^3-18x^2$, the numerical greatest common factor is 6 and the common variable power is $x^2$. Dividing each term by $6x^2$ gives $2x-3$, so the factorization is $6x^2(2x-3)$. Expanding it restores the original two terms.",
+        "Extracting a negative common factor is also valid. The expression above could be written $-6x^2(-2x+3)$. What matters is that each inside sign changes consistently. Extracting only $3x$ would leave more common factors inside, so it would be a correct identity but an incomplete factorization.",
+        "In these integer factoring questions, extract the numerical content so that each remaining variable factor has integer coefficients with greatest common factor 1. For example, write $2(x+1)(x+3)$ instead of leaving a factor $2x+2$. Repeated variable factors may use powers, as in $x^2=x\\cdot x$."
+      ]
+    },
+    {
+      "heading": "Factor a quadratic by matching all three coefficients",
+      "paragraphs": [
+        "For a monic quadratic $x^2+bx+c$, try $(x+p)(x+q)$. Expansion shows that p + q must equal b and pq must equal c. Both conditions are necessary. To factor $x^2-x-12$, choose -4 and 3: their sum is -1 and their product is -12. The result is $(x-4)(x+3)$.",
+        "If c is positive, p and q have the same sign; the sign of their sum tells you which one. If c is negative, the signs differ. List factor pairs systematically instead of guessing one pair and stopping. If c is zero, first extract x: $x^2+bx=x(x+b)$.",
+        "When the leading coefficient is not 1, the cross products still decide the middle coefficient. One method for $ax^2+bx+c$ is to find numbers whose product is ac and whose sum is b. Split the middle term using those numbers, then factor each pair of terms by grouping. The two groups should expose the same binomial factor.",
+        "For example, $2x^2+7x+3$ has ac = 6. The pair 6 and 1 has sum 7. Rewriting it as $2x^2+6x+x+3$ gives $2x(x+3)+1(x+3)=(2x+1)(x+3)$. Multiplying the factors checks the first, middle, and last coefficients.",
+        "Not every quadratic factors into linear factors with integer coefficients. Failing to find an integer factor pair is a reason to inspect the possibilities or use another equation-solving method, not to change the coefficients. The generated factoring questions here are chosen to have the requested integer factors. Later lessons handle polynomials and roots in greater depth."
+      ]
+    },
+    {
+      "heading": "Recognize special products in reverse",
+      "paragraphs": [
+        "A difference of squares satisfies $u^2-v^2=(u-v)(u+v)$. The opposite cross products cancel. Thus $9x^2-16=(3x-4)(3x+4)$. Check that both pieces are squares before using this pattern.",
+        "A perfect-square trinomial has a middle term of exactly twice the product of the two square roots, with the appropriate sign. For instance, $4x^2-20x+25=(2x-5)^2$. Looking only at the first and last terms would miss whether the middle term has the correct magnitude and sign.",
+        "A sum of squares uses a plus, so the difference-of-squares pattern does not apply. Over real coefficients, $x^2+9$ cannot be expressed as a product of real linear factors. Complex factors belong to the later quadratic discussion. Always keep the requested number system in mind.",
+        "A full factorization may need more than one step. First extract a common factor, then inspect the remaining polynomial for a quadratic or special-product pattern. For example, $2x^2+10x+12=2(x^2+5x+6)=2(x+2)(x+3)$. Stopping after the first equality leaves further integer factors hidden."
+      ]
+    },
+    {
+      "heading": "Check an identity, then check the requested form",
+      "paragraphs": [
+        "To prove two polynomials equal, expand both, collect like terms, and compare the coefficient of every power. The checker performs that exact comparison. A decimal approximation or a few matching graph points is not a substitute for the identity.",
+        "A single counterexample can disprove a proposed identity. At x = 1, $(x+5)^2$ equals 36 while $x^2+25$ equals 26. However, these expressions agree at x = 0. That matching input does not establish equality for every x.",
+        "After checking equality, inspect the instruction. An expansion question needs products expanded and like terms collected. A factoring question needs the requested factors separated. An unchanged original expression may be equal to itself, but it has not completed either task.",
+        "For polynomial inputs, type x^2 for a square and parentheses around factors, such as 3*x*(x-2). Fractions and exact decimals are accepted as coefficients. These inputs use x and whole-number powers; variable denominators are handled in the next refresher. Equivalent term orders, factor orders, and consistent sign choices are accepted."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Distribute a subtraction before collecting terms",
+      "prompt": "Expand $3(2x-5)-2(x+4)$.",
+      "steps": [
+        {"math": "3(2x-5)-2(x+4)=6x-15-2x-8", "reason": "Both terms in the second parentheses are multiplied by -2."},
+        {"math": "6x-15-2x-8=(6-2)x+(-15-8)", "reason": "Group the linear terms and the constants separately."},
+        {"math": "(6-2)x+(-15-8)=4x-23", "reason": "Add each group of coefficients without changing its power of x."}
+      ],
+      "conclusion": "The expanded form is $4x-23$. At x = 2, both the original expression and the result give -15."
+    },
+    {
+      "title": "Extract a signed common factor",
+      "prompt": "Factor $-14x^3+21x^2$ completely over the integers.",
+      "steps": [
+        {"math": "-14x^3=(-7x^2)(2x),\\qquad 21x^2=(-7x^2)(-3)", "reason": "The greatest common numerical magnitude is 7, and the smaller shared power is x². Choosing -7 makes the remaining leading coefficient positive."},
+        {"math": "-14x^3+21x^2=-7x^2(2x-3)", "reason": "Reverse distribution to collect the shared factor."},
+        {"math": "(-7x^2)(2x)+(-7x^2)(-3)=-14x^3+21x^2", "reason": "Expansion verifies both powers and both signs."}
+      ],
+      "conclusion": "The remaining coefficients 2 and -3 share no numerical factor beyond 1. The equivalent $7x^2(-2x+3)$ is accepted too."
+    },
+    {
+      "title": "Split a middle term and factor by grouping",
+      "prompt": "Factor $6x^2+7x-3$ into integer linear factors.",
+      "steps": [
+        {"math": "6(-3)=-18,\\qquad 9+(-2)=7,\\qquad 9(-2)=-18", "reason": "Choose two numbers with product ac and sum equal to the middle coefficient."},
+        {"math": "6x^2+7x-3=6x^2+9x-2x-3", "reason": "Replace 7x by 9x-2x without changing the polynomial."},
+        {"math": "6x^2+9x-2x-3=3x(2x+3)-1(2x+3)", "reason": "Factor each group. Taking -1 from the last group exposes the same binomial."},
+        {"math": "3x(2x+3)-1(2x+3)=(3x-1)(2x+3)", "reason": "The shared binomial is a factor of the sum."},
+        {"math": "(3x-1)(2x+3)=6x^2+9x-2x-3=6x^2+7x-3", "reason": "Check every coefficient by expanding the proposed factors."}
+      ],
+      "conclusion": "Both factors are linear and have no numerical common factor to extract. Reordering them gives the same product."
+    },
+    {
+      "title": "Distinguish a difference of squares from a squared difference",
+      "prompt": "Compare $9x^2-16$ with $(3x-4)^2$ and factor the first expression.",
+      "steps": [
+        {"math": "9x^2-16=(3x)^2-4^2=(3x-4)(3x+4)", "reason": "Opposite signs make the two cross products cancel."},
+        {"math": "(3x-4)^2=9x^2-24x+16", "reason": "Squaring a difference produces a negative middle term and a positive constant."},
+        {"math": "x=0:\\quad 9x^2-16=-16,\\qquad (3x-4)^2=16", "reason": "This counterexample confirms that the square is not the original expression."}
+      ],
+      "conclusion": "Use $(3x-4)(3x+4)$ for the difference of squares. A repeated minus factor changes both the middle and constant terms."
+    }
+  ],
+  "guided": {
+    "title": "Finish the two directions of distribution",
+    "setup": "Expand $-2(x-5)+3x$, then factor $3x^2+12x$ completely.",
+    "before": ["Distribute -2 to both terms in its parentheses.", "Collect the x terms, keeping the constant separate.", "For the second expression, extract the numerical greatest common factor and the common x."],
+    "question": {
+      "id": "guided-factoring", "familyId": "mth-factoring-guided", "familyVersion": 1, "courseId": "mth-215", "objectiveId": "b03", "category": "procedural", "critical": true,
+      "prompt": "Enter the completed expanded and factored forms.",
+      "fields": [
+        {"id": "expanded", "kind": "polynomial", "label": "Expanded form of the first expression", "expected": "x+10", "form": "expanded", "help": "Use x and collect like terms."},
+        {"id": "factored", "kind": "polynomial", "label": "Factored form of the second expression", "expected": "3x^2+12x", "form": "factored", "factorDegrees": [1,1], "primitiveFactors": true, "help": "Extract 3x and put the remaining factor in parentheses."}
+      ],
+      "parameters": {},
+      "hints": ["The first distributed expression is -2x+10+3x.", "Dividing each term of the second polynomial by 3x leaves x+4.", "The answers are x+10 and 3*x*(x+4)."],
+      "explanation": ["$-2(x-5)+3x=-2x+10+3x=x+10$.", "$3x^2+12x=3x(x+4)$. The factors recover both original terms when multiplied."],
+      "answerSummary": "Expanded: $x+10$. Factored: $3x(x+4)$."
+    },
+    "after": "An equal expression can still need more work if the question asks for an expanded or completely factored form."
+  },
+  "interaction": {
+    "kind": "polynomial-lab",
+    "prompt": "Predict whether the two expressions are equal for every real x. Compare their exact coefficients, then test an input. Change one sign or factor and explain what changes. Pay special attention to cases that agree at x = 0 but are not identities.",
+    "examples": [
+      {"label": "A correct binomial product", "left": "(x+2)(x+5)", "right": "x^2+7x+10", "explanation": "The two cross products total 7x, so all three coefficients agree."},
+      {"label": "A missing middle term", "left": "(x+3)^2", "right": "x^2+9", "explanation": "The first expression has an additional 6x. At x = 0 that term vanishes, so one sample hides the error."},
+      {"label": "A greatest common factor", "left": "12x^3-18x^2", "right": "6x^2(2x-3)", "explanation": "Each original term contains 6x². Dividing the two terms by it leaves 2x-3."},
+      {"label": "Two consistent sign changes", "left": "(x-4)(x+1)", "right": "(-x+4)(-x-1)", "explanation": "Each factor has been multiplied by -1. Their product is multiplied by (-1)(-1)=1, so it stays unchanged."},
+      {"label": "A squared difference is not a difference of squares", "left": "(x-4)^2", "right": "x^2-16", "explanation": "The square expands to x²-8x+16. Both its linear and constant coefficients differ from the second expression."}
+    ]
+  },
+  "practice": [
+    {"familyId":"mth-polynomial-expand","variant":"distribution"},
+    {"familyId":"mth-polynomial-expand","variant":"product"},
+    {"familyId":"mth-polynomial-expand","variant":"square"},
+    {"familyId":"mth-polynomial-expand","variant":"area"},
+    {"familyId":"mth-common-factor","variant":"monomial"},
+    {"familyId":"mth-quadratic-factor","variant":"monic"},
+    {"familyId":"mth-quadratic-factor","variant":"leading"},
+    {"familyId":"mth-quadratic-factor","variant":"squares"},
+    {"familyId":"mth-quadratic-factor","variant":"repeated"},
+    {"familyId":"mth-factor-audit","variant":"missing"},
+    {"familyId":"mth-factor-audit","variant":"sign"},
+    {"familyId":"mth-factor-audit","variant":"constant"}
+  ],
+  "checkpoint": [
+    {"familyId":"mth-polynomial-expand","variant":"distribution"},
+    {"familyId":"mth-common-factor","variant":"monomial"},
+    {"familyId":"mth-quadratic-factor","variant":"leading"},
+    {"familyId":"mth-factor-audit","variant":"missing"}
+  ],
+  "summary": [
+    "Distribute a multiplier, including its sign, to every term inside parentheses.",
+    "Collect only like terms. A product multiplies powers; a sum adds coefficients of matching powers.",
+    "Extract common numerical and variable factors before trying quadratic patterns.",
+    "A quadratic factorization must reproduce the middle coefficient as well as the leading and constant coefficients.",
+    "Check by complete expansion. One counterexample disproves an identity, but a matching sample does not prove it.",
+    "After verifying equality, check that your answer has the requested expanded or factored form."
+  ],
+  "retrieval": "Without looking back, expand -3(x-2)+5x, factor 4x²-20x, and explain why (x+2)² differs from x²+4 even though they agree at x = 0.",
+  "readings": [
+    {"title":"OpenStax: Polynomials","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-4-polynomials","purpose":"Additional explanations of terms, coefficients, distribution, and polynomial products."},
+    {"title":"OpenStax: Factoring Polynomials","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-5-factoring-polynomials","purpose":"More practice with common factors, grouping, quadratic factors, and special products."}
+  ]
+}
