@@ -21,7 +21,7 @@ export function CoordinatePlot({ figure }: { figure: CoordinateFigure }) {
       {figure.line && <line x1={first.x-100*(second.x-first.x)} x2={first.x+100*(second.x-first.x)} y1={first.y-100*(second.y-first.y)} y2={first.y+100*(second.y-first.y)} clipPath={`url(#${clip})`} stroke="#98502c" strokeWidth="2" />}
       {figure.points.map(point => { const pixel = coordinatePixel(point); return <g key={point.name}><circle data-point={point.name} cx={pixel.x} cy={pixel.y} r="5" fill="#23574d" stroke="white" strokeWidth="1.5" /><text x={pixel.x+8} y={pixel.y-8} fontWeight="700" fontSize="13">{point.name}</text></g>; })}
     </svg>
-    <p>Horizontal axis: {figure.xLabel}, with {figure.xStep} units per tick. Vertical axis: {figure.yLabel}, with {figure.yStep} units per tick.</p>
+    <p>Horizontal axis: {figure.xLabel}, with {figure.xStep} {figure.xStep===1?"unit":"units"} per tick. Vertical axis: {figure.yLabel}, with {figure.yStep} {figure.yStep===1?"unit":"units"} per tick.</p>
     <details><summary>Read the graph as text</summary>{figure.points.map(point => <p key={point.name}>{describeCoordinate(point)}</p>)}{figure.line && <p>A straight line passes through both labeled points.</p>}</details>
   </figure>;
 }
