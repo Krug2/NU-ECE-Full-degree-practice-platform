@@ -87,6 +87,7 @@ export const lessonSchema = z.object({
     z.object({kind:z.literal("candidate-audit"),prompt:text,cases:z.array(z.object({id,title:text,equation:text,transformation:text,candidates:z.array(z.object({value:text,outcome:z.enum(["valid","excluded","extraneous"]),reason:text}).strict()).min(1).max(8)}).strict()).min(2).max(8)}).strict(),
     z.object({kind:z.literal("arithmetic-lab"),prompt:text,examples:z.array(z.object({label:text,expression:exact,explanation:text}).strict()).min(2).max(12)}).strict(),
     z.object({kind:z.literal("polynomial-lab"),prompt:text,examples:z.array(z.object({label:text,left:polynomial,right:polynomial,explanation:text}).strict()).min(2).max(12)}).strict(),
+    z.object({kind:z.literal("simplification-lab"),prompt:text,a:z.number().int().min(-8).max(8),b:z.number().int().min(-8).max(8),c:z.number().int().min(-8).max(8)}).strict().refine(value=>new Set([value.a,value.b,value.c]).size===3,"Use distinct inputs in the simplification investigation"),
   ]),
   practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
   summary: z.array(text).min(2), retrieval: text,
