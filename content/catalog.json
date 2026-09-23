@@ -1,0 +1,887 @@
+{
+  "version": "nu-public-2026-09",
+  "checkedAt": "2026-09-22",
+  "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+  "creditUnit": "semester",
+  "status": "provisional",
+  "courses": [
+    {
+      "code": "MTH 215",
+      "title": "College Algebra & Trigonometry",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "mth-215",
+      "subject": "Mathematics",
+      "summary": "Reconnect equations, functions, and trigonometry with the engineering problems they help solve.",
+      "status": "planned",
+      "preparation": [
+        "f01",
+        "f02",
+        "f03",
+        "f04",
+        "f05"
+      ],
+      "resourceIds": [
+        "R01",
+        "R02"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "PHS 104",
+      "title": "Introductory Physics",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "phs-104",
+      "subject": "Physics",
+      "summary": "Build intuition for motion, energy, and physical models using algebra and measurement.",
+      "status": "planned",
+      "preparation": [
+        "mth-215",
+        "f06"
+      ],
+      "resourceIds": [
+        "R06",
+        "R09"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "PHS 104A",
+      "title": "Introductory Physics Lab",
+      "credits": 1,
+      "group": "prerequisite",
+      "kind": "lab",
+      "id": "phs-104a",
+      "subject": "Physics",
+      "summary": "Connect predictions with observations through introductory physics experiments.",
+      "status": "planned",
+      "preparation": [
+        "phs-104",
+        "f06"
+      ],
+      "resourceIds": [
+        "R06",
+        "R09"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 208",
+      "title": "Calculus for Comp. Science I",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "csc-208",
+      "subject": "Mathematics",
+      "summary": "Understand change and accumulation through limits, derivatives, and integrals.",
+      "status": "planned",
+      "preparation": [
+        "mth-215"
+      ],
+      "resourceIds": [
+        "R03",
+        "R24"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 242",
+      "title": "Intro to Programming Concepts",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "csc-242",
+      "subject": "Computing",
+      "summary": "Learn to express a solution as a program, starting with variables, decisions, and functions.",
+      "status": "planned",
+      "preparation": [
+        "mth-215",
+        "f10"
+      ],
+      "resourceIds": [
+        "R10"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 209",
+      "title": "Calculus for Comp. Science II",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "csc-209",
+      "subject": "Mathematics",
+      "summary": "Extend integration and approximation, and build a bridge to multivariable thinking.",
+      "status": "planned",
+      "preparation": [
+        "csc-208"
+      ],
+      "resourceIds": [
+        "R04",
+        "R05"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 252",
+      "title": "Programming in C++",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "csc-252",
+      "subject": "Computing",
+      "summary": "Develop, test, and debug structured programs in C++.",
+      "status": "planned",
+      "preparation": [
+        "csc-242"
+      ],
+      "resourceIds": [
+        "R10"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 220",
+      "title": "Applied Probability & Stats.",
+      "credits": 3,
+      "group": "prerequisite",
+      "kind": "lecture",
+      "id": "csc-220",
+      "subject": "Mathematics",
+      "summary": "Use probability and data to reason about variation, uncertainty, and evidence.",
+      "status": "planned",
+      "preparation": [
+        "csc-208"
+      ],
+      "resourceIds": [
+        "R08",
+        "R11",
+        "R24"
+      ],
+      "sourceNote": "Published prerequisite wording is ambiguous. Confirm the calculus alternative and EGR 220 reference with NU.",
+      "modules": []
+    },
+    {
+      "code": "PHS 231",
+      "title": "Calculus-based Physics 1",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "phs-231",
+      "subject": "Physics",
+      "summary": "Model motion, forces, and conservation laws with calculus.",
+      "status": "planned",
+      "preparation": [
+        "phs-104",
+        "csc-208",
+        "f07"
+      ],
+      "resourceIds": [
+        "R07"
+      ],
+      "sourceNote": "The published prerequisite alternatives need clarification with NU.",
+      "modules": []
+    },
+    {
+      "code": "PHS 232",
+      "title": "Calculus-based Physics 2",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "phs-232",
+      "subject": "Physics",
+      "summary": "Connect waves, electric and magnetic fields, and electromagnetic models.",
+      "status": "planned",
+      "preparation": [
+        "phs-231",
+        "csc-209"
+      ],
+      "resourceIds": [
+        "R07",
+        "R12",
+        "R09"
+      ],
+      "sourceNote": "The published prerequisite alternatives need clarification with NU.",
+      "modules": []
+    },
+    {
+      "code": "CSC 310",
+      "title": "Linear Algebra and Matrix Comp",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-310",
+      "subject": "Mathematics",
+      "summary": "Work with vectors, matrices, linear systems, and computational methods.",
+      "status": "planned",
+      "preparation": [
+        "csc-252"
+      ],
+      "resourceIds": [
+        "R13",
+        "R24",
+        "R25"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 331",
+      "title": "Discrete Structures and Logic",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-331",
+      "subject": "Mathematics",
+      "summary": "Build mathematical reasoning with logic, proofs, counting, and discrete structures.",
+      "status": "planned",
+      "preparation": [
+        "csc-252"
+      ],
+      "resourceIds": [
+        "R14",
+        "R15"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 300",
+      "title": "Advanced Engineering Math",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-300",
+      "subject": "Mathematics",
+      "summary": "Use differential equations and transforms to describe engineering systems.",
+      "status": "planned",
+      "preparation": [
+        "csc-209",
+        "csc-310",
+        "f09"
+      ],
+      "resourceIds": [
+        "R16",
+        "R24",
+        "R25"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 300",
+      "title": "Object Oriented Design",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-300",
+      "subject": "Computing",
+      "summary": "Turn requirements into clear, maintainable object-oriented software designs.",
+      "status": "planned",
+      "preparation": [
+        "csc-252"
+      ],
+      "resourceIds": [
+        "R10",
+        "R26"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 310",
+      "title": "Circuit Analysis",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-310",
+      "subject": "Circuits",
+      "summary": "Analyze how circuit elements interact in steady state and over time.",
+      "status": "planned",
+      "preparation": [
+        "cee-300",
+        "phs-232"
+      ],
+      "resourceIds": [
+        "R17",
+        "R27",
+        "R28"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 310L",
+      "title": "Circuit Analysis Lab",
+      "credits": 1,
+      "group": "major",
+      "kind": "lab",
+      "id": "cee-310l",
+      "subject": "Circuits",
+      "summary": "Compare circuit predictions with measurements and simulation.",
+      "status": "planned",
+      "preparation": [
+        "cee-300",
+        "f06"
+      ],
+      "resourceIds": [
+        "R17",
+        "R27",
+        "R28"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 340",
+      "title": "Digital Logic Design",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-340",
+      "subject": "Computing",
+      "summary": "Connect Boolean logic to combinational and sequential digital systems.",
+      "status": "planned",
+      "preparation": [
+        "csc-331"
+      ],
+      "resourceIds": [
+        "R18",
+        "R19",
+        "R29"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 340L",
+      "title": "Digital Logic Design Lab",
+      "credits": 1,
+      "group": "major",
+      "kind": "lab",
+      "id": "csc-340l",
+      "subject": "Computing",
+      "summary": "Design, test, and document digital logic circuits.",
+      "status": "planned",
+      "preparation": [
+        "csc-331"
+      ],
+      "resourceIds": [
+        "R18",
+        "R19",
+        "R29"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 350",
+      "title": "Computer Ethics",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-350",
+      "subject": "Professional practice",
+      "summary": "Examine professional responsibility and the human consequences of computing.",
+      "status": "planned",
+      "preparation": [
+        "f11"
+      ],
+      "resourceIds": [
+        "R30",
+        "R31"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CSC 342",
+      "title": "Computer Architecture",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-342",
+      "subject": "Computing",
+      "summary": "Follow how instructions, processors, memory, and interfaces work together.",
+      "status": "planned",
+      "preparation": [
+        "csc-340",
+        "csc-340l"
+      ],
+      "resourceIds": [
+        "R18",
+        "R32"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 420",
+      "title": "Microelectronics",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-420",
+      "subject": "Circuits",
+      "summary": "Understand semiconductor devices, biasing, and amplifier behavior.",
+      "status": "planned",
+      "preparation": [
+        "cee-310"
+      ],
+      "resourceIds": [
+        "R20",
+        "R17",
+        "R27"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 420L",
+      "title": "Microelectronics Lab",
+      "credits": 1,
+      "group": "major",
+      "kind": "lab",
+      "id": "cee-420l",
+      "subject": "Circuits",
+      "summary": "Investigate device and amplifier behavior through practical experiments.",
+      "status": "planned",
+      "preparation": [
+        "cee-310l"
+      ],
+      "resourceIds": [
+        "R20",
+        "R27"
+      ],
+      "sourceNote": "The lecture and lab listings disagree about prerequisite versus corequisite timing.",
+      "modules": []
+    },
+    {
+      "code": "CSC 436",
+      "title": "Comp. Communication Networks",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "csc-436",
+      "subject": "Computing",
+      "summary": "Explore how data moves through network protocols, links, and routing systems.",
+      "status": "planned",
+      "preparation": [
+        "csc-331"
+      ],
+      "resourceIds": [
+        "R21",
+        "R33"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 324",
+      "title": "Linear Systems and Signals",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-324",
+      "subject": "Signals",
+      "summary": "Describe signals and system behavior in time and frequency.",
+      "status": "planned",
+      "preparation": [
+        "cee-310",
+        "f09"
+      ],
+      "resourceIds": [
+        "R22",
+        "R24",
+        "R25"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 324L",
+      "title": "Linear Systems and Signals Lab",
+      "credits": 1,
+      "group": "major",
+      "kind": "lab",
+      "id": "cee-324l",
+      "subject": "Signals",
+      "summary": "Investigate signal models, sampling, and system response.",
+      "status": "planned",
+      "preparation": [
+        "cee-310"
+      ],
+      "resourceIds": [
+        "R22",
+        "R24",
+        "R25"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 340",
+      "title": "Embedded Systems",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-340",
+      "subject": "Computing",
+      "summary": "Connect software to hardware through microcontrollers and embedded interfaces.",
+      "status": "planned",
+      "preparation": [
+        "csc-252",
+        "csc-340",
+        "cee-420"
+      ],
+      "resourceIds": [
+        "R23",
+        "R34",
+        "R35"
+      ],
+      "sourceNote": "Published prerequisites differ between the current page and archived catalog.",
+      "modules": []
+    },
+    {
+      "code": "CEE 340L",
+      "title": "Embedded Systems Lab",
+      "credits": 1,
+      "group": "major",
+      "kind": "lab",
+      "id": "cee-340l",
+      "subject": "Computing",
+      "summary": "Build and test embedded behavior with observable hardware and software results.",
+      "status": "planned",
+      "preparation": [
+        "csc-252",
+        "csc-340l",
+        "cee-420l"
+      ],
+      "resourceIds": [
+        "R23",
+        "R34",
+        "R35"
+      ],
+      "sourceNote": "Confirm the current embedded lab requirements and required 8051 tools.",
+      "modules": []
+    },
+    {
+      "code": "CEE 430",
+      "title": "Digital Signal Processing",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-430",
+      "subject": "Signals",
+      "summary": "Work with sampled signals, discrete transforms, and digital filters.",
+      "status": "planned",
+      "preparation": [
+        "cee-324"
+      ],
+      "resourceIds": [
+        "R22",
+        "R36",
+        "R24",
+        "R25"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 440",
+      "title": "VLSI Design",
+      "credits": 3,
+      "group": "major",
+      "kind": "lecture",
+      "id": "cee-440",
+      "subject": "Circuits",
+      "summary": "Explore integrated digital circuits and their timing, power, and layout tradeoffs.",
+      "status": "planned",
+      "preparation": [
+        "cee-420",
+        "csc-340"
+      ],
+      "resourceIds": [
+        "R18",
+        "R37",
+        "R27"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 498A",
+      "title": "Capstone Design Project I",
+      "credits": 3,
+      "group": "major",
+      "kind": "capstone",
+      "id": "cee-498a",
+      "subject": "Professional practice",
+      "summary": "Define a design problem, investigate alternatives, and establish requirements.",
+      "status": "planned",
+      "preparation": [
+        "cee-340",
+        "cee-430",
+        "cee-440",
+        "csc-350"
+      ],
+      "resourceIds": [
+        "R38"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 498B",
+      "title": "Capstone Design Project II",
+      "credits": 3,
+      "group": "major",
+      "kind": "capstone",
+      "id": "cee-498b",
+      "subject": "Professional practice",
+      "summary": "Implement a design and gather evidence against its requirements.",
+      "status": "planned",
+      "preparation": [
+        "cee-498a"
+      ],
+      "resourceIds": [
+        "R38"
+      ],
+      "sourceNote": "",
+      "modules": []
+    },
+    {
+      "code": "CEE 498C",
+      "title": "Capstone Design Project III",
+      "credits": 1,
+      "group": "major",
+      "kind": "capstone",
+      "id": "cee-498c",
+      "subject": "Professional practice",
+      "summary": "Complete verification, documentation, and a defensible project presentation.",
+      "status": "planned",
+      "preparation": [
+        "cee-498b"
+      ],
+      "resourceIds": [
+        "R38"
+      ],
+      "sourceNote": "The public page lists 1 semester credit and CEE 499B as predecessor; the archived catalog differs. Confirm both with NU.",
+      "modules": []
+    },
+    {
+      "id": "f01",
+      "code": "F01",
+      "title": "Arithmetic and notation",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Signed numbers, fractions, proportions, powers, roots, order of operations.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f02",
+      "code": "F02",
+      "title": "Algebra manipulation",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Linear equations, inequalities, factoring, quadratics, rational expressions.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f03",
+      "code": "F03",
+      "title": "Functions and graphs",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Domain/range, composition, inverses, slope, piecewise rules.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f04",
+      "code": "F04",
+      "title": "Trigonometry",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Radians, unit circle, identities, inverse functions, phase.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f05",
+      "code": "F05",
+      "title": "Exponentials and logarithms",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Growth/decay, inverse relationships, log rules, decibel intuition.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f06",
+      "code": "F06",
+      "title": "Units and measurement",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "SI prefixes, scientific notation, dimensional checks, significant figures, uncertainty.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f07",
+      "code": "F07",
+      "title": "Vectors and geometry",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Components, magnitude, direction, dot/cross products, coordinate systems.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f08",
+      "code": "F08",
+      "title": "Calculus recall",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Limits, derivative meaning, chain rule, integrals, initial conditions.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R03"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f09",
+      "code": "F09",
+      "title": "Complex numbers",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Rectangular/polar forms, Euler form, conjugates, arithmetic.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f10",
+      "code": "F10",
+      "title": "Programming recall",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Variables, branches, loops, functions, arrays, debugging.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R10"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f11",
+      "code": "F11",
+      "title": "Engineering work habits",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Sketches, assumptions, estimates, units, reasonableness, revision.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R01"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    },
+    {
+      "id": "f12",
+      "code": "F12",
+      "title": "Study and tool orientation",
+      "credits": null,
+      "group": "refresher",
+      "kind": "refresher",
+      "subject": "Foundations",
+      "summary": "Retrieval practice, planning, notation, calculator modes, file management, technical reading.",
+      "status": "planned",
+      "preparation": [],
+      "resourceIds": [
+        "R45"
+      ],
+      "sourceNote": "Optional app refresher. This is not a separate NU course or a credit requirement.",
+      "modules": []
+    }
+  ]
+}

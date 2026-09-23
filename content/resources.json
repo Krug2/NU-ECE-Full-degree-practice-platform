@@ -1,0 +1,730 @@
+[
+  {
+    "id": "R01",
+    "title": "OpenStax Algebra and Trigonometry 2e",
+    "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "mth-215",
+      "f01",
+      "f02",
+      "f03",
+      "f04",
+      "f05",
+      "f06",
+      "f07",
+      "f09",
+      "f11"
+    ],
+    "summary": "F01-F05, MTH 215: algebra/functions/trig explanations and linked practice",
+    "note": "Preface and scope checked; use as primary foundation text",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R02",
+    "title": "Khan Academy algebra",
+    "url": "https://www.khanacademy.org/math/algebra-home?t=classes",
+    "additionalLinks": [
+      {
+        "title": "trigonometry",
+        "url": "https://www.khanacademy.org/math/geometry-home/trigonometry"
+      }
+    ],
+    "provider": "khanacademy.org",
+    "kind": "Course",
+    "courseIds": [
+      "mth-215"
+    ],
+    "summary": "Alternate short refreshers and learner-directed practice",
+    "note": "Subject pages found; top-level math page did not expose text to the reader; verify chosen activity links",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R03",
+    "title": "OpenStax Calculus Volume 1",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "csc-208",
+      "f08"
+    ],
+    "summary": "CSC 208 and F08: limits, derivatives, integrals",
+    "note": "Scope/preface checked; map selected sections to app objectives",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R04",
+    "title": "OpenStax Calculus Volume 2",
+    "url": "https://openstax.org/books/calculus-volume-2/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "csc-209"
+    ],
+    "summary": "CSC 209: integration, series, approximation",
+    "note": "Does not cover all multivariable content; pair with R05",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R05",
+    "title": "OpenStax Calculus Volume 3",
+    "url": "https://openstax.org/books/calculus-volume-3/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "csc-209"
+    ],
+    "summary": "CSC 209 selected multivariable topics; vector bridge",
+    "note": "Assign selected sections after diagnosing prior exposure",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R06",
+    "title": "OpenStax College Physics 2e",
+    "url": "https://openstax.org/books/college-physics-2e/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "phs-104",
+      "phs-104a"
+    ],
+    "summary": "PHS 104/104A: non-calculus physics explanations",
+    "note": "Scope checked; physical lab instructions still require original review",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R07",
+    "title": "OpenStax University Physics Volume 1",
+    "url": "https://openstax.org/books/university-physics-volume-1/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "phs-231",
+      "phs-232"
+    ],
+    "summary": "PHS 231 mechanics and PHS 232 oscillation/wave support",
+    "note": "Calculus-based; pair with R12 for electricity/magnetism",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R08",
+    "title": "OpenStax Introductory Statistics 2e",
+    "url": "https://openstax.org/books/introductory-statistics-2e/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "csc-220"
+    ],
+    "summary": "CSC 220: data analysis, inference, and introductory probability",
+    "note": "Introductory application text; add engineering/calculus depth from R11",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R09",
+    "title": "PhET physics simulations",
+    "url": "https://phet.colorado.edu/en/simulations/filter?subjects=physics&type=html",
+    "additionalLinks": [],
+    "provider": "phet.colorado.edu",
+    "kind": "Tool",
+    "courseIds": [
+      "phs-104",
+      "phs-104a",
+      "phs-232"
+    ],
+    "summary": "PHS 104/104A, PHS 231/232: guided conceptual investigations",
+    "note": "Collection reachable; choose and verify specific simulations, accessibility, and reuse conditions per activity",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R10",
+    "title": "LearnCpp",
+    "url": "https://www.learncpp.com/",
+    "additionalLinks": [],
+    "provider": "learncpp.com",
+    "kind": "Course",
+    "courseIds": [
+      "csc-242",
+      "csc-252",
+      "csc-300",
+      "f10"
+    ],
+    "summary": "CSC 242/252 and C++ implementation support for CSC 300",
+    "note": "Tutorial index checked; link to selected lessons; do not assume copying rights",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R11",
+    "title": "MIT 6.041SC Probability",
+    "url": "https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "csc-220"
+    ],
+    "summary": "CSC 220: random variables, probability models, engineering depth",
+    "note": "Undergraduate course with substantial material; use selected units",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R12",
+    "title": "OpenStax University Physics Volume 2",
+    "url": "https://openstax.org/books/university-physics-volume-2/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "phs-232"
+    ],
+    "summary": "PHS 232: electric/magnetic fields, circuits, induction",
+    "note": "Pair with relevant oscillations/waves from R07",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R13",
+    "title": "MIT 18.06 Linear Algebra",
+    "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "csc-310"
+    ],
+    "summary": "CSC 310: systems, subspaces, projections, eigenvalues",
+    "note": "Course and calendar checked; distinguish available lectures from referenced paid textbook exercises",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R14",
+    "title": "Discrete Mathematics: An Open Introduction",
+    "url": "https://discrete.openmathbooks.org/dmoi4.html",
+    "additionalLinks": [],
+    "provider": "discrete.openmathbooks.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "csc-331"
+    ],
+    "summary": "CSC 331: proof, counting, recurrence, graph concepts",
+    "note": "Author's fourth-edition entry checked; choose exact section links during authoring",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R15",
+    "title": "MIT 6.042J Mathematics for Computer Science",
+    "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "csc-331"
+    ],
+    "summary": "CSC 331: alternative explanations and deeper discrete reasoning",
+    "note": "Course/open textbook entry checked",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R16",
+    "title": "MIT 18.03SC Differential Equations",
+    "url": "https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "cee-300"
+    ],
+    "summary": "CEE 300: differential equations, systems, transforms",
+    "note": "Select a coherent subset aligned to the proposed engineering math modules",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R17",
+    "title": "MIT 6.002 Circuits and Electronics",
+    "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "cee-310",
+      "cee-310l",
+      "cee-420"
+    ],
+    "summary": "CEE 310/310L and introductory CEE 420 support",
+    "note": "Undergraduate course; syllabus checked; some assigned work references a separate textbook",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R18",
+    "title": "MIT 6.004 Computation Structures",
+    "url": "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "csc-340",
+      "csc-340l",
+      "csc-342",
+      "cee-440"
+    ],
+    "summary": "CSC 340/340L, CSC 342, introductory CMOS in CEE 440",
+    "note": "Course offers a connected logic-to-computer route; architecture differs from other teaching platforms",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R19",
+    "title": "MIT 6.111 Digital Systems Laboratory",
+    "url": "https://ocw.mit.edu/courses/6-111-introductory-digital-systems-laboratory-spring-2006/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "csc-340",
+      "csc-340l"
+    ],
+    "summary": "CSC 340L: design/test/documentation examples",
+    "note": "Hardware-era and setup differences require adapted original lab guides",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R20",
+    "title": "MIT 6.012 Microelectronic Devices and Circuits",
+    "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "cee-420",
+      "cee-420l"
+    ],
+    "summary": "CEE 420/420L: devices, biasing, amplifier reasoning",
+    "note": "Select undergraduate topics; avoid assuming full lecture-for-lecture alignment",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R21",
+    "title": "An Introduction to Computer Networks, Peter Dordal",
+    "url": "https://intronetworks.cs.luc.edu/",
+    "additionalLinks": [],
+    "provider": "intronetworks.cs.luc.edu",
+    "kind": "Textbook",
+    "courseIds": [
+      "csc-436"
+    ],
+    "summary": "CSC 436: packet networks, links, routing, transport",
+    "note": "Author site verified through the library's link; library record reports CC BY-NC-ND, so linking is the initial use",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R22",
+    "title": "MIT 6.003 Signals and Systems",
+    "url": "https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "cee-324",
+      "cee-324l",
+      "cee-430"
+    ],
+    "summary": "CEE 324/324L and CEE 430 prerequisites",
+    "note": "Time/frequency methods, transforms, sampling, and LTI analysis",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R23",
+    "title": "SDCC",
+    "url": "https://sdcc.sourceforge.net/",
+    "additionalLinks": [],
+    "provider": "sdcc.sourceforge.net",
+    "kind": "Tool",
+    "courseIds": [
+      "cee-340",
+      "cee-340l"
+    ],
+    "summary": "CEE 340/340L: 8051-oriented C toolchain and simulator investigation",
+    "note": "Official page confirms MCS51 targets and bundled simulation components; exact workflow still needs a feasibility test",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R24",
+    "title": "GNU Octave manual",
+    "url": "https://octave.org/doc/interpreter/",
+    "additionalLinks": [],
+    "provider": "octave.org",
+    "kind": "Reference",
+    "courseIds": [
+      "csc-208",
+      "csc-220",
+      "csc-310",
+      "cee-300",
+      "cee-324",
+      "cee-324l",
+      "cee-430"
+    ],
+    "summary": "CEE 300/324/430 and computational exercises across math/physics",
+    "note": "Numerical practice option; not a promise of complete MATLAB compatibility",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R25",
+    "title": "MATLAB Onramp",
+    "url": "https://www.mathworks.com/learn/tutorials/matlab-onramp.html",
+    "additionalLinks": [],
+    "provider": "mathworks.com",
+    "kind": "Course",
+    "courseIds": [
+      "csc-310",
+      "cee-300",
+      "cee-324",
+      "cee-324l",
+      "cee-430"
+    ],
+    "summary": "Orientation to MATLAB syntax/workflow used in NU descriptions",
+    "note": "Account/access and any institution-provided license must be checked before relying on a particular environment",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R26",
+    "title": "OMG UML 2.5.1 specification",
+    "url": "https://www.omg.org/spec/UML/2.5.1/About-UML",
+    "additionalLinks": [],
+    "provider": "omg.org",
+    "kind": "Reference",
+    "courseIds": [
+      "csc-300"
+    ],
+    "summary": "CSC 300: authoritative notation reference",
+    "note": "Reference material, not a beginner course; pair with original design lessons",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R27",
+    "title": "ngspice",
+    "url": "https://ngspice.sourceforge.io/",
+    "additionalLinks": [],
+    "provider": "ngspice.sourceforge.io",
+    "kind": "Tool",
+    "courseIds": [
+      "cee-310",
+      "cee-310l",
+      "cee-420",
+      "cee-420l",
+      "cee-440"
+    ],
+    "summary": "CEE 310/420 labs, circuit answer verification, selected VLSI practice",
+    "note": "Official page checked; netlist-based engine, not a complete schematic editor",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R28",
+    "title": "Falstad circuit simulator",
+    "url": "https://www.falstad.com/circuit/",
+    "additionalLinks": [],
+    "provider": "falstad.com",
+    "kind": "Tool",
+    "courseIds": [
+      "cee-310",
+      "cee-310l"
+    ],
+    "summary": "CEE 310: quick visual exploration of reviewed circuits",
+    "note": "Link initially; embedding, model fidelity, accessibility, and license review remain separate",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R29",
+    "title": "Logisim-evolution",
+    "url": "https://github.com/logisim-evolution/logisim-evolution",
+    "additionalLinks": [],
+    "provider": "github.com",
+    "kind": "Tool",
+    "courseIds": [
+      "csc-340",
+      "csc-340l"
+    ],
+    "summary": "CSC 340/340L, selected CSC 342: digital circuit design/testing",
+    "note": "Official repository checked; desktop workflow and GPL license need appropriate integration decisions",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R30",
+    "title": "ACM Code of Ethics and Professional Conduct",
+    "url": "https://www.acm.org/binaries/content/assets/about/acm-code-of-ethics-and-professional-conduct.pdf",
+    "additionalLinks": [],
+    "provider": "acm.org",
+    "kind": "Reference",
+    "courseIds": [
+      "csc-350"
+    ],
+    "summary": "CSC 350 and capstones: ethical case discussion",
+    "note": "Official PDF located in search; main HTML endpoint returned 403; verify complete PDF before lesson publication",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R31",
+    "title": "IEEE Code of Ethics",
+    "url": "https://www.ieee.org/about/corporate/governance/p7-8.html",
+    "additionalLinks": [],
+    "provider": "ieee.org",
+    "kind": "Reference",
+    "courseIds": [
+      "csc-350"
+    ],
+    "summary": "CSC 350 and engineering design responsibility",
+    "note": "Official endpoint blocked automated access; retain as a candidate and confirm the current version manually",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R32",
+    "title": "RISC-V specifications library",
+    "url": "https://docs.riscv.org/reference/home/index.html",
+    "additionalLinks": [],
+    "provider": "docs.riscv.org",
+    "kind": "Reference",
+    "courseIds": [
+      "csc-342"
+    ],
+    "summary": "CSC 342: documented instruction semantics for optional architecture exercises",
+    "note": "Ratified-specification index checked; use a small named subset, not the entire specification as an introductory text",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R33",
+    "title": "Wireshark User's Guide",
+    "url": "https://www.wireshark.org/docs/wsug_html_chunked/",
+    "additionalLinks": [],
+    "provider": "wireshark.org",
+    "kind": "Reference",
+    "courseIds": [
+      "csc-436"
+    ],
+    "summary": "CSC 436: packet capture analysis and tool orientation",
+    "note": "Use prepared captures or authorized local traffic; UI/version details need toolchain pinning",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R34",
+    "title": "8051 instruction manual",
+    "url": "https://www.keil.com/support/man/docs/is51/is51_instructions.asp",
+    "additionalLinks": [],
+    "provider": "keil.com",
+    "kind": "Reference",
+    "courseIds": [
+      "cee-340",
+      "cee-340l"
+    ],
+    "summary": "CEE 340: instructions, operands, timing assumptions",
+    "note": "Vendor reference found; root redirects to Arm documentation; verify chosen instruction pages and hardware timing variant",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R35",
+    "title": "Wokwi documentation",
+    "url": "https://docs.wokwi.com/",
+    "additionalLinks": [],
+    "provider": "docs.wokwi.com",
+    "kind": "Tool",
+    "courseIds": [
+      "cee-340",
+      "cee-340l"
+    ],
+    "summary": "Optional modern-board embedded practice",
+    "note": "Docs describe Arduino/ESP32/STM32 and other hardware; no 8051 support assumed. Personal/commercial access terms differ",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R36",
+    "title": "MIT 6.341 Discrete-Time Signal Processing",
+    "url": "https://ocw.mit.edu/courses/6-341-discrete-time-signal-processing-fall-2005/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "cee-430"
+    ],
+    "summary": "CEE 430: selected advanced reading/problems",
+    "note": "Graduate-level resource; supplementary only after an original undergraduate introduction",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R37",
+    "title": "MIT 6.374 Digital Integrated Circuits",
+    "url": "https://ocw.mit.edu/courses/6-374-analysis-and-design-of-digital-integrated-circuits-fall-2003/",
+    "additionalLinks": [],
+    "provider": "ocw.mit.edu",
+    "kind": "Course",
+    "courseIds": [
+      "cee-440"
+    ],
+    "summary": "CEE 440: selected timing/power/design depth",
+    "note": "Graduate-level and older technology context; teach fundamentals and label historical/process assumptions",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R38",
+    "title": "NASA Systems Engineering Handbook",
+    "url": "https://www.nasa.gov/reference/systems-engineering-handbook/",
+    "additionalLinks": [],
+    "provider": "nasa.gov",
+    "kind": "Reference",
+    "courseIds": [
+      "cee-498a",
+      "cee-498b",
+      "cee-498c"
+    ],
+    "summary": "CEE 498A/B/C: needs, requirements, alternatives, verification, lifecycle",
+    "note": "Handbook page checked; scale practices down for undergraduate projects",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R39",
+    "title": "Purdue OWL academic writing",
+    "url": "https://owl.purdue.edu/owl/general_writing/academic_writing/index.html",
+    "additionalLinks": [],
+    "provider": "owl.purdue.edu",
+    "kind": "Reference",
+    "courseIds": [],
+    "summary": "Writing, research, reports, and communication",
+    "note": "University reference; selected pages support original writing activities",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R40",
+    "title": "SciPy signal-processing tutorial",
+    "url": "https://docs.scipy.org/doc/scipy/tutorial/signal.html",
+    "additionalLinks": [],
+    "provider": "docs.scipy.org",
+    "kind": "Reference",
+    "courseIds": [],
+    "summary": "CEE 324/430: optional Python numerical route",
+    "note": "Tool documentation, not a substitute for teaching signal theory",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R41",
+    "title": "OpenStax Writing Guide with Handbook",
+    "url": "https://openstax.org/books/writing-guide/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [],
+    "summary": "Academic writing and composition resource route",
+    "note": "Preface/scope checked; align tasks to selected NU course",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R42",
+    "title": "OpenStax Psychology 2e",
+    "url": "https://openstax.org/books/psychology-2e/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [],
+    "summary": "Candidate general education psychology route",
+    "note": "Not a confirmed transfer equivalent or prescribed NU text",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R43",
+    "title": "OpenStax Introduction to Sociology 3e",
+    "url": "https://openstax.org/books/introduction-sociology-3e/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [],
+    "summary": "Candidate general education sociology route",
+    "note": "Add original analysis and research-method activities",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R44",
+    "title": "OpenStax Principles of Microeconomics 3e",
+    "url": "https://openstax.org/books/principles-microeconomics-3e/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [],
+    "summary": "Candidate general education economics route",
+    "note": "Requires course-specific outcome mapping",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R45",
+    "title": "OpenStax College Success",
+    "url": "https://openstax.org/books/college-success/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [
+      "f12"
+    ],
+    "summary": "F12 and selected lifelong-learning support",
+    "note": "Study-skills support does not itself complete a NU course",
+    "usage": "link-only",
+    "review": "candidate"
+  },
+  {
+    "id": "R46",
+    "title": "OpenStax Introduction to Philosophy",
+    "url": "https://openstax.org/books/introduction-philosophy/pages/preface",
+    "additionalLinks": [],
+    "provider": "openstax.org",
+    "kind": "Textbook",
+    "courseIds": [],
+    "summary": "Candidate humanities/philosophy route",
+    "note": "Requires reasoning/writing activities and course-specific review",
+    "usage": "link-only",
+    "review": "candidate"
+  }
+]
