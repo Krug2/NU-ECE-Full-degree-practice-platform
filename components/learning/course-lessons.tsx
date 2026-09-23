@@ -1,0 +1,20 @@
+"use client";
+
+import Link from "next/link";
+import { learningPack, lessonById } from "@/lib/learning/catalog";
+import { useStudy } from "@/lib/study-store";
+import "./learning.css";
+
+export function CourseLessons({courseId}:{courseId:string}){
+  const pack=learningPack(courseId);
+  const {data}=useStudy();
+  if(!pack)return null;
+  const outlines=pack.modules.flatMap(item=>item.lessons);
+  const available=outlines.filter(item=>lessonById(courseId,item.id));
+  const resume=[...data.learning.attempts].reverse().find(attempt=>attempt.courseId===courseId&&attempt.status==="active");
+  const next=resume?available.find(item=>item.id===resume.lessonId):available.find(item=>!data.learning.evidence.some(evidence=>evidence.courseId===courseId&&evidence.lessonId===item.id&&evidence.lessonVersion===lessonById(courseId,item.id)?.version))??available[0];
+  return <section className="panel course-lessons"><span className="eyebrow">Your learning path</span><h2>Build the understanding, step by step.</h2><p>{pack.introduction}</p><p className="notice">{available.length} of {outlines.length} planned lessons are available. The complete course, module assessments, and project are still being built.</p>{next&&<Link className="button section-space" href={`/courses/${courseId}/lessons/${next.id}`}>{resume?"Resume lesson":"Open lesson"}: {next.title}</Link>}{pack.modules.map(item=><details key={item.id} open={item.lessons.some(lesson=>lessonById(courseId,lesson.id))}><summary>{item.id.toUpperCase()} · {item.title}</summary><ol>{item.lessons.map(outline=>{
+    const lesson=lessonById(courseId,outline.id),evidence=lesson&&data.learning.evidence.find(value=>value.courseId===courseId&&value.lessonId===lesson.id&&value.lessonVersion===lesson.version);
+    return <li key={outline.id}>{lesson?<Link href={`/courses/${courseId}/lessons/${outline.id}`}>{outline.title}</Link>:<span>{outline.title}</span>}<small>{lesson?(evidence?"Objective demonstrated":"Lesson and practice available"):"Planned lesson"}</small></li>;
+  })}</ol></details>)}</section>;
+}
