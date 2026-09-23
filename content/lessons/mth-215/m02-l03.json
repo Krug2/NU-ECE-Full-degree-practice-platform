@@ -1,0 +1,621 @@
+{
+  "id": "m02-l03",
+  "courseId": "mth-215",
+  "moduleId": "m02",
+  "version": 1,
+  "title": "Composition and inverse functions",
+  "objective": "Compose functions with valid input restrictions and determine whether a domain restriction is needed for an inverse.",
+  "why": "Engineering models often form a chain: time determines temperature, temperature determines voltage, and voltage determines a displayed reading. Composition describes that chain. An inverse runs a relationship backward to recover an input, but only when the outputs identify those inputs uniquely.",
+  "estimatedMinutes": 130,
+  "prerequisites": [
+    {
+      "label": "Function notation and domains",
+      "lessonId": "m02-l01"
+    },
+    {
+      "label": "Transformations and graph features",
+      "lessonId": "m02-l02"
+    },
+    {
+      "label": "Original restrictions and candidate checks",
+      "lessonId": "m01-l04"
+    },
+    {
+      "label": "Algebraic fractions",
+      "lessonId": "b04"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Combining outputs and composing functions",
+      "paragraphs": [
+        "Adding functions uses $(f+g)(x)=f(x)+g(x)$; subtraction and multiplication work similarly. These operations evaluate both functions at the same input and combine their outputs. Their domains require x to belong to both original domains. For $(f/g)(x)=f(x)/g(x)$, also require $g(x)\\ne0$. Simplification does not remove these original conditions.",
+        "Composition instead feeds one output into another function: $(f\\circ g)(x)=f(g(x))$. Read the innermost operation first. The notation means g acts first and f acts second; it does not mean $f(x)g(x)$.",
+        "To form $f(g(x))$, replace every occurrence of the outer function's input variable by the whole expression g(x), using parentheses. With $f(x)=2x+3$ and $g(x)=x^2-1$, the result is $2(x^2-1)+3=2x^2+1$. In the reverse order, $g(f(x))=(2x+3)^2-1$. Expanded answers should collect like powers and omit zero terms."
+      ]
+    },
+    {
+      "heading": "Order, tables, and decomposition",
+      "paragraphs": [
+        "Composition generally depends on order. Two rules that agree at one input need not agree throughout their domains. Conversely, some particular functions do commute, so calculate instead of assuming the results must always differ.",
+        "With tables, locate the original input in the inner table, read its output, then use that exact value as an input in the outer table. If the second table does not contain that value and no continuation rule was given, the composition is undefined at that input. Do not interpolate a missing table entry.",
+        "For example, if $g(2)=-1$ and $f(-1)=4$, then $f(g(2))=4$. Knowing $f(2)$ does not help with that order. The graph version follows the same two steps: read an inner output, then use it as an outer input.",
+        "Decomposition reverses this description. To write $H(x)=\\sqrt{x^2+5}$ as $f(g(x))$, choose $g(x)=x^2+5$ and $f(u)=\\sqrt{u}$. Other decompositions may be valid; the chosen functions must reproduce both the operation order and the domain. Interchanging these two rules produces a different function."
+      ]
+    },
+    {
+      "heading": "A composition has two domain checks",
+      "paragraphs": [
+        "The domain of $f\\circ g$ consists exactly of inputs x for which $x\\in D_g$ and $g(x)\\in D_f$. First check the original input. Then check the intermediate output. Both conditions must hold. You may need to restrict the inner function's domain; its whole range does not have to fit the outer domain before any composition can be defined.",
+        "For $f(u)=\\sqrt{u}$ and $g(x)=3-x$, the inner rule allows all real x, but the outer rule requires $3-x\\ge0$. The composite domain is $(-\\infty,3]$. If g were given only on $[0,5]$, the composite domain would instead be $[0,3]$.",
+        "If $f(u)=1/(u-2)$ and $g(x)=\\sqrt{x+1}$, require $x\\ge-1$ and $\\sqrt{x+1}\\ne2$. This removes x = 3 from the half-line. If the excluded outer input were -2 instead, the principal square root would never reach it, so it would remove no additional input.",
+        "An invalid first stage has no output to pass onward. Squaring, multiplying by zero, or canceling symbols later cannot repair that missing value. Undefined is different from an assigned output of zero."
+      ]
+    },
+    {
+      "heading": "Simplified expressions retain the original domain",
+      "paragraphs": [
+        "The composition $\\sqrt{(x-1)^2}$ is defined on $\\mathbb R$ and equals $|x-1|$. The reverse order, $(\\sqrt{x-1})^2$, equals $x-1$ only for $x\\ge1$. These are different functions even though informal cancellation might make them look alike.",
+        "For $f(u)=1/u$ and $g(x)=1/(x-3)$, the composite $f(g(x))=1/(1/(x-3))$ simplifies to $x-3$, with $x\\ne3$. The reduced polynomial expression alone is defined at 3, but the original composition is not.",
+        "Record the rule and the domain together. When comparing two functions, matching algebraic expressions are insufficient if the allowed inputs differ. Every canceled denominator or square-root restriction must be carried into the final description."
+      ]
+    },
+    {
+      "heading": "Units tell you which function can follow another",
+      "paragraphs": [
+        "Suppose a temperature model maps time in seconds to temperature in degrees C, and a sensor model maps temperature to voltage. The temperature output can enter the sensor model, giving voltage as a function of time. Feeding voltage into a model that expects seconds does not match these definitions.",
+        "The intermediate quantity is part of the reasoning, not disposable arithmetic. Label it with units and check that its value lies in the next model's operating range. An algebraic rule may be defined more widely than a model supported by measurements.",
+        "When a conversion is explicitly an unrounded linear model, keep intermediate fractions exact. If a real instrument rounds, clips, saturates, or quantizes its output, that behavior needs its own model; it may destroy information and prevent a unique inverse."
+      ]
+    },
+    {
+      "heading": "An inverse needs one-to-one behavior",
+      "paragraphs": [
+        "An inverse function recovers the original input from its output. If $f(u)=v$, its inverse must give $f^{-1}(v)=u$. The notation $f^{-1}(x)$ means inverse function, when it exists; it does not mean $1/f(x)$.",
+        "A function is one-to-one when distinct original inputs have distinct outputs. Repeated outputs are allowed for a function, but they prevent its whole inverse relation from being a function. In a finite table, compare the outputs. On a graph, the horizontal-line test asks whether any horizontal line meets more than one distinct point.",
+        "The square function on $\\mathbb R$ fails because, for example, $f(-2)=f(2)=4$. Reversing its pairs would assign both -2 and 2 to inverse input 4. The notation $\\pm\\sqrt{x}$ describes both branches of the inverse relation, not one inverse function.",
+        "Strict increase or strict decrease across an interval guarantees one-to-one behavior there. One-to-one behavior does not require every graph to have a single global monotonic direction on a disconnected domain. Always use the actual pairs or a valid uniqueness argument.",
+        "Restricting $x^2$ to $[0,\\infty)$ gives inverse $\\sqrt{x}$. Restricting it to $(-\\infty,0]$ gives inverse $-\\sqrt{x}$. Both restrictions are valid choices, but they define different original functions. State which one you use."
+      ]
+    },
+    {
+      "heading": "Solve for the old input and swap the sets",
+      "paragraphs": [
+        "To find an inverse, write $y=f(x)$, solve for the old input x in terms of y, and enforce any original branch restriction. Rename the independent variable afterward if desired. Swapping the letters is a notation step; solving the relation and selecting a valid branch supply the mathematics.",
+        "If f has domain D and actual range R and is one-to-one, then $f^{-1}$ has domain R and range D. This explains why a correct-looking inverse formula may still need a domain restriction.",
+        "For $f(x)=a(x-h)^2+k$ restricted to one side of h, solving gives $x=h\\pm\\sqrt{(y-k)/a}$. Select the plus sign for the right branch and the minus sign for the left branch. The inverse input must satisfy $(y-k)/a\\ge0$, so its domain depends on the sign of a.",
+        "For $f(x)=a\\sqrt{x-h}+k$, the original domain is $[h,\\infty)$. Solving gives $f^{-1}(y)=((y-k)/a)^2+h$, with $(y-k)/a\\ge0$. The square formula does not justify allowing y outside that inverse domain.",
+        "For $f(x)=a/(x-h)+k$ with nonzero a, solving gives $f^{-1}(y)=h+a/(y-k)$. The original excludes input h and output k; the inverse excludes input k and output h. Keep both holes."
+      ]
+    },
+    {
+      "heading": "Verify both compositions on their respective domains",
+      "paragraphs": [
+        "A candidate g is an inverse of f when $g(f(x))=x$ for every x in the original domain and $f(g(y))=y$ for every y in the inverse domain. Each composition must also be defined there. Checking one convenient numerical pair is useful for catching an error but is not a proof for an entire domain.",
+        "The pair $f(x)=x^2$ on $\\mathbb R$ and $g(y)=\\sqrt{y}$ on $[0,\\infty)$ passes $f(g(y))=y$. The other order gives $g(f(x))=|x|$, which differs from x when x is negative. One successful identity is insufficient.",
+        "A wrong branch can fail even before an algebraic identity is checked. If f is a square restricted to its left branch but g returns the right branch, most outputs of g are outside f's stated domain. Substituting them into the unrestricted formula would evaluate a different function.",
+        "For a valid branch restriction, simplify $\\sqrt{(x-h)^2}$ to $|x-h|$ first. Then use $x\\ge h$ or $x\\le h$ to remove the absolute value correctly. For a radical inverse, use the inverse-domain condition to justify $\\sqrt{((y-k)/a)^2}=(y-k)/a$."
+      ]
+    },
+    {
+      "heading": "The inverse graph and a practical check",
+      "paragraphs": [
+        "An inverse swaps coordinates: $(u,v)$ becomes $(v,u)$. This reflects a one-to-one graph across the line $y=x$. It also swaps the domain and range. This diagonal reflection is different from the axis reflections used in the previous lesson.",
+        "If two original points share an output, their swapped points share an input and fail the vertical-line test. A chosen square branch removes that conflict by assigning each allowed output to only one original input.",
+        "Before accepting a composition or inverse, state the input set, follow the intermediate values, verify the relevant output set, and test a boundary or excluded point. For an inverse, also provide the reasoning for both composition identities. These checks are especially useful when recovering a measured quantity from a sensor reading."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Calculate the two composition orders",
+      "prompt": "Let $f(x)=2x+3$ and $g(x)=x^2-1$ on $\\mathbb R$. Find both compositions and evaluate them at x = 2.",
+      "steps": [
+        {
+          "math": "f(g(x))=2(x^2-1)+3=2x^2+1",
+          "reason": "Substitute the whole inner rule into the linear outer rule."
+        },
+        {
+          "math": "g(f(x))=(2x+3)^2-1=4x^2+12x+8",
+          "reason": "The reverse order squares the entire linear expression, including its middle term."
+        },
+        {
+          "math": "f(g(2))=9,\\qquad g(f(2))=48",
+          "reason": "This allowed input gives a concrete counterexample to equality of the two functions."
+        }
+      ],
+      "conclusion": "Both domains are $\\mathbb R$, but the rules and outputs differ. Composition is not the product of f and g."
+    },
+    {
+      "title": "Remove an outer pole from an inner half-line",
+      "prompt": "Find the domain of $f(g(x))$ for $f(u)=1/(u-2)$ and $g(x)=\\sqrt{x+1}$.",
+      "steps": [
+        {
+          "math": "x+1\\ge0\\quad\\Longrightarrow\\quad x\\ge-1",
+          "reason": "The first stage is a real square root."
+        },
+        {
+          "math": "\\sqrt{x+1}\\ne2\\quad\\Longrightarrow\\quad x\\ne3",
+          "reason": "The outer denominator cannot vanish. The excluded intermediate value is nonnegative, so it can occur."
+        },
+        {
+          "math": "D_{f\\circ g}=[-1,3)\\cup(3,\\infty)",
+          "reason": "Intersect the two conditions. The root endpoint is allowed because its output zero is accepted by f."
+        }
+      ],
+      "conclusion": "At x = -1, the final output is -1/2. At x = 3, the first stage produces 2 and the second stage is undefined."
+    },
+    {
+      "title": "Reverse a square and a square root",
+      "prompt": "Compare $\\sqrt{(x-1)^2}$ with $(\\sqrt{x-1})^2$.",
+      "steps": [
+        {
+          "math": "\\sqrt{(x-1)^2}=|x-1|,\\qquad x\\in\\mathbb R",
+          "reason": "The inner square is always nonnegative; the principal square root returns a nonnegative distance."
+        },
+        {
+          "math": "(\\sqrt{x-1})^2=x-1,\\qquad x\\in[1,\\infty)",
+          "reason": "The root must exist before its output is squared."
+        },
+        {
+          "math": "x=-2:\\qquad\\sqrt{(-3)^2}=3",
+          "reason": "The first composition accepts this input. The reverse composition rejects it because -3 has no real square root."
+        }
+      ],
+      "conclusion": "The functions differ in both rule and domain. Later operations cannot restore a value rejected at the first stage."
+    },
+    {
+      "title": "Find a linear inverse and check both directions",
+      "prompt": "Find the inverse of $f(x)=-3x+6$ on $\\mathbb R$.",
+      "steps": [
+        {
+          "math": "y=-3x+6\\quad\\Longrightarrow\\quad x=2-\\frac y3",
+          "reason": "Undo the offset and divide by the nonzero coefficient."
+        },
+        {
+          "math": "g(y)=2-\\frac y3,\\qquad D_g=R_g=\\mathbb R",
+          "reason": "The original linear function takes every real output exactly once."
+        },
+        {
+          "math": "f(g(y))=-3\\left(2-\\frac y3\\right)+6=y",
+          "reason": "The forward check holds for every inverse input."
+        },
+        {
+          "math": "g(f(x))=2-\\frac{-3x+6}{3}=x",
+          "reason": "The reverse check holds for every original input."
+        }
+      ],
+      "conclusion": "The inverse is $f^{-1}(x)=2-x/3$. Its value at 9 is -1, while $1/f(9)=-1/21$."
+    },
+    {
+      "title": "Select and verify the left square branch",
+      "prompt": "Find the inverse of $f(x)=(x-1)^2+2$ with domain $(-\\infty,1]$.",
+      "steps": [
+        {
+          "math": "y-2=(x-1)^2,\\qquad x-1\\le0",
+          "reason": "The original domain fixes which square-root branch can recover the input."
+        },
+        {
+          "math": "x=1-\\sqrt{y-2}",
+          "reason": "Use the nonpositive root contribution for the left branch."
+        },
+        {
+          "math": "g(y)=1-\\sqrt{y-2},\\qquad D_g=[2,\\infty),\\quad R_g=(-\\infty,1]",
+          "reason": "Swap the original domain and range."
+        },
+        {
+          "math": "f(g(y))=(-\\sqrt{y-2})^2+2=y\\quad(y\\ge2)",
+          "reason": "The selected output of g belongs to the original left branch."
+        },
+        {
+          "math": "g(f(x))=1-|x-1|=1-(1-x)=x\\quad(x\\le1)",
+          "reason": "Use the branch restriction after introducing the absolute value."
+        }
+      ],
+      "conclusion": "At inverse input 11, the recovered input is $1-\\sqrt9=-2$. Choosing the positive branch would recover 4, outside the stated original domain."
+    },
+    {
+      "title": "Swap the holes of a reciprocal model",
+      "prompt": "Find and verify the inverse of $f(x)=2/(x-1)+3$.",
+      "steps": [
+        {
+          "math": "y-3=\\frac2{x-1}\\quad\\Longrightarrow\\quad x=1+\\frac2{y-3}",
+          "reason": "The nonzero numerator means the original can never output 3."
+        },
+        {
+          "math": "D_g=\\mathbb R\\setminus\\{3\\},\\qquad R_g=\\mathbb R\\setminus\\{1\\}",
+          "reason": "The inverse input hole is the original output hole."
+        },
+        {
+          "math": "f(g(y))=\\frac2{2/(y-3)}+3=y\\quad(y\\ne3)",
+          "reason": "The inverse output never equals the original excluded input 1."
+        },
+        {
+          "math": "g(f(x))=1+\\frac2{2/(x-1)}=x\\quad(x\\ne1)",
+          "reason": "The original output never equals the inverse excluded input 3."
+        }
+      ],
+      "conclusion": "The inverse is $1+2/(x-3)$, equivalently $(x-1)/(x-3)$. The cancellation in either check does not remove the stated holes."
+    },
+    {
+      "title": "A squared inverse formula still needs its domain",
+      "prompt": "Invert $f(x)=-\\sqrt{x+2}+4$ on its full real domain.",
+      "steps": [
+        {
+          "math": "D_f=[-2,\\infty),\\qquad R_f=(-\\infty,4]",
+          "reason": "The root is nonnegative, so the original output never exceeds 4."
+        },
+        {
+          "math": "\\sqrt{x+2}=4-y\\quad\\Longrightarrow\\quad x=(4-y)^2-2,\\qquad y\\le4",
+          "reason": "The nonnegative square root requires 4 - y to be nonnegative before squaring."
+        },
+        {
+          "math": "g(y)=(4-y)^2-2,\\quad D_g=(-\\infty,4],\\quad R_g=[-2,\\infty)",
+          "reason": "The inverse's sets are the original sets in reverse order."
+        },
+        {
+          "math": "f(g(y))=-|4-y|+4=y\\quad(y\\le4)",
+          "reason": "The inverse-domain condition justifies replacing the absolute value by 4 - y."
+        },
+        {
+          "math": "g(f(x))=(\\sqrt{x+2})^2-2=x\\quad(x\\ge-2)",
+          "reason": "The original-domain condition guarantees a real square root."
+        }
+      ],
+      "conclusion": "Allowing inverse input 5 would produce -1, but $f(-1)=3$, not 5. The polynomial formula alone does not define the correct inverse."
+    },
+    {
+      "title": "One successful composition is insufficient",
+      "prompt": "Can $f(x)=x^2$ on $\\mathbb R$ and $g(x)=\\sqrt{x}$ on $[0,\\infty)$ be inverse functions?",
+      "steps": [
+        {
+          "math": "f(g(y))=(\\sqrt y)^2=y\\quad(y\\ge0)",
+          "reason": "This direction succeeds throughout g's domain."
+        },
+        {
+          "math": "g(f(x))=\\sqrt{x^2}=|x|",
+          "reason": "The reverse direction uses the principal square root."
+        },
+        {
+          "math": "g(f(-2))=2\\ne-2",
+          "reason": "One valid original input disproves the required identity on the entire original domain."
+        }
+      ],
+      "conclusion": "They are not inverses on these domains. Restrict f to nonnegative inputs to make g its inverse, or choose the negative square-root branch for a nonpositive original domain."
+    }
+  ],
+  "guided": {
+    "title": "Complete a restricted inverse",
+    "setup": "Let $f(x)=(x-1)^2+2$ for $x\\le1$. Finish the inverse rule, its sets, and the check at inverse input 11.",
+    "before": [
+      "Writing $y=f(x)$ gives $(x-1)^2=y-2$.",
+      "The branch condition $x-1\\le0$ fixes the sign of the root contribution.",
+      "The original range is $[2,\\infty)$ and becomes the inverse domain."
+    ],
+    "question": {
+      "id": "m02-l03-guided",
+      "familyId": "mth-inverse-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m02-l03",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "Select the inverse rule and give its complete domain, complete range, and value at input 11.",
+      "fields": [
+        {
+          "id": "formula",
+          "kind": "choice",
+          "label": "Inverse rule",
+          "correct": "left",
+          "options": [
+            {
+              "id": "left",
+              "label": "$1-\\sqrt{x-2}$",
+              "feedback": "The minus sign recovers the original left branch.",
+              "accessibleLabel": "One minus the square root of (x minus two)"
+            },
+            {
+              "id": "right",
+              "label": "$1+\\sqrt{x-2}$",
+              "feedback": "This returns the opposite branch for inputs greater than 2.",
+              "accessibleLabel": "One plus the square root of (x minus two)"
+            },
+            {
+              "id": "reciprocal",
+              "label": "$1/((x-1)^2+2)$",
+              "feedback": "This takes the reciprocal of f's output instead of undoing f.",
+              "accessibleLabel": "One divided by ((x minus one) squared plus two)"
+            }
+          ]
+        },
+        {
+          "id": "domain",
+          "kind": "intervals",
+          "label": "Inverse domain",
+          "expected": [
+            {
+              "lower": "2",
+              "upper": null,
+              "lowerClosed": true,
+              "upperClosed": false
+            }
+          ]
+        },
+        {
+          "id": "range",
+          "kind": "intervals",
+          "label": "Inverse range",
+          "expected": [
+            {
+              "lower": null,
+              "upper": "1",
+              "lowerClosed": false,
+              "upperClosed": true
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "kind": "rational",
+          "label": "Inverse at 11",
+          "expected": "-2"
+        }
+      ],
+      "hints": [
+        "Use the branch condition before selecting a root sign.",
+        "The inverse domain is [2,inf) and its range is (-inf,1].",
+        "At input 11, subtract sqrt(9) from 1."
+      ],
+      "explanation": [
+        "The inverse is $1-\\sqrt{x-2}$ on $[2,\\infty)$, with range $(-\\infty,1]$.",
+        "Its value at 11 is -2, and $f(-2)=11$.",
+        "For all original inputs $x\\le1$, the reverse composition gives $1-|x-1|=x$. For all inverse inputs $y\\ge2$, the forward composition gives $(-\\sqrt{y-2})^2+2=y$."
+      ],
+      "answerSummary": "$f^{-1}(x)=1-\\sqrt{x-2}$; domain $[2,\\infty)$; range $(-\\infty,1]$; value at 11: -2."
+    },
+    "after": "Use the machine investigation to compare both composition orders and to see what changes when a square's branch restriction is changed."
+  },
+  "interaction": {
+    "kind": "composition-lab",
+    "prompt": "Predict the intermediate and final outputs before tracing each pair. Reverse the order without changing the input. Then compare the inverse of f with its reciprocal, including excluded inputs and branch restrictions.",
+    "cases": [
+      {
+        "title": "Changing the order",
+        "f": {
+          "kind": "linear",
+          "a": "2",
+          "h": "0",
+          "k": "3",
+          "branch": "all"
+        },
+        "g": {
+          "kind": "square",
+          "a": "1",
+          "h": "0",
+          "k": "0",
+          "branch": "all"
+        },
+        "input": "2",
+        "order": "fg"
+      },
+      {
+        "title": "A square and a square root",
+        "f": {
+          "kind": "square",
+          "a": "1",
+          "h": "0",
+          "k": "0",
+          "branch": "all"
+        },
+        "g": {
+          "kind": "sqrt",
+          "a": "1",
+          "h": "0",
+          "k": "0",
+          "branch": "all"
+        },
+        "input": "-2",
+        "order": "fg"
+      },
+      {
+        "title": "An outer-domain restriction",
+        "f": {
+          "kind": "sqrt",
+          "a": "1",
+          "h": "0",
+          "k": "0",
+          "branch": "all"
+        },
+        "g": {
+          "kind": "linear",
+          "a": "1",
+          "h": "0",
+          "k": "-3",
+          "branch": "all"
+        },
+        "input": "2",
+        "order": "fg"
+      },
+      {
+        "title": "A canceled reciprocal",
+        "f": {
+          "kind": "reciprocal",
+          "a": "1",
+          "h": "0",
+          "k": "0",
+          "branch": "all"
+        },
+        "g": {
+          "kind": "reciprocal",
+          "a": "1",
+          "h": "2",
+          "k": "0",
+          "branch": "all"
+        },
+        "input": "2",
+        "order": "fg"
+      },
+      {
+        "title": "Restricted inverse branches",
+        "f": {
+          "kind": "square",
+          "a": "1",
+          "h": "1",
+          "k": "2",
+          "branch": "left"
+        },
+        "g": {
+          "kind": "sqrt",
+          "a": "-1",
+          "h": "2",
+          "k": "1",
+          "branch": "all"
+        },
+        "input": "0",
+        "order": "gf"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-compose-values",
+      "variant": "affine-square"
+    },
+    {
+      "familyId": "mth-compose-values",
+      "variant": "table"
+    },
+    {
+      "familyId": "mth-compose-values",
+      "variant": "signal"
+    },
+    {
+      "familyId": "mth-compose-formula",
+      "variant": "both"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "root-linear"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "reciprocal-root"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "root-reciprocal"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "root-square"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "square-root"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "canceled-reciprocal"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "restricted-inner"
+    },
+    {
+      "familyId": "mth-compose-structure",
+      "variant": "operations"
+    },
+    {
+      "familyId": "mth-compose-structure",
+      "variant": "decompose"
+    },
+    {
+      "familyId": "mth-compose-structure",
+      "variant": "unit-order"
+    },
+    {
+      "familyId": "mth-inverse-classify",
+      "variant": "table"
+    },
+    {
+      "familyId": "mth-inverse-classify",
+      "variant": "graph"
+    },
+    {
+      "familyId": "mth-inverse-classify",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-inverse-rule",
+      "variant": "linear"
+    },
+    {
+      "familyId": "mth-inverse-rule",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "mth-inverse-rule",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-inverse-rule",
+      "variant": "radical"
+    },
+    {
+      "familyId": "mth-inverse-verify",
+      "variant": "restricted"
+    },
+    {
+      "familyId": "mth-inverse-verify",
+      "variant": "unrestricted"
+    },
+    {
+      "familyId": "mth-inverse-verify",
+      "variant": "rational"
+    },
+    {
+      "familyId": "mth-inverse-verify",
+      "variant": "notation"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-compose-formula",
+      "variant": "fg"
+    },
+    {
+      "familyId": "mth-compose-formula",
+      "variant": "gf"
+    },
+    {
+      "familyId": "mth-compose-domain",
+      "variant": "reciprocal-root"
+    },
+    {
+      "familyId": "mth-inverse-rule",
+      "variant": "quadratic"
+    }
+  ],
+  "summary": [
+    "In $f(g(x))$, evaluate g first. Composition is generally different from reversing the order or multiplying the functions.",
+    "Require both $x\\in D_g$ and $g(x)\\in D_f$. Preserve restrictions from both stages after simplification.",
+    "The identity $\\sqrt{z^2}=|z|$ preserves the principal root's sign. The reverse operation $(\\sqrt z)^2=z$ requires $z\\ge0$.",
+    "An inverse function needs one-to-one behavior. Use output uniqueness, the horizontal-line test, or an appropriate domain restriction.",
+    "The inverse domain is the original range; the inverse range is the original domain. A formula without these sets can describe the wrong function.",
+    "Check both $f^{-1}(f(x))=x$ and $f(f^{-1}(y))=y$ on their respective domains.",
+    "An inverse recovers an input. A reciprocal divides 1 by a function value. Units and intermediate values help distinguish these operations."
+  ],
+  "retrieval": "Explain the two domain checks for a composition. Compare a square followed by a square root with the reverse order at a negative input. Find the inverse of (x-1)^2+2 on the left branch, state its domain and range, and explain why checking only one composition is insufficient.",
+  "readings": [
+    {
+      "title": "OpenStax: Composition of Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-4-composition-of-functions",
+      "purpose": "Additional practice with operations on functions, composition order, domains, tables, and decomposition."
+    },
+    {
+      "title": "OpenStax: Inverse Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-7-inverse-functions",
+      "purpose": "Further examples of one-to-one behavior, inverse graphs, branch restrictions, and two-sided verification."
+    }
+  ]
+}
