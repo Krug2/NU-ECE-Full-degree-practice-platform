@@ -1,0 +1,529 @@
+{
+  "id": "m02-l01",
+  "courseId": "mth-215",
+  "moduleId": "m02",
+  "version": 1,
+  "title": "Function notation, domains, and piecewise rules",
+  "objective": "Determine whether a relation is a function, evaluate it correctly, and describe its domain and range.",
+  "why": "An engineering model must say which inputs it accepts and what output it assigns to each one. A formula, table, or graph can communicate the same relationship, but each can also hide an assumption. This lesson makes those assumptions explicit and prepares you to combine, transform, and invert functions.",
+  "estimatedMinutes": 100,
+  "prerequisites": [
+    {
+      "label": "Coordinates and graph scales",
+      "lessonId": "b05"
+    },
+    {
+      "label": "Expansion and factoring",
+      "lessonId": "b03"
+    },
+    {
+      "label": "Inequalities and interval notation",
+      "lessonId": "m01-l02"
+    },
+    {
+      "label": "Rational and radical restrictions",
+      "lessonId": "m01-l04"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "A function assigns one output to each allowed input",
+      "paragraphs": [
+        "A relation is a set of input-output pairs. Its domain is the set of inputs that occur, and its range is the set of outputs that occur. A function is a relation that assigns exactly one output to every input in its domain.",
+        "Different inputs may share an output. For example, (-2, 4) and (2, 4) can both belong to a function. The difficulty would be one input with different outputs, such as (2, 4) and (2, 7). That relation cannot describe y as a function of x.",
+        "Repeating an identical pair does not create a second distinct output. A table containing (2, 4) twice still assigns only 4 to input 2, provided no other row assigns a different output there. When listing the domain or range, write each distinct value once.",
+        "Which quantity is the input matters. A relation can define y as a function of x without defining x as a function of y. You will revisit that distinction when studying inverse functions. For now, identify the intended input before checking uniqueness.",
+        "A function need not accept every real number. A finite function may have just three allowed inputs. A real-valued formula may exclude some inputs because a denominator would be zero or a square root would be nonreal."
+      ]
+    },
+    {
+      "heading": "Read function notation as a process",
+      "paragraphs": [
+        "In $y=f(x)$, f names the function, x names the input, and y or f(x) names the output. The notation f(3) means the output assigned to input 3. The parentheses do not mean multiplication by a number named f.",
+        "If $f(x)=2x^2-3x+1$, then $f(-2)=2(-2)^2-3(-2)+1=15$. Replace every x with the complete input in parentheses. Square the negative input before multiplying its coefficient, and preserve the subtraction signs.",
+        "An input may itself be an expression. For the same rule, $f(x+1)=2(x+1)^2-3(x+1)+1=2x^2+x$. This is generally different from f(x) + 1. The entire expression x + 1 is substituted everywhere x appeared.",
+        "Evaluating f(3) asks for an output at one known input. Solving f(x) = 3 asks for every allowed input producing output 3. A function may have several such inputs. For example, $f(x)=x^2$ gives f(-2) = f(2) = 4 while still assigning one output to each input.",
+        "Keep the quantities and units attached to a statement. If P(t) is power in watts at time t seconds, P(3) = 12 says the power at 3 seconds is 12 watts. It does not say that 12 seconds corresponds to 3 watts."
+      ]
+    },
+    {
+      "heading": "Read a finite table or graph without inventing values",
+      "paragraphs": [
+        "To evaluate a function from a table, find the requested input in its input row or column and read the paired output. Do not reverse the lookup unless the question asks you to find inputs from a known output.",
+        "A table that defines an entire finite function gives values only at its listed inputs. If input 5 is absent, f(5) is undefined for that function. A row assigning f(2) = 0, by contrast, defines a real output of zero. Missing data and zero are different.",
+        "Some tables are samples from a broader model. In that case, values between samples require an explicit interpolation rule or other additional information. The finite-table questions in this lesson state that the listed pairs are the entire function, so no interpolation is permitted.",
+        "On a graph, move vertically from an input value to a point on the relation and then read its output coordinate. A finite point graph contains only the displayed points when no connecting segments or continuation are specified. Do not fill in the gaps by drawing an imagined line.",
+        "The vertical-line test checks whether a graphed relation is a function of x. If a vertical line intersects two distinct included points, one input has different outputs. If it intersects no included point, that input is outside the domain. An open endpoint marker does not count as an included point.",
+        "The displayed graph window and the function's domain are different ideas. A continuous line or parabola may extend beyond the visible window when its rule says so. The piecewise graphs in this lesson are explicitly bounded segments, and their stated endpoint conditions determine where they stop."
+      ]
+    },
+    {
+      "heading": "Distinguish domain from range",
+      "paragraphs": [
+        "The domain answers which inputs are allowed. The range answers which outputs are actually produced. For the finite relation {(-2, 4), (0, 1), (3, 4)}, the domain is {-2, 0, 3} and the range is {1, 4}. The repeated output 4 appears once in the range.",
+        "A finite set is not an interval. The domain {-2, 0, 3} contains only those three numbers, while [-2, 3] contains every real number between -2 and 3. In a finite-set answer field, enter distinct values separated by commas. In an interval field, use brackets or parentheses as appropriate.",
+        "Square brackets include finite endpoints, and parentheses exclude them. Infinity and negative infinity always take parentheses. Use U to join separate intervals, for example [-2, 1) U (1, inf). A single attained output can be written [3, 3] in the interval fields used for piecewise ranges.",
+        "A rule can accept every real input while producing only some real outputs. The function $f(x)=x^2+1$ has domain R and range $[1,\\infty)$: a square is nonnegative, the minimum output 1 is attained at x = 0, and arbitrarily large outputs are possible.",
+        "Reading a range from a graph means collecting all attained vertical values. Overlapping output intervals should be combined. An output excluded at one segment's endpoint may still be included through another segment, so inspect the whole function before excluding that value."
+      ]
+    },
+    {
+      "heading": "Find algebraic restrictions from the original formula",
+      "paragraphs": [
+        "Unless a narrower domain is specified, a real-valued formula is normally assigned its maximal real domain: every real input for which the original expression is defined. Polynomial formulas accept every real input.",
+        "A denominator cannot equal zero. For $f(x)=(x-3)(x+2)/(x-3)$, the original domain excludes x = 3 even though canceling a factor gives the simpler formula x + 2. The original function still has a missing input there.",
+        "A real square root requires its radicand to be nonnegative. For $g(x)=\\sqrt{6-2x}$, solving $6-2x\\ge0$ gives $x\\le3$. Equality is permitted because the square root of zero exists. The domain is $(-\\infty,3]$.",
+        "When the root is also a denominator, both restrictions apply. For $h(x)=1/\\sqrt{6-2x}$, the radicand must be strictly positive, so x < 3. The domain is $(-\\infty,3)$. The endpoint x = 3 is excluded because it would make the denominator zero.",
+        "Combine multiple restrictions using intersection. In $\\sqrt{x+2}/(x-1)$, require x at least -2 for the root and x different from 1 for the denominator. The resulting domain is $[-2,1)\\cup(1,\\infty)$.",
+        "Preserve inequality direction when solving a radicand condition. Dividing by a negative coefficient reverses the comparison. Checking a sample input on each side of the boundary can help catch a reversed domain."
+      ]
+    },
+    {
+      "heading": "A physical model can use a narrower domain",
+      "paragraphs": [
+        "An algebraically defined value need not be meaningful in a model. Suppose a rectangle has perimeter 20 m and width x meters. Its other side is L(x) = 10 - x meters. The linear formula is defined for every real x, but a rectangle requires both x > 0 and L(x) > 0.",
+        "Those physical conditions give 0 < x < 10. The endpoints would flatten one side to zero and do not describe a rectangle with positive side lengths. Negative widths are excluded by the interpretation even though the formula can be evaluated there.",
+        "Other contexts may include zero or restrict inputs to whole numbers. Elapsed time after an event often includes zero; a count of complete components uses integers. State the kind of input and the permitted interval or set instead of assuming every application has the same domain.",
+        "If a sensor model is specified only for an operating interval, evaluating its formula outside that interval is an extrapolation. An algebraic output alone does not establish that the model is valid there. This lesson's sensor investigation deliberately leaves unspecified inputs undefined."
+      ]
+    },
+    {
+      "heading": "Select a piecewise branch using the input condition",
+      "paragraphs": [
+        "A piecewise function lists different rules for different portions of its domain. It is still one function. First compare the input with each condition, select the included branch, and then substitute into that branch's formula.",
+        "Consider $f(x)=x+2$ for $-4\\le x<0$ and $f(x)=x/2+1$ for $0\\le x\\le4$. At x = -2, use the first rule and obtain 0. At x = 0, use the second rule and obtain 1, because the first rule excludes its upper endpoint.",
+        "Computing the first formula at x = 0 would give 2, but that formula's condition does not allow input 0. An open circle at (0, 2) illustrates the excluded endpoint; a filled circle at (0, 1) shows the value actually assigned. The vertical-line test counts only the included point.",
+        "If both conditions excluded 0, that input would be missing from the domain. If both included 0 and gave different outputs, the relation would fail the function definition. A well-specified branch system tells you what happens at every boundary.",
+        "The piecewise domain is the union of the branches' input intervals. For the displayed example it is [-4, 4], since exactly one branch includes the shared input 0. A jump in output does not by itself remove an input from the domain."
+      ]
+    },
+    {
+      "heading": "Find a piecewise range one branch at a time",
+      "paragraphs": [
+        "Track which output values each segment attains. For the increasing branch x + 2 on [-4, 0), the outputs run from -2 included up to 2 excluded, giving [-2, 2). For x/2 + 1 on [0, 4], the outputs run from 1 to 3 with both endpoints included.",
+        "Taking the union [-2, 2) U [1, 3] gives [-2, 3]. Although the first branch excludes output 2 at its endpoint, the second branch attains output 2 at x = 2. Therefore 2 belongs to the full range.",
+        "A decreasing branch reverses output endpoint order. For y = -2x + 2 on [0, 4), input 0 produces output 2 included, while approaching the excluded input 4 produces outputs approaching -6 without reaching it. Its range is (-6, 2].",
+        "A constant branch on any nonempty input interval contributes one attained output. If y = 7 on (-4, 0), every included input produces 7, even though both input endpoints are excluded. Its range is the singleton {7}, entered as [7, 7] in an interval field.",
+        "Keep branch selection, evaluation, domain, and range as separate reasoning steps. A correct numerical output does not repair choosing an excluded input, and a correct input interval does not automatically identify the output interval."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Classify a relation and list its distinct values",
+      "prompt": "A table lists (-3, 2), (0, 2), (4, -1), and (-3, 2). Decide whether it defines y as a function of x.",
+      "steps": [
+        {
+          "math": "-3\\mapsto2,\\qquad0\\mapsto2,\\qquad4\\mapsto-1",
+          "reason": "Group by input and inspect the distinct outputs assigned to each one."
+        },
+        {
+          "math": "D=\\{-3,0,4\\},\\qquad R=\\{-1,2\\}",
+          "reason": "Collect each distinct input and output once."
+        }
+      ],
+      "conclusion": "This is a function. Sharing output 2 is allowed, and repeating the identical pair (-3, 2) does not add a conflicting output. Adding (-3, 5) would make it fail the function test."
+    },
+    {
+      "title": "Substitute a negative number and a complete expression",
+      "prompt": "For $f(x)=2x^2-3x+1$, find f(-2) and expand f(x + 1).",
+      "steps": [
+        {
+          "math": "f(-2)=2(-2)^2-3(-2)+1=8+6+1=15",
+          "reason": "Parenthesize the negative input everywhere it replaces x."
+        },
+        {
+          "math": "f(x+1)=2(x+1)^2-3(x+1)+1",
+          "reason": "The full expression x + 1 replaces every occurrence of x."
+        },
+        {
+          "math": "=2(x^2+2x+1)-3x-3+1=2x^2+x",
+          "reason": "Expand, distribute, and collect like terms."
+        }
+      ],
+      "conclusion": "The outputs are 15 and 2x^2 + x. Adding 1 to f(x) would be a different operation."
+    },
+    {
+      "title": "Combine a root restriction with a denominator restriction",
+      "prompt": "Find the maximal real domain of $g(x)=\\sqrt{x+2}/(x-1)$.",
+      "steps": [
+        {
+          "math": "x+2\\ge0\\Longrightarrow x\\ge-2",
+          "reason": "The square root requires a nonnegative radicand."
+        },
+        {
+          "math": "x-1\\ne0\\Longrightarrow x\\ne1",
+          "reason": "The denominator must remain nonzero."
+        },
+        {
+          "math": "D=[-2,1)\\cup(1,\\infty)",
+          "reason": "Intersect the two conditions. Include -2, exclude 1, and never include infinity."
+        }
+      ],
+      "conclusion": "Both restrictions must hold at once. Input -2 gives a zero numerator over a nonzero denominator, so it is allowed."
+    },
+    {
+      "title": "Separate the algebraic domain from the physical domain",
+      "prompt": "A rectangle has perimeter 20 m, width x meters, and length L(x) = 10 - x meters. Find the algebraic and physical domains.",
+      "steps": [
+        {
+          "math": "D_{\\mathrm{algebraic}}=\\mathbb{R}",
+          "reason": "A linear formula has no denominators or roots restricting its real input."
+        },
+        {
+          "math": "x>0,\\qquad10-x>0",
+          "reason": "Both physical sides must have positive length."
+        },
+        {
+          "math": "D_{\\mathrm{physical}}=(0,10)",
+          "reason": "Combine x > 0 with x < 10. Either endpoint gives a zero side length."
+        }
+      ],
+      "conclusion": "The algebraic domain is all real numbers, but the rectangle model uses only 0 < x < 10 meters."
+    },
+    {
+      "title": "Evaluate a boundary and combine overlapping output intervals",
+      "prompt": "Let $f(x)=x+2$ on $[-4,0)$ and $f(x)=x/2+1$ on $[0,4]$. Find f(0), the domain, and the range.",
+      "steps": [
+        {
+          "math": "0\\in[0,4]\\Longrightarrow f(0)=0/2+1=1",
+          "reason": "Equality at zero belongs to the higher-input branch."
+        },
+        {
+          "math": "D=[-4,0)\\cup[0,4]=[-4,4]",
+          "reason": "The adjacent input intervals cover the shared boundary through the second branch."
+        },
+        {
+          "math": "R_1=[-2,2),\\qquad R_2=[1,3]",
+          "reason": "Evaluate each segment's endpoint outputs, preserving which endpoint is included."
+        },
+        {
+          "math": "R=R_1\\cup R_2=[-2,3]",
+          "reason": "The output intervals overlap, so combine them. Output 2 is attained by the second branch."
+        }
+      ],
+      "conclusion": "The boundary output is 1, the domain is [-4, 4], and the range is [-2, 3]. An excluded endpoint on one branch does not necessarily exclude that output from the whole range."
+    },
+    {
+      "title": "Compare a decreasing branch with a constant branch",
+      "prompt": "A function uses y = -2x + 2 on [0, 4), and y = 7 on (-4, 0). Find its domain and range.",
+      "steps": [
+        {
+          "math": "D=(-4,0)\\cup[0,4)=(-4,4)",
+          "reason": "Input 0 is included by the decreasing branch."
+        },
+        {
+          "math": "R_1=(-6,2]",
+          "reason": "The decreasing branch reverses the endpoint order: output 2 is attained, but -6 is approached at an excluded input."
+        },
+        {
+          "math": "R_2=\\{7\\},\\qquad R=(-6,2]\\cup\\{7\\}",
+          "reason": "The constant branch attains 7 at every one of its allowed inputs. It contributes a single output."
+        }
+      ],
+      "conclusion": "Enter the range as (-6, 2] U [7, 7]. Do not fill the gap between output 2 and output 7."
+    }
+  ],
+  "guided": {
+    "title": "Trace a sensor input at a switching boundary",
+    "setup": "Use the two stated operating intervals. The higher-input branch includes the switching input 0 V.",
+    "before": [
+      "Locate x = 0 in the branch conditions.",
+      "Evaluate only the branch that includes the input.",
+      "Find all accepted inputs and all attained outputs from both segments."
+    ],
+    "question": {
+      "id": "guided-function",
+      "familyId": "mth-function-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m02-l01",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "$f(x)=x+2$ for $-4\\le x<0$ and $f(x)=x/2+1$ for $0\\le x\\le4$. Find f(0), the complete domain, and the complete range.",
+      "figure": {
+        "kind": "piecewise",
+        "title": "Switching sensor",
+        "xLabel": "Input x (V)",
+        "yLabel": "Output f(x) (V)",
+        "model": {
+          "name": "f",
+          "pieces": [
+            {
+              "id": "left",
+              "label": "Lower-input branch",
+              "slope": "1",
+              "intercept": "2",
+              "lower": "-4",
+              "upper": "0",
+              "lowerClosed": true,
+              "upperClosed": false
+            },
+            {
+              "id": "right",
+              "label": "Higher-input branch",
+              "slope": "1/2",
+              "intercept": "1",
+              "lower": "0",
+              "upper": "4",
+              "lowerClosed": true,
+              "upperClosed": true
+            }
+          ]
+        }
+      },
+      "fields": [
+        {
+          "id": "branch",
+          "kind": "choice",
+          "label": "Branch at x = 0",
+          "correct": "right",
+          "options": [
+            {
+              "id": "left",
+              "label": "Lower-input branch",
+              "feedback": "Its condition x < 0 excludes the switching input."
+            },
+            {
+              "id": "right",
+              "label": "Higher-input branch",
+              "feedback": "Its condition includes equality at x = 0."
+            },
+            {
+              "id": "missing",
+              "label": "Neither branch",
+              "feedback": "The higher-input branch includes x = 0, so this input has an assigned output."
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "kind": "rational",
+          "label": "Sensor output f(0)",
+          "expected": "1",
+          "unit": "V"
+        },
+        {
+          "id": "domain",
+          "kind": "intervals",
+          "label": "Sensor domain",
+          "expected": [
+            {
+              "lower": "-4",
+              "upper": "4",
+              "lowerClosed": true,
+              "upperClosed": true
+            }
+          ],
+          "help": "Use interval notation for input voltages."
+        },
+        {
+          "id": "range",
+          "kind": "intervals",
+          "label": "Sensor range",
+          "expected": [
+            {
+              "lower": "-2",
+              "upper": "3",
+              "lowerClosed": true,
+              "upperClosed": true
+            }
+          ],
+          "help": "Use interval notation for output voltages."
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "The higher-input branch includes the switching input.",
+        "It gives 0/2 + 1 = 1. The two input intervals join without a gap.",
+        "The domain is [-4, 4]. The output intervals [-2, 2) and [1, 3] combine to [-2, 3]."
+      ],
+      "explanation": [
+        "At x = 0, the higher-input branch gives f(0) = 1 V.",
+        "Both outer input endpoints are included, and the shared input 0 belongs to one branch, so the domain is [-4, 4].",
+        "The two output intervals overlap. Together they include every output from -2 V through 3 V."
+      ],
+      "answerSummary": "Higher-input branch; f(0) = 1 V; domain [-4, 4]; range [-2, 3]."
+    },
+    "after": "An open circle is excluded from the relation. The filled circle at the same input specifies the actual function value."
+  },
+  "interaction": {
+    "kind": "piecewise-lab",
+    "prompt": "These are idealized sensor response rules over stated voltage intervals. Predict which branch an input selects and its output. Compare inputs just below, at, and above the boundary. Switch to the rule with a boundary gap and explain how undefined differs from the valid zero output at x = -2.",
+    "initialInput": "0",
+    "cases": [
+      {
+        "kind": "piecewise",
+        "title": "Switching sensor",
+        "xLabel": "Input x (V)",
+        "yLabel": "Output f(x) (V)",
+        "model": {
+          "name": "f",
+          "pieces": [
+            {
+              "id": "left",
+              "label": "Lower-input branch",
+              "slope": "1",
+              "intercept": "2",
+              "lower": "-4",
+              "upper": "0",
+              "lowerClosed": true,
+              "upperClosed": false
+            },
+            {
+              "id": "right",
+              "label": "Higher-input branch",
+              "slope": "1/2",
+              "intercept": "1",
+              "lower": "0",
+              "upper": "4",
+              "lowerClosed": true,
+              "upperClosed": true
+            }
+          ]
+        }
+      },
+      {
+        "kind": "piecewise",
+        "title": "Sensor with a boundary gap",
+        "xLabel": "Input x (V)",
+        "yLabel": "Output f(x) (V)",
+        "model": {
+          "name": "f",
+          "pieces": [
+            {
+              "id": "left",
+              "label": "Lower-input branch",
+              "slope": "1",
+              "intercept": "2",
+              "lower": "-4",
+              "upper": "0",
+              "lowerClosed": true,
+              "upperClosed": false
+            },
+            {
+              "id": "right",
+              "label": "Higher-input branch",
+              "slope": "1/2",
+              "intercept": "1",
+              "lower": "0",
+              "upper": "4",
+              "lowerClosed": false,
+              "upperClosed": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-function-relation",
+      "variant": "table-function"
+    },
+    {
+      "familyId": "mth-function-relation",
+      "variant": "table-conflict"
+    },
+    {
+      "familyId": "mth-function-relation",
+      "variant": "repeated-pair"
+    },
+    {
+      "familyId": "mth-function-relation",
+      "variant": "graph-conflict"
+    },
+    {
+      "familyId": "mth-function-evaluate",
+      "variant": "rule"
+    },
+    {
+      "familyId": "mth-function-evaluate",
+      "variant": "expression"
+    },
+    {
+      "familyId": "mth-function-evaluate",
+      "variant": "table"
+    },
+    {
+      "familyId": "mth-function-evaluate",
+      "variant": "missing"
+    },
+    {
+      "familyId": "mth-function-evaluate",
+      "variant": "graph"
+    },
+    {
+      "familyId": "mth-function-domain",
+      "variant": "rational"
+    },
+    {
+      "familyId": "mth-function-domain",
+      "variant": "radical"
+    },
+    {
+      "familyId": "mth-function-domain",
+      "variant": "reciprocal-root"
+    },
+    {
+      "familyId": "mth-function-domain",
+      "variant": "context"
+    },
+    {
+      "familyId": "mth-piecewise-function",
+      "variant": "boundary"
+    },
+    {
+      "familyId": "mth-piecewise-function",
+      "variant": "interior"
+    },
+    {
+      "familyId": "mth-piecewise-function",
+      "variant": "gap"
+    },
+    {
+      "familyId": "mth-piecewise-function",
+      "variant": "range"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-function-relation",
+      "variant": "graph-mixed"
+    },
+    {
+      "familyId": "mth-function-evaluate",
+      "variant": "rule"
+    },
+    {
+      "familyId": "mth-function-domain",
+      "variant": "reciprocal-root"
+    },
+    {
+      "familyId": "mth-piecewise-function",
+      "variant": "boundary"
+    }
+  ],
+  "summary": [
+    "Every input in a function's domain has exactly one output. Different inputs may share an output.",
+    "Substitute the complete input everywhere the input variable occurs. Function notation does not mean multiplication.",
+    "Read only the values a finite table or graph actually assigns. Undefined and zero have different meanings.",
+    "Domain collects allowed inputs; range collects attained outputs. Finite sets and continuous intervals are different.",
+    "Preserve restrictions from the original formula and intersect them with any contextual restrictions.",
+    "Select a piecewise branch by its input condition, including its boundary symbols, before calculating.",
+    "Combine branch output intervals to find the range, reversing endpoint order for decreasing branches and retaining attained constant outputs."
+  ],
+  "retrieval": "Explain why (-2, 4) and (2, 4) can belong to a function, while (2, 4) and (2, 7) cannot. Evaluate f(x + 2) for f(x) = x^2 - 1, find the real domain of 1/sqrt(5 - x), and explain a piecewise boundary with an open circle and a filled circle at different heights.",
+  "readings": [
+    {
+      "title": "OpenStax: Functions and Function Notation",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-1-functions-and-function-notation",
+      "purpose": "Additional examples of function notation, representations, and the vertical-line test. One-to-one functions return in the inverse-functions lesson."
+    },
+    {
+      "title": "OpenStax: Domain and Range",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-2-domain-and-range",
+      "purpose": "Further practice with domains, ranges, interval notation, and piecewise definitions."
+    }
+  ]
+}

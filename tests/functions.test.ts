@@ -29,6 +29,7 @@ it("classifies finite relations without confusing repeated outputs or identical 
     if(variant==="graph-mixed") mixedAnswers.add(isFunction); else expect(isFunction).toBe(!variant.endsWith("conflict"));
     if(q.figure?.kind==="coordinates") expect(q.figure.points.map(point=>[point.xTicks,point.yTicks])).toEqual(pairs);
   }
+  expect(mixedAnswers.size).toBe(2);
 });
 it("evaluates complete inputs, finite graphs, and missing table inputs across fifty seeds", () => {
   let zeroSeen=false;
