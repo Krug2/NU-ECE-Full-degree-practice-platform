@@ -1,0 +1,308 @@
+{
+  "courseId": "mth-215",
+  "title": "College Algebra & Trigonometry",
+  "version": 1,
+  "status": "building",
+  "introduction": "Prepare a learner to manipulate mathematical models, interpret graphs, solve constrained problems, and enter calculus, introductory physics, and programming with dependable algebra and trigonometry skills.",
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Equations and valid reasoning",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Linear equations and formula rearrangement",
+          "objective": "Isolate a specified variable, state any divisor restrictions, and verify a proposed solution by substitution."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Inequalities and absolute value",
+          "objective": "Express the full solution set of a linear, compound, or absolute-value inequality with correct endpoints."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Quadratics and complex roots",
+          "objective": "Choose a quadratic solution method, return every root in the requested number system, and verify the roots."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Restrictions and extraneous solutions",
+          "objective": "Solve rational and radical equations while preserving original restrictions and rejecting invalid candidate roots."
+        }
+      ]
+    },
+    {
+      "id": "m02",
+      "title": "Functions, graphs, and models",
+      "requires": [
+        "m01"
+      ],
+      "lessons": [
+        {
+          "id": "m02-l01",
+          "title": "Function notation, domains, and piecewise rules",
+          "objective": "Determine whether a relation is a function, evaluate it correctly, and describe its domain and range."
+        },
+        {
+          "id": "m02-l02",
+          "title": "Transformations and graph features",
+          "objective": "Predict how a transformation changes key points, intercepts, domain, and range."
+        },
+        {
+          "id": "m02-l03",
+          "title": "Composition and inverse functions",
+          "objective": "Compose functions with valid input restrictions and determine whether a domain restriction is needed for an inverse."
+        },
+        {
+          "id": "m02-l04",
+          "title": "Rates of change and linear calibration",
+          "objective": "Construct a linear model from two points, interpret its parameters with units, and judge the validity of a prediction."
+        }
+      ]
+    },
+    {
+      "id": "m03",
+      "title": "Polynomial structure and behavior",
+      "requires": [
+        "m01",
+        "m02"
+      ],
+      "lessons": [
+        {
+          "id": "m03-l01",
+          "title": "Degree and end behavior",
+          "objective": "Predict a polynomial's end behavior and possible number of turning points from its leading term."
+        },
+        {
+          "id": "m03-l02",
+          "title": "Zeros, multiplicity, and graph shape",
+          "objective": "Read zeros and multiplicities from factored form and explain crossing or touching behavior."
+        },
+        {
+          "id": "m03-l03",
+          "title": "Division, remainders, and factors",
+          "objective": "Divide a polynomial, state quotient and remainder, and use the remainder to test a proposed factor."
+        },
+        {
+          "id": "m03-l04",
+          "title": "Finding and checking all polynomial roots",
+          "objective": "Use rational-root candidates and factor reduction to obtain a complete root list, including multiplicities and complex pairs when requested."
+        }
+      ]
+    },
+    {
+      "id": "m04",
+      "title": "Rational and radical functions",
+      "requires": [
+        "m02",
+        "m03"
+      ],
+      "lessons": [
+        {
+          "id": "m04-l01",
+          "title": "Holes, asymptotes, and intercepts",
+          "objective": "Identify original domain exclusions, removable holes, vertical asymptotes, intercepts, and end behavior of a rational function."
+        },
+        {
+          "id": "m04-l02",
+          "title": "Polynomial and rational inequalities",
+          "objective": "Build a sign chart and return every interval satisfying a polynomial or rational inequality."
+        },
+        {
+          "id": "m04-l03",
+          "title": "Variation and rational models",
+          "objective": "Build a direct, inverse, or joint variation model and use units and restrictions to interpret a result."
+        },
+        {
+          "id": "m04-l04",
+          "title": "Radical functions and restricted inverses",
+          "objective": "Analyze a radical function's domain and range and verify an inverse on the correct restricted domain."
+        }
+      ]
+    },
+    {
+      "id": "m05",
+      "title": "Exponential and logarithmic reasoning",
+      "requires": [
+        "m01",
+        "m02",
+        "m04"
+      ],
+      "lessons": [
+        {
+          "id": "m05-l01",
+          "title": "Exponential functions and growth factors",
+          "objective": "Distinguish additive from multiplicative change and interpret an exponential model's initial value, base, and asymptote."
+        },
+        {
+          "id": "m05-l02",
+          "title": "Logarithms as inverse functions",
+          "objective": "Convert between exponential and logarithmic statements and determine the domain of a logarithmic expression."
+        },
+        {
+          "id": "m05-l03",
+          "title": "Log rules and exponential equations",
+          "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks."
+        },
+        {
+          "id": "m05-l04",
+          "title": "Decay, thresholds, and logarithmic scales",
+          "objective": "Fit a simple exponential model, solve for a threshold time, and interpret a logarithm of a dimensionless ratio."
+        }
+      ]
+    },
+    {
+      "id": "m06",
+      "title": "Angles and trigonometric foundations",
+      "requires": [
+        "m01",
+        "m02"
+      ],
+      "lessons": [
+        {
+          "id": "m06-l01",
+          "title": "Radians, rotations, and arc length",
+          "objective": "Convert degree and radian measures, identify coterminal angles, and calculate an arc length with consistent units."
+        },
+        {
+          "id": "m06-l02",
+          "title": "Right-triangle ratios",
+          "objective": "Choose a trigonometric ratio to solve a right triangle and interpret the solution with the correct reference angle and units."
+        },
+        {
+          "id": "m06-l03",
+          "title": "The unit circle and exact values",
+          "objective": "Determine exact sine and cosine values using coordinates, symmetry, reference angles, and quadrant signs."
+        },
+        {
+          "id": "m06-l04",
+          "title": "All six trigonometric functions",
+          "objective": "Calculate the six trigonometric ratios where defined and explain each undefined value using a zero denominator."
+        }
+      ]
+    },
+    {
+      "id": "m07",
+      "title": "Periodic graphs and inverse trigonometry",
+      "requires": [
+        "m02",
+        "m06"
+      ],
+      "lessons": [
+        {
+          "id": "m07-l01",
+          "title": "Sine and cosine parameters",
+          "objective": "Determine amplitude, period, midline, and phase shift and construct a matching sinusoidal function."
+        },
+        {
+          "id": "m07-l02",
+          "title": "Tangent and reciprocal graphs",
+          "objective": "Predict periods, asymptotes, and domains of transformed tangent, cotangent, secant, and cosecant functions."
+        },
+        {
+          "id": "m07-l03",
+          "title": "Inverse trigonometric functions and principal values",
+          "objective": "Evaluate arcsine, arccosine, and arctangent within their principal ranges and distinguish them from solving a periodic equation."
+        },
+        {
+          "id": "m07-l04",
+          "title": "Signals, frequency, and time shifts",
+          "objective": "Fit a simple periodic signal from extrema and timing information and interpret frequency and phase in consistent units."
+        }
+      ]
+    },
+    {
+      "id": "m08",
+      "title": "Trigonometric identities, equations, and applications",
+      "requires": [
+        "m01",
+        "m06",
+        "m07"
+      ],
+      "lessons": [
+        {
+          "id": "m08-l01",
+          "title": "Identities and domain-aware simplification",
+          "objective": "Verify an identity through valid transformations on its common domain and identify invalid proof steps."
+        },
+        {
+          "id": "m08-l02",
+          "title": "Angle sums and double angles",
+          "objective": "Use sum, difference, and double-angle identities to evaluate exact expressions and explain invalid distributive shortcuts."
+        },
+        {
+          "id": "m08-l03",
+          "title": "Complete trigonometric solution sets",
+          "objective": "Find every solution on a stated interval and express general periodic families when requested."
+        },
+        {
+          "id": "m08-l04",
+          "title": "Non-right triangles and model ambiguity",
+          "objective": "Choose the law of sines or cosines, solve a non-right triangle, and identify whether supplied measurements permit zero, one, or two triangles."
+        }
+      ]
+    },
+    {
+      "id": "m09",
+      "title": "Systems of equations and constraints",
+      "requires": [
+        "m01",
+        "m02",
+        "m03",
+        "m04"
+      ],
+      "lessons": [
+        {
+          "id": "m09-l01",
+          "title": "Two-variable linear systems",
+          "objective": "Solve a two-variable system and distinguish one solution, no solution, and infinitely many solutions."
+        },
+        {
+          "id": "m09-l02",
+          "title": "Three-variable elimination",
+          "objective": "Reduce a three-variable system to simpler equations and verify the resulting ordered triple or describe a dependent family."
+        },
+        {
+          "id": "m09-l03",
+          "title": "Nonlinear intersections and feasible regions",
+          "objective": "Find all solutions of a small nonlinear system and interpret whether points satisfy simultaneous inequalities."
+        },
+        {
+          "id": "m09-l04",
+          "title": "Formulating and auditing systems",
+          "objective": "Define variables and units, translate two or three supplied relationships into a system, and assess whether its solution is meaningful."
+        }
+      ]
+    },
+    {
+      "id": "m10",
+      "title": "Matrix algebra and solution verification",
+      "requires": [
+        "m09"
+      ],
+      "lessons": [
+        {
+          "id": "m10-l01",
+          "title": "Matrix dimensions and operations",
+          "objective": "Determine whether matrix operations are defined and compute sums, scalar products, and matrix products correctly."
+        },
+        {
+          "id": "m10-l02",
+          "title": "Augmented matrices and row reduction",
+          "objective": "Represent a linear system as an augmented matrix and use valid row operations to classify and solve it."
+        },
+        {
+          "id": "m10-l03",
+          "title": "Determinants and inverse matrices",
+          "objective": "Use a 2x2 determinant to decide invertibility, compute an inverse when it exists, and solve a system by multiplication in the correct order."
+        },
+        {
+          "id": "m10-l04",
+          "title": "Choosing methods and checking numerical results",
+          "objective": "Select an appropriate system solution method, use Cramer's rule for a small nonsingular case, and verify a rounded result using residuals."
+        }
+      ]
+    }
+  ]
+}
