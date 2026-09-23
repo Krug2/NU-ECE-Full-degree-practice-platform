@@ -22,7 +22,7 @@ it("distinguishes gaps from zero and rejects branch overlap at a single endpoint
   const gap = piecewiseSchema.parse({ ...model, pieces: [model.pieces[0], { ...model.pieces[1], lowerClosed: false }] });
   expect(evaluatePiecewise(gap, "0")).toBeNull();
   expect(formatIntervals(piecewiseDomain(gap))).toBe("[-4, 0) U (0, 4]");
-  for (const patch of [{ upperClosed: true }, { upper: "1" }, { lower: "2", upper: "1" }, { slope: "51" }, { lower: "-51" }, { intercept: "Infinity" }]) {
+  for (const patch of [{ upperClosed: true }, { upper: "1" }, { lower: "2", upper: "1" }, { slope: "51" }, { lower: "-51" }, { intercept: "Infinity" }, { lower: "invalid" }, { upper: "1/0" }, { lower: 42 }]) {
     expect(piecewiseSchema.safeParse({ ...model, pieces: [{ ...model.pieces[0], ...patch }, model.pieces[1]] }).success).toBe(false);
   }
   expect(piecewiseSchema.safeParse({ ...model, pieces: [model.pieces[0], { ...model.pieces[1], id: "left" }] }).success).toBe(false);

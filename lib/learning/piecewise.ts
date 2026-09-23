@@ -14,10 +14,14 @@ const bounded = z.string().min(1).max(100).refine(value => {
 export const linearPieceSchema = z.object({
   id: z.string().regex(/^[a-z][a-z0-9-]*$/).max(40), label: z.string().min(1).max(60),
   slope: bounded, intercept: bounded, lower: bounded, upper: bounded, lowerClosed: z.boolean(), upperClosed: z.boolean(),
-}).strict().refine(piece => compareRational(parseRational(piece.lower), parseRational(piece.upper)) < 0, "A branch needs an increasing, nonempty interval");
+}).strict().refine(piece => {
+  try { return compareRational(parseRational(piece.lower), parseRational(piece.upper)) < 0; }
+  catch { return false; }
+}, "A branch needs an increasing, nonempty interval");
 export const piecewiseSchema = z.object({
   name: z.string().regex(/^[A-Za-z]$/), pieces: z.array(linearPieceSchema).min(2).max(4),
 }).strict().superRefine((model, ctx) => {
+  if (model.pieces.some(piece => !linearPieceSchema.safeParse(piece).success)) return;
   if (new Set(model.pieces.map(piece => piece.id)).size !== model.pieces.length) ctx.addIssue({ code: "custom", message: "Branch IDs must be unique" });
   const sorted = [...model.pieces].sort((a,b) => compareRational(parseRational(a.lower), parseRational(b.lower)));
   for (let i = 1; i < sorted.length; i++) {
