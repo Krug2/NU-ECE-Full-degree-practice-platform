@@ -15,9 +15,10 @@ import { functionFamilyIds, functionQuestion } from "./families/mth-functions";
 import { transformationFamilyIds, transformationQuestion } from "./families/mth-transformations";
 
 import { graphFeatureFamilyIds, graphFeatureQuestion } from "./families/mth-graph-features";
+import { compositionFamilyIds, compositionQuestion } from "./families/mth-composition";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion]] as const){
+for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
 }
 export const availableFamilyIds = new Set(generators.keys());
