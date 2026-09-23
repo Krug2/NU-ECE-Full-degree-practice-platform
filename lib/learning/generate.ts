@@ -8,9 +8,10 @@ import { foundationPowerFamilyIds, foundationPowerQuestion } from "./families/mt
 import { foundationFactoringFamilyIds, foundationFactoringQuestion } from "./families/mth-foundation-factoring";
 import { foundationFractionFamilyIds, foundationFractionQuestion } from "./families/mth-foundation-fractions";
 import { foundationCoordinateFamilyIds, foundationCoordinateQuestion } from "./families/mth-foundation-coordinates";
+import { foundationTriangleFamilyIds, foundationTriangleQuestion } from "./families/mth-foundation-triangles";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion]] as const){
+for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
 }
 export const availableFamilyIds = new Set(generators.keys());
