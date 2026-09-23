@@ -1,0 +1,312 @@
+{
+  "id": "m01-l03",
+  "courseId": "mth-215",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Quadratics and complex roots",
+  "objective": "Choose a quadratic solution method, return every root in the requested number system, and verify the roots.",
+  "why": "Quadratic relationships appear in areas, motion, energy, and characteristic equations. The useful skill is more than remembering a formula: identify the number system, keep every valid branch, and decide which solutions fit the situation. This lesson also introduces complex numbers, which will later describe oscillations and circuit behavior.",
+  "estimatedMinutes": 65,
+  "prerequisites": [
+    {
+      "label": "Linear equations and formula rearrangement",
+      "lessonId": "m01-l01"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What makes an equation quadratic?",
+      "paragraphs": [
+        "A quadratic equation can be written as $ax^2+bx+c=0$, where $a\\ne0$. Move every term to one side before identifying the coefficients, and keep their signs. In $2x^2=5x-3$, the standard form is $2x^2-5x+3=0$, so $a=2$, $b=-5$, and $c=3$. If the coefficient of $x^2$ is zero after simplification, use a linear method instead.",
+        "A root is a number that makes the original equation true. A real root corresponds to an x-intercept of the real graph $y=ax^2+bx+c$. A nonreal root does not give a point on that real x-axis. A quadratic has two complex roots when multiplicities are counted; it can have two, one, or zero distinct real roots. A repeated root is listed once in a set of distinct roots, with multiplicity two recorded separately.",
+        "Begin by choosing the number system requested in the question. A problem asking for real roots may have an empty answer even though complex roots exist. A physical model may impose additional restrictions, such as nonnegative time. Solve the algebraic problem completely, then state which roots survive the model's restrictions."
+      ]
+    },
+    {
+      "heading": "Factoring and the zero-product property",
+      "paragraphs": [
+        "When the expression factors conveniently, rewrite it as a product equal to zero. The zero-product property says that if $uv=0$, then $u=0$ or $v=0$. For $(x-4)(x+1)=0$, solve both $x-4=0$ and $x+1=0$, giving $x=4$ and $x=-1$. Verify a factorization by expanding it before using its factors.",
+        "The right side must be zero. From $(x-4)(x+1)=6$, setting a factor equal to six does not solve the equation. First expand and rearrange to zero, or find another valid method. Also avoid dividing by a factor containing the unknown: dividing $x(x-5)=0$ by $x$ would lose the valid solution $x=0$.",
+        "A squared factor such as $(x+3)^2=0$ produces $x=-3$ twice when multiplicity is counted. Its root set is $\\{-3\\}$, and the graph touches the x-axis there. In contrast, two different linear factors give two distinct roots. Multiplicity describes how often a factor occurs, not how many times you type the same answer."
+      ]
+    },
+    {
+      "heading": "The square-root method keeps both branches",
+      "paragraphs": [
+        "If a squared expression is isolated, use it directly. From $(x-2)^2=7$, the expression $x-2$ can equal $\\sqrt7$ or $-\\sqrt7$, so $x=2+\\sqrt7$ or $x=2-\\sqrt7$. The symbol $\\sqrt7$ means the nonnegative principal square root. The plus-or-minus comes from solving the equation, not from changing the definition of that symbol.",
+        "For $(x-h)^2=k$ over the real numbers, positive $k$ gives two roots, zero gives the repeated root $h$, and negative $k$ gives no real roots. Do not take a decimal approximation prematurely. Keeping $h\\pm\\sqrt{k}$ preserves the exact values and makes algebraic checking possible.",
+        "Square roots do not distribute across sums: $\\sqrt{9+16}=5$, whereas $\\sqrt9+\\sqrt{16}=7$. For nonnegative real factors, square factors may be extracted: $\\sqrt{72}=\\sqrt{36\\cdot2}=6\\sqrt2$. That simplification is useful when two different-looking exact answers need to be compared."
+      ]
+    },
+    {
+      "heading": "Completing the square builds the needed form",
+      "paragraphs": [
+        "For $x^2+px$, half the coefficient of $x$ is $p/2$. Squaring it gives the missing constant: $x^2+px+(p/2)^2=(x+p/2)^2$. Add that same constant to both sides of an equation. When the leading coefficient is not one, divide every term by it first.",
+        "For example, $x^2+8x=5$ becomes $x^2+8x+16=21$, then $(x+4)^2=21$. The roots are $-4\\pm\\sqrt{21}$. A common error is adding 16 to the left while leaving the right at 5. That creates a different equation.",
+        "Completing the square is useful even when factoring is inconvenient. It reveals the horizontal shift of a parabola and gives a direct route to the quadratic formula. Choose it when the equation is close to a squared binomial, or when the problem asks you to explain the shift rather than only compute roots."
+      ]
+    },
+    {
+      "heading": "The quadratic formula and its discriminant",
+      "paragraphs": [
+        "Starting with $ax^2+bx+c=0$, divide by $a$, move $c/a$ to the right, and add $(b/(2a))^2$ to both sides. The result is $(x+b/(2a))^2=(b^2-4ac)/(4a^2)$. Solving both branches produces $x=(-b\\pm\\sqrt{b^2-4ac})/(2a)$. This works for every quadratic with $a\\ne0$.",
+        "The discriminant is $D=b^2-4ac$. With real coefficients, $D>0$ gives two distinct real roots; $D=0$ gives one distinct root of multiplicity two; $D<0$ gives a nonreal conjugate pair. Calculate this quantity first to predict the type of answer. A square positive discriminant with rational coefficients makes the formula especially easy to simplify.",
+        "Use parentheses when substituting a negative coefficient. If $b=-3$, then $-b=3$ and $b^2=(-3)^2=9$. The denominator $2a$ divides the entire numerator, including both terms. Writing $-b+\\sqrt D/(2a)$ generally gives the wrong value. When a formula returns two branches, check both, even if one happens to be zero."
+      ]
+    },
+    {
+      "heading": "Complex numbers extend the solution set",
+      "paragraphs": [
+        "Define $i$ by $i^2=-1$. A complex number has the form $u+vi$, with real part $u$ and imaginary coefficient $v$. Thus $(x+2)^2=-9$ has roots $x=-2+3i$ and $x=-2-3i$. Substituting either gives $(\\pm3i)^2=9i^2=-9$. These are algebraic solutions even though the real parabola has no intercepts.",
+        "The conjugate of $u+vi$ is $u-vi$. For a quadratic with real coefficients, any nonreal roots form a conjugate pair. Add and subtract complex numbers by grouping real parts and imaginary coefficients separately. Multiply by distributing, then replace $i^2$ with $-1$. For instance, $(1+2i)(3-i)=3-i+6i-2i^2=5+5i$.",
+        "For division, multiply the numerator and denominator by the denominator's conjugate. Its product is $(u+vi)(u-vi)=u^2+v^2$, which is nonzero unless both components are zero. As an example, $(2+i)/(1+i)=(2+i)(1-i)/2=(3-i)/2$. Multiplying that result by $1+i$ checks the quotient.",
+        "The powers of $i$ cycle through $i,-1,-i,1$, then repeat. Take care with radical product shortcuts involving negative numbers: $\\sqrt{-1}\\sqrt{-1}=i^2=-1$, while $\\sqrt{(-1)(-1)}=1$. Rewrite negative real radicands using $i$ before simplifying their products."
+      ]
+    },
+    {
+      "heading": "Verify and interpret every answer",
+      "paragraphs": [
+        "For $x^2-6x+1=0$, the completing-square form is $(x-3)^2=8$. Each candidate $3\\pm2\\sqrt2$ gives $(\\pm2\\sqrt2)^2=8$. This confirms both roots without rounding. Substitution into the original polynomial is also valid and is especially useful when you suspect a sign error.",
+        "An algebraic root can be unsuitable for a physical model without being an algebra error. Suppose a positive length L satisfies L² + L - 12 = 0. Factoring yields lengths 3 and -4 algebraically, but a positive physical length permits only 3. State the rejected value and its context restriction rather than silently omitting it.",
+        "Use the graph to interpret real roots, not to replace exact algebra. A graph window can hide an intercept or make a near-tangent crossing difficult to see. The discriminant, exact root list, and substitution should agree. In the investigation below, predict those relationships before revealing the graph."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Factor and verify two rational roots",
+      "prompt": "Solve $2x^2+x-6=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "2x^2+x-6=(2x-3)(x+2)",
+          "reason": "Expand the proposed factors: the middle terms are 4x and -3x, so their sum is x. The constant term is -6."
+        },
+        {
+          "math": "2x-3=0\\quad\\text{or}\\quad x+2=0",
+          "reason": "Because the product equals zero, at least one factor must be zero. Keep both possibilities."
+        },
+        {
+          "math": "x=\\frac32\\quad\\text{or}\\quad x=-2",
+          "reason": "Solve the two linear equations independently."
+        },
+        {
+          "math": "2\\left(\\frac32\\right)^2+\\frac32-6=0,\\qquad 2(-2)^2-2-6=0",
+          "reason": "Substitution confirms both original-equation roots."
+        }
+      ],
+      "conclusion": "The root set is $\\{-2,3/2\\}$. Both roots are real, so the real graph has two distinct x-intercepts."
+    },
+    {
+      "title": "Complete the square without changing the equation",
+      "prompt": "Solve $x^2-6x+1=0$ exactly.",
+      "steps": [
+        {
+          "math": "x^2-6x=-1",
+          "reason": "Move the constant to the other side."
+        },
+        {
+          "math": "x^2-6x+9=-1+9=8",
+          "reason": "Half of -6 is -3, and its square is 9. Add 9 to both sides."
+        },
+        {
+          "math": "(x-3)^2=8",
+          "reason": "The left side is a perfect-square trinomial."
+        },
+        {
+          "math": "x-3=\\pm\\sqrt8=\\pm2\\sqrt2",
+          "reason": "Take both branches and extract the square factor 4 from the radicand."
+        },
+        {
+          "math": "x=3\\pm2\\sqrt2",
+          "reason": "Add 3 on both branches. Each root gives a squared displacement of 8."
+        }
+      ],
+      "conclusion": "Both exact roots are needed. A single decimal near one root is neither the complete set nor an exact replacement."
+    },
+    {
+      "title": "Use the formula when factoring is inconvenient",
+      "prompt": "Solve $2x^2-3x-4=0$.",
+      "steps": [
+        {
+          "math": "a=2,\\quad b=-3,\\quad c=-4",
+          "reason": "Read the signed coefficients from standard form."
+        },
+        {
+          "math": "D=(-3)^2-4(2)(-4)=9+32=41",
+          "reason": "The discriminant is positive, predicting two distinct real roots."
+        },
+        {
+          "math": "x=\\frac{-(-3)\\pm\\sqrt{41}}{2(2)}=\\frac{3\\pm\\sqrt{41}}4",
+          "reason": "The whole numerator is divided by 4. Since 41 has no square factor greater than one, the radical remains."
+        },
+        {
+          "math": "x_1+x_2=\\frac32,\\qquad x_1x_2=\\frac{9-41}{16}=-2",
+          "reason": "As an additional consistency check, the sum is -b/a and the product is c/a. Direct substitution gives zero as well."
+        }
+      ],
+      "conclusion": "The exact root set contains $(3+\\sqrt{41})/4$ and $(3-\\sqrt{41})/4$. The positive discriminant matches the two real intercepts."
+    },
+    {
+      "title": "Find and check a nonreal conjugate pair",
+      "prompt": "Solve $x^2+4x+13=0$ over the complex numbers.",
+      "steps": [
+        {
+          "math": "x^2+4x=-13,\\qquad (x+2)^2=-9",
+          "reason": "After moving the constant, add 4 to both sides to complete the square."
+        },
+        {
+          "math": "x+2=\\pm3i",
+          "reason": "The square roots of -9 are 3i and -3i because i² = -1."
+        },
+        {
+          "math": "x=-2+3i\\quad\\text{or}\\quad x=-2-3i",
+          "reason": "Subtract 2 from both branches."
+        },
+        {
+          "math": "(-2+3i)^2+4(-2+3i)+13=(-5-12i)+(-8+12i)+13=0",
+          "reason": "Distribute carefully; the real and imaginary terms both cancel. The conjugate root gives the same check with opposite imaginary signs."
+        }
+      ],
+      "conclusion": "The two roots are nonreal conjugates. The real-root set is empty, and $D=-36$ correctly predicts no real x-intercepts."
+    }
+  ],
+  "guided": {
+    "title": "Finish the square and preserve both roots",
+    "setup": "Solve $x^2-4x+1=0$. The equation has already been moved into a form ready for completing the square.",
+    "before": [
+      "Subtract 1: $x^2-4x=-1$.",
+      "Half of -4 is -2. Add $(-2)^2=4$ to both sides.",
+      "The result is $(x-2)^2=3$."
+    ],
+    "question": {
+      "id": "guided-quadratic",
+      "familyId": "mth-quadratic-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m01-l03",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "List every distinct root exactly, then compute the original quadratic's discriminant as a check on the number of real roots.",
+      "fields": [
+        {
+          "id": "roots",
+          "kind": "roots",
+          "label": "Distinct roots",
+          "numberSystem": "complex",
+          "expected": [
+            "2+sqrt(3)",
+            "2-sqrt(3)"
+          ],
+          "help": "Separate both roots with a comma. Use sqrt(3) for a radical and keep the values exact."
+        },
+        {
+          "id": "discriminant",
+          "kind": "rational",
+          "label": "Discriminant",
+          "expected": "12"
+        }
+      ],
+      "parameters": {
+        "a": 1,
+        "b": -4,
+        "c": 1
+      },
+      "hints": [
+        "The expression x - 2 can be positive or negative.",
+        "Use $x-2=\\sqrt3$ and $x-2=-\\sqrt3$.",
+        "The roots are $2\\pm\\sqrt3$; the discriminant is $(-4)^2-4(1)(1)=12$."
+      ],
+      "explanation": [
+        "Both square-root branches give $x=2+\\sqrt3$ or $x=2-\\sqrt3$.",
+        "The discriminant is 12, which is positive, so two distinct real roots are expected.",
+        "Substituting either root gives $(x-2)^2=3$."
+      ],
+      "answerSummary": "Roots: $2\\pm\\sqrt3$. Discriminant: $12$."
+    },
+    "after": "An equivalent exact form is accepted. A missing branch or a rounded decimal does not give the complete exact root set."
+  },
+  "interaction": {
+    "kind": "parabola-explorer",
+    "prompt": "Predict the complex root list and the number of real intercepts. Change k from positive to zero to negative, then change the sign of a. Explain which changes affect the roots and which affect only the graph's direction.",
+    "a": 1,
+    "h": 1,
+    "k": 2
+  },
+  "practice": [
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "factor"
+    },
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "complete"
+    },
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "complex"
+    },
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "repeated"
+    },
+    {
+      "familyId": "mth-quadratic-discriminant",
+      "variant": "classify"
+    },
+    {
+      "familyId": "mth-quadratic-method",
+      "variant": "branch"
+    },
+    {
+      "familyId": "mth-complex-arithmetic",
+      "variant": "multiply"
+    },
+    {
+      "familyId": "mth-complex-arithmetic",
+      "variant": "divide"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "factor"
+    },
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "complete"
+    },
+    {
+      "familyId": "mth-quadratic-roots",
+      "variant": "complex"
+    },
+    {
+      "familyId": "mth-quadratic-discriminant",
+      "variant": "classify"
+    }
+  ],
+  "summary": [
+    "Choose a method from the equation's structure: factor a product equal to zero, isolate an existing square, complete the square, or use the general formula.",
+    "Solving $u^2=k$ requires both branches when $k\\ne0$. The principal square-root symbol itself still denotes one value.",
+    "Use the discriminant to predict distinct real roots, and keep repeated-root multiplicity separate from the root set.",
+    "Use $i^2=-1$ for nonreal roots. Conjugates make complex division possible without leaving a complex denominator.",
+    "Verify every candidate in the original equation and distinguish algebraic roots from context-approved solutions and real graph intercepts."
+  ],
+  "retrieval": "Without looking back, explain why a quadratic with a negative discriminant still has complex roots but no real intercepts. Derive the missing constant needed to complete x² + 10x. Then solve (x + 1)² = 5 with both branches.",
+  "readings": [
+    {
+      "title": "OpenStax: Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-4-complex-numbers",
+      "purpose": "Additional explanations of complex arithmetic, conjugates, and powers of i."
+    },
+    {
+      "title": "OpenStax: Quadratic Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-5-quadratic-equations",
+      "purpose": "Compare factoring, square roots, completing the square, and the quadratic formula."
+    },
+    {
+      "title": "OpenStax: Quadratic Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/5-1-quadratic-functions",
+      "purpose": "Connect roots and vertex form with the graph of a quadratic."
+    }
+  ]
+}
