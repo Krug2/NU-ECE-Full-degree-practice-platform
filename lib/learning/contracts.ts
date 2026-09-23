@@ -3,6 +3,7 @@ import { parseRational } from "./rational";
 import { normalizeIntervals } from "./intervals";
 import { equalExact, parseExact, realExact } from "./exact-number";
 import { degree, parsePolynomial } from "./polynomial";
+import { commonFactorDegree, parseRationalExpression } from "./rational-expression";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -42,7 +43,10 @@ const polynomialField = z.object({
     return field.form === "factored" ? field.factorDegrees.length > 0 && field.factorDegrees.reduce((sum, n) => sum + n, 0) === degree(value) : field.factorDegrees.length === 0 && !field.primitiveFactors;
   } catch { return false; }
 }, "Invalid polynomial answer or factor requirements");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField]);
+const rationalExpressionField = z.object({
+  ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
+}).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField, rationalExpressionField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({
@@ -52,7 +56,12 @@ export const questionSchema = z.object({
   parameters: z.record(z.string(), z.number().finite()).default({}),
   hints: z.array(text).length(3), explanation: z.array(text).min(1).max(12),
   answerSummary: text,
-}).strict().refine(item => unique(item.fields.map(field => field.id)), "Duplicate answer fields");
+}).strict().refine(item => unique(item.fields.map(field => field.id)), "Duplicate answer fields").superRefine((item, ctx) => {
+  for (const field of item.fields) if (field.kind === "rational-expression") {
+    const domain = item.fields.find(other => other.id === field.domainFieldId);
+    if (!(domain?.kind === "intervals" || domain?.kind === "roots" && domain.numberSystem === "real")) ctx.addIssue({ code: "custom", message: "A rational expression requires a separate original-domain answer" });
+  }
+});
 export type Question = z.infer<typeof questionSchema>;
 export const responseSchema = z.record(id, z.string().max(500));
 export type Response = z.infer<typeof responseSchema>;
