@@ -15,9 +15,9 @@ function question(family:string,variant:string,seed:number) {
 }
 it("checks exponent and principal-root rules on fifty seeded forms per variant",()=>{
   for(let seed=0;seed<50;seed++){
-    for(const variant of ["product","quotient","negative"]){
+    for(const variant of ["product","quotient","negative","nested"]){
       const item=question("mth-exponent-rules",variant,seed),{a,m,n}=item.parameters;
-      const exponent=variant==="product"?m+n:variant==="quotient"?m-n:-n;
+      const exponent=variant==="nested"?m*n:variant==="product"?m+n:variant==="quotient"?m-n:-n;
       const value=exponent<0?`1/${a**(-exponent)}`:String(a**exponent);
       expect(gradeQuestion(item,{exponent:String(exponent),value}).correct).toBe(true);
       expect(gradeQuestion(item,{exponent:String(exponent+1),value}).correct).toBe(false);

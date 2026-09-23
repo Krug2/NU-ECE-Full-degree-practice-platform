@@ -16,14 +16,14 @@ export function foundationPowerQuestion(familyId:string,variant:string,seed:stri
         hints:["The denominator of the exponent gives the root; the numerator gives the power.",`The real ${degree===2?"square":"cube"} root of ${radicand} is ${root}.`,`Raise ${root} to power ${power}.`],
         explanation:[`Rewrite as $\\left(\\sqrt[${degree}]{${radicand}}\\right)^{${power}}$.`,`The requested real root is ${root}, so the value is $(${root})^{${power}}=${root**power}$.`],answerSummary:String(root**power)});
     }
-    if(!["product","quotient","negative"].includes(variant))throw new Error("Unknown exponent variant");
-    const a=rng.integer(2,5),m=rng.integer(1,5),n=rng.integer(1,5),exponent=variant==="negative"?-n:variant==="product"?m+n:m-n;
-    const expression=variant==="negative"?`${a}^{-${n}}`:variant==="product"?`${a}^{${m}}\\cdot${a}^{${n}}`:`\\frac{${a}^{${m}}}{${a}^{${n}}}`;
+    if(!["product","quotient","negative","nested"].includes(variant))throw new Error("Unknown exponent variant");
+    const a=rng.integer(2,5),m=rng.integer(1,variant==="nested"?3:5),n=rng.integer(1,variant==="nested"?3:5),exponent=variant==="nested"?m*n:variant==="negative"?-n:variant==="product"?m+n:m-n;
+    const expression=variant==="nested"?`(${a}^{${m}})^{${n}}`:variant==="negative"?`${a}^{-${n}}`:variant==="product"?`${a}^{${m}}\\cdot${a}^{${n}}`:`\\frac{${a}^{${m}}}{${a}^{${n}}}`;
     const expected=formatRational(parseRational(`${a}^(${exponent})`));
     return questionSchema.parse({...base,parameters:{a,m,n,exponent},category:"procedural",critical:variant==="negative",
       prompt:`Write $${expression}$ as a single power of ${a}, then evaluate exactly.`,fields:[{id:"exponent",kind:"rational",label:"Exponent on the single power",expected:String(exponent)},{id:"value",kind:"rational",label:"Exact value",expected}],
-      hints:[variant==="negative"?"A negative exponent means a reciprocal, not a negative result.":variant==="product"?"Multiplying powers with the same base adds their exponents.":"Dividing powers with the same nonzero base subtracts exponents.",`The single power is $${a}^{${exponent}}$.`,exponent<0?`Write it as $1/${a}^{${-exponent}}$.`:exponent===0?"A nonzero base to the zeroth power is one.":`Multiply ${exponent} factors of ${a}.`],
-      explanation:[variant==="negative"?`By definition, $${a}^{-${n}}=1/${a}^{${n}}$.`:variant==="product"?`There are ${m+n} factors of ${a} in the product.`:`Canceling common factors leaves the exponent ${m}-${n}=${exponent}.`,`The exact value is ${expected}. The base is nonzero, so the reciprocal and zero-exponent rules apply.`],answerSummary:`Exponent: ${exponent}; exact value: ${expected}.`});
+      hints:[variant==="nested"?"A power raised to another power multiplies the exponents.":variant==="negative"?"A negative exponent means a reciprocal, not a negative result.":variant==="product"?"Multiplying powers with the same base adds their exponents.":"Dividing powers with the same nonzero base subtracts exponents.",`The single power is $${a}^{${exponent}}$.`,exponent<0?`Write it as $1/${a}^{${-exponent}}$.`:exponent===0?"A nonzero base to the zeroth power is one.":`Multiply ${exponent} factors of ${a}.`],
+      explanation:[variant==="nested"?`There are ${n} groups with ${m} factors in each, giving exponent ${m*n}.`:variant==="negative"?`By definition, $${a}^{-${n}}=1/${a}^{${n}}$.`:variant==="product"?`There are ${m+n} factors of ${a} in the product.`:`Canceling common factors leaves the exponent ${m}-${n}=${exponent}.`,`The exact value is ${expected}. The base is nonzero, so the reciprocal and zero-exponent rules apply.`],answerSummary:`Exponent: ${exponent}; exact value: ${expected}.`});
   }
   if(familyId==="mth-root-meaning"){
     if(variant==="absolute"){
