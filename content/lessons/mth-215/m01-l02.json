@@ -1,0 +1,83 @@
+{
+  "id":"m01-l02","courseId":"mth-215","moduleId":"m01","version":1,
+  "title":"Inequalities and absolute value",
+  "objective":"Express the full solution set of a linear, compound, or absolute-value inequality with correct endpoints.",
+  "why":"An engineering requirement is often a range: a temperature must stay below a limit, a resistance must lie within tolerance, or a signal must exceed a threshold. Solving an inequality tells you every acceptable input. Boundary values matter because a strict limit and an inclusive limit make different promises.",
+  "estimatedMinutes":65,
+  "prerequisites":[{"label":"Linear equations and valid operations","lessonId":"m01-l01"}],
+  "sections":[
+    {"heading":"A solution is a set of values","paragraphs":[
+      "The statement $x<3$ is true for every real number below 3. Its solution is a whole set, not the single number 3. The statement $x\\le3$ also allows the boundary value 3. Read the symbols aloud: less than, less than or equal to, greater than, and greater than or equal to.",
+      "On a number line, an open circle excludes a boundary value and a filled circle includes it. Shade all allowed values. A graph's displayed window is finite, but an arrow indicates the set continues beyond that window. Infinity describes that unbounded direction; it is not an ordinary endpoint you can include.",
+      "Interval notation records the same information. Parentheses exclude endpoints and square brackets include them. For example, $(-\\infty,3)$ represents $x<3$; $(-\\infty,3]$ represents $x\\le3$; and $[2,5)$ represents $2\\le x<5$. Infinity always receives a parenthesis.",
+      "In the app, type (-inf, 3), (-inf, 3], or [2, 5). Separate disjoint intervals with U, such as (-inf, 0) U (0, inf). That last set excludes zero; it is not the same as all real numbers. Type R for the entire real line and empty for no solutions."
+    ]},
+    {"heading":"Why a negative multiplier reverses the sign","paragraphs":[
+      "Adding or subtracting the same number on both sides preserves an inequality's direction. Multiplying or dividing by a positive number also preserves the direction. For example, $2x+1<7$ becomes $2x<6$, then $x<3$.",
+      "Multiplying or dividing both sides by a negative number reverses their order. Since $2<3$, multiplication by -1 gives $-2>-3$. Reflection across zero reverses which number lies farther to the right. This is why solving $-2x<6$ gives $x>-3$.",
+      "The sign reversal belongs to multiplication or division by a negative quantity. Subtracting a number does not itself reverse the sign. When the divisor contains an unknown variable, you cannot assume its sign; later lessons will use sign charts to handle that situation.",
+      "After solving, test one point inside your proposed region, one outside it, and the boundary itself. These checks catch common errors. They support the algebraic derivation; they do not replace a reason why every point in the region works."
+    ]},
+    {"heading":"AND and OR describe different combinations","paragraphs":[
+      "AND means both conditions must hold. To solve $x>1$ AND $x\\le4$, keep only their overlap: $(1,4]$. This is an intersection. An input of 0 fails the first condition; an input of 5 fails the second; an input of 4 satisfies both.",
+      "OR means at least one condition must hold. The statement $x<1$ OR $x\\ge4$ gives $(-\\infty,1)\\cup[4,\\infty)$. This is a union. It describes two separated regions, not the interval between 1 and 4.",
+      "Some intersections are empty. The conditions $x>5$ AND $x\\le2$ cannot hold together. Some unions cover the entire real line: $x<5$ OR $x\\ge2$ leaves no gap. Always consider overlap before copying two pieces into the answer.",
+      "A chained inequality such as $-2<3x+1\\le7$ requires all three expressions to preserve their order. Subtract 1 from each part to get $-3<3x\\le6$, then divide each part by 3 to obtain $-1<x\\le2$. If dividing a chain by a negative number, reverse both inequality signs and rewrite the final bounds in increasing order."
+    ]},
+    {"heading":"Absolute value describes distance","paragraphs":[
+      "The quantity $|x-h|$ is the distance from x to a center h. A distance is nonnegative. The inequality $|x-h|<r$ with $r>0$ means x is closer than r units to h, so $h-r<x<h+r$. The inclusive version uses inclusive endpoints.",
+      "For $|x-h|>r$ with $r>0$, the point must be farther than r units from h. There are two regions: $x<h-r$ OR $x>h+r$. Do not join those two conditions with AND, because no input can be simultaneously to the left of the lower boundary and to the right of the upper boundary.",
+      "Treat zero or negative thresholds directly from the meaning of distance. The inequality $|x-h|<0$ has no solutions. The inequality $|x-h|\\le0$ permits only $x=h$, represented by $[h,h]$. The condition $|x-h|>0$ allows every real input except h, while $|x-h|\\ge0$ allows all real inputs.",
+      "A negative threshold cannot be treated as a positive radius. For example, $|x-2|<-1$ is impossible, but $|x-2|>-1$ is always true. Check this before splitting into cases. The rule $|x|=x$ also requires $x\\ge0$; when x is negative, $|x|=-x$."
+    ]},
+    {"heading":"Translate a tolerance requirement","paragraphs":[
+      "Suppose a component's resistance R must be within 5 ohms of 100 ohms, including the boundary. The requirement is $|R-100|\\le5$. It gives $95\\le R\\le105$, or $[95,105]$ ohms. Values 95 and 105 pass; 94.9 and 105.1 fail.",
+      "Words such as at most and at least include equality. Less than, greater than, and strictly within exclude the boundary. If a specification says within without stating its boundary policy, write down the interpretation being used rather than hiding the ambiguity.",
+      "A percent tolerance must be converted into an absolute distance before applying the interval formula. A 2 percent tolerance around 150 ohms is 3 ohms, so the inclusive accepted interval is $[147,153]$. The nominal value is the center; the tolerance is the radius.",
+      "A physical context can impose an additional domain. If a mathematical distance condition includes negative times but the model applies only for $t\\ge0$, intersect the solution with that time domain. Keep the algebraic result and the contextual restriction visible as separate steps."
+    ]}
+  ],
+  "examples":[
+    {"title":"A negative coefficient","prompt":"Solve $-3x+4>10$ and check the boundary.","steps":[
+      {"math":"-3x>6","reason":"Subtract 4 from both sides without reversing the inequality."},
+      {"math":"x<-2","reason":"Divide by -3. Division by a negative number reverses the direction."},
+      {"math":"x\\in(-\\infty,-2)","reason":"The comparison is strict, so -2 is excluded. Negative infinity always uses an open end."},
+      {"math":"-3(-3)+4=13>10","reason":"The inside test point -3 satisfies the original inequality."},
+      {"math":"-3(-2)+4=10","reason":"The boundary gives equality, so it does not satisfy the strict comparison."}
+    ],"conclusion":"The complete solution set is (-inf, -2). For comparison, the outside point 0 gives 4, which is not greater than 10."},
+    {"title":"An inclusive distance requirement","prompt":"Solve $|x-5|\\le3$ and explain the interval.","steps":[
+      {"math":"-3\\le x-5\\le3","reason":"Distance at most 3 means the signed displacement is between -3 and 3, including both boundaries."},
+      {"math":"2\\le x\\le8","reason":"Add 5 to every part of the chained inequality."},
+      {"math":"x\\in[2,8]","reason":"Both boundaries are allowed because equality was included."},
+      {"math":"|2-5|=3,\\qquad |8-5|=3","reason":"Both endpoints pass the original requirement."}
+    ],"conclusion":"The solution is [2, 8]. A value such as 5 is inside the interval and has distance zero. A value such as 9 is outside and has distance four."}
+  ],
+  "guided":{
+    "title":"Choose the correct two regions",
+    "setup":"Solve $|x+2|>4$. The center is -2 because $x+2=x-(-2)$. The two boundary points are -6 and 2.",
+    "before":["The distance must be greater than 4, so select the outside regions.","The comparison is strict, so exclude each boundary. Use U to combine the two regions."],
+    "question":{"id":"guided-inequality","familyId":"guided-inequality","familyVersion":1,"courseId":"mth-215","objectiveId":"m01-l02","category":"conceptual","critical":false,"prompt":"Write the complete solution set.",
+      "fields":[{"id":"set","kind":"intervals","label":"Solution set","help":"Use (-inf, boundary) U (boundary, inf).","expected":[{"lower":null,"upper":"-6","lowerClosed":false,"upperClosed":false},{"lower":"2","upper":null,"lowerClosed":false,"upperClosed":false}]}],
+      "hints":["Farther away means outside the interval between the boundary points.","One region lies below -6. The other lies above 2.","The answer is (-inf, -6) U (2, inf)."],
+      "explanation":["The condition splits into $x+2<-4$ OR $x+2>4$.","Subtracting 2 gives $x<-6$ OR $x>2$. Neither boundary is included."],"answerSummary":"(-inf, -6) U (2, inf)"},
+    "after":"An answer containing only one of the two regions misses valid inputs. Check one point on each side, such as -7 and 3."
+  },
+  "interaction":{"kind":"interval-builder","prompt":"Predict the entire solution set, then reveal the number line. Change the center, threshold, and comparison. Explore a strict boundary, a zero threshold, and a negative threshold, and explain each result using distance.","center":5,"radius":3,"relation":"le"},
+  "practice":[
+    {"familyId":"mth-inequality-linear","variant":"linear"},
+    {"familyId":"mth-inequality-linear","variant":"negative"},
+    {"familyId":"mth-inequality-compound","variant":"intersection"},
+    {"familyId":"mth-inequality-compound","variant":"union"},
+    {"familyId":"mth-inequality-distance","variant":"absolute"},
+    {"familyId":"mth-inequality-distance","variant":"tolerance"}
+  ],
+  "checkpoint":[
+    {"familyId":"mth-inequality-linear","variant":"negative"},
+    {"familyId":"mth-inequality-compound","variant":"intersection"},
+    {"familyId":"mth-inequality-distance","variant":"absolute"},
+    {"familyId":"mth-inequality-distance","variant":"tolerance"}
+  ],
+  "summary":["An inequality describes a complete set of inputs, including decisions about its boundaries.","Reverse the inequality after multiplication or division by a negative value; ordinary addition or subtraction does not reverse it.","AND takes the overlap. OR takes the union. Consider empty sets and overlapping regions.","Absolute value is distance: smaller distances usually give an inside interval and larger distances give two outside regions.","Zero and negative thresholds need direct interpretation. State any physical domain and units."],
+  "retrieval":"Explain why dividing by a negative reverses an inequality. Then solve one inclusive tolerance condition and one strict outside-distance condition without looking at the examples.",
+  "readings":[{"title":"OpenStax Algebra and Trigonometry 2e, section 2.7","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-introduction-to-equations-and-inequalities","purpose":"Choose section 2.7 for further linear, compound, and absolute-value inequalities. Use your own number line to check endpoint choices before looking at any provided answer."}]
+}
