@@ -1,0 +1,17 @@
+.resource-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.resource-card { display: flex; flex-direction: column; min-width: 0; }
+.resource-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 21px; }
+.resource-type { display: flex; gap: 8px; align-items: center; color: var(--green); font-size: 12px; }
+.resource-card h2 { font-size: 19px; margin-bottom: 5px; }
+.resource-card h2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.provider { color: var(--muted); font-size: 11px; margin-bottom: 18px; overflow-wrap: anywhere; }
+.resource-card > p { font-size: 13px; color: var(--muted); flex: 1; }
+.resource-details { font-size: 12px; margin-top: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+.resource-details summary { cursor: pointer; color: var(--green); }
+.resource-details p { color: var(--muted); margin: 10px 0 0; }
+.resource-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 15px; }
+.resource-bottom .text-link { font-size: 12px; }
+.saved-filter { display: flex; align-items: center; gap: 8px; }
+.resource-notice { margin-bottom: 23px; }
+#resource-course { max-width: 280px; }
+@media(max-width: 700px) { .resource-grid { grid-template-columns: 1fr; } #resource-course { max-width: 100%; width: 100%; flex-basis: 100%; } }
