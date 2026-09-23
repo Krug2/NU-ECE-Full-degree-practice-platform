@@ -5,6 +5,7 @@ const courseIds = new Set(courses.map(course => course.id));
 const resourceIds = new Set(resources.map(resource => resource.id));
 const courseId = z.string().refine(id => courseIds.has(id), "Unknown course");
 const unique = (items: string[]) => new Set(items).size === items.length;
+export const backupLimitMessage = "Your progress has reached the 1 MB backup limit. Export a copy, then remove older study sessions or shorten notes before saving more.";
 export const confidenceOptions = { new: "New to me", refresh: "Needs a refresher", comfortable: "Feels familiar" };
 export const progressSchema = z.object({
   schemaVersion: z.literal(1),
@@ -17,7 +18,7 @@ export const progressSchema = z.object({
     id: z.uuid(), courseId, minutes: z.number().int().min(1).max(480),
     at: z.iso.datetime(), note: z.string().max(300),
   }).strict()).max(5000).refine(items => unique(items.map(item => item.id)), "Duplicate sessions"),
-}).strict();
+}).strict().refine(data => new TextEncoder().encode(JSON.stringify(data, null, 2)).length <= 1_000_000, backupLimitMessage);
 
 export type Progress = z.infer<typeof progressSchema>;
 export type Confidence = keyof typeof confidenceOptions;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { emptyProgress, parseBackup, progressSchema, type Progress } from "./progress";
+import { backupLimitMessage, emptyProgress, parseBackup, progressSchema, type Progress } from "./progress";
 
 const key = "ece-study:progress:v1";
 type Snapshot = { data: Progress; ready: boolean; issue: string; locked: boolean };
@@ -38,7 +38,11 @@ export function saveProgress(update: (data: Progress) => Progress, replace = fal
   const current = load();
   if (current.locked && !replace) return false;
   const result = progressSchema.safeParse(update(current.data));
-  if (!result.success) return false;
+  if (!result.success) {
+    snapshot = { ...current, issue: result.error.issues.some(issue => issue.message === backupLimitMessage) ? backupLimitMessage : "This change could not be saved. Check the entered values; your existing progress has been preserved." };
+    notify();
+    return false;
+  }
   try {
     window.localStorage.setItem(key, JSON.stringify(result.data));
     snapshot = { data: result.data, ready: true, issue: "", locked: false };
