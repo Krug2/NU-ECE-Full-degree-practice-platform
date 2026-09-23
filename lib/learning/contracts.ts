@@ -1,11 +1,13 @@
 import { z } from "zod";
 import { parseRational } from "./rational";
 import { normalizeIntervals } from "./intervals";
+import { equalExact, parseExact, realExact } from "./exact-number";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
 const unique = (items: string[]) => new Set(items).size === items.length;
 const rational = z.string().max(200).refine(value => { try { parseRational(value); return true; } catch { return false; } }, "Invalid exact number");
+const exact = z.string().max(200).refine(value => { try { parseExact(value); return true; } catch { return false; } }, "Invalid radical or complex number");
 const fieldBase = { id, label: text, help: z.string().max(500).default("") };
 const choiceField = z.object({
   ...fieldBase, kind: z.literal("choice"),
@@ -20,7 +22,15 @@ const numericField = z.object({
 }).strict();
 const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:rational.nullable(),upper:rational.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
   .refine(field=>{try{normalizeIntervals(field.expected);return true;}catch{return false;}},"Invalid interval key");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField]);
+const exactField = z.object({ ...fieldBase, kind: z.literal("exact"), expected: exact, unit: z.string().max(60).default("") }).strict();
+const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: z.array(exact).max(8), numberSystem: z.enum(["real", "complex"]), unit: z.string().max(60).default("") }).strict()
+  .refine(field => {
+    try {
+      const values = field.expected.map(parseExact);
+      return values.every((value, index) => (field.numberSystem === "complex" || realExact(value)) && !values.slice(0, index).some(other => equalExact(value, other)));
+    } catch { return false; }
+  }, "Root keys must be distinct and match the requested number system");
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({

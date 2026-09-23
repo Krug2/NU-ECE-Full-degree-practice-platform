@@ -1,6 +1,7 @@
 import { equalRational, parseRational } from "./rational";
 import { equalIntervals, parseIntervals } from "./intervals";
 import type { AnswerField, Question, Response } from "./contracts";
+import { equalExact, equalRootSets, parseExact, parseRootSet, realExact } from "./exact-number";
 
 export type FieldResult = { correct: boolean; valid: boolean; message: string };
 export function gradeField(field: AnswerField, input: string): FieldResult {
@@ -10,6 +11,16 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     return choice ? { correct: choice.id === field.correct, valid: true, message: choice.feedback } : { correct: false, valid: false, message: "Choose one of the available answers." };
   }
   try {
+    if (field.kind === "exact") {
+      const correct = equalExact(parseExact(input), parseExact(field.expected));
+      return { correct, valid: true, message: correct ? "This is an equivalent exact value." : "Keep radicals exact and check both the real and imaginary parts." };
+    }
+    if (field.kind === "roots") {
+      const values = parseRootSet(input);
+      if (field.numberSystem === "real" && !values.every(realExact)) return { correct: false, valid: true, message: "This question asks for real roots. Nonreal numbers are not real graph intercepts." };
+      const correct = equalRootSets(values, field.expected.map(parseExact));
+      return { correct, valid: true, message: correct ? "The complete set of distinct roots is correct." : "Check every root, including the other square-root branch. Substitute into the original equation and keep roots exact." };
+    }
     if(field.kind==="intervals"){
       const correct=equalIntervals(parseIntervals(input),field.expected);
       return {correct,valid:true,message:correct?"The complete solution set and endpoint choices are correct.":"Check every interval, endpoint inclusion, and excluded value. A missing single point changes the solution set."};

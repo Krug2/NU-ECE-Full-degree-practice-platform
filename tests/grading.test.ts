@@ -28,6 +28,20 @@ describe("answer checking", () => {
     expect(gradeField(choice,"all").message).toContain("Cancellation");
     expect(gradeField(choice,"excluded").correct).toBe(true);
   });
+  it("checks radical values and complete real or complex root sets", () => {
+    const field = answerFieldSchema.parse({id:"roots",kind:"roots",label:"Distinct roots",numberSystem:"complex",expected:["1+i*sqrt(3)","1-i*sqrt(3)"]});
+    expect(gradeField(field,"1-sqrt(-3), (2+sqrt(-12))/2").correct).toBe(true);
+    expect(gradeField(field,"1+i*sqrt(3)").correct).toBe(false);
+    expect(gradeField(field,"1+1.732i,1-1.732i").correct).toBe(false);
+    const real = answerFieldSchema.parse({...field,numberSystem:"real",expected:[]});
+    expect(gradeField(real,"none").correct).toBe(true);
+    expect(gradeField(real,"i,-i").message).toContain("real roots");
+    expect(answerFieldSchema.safeParse({...real,expected:["i"]}).success).toBe(false);
+    expect(answerFieldSchema.safeParse({...field,expected:["sqrt(2)","sqrt(8)/2"]}).success).toBe(false);
+    const radical = answerFieldSchema.parse({id:"value",kind:"exact",label:"Exact value",expected:"sqrt(3)"});
+    expect(gradeField(radical,"sqrt(12)/2").correct).toBe(true);
+    expect(gradeField(radical,"1.732").correct).toBe(false);
+  });
   it("requires all parts of a question and retains domain evidence", () => {
     const question=questionSchema.parse({ id:"q1",familyId:"f1",familyVersion:1,courseId:"mth-215",objectiveId:"m01-l01",category:"conceptual",critical:true,prompt:"Give both parts.",fields:[exact,choice],hints:["First","Second","Third"],explanation:["Keep restrictions."],answerSummary:"One third; x is not one." });
     expect(gradeQuestion(question,{ x:"1/3" }).correct).toBe(false);
