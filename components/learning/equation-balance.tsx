@@ -10,7 +10,7 @@ const latex=(value:Rational)=>value.denominator===1n?String(value.numerator):`\\
 const equation=(state:BalanceState)=>`${latex(state.leftX)}x+(${latex(state.leftConstant)})=${latex(state.rightX)}x+(${latex(state.rightConstant)})`;
 const labels={add:"Add a number",subtract:"Subtract a number",multiply:"Multiply by a number",divide:"Divide by a number","subtract-x":"Subtract a multiple of x"};
 
-export function EquationBalance({activity}:{activity:Lesson["interaction"]}) {
+export function EquationBalance({activity}:{activity:Extract<Lesson["interaction"],{kind:"equation-balance"}>}) {
   const initial:BalanceState={leftX:parseRational(activity.coefficient),leftConstant:parseRational(activity.constant),rightX:parseRational("0"),rightConstant:parseRational(activity.right)};
   const [history,setHistory]=useState([{state:initial,operation:"Original equation"}]);
   const [operation,setOperation]=useState<BalanceOperation>("subtract");

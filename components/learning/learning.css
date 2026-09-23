@@ -18,6 +18,9 @@
 .display-equation .katex-display { margin:.45em 0;text-align:left; }
 .equation .katex { font-size:1.1em; }
 .balance-display { padding:20px;background:var(--soft);border:1px solid var(--line);border-radius:8px;margin:18px 0; }
+.interval-figure { margin:25px 0 0;padding:18px;background:var(--soft);border:1px solid var(--line);border-radius:8px; }
+.interval-figure svg { display:block;width:100%;height:auto; }
+.interval-figure figcaption { font-size:14px; }
 .activity-controls { display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:14px; }
 .activity-controls>* { min-width:0; }
 .activity-controls input,.activity-controls select { width:100%; }
