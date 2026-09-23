@@ -1,0 +1,63 @@
+{
+  "id": "m03",
+  "title": "Polynomial structure and behavior",
+  "requires": ["m01", "m02"],
+  "purpose": "Use algebraic structure to explain a polynomial's graph and recover its zeros.",
+  "bridgeIds": ["b02", "b03"],
+  "lessons": [
+    {
+      "id": "m03-l01",
+      "title": "Degree and end behavior",
+      "objective": "Predict a polynomial's end behavior and possible number of turning points from its leading term.",
+      "coverage": "Polynomial versus nonpolynomial rules, degree, leading coefficient, even/odd powers, and upper bounds on turning points without claiming that every bound is attained.",
+      "activity": "Compare a polynomial with its leading term at expanding viewing scales and explain why local shape can differ while far-end behavior agrees.",
+      "families": ["Classify end behavior from symbolic rules", "Match a graph description to possible degrees and leading-coefficient signs"],
+      "generatorRules": "Never allow the leading coefficient to vanish; distinguish an upper bound from an exact turning-point count. Include odd and even degree with each sign.",
+      "commonError": "Using the constant term to predict the ends or treating degree minus one as an exact turning-point count.",
+      "feedback": "Compare the largest-magnitude term for positive and negative inputs and test a polynomial with fewer turning points.",
+      "checkpoint": "Two end-behavior items, one polynomial classification, and one turning-point bound.",
+      "reading": ["os-5/5.2", "os-5/5.3"]
+    },
+    {
+      "id": "m03-l02",
+      "title": "Zeros, multiplicity, and graph shape",
+      "objective": "Read zeros and multiplicities from factored form and explain crossing or touching behavior.",
+      "coverage": "Factors and zeros, odd/even multiplicity, y-intercept, sign between roots, and constructing a polynomial from roots plus a scale condition.",
+      "activity": "Change one root's multiplicity and predict whether the graph crosses or touches before revealing it; use a sign table as the nonvisual equivalent.",
+      "families": ["Annotate zeros, multiplicities, and signs for a factored polynomial", "Construct a polynomial from specified roots and a point"],
+      "generatorRules": "Choose distinct base roots, assign multiplicities explicitly, and keep the scale point away from every root. Count multiplicity separately from distinct roots.",
+      "commonError": "Equating the number of distinct roots with degree or assuming every x-intercept is a crossing.",
+      "feedback": "Track the sign of the repeated factor on either side of the root.",
+      "checkpoint": "Zeros, multiplicity behavior, an interval sign, and reconstruction from roots and a point.",
+      "reading": ["os-5/5.3", "os-5/5.5"]
+    },
+    {
+      "id": "m03-l03",
+      "title": "Division, remainders, and factors",
+      "objective": "Divide a polynomial, state quotient and remainder, and use the remainder to test a proposed factor.",
+      "coverage": "Long division, synthetic division for a linear monic divisor, missing coefficients, the remainder theorem, and reconstructing dividend = divisor*quotient + remainder.",
+      "activity": "Complete a division table with missing coefficients and inspect the reconstruction identity after each completed row.",
+      "families": ["Generate a dividend from a known divisor, quotient, and lower-degree remainder", "Use evaluation to accept or reject a linear factor"],
+      "generatorRules": "Require remainder degree below divisor degree; include zero coefficients and nonzero remainders. State when synthetic division is applicable.",
+      "commonError": "Dropping a missing-power coefficient, using the wrong sign in synthetic division, or losing the remainder.",
+      "feedback": "Expand the reconstruction and highlight the first coefficient that fails to match.",
+      "checkpoint": "Long division, synthetic division, factor test, and reconstruction check.",
+      "reading": ["os-5/5.4", "os-5/5.5"]
+    },
+    {
+      "id": "m03-l04",
+      "title": "Finding and checking all polynomial roots",
+      "objective": "Use rational-root candidates and factor reduction to obtain a complete root list, including multiplicities and complex pairs when requested.",
+      "coverage": "Candidate roots versus confirmed roots, factor theorem, real-coefficient conjugate pairs, complex root counts with multiplicity, and limits of a plotted graph.",
+      "activity": "Choose candidate roots, test them exactly, reduce the remaining polynomial, and compare the full root list with visible real intercepts.",
+      "families": ["Factor a constructed cubic or quartic using rational candidates", "Audit a root list for missing multiplicities or conjugate partners"],
+      "generatorRules": "Build polynomials from known linear and irreducible quadratic factors. Keep arithmetic suitable for hand work; do not imply all polynomials have rational roots.",
+      "commonError": "Treating every rational-root candidate as a root or assuming a graph reveals nonreal roots.",
+      "feedback": "Evaluate each candidate and compare total multiplicity with degree; return to m01-l03 for a remaining quadratic.",
+      "checkpoint": "Candidate generation, factor reduction, a complete complex-root list, and graph-versus-algebra interpretation.",
+      "reading": ["os-5/5.5", "os-2/2.4"]
+    }
+  ],
+  "anchor": {"prompt":"Analyze p(x)=(x+2)*(x-1)^2.","answer":"p(x)=x^3-3*x+2. Its zeros are -2 with multiplicity 1 and 1 with multiplicity 2; it crosses at -2 and touches at 1. The y-intercept is 2; left end down, right end up.","numericChecks":[-2,1,2]},
+  "moduleExit": "Explain a new polynomial using both factor structure and graph behavior; numerical plotting alone cannot satisfy the algebra objectives."
+}

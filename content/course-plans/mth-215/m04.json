@@ -1,0 +1,63 @@
+{
+  "id": "m04",
+  "title": "Rational and radical functions",
+  "requires": ["m02", "m03"],
+  "purpose": "Understand excluded inputs, discontinuities, sign changes, and inverse relationships before calculus.",
+  "bridgeIds": ["b02", "b04"],
+  "lessons": [
+    {
+      "id": "m04-l01",
+      "title": "Holes, asymptotes, and intercepts",
+      "objective": "Identify original domain exclusions, removable holes, vertical asymptotes, intercepts, and end behavior of a rational function.",
+      "coverage": "Factor cancellation with retained exclusions, denominator zeros, horizontal and slant asymptotes, and the fact that a graph can cross a horizontal asymptote.",
+      "activity": "Compare an original rational expression and its reduced form, including a table row at a canceled root and a graph with an explicit open point.",
+      "families": ["Construct a rational function with specified holes and poles", "Classify horizontal/slant behavior using degrees or division"],
+      "generatorRules": "Generate numerator and denominator from known factors; track the original denominator separately. Include canceled and uncanceled factors and equal-degree cases.",
+      "commonError": "Turning every denominator zero into an asymptote or restoring a canceled input to the domain.",
+      "feedback": "Contrast an undefined original value with a nearby trend and identify which denominator factors remain after reduction.",
+      "checkpoint": "Domain, hole-versus-pole classification, intercepts, and end behavior.",
+      "reading": ["os-5/5.6", "os-5/5.4"]
+    },
+    {
+      "id": "m04-l02",
+      "title": "Polynomial and rational inequalities",
+      "objective": "Build a sign chart and return every interval satisfying a polynomial or rational inequality.",
+      "coverage": "Critical values from numerator and denominator, multiplicity effects, interval test points, and different endpoint rules for zeros and exclusions.",
+      "activity": "Partition a number line at critical values, predict signs on each interval, then test one value per interval and assemble the solution set.",
+      "families": ["Solve factored polynomial inequalities with repeated roots", "Solve rational inequalities with excluded boundaries"],
+      "generatorRules": "Use ordered rational critical values and include repeated factors. Never multiply across an inequality by a variable expression without accounting for its sign.",
+      "commonError": "Multiplying by an unknown-sign denominator or including a pole in a non-strict solution.",
+      "feedback": "Offer a test input from a misclassified interval and separate numerator-zero and denominator-zero endpoint rules.",
+      "checkpoint": "A polynomial inequality, a rational inequality, an endpoint decision, and an invalid-step explanation.",
+      "reading": ["os-5/5.3", "os-5/5.6"]
+    },
+    {
+      "id": "m04-l03",
+      "title": "Variation and rational models",
+      "objective": "Build a direct, inverse, or joint variation model and use units and restrictions to interpret a result.",
+      "coverage": "Proportionality constants, inverse-square relationships, combined variation, solving for a parameter, and distinguishing mathematical from physical domains.",
+      "activity": "Compare a model prediction after doubling one input with a parameter table; explain why an inverse relationship halves the output rather than subtracting a constant.",
+      "families": ["Recover a variation constant from one calibration observation", "Predict the effect of an input scale change or solve a constrained rational model"],
+      "generatorRules": "Keep physical lengths and resistances positive; supply the model so prior physics knowledge is unnecessary. Reject zero-denominator and physically invalid solutions explicitly.",
+      "commonError": "Replacing inverse variation with a negative linear slope or applying a physical model outside its allowed interval.",
+      "feedback": "Use an input ratio and output ratio before substituting numbers; inspect units on the recovered constant.",
+      "checkpoint": "Direct, inverse, joint variation, and a domain-limited application.",
+      "reading": ["os-5/5.8", "os-5/5.6"]
+    },
+    {
+      "id": "m04-l04",
+      "title": "Radical functions and restricted inverses",
+      "objective": "Analyze a radical function's domain and range and verify an inverse on the correct restricted domain.",
+      "coverage": "Even and odd roots, horizontal and vertical transformations, square-root principal branch, solving for an inverse, and checking both input and output restrictions.",
+      "activity": "Reflect a restricted quadratic and a square-root graph across y=x, then test a point outside the permitted branch using their tables.",
+      "families": ["Determine domain and range of transformed root functions", "Match a restricted power function with its valid inverse"],
+      "generatorRules": "Record branch restrictions as part of the expected answer. Include negative shifts and one odd-root comparison without requiring complex-valued functions.",
+      "commonError": "Treating a square-root function as both positive and negative branches or declaring a full quadratic one-to-one.",
+      "feedback": "Ask which output the function actually assigns and return to the horizontal-line test in m02-l03.",
+      "checkpoint": "Domain, range, a restricted inverse, and a composition check at a boundary.",
+      "reading": ["os-5/5.7", "os-3/3.7"]
+    }
+  ],
+  "anchor": {"prompt":"Analyze r(x)=(x^2-1)/(x-1) and solve (x-2)/(x+1)>=0.","answer":"r(x)=x+1 only for x!=1, with a hole at (1,2). The inequality solution is (-infinity,-1) union [2,infinity); -1 is excluded.","numericChecks":[1,2,-1]},
+  "moduleExit": "A learner must preserve exclusions while moving among original formulas, reduced formulas, sign charts, and graphs."
+}
