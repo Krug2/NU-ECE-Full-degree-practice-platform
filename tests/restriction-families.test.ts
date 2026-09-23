@@ -12,6 +12,21 @@ function checkMath(question:Question) {
   visit(question);
 }
 const grid=Array.from({length:121},(_,index)=>index/2-30);
+it("retains the original puncture in identities and checks both squaring steps",()=>{
+  for(let seed=0;seed<50;seed++){
+    const identity=restrictionQuestion("mth-rational-equation","identity",String(seed),"q1");checkMath(identity);
+    const {p}=identity.parameters;
+    expect(gradeQuestion(identity,{domain:`(-inf,${p}) U (${p},inf)`}).correct).toBe(true);
+    expect(gradeQuestion(identity,{domain:"R"}).correct).toBe(false);
+    for(const x of grid.filter(x=>x!==p))expect((x*x-p*p)/(x-p)).toBeCloseTo(x+p,10);
+    const double=restrictionQuestion("mth-radical-equation","double",String(seed),"q2");checkMath(double);
+    const {m}=double.parameters;
+    const x=((m-1)/2)**2;
+    expect(Math.sqrt(x+m)-Math.sqrt(x)).toBe(1);
+    expect(gradeQuestion(double,{roots:String(x)}).correct).toBe(true);
+    expect(gradeQuestion(double,{roots:String(x+1)}).correct).toBe(false);
+  }
+});
 it("validates rational and radical candidates in the original expression for fifty seeds",()=>{
   for(let seed=0;seed<50;seed++)for(const variant of ["one","none","two"]){
     const rational=restrictionQuestion("mth-rational-equation",variant,String(seed),"q1");checkMath(rational);

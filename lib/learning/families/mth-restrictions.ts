@@ -12,6 +12,15 @@ const rootField = (id:string,label:string,expected:number[]) => ({id,kind:"roots
 export function restrictionQuestion(familyId:string,variant:string,seed:string,id:string):Question {
   const rng=randomFrom(seed),base={id,familyId,familyVersion:1,courseId:"mth-215",objectiveId:"m01-l04"};
   if(familyId==="mth-rational-equation") {
+    if(variant==="identity") {
+      const p=rng.integer(1,9)*(rng.integer(0,1)?1:-1);
+      const expected:Interval[]=[{lower:null,upper:String(p),lowerClosed:false,upperClosed:false},{lower:String(p),upper:null,lowerClosed:false,upperClosed:false}];
+      return questionSchema.parse({...base,parameters:{p},category:"conceptual",critical:true,
+        prompt:`Solve $\\frac{x^2-${p*p}}{x${signed(-p)}}=x${signed(p)}$ over the real numbers. Give the entire solution set.`,
+        fields:[{id:"domain",kind:"intervals",label:"Solution set",expected,help:"Use interval notation with a union. Keep any original excluded input missing from the set."}],
+        hints:[`The denominator excludes $x=${p}$.`,`Factor the numerator as $(x${signed(-p)})(x${signed(p)})$.`,"After cancellation, the equation is an identity on its original domain."],
+        explanation:[`For $x\\ne${p}$, cancellation gives $x${signed(p)}=x${signed(p)}$.`,`Every allowed real input therefore solves the equation, but $x=${p}$ remains excluded because the original fraction is undefined there.`],answerSummary:formatIntervals(expected)});
+    }
     if(!["one","none","two"].includes(variant))throw new Error("Unknown rational equation variant");
     const p=rng.integer(-6,6),t=rng.integer(1,6),r=variant==="none"?p:p+rng.integer(1,5),s=r+rng.integer(1,5),q=r-t;
     const two=variant==="two", expected=two?[r,s]:variant==="none"?[]:[r];
@@ -24,6 +33,14 @@ export function restrictionQuestion(familyId:string,variant:string,seed:string,i
       answerSummary:`Valid solutions: ${expected.length?expected.join(", "):"empty"}. Original excluded value: ${p}.`});
   }
   if(familyId==="mth-radical-equation") {
+    if(variant==="double") {
+      const n=rng.integer(1,8),m=2*n+1;
+      return questionSchema.parse({...base,parameters:{n,m},category:"procedural",critical:true,
+        prompt:`Solve $\\sqrt{x+${m}}-\\sqrt{x}=1$ over the real numbers. Check the original equation after both squaring steps.`,
+        fields:[rootField("roots","Valid solutions",[n*n])],
+        hints:["The real domain is x at least zero. Isolate the first square root before squaring.",`The first squaring gives $x+${m}=1+2\\sqrt{x}+x$.`,`Isolating the remaining radical gives $\\sqrt{x}=${n}$. Square again, then check.`],
+        explanation:[`The original domain is $x\\ge0$. Isolating gives $\\sqrt{x+${m}}=1+\\sqrt{x}$.`,`Squaring and canceling x gives $${m-1}=2\\sqrt{x}$, so $x=${n*n}$.`,`The original check is $\\sqrt{${n*n+m}}-\\sqrt{${n*n}}=${n+1}-${n}=1$. This candidate is valid.`],answerSummary:`$x=${n*n}$`});
+    }
     if(!["one","two","none"].includes(variant))throw new Error("Unknown radical equation variant");
     const c=rng.integer(-4,4),u=variant==="none"?-rng.integer(1,5):rng.integer(0,5);
     const v=variant==="two"?u+rng.integer(1,4):variant==="none"?u-rng.integer(1,4):-rng.integer(1,5);
