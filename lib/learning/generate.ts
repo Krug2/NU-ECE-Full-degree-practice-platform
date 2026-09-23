@@ -4,9 +4,10 @@ import { inequalityFamilyIds, inequalityQuestion } from "./families/mth-inequali
 import { quadraticFamilyIds, quadraticQuestion } from "./families/mth-quadratics";
 import { restrictionFamilyIds, restrictionQuestion } from "./families/mth-restrictions";
 import { foundationNumberFamilyIds, foundationNumberQuestion } from "./families/mth-foundation-numbers";
+import { foundationPowerFamilyIds, foundationPowerQuestion } from "./families/mth-foundation-powers";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion]] as const){
+for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
 }
 export const availableFamilyIds = new Set(generators.keys());
