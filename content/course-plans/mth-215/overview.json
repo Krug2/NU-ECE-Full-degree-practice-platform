@@ -1,0 +1,66 @@
+{
+  "courseId": "mth-215",
+  "planVersion": 1,
+  "status": "proposed",
+  "title": "College Algebra & Trigonometry",
+  "alignment": {
+    "checkedAt": "2026-09-22",
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "publishedCredits": 3,
+    "creditUnit": "semester",
+    "publishedScope": "Polynomial, rational, exponential and logarithmic functions, trigonometry, and matrix algebra for further technical study.",
+    "publishedEntry": "MTH 12A and MTH 12B, or Accuplacer placement evaluation.",
+    "boundary": "This is an independently proposed learning pack. The public description establishes subject alignment, but does not establish NU's detailed syllabus, textbook, exam coverage, grading policy, or transfer decisions.",
+    "tools": "NU recommends computer or graphing-calculator use. This pack will supply browser tools and label each item's permitted tools. It does not infer NU's exam calculator policy."
+  },
+  "intent": "Prepare a learner to manipulate mathematical models, interpret graphs, solve constrained problems, and enter calculus, introductory physics, and programming with dependable algebra and trigonometry skills.",
+  "sequence": ["m01", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10"],
+  "routes": [
+    {
+      "id": "full",
+      "name": "Learn from the beginning",
+      "behavior": "Take the optional foundation screen, study all ten modules, complete checkpoints and module quizzes, submit the modeling project, then take the cumulative assessment and delayed review.",
+      "planningEffort": "Approximately 45 to 75 focused hours, plus any needed foundation refreshers. This is a design estimate to revise after a pilot, not a calendar deadline."
+    },
+    {
+      "id": "refresh",
+      "name": "Find and repair gaps",
+      "behavior": "Use a short screen to select relevant module challenges. A strong challenge result can replace that module's initial lesson checkpoints. Missed objectives receive specific lessons and new questions; other objectives stay available without forced repetition.",
+      "planningEffort": "Approximately 6 to 18 hours when most topics are already familiar; substantial gaps can require the full route. Prior course credit does not create automatic skill evidence."
+    },
+    {
+      "id": "reference",
+      "name": "Review a topic",
+      "behavior": "Open any lesson or resource directly. Browsing, self-reported familiarity, reading time, and bookmarks do not count as demonstrated understanding."
+    }
+  ],
+  "foundationBridges": [
+    {"id":"b01","title":"Signed numbers, fractions, and notation","trigger":"Fraction arithmetic, sign handling, or order of operations errors","scope":"Compute with signed fractions; distinguish a negative base from a leading minus; interpret interval endpoints and exact versus approximate answers.","reading":["os-1/1.1"],"exit":"Solve four varied arithmetic or notation items independently, including a negative sign and a fraction."},
+    {"id":"b02","title":"Powers, roots, and scientific notation","trigger":"Exponent laws or radical restrictions are unreliable","scope":"Integer and rational exponents, scientific notation, even-root domains, and the distinction between sqrt(x^2) and x.","reading":["os-1/1.2","os-1/1.3"],"exit":"Solve four items, including sqrt(x^2)=abs(x), a negative exponent, and a scientific-notation conversion."},
+    {"id":"b03","title":"Expansion and factoring","trigger":"Distribution, common factors, or polynomial factoring errors","scope":"Distribute with signs, collect like terms, factor common factors and simple quadratics, and check by expansion.","reading":["os-1/1.4","os-1/1.5"],"exit":"Expand one expression, factor two structurally different expressions, and detect one invalid factorization."},
+    {"id":"b04","title":"Fractions containing variables","trigger":"Cancellation across addition or missing restrictions","scope":"Find common denominators, cancel factors only, state original exclusions, and divide rational expressions without dividing by zero.","reading":["os-1/1.6"],"exit":"Simplify two expressions with restrictions and reject two invalid cancellation steps."},
+    {"id":"b05","title":"Coordinates, lines, and measurement labels","trigger":"Axes, slope, graph scale, or unit conversion errors","scope":"Read coordinates and scales, calculate rise over run, distinguish vertical and horizontal lines, and keep units attached to modeled quantities.","reading":["os-2/2.1","os-4/4.1"],"exit":"Read a graph, compute a slope with units, convert milliseconds to seconds, and interpret an intercept."},
+    {"id":"b06","title":"Right triangles and calculator use","trigger":"Triangle geometry or calculator mode blocks trigonometry","scope":"Use the Pythagorean relation, identify the side opposite an angle, enter parentheses correctly, and check degree versus radian mode.","reading":["os-7/7.1","os-7/7.2"],"exit":"Solve a right triangle and obtain the same sine value using an angle in degrees and its radian equivalent."}
+  ],
+  "lessonContract": {
+    "duration": "Design for 50 to 80 minutes including practice, with saved stopping points every 10 to 20 minutes.",
+    "requiredBlocks": ["A concrete motivating question", "An explicit objective and prerequisite links", "A visual or verbal explanation", "Two original worked examples with reasons for each step", "One faded example that asks the learner to complete missing reasoning", "One interactive investigation with a prediction before manipulation", "Six practice items spanning routine, conceptual, error-analysis, and application forms", "A four-item independent checkpoint", "A summary and mapped external reading", "A retrieval prompt scheduled after the session"],
+    "writing": "Define symbols before use, keep exact arithmetic until approximation is requested, state domains and units, and explain why a method applies. Do not make the external textbook necessary to understand an original lesson.",
+    "practice": "Each lesson needs at least two distinct reviewed item families. Parameter changes within one family do not count as different problem types. At least one family must test reasoning, representation, or error analysis.",
+    "hints": "Offer a conceptual prompt, then a suggested first step, then a worked solution. Record assistance and keep assisted attempts out of independent mastery evidence.",
+    "access": "Use readable mathematics, keyboard controls, explicit labels, text descriptions and tabular equivalents for graphs. Every visual task must have an equivalent non-drag interaction.",
+    "progress": "Persist answers, current step, seed, content version, assistance, and outcomes. Resuming an assessment must restore the same questions. The existing study-time and familiarity records remain separate."
+  },
+  "coveragePolicy": {
+    "core": "The forty lesson objectives, ten module quizzes, cumulative assessment, and modeling project define this proposed pack's coverage.",
+    "extensions": ["Partial-fraction decomposition after systems, as preparation for later calculus", "Half-angle and product-to-sum identities beyond the required sum and double-angle work", "Vectors and polar representations as a later bridge to physics and complex-number applications", "Conic sections and sequences when a current syllabus or later course requires them"],
+    "excludedFromCompletion": "Extensions are visibly optional and cannot silently increase the required denominator. Differential calculus, integration, eigenvalues, full linear algebra, and physical circuit design belong to later packs.",
+    "changeControl": "If a current NU syllabus becomes available, map every listed outcome to a lesson, identify missing or unnecessary topics, and version the plan before claiming syllabus-level alignment."
+  },
+  "completionLanguage": "Use learning-pack completion and objective evidence. Do not label this university credit, transfer approval, an official course grade, or proof of NU enrollment eligibility.",
+  "openDecisions": [
+    "A current NU MTH 215 syllabus could refine the detailed scope; it is not required to begin the independent pack.",
+    "Use an untimed default and optional calculator practice until the learner supplies an applicable official assessment policy.",
+    "An independent subject reviewer and pilot learners should review the completed content before it is labeled a reviewed release."
+  ]
+}
