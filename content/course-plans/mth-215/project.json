@@ -1,0 +1,74 @@
+{
+  "id": "mth-215-measurement-bench",
+  "title": "A virtual measurement bench",
+  "status": "proposed",
+  "purpose": "Bring algebra, function interpretation, trigonometry, and matrix methods together in six small investigations using supplied idealized data. No hardware purchase or prior circuit theory is needed.",
+  "effort": "Approximately 3 to 5 focused hours with saved progress between tasks.",
+  "deliverable": "A structured notebook containing definitions, equations, calculations, domain and unit checks, graph/table comparisons, and short explanations. Export a readable report with the submitted values and rubric state.",
+  "tasks": [
+    {
+      "id": "p01",
+      "title": "Calibrate a sensor",
+      "objectives": ["m01-l01", "m02-l03", "m02-l04"],
+      "given": "A temperature sensor produces 0.5 V at 0 degrees C and 2.5 V at 100 degrees C. Assume a linear response within that calibration interval.",
+      "work": "Define variables and units; derive V(T) and its inverse; convert a 1.7 V reading; compare a predicted reading at 60 degrees C with an observed 1.72 V; explain whether 3.1 V is interpolation or extrapolation.",
+      "reference": "V(T)=0.02*T+0.5; T(V)=(V-0.5)/0.02; 1.7 V maps to 60 degrees C. Observed-minus-predicted residual at 60 degrees C is +0.02 V. A 3.1 V reading lies outside the calibrated voltage interval.",
+      "acceptance": "Both functions and units are correct, their valid modeling interval is stated, the residual sign matches its definition, and extrapolation is identified."
+    },
+    {
+      "id": "p02",
+      "title": "Audit a mathematical transformation",
+      "objectives": ["m01-l04", "m03-l02", "m04-l01"],
+      "given": "A synthetic error model uses p(x)=(x+2)*(x-1)^2 on [-3,3]. A separate processing rule uses q(x)=(x^2-1)/(x-1). The variable x is dimensionless.",
+      "work": "Find p's zeros and multiplicities, explain crossing versus touching, simplify q, identify the input that remains invalid, and produce a table near that input.",
+      "reference": "p has roots -2 with multiplicity 1 and 1 with multiplicity 2. q agrees with x+1 for x!=1 and has a hole at (1,2). q(0.9)=1.9 and q(1.1)=2.1, but q(1) is undefined.",
+      "acceptance": "A smooth-looking plot must not restore the excluded input. The explanation connects factor multiplicity with behavior on both sides of each zero."
+    },
+    {
+      "id": "p03",
+      "title": "Estimate a decay threshold",
+      "objectives": ["m05-l01", "m05-l03", "m05-l04"],
+      "given": "A supplied idealized model is V(t)=8*exp(-t/2), with voltage in volts and time in seconds, for t>=0.",
+      "work": "Interpret the initial value and decay behavior; derive the time when the signal reaches 2 V; provide an exact and a rounded value; verify by substitution; explain why reaching exactly 0 V has no finite solution in this model.",
+      "reference": "The threshold time is 2*ln(4), approximately 2.772588722 s. The exponent uses a 2-second time constant. V remains positive for every finite nonnegative time.",
+      "acceptance": "The logarithm argument is positive and dimensionless, the time is nonnegative, and the learner distinguishes an asymptotic approach from a finite zero."
+    },
+    {
+      "id": "p04",
+      "title": "Describe and solve a periodic signal",
+      "objectives": ["m06-l01", "m07-l01", "m07-l04", "m08-l03"],
+      "given": "A voltage signal is v(t)=3*sin(4*pi*(t-0.125))+1, with t in seconds. Consider 0<=t<0.5.",
+      "work": "Report amplitude, offset, period, frequency, and time shift; predict the peak; solve v(t)=2.5 V on the stated interval; compare a graph and an exact phase-angle calculation.",
+      "reference": "Amplitude 3 V, offset 1 V, period 0.5 s, frequency 2 Hz, right shift 0.125 s. A peak occurs at t=0.25 s with 4 V. The threshold times are t=1/6 s and t=1/3 s.",
+      "acceptance": "Both threshold times are present and verified, time and angle units stay distinct, and an equivalent sinusoidal representation is accepted."
+    },
+    {
+      "id": "p05",
+      "title": "Solve a coupled calibration",
+      "objectives": ["m09-l01", "m09-l04", "m10-l01", "m10-l02", "m10-l03", "m10-l04"],
+      "given": "Two dimensionless unknown calibration parameters satisfy 2*x+y=7 and x-y=2. Compare with the altered information x+y=2 and 2*x+2*y=5.",
+      "work": "Write A*x=b; solve the first system by elimination and one matrix method; compute the residual; classify the altered system; explain why an inverse does not exist for its coefficient matrix.",
+      "reference": "The first system gives (3,1), determinant -3, and zero residual. The altered coefficient matrix is singular, and its augmented system is inconsistent.",
+      "acceptance": "Variable order is consistent, the matrix method agrees with elimination, and singularity is distinguished from inconsistency of the augmented system."
+    },
+    {
+      "id": "p06",
+      "title": "Explain limits and reproduce a result",
+      "objectives": ["m02-l04", "m05-l04", "m07-l04", "m09-l04"],
+      "given": "Use the assumptions and outputs from p01 through p05.",
+      "work": "Choose one result and reproduce it with a second method. Identify one domain restriction, one measurement or rounding limitation, and one observation that would call a model into question. Summarize the distinction between supplied idealized models and measured physical behavior.",
+      "reference": "Accept multiple sound explanations. Examples include an out-of-range calibration input, nonzero sensor residuals, a decay curve that stops matching observations, or inconsistent calibration equations.",
+      "acceptance": "Use a transparent rubric with self-review or a human reviewer. Free-form explanations must not receive a fabricated automatic correctness score."
+    }
+  ],
+  "rubric": [
+    {"criterion":"Definitions and setup","weight":20,"evidence":"Variables, units, intervals, and supplied assumptions are explicit before solving."},
+    {"criterion":"Mathematical accuracy","weight":30,"evidence":"Required numeric, symbolic, interval, and matrix outputs pass their reviewed checks."},
+    {"criterion":"Validation","weight":20,"evidence":"Substitution, residuals, graph/table comparisons, and an independent method support the results."},
+    {"criterion":"Interpretation and restrictions","weight":20,"evidence":"The learner explains exclusions, full solution sets, model range, and singularity correctly."},
+    {"criterion":"Reproducible communication","weight":10,"evidence":"The notebook includes enough steps and labels for another learner to follow the work."}
+  ],
+  "completion": "Require all structured checks and a completed rubric self-review with at least 80/100 and no missing criterion. Label the rubric score self-assessed unless an identified human reviewer supplies it. Return incomplete or invalid mathematical work for revision; allow unlimited revisions.",
+  "reviewScale": "For each rubric criterion use 0 for missing, 0.5 for partially evidenced, and 1 for complete evidence, multiplied by that criterion's weight. A self-assessment records reflection, not independent certification.",
+  "variants": "After the reference project is reviewed, create at least two equivalent data sets with independently verified answers. Preserve the same objectives and workload; do not simply change every number without rechecking restrictions and threshold counts."
+}
