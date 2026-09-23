@@ -60,3 +60,4 @@
 .coefficient-table { width:100%;border-collapse:collapse;margin:20px 0;font-size:14px; }
 .coefficient-table caption { text-align:left;margin-bottom:12px;font-weight:600; }
 .coefficient-table th,.coefficient-table td { text-align:left;padding:9px 8px;border-bottom:1px solid var(--line); }
+@media(max-width:800px){.lesson-main section{scroll-margin-top:90px}}

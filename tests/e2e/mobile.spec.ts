@@ -29,3 +29,17 @@ test("mobile navigation, course filters, and layouts remain usable", async ({ pa
   }
   expect(failures).toEqual([]);
 });
+
+test("mobile lesson links keep the target below the sticky navigation", async ({ page }, testInfo) => {
+  await page.goto("/courses/mth-215/lessons/m02-l01");
+  for (const [label,id] of [["Guided practice","guided"],["Interactive investigation","investigate"],["Practice and checkpoint","practice"]]) {
+    await page.getByRole("link",{name:label,exact:true}).click();
+    await expect.poll(async()=>{
+      const target=await page.locator("#"+id).boundingBox(), header=await page.locator(".sidebar").boundingBox();
+      if(!target||!header)return false;
+      const gap=target.y-(header.y+header.height);
+      return gap>=12&&gap<=60;
+    }).toBe(true);
+  }
+  await page.screenshot({path:testInfo.outputPath("lesson-navigation.png")});
+});
