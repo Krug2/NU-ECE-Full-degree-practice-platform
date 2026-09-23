@@ -15,6 +15,7 @@ it("reads different scales and every quadrant from the actual saved graph", () =
   const quadrants = new Set<string>();
   for (let seed = 0; seed < 50; seed++) for (const variant of ["scaled", "axes"]) {
     const item = question("mth-coordinate-read", variant, seed), figure = item.figure!;
+    if (figure.kind !== "coordinates") throw new Error("Expected coordinate graph");
     const point = figure.points[0], x = point.xTicks*figure.xStep, y = point.yTicks*figure.yStep;
     expect(figure.xStep).not.toBe(figure.yStep);
     expect(gradeQuestion(item, { x: String(x), y: String(y) }).correct).toBe(true);
@@ -26,7 +27,9 @@ it("reads different scales and every quadrant from the actual saved graph", () =
 });
 it("checks signed slopes in coordinate units, including horizontal and vertical lines", () => {
   for (let seed = 0; seed < 50; seed++) for (const variant of ["general", "horizontal", "vertical"]) {
-    const item = question("mth-line-slope", variant, seed), graph = item.figure!, [a, b] = graph.points;
+    const item = question("mth-line-slope", variant, seed), graph = item.figure!;
+    if (graph.kind !== "coordinates") throw new Error("Expected coordinate graph");
+    const [a, b] = graph.points;
     const rise = (b.yTicks-a.yTicks)*graph.yStep, run = (b.xTicks-a.xTicks)*graph.xStep;
     if (run === 0) {
       expect(rise).not.toBe(0);
