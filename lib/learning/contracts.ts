@@ -4,6 +4,7 @@ import { normalizeIntervals } from "./intervals";
 import { equalExact, parseExact, realExact } from "./exact-number";
 import { degree, parsePolynomial } from "./polynomial";
 import { commonFactorDegree, parseRationalExpression } from "./rational-expression";
+import { coordinateFigureSchema } from "./figures";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -53,6 +54,7 @@ export const questionSchema = z.object({
   id, familyId: id, familyVersion: z.number().int().positive(), courseId: id, objectiveId: id,
   category: z.enum(["procedural", "conceptual", "application"]), critical: z.boolean(),
   prompt: text, fields: z.array(answerFieldSchema).min(1).max(8),
+  figure: coordinateFigureSchema.optional(),
   parameters: z.record(z.string(), z.number().finite()).default({}),
   hints: z.array(text).length(3), explanation: z.array(text).min(1).max(12),
   answerSummary: text,
