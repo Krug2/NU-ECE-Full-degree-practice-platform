@@ -1,4 +1,4 @@
-import { addRational, divideRational, equalRational, multiplyRational, negateRational, parseRational, type Rational } from "./rational";
+import { addRational, divideRational, equalRational, formatRational, multiplyRational, negateRational, parseRational, type Rational } from "./rational";
 
 export type ExactNumber = Map<bigint, Rational>;
 const one = parseRational("1");
@@ -70,6 +70,17 @@ export function divideExact(a: ExactNumber, b: ExactNumber): ExactNumber {
 
 export const equalExact = (a: ExactNumber, b: ExactNumber) => a.size === b.size && [...a].every(([radicand, value]) => b.has(radicand) && equalRational(value, b.get(radicand)!));
 export const realExact = (value: ExactNumber) => [...value.keys()].every(radicand => radicand > 0n);
+export function formatExact(value: ExactNumber, latex = false): string {
+  const terms = [...value].sort(([a],[b]) => a>0n&&b<0n?-1:a<0n&&b>0n?1:Number(absolute(a)-absolute(b)));
+  return terms.map(([radicand, coefficient],index) => {
+    const positive = {numerator:absolute(coefficient.numerator),denominator:coefficient.denominator};
+    const number = latex && positive.denominator!==1n ? `\\frac{${positive.numerator}}{${positive.denominator}}` : formatRational(positive);
+    const imaginary = radicand<0n ? "i" : "";
+    const root = absolute(radicand)>1n ? latex?`\\sqrt{${absolute(radicand)}}`:`sqrt(${absolute(radicand)})` : "";
+    const factors = [positive.numerator===positive.denominator&&(imaginary||root)?"":number,imaginary,root].filter(Boolean);
+    return `${coefficient.numerator<0n?"-":index?"+":""}${factors.join(latex?" ":"*")}`;
+  }).join("") || "0";
+}
 export const approximateExact = (value: ExactNumber) => [...value].reduce((result, [radicand, coefficient]) => {
   result[radicand > 0n ? "real" : "imaginary"] += Number(coefficient.numerator) / Number(coefficient.denominator) * Math.sqrt(Number(absolute(radicand)));
   return result;
