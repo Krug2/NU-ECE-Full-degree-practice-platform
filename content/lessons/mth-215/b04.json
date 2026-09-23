@@ -1,0 +1,188 @@
+{
+  "id": "b04", "courseId": "mth-215", "moduleId": "foundations", "version": 1,
+  "title": "Fractions containing variables",
+  "objective": "Find common denominators, cancel factors only, state original exclusions, and divide rational expressions without dividing by zero.",
+  "why": "Ratios appear whenever you describe an average, a rate, or the relationship between two quantities. A useful formula must say which inputs it accepts. In this refresher you will simplify and combine fractions containing variables while preserving that information. The algebra will prepare you for rational equations and functions, and for later formulas involving physical measurements.",
+  "estimatedMinutes": 60,
+  "prerequisites": [{"label":"Signed numbers and fractions","lessonId":"b01"},{"label":"Expansion and factoring","lessonId":"b03"}],
+  "sections": [
+    {
+      "heading": "A denominator sets an input restriction",
+      "paragraphs": [
+        "A rational expression is a quotient of polynomials, such as $(x+2)/(x-5)$. The denominator must be nonzero. Here x = 5 is excluded, while x = -2 is allowed and gives a value of zero. A zero numerator can produce zero; a zero denominator makes the expression undefined.",
+        "Start every problem by recording the domain of the original expression. Factor each denominator and find every input that makes any denominator factor zero. For $1/((x-2)(x+4))$, exclude both 2 and -4. A repeated factor changes its multiplicity, but it does not create a new excluded input: $1/(x-2)^2$ still excludes only 2.",
+        "If you are dividing by a fraction, that entire divisor must also be nonzero. This adds a second kind of restriction: an input that makes the divisor's numerator zero can be forbidden even though every original denominator is nonzero there. Determine these restrictions before replacing division with multiplication by a reciprocal.",
+        "Write the original exclusions beside your work and carry them through each line. A later formula might hide one of them. Simplification preserves values on the original domain; it does not automatically enlarge the domain of the original expression."
+      ]
+    },
+    {
+      "heading": "Cancel common factors, with their restrictions attached",
+      "paragraphs": [
+        "Cancellation uses the identity $(A C)/(B C)=A/B$ when B and C are nonzero. Both entire polynomials have the factor C. Dividing each by that same factor changes the written form without changing the value at allowed inputs.",
+        "For $(x^2-9)/(x-3)$, factor the numerator into $(x-3)(x+3)$. The factor x - 3 can be canceled wherever x is not 3, leaving x + 3. At x = 3, the original expression is 0/0 and remains undefined, even though the reduced polynomial gives 6. The missing input must stay in the answer.",
+        "A practical routine is: record exclusions, factor numerators and denominators, cancel common factors, then inspect the result for anything still reducible. Numerical coefficients use ordinary exact fraction arithmetic. Equivalent numerical coefficients are accepted, but common variable factors must be removed in these simplification questions.",
+        "A sign reversal can be treated as a factor of -1. For example, $x-4=-(4-x)$, so $(x-4)/(4-x)=-1$ for x not equal to 4. Canceling the terms without accounting for that minus sign would incorrectly give +1."
+      ]
+    },
+    {
+      "heading": "Added terms cannot be crossed out",
+      "paragraphs": [
+        "The x in x + 2 is a term, not a factor of the whole sum. Therefore $(x+2)/(x+5)$ cannot be reduced to 2/5 by crossing out x. At x = 1, the original value is 3/6 = 1/2, while 2/5 is different. This allowed input disproves the proposed identity.",
+        "You may split a numerator sum over one common denominator: $(4x+6)/(2x)=4x/(2x)+6/(2x)=2+3/x$, with x nonzero. Each term still has its denominator. It would be wrong to cancel x from the first term and then ignore the second term's division by x.",
+        "You generally cannot split a sum in the denominator. For example, $1/(x+2)$ is not $1/x+1/2$. The denominator names one whole quantity being divided into the numerator. Parentheses are essential when entering it into a calculator or answer box.",
+        "When a cancellation looks tempting, factor the whole numerator and denominator explicitly. If the proposed factor is not shared by every term of the relevant polynomial, do not cancel it. A variable may be canceled when it is truly a common nonzero factor; the problem is not the variable itself."
+      ]
+    },
+    {
+      "heading": "Multiply by factors, and divide by a reciprocal",
+      "paragraphs": [
+        "Multiplication follows $(A/B)(C/D)=AC/(BD)$, with both B and D nonzero. Factoring first can expose common factors before you expand anything. You can cancel a numerator factor against a denominator factor across the product because the whole expression is one product of factors.",
+        "For $(x-1)/(x+2)$ times $(x+2)/(x-4)$, the original exclusions are -2 and 4. Canceling x + 2 gives $(x-1)/(x-4)$ on that original domain. The reduced denominator displays 4 but hides the excluded input -2.",
+        "For division, use $(A/B)\\div(C/D)=(A/B)(D/C)$. The second fraction must be defined, so D is nonzero, and it must have a nonzero value, so C is also nonzero. B must remain nonzero as well. Take the reciprocal of the entire second fraction, including all its factors.",
+        "An expression such as $(x+1)/(x-2)\\div((x-3)/(x-2))$ excludes both 2 and 3. The original denominators exclude 2; the divisor becomes zero at 3. The reduced result is $(x+1)/(x-3)$ with both exclusions retained. This distinction is tested in the practice questions."
+      ]
+    },
+    {
+      "heading": "Add or subtract only after matching denominators",
+      "paragraphs": [
+        "With equal denominators, add or subtract the numerators and keep the denominator: $A/D+B/D=(A+B)/D$. With different denominators, first rewrite each fraction using a common denominator. Adding the denominators would change the sizes of the parts being combined.",
+        "Factor the denominators to find a least common denominator. Include each distinct factor at the greatest power needed by either fraction. For denominators $(x-1)^2$ and $(x-1)(x+3)$, a least common denominator is $(x-1)^2(x+3)$. You need two copies of x - 1, not three.",
+        "Multiply each whole numerator and denominator by the factors it is missing. For $2/(x-1)^2+3/(x-1)$, only the second fraction needs an additional x - 1. The result is $(2+3(x-1))/(x-1)^2=(3x-1)/(x-1)^2$, with x not equal to 1.",
+        "If one denominator already contains the other, avoid adding unnecessary factors. In $2/(x-1)+5/((x-1)(x+2))$, use $(x-1)(x+2)$ and multiply the first numerator by x + 2. The combined numerator becomes 2x + 9.",
+        "When subtracting, put the entire second adjusted numerator in parentheses. The subtraction sign applies to every one of its terms. After combining and collecting the numerator, factor again to check for cancellation, while retaining all original exclusions."
+      ]
+    },
+    {
+      "heading": "Handle a fraction containing smaller fractions",
+      "paragraphs": [
+        "A complex rational expression contains fractions inside its numerator or denominator. The word complex here describes the stacked fraction structure, not a requirement to use imaginary numbers. Read the large fraction bar as division of the entire top by the entire bottom.",
+        "One method is to combine the small fractions above the main bar, combine those below it, and then multiply by the bottom fraction's reciprocal. Another method is to multiply both the entire top and entire bottom by a common denominator of the small fractions. These methods agree when the original restrictions are respected.",
+        "For $(1/x)/(1/x+2)$, first require x nonzero. The large divisor must also be nonzero, so 1 + 2x must be nonzero and x cannot equal -1/2. Multiplying the top and bottom by x gives $1/(1+2x)$, with both exclusions retained.",
+        "Do not multiply only one term below the large fraction bar. If the bottom is a sum, the clearing factor must distribute to every term. Likewise, do not forget the zero-divisor restriction just because you removed the small denominators successfully."
+      ]
+    },
+    {
+      "heading": "Keep algebraic restrictions and model restrictions together",
+      "paragraphs": [
+        "A formula used in a model may have restrictions beyond nonzero denominators. For a positive batch mass x, an average quantity calculated as total divided by x requires x > 0. A reduced polynomial that can be evaluated at zero or a negative input does not make those inputs meaningful for the model.",
+        "Suppose a practice energy model gives total energy $2x^2+5x$ joules for a batch of mass x kilograms. Average energy per kilogram is $(2x^2+5x)/x=2x+5$ J/kg for x > 0. The reduced formula gives 5 at x = 0, but the original average would divide by zero. Keep the positive-mass domain attached.",
+        "For an algebra-only question, list every excluded real input when requested. For a contextual question, use the full allowed interval, including the stated physical conditions. An exclusion list and a domain interval describe related information in different forms; follow the answer label.",
+        "Check your final result in two ways. Algebraic expansion or exact cross multiplication verifies the fraction's value on a common domain. Separately inspect the original denominators and divisors to verify that the domain has not changed. Neither check replaces the other."
+      ]
+    },
+    {
+      "heading": "Enter one clear fraction and a separate domain answer",
+      "paragraphs": [
+        "Write one simplified fraction in the answer box, using parentheses around its whole numerator and denominator: (x+1)/(x-2). If the result is a polynomial, enter it directly, such as x+3. Use ^ for powers and * for multiplication. Variable expressions in this refresher use x and rational coefficients.",
+        "Expressions such as x+1/(x-2) mean a sum under ordinary operation order, so they are not accepted as shorthand for (x+1)/(x-2). The box asks you to combine the result first. A fractional numerical coefficient can be placed inside a parenthesized polynomial, such as (x/2+1)/(x-3).",
+        "The fraction and original domain are checked separately, and every part must be correct for the question to count. Use commas between excluded inputs, such as -3, 4, and exact fractions when necessary. The original restrictions remain necessary even when the final answer no longer has a variable denominator."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title":"Cancel a factor while keeping a missing input",
+      "prompt":"Simplify $(x^2-16)/(x^2-x-12)$ with its original exclusions.",
+      "steps":[
+        {"math":"x^2-x-12=(x-4)(x+3),\\qquad x\\ne4,-3","reason":"Factor the original denominator and record both zeros before changing the expression."},
+        {"math":"\\frac{x^2-16}{x^2-x-12}=\\frac{(x-4)(x+4)}{(x-4)(x+3)}","reason":"The numerator is a difference of squares."},
+        {"math":"\\frac{(x-4)(x+4)}{(x-4)(x+3)}=\\frac{x+4}{x+3},\\qquad x\\ne4,-3","reason":"Cancel x-4 only on the original domain, where it is nonzero."}
+      ],
+      "conclusion":"At x = 4 the reduced formula gives 8/7, but the original fraction is undefined. Both 4 and -3 remain excluded."
+    },
+    {
+      "title":"Subtract using one common denominator",
+      "prompt":"Combine $3/(x-2)-2/(x+1)$ into one fraction.",
+      "steps":[
+        {"math":"x\\ne2,-1,\\qquad D=(x-2)(x+1)","reason":"The two distinct denominator factors determine the original exclusions and a common denominator."},
+        {"math":"\\frac3{x-2}-\\frac2{x+1}=\\frac{3(x+1)-2(x-2)}{(x-2)(x+1)}","reason":"Multiply each numerator by the factor missing from its denominator."},
+        {"math":"3(x+1)-2(x-2)=3x+3-2x+4=x+7","reason":"The minus sign distributes to both terms in the second product."},
+        {"math":"\\frac3{x-2}-\\frac2{x+1}=\\frac{x+7}{(x-2)(x+1)},\\qquad x\\ne2,-1","reason":"No denominator factor divides the entire numerator, so there is no further variable cancellation."}
+      ],
+      "conclusion":"Do not add or subtract the denominators. The result has one common denominator and preserves both original exclusions."
+    },
+    {
+      "title":"Keep a zero divisor out of the domain",
+      "prompt":"Simplify $(x+2)/(x-5)\\div((x-1)/(x-5))$.",
+      "steps":[
+        {"math":"x\\ne5,\\qquad \\frac{x-1}{x-5}\\ne0\\Longrightarrow x\\ne1","reason":"The original denominators exclude 5, and division by a zero-valued fraction excludes 1."},
+        {"math":"\\frac{x+2}{x-5}\\div\\frac{x-1}{x-5}=\\frac{x+2}{x-5}\\cdot\\frac{x-5}{x-1}","reason":"Take the reciprocal of the entire second fraction."},
+        {"math":"\\frac{x+2}{x-5}\\cdot\\frac{x-5}{x-1}=\\frac{x+2}{x-1},\\qquad x\\ne5,1","reason":"Cancel the common nonzero factor x-5 and keep both restrictions."}
+      ],
+      "conclusion":"The reduced denominator reveals the zero-divisor exclusion 1 but hides the original denominator exclusion 5."
+    },
+    {
+      "title":"Clear small denominators without losing either restriction",
+      "prompt":"Simplify $(1/(x+2))/(1/(x+2)+3)$.",
+      "steps":[
+        {"math":"x\\ne-2,\\qquad \\frac1{x+2}+3\\ne0","reason":"Each small fraction must be defined, and the whole large denominator must be nonzero."},
+        {"math":"1+3(x+2)=3x+7\\ne0\\Longrightarrow x\\ne-7/3","reason":"On the already restricted domain, multiplying the nonzero-divisor condition by x+2 identifies the additional exclusion."},
+        {"math":"\\frac{\\frac1{x+2}}{\\frac1{x+2}+3}=\\frac1{1+3(x+2)}=\\frac1{3x+7}","reason":"Multiply both the entire top and the entire bottom by x+2."}
+      ],
+      "conclusion":"The final expression is $1/(3x+7)$, with -2 and -7/3 both excluded."
+    },
+    {
+      "title":"Reject cancellation across an addition",
+      "prompt":"Decide whether $(4x+6)/(2x)$ equals 2 + 3 for every allowed x.",
+      "steps":[
+        {"math":"\\frac{4x+6}{2x}=\\frac{4x}{2x}+\\frac6{2x}=2+\\frac3x,\\qquad x\\ne0","reason":"Splitting the numerator gives the same denominator to both terms. Only the first term loses its x completely."},
+        {"math":"x=2:\\quad \\frac{4(2)+6}{2(2)}=\\frac{14}4=\\frac72","reason":"Use an allowed input in the original expression."},
+        {"math":"2+3=5\\ne\\frac72","reason":"The different values disprove the proposed simplification."}
+      ],
+      "conclusion":"As one fraction the correct result is $(2x+3)/x$, with x nonzero. The constant in the numerator never shared the canceled factor x."
+    }
+  ],
+  "guided": {
+    "title":"Finish a simplification and preserve its domain",
+    "setup":"Simplify $(x^2-9)/(x-3)$ while keeping all original excluded inputs.",
+    "before":["The original denominator is zero at x = 3.","Factor the numerator as (x-3)(x+3).","Cancel the common factor only where it is nonzero."],
+    "question": {
+      "id":"guided-fractions","familyId":"mth-fractions-guided","familyVersion":1,"courseId":"mth-215","objectiveId":"b04","category":"conceptual","critical":true,
+      "prompt":"Enter the reduced expression and the original exclusions.",
+      "fields":[
+        {"id":"expression","kind":"rational-expression","label":"Reduced expression","expected":"x+3","domainFieldId":"excluded","help":"The variable denominator cancels, so a polynomial answer is appropriate."},
+        {"id":"excluded","kind":"roots","label":"Original excluded inputs","expected":["3"],"numberSystem":"real","help":"List only the inputs excluded by the original denominator."}
+      ],
+      "parameters":{},"hints":["The surviving numerator factor is x+3.","Canceling x-3 does not give the original fraction a value at 3.","The reduced expression is x+3 and the excluded input is 3."],
+      "explanation":["$(x^2-9)/(x-3)=(x-3)(x+3)/(x-3)=x+3$ when x is not 3.","At x = 3 the original denominator is zero, so that input stays excluded."],
+      "answerSummary":"$x+3$, with x = 3 excluded."
+    },
+    "after":"The simplified value and original domain are both needed for a complete answer."
+  },
+  "interaction": {
+    "kind":"simplification-lab",
+    "prompt":"Change the three factor zeros and choose a test input. Predict whether the original fraction is defined there. Compare a canceled input, a remaining denominator zero, and an allowed numerator zero, then explain why their outcomes differ.",
+    "a":2,"b":-1,"c":4
+  },
+  "practice":[
+    {"familyId":"mth-rational-simplify","variant":"factors"},
+    {"familyId":"mth-rational-simplify","variant":"squares"},
+    {"familyId":"mth-rational-simplify","variant":"monomial"},
+    {"familyId":"mth-rational-operations","variant":"add"},
+    {"familyId":"mth-rational-operations","variant":"subtract"},
+    {"familyId":"mth-rational-operations","variant":"shared"},
+    {"familyId":"mth-rational-operations","variant":"repeated"},
+    {"familyId":"mth-rational-operations","variant":"multiply"},
+    {"familyId":"mth-rational-operations","variant":"divide"},
+    {"familyId":"mth-rational-operations","variant":"complex"},
+    {"familyId":"mth-cancel-audit","variant":"sum"},
+    {"familyId":"mth-cancel-audit","variant":"partial"},
+    {"familyId":"mth-rational-model","variant":"average"}
+  ],
+  "checkpoint":[
+    {"familyId":"mth-rational-simplify","variant":"factors"},
+    {"familyId":"mth-rational-operations","variant":"divide"},
+    {"familyId":"mth-cancel-audit","variant":"sum"},
+    {"familyId":"mth-cancel-audit","variant":"partial"}
+  ],
+  "summary":[
+    "Record all original denominator zeros before manipulating a rational expression.",
+    "Cancel factors of the entire numerator and denominator, never isolated terms inside sums.",
+    "Division requires the divisor to be defined and nonzero. Multiply by its complete reciprocal.",
+    "For addition and subtraction, match denominators and adjust every affected numerator term.",
+    "A least common denominator uses the greatest required multiplicity of each factor.",
+    "Keep original and contextual restrictions after simplification, even if the new formula hides them."
+  ],
+  "retrieval":"Simplify (x²-25)/(x-5) and name its original exclusion. Explain why (x+2)/(x+3) cannot become 2/3, and list every restriction in (x+1)/(x-4) divided by (x-2)/(x-4).",
+  "readings":[{"title":"OpenStax: Rational Expressions","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-6-rational-expressions","purpose":"Additional examples of factoring, multiplication, division, common denominators, and complex rational expressions."}]
+}
