@@ -22,7 +22,7 @@ export function generateQuestions(slots: QuestionSlot[], seed: string): Question
     for (let retry = 0; retry < 40; retry++) {
       const generate=generators.get(slot.familyId)!;
       const question=generate(slot.familyId,slot.variant,`${seed}:${index}:${retry}`,`q-${index+1}`);
-      const fingerprint = question.prompt;
+      const fingerprint = JSON.stringify({ prompt: question.prompt, figure: question.figure });
       if (!seen.has(fingerprint)) { seen.add(fingerprint); return question; }
     }
     throw new Error("There are not enough different problems for this request. Choose a shorter practice set.");
