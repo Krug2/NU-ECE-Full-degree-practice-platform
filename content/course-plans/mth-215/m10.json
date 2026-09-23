@@ -1,0 +1,63 @@
+{
+  "id": "m10",
+  "title": "Matrix algebra and solution verification",
+  "requires": ["m09"],
+  "purpose": "Represent systems compactly, perform valid matrix operations, and recognize the limits of inversion and rounded computation.",
+  "bridgeIds": ["b01"],
+  "lessons": [
+    {
+      "id": "m10-l01",
+      "title": "Matrix dimensions and operations",
+      "objective": "Determine whether matrix operations are defined and compute sums, scalar products, and matrix products correctly.",
+      "coverage": "Row/column indexing, dimensions, equality, addition, scalar multiplication, row-by-column multiplication, identity and zero matrices, and noncommutativity.",
+      "activity": "Choose an output entry, highlight its contributing row and column, predict the dot product, and compare A*B with B*A when both exist.",
+      "families": ["Classify operation compatibility and output dimensions", "Compute small products and identify a counterexample to commutativity"],
+      "generatorRules": "Use 2x2, 2x3, and 3x2 matrices with small integers. Keep undefined operations distinct from zero matrices; include cases where only one product order is possible.",
+      "commonError": "Multiplying corresponding entries, reversing dimensions, or assuming A*B=B*A.",
+      "feedback": "Write the inner dimensions and expand one row-column product term by term.",
+      "checkpoint": "Dimension compatibility, addition/scaling, multiplication, and noncommutativity.",
+      "reading": ["os-11/11.5"]
+    },
+    {
+      "id": "m10-l02",
+      "title": "Augmented matrices and row reduction",
+      "objective": "Represent a linear system as an augmented matrix and use valid row operations to classify and solve it.",
+      "coverage": "Variable order, row swaps, nonzero row scaling, row replacement, pivots, echelon forms, back substitution, free variables, and inconsistent rows.",
+      "activity": "Perform explicit row operations through dropdowns and numeric fields; preview the new row, undo an operation, and compare the matrix with the equivalent equations.",
+      "families": ["Complete a valid elimination path for a 2x2 or 3x3 system", "Classify solution sets from echelon forms including free variables and contradictions"],
+      "generatorRules": "Record exact rational entries and operations. Disallow scaling a row by zero and choose a pivoting strategy when the apparent pivot is zero.",
+      "commonError": "Changing only part of a row, dividing by a zero pivot, or assuming a row of zeros means every variable is zero.",
+      "feedback": "Show the equivalent equation for the row and identify whether a pivot or a free variable remains.",
+      "checkpoint": "Matrix translation, valid row operation, solution extraction, and free-variable/inconsistency interpretation.",
+      "reading": ["os-11/11.6"]
+    },
+    {
+      "id": "m10-l03",
+      "title": "Determinants and inverse matrices",
+      "objective": "Use a 2x2 determinant to decide invertibility, compute an inverse when it exists, and solve a system by multiplication in the correct order.",
+      "coverage": "ad-bc, singular matrices, the 2x2 inverse formula, A inverse times b, verification with identity products, and inverse computation by row operations as an extension within the lesson.",
+      "activity": "Predict whether two rows provide independent information, compute the determinant, and multiply a proposed inverse by the original matrix to check it.",
+      "families": ["Classify and invert a nonsingular 2x2 matrix", "Audit a proposed inverse or solve A*x=b while preserving multiplication order"],
+      "generatorRules": "Generate singular examples deliberately and never divide by their determinant. Use bounded determinants for hand arithmetic; a singular matrix alone does not decide whether A*x=b is inconsistent.",
+      "commonError": "Using bc-ad, inverting each entry, writing b*A inverse, or assuming singular always means no solution.",
+      "feedback": "Check the identity product and compare the coefficient matrix with the augmented system.",
+      "checkpoint": "Determinant, inverse, matrix solution, and interpretation of a singular case.",
+      "reading": ["os-11/11.7", "os-11/11.8"]
+    },
+    {
+      "id": "m10-l04",
+      "title": "Choosing methods and checking numerical results",
+      "objective": "Select an appropriate system solution method, use Cramer's rule for a small nonsingular case, and verify a rounded result using residuals.",
+      "coverage": "Two-variable Cramer's rule, replacement-column order, comparison with elimination and inversion, residual vector A*x-b, rounding effects, and why a small residual alone does not guarantee insensitivity to data changes.",
+      "activity": "Compare exact and rounded solutions for two systems, perturb a supplied measurement, and explain which solution changes more without requiring a condition-number calculation.",
+      "families": ["Solve a 2x2 system using replacement determinants and check by substitution", "Compare candidate solutions using residuals and interpret a supplied sensitivity example"],
+      "generatorRules": "Require nonzero determinant for Cramer's rule. Supply the perturbed comparison data and use exact reference solutions; formal numerical analysis stays outside the completion requirements.",
+      "commonError": "Replacing the wrong column, treating a rounded answer as exact, or claiming numerical stability from one small residual.",
+      "feedback": "Label each variable's column, compute both original equations at the candidate, and compare the size of input and output changes.",
+      "checkpoint": "Replacement determinant, solution, residual verification, and method/rounding interpretation.",
+      "reading": ["os-11/11.6", "os-11/11.7", "os-11/11.8"]
+    }
+  ],
+  "anchor": {"prompt":"For A=[[2,1],[1,-1]] and b=[7,2], find the determinant, inverse, and solution of A*x=b.","answer":"det(A)=-3. A inverse=[[1/3,1/3],[1/3,-2/3]]. The solution is [3,1], with residual [0,0].","numericChecks":[-3,3,1,0,0]},
+  "moduleExit": "Demonstrate dimensions, valid row operations, singular-case reasoning, and residual checking. Matrix algebra cannot be reduced to memorizing the 2x2 inverse formula."
+}

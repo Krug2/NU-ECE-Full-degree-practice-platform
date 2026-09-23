@@ -1,0 +1,63 @@
+{
+  "id": "m09",
+  "title": "Systems of equations and constraints",
+  "requires": ["m01", "m02", "m03", "m04"],
+  "purpose": "Solve simultaneous conditions, distinguish solution types, and translate a model into an auditable system.",
+  "bridgeIds": ["b01", "b03"],
+  "lessons": [
+    {
+      "id": "m09-l01",
+      "title": "Two-variable linear systems",
+      "objective": "Solve a two-variable system and distinguish one solution, no solution, and infinitely many solutions.",
+      "coverage": "Substitution, elimination, graphical intersections, parallel versus coincident lines, and verification in both original equations.",
+      "activity": "Predict the number of intersections, solve algebraically, and compare with two lines whose numerical coefficients are also available in a table.",
+      "families": ["Construct and solve a unique-solution linear system", "Classify dependent or inconsistent pairs and interpret the geometry"],
+      "generatorRules": "Generate from a known solution or explicit proportional rows. Use a separate constant perturbation for inconsistent cases; never infer uniqueness from a rounded graph.",
+      "commonError": "Calling 0=0 a zero-valued solution, calling 0=5 an unknown solution, or checking only one equation.",
+      "feedback": "Interpret the reduced statement and substitute into every original equation.",
+      "checkpoint": "Substitution, elimination, solution-type classification, and verification.",
+      "reading": ["os-11/11.1"]
+    },
+    {
+      "id": "m09-l02",
+      "title": "Three-variable elimination",
+      "objective": "Reduce a three-variable system to simpler equations and verify the resulting ordered triple or describe a dependent family.",
+      "coverage": "Consistent variable order, eliminating the same variable from two pairs, back substitution, contradictions, and one-parameter solution descriptions.",
+      "activity": "Choose elimination combinations and track which variables remain after each step, with a visible record of equivalent systems.",
+      "families": ["Solve a three-variable system constructed from a known rational triple", "Interpret a dependent or inconsistent system after a supplied reduction"],
+      "generatorRules": "Use small coefficients and reviewed row combinations. Include unique, inconsistent, and one-free-variable cases; avoid accidental large fractions in introductory tasks.",
+      "commonError": "Eliminating different variables and treating the resulting equations as a complete two-variable system or losing a minus sign in back substitution.",
+      "feedback": "Align variables in columns and verify each newly formed equation from its parent equations.",
+      "checkpoint": "An elimination step, back substitution, a dependent-family interpretation, and full-system verification.",
+      "reading": ["os-11/11.2"]
+    },
+    {
+      "id": "m09-l03",
+      "title": "Nonlinear intersections and feasible regions",
+      "objective": "Find all solutions of a small nonlinear system and interpret whether points satisfy simultaneous inequalities.",
+      "coverage": "Line/parabola and line/circle intersections, substitution to a quadratic, multiple intersections, boundary inclusion, and intersection of constraint regions.",
+      "activity": "Predict intersection count, compute exact candidates, then test each pair in both equations or each inequality. Provide a text list of boundary and test-point conditions.",
+      "families": ["Solve a constructed line-quadratic system with zero, one, or two real intersections", "Classify a point or boundary in a feasible region defined by two inequalities"],
+      "generatorRules": "Generate known intersection cases and explicitly state real coordinates. Do not grade a visually selected point without numeric coordinates and boundary rules.",
+      "commonError": "Returning x-values without corresponding y-values, omitting one intersection, or taking the union of constraints instead of the intersection.",
+      "feedback": "Substitute each complete ordered pair and evaluate every constraint separately.",
+      "checkpoint": "Two nonlinear-intersection items, one boundary decision, and one feasible-point classification.",
+      "reading": ["os-11/11.3"]
+    },
+    {
+      "id": "m09-l04",
+      "title": "Formulating and auditing systems",
+      "objective": "Define variables and units, translate two or three supplied relationships into a system, and assess whether its solution is meaningful.",
+      "coverage": "Calibration coefficients, totals and balance equations, independent information, exact models versus noisy observations, and checking physically allowed signs and ranges.",
+      "activity": "Select equations for a two-sensor calibration, solve for offsets or gains, and discover why repeating the same observation adds no independent information.",
+      "families": ["Translate a short context into a labeled system and solve it", "Identify redundant, inconsistent, or insufficient measurements and explain the consequence"],
+      "generatorRules": "Supply every domain relationship. Use exact synthetic observations unless noise is explicitly being discussed; least-squares fitting is outside the required solution methods.",
+      "commonError": "Treating any two equations as independent or accepting a mathematical solution outside the stated operating range.",
+      "feedback": "Attach units to every term and compare equation independence before performing elimination.",
+      "checkpoint": "Variable definitions, equation selection, solution, and contextual validation.",
+      "reading": ["os-11/11.1", "os-11/11.2", "os-4/4.2"]
+    }
+  ],
+  "anchor": {"prompt":"Solve 2*x+y=7 and x-y=2; contrast this with x+y=2 and 2*x+2*y=5.","answer":"The first system has (x,y)=(3,1). The second is inconsistent because twice the first left-hand side would require 4, not 5, on the right.","numericChecks":[3,1]},
+  "moduleExit": "Require explicit solution-type classification and verification in all original equations, including one contextual system."
+}
