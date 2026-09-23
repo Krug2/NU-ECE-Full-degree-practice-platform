@@ -92,6 +92,7 @@ export const lessonSchema = z.object({
     z.object({kind:z.literal("polynomial-lab"),prompt:text,examples:z.array(z.object({label:text,left:polynomial,right:polynomial,explanation:text}).strict()).min(2).max(12)}).strict(),
     z.object({kind:z.literal("simplification-lab"),prompt:text,a:z.number().int().min(-8).max(8),b:z.number().int().min(-8).max(8),c:z.number().int().min(-8).max(8)}).strict().refine(value=>new Set([value.a,value.b,value.c]).size===3,"Use distinct inputs in the simplification investigation"),
     z.object({kind:z.literal("line-lab"),prompt:text,ax:z.number().int().min(-4).max(4),ay:z.number().int().min(-4).max(4),bx:z.number().int().min(-4).max(4),by:z.number().int().min(-4).max(4)}).strict().refine(value=>value.ax!==value.bx||value.ay!==value.by,"A line investigation needs distinct points"),
+    z.object({kind:z.literal("triangle-calculator"),prompt:text,degrees:z.number().int().min(1).max(89),hypotenuse:z.number().int().min(1).max(20)}).strict(),
   ]),
   practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
   summary: z.array(text).min(2), retrieval: text,
