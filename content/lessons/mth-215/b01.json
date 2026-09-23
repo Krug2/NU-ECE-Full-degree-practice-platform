@@ -1,0 +1,272 @@
+{
+  "id": "b01",
+  "courseId": "mth-215",
+  "moduleId": "foundations",
+  "version": 1,
+  "title": "Signed numbers, fractions, and notation",
+  "objective": "Compute with signed fractions; distinguish a negative base from a leading minus; interpret interval endpoints and exact versus approximate answers.",
+  "why": "A small arithmetic or notation error can hide otherwise good algebra. This refresher rebuilds the habits used throughout the course: track signs, keep fractions exact, group operations deliberately, and say which values a set includes. You can use it before the core lessons or return when practice reveals a gap.",
+  "estimatedMinutes": 45,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Read a signed number before calculating",
+      "paragraphs": [
+        "A sign locates a number relative to zero. On a number line, -5 is less than -2 because -5 lies farther left, even though its distance from zero is larger. The absolute value records distance: $|-5|=5$. Zero is neither positive nor negative.",
+        "Adding a positive number moves right; adding a negative number moves left. Subtraction adds the opposite: $a-b=a+(-b)$. Thus $3-(-4)=3+4=7$, while $-3-4=-3+(-4)=-7$. Write the opposite explicitly if adjacent minus signs become difficult to track.",
+        "For multiplication or division of nonzero real numbers, equal signs give a positive result and different signs give a negative one. For example, $(-6)(-2)=12$ and $(-6)/2=-3$. This rule belongs to multiplication and division; it does not say that adding two negative numbers produces a positive number."
+      ]
+    },
+    {
+      "heading": "A fraction is one value expressed as a quotient",
+      "paragraphs": [
+        "In $a/b$, the numerator $a$ is divided by the denominator $b$, and $b$ cannot be zero. The fraction $3/4$ describes three quarter-sized parts. A fraction can be negative or exceed one: $-3/4$ lies left of zero, and $7/4=1+3/4$ lies between one and two.",
+        "Multiplying numerator and denominator by the same nonzero value preserves the quotient. For example, $3/4=9/12$ because multiplying by $3/3$ multiplies by one. Reducing reverses that process: $18/24=3/4$. Keep a negative sign once, typically in front or in the numerator: $-3/4=3/(-4)$, while $(-3)/(-4)=3/4$.",
+        "An equivalent fraction is not a different measurement. It is the same value written with a different unit fraction. This is why common denominators make addition possible. In this app, type an improper fraction such as 7/4, or 1+3/4, rather than the ambiguous mixed-number text '1 3/4'."
+      ]
+    },
+    {
+      "heading": "Add equal-sized parts; multiply or divide using factors",
+      "paragraphs": [
+        "For addition or subtraction, convert the terms to a common denominator. Since $1/3=2/6$, the sum $1/3+1/6=2/6+1/6=3/6=1/2$. Adding denominators would give $2/9$, which uses the wrong-sized parts. The product of the denominators is always a usable common denominator, though it may not be the smallest.",
+        "For multiplication, multiply numerators and denominators: $(a/b)(c/d)=ac/(bd)$, with nonzero denominators. Common factors may be reduced before or after multiplying. In $(3/10)(5/9)$, reducing the factor 5 against 10 and the factor 3 against 9 leaves $1/6$.",
+        "Dividing by a nonzero fraction multiplies by its reciprocal: $(a/b)\\div(c/d)=(a/b)(d/c)$. The divisor's numerator $c$ must also be nonzero. This follows because $(c/d)(d/c)=1$. Do not invert the first fraction, and do not apply the reciprocal rule to addition.",
+        "Division by zero is undefined, including $0/0$. A zero numerator divided by a nonzero denominator is valid: $0/7=0$. Check which part is zero before applying a rule."
+      ]
+    },
+    {
+      "heading": "Order of operations depends on grouping",
+      "paragraphs": [
+        "Evaluate grouped expressions first, then powers, then multiplication and division from left to right, then addition and subtraction from left to right. Multiplication does not automatically precede division. For example, $12/3\\cdot2=(12/3)\\cdot2=8$, while $12/(3\\cdot2)=2$.",
+        "The expression $-4^2$ means $-(4^2)=-16$. In $(-4)^2$, the base itself is negative, so $(-4)(-4)=16$. Parentheses determine whether the minus sign is inside the power. A leading minus can therefore produce a different answer even when every written digit is the same.",
+        "A fraction bar groups its entire numerator and denominator. Type $(2+3)/(4+1)$ with parentheses around both sums. Typing $2+3/4+1$ describes a different expression. When in doubt, add explicit grouping rather than relying on a calculator display to infer your intent."
+      ]
+    },
+    {
+      "heading": "Keep exactness separate from display precision",
+      "paragraphs": [
+        "The numbers $1/8$ and 0.125 are exactly equal. The number $1/3$ has an endlessly repeating decimal; 0.333 is close, but not equal. A line over the repeating digit, $0.\\overline3$, denotes the exact repeating decimal, while a short rounded decimal does not.",
+        "Use $=$ for equality and $\\approx$ for approximation. The statement $2/7\\approx0.286$ is appropriate to three decimal places. Writing $2/7=0.286$ silently changes the value. In multistep work, retain exact fractions until an approximation is requested so repeated rounding does not accumulate.",
+        "A finite decimal can be an exact specification or a rounded measurement, depending on the problem. Do not assume every decimal is approximate or that extra displayed digits guarantee accuracy. The questions in this refresher explicitly ask for exact arithmetic; later measurement questions will state their units and rounding tolerances."
+      ]
+    },
+    {
+      "heading": "Read interval endpoints as inclusion decisions",
+      "paragraphs": [
+        "An interval names a continuous set of real numbers. The interval $[-2,5)$ contains every number from -2 up to 5, including -2 but excluding 5. A square bracket includes an endpoint; a parenthesis excludes it. Place the lower endpoint first.",
+        "The words 'at least' and 'at most' include equality. Thus values at least -2 and less than 5 form $[-2,5)$. Values greater than -2 and at most 5 form $(-2,5]$. Test the two endpoints explicitly when reading a new interval.",
+        "An unbounded direction uses infinity as a symbol, not as a real endpoint. The set of all numbers at least 4 is $[4,\\infty)$; infinity always receives a parenthesis. A union combines allowed regions, as in $(-\\infty,0)\\cup(0,\\infty)$ for all real numbers except zero. The empty set has no members. The inequalities lesson develops these ideas further."
+      ]
+    },
+    {
+      "heading": "Use a quick reasonableness check",
+      "paragraphs": [
+        "Before detailed arithmetic, predict a sign and a rough size. The sum of a negative number and a smaller positive magnitude should stay negative. Multiplying a positive number by a positive fraction less than one should shrink it. These checks do not replace computation, but they catch many errors early.",
+        "For $-7/12+5/18$, the negative term has larger magnitude because $7/12>5/18$. A negative result is therefore expected. A result near positive 2 would contradict the structure before any exact comparison.",
+        "When an answer is wrong, identify the first changed assumption: a sign, the grouping, a denominator, or the requested notation. Correcting that step is more useful than repeating the same sequence faster. The investigation lets you change a single sign or parenthesis and compare your prediction with an exact result."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Add signed fractions with a common denominator",
+      "prompt": "Calculate $-7/12+5/18$ exactly.",
+      "steps": [
+        {
+          "math": "-\\frac7{12}=-\\frac{21}{36},\\qquad \\frac5{18}=\\frac{10}{36}",
+          "reason": "A common denominator is 36. Multiply each numerator by the same factor used for its denominator."
+        },
+        {
+          "math": "-\\frac{21}{36}+\\frac{10}{36}=\\frac{-21+10}{36}=-\\frac{11}{36}",
+          "reason": "Add the signed numerators after the parts have equal size."
+        },
+        {
+          "math": "-\\frac{11}{36}<0",
+          "reason": "The result is negative, agreeing with the larger magnitude of the negative term. Eleven and 36 share no common factor greater than one."
+        }
+      ],
+      "conclusion": "The exact answer is $-11/36$. The sign and the magnitude both fit the original terms."
+    },
+    {
+      "title": "Divide by a signed fraction",
+      "prompt": "Calculate $(-5/8)\\div(-15/4)$.",
+      "steps": [
+        {
+          "math": "\\left(-\\frac58\\right)\\div\\left(-\\frac{15}4\\right)=\\left(-\\frac58\\right)\\left(-\\frac4{15}\\right)",
+          "reason": "Invert the nonzero divisor and multiply. Leave the first fraction unchanged."
+        },
+        {
+          "math": "\\frac{20}{120}=\\frac16",
+          "reason": "The two negatives produce a positive result. Reduce the common factor 20."
+        },
+        {
+          "math": "\\frac16\\left(-\\frac{15}4\\right)=-\\frac{15}{24}=-\\frac58",
+          "reason": "Multiply the quotient by the divisor to recover the original dividend."
+        }
+      ],
+      "conclusion": "The quotient is $1/6$. The reverse multiplication checks both its magnitude and sign."
+    },
+    {
+      "title": "Distinguish a leading minus from a negative base",
+      "prompt": "Compare $-4^2+3(7-5)$ and $(-4)^2+3(7-5)$.",
+      "steps": [
+        {
+          "math": "7-5=2,\\qquad 3(7-5)=6",
+          "reason": "The shared parentheses are evaluated first, then multiplied by 3."
+        },
+        {
+          "math": "-4^2+6=-16+6=-10",
+          "reason": "In the first expression, the square applies to 4 before the leading minus."
+        },
+        {
+          "math": "(-4)^2+6=16+6=22",
+          "reason": "In the second expression, the negative sign belongs to the squared base."
+        }
+      ],
+      "conclusion": "One pair of parentheses changes the answer from -10 to 22. Grouping is part of the mathematical meaning."
+    }
+  ],
+  "guided": {
+    "title": "Finish a common-denominator calculation",
+    "setup": "Calculate $-2/3+5/12$ without rounding.",
+    "before": [
+      "Choose 12 as the common denominator.",
+      "Multiply the numerator and denominator of -2/3 by 4.",
+      "Keep the existing denominator of 5/12."
+    ],
+    "question": {
+      "id": "guided-fractions",
+      "familyId": "mth-fractions-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "b01",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Enter the signed numerator of the first fraction when its denominator is 12, then enter the exact final sum.",
+      "fields": [
+        {
+          "id": "numerator",
+          "kind": "rational",
+          "label": "First numerator over 12",
+          "expected": "-8"
+        },
+        {
+          "id": "sum",
+          "kind": "rational",
+          "label": "Exact sum",
+          "expected": "-1/4"
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "Multiply -2 by the same 4 used to change 3 into 12.",
+        "Add -8 and 5, keeping denominator 12.",
+        "The intermediate fraction is -3/12, which reduces to -1/4."
+      ],
+      "explanation": [
+        "The first fraction is $-8/12$.",
+        "The sum is $(-8+5)/12=-3/12=-1/4$."
+      ],
+      "answerSummary": "Numerator: $-8$. Sum: $-1/4$."
+    },
+    "after": "The numerator's sign is part of the value. The final result is negative because the negative term has the larger magnitude."
+  },
+  "interaction": {
+    "kind": "arithmetic-lab",
+    "prompt": "Predict the exact value before revealing it. Then change just one sign or pair of parentheses, predict again, and explain the difference.",
+    "examples": [
+      {
+        "label": "A leading minus",
+        "expression": "-3^2+4*2",
+        "explanation": "Square 3 first, apply the leading minus, and then add 8: $-9+8=-1$."
+      },
+      {
+        "label": "A negative base",
+        "expression": "(-3)^2+4*2",
+        "explanation": "The negative sign belongs to the squared base, so the result is $9+8=17$."
+      },
+      {
+        "label": "Add unlike fractions",
+        "expression": "1/3+1/6",
+        "explanation": "Use sixths: $2/6+1/6=3/6=1/2$."
+      },
+      {
+        "label": "Division and multiplication from left to right",
+        "expression": "6/3*2",
+        "explanation": "First divide 6 by 3 to get 2, then multiply by 2 to get 4."
+      },
+      {
+        "label": "Group the whole denominator",
+        "expression": "6/(3*2)",
+        "explanation": "The denominator is the product 3 times 2, so the quotient is 6/6 = 1."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-signed-fractions",
+      "variant": "add"
+    },
+    {
+      "familyId": "mth-signed-fractions",
+      "variant": "subtract"
+    },
+    {
+      "familyId": "mth-signed-fractions",
+      "variant": "multiply"
+    },
+    {
+      "familyId": "mth-signed-fractions",
+      "variant": "divide"
+    },
+    {
+      "familyId": "mth-signed-fractions",
+      "variant": "length"
+    },
+    {
+      "familyId": "mth-sign-precedence",
+      "variant": "square"
+    },
+    {
+      "familyId": "mth-exact-approximate",
+      "variant": "compare"
+    },
+    {
+      "familyId": "mth-interval-notation",
+      "variant": "endpoints"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-signed-fractions",
+      "variant": "add"
+    },
+    {
+      "familyId": "mth-sign-precedence",
+      "variant": "square"
+    },
+    {
+      "familyId": "mth-exact-approximate",
+      "variant": "compare"
+    },
+    {
+      "familyId": "mth-interval-notation",
+      "variant": "endpoints"
+    }
+  ],
+  "summary": [
+    "Track signs according to the operation; the sign rule for products is not the rule for sums.",
+    "Use common denominators for sums, numerator/denominator products for multiplication, and a reciprocal for division by a nonzero fraction.",
+    "A leading minus outside a power and a negative base inside parentheses have different meanings.",
+    "Preserve exact values until rounding is requested. Displayed precision and exact equality are different ideas.",
+    "An interval's brackets and parentheses specify membership at its endpoints."
+  ],
+  "retrieval": "Calculate -3/4 + 1/6 without a calculator. Explain the difference between -5² and (-5)². Then give one number included in [-1,2) and identify which endpoint is excluded.",
+  "readings": [
+    {
+      "title": "OpenStax: Real Numbers: Algebra Essentials",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-1-real-numbers-algebra-essentials",
+      "purpose": "Additional background on real numbers, arithmetic properties, and operation order."
+    }
+  ]
+}

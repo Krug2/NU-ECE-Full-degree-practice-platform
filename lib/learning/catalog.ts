@@ -1,4 +1,5 @@
 import packData from "@/content/learning-packs/mth-215.json";
+import numberBridge from "@/content/lessons/mth-215/b01.json";
 import linearLesson from "@/content/lessons/mth-215/m01-l01.json";
 import inequalityLesson from "@/content/lessons/mth-215/m01-l02.json";
 import quadraticLesson from "@/content/lessons/mth-215/m01-l03.json";
@@ -7,7 +8,7 @@ import { lessonSchema, packSchema } from "./contracts";
 import { availableFamilyIds } from "./generate";
 
 export const learningPacks = [packSchema.parse(packData)];
-export const lessons = [lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson)];
+export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson)];
 export const learningPack = (courseId: string) => learningPacks.find(pack => pack.courseId === courseId);
 export const lessonById = (courseId: string, lessonId: string) => lessons.find(lesson => lesson.courseId === courseId && lesson.id === lessonId);
 
