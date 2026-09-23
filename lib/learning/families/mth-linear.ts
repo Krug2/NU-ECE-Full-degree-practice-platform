@@ -35,16 +35,16 @@ export function linearQuestion(familyId: string, variant: string, seed: string, 
   if (familyId === "mth-linear-formula") {
     if (variant !== "isolate") throw new Error("Unknown formula variant");
     const forms = [
-      {equation:"V=IR", target:"R", answer:"R=V/I", wrong:"R=I/V", divider:"I", meaning:"voltage, current, and resistance", start:"Divide both sides by I", domain:"I is not zero"},
-      {equation:"v=u+at", target:"t", answer:"t=(v-u)/a", wrong:"t=(v+u)/a", divider:"a", meaning:"initial velocity, acceleration, and elapsed time", start:"Subtract u from both sides, then divide by a", domain:"a is not zero"},
-      {equation:"P=VI", target:"I", answer:"I=P/V", wrong:"I=V/P", divider:"V", meaning:"power, voltage, and current", start:"Divide both sides by V", domain:"V is not zero"},
-      {equation:"y=mx+b", target:"x", answer:"x=(y-b)/m", wrong:"x=(y+b)/m", divider:"m", meaning:"a linear input-output model", start:"Subtract b from both sides, then divide by m", domain:"m is not zero"},
+      {equation:"V=IR", target:"R", answer:"R=V/I", wrong:"R=I/V", spokenAnswer:"R equals V divided by I", spokenWrong:"R equals I divided by V", divider:"I", meaning:"voltage, current, and resistance", start:"Divide both sides by I", domain:"I is not zero"},
+      {equation:"v=u+at", target:"t", answer:"t=(v-u)/a", wrong:"t=(v+u)/a", spokenAnswer:"t equals (v minus u) divided by a", spokenWrong:"t equals (v plus u) divided by a", divider:"a", meaning:"initial velocity, acceleration, and elapsed time", start:"Subtract u from both sides, then divide by a", domain:"a is not zero"},
+      {equation:"P=VI", target:"I", answer:"I=P/V", wrong:"I=V/P", spokenAnswer:"I equals P divided by V", spokenWrong:"I equals V divided by P", divider:"V", meaning:"power, voltage, and current", start:"Divide both sides by V", domain:"V is not zero"},
+      {equation:"y=mx+b", target:"x", answer:"x=(y-b)/m", wrong:"x=(y+b)/m", spokenAnswer:"x equals (y minus b) divided by m", spokenWrong:"x equals (y plus b) divided by m", divider:"m", meaning:"a linear input-output model", start:"Subtract b from both sides, then divide by m", domain:"m is not zero"},
     ];
     const form = forms[rng.integer(0,forms.length-1)];
     return questionSchema.parse({ ...base,category:"application",critical:true,
       prompt:`The supplied relationship $${form.equation}$ represents ${form.meaning}. Which rearrangement isolates $${form.target}$, and what condition permits this division?`,
       fields:[
-        {id:"formula",kind:"choice",label:"Rearranged formula",correct:"valid",options:rng.shuffle([{id:"valid",label:`$${form.answer}$`,feedback:"The target variable is isolated by applying the same operations to both sides."},{id:"wrong",label:`$${form.wrong}$`,feedback:"Check the inverse operation and which quantity is divided by which."}])},
+        {id:"formula",kind:"choice",label:"Rearranged formula",correct:"valid",options:rng.shuffle([{id:"valid",label:`$${form.answer}$`,accessibleLabel:form.spokenAnswer,feedback:"The target variable is isolated by applying the same operations to both sides."},{id:"wrong",label:`$${form.wrong}$`,accessibleLabel:form.spokenWrong,feedback:"Check the inverse operation and which quantity is divided by which."}])},
         {id:"restriction",kind:"choice",label:"Required condition",correct:"nonzero",options:rng.shuffle([{id:"nonzero",label:form.domain,feedback:"Division by zero cannot preserve a valid formula."},{id:"none",label:"No condition is needed",feedback:`The division is only valid when ${form.divider} is not zero.`},{id:"positive",label:`${form.divider} must be positive`,feedback:"For the algebraic division, a negative nonzero value also works. Positivity would need a separate physical assumption."}])},
       ],
       hints:["Undo the operations on the target variable in reverse order.",`${form.start}.`,`The formula is $${form.answer}$ and requires $${form.divider}\\ne0$.`],
@@ -57,7 +57,7 @@ export function linearQuestion(familyId: string, variant: string, seed: string, 
     return questionSchema.parse({ ...base,parameters:{a,b,right},category:"conceptual",critical:true,
       prompt:`Start with $${term(a)}+${b}=${right}$. A learner changes it to $${term(a)}=${right}$ by removing ${b} from the left side only. Is that an equivalent equation?`,
       fields:[{id:"reason",kind:"choice",label:"Reasoning",correct:"both",options:rng.shuffle([
-        {id:"both",label:`No. Subtract ${b} from both sides to get $${term(a)}=${right-b}$.`,feedback:"Applying the same subtraction to both sides preserves equality."},
+        {id:"both",label:`No. Subtract ${b} from both sides to get $${term(a)}=${right-b}$.`,accessibleLabel:"No. Subtract "+b+" from both sides to get "+a+" times x equals "+(right-b),feedback:"Applying the same subtraction to both sides preserves equality."},
         {id:"one",label:"Yes. Constants can be deleted when isolating a variable.",feedback:"Deleting a constant on one side changes which input satisfies the equation."},
         {id:"divide",label:`No. Instead divide only the left side by ${a}.`,feedback:"Dividing only one side also changes the equation. Apply a valid operation to both sides."},
       ])}],

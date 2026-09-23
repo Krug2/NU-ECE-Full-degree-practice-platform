@@ -30,9 +30,9 @@ export function foundationPowerQuestion(familyId:string,variant:string,seed:stri
       const x=-rng.integer(1,15);
       return questionSchema.parse({...base,parameters:{x},category:"conceptual",critical:true,prompt:`At $x=${x}$, evaluate $\\sqrt{x^2}$ and identify the rule that works for every real x.`,
         fields:[{id:"value",kind:"rational",label:"Principal square root",expected:String(-x)},{id:"rule",kind:"choice",label:"Rule for every real x",correct:"absolute",options:rng.shuffle([
-          {id:"absolute",label:"$\\sqrt{x^2}=|x|$",feedback:"The principal square root is nonnegative, so it equals the distance of x from zero."},
-          {id:"same",label:"$\\sqrt{x^2}=x$ for all real x",feedback:"For a negative input, x is negative but the principal square root is positive."},
-          {id:"negative",label:"$\\sqrt{x^2}=-x$ for all real x",feedback:"This agrees for negative inputs but fails for positive ones. Absolute value covers both signs."},
+          {id:"absolute",label:"$\\sqrt{x^2}=|x|$",accessibleLabel:"The principal square root of x squared equals the absolute value of x",feedback:"The principal square root is nonnegative, so it equals the distance of x from zero."},
+          {id:"same",label:"$\\sqrt{x^2}=x$ for all real x",accessibleLabel:"The principal square root of x squared equals x for every real x",feedback:"For a negative input, x is negative but the principal square root is positive."},
+          {id:"negative",label:"$\\sqrt{x^2}=-x$ for all real x",accessibleLabel:"The principal square root of x squared equals negative x for every real x",feedback:"This agrees for negative inputs but fails for positive ones. Absolute value covers both signs."},
         ])}],hints:["Square the input first.",`The radicand is ${x*x}. The principal square root is nonnegative.`,`The result is ${-x}, which equals |${x}|.`],explanation:[`Squaring gives $(${x})^2=${x*x}$.`,`The principal square root is ${-x}, not ${x}. In general, $\\sqrt{x^2}=|x|$.`],answerSummary:`${-x}; use the absolute-value rule.`});
     }
     if(variant!=="domain")throw new Error("Unknown root meaning variant");

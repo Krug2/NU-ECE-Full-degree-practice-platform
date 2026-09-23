@@ -56,7 +56,7 @@ export function quadraticQuestion(familyId: string, variant: string, seed: strin
     return questionSchema.parse({...base,parameters:{h,n},category:"conceptual",critical:true,
       prompt:`A learner solves $(x${signed(-h)})^2=${n*n}$ and reports only $x=${h+n}$. Give the missing root and explain the step that was omitted.`,
       fields:[{id:"missing",kind:"rational",label:"Missing root",expected:String(h-n)},{id:"reason",kind:"choice",label:"Why is there another root?",correct:"branch",options:rng.shuffle([
-        {id:"branch",label:`Both $${n}$ and $-${n}$ square to $${n*n}$.`,feedback:"The principal square root is positive, but solving u² = n² requires both u = n and u = -n."},
+        {id:"branch",label:`Both $${n}$ and $-${n}$ square to $${n*n}$.`,accessibleLabel:"Both "+n+" and negative "+n+" square to "+n*n,feedback:"The principal square root is positive, but solving u² = n² requires both u = n and u = -n."},
         {id:"negative",label:"Every positive root has its negative as another root.",feedback:"A shifted quadratic need not have roots that are opposites. Apply both signs before undoing the shift."},
         {id:"none",label:"Taking the principal square root already gives every solution.",feedback:"The square-root function returns one principal value. The squared equation can have two solutions."},
       ])}],
