@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { piecewiseSchema } from "./piecewise";
 
 export const coordinatePointSchema = z.object({ name: z.string().regex(/^[A-D]$/), xTicks: z.number().int().min(-4).max(4), yTicks: z.number().int().min(-4).max(4) }).strict();
 export const coordinateFigureSchema = z.object({
@@ -13,7 +14,12 @@ export const triangleFigureSchema = z.object({
   kind: z.literal("right-triangle"), title: z.string().min(1).max(100), angleAt: z.enum(["B", "C"]),
   AB: z.string().min(1).max(120), AC: z.string().min(1).max(120), BC: z.string().min(1).max(120),
 }).strict();
-export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema]);
+export const piecewiseFigureSchema = z.object({
+  kind: z.literal("piecewise"), title: z.string().min(1).max(100),
+  xLabel: z.string().min(1).max(40), yLabel: z.string().min(1).max(40), model: piecewiseSchema,
+}).strict();
+export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema, piecewiseFigureSchema]);
+export type PiecewiseFigure = z.infer<typeof piecewiseFigureSchema>;
 export type TriangleFigure = z.infer<typeof triangleFigureSchema>;
 export type QuestionFigureData = z.infer<typeof questionFigureSchema>;
 export const coordinatePixel = (point: Pick<CoordinatePoint, "xTicks" | "yTicks">) => ({ x: 180+26*point.xTicks, y: 170-24*point.yTicks });
