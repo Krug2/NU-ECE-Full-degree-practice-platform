@@ -19,7 +19,7 @@ function question(family:string,variant:string,seed:number){
 }
 it("maps translation, scaling, combined, and unfactored input shifts by substitution",()=>{
   const signs=new Set<string>();
-  for(let seed=0;seed<50;seed++)for(const variant of ["translate","scale","combined","inside-shift"]){
+  for(let seed=0;seed<50;seed++)for(const variant of ["translate","scale","combined","inside-shift","signal"]){
     const q=question("mth-transform-point",variant,seed),p=q.parameters;
     const x=variant==="inside-shift"?(p.u-p.c)/p.b:p.u/p.b+p.h,y=p.a*p.v+p.k;
     const answer={x:variant==="inside-shift"?"("+p.u+"-("+p.c+"))/("+p.b+")":"("+p.u+")/("+p.b+")+("+p.h+")",y:String(y)};

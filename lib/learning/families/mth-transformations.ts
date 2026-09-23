@@ -14,18 +14,18 @@ export function transformationQuestion(familyId:string,variant:string,seed:strin
   const scales=["-3","-2","-1","-1/2","1/2","1","2","3"],transform:Transform={a:scales[rng.integer(0,7)],b:scales[rng.integer(0,7)],h:String(rng.integer(-4,4)),k:String(rng.integer(-4,4))};
   const parameters=()=>Object.fromEntries(Object.entries(transform).map(([key,value])=>[key,graphNumber(value)]));
   if(familyId==="mth-transform-point"){
-    if(!["translate","scale","combined","inside-shift"].includes(variant))throw new Error("Unknown point transformation");
+    if(!["translate","scale","combined","inside-shift","signal"].includes(variant))throw new Error("Unknown point transformation");
     if(variant==="translate"){transform.a="1";transform.b="1";}
     if(variant==="scale"){transform.h="0";transform.k="0";}
     const u=rng.integer(-5,5),v=rng.integer(-5,5),c=rng.integer(1,4)*(rng.integer(0,1)?1:-1);
     if(variant==="inside-shift")transform.h=formatRational(parseRational("("+(-c)+")/("+transform.b+")"));
     const mapped=mapPoint(transform,{x:String(u),y:String(v)});
     const rule=variant==="inside-shift"?"g(x)=("+transform.a+")f(("+transform.b+")x+("+c+"))+("+transform.k+")":transformationLatex(transform);
-    return questionSchema.parse({...base,category:"procedural",parameters:{...parameters(),u,v,c},
-      prompt:"The point ("+u+", "+v+") lies on y = f(x). For $"+rule+"$, find the corresponding point on y = g(x).",
-      fields:[rationalField("x","Transformed input",mapped.x),rationalField("y","Transformed output",mapped.y)],
+    return questionSchema.parse({...base,category:variant==="signal"?"application":"procedural",parameters:{...parameters(),u,v,c},
+      prompt:variant==="signal"?"A recorded voltage signal f(t), with t in seconds relative to a reference time, has value "+v+" V at t = "+u+" s. The edited signal is $"+rule.replaceAll("x","t")+"$. Find the time and voltage of the corresponding event. The scale factors a and b are dimensionless.":"The point ("+u+", "+v+") lies on y = f(x). For $"+rule+"$, find the corresponding point on y = g(x).",
+      fields:variant==="signal"?[{...rationalField("x","Event time",mapped.x),unit:"s"},{...rationalField("y","Transformed voltage",mapped.y),unit:"V"}]:[rationalField("x","Transformed input",mapped.x),rationalField("y","Transformed output",mapped.y)],
       hints:["Make the inner expression equal to the old input, then solve for the new input.","The outside operations act on the old output after the function has been evaluated.","The corresponding point is ("+mapped.x+", "+mapped.y+")."],
-      explanation:[variant==="inside-shift"?"Solve ("+transform.b+")x + ("+c+") = "+u+" for x.":"Solve ("+transform.b+")(x - ("+transform.h+")) = "+u+", giving x = ("+u+")/("+transform.b+") + ("+transform.h+").","The new output is ("+transform.a+")("+v+") + ("+transform.k+") = "+mapped.y+".","Horizontal coordinates use the inverse input operation. Applying the vertical rule to both coordinates would be incorrect."],
+      explanation:[variant==="signal"?"Match the inner time expression to the original event time: the new time is ("+u+")/("+transform.b+") + ("+transform.h+") = "+mapped.x+" s.":variant==="inside-shift"?"Solve ("+transform.b+")x + ("+c+") = "+u+" for x.":"Solve ("+transform.b+")(x - ("+transform.h+")) = "+u+", giving x = ("+u+")/("+transform.b+") + ("+transform.h+").","The new output is ("+transform.a+")("+v+") + ("+transform.k+") = "+mapped.y+".","Horizontal coordinates use the inverse input operation. Applying the vertical rule to both coordinates would be incorrect."],
       answerSummary:"("+mapped.x+", "+mapped.y+")."});
   }
   if(familyId==="mth-transform-description"){
