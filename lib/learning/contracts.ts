@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { parseRational } from "./rational";
+import { normalizeIntervals } from "./intervals";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -17,7 +18,9 @@ const numericField = z.object({
   absoluteTolerance: z.number().positive(), relativeTolerance: z.number().min(0).max(.1),
   unit: z.string().max(60).default(""),
 }).strict();
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField]);
+const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:rational.nullable(),upper:rational.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
+  .refine(field=>{try{normalizeIntervals(field.expected);return true;}catch{return false;}},"Invalid interval key");
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({

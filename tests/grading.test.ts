@@ -17,6 +17,12 @@ describe("answer checking", () => {
     expect(gradeField(approximate,"0.00101").correct).toBe(false);
     expect(gradeField(approximate,"").valid).toBe(false);
   });
+  it("checks complete intervals rather than only their endpoints",()=>{
+    const field=answerFieldSchema.parse({id:"set",kind:"intervals",label:"Solution set",expected:[{lower:null,upper:"2",lowerClosed:false,upperClosed:false},{lower:"2",upper:null,lowerClosed:false,upperClosed:false}]});
+    expect(gradeField(field,"(2,inf) U (-inf,2)").correct).toBe(true);
+    expect(gradeField(field,"R").correct).toBe(false);
+    expect(gradeField(field,"[-inf,2)").valid).toBe(false);
+  });
   it("rejects forged choices and provides misconception feedback", () => {
     expect(gradeField(choice,"unexpected").valid).toBe(false);
     expect(gradeField(choice,"all").message).toContain("Cancellation");
