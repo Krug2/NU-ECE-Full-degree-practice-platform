@@ -62,6 +62,7 @@ export const lessonSchema = z.object({
   interaction: z.discriminatedUnion("kind",[
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
+    z.object({ kind:z.literal("parabola-explorer"),prompt:text,a:z.number().int().min(-3).max(3).refine(value=>value!==0),h:z.number().int().min(-4).max(4),k:z.number().int().min(-5).max(5) }).strict(),
   ]),
   practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
   summary: z.array(text).min(2), retrieval: text,

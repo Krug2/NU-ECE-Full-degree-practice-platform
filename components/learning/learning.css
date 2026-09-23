@@ -52,3 +52,6 @@
 @media(max-width:1150px){.lesson-layout{grid-template-columns:minmax(0,1fr)}.lesson-nav{position:static;grid-row:1}.lesson-nav nav{display:flex;gap:18px;flex-wrap:wrap}.lesson-nav a{padding:3px 0}.lesson-main .panel{padding:24px}}
 @media(max-width:620px){.lesson-main .panel{padding:20px}.activity-controls{grid-template-columns:1fr}.question-prompt{font-size:16px}.answer-choice label{padding:10px}.attempt-navigation .button{flex:1}.lesson-history li{align-items:flex-start;flex-direction:column}}
 @media print{.lesson-nav,.lesson-main button,.attempt-session{display:none}.lesson-layout{display:block}.lesson-main .panel{border:0;padding:0}.worked-example{break-inside:avoid}}
+.function-figure { margin: 1rem 0 0; padding: 1rem; background: #f3f7f4; border-radius: 12px; }
+.function-figure svg { width: 100%; height: auto; display: block; }
+.function-figure figcaption { color: #203b3e; }
