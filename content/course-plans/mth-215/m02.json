@@ -1,0 +1,63 @@
+{
+  "id": "m02",
+  "title": "Functions, graphs, and models",
+  "requires": ["m01"],
+  "purpose": "Connect symbolic rules, graphs, tables, and physical interpretations without losing domain information.",
+  "bridgeIds": ["b01", "b05"],
+  "lessons": [
+    {
+      "id": "m02-l01",
+      "title": "Function notation, domains, and piecewise rules",
+      "objective": "Determine whether a relation is a function, evaluate it correctly, and describe its domain and range.",
+      "coverage": "Input-output notation, vertical-line test, graph/table/formula representations, piecewise boundaries, and algebraic versus contextual domain restrictions.",
+      "activity": "Enter an input into a piecewise sensor rule, predict which branch applies, and see the corresponding table row and graph point.",
+      "families": ["Evaluate and interpret a function from a rule, table, or graph", "Determine domains and endpoint behavior for piecewise, rational, and radical rules"],
+      "generatorRules": "Use explicit interval boundaries with exactly one assigned branch at each included input. Include a relation that fails uniqueness and distinguish a missing value from zero.",
+      "commonError": "Treating f(x) as multiplication, confusing domain with range, or selecting both branches at a boundary.",
+      "feedback": "Trace input, selected rule, and output separately; route coordinate difficulties to b05.",
+      "checkpoint": "Function classification, evaluation, domain, and a piecewise boundary item.",
+      "reading": ["os-3/3.1", "os-3/3.2"]
+    },
+    {
+      "id": "m02-l02",
+      "title": "Transformations and graph features",
+      "objective": "Predict how a transformation changes key points, intercepts, domain, and range.",
+      "coverage": "Translations, reflections, vertical and horizontal scales, parent functions, increasing/decreasing intervals, and local versus absolute extrema on a stated interval.",
+      "activity": "Predict the new location of three anchor points before changing a, b, h, and k in a*f(b*(x-h))+k. Compare the transformed table and graph.",
+      "families": ["Map original points through a specified transformation", "Identify a transformation and graph features from matching representations"],
+      "generatorRules": "Use nonzero a and b in scaling tasks; include negative b and fractional scale factors. Label the displayed viewing window so clipping is not mistaken for a domain restriction.",
+      "commonError": "Reversing a horizontal shift, treating a horizontal scale like a vertical one, or confusing the window with the function's domain.",
+      "feedback": "Solve b*(x-h)=oldInput for the new input and track one point before applying a visual rule.",
+      "checkpoint": "Translation, reflection/scale, domain-range, and increasing-interval items.",
+      "reading": ["os-3/3.3", "os-3/3.5"]
+    },
+    {
+      "id": "m02-l03",
+      "title": "Composition and inverse functions",
+      "objective": "Compose functions with valid input restrictions and determine whether a domain restriction is needed for an inverse.",
+      "coverage": "Order of composition, inner-output restrictions, one-to-one behavior, horizontal-line test, inverse notation, and verifying both compositions on their respective domains.",
+      "activity": "Connect two function machines in both orders. Predict whether a selected input reaches a valid output and compare the inverse machine with reciprocal values.",
+      "families": ["Compute a composition and its domain", "Find or reject an inverse and verify it using domain-aware composition"],
+      "generatorRules": "Use linear, quadratic-with-restriction, rational, and radical cases. Do not grade a formula alone as a complete inverse when its domain is missing.",
+      "commonError": "Assuming composition commutes or reading f inverse as 1/f.",
+      "feedback": "Follow one input through both machines and provide a counterexample when order matters.",
+      "checkpoint": "Two compositions in opposite orders, a restricted domain, and a verified inverse.",
+      "reading": ["os-3/3.4", "os-3/3.7"]
+    },
+    {
+      "id": "m02-l04",
+      "title": "Rates of change and linear calibration",
+      "objective": "Construct a linear model from two points, interpret its parameters with units, and judge the validity of a prediction.",
+      "coverage": "Average rate of change, slope-intercept and point-slope forms, difference quotients with nonzero increments, interpolation, extrapolation, and residuals against a third observation.",
+      "activity": "Calibrate a virtual sensor using two observations, predict a third, and adjust graph scale while preserving the numerical slope and its units.",
+      "families": ["Fit and invert a two-point linear model", "Compare average rates or identify an unjustified extrapolation from a finite data set"],
+      "generatorRules": "Require distinct calibration inputs; specify measurement units and an operating interval. Exact model tasks and noisy-data interpretation tasks must be labeled separately.",
+      "commonError": "Using output/input instead of change in output/change in input, swapping units, or assuming a model is valid everywhere.",
+      "feedback": "Show the two differences with unit labels, then ask whether the requested input lies inside the calibrated interval.",
+      "checkpoint": "Slope, equation, inverse prediction, and validity/residual interpretation.",
+      "reading": ["os-3/3.3", "os-4/4.1", "os-4/4.2"]
+    }
+  ],
+  "anchor": {"prompt":"A sensor reports 0.5 V at 0 degrees C and 2.5 V at 100 degrees C. Find the linear calibration and the temperature corresponding to 1.7 V.","answer":"V=0.02*T+0.5; T=(V-0.5)/0.02. The reading 1.7 V corresponds to 60 degrees C within the calibrated interval.","numericChecks":[0.02,0.5,60]},
+  "moduleExit": "Require agreement among formula, table, and graph on a new calibration example, in addition to the eight-item module quiz."
+}

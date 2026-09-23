@@ -1,0 +1,63 @@
+{
+  "id": "m01",
+  "title": "Equations and valid reasoning",
+  "requires": [],
+  "purpose": "Build a reliable method for changing an equation without silently changing its solution set.",
+  "bridgeIds": ["b01", "b02", "b03", "b04"],
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Linear equations and formula rearrangement",
+      "objective": "Isolate a specified variable, state any divisor restrictions, and verify a proposed solution by substitution.",
+      "coverage": "Balance operations, distributive signs, equations with fractions, identity versus contradiction, and rearranging a formula with several symbols.",
+      "activity": "A step checker shows two sides of an equation. Predict whether an operation preserves the solution set, apply it, and explain an invalid division by a possible zero.",
+      "families": ["Construct linear equations from a known rational solution, including all-real and no-solution cases", "Choose or complete a valid symbolic rearrangement with required parameter restrictions"],
+      "generatorRules": "Use small integers and rational coefficients. Deliberately label separate unique, identity, and contradiction families. Do not accidentally divide by a zero coefficient.",
+      "commonError": "Changing only one side, distributing a minus incorrectly, or dividing by a parameter without checking zero.",
+      "feedback": "Highlight the first operation that changes equivalence; route sign errors to b01 and distribution errors to b03.",
+      "checkpoint": "One numerical equation, one formula rearrangement, one identity/contradiction classification, and one invalid-step explanation.",
+      "reading": ["os-2/2.2", "os-2/2.3"]
+    },
+    {
+      "id": "m01-l02",
+      "title": "Inequalities and absolute value",
+      "objective": "Express the full solution set of a linear, compound, or absolute-value inequality with correct endpoints.",
+      "coverage": "Sign reversal after multiplying by a negative, interval and set notation, unions versus intersections, and distance interpretations of absolute value.",
+      "activity": "Predict an interval, enter its endpoints and inclusion flags, and compare its number-line representation with test values on either side of a boundary.",
+      "families": ["Generate a linear or compound inequality from a known interval", "Translate an absolute-value tolerance condition into an interval or union and back"],
+      "generatorRules": "Include strict and inclusive boundaries, negative multipliers, empty sets, and all-real cases. Infinity is never an included endpoint.",
+      "commonError": "Keeping the inequality direction after division by a negative, using AND where OR is needed, or including an open endpoint.",
+      "feedback": "Test a counterexample near the incorrect endpoint and reconnect absolute value with distance.",
+      "checkpoint": "A negative-coefficient inequality, a compound interval, an absolute-value case, and a tolerance interpretation.",
+      "reading": ["os-2/2.7", "os-3/3.6"]
+    },
+    {
+      "id": "m01-l03",
+      "title": "Quadratics and complex roots",
+      "objective": "Choose a quadratic solution method, return every root in the requested number system, and verify the roots.",
+      "coverage": "Factoring, square-root method, completing the square, quadratic formula, discriminant, repeated roots, i notation, and conjugate pairs.",
+      "activity": "Compare a parabola's real intercepts with an exact root list. Change the discriminant and explain why an empty real-root list can coexist with complex roots.",
+      "families": ["Construct quadratics with two real roots, a repeated root, or a complex conjugate pair", "Select the most direct method and identify an omitted plus-or-minus branch"],
+      "generatorRules": "Specify real or complex answers. Include rational and simple radical roots. Preserve multiplicity in a separate field when requested; do not confuse roots with x-intercepts.",
+      "commonError": "Dropping one square-root branch, treating sqrt(a+b) as sqrt(a)+sqrt(b), or reporting a complex root as a real intercept.",
+      "feedback": "Substitute both candidate roots and use the discriminant to classify the expected answer before recomputing.",
+      "checkpoint": "Factorable, completing-square, nonreal-root, and discriminant interpretation items.",
+      "reading": ["os-2/2.4", "os-2/2.5", "os-5/5.1"]
+    },
+    {
+      "id": "m01-l04",
+      "title": "Restrictions and extraneous solutions",
+      "objective": "Solve rational and radical equations while preserving original restrictions and rejecting invalid candidate roots.",
+      "coverage": "Original denominator exclusions, even-root domains, clearing denominators, squaring as a one-way implication, and checking candidates in the original equation.",
+      "activity": "Sort generated candidates into valid, excluded, and extraneous categories, then show which original condition rejects each one.",
+      "families": ["Solve rational equations whose clearing step creates an excluded candidate", "Solve radical equations whose squaring step creates an extraneous candidate"],
+      "generatorRules": "Generate from factored forms and verify every candidate against the original expression. Include zero, one, and two valid-root cases with explicit real domains.",
+      "commonError": "Accepting every root of the transformed equation or erasing a denominator restriction after cancellation.",
+      "feedback": "Show the original expression at the rejected candidate, then link b04 if the restriction was lost while simplifying.",
+      "checkpoint": "A rational equation, a radical equation, a complete restriction list, and an explanation of why squaring needs a check.",
+      "reading": ["os-1/1.6", "os-2/2.6"]
+    }
+  ],
+  "anchor": {"prompt":"Solve sqrt(x+6)=x over the real numbers.","answer":"x=3. Squaring produces candidates 3 and -2, but x must be nonnegative. The candidate -2 fails the original equation.","numericChecks":[3]},
+  "moduleExit": "Use the eight-item module blueprint, with two items per lesson. A restriction or extraneous-root error must receive targeted remediation even when the overall score is high."
+}
