@@ -1,0 +1,156 @@
+{
+  "id":"b05","courseId":"mth-215","moduleId":"foundations","version":1,
+  "title":"Coordinates, lines, and measurement labels",
+  "objective":"Read coordinates and scales, calculate rise over run, distinguish vertical and horizontal lines, and keep units attached to modeled quantities.",
+  "why":"A graph makes a relationship visible, but its meaning comes from its coordinates, scales, and units. Reading a graph by appearance alone can reverse a rate or introduce a factor-of-one-thousand error. This refresher connects points, lines, formulas, and measurements so you can use each representation to check the others.",
+  "estimatedMinutes":50,
+  "prerequisites":[{"label":"Signed numbers and fractions","lessonId":"b01"},{"label":"Powers and scientific notation","lessonId":"b02"}],
+  "sections":[
+    {
+      "heading":"Read an ordered pair in the stated order",
+      "paragraphs":[
+        "An ordered pair (x, y) records a horizontal coordinate first and a vertical coordinate second. Start at the origin, where both coordinates are zero. Positive horizontal movement goes right; negative horizontal movement goes left. Positive vertical movement goes up; negative vertical movement goes down.",
+        "The point (-3, 2) lies three horizontal units left of the origin and two vertical units above it. The point (2, -3) is different because the order matters. Locate both directions before choosing signs; the sign of one coordinate does not determine the other.",
+        "The four open quadrants have sign pairs (+,+), (-,+), (-,-), and (+,-), numbered counterclockwise starting at the upper right. Points on an axis do not belong to one of these open quadrants. If x is zero, the point lies on the vertical axis. If y is zero, it lies on the horizontal axis. The origin lies on both.",
+        "A negative coordinate is not automatically an impossible measurement. A signed position, voltage relative to a reference, or time offset can be negative. A mass or elapsed duration may have a more restricted domain. Read what the axis represents before attaching a physical interpretation to its sign."
+      ]
+    },
+    {
+      "heading":"Read each axis scale independently",
+      "paragraphs":[
+        "One grid interval need not mean one numerical unit. If horizontal ticks are labeled 0, 2, 4, and 6, each interval represents two units. A point three intervals right of zero has horizontal coordinate 6. Count the intervals and multiply by the scale, then apply the direction's sign.",
+        "The two axes can use different scales and different units. For a graph of voltage horizontally and current vertically, a point might represent (4 V, 15 mA). It is not meaningful to combine those coordinates into one unlabeled number. A tick on the vertical axis might represent 5 mA while a horizontal tick represents 2 V.",
+        "Always inspect labels near the origin and farther along each axis. Do not assume that a cropped graph starts at zero, that all displayed graphs use the same window, or that equal pixel distances represent equal quantities. This refresher uses evenly spaced linear axes, with zero and the tick values labeled.",
+        "Every graph here has a text description of the same tick positions. The description names the directions and interval counts; you still apply the stated scales. Use it to check a visual reading or as an alternative way to read the graph."
+      ]
+    },
+    {
+      "heading":"Slope compares two changes",
+      "paragraphs":[
+        "For two points A = (x_A, y_A) and B = (x_B, y_B) with different horizontal coordinates, slope is $m=(y_B-y_A)/(x_B-x_A)$. The numerator is the signed vertical change, often called rise. The denominator is the signed horizontal change, often called run. Both differences must use the same point order.",
+        "Reversing from A-to-B to B-to-A changes the sign of both differences, so the ratio is unchanged. Reversing only one difference changes the sign of the answer and is an error. Keep the subtraction parentheses visible when a coordinate is negative.",
+        "A positive slope means y increases as x increases. A negative slope means y decreases as x increases. These statements describe movement from left to right, regardless of the direction in which you happened to calculate the differences.",
+        "Slope has units of vertical quantity per horizontal quantity. If y is measured in meters and x in seconds, the slope has units m/s. If y is measured in mA and x in V, the slope has units mA/V. Swapping the units describes the reciprocal relationship, not the requested slope.",
+        "On a graph with different scales, count tick intervals and convert both changes to their numerical quantities before dividing. The visual angle of the line can change when the graph is stretched, even though the numerical relationship and its slope remain the same."
+      ]
+    },
+    {
+      "heading":"Zero slope and undefined slope mean different things",
+      "paragraphs":[
+        "A horizontal line has the same y-coordinate at every point. Between two distinct points, its rise is zero and its run is nonzero, so its slope is zero. It has an equation of the form y = b. The quantity on the vertical axis stays constant as the horizontal input changes.",
+        "A vertical line has the same x-coordinate at every point. Between two distinct points, its run is zero and its rise is nonzero, so rise divided by run is undefined. Its equation has the form x = a. Do not enter zero or infinity as a numerical slope for it.",
+        "A vertical line cannot be written as a single-valued rule y = mx + b with finite m. One x-coordinate would correspond to many y-coordinates. It is still a valid geometric line; it simply is not a function giving one y for each x.",
+        "Two identical points produce zero rise and zero run. They do not determine a unique line, so 0/0 cannot be used to assign a slope. In the investigation, choose two distinct points, including distinct points on a horizontal or vertical line."
+      ]
+    },
+    {
+      "heading":"Connect intercepts to a linear formula",
+      "paragraphs":[
+        "In y = mx + b, m is the slope and b is the y-coordinate of the vertical intercept. Setting x = 0 gives y = b, so the intercept point is (0, b). The intercept has the units of y, while the slope has units of y per x.",
+        "The horizontal intercept is found by setting y = 0. If m is nonzero, solving 0 = mx + b gives x = -b/m. Its coordinate pair is (-b/m, 0), and its horizontal coordinate has the units of x. The two intercepts answer different questions.",
+        "If m = 0, do not divide by m to find an intercept. A horizontal line y = b with b nonzero never reaches the horizontal axis. The line y = 0 lies on that axis, so every one of its points is on it. These cases explain why a formula's conditions matter.",
+        "For a position model d(t) = vt + d_0, the vertical intercept d_0 is the position at time zero, and the slope v is the signed change in position per second. A negative position can be valid relative to a chosen reference. Check the model's stated time interval before using an intercept or prediction outside it."
+      ]
+    },
+    {
+      "heading":"Convert units before combining quantities",
+      "paragraphs":[
+        "The prefix milli means one thousandth: 1000 ms = 1 s and 1000 mm = 1 m. To convert a numerical value from milliseconds to seconds, divide by 1000. To convert seconds to milliseconds, multiply by 1000. The value's sign stays the same.",
+        "Write a conversion factor whose units cancel. For example, $250\\ \\mathrm{ms}\\times(1\\ \\mathrm{s}/1000\\ \\mathrm{ms})=0.25\\ \\mathrm{s}$. The conversion factor represents a ratio of equal durations, so it changes the written number and unit without changing the duration.",
+        "A rate must use the requested units in both parts of its ratio. Traveling 3 m in 250 ms gives 3/0.25 = 12 m/s. Dividing 3 by 250 gives 0.012 m/ms, which describes the same rate in different units. Writing 0.012 m/s would be a factor-of-one-thousand error.",
+        "Estimate the direction of a conversion before calculating. The same duration contains many milliseconds but fewer seconds. A rate per second has a larger numerical value than the same rate per millisecond, because one second contains more time. This check can catch a reversed conversion factor.",
+        "Use the precision stated by the problem. In the exact practice questions, keep the given values and fractions exact until an approximation is requested. Relabeling a measured value or changing units does not make the underlying measurement more precise."
+      ]
+    }
+  ],
+  "examples":[
+    {
+      "title":"Read coordinates using two different scales",
+      "prompt":"A point is three tick intervals right of the vertical axis and two intervals below the horizontal axis. Horizontal intervals represent 5 ms; vertical intervals represent 2 V.",
+      "steps":[
+        {"math":"x=3(5)=15\\ \\mathrm{ms}","reason":"Rightward movement is positive. Multiply its interval count by the horizontal scale."},
+        {"math":"y=-2(2)=-4\\ \\mathrm{V}","reason":"Downward movement is negative. Use the vertical scale independently."},
+        {"math":"(x,y)=(15\\ \\mathrm{ms},-4\\ \\mathrm{V})","reason":"Write the horizontal coordinate first and keep each measurement's unit."}
+      ],
+      "conclusion":"The point is (15 ms, -4 V), not (3, -2). Tick counts become coordinates only after applying their scales."
+    },
+    {
+      "title":"Find a signed slope and its units",
+      "prompt":"Find the slope through (2 V, 7 mA) and (6 V, 1 mA).",
+      "steps":[
+        {"math":"\\Delta y=1-7=-6\\ \\mathrm{mA},\\qquad \\Delta x=6-2=4\\ \\mathrm{V}","reason":"Use the same point order for the vertical and horizontal changes."},
+        {"math":"m=\\frac{-6\\ \\mathrm{mA}}{4\\ \\mathrm{V}}=-\\frac32\\ \\mathrm{mA/V}","reason":"Divide rise by run and reduce the fraction exactly."},
+        {"math":"\\frac{7-1}{2-6}=\\frac6{-4}=-\\frac32","reason":"Reversing both differences gives the same numerical slope."}
+      ],
+      "conclusion":"The line's slope is -3/2 mA per V: the vertical quantity decreases as the horizontal quantity increases."
+    },
+    {
+      "title":"Compare a horizontal line and a vertical line",
+      "prompt":"Compare the line through (-3, 2) and (4, 2) with the line through (1, -2) and (1, 3).",
+      "steps":[
+        {"math":"m_1=\\frac{2-2}{4-(-3)}=\\frac07=0","reason":"The first pair has equal vertical coordinates and a nonzero horizontal change."},
+        {"math":"y=2","reason":"Every point on that horizontal line has vertical coordinate 2."},
+        {"math":"\\Delta y=3-(-2)=5,\\qquad\\Delta x=1-1=0","reason":"The second pair has zero horizontal change and nonzero vertical change."},
+        {"math":"x=1","reason":"The second line is vertical. Its slope is undefined because the ratio would divide by zero."}
+      ],
+      "conclusion":"Horizontal means zero slope; vertical means undefined slope. Both examples use distinct points."
+    },
+    {
+      "title":"Convert time before calculating a rate",
+      "prompt":"A distance increases by 3 m during 250 ms. Find the average rate in m/s.",
+      "steps":[
+        {"math":"250\\ \\mathrm{ms}\\cdot\\frac{1\\ \\mathrm{s}}{1000\\ \\mathrm{ms}}=\\frac14\\ \\mathrm{s}","reason":"The millisecond units cancel, leaving the interval in seconds."},
+        {"math":"\\frac{3\\ \\mathrm{m}}{(1/4)\\ \\mathrm{s}}=12\\ \\mathrm{m/s}","reason":"Dividing by one quarter multiplies the numerical value by four."},
+        {"math":"12\\ \\mathrm{m/s}\\cdot\\frac14\\ \\mathrm{s}=3\\ \\mathrm{m}","reason":"Multiplying the rate by the original duration checks both the magnitude and the units."}
+      ],
+      "conclusion":"The average rate is 12 m/s. Keep the time unit visible until it cancels."
+    },
+    {
+      "title":"Interpret both intercepts of a position model",
+      "prompt":"For $d(t)=-2t+7$ meters over the interval $0\\le t\\le4$ seconds, find the initial position, the position at t = 3, and the time when the position is zero.",
+      "steps":[
+        {"math":"d(0)=-2(0)+7=7\\ \\mathrm{m}","reason":"The vertical intercept gives the initial position, not the rate."},
+        {"math":"d(3)=-2(3)+7=1\\ \\mathrm{m}","reason":"Substitute the requested time into the complete formula."},
+        {"math":"0=-2t+7\\Longrightarrow t=7/2\\ \\mathrm{s}","reason":"A horizontal intercept occurs where the vertical position is zero."},
+        {"math":"0\\le7/2\\le4","reason":"Check that the computed crossing lies inside the model's stated time interval."}
+      ],
+      "conclusion":"The vertical intercept is (0 s, 7 m), the position at 3 s is 1 m, and the horizontal intercept is (3.5 s, 0 m). The slope is -2 m/s."
+    }
+  ],
+  "guided":{
+    "title":"Read a point with different axis scales",
+    "setup":"Use the labeled graph to identify point A's voltage and current coordinates.",
+    "before":["The horizontal axis increases by 2 V per tick interval.","The vertical axis increases by 5 mA per tick interval.","Use the point's direction from each axis to choose the sign of each coordinate."],
+    "question":{
+      "id":"guided-coordinates","familyId":"mth-coordinates-guided","familyVersion":1,"courseId":"mth-215","objectiveId":"b05","category":"conceptual","critical":true,
+      "prompt":"Give the horizontal coordinate first and the vertical coordinate second.",
+      "figure":{"kind":"coordinates","title":"Guided point A","xLabel":"Voltage (V)","yLabel":"Current (mA)","xStep":2,"yStep":5,"points":[{"name":"A","xTicks":-2,"yTicks":3}]},
+      "fields":[{"id":"x","kind":"rational","label":"Point A voltage","expected":"-4","unit":"V"},{"id":"y","kind":"rational","label":"Point A current","expected":"15","unit":"mA"}],
+      "parameters":{},"hints":["A is left of the vertical axis and above the horizontal axis.","Its horizontal displacement is -2 tick intervals and its vertical displacement is +3 intervals.","The coordinates are -4 V and 15 mA."],
+      "explanation":["The horizontal coordinate is -2 times 2 V, or -4 V.","The vertical coordinate is 3 times 5 mA, or 15 mA. The coordinate order is voltage first, current second."],
+      "answerSummary":"(-4 V, 15 mA)"
+    },
+    "after":"Coordinate order, sign, scale, and unit all contribute to the meaning of a plotted point."
+  },
+  "interaction":{"kind":"line-lab","prompt":"Move two points using their coordinate inputs and predict the slope. Build rising, falling, horizontal, and vertical lines. Swap A with B to test whether the point order changes the slope.","ax":-2,"ay":-1,"bx":2,"by":3},
+  "practice":[
+    {"familyId":"mth-coordinate-read","variant":"scaled"},{"familyId":"mth-coordinate-read","variant":"axes"},
+    {"familyId":"mth-line-slope","variant":"general"},{"familyId":"mth-line-slope","variant":"horizontal"},{"familyId":"mth-line-slope","variant":"vertical"},
+    {"familyId":"mth-measurement-units","variant":"ms-to-s"},{"familyId":"mth-measurement-units","variant":"s-to-ms"},{"familyId":"mth-measurement-units","variant":"mm-to-m"},{"familyId":"mth-measurement-units","variant":"rate"},
+    {"familyId":"mth-linear-intercept","variant":"position"}
+  ],
+  "checkpoint":[{"familyId":"mth-coordinate-read","variant":"scaled"},{"familyId":"mth-line-slope","variant":"general"},{"familyId":"mth-measurement-units","variant":"ms-to-s"},{"familyId":"mth-linear-intercept","variant":"position"}],
+  "summary":[
+    "Read horizontal then vertical, and apply each axis's own sign, scale, and unit.",
+    "Slope is signed vertical change divided by signed horizontal change, using the same point order in both differences.",
+    "Horizontal lines have zero slope. Vertical lines have undefined slope. Identical points do not determine a unique line.",
+    "The vertical intercept gives the output at zero input; its units differ from those of the slope.",
+    "The prefix milli means one thousandth. Convert the interval before reporting a rate in base units.",
+    "A model's domain and measurement precision remain relevant after a calculation."
+  ],
+  "retrieval":"Read a point two horizontal ticks left and three vertical ticks down when the scales are 5 V and 2 mA per tick. Explain the slope of a horizontal line, convert -625 ms to seconds, and interpret the intercept in d(t)=3t-4 meters.",
+  "readings":[
+    {"title":"OpenStax: The Rectangular Coordinate Systems and Graphs","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-1-the-rectangular-coordinate-systems-and-graphs","purpose":"Review ordered pairs, graph windows, scales, and intercepts."},
+    {"title":"OpenStax: Linear Functions","url":"https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-1-linear-functions","purpose":"Further examples connecting slopes, intercepts, units, and linear models."}
+  ]
+}
