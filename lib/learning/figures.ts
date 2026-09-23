@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { piecewiseSchema } from "./piecewise";
+import { transformedFunctionSchema } from "./transformations";
 
 export const coordinatePointSchema = z.object({ name: z.string().regex(/^[A-D]$/), xTicks: z.number().int().min(-4).max(4), yTicks: z.number().int().min(-4).max(4) }).strict();
 export const coordinateFigureSchema = z.object({
@@ -18,7 +19,12 @@ export const piecewiseFigureSchema = z.object({
   kind: z.literal("piecewise"), title: z.string().min(1).max(100),
   xLabel: z.string().min(1).max(40), yLabel: z.string().min(1).max(40), model: piecewiseSchema,
 }).strict();
-export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema, piecewiseFigureSchema]);
+export const transformedFigureSchema = z.object({
+  kind:z.literal("transformed-function"),title:z.string().min(1).max(100),model:transformedFunctionSchema,
+  extent:z.number().int().min(2).max(24).default(12),showParent:z.boolean().default(false),
+}).strict();
+export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema, piecewiseFigureSchema, transformedFigureSchema]);
+export type TransformedFigure = z.infer<typeof transformedFigureSchema>;
 export type PiecewiseFigure = z.infer<typeof piecewiseFigureSchema>;
 export type TriangleFigure = z.infer<typeof triangleFigureSchema>;
 export type QuestionFigureData = z.infer<typeof questionFigureSchema>;
