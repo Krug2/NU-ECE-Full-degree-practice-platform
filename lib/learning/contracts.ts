@@ -5,6 +5,7 @@ import { equalExact, parseExact, realExact } from "./exact-number";
 import { degree, parsePolynomial } from "./polynomial";
 import { commonFactorDegree, parseRationalExpression } from "./rational-expression";
 import { questionFigureSchema, piecewiseFigureSchema } from "./figures";
+import { transformedFunctionSchema } from "./transformations";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -94,6 +95,7 @@ export const lessonSchema = z.object({
     z.object({kind:z.literal("line-lab"),prompt:text,ax:z.number().int().min(-4).max(4),ay:z.number().int().min(-4).max(4),bx:z.number().int().min(-4).max(4),by:z.number().int().min(-4).max(4)}).strict().refine(value=>value.ax!==value.bx||value.ay!==value.by,"A line investigation needs distinct points"),
     z.object({kind:z.literal("triangle-calculator"),prompt:text,degrees:z.number().int().min(1).max(89),hypotenuse:z.number().int().min(1).max(20)}).strict(),
     z.object({kind:z.literal("piecewise-lab"),prompt:text,cases:z.array(piecewiseFigureSchema).min(2).max(4),initialInput:rational}).strict(),
+    z.object({kind:z.literal("transformation-lab"),prompt:text,model:transformedFunctionSchema,extent:z.number().int().min(2).max(24)}).strict(),
   ]),
   practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
   summary: z.array(text).min(2), retrieval: text,
