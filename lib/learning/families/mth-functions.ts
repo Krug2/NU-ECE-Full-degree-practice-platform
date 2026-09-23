@@ -15,8 +15,8 @@ export function functionQuestion(familyId: string, variant: string, seed: string
   const graph = (title: string) => ({ kind: "coordinates", title, xLabel: "Input x", yLabel: "Output y", xStep: 1, yStep: 1, points: xs.map((x,index) => ({ name: "ABCD"[index], xTicks: x, yTicks: ys[index] })) });
   const pairParameters = () => Object.fromEntries(xs.flatMap((x,i) => [["x"+i,x],["y"+i,ys[i]]]));
   if (familyId === "mth-function-relation") {
-    if (!["table-function","table-conflict","graph-function","graph-conflict","repeated-pair"].includes(variant)) throw new Error("Unknown relation variant");
-    const conflict = variant.endsWith("conflict"), repeated = variant === "repeated-pair", plotted = variant.startsWith("graph");
+    if (!["table-function","table-conflict","graph-function","graph-conflict","graph-mixed","repeated-pair"].includes(variant)) throw new Error("Unknown relation variant");
+    const conflict = variant.endsWith("conflict") || variant === "graph-mixed" && rng.integer(0,1) === 1, repeated = variant === "repeated-pair", plotted = variant.startsWith("graph");
     ys[2] = ys[0];
     if (conflict || repeated) xs[3] = xs[0];
     if (repeated) ys[3] = ys[0];

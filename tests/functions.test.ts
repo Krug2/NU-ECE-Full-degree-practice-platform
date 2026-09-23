@@ -16,7 +16,8 @@ function item(family: string, variant: string, seed: number) {
   visit(question); return question;
 }
 it("classifies finite relations without confusing repeated outputs or identical pairs with conflicts", () => {
-  for (let seed=0;seed<50;seed++) for (const variant of ["table-function","table-conflict","graph-function","graph-conflict","repeated-pair"]) {
+  const mixedAnswers=new Set<boolean>();
+  for (let seed=0;seed<50;seed++) for (const variant of ["table-function","table-conflict","graph-function","graph-conflict","graph-mixed","repeated-pair"]) {
     const q=item("mth-function-relation",variant,seed), p=q.parameters;
     const pairs=Array.from({length:4},(_,i)=>[p["x"+i],p["y"+i]]);
     const unique=new Map<number,Set<number>>();
@@ -25,7 +26,7 @@ it("classifies finite relations without confusing repeated outputs or identical 
     const answer={classification:isFunction?"yes":"no",domain:[...unique.keys()].join(","),range:[...new Set(pairs.map(pair=>pair[1]))].join(",")};
     expect(gradeQuestion(q,answer).correct).toBe(true);
     expect(gradeQuestion(q,{...answer,classification:isFunction?"no":"yes"}).correct).toBe(false);
-    expect(isFunction).toBe(!variant.endsWith("conflict"));
+    if(variant==="graph-mixed") mixedAnswers.add(isFunction); else expect(isFunction).toBe(!variant.endsWith("conflict"));
     if(q.figure?.kind==="coordinates") expect(q.figure.points.map(point=>[point.xTicks,point.yTicks])).toEqual(pairs);
   }
 });
