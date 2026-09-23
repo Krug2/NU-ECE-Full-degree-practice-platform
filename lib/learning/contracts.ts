@@ -27,6 +27,7 @@ const numericField = z.object({
 const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:rational.nullable(),upper:rational.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
   .refine(field=>{try{normalizeIntervals(field.expected);return true;}catch{return false;}},"Invalid interval key");
 const exactField = z.object({ ...fieldBase, kind: z.literal("exact"), expected: exact, unit: z.string().max(60).default("") }).strict();
+const piField = z.object({ ...fieldBase, kind: z.literal("pi-multiple"), expected: rational, unit: z.string().max(60).default("") }).strict();
 const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: z.array(exact).max(8), numberSystem: z.enum(["real", "complex"]), unit: z.string().max(60).default("") }).strict()
   .refine(field => {
     try {
@@ -47,7 +48,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField, rationalExpressionField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField, rationalExpressionField, piField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({

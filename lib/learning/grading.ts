@@ -4,6 +4,7 @@ import type { AnswerField, Question, Response } from "./contracts";
 import { equalExact, equalRootSets, parseExact, parseRootSet, realExact } from "./exact-number";
 import { checkPolynomialForm, parsePolynomial } from "./polynomial";
 import { checkRationalExpression } from "./rational-expression";
+import { parsePiMultiple } from "./angles";
 
 export type FieldResult = { correct: boolean; valid: boolean; message: string };
 export function gradeField(field: AnswerField, input: string): FieldResult {
@@ -13,6 +14,10 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     return choice ? { correct: choice.id === field.correct, valid: true, message: choice.feedback } : { correct: false, valid: false, message: "Choose one of the available answers." };
   }
   try {
+    if (field.kind === "pi-multiple") {
+      const correct = equalRational(parsePiMultiple(input), parseRational(field.expected));
+      return { correct, valid: true, message: correct ? "This is the correct exact multiple of pi." : "Use 180 degrees = pi radians and keep the coefficient of pi exact." };
+    }
     if (field.kind === "rational-expression") return { ...checkRationalExpression(input, field.expected), valid: true };
     if (field.kind === "polynomial") return { ...checkPolynomialForm(input, parsePolynomial(field.expected), field), valid: true };
     if (field.kind === "exact") {
