@@ -1,0 +1,30 @@
+# Local planning and Markdown documents
+*.[mM][dD]
+*.[mM][dD][xX]
+*.[mM][aA][rR][kK][dD][oO][wW][nN]
+/planning/
+/private/
+/tmp/
+
+# Dependencies and generated output
+node_modules/
+.next/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.log
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+Thumbs.db
