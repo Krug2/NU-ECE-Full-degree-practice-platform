@@ -1,0 +1,355 @@
+{
+  "id": "b06",
+  "courseId": "mth-215",
+  "moduleId": "foundations",
+  "version": 1,
+  "title": "Right triangles and calculator use",
+  "objective": "Use the Pythagorean relation, identify the side opposite an angle, enter parentheses correctly, and check degree versus radian mode.",
+  "why": "Right triangles connect lengths, angles, and component measurements. This refresher gives you a reliable way to choose sides, preserve units, and check a calculator result before using it in later trigonometry or physics.",
+  "estimatedMinutes": 60,
+  "prerequisites": [
+    {
+      "label": "Signed numbers and fractions",
+      "lessonId": "b01"
+    },
+    {
+      "label": "Powers and roots",
+      "lessonId": "b02"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Identify the triangle before calculating",
+      "paragraphs": [
+        "A right triangle has one 90-degree angle. Its other two angles are acute, meaning greater than 0 degrees and less than 90 degrees. Because the three interior angles of a triangle add to 180 degrees, the two acute angles add to 90 degrees.",
+        "The hypotenuse is the side across from the right angle, and it is longer than either leg. Find the right-angle marker first. Rotating a drawing, changing its orientation, or choosing a different acute reference angle cannot change which side is the hypotenuse.",
+        "The opposite side is across from the chosen reference angle and does not touch its vertex. The adjacent leg touches that angle and is not the hypotenuse. Although the hypotenuse also touches the angle, it is excluded when a trigonometric ratio calls for the adjacent leg.",
+        "In the diagrams here, A is the right-angle vertex, so BC is always the hypotenuse. When the reference angle is at B, AC is opposite and AB is adjacent. When the reference angle is at C, AB is opposite and AC is adjacent. Label the reference angle before assigning these roles.",
+        "These drawings are schematic. Use their labels and right-angle marker, not measured pixels or the apparent steepness of a side. Each diagram also includes a side-information table and a text description."
+      ]
+    },
+    {
+      "heading": "Use squared lengths and the positive root",
+      "paragraphs": [
+        "For legs a and b and hypotenuse h, the Pythagorean relation is $a^2+b^2=h^2$. It applies to right triangles. Do not apply it to an arbitrary triangle just because three side lengths appear in a problem.",
+        "If both legs are known, the hypotenuse is $h=\\sqrt{a^2+b^2}$. If the hypotenuse and one leg are known, the other leg is $a=\\sqrt{h^2-b^2}$. The change from addition to subtraction comes from solving the same equation for the missing squared length.",
+        "A geometric side length is positive, so take the positive square root. Solving an unrestricted equation x squared = 25 gives x = -5 or x = 5; a triangle side whose square is 25 cm squared has length 5 cm.",
+        "Keep the whole sum or difference under the square root. Enter sqrt(13^2 - 5^2) for the missing leg of a triangle with hypotenuse 13 and known leg 5. The expression sqrt(13^2) - 5^2 is a different calculation because its subtraction is outside the root.",
+        "Check the data and the result. The hypotenuse must be strictly longer than either leg, and all three side lengths must be positive. A proposed hypotenuse equal to a leg would force the other leg to be zero, which is not a triangle. A smaller proposed hypotenuse would give a negative squared length.",
+        "Use consistent length units before squaring. Adding 3 cm squared to 4 m squared as if the numbers had the same units is invalid. When exact lengths are requested, retain the radical, such as sqrt(74), rather than rounding it."
+      ]
+    },
+    {
+      "heading": "Choose a trigonometric ratio from the reference angle",
+      "paragraphs": [
+        "For an acute angle $\\theta$ in a right triangle, $\\sin\\theta=\\text{opposite}/\\text{hypotenuse}$, $\\cos\\theta=\\text{adjacent}/\\text{hypotenuse}$, and $\\tan\\theta=\\text{opposite}/\\text{adjacent}$. The names of the legs depend on the marked angle.",
+        "A useful sequence is to identify the reference angle, label the three side roles, select the ratio, and only then substitute lengths. This protects you from using the correct formula with the wrong leg.",
+        "These ratios are dimensionless when both lengths use the same unit. For example, (6 cm)/(10 cm) = 3/5. The centimeter units cancel. Converting both lengths to meters leaves the ratio unchanged.",
+        "Similar right triangles have the same angles and proportional side lengths. Multiplying every length by the same positive factor changes the triangle's size but not its sine, cosine, or tangent ratios. In the investigation, change the hypotenuse while keeping the target angle fixed to observe this.",
+        "For an acute angle, sine and cosine lie strictly between 0 and 1 because each divides a leg by the longer hypotenuse. Tangent is positive but can exceed 1 because the opposite leg can be longer than the adjacent leg. These are useful checks for this right-triangle setting."
+      ]
+    },
+    {
+      "heading": "Degrees and radians describe the same angle in different units",
+      "paragraphs": [
+        "A full turn is $360^\\circ$, a half turn is $180^\\circ$, and a right angle is $90^\\circ$. Radian measure compares a circular arc's length with its radius: $\\theta=s/r$ when s and r have the same length unit. A half-circle arc has length $\\pi r$, so a half turn is $\\pi$ radians.",
+        "Use $180^\\circ=\\pi\\ \\mathrm{rad}$ as the conversion relationship. Multiply a degree measure by $\\pi/180$ to obtain radians. Multiply a radian measure by $180/\\pi$ to obtain degrees. The factors convert the angle before any trigonometric function is evaluated.",
+        "For example, $30^\\circ=30\\pi/180=\\pi/6$ radians, and $(3\\pi/4)(180/\\pi)=135^\\circ$. A full turn is $2\\pi$ radians. Zero converts to zero, and a negative directed angle keeps its negative sign. The conversion rule also applies to angles beyond the acute angles of a triangle.",
+        "Keep pi exact when an exact radian measure is requested. In an answer field, write pi/6, 3*pi/4, or -pi/2. A rounded decimal such as 0.524 describes an approximation to pi/6, not its exact value. You will study arc length and angles around the full circle in the main trigonometry module."
+      ]
+    },
+    {
+      "heading": "Make the calculator mode agree with the input",
+      "paragraphs": [
+        "The number typed inside sine is interpreted in the selected angle unit. In DEG mode, sin(30) means $\\sin(30^\\circ)=1/2$. In RAD mode, sin(pi/6) also gives 1/2. These inputs describe the same angle.",
+        "Leaving the number 30 in the input while switching to RAD mode asks for the sine of 30 radians. That result is approximately -0.988032. The calculator is evaluating the angle you entered in its selected mode, so the unexpected result is a reason to check the input and mode together.",
+        "Repair a mode mismatch by changing the mode to match the degree input, or by converting the input angle to radians. Do not multiply the displayed sine result by pi/180. A sine result is a ratio, not an angle to convert.",
+        "Parentheses belong to the calculation's structure. Enter sin(pi/6) so the entire angle is inside the function. For a ratio with compound parts, group the full numerator and denominator. Read the expression back from the display before accepting its result.",
+        "A matching output alone does not prove that two angles are the same: 30 degrees and 150 degrees both have sine 1/2. Compare the interpreted angle as well as the result. The investigation shows both, and deliberately preserves your typed input when you change modes."
+      ]
+    },
+    {
+      "heading": "Solve for a side or recover an acute angle",
+      "paragraphs": [
+        "If the hypotenuse h and acute angle $\\theta$ are known, multiply the ratio definitions by h: opposite $=h\\sin\\theta$ and adjacent $=h\\cos\\theta$. The other acute angle is $90^\\circ-\\theta$.",
+        "When two side lengths are known, use an appropriate inverse trigonometric function to find the acute angle. For example, $\\theta=\\arctan(\\text{opposite}/\\text{adjacent})$. You can also use arcsine with opposite/hypotenuse or arccosine with adjacent/hypotenuse.",
+        "The notation $\\sin^{-1}(u)$ on many calculators means inverse sine, also called arcsine. It does not mean $1/\\sin(u)$. An inverse trigonometric function takes a ratio and returns an angle; a reciprocal calculation returns another ratio.",
+        "The angle mode affects the output of an inverse trigonometric function. If a question requests degrees, use the calculator's degree output or convert its radian output to degrees. A ratio of 3/4 gives an inverse-tangent result of approximately 36.8699 degrees, or approximately 0.6435 radians.",
+        "In this refresher, all triangle angles being recovered are acute, and positive side ratios select the appropriate acute answer. Finding every angle that satisfies a trigonometric equation is a broader task handled later. Do not add a second nonacute angle to a right triangle."
+      ]
+    },
+    {
+      "heading": "Check precision, units, and the whole triangle",
+      "paragraphs": [
+        "Keep full calculator precision during intermediate steps and round only the requested final values. Rounding an angle before using it to find a side can produce avoidable disagreement. If a question requests an exact fraction or radical, preserve that form instead.",
+        "The practice states its required precision. Side approximations to the nearest 0.01 cm are checked within 0.005 cm. Angle approximations to the nearest 0.1 degree are checked within 0.05 degree. Calculator sine comparisons allow an absolute error of 0.0005. Extra correct decimal places are accepted.",
+        "Check that the computed legs are positive and shorter than the hypotenuse. Square the legs and verify that their sum approximately equals the hypotenuse squared. Check that the two acute angles add to 90 degrees. Small discrepancies can arise when checking already-rounded values.",
+        "Write units for lengths and angles, but not for a same-unit trigonometric ratio. State which side or angle you found. A number can be arithmetically correct and still answer the wrong question if its reference angle, side label, or unit is wrong."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Keep the hypotenuse fixed while the reference angle changes",
+      "prompt": "Triangle ABC is right at A. AB = 3 cm, AC = 4 cm, and BC = 5 cm. Find sine and cosine for the acute angles at B and C.",
+      "steps": [
+        {
+          "math": "\\sin B=AC/BC=4/5,\\qquad\\cos B=AB/BC=3/5",
+          "reason": "Relative to B, AC is opposite and AB is the adjacent leg. BC is the hypotenuse."
+        },
+        {
+          "math": "\\sin C=AB/BC=3/5,\\qquad\\cos C=AC/BC=4/5",
+          "reason": "Relative to C, the two leg roles switch. BC remains across from the right angle at A."
+        },
+        {
+          "math": "(4/5)^2+(3/5)^2=16/25+9/25=1",
+          "reason": "The squared sine and cosine ratios are consistent with the Pythagorean relation."
+        }
+      ],
+      "conclusion": "Name the reference angle first. Opposite and adjacent may switch, while the hypotenuse never does."
+    },
+    {
+      "title": "Preserve an exact hypotenuse and group a missing-leg calculation",
+      "prompt": "First find the exact hypotenuse when the legs are 5 cm and 7 cm. Then find the missing leg in a different right triangle with hypotenuse 13 cm and known leg 5 cm.",
+      "steps": [
+        {
+          "math": "h^2=5^2+7^2=74,\\qquad h=\\sqrt{74}\\ \\mathrm{cm}",
+          "reason": "Both given lengths are legs, so add their squares and take the positive root."
+        },
+        {
+          "math": "a^2=13^2-5^2=169-25=144",
+          "reason": "In the second triangle, isolate the missing leg's square by subtracting the known leg's square."
+        },
+        {
+          "math": "a=\\sqrt{13^2-5^2}=\\sqrt{144}=12\\ \\mathrm{cm}",
+          "reason": "The entire difference belongs under the square root. Enter sqrt(13^2 - 5^2)."
+        },
+        {
+          "math": "12^2+5^2=144+25=169=13^2",
+          "reason": "Substitute the result into the original squared-length relationship."
+        }
+      ],
+      "conclusion": "The first answer is sqrt(74) cm exactly. The second answer is 12 cm. sqrt(13^2) - 5^2 would give -12 and cannot represent the requested side length."
+    },
+    {
+      "title": "Match equivalent angles to their calculator modes",
+      "prompt": "Convert 30 degrees to radians and -3pi/4 radians to degrees. Then calculate the sine of the 30-degree angle in both modes.",
+      "steps": [
+        {
+          "math": "30\\cdot\\frac{\\pi}{180}=\\frac{\\pi}{6}",
+          "reason": "Multiply a degree measure by pi/180 to obtain its exact radian measure."
+        },
+        {
+          "math": "-\\frac{3\\pi}{4}\\cdot\\frac{180}{\\pi}=-135^\\circ",
+          "reason": "The pi factors cancel when converting radians to degrees; retain the negative sign."
+        },
+        {
+          "math": "\\sin(30^\\circ)=\\sin(\\pi/6)=\\frac12",
+          "reason": "Use 30 in DEG mode or pi/6 in RAD mode. The ratio is the same because the angle is the same."
+        },
+        {
+          "math": "\\sin(30\\ \\mathrm{rad})\\approx-0.988032",
+          "reason": "The bare number 30 in RAD mode represents a different angle, demonstrating a mode mismatch."
+        }
+      ],
+      "conclusion": "Convert the input angle or select the matching mode. Do not convert the sine result as though it were an angle."
+    },
+    {
+      "title": "Solve a right triangular panel from an angle and its hypotenuse",
+      "prompt": "A panel is modeled as a right triangle with hypotenuse 10 cm and an acute reference angle of 35 degrees. Find its legs and other acute angle.",
+      "steps": [
+        {
+          "math": "o=10\\sin(35^\\circ)\\approx5.735764\\ \\mathrm{cm}",
+          "reason": "Sine is opposite over hypotenuse, so multiply the hypotenuse by sine to recover the opposite leg."
+        },
+        {
+          "math": "a=10\\cos(35^\\circ)\\approx8.191520\\ \\mathrm{cm}",
+          "reason": "Cosine uses the adjacent leg, always relative to the same 35-degree angle."
+        },
+        {
+          "math": "\\phi=90^\\circ-35^\\circ=55^\\circ",
+          "reason": "The two acute angles of a right triangle are complementary."
+        },
+        {
+          "math": "(5.735764)^2+(8.191520)^2\\approx100=10^2",
+          "reason": "Check squared lengths using the unrounded calculator values when available."
+        }
+      ],
+      "conclusion": "To the nearest 0.01 cm, the opposite leg is 5.74 cm and the adjacent leg is 8.19 cm. The other acute angle is 55 degrees."
+    },
+    {
+      "title": "Recover an acute angle from two legs",
+      "prompt": "The opposite and adjacent legs relative to theta measure 3 cm and 4 cm. Find theta and the other acute angle to the nearest 0.1 degree.",
+      "steps": [
+        {
+          "math": "\\tan\\theta=\\frac{3\\ \\mathrm{cm}}{4\\ \\mathrm{cm}}=\\frac34",
+          "reason": "The unit cancels from the ratio. Both lengths are relative to the specified angle."
+        },
+        {
+          "math": "\\theta=\\arctan(3/4)\\approx36.869898^\\circ",
+          "reason": "Apply inverse tangent and request degree output. Keep this value for the next calculation."
+        },
+        {
+          "math": "\\phi=90^\\circ-\\theta\\approx53.130102^\\circ",
+          "reason": "Subtract the unrounded angle from 90 degrees before rounding the final result."
+        },
+        {
+          "math": "\\tan(36.869898^\\circ)\\approx0.75",
+          "reason": "Applying tangent to the computed angle checks that it recovers the original ratio."
+        }
+      ],
+      "conclusion": "Theta is approximately 36.9 degrees and the other acute angle is approximately 53.1 degrees. Inverse tangent returns an angle, not the reciprocal 4/3."
+    }
+  ],
+  "guided": {
+    "title": "Find a missing length before forming a ratio",
+    "setup": "Triangle ABC has its right angle at A and its marked acute angle at B. Use the two given legs to find BC, then calculate sine of the marked angle.",
+    "before": [
+      "AB is 6 cm and AC is 8 cm.",
+      "BC is across from the right angle at A.",
+      "Decide which leg is opposite B before calculating sine."
+    ],
+    "question": {
+      "id": "guided-triangle",
+      "familyId": "mth-triangle-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "b06",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Give the positive hypotenuse length and the exact sine ratio for theta at B.",
+      "figure": {
+        "kind": "right-triangle",
+        "title": "Guided triangle ABC",
+        "angleAt": "B",
+        "AB": "6 cm",
+        "AC": "8 cm",
+        "BC": "Unknown hypotenuse"
+      },
+      "fields": [
+        {
+          "id": "length",
+          "kind": "exact",
+          "label": "Hypotenuse BC",
+          "expected": "10",
+          "unit": "cm"
+        },
+        {
+          "id": "sine",
+          "kind": "rational",
+          "label": "Sine of theta",
+          "expected": "4/5",
+          "help": "Enter an exact fraction. The length units cancel."
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "Use the sum of the two leg squares to find the hypotenuse square.",
+        "BC squared is 36 + 64 = 100. AC is opposite B.",
+        "BC is 10 cm, and sine of theta is AC/BC = 8/10 = 4/5."
+      ],
+      "explanation": [
+        "$BC=\\sqrt{6^2+8^2}=\\sqrt{100}=10$ cm, using the positive root.",
+        "The side opposite B is AC, so $\\sin\\theta=AC/BC=8/10=4/5$."
+      ],
+      "answerSummary": "BC = 10 cm; sine of theta = 4/5."
+    },
+    "after": "The right-angle marker identifies the hypotenuse; the chosen acute angle identifies the opposite leg. These are separate decisions."
+  },
+  "interaction": {
+    "kind": "triangle-calculator",
+    "prompt": "Predict the sine of the target angle, then compare degree and radian inputs. Change modes while leaving the number unchanged to create a mismatch. Use the target-angle button to convert the input correctly, then vary the hypotenuse and explain why the sine ratio stays fixed.",
+    "degrees": 30,
+    "hypotenuse": 10
+  },
+  "practice": [
+    {
+      "familyId": "mth-triangle-geometry",
+      "variant": "labels"
+    },
+    {
+      "familyId": "mth-triangle-geometry",
+      "variant": "hypotenuse"
+    },
+    {
+      "familyId": "mth-triangle-geometry",
+      "variant": "leg"
+    },
+    {
+      "familyId": "mth-triangle-ratios",
+      "variant": "sin"
+    },
+    {
+      "familyId": "mth-triangle-ratios",
+      "variant": "cos"
+    },
+    {
+      "familyId": "mth-triangle-ratios",
+      "variant": "tan"
+    },
+    {
+      "familyId": "mth-angle-conversion",
+      "variant": "to-radians"
+    },
+    {
+      "familyId": "mth-angle-conversion",
+      "variant": "to-degrees"
+    },
+    {
+      "familyId": "mth-calculator-mode",
+      "variant": "matched"
+    },
+    {
+      "familyId": "mth-calculator-mode",
+      "variant": "mismatch"
+    },
+    {
+      "familyId": "mth-triangle-solve",
+      "variant": "sides"
+    },
+    {
+      "familyId": "mth-triangle-solve",
+      "variant": "angles"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-triangle-geometry",
+      "variant": "leg"
+    },
+    {
+      "familyId": "mth-triangle-solve",
+      "variant": "sides"
+    },
+    {
+      "familyId": "mth-angle-conversion",
+      "variant": "to-radians"
+    },
+    {
+      "familyId": "mth-calculator-mode",
+      "variant": "matched"
+    }
+  ],
+  "summary": [
+    "The hypotenuse is across from the right angle. Opposite and adjacent refer to the chosen acute angle.",
+    "Use squared lengths in the Pythagorean relation and the positive root for a side length. Group the full sum or difference under the root.",
+    "Sine uses opposite/hypotenuse, cosine uses adjacent/hypotenuse, and tangent uses opposite/adjacent.",
+    "Multiply degrees by pi/180 to get radians; multiply radians by 180/pi to get degrees.",
+    "Match the angle's unit to the calculator mode. Convert the input, not the trigonometric ratio.",
+    "Inverse trigonometric functions return angles. They are different from reciprocals.",
+    "Keep intermediate precision, attach units, and check the side lengths and complementary angles."
+  ],
+  "retrieval": "In a right triangle with legs 5 cm and 12 cm, find the hypotenuse and the sine of the angle opposite the 5 cm leg. Convert 60 degrees to radians, explain how to enter its sine in both modes, and explain why sqrt(13^2 - 5^2) needs parentheses.",
+  "readings": [
+    {
+      "title": "OpenStax: Angles",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+      "purpose": "Review degree and radian measure and exact conversions. Arc length and angular speed receive fuller treatment in the main trigonometry module."
+    },
+    {
+      "title": "OpenStax: Right Triangle Trigonometry",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry",
+      "purpose": "Review side ratios, complementary angles, and solving right triangles."
+    }
+  ]
+}
