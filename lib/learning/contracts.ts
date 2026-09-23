@@ -2,6 +2,7 @@ import { z } from "zod";
 import { parseRational } from "./rational";
 import { normalizeIntervals } from "./intervals";
 import { equalExact, parseExact, realExact } from "./exact-number";
+import { degree, parsePolynomial } from "./polynomial";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -30,7 +31,17 @@ const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: 
       return values.every((value, index) => (field.numberSystem === "complex" || realExact(value)) && !values.slice(0, index).some(other => equalExact(value, other)));
     } catch { return false; }
   }, "Root keys must be distinct and match the requested number system");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField]);
+const polynomialField = z.object({
+  ...fieldBase, kind: z.literal("polynomial"), expected: z.string().max(200), unit: z.string().max(60).default(""),
+  form: z.enum(["equivalent", "expanded", "factored"]),
+  factorDegrees: z.array(z.number().int().min(1).max(12)).max(12).default([]), primitiveFactors: z.boolean().default(false),
+}).strict().refine(field => {
+  try {
+    const value = parsePolynomial(field.expected);
+    return field.form === "factored" ? field.factorDegrees.length > 0 && field.factorDegrees.reduce((sum, n) => sum + n, 0) === degree(value) : field.factorDegrees.length === 0 && !field.primitiveFactors;
+  } catch { return false; }
+}, "Invalid polynomial answer or factor requirements");
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({

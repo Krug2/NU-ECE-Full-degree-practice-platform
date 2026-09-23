@@ -2,6 +2,7 @@ import { equalRational, parseRational } from "./rational";
 import { equalIntervals, parseIntervals } from "./intervals";
 import type { AnswerField, Question, Response } from "./contracts";
 import { equalExact, equalRootSets, parseExact, parseRootSet, realExact } from "./exact-number";
+import { checkPolynomialForm, parsePolynomial } from "./polynomial";
 
 export type FieldResult = { correct: boolean; valid: boolean; message: string };
 export function gradeField(field: AnswerField, input: string): FieldResult {
@@ -11,6 +12,7 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     return choice ? { correct: choice.id === field.correct, valid: true, message: choice.feedback } : { correct: false, valid: false, message: "Choose one of the available answers." };
   }
   try {
+    if (field.kind === "polynomial") return { ...checkPolynomialForm(input, parsePolynomial(field.expected), field), valid: true };
     if (field.kind === "exact") {
       const correct = equalExact(parseExact(input), parseExact(field.expected));
       return { correct, valid: true, message: correct ? "This is an equivalent exact value." : "Keep radicals exact and check both the real and imaginary parts." };
