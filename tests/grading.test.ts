@@ -35,7 +35,7 @@ describe("answer checking", () => {
     expect(gradeField(field,"1+1.732i,1-1.732i").correct).toBe(false);
     const real = answerFieldSchema.parse({...field,numberSystem:"real",expected:[]});
     expect(gradeField(real,"none").correct).toBe(true);
-    expect(gradeField(real,"i,-i").message).toContain("real roots");
+    expect(gradeField(real,"i,-i").message).toContain("real values");
     expect(answerFieldSchema.safeParse({...real,expected:["i"]}).success).toBe(false);
     expect(answerFieldSchema.safeParse({...field,expected:["sqrt(2)","sqrt(8)/2"]}).success).toBe(false);
     const radical = answerFieldSchema.parse({id:"value",kind:"exact",label:"Exact value",expected:"sqrt(3)"});

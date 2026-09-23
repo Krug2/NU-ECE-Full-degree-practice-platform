@@ -21,9 +21,9 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     }
     if (field.kind === "roots") {
       const values = parseRootSet(input);
-      if (field.numberSystem === "real" && !values.every(realExact)) return { correct: false, valid: true, message: "This question asks for real roots. Nonreal numbers are not real graph intercepts." };
+      if (field.numberSystem === "real" && !values.every(realExact)) return { correct: false, valid: true, message: "This question asks for real values. Nonreal numbers do not belong in the requested set." };
       const correct = equalRootSets(values, field.expected.map(parseExact));
-      return { correct, valid: true, message: correct ? "The complete set of distinct roots is correct." : "Check every root, including the other square-root branch. Substitute into the original equation and keep roots exact." };
+      return { correct, valid: true, message: correct ? "The complete set of distinct values is correct." : "Include every requested value and no extras. Keep values exact and check the original expression's restrictions." };
     }
     if(field.kind==="intervals"){
       const correct=equalIntervals(parseIntervals(input),field.expected);
