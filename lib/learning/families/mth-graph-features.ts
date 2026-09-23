@@ -27,6 +27,20 @@ export function graphFeatureQuestion(familyId:string,variant:string,seed:string,
       explanation:["The key point is ("+h+", "+k+"). Substituting its input must give output "+k+".","The remaining anchors verify the signed scale "+a+". Use more than one point, because an incorrect formula can happen to agree at a single input."],
       answerSummary:"$"+formula(a,h,k)+"$."});
   }
+  if(familyId==="mth-graph-extrema"&&variant==="open"){
+    const lower=rng.integer(-5,-1),upper=rng.integer(1,5),slope=rng.integer(1,3)*(rng.integer(0,1)?1:-1),intercept=rng.integer(-3,3),mode=rng.integer(0,2),lowerClosed=mode===2,upperClosed=mode===1;
+    const points=[lower,0,upper],model=piecewiseSchema.parse({name:"f",pieces:points.slice(0,2).map((x,i)=>({id:"part-"+i,label:"Part "+(i+1),slope:String(slope),intercept:String(intercept),lower:String(x),upper:String(points[i+1]),lowerClosed:i===0?lowerClosed:true,upperClosed:i===1?upperClosed:false}))});
+    const lowValue=Math.min(slope*lower+intercept,slope*upper+intercept),highValue=Math.max(slope*lower+intercept,slope*upper+intercept);
+    const minExists=slope>0?lowerClosed:upperClosed,maxExists=slope>0?upperClosed:lowerClosed;
+    const existence=(id:string,label:string,exists:boolean)=>({id,kind:"choice",label,correct:exists?"attained":"none",options:rng.shuffle([{id:"attained",label:"An absolute extremum is attained",feedback:"An extremum requires an included input that actually gives the extreme output."},{id:"none",label:"No absolute extremum of this kind is attained",feedback:"A finite bound can be approached without being reached when its corresponding endpoint is excluded."}])});
+    return questionSchema.parse({...base,critical:true,parameters:{lower,upper,slope,intercept,lowerClosed:Number(lowerClosed),upperClosed:Number(upperClosed)},
+      prompt:"This increasing or decreasing linear graph is restricted to the marked endpoint conditions. Decide whether an absolute maximum and an absolute minimum are actually attained, and give its full range.",
+      figure:{kind:"piecewise",title:"Check whether endpoint values are attained",xLabel:"Input x",yLabel:"Output f(x)",model},
+      fields:[existence("max-exists","Absolute maximum",maxExists),existence("min-exists","Absolute minimum",minExists),{id:"range",kind:"intervals",label:"Range",expected:[{lower:String(lowValue),upper:String(highValue),lowerClosed:minExists,upperClosed:maxExists}],help:"Carry each endpoint's inclusion with its output, reversing the order for a decreasing line."}],
+      hints:["A maximum or minimum must occur at an included point, not just be approached.","Compare both endpoint outputs, then inspect which corresponding points belong to the graph.","The lower output bound is "+lowValue+" and the upper output bound is "+highValue+"; use open or closed endpoints according to actual attainment."],
+      explanation:["The line is strictly "+(slope>0?"increasing":"decreasing")+", so its extreme possible outputs occur at its domain boundaries.","The upper output bound "+highValue+" is "+(maxExists?"attained, so it is the absolute maximum.":"not attained, so there is no absolute maximum."),"The lower output bound "+lowValue+" is "+(minExists?"attained, so it is the absolute minimum.":"not attained, so there is no absolute minimum.")],
+      answerSummary:"Absolute maximum "+(maxExists?String(highValue):"not attained")+"; absolute minimum "+(minExists?String(lowValue):"not attained")+"; range "+(minExists?"[":"(")+lowValue+", "+highValue+(maxExists?"]":")")+"."});
+  }
   if(familyId==="mth-graph-extrema"){
     if(!["turns","plateau"].includes(variant))throw new Error("Unknown extrema variant");
     const center=rng.integer(-2,2),spacing=rng.integer(1,2),shift=rng.integer(-2,2),sign=rng.integer(0,1)?1:-1;

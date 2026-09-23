@@ -6,6 +6,24 @@ import { evaluatePiecewise } from "../lib/learning/piecewise";
 import { formatRational } from "../lib/learning/rational";
 import { graphNumber,transformedAnchors } from "../lib/learning/transformations";
 
+it("requires endpoint attainment before reporting an absolute maximum or minimum",()=>{
+  const outcomes=new Set<string>();
+  for(let seed=0;seed<50;seed++){
+    const q=question("mth-graph-extrema","open",seed),p=q.parameters;
+    const left=p.slope*p.lower+p.intercept,right=p.slope*p.upper+p.intercept;
+    const minExists=left<right?!!p.lowerClosed:!!p.upperClosed,maxExists=left>right?!!p.lowerClosed:!!p.upperClosed;
+    const low=Math.min(left,right),high=Math.max(left,right);
+    const answer={"max-exists":maxExists?"attained":"none","min-exists":minExists?"attained":"none",range:(minExists?"[":"(")+low+","+high+(maxExists?"]":")")};
+    expect(gradeQuestion(q,answer).correct).toBe(true);
+    expect(gradeQuestion(q,{...answer,range:"["+low+","+high+"]"}).correct).toBe(false);
+    if(q.figure?.kind!=="piecewise")throw new Error("Expected a bounded graph");
+    expect(evaluatePiecewise(q.figure.model,String(p.lower))!==null).toBe(!!p.lowerClosed);
+    expect(evaluatePiecewise(q.figure.model,String(p.upper))!==null).toBe(!!p.upperClosed);
+    outcomes.add(answer["max-exists"]+","+answer["min-exists"]);
+  }
+  expect(outcomes.size).toBe(3);
+});
+
 function question(family:string,variant:string,seed:number){
   const q=graphFeatureQuestion(family,variant,String(seed),"q1");
   const visit=(value:unknown):void=>{
