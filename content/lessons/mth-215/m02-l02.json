@@ -1,0 +1,476 @@
+{
+  "id": "m02-l02",
+  "courseId": "mth-215",
+  "moduleId": "m02",
+  "version": 1,
+  "title": "Transformations and graph features",
+  "objective": "Predict how a transformation changes key points, intercepts, domain, and range.",
+  "why": "A sensor offset shifts outputs, a gain scales them, and a change in time scale moves events horizontally. Tracking exact points through these operations makes a graph useful even when its shape is unfamiliar or its viewing window hides important behavior.",
+  "estimatedMinutes": 110,
+  "prerequisites": [
+    {
+      "label": "Functions and domains",
+      "lessonId": "m02-l01"
+    },
+    {
+      "label": "Coordinates and slopes",
+      "lessonId": "b05"
+    },
+    {
+      "label": "Powers and roots",
+      "lessonId": "b02"
+    },
+    {
+      "label": "Intervals and inequalities",
+      "lessonId": "m01-l02"
+    },
+    {
+      "label": "Quadratic equations",
+      "lessonId": "m01-l03"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "A small library of parent functions",
+      "paragraphs": [
+        "A parent function supplies a familiar rule, shape, and set of exact points. The identity $f(x)=x$ and cube $f(x)=x^3$ have domain and range $\\mathbb R$. The constant parent $f(x)=1$ has domain $\\mathbb R$ and range $\\{1\\}$. A horizontal line is still a function.",
+        "The square $f(x)=x^2$ and absolute value $f(x)=|x|$ have domain $\\mathbb R$ and range $[0,\\infty)$. Both have a lowest point at $(0,0)$, but the square is curved and absolute value consists of two straight rays. Useful square anchors are $(-1,1),(0,0),(1,1)$; useful absolute-value anchors are $(-2,2),(0,0),(2,2)$.",
+        "The square root $f(x)=\\sqrt{x}$ has domain and range $[0,\\infty)$, with anchors $(0,0),(1,1),(4,2)$. The cube root $f(x)=\\sqrt[3]{x}$ allows negative inputs and outputs, so both sets are $\\mathbb R$; its anchors include $(-8,-2),(0,0),(8,2)$.",
+        "The reciprocal $f(x)=1/x$ excludes zero from both domain and range. Its square $f(x)=1/x^2$ excludes zero from its domain and has range $(0,\\infty)$. These curves approach the axes without meeting them. A blank part of a finite graph window does not establish that an input is excluded; use the defining rule and any stated restrictions."
+      ]
+    },
+    {
+      "heading": "Derive the point mapping before memorizing a shape",
+      "paragraphs": [
+        "Write the transformed rule as $g(x)=a\\,f(b(x-h))+k$, with $a\\ne0$ and $b\\ne0$. Suppose $(u,v)$ is on the parent, so $f(u)=v$. To use that same parent evaluation, require $b(x-h)=u$. Solving gives $x=u/b+h$. The corresponding output is $av+k$.",
+        "The complete mapping is $(u,v)\\mapsto(u/b+h,\\;av+k)$. Horizontal coordinates undergo the inverse of the operation inside the function; outputs undergo the outside operations directly. Multiplying the input expression by 2 makes corresponding horizontal distances half as large.",
+        "When $a=b=1$, the mapping becomes $(u+h,v+k)$. Positive h shifts right and positive k shifts up. In $f(x+3)$, rewrite the inside as $x-(-3)$: here $h=-3$, so the shift is left by 3. Read the value of h from the standard form."
+      ]
+    },
+    {
+      "heading": "Scales, reflections, and the order of operations",
+      "paragraphs": [
+        "Starting with the parent coordinates, scale horizontal lengths by $1/|b|$ and vertical lengths by $|a|$. If $b<0$, reflect across the y-axis; if $a<0$, reflect across the x-axis. Then translate by $(h,k)$. This sequence implements $(u/b+h,av+k)$. Translating first generally gives a different rule.",
+        "A vertical multiplier of $1/2$ halves heights before translation; a horizontal inside multiplier of $1/2$ doubles horizontal distances. A negative multiplier changes orientation as well as size. For example, $b=-1/2$ sends an old input u to $-2u$ before the shift.",
+        "Symmetry can hide a reflection. For an even parent such as $x^2$ or $|x|$, $f(-x)=f(x)$, so a horizontal reflection leaves the curve's point set unchanged even though labeled anchors swap sides. Different parameter combinations can also describe the same curve. A parameterized rule describes a valid transformation sequence; the curve need not determine unique parameters.",
+        "These investigations use nonzero a and b so both coordinate maps can be inverted. If $b=0$, the expression uses $f(0)$ everywhere, which requires $f(0)$ to exist. If $a=0$, multiplying by zero still does not make an undefined parent evaluation valid. Those degenerate cases need separate domain analysis."
+      ]
+    },
+    {
+      "heading": "Factor the inside expression to identify a shift",
+      "paragraphs": [
+        "For $g(x)=a f(bx+c)+k$, factor the inside: $bx+c=b(x+c/b)=b(x-h)$, so $h=-c/b$. The constant c alone is not the horizontal shift.",
+        "For $f(2x-6)$, the inside is $2(x-3)$: the horizontal length multiplier is $1/2$ and the shift is right by 3. An old input u moves to $(u+6)/2=u/2+3$. Solving the inner equation directly gives the same result."
+      ]
+    },
+    {
+      "heading": "Transform whole sets, including excluded endpoints",
+      "paragraphs": [
+        "If the parent domain is D and range is R, the transformed domain is $\\{u/b+h:u\\in D\\}$ and transformed range is $\\{av+k:v\\in R\\}$. This follows from the point correspondence. It remains true for disconnected sets, half-lines, holes, and a singleton range.",
+        "A negative multiplier reverses endpoint order. Carry each endpoint's inclusion symbol with its mapped value, then put the smaller endpoint first. Infinity is always open. For example, multiplying $(1,4]$ by $-2$ gives $[-8,-2)$, not $(-8,-2]$.",
+        "For a transformed square root, solve $b(x-h)\\ge0$ for the domain. Its endpoint $(h,k)$ is included. For a transformed reciprocal, $x=h$ remains excluded and $y=k$ is never attained. A reciprocal square also excludes $x=h$, but its range is above k when a is positive and below k when a is negative, with k excluded.",
+        "The graph window is only a drawing boundary. Changing the window cannot remove domain values, create endpoints, or turn a finite-looking top edge into a maximum. A contextual restriction, such as an operating time interval, does change the domain and must be stated explicitly."
+      ]
+    },
+    {
+      "heading": "Intercepts are not the same as shifts",
+      "paragraphs": [
+        "A vertical intercept occurs at input zero, when zero belongs to the domain: $g(0)=a f(-bh)+k$. The vertical shift k is not generally this intercept. For a square or absolute-value parent, $(h,k)$ is the turning point; it lies on the vertical axis only when $h=0$.",
+        "Horizontal intercepts satisfy $a f(b(x-h))+k=0$. Require $f(b(x-h))=-k/a$, then solve for every valid input. A squared parent can have zero, one, or two real horizontal intercepts. Keep exact radicals and check candidates against the original domain.",
+        "When a question requests horizontal-intercept inputs, enter the x values, not ordered pairs. Enter empty if none exist. To describe an actual intercept point in your notes, include its zero coordinate."
+      ]
+    },
+    {
+      "heading": "Increasing and decreasing describe left-to-right behavior",
+      "paragraphs": [
+        "A function is strictly increasing on an interval when $x_1<x_2$ implies $f(x_1)<f(x_2)$ for any two distinct inputs there. Strictly decreasing reverses the output inequality. Constant means the outputs are equal throughout the interval. Trace the graph from left to right, regardless of which direction a parent anchor moved.",
+        "For a transformed square or absolute-value parent with $a>0$, the graph decreases before $x=h$ and increases after it. With $a<0$, the directions reverse. The sign of b does not change this conclusion for these even parents; its magnitude changes the width.",
+        "In this lesson's turning-point questions, report the open intervals separated by the turning input, excluding h from both answers. This is an explicit answer convention. A monotonic interval can sometimes include its endpoint without violating the definition; the prompt specifies the representation to use.",
+        "A graph may increase on several separated intervals. Preserve each interval instead of combining across a decreasing section or a missing input. A horizontal section is constant, not strictly increasing or strictly decreasing."
+      ]
+    },
+    {
+      "heading": "Local turns, absolute extrema, and unattained bounds",
+      "paragraphs": [
+        "An absolute maximum is the largest output actually attained anywhere in the stated domain; an absolute minimum is the smallest attained output. Distinguish the extremum's value from the input or inputs where it occurs. Restricting the domain can change both without changing the formula.",
+        "A local maximum or minimum compares nearby allowed inputs. The turning-point tasks here ask specifically for interior peaks and valleys and exclude domain endpoints. An interior peak changes from increasing to decreasing; an interior valley changes from decreasing to increasing. An endpoint can still be an absolute extremum on a closed interval.",
+        "A flat top attains its largest value on an entire interval. Report all those inputs, including included endpoints, rather than just endpoints or one representative. Under non-strict local-extremum definitions, flat parts may also qualify locally; our isolated-turn questions avoid that ambiguity and state their convention.",
+        "An open endpoint is not attained. The function $f(x)=x$ on $(0,1)$ has outputs arbitrarily close to 0 and 1, but has neither an absolute minimum nor an absolute maximum. On $(0,1]$, its maximum is 1 and no minimum exists. For a decreasing rule, the largest output is associated with the lower input endpoint, so check that endpoint's inclusion.",
+        "A viewing-window edge is not a domain endpoint. An upward parabola on $\\mathbb R$ has an absolute minimum but no absolute maximum, even if the displayed portion fits inside a box."
+      ]
+    },
+    {
+      "heading": "Use the same reasoning for measured signals",
+      "paragraphs": [
+        "If $f(t)$ is a voltage signal with time in seconds, $a f(b(t-h))+k$ uses dimensionless a and b, h in seconds, and k in volts. An event at $(u\\text{ s},v\\text{ V})$ moves to $((u/b+h)\\text{ s},(av+k)\\text{ V})$. A negative time coordinate is meaningful when the origin is a reference event.",
+        "State whether a model is valid for all real inputs or only an observed interval. Transform that interval along with the signal. Predictions outside it need additional justification; a smooth drawing alone supplies no measurement evidence.",
+        "Before accepting a result, substitute one mapped input into the new inner expression, confirm it equals the old input, and compute the outside output. Check endpoint inclusion, units, and whether a reported bound is actually attained."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Follow an anchor through four operations",
+      "prompt": "The parent contains $(-2,3)$. Find its corresponding point on $g(x)=-2 f(-\\tfrac12(x-3))+1$.",
+      "steps": [
+        {
+          "math": "-\\tfrac12(x-3)=-2\\quad\\Longrightarrow\\quad x-3=4\\quad\\Longrightarrow\\quad x=7",
+          "reason": "Match the inside expression to the old input and solve for the new input."
+        },
+        {
+          "math": "y=-2(3)+1=-5",
+          "reason": "Apply the outside operations to the old output."
+        },
+        {
+          "math": "-\\tfrac12(7-3)=-2,\\qquad g(7)=-2f(-2)+1=-5",
+          "reason": "Substitute the new input to verify the correspondence."
+        }
+      ],
+      "conclusion": "The point becomes $(7,-5)$. Multiplying the old input by b instead of dividing by b gives the wrong horizontal coordinate."
+    },
+    {
+      "title": "Find the shift hidden by an inside coefficient",
+      "prompt": "Describe $g(x)=f(2x-6)$ and map the parent point $(4,5)$.",
+      "steps": [
+        {
+          "math": "2x-6=2(x-3)",
+          "reason": "Factor the inside coefficient before reading the shift."
+        },
+        {
+          "math": "x=\\frac42+3=5,\\qquad y=5",
+          "reason": "Halve the old input, then move right by 3. Outputs are unchanged."
+        },
+        {
+          "math": "2(5)-6=4",
+          "reason": "The mapped input returns the original parent input."
+        }
+      ],
+      "conclusion": "The horizontal length multiplier is $1/2$, the shift is 3 to the right, and $(4,5)$ becomes $(5,5)$. The shift is not 6."
+    },
+    {
+      "title": "Reflect a square-root domain without losing its endpoint",
+      "prompt": "Let $f(x)=\\sqrt{x}$ and $g(x)=2f(-\\tfrac12(x-3))-1$. Find three anchors, the domain, and the range.",
+      "steps": [
+        {
+          "math": "(u,v)\\mapsto(-2u+3,\\;2v-1)",
+          "reason": "Use the inverse input operation and direct output operation."
+        },
+        {
+          "math": "(0,0)\\mapsto(3,-1),\\quad(1,1)\\mapsto(1,1),\\quad(4,2)\\mapsto(-5,3)",
+          "reason": "The parent input order reverses under negative horizontal scaling."
+        },
+        {
+          "math": "-\\tfrac12(x-3)\\ge0\\quad\\Longrightarrow\\quad x\\le3",
+          "reason": "The square-root input must be nonnegative. Dividing by a negative number reverses the inequality."
+        },
+        {
+          "math": "D_g=(-\\infty,3],\\qquad R_g=[-1,\\infty)",
+          "reason": "The endpoint is attained and transformed outputs extend upward without bound."
+        }
+      ],
+      "conclusion": "The included endpoint is $(3,-1)$ and the curve extends left and up. A finite window does not change these sets."
+    },
+    {
+      "title": "Carry inclusion with the endpoint",
+      "prompt": "The entire parent domain is $(-2,3]$ and range is $[-1,4)$. For $g(x)=-2 f(-\\tfrac12(x-1))+3$, find both transformed sets.",
+      "steps": [
+        {
+          "math": "x=-2u+1:\\quad 3\\mapsto-5,\\quad -2\\mapsto5",
+          "reason": "The included upper parent input becomes the included lower transformed input."
+        },
+        {
+          "math": "D_g=[-5,5)",
+          "reason": "Sort the transformed endpoints and retain their membership."
+        },
+        {
+          "math": "y=-2v+3:\\quad4\\mapsto-5,\\quad-1\\mapsto5",
+          "reason": "The excluded upper parent output becomes the excluded lower transformed output."
+        },
+        {
+          "math": "R_g=(-5,5]",
+          "reason": "The included parent output -1 becomes the included output 5."
+        }
+      ],
+      "conclusion": "Negative scales reverse order, not membership. Transform the domain and range separately."
+    },
+    {
+      "title": "Read all features of a shifted downward parabola",
+      "prompt": "For $g(x)=-2(x-1)^2+8$ on $\\mathbb R$, find the turning point, intercepts, open intervals of increase and decrease, and absolute extrema.",
+      "steps": [
+        {
+          "math": "(h,k)=(1,8),\\qquad g(0)=-2(1)+8=6",
+          "reason": "The turning point is (1,8), while the vertical intercept is (0,6)."
+        },
+        {
+          "math": "-2(x-1)^2+8=0\\quad\\Longrightarrow\\quad(x-1)^2=4\\quad\\Longrightarrow\\quad x=-1,\\ 3",
+          "reason": "Both square-root signs are needed for the complete intercept set."
+        },
+        {
+          "math": "\\text{Increasing: }(-\\infty,1),\\qquad\\text{decreasing: }(1,\\infty)",
+          "reason": "The negative outside coefficient creates a peak. Trace the graph left to right."
+        },
+        {
+          "math": "g(x)\\le8,\\qquad g(1)=8,\\qquad R_g=(-\\infty,8]",
+          "reason": "The largest value is attained at the peak; outputs have no lower bound."
+        }
+      ],
+      "conclusion": "The absolute maximum is 8 at input 1, with no absolute minimum. Horizontal intercepts are $(-1,0)$ and $(3,0)$."
+    },
+    {
+      "title": "Compare local turns, endpoints, and a plateau",
+      "prompt": "One continuous graph connects (-3,-4), (-1,2), (1,-2), and (3,4) by line segments on [-3,3]. A second connects (-3,0), (-1,3), (1,3), and (3,1) on that domain. Describe their extrema.",
+      "steps": [
+        {
+          "math": "\\text{First: local peak }(-1,2),\\quad\\text{local valley }(1,-2)",
+          "reason": "Only the interior vertices reverse direction. These are the interior local turns requested here."
+        },
+        {
+          "math": "\\text{First: minimum }-4\\text{ at }x=-3,\\quad\\text{maximum }4\\text{ at }x=3",
+          "reason": "Compare the entire closed domain, including endpoints. Each segment stays between its endpoint heights."
+        },
+        {
+          "math": "\\text{Second: maximum }3\\text{ for every }x\\in[-1,1]",
+          "reason": "Every point on the horizontal top attains the largest output, including the joined vertices."
+        },
+        {
+          "math": "\\text{Second: minimum }0\\text{ at }x=-3",
+          "reason": "The lowest attained output occurs at the left endpoint."
+        }
+      ],
+      "conclusion": "A local peak need not be the absolute maximum. Maximizing inputs can form an interval, and closed endpoints can be absolute extrema."
+    },
+    {
+      "title": "A finite bound that is never attained",
+      "prompt": "For $g(x)=-2x+1$ with domain $(-1,2]$, determine the range and whether the absolute maximum and minimum exist.",
+      "steps": [
+        {
+          "math": "g(-1)=3,\\qquad g(2)=-3",
+          "reason": "Evaluate endpoint formulas to identify bounds, then check whether each input is allowed."
+        },
+        {
+          "math": "x>-1\\Longrightarrow g(x)<3,\\qquad x\\le2\\Longrightarrow g(x)\\ge-3",
+          "reason": "The decreasing rule reverses order. Input -1 is excluded; input 2 is included."
+        },
+        {
+          "math": "R_g=[-3,3)",
+          "reason": "The lower output is attained and the upper bound is not."
+        }
+      ],
+      "conclusion": "The absolute minimum is -3 at input 2. There is no absolute maximum: outputs approach 3, but no allowed input produces it."
+    },
+    {
+      "title": "Move a voltage event with its units",
+      "prompt": "A voltage signal has value 3 V at input 2 s. For $g(t)=2f(\\tfrac12(t-1))-1$, find the corresponding event. Time is measured in seconds, and outputs in volts.",
+      "steps": [
+        {
+          "math": "\\tfrac12(t-1)=2\\quad\\Longrightarrow\\quad t=5\\text{ s}",
+          "reason": "The inside factor doubles horizontal time distances before the 1-second shift."
+        },
+        {
+          "math": "g(5)=2(3)-1=5\\text{ V}",
+          "reason": "The gain doubles the voltage and the offset subtracts 1 volt."
+        }
+      ],
+      "conclusion": "The event moves from (2 s, 3 V) to (5 s, 5 V). Time and voltage transformations act on different quantities."
+    }
+  ],
+  "guided": {
+    "title": "Finish the transformed square-root model",
+    "setup": "Use $f(x)=\\sqrt{x}$ and $g(x)=2 f(-\\tfrac12(x-3))-1$. Map the parent point $(4,2)$ and state the complete domain and range.",
+    "before": [
+      "Matching the old input gives $-\\tfrac12(x-3)=4$.",
+      "The new output uses $2(2)-1$.",
+      "The square-root input must be nonnegative, and the outside scale is positive."
+    ],
+    "question": {
+      "id": "m02-l02-guided",
+      "familyId": "mth-transform-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m02-l02",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "Give both coordinates of the corresponding point and both complete sets. Keep the included square-root endpoint.",
+      "fields": [
+        {
+          "id": "x",
+          "kind": "rational",
+          "label": "Mapped input",
+          "expected": "-5"
+        },
+        {
+          "id": "y",
+          "kind": "rational",
+          "label": "Mapped output",
+          "expected": "3"
+        },
+        {
+          "id": "domain",
+          "kind": "intervals",
+          "label": "Complete domain",
+          "expected": [
+            {
+              "lower": null,
+              "upper": "3",
+              "lowerClosed": false,
+              "upperClosed": true
+            }
+          ]
+        },
+        {
+          "id": "range",
+          "kind": "intervals",
+          "label": "Complete range",
+          "expected": [
+            {
+              "lower": "-1",
+              "upper": null,
+              "lowerClosed": true,
+              "upperClosed": false
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Solve the inside equation for x before calculating the output.",
+        "Divide by -1/2, then add 3. Reversing a negative inequality gives x at most 3.",
+        "The point is (-5,3); domain (-inf,3]; range [-1,inf)."
+      ],
+      "explanation": [
+        "The input mapping gives 4/(-1/2)+3 = -5, while the output is 2(2)-1 = 3.",
+        "The radicand is nonnegative exactly when x <= 3. The smallest output is -1 and is attained at x = 3.",
+        "The graph window does not supply additional restrictions."
+      ],
+      "answerSummary": "Mapped point (-5,3); domain (-inf,3]; range [-1,inf)."
+    },
+    "after": "Predict the other two anchors before revealing the graph in the investigation. Change only the window after checking and explain why the domain and range stay the same."
+  },
+  "interaction": {
+    "kind": "transformation-lab",
+    "prompt": "Start with the square-root parent and predict all three mapped anchors for $g(x)=2 f(-\\tfrac12(x-3))-1$. Check the graph, change its viewing window, then try another parent or parameter. Explain every move using $(u/b+h,av+k)$.",
+    "model": {
+      "parent": "sqrt",
+      "transform": {
+        "a": "2",
+        "b": "-1/2",
+        "h": "3",
+        "k": "-1"
+      }
+    },
+    "extent": 12
+  },
+  "practice": [
+    {
+      "familyId": "mth-transform-point",
+      "variant": "translate"
+    },
+    {
+      "familyId": "mth-transform-point",
+      "variant": "scale"
+    },
+    {
+      "familyId": "mth-transform-point",
+      "variant": "combined"
+    },
+    {
+      "familyId": "mth-transform-point",
+      "variant": "inside-shift"
+    },
+    {
+      "familyId": "mth-transform-point",
+      "variant": "signal"
+    },
+    {
+      "familyId": "mth-transform-description",
+      "variant": "scales"
+    },
+    {
+      "familyId": "mth-transform-domain",
+      "variant": "intervals"
+    },
+    {
+      "familyId": "mth-transform-domain",
+      "variant": "sqrt"
+    },
+    {
+      "familyId": "mth-transform-domain",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "mth-transform-domain",
+      "variant": "reciprocal-square"
+    },
+    {
+      "familyId": "mth-transform-domain",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-transform-features",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-transform-features",
+      "variant": "absolute"
+    },
+    {
+      "familyId": "mth-transform-match",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-transform-match",
+      "variant": "sqrt"
+    },
+    {
+      "familyId": "mth-graph-extrema",
+      "variant": "turns"
+    },
+    {
+      "familyId": "mth-graph-extrema",
+      "variant": "plateau"
+    },
+    {
+      "familyId": "mth-graph-extrema",
+      "variant": "open"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-transform-point",
+      "variant": "translate"
+    },
+    {
+      "familyId": "mth-transform-description",
+      "variant": "scales"
+    },
+    {
+      "familyId": "mth-transform-domain",
+      "variant": "sqrt"
+    },
+    {
+      "familyId": "mth-transform-features",
+      "variant": "quadratic"
+    }
+  ],
+  "summary": [
+    "For $g(x)=a f(b(x-h))+k$, a parent point $(u,v)$ moves to $(u/b+h,av+k)$.",
+    "Horizontal lengths scale by $1/|b|$ and vertical lengths by $|a|$. Negative b reflects inputs and negative a reflects outputs before translations.",
+    "Factor $bx+c$ before identifying a shift: $h=-c/b$.",
+    "Transform domain and range separately. Negative scaling reverses endpoint order while preserving inclusion.",
+    "A window clips a picture. The rule and any stated contextual restrictions determine the domain and range.",
+    "Find intercepts by setting the appropriate coordinate to zero; trace monotonic behavior from left to right.",
+    "Absolute extrema must be attained. Check allowed endpoints, entire plateaus, and excluded bounds. Local turns compare nearby behavior."
+  ],
+  "retrieval": "Without the graph, explain why an inside multiplier of 2 halves horizontal distances. Map (-2,3) using a = -2, b = -1/2, h = 3, k = 1. Describe a square-root domain when b is negative, distinguish vertical shift from vertical intercept, and give a finite upper bound that is not a maximum.",
+  "readings": [
+    {
+      "title": "OpenStax: Rates of Change and Behavior of Graphs",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-3-rates-of-change-and-behavior-of-graphs",
+      "purpose": "Additional examples of increasing and decreasing intervals and local versus absolute extrema. Average rates return in the calibration lesson."
+    },
+    {
+      "title": "OpenStax: Transformation of Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-5-transformation-of-functions",
+      "purpose": "Further practice with translations, reflections, stretches, compressions, and combinations of transformations."
+    }
+  ]
+}
