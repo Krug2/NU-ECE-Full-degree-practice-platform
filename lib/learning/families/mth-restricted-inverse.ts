@@ -11,11 +11,13 @@ const r=(source:string)=>formatRational(parseRational(source));
 const number=(id:string,label:string,expected:string)=>({id,label,kind:"rational",expected:r(expected),help:"Use an exact number or fraction."});
 const interval=(id:string,label:string,expected:Interval[])=>({id,label,kind:"intervals",expected,help:"Give the complete interval, including every required restriction."});
 const exact=(value:RootValue)=>{if(value.status!=="defined"||value.exact===null)throw new Error("This inverse question needs an exact value.");return value.exact;};
+const inverseWords=(model:PowerFunction)=>"g of x equals ("+model.h+") "+(model.branch==="left"?"minus":"plus")+" the "+({2:"square",3:"cube",4:"fourth",5:"fifth"}[model.degree])+" root of ((x minus ("+model.k+")) divided by ("+model.a+")).";
+const powerWords=(model:PowerFunction)=>"("+model.a+") times (x minus ("+model.h+")) raised to power "+model.degree+", plus ("+model.k+")";
 const formulaOptions=(model:PowerFunction)=>[
-  {id:"correct",label:"$g(x)="+inversePowerLatex(model)+"$",feedback:"The chosen root branch must return values to the original restricted domain."},
-  {id:"opposite",label:"$g(x)="+inversePowerLatex({...model,branch:model.branch==="left"?"right":"left"})+"$",feedback:"Changing the root sign sends non-endpoint values to the wrong branch or fails the inverse equation."},
-  {id:"original",label:"$g(x)="+powerFunctionLatex(model)+"$",feedback:"Repeating the original power operation does not undo it."},
-  {id:"reciprocal",label:"$g(x)=\\frac{1}{"+powerFunctionLatex(model)+"}$",feedback:"A reciprocal divides one by an output. An inverse function recovers the original input."},
+  {id:"correct",label:"$g(x)="+inversePowerLatex(model)+"$",accessibleLabel:inverseWords(model),feedback:"The chosen root branch must return values to the original restricted domain."},
+  {id:"opposite",label:"$g(x)="+inversePowerLatex({...model,branch:model.branch==="left"?"right":"left"})+"$",accessibleLabel:inverseWords({...model,branch:model.branch==="left"?"right":"left"}),feedback:"Changing the root sign sends non-endpoint values to the wrong branch or fails the inverse equation."},
+  {id:"original",label:"$g(x)="+powerFunctionLatex(model)+"$",accessibleLabel:"g of x equals "+powerWords(model)+".",feedback:"Repeating the original power operation does not undo it."},
+  {id:"reciprocal",label:"$g(x)=\\frac{1}{"+powerFunctionLatex(model)+"}$",accessibleLabel:"g of x equals 1 divided by ("+powerWords(model)+").",feedback:"A reciprocal divides one by an output. An inverse function recovers the original input."},
 ];
 export function restrictedInverseQuestion(familyId:string,variant:string,seed:string,id:string):Question{
   if(familyId!=="mth-restricted-inverse")throw new Error("Unknown restricted inverse family");

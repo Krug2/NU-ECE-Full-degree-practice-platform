@@ -34,8 +34,15 @@ import { signReasoningFamilyIds,signReasoningQuestion } from "./families/mth-sig
 import { basicVariationFamilyIds,basicVariationQuestion } from "./families/mth-variation-basic";
 import { jointVariationFamilyIds,jointVariationQuestion } from "./families/mth-variation-joint";
 import { variationAuditFamilyIds,variationAuditQuestion } from "./families/mth-variation-audit";
+import { radicalDomainFamilyIds,radicalDomainQuestion } from "./families/mth-radical-domain";
+import { radicalTransformFamilyIds,radicalTransformQuestion } from "./families/mth-radical-transform";
+import { restrictedInverseFamilyIds,restrictedInverseQuestion } from "./families/mth-restricted-inverse";
+import { radicalAuditFamilyIds,radicalAuditQuestion } from "./families/mth-radical-audit";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const [ids,generate] of [[radicalDomainFamilyIds,radicalDomainQuestion],[radicalTransformFamilyIds,radicalTransformQuestion],[restrictedInverseFamilyIds,restrictedInverseQuestion],[radicalAuditFamilyIds,radicalAuditQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
 for(const [ids,generate] of [[basicVariationFamilyIds,basicVariationQuestion],[jointVariationFamilyIds,jointVariationQuestion],[variationAuditFamilyIds,variationAuditQuestion],[signSolutionFamilyIds,signSolutionQuestion],[signReasoningFamilyIds,signReasoningQuestion],[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion],[rootSearchFamilyIds,rootSearchQuestion],[rootCompletionFamilyIds,rootCompletionQuestion],[rationalGraphFamilyIds,rationalGraphQuestion],[rationalBehaviorFamilyIds,rationalBehaviorQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
