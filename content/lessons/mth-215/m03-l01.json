@@ -1,0 +1,303 @@
+{
+  "id": "m03-l01",
+  "courseId": "mth-215",
+  "moduleId": "m03",
+  "version": 1,
+  "title": "Degree and end behavior",
+  "objective": "Predict a polynomial's end behavior and possible number of turning points from its leading term.",
+  "why": "A graphing window shows only a small piece of a function. Polynomial structure lets you predict what happens beyond that picture, check whether a proposed graph is possible, and recognize when a fitted engineering model is being used beyond the data that support it. You will explain these conclusions from algebra rather than relying on the shape of a screen image.",
+  "estimatedMinutes": 150,
+  "prerequisites": [
+    {"label": "Powers, roots, and notation", "lessonId": "b02"},
+    {"label": "Expanding and factoring polynomials", "lessonId": "b03"},
+    {"label": "Functions, domains, and graphs", "lessonId": "m02-l01"},
+    {"label": "Quadratics and their vertices", "lessonId": "m01-l03"}
+  ],
+  "sections": [
+    {
+      "heading": "Recognize the polynomial class",
+      "paragraphs": [
+        "A polynomial in x is a finite sum of terms $a_kx^k$, where each exponent k is a nonnegative integer and each coefficient is a real constant. Missing powers are allowed. Coefficients may be negative, fractions, decimals, or irrational numbers: $\\sqrt{2}x^4-\\frac13x+7$ is a polynomial. A polynomial rule is defined at every real input.",
+        "The power on the variable is the important distinction. A nonzero $x^{-2}$ term, a $\\sqrt{x}$ term, or a variable exponent such as $2^x$ does not fit the polynomial definition. A square root in a constant coefficient is different from a square root of the variable. Simplify and combine terms before classifying, while retaining every restriction in the original rule.",
+        "For example, $(x^2-9)/(x-3)$ agrees with x + 3 when x is not 3, but its original domain has a hole. Filling that hole creates a polynomial extension; it does not make the original restricted function equal to the polynomial on all of R. This repeats the original-domain checks from the equations and functions modules."
+      ]
+    },
+    {
+      "heading": "Find the actual leading term",
+      "paragraphs": [
+        "For a nonzero polynomial, collect like terms and arrange the remaining powers from greatest to least. The greatest exponent with a nonzero coefficient is the degree. Its term is the leading term, and its coefficient, including its sign, is the leading coefficient. The leading term need not be the first term as originally written.",
+        "Do not count terms to find degree, and do not keep an exponent whose coefficient becomes zero. In $4x^6-4x^6+2x^3-x+8$, the sixth-power terms cancel. The degree is 3 and the leading coefficient is 2. A missing second-power term can be represented by a zero coefficient when needed, but it does not change the degree.",
+        "Factored structure can save work. Multiply the leading terms of nonzero polynomial factors, and add their degrees. In $-2(x-3)^2(x+1)^3$, the leading term is $-2x^5$. You do not need to expand every lower term to determine the degree or far-end directions."
+      ]
+    },
+    {
+      "heading": "Separate constants from the zero polynomial",
+      "paragraphs": [
+        "A nonzero constant such as -3 has degree 0 and leading coefficient -3. Its graph stays at height -3 at both ends. It does not fall toward negative infinity. The up-or-down rules for positive degrees do not apply to this finite constant behavior.",
+        "The zero polynomial is a polynomial, but all of its coefficients are zero. It has no nonzero leading term; its degree is undefined in this lesson. Its graph stays at zero. Do not assign it degree zero just because a calculator or programming library uses a convenient internal convention.",
+        "A turning point will mean a change from increasing to decreasing or from decreasing to increasing. Constant and zero graphs have no such reversals. The degree-minus-one turning-point theorem below is stated for nonconstant polynomials, so it should not be applied to either constant case."
+      ]
+    },
+    {
+      "heading": "Read the left and right ends correctly",
+      "paragraphs": [
+        "The left end describes what happens as x decreases without bound, written $x\\to-\\infty$. The right end describes what happens as x increases without bound, written $x\\to\\infty$. Saying an end is up means the output increases without bound; down means the output decreases without bound. Infinity describes a trend, not an input to substitute into an arithmetic expression.",
+        "For a nonconstant polynomial with leading term $ax^n$, start on the right: a positive a gives an upward right end, and a negative a gives a downward right end. For even n, a negative input raised to n is positive, so both ends have the same direction. For odd n, the power keeps the input's sign, so the ends have opposite directions.",
+        "The four cases are: even degree with a positive leading coefficient, both ends up; even degree with a negative leading coefficient, both ends down; odd degree with a positive leading coefficient, left down and right up; odd degree with a negative leading coefficient, left up and right down. A constant term can move the graph near the origin without changing any of these eventual directions."
+      ]
+    },
+    {
+      "heading": "Explain why the leading term controls the ends",
+      "paragraphs": [
+        "Let $p(x)=a_nx^n+a_{n-1}x^{n-1}+\\cdots+a_0$, with $a_n\\ne0$ and $n\\ge1$. For nonzero x, divide by the leading term: $\\frac{p(x)}{a_nx^n}=1+\\frac{a_{n-1}}{a_nx}+\\cdots+\\frac{a_0}{a_nx^n}$. Each additional fraction becomes small as the magnitude of x grows, because its denominator contains a growing positive power of that magnitude.",
+        "Thus p(x) divided by its leading term approaches 1. Eventually the ratio is positive, so the two expressions have the same sign at each far end. This explains the parity and coefficient rules. It does not say that lower terms vanish at any particular finite input.",
+        "Relative agreement is different from absolute closeness. If $p(x)=x^4-200x^2$ and $L(x)=x^4$, then $p(x)/L(x)=1-200/x^2$ approaches 1, while $p(x)-L(x)=-200x^2$ grows in magnitude. The vertical gap can grow even though the leading term dominates relatively. At x = 0 this ratio is undefined, and that does not interfere with a statement about large input magnitudes."
+      ]
+    },
+    {
+      "heading": "Use graph windows as evidence, not proof",
+      "paragraphs": [
+        "For $p(x)=x^4-200x^2$, both far ends must go up. Nevertheless, p(10) and p(-10) are both -10,000. A narrow window can show negative values at its edges and conceal the eventual rise. Expanding the window can reveal parts of the same graph that were previously outside the picture.",
+        "The investigation below draws p(x) and its leading term on shared axes. Its vertical range adjusts when the horizontal window changes. This keeps the sampled curves visible but changes their apparent steepness. Read the axis labels and the exact table rather than comparing screen angles.",
+        "A finite sample does not prove an infinite trend or establish that every turning point has been seen. Use algebra for the end conclusion, and use the graph and table to test your understanding. New visible features after a zoom were already part of the function; the viewing change did not create them."
+      ]
+    },
+    {
+      "heading": "Treat turning points as reversals of direction",
+      "paragraphs": [
+        "A turning point changes the graph from rising to falling or from falling to rising as x moves from left to right. An intercept is not automatically a turning point. A flat-looking point need not be a turn either: $y=x^3$ flattens at the origin but continues increasing on both sides.",
+        "A nonconstant polynomial of degree n has at most n - 1 turning points. For example, degree 5 allows no more than four. This is an upper bound, not a general exact-count formula. The function $x^5$ has zero turns, while $x^4$ has one turn even though its degree permits up to three.",
+        "Some low-degree cases have a forced count: a nonconstant line has no turns, and a quadratic has one vertex and one turn. For higher degrees, do not infer an exact count from degree alone. No derivative calculation is required in this lesson; calculus later supplies a systematic method for locating possible turns."
+      ]
+    },
+    {
+      "heading": "Reason backward from a graph description",
+      "paragraphs": [
+        "If a nonconstant polynomial graph has t turning points, then $t\\le n-1$, so $n\\ge t+1$. This gives a lower bound on degree. If only a portion of the graph was observed, the turns already seen still give a lower bound; additional turns might lie outside that window.",
+        "End directions add information: matching ends require even degree, opposite ends require odd degree, and the right end determines the leading-coefficient sign. For a graph described as having three turns and two upward ends, the degree is at least 4 and even, and the leading coefficient is positive. The information does not force the exact degree to be 4.",
+        "Keep the direction of each inference straight. A known degree gives an upper bound on turns. A known count of turns gives a lower bound on degree. Neither generally becomes an equality without additional information."
+      ]
+    },
+    {
+      "heading": "Do not confuse degree parity with function symmetry",
+      "paragraphs": [
+        "An even degree does not automatically make an even function. Even-function symmetry requires $p(-x)=p(x)$ for every x. The polynomial $x^4+x$ has even degree and two upward ends, but its lower odd-power term breaks that symmetry.",
+        "Similarly, odd-function symmetry requires $p(-x)=-p(x)$ for every x. The odd-degree polynomial $x^3+1$ has opposite ends but is not symmetric about the origin. Degree parity describes the end pattern. The entire rule determines symmetry.",
+        "A single pair of values can disprove an identity that must hold at every input. Matching one pair cannot establish that identity for all inputs. Use the algebraic comparison from the functions module when a full symmetry proof is needed."
+      ]
+    },
+    {
+      "heading": "Keep a physical model's scope separate",
+      "paragraphs": [
+        "A polynomial formula has a mathematical value at every real input. A device model based on that formula may be validated only on a particular time, temperature, or voltage interval. Mathematical end behavior does not establish that a real system will follow the model beyond its supported interval.",
+        "For engineering work, state the polynomial's degree and leading coefficient, predict its mathematical ends, and separately state the interval supported by the model or data. If a proposed prediction lies outside that interval, label the extrapolation and seek additional validation before treating the output as a supported device prediction."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A coefficient may be irrational",
+      "prompt": "Classify $p(x)=\\sqrt{2}x^4-\\frac13x+9$ and $q(x)=\\sqrt{x}+9$.",
+      "steps": [
+        {"math": "p(x)=(\\sqrt{2})x^4-\\frac13x^1+9x^0", "reason": "The powers of x are 4, 1, and 0. Each coefficient is a real constant."},
+        {"math": "\\deg p=4,\\qquad a_4=\\sqrt{2}", "reason": "The fourth-power coefficient is nonzero, even though it is irrational."},
+        {"math": "\\sqrt{x}=x^{1/2}", "reason": "In q, the variable itself has a noninteger exponent. Its natural real domain also excludes negative inputs."}
+      ],
+      "conclusion": "p is a degree-4 polynomial. q is not a polynomial. Locate the variable before judging a root or fraction."
+    },
+    {
+      "title": "Cancel before finding degree",
+      "prompt": "Analyze $p(x)=4x^6-4x^6+2x^3-x+8$.",
+      "steps": [
+        {"math": "4x^6-4x^6=0", "reason": "The sixth-power coefficient becomes zero, so that exponent cannot determine degree."},
+        {"math": "p(x)=2x^3-x+8", "reason": "The actual leading term is 2x cubed: degree 3, leading coefficient 2."},
+        {"math": "x\\to-\\infty:\\ p(x)\\to-\\infty;\\qquad x\\to\\infty:\\ p(x)\\to\\infty", "reason": "An odd degree with positive leading coefficient has left end down and right end up."},
+        {"math": "\\text{turning points}\\le3-1=2", "reason": "The degree permits at most two turns. It does not establish that both occur."}
+      ],
+      "conclusion": "The largest displayed exponent is not always the degree. Use the surviving terms."
+    },
+    {
+      "title": "The first term need not lead",
+      "prompt": "Find the ends of $p(x)=7-5x^6+3x^2$.",
+      "steps": [
+        {"math": "p(x)=-5x^6+3x^2+7", "reason": "Reorder by descending powers without changing the function."},
+        {"math": "L(x)=-5x^6", "reason": "The degree is even and the leading coefficient is negative."},
+        {"math": "x\\to\\pm\\infty:\\ p(x)\\to-\\infty", "reason": "An even power is positive at either far end; the negative coefficient makes both outputs decrease without bound."}
+      ],
+      "conclusion": "Both ends go down. The positive constant 7 does not control the ends."
+    },
+    {
+      "title": "Use factored structure efficiently",
+      "prompt": "Predict the ends and turning-point bound for $p(x)=-2(x-3)^2(x+1)^3$.",
+      "steps": [
+        {"math": "L(x)=-2\\cdot x^2\\cdot x^3=-2x^5", "reason": "Multiply the leading terms of the factors. The powers add to five."},
+        {"math": "x\\to-\\infty:\\ p(x)\\to\\infty;\\qquad x\\to\\infty:\\ p(x)\\to-\\infty", "reason": "Odd degree gives opposite ends; the negative coefficient sends the right end down."},
+        {"math": "\\text{turning points}\\le5-1=4", "reason": "This is a maximum permitted by the degree, not an asserted actual count."}
+      ],
+      "conclusion": "Degree 5, leading coefficient -2, left up, right down, and at most four turns. Full expansion was unnecessary."
+    },
+    {
+      "title": "Handle a constant and zero separately",
+      "prompt": "Classify $p(x)=5(x-2)-5x+7$ and $q(x)=2x^2-2x^2$.",
+      "steps": [
+        {"math": "p(x)=5x-10-5x+7=-3", "reason": "This is a nonzero constant polynomial, so its degree is zero."},
+        {"math": "p(x)=-3\\quad\\text{for every real }x", "reason": "Both ends stay at -3; they do not tend to negative infinity."},
+        {"math": "q(x)=0", "reason": "This is the zero polynomial. No nonzero leading term remains, so its degree is undefined here."}
+      ],
+      "conclusion": "Both graphs are flat and have no direction reversals. Do not apply the positive-degree end rules or the nonconstant turning-point formula to these cases."
+    },
+    {
+      "title": "A bound can exceed the actual count",
+      "prompt": "Compare the degree-based bound with the actual turns of $p(x)=-x^5$ and $q(x)=x^4+2$.",
+      "steps": [
+        {"math": "\\deg p=5,\\qquad \\text{turning points}\\le4", "reason": "The theorem permits up to four turns for p."},
+        {"math": "x_1<x_2\\ \\Longrightarrow\\ -x_1^5>-x_2^5", "reason": "p is strictly decreasing across the real line. Its flat point at zero is not a reversal, so its actual turn count is zero."},
+        {"math": "\\deg q=4,\\qquad \\text{turning points}\\le3", "reason": "The theorem permits up to three turns for q."},
+        {"math": "q(0)=2", "reason": "The even power decreases toward zero from the left and increases away from zero on the right. There is one turn at the minimum."}
+      ],
+      "conclusion": "Degree 5 with zero turns and degree 4 with one turn both satisfy the theorem. Neither must attain its maximum."
+    },
+    {
+      "title": "Infer a minimum degree",
+      "prompt": "A polynomial graph is described as having three turning points and both ends upward. What can you conclude?",
+      "steps": [
+        {"math": "3\\le n-1\\quad\\Longrightarrow\\quad n\\ge4", "reason": "Three turns require at least degree four."},
+        {"math": "n\\text{ is even},\\qquad a_n>0", "reason": "Matching ends give even degree; the upward right end gives a positive leading coefficient."},
+        {"math": "n=4,6,8,\\ldots\\ \\text{are not excluded by these conditions}", "reason": "Degree four is the minimum. The conditions do not determine a unique degree."}
+      ],
+      "conclusion": "Report an even degree of at least four and a positive leading coefficient. Do not report an exact degree without further evidence."
+    },
+    {
+      "title": "Expand a misleading window",
+      "prompt": "Compare $p(x)=x^4-200x^2$ with $L(x)=x^4$ at x = 10 and x = 100.",
+      "steps": [
+        {"math": "p(10)=10000-20000=-10000,\\qquad L(10)=10000", "reason": "The lower term dominates at this finite input and gives the opposite sign."},
+        {"math": "p(100)=100000000-2000000=98000000", "reason": "At the larger input the fourth-power term dominates."},
+        {"math": "\\frac{p(10)}{L(10)}=-1,\\qquad \\frac{p(100)}{L(100)}=\\frac{49}{50}", "reason": "The ratio moves toward one, but no finite pair of measurements alone proves the trend."},
+        {"math": "\\frac{p(x)}{L(x)}=1-\\frac{200}{x^2}\\quad(x\\ne0)", "reason": "The algebra explains the eventual ratio. Meanwhile the absolute gap is 200 times x squared, which grows."}
+      ],
+      "conclusion": "Both ends go up because the leading term is positive and even-degree. Relative dominance does not mean the curves become exactly equal or have vanishing vertical separation."
+    },
+    {
+      "title": "A canceled denominator still leaves a hole",
+      "prompt": "Does $r(x)=(x^2-9)/(x-3)$ define a polynomial on all real inputs?",
+      "steps": [
+        {"math": "x-3\\ne0\\quad\\Longrightarrow\\quad x\\ne3", "reason": "Record the original denominator restriction first."},
+        {"math": "\\frac{(x-3)(x+3)}{x-3}=x+3\\quad\\text{only when }x\\ne3", "reason": "Canceling the factor preserves the restriction."},
+        {"math": "s(x)=x+3\\quad\\text{for every real }x", "reason": "s is a polynomial extension. It supplies s(3) = 6, which the original r does not define."}
+      ],
+      "conclusion": "The original rule is not a polynomial function on all R. Its simplified expression describes the same values only on the original domain."
+    },
+    {
+      "title": "Even degree does not prove even symmetry",
+      "prompt": "Analyze the symmetry and ends of $p(x)=x^4+x$.",
+      "steps": [
+        {"math": "p(1)=2,\\qquad p(-1)=0", "reason": "These unequal values disprove p(-x) = p(x), so the function is not even."},
+        {"math": "p(-1)=0\\ne-2=-p(1)", "reason": "The same pair also disproves odd-function symmetry."},
+        {"math": "L(x)=x^4", "reason": "The degree is still even and the leading coefficient positive, so both far ends go up."}
+      ],
+      "conclusion": "This function is neither even nor odd. Its degree still determines an even-degree end pattern."
+    },
+    {
+      "title": "Separate algebra from supported prediction",
+      "prompt": "A voltage model $V(t)=\\frac{1}{100}t^3-\\frac15t+1$ is validated only for $0\\le t\\le5$ seconds. Evaluate its formula at 20 seconds and assess the result.",
+      "steps": [
+        {"math": "L(t)=\\frac{1}{100}t^3", "reason": "The mathematical right end increases without bound."},
+        {"math": "V(20)=80-4+1=77", "reason": "The polynomial formula has a value of 77 volts at this input."},
+        {"math": "20\\notin[0,5]", "reason": "The requested input lies outside the stated validation interval."}
+      ],
+      "conclusion": "77 volts is an algebraic extrapolation, not a validated device prediction. End behavior alone does not establish physical accuracy there."
+    }
+  ],
+  "guided": {
+    "title": "Find the surviving term before predicting",
+    "setup": "Work with $p(x)=6x^5-6x^5-3x^4+2x+7$. Complete the structural checks and explain what the turning-point number means.",
+    "before": [
+      "Combine the two fifth-power terms first.",
+      "Use the surviving highest power and its signed coefficient for both end predictions.",
+      "Keep a degree-based maximum separate from an actual turning-point count."
+    ],
+    "question": {
+      "id": "guided-polynomial",
+      "familyId": "mth-guided-polynomial",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m03-l01",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "For $p(x)=6x^5-6x^5-3x^4+2x+7$, give the actual degree, leading coefficient, far-end directions, and degree-based turning-point maximum.",
+      "parameters": {"n":4,"a":-3,"b":2,"c":7},
+      "fields": [
+        {"id":"degree","label":"Degree after collecting terms","kind":"rational","expected":"4"},
+        {"id":"coefficient","label":"Leading coefficient","kind":"rational","expected":"-3"},
+        {"id":"left","label":"Far-left behavior","kind":"choice","correct":"down","options":[{"id":"up","label":"Up without bound","feedback":"An even power keeps a positive sign at the left; the negative coefficient reverses it."},{"id":"down","label":"Down without bound","feedback":"The surviving leading term is negative with even degree."}]},
+        {"id":"right","label":"Far-right behavior","kind":"choice","correct":"down","options":[{"id":"up","label":"Up without bound","feedback":"The negative leading coefficient makes the right output negative for sufficiently large inputs."},{"id":"down","label":"Down without bound","feedback":"The negative leading coefficient controls the right end."}]},
+        {"id":"bound","label":"Maximum permitted turning points","kind":"rational","expected":"3"},
+        {"id":"meaning","label":"Interpret the maximum","kind":"choice","correct":"bound","options":[{"id":"exact","label":"The graph must have exactly this many turns","feedback":"Degree gives an upper bound. Fewer turns can occur."},{"id":"bound","label":"The graph has no more than this many turns","feedback":"Degree four permits at most three turns without forcing all three."}]}
+      ],
+      "hints": ["The fifth-power terms cancel exactly.","The surviving leading term is -3 times x to the fourth power.","Both ends go down; the maximum permitted turn count is 4 - 1."],
+      "explanation": ["The collected polynomial is $-3x^4+2x+7$, with degree 4 and leading coefficient -3.","The degree is even, so the ends match. The coefficient is negative, so both go down without bound.","The turning-point theorem gives at most three turns, not necessarily exactly three."],
+      "answerSummary": "Degree 4; leading coefficient -3; both ends down; at most three turning points."
+    },
+    "after": "These predictions follow from the surviving leading term. A checkpoint will use different expressions and may reverse the direction of the degree-versus-turns inference."
+  },
+  "interaction": {
+    "kind": "polynomial-ends-lab",
+    "prompt": "Predict the degree, leading coefficient, far ends, and turning-point maximum before revealing the graph. Then expand the window and use the exact ratios to explain where a local picture differs from eventual behavior.",
+    "cases": [
+      {"title":"Even degree with hidden upward ends","polynomial":"x^4-200*x^2"},
+      {"title":"Even degree with downward ends","polynomial":"-2*x^4+50*x^2+8"},
+      {"title":"Odd degree with upward right end","polynomial":"x^3-100*x"},
+      {"title":"Odd degree with downward right end","polynomial":"-x^5+100*x^3+4"},
+      {"title":"Canceled highest powers","polynomial":"3*x^7-3*x^7-2*x^3+8*x+6"},
+      {"title":"A nonconstant line","polynomial":"-2*x+12"}
+    ]
+  },
+  "practice": [
+    {"familyId":"mth-polynomial-classify","variant":"polynomial"},
+    {"familyId":"mth-polynomial-classify","variant":"negative-power"},
+    {"familyId":"mth-polynomial-classify","variant":"radical"},
+    {"familyId":"mth-polynomial-classify","variant":"exponential"},
+    {"familyId":"mth-polynomial-classify","variant":"variable-denominator"},
+    {"familyId":"mth-polynomial-classify","variant":"canceled"},
+    {"familyId":"mth-polynomial-classify","variant":"constant"},
+    {"familyId":"mth-polynomial-classify","variant":"zero"},
+    {"familyId":"mth-polynomial-classify","variant":"irrational-coefficient"},
+    {"familyId":"mth-leading-ends","variant":"even-positive"},
+    {"familyId":"mth-leading-ends","variant":"even-negative"},
+    {"familyId":"mth-leading-ends","variant":"odd-positive"},
+    {"familyId":"mth-leading-ends","variant":"odd-negative"},
+    {"familyId":"mth-leading-ends","variant":"reordered"},
+    {"familyId":"mth-leading-ends","variant":"canceled"},
+    {"familyId":"mth-leading-ends","variant":"factored"},
+    {"familyId":"mth-turning-bound","variant":"upper-bound"},
+    {"familyId":"mth-turning-bound","variant":"counterexample"},
+    {"familyId":"mth-turning-bound","variant":"minimum"},
+    {"familyId":"mth-turning-bound","variant":"graph"},
+    {"familyId":"mth-leading-comparison","variant":"local-window"},
+    {"familyId":"mth-leading-comparison","variant":"relative"},
+    {"familyId":"mth-leading-comparison","variant":"absolute-gap"},
+    {"familyId":"mth-leading-comparison","variant":"symmetry"},
+    {"familyId":"mth-leading-comparison","variant":"model-domain"}
+  ],
+  "checkpoint": [
+    {"familyId":"mth-leading-ends","variant":"even"},
+    {"familyId":"mth-leading-ends","variant":"odd"},
+    {"familyId":"mth-polynomial-classify","variant":"mixed"},
+    {"familyId":"mth-turning-bound","variant":"mixed"}
+  ],
+  "summary": [
+    "Collect terms before identifying degree and the signed leading coefficient. Canceled powers do not determine degree.",
+    "Nonzero constants have degree zero and finite constant ends. The zero polynomial has undefined degree in this lesson.",
+    "For positive degree, the right end follows the leading coefficient; even degree gives matching ends and odd degree gives opposite ends.",
+    "Leading-term dominance concerns the ratio approaching 1. It does not require a vanishing absolute difference.",
+    "A nonconstant degree-n polynomial has at most n - 1 turns. A count of t turns gives degree at least t + 1.",
+    "Degree parity is different from even-function or odd-function symmetry.",
+    "Graph windows and physical validation intervals limit what observations support. Algebraic end behavior does not remove either limitation."
+  ],
+  "retrieval": "Without looking back, explain the ends of -2x^5 + 40x^3 + 7, state its turning-point bound, and give a degree-5 example with fewer turns. Then explain why x^4 - 200x^2 can be negative at both edges of a small window while both far ends go up. Revisit the zero-polynomial degree and the original domain of a canceled fraction if either distinction feels uncertain.",
+  "readings": [
+    {"title":"OpenStax College Algebra 2e, 5.2: Power Functions and Polynomial Functions","url":"https://openstax.org/books/college-algebra-2e/pages/5-2-power-functions-and-polynomial-functions","purpose":"Review polynomial definitions, degree, leading coefficients, and the four positive-degree end patterns."},
+    {"title":"OpenStax College Algebra 2e, 5.3: Graphs of Polynomial Functions","url":"https://openstax.org/books/college-algebra-2e/pages/5-3-graphs-of-polynomial-functions","purpose":"Connect polynomial structure with graph behavior and turning-point limits. Zeros and multiplicity are developed in the next lesson."}
+  ]
+}
