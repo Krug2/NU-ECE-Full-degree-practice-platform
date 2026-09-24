@@ -1,0 +1,284 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m07-l01",
+  "checkedAt": "2026-09-24",
+  "status": "Detailed implementation plan; not yet delivered.",
+  "title": "Angular motion, torque, and rotational inertia",
+  "objective": "Relate angular and tangential variables, calculate torque about a stated axis, and derive or combine moments of inertia.",
+  "alignment": "Develops rotational motion within the verified official PHS 231 description. This lesson sequence, models, examples, and assessment defaults are platform proposals, not an official NU syllabus or equipment requirement. Official prerequisite wording and its ambiguity remain in the course overview.",
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "purpose": "Cross products, dot products, unit directions, and perpendicular projections"
+    },
+    {
+      "lessonId": "m02-l01",
+      "purpose": "Signed derivatives, definite integrals, initial conditions, and reversal"
+    },
+    {
+      "lessonId": "m03-l01",
+      "purpose": "External force inventories and constraints"
+    },
+    {
+      "lessonId": "m04-l01",
+      "purpose": "Radian angles, radial and tangential acceleration"
+    },
+    {
+      "lessonId": "m06-l01",
+      "purpose": "Center of mass, mass density, and composite bodies"
+    },
+    {
+      "courseId": "csc-208",
+      "purpose": "Differentiate angular functions and integrate distributed mass; preparation is under construction"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Axis, orientation, and angular calculus",
+      "teaching": "Name a fixed axis in an inertial frame and a positive right-hand sense. Define unwrapped angle, signed omega and alpha; retain radian labels despite dimensionless radian dimensions. Convert rpm using 2π/60. Derive constant-alpha formulas from integration and distinguish displacement from absolute angular travel across reversals.",
+      "critical": [
+        "Negative alpha does not imply slowing.",
+        "A point returning to the same orientation can have nonzero accumulated angle."
+      ]
+    },
+    {
+      "topic": "Point motion on a rigid rotor",
+      "teaching": "All points share angular variables, not linear speed. For fixed-axis rigid motion use v=omega cross r and a=alpha cross r+omega cross (omega cross r). Resolve signed tangential and inward radial components. Distance is perpendicular to the axis, not full distance to an arbitrary origin on it.",
+      "critical": [
+        "Alpha=0 can coexist with nonzero centripetal acceleration.",
+        "At omega=0 tangential acceleration can remain nonzero."
+      ]
+    },
+    {
+      "topic": "Vector torque and axis projection",
+      "teaching": "Calculate r cross F about a named origin and project onto a unit axis. Derive signed planar torque xFy−yFx, lever-arm magnitude, radial-force zero torque, and contributions of multiple forces. Torque dimensions equal energy dimensions but torque is recorded in N m. Shift origins explicitly; a pure couple is origin independent when net force is zero.",
+      "critical": [
+        "Force magnitude times radius is valid only for perpendicular force.",
+        "A torque component about the allowed axis is not generally the torque-vector magnitude."
+      ]
+    },
+    {
+      "topic": "Discrete inertia and axis geometry",
+      "teaching": "Build I=sum m rho² with rho²=|r|²−(r dot n)² for unit n. Compare different axes, masses on the axis, radius scaling, and radius of gyration. Derive the scalar kinetic-energy identity by summing point-speed energies, reserving detailed rotational work for the next lesson.",
+      "critical": [
+        "Same mass need not mean same inertia.",
+        "A point mass on the axis contributes zero; a finite object centered on the axis can contribute its own inertia."
+      ]
+    },
+    {
+      "topic": "Continuous mass and shape derivations",
+      "teaching": "Relate dm to linear, area, or volume density and integrate perpendicular squared distance. Derive a slender uniform rod about its center and end; derive disk and annulus using circular rings and proper area measure. Include a nonuniform rod whose CM differs from its midpoint.",
+      "critical": [
+        "The integration element must include density and geometry.",
+        "Uniform radial spacing is not uniform disk area."
+      ]
+    },
+    {
+      "topic": "Axis theorems and composite bodies",
+      "teaching": "Derive I=Icm+Md² by expanding the squared perpendicular displacement and showing the CM cross term vanishes. Apply only to parallel axes with a CM reference. Explain planar perpendicular-axis theorem and its restriction to a planar lamina and intersecting perpendicular axes. Add positive components or subtract missing mass at one common axis; compute the actual remaining mass and CM before shifting.",
+      "critical": [
+        "Do not add Md² between two arbitrary non-CM axes.",
+        "Do not subtract a removed piece's own-center inertia without shifting it to the common axis."
+      ]
+    },
+    {
+      "topic": "Fixed-axis dynamics and force constraints",
+      "teaching": "Derive the axial external torque balance sum tau_axis=I_axis alpha for a rigid body with constant inertia about a fixed inertial axis. Include drive, load, bearing torque, and support-force contributions as appropriate. Avoid claiming a universal vector tau=I alpha for arbitrary 3D bodies or changing axes. Solve constant and time-varying torque; audit dimensions and signs.",
+      "critical": [
+        "Zero net torque allows constant nonzero angular velocity.",
+        "The simple fixed-I equation does not model moving masses while spinning."
+      ]
+    },
+    {
+      "topic": "Massive pulley and inverse inference",
+      "teaching": "Combine hanging-mass translation, fixed-pulley rotation, and a=R alpha for a light inextensible cord without slip. Derive a and tension instead of imposing tension=mg or equal tensions across a massive pulley. Infer I or a missing mass from a known net torque and alpha, checking positive and nonnegative parameter conditions.",
+      "critical": [
+        "Angular inertia appears as I/R² in the coupled translation equation.",
+        "A negative inferred added mass rejects the proposed model or data."
+      ]
+    },
+    {
+      "topic": "Model and measurement evidence",
+      "teaching": "Compare trial changes at fixed drive lever and torque separately from changes in torque arm. Bound inertia and positive angular acceleration with monotonic measurement endpoints. State sensor resolution, angle unwrapping, timebase bias, uncertain radius squared, and differentiation noise. Simulation presets are separate rigid trials; no motor, flywheel, hanging-load, or physical apparatus procedure is assigned.",
+      "critical": [
+        "Changing radius between trials is not an instantaneous physical move during a run.",
+        "Ideal prescribed torque can reverse a rotor; a dry brake needs a different post-stop model."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "angular-calculus",
+      "input": "theta=2−3t+t³ rad, r=1/2 m; t=2 s",
+      "expected": "theta4,delta theta2 rad; omega9 rad/s,alpha12 rad/s²; signed tangential velocity9/2 m/s,at6 m/s², inward ar81/2 m/s²; total acceleration sqrt(6705)/2 m/s²."
+    },
+    {
+      "id": "torque-axis",
+      "input": "r=(2,−1,3) m,F=(4,5,−2) N,n=(0,3/5,4/5)",
+      "expected": "tau=(−13,16,14) N m; axial104/5 N m. Shift origin by (1,0,0): tau'=(−13,14,9)."
+    },
+    {
+      "id": "couple",
+      "input": "F_A=(0,3,0) N at (2,0,0) m and F_B=(0,−3,0) at (−1,0,0)",
+      "expected": "netF0,tau_z9 N m about every origin; the perpendicular separation is3 m."
+    },
+    {
+      "id": "particles",
+      "input": "2kg at (1,2,3),1kg at (−2,0,1) m",
+      "expected": "Iz14,Ix27 kg m²; around n=(0,3/5,4/5) through origin I=161/25 kg m²."
+    },
+    {
+      "id": "rod",
+      "input": "Uniform slender rod3kg,length2m; all axes perpendicular to rod",
+      "expected": "Icenter1,Iend4; axis0.5m from center7/4; axis0.5m beyond end31/4 kg m². Adding M(0.5)² directly to Iend would give a wrong19/4."
+    },
+    {
+      "id": "nonuniform",
+      "input": "lambda(x)=2(1+x/3) kg/m on0≤x≤3m; axis normal to rod",
+      "expected": "M9kg,CM5/3m,Iend63/2,Icm13/2 kg m²; radius of gyration about CM sqrt(26)/6m."
+    },
+    {
+      "id": "annulus",
+      "input": "Uniform annulus4kg,inner radius1m,outer2m",
+      "expected": "Iaxis10 kg m²; disk4kg,R2m has8,thin hoop4kg,R2m has16. Derive from area rings."
+    },
+    {
+      "id": "cutout",
+      "input": "Uniform disk originally8kg,R2m; remove circular hole r1m whose center is1m along+x; parallel perpendicular axes",
+      "expected": "Removed mass2kg,removed I about original center3; remaining mass6kg,remaining I13; remaining CMx−1/3m; remaining Icm37/3 kg m²."
+    },
+    {
+      "id": "rotor",
+      "input": "Disk2kg,R1m; point A1kg,r1m; B2kg,r1/2m; drive arm1/2m,Fr4N,Ft6N,couple−1Nm; omega0−1rad/s,T2s",
+      "expected": "I=5/2,tau2,alpha4/5; finalomega3/5,delta theta−2/5; zero-speed time5/4s; total angular travel17/20rad. Point A final speed3/5,at4/5,ar9/25."
+    },
+    {
+      "id": "pulley",
+      "input": "Hanging2kg mass; uniform disk pulley4kg,R1/2m,ideal bearing and no-slip cord,g10",
+      "expected": "PulleyI1/2 kg m²; downwarda5m/s²,tension10N,alpha10rad/s². Net axial torque5Nm."
+    },
+    {
+      "id": "inference-bounds",
+      "input": "Known baseI1kgm²; pointmass2kg at radius within0.4..0.6m; positive net torque within3..5Nm",
+      "expected": "I within33/25..43/25; alpha within75/43..125/33 rad/s². Endpoints bound the stipulated independent intervals, not a statistical confidence interval."
+    }
+  ],
+  "families": [
+    {
+      "id": "phs231-rotation-dynamics",
+      "variants": [
+        "angular",
+        "accumulate",
+        "point",
+        "torque",
+        "couple",
+        "driven",
+        "pulley",
+        "stopping"
+      ],
+      "coverage": "Angular calculus and unit conversion, full point acceleration, vector/axis torque, origin shifts, constant and affine drive, coupled constraints, and valid stopping interval."
+    },
+    {
+      "id": "phs231-inertia-model",
+      "variants": [
+        "particles",
+        "rod",
+        "density",
+        "annulus",
+        "cutout",
+        "inverse",
+        "axes",
+        "bounds"
+      ],
+      "coverage": "Axis-aware sums, continuous integrals, density and CM, shape limits, composite subtraction, inverse evidence, theorem restrictions, and uncertainty."
+    }
+  ],
+  "guided": {
+    "fixture": "Default rotor above",
+    "fields": [
+      "inertia",
+      "torque",
+      "alpha",
+      "finalOmega",
+      "interpretation"
+    ],
+    "misconceptions": [
+      "Use force magnitude instead of its tangential component.",
+      "Use mass times radius instead of squared radius.",
+      "Infer slowing from alpha alone.",
+      "Treat an ideal signed torque as a brake that holds at rest."
+    ]
+  },
+  "investigation": {
+    "kind": "phs231-rotation",
+    "model": "Horizontal planar rigid disk plus two ideal point masses on massless rigid arms. Fixed z axle in an inertial frame; negligible bearing torque except the independently specified signed axial couple. Point A starts on+x, B on+y. A prescribed actuator co-rotates at an independent drive radius, maintaining constant radial and tangential components. All inertia and force parameters remain fixed within each run.",
+    "inputs": "Disk mass0.1..20kg,radius0.05..3m; added masses0..10kg and radii0..3m; independent drive radius0..3m; radial/tangential forces and axial couple−20..20; omega0−10..10rad/s; duration0.05..10s.",
+    "outputs": "Disk and point inertia contributions; radial/drive/couple torque inventory; alpha, finalomega, signed angle, absolute angular travel and any zero-speed time; selected-time rotor diagram; point position, velocity and full acceleration; 41-row time table; comparison at scaled point radii keeping drive geometry unchanged.",
+    "predictions": "Total I, net axial torque, alpha, and finalomega. Exact fractions or documented decimal tolerance; reveal separate feedback and complete outputs.",
+    "limitations": "No active radius changes during a trial, free 3D tumbling, axle reaction calculation, friction law, material strength, apparatus safety certification, or physical experiment. Controls reset on reload; notes persist."
+  },
+  "verification": {
+    "seedMinimumPerVariant": 50,
+    "independentChecks": [
+      "Integrate polynomial mass densities and disk area independently of supplied closed forms.",
+      "Compute point accelerations by finite differences of Cartesian trajectories.",
+      "Check torque in rotated Cartesian coordinates from r cross F.",
+      "Reconstruct angle and omega with independent numerical integration and split absolute angular travel at every crossing.",
+      "Solve pulley translation and torque simultaneously and check rope constraint.",
+      "Calculate composite inertia directly about both axes using distributed density or individual component integrals.",
+      "Accept exact-equivalent expressions, reject wrong units/invalid numeric syntax and incorrect signs, and verify all interpretation branches.",
+      "Complete and restore actual generated checkpoint snapshots and notes."
+    ],
+    "edges": [
+      "Zero added mass and zero point radius",
+      "Zero radial or tangential force; zero drive radius",
+      "Torque cancellation with nonzero forces",
+      "Negative torque and negative initialomega",
+      "Exact-rest, constant rotation, endpointstop, and interiorreversal",
+      "Axes through a point or shifted from CM",
+      "Annulus disk limit and hoop trend",
+      "Centered versus offset cutout",
+      "Impossible inverse inferred mass",
+      "Uncertainty intervals including radiuszero but positive totalI"
+    ],
+    "browser": "Desktop/mobile, keyboard inputs and sample-time control, accessible diagram/time and contribution tables, invalid input, misconception feedback, reload, practice/checkpoint and notes backup restore.",
+    "review": "No independent subject review or pilot validation has occurred."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Rotational Variables",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-1-rotational-variables",
+      "checkedAt": "2026-09-24",
+      "use": "Angular quantities and point-motion definitions. The lesson explicitly distinguishes signed tangential velocity from speed and includes radial acceleration in the full vector."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Calculating Moments of Inertia",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "checkedAt": "2026-09-24",
+      "use": "Distributed-mass integrals and axis theorem background; original examples are independently calculated."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Torque",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+      "checkedAt": "2026-09-24",
+      "use": "Vector torque, right-hand orientation, and lever arms."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Newton's Second Law for Rotation",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-7-newtons-second-law-for-rotation",
+      "checkedAt": "2026-09-24",
+      "use": "Fixed-axis dynamics. The scalar equation is restricted to the stated axial component; no arbitrary 3D scalar-inertia claim is made."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "29.4 Parallel Axis Theorem",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/resources/29-3/",
+      "checkedAt": "2026-09-24",
+      "use": "Free video/transcript companion on parallel axes and the CM reference."
+    }
+  ]
+}
