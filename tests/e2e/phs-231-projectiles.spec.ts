@@ -74,7 +74,12 @@ test("projectile checkpoints preserve algebraic root sets and admissible events 
       if(field.kind==="choice")await practice.locator(`input[value="${answers[field.id]}"]`).check();
       else await practice.getByLabel(`${field.label}${field.unit?` (${field.unit})`:""}`,{exact:true}).fill(answers[field.id]);
     }
-    if(index===1){await page.reload();await page.getByRole("button",{name:"Checkpoint",exact:true}).click();await expect(practice.getByLabel("All algebraic roots (s)",{exact:true})).toHaveValue(answers.roots);}
+    if(index===1){
+      await expect(practice.getByText("Saved in this browser.",{exact:true})).toBeVisible();
+      await page.reload();await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
+      await expect(practice.getByLabel("All algebraic roots (s)",{exact:true})).toHaveValue(answers.roots);
+      await expect(practice.getByLabel("Physical future impact time (s)",{exact:true})).toHaveValue(answers.time);
+    }
     await practice.getByRole("button",{name:index===3?"Submit checkpoint":"Next question",exact:true}).click();
   }
   await expect(practice.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
