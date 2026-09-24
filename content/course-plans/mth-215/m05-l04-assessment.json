@@ -1,8 +1,8 @@
 {
   "courseId": "mth-215",
   "lessonId": "m05-l04",
-  "status": "assessment draft",
-  "lessonAvailable": false,
+  "status": "implemented and verified",
+  "lessonAvailable": true,
   "objective": "Fit a simple exponential model, solve for a threshold time, and interpret a logarithm of a dimensionless ratio.",
   "families": {
     "mth-model-fit": ["two-point", "shifted-origin", "time-units", "known-baseline", "constant-data", "invalid-data", "extra-observation", "log-linear-fit", "residual-audit"],
@@ -18,5 +18,15 @@
   ],
   "checkpointRule": "Every sampled question is critical and must be correct without assistance. Each four-question form samples these families; it does not assess every variant or establish complete course mastery.",
   "activationRequirements": ["Complete original lesson instruction and worked examples", "Guided practice", "Threshold investigation", "In-app logarithmic fitting tool", "Coverage and retrieval mapping", "Lesson browser and accessibility verification"],
+  "delivery": {
+    "instructionSections": 22,
+    "workedExamples": 50,
+    "guidedFields": 8,
+    "investigationCases": 6,
+    "practiceVariants": 36,
+    "checkpointFamilies": 4,
+    "verification": ["Lesson schema, math rendering and coverage checks passed", "Guided answers and all six authored models checked independently", "Four actual lesson browser journeys passed, including keyboard, mobile accessibility, notes, checkpoints and backup restoration", "Fitting-label contrast corrected and affected browser journeys repeated"],
+    "courseStatus": "building"
+  },
   "independentSubjectReview": "not yet performed"
 }
