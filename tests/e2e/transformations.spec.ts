@@ -107,6 +107,7 @@ test("transformation checkpoint graphs and exact answer sets survive backup rest
   await page.getByRole("button",{name:"Confirm reset",exact:true}).click();
   await page.getByLabel("Import a progress backup",{exact:true}).setInputFiles(file);
   await page.getByRole("button",{name:"Replace with this backup",exact:true}).click();
+  await expect(page.getByText(/^Backup restored\./)).toBeVisible();
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   await expect(page.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
   await page.getByText("Question 3: Correct",{exact:true}).click();

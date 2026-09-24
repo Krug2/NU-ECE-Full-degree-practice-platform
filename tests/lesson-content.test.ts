@@ -9,7 +9,7 @@ it("keeps unavailable material distinct from authored lessons", () => {
   expect(lessons.length).toBeGreaterThan(0);
 });
 
-it.each(lessons)("renders $courseId/$id formulas and supplies complete practice forms", (lesson) => {
+it.each(lessons)("$courseId $id renders every formula and supplies complete practice forms", lesson => {
     const strings: string[]=[];
     const collect=(value:unknown):void=>{if(typeof value==="string")strings.push(value);else if(value&&typeof value==="object")Object.values(value).forEach(collect);};
     collect(lesson);

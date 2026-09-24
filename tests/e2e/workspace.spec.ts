@@ -15,23 +15,29 @@ test("browse, organize, record study, and restore a complete backup", async ({ p
   await page.getByRole("link", { name: "Circuit Analysis", exact: true }).click();
   await expect(page.getByText("Awaiting course planning", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Added to my plan", exact: true })).toBeVisible();
   await page.getByLabel("Course notes", { exact: true }).fill("Review Kirchhoff's laws <script>literal text</script>");
   await page.getByRole("button", { name: "Save notes", exact: true }).click();
+  await expect(page.getByText("Notes saved in this browser.", { exact: true })).toBeVisible();
   await page.getByLabel("How familiar does this feel?").selectOption("refresh");
+  await expect.poll(async () => (await readStoredProgress(page)).confidence["cee-310"]).toBe("refresh");
   await page.reload();
   await expect(page.getByLabel("Course notes", { exact: true })).toHaveValue("Review Kirchhoff's laws <script>literal text</script>");
   await expect(page.getByLabel("How familiar does this feel?")).toHaveValue("refresh");
   await page.goto("/courses/f02");
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Added to my plan", exact: true })).toBeVisible();
   await page.goto("/plan");
   await page.getByRole("button", { name: "Move F02 up", exact: true }).click();
   await expect(page.locator(".plan-list > li").first()).toContainText("F02");
   await page.goto("/resources?course=csc-208");
   await page.getByRole("button", { name: "Save OpenStax Calculus Volume 1", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Unsave OpenStax Calculus Volume 1", exact: true })).toHaveAttribute("aria-pressed", "true");
   await page.goto("/settings");
   await page.getByLabel("What should we call you?", { exact: false }).fill("Sam");
   await page.getByLabel("Weekly study goal", { exact: true }).fill("8");
   await page.getByRole("button", { name: "Save preferences", exact: true }).click();
+  await expect(page.getByText("Preferences saved.", { exact: true })).toBeVisible();
   await page.goto("/plan");
   await page.getByLabel("Course or refresher", { exact: true }).selectOption("cee-310");
   await page.getByLabel("Minutes studied", { exact: true }).fill("45");
@@ -59,6 +65,7 @@ test("browse, organize, record study, and restore a complete backup", async ({ p
   await expect(page.getByText("Review this backup", { exact: true })).toBeVisible();
   await expect(page.getByLabel("Weekly study goal", { exact: true })).toHaveValue("5");
   await page.getByRole("button", { name: "Replace with this backup", exact: true }).click();
+  await expect(page.getByText(/^Backup restored\./)).toBeVisible();
   await page.reload();
   await expect(page.getByLabel("Weekly study goal", { exact: true })).toHaveValue("8");
   await page.goto("/plan");
@@ -70,6 +77,7 @@ test("browse, organize, record study, and restore a complete backup", async ({ p
 test("invalid imports preserve existing progress and cancelled resets do nothing", async ({ page }) => {
   await page.goto("/courses/f01");
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Added to my plan", exact: true })).toBeVisible();
   await page.goto("/settings");
   const before = await readStoredProgress(page);
   await page.getByLabel("Import a progress backup", { exact: true }).setInputFiles({ name: "future.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify({ schemaVersion: 999 })) });

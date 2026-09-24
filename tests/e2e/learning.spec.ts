@@ -27,14 +27,17 @@ test("learn, investigate, resume practice, and restore learning in a backup",asy
   await page.getByRole("button",{name:"Start practice",exact:true}).click();
   await page.locator("#practice").getByLabel("x",{exact:true}).fill("1/3");
   await page.getByRole("button",{name:"Show a hint (0/3)",exact:true}).last().click();
+  await expect(page.locator("#practice").getByRole("button",{name:"Show a hint (1/3)",exact:true})).toBeVisible();
   await page.reload();
   await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("1/3");
   await expect(page.locator("#practice").getByRole("button",{name:"Show a hint (1/3)",exact:true})).toBeVisible();
   await page.getByRole("button",{name:"Next question",exact:true}).click();
+  await expect(page.locator(".attempt-meta")).toContainText("Question 2 of 6");
   await page.reload();
   await expect(page.locator(".attempt-meta")).toContainText("Question 2 of 6");
   await page.getByLabel("Reasoning, questions, or a worked solution to revisit",{exact:true}).fill("Subtract from both sides before dividing. <script>literal</script>");
   await page.getByRole("button",{name:"Save lesson notes",exact:true}).click();
+  await expect(page.getByText("Lesson notes saved.",{exact:true})).toBeVisible();
   await page.goto("/settings");
   const downloadPromise=page.waitForEvent("download");
   await page.getByRole("button",{name:"Export progress",exact:true}).click();
@@ -45,6 +48,7 @@ test("learn, investigate, resume practice, and restore learning in a backup",asy
   await page.getByRole("button",{name:"Confirm reset",exact:true}).click();
   await page.getByLabel("Import a progress backup",{exact:true}).setInputFiles(file);
   await page.getByRole("button",{name:"Replace with this backup",exact:true}).click();
+  await expect(page.getByText(/^Backup restored\./)).toBeVisible();
   await page.goto(route);
   await expect(page.locator(".attempt-meta")).toContainText("Question 2 of 6");
   await expect(page.getByLabel("Reasoning, questions, or a worked solution to revisit",{exact:true})).toHaveValue("Subtract from both sides before dividing. <script>literal</script>");

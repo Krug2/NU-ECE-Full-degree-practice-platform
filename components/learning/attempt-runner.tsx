@@ -4,7 +4,7 @@ import { useEffect,useState } from "react";
 import type { Lesson,Response } from "@/lib/learning/contracts";
 import { attemptResult,createAttempt,type Attempt } from "@/lib/learning/attempts";
 import { AttemptWriteQueue,type AttemptPatch } from "@/lib/learning/attempt-writes";
-import { getStudySnapshot,saveProgress,useStudy } from "@/lib/study-store";
+import { getStudySnapshot,saveAttemptProgress,saveProgress,useStudy } from "@/lib/study-store";
 import { downloadProgressText } from "@/lib/download-progress";
 import { MathText } from "./math-text";
 import { QuestionFeedback,QuestionFields } from "./question-fields";
@@ -15,7 +15,7 @@ function AttemptSession({attempt,removed,onDraftCopied,onBusy,onCloseRemoved}:{a
   const [responses,setResponses]=useState(attempt.responses),[position,setPosition]=useState(attempt.position);
   const [revision,setRevision]=useState(attempt.revision),[checked,setChecked]=useState(false);
   const [message,setMessage]=useState(""),[pending,setPending]=useState(0),[failed,setFailed]=useState(false);
-  const [writer]=useState(()=>new AttemptWriteQueue(attempt.id,attempt.revision,saveProgress));
+  const [writer]=useState(()=>new AttemptWriteQueue(attempt.id,attempt.revision,saveAttemptProgress));
   const sourceChanged=attemptIdentity(loaded)!==attemptIdentity(attempt);
   if(!sourceChanged&&loaded!==attempt)setLoaded(attempt);
   const {locked}=useStudy(),conflict=sourceChanged||pending===0&&(removed||attempt.revision!==revision),recovery=conflict||failed;

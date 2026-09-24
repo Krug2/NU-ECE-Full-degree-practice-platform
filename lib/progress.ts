@@ -6,8 +6,9 @@ const courseIds = new Set(courses.map(course => course.id));
 const resourceIds = new Set(resources.map(resource => resource.id));
 const courseId = z.string().refine(id => courseIds.has(id), "Unknown course");
 const unique = (items: string[]) => new Set(items).size === items.length;
-export const backupByteLimit=1_000_000;
-export const backupLimitMessage = "Your progress has reached the 1 MB backup limit. Export a copy, then remove older study sessions or practice attempts, or shorten notes before saving more.";
+export const backupByteLimit=50_000_000;
+export const backupLimitLabel=`${backupByteLimit/1_000_000} MB`;
+export const backupLimitMessage = `Your progress has reached the ${backupLimitLabel} backup limit. Export a copy, then remove older study sessions or practice attempts, or shorten notes before saving more.`;
 export const confidenceOptions = { new: "New to me", refresh: "Needs a refresher", comfortable: "Feels familiar" };
 const legacyProgressSchema = z.object({
   schemaVersion: z.literal(1),
@@ -30,7 +31,7 @@ export type Confidence = keyof typeof confidenceOptions;
 export const emptyProgress = (): Progress => ({ schemaVersion: 2, profile: { displayName: "", weeklyHours: 5 }, plan: [], bookmarks: [], notes: {}, confidence: {}, sessions: [], learning:emptyLearning() });
 
 export function parseBackup(text: string): Progress {
-  if (new TextEncoder().encode(text).length > backupByteLimit) throw new Error("Choose a progress backup smaller than 1 MB.");
+  if (new TextEncoder().encode(text).length > backupByteLimit) throw new Error(`Choose a progress backup no larger than ${backupLimitLabel}.`);
   let value: unknown;
   try { value = JSON.parse(text); } catch { throw new Error("This file is not valid JSON. Choose an ECE Study progress export."); }
   if(value&&typeof value==="object"&&"schemaVersion" in value&&value.schemaVersion===1){
