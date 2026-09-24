@@ -2,7 +2,7 @@
   "courseId": "f06",
   "title": "Units and measurement",
   "version": 1,
-  "status": "building",
+  "status": "preview",
   "introduction": "Recover SI prefixes, compound conversions, dimensional analysis, reporting precision, and the interpretation of measurement bounds. This optional refresher does not award university credit or determine enrollment eligibility. Familiarity and assisted exploration are separate from independent checkpoint evidence. Independent human review is pending.",
   "bridges": [],
   "modules": [
