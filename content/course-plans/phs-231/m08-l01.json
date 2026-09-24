@@ -1,0 +1,296 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m08-l01",
+  "checkedAt": "2026-09-24",
+  "status": "Detailed implementation plan; not yet delivered.",
+  "title": "Static equilibrium and support reactions",
+  "objective": "Solve force and torque equilibrium for a rigid body and assess support, contact, and tipping constraints.",
+  "alignment": "Develops equilibrium within the verified official PHS 231 subject coverage. This teaching sequence, contact model, activities, and assessment choices are proposed platform design, not an official NU syllabus or equipment requirement.",
+  "prerequisites": [
+    {
+      "lessonId": "m07-l01",
+      "purpose": "Force moments, couples, rigid-body geometry, and axis conventions"
+    },
+    {
+      "lessonId": "m03-l01",
+      "purpose": "External force inventory, support direction, and body boundaries"
+    },
+    {
+      "lessonId": "m03-l02",
+      "purpose": "Required static friction versus capacity and unilateral contact"
+    },
+    {
+      "lessonId": "m06-l01",
+      "purpose": "Center of mass and weighted resultants"
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "Potential-energy interpretation and local stability"
+    },
+    {
+      "lessonId": "m01-l01",
+      "purpose": "Units and allowed measurement intervals"
+    },
+    {
+      "courseId": "csc-208",
+      "status": "under construction",
+      "purpose": "Integrals of distributed loads; necessary calculations are developed locally"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Static conditions and force inventory",
+      "teaching": "Require rest in the selected inertial frame, zero resultant force, and zero resultant moment. Distinguish equilibrium from instantaneously zero velocity and from stability. Use three independent planar scalar equations; name six component conditions in 3D without reducing all 3D problems to a planar sketch.",
+      "critical": [
+        "Force balance alone does not imply rotational equilibrium.",
+        "Rest at one instant is not proof that acceleration is zero."
+      ]
+    },
+    {
+      "topic": "Support laws and unknowns",
+      "teaching": "Distinguish ideal pins with two reaction components, fixed clamps with a reaction couple, frictionless rollers normal to their surface, tension-only cables along their geometry, and unilateral rough contacts with N>=0 and |f|<=mu_sN. Internal member forces cancel only when the selected system contains both interacting pieces. A two-force member requires exactly two end forces and no separate couple or weight.",
+      "critical": [
+        "A pin supplies no reaction couple in this planar idealization.",
+        "A cable cannot realize a negative tension; a supporting surface cannot pull."
+      ]
+    },
+    {
+      "topic": "Moments and origin checks",
+      "teaching": "Use Mz=xFy-yFx with counterclockwise positive, explicitly differing from the preceding rolling lesson's signed clockwise scalar. A couple is origin-independent. Under an origin shift a, Mnew=Mold-a cross resultant force; torque balance becomes origin-independent when force balance also holds. Verify solutions about more than one point without inventing extra independent equations.",
+      "critical": [
+        "Do not count component forces and their resultant twice.",
+        "Moving the pivot does not create additional independent equilibrium equations."
+      ]
+    },
+    {
+      "topic": "Distributed loads",
+      "teaching": "Integrate a nonnegative line load w(x) in N/m to its force Q=int w dx and moment J=int xw dx. Use centroid J/Q only for Q>0; zero load has no unique centroid. Derive uniform and both triangular limits of a linear load. Distinguish distributed-load centroid, uniform-field center of gravity, and an effective support line shifted by applied couples or a horizontal force at height.",
+      "critical": [
+        "Equal total load with a different centroid gives different reactions.",
+        "The height of a horizontal load affects its moment even when its horizontal location does not."
+      ]
+    },
+    {
+      "topic": "Beam, cable, ladder, and clamp balances",
+      "teaching": "Solve two-support beams with overhangs, a pinned horizontal beam and inclined tension cable, an inclined beam with a horizontal cable, a smooth-wall rough-floor ladder as a paper model, and a fixed-end load inventory. Keep perpendicular lever arms rather than using rod length indiscriminately.",
+      "critical": [
+        "Check every solved support force against its direction and contact law.",
+        "Do not turn static demand into a strength rating or a physical setup procedure."
+      ]
+    },
+    {
+      "topic": "Moving loads and contact loss",
+      "teaching": "Find normal reactions as affine functions of load position and intersect their nonnegative domains with the finite beam. At a zero reaction the model is at a limiting contact state; beyond it the negative candidate is impossible for the stated support. Do not clip a negative reaction and continue claiming equilibrium. The simulation does not predict subsequent tipping motion.",
+      "critical": [
+        "A zero reaction is a boundary, not proof of a robust stable state.",
+        "An algebraic solution can violate the support model."
+      ]
+    },
+    {
+      "topic": "Sliding versus tipping",
+      "teaching": "For a rough left support and smooth right support, solve required friction from horizontal balance and use the actual left normal force in its bound. A raised horizontal load alters normal reactions. For an ideal rectangular block, compare mu_sW with Wb/(2h) under the stated centered weight and fixed loading height; show sliding-first, tipping-first, and simultaneous thresholds.",
+      "critical": [
+        "Do not use the total beam weight in a friction law attached to only one support.",
+        "A friction-limited force and a tipping-limited force are distinct model conditions."
+      ]
+    },
+    {
+      "topic": "Determination, compatibility, and stability",
+      "teaching": "Three vertical supports generally leave a reaction family when only rigid-body statics is known. Give an explicit symmetric spring-support compatibility model to select one member of that family, preparing for elasticity. Conversely, three unknowns do not guarantee a unique answer: a pin plus an ineffective horizontal support can leave a rotation mechanism. Use local potential minima, maxima, and constant potential to distinguish stable, unstable, and neutral equilibria, including a quartic minimum with zero second derivative.",
+      "critical": [
+        "Counting unknowns is not a rank or geometric restraint test.",
+        "Equilibrium does not establish stability, stiffness, or strength.",
+        "Zero second derivative alone does not establish neutral stability."
+      ]
+    },
+    {
+      "topic": "Uncertainty and evidence",
+      "teaching": "Use independent allowed intervals for moving load, raised horizontal load, and friction coefficient. Derive reaction and friction-margin extrema from monotonicity, state when correlations invalidate independent corner combinations, and report all, none, or mixed admissibility without probability claims. Record system boundary, force inventory, predicted reactions, contact decisions, alternate-origin residuals, and a controlled change.",
+      "critical": [
+        "A small equation residual does not validate the assumed supports.",
+        "No physical ladder, suspended-load, elevated-weight, or destructive experiment is assigned."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "rough-beam",
+      "input": "L6m,a1m,b4m,W60N atL/2,P60N atx3m,H12N aty1m,M0,mu_s.4; right support smooth",
+      "expected": "NA36N,NB84N,fA-12N,capacity14.4N,margin2.4N; admissible. Vertical load centroid3m, effective support line3.1m."
+    },
+    {
+      "id": "origin-check",
+      "input": "Same rough-beam fixture",
+      "expected": "About A:84*3-60*2-60*2-12=0. About B:-36*3+60+60-12=0. Extra torque equations do not add independent constraints."
+    },
+    {
+      "id": "distributed",
+      "input": "L6,a1,b4,W60 at3,P0,H0,M0; w0=0,w1=20N/m",
+      "expected": "Q60N,J240Nm,centroid4m,NB100N,NA20N. Reverse the triangle to w0=20,w1=0:Q60,J120,centroid2,NB60,NA60."
+    },
+    {
+      "id": "cable",
+      "input": "Horizontal beamL4m,pin0,W40N at2,P60N at3,cableattip direction(-3/5,4/5),M0",
+      "expected": "CableTy65N,T325/4N,Tx-195/4N,pinRx195/4N,Ry35N. With additional CCW M300Nm, requiredTy-10 andT-25/2 are not realizable by this tension-only cable."
+    },
+    {
+      "id": "inclined-cable",
+      "input": "Beamtip(3,4)m,pinorigin,W100N atmidpoint,P40N attip,horizontalleft cableattip",
+      "expected": "4T-150-120=0 givesT135/2N,pinRx135/2N,Ry140N."
+    },
+    {
+      "id": "ladder",
+      "input": "Paper model with lower pointorigin,uppertip(3,4)m,W80N atmidpoint,P120N at3/4length,smoothwall,roughfloor",
+      "expected": "Wallnormal195/2N,floorN200N,floorf195/2N,minimum mu_s39/80. Given mu_s.4 fails; no subsequent motion or safe-use claim is derived."
+    },
+    {
+      "id": "moving-window",
+      "input": "L6,a1,b4,W60,P60,zero distributedload,H=M0,pointpositionx",
+      "expected": "NA=100-20x,NB=20+20x; allowedx[0,5]m. WithH12 atheight1 andmu_s.4,NA=96-20x,NB=24+20x:tipbound4.8m butfrictionbound3.3m, soadmissible[0,3.3]."
+    },
+    {
+      "id": "clamp",
+      "input": "Idealized 3m cantilever with uniformdownwardload10N/m and tipforce(6,-20)N; no other load",
+      "expected": "ClampRx-6N,Ry50N,CCW moment105Nm. A pin cannot supply that independent moment."
+    },
+    {
+      "id": "slide-tip",
+      "input": "Centered blockW100N,basewidth2m,horizontalforceatheight3m",
+      "expected": "Ftip100/3N. mu_s.2 givesFslide20N andslidingfirst; mu_s.5 givesFslide50N andtippingfirst; mu_s1/3 simultaneous. AtF10N verticalsupportlinex1.3m fromleftedge."
+    },
+    {
+      "id": "redundant",
+      "input": "Rigid beam with supportsx0,2,4m andcenteredW120N",
+      "expected": "NA=NC=(120-NB)/2 with0<=NB<=120. Equal spring stiffnesses select40Neach; center springtwiceouterstiffness selects30,60,30. This extra deformation law is not derived from statics alone."
+    },
+    {
+      "id": "mechanism",
+      "input": "Pinat(0,0),secondsupportat(4,0) canonlysupplyhorizontalreaction,downward40N at(2,0)",
+      "expected": "Horizontal balanceAx+Bx0,verticalAy40N,unbalancedmoment-80Nm independentofunknowns. Three unknowns do not remove the missing rotational restraint."
+    },
+    {
+      "id": "inverse-load",
+      "input": "Endpointsupports0,4m,uniformbeamW40N,measuredNA50N,NB90N,unknown downwardpointload",
+      "expected": "P100N,x14/5m,totalverticalloadcenter18/7m."
+    },
+    {
+      "id": "stability",
+      "input": "LocalpotentialU=10+Aq²+5q⁴J,qinmeters within[-.2,.2]; A=2,-2,0 inJ/m²; comparewithconstantU",
+      "expected": "AllhaveF(0)0. Atq.1:deltaU .0205,-.0195,.0005J respectively:stable,unstable,stable. QuarticcaseU''(0)0 isstillstrictlocalminimum; constantU isneutral withinstatedcoordinate/domain."
+    },
+    {
+      "id": "uncertainty",
+      "input": "RoughbaselinebeamW=P60,L6,a1,b4,h1,M0; x[3,3.2],H[10,14],mu_s[.35,.45]",
+      "expected": "NA in[94/3,110/3]N,allnormalcontactspositive. Worstfrictionmargin-91/30N,best13/2N: mixedadmissibility. Ifmu_slowerboundincreasesto.5 witha consistentupperboundatleast.5,worstmargin5/3N andallpass."
+    }
+  ],
+  "families": [
+    {
+      "id": "phs231-static-reactions",
+      "variants": [
+        "beam",
+        "distributed",
+        "cable",
+        "inclined",
+        "ladder",
+        "origin",
+        "inverse",
+        "clamp"
+      ],
+      "coverage": "Force and moment balances for varied supports and geometry, load integrals, origin changes, and inverse measured reactions."
+    },
+    {
+      "id": "phs231-static-validity",
+      "variants": [
+        "liftoff",
+        "window",
+        "rough",
+        "slide-tip",
+        "redundant",
+        "mechanism",
+        "stability",
+        "uncertainty"
+      ],
+      "coverage": "Unilateral signs, finite load-position domains, local friction, competing limits, additional compatibility, singular restraint, stability, and allowed measurement bounds."
+    }
+  ],
+  "guided": {
+    "fixture": "Rough baseline beam moved to x4m: candidateNA16N,NB104N,fA-12N,staticcapacity6.4N; positive normal reactions do not rescue failed friction.",
+    "misconceptions": [
+      "Use totalN120N to assign frictioncapacity48N.",
+      "Ignore the horizontal force's moment atheight1.",
+      "Balance forces without moments.",
+      "Clip an impossible force to its bound while still claiming static equilibrium."
+    ]
+  },
+  "investigation": {
+    "kind": "phs231-statics",
+    "model": "Rigid horizontal beam on two unilateral supports at a<b. Left support supplies vertical NA and horizontal Coulomb static friction; right support is smooth and supplies only vertical NB. Uniform beam weight W acts at L/2; external linear downward line load w(x) runs across0..L; a downward point load P moves along0..L. Signed horizontal force H is transmitted through an ideal massless rigid attachment at height h, and separate signed CCW couple M acts. Static candidate only; no post-failure dynamics, compliance, strength, damping, or hardware procedure.",
+    "inputs": "L1..12m; supports0..L separatedbyatleast.1m; W.1..200N; P0..300N; loadposition0..L; w0,w1 0..100N/m; H-100..100N; h0..4m; M-300..300Nm; mu_s0..1.5. DefaultL6,a1,b4,W60,P60,x3,w0=w1=0,H12,h1,M0,mu_s.4.",
+    "equations": "Q=L(w0+w1)/2; J=L²(w0+2w1)/6; D=W+Q+P>0; A=W L/2+J+P x+hH-M. NB=(A-aD)/(b-a),NA=(bD-A)/(b-a),fA=-H. CandidateadmissibleiffNA>=0,NB>=0,|H|<=mu_s NA. DistributedcentroidJ/Q isundefinedwhenQ0. Downwardloadcentroid(W L/2+J+Px)/D differsfromeffectiveverticalreactionlineA/D whenhH-M nonzero.",
+    "outputs": "Candidate force inventory, normals, friction demand/capacity/margin, separate failed constraints, vertical-load centroid, effective support line, and force/moment residuals about0,A,B. An affine moving-load sweep includes0,L,selectedposition, and all exact constraint boundaries within0..L; complete equivalent table, reaction-versus-position plot, and force diagram. Show the feasible position interval or explicitly none. Negative candidates remain visible as incompatible requirements, never clipped into a claimed new equilibrium.",
+    "predictions": "NA, NB, requiredsignedfriction, and a contact decision: admitted; positive-contact candidate fails friction; or unilateral contact fails. Exact boundary remains admitted but is explicitly marked limiting. Predictions refer to the chosen initial position; the sweep slider then compares positions under otherwise unchanged loading.",
+    "accessibility": "Keyboard-controlled numeric inputs, selected sweep slider with Home/End/arrows, exact-boundary buttons, table regions with keyboard overflow, text-identifiable force directions, diagram descriptions, and no automatic motion. Diagram text sized for mobile and tables supply every numerical result.",
+    "limits": "No material strength, support compliance, cable elasticity, or dynamic fall is modeled. Static feasibility does not establish global stability or safe hardware loading. The simulation is not a physical ladder, suspended-load, or elevated-weight experiment. Controls reset onreload; notes and assessments persist."
+  },
+  "verification": {
+    "seedMinimumPerVariant": 50,
+    "independentChecks": [
+      "Integrate distributed force and first moment numerically rather than repeating the centroid formula.",
+      "Solve the three equilibrium equations by independent small-matrix elimination and verify Cartesian force moments about several shifted origins.",
+      "Enumerate reactions over dense position samples and compare membership in the independently intersected unilateral/friction interval, including exact bounds and adjacent points.",
+      "Check cable direction components, smooth-wall ladder torque, clamp moment, and support action/reaction recipients.",
+      "Verify inferred loads by substituting measured reactions into independent moment balance.",
+      "Use compliant-support equations separately to check the statically indeterminate family; test a singular support geometry instead of equating unknown count with rank.",
+      "Use nearby potential values and derivative finite differences for local stability, including zero quadratic curvature.",
+      "Enumerate uncertainty corners and compare all/none/mixed outcomes without probabilities.",
+      "Run at least50 deterministic seeds pervariant with units, equivalentanswers, impossible supportchoices, blank/complex/nonfiniteinputs, and meaningful edgecases.",
+      "Complete actual checkpoint, waitforconfirmed save, reload, export/reset/restore question snapshots, answers, evidence, and notes."
+    ],
+    "edges": [
+      "Point load zero",
+      "Distributed load zero and both triangular limits",
+      "Pure signed couple",
+      "Horizontal force atzeroheight",
+      "Both force signs",
+      "Zero friction withzero ornonzerohorizontal demand",
+      "Exactlyzero normal reaction",
+      "Justoutsidecontactboundary",
+      "Exactlyatfrictioncapacity",
+      "Normalpositivebutfrictionfails",
+      "Bothcontactandfrictioninconsistent",
+      "No admissible position",
+      "All positions admissible",
+      "Single admissible position",
+      "Closestallowed supports",
+      "Cabletensionzero ornegative",
+      "Singular orredundantsupports",
+      "Stablequarticwithzeroquadraticcurvature",
+      "Invalidsupportorderoroffbeamload"
+    ],
+    "review": "Independent subject review and pilot validation have not been performed."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Conditions for Static Equilibrium",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium",
+      "checkedAt": "2026-09-24",
+      "use": "Primary textbook coverage check for force/moment equilibrium, torque origins, center of gravity, and tipping. All lesson exposition, examples, diagrams, and generators are original."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Examples of Static Equilibrium",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-2-examples-of-static-equilibrium",
+      "checkedAt": "2026-09-24",
+      "use": "Free companion for extended-body free-body diagrams, support reactions, cables, and ladders; do not copy numerical examples."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "Solid Mechanics: Class Exercise 4",
+      "url": "https://ocw.mit.edu/courses/1-050-solid-mechanics-fall-2004/resources/class04_4/",
+      "checkedAt": "2026-09-24",
+      "use": "Optional free primary-source exercise in isolating a body and writing equilibrium equations. Its PDF was opened and checked; no copied problem is used as platform assessment."
+    }
+  ]
+}
