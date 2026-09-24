@@ -1,10 +1,10 @@
 {
   "courseId": "phs-231",
-  "planVersion": 1,
+  "planVersion": 2,
   "title": "Calculus-based Physics 1",
-  "status": "proposed",
+  "status": "Implemented teaching sequence; complete technical release audit in progress. Teaching choices remain proposed platform defaults, not an official NU syllabus.",
   "alignment": {
-    "checkedAt": "2026-09-23",
+    "checkedAt": "2026-09-24",
     "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
     "publishedCredits": 3,
     "creditUnit": "semester",
@@ -16,7 +16,7 @@
   },
   "intent": "Build and check a mechanical model from a physical situation, choose coordinates and system boundaries deliberately, use calculus and vectors to obtain predictions, and evaluate those predictions using dimensions, limiting cases, uncertainty, and independent conservation checks.",
   "routes": [
-    {"id":"full","title":"Learn thoroughly","description":"Complete the readiness screen, repair prerequisite gaps, study the 22 lessons in dependency order, take each module assessment, complete the mechanical-system investigation, and take cumulative and delayed retrieval assessments.","effort":"Proposed 60 to 90 focused hours, plus prerequisite study. This estimate has not been pilot validated and imposes no deadline."},
+    {"id":"full","title":"Learn thoroughly","description":"Complete the readiness screen, repair prerequisite gaps, study the 22 lessons in dependency order, take each module assessment, complete the mechanical-system investigation, and take cumulative and delayed retrieval assessments.","effort":"The displayed lesson estimates, including the project, total 3770 minutes. Nine module forms add 770 minutes and the two cumulative parts add 280: 80 hours 20 minutes for that first path. Readiness adds 45 minutes; all 22 optional review forms add 770 minutes. Allow further time for prerequisite repair, repeated practice and revisions. These planning estimates are not pilot validated and impose no deadline."},
     {"id":"refresh","title":"Refresh selectively","description":"Use the readiness screen and module assessments to locate gaps. Revisit missed objectives and attempt a different form later. Prior course credit, reading time, and one high aggregate score do not replace objective evidence or project evidence."},
     {"id":"reference","title":"Look up a topic","description":"Open any lesson directly. Prerequisite advice is visible but does not lock self-study access. Browsing does not mark an objective demonstrated."}
   ],

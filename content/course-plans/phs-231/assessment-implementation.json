@@ -1,7 +1,7 @@
 {
   "courseId": "phs-231",
   "version": 1,
-  "status": "Detailed implementation plan; course assessments are not yet available.",
+  "status": "All 34 forms and the course evidence panel are implemented and individually verified. Complete course release audit in progress.",
   "purpose": "Complete the planned readiness, module, cumulative and targeted-review experience after all 22 lessons, preserving the existing single-lesson checkpoint and backup behavior.",
   "officialDistinction": "All assessment lengths, thresholds, permitted aids and review delays are proposed self-study defaults. They are not official NU examination rules, credit, or psychometric validation.",
   "design": {
@@ -63,7 +63,8 @@
       "all 22 current lesson objectives demonstrated",
       "all nine module quiz blueprints passed independently",
       "both current cumulative blueprints passed independently",
-      "a preserved project artifact meeting the learner self-assessment rule"
+      "a preserved project artifact meeting the learner self-assessment rule",
+      "no unresolved failed current targeted review; a fresh successful review repairs that result without changing required assessment results"
     ],
     "notSufficient": [
       "opening lessons",
