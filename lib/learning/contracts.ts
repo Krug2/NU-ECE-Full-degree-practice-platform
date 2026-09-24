@@ -19,6 +19,7 @@ import { phs231GravityActivitySchema } from "./phs-231-gravity";
 import { phs231WorkActivitySchema } from "./phs-231-work";
 import { phs231EnergyActivitySchema } from "./phs-231-energy";
 import { phs231ImpulseActivitySchema } from "./phs-231-impulse";
+import { phs231MaterialActivitySchema } from "./phs-231-materials";
 import { phs231ElasticActivitySchema } from "./phs-231-elasticity";
 import { phs231StaticsActivitySchema } from "./phs-231-statics";
 import { phs231RollingActivitySchema } from "./phs-231-rolling";
@@ -147,6 +148,7 @@ export const lessonSchema = z.object({
     phs231RollingActivitySchema,
     phs231StaticsActivitySchema,
     phs231ElasticActivitySchema,
+    phs231MaterialActivitySchema,
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
