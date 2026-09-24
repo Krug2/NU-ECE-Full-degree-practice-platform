@@ -11,7 +11,8 @@ import circular from "@/content/lessons/phs-231/m04-l01.json";
 import gravity from "@/content/lessons/phs-231/m04-l02.json";
 import work from "@/content/lessons/phs-231/m05-l01.json";
 import energy from "@/content/lessons/phs-231/m05-l02.json";
+import impulse from "@/content/lessons/phs-231/m06-l01.json";
 import { lessonSchema, packSchema } from "../contracts";
 
 export const phs231Pack = packSchema.parse(pack);
-export const phs231Lessons = [lessonSchema.parse(measurement), lessonSchema.parse(vectors), lessonSchema.parse(motion), lessonSchema.parse(frames), lessonSchema.parse(projectiles), lessonSchema.parse(forces), lessonSchema.parse(friction), lessonSchema.parse(drag), lessonSchema.parse(circular), lessonSchema.parse(gravity), lessonSchema.parse(work), lessonSchema.parse(energy)];
+export const phs231Lessons = [lessonSchema.parse(measurement), lessonSchema.parse(vectors), lessonSchema.parse(motion), lessonSchema.parse(frames), lessonSchema.parse(projectiles), lessonSchema.parse(forces), lessonSchema.parse(friction), lessonSchema.parse(drag), lessonSchema.parse(circular), lessonSchema.parse(gravity), lessonSchema.parse(work), lessonSchema.parse(energy), lessonSchema.parse(impulse)];

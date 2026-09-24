@@ -17,6 +17,7 @@ import circularData from "../content/lessons/phs-231/m04-l01.json";
 import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
+import impulseData from "../content/lessons/phs-231/m06-l01.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
@@ -25,7 +26,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -41,6 +42,16 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks guided contact impulse from mean acceleration and distinguishes histories with the same area",()=>{
+  const q=lessonSchema.parse(impulseData).guided.question;
+  const meanAcceleration=(2+4)/.1,meanFloor=.5*meanAcceleration+.5*10;
+  const response={net:"(.5*60)*.1",gravity:"-.5*10*.1",contact:"35*.1",mean:String(meanFloor),peak:"unknown"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  const constantArea=35*.1,triangleArea=.5*70*.1;
+  expect(constantArea).toBe(triangleArea);
+  for(const wrong of [{contact:"3"},{gravity:".5"},{mean:"30"},{peak:"net"},{peak:"peak"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks the guided energy ledger against separate spring, gravity, and friction work",()=>{
