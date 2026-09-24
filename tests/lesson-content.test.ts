@@ -9,8 +9,7 @@ it("keeps unavailable material distinct from authored lessons", () => {
   expect(lessons.length).toBeGreaterThan(0);
 });
 
-it("renders every authored formula and supplies complete practice forms", () => {
-  for(const lesson of lessons) {
+it.each(lessons)("$courseId/$id renders authored formulas and supplies complete practice forms", lesson => {
     const strings: string[]=[];
     const collect=(value:unknown):void=>{if(typeof value==="string")strings.push(value);else if(value&&typeof value==="object")Object.values(value).forEach(collect);};
     collect(lesson);
@@ -20,5 +19,4 @@ it("renders every authored formula and supplies complete practice forms", () => 
       expect(generateQuestions(lesson.practice,`practice-${seed}`)).toHaveLength(lesson.practice.length);
       expect(generateQuestions(lesson.checkpoint,`checkpoint-${seed}`)).toHaveLength(4);
     }
-  }
 });
