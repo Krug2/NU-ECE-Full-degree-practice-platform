@@ -1,13 +1,60 @@
 {
   "courseId": "f12",
-  "status": "planned",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
   "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 4,
+    "workedExamples": 16,
+    "diagnosticJudgments": 4,
+    "practicalObjectives": 4,
+    "seededScenarioStructures": 12,
+    "toolActivities": 2
+  },
   "checks": [
-    "Strict plans/content/links/complete objective coverage; all inline math renders.",
-    "100 seeds per lesson cover all three scenario structures, deterministic outputs and sensible constraints; independent oracles check passage arithmetic, unit-circle values, grouping and notation.",
-    "Actual file download/read/compare, invalid JSON, wrong format, mismatch and size limits; no numerical evidence from tools.",
-    "Every practical objective: draft save/reload, assisted label, fresh independent record, retained completion, notes, export/reset/import, two-tab conflict and corrupt-record recovery.",
-    "Desktop/mobile all pages plus active tool states, keyboard, Axe, overflow, console errors and visual review.",
-    "Run full tests including CPython, lint, types and production build on owned worktree; isolated 3102 browser tests, 3002 preview. Label preview only afterward; human review pending."
+    {
+      "command": "F10_PYTHON=tmp/python314/python.exe pnpm exec vitest run --maxWorkers=1 --testTimeout=30000",
+      "result": "907 tests passed across 121 files, including all CPython checks. An earlier concurrent run hit five default five-second timeouts in older F02/F08/foundation tests; all assertions passed in the final complete run with a longer timeout."
+    },
+    {
+      "command": "pnpm lint; pnpm typecheck",
+      "result": "Passed. Touched-file lint repeated after tool refinements."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, type checking and 121 static pages, including repeat builds after the file fixes and preview status."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep f1[12]: --workers=2",
+      "result": "Ten of eleven F11/F12 journeys initially passed; active file-tool helper text failed contrast at 4.39:1. The text color was corrected, then the complete download/reopen/error/keyboard/mobile/Axe file journey passed. All seven F12 and four F11 journeys have passed."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep 'f12: practical diagnostic' --workers=1",
+      "result": "Final available-preview curriculum entry, all-objective portfolio, notes and export/reset/import journey passed."
+    }
+  ],
+  "correctness": "400 deterministic cases across 100 seeds per objective cover all twelve study/reading/tool/file structures. Independent reconstruction checks unit conversions, affine outputs, indexed sampling intervals, grouping and decimal notation. Calculator sine/cosine are checked against a separate Taylor-series oracle on a five-degree grid, with exact inverse-sine and known-angle benchmarks. File tests verify exact field contents independent of JSON key order and formatting; malformed JSON, wrong schema, unexpected keys, mismatched marker/revision/note (including whitespace), and oversize files are rejected.",
+  "instruction": "Four original lessons provide quick recall, full explanations, 16 reasoned examples, attempted guided comparison, targeted diagnostic review and an independent practical task for every objective. The retrieval source can be closed and reopened for an attempt-check-correct cycle. Scheduling examples are adaptable plans, not automatic reminders or universal ideal intervals.",
+  "tools": "Local unscored calculator checks teach angle mode, inverse-sine meaning, grouping, negative bases and scientific notation. A local synthetic JSON download/reopen activity verifies note, revision and marker without replacing progress. It is explicitly distinct from the existing real progress backup.",
+  "evidence": "Each practical task requires four substantive written fields, three self-check acknowledgments and a timestamp. Assistance is retained when the possible review is shown. Fresh tasks keep the last completed artifact. Confidence, visits, diagnostic and tool feedback never create numerical evidence or course completion.",
+  "persistence": "Browser checks passed exact draft/seed resume, assistance persistence, fresh independent completion across all objectives, retained artifacts, ordinary notes, complete progress export/reset/import, concurrent-tab draft protection and unreadable-record recovery. Existing progress and backup schemas remain unchanged.",
+  "accessibility": "All five pages passed desktop/mobile WCAG2 A/AA and WCAG2.1 AA Axe checks without overflow or KaTeX errors. Active calculator and verified-file states passed keyboard and mobile Axe checks. Desktop overview, calculator and corrected file tool were visually inspected.",
+  "sources": "Eight precise free references verified: three College Success sections, three Algebra and Trigonometry 2e sections, the original Roediger/Karpicke 2006 paper on the author's institutional site, and Library of Congress personal digital records guidance. Attribution and license details are in resources.json; app prose, examples, scenarios and tools are original.",
+  "sharedInterfaces": [
+    "F12 registered in the scoped practical catalog and availability; existing route dispatch reused.",
+    "Optional activity selector and retrieval reference in practical content. No practical record envelope, numerical grader, progress storage or backup format changes."
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f12",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional content awards no university credit and establishes no enrollment eligibility.",
+    "Independent human subject and assistive-technology reviews remain pending.",
+    "Open-ended artifacts are self-checked completeness records, not automatic judgments of study quality or lasting retention.",
+    "The practice file verifies only its own round trip; users must separately verify real progress recovery."
   ]
 }

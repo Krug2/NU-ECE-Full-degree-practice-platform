@@ -2,7 +2,7 @@
   "courseId": "f12",
   "title": "Study and tool orientation",
   "version": 1,
-  "status": "building",
+  "status": "preview",
   "introduction": "Practice a repeatable study cycle, decode technical notation, check calculator settings, and verify a saved file. Build a portfolio of original practical tasks with assistance labeled separately. Completion is self-checked; independent human review is pending.",
   "bridges": [],
   "modules": [
