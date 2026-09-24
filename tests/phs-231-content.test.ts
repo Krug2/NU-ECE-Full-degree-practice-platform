@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import materialsData from "../content/lessons/phs-231/m08-l03.json";
 import elasticityData from "../content/lessons/phs-231/m08-l02.json";
 import staticsData from "../content/lessons/phs-231/m08-l01.json";
 import rollingData from "../content/lessons/phs-231/m07-l03.json";
@@ -32,7 +33,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData, staticsData, elasticityData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData, staticsData, elasticityData, materialsData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -48,6 +49,18 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("separates a documented fracture endpoint from later control and thermal claims",()=>{
+  const q=lessonSchema.parse(materialsData).guided.question;
+  const strain=[0,.001,.01,.02],stress=[0,100,200,150];
+  const density=strain.slice(1).reduce((sum,end,i)=>sum+(end-strain[i])*(stress[i]+stress[i+1])/2,0);
+  const force=stress.map(s=>s*10),extension=strain.map(e=>e*.1);
+  const work=extension.slice(1).reduce((sum,end,i)=>sum+(end-extension[i])*(force[i]+force[i+1])/2,0);
+  expect(density).toBeCloseTo(3.15,12);expect(work).toBeCloseTo(density*1e6*10e-6*.1,12);
+  const response={ultimate:String(Math.max(...stress)),last:String(stress.at(-1)),strain:"1/50",work:"63/20",history:"unknown",thermal:"input"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  for(const wrong of [{ultimate:"150"},{last:"200"},{strain:".03"},{strain:"2"},{work:"315"},{history:"zero"},{history:"line"},{history:"last"},{thermal:"heat"},{thermal:"elastic"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks both elastic range bounds before establishing a guided deformation",()=>{

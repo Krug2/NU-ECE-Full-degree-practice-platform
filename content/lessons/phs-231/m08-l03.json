@@ -1,0 +1,654 @@
+{
+  "id": "m08-l03",
+  "courseId": "phs-231",
+  "moduleId": "m08",
+  "version": 1,
+  "title": "Plasticity, fracture, and evidence limits",
+  "objective": "Interpret a stress-strain record and distinguish stiffness, yielding, strength, toughness, and the limitations of a simple failure estimate.",
+  "why": "Two specimens can have the same initial stiffness and maximum tensile stress yet absorb very different amounts of work before fracture. A load can also look modest on an average-stress calculation while a flaw changes the relevant criterion. To interpret such evidence, keep the loading history, reference geometry, units, and model limits visible. This lesson connects curves to force and work, then asks which claims the record actually supports.",
+  "estimatedMinutes": 260,
+  "prerequisites": [
+    {
+      "lessonId": "m08-l02",
+      "label": "Stress, strain, and elastic response",
+      "note": "Review original dimensions, pressure units, material modulus versus specimen stiffness, and why an unsupported excursion leaves unloading unknown."
+    },
+    {
+      "lessonId": "m01-l01",
+      "label": "Units and measurement evidence",
+      "note": "Refresh squared-area conversions, fractional versus percent change, resolution bounds, and the distinction between a bound and a probability."
+    },
+    {
+      "lessonId": "m05-l01",
+      "label": "Work as a path integral",
+      "note": "Review signed force–displacement area and integration over unequal intervals."
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Energy accounts and model limits",
+      "note": "Separate returned mechanical work, recoverable energy, internal material change, and heat."
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus I preparation",
+      "note": "This prerequisite course is under construction. Piecewise integrals and slopes needed here are developed explicitly; this does not replace academic calculus preparation."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define the record before naming a property",
+      "paragraphs": [
+        "Use original gauge length $L_0>0$ and original area $A_0>0$. Engineering stress is $\\sigma=F/A_0$, and engineering strain is $\\varepsilon=(L-L_0)/L_0=\\delta/L_0$. Stress in N/mm² is numerically MPa. Strain is dimensionless: $0.006=0.6\\%$, not 6%. Two opposite end forces can balance the whole specimen while the internal tensile force across either cut remains $F$.",
+        "Every curve needs provenance. Identify whether its points are a measured record or a supplied simulation, how the extension was controlled, which area and gauge length were used, and what is known about temperature and loading rate. A final data point may mean that recording stopped. Call it a fracture endpoint only if fracture was actually observed or is explicitly part of the supplied model. A maximum in a partial record is not automatically the ultimate strength of a complete test.",
+        "The reference record used below is synthetic and piecewise linear. Its $(\\varepsilon,\\sigma)$ knots, with stress in MPa, are $(0,0)$, $(0.001,100)$, $(0.01,200)$, and $(0.02,150)$. The last point is explicitly documented fracture. Straight segments between knots are part of the model; they are not evidence of the detailed response of an actual alloy or polymer. Loading follows increasing prescribed extension.",
+        "To refresh interpolation, a segment from $(a,A)$ to $(b,B)$ has $\\sigma(\\varepsilon)=A+(B-A)(\\varepsilon-a)/(b-a)$ only for $a\\leq\\varepsilon\\leq b$. Check that interval before substitution. To refresh area, its work-density contribution is $\\tfrac12(A+B)(b-a)$ when stress and strain axes use consistent units. Do not replace an uneven strain interval by a row count."
+      ]
+    },
+    {
+      "heading": "Stiffness, yield, maximum stress, and fracture answer different questions",
+      "paragraphs": [
+        "The initial tangent modulus is $E=d\\sigma/d\\varepsilon$ at the initial state. On the first reference segment, $E=100/0.001=100000$ MPa = 100 GPa. A secant modulus $\\sigma/\\varepsilon$ is the slope from the origin to a specified point; a tangent at that point is the local slope. They need not equal the initial modulus. A slope does not supply a yield or fracture stress.",
+        "The proportional limit ends a straight stress–strain relation. The elastic limit concerns full recovery after unloading. These are distinct: a nonlinear law can still be reversible. A yield point or proof stress describes a specified onset or amount of permanent deformation under a stated convention. Here the 100 MPa knot is explicitly supplied as yield; a graph's bend alone would not establish a real specimen's unloading history.",
+        "Ultimate tensile strength is the largest engineering stress in a complete tensile test. For the reference record it is 200 MPa at strain 0.01, whereas fracture stress is 150 MPa at strain 0.02. The lower final engineering stress can accompany localization of deformation. A plateau can attain the maximum over an interval. Do not replace a maximum search by taking the final row.",
+        "Ductility concerns deformation before fracture under specified test conditions and geometry. A fracture strain of 2% is one such descriptor, not a universal property independent of gauge length and localization. Resilience refers to recoverable elastic energy per volume. Work to fracture is the full loading area per reference volume. The crack parameter $K_{Ic}$, often called mode-I fracture toughness, has different units and comes from different evidence. Keep each definition attached to its quantity."
+      ]
+    },
+    {
+      "heading": "Plasticity is a statement about loading history",
+      "paragraphs": [
+        "A monotone loading curve alone cannot determine where an unloading path ends. For this investigation only, an unfractured state unloads along a straight engineering line parallel to the initial slope: $\\sigma=E(\\varepsilon-\\varepsilon_r)$. Setting stress to zero gives $\\varepsilon_r=\\varepsilon_p-\\sigma_p/E$. Total peak strain is the sum of this residual strain and the recovered strain $\\sigma_p/E$. The line stops at zero stress; it does not continue into unspecified compression.",
+        "At reference peak strain 0.006, interpolation gives $\\sigma_p=1400/9$ MPa. The recovered strain is $7/4500$ and residual strain is $1/225$. For $L_0=100$ mm, the residual extension is $4/9$ mm. It is smaller than the original peak extension 0.6 mm and greater than zero. Setting the final load to zero has not restored the original length. This conclusion depends on the supplied unload law.",
+        "Nonlinearity does not prove plasticity. For example, a supplied reversible relation $\\sigma=100000\\varepsilon+10^7\\varepsilon^2$ MPa can unload by retracing itself. At $\\varepsilon=0.002$ it reaches 240 MPa yet returns to zero strain. Conversely, a permanent offset cannot be attributed to specimen plasticity until instrument drift, fixture compliance, slip, and temperature change are addressed.",
+        "To assess resolution alone, suppose two length readings round to the nearest step $h$. Each rounding error is bounded by $h/2$, so the error in their difference can reach $h$. A displayed increase $d$ therefore permits a true increase in $[d-h,d+h]$ under this model. If that interval includes zero, a positive permanent extension has not been resolved. The bound is not a confidence interval and does not include unmodeled drift or slip."
+      ]
+    },
+    {
+      "heading": "Integrate work and keep the energy account honest",
+      "paragraphs": [
+        "Because $F=A_0\\sigma$ and $d\\delta=L_0\\,d\\varepsilon$, work is $W=A_0L_0\\int\\sigma\\,d\\varepsilon$. Thus $w=W/V_0=\\int\\sigma\\,d\\varepsilon$ is input work per original volume, with $V_0=A_0L_0$. A pascal equals a joule per cubic meter, and an MPa of area corresponds to an MJ/m³. If the horizontal axis is percent strain, divide its numerical interval width by 100.",
+        "For the complete reference record, the three trapezoid areas are 0.05, 1.35, and 1.75 MJ/m³, totaling 3.15 MJ/m³. A 100 mm gauge and 10 mm² original section have volume 1000 mm³ = 1 cm³ = $10^{-6}$ m³, so the input work to fracture is 3.15 J. This identity uses engineering stress and extension of the corresponding gauge; it does not imply homogeneous local deformation after necking.",
+        "Under the explicitly supplied unfractured unload line, the work returned per original volume is $\\sigma_p^2/(2E)$. At the 0.006-strain baseline the input is $31/45$ MJ/m³ and the returned part is $49/405$ MJ/m³. The difference, $46/81$ MJ/m³, is mechanical work not returned by this law. It can include internal hardening or damage energy and thermal transfer; the curve alone does not establish that all of it became heat.",
+        "During unloading, net delivered work equals cumulative input minus cumulative returned work. It also equals the energy still recoverable by the supplied law plus the part not returned by that law. At documented fracture the later unloading response is absent, so do not complete an imaginary triangle to claim recoverable energy. Historical input through the last connected state remains known; later work on separated pieces is not supplied."
+      ]
+    },
+    {
+      "heading": "Find a proof stress and check every inverse branch",
+      "paragraphs": [
+        "When a material has no sharp yield point, a specified offset convention can define a proof stress. For a 0.2% offset use $\\varepsilon_o=0.002$, and intersect the loading curve with $\\sigma=E(\\varepsilon-\\varepsilon_o)$. The zero-stress intercept is shifted horizontally; neither the stress nor the initial slope is simply reduced by 0.2%.",
+        "On the reference hardening segment, $\\sigma=100+(100/0.009)(\\varepsilon-0.001)$ MPa. Equating this to $100000(\\varepsilon-0.002)$ gives $\\varepsilon=0.00325$ and $\\sigma=125$ MPa. Substitute into both lines, then check $0.001\\leq0.00325\\leq0.01$. A line intersection outside the chosen segment must be rejected, even if the algebra is correct. This proof stress is a convention, not proof of a universal sudden yield event.",
+        "Inverting the entire reference curve requires all valid branches. At 175 MPa the hardening segment gives strain 0.00775, and the descending segment gives 0.015. With $A_0=10$ mm² both correspond to force 1750 N. At the 200 MPa peak the two segment calculations refer to one shared point; report it once. On a flat segment an exact stress can correspond to a whole strain interval.",
+        "A decreasing force along increasing extension is possible in a displacement-controlled record. It does not show that slowly increasing an applied force will trace the same descending path. Apparatus compliance, instability, and control determine whether continuation is possible. Algebra supplies candidate states; loading history and a valid control model select the physical interpretation."
+      ]
+    },
+    {
+      "heading": "Compare complete records without confusing engineering and local response",
+      "paragraphs": [
+        "Compare the reference record with a linear brittle record having the same $E=100$ GPa and the same maximum stress 200 MPa. The brittle endpoint is at $\\varepsilon=0.002$, so its triangular loading area is only 0.2 MJ/m³. The ductile record reaches 2% strain and 3.15 MJ/m³. Equal initial slope and maximum stress have not fixed either fracture strain or work to fracture. These are controlled synthetic comparisons, not ratings of named materials.",
+        "Engineering stress uses $A_0$. If a measured current cross section has area $A$, its average axial true stress is $F/A$. For $F=1500$ N, $A_0=10$ mm², and a current neck area of 6 mm², engineering stress is 150 MPa while the current-section average is 250 MPa. A falling engineering force divided by a fixed original area does not by itself establish that this local average falls. A nonuniform neck also has a more complex local stress state than one scalar captures.",
+        "Before localization, a homogeneous constant-volume approximation may relate current geometry to uniform elongation. After localization, a global gauge extension is insufficient to infer the neck's local strain or current area. Measure the needed local geometry and state the approximation. Do not silently turn a convenient homogeneous conversion into evidence after necking.",
+        "Geometry still controls total response. At fixed synthetic stress–strain path, doubling original area doubles force, reference volume, and total work; strain and work density stay the same. Doubling gauge length doubles extension, reference volume, and total work, while force is unchanged. State what is held fixed. A change in force or work need not mean a change in material law."
+      ]
+    },
+    {
+      "heading": "Separate nominal limits from local stress concentrations",
+      "paragraphs": [
+        "A classroom allowable-stress rule may supply a strength $S$, factor $n>0$, and criterion $\\sigma_{nom}\\leq S/n$. With a specified area $A$, a tensile force cap is $F_{cap}=A S/n$. A margin $S/n-F/A$ has stress units. A negative margin means this supplied criterion fails; it does not calculate when fracture occurs. Equality is the limiting admitted value when the rule uses $\\leq$.",
+        "For $S=240$ MPa, $n=3$, and $A=10$ mm², the allowable is 80 MPa and cap is 800 N. A demand of 900 N produces 90 MPa and margin −10 MPa. Dividing the demand by the factor instead of dividing the supplied strength reverses the intended conservatism. Comparing 90 MPa with a 100 GPa modulus answers no strength question.",
+        "A supplied elastic stress concentration factor $K_t$ relates a specified nominal stress to a local estimate: $\\sigma_{local}=K_t\\sigma_{nom}$. Its convention might use a gross area or a net ligament area. Match that exact definition. For $K_t=2.5$, gross area 5 mm², and force 300 N, nominal stress is 60 MPa and local estimate is 150 MPa. Against a local allowable 180 MPa, the force cap is 360 N.",
+        "A positive nominal margin alone does not address a crack, fatigue, buckling, creep, corrosion, temperature, rate dependence, or uncertainty. These are separate constraints with their own evidence. Multiplying unrelated factors or substituting net for gross area can double-count or misapply a correction. The dimensionless $K_t$ is not the stress-intensity factor $K_I$, whose units include a square root of length."
+      ]
+    },
+    {
+      "heading": "Use a crack criterion only with its stated geometry and regime",
+      "paragraphs": [
+        "For an introductory opening-mode crack model, take $K_I=Y\\sigma\\sqrt{\\pi a}$. Here $a>0$ is a specifically defined crack length, $Y>0$ is the supplied geometry factor for that definition, and $\\sigma$ is its specified remote nominal stress. Depending on the geometry, $a$ might be a half-length or an edge length; never infer that convention from the symbol alone. With stress in MPa and $a$ in meters, $K_I$ is in MPa$\\sqrt{\\mathrm m}$.",
+        "A supplied $K_{Ic}$ applies under its stated specimen, environment, and linear-elastic conditions, including a sufficiently small plastic zone and the appropriate constrained crack-tip state. The elementary comparison $K_I<K_{Ic}$ gives a positive margin under that model; equality reaches the criterion. The formula is not generally valid for extensive yielding, unknown geometry, mixed-mode loading, or arbitrary crack growth. A tensile work-area measurement does not supply $K_{Ic}$.",
+        "With $\\sigma=100$ MPa, $a=1$ mm = 0.001 m, $Y=1.2$, and $K_{Ic}=12$ MPa$\\sqrt{\\mathrm m}$, obtain $K_I\\approx6.725989$ MPa$\\sqrt{\\mathrm m}$. Solving the same equation gives $a_c=(K_{Ic}/(Y\\sigma))^2/\\pi\\approx3.183099$ mm. Quadrupling $a$ doubles $K_I$ at fixed stress and geometry; doubling stress quarters $a_c$. Check square-root and squared-length scaling before interpreting a result.",
+        "With positive allowed intervals for stress and crack length and fixed $Y$, $K_I$ increases with each. Test their upper endpoints to establish that all permitted combinations stay below a supplied criterion. If the interval crosses the threshold, some permitted states pass and some do not; no probability follows. A detection bound from inspection does not prove zero flaw size. The absence of a detected crack is meaningful only with the supplied detection model and coverage."
+      ]
+    },
+    {
+      "heading": "Energy release and cyclic loading require their own evidence",
+      "paragraphs": [
+        "An energy-based crack argument compares available release per increment of projected crack area, $G=\\Delta E/\\Delta A$, with a consistently defined resistance $R$. Both use J/m². If the supplied resistance already includes the two new surfaces, do not multiply the projected area by two again. A release of 0.06 J over $2\\times10^{-5}$ m² gives $G=3000$ J/m², above a supplied $R=2500$ J/m². That makes advance energetically permitted in this model; it does not supply crack speed or a complete dynamic path.",
+        "For a cycle with signed maximum $\\sigma_{max}$ and minimum $\\sigma_{min}$, amplitude is $\\sigma_a=(\\sigma_{max}-\\sigma_{min})/2$, mean is $\\sigma_m=(\\sigma_{max}+\\sigma_{min})/2$, and load ratio is $R_\\sigma=\\sigma_{min}/\\sigma_{max}$ when the denominator is nonzero. Use this subscript to distinguish the load ratio from crack-growth resistance. Negative minima are compressive portions of the cycle; keep their sign.",
+        "A 150-to-50 MPa cycle has amplitude 50 MPa, mean 100 MPa, and ratio 1/3. Those values do not establish a fatigue life. A specimen surviving $N$ completed cycles without observed fracture establishes survival through that run under its conditions; it does not reveal its eventual failure cycle or prove unlimited endurance. Fatigue data can scatter and depend on mean load, geometry, environment, and observation rules.",
+        "Likewise, a short room-temperature test does not validate a long high-temperature service interval. Creep and rate effects need evidence appropriate to their conditions. A missing model does not prove immediate failure, but it prevents the claimed prediction. In an audit, name the unsupported claim and the additional measurement or validated relation that would be needed."
+      ]
+    },
+    {
+      "heading": "Make the investigation reproducible and bounded",
+      "paragraphs": [
+        "Predict before revealing the simulation. Save original geometry, all stress–strain knots, the requested strain, the supplied unload law, and your expected maximum stress, last connected force, input work, and fracture decision. For an unfractured trial also predict residual strain and returned work. Keep a mistaken prediction and explain its correction rather than replacing it without a trace.",
+        "The stage slider is a sequence parameter. Stage 0→1 increases the controller's extension target; in an unfractured trial, stage 1→2 follows the unload line only to zero load at residual extension. Reaching fracture terminates the connected response at its exact endpoint. Later targets are known commands, not measured specimen strains. The plots omit unknown response and the tables state it explicitly.",
+        "Use the keyboard arrows, Home, End, and exact-event buttons. Every curve has an equivalent reference or path table. Compare at least six states across subyield, plastic, and fracture trials, then compare equal-modulus brittle and ductile records. Include one independent area calculation, one residual-strain calculation, one inverse-branch explanation, and one missing-evidence statement. The four-criterion rubric beneath the activity is a proposed practice standard, not an NU grade or independent review.",
+        "No physical breaking, tensioning, pressurizing, overhead-loading, or improvised fatigue experiment is assigned. A real materials test requires a suitable supervised apparatus, guarded specimens, appropriate fixtures and instrumentation, and procedures for that equipment and specimen. The synthetic values here cannot establish equipment ratings or authorize an experiment. Save your evidence in lesson notes and include it in a normal progress backup."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Convert force and extension to engineering quantities",
+      "prompt": "A synthetic specimen has L0=100 mm, A0=10 mm², force 1500 N, and extension 0.6 mm. Both ends are in static balance.",
+      "steps": [
+        {
+          "math": "\\sigma=\\frac{1500}{10}=150\\ \\mathrm{N/mm^2}=150\\ \\mathrm{MPa}",
+          "reason": "Cut one side of the specimen: the internal force is 1500 N. Whole-specimen force balance does not make this internal force zero."
+        },
+        {
+          "math": "\\varepsilon=\\frac{0.6}{100}=0.006=0.6\\%,\\qquad L=100+0.6=100.6\\ \\mathrm{mm}",
+          "reason": "Normalize extension by original gauge length. Multiply the fractional strain by 100 to express it as a percent."
+        }
+      ],
+      "conclusion": "Stress is 150 MPa and strain is 0.006. Current length and change in length are different quantities."
+    },
+    {
+      "title": "Read four different landmarks",
+      "prompt": "Use the complete reference knots (0,0), (0.001,100), (0.01,200), and (0.02,150), with stress in MPa. The first bend is supplied yield and the last point is documented fracture.",
+      "steps": [
+        {
+          "math": "E=\\frac{100-0}{0.001-0}=100000\\ \\mathrm{MPa}=100\\ \\mathrm{GPa}",
+          "reason": "The initial segment gives the initial modulus. No final-point secant is substituted."
+        },
+        {
+          "math": "\\sigma_y=100\\ \\mathrm{MPa},\\qquad \\sigma_u=\\max(0,100,200,150)=200\\ \\mathrm{MPa}",
+          "reason": "Yield comes from the supplied definition; ultimate engineering stress comes from the maximum of the complete record."
+        },
+        {
+          "math": "\\sigma_f=150\\ \\mathrm{MPa},\\quad \\varepsilon_f=0.02=2\\%,\\quad E_{\\mathrm{sec},f}=\\frac{150}{0.02}=7500\\ \\mathrm{MPa}",
+          "reason": "The final fracture stress is lower than the maximum. The secant modulus to fracture is 7.5 GPa, not the initial modulus."
+        }
+      ],
+      "conclusion": "Initial modulus, yield stress, ultimate stress, and fracture stress describe different features of this record."
+    },
+    {
+      "title": "A nonlinear law can be reversible",
+      "prompt": "A hypothetical material retraces σ=100000ε+10⁷ε² MPa while loading and unloading over 0≤ε≤0.002. No residual strain is supplied.",
+      "steps": [
+        {
+          "math": "\\sigma_p=100000(0.002)+10^7(0.002)^2=240\\ \\mathrm{MPa}",
+          "reason": "Evaluate the supplied law; do not force a straight line through a nonlinear record."
+        },
+        {
+          "math": "w=\\int_0^{0.002}(100000\\varepsilon+10^7\\varepsilon^2)\\,d\\varepsilon=\\frac15+\\frac2{75}=\\frac{17}{75}\\ \\mathrm{MJ/m^3}",
+          "reason": "Integrate each power. MPa times dimensionless strain is MJ/m³."
+        },
+        {
+          "math": "w_{\\mathrm{returned}}=\\frac{17}{75}\\ \\mathrm{MJ/m^3},\\qquad \\varepsilon_r=0",
+          "reason": "The supplied reverse path retraces the loading curve, returning all its mechanical work. This conclusion comes from history, not from the shape alone."
+        }
+      ],
+      "conclusion": "Curvature of a loading graph does not establish plasticity."
+    },
+    {
+      "title": "Recover only the part allowed by the unload law",
+      "prompt": "Load the reference record to strain 0.006. Supply an unloading slope E=100000 MPa; use L0=100 mm and A0=10 mm².",
+      "steps": [
+        {
+          "math": "\\sigma_p=100+\\frac{200-100}{0.01-0.001}(0.006-0.001)=\\frac{1400}{9}\\ \\mathrm{MPa}",
+          "reason": "The requested strain lies on the hardening segment."
+        },
+        {
+          "math": "\\varepsilon_{\\mathrm{recovered}}=\\frac{1400/9}{100000}=\\frac7{4500},\\quad \\varepsilon_r=\\frac3{500}-\\frac7{4500}=\\frac1{225},\\quad \\delta_r=\\frac49\\ \\mathrm{mm}",
+          "reason": "Subtract the recovered strain from total peak strain; multiply residual strain by original length."
+        },
+        {
+          "math": "w_{\\mathrm{in}}=\\frac12(100)(0.001)+\\frac12\\left(100+\\frac{1400}{9}\\right)(0.005)=\\frac{31}{45}\\ \\mathrm{MJ/m^3}",
+          "reason": "Use a triangle before yield and a trapezoid over the actual 0.005 hardening interval."
+        },
+        {
+          "math": "w_{\\mathrm{returned}}=\\frac{(1400/9)^2}{2(100000)}=\\frac{49}{405},\\quad w_{\\mathrm{not\\ returned}}=\\frac{31}{45}-\\frac{49}{405}=\\frac{46}{81}\\ \\mathrm{MJ/m^3}",
+          "reason": "Returned work is the unload triangle. The remainder need not be entirely heat."
+        }
+      ],
+      "conclusion": "For the 1 cm³ original volume the numerical work values are 31/45 J input, 49/405 J returned, and 46/81 J not returned by the supplied law."
+    },
+    {
+      "title": "Integrate through the documented fracture endpoint",
+      "prompt": "Use the complete reference record with L0=100 mm and A0=10 mm². Integrate to its fracture strain 0.02.",
+      "steps": [
+        {
+          "math": "w_1=\\frac12(0+100)(0.001)=0.05,\\quad w_2=\\frac12(100+200)(0.009)=1.35",
+          "reason": "These contributions are in MJ/m³. The second interval is nine times as wide as the first."
+        },
+        {
+          "math": "w_3=\\frac12(200+150)(0.01)=1.75,\\qquad w_f=0.05+1.35+1.75=3.15\\ \\mathrm{MJ/m^3}",
+          "reason": "A descending positive stress still contributes positive work while extension increases."
+        },
+        {
+          "math": "V_0=(10)(100)\\ \\mathrm{mm^3}=10^{-6}\\ \\mathrm{m^3},\\quad W_f=3.15(10^6)(10^{-6})=3.15\\ \\mathrm J",
+          "reason": "Convert the original volume before multiplying by work density."
+        }
+      ],
+      "conclusion": "3.15 J is input through the last connected state. An unloading energy after fracture is not established."
+    },
+    {
+      "title": "Equal modulus and maximum stress do not fix work to fracture",
+      "prompt": "Compare the complete reference record to a linear brittle record with E=100 GPa and fracture stress 200 MPa. Use equal original volumes.",
+      "steps": [
+        {
+          "math": "\\varepsilon_{f,b}=\\frac{200}{100000}=0.002=0.2\\%,\\quad w_{f,b}=\\frac12(200)(0.002)=0.2\\ \\mathrm{MJ/m^3}",
+          "reason": "The brittle record is a triangle ending at its maximum."
+        },
+        {
+          "math": "\\frac{E_d}{E_b}=1,\\quad\\frac{\\sigma_{u,d}}{\\sigma_{u,b}}=1,\\quad\\frac{\\varepsilon_{f,d}}{\\varepsilon_{f,b}}=\\frac{0.02}{0.002}=10",
+          "reason": "The chosen controls match initial modulus and maximum stress, but not fracture strain."
+        },
+        {
+          "math": "\\frac{w_{f,d}}{w_{f,b}}=\\frac{3.15}{0.2}=15.75",
+          "reason": "The full areas differ substantially even though the two matched descriptors are identical."
+        }
+      ],
+      "conclusion": "The comparison establishes greater fracture strain and loading work for this ductile record under the supplied conditions; it does not determine KIc or cyclic life."
+    },
+    {
+      "title": "Solve and validate a 0.2% proof-stress intersection",
+      "prompt": "Find the intersection of the reference loading curve and a line parallel to the initial slope with strain offset 0.002.",
+      "steps": [
+        {
+          "math": "100+\\frac{100}{0.009}(\\varepsilon-0.001)=100000(\\varepsilon-0.002)",
+          "reason": "Use the hardening segment as a candidate; write the offset as dimensionless strain."
+        },
+        {
+          "math": "\\varepsilon=\\frac{13}{4000}=0.00325,\\qquad \\sigma=100000(0.00325-0.002)=125\\ \\mathrm{MPa}",
+          "reason": "Solve the two lines and evaluate stress."
+        },
+        {
+          "math": "0.001<0.00325<0.01,\\quad 100+\\frac{100}{0.009}(0.00225)=125\\ \\mathrm{MPa}",
+          "reason": "Check the candidate lies on the hardening segment and satisfies that segment independently."
+        }
+      ],
+      "conclusion": "The 125 MPa proof stress uses a 0.2% convention. It is distinct from the model's separately supplied yield stress of 100 MPa."
+    },
+    {
+      "title": "One force can intersect two loading branches",
+      "prompt": "At σ=175 MPa, find all reference strains. Use A0=10 mm² to relate that stress to force.",
+      "steps": [
+        {
+          "math": "\\varepsilon_1=0.001+\\frac{175-100}{200-100}(0.01-0.001)=0.00775",
+          "reason": "The rising branch uses a fraction 75/100 of its strain interval."
+        },
+        {
+          "math": "\\varepsilon_2=0.01+\\frac{175-200}{150-200}(0.02-0.01)=0.015",
+          "reason": "The descending branch has negative changes in both stress numerator and denominator, giving a positive interval fraction."
+        },
+        {
+          "math": "F=175(10)=1750\\ \\mathrm N,\\qquad \\varepsilon\\in\\{0.00775,0.015\\}",
+          "reason": "Both candidates lie on their own branch. The single force value does not distinguish their histories."
+        }
+      ],
+      "conclusion": "At exactly 200 MPa the branches share strain 0.01, which must be counted only once. A force-controlled continuation is not implied by these intersections."
+    },
+    {
+      "title": "Use measured current area without inventing local strain",
+      "prompt": "At a 1500 N load, original area is 10 mm² and an independently measured neck area is 6 mm². The global gauge extension is known, but no local neck strain measurement is given.",
+      "steps": [
+        {
+          "math": "\\sigma_{\\mathrm{eng}}=\\frac{1500}{10}=150\\ \\mathrm{MPa}",
+          "reason": "The engineering definition retains original area."
+        },
+        {
+          "math": "\\overline{\\sigma}_{\\mathrm{current}}=\\frac{1500}{6}=250\\ \\mathrm{MPa},\\qquad\\frac{\\overline{\\sigma}_{\\mathrm{current}}}{\\sigma_{\\mathrm{eng}}}=\\frac53",
+          "reason": "The supplied current area supports an average axial stress at that section. It does not supply a uniform three-dimensional neck stress."
+        }
+      ],
+      "conclusion": "Local neck strain is not determined by global extension alone. A descending engineering curve can coexist with a larger current-section stress."
+    },
+    {
+      "title": "Audit a supplied nominal allowable",
+      "prompt": "A classroom rule supplies strength 240 MPa, factor 3, original reference area 10 mm², and demand 900 N. Its criterion admits stress at or below S/n.",
+      "steps": [
+        {
+          "math": "\\sigma_{\\mathrm{allow}}=\\frac{240}{3}=80\\ \\mathrm{MPa},\\quad F_{\\mathrm{cap}}=80(10)=800\\ \\mathrm N",
+          "reason": "Divide the supplied strength by the factor, then convert stress capacity to force capacity using the specified area."
+        },
+        {
+          "math": "\\sigma_{\\mathrm{demand}}=\\frac{900}{10}=90\\ \\mathrm{MPa},\\quad M=80-90=-10\\ \\mathrm{MPa}",
+          "reason": "Keep capacity and demand in the same units before subtraction."
+        }
+      ],
+      "conclusion": "The demand fails this nominal criterion. This calculation supplies neither an actual failure time nor certification against other mechanisms."
+    },
+    {
+      "title": "Respect the area convention of a concentration factor",
+      "prompt": "A supplied Kt=2.5 uses nominal stress based on gross area 5 mm². Applied force is 300 N and the supplied local allowable is 180 MPa.",
+      "steps": [
+        {
+          "math": "\\sigma_{\\mathrm{nom}}=\\frac{300}{5}=60\\ \\mathrm{MPa},\\quad \\sigma_{\\mathrm{local}}=2.5(60)=150\\ \\mathrm{MPa}",
+          "reason": "Apply the factor to exactly the nominal stress definition it accompanies."
+        },
+        {
+          "math": "M=180-150=30\\ \\mathrm{MPa},\\quad F_{\\mathrm{cap}}=\\frac{180(5)}{2.5}=360\\ \\mathrm N",
+          "reason": "Invert the same local criterion to calculate its limiting applied force."
+        }
+      ],
+      "conclusion": "Replacing gross area with a smaller net area while retaining this Kt changes the model without justification."
+    },
+    {
+      "title": "Convert crack length before applying its square root",
+      "prompt": "The supplied mode-I model uses σ=100 MPa, a=1 mm, Y=1.2, and KIc=12 MPa√m. Assume its stated linear-elastic and geometry conditions apply.",
+      "steps": [
+        {
+          "math": "a=0.001\\ \\mathrm m,\\qquad K_I=1.2(100)\\sqrt{\\pi(0.001)}\\approx6.725989\\ \\mathrm{MPa}\\sqrt{\\mathrm m}",
+          "reason": "The square-root length unit in KI determines which unit a must use."
+        },
+        {
+          "math": "a_c=\\frac1\\pi\\left(\\frac{12}{1.2(100)}\\right)^2=\\frac1{100\\pi}\\ \\mathrm m\\approx3.183099\\ \\mathrm{mm}",
+          "reason": "Solve the same criterion for a and convert meters to millimeters only after the calculation."
+        },
+        {
+          "math": "K_I(4a)=2K_I(a)\\approx13.451979\\ \\mathrm{MPa}\\sqrt{\\mathrm m}>12\\ \\mathrm{MPa}\\sqrt{\\mathrm m}",
+          "reason": "A fourfold increase in length doubles the intensity. The new candidate reaches beyond the supplied criterion."
+        }
+      ],
+      "conclusion": "The result is conditional on the defined crack length, geometry factor, toughness evidence, and validity regime; it is not a service rating."
+    },
+    {
+      "title": "Bound a crack calculation without claiming a probability",
+      "prompt": "Use Y=1.2 and KIc=12 MPa√m, stress in [95,105] MPa, and crack length a in [0.5,1.5] mm. All endpoint combinations are permitted.",
+      "steps": [
+        {
+          "math": "K_{\\min}=1.2(95)\\sqrt{\\pi(0.0005)},\\quad K_{\\max}=1.2(105)\\sqrt{\\pi(0.0015)}",
+          "reason": "Positive stress and crack length each increase KI, so opposite corners bound every permitted state."
+        },
+        {
+          "math": "K_{\\max}\\approx8.649502\\ \\mathrm{MPa}\\sqrt{\\mathrm m},\\quad M_{\\min}=12-K_{\\max}\\approx3.350498\\ \\mathrm{MPa}\\sqrt{\\mathrm m}",
+          "reason": "Even the upper bound remains below the supplied criterion, giving a positive conditional minimum margin."
+        }
+      ],
+      "conclusion": "No failure probability follows from these allowed intervals. A separate inspection detection bound would not establish an exactly zero flaw."
+    },
+    {
+      "title": "Keep crack area and cycle descriptors distinct",
+      "prompt": "One model releases 0.06 J over a newly advanced projected crack area 2×10⁻⁵ m². Resistance is 2500 J/m² and already includes both new surfaces. A separate cycle runs between 50 and 150 MPa.",
+      "steps": [
+        {
+          "math": "G=\\frac{0.06}{2\\times10^{-5}}=3000\\ \\mathrm{J/m^2},\\quad E_{\\mathrm{required}}=2500(2\\times10^{-5})=0.05\\ \\mathrm J",
+          "reason": "Use the projected-area convention once. Available release exceeds the supplied required energy by 0.01 J."
+        },
+        {
+          "math": "\\sigma_a=\\frac{150-50}{2}=50\\ \\mathrm{MPa},\\quad \\sigma_m=\\frac{150+50}{2}=100\\ \\mathrm{MPa},\\quad R_\\sigma=\\frac{50}{150}=\\frac13",
+          "reason": "Amplitude is half the range; mean is the midpoint; the ratio preserves the signed minimum."
+        },
+        {
+          "math": "N_{\\mathrm{completed}}=10000\\quad\\Rightarrow\\quad\\text{survival through 10000 completed cycles}",
+          "reason": "If no fracture was observed, the run establishes this survival bound only. It does not establish that failure occurred on cycle 10000 or will never occur."
+        }
+      ],
+      "conclusion": "An energy criterion, a cyclic stress description, and an observed survival bound answer three different questions."
+    }
+  ],
+  "guided": {
+    "title": "Stop the connected record at fracture",
+    "setup": "Use the synthetic reference knots (0,0), (0.001,100), (0.01,200), and (0.02,150), where strain is dimensionless and stress is MPa. The last knot is documented fracture. L0=100 mm and A0=10 mm². A controller requests peak strain 0.03 and then returns its target to zero. Identify what the record actually establishes.",
+    "before": [
+      "Find the maximum of the whole reached record, then read the separate final connected stress.",
+      "Integrate only through the documented endpoint. Convert original volume before turning work density into total work.",
+      "A known controller target after fracture is not a known specimen strain. Keep energy not returned distinct from heat."
+    ],
+    "question": {
+      "id": "phs231-material-guided",
+      "familyId": "phs231-material-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m08-l03",
+      "category": "application",
+      "critical": true,
+      "parameters": {
+        "E": 100,
+        "L": 100,
+        "A": 10,
+        "peak": 0.03,
+        "yield": 0.001,
+        "hardening": 0.01,
+        "fracture": 0.02
+      },
+      "prompt": "Report the largest reached engineering stress, last connected engineering stress, last connected strain, and input work through fracture. Then audit the claimed final response and thermal interpretation.",
+      "fields": [
+        {
+          "id": "ultimate",
+          "label": "Largest reached engineering stress",
+          "kind": "rational",
+          "expected": "200",
+          "unit": "MPa",
+          "help": "Enter an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "last",
+          "label": "Last connected engineering stress",
+          "kind": "rational",
+          "expected": "150",
+          "unit": "MPa",
+          "help": "Enter an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "strain",
+          "label": "Last connected engineering strain",
+          "kind": "rational",
+          "expected": "1/50",
+          "unit": "1",
+          "help": "Enter an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "work",
+          "label": "Input work through fracture",
+          "kind": "rational",
+          "expected": "63/20",
+          "unit": "J",
+          "help": "Enter an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "history",
+          "label": "Final response after the controller returns",
+          "kind": "choice",
+          "correct": "unknown",
+          "options": [
+            {
+              "id": "unknown",
+              "label": "Connected final strain and returned work are not established",
+              "feedback": "Fracture terminates the supplied connected record. Later controller targets do not provide an unloading law for separated pieces."
+            },
+            {
+              "id": "zero",
+              "label": "Final specimen strain is zero because the controller target is zero",
+              "feedback": "A controller command is not a specimen measurement. Returning the grips does not reestablish a connected material history."
+            },
+            {
+              "id": "line",
+              "label": "Extrapolate the initial elastic line to calculate final recovery",
+              "feedback": "The supplied record terminates at fracture. An initial slope cannot supply a postfracture unloading path."
+            },
+            {
+              "id": "last",
+              "label": "Use 0.03 as the observed fracture strain",
+              "feedback": "The controller requested 0.03, but the documented connected endpoint is 0.02. A request is not an achieved connected state."
+            }
+          ]
+        },
+        {
+          "id": "thermal",
+          "label": "What the 3.15 J loading work establishes",
+          "kind": "choice",
+          "correct": "input",
+          "options": [
+            {
+              "id": "input",
+              "label": "Input work through the documented endpoint; its thermal partition is unknown",
+              "feedback": "The integral establishes input work. Heat, internal material changes, fracture processes, and subsequent motion require additional evidence."
+            },
+            {
+              "id": "heat",
+              "label": "Exactly 3.15 J became heat",
+              "feedback": "A mechanical loading area does not determine the thermal partition. Internal hardening, damage, and other mechanisms may retain or transfer energy."
+            },
+            {
+              "id": "elastic",
+              "label": "Exactly 3.15 J remains recoverable elastic energy",
+              "feedback": "The full loading area is not an established unload area. A connected return law after fracture is absent."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "The complete reached record peaks at its third knot; the fourth knot has a lower stress.",
+        "The three loading areas are 0.05, 1.35, and 1.75 MJ/m³. Original volume is 1 cm³.",
+        "Stop at strain 0.02. Neither a return command nor a loading integral supplies a missing postfracture or thermal model."
+      ],
+      "explanation": [
+        "$\\sigma_{\\max}=200\\ \\mathrm{MPa}$ while $\\sigma_f=150\\ \\mathrm{MPa}$ at $\\varepsilon_f=0.02$. Maximum and endpoint are distinct.",
+        "$w=0.05+1.35+1.75=3.15\\ \\mathrm{MJ/m^3}$ and $V_0=10^{-6}\\ \\mathrm{m^3}$ give $W=3.15\\ \\mathrm J$.",
+        "The controller's 0.03 request exceeds the documented connected endpoint. Its later return to zero establishes neither a final connected strain nor returned work.",
+        "Input work is known through fracture. The loading area alone does not determine recoverable energy after fracture or the amount transferred as heat."
+      ],
+      "answerSummary": "Maximum stress 200 MPa; final connected stress 150 MPa at strain 0.02; input work 3.15 J. Final connected response and thermal partition are not established."
+    },
+    "after": "Compare Exact fracture with Beyond fracture in the investigation. Explain why both share the same last documented state even though their peak requests differ. Save the distinction between a historical input-work total and unknown later work."
+  },
+  "interaction": {
+    "kind": "phs231-materials",
+    "prompt": "Predict which material states and work accounts the supplied record establishes. Compare elastic recovery, permanent extension, equal-modulus fracture records, and the exact point where a controller target ceases to establish a connected specimen response.",
+    "initial": {
+      "mode": "ductile",
+      "modulusGPa": 100,
+      "lengthMm": 100,
+      "areaMm2": 10,
+      "peakStrain": 0.006,
+      "yieldMPa": 100,
+      "hardeningStrain": 0.01,
+      "hardeningMPa": 200,
+      "fractureStrain": 0.02,
+      "fractureMPa": 150
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "units"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "slope"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "landmarks"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "unloading"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "energy"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "offset"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "comparison"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "true-stress"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "measurement"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "allowable"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "concentration"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "crack"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "scaling"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "inspection"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "fracture-work"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "cyclic"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "competing"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "load-control"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "evidence"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "landmarks"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "unloading"
+    },
+    {
+      "familyId": "phs231-material-evidence",
+      "variant": "energy"
+    },
+    {
+      "familyId": "phs231-fracture-audit",
+      "variant": "inspection"
+    }
+  ],
+  "summary": [
+    "Engineering stress and strain use original geometry. Percent strain is 100 times the dimensionless strain; a recorded endpoint is fracture only when that event is documented.",
+    "Initial modulus, proof stress, maximum engineering stress, fracture stress, ductility, work per original volume, and KIc describe different evidence.",
+    "$W=V_0\\int\\sigma\\,d\\varepsilon$. Integrate actual intervals; a percent-strain axis needs a factor 1/100.",
+    "For the explicitly supplied unfractured unload line, $\\varepsilon_r=\\varepsilon_p-\\sigma_p/E$ and $w_{\\mathrm{returned}}=\\sigma_p^2/(2E)$. Nonreturned mechanical work is not automatically heat.",
+    "A nonmonotone loading record can give several strains at one force. Control and history matter; no connected unloading path is invented after fracture.",
+    "Apply nominal, local concentration, crack, and cyclic criteria separately with their stated areas, units, validity ranges, and observation limits."
+  ],
+  "retrieval": "Tomorrow, redraw the reference curve from its four knots and label initial slope, yield, maximum, and fracture. Without looking, compute the work to fracture and explain why the full area is not stored elastic energy. Then derive why quadrupling crack length doubles KI, and name one measurement missing from a fatigue-life claim. Revisit the matching practice variants for every uncertain step.",
+  "readings": [
+    {
+      "title": "OpenStax: Elasticity and Plasticity",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity",
+      "purpose": "Review proportionality, elastic recovery, and plastic deformation. For a general ductile record, keep ultimate engineering stress distinct from the final breaking stress."
+    },
+    {
+      "title": "MIT OpenCourseWare: Stress-Strain Curves",
+      "url": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_ss/",
+      "purpose": "Read the engineering and true stress definitions, offset-proof convention, necking discussion, and stress–strain work areas."
+    },
+    {
+      "title": "MIT OpenCourseWare: Introduction to Fracture Mechanics",
+      "url": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_frac/",
+      "purpose": "Extend the conditional crack-intensity and energy-release reasoning. Check each geometry and crack-length convention; advanced derivations are optional."
+    },
+    {
+      "title": "MIT OpenCourseWare: Fatigue",
+      "url": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_fatigue-1/",
+      "purpose": "Explore cyclic mean and amplitude, load ratio, and dependence of fatigue evidence on test conditions. Do not infer a universal endurance limit."
+    }
+  ]
+}
