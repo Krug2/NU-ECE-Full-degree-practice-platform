@@ -1,0 +1,647 @@
+{
+  "id": "m07-l02",
+  "courseId": "phs-231",
+  "moduleId": "m07",
+  "version": 1,
+  "title": "Angular momentum and rotational work",
+  "objective": "Use external torque and angular impulse to track angular momentum and distinguish its conservation from energy conservation.",
+  "why": "A rotor can speed up with no external axial torque, while a motor can exchange power at perfectly steady speed. Both results make sense once angular momentum, kinetic energy, and the system boundary are kept separate. You will choose a reference origin, integrate torque over time or angle for the appropriate balance, and explain where energy goes when masses move, objects stick, or rotors couple.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {
+      "lessonId": "m07-l01",
+      "label": "Angular variables, cross products, torque, and inertia about a specified axis"
+    },
+    {
+      "lessonId": "m06-l01",
+      "label": "Vector impulse, system boundaries, and center-of-mass motion"
+    },
+    {
+      "lessonId": "m06-l02",
+      "label": "Inelastic capture and kinetic energy conversion"
+    },
+    {
+      "lessonId": "m05-l01",
+      "label": "Signed work, power, and energy accessibility"
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Conservative potential energy and a complete energy ledger"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. Review the product rule, definite integrals, and derivatives of vector components. Their required uses are developed locally in this lesson."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Angular momentum belongs to a particle and a stated origin",
+      "paragraphs": [
+        "For a particle of constant mass m, linear momentum is $\\mathbf p=m\\mathbf v$. Choose an inertial frame, right-handed coordinate axes, and a fixed origin O. The particle's angular momentum about O is $\\mathbf L_O=\\mathbf r\\times\\mathbf p$, where r runs from O to the particle. Angular momentum has units kg m²/s, also expressible as N m s. It is not torque, whose units are N m.",
+        "Compute components before interpreting direction: $\\mathbf L=(yp_z-zp_y,\\ zp_x-xp_z,\\ xp_y-yp_x)$. The magnitude is $|\\mathbf L|=rp|\\sin\\phi|$, where φ is the angle between r and p. Equivalently it is momentum magnitude times the perpendicular distance from O to the particle's instantaneous line of motion. Reversing cross-product order changes the sign. A zero angular-momentum vector has no defined direction.",
+        "Circular motion is not required. A particle moving freely along a straight line generally has nonzero angular momentum about a point off that line. Its lever distance to the line is constant, so its angular momentum can be constant while its position changes. If r and p are parallel, angular momentum about that origin is zero even though the particle may be moving rapidly.",
+        "For a system, use $\\mathbf P=\\sum_i\\mathbf p_i$ and $\\mathbf L_O=\\sum_i\\mathbf r_i\\times\\mathbf p_i$. Each particle needs its own lever arm. Add signed components, not magnitudes. Two opposite momenta can cancel in P while their angular momenta add. Conversely, contributions to L can cancel without every particle being at rest.",
+        "Refresh the cross product by writing a small component table with one row for each particle: position, momentum, and r cross p. Check that each individual cross product is perpendicular to both of its factors. The total need not be perpendicular to every individual position or momentum."
+      ]
+    },
+    {
+      "heading": "Change the origin deliberately, and derive the torque balance",
+      "paragraphs": [
+        "Let another fixed origin O′ lie at displacement a from O, with parallel axes. Its lever vector is r−a. Expanding gives $\\mathbf L_{O'}=\\mathbf L_O-\\mathbf a\\times\\mathbf P$ for a system. Thus total angular momentum is independent of origin when P=0, and can also agree for particular shifts parallel to P. It is not generally invariant under arbitrary shifts.",
+        "For a particle about a fixed origin, differentiate the definition: $d(\\mathbf r\\times\\mathbf p)/dt=\\mathbf v\\times m\\mathbf v+\\mathbf r\\times\\mathbf F=\\boldsymbol\\tau_O$. The first term vanishes because a vector crossed with itself is zero. For a fixed collection of particles, sum this equation. Internal moments cancel in the usual Newtonian model of equal, opposite pair forces along their joining line; any internal couples or stored spin in a more detailed model must be accounted for consistently.",
+        "The resulting system equation is $d\\mathbf L_O/dt=\\sum\\boldsymbol\\tau_{{\\rm ext},O}$. Name both the system and origin before claiming conservation. The torque inventory includes applied loads and bearing moments. A support force applied at the ideal axle has zero moment about that axle, but it can change total linear momentum. A nonzero force at another point can have a nonzero moment about the same axle.",
+        "A moving reference point needs care. If momenta still use velocities in the original inertial frame, $\\mathbf L_O=\\sum(\\mathbf r_i-\\mathbf r_O)\\times\\mathbf p_i$ has derivative $\\boldsymbol\\tau_O-\\mathbf v_O\\times\\mathbf P$. The extra term vanishes for the center of mass because P=M Vcm. It does not vanish for every moving origin. The fixed-origin examples below avoid that extra condition; shifting an origin is also different from changing the observer's velocity.",
+        "Zero net external torque throughout an interval conserves the full L vector. Zero torque about one fixed axis conserves only that axial component. For nonzero L, $d|\\mathbf L|/dt=\\widehat{\\mathbf L}\\cdot\\boldsymbol\\tau$. A torque continuously perpendicular to L changes direction without changing magnitude. Perpendicularity at only one instant establishes only an instantaneous zero derivative of the magnitude, not a finite-time conservation law."
+      ]
+    },
+    {
+      "heading": "Integrate angular impulse and recognize central forces",
+      "paragraphs": [
+        "Integrate torque in time to obtain angular impulse: $\\mathbf J_{\\rm ang}=\\int_{t_0}^{t_1}\\boldsymbol\\tau_{\\rm ext}\\,dt=\\mathbf L_1-\\mathbf L_0$. The signed area under an axial torque-time graph changes the corresponding angular momentum. For a vector history, integrate each component separately. The area under the torque magnitude is generally neither the angular-impulse vector nor its magnitude.",
+        "A constant torque component gives J=τΔt, and the mean torque over a positive duration is J/Δt. Equal angular impulse can come from different peak torques or pulse shapes. A zero net impulse means equal endpoint angular momenta; it does not imply L was constant at every intermediate time. A positive pulse followed by an equal negative pulse illustrates the difference.",
+        "A central force always lies along the radius from one fixed force center. About that center, $\\mathbf r\\times\\mathbf F=0$, so L is conserved despite nonzero force and changing linear momentum. About a different origin, the force generally has a moment. State the force center rather than claiming a central-force trajectory conserves angular momentum about every point.",
+        "In planar motion, decompose velocity into outward radial and signed transverse components. The radial part contributes no L, while $L_z=mrv_t=mr^2\\dot\\theta$. The signed rate of swept area is $dA/dt=rv_t/2=L_z/(2m)$. Constant L therefore gives equal signed swept areas in equal times, connecting to the gravitational-orbit lesson. As radius grows, transverse speed scales as 1/r and angular velocity as 1/r².",
+        "Angular momentum alone does not determine the radial velocity or guarantee that a proposed radius is reached. A force law, energy balance, or additional trajectory data may be needed. At L=0, transverse velocity is zero wherever r>0, but radial motion can remain. Crossing the force center requires separate attention because radial direction and θ are undefined at r=0."
+      ]
+    },
+    {
+      "heading": "Separate fixed-axis angular momentum from a universal vector shortcut",
+      "paragraphs": [
+        "For rotation about fixed z, an element at (x,y,z) has velocity $(-\\omega y,\\omega x,0)$. Its axial angular momentum is $x(m\\omega x)-y(-m\\omega y)=m(x^2+y^2)\\omega$. Summing gives $L_z=I_z\\omega$. In a rigid configuration I is constant, so $\\tau_z=I_z\\alpha$. This recovers the previous lesson's scalar equation from angular momentum.",
+        "The full vector L need not be parallel to angular velocity for an arbitrary three-dimensional mass distribution. For example, a mass with nonzero z coordinate also contributes transverse components. A general relation uses an inertia tensor. The axial identity Lz=Izω and the kinetic-energy formula for constrained pure fixed-axis rotation remain useful without claiming the stronger vector identity L=Iω for every body.",
+        "Now allow masses to move radially while maintaining common angular velocity around the same fixed axis. The axial relation still has the form L=I(t)ω(t), but the product rule gives $\\tau_{\\rm ext}=I\\alpha+\\dot I\\omega$. This mechanism is no longer a rigid body with constant geometry. Setting τ=Iα alone would incorrectly predict zero acceleration when radial motion changes I under zero axial torque.",
+        "If external axial torque is zero throughout, $I_0\\omega_0=I_1\\omega_1=L$ and $K_{\\rm rot}=I\\omega^2/2=L^2/(2I)$. At nonzero fixed L, reducing I increases both angular speed and rotational kinetic energy. The energy must come from radial work or conversion of an included internal energy store. Zero axial torque does not prohibit work by radial forces whose application points move.",
+        "Before calculating, say whether actuators are inside the system. For the investigation, the mechanical system is disk plus moving masses; the motor and radial actuators are outside. Their work crosses the boundary. If a person and their muscles were included in a different system, a rise in mechanical energy might instead correspond to a drop in internal chemical energy. The conservation statement depends on this choice."
+      ]
+    },
+    {
+      "heading": "Use angular momentum during capture and frictional coupling",
+      "paragraphs": [
+        "For a short capture at a fixed ideal axle, choose a system containing both rotor and incoming object. If the external axial angular impulse is negligible, conserve L about that axle. An incoming point mass at radius R with tangential speed vt contributes mRvt; an incident radial component contributes no axial L but still contributes kinetic energy. Add any existing rotor angular momentum before dividing by the new inertia.",
+        "When the point mass sticks at radius R, $I_f=I_{\\rm rotor}+mR^2$ and $\\omega_f=(I_{\\rm rotor}\\omega_0+mRv_t)/I_f$. Initial energy includes the rotor and every particle-velocity component. Final energy is $I_f\\omega_f^2/2$. Their difference is converted to deformation, vibration, heat, or other unmodeled internal modes. Under the stated passive inelastic model it is nonnegative; kinetic energy is not the conservation equation for finding the common speed.",
+        "The ideal axle can deliver linear impulse while having zero moment about itself. In the instantaneous planar capture model, a particle captured at (R,0) ends with velocity (0,Rωf), while the rotor's center remains fixed. The axle impulse on the combined system is its change in total linear momentum. Conservation of axial L does not license conservation of the system's linear momentum.",
+        "For two coaxial rotors coupled by internal friction, negligible external axial impulse gives $\\omega_f=(I_1\\omega_1+I_2\\omega_2)/(I_1+I_2)$. This is an inertia-weighted average. Opposite initial rotations can yield either final sign or complete cancellation. Each rotor's angular impulse is $I_i(\\omega_f-\\omega_i)$; the two are equal and opposite.",
+        "Subtracting final from initial kinetic energy gives $K_i-K_f=I_1I_2(\\omega_1-\\omega_2)^2/[2(I_1+I_2)]$. It vanishes only for equal initial rates when both inertias are positive. The squared relative rate proves the conversion is nonnegative and shows why merely canceling L does not mean there was no energy to dissipate. These are calculations with stipulated capture or clutch behavior, not procedures for making a spinning impact device."
+      ]
+    },
+    {
+      "heading": "Torque-time area and torque-angle area answer different questions",
+      "paragraphs": [
+        "For a rigid body in pure rotation about a fixed axis, the displacement of a force's application point is $d\\mathbf r=(\\widehat{\\mathbf n}\\times\\mathbf r)\\,d\\theta$. The scalar triple-product identity turns $\\mathbf F\\cdot d\\mathbf r$ into $(\\mathbf r\\times\\mathbf F)\\cdot\\widehat{\\mathbf n}\\,d\\theta$. Thus $dW=\\tau_n\\,d\\theta$ and $W=\\int\\tau_n(\\theta)\\,d\\theta$ along the actual angular path.",
+        "An axial torque-time integral has units N m s and changes L. A torque-angle integral has units N m (radians are dimensionless) and transfers energy in joules. Multiplying torque by time does not calculate work, and multiplying torque by angle does not calculate angular impulse. A graph's horizontal axis matters as much as its vertical label.",
+        "Instantaneous power is $P=\\mathbf F\\cdot\\mathbf v=\\boldsymbol\\tau\\cdot\\boldsymbol\\omega$, or P=τnω for fixed-axis motion. This identity does not require a constant torque. For a body that also translates, the complete external-force power can be decomposed into net force dot CM velocity plus torque about CM dot angular velocity. Using only τω for an arbitrary translating system omits translational power.",
+        "For constant I and net axial work, $K_f=K_i+\\int\\tau_{\\rm net}\\,d\\theta$ and $|\\omega_f|=\\sqrt{2K_f/I}$ when Kf is nonnegative. Energy gives speed; direction needs motion information. Starting with positive ω, the first advancing passage has positive ω until a turning point. A negative computed K means the requested state is inaccessible, not a negative or imaginary physical kinetic energy.",
+        "Check the whole path, not just the endpoint. In the practice family, τ=a−bθ with b≥0 makes K a concave-down function beginning positive, so a positive target K guarantees no earlier negative gap on that advance. More general torque laws can contain an intervening barrier even when the final formal K is positive. Reuse the work lesson's accessibility reasoning for those cases.",
+        "At steady nonzero speed, net torque and net power can be zero while a drive supplies positive power and a load absorbs it. A full turn follows the signed direction of rotation: Δθ=2π sign(ω), whereas elapsed turn time is positive, 2π/|ω|. Convert rpm to rad/s with 2π/60 before evaluating power."
+      ]
+    },
+    {
+      "heading": "Elastic torsion, braking, and motor losses need different accounts",
+      "paragraphs": [
+        "An ideal linear torsional spring has restoring torque $\\tau=-\\kappa\\theta$, with stiffness κ in N m/rad and θ measured from its unstressed equilibrium. Set $U(0)=0$ and integrate $dU=-\\tau\\,d\\theta$ to obtain $U=\\kappa\\theta^2/2$. The quadratic energy is nonnegative for κ>0 even when angle is negative. The linear law must be valid across the stated angular range.",
+        "With no damping or other work, a rotor released from angle θ0 at rest conserves $I\\omega^2/2+\\kappa\\theta^2/2$. At its first passage through θ=0 it moves toward the other side, so $\\omega=-\\theta_0\\sqrt{\\kappa/I}$. Spring torque is zero at that instant, but kinetic energy and speed are maximal. Zero angular acceleration does not imply rest.",
+        "A dissipative brake with constant opposing torque magnitude b removes work as the rotor turns. For initial signed rate ω0, $\\alpha=-\\operatorname{sgn}(\\omega_0)b/I$ until first rest, $t_{\\rm stop}=I|\\omega_0|/b$, and $\\Delta\\theta=I\\omega_0|\\omega_0|/(2b)$. If all removed kinetic energy becomes thermal energy, the conversion is Iω0²/2. These formulas end at the first stop; a later holding, release, or actuator rule must be specified.",
+        "For positive motoring efficiency $\\eta=P_{\\rm shaft}/P_{\\rm electrical}$, electrical input is Pshaft/η and internal conversion loss is input minus output. Shaft output may feed both a useful load and bearing loss. At steady speed, the shaft kinetic energy does not increase, but these positive energy flows can continue. Specify whether a quoted efficiency covers the motor alone or the complete drive.",
+        "Negative mechanical work on the system means energy flows into the motor-side boundary. It does not by itself tell you how much electrical energy is recovered. Regeneration needs its own directional conversion model, operating limits, and loss data. Do not insert negative power into a positive-motoring efficiency formula and label the result a verified electrical output."
+      ]
+    },
+    {
+      "heading": "Resolve motor work and radial work during a change in inertia",
+      "paragraphs": [
+        "The investigation has a base disk inertia Ib and two equal masses m at opposite positive radii r. Total I=Ib+2mr² and $\\dot I=4mr\\dot r$. A smooth prescribed path carries r0 to r1 in duration T, with radial velocity and acceleration zero at both endpoints. With u=t/T, use $S(u)=10u^3-15u^4+6u^5$ and $r=r_0+(r_1-r_0)S$. Differentiate the path using the chain-rule factors 1/T and 1/T².",
+        "The two masses' kinetic energy is the sum of radial and tangential parts: together they contribute $m\\dot r^2+mr^2\\omega^2$. Including the disk gives $K_{\\rm total}=I\\omega^2/2+m\\dot r^2$. The radial term vanishes at the endpoints but generally not between them. A work ledger that retains only rotational energy is incomplete during the move.",
+        "In conserved-L mode, external axial torque is zero, $\\omega=L_0/I$, and $\\alpha=-\\dot I\\omega/I$. There is no motor work. The radial actuators supply the entire change in total kinetic energy. In fixed-ω mode, α=0 but $\\tau_m=\\dot I\\omega$, so $W_m=\\int\\tau_m\\omega\\,dt=\\omega^2(I-I_0)$. This is twice the endpoint change in rotational energy, making a second work term essential.",
+        "Choose outward as positive for radial force on each mass. Polar acceleration has radial component $\\ddot r-r\\omega^2$, giving $F_r=m(\\ddot r-r\\omega^2)$. Both actuators together supply power $P_r=2F_r\\dot r$. The tracks exchange tangential forces internally with the mechanical bodies; the external motor torque accounts for any total axial angular-momentum change. The complete balance is $K-K_0=W_m+W_r$.",
+        "At endpoint radial rest and fixed ω, $\\Delta K=\\omega^2\\Delta I/2$, $W_m=\\omega^2\\Delta I$, and $W_r=-\\omega^2\\Delta I/2$. During an inward move with nonzero spin, ΔI<0: the radial actuators do positive work, the motor removes more mechanical energy, and rotational K decreases. Under conserved L, the same inward geometry instead increases K. The constraint changes the energy story.",
+        "Doubling duration without changing endpoints gives the same radius and angular rate at equal fractional time, but halves radial velocity and quarters radial acceleration and radial kinetic energy. In fixed-ω mode it also halves motor torque at that fractional time. Endpoint work is unchanged. The graph includes radial K so this timing comparison can expose an otherwise hidden term."
+      ]
+    },
+    {
+      "heading": "Use uncertainty and evidence to qualify a conservation claim",
+      "paragraphs": [
+        "In the simulation all parameters are prescribed, not measured. It cannot determine actual bearing torque, material stresses, safe rotational speed, actuator capacity, or equipment requirements. A small computed balance residual is a check on arithmetic for the model, not a measurement proving physical isolation. The prescribed radial path and ideal speed controller can demand forces beyond a real device's limits.",
+        "For measured angular momentum L=Iω, uncertainty in mass distribution and rate both matter. If I=Ib+2mr², a small differential is $dI=dI_b+2r^2\\,dm+4mr\\,dr$. Radius error is amplified by the squared-radius dependence; a numerical rate derived from angle also depends on sampling and time calibration. Use signed interval bounds or an explicitly justified statistical propagation rule, and preserve correlation when the same measurements enter both sides of a balance.",
+        "For angular impulse, calibrate torque and time and retain the signed area. Finite time sampling can miss a narrow torque pulse or a high peak even when the sampled graph looks smooth. An unmodeled bearing torque acting over a long time can accumulate a significant angular impulse. A short event may justify neglecting that contribution only after comparing its estimated impulse with the terms retained.",
+        "A measured conservation residual consistent with the uncertainty budget supports the model at that resolution; it does not prove exact zero torque. Conversely, a significant residual invites checking omitted torque, changing radius, origin choice, unit conversion, and timing before declaring a new physical effect. Distinguish an instrument's displayed digits from its resolution, calibration accuracy, and dynamic response.",
+        "For this lesson's evidence, state the mechanical system, origin, positive direction, and angular constraint. Record one prediction before revealing results, include selected numerical values, and explain both work sources. Save this reasoning in lesson notes and use the checkpoint to test transfer to a new deterministic question set. The later project develops a fuller numerical notebook and rubric."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A particle, a shifted origin, and an instantaneous torque",
+      "prompt": "A 2 kg particle is at r=(2,−1,3) m with v=(1,4,−2) m/s. Find L about O and about O′ displaced by (1,0,0) m. If F=(3,0,2) N at that instant, find dL/dt about O.",
+      "steps": [
+        {
+          "math": "\\mathbf p=2(1,4,-2)=(2,8,-4)\\ {\\rm kg\\,m/s}",
+          "reason": "Convert velocity to momentum before taking a moment; the position itself is unchanged."
+        },
+        {
+          "math": "\\mathbf L_O=(2,-1,3)\\times(2,8,-4)=(-20,14,18)\\ {\\rm kg\\,m^2/s}",
+          "reason": "Expand all three cross-product components with the right-hand order. As a check, this vector is perpendicular to both r and p."
+        },
+        {
+          "math": "\\mathbf L_{O'}=\\mathbf L_O-(1,0,0)\\times(2,8,-4)=(-20,10,10)\\ {\\rm kg\\,m^2/s}",
+          "reason": "The new lever is (1,−1,3) m. Its direct cross product gives the same result; subtracting the origin shift is essential."
+        },
+        {
+          "math": "\\frac{d\\mathbf L_O}{dt}=\\boldsymbol\\tau_O=(2,-1,3)\\times(3,0,2)=(-2,5,3)\\ {\\rm N\\,m}",
+          "reason": "This derivative refers to the stated fixed O. Angular momentum and its rate use different units."
+        }
+      ],
+      "conclusion": "The two angular momenta describe the same particle about different points. There is no contradiction in their differing values, and neither can be replaced by the torque vector."
+    },
+    {
+      "title": "Zero total linear momentum with nonzero angular momentum",
+      "prompt": "Two 1 kg particles are at (1,0,0) and (−1,0,0) m with velocities (0,2,0) and (0,−2,0) m/s. Find total P, L about the origin, and kinetic energy. What happens to total L if the origin is translated?",
+      "steps": [
+        {
+          "math": "\\mathbf P=(0,2,0)+(0,-2,0)=\\mathbf0",
+          "reason": "The momenta cancel as vectors; this says nothing yet about their moments."
+        },
+        {
+          "math": "\\mathbf L=(1,0,0)\\times(0,2,0)+(-1,0,0)\\times(0,-2,0)=(0,0,4)\\ {\\rm kg\\,m^2/s}",
+          "reason": "Each particle contributes positive z angular momentum because position and transverse velocity both reverse between particles."
+        },
+        {
+          "math": "K=\\frac12(1)(2^2)+\\frac12(1)(2^2)=4\\ {\\rm J},\\qquad \\mathbf L'=\\mathbf L-\\mathbf a\\times\\mathbf0=\\mathbf L",
+          "reason": "Energy is a scalar sum and is positive. P=0 makes total angular momentum independent of the translated origin, although individual contributions can change."
+        }
+      ],
+      "conclusion": "A system can have zero CM motion and still have internal motion, kinetic energy, and angular momentum."
+    },
+    {
+      "title": "A vector torque history and the danger of integrating magnitudes",
+      "prompt": "About a fixed inertial origin, L(0)=(1,2,−1) kg m²/s and external τ(t)=(2t,−1,3−t) N m for 0≤t≤2 s. Determine angular impulse, final L, and its magnitude.",
+      "steps": [
+        {
+          "math": "\\mathbf J_{\\rm ang}=\\left([t^2]_0^2,\\ [-t]_0^2,\\ [3t-t^2/2]_0^2\\right)=(4,-2,4)\\ {\\rm N\\,m\\,s}",
+          "reason": "Integrate each signed component over the same time interval. The second component is negative throughout."
+        },
+        {
+          "math": "\\mathbf L(2)=(1,2,-1)+(4,-2,4)=(5,0,3)\\ {\\rm kg\\,m^2/s}",
+          "reason": "The impulse adds to the initial vector, not to its magnitude."
+        },
+        {
+          "math": "|\\mathbf L(2)|=\\sqrt{5^2+0^2+3^2}=\\sqrt{34}\\ {\\rm kg\\,m^2/s}",
+          "reason": "Take the magnitude only after summing components. The torque magnitude's time integral would answer a different question."
+        },
+        {
+          "math": "\\mathbf L_0=L_0\\widehat{\\mathbf z},\\quad \\boldsymbol\\tau=\\tau_0\\widehat{\\mathbf x}\\quad\\Longrightarrow\\quad |\\mathbf L(t)|=\\sqrt{L_0^2+\\tau_0^2t^2}",
+          "reason": "As a separate comparison, constant torque perpendicular to the initial L does not preserve its magnitude for later times. It must remain perpendicular to the changing L for that stronger claim."
+        }
+      ],
+      "conclusion": "Angular impulse is a vector endpoint change. Neither a norm integral nor an initial perpendicularity check replaces the component balance."
+    },
+    {
+      "title": "Central force, area rate, and missing radial information",
+      "prompt": "A 2 kg particle is at (3,0,0) m with v=(−1,4,0) m/s under a force always directed toward the fixed origin. If it later reaches radius 6 m in the same plane, find the transverse speed and angular velocity there.",
+      "steps": [
+        {
+          "math": "L_z=mrv_t=(2)(3)(4)=24\\ {\\rm kg\\,m^2/s}",
+          "reason": "The −1 m/s radial velocity does not contribute because it is parallel to the radius."
+        },
+        {
+          "math": "\\frac{dA}{dt}=\\frac{L_z}{2m}=\\frac{24}{4}=6\\ {\\rm m^2/s}",
+          "reason": "The central force has zero moment about its center. The signed area rate remains constant."
+        },
+        {
+          "math": "v_t(6)=\\frac{24}{(2)(6)}=2\\ {\\rm m/s},\\qquad \\omega(6)=\\frac{2}{6}=\\frac13\\ {\\rm rad/s}",
+          "reason": "Preserve r vt, then divide transverse velocity by the new radius. Doubling radius halves vt and quarters angular velocity."
+        }
+      ],
+      "conclusion": "The radial velocity at radius 6 m is not determined by L alone, and reaching that radius is conditional. A specific force or energy model would supply additional information."
+    },
+    {
+      "title": "An inward move with no external axial torque",
+      "prompt": "A disk with base I=1 kg m² carries two 1 kg point masses at opposite radii. They move from r=1 m to r=1/2 m, with radial rest at both endpoints. Initially ω=2 rad/s. The external radial actuators have zero axial torque; there is no motor torque or loss.",
+      "steps": [
+        {
+          "math": "I_0=1+2(1)(1^2)=3,\\qquad I_f=1+2(1)(1/2)^2=\\frac32\\ {\\rm kg\\,m^2}",
+          "reason": "Square each radius and include both masses and the unchanged disk contribution."
+        },
+        {
+          "math": "L=I_0\\omega_0=6,\\qquad \\omega_f=\\frac{6}{3/2}=4\\ {\\rm rad/s}",
+          "reason": "Zero external axial torque conserves L about the fixed axle, increasing angular speed as I falls."
+        },
+        {
+          "math": "K_0=\\frac12(3)(2^2)=6\\ {\\rm J},\\quad K_f=\\frac12(3/2)(4^2)=12\\ {\\rm J},\\quad W_r=+6\\ {\\rm J}",
+          "reason": "Endpoint radial K is zero. With the actuators outside the mechanical system and no motor work, their positive work supplies the 6 J gain."
+        }
+      ],
+      "conclusion": "Conservation of angular momentum has not created energy. Inward radial forces act through inward displacements and supply mechanical work."
+    },
+    {
+      "title": "The same inward move while a motor holds angular speed",
+      "prompt": "Use the same disk, masses, and radius endpoints, but let an ideal motor hold ω=2 rad/s. The mechanical system excludes motor and radial actuators. Determine both work transfers.",
+      "steps": [
+        {
+          "math": "L_0=3(2)=6,\\quad L_f=\\frac32(2)=3,\\quad J_m=L_f-L_0=-3\\ {\\rm N\\,m\\,s}",
+          "reason": "Holding ω fixed while decreasing I requires removal of angular momentum through the motor-side torque."
+        },
+        {
+          "math": "W_m=\\omega^2\\Delta I=4\\left(\\frac32-3\\right)=-6\\ {\\rm J}",
+          "reason": "Integrate τmω with τm=Idot ω. This is not the same as the change in rotational K."
+        },
+        {
+          "math": "K_f=\\frac12\\left(\\frac32\\right)(2^2)=3\\ {\\rm J},\\quad \\Delta K=-3\\ {\\rm J},\\quad W_r=\\Delta K-W_m=+3\\ {\\rm J}",
+          "reason": "Radial actuators add 3 J while the motor removes 6 J, so the net mechanical-energy change is −3 J."
+        }
+      ],
+      "conclusion": "The radius endpoints match the previous example but the angular constraint differs. Negative motor work is a mechanical transfer; electrical recovery has not been modeled."
+    },
+    {
+      "title": "The midpoint exposes radial kinetic energy",
+      "prompt": "For the preceding inward geometry, prescribe T=2 s and r=1−S(t/2)/2 with S=10u³−15u⁴+6u⁵. Inspect t=1 s in both angular modes. Each sliding mass is 1 kg.",
+      "steps": [
+        {
+          "math": "u=\\frac12,\\quad r=\\frac34,\\quad \\dot r=-\\frac{15}{32}\\ {\\rm m/s},\\quad \\ddot r=0",
+          "reason": "Differentiate with respect to u and apply the factors 1/T and 1/T². The smooth midpoint is not a point of zero radial velocity."
+        },
+        {
+          "math": "I=1+2(3/4)^2=\\frac{17}{8},\\qquad K_r=m\\dot r^2=\\frac{225}{1024}\\ {\\rm J}",
+          "reason": "Both radial contributions sum to m rdot². This positive energy must be included between the endpoints."
+        },
+        {
+          "math": "L=6:\\quad \\omega=\\frac{48}{17},\\quad K_{\\rm rot}=\\frac{144}{17},\\quad \\alpha=\\frac{540}{289},\\quad F_r=-\\frac{1728}{289}",
+          "reason": "In conserved-L mode, use ω=L/I and the product-rule equation for α. The radial force per mass is m(rddot−rω²), directed inward here; units are rad/s, J, rad/s², and N respectively."
+        },
+        {
+          "math": "P_r=2F_r\\dot r=\\frac{1620}{289}\\ {\\rm W},\\qquad W_r=\\frac{144}{17}+\\frac{225}{1024}-6\\ {\\rm J}",
+          "reason": "No motor power is present. The integrated radial work equals the change in total, rather than only rotational, kinetic energy."
+        },
+        {
+          "math": "\\omega=2:\\quad \\tau_m=-\\frac{45}{16}\\ {\\rm N\\,m},\\quad P_m=-\\frac{45}{8}\\ {\\rm W},\\quad P_r=\\frac{45}{16}\\ {\\rm W}",
+          "reason": "In fixed-speed mode, the shrinking inertia requires a negative motor torque. Radial power is still positive, but the larger motor removal makes total kinetic energy decrease at this instant."
+        }
+      ],
+      "conclusion": "A rotation-only ledger misses 225/1024 J at this midpoint. With T doubled, that radial kinetic energy is one quarter as large at the same fraction of the move."
+    },
+    {
+      "title": "Capture at a fixed axle, including radial incident energy",
+      "prompt": "A rotor has I=2 kg m² and ω=−1 rad/s. A 1 kg particle at r=(2,0) m with incident velocity (−3,4) m/s is captured and sticks. During the short event, external axial angular impulse and angular displacement are negligible. Find final spin, converted kinetic energy, and axle impulse.",
+      "steps": [
+        {
+          "math": "L_i=2(-1)+(2)(1)(4)=6\\ {\\rm kg\\,m^2/s},\\qquad I_f=2+(1)(2^2)=6\\ {\\rm kg\\,m^2}",
+          "reason": "The rotor initially contributes negative angular momentum; the particle's positive tangential contribution is larger."
+        },
+        {
+          "math": "\\omega_f=\\frac{6}{6}=1\\ {\\rm rad/s},\\quad K_i=\\frac12(2)(1)+\\frac12(1)(9+16)=\\frac{27}{2}\\ {\\rm J}",
+          "reason": "The radial incident speed contributes 9/2 J of kinetic energy even though it contributes no axial L."
+        },
+        {
+          "math": "K_f=\\frac12(6)(1^2)=3\\ {\\rm J},\\qquad K_i-K_f=\\frac{21}{2}\\ {\\rm J}",
+          "reason": "Capture is inelastic. This positive conversion must not be set to zero to impose a second conservation law."
+        },
+        {
+          "math": "\\mathbf J_{\\rm axle}=\\mathbf P_f-\\mathbf P_i=(0,2)-(-3,4)=(3,-2)\\ {\\rm N\\,s}",
+          "reason": "The captured particle moves tangentially at Rωf=2 m/s. The rotor CM stays fixed, and the support impulse accounts for the system's linear-momentum change."
+        }
+      ],
+      "conclusion": "The axle provides impulse without an axial moment about itself. Conserve the specified axial angular momentum while separately accounting for inelastic energy conversion."
+    },
+    {
+      "title": "Counter-rotating disks coupled by a clutch",
+      "prompt": "Two coaxial rotors have I1=2 and I2=3 kg m², with ω1=4 and ω2=−1 rad/s. Internal clutch friction brings them to a common rate while external axial impulse is negligible.",
+      "steps": [
+        {
+          "math": "L=2(4)+3(-1)=5,\\qquad \\omega_f=\\frac{5}{2+3}=1\\ {\\rm rad/s}",
+          "reason": "Use the inertia-weighted rate. Opposite spins do not imply equal and opposite angular momenta."
+        },
+        {
+          "math": "K_i=\\frac12(2)(4^2)+\\frac12(3)(1^2)=\\frac{35}{2},\\qquad K_f=\\frac12(5)(1^2)=\\frac52\\ {\\rm J}",
+          "reason": "Both initial energy terms are positive despite opposite angular velocities."
+        },
+        {
+          "math": "K_i-K_f=15\\ {\\rm J}=\\frac{(2)(3)(4-(-1))^2}{2(2+3)}",
+          "reason": "The relative-rate formula independently checks the direct energy subtraction."
+        },
+        {
+          "math": "J_1=2(1-4)=-6,\\qquad J_2=3(1-(-1))=+6\\ {\\rm N\\,m\\,s}",
+          "reason": "The internal clutch exchanges equal and opposite angular impulses, which cancel for the two-rotor system."
+        }
+      ],
+      "conclusion": "Common rotation retains 5/2 J while 15 J leaves the modeled rotational kinetic energy. A zero external torque does not prevent internal frictional conversion."
+    },
+    {
+      "title": "Integrating torque over angle and selecting a physical velocity",
+      "prompt": "A rotor with I=2 kg m² starts at θ=0 with ω=+1 rad/s. Its net torque is τ=6−2θ N m until θ=2 rad. Find work, angular velocity, and power there.",
+      "steps": [
+        {
+          "math": "W=\\int_0^2(6-2\\theta)\\,d\\theta=[6\\theta-\\theta^2]_0^2=8\\ {\\rm J}",
+          "reason": "This integral uses angle, so it gives work. Multiplying the torque by an unspecified time would not answer it."
+        },
+        {
+          "math": "K(\\theta)=1+6\\theta-\\theta^2,\\qquad K(2)=9\\ {\\rm J}",
+          "reason": "The initial kinetic energy is 1 J. Over 0≤θ≤2 the torque stays positive, so K never reaches a turning barrier."
+        },
+        {
+          "math": "|\\omega_f|=\\sqrt{\\frac{2(9)}{2}}=3,\\qquad \\omega_f=+3\\ {\\rm rad/s}",
+          "reason": "The rotor starts with positive rate and does not turn before the target. That motion information selects the positive branch."
+        },
+        {
+          "math": "\\tau_f=6-2(2)=2\\ {\\rm N\\,m},\\qquad P_f=\\tau_f\\omega_f=6\\ {\\rm W}",
+          "reason": "The endpoint power uses the endpoint torque, although the torque varied along the path."
+        }
+      ],
+      "conclusion": "A square root gives speed. Check the path and direction before treating an algebraic sign as a physical angular velocity."
+    },
+    {
+      "title": "A spring crossing and a separate braking stop",
+      "prompt": "First, a torsional spring with κ=8 N m/rad acts on I=2 kg m², released from θ0=1/2 rad at rest without damping. Separately, a rotor with I=2 kg m² and ω0=+3 rad/s experiences constant brake torque −3 N m until first rest.",
+      "steps": [
+        {
+          "math": "U_0=\\frac12(8)(1/2)^2=1\\ {\\rm J},\\qquad \\omega_{\\theta=0}=-\\sqrt{\\frac{2(1)}{2}}=-1\\ {\\rm rad/s}",
+          "reason": "For the spring, the initial restoring torque is negative, so the first equilibrium crossing has negative angular velocity."
+        },
+        {
+          "math": "\\tau_{\\theta=0}=0,\\qquad K_{\\theta=0}=1\\ {\\rm J}",
+          "reason": "At that crossing, zero torque coexists with nonzero speed. Energy has moved from spring potential to rotor kinetic energy."
+        },
+        {
+          "math": "\\alpha=-\\frac32\\ {\\rm rad/s^2},\\qquad t_{\\rm stop}=\\frac{3}{3/2}=2\\ {\\rm s},\\qquad \\Delta\\theta=\\frac{3+0}{2}(2)=3\\ {\\rm rad}",
+          "reason": "For the separate brake case, integrate its constant angular acceleration only until first rest."
+        },
+        {
+          "math": "W_{\\rm brake}=(-3)(3)=-9\\ {\\rm J},\\quad E_{\\rm thermal}=9\\ {\\rm J},\\quad J_{\\rm ang}=(-3)(2)=-6\\ {\\rm N\\,m\\,s}",
+          "reason": "Signed work and angular impulse use different independent variables and units. Both agree with their corresponding endpoint changes."
+        }
+      ],
+      "conclusion": "The spring stores and returns ideal mechanical energy. The brake dissipates it. The post-stop brake behavior has not been specified."
+    },
+    {
+      "title": "Zero net angular impulse with a changing history",
+      "prompt": "A fixed rotor has I=2 kg m² and starts at ω=1 rad/s. Net torque is +2 N m for 1 s and then −2 N m for 1 s. Compare momentum, work, and angular displacement.",
+      "steps": [
+        {
+          "math": "\\omega:1\\longrightarrow2\\longrightarrow1\\ {\\rm rad/s},\\qquad J_1=+2,\\quad J_2=-2\\ {\\rm N\\,m\\,s}",
+          "reason": "Each pulse changes angular velocity by its angular impulse divided by I. The second restores the initial value."
+        },
+        {
+          "math": "K:1\\longrightarrow4\\longrightarrow1\\ {\\rm J},\\qquad W_1=+3,\\quad W_2=-3\\ {\\rm J}",
+          "reason": "Work follows kinetic-energy differences, not just the torque-time area. Both total angular impulse and total work happen to cancel for this fixed-I cycle."
+        },
+        {
+          "math": "\\Delta\\theta=\\frac{1+2}{2}(1)+\\frac{2+1}{2}(1)=3\\ {\\rm rad}",
+          "reason": "The two angular-velocity areas are positive. For comparison, a steady 1 rad/s rotor would travel only 2 rad in the same 2 s."
+        }
+      ],
+      "conclusion": "Equal endpoint momentum does not establish constant momentum throughout, and equal endpoint kinetic energy does not determine the accumulated angle."
+    },
+    {
+      "title": "Negative rotation with positive motor power",
+      "prompt": "A shaft turns steadily at −120 rpm. The motor couple is −3 N m and a useful resisting load supplies +3 N m. Bearing loss is negligible. Motor efficiency in this motoring direction is 4/5.",
+      "steps": [
+        {
+          "math": "\\omega=-120\\left(\\frac{2\\pi}{60}\\right)=-4\\pi\\ {\\rm rad/s},\\quad P_{\\rm shaft}=(-3)(-4\\pi)=12\\pi\\ {\\rm W}",
+          "reason": "Negative torque in negative rotation delivers positive mechanical power. Convert revolutions and minutes before multiplying."
+        },
+        {
+          "math": "P_{\\rm load\\ on\\ shaft}=(3)(-4\\pi)=-12\\pi\\ {\\rm W},\\quad \\frac{dK}{dt}=0",
+          "reason": "The load absorbs 12π W while its work on the shaft is negative. The two contributions balance at steady speed."
+        },
+        {
+          "math": "P_{\\rm electrical}=\\frac{12\\pi}{4/5}=15\\pi\\ {\\rm W},\\quad P_{\\rm conversion\\ loss}=15\\pi-12\\pi=3\\pi\\ {\\rm W}",
+          "reason": "The stated motor efficiency connects positive electrical input to positive shaft output; it does not include a separate regeneration law."
+        }
+      ],
+      "conclusion": "Steady rotation requires no net acceleration power, yet a motor can continuously transmit energy to a load and lose some internally."
+    }
+  ],
+  "guided": {
+    "title": "Account for two inward moves",
+    "setup": "A disk of base inertia 1 kg m² carries two 1 kg masses on opposite radial tracks. Each moves from radius 1 m to 1/2 m with radial rest at both endpoints. Both trials start at ω=2 rad/s. Trial A has zero external axial torque; trial B uses an ideal motor to hold ω=2 rad/s. The mechanical system excludes the motor and radial actuators; there are no losses.",
+    "before": [
+      "Find I0=3 and If=3/2 kg m² from the mass geometry.",
+      "For trial A, use L0=6 kg m²/s and zero motor work. Its endpoint energy change is radial actuator work.",
+      "For trial B, integrate motor power using τm=Idot ω, then use the complete work balance."
+    ],
+    "question": {
+      "id": "phs231-angular-guided",
+      "familyId": "phs231-angular-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m07-l02",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find the final angular velocity and radial actuator work for trial A. Then find motor work and radial actuator work for trial B. Choose the energy-accounting statement that applies during the moves.",
+      "fields": [
+        {
+          "id": "free-omega",
+          "label": "Trial A final angular velocity",
+          "expected": "4",
+          "unit": "rad/s",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "free-work",
+          "label": "Trial A radial actuator work",
+          "expected": "6",
+          "unit": "J",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "motor-work",
+          "label": "Trial B motor work",
+          "expected": "-6",
+          "unit": "J",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "radial-work",
+          "label": "Trial B radial actuator work",
+          "expected": "3",
+          "unit": "J",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "meaning",
+          "label": "Angular momentum and energy accounting",
+          "kind": "choice",
+          "correct": "complete",
+          "options": [
+            {
+              "id": "complete",
+              "label": "Include both work sources and radial kinetic energy during the move",
+              "feedback": "Radial kinetic energy is zero at the chosen endpoints but positive during an actual radius change. Both external work sources enter K−K0=Wmotor+Wradial."
+            },
+            {
+              "id": "kinetic",
+              "label": "Trial A keeps kinetic energy constant because angular momentum is conserved",
+              "feedback": "At fixed nonzero L, Krot=L²/(2I). The smaller inertia increases K; radial actuators supply the energy in this chosen system."
+            },
+            {
+              "id": "motor",
+              "label": "Trial B needs no motor torque because angular acceleration is zero",
+              "feedback": "The product rule gives τ=d(Iω)/dt=Iα+Idot ω. The second term remains during a radius change at nonzero fixed ω."
+            },
+            {
+              "id": "rotation",
+              "label": "Use rotational kinetic energy alone throughout the radial move",
+              "feedback": "The masses also have radial velocity between the endpoints. Their combined radial kinetic energy is m rdot² and must be included then."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "baseI": 1,
+        "mass": 1,
+        "r0": 1,
+        "r1": 0.5,
+        "omega": 2
+      },
+      "hints": [
+        "At the endpoints I0=3 and If=3/2. With L=6 conserved, trial A finishes at ω=4 rad/s.",
+        "Trial A: Ki=6 J and Kf=12 J, so radial work is +6 J. Trial B instead keeps ω=2 rad/s.",
+        "Trial B: motor work is 2²(3/2−3)=−6 J. Its ΔK is −3 J, so radial work must be +3 J."
+      ],
+      "explanation": [
+        "Trial A conserves L=Iω=6 kg m²/s, giving ωf=4 rad/s. Its endpoint kinetic energy grows from 6 to 12 J, supplied by 6 J of radial actuator work.",
+        "Trial B changes L from 6 to 3 kg m²/s. Holding angular speed fixed requires motor torque while inertia changes, despite α=0.",
+        "Integrating motor power gives Wmotor=ω²ΔI=−6 J. The endpoint kinetic-energy change is −3 J, leaving radial work +3 J.",
+        "During either move, use Ktotal=Iω²/2+m rdot². Radial kinetic energy vanishes at the deliberately smooth endpoints, not at every time.",
+        "The same inward geometry supports different work transfers under different angular constraints. A negative motor work is not a specified electrical regeneration output."
+      ],
+      "answerSummary": "Trial A: final ω=4 rad/s, radial work=+6 J. Trial B: motor work=−6 J, radial work=+3 J. Include radial kinetic energy between endpoints and both external work sources."
+    },
+    "after": "Reconstruct the two endpoint energy balances separately, then inspect the midpoint in the investigation. State which constraint fixed the angular motion before assigning an energy transfer."
+  },
+  "interaction": {
+    "kind": "phs231-angular",
+    "prompt": "Compare a changing radius under conserved angular momentum and controlled angular speed. Predict the final angular state and both work transfers, then inspect the radial kinetic energy, instantaneous forces and powers, and complete equivalent tables.",
+    "initial": {
+      "baseInertia": 1,
+      "mass": 1,
+      "radius0": 1,
+      "radius1": 0.5,
+      "omega0": 2,
+      "duration": 2,
+      "mode": "momentum"
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "particle"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "system"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "origin"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "impulse"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "central"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "conserve"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "capture"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "coupling"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "work"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "vector-power"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "power"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "torsion"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "braking"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "controlled"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "pulse-cycle"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "efficiency"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "origin"
+    },
+    {
+      "familyId": "phs231-angular-momentum",
+      "variant": "capture"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "work"
+    },
+    {
+      "familyId": "phs231-rotation-energy",
+      "variant": "controlled"
+    }
+  ],
+  "summary": [
+    "Name the material system, inertial frame, origin, axis, and positive sense before computing angular momentum or claiming conservation.",
+    "For a particle L=r cross p; for a system sum individual moments. Changing fixed origins gives L′=L−a cross P.",
+    "About a fixed origin, external torque is dL/dt. Integrating torque over time gives angular impulse; a zero interval integral guarantees only equal endpoint L.",
+    "Central forces conserve angular momentum about the force center and signed swept-area rate. They do not determine radial velocity from angular momentum alone.",
+    "Laxis=Iaxis ω is an axial identity. It is not a universal scalar formula for the full angular-momentum vector of any 3D body.",
+    "For changing I, use τ=Iα+Idot ω. Conserved L can accompany changing kinetic energy, supplied by work or internal energy conversion.",
+    "Capture and internal clutch friction can conserve total axial L while reducing kinetic energy. A fixed axle can still deliver linear impulse.",
+    "Integrate torque over angle for work and use instantaneous P=τ dot ω for pure rotation. Energy gives speed; path and direction choose the physical event.",
+    "Elastic torsion, dissipative braking, steady drive power, and motoring efficiency require their own declared energy accounts and validity intervals.",
+    "A radial move carries radial kinetic energy between endpoints. Include motor work and radial actuator work under the chosen system boundary.",
+    "Simulation residuals do not measure hardware accuracy. Measured conservation tests require uncertainty, calibration, time resolution, and omitted-torque checks."
+  ],
+  "retrieval": "A disk of base inertia 2 kg m² carries two 1 kg masses, each moving from radius 1 m to 2 m with radial rest at both endpoints. Initial ω=−3 rad/s. First conserve axial L; then compare a motor-controlled trial at fixed ω=−3 rad/s. Work before reading the check: I0=4 and If=10 kg m²; L0=−12 kg m²/s. Conserved-L trial: ωf=−6/5 rad/s, K0=18 J, Kf=36/5 J, radial work=−54/5 J. Fixed-ω trial: ΔL=−18 kg m²/s, motor work=+54 J, radial work=−27 J, ΔK=+27 J. Explain why negative rotation does not by itself make motor power negative.",
+  "readings": [
+    {
+      "title": "OpenStax: Angular Momentum",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-2-angular-momentum",
+      "purpose": "Particle and system angular momentum, torque balance about a fixed reference, and angular impulse background."
+    },
+    {
+      "title": "OpenStax: Conservation of Angular Momentum",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
+      "purpose": "Changing inertia and angular-momentum conservation. Use the lesson's explicit system boundary when following the energy transfers."
+    },
+    {
+      "title": "OpenStax: Work and Power for Rotational Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-8-work-and-power-for-rotational-motion",
+      "purpose": "Torque-angle work and rotational power. The instantaneous power identity does not require a constant torque."
+    },
+    {
+      "title": "MIT OpenCourseWare: Week 11, Angular Momentum",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-11-angular-momentum/",
+      "purpose": "Free readings, video lessons, and practice on particle angular momentum, fixed-axis rotation, and angular impulse."
+    }
+  ]
+}

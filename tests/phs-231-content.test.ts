@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import angularData from "../content/lessons/phs-231/m07-l02.json";
 import rotationData from "../content/lessons/phs-231/m07-l01.json";
 import collisionData from "../content/lessons/phs-231/m06-l02.json";
 
@@ -28,7 +29,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -44,6 +45,18 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks the guided changing-radius accounts using separate tangential energies and radial work integrals",()=>{
+  const q=lessonSchema.parse(angularData).guided.question;
+  const I0=1+2*1*1,If=1+2*.5*.5,L=I0*2,free= L/If;
+  const response={"free-omega":String(free),"free-work":String(If*free*free/2-I0*4/2),"motor-work":String((If-I0)*4),"radial-work":"-4*(.5^2-1^2)",meaning:"complete"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  const steps=2000,h=(.5-1)/steps;
+  let radial=0,freeRadial=0;
+  for(let i=0;i<steps;i++){const r=1+(i+.5)*h;radial+=-2*r*4*h;freeRadial+=-2*r*(L/(1+2*r*r))**2*h;}
+  expect(radial).toBeCloseTo(3,10);expect(freeRadial).toBeCloseTo(6,6);
+  for(const wrong of [{"free-omega":"2"},{"free-work":"0"},{"motor-work":"-3"},{"radial-work":"-3"},{meaning:"kinetic"},{meaning:"motor"},{meaning:"rotation"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks the guided rotor by separate mass and moment inventories and a signed velocity integral",()=>{
