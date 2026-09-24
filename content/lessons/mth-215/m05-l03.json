@@ -137,6 +137,22 @@
         "Find every real quadratic candidate, including zero, negative and repeated roots when they occur. A quadratic with no real roots provides no real x solutions. Reject every nonpositive u candidate because no finite real x gives that value of a positive-base exponential. For each retained positive candidate, solve $x=\\log_b u$ exactly.",
         "This process is complete because a valid exponential base gives a one-to-one map from all real x onto all positive u. Each positive quadratic root corresponds to exactly one real x, and there are no additional x solutions outside those retained candidates. A repeated positive u root produces one distinct solution value, even though its polynomial multiplicity is greater than one."
       ]
+    },
+    {
+      "heading": "Convert a single logarithm into an exponential statement",
+      "paragraphs": [
+        "For a valid base, $\\log_b A(x)=c$ is equivalent on the original domain to $A(x)=b^c$. Write the strict condition A(x)>0 before solving. The exponential target is positive, but the algebra used to solve for x can still have several branches or interact with original denominator exclusions.",
+        "With an affine argument $ax+d$ and nonzero a, solve $ax+d=b^c$ and then substitute the candidate back into that original argument. A negative a reverses the direction of the domain inequality, but ordinary equation solving still uses the same legal operations on both sides.",
+        "A natural logarithm uses the exact base e, so $\\ln A(x)=c$ gives $A(x)=e^c$. A reciprocal base remains valid and can turn a negative logarithm output into an argument larger than one. Keep e, powers and logarithms exact when constructing the solution."
+      ]
+    },
+    {
+      "heading": "Equate same-base logarithms on their common domain",
+      "paragraphs": [
+        "The one-to-one property of a valid logarithm gives $\\log_b A(x)=\\log_b B(x)$ if and only if A(x)=B(x), provided both arguments are positive. First intersect A(x)>0 with B(x)>0, including any original denominator exclusions. The common base alone does not guarantee that a particular candidate is legal.",
+        "Solve the argument equation to obtain all algebraic candidates, then compare each one with the common original domain. Equal positive arguments verify the original logarithms immediately. Equal zero or equal negative arguments do not give an equality of real logarithms because those logarithms are undefined.",
+        "A candidate is provisional, not automatically a solution. Report the complete retained set, which may be empty even when the argument equation has a perfectly valid real root. If the argument equation becomes an identity, only inputs in the original common domain remain eligible."
+      ]
     }
   ],
   "examples": [
@@ -784,6 +800,94 @@
         }
       ],
       "conclusion": "The complete set is {ln(2)}, with the value listed once. Polynomial multiplicity does not create a second distinct x value."
+    },
+    {
+      "title": "Solve a reciprocal-base logarithm with a reflected argument",
+      "prompt": "Solve $\\log_{1/2}(5-2x)=-2$ over the real numbers.",
+      "steps": [
+        {
+          "math": "5-2x>0\\iff x<5/2",
+          "reason": "The negative argument coefficient reverses the domain inequality when dividing by -2."
+        },
+        {
+          "math": "5-2x=(1/2)^{-2}=4",
+          "reason": "Convert the logarithm statement into its exact exponential form."
+        },
+        {
+          "math": "x=1/2",
+          "reason": "Solve the resulting affine equation."
+        },
+        {
+          "math": "5-2(1/2)=4>0,\\qquad\\log_{1/2}4=-2",
+          "reason": "The candidate belongs to the original domain and returns the required logarithm value."
+        }
+      ],
+      "conclusion": "The complete solution set is {1/2}. The base is positive even though the logarithm output is negative."
+    },
+    {
+      "title": "Keep a natural-base solution exact",
+      "prompt": "Solve $\\ln(2x+3)=2$ exactly.",
+      "steps": [
+        {
+          "math": "2x+3>0\\iff x>-3/2",
+          "reason": "Record the original logarithm domain."
+        },
+        {
+          "math": "2x+3=e^2\\quad\\Longrightarrow\\quad x=\\frac{e^2-3}{2}",
+          "reason": "Use the exact natural exponential target and solve the affine equation."
+        },
+        {
+          "math": "2\\left(\\frac{e^2-3}{2}\\right)+3=e^2>0,\\qquad\\ln(e^2)=2",
+          "reason": "The original argument is positive and its logarithm equals the required value."
+        }
+      ],
+      "conclusion": "The unique solution is (e^2-3)/2. The expression is exact without a decimal approximation to e."
+    },
+    {
+      "title": "Equal positive arguments verify a logarithmic solution",
+      "prompt": "Solve $\\log_3(2x+1)=\\log_3(5x-8)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x>-1/2,\\quad x>8/5\\quad\\Longrightarrow\\quad D=(8/5,\\infty)",
+          "reason": "Both original affine arguments must be positive."
+        },
+        {
+          "math": "2x+1=5x-8\\quad\\Longrightarrow\\quad x=3",
+          "reason": "Equate arguments and solve the affine equation."
+        },
+        {
+          "math": "2(3)+1=7,\\qquad5(3)-8=7",
+          "reason": "The candidate gives the same strictly positive argument on each side."
+        },
+        {
+          "math": "\\log_3 7=\\log_3 7",
+          "reason": "The original equation is valid at x=3, and the affine equation had only this candidate."
+        }
+      ],
+      "conclusion": "The complete solution set is {3}. There is no need to approximate either logarithm to verify the equality."
+    },
+    {
+      "title": "Equal negative arguments do not define real logarithms",
+      "prompt": "Solve $\\ln(2x-5)=\\ln(x-4)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x>5/2,\\quad x>4\\quad\\Longrightarrow\\quad D=(4,\\infty)",
+          "reason": "Intersect the two original positivity conditions first."
+        },
+        {
+          "math": "2x-5=x-4\\quad\\Longrightarrow\\quad x=1",
+          "reason": "The argument equation supplies one algebraic candidate."
+        },
+        {
+          "math": "2(1)-5=-3,\\qquad1-4=-3",
+          "reason": "The two arguments are equal but negative, so neither original real logarithm exists."
+        },
+        {
+          "math": "1\\notin(4,\\infty),\\qquad S=\\varnothing",
+          "reason": "Reject the sole candidate using the original domain."
+        }
+      ],
+      "conclusion": "There are no real solutions. Equality of two negative arguments cannot validate an original real logarithm equation."
     }
   ],
   "guided": {

@@ -2,7 +2,7 @@
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
   "status": "draft",
-  "contentStages": 5,
+  "contentStages": 6,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -222,6 +222,37 @@
       ],
       "independentCheck": "mth-exp-equation:mixed",
       "retrieval": "State the range of u=b^x before solving, then classify two positive roots, one retained root, no retained roots and a repeated positive root."
+    },
+    {
+      "skill": "Convert a single logarithm into an exponential statement",
+      "instruction": [
+        "Convert a single logarithm into an exponential statement"
+      ],
+      "examples": [
+        "Solve a reciprocal-base logarithm with a reflected argument",
+        "Keep a natural-base solution exact"
+      ],
+      "practice": [
+        "mth-log-equation:single"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "State the original affine argument domain, convert a logarithm to an exponential statement, and verify an exact natural-base solution."
+    },
+    {
+      "skill": "Equate same-base logarithms on their common domain",
+      "instruction": [
+        "Equate same-base logarithms on their common domain"
+      ],
+      "examples": [
+        "Equal positive arguments verify a logarithmic solution",
+        "Equal negative arguments do not define real logarithms"
+      ],
+      "practice": [
+        "mth-log-equation:equal-arguments",
+        "mth-log-equation:excluded-root"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Solve an equality of logarithms and check both original arguments, including a case where the algebraic candidate must be rejected."
     }
   ]
 }
