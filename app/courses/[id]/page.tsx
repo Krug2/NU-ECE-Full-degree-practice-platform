@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { courses, courseById } from "@/lib/catalog";
 import { CourseWorkspace } from "@/components/course-workspace";
 import { learningPack, lessons } from "@/lib/learning/catalog";
+import { refresherPath } from "@/lib/learning/refreshers/catalog";
+import { RefresherWorkspace } from "@/components/learning/refresher-workspace";
 
 export function generateStaticParams() { return courses.map(course => ({ id: course.id })); }
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -14,5 +16,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   if (!course) notFound();
   const pack=learningPack(id);
   const lessonVersions=Object.fromEntries(lessons.filter(lesson=>lesson.courseId===id).map(lesson=>[lesson.id,lesson.version]));
+  const path=refresherPath(id);
+  if(course.group==="refresher"&&pack&&path) return <RefresherWorkspace course={course} pack={pack} path={path} versions={lessonVersions}/>;
   return <CourseWorkspace course={course} pack={pack} lessonVersions={lessonVersions} />;
 }
