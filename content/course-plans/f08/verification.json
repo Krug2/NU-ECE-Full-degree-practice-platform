@@ -1,12 +1,68 @@
 {
   "courseId": "f08",
-  "status": "planned",
-  "humanReview": "pending",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 5,
+    "workedExamples": 35,
+    "practiceStructures": 46,
+    "diagnosticProbes": 5,
+    "lessonCheckpointQuestions": 20,
+    "mixedRecallQuestions": 4,
+    "evidence": "F08 versioned checkpoints are separate from familiarity, visits, diagnostic and assisted practice."
+  },
   "checks": [
-    "Check all structures over at least100seeds against independent symbolic coefficients, direct substitutions, analytic one-sided signs, and numeric finite differences where appropriate.",
-    "Independently integrate by power moments and compare derivative/antiderivative round trips; check signed versus absolute accumulation and all initial conditions.",
-    "Check equivalent polynomial and fractional answers; retain original domains, h≠0, zero-width bounds, nonzero substitution slopes and radian conventions; render all KaTeX.",
-    "Exercise every guided/activity route plus full diagnostic, checkpoint, mixed recall, notes/resume/backup; keyboard, desktop/mobile, Axe; full tests, lint, types, production build.",
-    "Release as preview only after verification; human review remains pending. Finish F08 before detailed planning of F09."
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "838 tests passed across 96 files."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript and 105 static pages; repeated successfully for final preview status."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts --grep [fF]08 --workers=2 --output=tmp/f08-browser",
+      "result": "All eight browser journeys passed: all five guided activities, every lesson and mixed checkpoint, diagnostic routing, exact resume, lesson/refresher notes, export/reset/import, keyboard, mobile and all-page accessibility."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts --grep 'f08: diagnostic gaps' --workers=1 --output=tmp/f08-preview",
+      "result": "Final Available preview entry and full diagnostic/resume/notes/backup journey passed."
+    },
+    {
+      "command": "pnpm exec vitest run tests/f08-path.test.ts tests/f08-content.test.ts --maxWorkers=2",
+      "result": "All six final lesson and routing checks passed."
+    }
+  ],
+  "mathematics": "Question structures were tested with 100 seeds each; lesson/screen coverage uses 50 seeds. Independent checks use direct finite quotient calculations, polynomial coefficient formulas, small-step numerical derivative oracles, Simpson's exact rule for cubic-or-lower integrands, separately summed rectangles/areas/distances, and substitution/initial-value reconstruction. Boundary cases include original canceled domains, distinct one-sided limits, signed poles, zero and negative inner slopes, h=0 rejection, radian trig, positive logarithm arguments, square-root boundary derivatives, reversed/equal bounds, and separate constants after two integrations. Equivalent polynomial/fraction answers and invalid expressions are checked.",
+  "instruction": "Five original lessons have quick recall, full explanations, 35 worked examples with reasoned steps, guided work, prediction activities, 46 practice structures, complete objective checkpoints and targeted review. The MTH 215 m02-l04 average-rate and finite-difference families are wrapped without changing their original identities or claims. Shared exact rational/polynomial graders and progress APIs are reused.",
+  "accessibility": "Axe WCAG2 A/AA and WCAG2.1 AA checks passed for all pages at desktop and mobile widths and for every revealed activity. No horizontal overflow or KaTeX errors. Keyboard feedback, control reset, invalid-input states and retry paths passed. Plots distinguish line styles and included/excluded points, have accurate zero-range scales and equivalent data tables. Desktop overview and mobile limits, secants, accumulation and initial-condition screenshots were visually inspected.",
+  "sources": "Thirteen precise free OpenStax Calculus Volume 1 sections were verified and attributed in resources.json. All in-app prose, exercises and figures are original. Radian conventions, real domains and the continuous-integrand versions of FTC are stated.",
+  "sharedInterfaces": [
+    {
+      "interface": "Lesson.interaction adds {kind:'refresher-calculus-lab',mode:'limit'|'secant'|'chain'|'accumulation'|'initial',prompt:string}.",
+      "integration": "One strict union member and reader dispatch to a scoped keyboard-accessible component, pure models, SVGs and equivalent tables."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f08",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional content does not award university credit or establish enrollment eligibility.",
+    "Independent human subject review and assistive-technology review remain pending.",
+    "Formal limit proofs, advanced/improper integration, series, multivariable calculus and general differential equations belong in the corresponding full courses.",
+    "F09 through F12 remain planned at this verification milestone."
   ]
 }

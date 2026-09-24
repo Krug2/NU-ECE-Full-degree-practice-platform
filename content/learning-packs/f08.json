@@ -2,7 +2,7 @@
   "courseId": "f08",
   "title": "Calculus recall",
   "version": 1,
-  "status": "building",
+  "status": "preview",
   "introduction": "Recover limits and continuity, derivatives and composite rules, signed accumulation, antiderivatives, and initial conditions. This optional refresher does not award university credit or establish enrollment eligibility. Familiarity and assisted work are separate from independent checkpoint evidence. Independent human review is pending.",
   "bridges": [],
   "modules": [
