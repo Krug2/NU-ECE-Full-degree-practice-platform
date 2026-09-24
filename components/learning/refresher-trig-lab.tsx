@@ -3,7 +3,7 @@
 import { useId, useState, type ReactNode } from "react";
 import { questionSchema, type Question, type Response } from "@/lib/learning/contracts";
 import { gradeQuestion } from "@/lib/learning/grading";
-import { approximateExact, parseExact } from "@/lib/learning/exact-number";
+import { approximateExact, formatExact, parseExact } from "@/lib/learning/exact-number";
 import { formatPiMultiple } from "@/lib/learning/angles";
 import { parseRational } from "@/lib/learning/rational";
 import { coterminalDegrees, rationalText, standardDegrees, trigSolutions, trigValue, waveAnchors, type TrigName } from "@/lib/learning/refreshers/trig";
@@ -40,7 +40,7 @@ function CircleLab(){
       <circle cx="160" cy="130" r="100" fill="none" stroke="currentColor"/><path d="M30 130H290M160 10V250" stroke="currentColor" opacity=".45"/><path d={`M160 130L${x} ${y}`} stroke="#23664f" strokeWidth="3"/><path d={`M${x} 130V${y}H160`} stroke="#23664f" strokeDasharray="4 4" fill="none"/><circle cx={x} cy={y} r="5" fill="#23664f"/><text x="275" y="148">x</text><text x="170" y="18">y</text><text x="263" y="124">1</text><text x="45" y="124">−1</text><text x="170" y="36">1</text><text x="170" y="234">−1</text>
     </svg>
     <p>Horizontal coordinate: {cosine}. Vertical coordinate: {sine}. The radius is 1. Tangent divides the vertical coordinate by the horizontal coordinate.</p>
-    <table><caption>Exact values at {degrees} degrees</caption><thead><tr><th scope="col">Function</th><th scope="col">Value</th></tr></thead><tbody>{(["sin","cos","tan","csc","sec","cot"] as TrigName[]).map(name=><tr key={name}><th scope="row">{name}</th><td>{trigValue(name,degrees)??"Undefined: denominator is zero"}</td></tr>)}</tbody></table>
+    <table className="coefficient-table"><caption>Exact values at {degrees} degrees</caption><thead><tr><th scope="col">Function</th><th scope="col">Value</th></tr></thead><tbody>{(["sin","cos","tan","csc","sec","cot"] as TrigName[]).map(name=>{const value=trigValue(name,degrees);return <tr key={name}><th scope="row">{name}</th><td>{value===null?"Undefined: denominator is zero":formatExact(parseExact(value))}</td></tr>;})}</tbody></table>
     <p>Try 90 degrees and then add a negative whole turn. Explain which ratios are undefined and why the point stays fixed.</p>
   </Prediction></>;
 }
@@ -49,7 +49,7 @@ function WaveLab(){
   const amplitude=Math.abs(Number(a)),period=rationalText(`2/${Math.abs(Number(b))}`),start=Number(d)+(kind==="cos"?Number(a):0);
   const anchors=waveAnchors(Number(a),Number(b),h,Number(d),kind as "sin"|"cos"),low=Number(d)-amplitude,high=Number(d)+amplitude;
   const question=modelQuestion("wave",[{id:"amplitude",kind:"rational",label:"Predicted amplitude",expected:String(amplitude)},{id:"period",kind:"pi-multiple",label:"Predicted period",expected:period,unit:"rad",help:"Use an exact multiple of pi."},{id:"start",kind:"rational",label:"Predicted output at x = h",expected:String(start)}],
-    `For y=${a} ${kind}(${b}(x-${pi(h)}))+${d}, predict the amplitude, positive period, and output at the written shift h=${pi(h)}. The input x is in radians.`,
+    `For y=(${a}) ${kind}(${b}(x-(${pi(h)})))+(${d}), predict the amplitude, positive period, and output at the written shift h=${pi(h)}. The input x is in radians.`,
     [`Amplitude is |${a}|=${amplitude}, and period is 2pi/|${b}|=${pi(period)}.`,`At x=h, the internal angle is zero. ${kind==="sin"?"Sine begins at the midline.":"Cosine begins at the signed amplitude plus the midline."} The output is ${start}.`,`The signed coefficient and input multiplier control orientation; the output range is [${low},${high}].`],
     `Amplitude ${amplitude}; period ${pi(period)} rad; starting output ${start}.`);
   const y=(value:number)=>190-(value-low)*150/(high-low);
@@ -59,7 +59,7 @@ function WaveLab(){
       <svg viewBox="0 0 340 245" role="img" aria-label={`One cycle of the ${kind} model from ${pi(anchors[0].inputPi)} to ${pi(anchors[4].inputPi)} radians, ranging from ${low} to ${high}; exact anchor table follows`} style={{width:"100%",maxWidth:560}}>
         <path d={`M40 25V200H310M40 ${y(Number(d))}H310`} stroke="currentColor" fill="none" opacity=".45"/><polyline points={points} fill="none" stroke="#23664f" strokeWidth="3"/>{anchors.map((anchor,i)=><circle key={i} cx={40+65*i} cy={y(anchor.output)} r="4" fill="#23664f"/>)}<text x="8" y="45">{high}</text><text x="8" y="195">{low}</text><text x="100" y="225">Input x (radians)</text><text x="8" y="18">y</text>
       </svg>
-      <table><caption>Quarter-cycle anchors, read from left to right</caption><thead><tr><th scope="col">Input x (radians)</th><th scope="col">Output y</th></tr></thead><tbody>{anchors.map((anchor,i)=><tr key={i}><th scope="row">{pi(anchor.inputPi)}</th><td>{anchor.output}</td></tr>)}</tbody></table>
+      <table className="coefficient-table"><caption>Quarter-cycle anchors, read from left to right</caption><thead><tr><th scope="col">Input x (radians)</th><th scope="col">Output y</th></tr></thead><tbody>{anchors.map((anchor,i)=><tr key={i}><th scope="row">{pi(anchor.inputPi)}</th><td>{anchor.output}</td></tr>)}</tbody></table>
       <p>Keep A fixed and change B to its negative. Predict which intermediate anchors swap. Then change the shift while preserving the shape and period.</p>
     </Prediction></>;
 }
