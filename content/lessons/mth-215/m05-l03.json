@@ -1,0 +1,1259 @@
+{
+  "id": "m05-l03",
+  "courseId": "mth-215",
+  "moduleId": "m05",
+  "version": 1,
+  "title": "Log rules and exponential equations",
+  "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
+  "why": "Logarithms let you undo multiplicative relationships and recover an unknown exponent. Their identities are powerful because they turn products and powers into simpler arithmetic, but every step has conditions. This lesson develops those identities, explains which rewrites preserve a complete real domain, and solves equations with exact answers and every candidate checked. These are the algebraic tools used for decay times and logarithmic scales in the next lesson.",
+  "estimatedMinutes": 300,
+  "prerequisites": [
+    {
+      "label": "Factoring and polynomial structure",
+      "lessonId": "b03"
+    },
+    {
+      "label": "Fractions, rational expressions, and original exclusions",
+      "lessonId": "b04"
+    },
+    {
+      "label": "Quadratic equations and complete solutions",
+      "lessonId": "m01-l03"
+    },
+    {
+      "label": "Extraneous candidates and restrictions",
+      "lessonId": "m01-l04"
+    },
+    {
+      "label": "Exponential functions and growth factors",
+      "lessonId": "m05-l01"
+    },
+    {
+      "label": "Logarithms as inverse functions",
+      "lessonId": "m05-l02"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Preserve both values and allowed inputs",
+      "paragraphs": [
+        "Two real functions are the same only when they accept the same inputs and give the same value at every accepted input. A simplification can agree wherever both formulas exist while quietly changing the domain. Record the domain of each original expression before applying an identity, canceling a factor, or multiplying by zero.",
+        "For a real logarithm, the base must satisfy $b>0$ and $b\\ne1$, and its complete argument must be strictly positive. In a sum of logarithms, each argument has its own positivity condition. In an equation, every expression on both sides must exist. A product of two negative factors can be positive even though the logarithm of either separate factor is undefined.",
+        "The identity $\\ln(u^2)=2\\ln|u|$ holds for every real u other than zero. Replacing the right side with $2\\ln u$ retains only u>0. Equality on that smaller common domain is useful when that restriction is stated, but it does not preserve the entire original real function. An absolute value makes a nonzero argument positive; it never makes zero acceptable."
+      ]
+    },
+    {
+      "heading": "Derive product and quotient rules",
+      "paragraphs": [
+        "Let $u=\\log_b A$ and $v=\\log_b B$, with A>0, B>0 and the same valid base b. By definition, $A=b^u$ and $B=b^v$. Multiplication gives $AB=b^{u+v}$, so $\\log_b(AB)=u+v=\\log_b A+\\log_b B$. Adding logarithms therefore corresponds to multiplying their arguments.",
+        "Division gives $A/B=b^{u-v}$ and therefore $\\log_b(A/B)=\\log_b A-\\log_b B$. The numerator belongs to the first logarithm and the denominator to the subtracted logarithm. Reversing the quotient changes the sign. These arguments work for bases between zero and one as well as for bases above one.",
+        "The hypotheses A>0 and B>0 ensure that both separate logarithms exist. A positive product or quotient by itself is not enough: both A and B could be negative. When starting from a logarithm of a combined variable expression, inspect its entire original domain before splitting it. Absolute-value versions can preserve values on negative-factor branches, but the original positive-product or positive-quotient restriction must still be retained."
+      ]
+    },
+    {
+      "heading": "Move powers and roots with their conditions",
+      "paragraphs": [
+        "For A>0, write $A=b^u$ with $u=\\log_b A$. Then $A^r=b^{ur}$, so $\\log_b(A^r)=r\\log_b A$. The exponent belongs to the entire argument being raised to a power. It becomes a signed multiplier outside the logarithm, not an exponent on the logarithm value.",
+        "A negative exponent remains negative when moved outside: $\\log_b(A^{-m})=-m\\log_b A$. A positive nth root contributes a reciprocal exponent: $\\log_b(\\sqrt[n]{A})=(1/n)\\log_b A$. These statements use positive A, ensuring that the separate real logarithm and the stated real powers exist.",
+        "Do not remove the positivity hypothesis merely because a particular integer power happens to be positive. An even power of a negative number is positive, but the logarithm of the unpowered negative number is not real. For variable expressions, determine the original domain first and use an absolute value where it is needed to preserve that domain."
+      ]
+    },
+    {
+      "heading": "Expand even powers over the full real domain",
+      "paragraphs": [
+        "For a nonzero real u, an even power satisfies $u^{2m}=|u|^{2m}>0$. Therefore $\\log_b(u^{2m})=2m\\log_b|u|$ on the complete domain u different from zero. The absolute value is part of the mathematical argument, not an optional decoration.",
+        "When a quotient contains even powers, exclude the denominator zeros first and exclude any numerator zeros that would make the logarithm argument zero. Away from those points, positive constants and even powers make the quotient positive. Expand the positive factors, subtract denominator logarithms, and keep each coefficient with its own absolute-value argument.",
+        "An odd positive power behaves differently: $u^{2m+1}>0$ requires u>0, so its original logarithm already has only the positive branch. In that case $(2m+1)\\log_b u$ preserves the domain. The choice of an absolute value comes from the original expression and its allowed inputs, not from a rule to insert absolute values everywhere."
+      ]
+    },
+    {
+      "heading": "Condense on the original common domain",
+      "paragraphs": [
+        "To condense a sum or difference of same-base logarithms, begin with the common domain of all original terms. Move coefficients into powers of their complete arguments, turn addition into multiplication, and turn subtraction into division. The result is one logarithm used on that recorded original domain.",
+        "The condensed argument may be positive at extra inputs where an original logarithm was undefined. An even power can remove a sign from the combined formula, and a quotient can become positive from two negative terms. Those new inputs do not become valid for the original expression merely because the condensed formula can be evaluated there.",
+        "You can verify a condensation by expanding it back under the original positivity assumptions. Keep the signs of coefficients, denominator factors and the constant factor. When a full-domain expansion is desired instead, return to the actual domain of the original combined expression and decide which absolute values and restrictions it needs."
+      ]
+    },
+    {
+      "heading": "Keep restrictions after cancellation and multiplication by zero",
+      "paragraphs": [
+        "A common factor can be canceled only where its original denominator is nonzero. If a rational logarithm argument simplifies, keep both its original denominator exclusions and the condition that its value be strictly positive. The simplified expression can help compute values on that domain, but it cannot restore an input that never belonged to the original expression.",
+        "A zero coefficient also leaves the original domain intact. In $0\\ln A(x)$, the logarithm must be defined before its value is multiplied by zero. The expression equals zero wherever A(x)>0 and is undefined wherever A(x) is nonpositive or undefined. The standalone constant function zero has a larger domain unless the original conditions already allowed every real input.",
+        "In an equation, carry these restrictions into the final candidate check. A candidate can satisfy a simplified equation and still fail the original one because it makes a canceled denominator zero or an original logarithm invalid. Domain checks must refer to the original written expressions, not only to the last line of algebra."
+      ]
+    },
+    {
+      "heading": "Disprove false sum rules and repair mixed bases",
+      "paragraphs": [
+        "The product identity relates the logarithm of a product to a sum of logarithms. There is no corresponding general identity that splits $\\log_b(A+B)$ into $\\log_b A+\\log_b B$. The latter expression, when its terms exist, combines to $\\log_b(AB)$ instead. A simple input with both sides defined can disprove a proposed sum rule.",
+        "One counterexample is enough to refute a claim made for every permitted input. One matching input is not enough to prove such a claim. A false rule can agree accidentally at a special value, so the activity asks you to distinguish what a probe establishes from the symbolic argument needed for an identity.",
+        "Product and quotient identities also require a common base. Changing the base changes the exponent a logarithm reports. Convert all terms to a common base before combining them, including any conversion coefficient. Treating different bases as if they were equal generally changes the value even when all arguments are positive."
+      ]
+    },
+    {
+      "heading": "Change base and separate exact from approximate results",
+      "paragraphs": [
+        "If $y=\\log_b A$, then $b^y=A$. Taking natural logarithms gives $y\\ln b=\\ln A$, so $\\log_b A=\\ln A/\\ln b$. The numerator comes from the argument and the denominator from the base. The denominator is nonzero because b is not one. The same derivation works with any other valid logarithm base.",
+        "An exact logarithm such as $\\ln7/\\ln2$ specifies a real number without rounding. A finite calculator report is a numerical approximation unless the exact value actually simplifies to that terminating number. Keep intermediate logarithms exact or retain extra numerical digits, and round only the final field that explicitly requests an approximation.",
+        "For a reciprocal base, $\\ln(1/b)=-\\ln b$, so $\\log_{1/b} A=-\\log_b A$. Bases between zero and one are valid. Their logarithms are decreasing, giving negative outputs for arguments above one and positive outputs for arguments between zero and one. The preceding lesson contains an in-app calculator for natural, common and specified-base logarithms."
+      ]
+    },
+    {
+      "heading": "Solve common and related-base exponentials",
+      "paragraphs": [
+        "A positive-base exponential with base different from one is one-to-one: $b^u=b^v$ if and only if u=v. A base above one is strictly increasing and a base between zero and one is strictly decreasing, but either direction preserves this equality property. An equation with one common valid base can therefore be solved by equating the complete exponents.",
+        "When bases are related, rewrite each as a power of a common base before equating exponents. The rule $(b^m)^u=b^{mu}$ multiplies the entire exponent u by m. Distribute that multiplier through every variable and constant term. A missed constant multiplier changes the resulting affine equation.",
+        "Solve the resulting equation and classify its outcome before dividing. A nonzero coefficient of x gives one solution; equal x coefficients can instead leave an identity or contradiction. Ordinary positive-base exponential expressions accept every real exponent, so a negative x value is not automatically invalid. Substitute it into both original sides to verify the equality."
+      ]
+    },
+    {
+      "heading": "Isolate a shifted exponential before taking logarithms",
+      "paragraphs": [
+        "For an equation $s b^{ax+c}+k=T$ with nonzero s, subtract the outside offset and divide by the outside coefficient first: $b^{ax+c}=(T-k)/s$. The sign of the original right-hand side alone does not decide whether a solution exists. What matters is the isolated exponential value.",
+        "Every finite real power of a positive base is strictly positive. If the isolated target is zero or negative, there is no real solution and no valid logarithm to take. Approaching zero as an exponent grows without bound does not mean the exponential attains zero at a finite real input.",
+        "If the isolated target is positive, take a logarithm in the appropriate base or use change of base, then undo the affine exponent. Keep a negative outside coefficient and a negative exponent coefficient separate; each participates in a different algebraic step. If a coefficient you intend to divide by is zero, first decide whether the remaining equation is an identity or contradiction instead of dividing by zero."
+      ]
+    },
+    {
+      "heading": "Solve natural and different-base exponentials",
+      "paragraphs": [
+        "For an isolated natural exponential $e^{ax+c}=T$ with T>0, apply the inverse identity to obtain $ax+c=\\ln T$. The constant e and the logarithm expression are exact. Replacing either with a rounded decimal too early changes the exact equation you are solving.",
+        "If two positive exponential sides have different bases, take natural logarithms of both sides. For $b^{ax+c}=d^{mx+n}$, the result is $(ax+c)\\ln b=(mx+n)\\ln d$. Collecting terms gives $x(a\\ln b-m\\ln d)=n\\ln d-c\\ln b$. This is an affine equation in x even though its coefficients contain logarithms.",
+        "Check whether the exact coefficient of x is zero before dividing. When it is nonzero, the exact quotient gives the unique candidate. Substitution into the logarithmic equation checks the algebra, and the injectivity of the exponential function returns equality of the original positive sides. When the coefficient is zero, inspect the remaining constants as in the next section."
+      ]
+    },
+    {
+      "heading": "Recognize exponential identities and contradictions",
+      "paragraphs": [
+        "After rewriting bases or taking logarithms, an exponential equation can reduce to $Ax=C$. If A is nonzero, division yields one candidate. If A=0, the equation has become a statement about constants, and dividing by A is not a permitted step.",
+        "When A=0 and C=0, the reduced statement is true for every input allowed by the original equation. For the ordinary positive-base exponentials considered here, the original domain is all real numbers, so the complete solution set is R. When A=0 and C is nonzero, the statement is false for every input, giving an empty solution set.",
+        "The disappearance of x does not mean x equals zero. A solution set can contain one point, several points, an interval, every real input, or no input. State the complete set supported by the original equation and by the reversibility of the algebraic steps."
+      ]
+    },
+    {
+      "heading": "Use a quadratic substitution with u greater than zero",
+      "paragraphs": [
+        "An equation involving $b^{2x}$ and $b^x$ can be quadratic in the repeated quantity $u=b^x$. Because $b^{2x}=(b^x)^2=u^2$, an expression such as $b^{2x}-5b^x+6$ becomes $u^2-5u+6$. Record the substitution restriction u>0 before solving the quadratic.",
+        "Find every real quadratic candidate, including zero, negative and repeated roots when they occur. A quadratic with no real roots provides no real x solutions. Reject every nonpositive u candidate because no finite real x gives that value of a positive-base exponential. For each retained positive candidate, solve $x=\\log_b u$ exactly.",
+        "This process is complete because a valid exponential base gives a one-to-one map from all real x onto all positive u. Each positive quadratic root corresponds to exactly one real x, and there are no additional x solutions outside those retained candidates. A repeated positive u root produces one distinct solution value, even though its polynomial multiplicity is greater than one."
+      ]
+    },
+    {
+      "heading": "Convert a single logarithm into an exponential statement",
+      "paragraphs": [
+        "For a valid base, $\\log_b A(x)=c$ is equivalent on the original domain to $A(x)=b^c$. Write the strict condition A(x)>0 before solving. The exponential target is positive, but the algebra used to solve for x can still have several branches or interact with original denominator exclusions.",
+        "With an affine argument $ax+d$ and nonzero a, solve $ax+d=b^c$ and then substitute the candidate back into that original argument. A negative a reverses the direction of the domain inequality, but ordinary equation solving still uses the same legal operations on both sides.",
+        "A natural logarithm uses the exact base e, so $\\ln A(x)=c$ gives $A(x)=e^c$. A reciprocal base remains valid and can turn a negative logarithm output into an argument larger than one. Keep e, powers and logarithms exact when constructing the solution."
+      ]
+    },
+    {
+      "heading": "Equate same-base logarithms on their common domain",
+      "paragraphs": [
+        "The one-to-one property of a valid logarithm gives $\\log_b A(x)=\\log_b B(x)$ if and only if A(x)=B(x), provided both arguments are positive. First intersect A(x)>0 with B(x)>0, including any original denominator exclusions. The common base alone does not guarantee that a particular candidate is legal.",
+        "Solve the argument equation to obtain all algebraic candidates, then compare each one with the common original domain. Equal positive arguments verify the original logarithms immediately. Equal zero or equal negative arguments do not give an equality of real logarithms because those logarithms are undefined.",
+        "A candidate is provisional, not automatically a solution. Report the complete retained set, which may be empty even when the argument equation has a perfectly valid real root. If the argument equation becomes an identity, only inputs in the original common domain remain eligible."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Equal on a shared domain is not full equivalence",
+      "prompt": "Compare $L(x)=\\ln((x-2)^2)$ and $R(x)=2\\ln(x-2)$ as complete real functions.",
+      "steps": [
+        {
+          "math": "(x-2)^2>0\\iff x\\ne2,\\qquad D_L=(-\\infty,2)\\cup(2,\\infty)",
+          "reason": "The square is positive on either side of its zero. The original logarithm accepts both branches."
+        },
+        {
+          "math": "x-2>0\\iff x>2,\\qquad D_R=(2,\\infty)",
+          "reason": "The separate logarithm without absolute values requires a positive shifted input."
+        },
+        {
+          "math": "L(1)=\\ln1=0,\\qquad R(1)\\text{ is undefined}",
+          "reason": "A single input accepted only by L demonstrates that the complete domains differ."
+        },
+        {
+          "math": "\\ln((x-2)^2)=2\\ln|x-2|,\\qquad x\\ne2",
+          "reason": "Use the positive absolute value to preserve the entire original domain."
+        }
+      ],
+      "conclusion": "L and R agree for x>2, but they are not the same complete real function. The absolute-value expansion preserves both branches."
+    },
+    {
+      "title": "An absolute value preserves both branches",
+      "prompt": "Expand $\\ln((x+1)^4)$ on its full real domain and check x=-3.",
+      "steps": [
+        {
+          "math": "(x+1)^4>0\\iff x\\ne-1",
+          "reason": "An even power is strictly positive precisely when its base is nonzero."
+        },
+        {
+          "math": "(x+1)^4=|x+1|^4,\\qquad \\ln((x+1)^4)=4\\ln|x+1|",
+          "reason": "The absolute-value argument is positive on exactly the original domain, so the power identity applies there."
+        },
+        {
+          "math": "x=-3:\\quad \\ln((-2)^4)=\\ln16=4\\ln2",
+          "reason": "The negative shifted input remains valid in both the original expression and the absolute-value expansion."
+        }
+      ],
+      "conclusion": "The complete domain is all real x except -1. Writing 4 ln(x+1) instead would remove every input below -1."
+    },
+    {
+      "title": "A product becomes a sum of logarithms",
+      "prompt": "Evaluate $\\log_3 6+\\log_3(9/2)$ exactly.",
+      "steps": [
+        {
+          "math": "6>0,\\quad 9/2>0,\\quad 3>0,\\quad3\\ne1",
+          "reason": "Both original logarithms use one valid base and positive arguments."
+        },
+        {
+          "math": "\\log_3 6+\\log_3(9/2)=\\log_3(6\\cdot9/2)=\\log_3 27",
+          "reason": "The product identity combines the arguments multiplicatively."
+        },
+        {
+          "math": "27=3^3\\quad\\Longrightarrow\\quad\\log_3 27=3",
+          "reason": "Recognize an exact power instead of introducing rounded decimals."
+        }
+      ],
+      "conclusion": "The exact value is 3. Adding the arguments would produce a different expression."
+    },
+    {
+      "title": "A quotient keeps its order",
+      "prompt": "Evaluate $\\log_2(3/4)-\\log_2 6$ exactly.",
+      "steps": [
+        {
+          "math": "\\log_2(3/4)-\\log_2 6=\\log_2\\left(\\frac{3/4}{6}\\right)",
+          "reason": "Both arguments are positive. The first argument stays in the numerator."
+        },
+        {
+          "math": "\\frac{3/4}{6}=\\frac18=2^{-3}",
+          "reason": "Divide the fractions before recognizing the resulting power."
+        },
+        {
+          "math": "\\log_2(1/8)=-3",
+          "reason": "The logarithm returns the exponent of the valid base. A negative logarithm value is allowed."
+        }
+      ],
+      "conclusion": "The exact value is -3. Reversing the quotient would give 3 and reverse the subtraction."
+    },
+    {
+      "title": "Two negative factors cannot be split into real logs",
+      "prompt": "Compare $\\ln((x-1)(x+2))$ with $\\ln(x-1)+\\ln(x+2)$ at x=-3 and over their full domains.",
+      "steps": [
+        {
+          "math": "(x-1)(x+2)>0\\iff x<-2\\text{ or }x>1",
+          "reason": "The two factors have the same sign on the outside intervals. Their zeros are excluded."
+        },
+        {
+          "math": "x-1>0\\text{ and }x+2>0\\iff x>1",
+          "reason": "The separate logarithms accept only the positive-factor branch."
+        },
+        {
+          "math": "x=-3:\\quad\\ln((-4)(-1))=\\ln4",
+          "reason": "The complete original argument is positive even though both factors are negative."
+        },
+        {
+          "math": "\\ln(-4)+\\ln(-1)\\text{ is undefined over the reals}",
+          "reason": "The proposed split does not exist at this input. The product rule cannot be applied without its individual positivity conditions."
+        }
+      ],
+      "conclusion": "The combined expression has domain (-inf,-2) U (1,inf), while the separate logs have domain (1,inf). A full-domain absolute-value expansion must still retain the original outside intervals."
+    },
+    {
+      "title": "A negative power is a signed multiplier",
+      "prompt": "Evaluate $\\log_5((1/25)^{-3})$ exactly using the power identity.",
+      "steps": [
+        {
+          "math": "1/25>0,\\qquad\\log_5((1/25)^{-3})=-3\\log_5(1/25)",
+          "reason": "The positive unpowered argument permits the identity, and the signed exponent becomes the multiplier."
+        },
+        {
+          "math": "1/25=5^{-2}\\quad\\Longrightarrow\\quad\\log_5(1/25)=-2",
+          "reason": "Recognize the reciprocal as an exact negative power."
+        },
+        {
+          "math": "-3(-2)=6,\\qquad(1/25)^{-3}=5^6",
+          "reason": "The positive result also checks directly against the original argument."
+        }
+      ],
+      "conclusion": "The exact logarithm is 6. Moving the exponent does not erase its minus sign."
+    },
+    {
+      "title": "A root contributes a reciprocal exponent",
+      "prompt": "Evaluate $\\log_8(\\sqrt[3]{4})$ exactly.",
+      "steps": [
+        {
+          "math": "\\sqrt[3]{4}=4^{1/3},\\qquad\\log_8(\\sqrt[3]{4})=\\frac13\\log_8 4",
+          "reason": "The positive cube root corresponds to exponent 1/3."
+        },
+        {
+          "math": "8=2^3,\\quad4=2^2,\\quad\\log_8 4=\\frac23",
+          "reason": "The exponent 2/3 converts 8 into 4."
+        },
+        {
+          "math": "\\frac13\\cdot\\frac23=\\frac29,\\qquad8^{2/9}=2^{2/3}=\\sqrt[3]{4}",
+          "reason": "Keep the exact fraction and check by exponentiating in the original base."
+        }
+      ],
+      "conclusion": "The exact value is 2/9. A root contributes a reciprocal multiplier, not multiplication by its index."
+    },
+    {
+      "title": "Expand a quotient of even powers",
+      "prompt": "Expand $\\log_2\\left(\\frac{8(x-1)^4}{(x+2)^2}\\right)$ over its full real domain and check x=-3.",
+      "steps": [
+        {
+          "math": "x\\ne-2,\\quad x\\ne1,\\qquad D=(-\\infty,-2)\\cup(-2,1)\\cup(1,\\infty)",
+          "reason": "The denominator excludes -2, while the zero numerator at 1 is rejected by the logarithm. Elsewhere the quotient is positive."
+        },
+        {
+          "math": "\\log_2 8+\\log_2((x-1)^4)-\\log_2((x+2)^2)",
+          "reason": "Separate positive factors and the positive quotient on the recorded domain."
+        },
+        {
+          "math": "3+4\\log_2|x-1|-2\\log_2|x+2|",
+          "reason": "The even powers require absolute values to retain both signs of the shifted inputs."
+        },
+        {
+          "math": "x=-3:\\quad\\log_2(8\\cdot256)=\\log_2 2048=11,\\quad3+4(2)-2(0)=11",
+          "reason": "The original expression and expansion agree on a negative-input branch that would be lost without absolute values."
+        }
+      ],
+      "conclusion": "The expansion is valid on all real inputs except -2 and 1. Both the coefficients and the complete original domain are part of the answer."
+    },
+    {
+      "title": "An odd power keeps a positivity requirement",
+      "prompt": "Expand $\\ln((x-3)^3)$ on its complete real domain.",
+      "steps": [
+        {
+          "math": "(x-3)^3>0\\iff x-3>0\\iff x>3",
+          "reason": "An odd power retains the sign of its base."
+        },
+        {
+          "math": "\\ln((x-3)^3)=3\\ln(x-3),\\qquad x>3",
+          "reason": "The original domain already guarantees a positive unpowered argument, so no absolute value is required."
+        },
+        {
+          "math": "x=2:\\quad(x-3)^3=-1",
+          "reason": "An input below 3 is not in the original domain. An absolute-value formula defined there would need the original restriction to remain equivalent."
+        }
+      ],
+      "conclusion": "The expansion 3 ln(x-3) preserves the original domain x>3."
+    },
+    {
+      "title": "Condense coefficients into a single rational argument",
+      "prompt": "Condense $3\\log_2(x-1)-2\\log_2(x+2)+\\log_2 5$ with its original domain.",
+      "steps": [
+        {
+          "math": "x-1>0,\\quad x+2>0\\quad\\Longrightarrow\\quad x>1",
+          "reason": "Every separate logarithm must exist. The positive constant 5 adds no variable restriction."
+        },
+        {
+          "math": "\\log_2((x-1)^3)-\\log_2((x+2)^2)+\\log_2 5",
+          "reason": "Move each coefficient into a power of its complete positive argument."
+        },
+        {
+          "math": "\\log_2\\left(\\frac{5(x-1)^3}{(x+2)^2}\\right),\\qquad x>1",
+          "reason": "Combine the numerator factors and retain the subtracted term in the denominator."
+        }
+      ],
+      "conclusion": "The combined argument is 5(x-1)^3/(x+2)^2, used on the original domain x>1."
+    },
+    {
+      "title": "The condensed formula can accept extra inputs",
+      "prompt": "Condense $2\\ln(x-1)-\\ln(x+2)$ and compare its original domain with the new formula.",
+      "steps": [
+        {
+          "math": "x-1>0,\\quad x+2>0\\quad\\Longrightarrow\\quad D_{\\text{original}}=(1,\\infty)",
+          "reason": "The original separate logarithms require x>1."
+        },
+        {
+          "math": "2\\ln(x-1)-\\ln(x+2)=\\ln\\left(\\frac{(x-1)^2}{x+2}\\right),\\qquad x>1",
+          "reason": "The condensation is justified on the recorded common domain."
+        },
+        {
+          "math": "\\frac{(x-1)^2}{x+2}>0\\iff x\\in(-2,1)\\cup(1,\\infty)",
+          "reason": "As a new standalone formula, the condensed logarithm also accepts inputs between -2 and 1."
+        },
+        {
+          "math": "x=0:\\quad\\ln(1/2)\\text{ exists, but }2\\ln(-1)-\\ln2\\text{ does not}",
+          "reason": "This probe identifies an extra input of the standalone condensed formula."
+        }
+      ],
+      "conclusion": "Retain x>1 when claiming equivalence to the original expression. Condensation does not authorize the extra branch."
+    },
+    {
+      "title": "Cancellation keeps an excluded point",
+      "prompt": "Simplify $\\ln\\left(\\frac{(x-1)(x-3)}{x-3}\\right)$ with its original domain.",
+      "steps": [
+        {
+          "math": "x-3\\ne0\\quad\\Longrightarrow\\quad x\\ne3",
+          "reason": "Record the original denominator exclusion before canceling anything."
+        },
+        {
+          "math": "\\frac{(x-1)(x-3)}{x-3}=x-1,\\qquad x\\ne3",
+          "reason": "The cancellation is valid only away from the original hole."
+        },
+        {
+          "math": "x-1>0,\\quad x\\ne3\\quad\\Longrightarrow\\quad D=(1,3)\\cup(3,\\infty)",
+          "reason": "The logarithm adds strict positivity of the remaining value."
+        },
+        {
+          "math": "\\ln(x-1),\\quad x\\in(1,3)\\cup(3,\\infty)",
+          "reason": "This simplified formula, together with the retained domain, represents the original expression."
+        }
+      ],
+      "conclusion": "At x=3 the simplified formula alone gives ln(2), but the original fraction has a zero denominator. The hole remains excluded."
+    },
+    {
+      "title": "A zero multiplier does not define a logarithm",
+      "prompt": "Compare $F(x)=0\\ln(x-2)$ with the constant formula $G(x)=0$.",
+      "steps": [
+        {
+          "math": "x-2>0\\iff x>2",
+          "reason": "The original logarithm must exist before multiplication is performed."
+        },
+        {
+          "math": "F(x)=0,\\qquad x\\in(2,\\infty)",
+          "reason": "Every permitted logarithm value becomes zero when multiplied by zero."
+        },
+        {
+          "math": "F(2)=0\\ln0\\text{ is undefined},\\qquad G(2)=0",
+          "reason": "An undefined expression cannot be made into a defined number by multiplying it by zero."
+        },
+        {
+          "math": "D_F=(2,\\infty),\\qquad D_G=\\mathbb R",
+          "reason": "The values agree on the smaller domain, but the complete functions are different."
+        }
+      ],
+      "conclusion": "Use the simplified value zero together with x>2 when representing the original expression."
+    },
+    {
+      "title": "A counterexample to a logarithm sum rule",
+      "prompt": "Test the proposed identity $\\ln(x+4)=\\ln x+\\ln4$ at x=2.",
+      "steps": [
+        {
+          "math": "D_L=(-4,\\infty),\\qquad D_R=(0,\\infty)",
+          "reason": "Both sides exist at x=2, so comparing their values is meaningful."
+        },
+        {
+          "math": "L(2)=\\ln6,\\qquad R(2)=\\ln2+\\ln4=\\ln8",
+          "reason": "The sum on the right represents a product of arguments."
+        },
+        {
+          "math": "6\\ne8\\quad\\Longrightarrow\\quad\\ln6\\ne\\ln8",
+          "reason": "The natural logarithm is one-to-one on positive arguments. No numerical rounding is needed to prove the mismatch."
+        }
+      ],
+      "conclusion": "The proposed identity is false. It also fails to preserve the full domain of the left expression."
+    },
+    {
+      "title": "An accidental match is not an identity",
+      "prompt": "Find the input where the two sides of $\\ln(x+4)=\\ln x+\\ln4$ happen to agree.",
+      "steps": [
+        {
+          "math": "x>0,\\qquad\\ln x+\\ln4=\\ln(4x)",
+          "reason": "Start on the original common domain, where the product identity is valid."
+        },
+        {
+          "math": "\\ln(x+4)=\\ln(4x)\\iff x+4=4x",
+          "reason": "One-to-one logarithms permit equality of their positive arguments."
+        },
+        {
+          "math": "x=\\frac43,\\qquad\\ln(x+4)=\\ln(16/3)=\\ln x+\\ln4",
+          "reason": "This particular positive input gives an exact agreement."
+        },
+        {
+          "math": "x=2:\\quad\\ln6\\ne\\ln8",
+          "reason": "A different common-domain input still disproves the universal identity."
+        }
+      ],
+      "conclusion": "The equality is an equation with one solution, not a logarithm identity valid for all positive x."
+    },
+    {
+      "title": "Convert a different base before combining",
+      "prompt": "Evaluate $\\log_2 8+\\log_4 4$ and explain the error in combining it directly as $\\log_2 32$.",
+      "steps": [
+        {
+          "math": "\\log_2 8=3,\\qquad\\log_4 4=1",
+          "reason": "The two bases ask for different exponents."
+        },
+        {
+          "math": "3+1=4,\\qquad\\log_2 32=5",
+          "reason": "The proposed direct combination changes the value."
+        },
+        {
+          "math": "\\log_4 4=\\frac{\\log_2 4}{\\log_2 4}=\\frac12\\log_2 4=\\log_2 2",
+          "reason": "Change of base contributes a factor of 1/2, which can then be moved into a positive power."
+        },
+        {
+          "math": "\\log_2 8+\\log_2 2=\\log_2 16=4",
+          "reason": "The product identity is valid after the conversion produces a common base."
+        }
+      ],
+      "conclusion": "The correct value is 4. The common-base requirement must be satisfied before combining logarithms."
+    },
+    {
+      "title": "Keep an exact quotient and a separate decimal",
+      "prompt": "Find an exact expression for $\\log_2 7$ and a numerical report to six decimal places.",
+      "steps": [
+        {
+          "math": "2^y=7\\quad\\Longrightarrow\\quad y\\ln2=\\ln7",
+          "reason": "Take natural logarithms of positive sides and use the power identity."
+        },
+        {
+          "math": "y=\\frac{\\ln7}{\\ln2}=\\frac{\\log_{10}7}{\\log_{10}2}",
+          "reason": "Either common base gives the same exact quotient."
+        },
+        {
+          "math": "y\\approx2.807355",
+          "reason": "Evaluate with extra digits and round only the final numerical report."
+        }
+      ],
+      "conclusion": "The quotient of logarithms is the exact answer. The six-place decimal is appropriate only when an approximation is requested."
+    },
+    {
+      "title": "A reciprocal base changes the sign",
+      "prompt": "Evaluate $\\log_{1/3}9$ exactly using change of base.",
+      "steps": [
+        {
+          "math": "\\log_{1/3}9=\\frac{\\ln9}{\\ln(1/3)}",
+          "reason": "The reciprocal base is positive and different from one, so it is valid."
+        },
+        {
+          "math": "\\frac{2\\ln3}{-\\ln3}=-2",
+          "reason": "The numerator power and reciprocal denominator preserve their signs."
+        },
+        {
+          "math": "(1/3)^{-2}=9",
+          "reason": "Exponentiation checks the exact logarithm value in the original base."
+        }
+      ],
+      "conclusion": "The negative result is consistent with an argument above one and a base between zero and one."
+    },
+    {
+      "title": "Use a common reciprocal base",
+      "prompt": "Solve $(1/3)^{2x-1}=(1/3)^{x+2}$ over the real numbers.",
+      "steps": [
+        {
+          "math": "2x-1=x+2",
+          "reason": "The common base is positive and different from one. Its decreasing direction does not remove the one-to-one equality property."
+        },
+        {
+          "math": "x=3",
+          "reason": "Subtract x and add 1 to isolate the unique input."
+        },
+        {
+          "math": "2(3)-1=5,\\qquad3+2=5",
+          "reason": "Both original exponents equal 5."
+        },
+        {
+          "math": "(1/3)^5=(1/3)^5",
+          "reason": "The original equation is satisfied, and the affine equation produced no other candidate."
+        }
+      ],
+      "conclusion": "The complete real solution set is {3}."
+    },
+    {
+      "title": "Rewrite related bases before equating exponents",
+      "prompt": "Solve $8^{x-1}=4^{2x+1}$ exactly.",
+      "steps": [
+        {
+          "math": "8=2^3,\\qquad4=2^2\\quad\\Longrightarrow\\quad2^{3(x-1)}=2^{2(2x+1)}",
+          "reason": "Express both bases as powers of two, retaining parentheses around each original exponent."
+        },
+        {
+          "math": "3x-3=4x+2",
+          "reason": "Equate complete exponents and distribute both multipliers."
+        },
+        {
+          "math": "x=-5",
+          "reason": "The affine equation has a nonzero coefficient and one solution."
+        },
+        {
+          "math": "8^{-6}=2^{-18},\\qquad4^{-9}=2^{-18}",
+          "reason": "The negative input is allowed, and both original sides have the same positive value."
+        }
+      ],
+      "conclusion": "The complete solution set is {-5}. A negative exponent or input is allowed in a positive-base exponential."
+    },
+    {
+      "title": "Isolate a shifted exponential with a negative coefficient",
+      "prompt": "Solve $7-3\\cdot2^{2x-1}=1$ over the real numbers.",
+      "steps": [
+        {
+          "math": "-3\\cdot2^{2x-1}=-6\\quad\\Longrightarrow\\quad2^{2x-1}=2",
+          "reason": "Subtract the offset first, then divide both sides by the negative outside coefficient."
+        },
+        {
+          "math": "2x-1=1\\quad\\Longrightarrow\\quad x=1",
+          "reason": "The isolated target is positive and equals the first power of the common base."
+        },
+        {
+          "math": "7-3\\cdot2^{2(1)-1}=7-6=1",
+          "reason": "Substitution into the full original expression checks both the exponent and outside transformations."
+        }
+      ],
+      "conclusion": "The unique solution is x=1. Isolating the exponential before taking logarithms keeps all signs in their proper steps."
+    },
+    {
+      "title": "A zero exponential target has no solution",
+      "prompt": "Solve $5e^{x+2}+4=4$ over the real numbers.",
+      "steps": [
+        {
+          "math": "5e^{x+2}=0\\quad\\Longrightarrow\\quad e^{x+2}=0",
+          "reason": "Subtract the offset and divide by the nonzero scale."
+        },
+        {
+          "math": "e^{x+2}>0\\qquad\\text{for every real }x",
+          "reason": "A positive-base exponential does not attain zero at a finite real input."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "The isolated equation is impossible, so the original equation has no real solution."
+        }
+      ],
+      "conclusion": "The original output can approach 4 but never equals 4. Taking ln(0) would be an invalid next step."
+    },
+    {
+      "title": "A negative exponential target has no solution",
+      "prompt": "Solve $2\\cdot3^{x-1}+5=1$ over the real numbers.",
+      "steps": [
+        {
+          "math": "2\\cdot3^{x-1}=-4\\quad\\Longrightarrow\\quad3^{x-1}=-2",
+          "reason": "The positive original right-hand side becomes a negative isolated exponential target after removing the offset."
+        },
+        {
+          "math": "3^{x-1}>0\\qquad\\text{for every real }x",
+          "reason": "The required negative target is outside the range of the exponential."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "No real exponent satisfies the isolated equation."
+        }
+      ],
+      "conclusion": "There are no real solutions. Check the isolated target rather than the sign of the original right-hand side."
+    },
+    {
+      "title": "Solve an equation with the natural base",
+      "prompt": "Solve $4e^{3x-2}+1=13$ exactly.",
+      "steps": [
+        {
+          "math": "4e^{3x-2}=12\\quad\\Longrightarrow\\quad e^{3x-2}=3",
+          "reason": "Isolate the positive exponential value before applying its inverse."
+        },
+        {
+          "math": "3x-2=\\ln3\\quad\\Longrightarrow\\quad x=\\frac{\\ln3+2}{3}",
+          "reason": "The natural logarithm recovers the complete exponent; then solve the affine equation."
+        },
+        {
+          "math": "4e^{3((\\ln3+2)/3)-2}+1=4e^{\\ln3}+1=13",
+          "reason": "The exact expression recovers the original target without rounding."
+        }
+      ],
+      "conclusion": "The unique solution is (ln(3)+2)/3. Retain this exact form unless a numerical approximation is separately requested."
+    },
+    {
+      "title": "Take logarithms when the bases differ",
+      "prompt": "Solve $2^{2x+1}=5^{x-1}$ exactly.",
+      "steps": [
+        {
+          "math": "(2x+1)\\ln2=(x-1)\\ln5",
+          "reason": "Both original sides are positive for every real input, so taking natural logarithms is reversible."
+        },
+        {
+          "math": "x(2\\ln2-\\ln5)=-\\ln5-\\ln2=-\\ln10",
+          "reason": "Distribute the exponents and collect all terms containing x."
+        },
+        {
+          "math": "x=\\frac{-\\ln10}{\\ln(4/5)}=\\frac{\\ln10}{\\ln(5/4)}",
+          "reason": "The denominator is nonzero because 4/5 is not one. The reciprocal-log identity simplifies the signs."
+        },
+        {
+          "math": "(2\\ln2-\\ln5)x+\\ln2+\\ln5=-\\ln(5/4)\\frac{\\ln10}{\\ln(5/4)}+\\ln10=0",
+          "reason": "The exact candidate makes the difference of the two original logarithmic sides zero. Exponentiating returns the original equality."
+        }
+      ],
+      "conclusion": "The complete solution set contains ln(10)/ln(5/4). Equating the original exponents directly would be invalid because their bases differ."
+    },
+    {
+      "title": "An exponential identity keeps every real input",
+      "prompt": "Solve $4^{x+1}=2^{2x+2}$ over the real numbers.",
+      "steps": [
+        {
+          "math": "4^{x+1}=(2^2)^{x+1}=2^{2x+2}",
+          "reason": "The power rule converts the left side into exactly the expression on the right."
+        },
+        {
+          "math": "2x+2=2x+2\\quad\\Longrightarrow\\quad0=0",
+          "reason": "The reduced equation is an identity, not a condition selecting one value of x."
+        },
+        {
+          "math": "D=\\mathbb R,\\qquad S=\\mathbb R",
+          "reason": "Both original exponential sides are defined for every real input, and the identity holds throughout that domain."
+        }
+      ],
+      "conclusion": "Every real x is a solution. The single value zero would be an incomplete answer."
+    },
+    {
+      "title": "Canceled x terms can leave a contradiction",
+      "prompt": "Solve $2^{x+1}=2^{x-2}$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x+1=x-2",
+          "reason": "The common valid base makes equality equivalent to equality of exponents."
+        },
+        {
+          "math": "1=-2",
+          "reason": "Subtracting x leaves unequal constants. No choice of x can change that contradiction."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "The original equation has no real solution."
+        }
+      ],
+      "conclusion": "No solution is the complete outcome. Do not divide by a zero x coefficient or infer x=0."
+    },
+    {
+      "title": "Two positive substitution roots give two solutions",
+      "prompt": "Solve $e^{2x}-5e^x+6=0$ exactly over the real numbers.",
+      "steps": [
+        {
+          "math": "u=e^x>0,\\qquad u^2-5u+6=0",
+          "reason": "Use the repeated exponential as one variable while keeping its positive range."
+        },
+        {
+          "math": "(u-2)(u-3)=0\\quad\\Longrightarrow\\quad u=2\\text{ or }u=3",
+          "reason": "Factor the complete quadratic and list both real candidates."
+        },
+        {
+          "math": "x=\\ln2\\text{ or }x=\\ln3",
+          "reason": "Both candidates are positive, so each has one real inverse-logarithm input."
+        },
+        {
+          "math": "u=2:\\ 4-10+6=0,\\qquad u=3:\\ 9-15+6=0",
+          "reason": "Each recovered exponential value satisfies the original polynomial expression in e^x."
+        }
+      ],
+      "conclusion": "The complete real solution set is {ln(2), ln(3)}. Reporting either one alone omits a valid branch."
+    },
+    {
+      "title": "Reject a negative substitution root and keep the positive one",
+      "prompt": "Solve $3^{2x}-2\\cdot3^x-3=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "u=3^x>0,\\qquad u^2-2u-3=(u-3)(u+1)=0",
+          "reason": "The quadratic has real candidates u=3 and u=-1."
+        },
+        {
+          "math": "u=-1\\text{ is rejected},\\qquad u=3\\text{ is retained}",
+          "reason": "Only strictly positive values belong to the range of the substitution."
+        },
+        {
+          "math": "3^x=3\\quad\\Longrightarrow\\quad x=1",
+          "reason": "Invert the retained positive candidate."
+        },
+        {
+          "math": "3^{2(1)}-2\\cdot3^1-3=9-6-3=0",
+          "reason": "Check the original equation at the retained input."
+        }
+      ],
+      "conclusion": "The complete solution set is {1}. Taking a real logarithm of the rejected value -1 is not valid."
+    },
+    {
+      "title": "Zero and negative substitution candidates can leave no solution",
+      "prompt": "Solve $2^{2x}+2^x=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "u=2^x>0,\\qquad u^2+u=u(u+1)=0",
+          "reason": "Solve the full quadratic rather than dividing away a possible algebraic root."
+        },
+        {
+          "math": "u=0\\text{ or }u=-1",
+          "reason": "These are all real roots of the quadratic in u."
+        },
+        {
+          "math": "0\\notin(0,\\infty),\\qquad-1\\notin(0,\\infty)",
+          "reason": "Neither candidate is attainable by the exponential substitution."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "With no retained positive u root, there is no real x solution. The original sum of two positive terms confirms the conclusion."
+        }
+      ],
+      "conclusion": "Both zero and negative substitution roots must be rejected. Approaching zero does not make u=0 attainable."
+    },
+    {
+      "title": "A repeated positive root gives one distinct input",
+      "prompt": "Solve $e^{2x}-4e^x+4=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "u=e^x>0,\\qquad u^2-4u+4=(u-2)^2=0",
+          "reason": "The quadratic has a repeated positive root."
+        },
+        {
+          "math": "u=2\\quad\\Longrightarrow\\quad x=\\ln2",
+          "reason": "A repeated root is one value, and the exponential has one real inverse input for that value."
+        },
+        {
+          "math": "e^{2\\ln2}-4e^{\\ln2}+4=4-8+4=0",
+          "reason": "The retained exact input satisfies the original equation."
+        }
+      ],
+      "conclusion": "The complete set is {ln(2)}, with the value listed once. Polynomial multiplicity does not create a second distinct x value."
+    },
+    {
+      "title": "Solve a reciprocal-base logarithm with a reflected argument",
+      "prompt": "Solve $\\log_{1/2}(5-2x)=-2$ over the real numbers.",
+      "steps": [
+        {
+          "math": "5-2x>0\\iff x<5/2",
+          "reason": "The negative argument coefficient reverses the domain inequality when dividing by -2."
+        },
+        {
+          "math": "5-2x=(1/2)^{-2}=4",
+          "reason": "Convert the logarithm statement into its exact exponential form."
+        },
+        {
+          "math": "x=1/2",
+          "reason": "Solve the resulting affine equation."
+        },
+        {
+          "math": "5-2(1/2)=4>0,\\qquad\\log_{1/2}4=-2",
+          "reason": "The candidate belongs to the original domain and returns the required logarithm value."
+        }
+      ],
+      "conclusion": "The complete solution set is {1/2}. The base is positive even though the logarithm output is negative."
+    },
+    {
+      "title": "Keep a natural-base solution exact",
+      "prompt": "Solve $\\ln(2x+3)=2$ exactly.",
+      "steps": [
+        {
+          "math": "2x+3>0\\iff x>-3/2",
+          "reason": "Record the original logarithm domain."
+        },
+        {
+          "math": "2x+3=e^2\\quad\\Longrightarrow\\quad x=\\frac{e^2-3}{2}",
+          "reason": "Use the exact natural exponential target and solve the affine equation."
+        },
+        {
+          "math": "2\\left(\\frac{e^2-3}{2}\\right)+3=e^2>0,\\qquad\\ln(e^2)=2",
+          "reason": "The original argument is positive and its logarithm equals the required value."
+        }
+      ],
+      "conclusion": "The unique solution is (e^2-3)/2. The expression is exact without a decimal approximation to e."
+    },
+    {
+      "title": "Equal positive arguments verify a logarithmic solution",
+      "prompt": "Solve $\\log_3(2x+1)=\\log_3(5x-8)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x>-1/2,\\quad x>8/5\\quad\\Longrightarrow\\quad D=(8/5,\\infty)",
+          "reason": "Both original affine arguments must be positive."
+        },
+        {
+          "math": "2x+1=5x-8\\quad\\Longrightarrow\\quad x=3",
+          "reason": "Equate arguments and solve the affine equation."
+        },
+        {
+          "math": "2(3)+1=7,\\qquad5(3)-8=7",
+          "reason": "The candidate gives the same strictly positive argument on each side."
+        },
+        {
+          "math": "\\log_3 7=\\log_3 7",
+          "reason": "The original equation is valid at x=3, and the affine equation had only this candidate."
+        }
+      ],
+      "conclusion": "The complete solution set is {3}. There is no need to approximate either logarithm to verify the equality."
+    },
+    {
+      "title": "Equal negative arguments do not define real logarithms",
+      "prompt": "Solve $\\ln(2x-5)=\\ln(x-4)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x>5/2,\\quad x>4\\quad\\Longrightarrow\\quad D=(4,\\infty)",
+          "reason": "Intersect the two original positivity conditions first."
+        },
+        {
+          "math": "2x-5=x-4\\quad\\Longrightarrow\\quad x=1",
+          "reason": "The argument equation supplies one algebraic candidate."
+        },
+        {
+          "math": "2(1)-5=-3,\\qquad1-4=-3",
+          "reason": "The two arguments are equal but negative, so neither original real logarithm exists."
+        },
+        {
+          "math": "1\\notin(4,\\infty),\\qquad S=\\varnothing",
+          "reason": "Reject the sole candidate using the original domain."
+        }
+      ],
+      "conclusion": "There are no real solutions. Equality of two negative arguments cannot validate an original real logarithm equation."
+    }
+  ],
+  "guided": {
+    "title": "Complete a logarithmic equation and its candidate audit",
+    "setup": "Solve $\\log_2(x-1)+\\log_2(x-3)=3$ over the real numbers. Construct the combined argument, find every algebraic candidate, and verify the retained solution in both original logarithms.",
+    "before": [
+      "Write a strict positivity condition for each original argument and intersect the two conditions.",
+      "On that common domain, the product identity combines the logarithms. Expand the argument and convert the resulting logarithm statement to an exponential statement.",
+      "Solve the complete quadratic, then check each candidate in the original arguments before selecting the solution set."
+    ],
+    "question": {
+      "id": "guided-log-equation",
+      "familyId": "mth-log-equation",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m05-l03",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Complete every part of the original-domain check and equation solution. Exact equivalent numbers and expressions are accepted; the combined polynomial must be expanded.",
+      "fields": [
+        {
+          "id": "domain",
+          "kind": "intervals",
+          "label": "Original common real domain",
+          "expected": [
+            {
+              "lower": "3",
+              "upper": null,
+              "lowerClosed": false,
+              "upperClosed": false
+            }
+          ],
+          "help": "Use interval notation with the correct strict endpoint."
+        },
+        {
+          "id": "argument",
+          "kind": "polynomial",
+          "label": "Expanded combined logarithm argument",
+          "expected": "x^2-4x+3",
+          "form": "expanded",
+          "help": "Enter the expanded polynomial in x before moving the exponential target to the left."
+        },
+        {
+          "id": "target",
+          "kind": "rational",
+          "label": "Required value of the combined argument",
+          "expected": "8"
+        },
+        {
+          "id": "candidates",
+          "kind": "roots",
+          "numberSystem": "real",
+          "label": "All algebraic candidates before checking the domain",
+          "expected": [
+            "-1",
+            "5"
+          ],
+          "help": "List every distinct real candidate, separated by commas."
+        },
+        {
+          "id": "rejected",
+          "kind": "roots",
+          "numberSystem": "real",
+          "label": "Candidates rejected by the original equation",
+          "expected": [
+            "-1"
+          ],
+          "help": "List the rejected real input or inputs."
+        },
+        {
+          "id": "solutions",
+          "kind": "logarithmic-roots",
+          "label": "Complete exact real solution set",
+          "expected": [
+            "5"
+          ]
+        },
+        {
+          "id": "first-argument",
+          "kind": "rational",
+          "label": "First original argument at the retained solution",
+          "expected": "4"
+        },
+        {
+          "id": "second-argument",
+          "kind": "rational",
+          "label": "Second original argument at the retained solution",
+          "expected": "2"
+        }
+      ],
+      "hints": [
+        "Both x-1 and x-3 must be strictly positive. The stricter lower bound controls their intersection.",
+        "The combined argument is (x-1)(x-3), and its required value is 2^3. Subtract that target to form a quadratic equal to zero.",
+        "The quadratic factors as (x-5)(x+1). The candidate -1 makes both original arguments negative; the other candidate makes them 4 and 2."
+      ],
+      "explanation": [
+        "The original common domain is x>3. On that interval, the sum combines into log base 2 of (x-1)(x-3).",
+        "The expanded argument is x^2-4x+3 and must equal 8. Therefore x^2-4x-5=(x-5)(x+1)=0, giving candidates 5 and -1.",
+        "At -1, the original arguments are -2 and -4, so the original logarithms are undefined. At 5, they are 4 and 2, and log base 2 of 4 plus log base 2 of 2 is 2+1=3. The complete real solution set is {5}."
+      ],
+      "answerSummary": "Original domain (3,inf); expanded argument x^2-4x+3; target 8; candidates -1 and 5; reject -1; complete solution {5}; original arguments 4 and 2."
+    },
+    "after": "This guided audit supplies support and does not award independent objective evidence. Reconstruct the argument and domain reasoning in fresh practice before attempting a checkpoint."
+  },
+  "interaction": {
+    "kind": "log-rewrite-lab",
+    "prompt": "Compare a proposed logarithm rewrite in three stages: predict the complete domains, predict exact values at a chosen input, and explain what the probe can and cannot establish. Keep a claim about one input separate from a claim about every permitted input.",
+    "cases": [
+      {
+        "model": {
+          "title": "An even power without absolute values",
+          "kind": "even-power",
+          "h": 2,
+          "k": 5,
+          "power": 1,
+          "constant": 4,
+          "base": "e",
+          "otherBase": "2"
+        },
+        "input": "1"
+      },
+      {
+        "model": {
+          "title": "The absolute value preserves both branches",
+          "kind": "shifted-absolute",
+          "h": 2,
+          "k": 5,
+          "power": 1,
+          "constant": 4,
+          "base": "e",
+          "otherBase": "2"
+        },
+        "input": "1"
+      },
+      {
+        "model": {
+          "title": "A product with two negative factors",
+          "kind": "product-domain",
+          "h": -2,
+          "k": 1,
+          "power": 1,
+          "constant": 4,
+          "base": "e",
+          "otherBase": "2"
+        },
+        "input": "-3"
+      },
+      {
+        "model": {
+          "title": "A quotient with two negative terms",
+          "kind": "quotient-domain",
+          "h": -2,
+          "k": 1,
+          "power": 1,
+          "constant": 4,
+          "base": "e",
+          "otherBase": "2"
+        },
+        "input": "-3"
+      },
+      {
+        "model": {
+          "title": "A proposed sum rule and an accidental match",
+          "kind": "false-sum",
+          "h": 0,
+          "k": 3,
+          "power": 1,
+          "constant": 4,
+          "base": "e",
+          "otherBase": "2"
+        },
+        "input": "2"
+      },
+      {
+        "model": {
+          "title": "A canceled factor leaves an original hole",
+          "kind": "canceled-hole",
+          "h": 1,
+          "k": 3,
+          "power": 1,
+          "constant": 4,
+          "base": "e",
+          "otherBase": "2"
+        },
+        "input": "3"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-log-rules",
+      "variant": "product"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "quotient"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "power"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "root"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "expand"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "condense"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "change-base"
+    },
+    {
+      "familyId": "mth-log-rules",
+      "variant": "fractional-base"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "product-domain"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "quotient-domain"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "even-power"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "shifted-absolute"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "canceled-hole"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "zero-coefficient"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "false-sum"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "mixed-bases"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "common-base"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "related-bases"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "shifted-factor"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "natural-base"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "different-bases"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "nonpositive-target"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "identity-or-empty"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "quadratic-two"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "quadratic-filter"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "single"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "equal-arguments"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "sum"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "difference"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "two-roots"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "excluded-root"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "original-hole"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "empty"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "identity-domain"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-log-rules",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-log-rewrite",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-exp-equation",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-log-equation",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "Use a positive logarithm base other than one and a strictly positive complete argument. Every separate logarithm and every original denominator contributes a condition.",
+    "For positive A and B in the same valid base, $\\log_b(AB)=\\log_b A+\\log_b B$ and $\\log_b(A/B)=\\log_b A-\\log_b B$. A power of a positive argument gives $\\log_b(A^r)=r\\log_b A$.",
+    "Preserve the full real domain when expanding even powers: $\\ln(u^2)=2\\ln|u|$ for u different from zero. Keep original holes after cancellation and restrictions after multiplication by zero.",
+    "The logarithm of a sum has no general product-style expansion. Convert different bases before applying same-base identities. One counterexample disproves a universal claim; one matching value does not prove it.",
+    "Change of base gives $\\log_b A=\\ln A/\\ln b$. Retain exact expressions until a numerical answer is explicitly requested, then round the final value.",
+    "Isolate an exponential before taking logarithms. Its isolated value must be positive. Check for a nonzero x coefficient before dividing; an identity or contradiction can produce all real inputs or none.",
+    "For a quadratic substitution $u=b^x$, keep u>0, solve for every candidate u, reject nonpositive candidates, and map every retained value back to x. Repeated roots are listed once.",
+    "Solve logarithmic equations on the common original domain. Algebraic candidates are provisional until each original argument and denominator has been checked. A squared argument can produce two valid roots.",
+    "The 34 named practice variants cover the planned skills. Each four-item checkpoint samples one critical item from each family. All four selected items must pass independently; one passed form does not establish that every named variant was tested."
+  ],
+  "retrieval": "After a delay, derive the product identity from exponent arithmetic and reconstruct the full-domain expansion of ln((x-2)^2). Give a counterexample to a proposed logarithm sum rule and explain why the canceled point in ln(((x-1)(x-3))/(x-3)) stays excluded. Solve 2^(2x+1)=7 exactly, then solve e^(2x)-5e^x+6=0 while retaining every positive substitution root. Finally solve ln(x-1)+ln(x-3)=ln(8), list every algebraic candidate, and check the original arguments. Repeat with new values and explain the reasons without referring to an answer key.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 6.5: Logarithmic Properties",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-5-logarithmic-properties",
+      "purpose": "Optional additional practice with product, quotient and power rules and change of base. Retain the complete original domains when expanding or condensing; a positive-variable convention must be stated rather than assumed."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 6.6: Exponential and Logarithmic Equations",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-6-exponential-and-logarithmic-equations",
+      "purpose": "Optional equation-solving examples. Keep exact answers, classify identities and contradictions, and verify every candidate in the original equation. The app provides original instruction, examples and practice."
+    }
+  ]
+}

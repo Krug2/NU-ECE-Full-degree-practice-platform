@@ -1,0 +1,1213 @@
+{
+  "id": "m05-l02",
+  "courseId": "mth-215",
+  "moduleId": "m05",
+  "version": 1,
+  "title": "Logarithms as inverse functions",
+  "objective": "Convert between exponential and logarithmic statements and determine the domain of a logarithmic expression.",
+  "why": "Exponential models describe how a quantity changes; logarithms recover the exponent behind a known response. That reversal is useful only when the input is allowed. This lesson builds the definition, exact and numerical evaluation, reflected graphs, transformed domains, and restrictions that survive simplification. You will use these ideas when solving growth, decay, and signal questions later.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {
+      "label": "Powers, roots, and scientific notation",
+      "lessonId": "b02"
+    },
+    {
+      "label": "Composition and inverse functions",
+      "lessonId": "m02-l03"
+    },
+    {
+      "label": "Sign charts and inequalities",
+      "lessonId": "m04-l02"
+    },
+    {
+      "label": "Radicals and restricted inverses",
+      "lessonId": "m04-l04"
+    },
+    {
+      "label": "Exponential functions and growth factors",
+      "lessonId": "m05-l01"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "A logarithm asks for an exponent",
+      "paragraphs": [
+        "An exponential starts with an exponent and produces a value. A logarithm reverses that question: which exponent produces this value from the stated base? The statement $\\log_b(A)=u$ means exactly $b^u=A$. The base stays the base, the logarithm argument A becomes the power's output, and the logarithm output u becomes the exponent.",
+        "For example, $\\log_4(1/64)=-3$ because $4^{-3}=1/64$. Read all three roles before calculating: base 4, argument 1/64, output -3. A small positive argument can require a negative exponent. The negative output is not an instruction to make the argument negative.",
+        "A logarithm is a function, not multiplication by a symbol named log and not division by the base. Dividing 1/64 by 4 gives 1/256, while its base-four logarithm is -3. To check a proposed logarithm, raise the stated base to the proposed answer and see whether the argument returns.",
+        "Conversion changes how a relationship is written. It does not exchange the base with the exponent or silently introduce a different base. Keep parentheses around a complete argument, especially a product, fraction, or shifted expression."
+      ]
+    },
+    {
+      "heading": "Check the base and the complete argument",
+      "paragraphs": [
+        "A real logarithm needs $b>0$, $b\\ne1$, and $A>0$. The first two restrictions make the associated real exponential a one-to-one function. A base of one gives the same output for every exponent, so its outputs cannot identify an exponent uniquely. A zero or negative base does not define the required positive exponential over all real exponents.",
+        "An isolated integer power of a negative base does not repair this problem. The equality $(-3)^2=9$ is true, but it does not establish a real logarithm function with base -3. The function definition must work over its stated real domain, rather than at a few convenient integer exponents.",
+        "Every finite real power of a valid positive base is positive. Therefore zero and negative arguments have no real logarithm. Saying that a logarithm approaches negative infinity near a boundary is a statement about a limit, not a finite value assigned at zero.",
+        "The positivity restriction applies to the complete argument A(x), not automatically to x. The function $\\log_2(3-x)$ accepts x=-1 because its argument is 4. Its output can be any real number. Always separate the sign of the input variable, the sign of the argument, and the sign of the logarithm output."
+      ]
+    },
+    {
+      "heading": "Recover exact values from known powers",
+      "paragraphs": [
+        "Use the definition before reaching for a calculator. The identities $b^0=1$ and $b^1=b$ give $\\log_b(1)=0$ and $\\log_b(b)=1$ for every valid base. Recognizing an integer power gives an integer logarithm without decimal approximation.",
+        "A reciprocal argument often needs a negative exponent. For a base above one, an argument between zero and one produces a negative output. A fractional base reverses this relationship: for example, powers of 1/3 get smaller as the exponent increases, and $\\log_{1/3}(9)=-2$.",
+        "Logarithms can be fractions. If the base and argument are known powers of the same positive number, compare their exponents. Since $8=2^3$ and $4=2^2$, the exponent u in $8^u=4$ satisfies $3u=2$, so u=2/3. A fractional answer is not an approximation.",
+        "Square-root arguments can also have exact logarithms. For instance, $9^{1/4}=\\sqrt{3}$. Verify the claimed power with the positive root, and retain the exact fraction. An approximate decimal close to an integer does not prove that the exact logarithm is that integer."
+      ]
+    },
+    {
+      "heading": "Common logarithms, natural logarithms, and numerical work",
+      "paragraphs": [
+        "In this lesson, log without a written base means base ten: $\\log(A)=\\log_{10}(A)$. Other fields or software may use different conventions, so a stated base is safer when moving between tools. The notation $\\ln(A)$ always denotes the natural logarithm, with exact base e.",
+        "Natural logarithms undo the natural exponential: $\\ln(e^u)=u$ for every real u. The symbol e is an exact constant; 2.718 is only an approximation. Common logarithms similarly undo powers of ten. Neither convention removes the positive-argument requirement.",
+        "When an argument is not a recognizable power, an expression such as $\\ln(3)$ is already an exact answer. A calculator can provide an approximation if requested. State which answer is exact, preserve extra digits during a calculation, and round the final reported value to the requested precision.",
+        "The calculator in this lesson accepts numbers, fractions, and supported square-root expressions. Choose natural, common, or a specified rational base. It distinguishes a failed real-domain condition from a numerical display limit. The next lesson develops change of base and logarithm rules; here the calculator supports evaluation rather than replacing a domain argument."
+      ]
+    },
+    {
+      "heading": "The two inverse identities start on different domains",
+      "paragraphs": [
+        "For a valid base, $\\log_b(b^t)=t$ for every real t. The inside exponential accepts any real input and always produces a positive value for the outside logarithm. Negative t and zero t are both allowed.",
+        "In the other order, $b^{\\log_b(x)}=x$ only for x>0. The inner logarithm must be evaluated first. A negative x or zero makes that inner operation undefined over the reals, so the complete composition is undefined there too.",
+        "Replacing a composition by its simplified formula preserves its original domain. The standalone identity function x accepts all real inputs; the original expression $b^{\\log_b(x)}$ does not. An identity on a restricted domain is not permission to enlarge the domain.",
+        "For transformed inverse functions, use the same order-of-operations check. The inverse input must belong to the original function's range. Prove cancellation with the complete expressions before discussing rounded numerical displays."
+      ]
+    },
+    {
+      "heading": "Reflect points, domains, ranges, and asymptotes",
+      "paragraphs": [
+        "If an exponential has point (t, y), its inverse has point (y, t). Exchanging coordinates reflects a graph across the diagonal y=x when the horizontal and vertical axes use equal scales. The inverse relation is about exchanged coordinates even if a display uses a stretched plotting window.",
+        "The parent exponential has domain R and range $(0,\\infty)$. Its logarithmic inverse has domain $(0,\\infty)$ and range R. The exponential's excluded horizontal boundary y=0 becomes the logarithm's excluded vertical boundary x=0.",
+        "For b>1, both the parent exponential and its inverse are increasing. For 0<b<1, both are decreasing. Reversing the mapping does not turn an increasing one-to-one function into a decreasing one.",
+        "A finite graph cannot establish the full domain, and sampled points cannot show every limiting value. Use the formula to establish the domain and asymptote. The investigation uses equal axis scales, exchanged samples, distinct line patterns, and a table so these relationships can be read without relying on color."
+      ]
+    },
+    {
+      "heading": "The transformed logarithm keeps a strict input boundary",
+      "paragraphs": [
+        "Consider $g(x)=a\\log_b(c(x-h))+k$, where a and c are nonzero and b is a valid base. The condition is $c(x-h)>0$. If c>0, the domain is $(h,\\infty)$; if c<0, the domain is $(-\\infty,h)$. In both cases x=h is excluded because the argument would be zero.",
+        "The vertical asymptote is x=h. Its position comes from the inside translation. The outside addition k shifts outputs and does not move that vertical line. Do not use k as the vertical-asymptote input.",
+        "The logarithm output can span all real numbers as its positive argument varies. A nonzero outside scale and a finite output shift preserve an all-real range. Thus this nonconstant transformed logarithm has range R, even though its domain is one open side of a boundary.",
+        "A zero scale is a separate case rather than a valid parameter of this transformation model. In an original expression containing a logarithm, multiplying its output by zero does not automatically restore inputs where that original logarithm was undefined."
+      ]
+    },
+    {
+      "heading": "Combine base direction with both reflections",
+      "paragraphs": [
+        "Determine direction in stages. A base above one makes the parent logarithm increasing; a base between zero and one makes it decreasing. A negative inside coefficient reverses input direction, and a negative outside coefficient reverses output direction. Each reversal changes increasing to decreasing or decreasing to increasing.",
+        "Approaching x=h from the allowed side makes the positive argument approach zero. For b>1 the parent logarithm then decreases without bound; for 0<b<1 it increases without bound. Apply the sign of a to get the transformed output behavior. The finite shift k does not bound an unbounded output.",
+        "At the unbounded end of the allowed input interval, the argument grows without bound and the logarithm goes in the opposite unbounded direction. With c<0, that unbounded input end is negative infinity, not positive infinity.",
+        "Direction as x increases and behavior while approaching an endpoint are different questions. State which input direction you mean. Check a second exact point when two reflections or a fractional base make a memorized graph rule unreliable."
+      ]
+    },
+    {
+      "heading": "Map anchors before deciding whether an intercept exists",
+      "paragraphs": [
+        "The parent logarithm point $(b^u,u)$ maps to $(h+b^u/c,k+au)$. Solve the complete inside argument for the new input coordinate, then apply the outside scale and shift to the output coordinate. The positive horizontal length multiplier is 1/|c| and the positive vertical length multiplier is |a|; negative signs describe reflections before translation.",
+        "Using u=0 gives the argument-one anchor $(h+1/c,k)$. The outside coefficient a is not generally the anchor output. It controls how the parent output is scaled before k is added.",
+        "A y-intercept requires x=0 to belong to the domain. Test c(0-h)>0 before evaluating the logarithm. If the test fails, there is no y-intercept. If it passes, evaluate the entire formula; neither a nor k alone generally gives that value.",
+        "A logarithmic expression can have a negative input coordinate at an anchor or intercept-related probe. The complete argument must be positive, while the original input coordinate may be zero, positive, or negative."
+      ]
+    },
+    {
+      "heading": "Solve positivity for the complete argument",
+      "paragraphs": [
+        "For $\\log_b(A(x))$, start with A(x)>0 and include any restrictions needed to define A itself. For an affine argument, solve a strict linear inequality. Dividing by a negative coefficient reverses the inequality, so an inside reflection can put the domain to the left of its boundary.",
+        "A squared argument is nonnegative but not always positive. For $\\ln((x+2)^2)$, the square is positive except at x=-2, where it is zero. Its domain therefore has two open pieces. Do not include the zero just because a square root would have allowed it.",
+        "The argument $x^2+1$ is always positive, so $\\ln(x^2+1)$ accepts every real x. The argument $-x^2-1$ is always negative, so its real logarithm has an empty domain. An outer logarithm does not force every domain to be one half-line.",
+        "Keep a strict zero boundary separate from a denominator hole. Both are excluded in a plain logarithm domain, but they fail for different reasons. This distinction matters when a later operation permits equality at a different boundary."
+      ]
+    },
+    {
+      "heading": "Use sign charts for products and rational arguments",
+      "paragraphs": [
+        "A product argument is positive when its nonzero factors have matching overall sign. Mark its zeros, test the intervals between them, and select positive intervals. Roots with even multiplicity can leave the sign unchanged, but a zero argument is still excluded.",
+        "A rational argument requires a nonzero original denominator and a positive quotient. Mark numerator zeros and original denominator zeros before selecting signs. Dividing an inequality by an expression whose sign is unknown can lose valid intervals or reverse the wrong part of the solution.",
+        "For a quotient such as $(x-2)/(x+4)$, both negative factors give a positive quotient to the left of -4, while both positive factors give a positive quotient to the right of 2. Between those critical values the quotient is negative. The pole and zero stay excluded.",
+        "Use exact endpoints and a test value from each open interval. Report a union when the answer has separate pieces. Verify one permitted and one excluded input in the original argument to check both the algebra and the endpoint reasoning."
+      ]
+    },
+    {
+      "heading": "Cancellation preserves the original hole",
+      "paragraphs": [
+        "An algebraic cancellation is valid only where the canceled factor is nonzero. If the original logarithm argument contains a fraction with denominator x-r, record x!=r before simplifying.",
+        "The expression $((x-1)(x+2))/(x-1)$ equals x+2 only for x!=1. Requiring positivity gives x>-2, and retaining the original exclusion removes x=1 from that interval. The logarithm domain is therefore $(-2,1)\\cup(1,\\infty)$.",
+        "At x=1, the separately simplified logarithm $\\ln(x+2)$ has value ln(3), while the original logarithm remains undefined because its argument contains division by zero. These statements do not conflict: the simplified formula has been extended to an additional input.",
+        "Check domain and value as separate parts of a simplification. Equal values on the shared domain do not establish that two written expressions have identical domains."
+      ]
+    },
+    {
+      "heading": "A logarithm of a root differs from a root of a logarithm",
+      "paragraphs": [
+        "For $\\ln(\\sqrt{A(x)})$, the square root must be real and must then be strictly positive for the logarithm. Together these conditions require A(x)>0, along with all original restrictions inside A. Allowing A=0 would produce a zero logarithm argument.",
+        "For $\\sqrt{\\log_b(A(x))}$, the logarithm must be real and its output must be nonnegative. When b>1, this is equivalent to A(x)>=1. When 0<b<1, it is equivalent to 0<A(x)<=1. The base direction changes which side of one is allowed.",
+        "Equality at A=1 is included for an outside square root because log_b(1)=0 and the square root of zero is real. Equality at A=0 remains excluded. Attach a closed endpoint only to the condition that actually permits equality.",
+        "Apply these conditions to the entire inner expression, including a rational argument. Work from the outside operation inward, then solve the resulting sign condition while preserving every original denominator exclusion."
+      ]
+    },
+    {
+      "heading": "Denominators and nested logarithms add another condition",
+      "paragraphs": [
+        "For $1/\\log_b(A(x))$, a positive argument is necessary but not sufficient. The denominator logarithm must also be nonzero. Since log_b(1)=0, require A(x)>0 and A(x)!=1, together with the original restrictions defining A.",
+        "For $\\ln(\\log_b(A(x)))$, the inner logarithm output must be strictly positive. When b>1 this requires A(x)>1. For a fractional base it requires 0<A(x)<1. The outer logarithm excludes the inner output zero, so equality at one is excluded here.",
+        "Compare these cases with an outside square root. The root accepts an inner logarithm of zero, a denominator rejects zero, and an outer logarithm rejects zero. The order and identity of the operations determine which endpoint conditions to combine.",
+        "Write a separate condition for each operation before intersecting allowed sets. A single positivity check on the original input variable cannot capture these nested restrictions."
+      ]
+    },
+    {
+      "heading": "Invert a shifted exponential in the correct order",
+      "paragraphs": [
+        "Start with $y=a b^{c(t-h)}+k$ and a,c nonzero. Subtract k and divide by a to isolate the positive exponential factor. The quotient (y-k)/a must be strictly positive. If a is negative, this places y below k.",
+        "By the logarithm definition, $\\log_b((y-k)/a)=c(t-h)$. Divide by c, then add h. The inverse is $t=h+\\frac{1}{c}\\log_b((y-k)/a)$ on the inherited input domain. Isolating a positive factor is different from taking separate logarithms of signed pieces.",
+        "Exchange a known point to check the result. The original shifted anchor is (h,a+k), so the inverse contains (a+k,h). Check both compositions on their proper domains and keep an excluded boundary excluded even if a rounded graph seems to touch it.",
+        "For a natural exponential, use ln in the same sequence. This lesson handles inversion of a supplied one-to-one formula. General logarithm rules, equation-solving procedures, model fitting, and threshold questions are developed in the following lessons."
+      ]
+    },
+    {
+      "heading": "Keep exact boundaries and operating restrictions",
+      "paragraphs": [
+        "Domain membership depends on the exact argument. Nearby inputs on opposite sides of a boundary can display the same rounded decimal. Subtract an exact boundary before rounding; a tiny positive argument, zero argument, and tiny negative argument have three different real-logarithm outcomes.",
+        "A calculator may show a value near an integer or collapse a very small change into a displayed offset. That display does not prove an exact identity or restore an excluded input. Keep exact fractions or a logarithm expression when exactness matters, and label numerical results as approximations.",
+        "A physical operating interval can be smaller than the mathematical formula domain. If a one-to-one exponential is authorized only on a closed time interval, its operating inverse accepts only the attained response interval. Both attained response endpoints are included, even though the full logarithm domain excludes its asymptote boundary.",
+        "To find that operating inverse domain, evaluate both original endpoints and order their responses using the monotonic direction. The operating inverse range is the original time interval. A response that the full formula maps to a negative or out-of-window time does not become authorized just because its logarithm is mathematically real."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Identify the three roles",
+      "prompt": "Interpret $\\log_4(1/64)=-3$ and test a proposed division interpretation.",
+      "steps": [
+        {
+          "math": "b=4,\\quad A=\\frac1{64},\\quad u=-3",
+          "reason": "Read the base, complete argument, and output before changing the notation."
+        },
+        {
+          "math": "4^{-3}=\\frac1{4^3}=\\frac1{64}",
+          "reason": "Raising the base to the logarithm output reconstructs the argument."
+        },
+        {
+          "math": "\\frac{1/64}{4}=\\frac1{256}\\ne-3",
+          "reason": "Dividing by the base gives a different positive number, so it cannot explain this logarithm."
+        }
+      ],
+      "conclusion": "The logarithm recovers the exponent -3. Its argument stays positive."
+    },
+    {
+      "title": "Convert a fractional exponent",
+      "prompt": "Rewrite $9^{3/2}=27$ as a logarithmic statement and verify it.",
+      "steps": [
+        {
+          "math": "\\log_9(27)=\\frac32",
+          "reason": "Keep 9 as the base, use the power result 27 as the argument, and make the exponent the logarithm output."
+        },
+        {
+          "math": "9^{3/2}=(\\sqrt9)^3=3^3=27",
+          "reason": "The positive square root verifies the fractional power exactly."
+        }
+      ],
+      "conclusion": "The two notations state the same base, argument, and exponent relationship."
+    },
+    {
+      "title": "Audit proposed bases",
+      "prompt": "Which of 0, 1, -3, and 1/3 can be a base of a real logarithm function?",
+      "steps": [
+        {
+          "math": "b>0,\\qquad b\\ne1",
+          "reason": "Check both base restrictions separately from any particular argument."
+        },
+        {
+          "math": "0\\not>0,\\qquad -3\\not>0,\\qquad 1=1",
+          "reason": "Zero and -3 fail positivity. One produces a constant exponential, preventing a one-to-one inverse."
+        },
+        {
+          "math": "0<\\frac13<1",
+          "reason": "A positive fractional base distinct from one is valid and gives a decreasing parent logarithm."
+        }
+      ],
+      "conclusion": "Only 1/3 is valid. An isolated integer power of -3 does not supply the required real logarithm function."
+    },
+    {
+      "title": "Separate argument sign from output sign",
+      "prompt": "Compare $\\log_5(0)$, $\\log_5(-25)$, and $\\log_5(1/25)$.",
+      "steps": [
+        {
+          "math": "0\\not>0,\\qquad -25\\not>0",
+          "reason": "The first two arguments violate the strict real logarithm condition."
+        },
+        {
+          "math": "5^{-2}=\\frac1{25}>0",
+          "reason": "The third positive argument is a known reciprocal power."
+        },
+        {
+          "math": "\\log_5\\left(\\frac1{25}\\right)=-2",
+          "reason": "The recovered exponent can be negative even though the argument must be positive."
+        }
+      ],
+      "conclusion": "The first two logarithms are undefined over the reals; the third is exactly -2."
+    },
+    {
+      "title": "Zero and unit logarithms",
+      "prompt": "Evaluate $\\log_7(1)$, $\\log_7(7)$, and $\\log_7(343)$.",
+      "steps": [
+        {
+          "math": "7^0=1,\\qquad 7^1=7",
+          "reason": "Use the zero and first powers of a valid base."
+        },
+        {
+          "math": "7^3=343",
+          "reason": "Recognize the remaining argument as the cube of the base."
+        },
+        {
+          "math": "\\log_7(1)=0,\\quad\\log_7(7)=1,\\quad\\log_7(343)=3",
+          "reason": "Each logarithm recovers the corresponding exponent."
+        }
+      ],
+      "conclusion": "A zero logarithm value belongs to argument one, not argument zero."
+    },
+    {
+      "title": "Two exact fractional logarithms",
+      "prompt": "Evaluate $\\log_8(4)$ and $\\log_{16}(1/8)$ without rounding.",
+      "steps": [
+        {
+          "math": "8^u=4\\iff (2^3)^u=2^2\\iff 3u=2",
+          "reason": "Express the first base and argument as powers of the same positive number."
+        },
+        {
+          "math": "u=\\frac23",
+          "reason": "Solve the exponent relation exactly."
+        },
+        {
+          "math": "16^v=\\frac18\\iff (2^4)^v=2^{-3}\\iff v=-\\frac34",
+          "reason": "Use a negative power for the reciprocal argument before solving."
+        }
+      ],
+      "conclusion": "The exact values are 2/3 and -3/4. Decimal estimates are unnecessary."
+    },
+    {
+      "title": "A fractional base with a negative output",
+      "prompt": "Evaluate $\\log_{4/9}(27/8)$.",
+      "steps": [
+        {
+          "math": "\\left(\\frac49\\right)^{-3/2}=\\left(\\frac94\\right)^{3/2}",
+          "reason": "A negative exponent takes the reciprocal of the complete positive base."
+        },
+        {
+          "math": "\\left(\\sqrt{\\frac94}\\right)^3=\\left(\\frac32\\right)^3=\\frac{27}{8}",
+          "reason": "Apply the positive square root and then the cube."
+        },
+        {
+          "math": "\\log_{4/9}\\left(\\frac{27}{8}\\right)=-\\frac32",
+          "reason": "The checked exponent is the logarithm value."
+        }
+      ],
+      "conclusion": "A base below one can require a negative exponent to produce an argument above one."
+    },
+    {
+      "title": "Keep a root argument exact",
+      "prompt": "Evaluate $\\log_9(\\sqrt3)$.",
+      "steps": [
+        {
+          "math": "9^{1/4}=(3^2)^{1/4}=3^{1/2}=\\sqrt3",
+          "reason": "The fourth root of the positive base is the requested argument."
+        },
+        {
+          "math": "\\log_9(\\sqrt3)=\\frac14",
+          "reason": "Use the exact power relation rather than approximating the root first."
+        }
+      ],
+      "conclusion": "The exact answer is 1/4; a calculator is only a numerical check."
+    },
+    {
+      "title": "Common and natural notation",
+      "prompt": "Evaluate $\\log(10^{-4})$ and $\\ln(e^{-3/2})$ using this lesson's common-log convention.",
+      "steps": [
+        {
+          "math": "\\log(10^{-4})=\\log_{10}(10^{-4})=-4",
+          "reason": "The stated common logarithm convention uses base ten."
+        },
+        {
+          "math": "\\ln(e^{-3/2})=\\log_e(e^{-3/2})=-\\frac32",
+          "reason": "The natural logarithm recovers the exponent of the exact constant e."
+        }
+      ],
+      "conclusion": "Both negative outputs are valid because their exponential arguments are positive."
+    },
+    {
+      "title": "An exact logarithm and a decimal report",
+      "prompt": "Report $\\ln(3)$ and $\\log_2(5)$ to six decimal places while retaining their exact forms.",
+      "steps": [
+        {
+          "math": "\\ln(3)\\approx1.09861228866811",
+          "reason": "Use the natural-log calculator on the positive argument and retain extra digits."
+        },
+        {
+          "math": "\\log_2(5)\\approx2.32192809488736",
+          "reason": "Select the stated base rather than the common-log convention."
+        },
+        {
+          "math": "\\ln(3)\\approx1.098612,\\qquad\\log_2(5)\\approx2.321928",
+          "reason": "Round only the final requested decimal reports."
+        }
+      ],
+      "conclusion": "The logarithm expressions remain exact; the finite decimal reports are approximations."
+    },
+    {
+      "title": "Compare the two composition domains",
+      "prompt": "Compare $L(t)=\\log_3(3^t)$ and $E(x)=3^{\\log_3(x)}$ at negative and zero inputs.",
+      "steps": [
+        {
+          "math": "D_L=\\mathbb R,\\qquad L(-2)=\\log_3(1/9)=-2",
+          "reason": "Every real exponential input yields a positive argument for the outside logarithm."
+        },
+        {
+          "math": "D_E=(0,\\infty),\\qquad E(x)=x\\text{ for }x>0",
+          "reason": "The inner logarithm restricts the starting input before the outside power is applied."
+        },
+        {
+          "math": "-2\\notin D_E,\\qquad0\\notin D_E",
+          "reason": "Neither excluded input can be restored by replacing the complete formula with x."
+        }
+      ],
+      "conclusion": "The inverse identities have different starting domains even though both recover their permitted starting input."
+    },
+    {
+      "title": "Exchange three graph points",
+      "prompt": "Reflect three points of $F(t)=2^t$ to obtain points of $G(x)=\\log_2(x)$.",
+      "steps": [
+        {
+          "math": "F(-2)=\\frac14,\\qquad F(0)=1,\\qquad F(2)=4",
+          "reason": "Construct exact exponential points before exchanging coordinates."
+        },
+        {
+          "math": "(-2,1/4)\\mapsto(1/4,-2),\\quad(0,1)\\mapsto(1,0),\\quad(2,4)\\mapsto(4,2)",
+          "reason": "The original output becomes the inverse input."
+        },
+        {
+          "math": "D_G=(0,\\infty),\\quad R_G=\\mathbb R,\\quad x=0\\text{ is excluded}",
+          "reason": "Exchange the full original domain and range, including the open boundary."
+        }
+      ],
+      "conclusion": "The points reflect across y=x on equal scales. The horizontal exponential asymptote becomes a vertical logarithm asymptote."
+    },
+    {
+      "title": "A decreasing parent logarithm",
+      "prompt": "Use exact points to describe $g(x)=\\log_{1/3}(x)$.",
+      "steps": [
+        {
+          "math": "(1/3)^2=1/9,\\qquad(1/3)^0=1,\\qquad(1/3)^{-2}=9",
+          "reason": "A fractional base produces smaller values at larger exponents."
+        },
+        {
+          "math": "g(1/9)=2,\\qquad g(1)=0,\\qquad g(9)=-2",
+          "reason": "Read the inverse points with increasing positive input coordinates."
+        },
+        {
+          "math": "x\\to0^+\\Rightarrow g(x)\\to+\\infty,\\qquad x\\to+\\infty\\Rightarrow g(x)\\to-\\infty",
+          "reason": "The decreasing direction determines the two endpoint behaviors."
+        }
+      ],
+      "conclusion": "The domain is (0,inf), range R, and vertical asymptote x=0, just as for other parent logarithms; the direction is decreasing."
+    },
+    {
+      "title": "A shifted boundary and all-real range",
+      "prompt": "Analyze $g(x)=-2\\log_3(4(x-1))+5$.",
+      "steps": [
+        {
+          "math": "4(x-1)>0\\iff x>1",
+          "reason": "Use the complete argument to find the strict domain boundary."
+        },
+        {
+          "math": "D_g=(1,\\infty),\\quad R_g=\\mathbb R,\\quad x=1\\text{ is the vertical asymptote}",
+          "reason": "The nonzero outside scale and finite shift preserve an all-real range."
+        },
+        {
+          "math": "x\\to1^+\\Rightarrow g(x)\\to+\\infty,\\qquad x\\to+\\infty\\Rightarrow g(x)\\to-\\infty",
+          "reason": "Base three gives an increasing parent, while the negative outside scale reverses it."
+        }
+      ],
+      "conclusion": "The graph is decreasing. The outside shift 5 is not its vertical-asymptote input."
+    },
+    {
+      "title": "A fractional base and an inside reflection",
+      "prompt": "Analyze $g(x)=3\\log_{1/2}(-2(x+1))+4$.",
+      "steps": [
+        {
+          "math": "-2(x+1)>0\\iff x<-1",
+          "reason": "Division by the negative inside coefficient reverses the inequality."
+        },
+        {
+          "math": "D_g=(-\\infty,-1),\\quad R_g=\\mathbb R",
+          "reason": "The input approaches its excluded boundary from the left."
+        },
+        {
+          "math": "x\\to-1^-\\Rightarrow g(x)\\to+\\infty,\\qquad x\\to-\\infty\\Rightarrow g(x)\\to-\\infty",
+          "reason": "Near the boundary the positive argument approaches zero. The fractional-base logarithm then increases without bound."
+        },
+        {
+          "math": "g\\text{ is increasing as }x\\text{ increases}",
+          "reason": "The decreasing parent and negative inside scale reverse direction twice in the combined mapping."
+        }
+      ],
+      "conclusion": "The vertical asymptote is x=-1. The input's unbounded end is negative infinity."
+    },
+    {
+      "title": "Map a scaled anchor",
+      "prompt": "Map the parent logarithm point (9,2) to $g(x)=-2\\log_3(4(x-1))+5$.",
+      "steps": [
+        {
+          "math": "4(x-1)=9\\iff x=1+\\frac94=\\frac{13}{4}",
+          "reason": "Set the complete transformed argument equal to the parent input."
+        },
+        {
+          "math": "y=-2(2)+5=1",
+          "reason": "Apply the outside scale and shift to the parent output."
+        },
+        {
+          "math": "(9,2)\\mapsto(13/4,1),\\qquad s_x=\\frac14,\\quad s_y=2",
+          "reason": "Lengths scale by the positive magnitudes. The negative outside coefficient reflects output coordinates before translation."
+        }
+      ],
+      "conclusion": "The mapped point is (13/4,1). The argument-one anchor is separately (5/4,5)."
+    },
+    {
+      "title": "Compute an actual y-intercept",
+      "prompt": "Distinguish the coefficient, anchor, and y-intercept of $g(x)=2\\log_2(4-x)-1$.",
+      "steps": [
+        {
+          "math": "4-x>0\\iff x<4,\\qquad0\\in(-\\infty,4)",
+          "reason": "Zero is an allowed input, so a y-intercept exists."
+        },
+        {
+          "math": "4-x=1\\iff x=3,\\qquad g(3)=-1",
+          "reason": "The argument-one anchor is (3,-1)."
+        },
+        {
+          "math": "g(0)=2\\log_2(4)-1=2(2)-1=3",
+          "reason": "Evaluate the full formula after the domain check."
+        }
+      ],
+      "conclusion": "The outside coefficient is 2, the anchor output is -1, and the y-intercept is 3. They have different roles."
+    },
+    {
+      "title": "Recognize a missing y-intercept",
+      "prompt": "Does $g(x)=\\log_3(2(x-1))+2$ meet the y-axis?",
+      "steps": [
+        {
+          "math": "2(x-1)>0\\iff x>1",
+          "reason": "Find the original logarithm domain first."
+        },
+        {
+          "math": "x=0\\Rightarrow2(x-1)=-2\\not>0",
+          "reason": "Substituting zero produces a forbidden argument."
+        },
+        {
+          "math": "0\\notin D_g=(1,\\infty)",
+          "reason": "The graph cannot meet the y-axis because that axis requires input zero."
+        }
+      ],
+      "conclusion": "There is no y-intercept. The outside constant 2 does not supply one."
+    },
+    {
+      "title": "Allow a negative input coordinate",
+      "prompt": "Find the domain of $f(x)=\\log_2(3-x)$ and evaluate f(-1).",
+      "steps": [
+        {
+          "math": "3-x>0\\iff x<3",
+          "reason": "The complete shifted argument determines the allowed input side."
+        },
+        {
+          "math": "D_f=(-\\infty,3),\\qquad3-(-1)=4>0",
+          "reason": "The negative input coordinate lies inside the domain."
+        },
+        {
+          "math": "f(-1)=\\log_2(4)=2",
+          "reason": "Use the positive argument to evaluate the logarithm."
+        }
+      ],
+      "conclusion": "A negative input coordinate can be valid. It is a nonpositive complete logarithm argument that is forbidden."
+    },
+    {
+      "title": "Squared, all-real, and empty domains",
+      "prompt": "Compare the domains of $\\ln((x+2)^2)$, $\\ln(x^2+1)$, and $\\ln(-x^2-1)$.",
+      "steps": [
+        {
+          "math": "(x+2)^2>0\\iff x\\ne-2",
+          "reason": "A square is positive except at its zero, which the logarithm excludes."
+        },
+        {
+          "math": "D_1=(-\\infty,-2)\\cup(-2,\\infty)",
+          "reason": "Keep both positive sides and remove the zero input."
+        },
+        {
+          "math": "x^2+1\\ge1>0\\Rightarrow D_2=\\mathbb R",
+          "reason": "This argument is positive for every real input."
+        },
+        {
+          "math": "-x^2-1\\le-1<0\\Rightarrow D_3=\\varnothing",
+          "reason": "This argument is never positive, so no real input is allowed."
+        }
+      ],
+      "conclusion": "Logarithm domains can be disconnected, all real, or empty, depending on the complete argument."
+    },
+    {
+      "title": "A product argument sign chart",
+      "prompt": "Find the domain of $\\log_2((x+3)(x-1))$.",
+      "steps": [
+        {
+          "math": "(x+3)(x-1)=0\\iff x=-3\\text{ or }x=1",
+          "reason": "Locate both zeros before testing the intervals."
+        },
+        {
+          "math": "x=-4:\\ (+),\\qquad x=0:\\ (-),\\qquad x=2:\\ (+)",
+          "reason": "The products at these test inputs have signs positive, negative, and positive."
+        },
+        {
+          "math": "D=(-\\infty,-3)\\cup(1,\\infty)",
+          "reason": "Select positive intervals and exclude both zero arguments."
+        }
+      ],
+      "conclusion": "Do not require each factor to be positive separately: two negative factors also give a permitted positive product."
+    },
+    {
+      "title": "A rational argument sign chart",
+      "prompt": "Find the domain of $\\ln((x-2)/(x+4))$.",
+      "steps": [
+        {
+          "math": "x\\ne-4,\\qquad x=2\\text{ makes the numerator zero}",
+          "reason": "Record the original pole and the logarithm-argument zero."
+        },
+        {
+          "math": "x=-5:\\frac{-7}{-1}>0,\\quad x=0:\\frac{-2}{4}<0,\\quad x=3:\\frac17>0",
+          "reason": "Test each interval in the original quotient without multiplying by an unknown-sign denominator."
+        },
+        {
+          "math": "D=(-\\infty,-4)\\cup(2,\\infty)",
+          "reason": "Keep positive intervals. The pole and the zero are both excluded."
+        }
+      ],
+      "conclusion": "The two excluded critical inputs fail for different reasons: undefined argument at -4, zero argument at 2."
+    },
+    {
+      "title": "A canceled factor leaves a hole",
+      "prompt": "Find the original domain of $\\ln(((x-1)(x+2))/(x-1))$ and compare the simplified value at x=1.",
+      "steps": [
+        {
+          "math": "x\\ne1,\\qquad\\frac{(x-1)(x+2)}{x-1}=x+2\\text{ only when }x\\ne1",
+          "reason": "Preserve the denominator restriction before canceling."
+        },
+        {
+          "math": "x+2>0\\iff x>-2,\\qquad D=(-2,1)\\cup(1,\\infty)",
+          "reason": "Combine positivity with the original hole."
+        },
+        {
+          "math": "\\ln(1+2)=\\ln(3),\\qquad\\frac{(1-1)(1+2)}{1-1}=\\frac00",
+          "reason": "The separately simplified logarithm has a value at one, while the original argument remains undefined."
+        }
+      ],
+      "conclusion": "A value of an extended formula does not restore an excluded input to the original expression."
+    },
+    {
+      "title": "Reverse the root and logarithm",
+      "prompt": "Compare $f(x)=\\ln(\\sqrt{x-2})$ and $g(x)=\\sqrt{\\ln(x-2)}$.",
+      "steps": [
+        {
+          "math": "\\sqrt{x-2}>0\\iff x-2>0\\iff x>2",
+          "reason": "The logarithm needs its square-root argument to be strictly positive."
+        },
+        {
+          "math": "D_f=(2,\\infty)",
+          "reason": "The input where the root equals zero stays excluded."
+        },
+        {
+          "math": "\\ln(x-2)\\ge0\\iff x-2\\ge1\\iff x\\ge3",
+          "reason": "For natural base e>1, a nonnegative logarithm requires an argument of at least one."
+        },
+        {
+          "math": "D_g=[3,\\infty),\\qquad g(3)=\\sqrt{\\ln1}=0",
+          "reason": "The outside root includes its zero radicand."
+        }
+      ],
+      "conclusion": "Changing the operation order changes both the boundary and whether equality is allowed."
+    },
+    {
+      "title": "An outside root with a fractional log base",
+      "prompt": "Find the domain of $\\sqrt{\\log_{1/2}(x-2)}$.",
+      "steps": [
+        {
+          "math": "x-2>0,\\qquad\\log_{1/2}(x-2)\\ge0",
+          "reason": "Require both a real logarithm and a nonnegative root radicand."
+        },
+        {
+          "math": "0<x-2\\le1",
+          "reason": "For a decreasing fractional-base logarithm, nonnegative outputs come from positive arguments at most one."
+        },
+        {
+          "math": "D=(2,3],\\qquad x=3\\Rightarrow\\sqrt{\\log_{1/2}(1)}=0",
+          "reason": "Include argument one but exclude argument zero."
+        }
+      ],
+      "conclusion": "The correct endpoint pattern is open at 2 and closed at 3."
+    },
+    {
+      "title": "A logarithm in the denominator",
+      "prompt": "Find the domain of $1/\\log_2(x-1)$.",
+      "steps": [
+        {
+          "math": "x-1>0\\iff x>1",
+          "reason": "The denominator logarithm must first be real."
+        },
+        {
+          "math": "\\log_2(x-1)\\ne0\\iff x-1\\ne1\\iff x\\ne2",
+          "reason": "The denominator also cannot vanish."
+        },
+        {
+          "math": "D=(1,2)\\cup(2,\\infty)",
+          "reason": "Combine strict positivity with the additional nonzero-denominator restriction."
+        }
+      ],
+      "conclusion": "The argument one is valid for a logarithm by itself, but its zero logarithm is invalid as a denominator."
+    },
+    {
+      "title": "Nested logarithms in both base directions",
+      "prompt": "Compare $\\ln(\\log_2(x+1))$ and $\\ln(\\log_{1/2}(x+1))$.",
+      "steps": [
+        {
+          "math": "\\log_2(x+1)>0\\iff x+1>1\\iff x>0",
+          "reason": "For base two, the inner logarithm must have argument greater than one to be positive."
+        },
+        {
+          "math": "D_1=(0,\\infty)",
+          "reason": "At x=0 the inner logarithm is zero, which the outer logarithm excludes."
+        },
+        {
+          "math": "\\log_{1/2}(x+1)>0\\iff0<x+1<1",
+          "reason": "For a fractional base, positive outputs occur between argument zero and one."
+        },
+        {
+          "math": "D_2=(-1,0)",
+          "reason": "Both endpoint arguments fail an operation, so both endpoints remain open."
+        }
+      ],
+      "conclusion": "The outer logarithm requires a strictly positive inner output. The inner base decides which arguments produce that output."
+    },
+    {
+      "title": "A root of a rational logarithm",
+      "prompt": "Find the domain of $\\sqrt{\\ln((x+1)/(x-1))}$.",
+      "steps": [
+        {
+          "math": "\\frac{x+1}{x-1}\\ge1,\\qquad x\\ne1",
+          "reason": "A nonnegative natural logarithm requires its complete argument to be at least one."
+        },
+        {
+          "math": "\\frac{x+1}{x-1}-1=\\frac2{x-1}\\ge0",
+          "reason": "Move one to the left while retaining the original denominator."
+        },
+        {
+          "math": "x>1\\Rightarrow D=(1,\\infty)",
+          "reason": "The numerator is positive and never zero. The quotient is nonnegative only when its denominator is positive."
+        }
+      ],
+      "conclusion": "No finite input makes the argument exactly one here. The pole at one stays excluded despite the non-strict logarithm-output condition."
+    },
+    {
+      "title": "Invert a signed shifted exponential",
+      "prompt": "Find the inverse of $F(t)=7-3\\,2^{(t-1)/2}$ and check its domain and a point.",
+      "steps": [
+        {
+          "math": "\\frac{7-y}{3}=2^{(t-1)/2}>0\\iff y<7",
+          "reason": "Isolate the positive exponential factor; the signed coefficient determines which side of the baseline is allowed."
+        },
+        {
+          "math": "\\log_2\\left(\\frac{7-y}{3}\\right)=\\frac{t-1}{2}",
+          "reason": "Apply the logarithm definition to recover the affine exponent."
+        },
+        {
+          "math": "G(y)=1+2\\log_2\\left(\\frac{7-y}{3}\\right),\\quad D_G=(-\\infty,7),\\quad R_G=\\mathbb R",
+          "reason": "Undo the exponent's scale and shift after taking the logarithm."
+        },
+        {
+          "math": "F(3)=1,\\qquad G(1)=1+2\\log_2(2)=3",
+          "reason": "Exchanging this exact point checks the inverse relationship."
+        }
+      ],
+      "conclusion": "The inverse accepts responses below 7. The boundary response 7 is excluded because it would give a zero logarithm argument."
+    },
+    {
+      "title": "Invert a natural exponential",
+      "prompt": "Invert $F(t)=4e^{-t/3}+2$ and check a natural-exponential point.",
+      "steps": [
+        {
+          "math": "\\frac{y-2}{4}=e^{-t/3}>0\\iff y>2",
+          "reason": "Isolate the positive factor and record the inherited inverse domain."
+        },
+        {
+          "math": "\\ln\\left(\\frac{y-2}{4}\\right)=-\\frac t3\\iff G(y)=-3\\ln\\left(\\frac{y-2}{4}\\right)",
+          "reason": "The natural logarithm recovers the exponent, then multiplication by -3 recovers t."
+        },
+        {
+          "math": "G(6)=0,\\qquad G(2+4/e)=-3\\ln(e^{-1})=3",
+          "reason": "Check the original zero-input anchor and a second exact symbolic point."
+        }
+      ],
+      "conclusion": "The inverse domain is (2,inf), its range is R, and its direction is decreasing."
+    },
+    {
+      "title": "Identical rounded inputs, different domains",
+      "prompt": "For $g(x)=\\log_{10}(x-2)$, compare the exact inputs 200001/100000, 2, and 199999/100000.",
+      "steps": [
+        {
+          "math": "\\frac{200001}{100000}-2=\\frac1{100000}=10^{-5}",
+          "reason": "Subtract the exact boundary before rounding the input display."
+        },
+        {
+          "math": "g\\left(\\frac{200001}{100000}\\right)=-5",
+          "reason": "The tiny positive argument gives a valid negative logarithm."
+        },
+        {
+          "math": "2-2=0,\\qquad\\frac{199999}{100000}-2=-\\frac1{100000}",
+          "reason": "The exact boundary and the point on its other side have zero and negative arguments."
+        },
+        {
+          "math": "D_g=(2,\\infty)",
+          "reason": "Only the first of these inputs belongs to the domain, even though all three display as 2.000 to three decimal places."
+        }
+      ],
+      "conclusion": "Rounded input displays do not determine exact logarithm-domain membership."
+    },
+    {
+      "title": "An operating inverse with attained endpoints",
+      "prompt": "The response $Y(t)=6-2(1/2)^t$ is authorized only for $0\\le t\\le2$. Here Y is the numerical response in volts and t is the numerical time in seconds. Find the operating inverse domain and range, then assess response Y=2.",
+      "steps": [
+        {
+          "math": "Y(0)=4,\\qquad Y(2)=6-\\frac12=\\frac{11}{2}",
+          "reason": "Evaluate both included original endpoints. This response increases as t increases."
+        },
+        {
+          "math": "D_{G,\\mathrm{operating}}=[4,11/2],\\qquad R_{G,\\mathrm{operating}}=[0,2]",
+          "reason": "Exchange the attained response interval and the original time interval. Included endpoints remain included."
+        },
+        {
+          "math": "G(y)=\\log_{1/2}\\left(\\frac{6-y}{2}\\right),\\qquad D_{G,\\mathrm{full}}=(-\\infty,6)",
+          "reason": "The full logarithmic formula accepts a larger mathematical input set."
+        },
+        {
+          "math": "G(2)=\\log_{1/2}(2)=-1\\notin[0,2]",
+          "reason": "The additional response gives a real inverse value outside the authorized time interval."
+        }
+      ],
+      "conclusion": "The operating inverse includes response endpoints 4 V and 11/2 V, but excludes response 2 V. Mathematical evaluability does not enlarge a supplied physical operating interval."
+    }
+  ],
+  "guided": {
+    "title": "Recover an input below a response boundary",
+    "setup": "The complete mathematical model is $F(t)=7-3\\,2^{(t-1)/2}$ for all real t. Write its inverse in the template $G(y)=A\\log_2(C(y-H))+K$. Determine the four coefficients, the full inverse domain, G(1), and G(F(-1)). Assess the exact inverse boundary y=7.",
+    "before": [
+      "Isolate the strictly positive factor: $(7-y)/3=2^{(t-1)/2}$.",
+      "Keep $(7-y)/3>0$ while undoing the exponent; an inverse input is an original output.",
+      "Use the logarithm definition, then undo the exponent's division by two and subtraction of one."
+    ],
+    "question": {
+      "id": "guided-log-inverse",
+      "familyId": "mth-log-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m05-l02",
+      "category": "conceptual",
+      "critical": true,
+      "parameters": {},
+      "prompt": "Complete the inverse coefficients and exact checks. Keep the negative inside coefficient and the excluded boundary.",
+      "fields": [
+        {
+          "id": "a",
+          "label": "Inverse outside coefficient A",
+          "kind": "rational",
+          "expected": "2",
+          "help": "Use an exact number or fraction."
+        },
+        {
+          "id": "c",
+          "label": "Inverse inside coefficient C",
+          "kind": "rational",
+          "expected": "-1/3",
+          "help": "Use an exact number or fraction."
+        },
+        {
+          "id": "h",
+          "label": "Inverse input shift H",
+          "kind": "rational",
+          "expected": "7",
+          "help": "Use an exact number or fraction."
+        },
+        {
+          "id": "k",
+          "label": "Inverse output shift K",
+          "kind": "rational",
+          "expected": "1",
+          "help": "Use an exact number or fraction."
+        },
+        {
+          "id": "domain",
+          "label": "Full inverse domain",
+          "kind": "intervals",
+          "expected": [
+            {
+              "lower": null,
+              "upper": "7",
+              "lowerClosed": false,
+              "upperClosed": false
+            }
+          ],
+          "help": "Use interval notation. The logarithm argument must be strictly positive."
+        },
+        {
+          "id": "probe",
+          "label": "Recovered original input G(1)",
+          "kind": "rational",
+          "expected": "3",
+          "help": "Use an exact number or fraction."
+        },
+        {
+          "id": "composition",
+          "label": "Exact G(F(-1))",
+          "kind": "rational",
+          "expected": "-1",
+          "help": "Use an exact number or fraction."
+        },
+        {
+          "id": "boundary",
+          "label": "What happens at the inverse input y = 7?",
+          "kind": "choice",
+          "correct": "undefined",
+          "options": [
+            {
+              "id": "zero",
+              "label": "The inverse equals zero",
+              "feedback": "A zero logarithm output occurs at argument one, not argument zero."
+            },
+            {
+              "id": "seven",
+              "label": "The inverse equals seven",
+              "feedback": "An inverse does not generally return its own input, and the logarithm must first be defined."
+            },
+            {
+              "id": "undefined",
+              "label": "The inverse is undefined over the reals",
+              "feedback": "The isolated factor becomes zero at y=7, so the real logarithm cannot be evaluated."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "The positive factor (7-y)/3 can be written as (-1/3)*(y-7).",
+        "The logarithm equals (t-1)/2; recover t by multiplying by two and adding one.",
+        "At response one, the positive factor is two. The composition G(F(t)) accepts every original real input t."
+      ],
+      "explanation": [
+        "The inverse is $G(y)=1+2\\log_2((-1/3)(y-7))$, so A=2, C=-1/3, H=7, and K=1.",
+        "Its full domain is $(-\\infty,7)$. The exact boundary is excluded because it produces a zero logarithm argument.",
+        "$G(1)=1+2\\log_2(2)=3$. Also $F(-1)=11/2$ and $G(11/2)=1+2\\log_2(1/2)=-1$.",
+        "The identity G(F(t))=t is valid on the original all-real domain. The other composition F(G(y))=y requires y<7."
+      ],
+      "answerSummary": "A=2, C=-1/3, H=7, K=1; domain (-inf,7); G(1)=3; G(F(-1))=-1; inverse undefined at y=7."
+    },
+    "after": "This guided exercise supplies part of the reasoning and awards no objective evidence. Explain the two different composition domains in your notes before trying the independent checkpoint."
+  },
+  "interaction": {
+    "kind": "logarithm-lab",
+    "prompt": "Predict an exponential's and its inverse's domains, then explore both composition orders. Compare exact points, reflected graphs, and a boundary input. Keep mathematical identities separate from rounded numerical displays.",
+    "cases": [
+      {
+        "title": "Increasing parent pair",
+        "model": {
+          "kind": "rational-base",
+          "base": "2",
+          "a": "1",
+          "rate": "1",
+          "h": "0",
+          "k": "0"
+        },
+        "tableInputs": [
+          "-1",
+          "0",
+          "1"
+        ],
+        "forwardInput": "3",
+        "inverseInput": "8"
+      },
+      {
+        "title": "Decreasing fractional-base pair",
+        "model": {
+          "kind": "rational-base",
+          "base": "1/3",
+          "a": "1",
+          "rate": "1",
+          "h": "0",
+          "k": "0"
+        },
+        "tableInputs": [
+          "-1",
+          "0",
+          "1"
+        ],
+        "forwardInput": "2",
+        "inverseInput": "1/9"
+      },
+      {
+        "title": "Shifted positive response",
+        "model": {
+          "kind": "rational-base",
+          "base": "2",
+          "a": "3",
+          "rate": "1",
+          "h": "1",
+          "k": "4"
+        },
+        "tableInputs": [
+          "-1",
+          "1",
+          "3"
+        ],
+        "forwardInput": "3",
+        "inverseInput": "10"
+      },
+      {
+        "title": "Negative exponential deviation",
+        "model": {
+          "kind": "rational-base",
+          "base": "2",
+          "a": "-2",
+          "rate": "1",
+          "h": "0",
+          "k": "5"
+        },
+        "tableInputs": [
+          "-1",
+          "0",
+          "1"
+        ],
+        "forwardInput": "2",
+        "inverseInput": "1"
+      },
+      {
+        "title": "Reversed and scaled input",
+        "model": {
+          "kind": "rational-base",
+          "base": "4",
+          "a": "1",
+          "rate": "-1/2",
+          "h": "2",
+          "k": "-1"
+        },
+        "tableInputs": [
+          "0",
+          "2",
+          "4"
+        ],
+        "forwardInput": "4",
+        "inverseInput": "3"
+      },
+      {
+        "title": "Natural exponential pair",
+        "model": {
+          "kind": "natural-base",
+          "a": "2",
+          "rate": "1/2",
+          "h": "0",
+          "k": "-3"
+        },
+        "tableInputs": [
+          "-2",
+          "0",
+          "2"
+        ],
+        "forwardInput": "2",
+        "inverseInput": "1"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "identify-parts"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "exponential-to-log"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "log-to-exponential"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "exact-integer"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "exact-reciprocal"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "fractional-exponent"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "fractional-base"
+    },
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "common-natural"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "linear-argument"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "reflected-argument"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "squared-argument"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "product-argument"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "rational-argument"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "canceled-hole"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "log-of-root"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "root-of-log"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "denominator-log"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "nested-log"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "increasing-parent"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "decreasing-parent"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "outer-reflection"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "inner-reflection"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "scaled-shifted"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "anchor-map"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "y-intercept"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "inverse-pair"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "invalid-argument"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "invalid-base"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "division-confusion"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "negative-output"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "boundary-inclusion"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "composition-domain"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "canceled-restriction"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "rounded-boundary"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "operating-window"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-log-inverse",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-log-domain",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-log-graph",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-log-audit",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "$\\log_b(A)=u$ means $b^u=A$. Require b>0, b!=1, and A>0. A valid logarithm output can be negative, zero, or positive.",
+    "Use known powers for exact values. Common logarithms use base ten under the stated convention, and natural logarithms use exact base e. Finite calculator decimals are approximations.",
+    "Inverse functions exchange points, domains, and ranges. The two composition orders preserve their different starting domains; simplification cannot restore an excluded input.",
+    "For $a\\log_b(c(x-h))+k$, solve c(x-h)>0, keep x=h excluded, combine both scale signs with the base direction, and map an anchor before looking for an intercept.",
+    "Apply every original argument, root, denominator, and nested-log condition. Keep original denominator holes after cancellation and distinguish strict from inclusive boundaries.",
+    "Exact mathematical domains, rounded displays, and supplied physical operating intervals have different roles. An operating inverse inherits the original attained response interval.",
+    "The 35 named practice variants cover the lesson's subtopics. Each four-item checkpoint samples one critical question from each family, so one passed form does not mean every variant was tested."
+  ],
+  "retrieval": "After a delay, rewrite log base 4 of 1/64 as a power and explain its negative output. Recover the inverse of F(t)=7-3*2^((t-1)/2), including its domain and an exact point. Find the original domain of ln(((x-1)*(x+2))/(x-1)), compare ln(sqrt(x-2)) with sqrt(ln(x-2)), and explain why an outside root can include a zero logarithm while a denominator or outer logarithm cannot. Finally exchange a closed operating interval with its attained response range. Redo the reasoning with new values rather than recalling only an answer.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 6.3: Logarithmic Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-3-logarithmic-functions",
+      "purpose": "Optional additional conversions, exact values, and common/natural logarithm notation. The app provides original instruction, worked examples, and practice."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 6.4: Graphs of Logarithmic Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-4-graphs-of-logarithmic-functions",
+      "purpose": "Optional graph and transformation examples. Apply positivity to the complete argument, and recheck direction after either inside or outside reflections."
+    }
+  ]
+}

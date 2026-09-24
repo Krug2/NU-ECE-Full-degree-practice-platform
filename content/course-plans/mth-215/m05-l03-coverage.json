@@ -1,0 +1,258 @@
+{
+  "lessonId": "m05-l03",
+  "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
+  "status": "draft",
+  "contentStages": 6,
+  "independentSubjectReview": "not yet performed",
+  "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
+  "coverage": [
+    {
+      "skill": "Preserve both values and allowed inputs",
+      "instruction": [
+        "Preserve both values and allowed inputs"
+      ],
+      "examples": [
+        "Equal on a shared domain is not full equivalence",
+        "An absolute value preserves both branches"
+      ],
+      "practice": [
+        "mth-log-rewrite:even-power",
+        "mth-log-rewrite:shifted-absolute"
+      ],
+      "independentCheck": "mth-log-rewrite:mixed",
+      "retrieval": "Give an input that distinguishes two domains, then repair the rewrite using an absolute value."
+    },
+    {
+      "skill": "Derive product and quotient rules",
+      "instruction": [
+        "Derive product and quotient rules"
+      ],
+      "examples": [
+        "A product becomes a sum of logarithms",
+        "A quotient keeps its order",
+        "Two negative factors cannot be split into real logs"
+      ],
+      "practice": [
+        "mth-log-rules:product",
+        "mth-log-rules:quotient",
+        "mth-log-rewrite:product-domain",
+        "mth-log-rewrite:quotient-domain"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Derive a product and a quotient rule from exponent arithmetic, then test a pair of negative factors against the hypotheses."
+    },
+    {
+      "skill": "Move powers and roots with their conditions",
+      "instruction": [
+        "Move powers and roots with their conditions"
+      ],
+      "examples": [
+        "A negative power is a signed multiplier",
+        "A root contributes a reciprocal exponent"
+      ],
+      "practice": [
+        "mth-log-rules:power",
+        "mth-log-rules:root"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Derive the power identity and apply it to one negative exponent and one positive root."
+    },
+    {
+      "skill": "Expand even powers over the full real domain",
+      "instruction": [
+        "Expand even powers over the full real domain"
+      ],
+      "examples": [
+        "Expand a quotient of even powers",
+        "An odd power keeps a positivity requirement"
+      ],
+      "practice": [
+        "mth-log-rules:expand",
+        "mth-log-rules:power",
+        "mth-log-rewrite:even-power",
+        "mth-log-rewrite:shifted-absolute"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Expand a quotient with two different even powers and explain every excluded input and every absolute value."
+    },
+    {
+      "skill": "Condense on the original common domain",
+      "instruction": [
+        "Condense on the original common domain"
+      ],
+      "examples": [
+        "Condense coefficients into a single rational argument",
+        "The condensed formula can accept extra inputs"
+      ],
+      "practice": [
+        "mth-log-rules:condense",
+        "mth-log-rewrite:product-domain",
+        "mth-log-rewrite:quotient-domain"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Condense a variable expression, then inspect an extra input accepted by the new formula but excluded by the original logarithms."
+    },
+    {
+      "skill": "Keep restrictions after cancellation and multiplication by zero",
+      "instruction": [
+        "Keep restrictions after cancellation and multiplication by zero"
+      ],
+      "examples": [
+        "Cancellation keeps an excluded point",
+        "A zero multiplier does not define a logarithm"
+      ],
+      "practice": [
+        "mth-log-rewrite:canceled-hole",
+        "mth-log-rewrite:zero-coefficient"
+      ],
+      "independentCheck": "mth-log-rewrite:mixed",
+      "retrieval": "Simplify a canceled factor and a zero coefficient while retaining the original domain in each result."
+    },
+    {
+      "skill": "Disprove false sum rules and repair mixed bases",
+      "instruction": [
+        "Disprove false sum rules and repair mixed bases"
+      ],
+      "examples": [
+        "A counterexample to a logarithm sum rule",
+        "An accidental match is not an identity",
+        "Convert a different base before combining"
+      ],
+      "practice": [
+        "mth-log-rewrite:false-sum",
+        "mth-log-rewrite:mixed-bases"
+      ],
+      "independentCheck": "mth-log-rewrite:mixed",
+      "retrieval": "Give both an exact counterexample and an accidental agreement for a false sum rule, then repair a different-base combination."
+    },
+    {
+      "skill": "Change base and separate exact from approximate results",
+      "instruction": [
+        "Change base and separate exact from approximate results"
+      ],
+      "examples": [
+        "Keep an exact quotient and a separate decimal",
+        "A reciprocal base changes the sign"
+      ],
+      "practice": [
+        "mth-log-rules:change-base",
+        "mth-log-rules:fractional-base"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Derive the change-of-base quotient, compute a reciprocal-base sign, and separate an exact expression from its rounded report."
+    },
+    {
+      "skill": "Solve common and related-base exponentials",
+      "instruction": [
+        "Solve common and related-base exponentials"
+      ],
+      "examples": [
+        "Use a common reciprocal base",
+        "Rewrite related bases before equating exponents"
+      ],
+      "practice": [
+        "mth-exp-equation:common-base",
+        "mth-exp-equation:related-bases"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Solve a reciprocal-base equality and a related-base equality, checking the complete original exponents."
+    },
+    {
+      "skill": "Isolate a shifted exponential before taking logarithms",
+      "instruction": [
+        "Isolate a shifted exponential before taking logarithms"
+      ],
+      "examples": [
+        "Isolate a shifted exponential with a negative coefficient",
+        "A zero exponential target has no solution",
+        "A negative exponential target has no solution"
+      ],
+      "practice": [
+        "mth-exp-equation:shifted-factor",
+        "mth-exp-equation:nonpositive-target"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Isolate a shifted exponential with a negative scale, then explain separate zero-target and negative-target failures."
+    },
+    {
+      "skill": "Solve natural and different-base exponentials",
+      "instruction": [
+        "Solve natural and different-base exponentials"
+      ],
+      "examples": [
+        "Solve an equation with the natural base",
+        "Take logarithms when the bases differ"
+      ],
+      "practice": [
+        "mth-exp-equation:natural-base",
+        "mth-exp-equation:different-bases"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Solve one natural exponential and one different-base equality, keeping the coefficient and constant logarithms exact."
+    },
+    {
+      "skill": "Recognize exponential identities and contradictions",
+      "instruction": [
+        "Recognize exponential identities and contradictions"
+      ],
+      "examples": [
+        "An exponential identity keeps every real input",
+        "Canceled x terms can leave a contradiction"
+      ],
+      "practice": [
+        "mth-exp-equation:identity-or-empty"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Classify one identity and one contradiction after the x terms disappear, stating the complete original solution set."
+    },
+    {
+      "skill": "Use a quadratic substitution with u greater than zero",
+      "instruction": [
+        "Use a quadratic substitution with u greater than zero"
+      ],
+      "examples": [
+        "Two positive substitution roots give two solutions",
+        "Reject a negative substitution root and keep the positive one",
+        "Zero and negative substitution candidates can leave no solution",
+        "A repeated positive root gives one distinct input"
+      ],
+      "practice": [
+        "mth-exp-equation:quadratic-two",
+        "mth-exp-equation:quadratic-filter"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "State the range of u=b^x before solving, then classify two positive roots, one retained root, no retained roots and a repeated positive root."
+    },
+    {
+      "skill": "Convert a single logarithm into an exponential statement",
+      "instruction": [
+        "Convert a single logarithm into an exponential statement"
+      ],
+      "examples": [
+        "Solve a reciprocal-base logarithm with a reflected argument",
+        "Keep a natural-base solution exact"
+      ],
+      "practice": [
+        "mth-log-equation:single"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "State the original affine argument domain, convert a logarithm to an exponential statement, and verify an exact natural-base solution."
+    },
+    {
+      "skill": "Equate same-base logarithms on their common domain",
+      "instruction": [
+        "Equate same-base logarithms on their common domain"
+      ],
+      "examples": [
+        "Equal positive arguments verify a logarithmic solution",
+        "Equal negative arguments do not define real logarithms"
+      ],
+      "practice": [
+        "mth-log-equation:equal-arguments",
+        "mth-log-equation:excluded-root"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Solve an equality of logarithms and check both original arguments, including a case where the algebraic candidate must be rejected."
+    }
+  ]
+}

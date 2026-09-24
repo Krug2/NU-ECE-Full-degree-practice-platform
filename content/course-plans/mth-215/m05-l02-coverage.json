@@ -1,0 +1,269 @@
+{
+  "lessonId": "m05-l02",
+  "objective": "Convert between exponential and logarithmic statements and determine the domain of a logarithmic expression.",
+  "independentSubjectReview": "not yet performed",
+  "assessmentPolicy": "Thirty-five named practice variants cover the planned subtopics. The common/natural variant includes independent numerical evaluation, and the operating-window audit retains attained inverse endpoints. Four mixed critical checkpoint items sample the four families. All four selected items must pass without assistance; one checkpoint does not claim to test every variant.",
+  "coverage": [
+    {
+      "skill": "A logarithm asks for an exponent",
+      "instruction": [
+        "A logarithm asks for an exponent"
+      ],
+      "examples": [
+        "Identify the three roles",
+        "Convert a fractional exponent"
+      ],
+      "practice": [
+        "mth-log-inverse:identify-parts",
+        "mth-log-inverse:exponential-to-log",
+        "mth-log-inverse:log-to-exponential",
+        "mth-log-audit:division-confusion"
+      ],
+      "independentCheck": "mth-log-inverse:mixed",
+      "retrieval": "Recover all three roles and disprove a quotient interpretation with a reciprocal argument."
+    },
+    {
+      "skill": "Check the base and the complete argument",
+      "instruction": [
+        "Check the base and the complete argument"
+      ],
+      "examples": [
+        "Audit proposed bases",
+        "Separate argument sign from output sign"
+      ],
+      "practice": [
+        "mth-log-audit:invalid-argument",
+        "mth-log-audit:invalid-base",
+        "mth-log-audit:negative-output"
+      ],
+      "independentCheck": "mth-log-audit:mixed",
+      "retrieval": "Check a base and argument separately and distinguish negative output from negative argument."
+    },
+    {
+      "skill": "Recover exact values from known powers",
+      "instruction": [
+        "Recover exact values from known powers"
+      ],
+      "examples": [
+        "Zero and unit logarithms",
+        "Two exact fractional logarithms",
+        "A fractional base with a negative output",
+        "Keep a root argument exact"
+      ],
+      "practice": [
+        "mth-log-inverse:exact-integer",
+        "mth-log-inverse:exact-reciprocal",
+        "mth-log-inverse:fractional-exponent",
+        "mth-log-inverse:fractional-base"
+      ],
+      "independentCheck": "mth-log-inverse:mixed",
+      "retrieval": "Reconstruct exact positive-base powers, including reciprocal and root arguments."
+    },
+    {
+      "skill": "Common logarithms, natural logarithms, and numerical work",
+      "instruction": [
+        "Common logarithms, natural logarithms, and numerical work"
+      ],
+      "examples": [
+        "Common and natural notation",
+        "An exact logarithm and a decimal report"
+      ],
+      "practice": [
+        "mth-log-inverse:common-natural"
+      ],
+      "independentCheck": "mth-log-inverse:mixed",
+      "retrieval": "State both bases, recover exact exponents, and give a correctly rounded numerical logarithm."
+    },
+    {
+      "skill": "The two inverse identities start on different domains",
+      "instruction": [
+        "The two inverse identities start on different domains"
+      ],
+      "examples": [
+        "Compare the two composition domains"
+      ],
+      "practice": [
+        "mth-log-audit:composition-domain"
+      ],
+      "independentCheck": "mth-log-audit:mixed",
+      "retrieval": "Explain why the two inverse identities have different starting domains."
+    },
+    {
+      "skill": "Reflect points, domains, ranges, and asymptotes",
+      "instruction": [
+        "Reflect points, domains, ranges, and asymptotes"
+      ],
+      "examples": [
+        "Exchange three graph points",
+        "A decreasing parent logarithm"
+      ],
+      "practice": [
+        "mth-log-graph:increasing-parent",
+        "mth-log-graph:decreasing-parent"
+      ],
+      "independentCheck": "mth-log-graph:mixed",
+      "retrieval": "Exchange three points and the open asymptote boundary on equal coordinate scales."
+    },
+    {
+      "skill": "The transformed logarithm keeps a strict input boundary",
+      "instruction": [
+        "The transformed logarithm keeps a strict input boundary"
+      ],
+      "examples": [
+        "A shifted boundary and all-real range"
+      ],
+      "practice": [
+        "mth-log-graph:scaled-shifted",
+        "mth-log-audit:boundary-inclusion"
+      ],
+      "independentCheck": "mth-log-graph:mixed",
+      "retrieval": "Recover the strict domain boundary and all-real output range from the transformed formula."
+    },
+    {
+      "skill": "Combine base direction with both reflections",
+      "instruction": [
+        "Combine base direction with both reflections"
+      ],
+      "examples": [
+        "A shifted boundary and all-real range",
+        "A fractional base and an inside reflection"
+      ],
+      "practice": [
+        "mth-log-graph:outer-reflection",
+        "mth-log-graph:inner-reflection",
+        "mth-log-graph:scaled-shifted"
+      ],
+      "independentCheck": "mth-log-graph:mixed",
+      "retrieval": "Track base direction, both reflections, the side of approach, and the unbounded input end."
+    },
+    {
+      "skill": "Map anchors before deciding whether an intercept exists",
+      "instruction": [
+        "Map anchors before deciding whether an intercept exists"
+      ],
+      "examples": [
+        "Map a scaled anchor",
+        "Compute an actual y-intercept",
+        "Recognize a missing y-intercept"
+      ],
+      "practice": [
+        "mth-log-graph:anchor-map",
+        "mth-log-graph:y-intercept"
+      ],
+      "independentCheck": "mth-log-graph:mixed",
+      "retrieval": "Map an argument-one anchor and check zero-input membership before claiming an intercept."
+    },
+    {
+      "skill": "Solve positivity for the complete argument",
+      "instruction": [
+        "Solve positivity for the complete argument"
+      ],
+      "examples": [
+        "Allow a negative input coordinate",
+        "Squared, all-real, and empty domains"
+      ],
+      "practice": [
+        "mth-log-domain:linear-argument",
+        "mth-log-domain:reflected-argument",
+        "mth-log-domain:squared-argument"
+      ],
+      "independentCheck": "mth-log-domain:mixed",
+      "retrieval": "Solve positivity of the complete argument, including disconnected, all-real, and empty sets."
+    },
+    {
+      "skill": "Use sign charts for products and rational arguments",
+      "instruction": [
+        "Use sign charts for products and rational arguments"
+      ],
+      "examples": [
+        "A product argument sign chart",
+        "A rational argument sign chart"
+      ],
+      "practice": [
+        "mth-log-domain:product-argument",
+        "mth-log-domain:rational-argument"
+      ],
+      "independentCheck": "mth-log-domain:mixed",
+      "retrieval": "Build a sign chart retaining every numerator zero and original denominator exclusion."
+    },
+    {
+      "skill": "Cancellation preserves the original hole",
+      "instruction": [
+        "Cancellation preserves the original hole"
+      ],
+      "examples": [
+        "A canceled factor leaves a hole"
+      ],
+      "practice": [
+        "mth-log-domain:canceled-hole",
+        "mth-log-audit:canceled-restriction"
+      ],
+      "independentCheck": "mth-log-audit:mixed",
+      "retrieval": "Show why a separately simplified value does not fill an original hole."
+    },
+    {
+      "skill": "A logarithm of a root differs from a root of a logarithm",
+      "instruction": [
+        "A logarithm of a root differs from a root of a logarithm"
+      ],
+      "examples": [
+        "Reverse the root and logarithm",
+        "An outside root with a fractional log base",
+        "A root of a rational logarithm"
+      ],
+      "practice": [
+        "mth-log-domain:log-of-root",
+        "mth-log-domain:root-of-log"
+      ],
+      "independentCheck": "mth-log-domain:mixed",
+      "retrieval": "Contrast the conditions for log of root and root of log for both base directions."
+    },
+    {
+      "skill": "Denominators and nested logarithms add another condition",
+      "instruction": [
+        "Denominators and nested logarithms add another condition"
+      ],
+      "examples": [
+        "A logarithm in the denominator",
+        "Nested logarithms in both base directions"
+      ],
+      "practice": [
+        "mth-log-domain:denominator-log",
+        "mth-log-domain:nested-log"
+      ],
+      "independentCheck": "mth-log-domain:mixed",
+      "retrieval": "Explain why argument one is removed by a denominator or outer logarithm."
+    },
+    {
+      "skill": "Invert a shifted exponential in the correct order",
+      "instruction": [
+        "Invert a shifted exponential in the correct order"
+      ],
+      "examples": [
+        "Invert a signed shifted exponential",
+        "Invert a natural exponential"
+      ],
+      "practice": [
+        "mth-log-graph:inverse-pair"
+      ],
+      "independentCheck": "mth-log-graph:mixed",
+      "retrieval": "Isolate the positive factor before applying a logarithm and inherit the original range."
+    },
+    {
+      "skill": "Keep exact boundaries and operating restrictions",
+      "instruction": [
+        "Keep exact boundaries and operating restrictions"
+      ],
+      "examples": [
+        "Identical rounded inputs, different domains",
+        "An operating inverse with attained endpoints"
+      ],
+      "practice": [
+        "mth-log-audit:rounded-boundary",
+        "mth-log-audit:operating-window"
+      ],
+      "independentCheck": "mth-log-audit:mixed",
+      "retrieval": "Keep exact boundary membership separate from displays and from closed operating restrictions."
+    }
+  ]
+}

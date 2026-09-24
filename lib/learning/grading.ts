@@ -6,6 +6,7 @@ import { checkPolynomialForm, parsePolynomial } from "./polynomial";
 import { checkRationalExpression } from "./rational-expression";
 import { parsePiMultiple } from "./angles";
 import { equalRootLists,parseRootList } from "./root-list";
+import { equalLogarithmic, equalLogarithmicSets, parseLogarithmic, parseLogarithmicSet } from "./logarithmic-number";
 
 export type FieldResult = { correct: boolean; valid: boolean; message: string };
 export function gradeField(field: AnswerField, input: string): FieldResult {
@@ -15,6 +16,14 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     return choice ? { correct: choice.id === field.correct, valid: true, message: choice.feedback } : { correct: false, valid: false, message: "Choose one of the available answers." };
   }
   try {
+    if (field.kind === "logarithmic") {
+      const correct=equalLogarithmic(parseLogarithmic(input),parseLogarithmic(field.expected));
+      return {correct,valid:true,message:correct?"This is an equivalent exact value.":"Keep logarithms and exponentials exact. Check the base, signs and complete expression; a rounded decimal does not replace an exact answer."};
+    }
+    if (field.kind === "logarithmic-roots") {
+      const correct=equalLogarithmicSets(parseLogarithmicSet(input),field.expected.map(parseLogarithmic));
+      return {correct,valid:true,message:correct?"The complete set of exact real solutions is correct.":"Include every real solution and no extras. Retain exact logarithms or exponentials and check every original restriction."};
+    }
     if (field.kind === "pi-multiple") {
       const correct = equalRational(parsePiMultiple(input), parseRational(field.expected));
       return { correct, valid: true, message: correct ? "This is the correct exact multiple of pi." : "Keep pi exact, check its coefficient, and use the labeled unit." };
