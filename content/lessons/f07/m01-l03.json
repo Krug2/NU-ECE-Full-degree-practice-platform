@@ -235,7 +235,7 @@
   "interaction": {
     "kind": "refresher-vector-lab",
     "mode": "dot",
-    "prompt": "Change planar vectors and predict the dot product and projection. Reveal the projected arrow and perpendicular remainder. Test a negative projection, orthogonality, and a zero target with an explicit invalid-state message."
+    "prompt": "Change the planar vectors and predict the dot product and projection before revealing the diagram and table. Try a negative projection, perpendicular inputs, and a zero target; explain why the last case is undefined."
   },
   "practice": [
     {
