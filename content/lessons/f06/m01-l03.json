@@ -1,0 +1,321 @@
+{
+  "id": "m01-l03",
+  "courseId": "f06",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Dimensional checks and model parameters",
+  "objective": "Determine mechanical and electrical dimensions, check every term and function argument in an equation, and infer parameter units while recognizing what dimensional analysis cannot prove.",
+  "why": "Dimensional analysis can reject many impossible formulas before you insert numbers. It also helps you recover the units of an unfamiliar coefficient and recognize when an apparently reasonable equation still needs physical justification.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "SI quantities, prefixes, and engineering notation"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Conversions with powers, rates, and offsets"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Use dimensions M, L, T, and I for mass, length, time, and electric current in this lesson. Multiply quantities by adding dimension exponents; divide by subtracting them. Terms joined by addition must have the same dimensions, and both sides of an equation must agree.",
+        "Inputs to exponentials and logarithms must be dimensionless; logarithm inputs must also be positive in the real setting. Trigonometric phase is a dimensionless angle, commonly expressed in radians. A dimensionally consistent equation can still be physically wrong."
+      ]
+    },
+    {
+      "heading": "Dimensions describe the kind of quantity",
+      "paragraphs": [
+        "Metres and centimetres are different units of the same length dimension L. Dimensional reasoning deliberately ignores their conversion factors. Thus a calculation can have correct dimensions and still have a factor-of-100 error. Use both the conversion checks from the previous lesson and a dimensional check.",
+        "Write an exponent vector in a fixed order, here M,L,T,I. Velocity has dimensions $(0,1,-1,0)$ because it is length per time. Acceleration divides velocity by time once more. A negative exponent means the corresponding dimension occurs in a denominator; a zero means it cancels."
+      ]
+    },
+    {
+      "heading": "Build electrical dimensions from supplied relationships",
+      "paragraphs": [
+        "Force follows mass times acceleration, energy follows force times displacement, and power follows energy divided by time. This gives $[F]=MLT^{-2}$, $[E]=ML^2T^{-2}$, and $[P]=ML^2T^{-3}$. Square brackets here mean dimensions rather than an interval.",
+        "Charge is current times time, so $[Q]=IT$. From power P=VI, voltage has dimensions $ML^2T^{-3}I^{-1}$. Resistance from V=IR therefore has dimensions $ML^2T^{-3}I^{-2}$. Capacitance from Q=CV has dimensions $M^{-1}L^{-2}T^4I^2$. The assessment supplies these relationships so you can derive dimensions rather than memorize a list."
+      ]
+    },
+    {
+      "heading": "Check every term and every function input",
+      "paragraphs": [
+        "In a sum, every term must be compatible before addition makes sense. The expression vt+(1/2)at² combines two lengths. By contrast, vt² and at have dimensions LT and L/T, so they cannot be added as a displacement. Matching only one term is insufficient.",
+        "For an exponential decay exp(-t/τ), the exponent is dimensionless when τ has time dimensions. An expression exp(-t) with t as a physical time lacks a specified time scale. Likewise, ln(P/P0) has a dimensionless argument when both are powers, but it also requires P/P0>0. Dimensional consistency never replaces a domain check."
+      ]
+    },
+    {
+      "heading": "Infer a parameter's unit from its job",
+      "paragraphs": [
+        "If x=a0+a1t+a2t² is a displacement model, then each product must be a length: a0 uses m, a1 uses m/s, and a2 uses m/s². Coefficients in a polynomial do not all share the output unit. Work backward from each complete term.",
+        "For sin(ωt+φ), ω is conventionally reported in rad/s and φ in rad. The radian is dimensionless in SI, but retaining its name helps distinguish angle and cycles. Frequency f in cycles per second and angular frequency ω differ by 2π. Dimensions alone cannot determine that numerical factor."
+      ]
+    },
+    {
+      "heading": "A passed check is necessary evidence, not a derivation",
+      "paragraphs": [
+        "Both x=vt and x=2vt have displacement dimensions. The appropriate relation depends on the physical situation, definitions, and assumptions. Dimensional analysis cannot determine an arbitrary dimensionless coefficient or prove that a model is valid over a particular range.",
+        "Use a consistent routine: identify quantities, rewrite each term using base dimensions, compare exponents, inspect function arguments, then check physical assumptions and a simple limiting case. If first-time physics is needed, use the full physics course and the free introductory section linked below."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Derive force dimensions",
+      "prompt": "Use F=ma with acceleration as velocity per time.",
+      "steps": [
+        {
+          "math": "[a]=\\frac{L/T}{T}=LT^{-2}",
+          "reason": "An acceleration divides a velocity by a time."
+        },
+        {
+          "math": "[F]=M(LT^{-2})=MLT^{-2}",
+          "reason": "Multiply by mass and combine exponents."
+        }
+      ],
+      "conclusion": "The force exponents in M,L,T,I order are 1,1,-2,0."
+    },
+    {
+      "title": "Derive voltage dimensions",
+      "prompt": "Use P=E/t, E=Fℓ, and P=VI.",
+      "steps": [
+        {
+          "math": "[P]=\\frac{(MLT^{-2})L}{T}=ML^2T^{-3}",
+          "reason": "Build power from mechanical quantities."
+        },
+        {
+          "math": "[V]=[P]/I=ML^2T^{-3}I^{-1}",
+          "reason": "Voltage is power per current in the supplied relationship."
+        }
+      ],
+      "conclusion": "A volt can be expressed as kg m² s^-3 A^-1."
+    },
+    {
+      "title": "Derive resistance dimensions",
+      "prompt": "Use R=V/I.",
+      "steps": [
+        {
+          "math": "[R]=\\frac{ML^2T^{-3}I^{-1}}{I}",
+          "reason": "Insert the voltage dimension derived above."
+        },
+        {
+          "math": "[R]=ML^2T^{-3}I^{-2}",
+          "reason": "Dividing by current subtracts one more from its exponent."
+        }
+      ],
+      "conclusion": "Resistance has current exponent -2, not -1."
+    },
+    {
+      "title": "Audit an entire displacement equation",
+      "prompt": "Compare x=vt+(1/2)at² with x=vt²+at.",
+      "steps": [
+        {
+          "math": "[vt]=L,\\qquad[at^2]=L",
+          "reason": "Both terms in the first candidate are lengths."
+        },
+        {
+          "math": "[vt^2]=LT,\\qquad[at]=LT^{-1}",
+          "reason": "The second candidate mixes incompatible dimensions."
+        },
+        {
+          "math": "L+L\\text{ is compatible; }LT+LT^{-1}\\text{ is not}",
+          "reason": "Addition cannot repair incompatible units."
+        }
+      ],
+      "conclusion": "The first equation passes this necessary check. Its physical assumptions still matter."
+    },
+    {
+      "title": "Recover a decay parameter's units",
+      "prompt": "Compare A exp(-t/τ) with A exp(-kt).",
+      "steps": [
+        {
+          "math": "[t/\\tau]=1\\ \\Rightarrow\\ [\\tau]=T",
+          "reason": "A ratio of times is dimensionless."
+        },
+        {
+          "math": "[kt]=1\\ \\Rightarrow\\ [k]=T^{-1}",
+          "reason": "A coefficient multiplying time needs inverse-time dimensions."
+        }
+      ],
+      "conclusion": "The time constant has time units; the exponential rate has inverse-time units."
+    },
+    {
+      "title": "Infer coefficient units without claiming proof",
+      "prompt": "For x=a0+a1t+a2t² in metres and seconds, find coefficient units. Does x=2vt necessarily describe the motion?",
+      "steps": [
+        {
+          "math": "[a_0]=L,\\quad[a_1]=LT^{-1},\\quad[a_2]=LT^{-2}",
+          "reason": "Each complete term must have the output dimension."
+        },
+        {
+          "math": "[2vt]=1(LT^{-1})T=L",
+          "reason": "A dimensionless numerical coefficient does not affect the test."
+        }
+      ],
+      "conclusion": "Use m, m/s, and m/s² for the polynomial coefficients. The second equation passes dimensions but needs a separate physical argument."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Use P=VI, V=IR, and mechanical power dimensions ML²T^-3. Then inspect exp(-t/τ).",
+    "before": [
+      "Divide power by current to obtain voltage dimensions, and divide once more for resistance.",
+      "The exponential input must have no remaining physical dimension."
+    ],
+    "question": {
+      "id": "f06-l03-guided",
+      "familyId": "guided-f06-l03",
+      "familyVersion": 1,
+      "courseId": "f06",
+      "objectiveId": "m01-l03",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the current exponent in resistance dimensions and the time exponent of τ in exp(-t/τ).",
+      "fields": [
+        {
+          "id": "current",
+          "kind": "rational",
+          "label": "Current exponent in resistance",
+          "expected": "-2",
+          "unit": ""
+        },
+        {
+          "id": "time",
+          "kind": "rational",
+          "label": "Time exponent of the time constant",
+          "expected": "1",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "The exponential input must have no remaining physical dimension.",
+        "Resistance has dimensions ML²T^-3 I^-2."
+      ],
+      "explanation": [
+        "Resistance has dimensions ML²T^-3 I^-2.",
+        "The ratio t/τ is dimensionless only when τ has time dimensions T."
+      ],
+      "answerSummary": "Resistance has dimensions ML²T^-3 I^-2. The ratio t/τ is dimensionless only when τ has time dimensions T."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-measurement-lab",
+    "mode": "dimensions",
+    "prompt": "Choose powers p,q in v^p t^q and a dimensionless coefficient. Predict length/time exponents and whether the expression can represent length. Compare the term-dimension table and explain why changing the coefficient preserves dimensions."
+  },
+  "practice": [
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "velocity"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "acceleration"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "force"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "energy"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "power"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "charge"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "voltage"
+    },
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "resistance"
+    },
+    {
+      "familyId": "f06-dim-equation",
+      "variant": "consistent"
+    },
+    {
+      "familyId": "f06-dim-equation",
+      "variant": "inconsistent"
+    },
+    {
+      "familyId": "f06-dim-equation",
+      "variant": "coefficient"
+    },
+    {
+      "familyId": "f06-dim-parameter",
+      "variant": "polynomial"
+    },
+    {
+      "familyId": "f06-dim-parameter",
+      "variant": "exponential"
+    },
+    {
+      "familyId": "f06-dim-parameter",
+      "variant": "oscillation"
+    },
+    {
+      "familyId": "f06-dim-argument",
+      "variant": "log"
+    },
+    {
+      "familyId": "f06-dim-argument",
+      "variant": "exp"
+    },
+    {
+      "familyId": "f06-dim-argument",
+      "variant": "trig"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f06-dim-expression",
+      "variant": "electrical"
+    },
+    {
+      "familyId": "f06-dim-equation",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f06-dim-parameter",
+      "variant": "exponential"
+    },
+    {
+      "familyId": "f06-dim-argument",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "Track base-dimension exponents through every product, quotient, and term.",
+    "Function arguments must be dimensionless, with their mathematical domains checked separately.",
+    "Dimensional consistency cannot determine dimensionless coefficients or establish physical validity."
+  ],
+  "retrieval": "Derive the dimensions of capacitance from C=Q/V. Then explain why sin(2πft) and sin(ft) pass the same dimensional check even though only one uses frequency in cycles per second as written.",
+  "readings": [
+    {
+      "title": "OpenStax University Physics Volume 1 · 1.4: Dimensional Analysis",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 4.1 and 4.2: SI base and derived units",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 7.1, 7.2, 7.7, 7.9: Expressing values, uncertainty notation, and choosing prefixes",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    }
+  ]
+}
