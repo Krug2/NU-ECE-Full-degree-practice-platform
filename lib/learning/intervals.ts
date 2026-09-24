@@ -1,14 +1,15 @@
-import { formatRational, parseRational, type Rational } from "./rational";
+import { formatExact,type ExactNumber } from "./exact-number";
+import { compareRealExact,parseRealEndpoint } from "./exact-order";
 
 export type Interval = { lower: string | null; upper: string | null; lowerClosed: boolean; upperClosed: boolean };
-type ParsedInterval = { lower: Rational | null; upper: Rational | null; lowerClosed: boolean; upperClosed: boolean };
-const compare=(a:Rational,b:Rational)=>{const delta=a.numerator*b.denominator-b.numerator*a.denominator;return delta<0n?-1:delta>0n?1:0;};
+type ParsedInterval = { lower: ExactNumber | null; upper: ExactNumber | null; lowerClosed: boolean; upperClosed: boolean };
+const compare=compareRealExact;
 
 export function normalizeIntervals(intervals:Interval[]):Interval[] {
   if(intervals.length>8)throw new Error("Use at most eight intervals.");
   const parsed:ParsedInterval[]=intervals.map(item=>{
     if((item.lower===null&&item.lowerClosed)||(item.upper===null&&item.upperClosed))throw new Error("Infinity always uses an open endpoint.");
-    const lower=item.lower===null?null:parseRational(item.lower),upper=item.upper===null?null:parseRational(item.upper);
+    const lower=item.lower===null?null:parseRealEndpoint(item.lower),upper=item.upper===null?null:parseRealEndpoint(item.upper);
     if(lower&&upper&&compare(lower,upper)>0)throw new Error("Put the smaller endpoint first.");
     return {...item,lower,upper};
   }).filter(item=>!(item.lower&&item.upper&&compare(item.lower,item.upper)===0&&!(item.lowerClosed&&item.upperClosed)));
@@ -25,7 +26,7 @@ export function normalizeIntervals(intervals:Interval[]):Interval[] {
       else if(compare(next.upper,last.upper)===0)last.upperClosed ||= next.upperClosed;
     }else merged.push({...next});
   }
-  return merged.map(item=>({...item,lower:item.lower===null?null:formatRational(item.lower),upper:item.upper===null?null:formatRational(item.upper)}));
+  return merged.map(item=>({...item,lower:item.lower===null?null:formatExact(item.lower),upper:item.upper===null?null:formatExact(item.upper)}));
 }
 
 export function parseIntervals(input:string):Interval[] {

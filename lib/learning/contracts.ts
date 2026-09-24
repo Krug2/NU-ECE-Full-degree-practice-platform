@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { parseRational } from "./rational";
 import { normalizeIntervals } from "./intervals";
+import { parseRealEndpoint } from "./exact-order";
 import { equalExact, parseExact, realExact } from "./exact-number";
 import { degree, parsePolynomial } from "./polynomial";
 import { commonFactorDegree, parseRationalExpression } from "./rational-expression";
@@ -19,6 +20,7 @@ const text = z.string().min(1).max(6000);
 const unique = (items: string[]) => new Set(items).size === items.length;
 const rational = z.string().max(200).refine(value => { try { parseRational(value); return true; } catch { return false; } }, "Invalid exact number");
 const exact = z.string().max(200).refine(value => { try { parseExact(value); return true; } catch { return false; } }, "Invalid radical or complex number");
+const endpoint = z.string().max(200).refine(value => { try { parseRealEndpoint(value); return true; } catch { return false; } }, "Invalid real interval endpoint");
 const polynomial = z.string().max(200).refine(value => { try { parsePolynomial(value); return true; } catch { return false; } }, "Invalid polynomial");
 const fieldBase = { id, label: text, help: z.string().max(500).default("") };
 const choiceField = z.object({
@@ -32,7 +34,7 @@ const numericField = z.object({
   absoluteTolerance: z.number().positive(), relativeTolerance: z.number().min(0).max(.1),
   unit: z.string().max(60).default(""),
 }).strict();
-const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:rational.nullable(),upper:rational.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
+const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:endpoint.nullable(),upper:endpoint.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
   .refine(field=>{try{normalizeIntervals(field.expected);return true;}catch{return false;}},"Invalid interval key");
 const exactField = z.object({ ...fieldBase, kind: z.literal("exact"), expected: exact, unit: z.string().max(60).default("") }).strict();
 const piField = z.object({ ...fieldBase, kind: z.literal("pi-multiple"), expected: rational, unit: z.string().max(60).default("") }).strict();
