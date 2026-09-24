@@ -6,6 +6,8 @@ import { refresherPath } from "@/lib/learning/refreshers/catalog";
 import { RefresherWorkspace } from "@/components/learning/refresher-workspace";
 import { practicalPack,practicalPath,practicalLessons } from "@/lib/learning/refreshers/practical-catalog";
 import { PracticalWorkspace } from "@/components/learning/practical-workspace";
+import { Phs231AssessmentPanel } from "@/components/learning/phs-231-assessment-panel";
+import { phs231Assessments } from "@/lib/learning/courses/phs-231-assessments";
 
 export function generateStaticParams() { return courses.map(course => ({ id: course.id })); }
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
@@ -22,5 +24,6 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   const lessonVersions=Object.fromEntries(lessons.filter(lesson=>lesson.courseId===id).map(lesson=>[lesson.id,lesson.version]));
   const path=refresherPath(id);
   if(course.group==="refresher"&&pack&&path) return <RefresherWorkspace course={course} pack={pack} path={path} versions={lessonVersions}/>;
-  return <CourseWorkspace course={course} pack={pack} lessonVersions={lessonVersions} />;
+  const assessmentPanel=id==="phs-231"?<Phs231AssessmentPanel definitions={phs231Assessments.map(({id,courseId,version,assessment,description,estimatedMinutes,requiredForCompletion})=>({id,courseId,version,assessment,description,estimatedMinutes,requiredForCompletion}))} objectives={lessons.filter(lesson=>lesson.courseId===id).map(({id,version,title})=>({id,version,title}))}/>:undefined;
+  return <CourseWorkspace course={course} pack={pack} lessonVersions={lessonVersions} assessmentPanel={assessmentPanel} availabilityNote={id==="phs-231"?"All 22 lessons, readiness checks, module and cumulative assessments, targeted reviews, and the simulation project are available. The complete course release audit is in progress.":undefined}/>;
 }

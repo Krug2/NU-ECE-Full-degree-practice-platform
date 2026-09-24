@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { catalog, courseById, groupLabels, resourcesForCourse, type Course } from "@/lib/catalog";
 import { confidenceOptions, type Confidence } from "@/lib/progress";
 import { saveProgress, toggleCourse, useStudy } from "@/lib/study-store";
@@ -10,7 +10,7 @@ import { useStudyDraft } from "@/lib/use-study-draft";
 import type { LearningPack } from "@/lib/learning/contracts";
 import { CourseLessons } from "./learning/course-lessons";
 
-export function CourseWorkspace({ course, pack, lessonVersions }: { course: Course; pack?: LearningPack; lessonVersions: Record<string,number> }) {
+export function CourseWorkspace({ course, pack, lessonVersions,assessmentPanel,availabilityNote }: { course: Course; pack?: LearningPack; lessonVersions: Record<string,number>;assessmentPanel?:ReactNode;availabilityNote?:string }) {
   const { data, ready, locked } = useStudy();
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -30,7 +30,8 @@ export function CourseWorkspace({ course, pack, lessonVersions }: { course: Cour
     <PageHeading eyebrow={`${course.code} · ${course.subject}`} title={course.title} action={<button className={`button ${selected ? "secondary" : ""}`} disabled={!ready || locked} onClick={() => toggleCourse(course.id)}><Icon name={selected ? "check" : "plus"} size={17} />{selected ? "Added to my plan" : "Add to my plan"}</button>}>{course.summary}</PageHeading>
     <div className="meta-list"><span className="pill neutral">{pack?"Lessons in development":"Awaiting course planning"}</span><span>{groupLabels[course.group]}</span>{course.credits !== null && <span>{course.credits} semester {course.credits === 1 ? "credit" : "credits"}</span>}<span>{course.kind === "lab" ? "Laboratory" : course.kind === "capstone" ? "Project" : "Self-paced study"}</span></div>
     <div className="two-columns section-space"><div className="stack">
-      {pack?<CourseLessons pack={pack} versions={lessonVersions}/>:<section className="panel"><div className="panel-heading"><h2>Built for understanding.</h2><Icon name="book" /></div><p className="muted">This course has a place in the curriculum. Its complete learning pack will be developed in a dedicated planning phase, then built and reviewed before release.</p><div className="notice">Lessons, interactive practice, quizzes, and completion tracking are not available for this course yet. You can organize your plan, save notes, and explore supporting references now.</div></section>}
+      {assessmentPanel}
+      {pack?<CourseLessons pack={pack} versions={lessonVersions} availabilityNote={availabilityNote}/>:<section className="panel"><div className="panel-heading"><h2>Built for understanding.</h2><Icon name="book" /></div><p className="muted">This course has a place in the curriculum. Its complete learning pack will be developed in a dedicated planning phase, then built and reviewed before release.</p><div className="notice">Lessons, interactive practice, quizzes, and completion tracking are not available for this course yet. You can organize your plan, save notes, and explore supporting references now.</div></section>}
       <section className="panel"><h2>Suggested preparation</h2><p className="muted">These are study recommendations. They do not determine NU enrollment eligibility or award academic credit.</p>{course.preparation.length ? <div className="compact-list">{course.preparation.map(id => { const item = courseById(id)!; return <Link className="compact-link" key={id} href={`/courses/${id}`}><div><strong>{item.title}</strong><small>{item.code} · {item.group === "refresher" ? "Optional refresher" : "Related course"}</small></div><Icon name="arrow" size={17} /></Link>; })}</div> : <p className="notice">Choose this refresher when the topic feels unfamiliar. A readiness check will be added with its learning pack.</p>}{course.sourceNote && <p className="notice warning section-space">{course.sourceNote}</p>}</section>
       <section className="panel"><h2>Your course notes</h2><p className="muted">Capture what you remember, questions to revisit, or what you want to learn.</p>{ready ? <form onSubmit={saveNote}><label className="sr-only" htmlFor="course-note">Course notes</label><textarea id="course-note" name="note" maxLength={5000} value={draft.value} onChange={event=>draft.setValue(event.target.value)} placeholder="What would you like to come back to?" style={{ width: "100%" }} disabled={locked} /><div className="form-actions section-space"><button className="button secondary" disabled={locked||saving}>{saving?"Saving notes...":"Save notes"}</button><small className="muted">Private to this browser · up to 5,000 characters</small></div><p role="status" className="form-status">{message}</p>{draft.changed&&<div className="notice warning" role="status"><p>Saved notes changed while you were editing. Your draft has been kept.</p><button type="button" className="button secondary" onClick={draft.loadSaved}>Load saved notes</button></div>}</form> : <p className="loading">Loading your notes...</p>}</section>
     </div><div className="stack">

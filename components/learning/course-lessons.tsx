@@ -5,7 +5,7 @@ import type { LearningPack } from "@/lib/learning/contracts";
 import { useStudy } from "@/lib/study-store";
 import "./learning.css";
 
-export function CourseLessons({pack,versions}:{pack:LearningPack;versions:Record<string,number>}) {
+export function CourseLessons({pack,versions,availabilityNote}:{pack:LearningPack;versions:Record<string,number>;availabilityNote?:string}) {
   const {data}=useStudy();
   const courseId=pack.courseId;
   const outlines=pack.modules.flatMap(item=>item.lessons);
@@ -25,7 +25,7 @@ export function CourseLessons({pack,versions}:{pack:LearningPack;versions:Record
     <span className="eyebrow">Your learning path</span>
     <h2>Build the understanding, step by step.</h2>
     <p>{pack.introduction}</p>
-    <p className="notice">{available.length} of {outlines.length} planned lessons are available. The complete course, module assessments, and project are still being built.</p>
+    <p className="notice">{availabilityNote??`${available.length} of ${outlines.length} planned lessons are available. The complete course, module assessments, and project are still being built.`}</p>
     {next&&<Link className="button section-space" href={`/courses/${courseId}/lessons/${next.id}`}>{resume?"Resume lesson":"Open lesson"}: {next.title}</Link>}
     {pack.bridges.length>0&&<details open><summary>Foundation refreshers</summary><p>Use these optional reviews when earlier skills feel rusty. Their checkpoints record refresher evidence separately from the {outlines.length} core lesson objectives.</p>{lessonList(pack.bridges,true)}</details>}
     {pack.modules.map(item=><details key={item.id} open={item.lessons.some(lesson=>versions[lesson.id])}><summary>{item.id.toUpperCase()} · {item.title}</summary>{lessonList(item.lessons)}</details>)}
