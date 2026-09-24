@@ -120,10 +120,12 @@
       ],
       "practice": [
         "mth-log-rewrite:false-sum",
-        "mth-log-rewrite:mixed-bases"
+        "mth-log-rewrite:mixed-bases",
+        "mth-log-rules:product",
+        "mth-log-rules:quotient"
       ],
       "independentCheck": "mth-log-rewrite:mixed",
-      "retrieval": "Give both an exact counterexample and an accidental agreement for a false sum rule, then repair a different-base combination."
+      "retrieval": "Give exact counterexamples for false sum, difference and product-of-logarithms rules. Find an accidental agreement for the false sum rule, then repair a different-base combination."
     },
     {
       "skill": "Change base and separate exact from approximate results",

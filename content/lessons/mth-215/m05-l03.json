@@ -86,6 +86,7 @@
       "heading": "Disprove false sum rules and repair mixed bases",
       "paragraphs": [
         "The product identity relates the logarithm of a product to a sum of logarithms. There is no corresponding general identity that splits $\\log_b(A+B)$ into $\\log_b A+\\log_b B$. The latter expression, when its terms exist, combines to $\\log_b(AB)$ instead. A simple input with both sides defined can disprove a proposed sum rule.",
+        "Subtraction inside an argument does not split either: $\\log_2 8-\\log_2 2=2$, whereas $\\log_2(8-2)=\\log_2 6\\ne2$ because $2^2=4\\ne6$. The valid subtraction identity gives the quotient $\\log_2(8/2)=2$. Multiplying two logarithm values is different again: $(\\log_2 8)(\\log_2 4)=3\\cdot2=6$, while $\\log_2(8\\cdot4)=5$. For a product of positive arguments, add their logarithms instead of multiplying their logarithm values.",
         "One counterexample is enough to refute a claim made for every permitted input. One matching input is not enough to prove such a claim. A false rule can agree accidentally at a special value, so the activity asks you to distinguish what a probe establishes from the symbolic argument needed for an identity.",
         "Product and quotient identities also require a common base. Changing the base changes the exponent a logarithm reports. Convert all terms to a common base before combining them, including any conversion coefficient. Treating different bases as if they were equal generally changes the value even when all arguments are positive."
       ]
