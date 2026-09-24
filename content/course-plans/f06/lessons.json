@@ -1,0 +1,743 @@
+{
+  "courseId": "f06",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "SI quantities, prefixes, and engineering notation",
+      "objective": "Identify quantity and unit roles, interpret case-sensitive SI prefixes, and convert exact values between scientific, engineering, and prefixed notation.",
+      "requires": [],
+      "scope": [
+        "Seven SI base quantities and selected electrical derived units",
+        "Common prefixes pico through tera, plus centi and deci; full current BIPM table linked",
+        "Case-sensitive symbols, the special kilogram naming convention, and no stacked prefixes",
+        "Normalized scientific notation versus an explicitly defined engineering notation convention",
+        "Conversion preserves physical value and does not create measurement precision"
+      ],
+      "workedExamples": [
+        "Separate the numerical value, prefix, and unit in 2.4 kΩ; distinguish current A from charge C=A s",
+        "Compare 1 mV with 1 MV: (1 MV)/(1 mV) is 10^9",
+        "Convert 4.7 μF to 4.7×10^-6 F",
+        "Convert 3300 pF to 3.3 nF",
+        "Represent 0.000082 V as 8.2×10^-5 V and 82×10^-6 V",
+        "Convert the stated 0.0200 A to 20.0 mA without losing its three significant figures"
+      ],
+      "guided": "Convert a capacitance from nF to F and pF, then distinguish milli from mega without changing the quantity.",
+      "interaction": {
+        "kind": "refresher-measurement-lab",
+        "mode": "prefix",
+        "purpose": "Choose a base quantity and two prefixes. Predict the converted value and direction of numerical change, then inspect an exact scale table and reverse conversion."
+      },
+      "practice": [
+        [
+          "scientific-notation",
+          "to"
+        ],
+        [
+          "scientific-notation",
+          "from"
+        ],
+        [
+          "prefix-convert",
+          "to-base"
+        ],
+        [
+          "prefix-convert",
+          "from-base"
+        ],
+        [
+          "prefix-convert",
+          "between"
+        ],
+        [
+          "prefix-convert",
+          "case"
+        ],
+        [
+          "engineering-notation",
+          "small"
+        ],
+        [
+          "engineering-notation",
+          "large"
+        ],
+        [
+          "unit-kind",
+          "base-derived"
+        ],
+        [
+          "unit-kind",
+          "symbols"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "prefix-convert",
+          "case"
+        ],
+        [
+          "prefix-convert",
+          "between"
+        ],
+        [
+          "engineering-notation",
+          "mixed"
+        ],
+        [
+          "unit-kind",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Treat m and M as interchangeable",
+          "Ignore symbol case",
+          "Expand both into powers of ten and compare."
+        ],
+        [
+          "Reverse the conversion direction",
+          "Confuse unit size and numerical count",
+          "A smaller target unit needs more units for the same quantity."
+        ],
+        [
+          "Normalize every notation coefficient below ten",
+          "Confuse engineering with scientific convention",
+          "Use 1<=|a|<1000 and exponent divisible by three for the stated engineering convention."
+        ],
+        [
+          "Infer extra accuracy after conversion",
+          "Confuse exact scaling with new information",
+          "Preserve the original measurement's reporting precision."
+        ]
+      ],
+      "readings": [
+        "up-1.2",
+        "bipm-prefixes",
+        "nist-7"
+      ],
+      "supports": [
+        "mth-215",
+        "phs-104",
+        "phs-104a",
+        "cee-310",
+        "cee-310l",
+        "cee-420",
+        "cee-420l"
+      ],
+      "acceptance": "Required questions check both prefix case and general scaling, engineering normalization, and quantity/unit identification. Reuse scientific-notation source questions under separate F06 identity."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Conversions with powers, rates, and offsets",
+      "objective": "Convert signed quantities, areas, volumes, inverse units, and compound rates with explicit unit cancellation, and distinguish temperature values from temperature differences.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "Exact equal-quantity conversion factors",
+        "Squared, cubed, and inverse unit scales",
+        "Compound units including speed, density, and voltage/time slopes",
+        "Celsius and kelvin values versus differences using the exact offset",
+        "Physical quantities unchanged under a consistent conversion"
+      ],
+      "workedExamples": [
+        "Convert a signed offset -750 ms to -3/4 s",
+        "Convert 2.5 cm² to 0.00025 m² by squaring the length factor",
+        "Convert 4 mm³ to 4×10^-9 m³ by cubing the length factor",
+        "Convert 72 km/h to 20 m/s with both numerator and denominator factors",
+        "Convert 1.2 g/cm³ to 1200 kg/m³",
+        "Convert 25 °C to 298.15 K but a difference of 25 °C to 25 K"
+      ],
+      "guided": "Convert a small area and a voltage-change rate while retaining the power and denominator conversions.",
+      "interaction": {
+        "kind": "refresher-measurement-lab",
+        "mode": "conversion",
+        "purpose": "Change a length-unit power among 1,2,3,-1 and predict the full scale factor. Show factor cancellation and a labeled table; compare area conversion with conversion of a side length."
+      },
+      "practice": [
+        [
+          "measurement-units",
+          "ms-to-s"
+        ],
+        [
+          "measurement-units",
+          "s-to-ms"
+        ],
+        [
+          "measurement-units",
+          "mm-to-m"
+        ],
+        [
+          "measurement-units",
+          "rate"
+        ],
+        [
+          "unit-power",
+          "area"
+        ],
+        [
+          "unit-power",
+          "volume"
+        ],
+        [
+          "unit-power",
+          "inverse"
+        ],
+        [
+          "unit-rate",
+          "speed"
+        ],
+        [
+          "unit-rate",
+          "km-hour"
+        ],
+        [
+          "unit-rate",
+          "slope"
+        ],
+        [
+          "unit-rate",
+          "density"
+        ],
+        [
+          "temperature",
+          "value"
+        ],
+        [
+          "temperature",
+          "difference"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "unit-power",
+          "all"
+        ],
+        [
+          "unit-rate",
+          "compound"
+        ],
+        [
+          "temperature",
+          "both"
+        ],
+        [
+          "conversion-audit",
+          "cancel"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Apply a length factor once to area or volume",
+          "Ignore the unit exponent",
+          "Raise the entire conversion factor to the same power."
+        ],
+        [
+          "Multiply a denominator scale in the wrong direction",
+          "Lose unit cancellation",
+          "Write the desired unit in the numerator of its conversion factor before simplifying."
+        ],
+        [
+          "Drop the sign of an offset",
+          "Assume all measurements are positive magnitudes",
+          "Convert the signed coordinate with the same positive scale factor."
+        ],
+        [
+          "Add 273.15 to a temperature difference",
+          "Confuse an affine value conversion with an interval",
+          "Subtract two converted values and observe cancellation of the common offset."
+        ]
+      ],
+      "readings": [
+        "up-1.3",
+        "nist-4",
+        "nist-8.5"
+      ],
+      "supports": [
+        "phs-104",
+        "phs-104a",
+        "phs-231",
+        "phs-232",
+        "cee-310",
+        "cee-310l",
+        "cee-324l"
+      ],
+      "acceptance": "Four checkpoint questions include all three nontrivial unit powers, compound conversions, absolute/difference temperature cases, and valid versus invalid cancellation reasoning. Basic millisecond/meter conversions retain source-family answer rules."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Dimensional checks and model parameters",
+      "objective": "Determine mechanical and electrical dimensions, check every term and function argument in an equation, and infer parameter units while recognizing what dimensional analysis cannot prove.",
+      "requires": [
+        "m01-l01",
+        "m01-l02"
+      ],
+      "scope": [
+        "Dimensions versus particular units",
+        "Exponent bookkeeping for mass, length, time, and electric current",
+        "Mechanical and selected electrical derived units with supplied defining relationships",
+        "Additive homogeneity and dimensionless log, exponential, and trigonometric inputs",
+        "Parameter units in polynomial, exponential, and oscillatory models",
+        "Dimensional consistency is necessary but does not fix dimensionless coefficients or prove physical validity"
+      ],
+      "workedExamples": [
+        "From F=m a infer force dimensions M L T^-2",
+        "From power=energy/time and voltage=power/current infer voltage dimensions M L² T^-3 I^-1",
+        "From R=V/I infer resistance dimensions M L² T^-3 I^-2",
+        "Compare x=v t+(1/2)a t² with x=v t²+a t; audit every term",
+        "For exp(-t/tau), infer tau has time dimensions and k in exp(k t) has reciprocal-time dimensions",
+        "For x(t)=a0+a1 t+a2 t² infer each coefficient's units; explain why x=2v t can pass dimensions without being a validated model"
+      ],
+      "guided": "Build a resistance dimension vector from supplied power and voltage definitions, then identify a valid dimensionless time ratio.",
+      "interaction": {
+        "kind": "refresher-measurement-lab",
+        "mode": "dimensions",
+        "purpose": "Choose powers p,q in v^p t^q and a dimensionless coefficient. Predict length/time exponents and whether the expression can represent length. Compare the term-dimension table and explain why changing the coefficient preserves dimensions."
+      },
+      "practice": [
+        [
+          "dim-expression",
+          "velocity"
+        ],
+        [
+          "dim-expression",
+          "acceleration"
+        ],
+        [
+          "dim-expression",
+          "force"
+        ],
+        [
+          "dim-expression",
+          "energy"
+        ],
+        [
+          "dim-expression",
+          "power"
+        ],
+        [
+          "dim-expression",
+          "charge"
+        ],
+        [
+          "dim-expression",
+          "voltage"
+        ],
+        [
+          "dim-expression",
+          "resistance"
+        ],
+        [
+          "dim-equation",
+          "consistent"
+        ],
+        [
+          "dim-equation",
+          "inconsistent"
+        ],
+        [
+          "dim-equation",
+          "coefficient"
+        ],
+        [
+          "dim-parameter",
+          "polynomial"
+        ],
+        [
+          "dim-parameter",
+          "exponential"
+        ],
+        [
+          "dim-parameter",
+          "oscillation"
+        ],
+        [
+          "dim-argument",
+          "log"
+        ],
+        [
+          "dim-argument",
+          "exp"
+        ],
+        [
+          "dim-argument",
+          "trig"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "dim-expression",
+          "electrical"
+        ],
+        [
+          "dim-equation",
+          "audit"
+        ],
+        [
+          "dim-parameter",
+          "exponential"
+        ],
+        [
+          "dim-argument",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Add quantities with incompatible dimensions",
+          "Focus only on numerical arithmetic",
+          "Compare each additive term separately."
+        ],
+        [
+          "Place a dimensional time directly in exp or log",
+          "Omit a rate or reference",
+          "Construct a same-dimension ratio or rate-times-time product."
+        ],
+        [
+          "Give every coefficient the output unit",
+          "Ignore powers of the input",
+          "Divide output dimensions by the accompanying input power."
+        ],
+        [
+          "Treat a passed check as proof",
+          "Confuse necessary with sufficient conditions",
+          "Test or derive dimensionless coefficients and model assumptions separately."
+        ]
+      ],
+      "readings": [
+        "up-1.4",
+        "nist-4",
+        "nist-7"
+      ],
+      "supports": [
+        "phs-231",
+        "phs-232",
+        "csc-208",
+        "csc-209",
+        "cee-300",
+        "cee-310",
+        "cee-324",
+        "cee-420"
+      ],
+      "acceptance": "Checkpoint questions require an electrical dimension vector, both valid and invalid equation judgments with a limitation check, exponential parameter units, and dimensionless-argument decisions. Definitions are supplied rather than assuming prior circuit instruction."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Significant figures and deliberate rounding",
+      "objective": "Interpret stated measurement precision, round using an explicit convention, and apply addition and multiplication reporting rules without allowing exact counts or conversions to limit precision.",
+      "requires": [
+        "m01-l01",
+        "m01-l02"
+      ],
+      "scope": [
+        "Leading, internal, and trailing zeros; explicit scientific notation",
+        "Ambiguous trailing zeros in bare integers; exact counts and definitions",
+        "Rounding places versus significant digits",
+        "Nearest rounding with exact ties away from zero, explicitly stated for these exercises",
+        "Addition/subtraction by last place; multiplication/division by significant-digit count",
+        "Guard digits and final rounding; reporting precision is not a complete uncertainty analysis"
+      ],
+      "workedExamples": [
+        "Count four significant digits in 0.004050; explain why bare 1200 needs more context and an exact count does not impose a finite precision limit",
+        "Round 6.275 to hundredths as 6.28 under the stated tie convention",
+        "Round 9.9995 to four significant digits as 10.00, preserving its final place",
+        "Report 12.11+0.3 as 12.4 because tenths is the coarsest input place",
+        "Report 2.34×1.2 as 2.8 to two significant digits",
+        "Convert measured 4.56 m to 456 cm; exact 100 cm/m does not reduce precision",
+        "Track precision through (1.26+2.1)×2.45: keep 3.36 internally and report 8.2; prematurely using 3.4 would give 8.3"
+      ],
+      "guided": "Count digits, select a report with the requested trailing zeros, and round a product only after computing its full value.",
+      "interaction": {
+        "kind": "refresher-measurement-lab",
+        "mode": "rounding",
+        "purpose": "Enter an exact finite decimal and choose significant digits or decimal places. Predict the rounded numerical value and a precision-preserving report, then compare the rounding step and nearby values. Include ties, negative inputs, and carry across a power of ten."
+      },
+      "practice": [
+        [
+          "sig-count",
+          "leading"
+        ],
+        [
+          "sig-count",
+          "internal"
+        ],
+        [
+          "sig-count",
+          "trailing"
+        ],
+        [
+          "sig-count",
+          "scientific"
+        ],
+        [
+          "sig-count",
+          "ambiguous"
+        ],
+        [
+          "sig-count",
+          "exact"
+        ],
+        [
+          "measurement-round",
+          "places"
+        ],
+        [
+          "measurement-round",
+          "figures"
+        ],
+        [
+          "measurement-round",
+          "tie"
+        ],
+        [
+          "measurement-round",
+          "carry"
+        ],
+        [
+          "measurement-round",
+          "negative"
+        ],
+        [
+          "precision-operation",
+          "addition"
+        ],
+        [
+          "precision-operation",
+          "subtraction"
+        ],
+        [
+          "precision-operation",
+          "multiplication"
+        ],
+        [
+          "precision-operation",
+          "division"
+        ],
+        [
+          "precision-operation",
+          "exact-factor"
+        ],
+        [
+          "precision-operation",
+          "mixed"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "sig-count",
+          "audit"
+        ],
+        [
+          "measurement-round",
+          "carry"
+        ],
+        [
+          "precision-operation",
+          "sum-difference"
+        ],
+        [
+          "precision-operation",
+          "product-quotient"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Count leading zeros as measured digits",
+          "Confuse decimal placeholders with recorded precision",
+          "Start at the first nonzero digit and include meaningful trailing decimal zeros."
+        ],
+        [
+          "Apply the fewest-digit rule to addition",
+          "Confuse significant digits with decimal places",
+          "Align the final reported place for sums and differences."
+        ],
+        [
+          "Discard trailing zeros from a requested report",
+          "Preserve value but lose stated precision",
+          "Use explicit decimal or scientific notation showing the last reported place."
+        ],
+        [
+          "Treat exact conversion factors as uncertain measurements",
+          "Infer uncertainty from a short written constant",
+          "Exact definitions and counts do not limit significant figures."
+        ],
+        [
+          "Round at every step",
+          "Lose guard digits",
+          "Track the reporting constraint separately, then round once."
+        ]
+      ],
+      "readings": [
+        "up-1.6",
+        "cp-1.3",
+        "nist-7"
+      ],
+      "supports": [
+        "phs-104",
+        "phs-104a",
+        "phs-231",
+        "phs-232",
+        "cee-310l",
+        "cee-324l",
+        "cee-420l"
+      ],
+      "acceptance": "Questions independently assess counts and ambiguity, a carry case with explicit precision, and both reporting-operation classes. Numeric equivalence is graded separately from the display choice, preserving trailing-zero meaning without adding a text-format grader."
+    },
+    {
+      "id": "m01-l05",
+      "title": "Measurement resolution, uncertainty, and bounds",
+      "objective": "Distinguish resolution, repeatability, discrepancy, and uncertainty; interpret stated bounds and relative uncertainty; and propagate simple bounds without inventing a confidence level.",
+      "requires": [
+        "m01-l02",
+        "m01-l04"
+      ],
+      "scope": [
+        "Read labeled scale increments and digital resolution",
+        "Resolution alone does not establish accuracy or total uncertainty",
+        "Repeatability versus discrepancy from a stated reference",
+        "Explicit symmetric bounds, inclusive endpoints, and unit conversion",
+        "Relative and percent uncertainty for nonzero nominal values; zero nominal case",
+        "Exact interval propagation for sums, differences, scales, and positive products/quotients",
+        "Uncertainty sources beyond repeated scatter; interval compatibility is not proof"
+      ],
+      "workedExamples": [
+        "A display 1.20 V with 0.01 V resolution has a conservative rounding-only bound ±0.005 V under the stated ideal nearest-step model; this is not total instrument uncertainty",
+        "Interpret 2.50±0.05 V as a stated bound [2.45,2.55] V and 2% relative uncertainty",
+        "Compare 9.99,10.00,10.01 with 10.49,10.50,10.51 against reference 10.00: same range, different mean discrepancy",
+        "Propagate stated bounds in (12±0.2)-(5±0.1) to [6.7,7.3]",
+        "Propagate (3±0.1)(2±0.1) to [5.51,6.51], showing asymmetric deviations from nominal 6",
+        "Check an inclusive boundary reference 10.2 against [9.8,10.2], while explaining that compatibility does not prove the measurement exact",
+        "For nominal zero with ±0.1 V bounds, retain the valid absolute interval but report relative uncertainty as undefined"
+      ],
+      "guided": "Convert a nominal measurement and its bound together, compute percent uncertainty, and check a reference against the inclusive interval.",
+      "interaction": {
+        "kind": "refresher-measurement-lab",
+        "mode": "measurement",
+        "purpose": "Change a displayed scale reading, resolution, and stated additional bound. Predict the conservative interval and compare a reference using keyboard controls. Show a labeled scale and equivalent numeric table; distinguish a tighter resolution from evidence of accuracy."
+      },
+      "practice": [
+        [
+          "measurement-read",
+          "analog"
+        ],
+        [
+          "measurement-read",
+          "digital"
+        ],
+        [
+          "measurement-quality",
+          "repeatability"
+        ],
+        [
+          "measurement-quality",
+          "bias"
+        ],
+        [
+          "measurement-uncertainty",
+          "interval"
+        ],
+        [
+          "measurement-uncertainty",
+          "relative"
+        ],
+        [
+          "measurement-uncertainty",
+          "convert"
+        ],
+        [
+          "measurement-uncertainty",
+          "compatible"
+        ],
+        [
+          "measurement-uncertainty",
+          "zero"
+        ],
+        [
+          "measurement-propagation",
+          "sum"
+        ],
+        [
+          "measurement-propagation",
+          "difference"
+        ],
+        [
+          "measurement-propagation",
+          "scale"
+        ],
+        [
+          "measurement-propagation",
+          "product"
+        ],
+        [
+          "measurement-propagation",
+          "quotient"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "measurement-read",
+          "audit"
+        ],
+        [
+          "measurement-quality",
+          "compare"
+        ],
+        [
+          "measurement-uncertainty",
+          "audit"
+        ],
+        [
+          "measurement-propagation",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Treat extra display digits as accuracy",
+          "Confuse resolution and bias",
+          "Compare with a stated reference and account for specifications."
+        ],
+        [
+          "Use a difference from reference as uncertainty",
+          "Mix discrepancy with estimated dispersion or bounds",
+          "Keep the reference discrepancy and uncertainty statement separate."
+        ],
+        [
+          "Assume every plus/minus means a 95% interval",
+          "Invent an unstated probability model",
+          "Read the supplied bound definition; a confidence level needs additional information."
+        ],
+        [
+          "Convert the central value but not its uncertainty",
+          "Scale only half the report",
+          "Apply the same exact unit factor to both."
+        ],
+        [
+          "Cancel uncertainties in a subtraction",
+          "Confuse signed changes with possible bounds",
+          "Subtract the opposite endpoints to find the minimum and maximum."
+        ],
+        [
+          "Divide a bound by a zero nominal value",
+          "Force a relative percentage",
+          "Keep the absolute bound and say the requested relative measure is undefined."
+        ]
+      ],
+      "readings": [
+        "up-1.6",
+        "cp-1.3",
+        "nist-uncertainty",
+        "nist-7"
+      ],
+      "supports": [
+        "phs-104a",
+        "phs-231",
+        "phs-232",
+        "cee-310l",
+        "cee-324l",
+        "cee-420l",
+        "cee-340"
+      ],
+      "acceptance": "Checkpoint coverage includes scale/resolution interpretation, repeatability versus reference discrepancy, bounds with conversion and percent/zero cases, and propagated sum/product or quotient bounds. All probability claims are excluded unless supplied; the fuller NIST guidance is linked for later study."
+    }
+  ]
+}

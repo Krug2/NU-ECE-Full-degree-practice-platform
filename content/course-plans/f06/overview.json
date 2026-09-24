@@ -1,0 +1,95 @@
+{
+  "courseId": "f06",
+  "title": "Units and measurement",
+  "status": "planned",
+  "plannedAt": "2026-09-24",
+  "learner": "Returning learners who can perform basic arithmetic but need reliable control of unit scales, dimensional meaning, reporting precision, and the interpretation of measurements.",
+  "assumedKnowledge": [
+    "F01 exact fractions, powers of ten, and basic arithmetic",
+    "F02 simple algebra and inequalities",
+    "F03 reading labeled scales and basic linear relationships; F05 optional for log and exponential argument examples"
+  ],
+  "scope": {
+    "include": [
+      "SI prefixes and scientific/engineering notation",
+      "Unit cancellation with powers, compound units, and temperature offsets",
+      "Dimensions and model-parameter units",
+      "Explicit measurement reporting and rounding conventions",
+      "Resolution, repeatability, discrepancy, stated uncertainty bounds, and simple interval propagation"
+    ],
+    "exclude": [
+      "A complete physics or laboratory methods course",
+      "Instrument-specific operating or electrical safety procedures",
+      "Statistical estimation, confidence-interval derivation, and full GUM uncertainty budgets",
+      "Unspecified uncertainty combination rules or claims of metrological certification",
+      "Probability inferred from a plus/minus sign",
+      "Rounding or formatting redesign of shared graders"
+    ]
+  },
+  "routes": {
+    "quick": "Five diagnostic probes target the five lessons. Read Quick recall and try each independent checkpoint, followed by the four-question mixed recall.",
+    "full": "Work the five lessons in sequence, including reasoned examples, guided questions, prediction activities, and varied practice. Use lesson notes to document your unit chain and next step.",
+    "escalation": {
+      "courseId": "phs-104",
+      "text": "The full introductory physics course and its lab are the next course destinations; their learning packs are not yet authored in this baseline. Precise free OpenStax sections provide a fuller explanation now. F01 and F03 supply authored arithmetic and graph support."
+    }
+  },
+  "reuse": {
+    "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+    "overlap": [
+      "MTH 215 b02 and F01 cover exact powers and basic scientific notation.",
+      "MTH 215 b05 and F03 cover signed millisecond/meter conversions, rate units, and labeled coordinates.",
+      "MTH 215 m02-l04 and F03 cover units of a linear model and explicit tolerances.",
+      "F05 supplies dimensional exponent and logarithm-ratio examples, without replacing measurement instruction."
+    ],
+    "implementation": "Wrap mth-scientific-notation as f06-scientific-notation for lesson 1 and mth-measurement-units as f06-measurement-units for lesson 2, keeping source IDs and answer rules intact. Use exact rational arithmetic for decimal scaling, rounding steps, and stated interval bounds. Precision-preserving report choices supplement numeric fields so trailing zeros can be assessed without changing the shared grader."
+  },
+  "assessment": {
+    "diagnostic": {
+      "length": 5,
+      "coverage": [
+        {
+          "lessonId": "m01-l01",
+          "probe": "prefix case and conversion"
+        },
+        {
+          "lessonId": "m01-l02",
+          "probe": "powered conversion"
+        },
+        {
+          "lessonId": "m01-l03",
+          "probe": "dimensionally invalid equation"
+        },
+        {
+          "lessonId": "m01-l04",
+          "probe": "rounding and reporting rule"
+        },
+        {
+          "lessonId": "m01-l05",
+          "probe": "stated bounds and relative uncertainty"
+        }
+      ]
+    },
+    "checkpoints": "Four required independent questions per lesson, combining related fields when needed; all objective questions critical and no question beyond eight fields.",
+    "mixed": "Four questions: prefixes and conversions share a multipart question with separate p1/p2 lesson targets; dimensions, reporting precision, and measurement bounds each receive a question. Mixed checks sample every lesson; lesson checkpoints provide full objective coverage.",
+    "evidence": "Confidence, visits, guided tasks, and diagnostic performance do not award independent evidence. Reuse versioned attempts, independent checkpoints, notes, resume, backup, and targeted review."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-measurement-lab', mode: 'prefix' | 'conversion' | 'dimensions' | 'rounding' | 'measurement', prompt: string }.",
+      "reason": "Keyboard predictions need exact unit-scale comparisons, dimensional exponent tables, precision reports, and explicit interval bounds.",
+      "integration": "One strict union member and reader dispatch. All logic and activities stay in new refresher-owned modules and reuse QuestionFields and graders. No storage, backup, app-shell, or generic answer parser changes."
+    }
+  ],
+  "verification": [
+    "Independently check prefix factors using decimal exponent arithmetic and reverse conversions, including case, signed zero, tiny values, and powers 2,3,-1.",
+    "Check compound conversions using independently expanded numerator/denominator factors; verify Celsius/kelvin values and intervals separately.",
+    "Check dimensions by independent exponent bookkeeping and known derived-unit definitions; include equations with dimensionless coefficients that pass without establishing physical validity.",
+    "Use exact integer/rational rounding and a separately structured oracle; test ties, negative values, power-of-ten carries, trailing-zero reports, ambiguity, exact factors, and guard digits.",
+    "Independently enumerate interval endpoint combinations for sums, differences, products, and positive-denominator quotients; check percent bounds, zero nominal values, conversion of uncertainty, inclusive reference boundaries, and absence of invented confidence levels.",
+    "Sweep each generator structure over 100 deterministic seeds and test valid equivalent answers, invalid input, units, clear feedback, and fully rendered math.",
+    "Browser-test every checkpoint and mixed recall, specific routing, assisted/independent distinctions, notes, exact reload/resume and backup recovery, all five keyboard activities, mobile layouts, and Axe.",
+    "Run the repository unit suite, lint, typecheck, and production build before preview status; human review remains pending.",
+    "Finish and verify F06 before detailed planning for F07."
+  ]
+}
