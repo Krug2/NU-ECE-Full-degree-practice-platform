@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m06-l02",
   "checkedAt": "2026-09-24",
-  "status": "proposed teaching and verification plan; not a delivered lesson",
+  "status": "Implemented and technically verified; independent subject review and pilot validation have not been performed.",
   "title": "Collisions and explosions in multiple dimensions",
   "objective": "Apply vector momentum conservation to collisions or separation events and audit kinetic energy before selecting an elastic model.",
   "alignment": "Develops the collision and momentum portion of the researched official PHS 231 scope. Restitution, selected teaching sequence, original examples, simulations, and assessment defaults are proposed platform choices, not an official NU syllabus, lab equipment list, or grading policy.",
@@ -266,5 +266,14 @@
       "checkedAt": "2026-09-24",
       "verification": "Free primary-provider material accessed. Use as optional further reading, with original explanations, fixtures, and questions. Retain explicit zero-external-impulse and passive-impact assumptions rather than extending abbreviated source statements beyond their domain."
     }
-  ]
+  ],
+  "implementation": {
+    "engine": "269ee0b",
+    "families": "5573eb9",
+    "sharedRegistration": "17005f3",
+    "modelClarifications": "4febda0",
+    "lesson": "89b2506",
+    "browser": "9166c21",
+    "seededVariantCases": 700
+  }
 }

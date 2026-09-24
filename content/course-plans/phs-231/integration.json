@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: thirteen of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: fourteen of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -19,13 +19,14 @@
       "m04-l02",
       "m05-l01",
       "m05-l02",
-      "m06-l01"
+      "m06-l01",
+      "m06-l02"
     ],
-    "questionFamilies": 27,
-    "questionVariants": 160,
+    "questionFamilies": 29,
+    "questionVariants": 174,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 13,
-    "workedExamples": 87,
+    "guidedExamples": 14,
+    "workedExamples": 97,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -39,14 +40,15 @@
       "Exterior circular-orbit comparisons with inverse-square fields, mass and source scaling, energy references, and explicit transfer limitations",
       "Signed work and kinetic-energy curves, with finite turns, inaccessible energy barriers, asymptotic equilibrium, exact rest, and instantaneous power",
       "Attached-spring ramp energy ledgers with kinetic friction, reference shifts, first-stop limits, and actual versus untraveled dissipation",
-      "Three-dimensional external force pulses, signed impulse histories, CM displacement timing, fixed-shape peak scaling, and zero-impulse limitations"
+      "Three-dimensional external force pulses, signed impulse histories, CM displacement timing, fixed-shape peak scaling, and zero-impulse limitations",
+      "Smooth oblique collision and common-velocity sticking comparisons, passive restitution, rotated contact normals, non-approach gating, and lab/CM velocity diagrams with momentum and energy ledgers"
     ]
   },
   "remaining": {
-    "phs231Lessons": 9,
+    "phs231Lessons": 8,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Collision, rotation, equilibrium, material, and numerical investigations",
+      "Rotation, equilibrium, material, and numerical investigations",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -54,10 +56,20 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m06-l02",
+    "nextLesson": "m07-l01",
     "nextCourseAfterPhs231Completion": "phs-232"
   },
   "sharedCommits": [
+    {
+      "commit": "17005f3",
+      "summary": "enabled collisions",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-collision and two families. Engine 269ee0b is checked against an independent two-equation normal solution across 1600 cases and 400 Galilean boosts. 5573eb9 adds 700 seeded variant cases, exact-root equivalence, invalid input, energy reconstruction, and contact-branch audits. The course-specific component is included. 4febda0 clarifies external-energy and point-mass/rotation assumptions; lesson registration is 89b2506; three browser workflows are 9166c21. Existing answer fields and backup schemas remain compatible."
+    },
     {
       "commit": "a5a24a0",
       "summary": "enabled impulse",
@@ -298,16 +310,16 @@
     ]
   },
   "verification": {
-    "status": "The thirteen delivered lessons are technically checked; the course release gates remain open.",
+    "status": "The fourteen delivered lessons are technically checked; the course release gates remain open.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the thirteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the fourteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 656,
-      "files": 81,
+      "passed": 664,
+      "files": 83,
       "command": "pnpm exec vitest run --maxWorkers=2",
-      "note": "All authored physics variants run at least 50 deterministic seeds plus edge and invariant fixtures. Impulse adds 800 variant cases, 200 pulse parameter/profile cases, exact-equivalence and invalid-input checks, independent quadrature, distributed mass and energy/frame audits."
+      "note": "All authored physics variants run at least 50 deterministic seeds plus edge and invariant fixtures. Collision adds 700 variant cases, independent normal/tangent and frame checks, exact-root equivalents, energy and system-boundary audits, and uncertainty-corner tests."
     },
     "browser": {
       "fullSuite": {
@@ -317,7 +329,7 @@
       },
       "focusedSuite": {
         "passed": 3,
-        "scope": "Impulse lesson: guided net/contact force distinction, all four pulse shapes, same-impulse displacement differences, duration scaling, negative components, zero-impulse interpretation, invalid inputs, desktop/mobile accessibility and visual inspection, keyboard controls, reload, and actual checkpoint plus notes export/reset/restore. Two investigation tests passed initially. The checkpoint test used the wrong field label after reload; the saved answer was present. After correcting that locator, the checkpoint workflow passed separately on the same production build. No product behavior or assertion was weakened."
+        "scope": "Collision lesson: all three workflows passed on the production build in 58.9 seconds. Checks cover misconception feedback, normal/tangent separation, smooth e0 versus full sticking, elastic and rotated contact, non-approach gating, invalid inputs, keyboard CM diagrams, equivalent tables, desktop/mobile accessibility and visual inspection, reload, exact-vector checkpoint completion, and actual question/evidence/notes export/reset/restore."
       },
       "port": 3101,
       "previousFocusedSuites": [
@@ -332,6 +344,10 @@
         {
           "passed": 3,
           "scope": "Energy lesson after the full eleven-lesson integration suite: actual versus untraveled dissipation, positive and negative reference changes, friction-free/no-spring/vertical limits, exact ledgers, disconnected regions, stability, desktop/mobile accessibility, keyboard input, reload, and real checkpoint plus notes export/reset/restore. The initial accessibility audit rejected redundant labels on SVG polylines; labels were removed while the chart description, legend, and equivalent tables were retained. All three workflows passed after rebuilding."
+        },
+        {
+          "passed": 3,
+          "scope": "Impulse lesson: guided net/contact force distinction, all four pulse shapes, same-impulse displacement differences, duration scaling, negative components, zero-impulse interpretation, invalid inputs, desktop/mobile accessibility and visual inspection, keyboard controls, reload, and actual checkpoint plus notes export/reset/restore. Two investigation tests passed initially. The checkpoint test used the wrong field label after reload; the saved answer was present. After correcting that locator, the checkpoint workflow passed separately on the same production build. No product behavior or assertion was weakened."
         }
       ],
       "previousFullSuites": [
@@ -351,7 +367,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the thirteen delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
+    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the fourteen delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",
