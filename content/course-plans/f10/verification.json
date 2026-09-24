@@ -1,12 +1,61 @@
 {
   "courseId": "f10",
-  "status": "planned",
-  "humanReview": "pending",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 4,
+    "workedExamples": 32,
+    "practiceStructures": 35,
+    "diagnosticProbes": 4,
+    "lessonCheckpointQuestions": 16,
+    "mixedRecallQuestions": 4
+  },
   "checks": [
-    "Independently execute generated Python snippets with an available Python runtime and compare expected fields; also use separate arithmetic/loop/list oracles for 100 seeds per structure.",
-    "Test empty/singleton lists, both step directions, excluded endpoints, equality thresholds, negative floor division, alias/copy behavior, missing returns, invalid indices and numerical tolerances.",
-    "Check code indentation and escaping in prompts, examples and feedback, complete objective coverage and deterministic seeds.",
-    "Exercise all four guided traces/activities, diagnostic routing, independent checkpoints, resume, notes, backup, keyboard, desktop/mobile Axe and screenshots; full test/lint/type/build.",
-    "Only then mark preview, record human review pending, push and begin F11 detailed planning."
+    {
+      "command": "F10_PYTHON=tmp/python314/python.exe pnpm exec vitest run --maxWorkers=2",
+      "result": "887 tests passed across 114 files, including all CPython cross-checks."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, types and 113 static pages; repeated for preview status."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep [fF]10 --workers=2",
+      "result": "All seven journeys passed: four guided activities, every independent and mixed checkpoint, diagnostics, exact reload/resume, lesson/refresher notes, backup/reset/import, all pages at desktop/mobile widths, keyboard and Axe."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep 'f10: diagnostic gaps' --workers=1",
+      "result": "Final available-preview entry and diagnostic/resume/notes/backup journey passed."
+    }
+  ],
+  "correctness": "4,700 generated cases were independently executed in CPython 3.14.7: state 1,200; loops/lists 1,300; functions/mutation 1,000; debugging/testing 1,200. CPython checked actual values, printed output, None, exceptions and float comparisons against generated keys. Separate arithmetic, bounds and trace tests supplement runtime checks. Per-lesson and screen coverage uses 50 seeds. Cases include negative floor division, equality boundaries, guarded zero division, empty/reverse ranges, zero-step rejection, list bounds, local rebinding, alias versus copy, missing return, all three failure categories and targeted bug repairs.",
+  "instruction": "Four original lessons supply quick recall, full explanations, 32 reasoned worked programs, guided predictions, bounded step-through traces and complete objective checkpoints. Debugging checks explicitly require syntax, runtime and logic classifications. Python conventions and differences from C++ scope are stated. No arbitrary learner code is executed.",
+  "accessibility": "All pages passed desktop/mobile WCAG2 A/AA and WCAG2.1 AA Axe checks, with no overflow or KaTeX errors. Code indentation and literal escaping, keyboard-controlled branches, step buttons, retry/reset behavior and empty/invalid/correct feedback passed. Mobile state/loop/debug traces and desktop overview were visually inspected.",
+  "sources": "Ten precise official Python 3.14 Tutorial sections verified and attributed under PSF License Version 2, with documentation code additionally Zero-Clause BSD. App prose and programs are original. The optional local verification runtime was downloaded from python.org and matched its published SHA-256; it remains in ignored tmp and is not an app dependency.",
+  "sharedInterfaces": [
+    "MathText supports escaped fenced Python and inline code within existing string fields; existing math rendering is retained. No persisted question shape changed.",
+    "One programming activity union member and reader dispatch. Existing assessment, notes, progress and backup APIs reused."
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f10",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional content awards no credit and establishes no enrollment eligibility.",
+    "Independent human subject and assistive-technology reviews remain pending.",
+    "Not a complete Python or C++ course; no arbitrary execution, recursion, object-oriented design, memory management, file/network or concurrent programming.",
+    "F11 and F12 remain planned at this milestone."
   ]
 }

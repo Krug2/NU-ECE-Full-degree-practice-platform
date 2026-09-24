@@ -2,7 +2,7 @@
   "courseId": "f10",
   "title": "Programming recall",
   "version": 1,
-  "status": "building",
+  "status": "preview",
   "introduction": "Recover state tracing, decisions, loops, indexed lists, functions, and evidence-based debugging through a clearly stated Python 3 subset. This optional refresher awards no university credit and establishes no enrollment eligibility. Familiarity and assisted work are separate from independent evidence. Independent human review is pending.",
   "bridges": [],
   "modules": [
