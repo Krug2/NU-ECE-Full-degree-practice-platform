@@ -2,7 +2,7 @@
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
   "status": "draft",
-  "contentStages": 2,
+  "contentStages": 3,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -91,6 +91,55 @@
       ],
       "independentCheck": "mth-log-rules:mixed",
       "retrieval": "Condense a variable expression, then inspect an extra input accepted by the new formula but excluded by the original logarithms."
+    },
+    {
+      "skill": "Keep restrictions after cancellation and multiplication by zero",
+      "instruction": [
+        "Keep restrictions after cancellation and multiplication by zero"
+      ],
+      "examples": [
+        "Cancellation keeps an excluded point",
+        "A zero multiplier does not define a logarithm"
+      ],
+      "practice": [
+        "mth-log-rewrite:canceled-hole",
+        "mth-log-rewrite:zero-coefficient"
+      ],
+      "independentCheck": "mth-log-rewrite:mixed",
+      "retrieval": "Simplify a canceled factor and a zero coefficient while retaining the original domain in each result."
+    },
+    {
+      "skill": "Disprove false sum rules and repair mixed bases",
+      "instruction": [
+        "Disprove false sum rules and repair mixed bases"
+      ],
+      "examples": [
+        "A counterexample to a logarithm sum rule",
+        "An accidental match is not an identity",
+        "Convert a different base before combining"
+      ],
+      "practice": [
+        "mth-log-rewrite:false-sum",
+        "mth-log-rewrite:mixed-bases"
+      ],
+      "independentCheck": "mth-log-rewrite:mixed",
+      "retrieval": "Give both an exact counterexample and an accidental agreement for a false sum rule, then repair a different-base combination."
+    },
+    {
+      "skill": "Change base and separate exact from approximate results",
+      "instruction": [
+        "Change base and separate exact from approximate results"
+      ],
+      "examples": [
+        "Keep an exact quotient and a separate decimal",
+        "A reciprocal base changes the sign"
+      ],
+      "practice": [
+        "mth-log-rules:change-base",
+        "mth-log-rules:fractional-base"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Derive the change-of-base quotient, compute a reciprocal-base sign, and separate an exact expression from its rounded report."
     }
   ]
 }

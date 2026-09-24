@@ -73,6 +73,30 @@
         "The condensed argument may be positive at extra inputs where an original logarithm was undefined. An even power can remove a sign from the combined formula, and a quotient can become positive from two negative terms. Those new inputs do not become valid for the original expression merely because the condensed formula can be evaluated there.",
         "You can verify a condensation by expanding it back under the original positivity assumptions. Keep the signs of coefficients, denominator factors and the constant factor. When a full-domain expansion is desired instead, return to the actual domain of the original combined expression and decide which absolute values and restrictions it needs."
       ]
+    },
+    {
+      "heading": "Keep restrictions after cancellation and multiplication by zero",
+      "paragraphs": [
+        "A common factor can be canceled only where its original denominator is nonzero. If a rational logarithm argument simplifies, keep both its original denominator exclusions and the condition that its value be strictly positive. The simplified expression can help compute values on that domain, but it cannot restore an input that never belonged to the original expression.",
+        "A zero coefficient also leaves the original domain intact. In $0\\ln A(x)$, the logarithm must be defined before its value is multiplied by zero. The expression equals zero wherever A(x)>0 and is undefined wherever A(x) is nonpositive or undefined. The standalone constant function zero has a larger domain unless the original conditions already allowed every real input.",
+        "In an equation, carry these restrictions into the final candidate check. A candidate can satisfy a simplified equation and still fail the original one because it makes a canceled denominator zero or an original logarithm invalid. Domain checks must refer to the original written expressions, not only to the last line of algebra."
+      ]
+    },
+    {
+      "heading": "Disprove false sum rules and repair mixed bases",
+      "paragraphs": [
+        "The product identity relates the logarithm of a product to a sum of logarithms. There is no corresponding general identity that splits $\\log_b(A+B)$ into $\\log_b A+\\log_b B$. The latter expression, when its terms exist, combines to $\\log_b(AB)$ instead. A simple input with both sides defined can disprove a proposed sum rule.",
+        "One counterexample is enough to refute a claim made for every permitted input. One matching input is not enough to prove such a claim. A false rule can agree accidentally at a special value, so the activity asks you to distinguish what a probe establishes from the symbolic argument needed for an identity.",
+        "Product and quotient identities also require a common base. Changing the base changes the exponent a logarithm reports. Convert all terms to a common base before combining them, including any conversion coefficient. Treating different bases as if they were equal generally changes the value even when all arguments are positive."
+      ]
+    },
+    {
+      "heading": "Change base and separate exact from approximate results",
+      "paragraphs": [
+        "If $y=\\log_b A$, then $b^y=A$. Taking natural logarithms gives $y\\ln b=\\ln A$, so $\\log_b A=\\ln A/\\ln b$. The numerator comes from the argument and the denominator from the base. The denominator is nonzero because b is not one. The same derivation works with any other valid logarithm base.",
+        "An exact logarithm such as $\\ln7/\\ln2$ specifies a real number without rounding. A finite calculator report is a numerical approximation unless the exact value actually simplifies to that terminating number. Keep intermediate logarithms exact or retain extra numerical digits, and round only the final field that explicitly requests an approximation.",
+        "For a reciprocal base, $\\ln(1/b)=-\\ln b$, so $\\log_{1/b} A=-\\log_b A$. Bases between zero and one are valid. Their logarithms are decreasing, giving negative outputs for arguments above one and positive outputs for arguments between zero and one. The preceding lesson contains an in-app calculator for natural, common and specified-base logarithms."
+      ]
     }
   ],
   "examples": [
@@ -300,6 +324,155 @@
         }
       ],
       "conclusion": "Retain x>1 when claiming equivalence to the original expression. Condensation does not authorize the extra branch."
+    },
+    {
+      "title": "Cancellation keeps an excluded point",
+      "prompt": "Simplify $\\ln\\left(\\frac{(x-1)(x-3)}{x-3}\\right)$ with its original domain.",
+      "steps": [
+        {
+          "math": "x-3\\ne0\\quad\\Longrightarrow\\quad x\\ne3",
+          "reason": "Record the original denominator exclusion before canceling anything."
+        },
+        {
+          "math": "\\frac{(x-1)(x-3)}{x-3}=x-1,\\qquad x\\ne3",
+          "reason": "The cancellation is valid only away from the original hole."
+        },
+        {
+          "math": "x-1>0,\\quad x\\ne3\\quad\\Longrightarrow\\quad D=(1,3)\\cup(3,\\infty)",
+          "reason": "The logarithm adds strict positivity of the remaining value."
+        },
+        {
+          "math": "\\ln(x-1),\\quad x\\in(1,3)\\cup(3,\\infty)",
+          "reason": "This simplified formula, together with the retained domain, represents the original expression."
+        }
+      ],
+      "conclusion": "At x=3 the simplified formula alone gives ln(2), but the original fraction has a zero denominator. The hole remains excluded."
+    },
+    {
+      "title": "A zero multiplier does not define a logarithm",
+      "prompt": "Compare $F(x)=0\\ln(x-2)$ with the constant formula $G(x)=0$.",
+      "steps": [
+        {
+          "math": "x-2>0\\iff x>2",
+          "reason": "The original logarithm must exist before multiplication is performed."
+        },
+        {
+          "math": "F(x)=0,\\qquad x\\in(2,\\infty)",
+          "reason": "Every permitted logarithm value becomes zero when multiplied by zero."
+        },
+        {
+          "math": "F(2)=0\\ln0\\text{ is undefined},\\qquad G(2)=0",
+          "reason": "An undefined expression cannot be made into a defined number by multiplying it by zero."
+        },
+        {
+          "math": "D_F=(2,\\infty),\\qquad D_G=\\mathbb R",
+          "reason": "The values agree on the smaller domain, but the complete functions are different."
+        }
+      ],
+      "conclusion": "Use the simplified value zero together with x>2 when representing the original expression."
+    },
+    {
+      "title": "A counterexample to a logarithm sum rule",
+      "prompt": "Test the proposed identity $\\ln(x+4)=\\ln x+\\ln4$ at x=2.",
+      "steps": [
+        {
+          "math": "D_L=(-4,\\infty),\\qquad D_R=(0,\\infty)",
+          "reason": "Both sides exist at x=2, so comparing their values is meaningful."
+        },
+        {
+          "math": "L(2)=\\ln6,\\qquad R(2)=\\ln2+\\ln4=\\ln8",
+          "reason": "The sum on the right represents a product of arguments."
+        },
+        {
+          "math": "6\\ne8\\quad\\Longrightarrow\\quad\\ln6\\ne\\ln8",
+          "reason": "The natural logarithm is one-to-one on positive arguments. No numerical rounding is needed to prove the mismatch."
+        }
+      ],
+      "conclusion": "The proposed identity is false. It also fails to preserve the full domain of the left expression."
+    },
+    {
+      "title": "An accidental match is not an identity",
+      "prompt": "Find the input where the two sides of $\\ln(x+4)=\\ln x+\\ln4$ happen to agree.",
+      "steps": [
+        {
+          "math": "x>0,\\qquad\\ln x+\\ln4=\\ln(4x)",
+          "reason": "Start on the original common domain, where the product identity is valid."
+        },
+        {
+          "math": "\\ln(x+4)=\\ln(4x)\\iff x+4=4x",
+          "reason": "One-to-one logarithms permit equality of their positive arguments."
+        },
+        {
+          "math": "x=\\frac43,\\qquad\\ln(x+4)=\\ln(16/3)=\\ln x+\\ln4",
+          "reason": "This particular positive input gives an exact agreement."
+        },
+        {
+          "math": "x=2:\\quad\\ln6\\ne\\ln8",
+          "reason": "A different common-domain input still disproves the universal identity."
+        }
+      ],
+      "conclusion": "The equality is an equation with one solution, not a logarithm identity valid for all positive x."
+    },
+    {
+      "title": "Convert a different base before combining",
+      "prompt": "Evaluate $\\log_2 8+\\log_4 4$ and explain the error in combining it directly as $\\log_2 32$.",
+      "steps": [
+        {
+          "math": "\\log_2 8=3,\\qquad\\log_4 4=1",
+          "reason": "The two bases ask for different exponents."
+        },
+        {
+          "math": "3+1=4,\\qquad\\log_2 32=5",
+          "reason": "The proposed direct combination changes the value."
+        },
+        {
+          "math": "\\log_4 4=\\frac{\\log_2 4}{\\log_2 4}=\\frac12\\log_2 4=\\log_2 2",
+          "reason": "Change of base contributes a factor of 1/2, which can then be moved into a positive power."
+        },
+        {
+          "math": "\\log_2 8+\\log_2 2=\\log_2 16=4",
+          "reason": "The product identity is valid after the conversion produces a common base."
+        }
+      ],
+      "conclusion": "The correct value is 4. The common-base requirement must be satisfied before combining logarithms."
+    },
+    {
+      "title": "Keep an exact quotient and a separate decimal",
+      "prompt": "Find an exact expression for $\\log_2 7$ and a numerical report to six decimal places.",
+      "steps": [
+        {
+          "math": "2^y=7\\quad\\Longrightarrow\\quad y\\ln2=\\ln7",
+          "reason": "Take natural logarithms of positive sides and use the power identity."
+        },
+        {
+          "math": "y=\\frac{\\ln7}{\\ln2}=\\frac{\\log_{10}7}{\\log_{10}2}",
+          "reason": "Either common base gives the same exact quotient."
+        },
+        {
+          "math": "y\\approx2.807355",
+          "reason": "Evaluate with extra digits and round only the final numerical report."
+        }
+      ],
+      "conclusion": "The quotient of logarithms is the exact answer. The six-place decimal is appropriate only when an approximation is requested."
+    },
+    {
+      "title": "A reciprocal base changes the sign",
+      "prompt": "Evaluate $\\log_{1/3}9$ exactly using change of base.",
+      "steps": [
+        {
+          "math": "\\log_{1/3}9=\\frac{\\ln9}{\\ln(1/3)}",
+          "reason": "The reciprocal base is positive and different from one, so it is valid."
+        },
+        {
+          "math": "\\frac{2\\ln3}{-\\ln3}=-2",
+          "reason": "The numerator power and reciprocal denominator preserve their signs."
+        },
+        {
+          "math": "(1/3)^{-2}=9",
+          "reason": "Exponentiation checks the exact logarithm value in the original base."
+        }
+      ],
+      "conclusion": "The negative result is consistent with an argument above one and a base between zero and one."
     }
   ],
   "guided": {
