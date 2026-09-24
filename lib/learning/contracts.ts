@@ -13,6 +13,7 @@ import { phs231ProjectileActivitySchema } from "./phs-231-projectiles";
 import { phs231FrameActivitySchema } from "./phs-231-frames";
 import { phs231MotionActivitySchema } from "./phs-231-motion";
 import { phs231ForceActivitySchema } from "./phs-231-forces";
+import { phs231FrictionActivitySchema } from "./phs-231-friction";
 import { calibrationCaseSchema } from "./calibration";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
@@ -99,6 +100,7 @@ export const lessonSchema = z.object({
     phs231FrameActivitySchema,
     phs231ProjectileActivitySchema,
     phs231ForceActivitySchema,
+    phs231FrictionActivitySchema,
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
