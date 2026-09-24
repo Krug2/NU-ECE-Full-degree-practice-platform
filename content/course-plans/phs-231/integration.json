@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-23",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: six of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: eight of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -12,27 +12,31 @@
       "m02-l01",
       "m02-l02",
       "m02-l03",
-      "m03-l01"
+      "m03-l01",
+      "m03-l02",
+      "m03-l03"
     ],
-    "questionFamilies": 13,
-    "questionVariants": 61,
+    "questionFamilies": 17,
+    "questionVariants": 85,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 6,
-    "workedExamples": 31,
+    "guidedExamples": 8,
+    "workedExamples": 45,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
       "One-dimensional motion, reversals, and signed graph areas",
       "Three-dimensional trajectories and moving observers",
       "Projectile flights, apex states, and admissible contact times",
-      "External force inventories, normal constraints, and contact loss"
+      "External force inventories, normal constraints, and contact loss",
+      "Static thresholds, relative sliding, and loss of friction capacity",
+      "Linear-drag transients, time constants, upward launches, and the zero-drag limit"
     ]
   },
   "remaining": {
-    "phs231Lessons": 16,
+    "phs231Lessons": 14,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Friction, drag, circular-motion, gravity, energy, momentum, rotation, equilibrium, material, and numerical investigations",
+      "Circular-motion, gravity, energy, momentum, rotation, equilibrium, material, and numerical investigations",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -40,10 +44,22 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m03-l02",
+    "nextLesson": "m04-l01",
     "nextCourseAfterPhs231Completion": "phs-232"
   },
   "sharedCommits": [
+    {
+      "commit": "28d6fe6",
+      "summary": "enabled friction",
+      "files": ["lib/learning/contracts.ts", "lib/learning/generate.ts", "components/learning/lesson-reader.tsx"],
+      "integration": "Adds phs231-friction and two families, with the course-specific component included. Requires the engine and 600-seed fixtures in 2c22783. Content and its course registration are in ad96431; browser workflows are in 7f3ca00."
+    },
+    {
+      "commit": "5fcde14",
+      "summary": "enabled drag",
+      "files": ["lib/learning/contracts.ts", "lib/learning/generate.ts", "components/learning/lesson-reader.tsx"],
+      "integration": "Adds phs231-drag and two families. Requires e683c2e's engine and checks against independent numerical integration. The component is included; content and registration are in e6f0e14, and browser workflows in 7868728. Answer and backup schemas remain compatible."
+    },
     {
       "commit": "cf962e6",
       "summary": "enabled forces",
@@ -130,6 +146,12 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "01a8a6fad0fed0e7517a4b5e225329a16bda6e65",
+        "mergeCommit": "c6fdf74",
+        "resolvedFiles": ["components/learning/lesson-reader.tsx", "lib/learning/catalog.ts", "lib/learning/contracts.ts", "lib/learning/generate.ts", "tests/lesson-content.test.ts"],
+        "preserved": "MTH 215 polynomial lesson, exploration and question families; pending-answer batching and awaited save/import fixes; 50 MB backups and 5,000-attempt history limits. Shared registrations retain all MTH and physics content. Prerequisite lesson content, plans, and development order match upstream. All 461 unit and 82 browser tests passed on the combined snapshot."
+      },
+      {
         "sourceCommit": "d4a1a2afb444bad3b41876cb2775f0e2bfb9c856",
         "mergeCommit": "6d6a93a",
         "resolvedFiles": [],
@@ -169,25 +191,25 @@
     ]
   },
   "verification": {
-    "status": "The six delivered lessons are technically checked; the course release gates remain open.",
+    "status": "The eight delivered lessons are technically checked; the course release gates remain open.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the six delivered lessons round-trips within the current 1 MB policy. This does not establish full-course or repeated-study capacity.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the eight delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 398,
-      "files": 53,
+      "passed": 461,
+      "files": 60,
       "command": "pnpm exec vitest run --maxWorkers=2",
       "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. An unrestricted run encountered timeout failures across existing files under CPU contention; the full run with two workers passed without changing assertions or timeouts."
     },
     "browser": {
       "fullSuite": {
-        "passed": 72,
-        "scope": "Merged history integration through 6d6a93a, with the first five physics lessons."
+        "passed": 82,
+        "scope": "Merged prerequisite integration through c6fdf74, with eight physics lessons, the MTH polynomial lesson, and expanded history handling."
       },
       "focusedSuite": {
         "passed": 2,
-        "scope": "Force lesson on the later production build, including exact incline answers, contact boundaries, and real checkpoint backup export, reset, and restoration. The interaction workflow also passed again after a diagram-label adjustment."
+        "scope": "Drag lesson before the full integration run, including numerical transients, exact radicals, model validation, and actual checkpoint export/reset/restore. The interaction workflow passed again after improving graph scales; the later 82-test full suite includes it."
       },
       "port": 3101
     },
@@ -196,7 +218,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the six delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
+    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the eight delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses."
