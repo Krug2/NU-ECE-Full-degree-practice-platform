@@ -17,6 +17,8 @@ const calculus: LearningPack = JSON.parse(readFileSync(new URL("../../content/le
 
 const complex: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f09.json", import.meta.url), "utf8"));
 
+const programming: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f10.json", import.meta.url), "utf8"));
+
 async function fillAnswer(area: Locator, question: Question, wrong = false) {
   const answers = refresherAnswers(question);
   for (const [index, field] of question.fields.entries()) {
@@ -29,7 +31,7 @@ async function fillAnswer(area: Locator, question: Question, wrong = false) {
   }
 }
 
-for (const pack of [algebra, functions, trigonometry, exponentials, measurement, vectors, calculus, complex]) {
+for (const pack of [algebra, functions, trigonometry, exponentials, measurement, vectors, calculus, complex, programming]) {
   const course = pack.courseId, lessons = pack.modules.flatMap(module => module.lessons);
   test(`${course}: diagnostic gaps, exact resume, notes, and backup round trip`, async ({ page }, testInfo) => {
     const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
