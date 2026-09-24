@@ -28,8 +28,8 @@ it("reuses complete source instruction without changing source IDs, content, or 
     expect(adapted.prerequisites.every(p => f02Lessons.some(l => l.id === p.lessonId))).toBe(true);
   }
 });
-it("keeps every borrowed family deterministic, required, and mapped to its F02 objective", () => {
-  for (let seed = 0; seed < 50; seed++) for (const lesson of f02Lessons) for (const slot of [...lesson.practice, ...lesson.checkpoint]) {
+it.each(f02Lessons)("$id keeps every borrowed family deterministic, required, and mapped to its F02 objective", lesson => {
+  for (let seed = 0; seed < 50; seed++) for (const slot of [...lesson.practice, ...lesson.checkpoint]) {
     const q = f02Question(slot.familyId, slot.variant, String(seed), "q1");
     expect(q.objectiveId).toBe(lesson.id);
     expect(q.courseId).toBe("f02");

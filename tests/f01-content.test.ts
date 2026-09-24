@@ -12,8 +12,7 @@ function checkMath(value: unknown): void {
     for (const match of value.matchAll(/\$([^$]+)\$/g)) expect(() => katex.renderToString(match[1], { strict: "error", trust: false })).not.toThrow();
   } else if (value && typeof value === "object") Object.values(value).forEach(checkMath);
 }
-it("validates every authored F01 lesson and its entire varied practice and required checkpoint", () => {
-  for (const lesson of lessons) {
+it.each(lessons)("$id validates authored F01 content, varied practice, and the required checkpoint", lesson => {
     checkMath(lesson);
     for (const example of lesson.examples) for (const step of example.steps) expect(() => katex.renderToString(step.math, { strict: "error", trust: false })).not.toThrow();
     for (let seed = 0; seed < 50; seed++) for (const slot of [...lesson.practice, ...lesson.checkpoint]) {
@@ -23,7 +22,6 @@ it("validates every authored F01 lesson and its entire varied practice and requi
       expect(q.critical).toBe(true);
       checkMath(q);
     }
-  }
 });
 it("maps each diagnostic probe and mixed check to a lesson without awarding lesson evidence", () => {
   for (const [familyId, target] of Object.entries(f01ScreenFamilies)) {
