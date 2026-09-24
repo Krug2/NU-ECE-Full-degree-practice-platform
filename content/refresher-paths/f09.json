@@ -1,0 +1,98 @@
+{
+  "courseId": "f09",
+  "version": 1,
+  "quickRoute": "Use four diagnostic probes to locate gaps. Read Quick recall, attempt each independent lesson checkpoint, and finish the mixed recall.",
+  "fullRoute": "Follow rectangular arithmetic, conjugates and division, polar representation, and powers and roots. Predict in the plane activities and explain each result in your notes.",
+  "diagnostic": [
+    {
+      "familyId": "f09-diagnostic-rectangular",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f09-diagnostic-conjugate",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f09-diagnostic-polar",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f09-diagnostic-roots",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f09-recall-rectangular",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f09-recall-conjugate",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f09-recall-polar",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f09-recall-powers",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f09-diagnostic-rectangular": "m01-l01",
+    "f09-diagnostic-conjugate": "m01-l02",
+    "f09-diagnostic-polar": "m01-l03",
+    "f09-diagnostic-roots": "m01-l04",
+    "f09-recall-rectangular": "m01-l01",
+    "f09-recall-conjugate": "m01-l02",
+    "f09-recall-polar": "m01-l03",
+    "f09-recall-powers": "m01-l04"
+  },
+  "support": [
+    {
+      "courseId": "f02",
+      "reason": "Recover distribution, fractions, and equation manipulation."
+    },
+    {
+      "courseId": "f04",
+      "reason": "Review radians, the unit circle, quadrants, and exact trigonometric values."
+    },
+    {
+      "courseId": "f07",
+      "reason": "Reconnect coordinates, magnitude, and geometric representations."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "Study the full algebra course and its complex-number lesson."
+    },
+    {
+      "courseId": "csc-209",
+      "reason": "Prepare for complex representations used alongside later calculus."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Build toward engineering mathematics with complex exponentials."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Prepare the arithmetic needed for phasors and impedance."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Use complex exponentials in signal representations."
+    },
+    {
+      "courseId": "cee-420",
+      "reason": "Support later circuit and device models."
+    },
+    {
+      "courseId": "cee-430",
+      "reason": "Prepare for complex signal and frequency-domain calculations."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "For first-time instruction, follow the MTH 215 complex-number lesson and linked free OpenStax sections. CEE 300, CEE 310, and CEE 324 supply later mathematical and physical models beyond this refresher."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "courseId": "f09",
+  "title": "Complex numbers",
+  "version": 1,
+  "status": "building",
+  "introduction": "Recover rectangular arithmetic, conjugates and division, polar and Euler forms, powers, and complete root sets. This optional refresher does not award university credit or establish enrollment eligibility. Familiarity and assisted work remain separate from independent checkpoint evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From complex coordinates to roots",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Rectangular numbers and arithmetic",
+          "objective": "Interpret real and imaginary components, use powers of i and principal negative square roots, and add, subtract, scale, and multiply complex numbers."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Conjugates, magnitude, division, and equations",
+          "objective": "Use conjugation and magnitude identities, divide by nonzero complex numbers including axis cases, and solve and verify a linear complex equation."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Polar coordinates, arguments, and Euler form",
+          "objective": "Convert between rectangular, polar, and Euler forms, select a principal argument in the stated range, and use conjugate exponential identities while treating zero's argument as undefined."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Polar operations, powers, and all roots",
+          "objective": "Use polar multiplication, division, and integer powers, recover all distinct low-order roots, and choose rectangular addition when polar angles cannot be added directly."
+        }
+      ]
+    }
+  ]
+}
