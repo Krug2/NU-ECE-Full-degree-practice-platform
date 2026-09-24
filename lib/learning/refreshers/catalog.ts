@@ -7,10 +7,13 @@ import path from "@/content/refresher-paths/f01.json";
 import algebraPack from "@/content/learning-packs/f02.json";
 import algebraPath from "@/content/refresher-paths/f02.json";
 import { f02Lessons } from "./f02";
+import functionsPack from "@/content/learning-packs/f03.json";
+import functionsPath from "@/content/refresher-paths/f03.json";
+import { f03Lessons } from "./f03";
 import { lessonSchema, packSchema } from "../contracts";
 import { refresherPathSchema } from "./contracts";
 
-export const refresherPacks = [packSchema.parse(pack), packSchema.parse(algebraPack)];
-export const refresherLessons = [...[l01, l02, l03, l04].map(data => lessonSchema.parse(data)), ...f02Lessons];
-export const refresherPaths = [refresherPathSchema.parse(path), refresherPathSchema.parse(algebraPath)];
+export const refresherPacks = [packSchema.parse(pack), packSchema.parse(algebraPack), packSchema.parse(functionsPack)];
+export const refresherLessons = [...[l01, l02, l03, l04].map(data => lessonSchema.parse(data)), ...f02Lessons, ...f03Lessons];
+export const refresherPaths = [refresherPathSchema.parse(path), refresherPathSchema.parse(algebraPath), refresherPathSchema.parse(functionsPath)];
 export const refresherPath = (courseId: string) => refresherPaths.find(path => path.courseId === courseId);

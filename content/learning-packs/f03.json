@@ -1,0 +1,42 @@
+{
+  "courseId": "f03",
+  "title": "Functions and graphs",
+  "version": 1,
+  "status": "building",
+  "introduction": "Reconnect graphs, formulas, and models through five substantial lessons. Start with a diagnostic, recover a particular skill, or rebuild the full chain from coordinates to calibration. Refresher evidence stays separate from university course completion.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From coordinates to useful models",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Coordinates, scales, and lines",
+          "objective": "Read scaled coordinates, find signed slopes with units, distinguish zero and undefined slope, and interpret intercepts."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Function inputs, domains, and piecewise rules",
+          "objective": "Classify a function, evaluate complete inputs, preserve its domain, and read finite and piecewise ranges without inventing outputs."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Transformations and graph features",
+          "objective": "Map points through shifts, scales, and reflections; transform domains and ranges; distinguish intercepts, monotonic intervals, and local versus absolute extrema."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Composition and inverse functions",
+          "objective": "Compose in the stated order with both domain checks, restrict inverse branches when necessary, and verify both inverse identities."
+        },
+        {
+          "id": "m01-l05",
+          "title": "Average rates and linear calibration",
+          "objective": "Calculate interval average rates, fit and interpret a linear model, recover an input when valid, and assess residuals and prediction scope."
+        }
+      ]
+    }
+  ]
+}

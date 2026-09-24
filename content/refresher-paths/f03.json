@@ -1,0 +1,90 @@
+{
+  "courseId": "f03",
+  "version": 1,
+  "quickRoute": "Try the five diagnostic probes and follow any review recommendation. Read a lesson's Quick recall section, then use its independent checkpoint. Finish the mixed recall check after covering all five lesson objectives.",
+  "fullRoute": "Begin with coordinates, scales, and lines. Continue through functions and domains, transformations, composition and inverses, and average rates with calibration. Each lesson includes full explanations, reasoned examples, guided work, an investigation, and varied practice. Split longer lessons across sessions and save your next step in notes.",
+  "diagnostic": [
+    {
+      "familyId": "f03-diagnostic-coordinates",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-diagnostic-domain",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-diagnostic-transform",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-diagnostic-composition",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-diagnostic-calibration",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f03-recall-foundations",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-recall-transforms",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-recall-inverse",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f03-recall-calibration",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f03-diagnostic-coordinates": "m01-l01",
+    "f03-diagnostic-domain": "m01-l02",
+    "f03-diagnostic-transform": "m01-l03",
+    "f03-diagnostic-composition": "m01-l04",
+    "f03-diagnostic-calibration": "m01-l05",
+    "f03-recall-foundations": {
+      "p1": "m01-l01",
+      "p2": "m01-l02"
+    },
+    "f03-recall-transforms": "m01-l03",
+    "f03-recall-inverse": "m01-l04",
+    "f03-recall-calibration": "m01-l05"
+  },
+  "support": [
+    {
+      "courseId": "f02",
+      "reason": "Return to algebra manipulation when symbolic operations or interval notation block function reasoning."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "Recover the representations and reasoning used throughout algebra and trigonometry."
+    },
+    {
+      "courseId": "csc-208",
+      "reason": "Domains, transformed graphs, and average rates prepare for limits and derivatives."
+    },
+    {
+      "courseId": "phs-104a",
+      "reason": "Read labeled graphs and distinguish a fitted model from measurement evidence."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Composition and transformations connect to signal chains, shifts, and scaling."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Interpret calibration rules and inputs with their correct units and operating scope."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "For first-time instruction or gaps beyond this refresher, follow the full MTH 215 learning path and its linked lessons. F01 and F02 rebuild the arithmetic and algebra used here. Difference quotients are an optional bridge; F08 and the calculus courses develop instantaneous rates."
+  }
+}
