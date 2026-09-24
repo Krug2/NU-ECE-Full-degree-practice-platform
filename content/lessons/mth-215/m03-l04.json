@@ -1,0 +1,368 @@
+{
+  "id": "m03-l04",
+  "courseId": "mth-215",
+  "moduleId": "m03",
+  "version": 1,
+  "title": "Finding and checking all polynomial roots",
+  "objective": "Use rational-root candidates and factor reduction to obtain a complete root list, including multiplicities and complex pairs when requested.",
+  "why": "A plausible zero, one successful division, or a graph with a few intercepts is only part of a root analysis. This lesson builds a checkable path from candidate values to a complete list, while preserving repeated roots and nonreal solutions that a real graph cannot display.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {"label": "Polynomial operations and factors", "lessonId": "b03"},
+    {"label": "Quadratic equations and complex numbers", "lessonId": "m01-l03"},
+    {"label": "Zeros and multiplicity", "lessonId": "m03-l02"},
+    {"label": "Division, remainders, and factors", "lessonId": "m03-l03"}
+  ],
+  "sections": [
+    {
+      "heading": "State what a complete answer must include",
+      "paragraphs": [
+        "A root of P is a number r for which P(r) = 0. A real root gives an intercept on the graph with real x and y axes. A nonreal complex root is a valid algebraic solution, but it is not a location on that real x-axis.",
+        "Keep three counts separate: distinct root values, roots counted with multiplicity, and distinct real intercepts. If $P(x)=(x-2)^2(x^2+1)$, the distinct complex values are 2, i, and -i. The list with multiplicity is 2, 2, i, -i. There is one distinct real intercept, at 2.",
+        "In this lesson's complete-root answer fields, repeat a root once for each copy of its factor. Order does not matter. A distinct-root set answers a different question and intentionally lists a repeated value only once.",
+        "Check which number system is requested. A real-root question omits nonreal values; an all-complex-roots question includes both real and nonreal roots."
+      ]
+    },
+    {
+      "heading": "Build rational candidates from integer coefficients",
+      "paragraphs": [
+        "For an integer-coefficient polynomial with nonzero leading and constant coefficients, a rational root written in lowest terms p/q must have p dividing the constant coefficient and q dividing the leading coefficient. Include both signs and reduce duplicate ratios.",
+        "To see why the denominator is restricted, substitute p/q into the equation and multiply by the appropriate power of q. Every term except the leading one has a factor q, so q must divide the leading coefficient times a power of p. Since p and q have no common factor, q must divide the leading coefficient. Reversing the argument gives the numerator restriction.",
+        "For a monic polynomial, q can be 1, so every rational root is an integer divisor of the constant term. A nonmonic polynomial can also have fractional candidates.",
+        "The theorem provides necessary possibilities, not guaranteed roots. A candidate must still give exact output zero. A list containing every candidate is not a solved root list."
+      ]
+    },
+    {
+      "heading": "Normalize coefficients and handle zero first",
+      "paragraphs": [
+        "For rational coefficients, multiply the entire polynomial by a nonzero common denominator. You may also remove a nonzero common integer factor. These operations preserve every root and its multiplicity, while making the integer-coefficient candidate rule usable.",
+        "If the constant term is zero, do not try to list divisors of zero. Factor out the whole available power of x. That exponent is the multiplicity of the zero root. Apply the candidate rule to the remaining polynomial with nonzero constant term, and keep the zero root in your final answer.",
+        "For example, $2x^4-6x^2=2x^2(x^2-3)$. Zero already has multiplicity two. The remaining quadratic has rational candidates -3, -1, 1, and 3, but its actual roots are irrational.",
+        "A nonzero constant polynomial has no roots. The zero polynomial is different: every number makes it zero, so a finite root list and an ordinary degree-based root count do not apply."
+      ]
+    },
+    {
+      "heading": "Test exactly, then reduce one confirmed factor",
+      "paragraphs": [
+        "Evaluate P(c) exactly for a candidate c. A nonzero result rejects that candidate. A zero result confirms the factor x - c and allows the identity $P(x)=(x-c)Q(x)$ after division.",
+        "Use c itself as the standard synthetic input, including its sign. The divisor x + 3 corresponds to c = -3. Preserve zero coefficient positions and retain the original leading scale in the quotient.",
+        "For a root 1/2, dividing by x - 1/2 and dividing by 2x - 1 produce different quotients, although they identify the same root. The first divisor is monic; the second includes an extra factor 2. Multiply back with the divisor you actually used.",
+        "Each successful division lowers the degree by one. Continue with the quotient. Testing and reducing an easier polynomial avoids repeatedly working with the original higher-degree expression."
+      ]
+    },
+    {
+      "heading": "Prove a multiplicity by repeating the test",
+      "paragraphs": [
+        "After removing x - c once, evaluate the quotient at c. If it is still zero, another copy remains. Continue until the next quotient is nonzero at c. The number of successful removals is the original multiplicity.",
+        "Do not confuse a repeated candidate on a scratch list with a repeated root. Duplicate ratios such as 1/1 and 2/2 represent one candidate. Repeated zero remainders establish multiplicity.",
+        "A real graph can suggest crossing or touching, but it does not by itself determine an exact exponent. The algebra must justify how many copies of a factor occur.",
+        "When a quadratic factor is raised to a power, each of its roots inherits that outer multiplicity. For $(x^2+4)^2$, both 2i and -2i have multiplicity two."
+      ]
+    },
+    {
+      "heading": "Finish a remaining quadratic without losing a branch",
+      "paragraphs": [
+        "Once reduction leaves a quadratic, solve it by factoring, completing the square, or the quadratic formula. For real coefficients, the discriminant distinguishes two distinct real roots, one repeated real root, and a nonreal conjugate pair.",
+        "From $(x-h)^2=d$ with d positive, use both $x=h+\\sqrt d$ and $x=h-\\sqrt d$. A positive nonsquare d gives irrational real roots. They need not have appeared in your rational candidate list.",
+        "From $(x-h)^2=-d$ with d positive, use both $x=h+i\\sqrt d$ and $x=h-i\\sqrt d$. These are nonreal roots, not a reason to write that the polynomial has no roots.",
+        "If the discriminant is zero, the two formula branches coincide. Record that one distinct value twice in a list counted with multiplicity.",
+        "Combine the remaining roots with every factor removed earlier. Solving the final quadratic alone does not reconstruct the full original answer."
+      ]
+    },
+    {
+      "heading": "Use the complex root count as a completeness check",
+      "paragraphs": [
+        "The fundamental theorem of algebra implies that a nonconstant polynomial of degree n has exactly n complex roots counted with multiplicity. It need not have n distinct roots or n real roots.",
+        "To prove your list complete, first verify the values and their multiplicities. Then check that their total multiplicity is n. Merely writing n numbers does not establish that any of them are roots.",
+        "The corresponding complete factorization over the complex numbers is a nonzero leading coefficient times one linear factor for every root, including repeated factors. Keep that leading coefficient when checking the product.",
+        "Over the real numbers, a nonreal conjugate pair combines into a quadratic factor with no real roots. A complete real factorization can therefore contain both real linear factors and irreducible real quadratics."
+      ]
+    },
+    {
+      "heading": "Apply the conjugate-root theorem with its hypothesis",
+      "paragraphs": [
+        "For a polynomial with real coefficients, a nonreal root a + bi requires its conjugate a - bi. Conjugate roots have the same multiplicity. This follows because conjugating the polynomial evaluation preserves the real coefficients and conjugates the root.",
+        "Their paired factors multiply to a real quadratic: $(x-(a+bi))(x-(a-bi))=x^2-2ax+(a^2+b^2)$. This identity connects a nonreal pair to the quadratic you obtain after factor reduction.",
+        "The coefficient condition matters. For $P(x)=x-(1+2i)$, the root is 1 + 2i, while substituting 1 - 2i gives -4i rather than zero. A polynomial with nonreal coefficients does not automatically require the partner.",
+        "Conjugate pairing applies to nonreal roots. It does not assert that every positive real root has its negative as another root."
+      ]
+    },
+    {
+      "heading": "Explain what the real graph can and cannot show",
+      "paragraphs": [
+        "Only real roots can appear as real x-intercepts. Repeated real roots share one location, and nonreal roots have no location on that axis. A quartic can have four complex roots counted with multiplicity and no real intercepts.",
+        "A finite window may also hide real roots outside its bounds or make a shallow touch hard to see. In the activity, exact algebra supplies verified markers and a root table; the sampled curve is a visual comparison, not the grading oracle.",
+        "Use graph behavior to ask useful questions, then answer them algebraically. A visible crossing can suggest odd multiplicity, but it cannot prove whether the multiplicity is one, three, or another odd value.",
+        "A correct real-intercept list can still be an incomplete all-complex-roots answer."
+      ]
+    },
+    {
+      "heading": "Recognize when the current method has not finished",
+      "paragraphs": [
+        "Rejecting every rational candidate rules out rational roots only. A quadratic such as $x^2-2$ still has two irrational real roots. A quadratic such as $x^2+2$ has two nonreal roots.",
+        "If a higher-degree residual has no rational root, the rational-candidate and quadratic-reduction workflow may not finish it. Other factor patterns or later numerical methods may be needed. Keep the unresolved factor in your report.",
+        "For $x^3-2$, none of the rational candidates -2, -1, 1, and 2 is a root. Yet the polynomial is negative at 1 and positive at 2, so continuity gives a real root between them. A rough decimal location does not constitute a verified complete complex root list.",
+        "The goal is an honest algebraic conclusion: confirmed roots with justified multiplicities, plus any factor still unresolved. Do not silently replace unresolved work with an empty set."
+      ]
+    },
+    {
+      "heading": "Apply model restrictions after solving the algebra",
+      "paragraphs": [
+        "An engineering model may use a polynomial only on a specified real input interval. First distinguish its unrestricted algebraic roots from the inputs allowed by the model.",
+        "A negative real root can be mathematically valid but outside a model that uses nonnegative time. Nonreal roots remain part of an all-complex-roots answer, but they are not real times.",
+        "If the question asks for a target output, form the error polynomial P minus the target before finding its zeros. A zero of that error polynomial is not necessarily a zero of P itself.",
+        "Before finishing, state the requested number system, preserve multiplicities, verify values, compare the count with degree, and only then apply any domain restriction."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Candidates are possibilities to test",
+      "prompt": "List the rational candidates for $P(x)=2x^3-3x+3$ and test c = 1.",
+      "steps": [
+        {"math": "p\\mid3,\\qquad q\\mid2", "reason": "In lowest terms, the numerator must divide the constant and the denominator must divide the leading coefficient."},
+        {"math": "\\left\\{-3,-\\frac32,-1,-\\frac12,\\frac12,1,\\frac32,3\\right\\}", "reason": "Include both signs of every distinct reduced ratio."},
+        {"math": "P(1)=2-3+3=2\\ne0", "reason": "Membership in the candidate set does not make 1 a root."}
+      ],
+      "conclusion": "This is a complete rational candidate set, not a complete root list. Exact testing rejects the candidate 1."
+    },
+    {
+      "title": "Clear fractions without changing zeros",
+      "prompt": "Prepare $P(x)=-\\frac32x^3+\\frac94x-\\frac94$ for rational candidate testing.",
+      "steps": [
+        {"math": "4P(x)=-6x^3+9x-9", "reason": "Multiplying every coefficient by 4 clears the denominators."},
+        {"math": "-\\frac43P(x)=2x^3-3x+3", "reason": "Remove the nonzero common coefficient factor -3."},
+        {"math": "P(r)=0\\iff-\\frac43P(r)=0", "reason": "Multiplication by a nonzero constant preserves roots and their multiplicities."}
+      ],
+      "conclusion": "The normalized polynomial has the same candidate set as the preceding example. Do not clear a denominator in only one term."
+    },
+    {
+      "title": "Extract the zero root before using a nonzero constant",
+      "prompt": "Find all complex roots with multiplicity of $2x^4-6x^2$.",
+      "steps": [
+        {"math": "2x^4-6x^2=2x^2(x^2-3)", "reason": "The common power x squared establishes zero with multiplicity two."},
+        {"math": "x^2-3=0\\quad\\Rightarrow\\quad x=\\pm\\sqrt3", "reason": "The remaining roots are irrational, so they are not confirmed rational candidates."},
+        {"math": "2x^4-6x^2=2x^2(x-\\sqrt3)(x+\\sqrt3)", "reason": "The complete factorization preserves the leading scale."},
+        {"math": "2+1+1=4", "reason": "The total multiplicity equals the original degree."}
+      ],
+      "conclusion": "The complete list is 0, 0, sqrt(3), -sqrt(3). There are three distinct real intercepts."
+    },
+    {
+      "title": "Reduce an integer-root cubic to a quadratic",
+      "prompt": "Find every root of $x^3-2x^2-5x+6$.",
+      "steps": [
+        {"math": "P(1)=1-2-5+6=0", "reason": "A rational candidate is confirmed by exact evaluation."},
+        {"math": "P(x)=(x-1)(x^2-x-6)", "reason": "Division removes one confirmed factor."},
+        {"math": "x^2-x-6=(x-3)(x+2)", "reason": "Factor the remaining quadratic."},
+        {"math": "P(x)=(x-1)(x-3)(x+2)", "reason": "Three distinct linear factors account for degree three."}
+      ],
+      "conclusion": "The roots are 1, 3, and -2, each with multiplicity one. All three are real."
+    },
+    {
+      "title": "Keep the sign of the tested root",
+      "prompt": "Given the factor x + 3, finish the root list for $x^3+2x^2-5x-6$.",
+      "steps": [
+        {"math": "c=-3,\\qquad P(-3)=-27+18+15-6=0", "reason": "The zero of x + 3 is -3."},
+        {"math": "P(x)=(x+3)(x^2-x-2)", "reason": "Use -3 in synthetic division and retain the quotient."},
+        {"math": "x^2-x-2=(x-2)(x+1)", "reason": "The remaining factors give two more roots."},
+        {"math": "P(3)=27+18-15-6=24", "reason": "Using +3 would test a different factor and give a nonzero remainder."}
+      ],
+      "conclusion": "The complete list is -3, 2, -1. A plus sign in the factor becomes a negative root."
+    },
+    {
+      "title": "A rational root can leave irrational roots",
+      "prompt": "Find all roots of $2x^3-x^2-4x+2$.",
+      "steps": [
+        {"math": "P\\left(\\frac12\\right)=\\frac14-\\frac14-2+2=0", "reason": "The fractional candidate 1/2 is an exact root."},
+        {"math": "P(x)=\\left(x-\\frac12\\right)(2x^2-4)", "reason": "Dividing by the monic factor keeps the leading scale 2 in the quotient."},
+        {"math": "2x^2-4=0\\quad\\Rightarrow\\quad x=\\pm\\sqrt2", "reason": "The remaining quadratic has two irrational real roots."},
+        {"math": "P(x)=2\\left(x-\\frac12\\right)(x-\\sqrt2)(x+\\sqrt2)", "reason": "The complete product contains the correct leading coefficient and three linear factors."}
+      ],
+      "conclusion": "The roots are 1/2, sqrt(2), and -sqrt(2). The rational candidate list was never intended to list the irrational roots."
+    },
+    {
+      "title": "Confirm the exact multiplicity by dividing again",
+      "prompt": "Determine all roots and multiplicities of $x^3-3x+2$.",
+      "steps": [
+        {"math": "P(1)=0,\\qquad P(x)=(x-1)(x^2+x-2)", "reason": "The first division confirms one copy of x - 1."},
+        {"math": "1^2+1-2=0,\\qquad x^2+x-2=(x-1)(x+2)", "reason": "The quotient still has root 1, confirming a second copy."},
+        {"math": "1+2=3\\ne0", "reason": "The next remaining factor does not vanish at 1, so the multiplicity is exactly two."},
+        {"math": "P(x)=(x-1)^2(x+2)", "reason": "The repeated root and the remaining simple root account for all three factors."}
+      ],
+      "conclusion": "The full list is 1, 1, -2. Its three entries represent only two distinct real intercepts."
+    },
+    {
+      "title": "One real root and a nonreal conjugate pair",
+      "prompt": "Find all complex roots of $x^3-2x^2+4x-8$.",
+      "steps": [
+        {"math": "P(2)=8-8+8-8=0", "reason": "The candidate 2 gives a zero remainder."},
+        {"math": "P(x)=(x-2)(x^2+4)", "reason": "Remove the confirmed rational factor."},
+        {"math": "x^2=-4\\quad\\Rightarrow\\quad x=2i\\text{ or }x=-2i", "reason": "Both square-root branches are nonreal."},
+        {"math": "P(x)=(x-2)(x-2i)(x+2i)", "reason": "All three complex roots are now represented."}
+      ],
+      "conclusion": "The complete list is 2, 2i, -2i. The real graph has only the intercept at 2."
+    },
+    {
+      "title": "Complete a shifted complex pair exactly",
+      "prompt": "Find all complex roots of $x^3-x^2+x+3$.",
+      "steps": [
+        {"math": "P(-1)=-1-1-1+3=0", "reason": "Testing -1 confirms the factor x + 1."},
+        {"math": "P(x)=(x+1)(x^2-2x+3)", "reason": "The quotient is quadratic."},
+        {"math": "x^2-2x+3=(x-1)^2+2", "reason": "Completing the square exposes the shift."},
+        {"math": "(x-1)^2=-2\\quad\\Rightarrow\\quad x=1\\pm i\\sqrt2", "reason": "Keep both conjugate branches and the exact radical."}
+      ],
+      "conclusion": "The complete list is -1, 1+i*sqrt(2), 1-i*sqrt(2). Approximations are unnecessary."
+    },
+    {
+      "title": "Repeated nonreal roots still count",
+      "prompt": "Use the supplied factorization $x^4+8x^2+16=(x^2+4)^2$ to find every root with multiplicity.",
+      "steps": [
+        {"math": "x^2+4=(x-2i)(x+2i)", "reason": "The quadratic contributes a nonreal conjugate pair."},
+        {"math": "(x^2+4)^2=(x-2i)^2(x+2i)^2", "reason": "The outer square repeats each factor."},
+        {"math": "2+2=4", "reason": "The two distinct roots each have multiplicity two."}
+      ],
+      "conclusion": "Enter 2i, 2i, -2i, -2i for the complete list. The real graph has no intercepts because x squared + 4 is positive for every real x."
+    },
+    {
+      "title": "A correct count cannot rescue an incorrect value",
+      "prompt": "For $P(x)=(x-1)^2(x^2+1)$, audit the reported list 1, 1, i, 2.",
+      "steps": [
+        {"math": "\\deg P=4", "reason": "Four entries are required when multiplicity is counted, but their number alone is not enough."},
+        {"math": "P(2)=(2-1)^2(2^2+1)=5\\ne0", "reason": "The reported value 2 is not a root."},
+        {"math": "x^2+1=(x-i)(x+i)", "reason": "The missing root is -i, the conjugate partner of i."},
+        {"math": "P(x)=(x-1)^2(x-i)(x+i)", "reason": "This verifies both root values and multiplicities."}
+      ],
+      "conclusion": "The correct list is 1, 1, i, -i. There is one distinct real intercept."
+    },
+    {
+      "title": "No rational roots does not mean no roots",
+      "prompt": "Interpret failed rational-candidate tests for $x^2-2$ and $x^3-2$.",
+      "steps": [
+        {"math": "x^2-2=0\\quad\\Rightarrow\\quad x=\\pm\\sqrt2", "reason": "The quadratic has two irrational real roots despite rejecting every rational candidate."},
+        {"math": "P(x)=x^3-2:\\quad P(-2)=-10,\\ P(-1)=-3,\\ P(1)=-1,\\ P(2)=6", "reason": "The cubic also rejects every possible rational root."},
+        {"math": "P(1)<0<P(2)", "reason": "Continuity guarantees a real root between 1 and 2, without making it rational."},
+        {"math": "\\deg P=3", "reason": "The cubic has three complex roots with multiplicity, but these candidate tests have not supplied a complete list."}
+      ],
+      "conclusion": "Solve a remaining quadratic when possible. If a higher-degree factor remains unresolved, state that honestly rather than returning no roots."
+    },
+    {
+      "title": "Check the coefficient condition before adding a conjugate",
+      "prompt": "Does the root 1 + 2i of $P(x)=x-(1+2i)$ force 1 - 2i to be a root?",
+      "steps": [
+        {"math": "P(1+2i)=0", "reason": "The stated root is correct."},
+        {"math": "P(1-2i)=(1-2i)-(1+2i)=-4i\\ne0", "reason": "Direct substitution rejects the conjugate."},
+        {"math": "P(x)=x+(-1-2i)", "reason": "The constant coefficient is nonreal, so the real-coefficient conjugate theorem does not apply."}
+      ],
+      "conclusion": "The answer is no. The real-coefficient hypothesis is an essential part of the theorem."
+    },
+    {
+      "title": "Filter model times after finding every algebraic root",
+      "prompt": "A normalized error model $E(t)=(t-1)(t+2)(t^2+1)$ is used only for real times from 0 through 3. Find all algebraic roots, then the zero-error times in the model domain.",
+      "steps": [
+        {"math": "t=1,\\ -2,\\ i,\\ -i", "reason": "The factorization gives four complex roots, each with multiplicity one."},
+        {"math": "1+1+1+1=4=\\deg E", "reason": "The algebraic list is complete."},
+        {"math": "t\\in[0,3]\\quad\\Rightarrow\\quad t=1", "reason": "Only one root is both real and inside the model's stated time interval."}
+      ],
+      "conclusion": "All roots remain part of the unrestricted algebraic solution. Only time 1 answers the model-domain question."
+    }
+  ],
+  "guided": {
+    "title": "Finish a repeated-root and conjugate-pair analysis",
+    "setup": "Find every complex root with multiplicity of $P(x)=x^4-4x^3+5x^2-4x+4$.",
+    "before": [
+      "Exact evaluation gives P(2) = 0. The first quotient on division by x - 2 is $x^3-2x^2+x-2$.",
+      "That quotient also vanishes at 2. A second division by x - 2 leaves $x^2+1$.",
+      "The remaining quadratic gives 5 at x = 2, so the multiplicity of 2 is exactly two. Solve that quadratic over the complex numbers and combine all roots."
+    ],
+    "question": {
+      "id": "guided-complete-roots",
+      "familyId": "guided-complete-roots",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m03-l04",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Use $P(x)=(x-2)^2(x^2+1)$ to complete the original polynomial's root list and counts.",
+      "fields": [
+        {"id": "roots", "kind": "root-list", "label": "All complex roots with multiplicity", "numberSystem": "complex", "expected": ["2","2","i","-i"], "help": "Separate roots with commas and repeat each for its multiplicity. Use i for the imaginary unit."},
+        {"id": "total", "kind": "rational", "label": "Total complex roots with multiplicity", "expected": "4"},
+        {"id": "intercepts", "kind": "rational", "label": "Distinct real x-intercepts", "expected": "1"}
+      ],
+      "parameters": {},
+      "hints": [
+        "Two successful divisions establish two copies of root 2.",
+        "The remaining equation x squared = -1 has roots i and -i.",
+        "The complete list has four entries. Only root 2 is real, and its repetitions share one intercept."
+      ],
+      "explanation": [
+        "The complete list is 2, 2, i, -i.",
+        "The total multiplicity is four, matching the degree. There are three distinct complex values.",
+        "The real graph has one distinct intercept, at x = 2."
+      ],
+      "answerSummary": "2, 2, i, -i; total count 4; one distinct real intercept."
+    },
+    "after": "Explain why omitting the second 2 and omitting -i are different errors. This guided work is separate from independent checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "root-search-lab",
+    "prompt": "Choose a rational candidate, predict its exact evaluation, and remove one factor only after confirming zero. Repeat for a repeated root. Finish a quadratic exactly, then check the complete root list against the real graph and the original polynomial.",
+    "cases": [
+      {"title": "Three distinct real roots", "polynomial": "x^3-2*x^2-5*x+6"},
+      {"title": "A repeated real root", "polynomial": "x^3-3*x+2"},
+      {"title": "Fractional and irrational roots", "polynomial": "2*x^3-x^2-4*x+2"},
+      {"title": "One real root and a complex pair", "polynomial": "x^3-2*x^2+4*x-8"},
+      {"title": "Repeated zero and a complex pair", "polynomial": "x^4+x^2"},
+      {"title": "No rational roots in a quadratic", "polynomial": "x^2-2"}
+    ]
+  },
+  "practice": [
+    {"familyId": "mth-rational-candidates", "variant": "monic"},
+    {"familyId": "mth-rational-candidates", "variant": "nonmonic"},
+    {"familyId": "mth-rational-candidates", "variant": "fraction-coefficients"},
+    {"familyId": "mth-rational-candidates", "variant": "zero-factor"},
+    {"familyId": "mth-rational-candidates", "variant": "deduplicate"},
+    {"familyId": "mth-factor-reduction", "variant": "integer-cubic"},
+    {"familyId": "mth-factor-reduction", "variant": "rational-root"},
+    {"familyId": "mth-factor-reduction", "variant": "repeated-root"},
+    {"familyId": "mth-factor-reduction", "variant": "zero-root"},
+    {"familyId": "mth-factor-reduction", "variant": "quartic"},
+    {"familyId": "mth-factor-reduction", "variant": "failed-candidate"},
+    {"familyId": "mth-complete-roots", "variant": "distinct-real"},
+    {"familyId": "mth-complete-roots", "variant": "repeated-real"},
+    {"familyId": "mth-complete-roots", "variant": "rational-root"},
+    {"familyId": "mth-complete-roots", "variant": "irrational-pair"},
+    {"familyId": "mth-complete-roots", "variant": "complex-pair"},
+    {"familyId": "mth-complete-roots", "variant": "repeated-complex"},
+    {"familyId": "mth-complete-roots", "variant": "zero-root"},
+    {"familyId": "mth-complete-roots", "variant": "real-only"},
+    {"familyId": "mth-root-list-audit", "variant": "graph-real-only"},
+    {"familyId": "mth-root-list-audit", "variant": "missing-conjugate"},
+    {"familyId": "mth-root-list-audit", "variant": "missing-repeat"},
+    {"familyId": "mth-root-list-audit", "variant": "wrong-root"},
+    {"familyId": "mth-root-list-audit", "variant": "complete"},
+    {"familyId": "mth-root-list-audit", "variant": "no-rational"},
+    {"familyId": "mth-root-list-audit", "variant": "complex-coefficients"},
+    {"familyId": "mth-root-list-audit", "variant": "model-domain"}
+  ],
+  "checkpoint": [
+    {"familyId": "mth-rational-candidates", "variant": "mixed"},
+    {"familyId": "mth-factor-reduction", "variant": "mixed"},
+    {"familyId": "mth-complete-roots", "variant": "mixed"},
+    {"familyId": "mth-root-list-audit", "variant": "mixed"}
+  ],
+  "summary": [
+    "A rational candidate must be tested exactly before it becomes a confirmed root.",
+    "Clear rational coefficient denominators and extract zero factors before enumerating candidates from a nonzero constant term.",
+    "Each zero remainder removes one factor. Repeating the test establishes multiplicity.",
+    "Finish a remaining quadratic with both branches, including irrational or nonreal values as required.",
+    "A complete complex root list has total multiplicity equal to degree, but every listed value must also be verified.",
+    "Nonreal roots of a real-coefficient polynomial occur in conjugate pairs with equal multiplicity.",
+    "A real graph counts distinct real locations; it does not display nonreal roots or automatically reveal exact multiplicities.",
+    "Keep unresolved factors explicit and apply a model's real-domain restrictions only after distinguishing the full algebraic solution."
+  ],
+  "retrieval": "Without looking back, find all complex roots of x^3 - 2x^2 + 4x - 8 and explain why its real graph has fewer intercepts than its degree. Then list the roots of (x^2 + 1)^2 with multiplicity. State exactly what failed rational-candidate tests do and do not establish.",
+  "readings": [
+    {"title": "OpenStax College Algebra 2e, 5.5: Zeros of Polynomial Functions", "url": "https://openstax.org/books/college-algebra-2e/pages/5-5-zeros-of-polynomial-functions", "purpose": "Optional free reading on rational candidates, factor reduction, the complex root count, and complete factorization. The built-in lesson and exercises provide original instruction."},
+    {"title": "OpenStax College Algebra 2e, 2.4: Complex Numbers", "url": "https://openstax.org/books/college-algebra-2e/pages/2-4-complex-numbers", "purpose": "Refresh the imaginary unit and conjugates before solving a remaining quadratic with nonreal roots."}
+  ]
+}
