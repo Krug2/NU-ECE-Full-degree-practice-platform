@@ -2,7 +2,7 @@
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
   "status": "draft",
-  "contentStages": 1,
+  "contentStages": 2,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -40,6 +40,57 @@
       ],
       "independentCheck": "mth-log-rules:mixed",
       "retrieval": "Derive a product and a quotient rule from exponent arithmetic, then test a pair of negative factors against the hypotheses."
+    },
+    {
+      "skill": "Move powers and roots with their conditions",
+      "instruction": [
+        "Move powers and roots with their conditions"
+      ],
+      "examples": [
+        "A negative power is a signed multiplier",
+        "A root contributes a reciprocal exponent"
+      ],
+      "practice": [
+        "mth-log-rules:power",
+        "mth-log-rules:root"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Derive the power identity and apply it to one negative exponent and one positive root."
+    },
+    {
+      "skill": "Expand even powers over the full real domain",
+      "instruction": [
+        "Expand even powers over the full real domain"
+      ],
+      "examples": [
+        "Expand a quotient of even powers",
+        "An odd power keeps a positivity requirement"
+      ],
+      "practice": [
+        "mth-log-rules:expand",
+        "mth-log-rules:power",
+        "mth-log-rewrite:even-power",
+        "mth-log-rewrite:shifted-absolute"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Expand a quotient with two different even powers and explain every excluded input and every absolute value."
+    },
+    {
+      "skill": "Condense on the original common domain",
+      "instruction": [
+        "Condense on the original common domain"
+      ],
+      "examples": [
+        "Condense coefficients into a single rational argument",
+        "The condensed formula can accept extra inputs"
+      ],
+      "practice": [
+        "mth-log-rules:condense",
+        "mth-log-rewrite:product-domain",
+        "mth-log-rewrite:quotient-domain"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Condense a variable expression, then inspect an extra input accepted by the new formula but excluded by the original logarithms."
     }
   ]
 }

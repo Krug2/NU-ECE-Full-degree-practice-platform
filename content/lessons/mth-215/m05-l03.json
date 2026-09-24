@@ -49,6 +49,30 @@
         "Division gives $A/B=b^{u-v}$ and therefore $\\log_b(A/B)=\\log_b A-\\log_b B$. The numerator belongs to the first logarithm and the denominator to the subtracted logarithm. Reversing the quotient changes the sign. These arguments work for bases between zero and one as well as for bases above one.",
         "The hypotheses A>0 and B>0 ensure that both separate logarithms exist. A positive product or quotient by itself is not enough: both A and B could be negative. When starting from a logarithm of a combined variable expression, inspect its entire original domain before splitting it. Absolute-value versions can preserve values on negative-factor branches, but the original positive-product or positive-quotient restriction must still be retained."
       ]
+    },
+    {
+      "heading": "Move powers and roots with their conditions",
+      "paragraphs": [
+        "For A>0, write $A=b^u$ with $u=\\log_b A$. Then $A^r=b^{ur}$, so $\\log_b(A^r)=r\\log_b A$. The exponent belongs to the entire argument being raised to a power. It becomes a signed multiplier outside the logarithm, not an exponent on the logarithm value.",
+        "A negative exponent remains negative when moved outside: $\\log_b(A^{-m})=-m\\log_b A$. A positive nth root contributes a reciprocal exponent: $\\log_b(\\sqrt[n]{A})=(1/n)\\log_b A$. These statements use positive A, ensuring that the separate real logarithm and the stated real powers exist.",
+        "Do not remove the positivity hypothesis merely because a particular integer power happens to be positive. An even power of a negative number is positive, but the logarithm of the unpowered negative number is not real. For variable expressions, determine the original domain first and use an absolute value where it is needed to preserve that domain."
+      ]
+    },
+    {
+      "heading": "Expand even powers over the full real domain",
+      "paragraphs": [
+        "For a nonzero real u, an even power satisfies $u^{2m}=|u|^{2m}>0$. Therefore $\\log_b(u^{2m})=2m\\log_b|u|$ on the complete domain u different from zero. The absolute value is part of the mathematical argument, not an optional decoration.",
+        "When a quotient contains even powers, exclude the denominator zeros first and exclude any numerator zeros that would make the logarithm argument zero. Away from those points, positive constants and even powers make the quotient positive. Expand the positive factors, subtract denominator logarithms, and keep each coefficient with its own absolute-value argument.",
+        "An odd positive power behaves differently: $u^{2m+1}>0$ requires u>0, so its original logarithm already has only the positive branch. In that case $(2m+1)\\log_b u$ preserves the domain. The choice of an absolute value comes from the original expression and its allowed inputs, not from a rule to insert absolute values everywhere."
+      ]
+    },
+    {
+      "heading": "Condense on the original common domain",
+      "paragraphs": [
+        "To condense a sum or difference of same-base logarithms, begin with the common domain of all original terms. Move coefficients into powers of their complete arguments, turn addition into multiplication, and turn subtraction into division. The result is one logarithm used on that recorded original domain.",
+        "The condensed argument may be positive at extra inputs where an original logarithm was undefined. An even power can remove a sign from the combined formula, and a quotient can become positive from two negative terms. Those new inputs do not become valid for the original expression merely because the condensed formula can be evaluated there.",
+        "You can verify a condensation by expanding it back under the original positivity assumptions. Keep the signs of coefficients, denominator factors and the constant factor. When a full-domain expansion is desired instead, return to the actual domain of the original combined expression and decide which absolute values and restrictions it needs."
+      ]
     }
   ],
   "examples": [
@@ -154,6 +178,128 @@
         }
       ],
       "conclusion": "The combined expression has domain (-inf,-2) U (1,inf), while the separate logs have domain (1,inf). A full-domain absolute-value expansion must still retain the original outside intervals."
+    },
+    {
+      "title": "A negative power is a signed multiplier",
+      "prompt": "Evaluate $\\log_5((1/25)^{-3})$ exactly using the power identity.",
+      "steps": [
+        {
+          "math": "1/25>0,\\qquad\\log_5((1/25)^{-3})=-3\\log_5(1/25)",
+          "reason": "The positive unpowered argument permits the identity, and the signed exponent becomes the multiplier."
+        },
+        {
+          "math": "1/25=5^{-2}\\quad\\Longrightarrow\\quad\\log_5(1/25)=-2",
+          "reason": "Recognize the reciprocal as an exact negative power."
+        },
+        {
+          "math": "-3(-2)=6,\\qquad(1/25)^{-3}=5^6",
+          "reason": "The positive result also checks directly against the original argument."
+        }
+      ],
+      "conclusion": "The exact logarithm is 6. Moving the exponent does not erase its minus sign."
+    },
+    {
+      "title": "A root contributes a reciprocal exponent",
+      "prompt": "Evaluate $\\log_8(\\sqrt[3]{4})$ exactly.",
+      "steps": [
+        {
+          "math": "\\sqrt[3]{4}=4^{1/3},\\qquad\\log_8(\\sqrt[3]{4})=\\frac13\\log_8 4",
+          "reason": "The positive cube root corresponds to exponent 1/3."
+        },
+        {
+          "math": "8=2^3,\\quad4=2^2,\\quad\\log_8 4=\\frac23",
+          "reason": "The exponent 2/3 converts 8 into 4."
+        },
+        {
+          "math": "\\frac13\\cdot\\frac23=\\frac29,\\qquad8^{2/9}=2^{2/3}=\\sqrt[3]{4}",
+          "reason": "Keep the exact fraction and check by exponentiating in the original base."
+        }
+      ],
+      "conclusion": "The exact value is 2/9. A root contributes a reciprocal multiplier, not multiplication by its index."
+    },
+    {
+      "title": "Expand a quotient of even powers",
+      "prompt": "Expand $\\log_2\\left(\\frac{8(x-1)^4}{(x+2)^2}\\right)$ over its full real domain and check x=-3.",
+      "steps": [
+        {
+          "math": "x\\ne-2,\\quad x\\ne1,\\qquad D=(-\\infty,-2)\\cup(-2,1)\\cup(1,\\infty)",
+          "reason": "The denominator excludes -2, while the zero numerator at 1 is rejected by the logarithm. Elsewhere the quotient is positive."
+        },
+        {
+          "math": "\\log_2 8+\\log_2((x-1)^4)-\\log_2((x+2)^2)",
+          "reason": "Separate positive factors and the positive quotient on the recorded domain."
+        },
+        {
+          "math": "3+4\\log_2|x-1|-2\\log_2|x+2|",
+          "reason": "The even powers require absolute values to retain both signs of the shifted inputs."
+        },
+        {
+          "math": "x=-3:\\quad\\log_2(8\\cdot256)=\\log_2 2048=11,\\quad3+4(2)-2(0)=11",
+          "reason": "The original expression and expansion agree on a negative-input branch that would be lost without absolute values."
+        }
+      ],
+      "conclusion": "The expansion is valid on all real inputs except -2 and 1. Both the coefficients and the complete original domain are part of the answer."
+    },
+    {
+      "title": "An odd power keeps a positivity requirement",
+      "prompt": "Expand $\\ln((x-3)^3)$ on its complete real domain.",
+      "steps": [
+        {
+          "math": "(x-3)^3>0\\iff x-3>0\\iff x>3",
+          "reason": "An odd power retains the sign of its base."
+        },
+        {
+          "math": "\\ln((x-3)^3)=3\\ln(x-3),\\qquad x>3",
+          "reason": "The original domain already guarantees a positive unpowered argument, so no absolute value is required."
+        },
+        {
+          "math": "x=2:\\quad(x-3)^3=-1",
+          "reason": "An input below 3 is not in the original domain. An absolute-value formula defined there would need the original restriction to remain equivalent."
+        }
+      ],
+      "conclusion": "The expansion 3 ln(x-3) preserves the original domain x>3."
+    },
+    {
+      "title": "Condense coefficients into a single rational argument",
+      "prompt": "Condense $3\\log_2(x-1)-2\\log_2(x+2)+\\log_2 5$ with its original domain.",
+      "steps": [
+        {
+          "math": "x-1>0,\\quad x+2>0\\quad\\Longrightarrow\\quad x>1",
+          "reason": "Every separate logarithm must exist. The positive constant 5 adds no variable restriction."
+        },
+        {
+          "math": "\\log_2((x-1)^3)-\\log_2((x+2)^2)+\\log_2 5",
+          "reason": "Move each coefficient into a power of its complete positive argument."
+        },
+        {
+          "math": "\\log_2\\left(\\frac{5(x-1)^3}{(x+2)^2}\\right),\\qquad x>1",
+          "reason": "Combine the numerator factors and retain the subtracted term in the denominator."
+        }
+      ],
+      "conclusion": "The combined argument is 5(x-1)^3/(x+2)^2, used on the original domain x>1."
+    },
+    {
+      "title": "The condensed formula can accept extra inputs",
+      "prompt": "Condense $2\\ln(x-1)-\\ln(x+2)$ and compare its original domain with the new formula.",
+      "steps": [
+        {
+          "math": "x-1>0,\\quad x+2>0\\quad\\Longrightarrow\\quad D_{\\text{original}}=(1,\\infty)",
+          "reason": "The original separate logarithms require x>1."
+        },
+        {
+          "math": "2\\ln(x-1)-\\ln(x+2)=\\ln\\left(\\frac{(x-1)^2}{x+2}\\right),\\qquad x>1",
+          "reason": "The condensation is justified on the recorded common domain."
+        },
+        {
+          "math": "\\frac{(x-1)^2}{x+2}>0\\iff x\\in(-2,1)\\cup(1,\\infty)",
+          "reason": "As a new standalone formula, the condensed logarithm also accepts inputs between -2 and 1."
+        },
+        {
+          "math": "x=0:\\quad\\ln(1/2)\\text{ exists, but }2\\ln(-1)-\\ln2\\text{ does not}",
+          "reason": "This probe identifies an extra input of the standalone condensed formula."
+        }
+      ],
+      "conclusion": "Retain x>1 when claiming equivalence to the original expression. Condensation does not authorize the extra branch."
     }
   ],
   "guided": {
