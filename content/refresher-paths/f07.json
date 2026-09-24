@@ -1,0 +1,110 @@
+{
+  "courseId": "f07",
+  "version": 1,
+  "quickRoute": "Five diagnostic probes route to specific lessons. Use Quick recall and independent lesson checkpoints before the four-question mixed recall.",
+  "fullRoute": "Work components, arithmetic and directions, dot products and projections, ordered cross products, then lines/planes and coordinate systems. Predict in each activity, explain differences, and save reasoning in notes.",
+  "diagnostic": [
+    {
+      "familyId": "f07-diagnostic-components",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-diagnostic-arithmetic",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-diagnostic-dot",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-diagnostic-cross",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-diagnostic-coordinates",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f07-recall-foundations",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-recall-dot",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-recall-cross",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f07-recall-geometry",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f07-diagnostic-components": "m01-l01",
+    "f07-diagnostic-arithmetic": "m01-l02",
+    "f07-diagnostic-dot": "m01-l03",
+    "f07-diagnostic-cross": "m01-l04",
+    "f07-diagnostic-coordinates": "m01-l05",
+    "f07-recall-foundations": {
+      "p1": "m01-l01",
+      "p2": "m01-l02"
+    },
+    "f07-recall-dot": "m01-l03",
+    "f07-recall-cross": "m01-l04",
+    "f07-recall-geometry": "m01-l05"
+  },
+  "support": [
+    {
+      "courseId": "f01",
+      "reason": "Recover exact fractions, radicals, and signed arithmetic."
+    },
+    {
+      "courseId": "f03",
+      "reason": "Review coordinate reading, signed changes, and geometric distances."
+    },
+    {
+      "courseId": "f04",
+      "reason": "Recover standard angles, sine/cosine signs, and angle conventions."
+    },
+    {
+      "courseId": "f06",
+      "reason": "Check compatible units and distinguish dimensions from physical meaning."
+    },
+    {
+      "courseId": "phs-231",
+      "reason": "Resolve forces, calculate displacement and work, and interpret supplied torque models."
+    },
+    {
+      "courseId": "phs-232",
+      "reason": "Prepare vector geometry and coordinate conventions for fields."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Develop vector methods and coordinate geometry in the full engineering mathematics course."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Prepare projections and component reasoning for signal representations."
+    },
+    {
+      "courseId": "cee-430",
+      "reason": "Use projection and component ideas when studying digital signal methods."
+    },
+    {
+      "courseId": "cee-340",
+      "reason": "Interpret spatial directions, coordinate frames, and sensor quantities."
+    },
+    {
+      "courseId": "cee-440",
+      "reason": "Read spatial coordinates and geometric relations in engineering models."
+    }
+  ],
+  "escalation": {
+    "courseId": "cee-300",
+    "text": "Use the linked free OpenStax Calculus Volume 3 sections for first-time instruction. CEE 300 and the full physics courses are the corresponding course destinations; their vector learning packs are not yet authored in this baseline. F03 and F04 provide available coordinate and trigonometry support."
+  }
+}
