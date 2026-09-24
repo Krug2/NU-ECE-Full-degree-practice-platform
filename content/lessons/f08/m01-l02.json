@@ -1,0 +1,310 @@
+{
+  "id": "m01-l02",
+  "courseId": "f08",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Derivative meaning, polynomial rules, and rates",
+  "objective": "Connect secants to instantaneous derivatives, differentiate polynomials, construct tangent lines, and interpret first and second derivatives with units and nondifferentiable corners.",
+  "why": "A derivative turns a comparison over an interval into a local rate. Recovering its meaning keeps a correct-looking formula connected to a graph, a tangent line, and physical units. It also helps you recognize corners where no ordinary derivative exists.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Limits, one-sided behavior, and continuity"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "The derivative at a is $f'(a)=\\lim_{h\\to 0}[f(a+h)-f(a)]/h$, when that finite limit exists. The quotient itself needs h≠0. A tangent with finite slope has equation $y=f(a)+f'(a)(x-a)$.",
+        "For polynomials, differentiate term by term: $d(x^n)/dx=nx^{n-1}$ for positive integer n, and the derivative of a constant is zero. A derivative function gives rates at many inputs; evaluating it gives the rate at one specified input."
+      ]
+    },
+    {
+      "heading": "From average rate to local rate",
+      "paragraphs": [
+        "The average rate from a to a+h compares the change in output with the signed change in input. It is the slope of the secant through two distinct graph points. Reverse both differences together and the quotient stays the same. Reversing only one difference gives a sign error.",
+        "To describe a local rate, let nonzero h approach zero from both sides. The two points approach each other, but do not simply substitute h=0 into the original quotient. First simplify or use a justified rule, then take the limit. The resulting derivative need not equal a secant slope for a visibly large interval."
+      ]
+    },
+    {
+      "heading": "A rule preserves the limit's reasoning",
+      "paragraphs": [
+        "For x², expanding (x+h)² and subtracting x² leaves 2xh+h². Dividing by h gives 2x+h for h≠0, whose limit is 2x. The power rule packages similar reasoning so that you do not need to rederive every polynomial term.",
+        "A constant multiplier stays outside a derivative; sums and differences differentiate term by term. A constant output has no change, so its derivative is zero. Keep zero terms when interpreting what changed, even though they can be omitted from the simplified answer. These linearity rules do not imply that products or quotients can be differentiated by separately multiplying or dividing derivatives."
+      ]
+    },
+    {
+      "heading": "Build a tangent through the correct point",
+      "paragraphs": [
+        "The tangent line needs two pieces of information: f(a) locates the point, and f′(a) supplies the slope. Using a derivative value as the vertical coordinate would mix two different quantities. Write the point-slope form before expanding it.",
+        "Near a differentiable point, the tangent also gives a local approximation: $f(a+h)\\approx f(a)+f'(a)h$ for sufficiently small h. It is usually an approximation, not a global equality. A picture that looks almost straight at one scale can still curve over a wider interval."
+      ]
+    },
+    {
+      "heading": "Continuous does not always mean differentiable",
+      "paragraphs": [
+        "At a corner of |x-a|, the graph meets continuously but its left and right slopes disagree. A two-sided derivative therefore does not exist there. A jump or hole also prevents differentiability at the affected point, because differentiability requires continuity.",
+        "The converse fails: continuity alone does not ensure a finite derivative. Corners are one example; a vertical tangent can also lack a finite ordinary derivative. The exercises focus on absolute-value corners where the two one-sided slopes can be checked directly, rather than treating a smooth-looking plot as proof."
+      ]
+    },
+    {
+      "heading": "Rates carry units and signs",
+      "paragraphs": [
+        "If position is measured in metres and time in seconds, its first derivative is velocity in m/s. Differentiating again gives acceleration in m/s². Negative velocity refers to the chosen negative direction, while speed is the nonnegative magnitude of velocity. Negative acceleration does not automatically mean slowing down; compare its sign with the velocity.",
+        "A zero derivative at one instant means a horizontal tangent there, not that the function is constant everywhere. For x², the derivative at zero is zero while the surrounding values change. Record what a result establishes at the requested input, and avoid extending a local claim beyond the evidence."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Take a limit after cancellation",
+      "prompt": "Derive the derivative of f(x)=x²-3x from the difference quotient.",
+      "steps": [
+        {
+          "math": "f(x+h)-f(x)=(x+h)^2-3(x+h)-(x^2-3x)=2xh+h^2-3h",
+          "reason": "Subtract the entire original expression so that both original terms cancel correctly."
+        },
+        {
+          "math": "\\frac{f(x+h)-f(x)}h=2x+h-3\\quad(h\\ne0)",
+          "reason": "Factor out and cancel h while retaining the original restriction."
+        },
+        {
+          "math": "f'(x)=\\lim_{h\\to 0}(2x+h-3)=2x-3",
+          "reason": "Take the limit of the simplified nearby formula."
+        }
+      ],
+      "conclusion": "The finite quotient depends on h; the derivative does not."
+    },
+    {
+      "title": "Differentiate a polynomial",
+      "prompt": "Find the derivative of 2x³-5x+7 and its value at x=2.",
+      "steps": [
+        {
+          "math": "f'(x)=2(3x^2)-5(1)+0=6x^2-5",
+          "reason": "Use the power rule and the zero derivative of the constant."
+        },
+        {
+          "math": "f'(2)=6(4)-5=19",
+          "reason": "Evaluate the derivative function at the requested input."
+        }
+      ],
+      "conclusion": "The original value f(2)=13 and the derivative value 19 answer different questions."
+    },
+    {
+      "title": "Place the tangent line",
+      "prompt": "Find the tangent to y=x² at x=-1.",
+      "steps": [
+        {
+          "math": "f(-1)=1,\\qquad f'(-1)=2(-1)=-2",
+          "reason": "Compute the graph point and its local slope separately."
+        },
+        {
+          "math": "y=1-2(x+1)=-2x-1",
+          "reason": "Use the point-slope form through (-1,1)."
+        },
+        {
+          "math": "y(-1)=1",
+          "reason": "Check that the line passes through the required point."
+        }
+      ],
+      "conclusion": "The tangent has slope -2; its y-intercept is -1."
+    },
+    {
+      "title": "Test a continuous corner",
+      "prompt": "Determine whether f(x)=|x-2| is differentiable at 2.",
+      "steps": [
+        {
+          "math": "x<2:\\quad f(x)=2-x,\\quad f'_-(2)=-1",
+          "reason": "On the left, the absolute-value expression reverses the sign."
+        },
+        {
+          "math": "x>2:\\quad f(x)=x-2,\\quad f'_+(2)=1",
+          "reason": "On the right, the expression retains its sign."
+        },
+        {
+          "math": "f'_-(2)\\ne f'_+(2)",
+          "reason": "The one-sided derivative limits disagree."
+        }
+      ],
+      "conclusion": "The function is continuous at 2 but has no two-sided derivative there."
+    },
+    {
+      "title": "Differentiate motion twice",
+      "prompt": "Position is s(t)=2t³-3t² metres for time t in seconds. Find velocity and acceleration at t=2s.",
+      "steps": [
+        {
+          "math": "v(t)=s'(t)=6t^2-6t",
+          "reason": "One derivative gives signed position change per second."
+        },
+        {
+          "math": "a(t)=v'(t)=12t-6",
+          "reason": "A second derivative gives velocity change per second."
+        },
+        {
+          "math": "v(2)=12\\,\\mathrm{m/s},\\qquad a(2)=18\\,\\mathrm{m/s^2}",
+          "reason": "Substitute the requested time and attach the distinct rate units."
+        }
+      ],
+      "conclusion": "Velocity and acceleration are different rates, even when they have the same sign."
+    },
+    {
+      "title": "Interpret a horizontal tangent",
+      "prompt": "For f(x)=x², explain what f′(0)=0 establishes.",
+      "steps": [
+        {
+          "math": "f'(x)=2x,\\qquad f'(0)=0",
+          "reason": "The slope at the single input is zero."
+        },
+        {
+          "math": "f(-1)=1,\\quad f(0)=0,\\quad f(1)=1",
+          "reason": "Nearby and farther values show that the function is not constant."
+        }
+      ],
+      "conclusion": "A horizontal tangent at one point does not prove a constant function."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "For f(x)=x²+2x, use base input1 and increment h=1/2.",
+    "before": [
+      "Compute [f(1+h)-f(1)]/h with the nonzero increment.",
+      "The simplified quotient is 4+h, and its h→0 limit is 4. Use f(1)=3 to place the tangent."
+    ],
+    "question": {
+      "id": "f08-l02-guided",
+      "familyId": "guided-f08-l02",
+      "familyVersion": 1,
+      "courseId": "f08",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the finite secant slope, tangent slope, and tangent line as a polynomial in x.",
+      "fields": [
+        {
+          "id": "secant",
+          "kind": "rational",
+          "label": "Finite secant slope",
+          "expected": "9/2",
+          "unit": ""
+        },
+        {
+          "id": "slope",
+          "kind": "rational",
+          "label": "Tangent slope",
+          "expected": "4",
+          "unit": ""
+        },
+        {
+          "id": "line",
+          "kind": "polynomial",
+          "label": "Tangent line y =",
+          "expected": "4x-1",
+          "unit": "",
+          "form": "equivalent"
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "The simplified quotient is 4+h, and its h→0 limit is 4. Use f(1)=3 to place the tangent.",
+        "At h=1/2, the secant slope is 9/2; the derivative at 1 is 4."
+      ],
+      "explanation": [
+        "At h=1/2, the secant slope is 9/2; the derivative at 1 is 4.",
+        "The tangent is y=3+4(x-1)=4x-1."
+      ],
+      "answerSummary": "At h=1/2, the secant slope is 9/2; the derivative at 1 is 4. The tangent is y=3+4(x-1)=4x-1."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-calculus-lab",
+    "mode": "secant",
+    "prompt": "Change a quadratic, base point, and signed nonzero increment. Predict finite secant and limiting tangent slopes; reveal paired lines and a slope table. Reject h=0 in the original quotient."
+  },
+  "practice": [
+    {
+      "familyId": "f08-source-rate",
+      "variant": "formula"
+    },
+    {
+      "familyId": "f08-source-rate",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "f08-source-quotient",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "f08-source-quotient",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "f08-derivative-polynomial",
+      "variant": "linear"
+    },
+    {
+      "familyId": "f08-derivative-polynomial",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "f08-derivative-polynomial",
+      "variant": "cubic"
+    },
+    {
+      "familyId": "f08-derivative-meaning",
+      "variant": "tangent"
+    },
+    {
+      "familyId": "f08-derivative-meaning",
+      "variant": "corner"
+    },
+    {
+      "familyId": "f08-derivative-meaning",
+      "variant": "motion"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f08-derivative-polynomial",
+      "variant": "cubic"
+    },
+    {
+      "familyId": "f08-derivative-meaning",
+      "variant": "tangent"
+    },
+    {
+      "familyId": "f08-derivative-meaning",
+      "variant": "corner"
+    },
+    {
+      "familyId": "f08-derivative-meaning",
+      "variant": "motion"
+    }
+  ],
+  "summary": [
+    "A secant compares two points; a derivative is a limit of nearby secants.",
+    "The derivative of a constant is zero; polynomial rules apply term by term.",
+    "A tangent needs both the point value and the derivative value.",
+    "Continuity alone does not guarantee a derivative; motion derivatives retain signs and units."
+  ],
+  "retrieval": "Derive the difference quotient of x² at a general base a. Explain why h=0 is forbidden in the quotient but allowed as the destination of its limit. Then state the units of the first two derivatives of position.",
+  "readings": [
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.1: Defining the Derivative",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.3: Differentiation Rules",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.4: Derivatives as Rates of Change",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-4-derivatives-as-rates-of-change",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    }
+  ]
+}
