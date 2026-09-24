@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { emptyProgress, parseBackup, moveCourse, weekSummary, progressSchema } from "../lib/progress";
+import { backupByteLimit,backupLimitLabel,emptyProgress, parseBackup, moveCourse, weekSummary, progressSchema } from "../lib/progress";
 
 describe("progress portability", () => {
   it("preserves notes, course order, and saved resources in a round trip", () => {
@@ -16,15 +16,15 @@ describe("progress portability", () => {
   });
   it("rejects malformed and oversized files", () => {
     expect(() => parseBackup("not JSON")).toThrow("valid JSON");
-    expect(() => parseBackup(" ".repeat(1_000_001))).toThrow("1 MB");
+    expect(() => parseBackup(" ".repeat(backupByteLimit+1))).toThrow(backupLimitLabel);
   });
   it("keeps every accepted progress record small enough to export and restore", () => {
-    const sessions = Array.from({ length: 2250 }, () => ({ id: crypto.randomUUID(), courseId: "f01", minutes: 30, at: "2026-09-22T12:00:00.000Z", note: "x".repeat(300) }));
-    const tooLarge = { ...emptyProgress(), sessions };
-    expect(JSON.stringify(tooLarge).length).toBeLessThan(1_000_000);
-    expect(JSON.stringify(tooLarge, null, 2).length).toBeGreaterThan(1_000_000);
+    const notes=Object.fromEntries(Array.from({length:9970},(_,index)=>["n"+index,"x".repeat(5000)]));
+    const tooLarge=emptyProgress();tooLarge.learning.notes={"mth-215":notes};
+    expect(new TextEncoder().encode(JSON.stringify(tooLarge)).length).toBeLessThan(backupByteLimit);
+    expect(new TextEncoder().encode(JSON.stringify(tooLarge,null,2)).length).toBeGreaterThan(backupByteLimit);
     expect(progressSchema.safeParse(tooLarge).success).toBe(false);
-    const accepted = progressSchema.parse({ ...tooLarge, sessions: sessions.slice(0,1000) });
+    const accepted = progressSchema.parse({...tooLarge,learning:{...tooLarge.learning,notes:{"mth-215":Object.fromEntries(Object.entries(notes).slice(0,200))}}});
     expect(parseBackup(JSON.stringify(accepted, null, 2))).toEqual(accepted);
   });
   it("moves courses without losing or duplicating an entry", () => {

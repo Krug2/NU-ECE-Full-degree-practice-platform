@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { backupByteLimit,backupLimitMessage,progressSchema,type Progress } from "./progress";
 import { courses } from "./catalog";
-import { attemptLimit,attemptSchema,type Attempt } from "./learning/attempts";
+import { attemptLimit,attemptLimitMessage,attemptSchema,type Attempt } from "./learning/attempts";
 
 export const historyIndexKey="index";
 export const attemptStoreName="attempts";
@@ -21,7 +21,7 @@ export function historyBackupBytes(core:Progress,attempts:AttemptReference[]){
 export const historyIndexSchema=z.object({
   storageVersion:z.literal(2),revision:storedRevision,generation:z.uuid(),
   data:progressSchema.refine(data=>data.learning.attempts.length===0,"Question histories must be stored separately"),
-  attempts:z.array(attemptReferenceSchema).max(attemptLimit).refine(items=>new Set(items.map(item=>item.id)).size===items.length,"Duplicate attempt references"),
+  attempts:z.array(attemptReferenceSchema).max(attemptLimit,attemptLimitMessage).refine(items=>new Set(items.map(item=>item.id)).size===items.length,"Duplicate attempt references"),
 }).strict().refine(index=>index.attempts.every(reference=>reference.revision<=index.revision),"An attempt reference cannot be newer than its history index")
   .refine(index=>historyBackupBytes(index.data,index.attempts)<=backupByteLimit,backupLimitMessage);
 export type HistoryIndex=z.infer<typeof historyIndexSchema>;

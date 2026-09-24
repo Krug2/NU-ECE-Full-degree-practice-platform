@@ -1,6 +1,6 @@
 import { expect,it } from "vitest";
-import { emptyProgress } from "../lib/progress";
-import { createAttempt } from "../lib/learning/attempts";
+import { backupByteLimit,emptyProgress } from "../lib/progress";
+import { attemptLimit,createAttempt } from "../lib/learning/attempts";
 import { lessonSchema } from "../lib/learning/contracts";
 import lesson from "../content/lessons/mth-215/m01-l01.json";
 import { assembleHistory,createHistoryIndex,historyBackupBytes,historyIndexSchema,prepareHistory,readStoredAttempt,referenceFor } from "../lib/progress-records";
@@ -37,6 +37,14 @@ it("keeps evidence after attempt details are removed while rejecting invalid cor
   const index=createHistoryIndex(data,2,[]);
   expect(assembleHistory(index,new Map()).data.learning.evidence).toEqual(data.learning.evidence);
   expect(historyIndexSchema.safeParse({...index,data:{...data,plan:["unknown"]}}).success).toBe(false);
-  expect(historyIndexSchema.safeParse({...index,attempts:[{id:crypto.randomUUID(),revision:1,bytes:1_000_000}]}).success).toBe(false);
+  expect(historyIndexSchema.safeParse({...index,attempts:[{id:crypto.randomUUID(),revision:1,bytes:backupByteLimit}]}).success).toBe(false);
   expect(historyIndexSchema.safeParse({...index,attempts:[{id:crypto.randomUUID(),revision:3,bytes:1}]}).success).toBe(false);
+});
+it("enforces the attempt count independently of the backup byte allowance",()=>{
+  const references=Array.from({length:attemptLimit},()=>({id:crypto.randomUUID(),revision:1,bytes:1}));
+  const index=createHistoryIndex(emptyProgress(),1,references);
+  expect(index.attempts).toHaveLength(attemptLimit);
+  const result=historyIndexSchema.safeParse({...index,attempts:[...references,{id:crypto.randomUUID(),revision:1,bytes:1}]});
+  expect(result.success).toBe(false);
+  if(!result.success)expect(result.error.issues[0].message).toContain("5,000 saved attempts");
 });
