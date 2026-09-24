@@ -1,12 +1,58 @@
 {
   "courseId": "f11",
-  "status": "planned",
-  "humanReview": "pending",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 4,
+    "workedExamples": 16,
+    "diagnosticJudgments": 4,
+    "practicalObjectives": 4,
+    "seededScenarioStructures": 3
+  },
   "checks": [
-    "Validate every original calculation and all travel/buffer/fill generators with independent dimensional and arithmetic oracles across 100 seeds; test zero/invalid model inputs at utility boundaries.",
-    "Validate strict practical-content and record schemas, 5000-character note limit, version mismatch, corrupted records, sticky assistance, and retained completed work while a fresh draft is started.",
-    "Diagnostic feedback identifies lesson-specific gaps without numerical mastery; confidence, visits and diagnostic never create completion records.",
-    "Verify draft save/reload, assisted and independent completion, rubric requirements, last-completed retention, notes, export/reset/import, concurrency/conflict protection, keyboard and desktop/mobile Axe/screenshots.",
-    "Run all applicable tests, lint, type checks and build. Label preview only after verification; human review pending. Finish F11 before detailed F12 planning."
+    {
+      "command": "F10_PYTHON=tmp/python314/python.exe pnpm exec vitest run --maxWorkers=2",
+      "result": "897 tests passed across 118 files, including all CPython checks."
+    },
+    {
+      "command": "pnpm lint; pnpm typecheck",
+      "result": "Both passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, types and 117 static pages; repeated for preview status."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep f11 --workers=2",
+      "result": "Portfolio/assistance/resume/backup, concurrent draft protection, all-page keyboard/mobile/Axe journeys passed. Recovery test initially matched Next's route announcer as well as the warning; a scoped locator corrected the test and the recovery rerun passed."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep 'f11: practical diagnostic' --workers=1",
+      "result": "Final available-preview entry, all-objective independent portfolio and notes/backup journey passed."
+    }
+  ],
+  "correctness": "400 deterministic travel/buffer/fill cases checked with independently reconstructed arithmetic and unit relationships across 100 seeds per objective, including family coverage, zero and invalid model boundaries. Authored examples independently recomputed: explicit hour/minute conversion, all-channel sample counts, added-volume balance, scenario range endpoints and piecewise filling. Strict content, diagnostic-gap, record-size, corrupt/version, stale-write and sticky-assistance tests passed.",
+  "instruction": "Four original lessons supply quick recall, full explanations, 16 reasoned examples, attempted guided comparison and seeded independent practical artifacts. Each objective requires four substantive fields and three self-check criteria. The app validates completeness only; it does not semantically grade open-ended work.",
+  "evidence": "Familiarity and visits create no completion. Revealing a task review requires an attempt and persists assistance before showing the review. Fresh tasks retain the last completed artifact. Completion records are self-checked and do not write numerical evidence, attempts, or course completion.",
+  "persistence": "Versioned practical and diagnostic records use existing learning.notes, capped at the existing 5000-character limit. Ordinary notes remain separate. Browser verification passed exact seed/draft reload, assistance persistence, retained completion, all-objective portfolio, export/reset/import, conflicting tabs and preserved unreadable records.",
+  "accessibility": "All five pages passed desktop and mobile WCAG2 A/AA and WCAG2.1 AA Axe checks without overflow or KaTeX errors. Keyboard start, comparison, validation and checkbox operation passed. Desktop overview and mobile practical form visually inspected.",
+  "sources": "Four precise OpenStax University Physics Volume 1 sections verified and attributed with current CC BY-NC-SA 4.0 details. App prose, scenarios and examples are original.",
+  "sharedInterfaces": [
+    "Separate practical catalog/reader avoids dummy numerical checkpoints. Existing QuestionFields is used only for unscored diagnostic judgments.",
+    "Two route dispatches and availability registration. Existing app shell, storage and backup schema, grading and assessed readers are unchanged."
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f11",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional content awards no university credit and establishes no enrollment eligibility.",
+    "Independent human subject and assistive-technology reviews remain pending.",
+    "A self-checked record is not automatic correctness certification or professional engineering approval.",
+    "F12 remains planned at this milestone."
   ]
 }
