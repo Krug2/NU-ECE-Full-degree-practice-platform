@@ -1,0 +1,404 @@
+{
+  "id": "m01-l03",
+  "courseId": "f05",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Log rules and equations with domain checks",
+  "objective": "Apply logarithm rules on their original domains and solve like-base, general exponential, and logarithmic equations while checking every candidate.",
+  "why": "Logarithm rules make equations manageable, but an algebraic rewrite can hide the original domain. A reliable solution records the conditions, solves for candidates, and checks those candidates in the original expression.",
+  "estimatedMinutes": 45,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Exponential change and graph features"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Logarithms reverse exponentials"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For positive u,v and a valid base, $\\log_b(uv)=\\log_b u+\\log_b v$, $\\log_b(u/v)=\\log_b u-\\log_b v$, and $\\log_b(u^r)=r\\log_b u$. The positivity assumptions matter. On all nonzero real x, $\\ln(x^2)=2\\ln|x|$; omitting the absolute value would lose negative x.",
+        "Use $\\log_b a=\\ln a/\\ln b$ to change bases. For equations, record each original logarithm argument's strict positivity, solve the transformed equation, and retain only candidates satisfying every original condition. Keep exact log expressions until the final rounding."
+      ]
+    },
+    {
+      "heading": "Why the rules involve products and powers",
+      "paragraphs": [
+        "Write u=b^m and v=b^n for positive u,v. Then uv=b^(m+n), so the logarithm of the product is m+n. Similarly u/v=b^(m-n), and a power of u gives b^(mr). These are exponent rules viewed through the inverse function. No exponent rule turns b^m+b^n into b^(m+n), which is why a logarithm does not distribute over addition.",
+        "Expanding a logarithm separates a product into terms; condensing reverses the process. A denominator produces a subtracted log term, and a fractional power produces a fractional coefficient. State x,y,z>0 when using individual logarithms of those variables. Condensing them into one expression does not erase those original restrictions."
+      ]
+    },
+    {
+      "heading": "An identity must preserve its domain as well as its values",
+      "paragraphs": [
+        "The expression ln(x²) is defined for every nonzero real x. The expression 2ln(x) is defined only for x>0. They agree on positive x, but they are not interchangeable over the entire original domain. Since |x| is positive when x is nonzero, 2ln|x| keeps both sides of zero.",
+        "Likewise ln(uv) can exist when u and v are both negative, while ln(u)+ln(v) cannot. Check the original expression before applying a rule whose assumptions are narrower. A single successful numerical sample cannot prove an identity; one valid counterexample can disprove it. The activity includes a false sum rule that happens to agree at one sample."
+      ]
+    },
+    {
+      "heading": "Choose a useful base without changing the value",
+      "paragraphs": [
+        "To find y=log base b of a, write b^y=a, take natural logs, and obtain y ln(b)=ln(a). Since b is positive and not 1, ln(b) is nonzero, so divide by it. The numerator is the logarithm of the argument and the denominator is the logarithm of the original base.",
+        "You may use any common valid logarithm base in both numerator and denominator, including base 10. Mixing bases or reversing the quotient gives a different result. A base between zero and one has negative ln(b), which must stay in the calculation. Check the answer by raising b to the unrounded result."
+      ]
+    },
+    {
+      "heading": "Solve exponential equations by undoing the whole exponent",
+      "paragraphs": [
+        "When both sides are powers of the same valid base, the one-to-one property lets you equate their entire exponents. For 5^(2x-1)=5^3, solve 2x-1=3, not 2x=3. If a convenient common base is unavailable, take logs first: b^(ax+c)=d gives ax+c=ln(d)/ln(b), provided d>0.",
+        "A positive-base exponential cannot equal zero or a negative target at a finite real input. Settle those impossible cases before taking logs. For d>0, solve the remaining linear equation without rounding intermediate logarithms. An exact log expression and a decimal approximation answer different presentation needs; keep both available."
+      ]
+    },
+    {
+      "heading": "Logarithmic equations require the original argument tests",
+      "paragraphs": [
+        "For a sum of two logs, the original domain requires both arguments positive. Combining the logs produces a product, and exponentiating often produces a polynomial with extra candidates from the both-negative region. Those candidates can satisfy the transformed polynomial while leaving the original logarithms undefined.",
+        "After solving, substitute into every original argument and then check the original equality. For a difference of logs, a rational equation also needs the denominator and each original argument checked. Equal logarithms with the same base imply equal arguments only where both logs exist. Sometimes that equality becomes an impossible statement, giving an empty solution set. F02 provides a fuller review if factoring or rational equations interrupt this reasoning."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Expand coefficients with stated positive variables",
+      "prompt": "For x,y,z>0, expand $\\log_2(x^3\\sqrt y/z^2)$.",
+      "steps": [
+        {
+          "math": "\\log_2(x^3\\sqrt y/z^2)=\\log_2(x^3)+\\log_2(y^{1/2})-\\log_2(z^2)",
+          "reason": "Apply product and quotient rules under the stated positivity conditions."
+        },
+        {
+          "math": "=3\\log_2 x+\\tfrac12\\log_2 y-2\\log_2 z",
+          "reason": "Bring each power outside its own logarithm."
+        },
+        {
+          "math": "(A,B,C)=(3,1/2,-2)",
+          "reason": "Read the signed coefficients, keeping the denominator's minus sign."
+        }
+      ],
+      "conclusion": "Condensing these terms recovers the same expression on the original positive-variable domain."
+    },
+    {
+      "title": "Keep the negative side of an even power",
+      "prompt": "At x=-3, compare ln(x²), 2ln|x|, and 2ln(x).",
+      "steps": [
+        {
+          "math": "\\ln((-3)^2)=\\ln9",
+          "reason": "The original argument is positive."
+        },
+        {
+          "math": "2\\ln|-3|=2\\ln3=\\ln9",
+          "reason": "Absolute value makes the expanded argument positive."
+        },
+        {
+          "math": "2\\ln(-3)\\quad\\text{is undefined in the reals}",
+          "reason": "The version without absolute value loses this valid original input."
+        }
+      ],
+      "conclusion": "The full-domain identity is ln(x²)=2ln|x| for x different from zero."
+    },
+    {
+      "title": "Disprove an invented sum rule",
+      "prompt": "Compare ln(2+3) with ln2+ln3.",
+      "steps": [
+        {
+          "math": "\\ln(2+3)=\\ln5",
+          "reason": "Add inside the original argument."
+        },
+        {
+          "math": "\\ln2+\\ln3=\\ln(2\\cdot3)=\\ln6",
+          "reason": "The genuine product law combines the right side."
+        },
+        {
+          "math": "5\\neq6\\quad\\Longrightarrow\\quad\\ln5\\neq\\ln6",
+          "reason": "The natural logarithm is one-to-one on positive inputs."
+        }
+      ],
+      "conclusion": "This counterexample disproves the proposed sum identity. The logarithm does not distribute over addition."
+    },
+    {
+      "title": "Equate the entire exponent",
+      "prompt": "Solve $5^{2x-1}=125$.",
+      "steps": [
+        {
+          "math": "125=5^3",
+          "reason": "Express the target with the same base."
+        },
+        {
+          "math": "2x-1=3",
+          "reason": "Use the one-to-one exponential property."
+        },
+        {
+          "math": "x=2,\\qquad 5^{2(2)-1}=125",
+          "reason": "Solve the linear equation and substitute back."
+        }
+      ],
+      "conclusion": "The solution is 2; dropping the -1 would give the wrong exponent."
+    },
+    {
+      "title": "An exact logarithmic solution before rounding",
+      "prompt": "Solve $3^{2x+1}=7$.",
+      "steps": [
+        {
+          "math": "(2x+1)\\ln3=\\ln7",
+          "reason": "Take natural logs of both positive sides."
+        },
+        {
+          "math": "x=\\frac{\\ln7/\\ln3-1}{2}",
+          "reason": "Undo the full linear exponent."
+        },
+        {
+          "math": "x\\approx0.385621875",
+          "reason": "Evaluate the exact expression only after isolating x."
+        }
+      ],
+      "conclusion": "The exact logarithmic form is preferred for substitution. Rounded to three decimals the root is 0.386."
+    },
+    {
+      "title": "Reject an algebraic root using the original logs",
+      "prompt": "Solve $\\ln(x-1)+\\ln(x-4)=\\ln18$.",
+      "steps": [
+        {
+          "math": "x-1>0,\\quad x-4>0\\quad\\Longrightarrow\\quad x>4",
+          "reason": "Record the intersection of the original log domains."
+        },
+        {
+          "math": "(x-1)(x-4)=18\\quad\\Longrightarrow\\quad x^2-5x-14=0",
+          "reason": "Combine logs only on that domain, then use their one-to-one property."
+        },
+        {
+          "math": "(x-7)(x+2)=0\\quad\\Longrightarrow\\quad x=7\\ \\text{or}\\ -2",
+          "reason": "Factor to generate all algebraic candidates."
+        },
+        {
+          "math": "x=7:\\quad (7-1)(7-4)=6\\cdot3=18",
+          "reason": "The positive arguments validate 7; -2 would make both original arguments negative."
+        }
+      ],
+      "conclusion": "Only x=7 solves the original equation. A positive product alone is not enough to validate two separate logarithms."
+    },
+    {
+      "title": "A quotient equation with two original conditions",
+      "prompt": "Solve $\\ln(x+3)-\\ln(x-1)=\\ln2$.",
+      "steps": [
+        {
+          "math": "x+3>0,\\quad x-1>0\\quad\\Longrightarrow\\quad x>1",
+          "reason": "Preserve both original argument restrictions."
+        },
+        {
+          "math": "\\frac{x+3}{x-1}=2\\quad\\Longrightarrow\\quad x+3=2x-2",
+          "reason": "Apply the quotient rule on the valid domain and clear the nonzero denominator."
+        },
+        {
+          "math": "x=5,\\qquad\\frac{5+3}{5-1}=2",
+          "reason": "The candidate satisfies the domain and the required ratio."
+        }
+      ],
+      "conclusion": "The solution is 5. Checking only a nonzero denominator would be weaker than checking both original logarithms."
+    },
+    {
+      "title": "An equation with an empty solution set",
+      "prompt": "Solve $\\ln(x-1)=\\ln(x-3)$.",
+      "steps": [
+        {
+          "math": "x>3",
+          "reason": "Both original arguments must be positive."
+        },
+        {
+          "math": "x-1=x-3\\quad\\Longrightarrow\\quad -1=-3",
+          "reason": "The one-to-one logarithm requires an impossible equality."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "No candidate can satisfy the equation on its domain."
+        }
+      ],
+      "conclusion": "An empty solution set is a complete answer, not a reason to invent a numerical root."
+    },
+    {
+      "title": "Change the base and check with a power",
+      "prompt": "Evaluate $\\log_5 12$.",
+      "steps": [
+        {
+          "math": "5^y=12\\quad\\Longrightarrow\\quad y\\ln5=\\ln12",
+          "reason": "Rewrite the inverse statement and take natural logs."
+        },
+        {
+          "math": "y=\\frac{\\ln12}{\\ln5}\\approx1.543959311",
+          "reason": "Divide argument log by base log."
+        },
+        {
+          "math": "5^{\\ln12/\\ln5}=12",
+          "reason": "The inverse check confirms the quotient order."
+        }
+      ],
+      "conclusion": "The answer lies between 1 and 2 because 5<12<25."
+    }
+  ],
+  "guided": {
+    "title": "Expand, then audit an original domain",
+    "setup": "Use the log rules where their assumptions hold, and keep those assumptions when checking candidates.",
+    "before": [
+      "Read the powers of x and y and the denominator's sign.",
+      "For the separate equation, require each original log argument to be positive.",
+      "Check the candidate in the original arguments before trusting its product."
+    ],
+    "question": {
+      "id": "f05-l03-guided",
+      "familyId": "guided-f05-l03",
+      "familyVersion": 1,
+      "courseId": "f05",
+      "objectiveId": "m01-l03",
+      "category": "procedural",
+      "critical": false,
+      "parameters": {},
+      "prompt": "For positive x,y, expand ln(x²/y³) as A ln(x)+B ln(y). Separately, a candidate x=-1 satisfies (x-2)(x-4)=15. Does it solve ln(x-2)+ln(x-4)=ln15?",
+      "fields": [
+        {
+          "id": "x",
+          "kind": "rational",
+          "label": "Coefficient A",
+          "expected": "2"
+        },
+        {
+          "id": "y",
+          "kind": "rational",
+          "label": "Coefficient B",
+          "expected": "-3"
+        },
+        {
+          "id": "candidate",
+          "kind": "choice",
+          "label": "Retain x = -1 in the original log equation?",
+          "correct": "reject",
+          "options": [
+            {
+              "id": "reject",
+              "label": "Reject: both original arguments are negative",
+              "feedback": "The transformed product is positive, but ln(-3) and ln(-5) are undefined in the reals."
+            },
+            {
+              "id": "retain",
+              "label": "Retain: the product of its arguments is positive",
+              "feedback": "Each separate original logarithm requires its own positive argument."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "A power becomes a log coefficient; a denominator produces subtraction.",
+        "The original equation requires x>4.",
+        "At x=-1 the arguments are -3 and -5, so reject it."
+      ],
+      "explanation": [
+        "The expansion is 2ln(x)-3ln(y) on the stated positive-variable domain.",
+        "The candidate -1 is outside the original equation's domain even though its product is 15."
+      ],
+      "answerSummary": "Coefficients 2 and -3; reject x=-1."
+    },
+    "after": "Write a two-column candidate check: each original argument and its sign. Then try an independent equation with a fresh seed."
+  },
+  "interaction": {
+    "kind": "refresher-explog-lab",
+    "mode": "rules",
+    "prompt": "Choose a proposed identity, predict whether it preserves the full stated domain, and test inputs. Contrast a true quotient rule with a sum-rule counterexample and the negative-input failure of 2ln(x)."
+  },
+  "practice": [
+    {
+      "familyId": "f05-log-rule",
+      "variant": "coefficients"
+    },
+    {
+      "familyId": "f05-log-rule",
+      "variant": "condense"
+    },
+    {
+      "familyId": "f05-log-rule",
+      "variant": "square-domain"
+    },
+    {
+      "familyId": "f05-log-rule",
+      "variant": "sum-error"
+    },
+    {
+      "familyId": "f05-log-rule",
+      "variant": "change-base"
+    },
+    {
+      "familyId": "f05-exp-equation",
+      "variant": "like-base"
+    },
+    {
+      "familyId": "f05-exp-equation",
+      "variant": "natural"
+    },
+    {
+      "familyId": "f05-exp-equation",
+      "variant": "general"
+    },
+    {
+      "familyId": "f05-exp-equation",
+      "variant": "impossible"
+    },
+    {
+      "familyId": "f05-log-equation",
+      "variant": "single"
+    },
+    {
+      "familyId": "f05-log-equation",
+      "variant": "sum"
+    },
+    {
+      "familyId": "f05-log-equation",
+      "variant": "quotient"
+    },
+    {
+      "familyId": "f05-log-equation",
+      "variant": "extraneous"
+    },
+    {
+      "familyId": "f05-log-equation",
+      "variant": "empty"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f05-log-rule",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "f05-exp-equation",
+      "variant": "general"
+    },
+    {
+      "familyId": "f05-log-equation",
+      "variant": "extraneous"
+    },
+    {
+      "familyId": "f05-log-rule",
+      "variant": "change-base"
+    }
+  ],
+  "summary": [
+    "Apply log rules with their positivity assumptions intact.",
+    "Use absolute value to preserve the full real domain when expanding an even power.",
+    "Keep the exact logarithmic expression until final rounding.",
+    "Check every candidate in every original argument, not only in a transformed product."
+  ],
+  "retrieval": "Explain why ln((x-2)²)=2ln|x-2| preserves more inputs than 2ln(x-2). Then solve ln(x)+ln(x-3)=ln10 and check every algebraic candidate.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.5: Logarithmic Properties",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-5-logarithmic-properties",
+      "purpose": "Extend these methods with the precise free section and its additional examples."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.6: Exponential and Logarithmic Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-6-exponential-and-logarithmic-equations",
+      "purpose": "Extend these methods with the precise free section and its additional examples."
+    }
+  ]
+}
