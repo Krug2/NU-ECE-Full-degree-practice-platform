@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-23",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: nine of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: ten of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -15,13 +15,14 @@
       "m03-l01",
       "m03-l02",
       "m03-l03",
-      "m04-l01"
+      "m04-l01",
+      "m04-l02"
     ],
-    "questionFamilies": 19,
-    "questionVariants": 97,
+    "questionFamilies": 21,
+    "questionVariants": 112,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 9,
-    "workedExamples": 52,
+    "guidedExamples": 10,
+    "workedExamples": 59,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -31,14 +32,15 @@
       "External force inventories, normal constraints, and contact loss",
       "Static thresholds, relative sliding, and loss of friction capacity",
       "Linear-drag transients, time constants, upward launches, and the zero-drag limit",
-      "Circular vector components, signed tangential acceleration, actual force inventories, and infeasible track contact"
+      "Circular vector components, signed tangential acceleration, actual force inventories, and infeasible track contact",
+      "Exterior circular-orbit comparisons with inverse-square fields, mass and source scaling, energy references, and explicit transfer limitations"
     ]
   },
   "remaining": {
-    "phs231Lessons": 13,
+    "phs231Lessons": 12,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Gravity, energy, momentum, rotation, equilibrium, material, and numerical investigations",
+      "Energy, momentum, rotation, equilibrium, material, and numerical investigations",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -46,10 +48,20 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m04-l02",
+    "nextLesson": "m05-l01",
     "nextCourseAfterPhs231Completion": "phs-232"
   },
   "sharedCommits": [
+    {
+      "commit": "0924228",
+      "summary": "enabled gravity",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-gravity and two families using 72d53c4 engines and 750 seeded fixtures, numerical force-work integration, potential-gradient checks, and independent orbit integration. Course-specific component is included. Lesson content/registration is ec126d2; keyboard, exterior-domain, mobile, reload, and actual backup workflows are d76961a. Existing answer fields and backups remain compatible."
+    },
     {
       "commit": "939802d",
       "summary": "accepted radicals",
@@ -240,14 +252,14 @@
     ]
   },
   "verification": {
-    "status": "The nine delivered lessons are technically checked; the course release gates remain open.",
+    "status": "The ten delivered lessons are technically checked; the course release gates remain open.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the nine delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the ten delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 513,
-      "files": 67,
+      "passed": 521,
+      "files": 68,
       "command": "pnpm exec vitest run --maxWorkers=2",
       "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. An unrestricted run encountered timeout failures across existing files under CPU contention; the full run with two workers passed without changing assertions or timeouts."
     },
@@ -258,8 +270,8 @@
         "scope": "Merged prerequisite roots/multiplicity work through 52c1a25, with nine physics lessons. The transformation interaction test reached the unchanged 60-second test limit while filling inputs after both accessibility audits; no assertion mismatch was reported. All other 86 browser tests passed."
       },
       "focusedSuite": {
-        "passed": 5,
-        "scope": "Circular investigation and actual checkpoint backup workflow, plus prerequisite powers and quadratics. Both circular workflows passed again after shortening mobile contact options. The latest full 82-test run remains the earlier eight-lesson snapshot; this focused run does not relabel it as a nine-lesson full run."
+        "passed": 2,
+        "scope": "Gravity lesson after the nine-lesson integration run: exact periods and radicals, apparent weightlessness, controlled source/mass changes, interior-domain rejection, desktop and mobile accessibility, keyboard controls, reloads, and actual checkpoint export/reset/restore. The fullSuite and retry entries retain their earlier integration snapshot and are not relabeled as a full ten-lesson run."
       },
       "port": 3101,
       "retry": {
@@ -272,7 +284,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the nine delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
+    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the ten delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses."

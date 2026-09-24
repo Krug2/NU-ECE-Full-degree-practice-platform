@@ -57,8 +57,8 @@
     "currentCourse": "phs-231",
     "currentCourseProgress": {
       "plannedLessons": 22,
-      "availableLessons": 9,
-      "nextLesson": "m04-l02",
+      "availableLessons": 10,
+      "nextLesson": "m05-l01",
       "integrationRecord": "phs-231/integration.json"
     },
     "completedCourses": [],
