@@ -12,7 +12,7 @@ it("varies all practical structures deterministically with independently checked
   if(item.kind==="sampling-passage")expect(Number(f.result)*Number(f.rate)).toBeCloseTo(Number(f.n),12);
   if(item.kind==="angle-check")expect(f.result).toBe(f.angle===30?1/2:1);
   if(item.kind==="grouping-check")expect(Number(f.result)*(Number(f.b)+Number(f.c))).toBe(f.numerator);
-  if(item.kind==="scientific-check")expect(Number(f.result)*10**Number(f.exponent)).toBeCloseTo(Number(f.n),12);
+  if(item.kind==="scientific-check"){expect(Number(f.result)*10**Number(f.exponent)).toBeCloseTo(Number(f.n),12);expect(item.review[1]).toBe("The value is positive and below 1: 0."+"0".repeat(Number(f.exponent)-1)+f.n+".");}
  }expect(kinds.size).toBe(3);expect(scenarios.size).toBeGreaterThanOrEqual(20);}
  expect(()=>f12Case("unknown","seed")).toThrow("Unknown");
 });
