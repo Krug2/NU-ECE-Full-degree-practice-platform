@@ -1,0 +1,10 @@
+.phs231-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
+.phs231-predictions{border:1px solid var(--line,#d5dde0);border-radius:8px;padding:1rem;margin:1rem 0;min-width:0}
+.phs231-predictions legend{font-weight:650;padding:0 .4rem}
+.phs231-table{overflow-x:auto;max-width:100%;margin:1rem 0}
+.phs231-table table{border-collapse:collapse;width:100%;font-size:.9rem}
+.phs231-table caption{text-align:left;font-weight:650;padding:.5rem 0}
+.phs231-table th,.phs231-table td{padding:.6rem;text-align:left;border-bottom:1px solid var(--line,#d5dde0)}
+.phs231-investigation svg{width:100%;height:auto;max-width:480px;display:block;margin:1rem auto}
+.phs231-investigation input{min-width:0;width:100%}
+@media(max-width:560px){.phs231-controls{grid-template-columns:1fr}.phs231-table th,.phs231-table td{padding:.45rem;font-size:.8rem}}
