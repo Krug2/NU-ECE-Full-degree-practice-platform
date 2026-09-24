@@ -1,0 +1,71 @@
+{
+  "courseId": "f04",
+  "checkedAt": "2026-09-23",
+  "provider": "OpenStax, Rice University",
+  "book": "Algebra and Trigonometry 2e",
+  "author": "Jay Abramson and contributing authors",
+  "sources": [
+    {
+      "section": "7.1",
+      "title": "Angles",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "7.2",
+      "title": "Right Triangle Trigonometry",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "7.3",
+      "title": "Unit Circle",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-3-unit-circle",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "7.4",
+      "title": "The Other Trigonometric Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-4-the-other-trigonometric-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "8.1",
+      "title": "Graphs of the Sine and Cosine Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/8-1-graphs-of-the-sine-and-cosine-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "8.3",
+      "title": "Inverse Trigonometric Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/8-3-inverse-trigonometric-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "9.1",
+      "title": "Verifying Trigonometric Identities and Using Trigonometric Identities to Simplify Trigonometric Expressions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/9-1-verifying-trigonometric-identities-and-using-trigonometric-identities-to-simplify-trigonometric-expressions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "9.2",
+      "title": "Sum and Difference Identities",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/9-2-sum-and-difference-identities",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "9.3",
+      "title": "Double-Angle, Half-Angle, and Reduction Formulas",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/9-3-double-angle-half-angle-and-reduction-formulas",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "9.5",
+      "title": "Solving Trigonometric Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/9-5-solving-trigonometric-equations",
+      "checkedAt": "2026-09-23"
+    }
+  ],
+  "policy": "Free section pages opened directly to verify subject matter and links. Original instruction and exercises are authored inside ECE Study; no external prose or illustrations are copied. Existing B06 attribution remains intact.",
+  "license": "Link-only use; consult current publisher terms before future copying."
+}

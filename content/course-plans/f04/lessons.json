@@ -1,0 +1,480 @@
+{
+  "courseId": "f04",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Right triangles and calculator modes",
+      "objective": "Use right-triangle geometry and side ratios, recover acute angles, and keep angle units and calculator modes consistent.",
+      "requires": [],
+      "source": "mth-215/b06",
+      "scope": [
+        "Reference-angle side roles",
+        "Pythagorean lengths and positive roots",
+        "Ratios and similar triangles",
+        "Degree/radian conversions in both directions",
+        "Solving sides and acute angles",
+        "Mode mismatch and appropriate rounding"
+      ],
+      "workedExamples": [
+        "Keep the hypotenuse fixed while the reference angle changes",
+        "Preserve an exact hypotenuse and group a missing-leg calculation",
+        "Match equivalent angles to their calculator modes",
+        "Solve a right triangular panel from an angle and its hypotenuse",
+        "Recover an acute angle from two legs"
+      ],
+      "guided": "Retain the source's side-role, exact-length, and calculator guided work.",
+      "interaction": {
+        "kind": "triangle-calculator",
+        "purpose": "Predict the entered sine value, change DEG/RAD without silently changing input, repair the mismatch, and scale the triangle while retaining its ratio."
+      },
+      "practice": [
+        {
+          "familyId": "f04-triangle-geometry",
+          "variant": "labels"
+        },
+        {
+          "familyId": "f04-triangle-geometry",
+          "variant": "hypotenuse"
+        },
+        {
+          "familyId": "f04-triangle-geometry",
+          "variant": "leg"
+        },
+        {
+          "familyId": "f04-triangle-ratios",
+          "variant": "sin"
+        },
+        {
+          "familyId": "f04-triangle-ratios",
+          "variant": "cos"
+        },
+        {
+          "familyId": "f04-triangle-ratios",
+          "variant": "tan"
+        },
+        {
+          "familyId": "f04-angle-conversion",
+          "variant": "to-radians"
+        },
+        {
+          "familyId": "f04-angle-conversion",
+          "variant": "to-degrees"
+        },
+        {
+          "familyId": "f04-calculator-mode",
+          "variant": "matched"
+        },
+        {
+          "familyId": "f04-calculator-mode",
+          "variant": "mismatch"
+        },
+        {
+          "familyId": "f04-triangle-solve",
+          "variant": "sides"
+        },
+        {
+          "familyId": "f04-triangle-solve",
+          "variant": "angles"
+        }
+      ],
+      "checkpoint": [
+        [
+          "check-triangle",
+          "leg-angle"
+        ],
+        [
+          "triangle-solve",
+          "sides"
+        ],
+        [
+          "check-conversion",
+          "both"
+        ],
+        [
+          "calculator-mode",
+          "mismatch"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Choose the hypotenuse from orientation",
+          "Ignore the right-angle marker",
+          "Use the side opposite the right angle, then relabel the legs relative to the reference angle."
+        ],
+        [
+          "Convert a sine result between units",
+          "Confuse an angle with a dimensionless ratio",
+          "Convert the input angle or change the calculator mode."
+        ],
+        [
+          "Use the negative root as a side",
+          "Forget the geometric domain",
+          "Lengths are positive and the hypotenuse must remain longest."
+        ]
+      ],
+      "readings": [
+        "7.1",
+        "7.2"
+      ],
+      "supports": [
+        "mth-215",
+        "phs-104",
+        "phs-231",
+        "cee-310"
+      ],
+      "acceptance": "A checkpoint requires Pythagorean grouping and recovered acute angle, side solving, both exact angle conversions, and mode repair."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Radians, the unit circle, and exact values",
+      "objective": "Locate directed angles, evaluate all six trigonometric ratios with correct signs and domains, and use radians in circular measurements.",
+      "requires": [
+        "m01-l01"
+      ],
+      "source": "Original F04 instruction; overlap with planned MTH 215 m06-l01, m06-l03, m06-l04 is recorded without claiming those lessons exist.",
+      "scope": [
+        "Radian definition and coterminal angles",
+        "30/45/60 degree values derived from triangles",
+        "Signed unit-circle coordinates and reference angles",
+        "Reciprocal ratios and zero denominators",
+        "Arc length, sector area, and angular/linear speed"
+      ],
+      "workedExamples": [
+        "Reduce -495 degrees to 225 degrees with reference angle 45 degrees",
+        "At 210 degrees derive sine, cosine, and tangent from coordinates",
+        "At -pi/2 classify csc, sec, and cot rather than dividing by zero",
+        "Radius 3 m and angle 5pi/6: arc 5pi/2 m and sector area 15pi/4 m²",
+        "Two revolutions in 5 s at radius 3 m: angular speed 4pi/5 rad/s and linear speed 12pi/5 m/s"
+      ],
+      "guided": "At 150 degrees supply exact sine, cosine, and tangent, then use the angle in an arc calculation.",
+      "interaction": {
+        "kind": "refresher-trig-lab",
+        "mode": "circle",
+        "purpose": "Choose directed angles and predict exact sine/cosine before checking coordinates. Compare signs, coterminal positions, axis cases, and a text coordinate table."
+      },
+      "practice": [
+        [
+          "directed-angle",
+          "coterminal"
+        ],
+        [
+          "directed-angle",
+          "negative"
+        ],
+        [
+          "circle-values",
+          "direct"
+        ],
+        [
+          "circle-values",
+          "axes"
+        ],
+        [
+          "circle-values",
+          "reciprocal"
+        ],
+        [
+          "circle-values",
+          "reciprocal-axes"
+        ],
+        [
+          "circular-measure",
+          "arc-sector"
+        ],
+        [
+          "circular-measure",
+          "speed"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "directed-angle",
+          "negative"
+        ],
+        [
+          "circle-values",
+          "direct"
+        ],
+        [
+          "circle-values",
+          "reciprocal-axes"
+        ],
+        [
+          "circular-measure",
+          "arc-sector"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Use acute signs everywhere",
+          "Carry triangle positivity beyond quadrant I",
+          "Read the x and y signs of the terminal point."
+        ],
+        [
+          "Report zero for an undefined reciprocal",
+          "Treat division by zero like zero divided by a number",
+          "Identify the denominator and decide definedness before evaluating."
+        ],
+        [
+          "Use degrees directly in s=r theta",
+          "Recall the formula without its unit condition",
+          "Convert the angle to radians before multiplying by radius."
+        ]
+      ],
+      "readings": [
+        "7.1",
+        "7.3",
+        "7.4"
+      ],
+      "supports": [
+        "mth-215",
+        "phs-231",
+        "cee-300",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Required questions cover directed angles and references, direct ratios, reciprocal domain cases, and exact circular quantities. Speed remains in practice and a checkpoint variant must include it within the circular-measure question."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Sinusoidal graphs, phase, and inverse values",
+      "objective": "Interpret sinusoidal amplitude, period, midline, and phase in angular and time models, and select inverse-trigonometric principal values.",
+      "requires": [
+        "m01-l02"
+      ],
+      "source": "Original F04 instruction; extends F03 transformations and inverse-domain reasoning.",
+      "scope": [
+        "Amplitude versus signed coefficient",
+        "Period and phase after factoring the input",
+        "Quarter-cycle anchors and sine/cosine starts",
+        "Angular frequency versus cycles per second",
+        "Inverse sine/cosine/tangent domains and principal ranges",
+        "Principal inverse values versus full equation solutions"
+      ],
+      "workedExamples": [
+        "For y=-3 sin(2(x-pi/4))+1 recover amplitude 3, period pi, shift pi/4, range [-2,4], and five cycle anchors",
+        "For y=2 cos(3(x+pi/6))-1 identify the negative phase shift and period 2pi/3",
+        "For v(t)=2 sin(4pi t-pi/2)+1 V find frequency 2 Hz, period 1/2 s, and delay 1/8 s",
+        "Evaluate arcsin(sin(5pi/6)), arccos(cos(7pi/6)), and arctan(tan(3pi/4)) using their principal ranges",
+        "Reject arcsin(6/5) over the reals and distinguish inverse sine from reciprocal sine"
+      ],
+      "guided": "Read a negative-amplitude sine model and recover an inverse value outside the principal input interval.",
+      "interaction": {
+        "kind": "refresher-trig-lab",
+        "mode": "wave",
+        "purpose": "Change signed amplitude, frequency multiplier, phase, offset, and sine/cosine choice. Predict amplitude, exact period, and starting value; verify five accessible quarter-cycle points and the graph."
+      },
+      "practice": [
+        [
+          "wave-features",
+          "angular"
+        ],
+        [
+          "wave-features",
+          "cosine"
+        ],
+        [
+          "wave-features",
+          "signal"
+        ],
+        [
+          "wave-sample",
+          "sine"
+        ],
+        [
+          "wave-sample",
+          "cosine"
+        ],
+        [
+          "inverse-values",
+          "principal"
+        ],
+        [
+          "inverse-values",
+          "negative"
+        ],
+        [
+          "inverse-values",
+          "domain"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "wave-features",
+          "angular"
+        ],
+        [
+          "wave-features",
+          "signal"
+        ],
+        [
+          "wave-sample",
+          "cosine"
+        ],
+        [
+          "inverse-values",
+          "principal"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Use a negative amplitude",
+          "Confuse distance from midline with orientation",
+          "Amplitude is the absolute outside coefficient; its sign controls reflection."
+        ],
+        [
+          "Use the raw phase constant as the shift",
+          "Skip factoring the angular coefficient",
+          "Solve for the input that makes the phase zero."
+        ],
+        [
+          "Return the original angle from every inverse composition",
+          "Ignore the restricted range",
+          "Choose the coterminal/reflected representative in the inverse function's principal range."
+        ]
+      ],
+      "readings": [
+        "8.1",
+        "8.3"
+      ],
+      "supports": [
+        "mth-215",
+        "phs-232",
+        "cee-310",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Checkpoint answers require angular and time periods with units, correct phase, a quarter-cycle value, all three inverse principal values, and the inverse-sine domain restriction."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Identities and complete trigonometric solutions",
+      "objective": "Use foundational, sum, and double-angle identities with domain restrictions and return every solution in a stated interval without losing zero factors.",
+      "requires": [
+        "m01-l02",
+        "m01-l03"
+      ],
+      "source": "Original F04 instruction; reuses exact-number and unordered real-set graders.",
+      "scope": [
+        "Pythagorean, reciprocal, quotient, even/odd identities",
+        "Identity validity on the original domain",
+        "Sum and double-angle computations",
+        "Principal solution versus every periodic branch",
+        "Frequency scaling and interval endpoints",
+        "Factoring without division by a possibly zero trigonometric factor"
+      ],
+      "workedExamples": [
+        "With sin theta=3/5 in quadrant II, find cos theta=-4/5 and tan theta=-3/4",
+        "Simplify (1-cos² theta)/sin theta but retain sin theta nonzero",
+        "Derive sin75=(sqrt6+sqrt2)/4 from the addition identity",
+        "Use sin theta=3/5 and cos theta=-4/5 to obtain sin2theta=-24/25 and cos2theta=7/25",
+        "Solve sin theta=1/2 on [0,360) and describe the two all-real angle families",
+        "Solve sin(2theta)=1/2 on [0,360) to obtain 15,75,195,255 degrees",
+        "Factor sin theta(2sin theta-1)=0 and retain 0,30,150,180 degrees"
+      ],
+      "guided": "Recover all solutions to a factored sine equation, explaining why dividing by sine would lose solutions.",
+      "interaction": {
+        "kind": "refresher-trig-lab",
+        "mode": "equations",
+        "purpose": "Choose sine/cosine, a target value, and an open/closed upper endpoint. Predict the full solution set and inspect candidate positions, including empty sets and the extra 360-degree endpoint."
+      },
+      "practice": [
+        [
+          "identity-recall",
+          "quadrant"
+        ],
+        [
+          "identity-recall",
+          "domain"
+        ],
+        [
+          "identity-recall",
+          "symmetry"
+        ],
+        [
+          "angle-identities",
+          "sum"
+        ],
+        [
+          "angle-identities",
+          "double"
+        ],
+        [
+          "trig-equation",
+          "basic"
+        ],
+        [
+          "trig-equation",
+          "frequency"
+        ],
+        [
+          "trig-equation",
+          "closed"
+        ],
+        [
+          "trig-equation",
+          "empty"
+        ],
+        [
+          "trig-equation",
+          "factored"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "identity-recall",
+          "domain"
+        ],
+        [
+          "angle-identities",
+          "sum-double"
+        ],
+        [
+          "trig-equation",
+          "frequency"
+        ],
+        [
+          "trig-equation",
+          "factored"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Claim an identity at an excluded angle",
+          "Simplification hides a zero denominator",
+          "Retain the original definedness condition."
+        ],
+        [
+          "Distribute sine across addition",
+          "Treat a nonlinear function as linear",
+          "Use the sum identity or a counterexample."
+        ],
+        [
+          "Keep only a calculator's principal angle",
+          "Stop before considering symmetry and periods",
+          "Generate every branch and filter by the stated interval."
+        ],
+        [
+          "Divide by sine and lose zero solutions",
+          "Apply a nonreversible algebraic step",
+          "Factor and solve each factor, then check the original equation."
+        ]
+      ],
+      "readings": [
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.5"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "csc-209",
+        "cee-300",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Four required questions combine identity domain reasoning, sum and double-angle values, frequency-scaled full roots, and zero-preserving factorization."
+    }
+  ]
+}

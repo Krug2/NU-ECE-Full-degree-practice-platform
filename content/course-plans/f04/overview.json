@@ -1,0 +1,70 @@
+{
+  "courseId": "f04",
+  "title": "Trigonometry",
+  "status": "planned",
+  "plannedAt": "2026-09-23",
+  "learner": "Returning learners who recognize trigonometric vocabulary but need to recover exact values, angle units, phase interpretation, and complete reasoning.",
+  "assumedKnowledge": [
+    "F01 exact fractions and roots",
+    "F02 equation transformations and restrictions",
+    "F03 functions, transformations, and inverse domains"
+  ],
+  "scope": {
+    "include": [
+      "Right triangles and calculator modes",
+      "Radians, unit circle, all six ratios, and circular quantities",
+      "Sine/cosine graphs, phase, and inverse principal values",
+      "Foundational identities, sum/double-angle calculations, and bounded complete equation solution sets"
+    ],
+    "exclude": [
+      "A complete first trigonometry course",
+      "General non-right-triangle law-of-sines/cosines problems",
+      "Extensive identity proof drills, product-to-sum, and half-angle sign cases",
+      "Calculus of trigonometric functions and complex phasors, developed in F08/F09"
+    ]
+  },
+  "routes": {
+    "quick": "Use the four-objective diagnostic, read the relevant Quick recall section, then attempt that lesson's independent checkpoint. Complete the four-question mixed recall after all lesson checkpoints.",
+    "full": "Study the four lessons in order. Work every reasoned example, complete the guided task, predict in the investigation, use fresh practice with hints, then take an independent check.",
+    "escalation": {
+      "courseId": "mth-215",
+      "text": "MTH 215 is the full-course destination, but its planned later trigonometry modules are not assumed complete. The precise free OpenStax readings supply first-time instruction beyond this refresher's scope."
+    }
+  },
+  "reuse": {
+    "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+    "source": "Adapt committed mth-215/b06 without copying divergent prose or changing its IDs. Wrap the five foundation triangle families under F04 IDs. New lessons, families, and interaction logic live in refresher-owned modules.",
+    "sharedMath": "Reuse exact radicals, rational arithmetic, pi-multiple and real root-set parsing and grading. Do not change the grading or persistence schemas.",
+    "overlap": "Triangle modes and conversions already exist in B06; full-circle signs, phase, identities, and complete periodic equation solutions need new authored instruction."
+  },
+  "assessment": {
+    "diagnostic": {
+      "length": 4,
+      "coverage": [
+        "Right-triangle side roles and calculator mode",
+        "Unit-circle exact values and undefined ratios",
+        "Sinusoidal period/phase",
+        "Complete basic trigonometric solution sets"
+      ]
+    },
+    "lessonCheckpoints": "Exactly four required questions per lesson; multi-field questions cover related subskills explicitly. Mixed recall has one required question per objective.",
+    "evidence": "Opening a lesson, choosing confidence, predictions, and diagnostic success create no mastery evidence. Independent checkpoints use fresh reproducible snapshots; hints remain for guided and practice work.",
+    "recommendations": "Map every diagnostic and mixed family to its lesson. Persist specific misses until a later successful independent lesson check."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-trig-lab', mode: 'circle' | 'wave' | 'equations', prompt: string }.",
+      "reason": "The existing triangle investigation covers only acute geometry. Full-circle signs, phase transformations, and complete solution sets need dedicated keyboard controls, accessible plots/tables, and prediction feedback.",
+      "integration": "One union member in lib/learning/contracts.ts and one import/dispatch branch in the existing lesson reader. Keep the component and math utilities under refresher-owned paths. No app-shell, storage, or answer-schema changes."
+    }
+  ],
+  "verification": [
+    "Independently compare all 16 standard-angle values against geometric identities and floating trig functions; test axes and signs exactly.",
+    "Check periodic root completeness by independent branch formulas, interval boundaries, substitutions, and intentional omitted/extra roots. Check coterminal negative angles, scaled frequencies, inverse branch ranges, and impossible target values.",
+    "Compare wave period and phase using independent time and angular calculations; verify units and circle measures.",
+    "Sweep every family variant across 60 or more seeds with deterministic snapshots, equivalents, misconceptions, invalid input, and KaTeX rendering.",
+    "Browser-test diagnostics, all lesson and mixed checkpoints, all investigations, keyboard feedback, exact resume, notes, backups, mobile layouts, and Axe.",
+    "Run applicable unit tests, lint, typecheck, and production build. Only then enable verified preview; independent human review remains pending.",
+    "Finish F04 before planning F05."
+  ]
+}
