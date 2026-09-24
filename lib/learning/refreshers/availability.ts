@@ -1,3 +1,4 @@
+import calculus from "@/content/learning-packs/f08.json";
 import vectors from "@/content/learning-packs/f07.json";
 import measurement from "@/content/learning-packs/f06.json";
 import arithmetic from "@/content/learning-packs/f01.json";
@@ -6,5 +7,5 @@ import functions from "@/content/learning-packs/f03.json";
 import trigonometry from "@/content/learning-packs/f04.json";
 import exponentials from "@/content/learning-packs/f05.json";
 
-const packs = [arithmetic, algebra, functions, trigonometry, exponentials, measurement, vectors];
+const packs = [arithmetic, algebra, functions, trigonometry, exponentials, measurement, vectors, calculus];
 export const refresherAvailable = (courseId: string) => packs.some(pack => pack.courseId === courseId && ["preview", "reviewed"].includes(pack.status));
