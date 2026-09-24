@@ -1,0 +1,348 @@
+{
+  "id": "m01-l04",
+  "courseId": "f09",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Polar operations, powers, and all roots",
+  "objective": "Use polar multiplication, division, and integer powers, recover all distinct low-order roots, and choose rectangular addition when polar angles cannot be added directly.",
+  "why": "Multiplication and powers become simpler when size and direction are separated. Complete root sets also explain why one inverse operation can have several answers. These skills prepare later phasor and signal work without assuming a circuit model.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l03",
+      "label": "Polar coordinates, arguments, and Euler form"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "In polar multiplication, multiply magnitudes and add angles. In division by a nonzero value, divide magnitudes and subtract angles. For integer n and nonzero z, $(re^{i\\theta})^n=r^ne^{in\\theta}$; normalize the final angle only when a principal representative is requested.",
+        "For w=ρe^(iθ)≠0, its nth roots are $\\rho^{1/n}e^{i(\\theta+2\\pi k)/n}$ for k=0,…,n-1. These are n distinct points. Zero has just one distinct nth root, zero. Addition uses rectangular components."
+      ]
+    },
+    {
+      "heading": "Rotation and scale explain the product rule",
+      "paragraphs": [
+        "The complex exponential obeys e^(iα)e^(iβ)=e^(i(α+β)). Multiplying by a complex number therefore combines a scale change and a rotation. Multiplying two radii gives the new radius, and the two turns add.",
+        "Division reverses those effects. Dividing by se^(iβ), with s>0, scales by 1/s and rotates by -β. A negative angle is a clockwise turn, so subtracting a negative argument adds a counterclockwise turn. Keep the operation and parentheses visible until the arithmetic is finished."
+      ]
+    },
+    {
+      "heading": "Integer powers include reciprocal cases",
+      "paragraphs": [
+        "Repeated multiplication gives the positive-integer power rule. For a negative integer, first recall that z^(-n)=1/z^n. The radius is inverted and the angle reverses sign as the power changes sign.",
+        "For nonzero z, z^0=1. Zero has positive powers, but it has no reciprocal and therefore no negative integer powers. This refresher does not assign a value to 0^0; any zeroth-power exercise explicitly uses a nonzero base."
+      ]
+    },
+    {
+      "heading": "All roots come from all full-turn representatives",
+      "paragraphs": [
+        "Suppose z^n=w and w≠0. Its root magnitude must be ρ^(1/n), because raising that radius to n must give ρ. Its angle must satisfy nφ=θ+2πk. Dividing by n gives φ=(θ+2πk)/n.",
+        "Taking k from 0 to n-1 yields n distinct points separated by 2π/n. The next k repeats the first direction after a full turn. Using only θ/n misses the other roots; using more than n successive values repeats them. Verify each proposed root by raising it to the requested power."
+      ]
+    },
+    {
+      "heading": "Root sets and zero need explicit interpretation",
+      "paragraphs": [
+        "A principal square root is one chosen value. Solving z²=w asks for all solutions, which include both signs when w≠0. For a negative real target, the principal square root has positive imaginary part, while its negative is the other solution.",
+        "The equation z^n=0 has one distinct solution, z=0. Algebraically that zero has multiplicity n, but it is still one point and one entry in a set of distinct roots. Do not count angle descriptions at radius zero as different solutions."
+      ]
+    },
+    {
+      "heading": "Addition needs a different representation",
+      "paragraphs": [
+        "No general addition rule adds polar magnitudes and angles. Convert each addend to a+bi and combine coordinates. Opposing values can cancel even though each original magnitude is positive.",
+        "Choose the form that exposes the operation: rectangular form supports addition and subtraction, while polar form supports products, quotients, and powers. Later circuit courses add physical definitions for phasors and impedance. This refresher develops the complex arithmetic, not those physical models."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Multiply radii and add turns",
+      "prompt": "Multiply 2e^(iπ/3) by 3e^(-iπ/6).",
+      "steps": [
+        {
+          "math": "r=2\\cdot3=6,\\qquad\\theta=\\frac\\pi3-\\frac\\pi6=\\frac\\pi6",
+          "reason": "The product combines both scales and both rotations."
+        },
+        {
+          "math": "z=6e^{i\\pi/6}=3\\sqrt3+3i",
+          "reason": "Converting back gives an optional component check."
+        }
+      ],
+      "conclusion": "The result's magnitude is 6."
+    },
+    {
+      "title": "Divide radii and subtract turns",
+      "prompt": "Divide 4e^(-iπ/2) by 2e^(iπ/4).",
+      "steps": [
+        {
+          "math": "r=\\frac42=2,\\qquad\\theta=-\\frac\\pi2-\\frac\\pi4=-\\frac{3\\pi}4",
+          "reason": "The divisor has nonzero magnitude, so division is valid."
+        },
+        {
+          "math": "z=2e^{-i3\\pi/4}=-\\sqrt2-\\sqrt2i",
+          "reason": "The result lies in quadrant III."
+        }
+      ],
+      "conclusion": "Subtract the whole divisor angle."
+    },
+    {
+      "title": "Raise a rectangular value to a power",
+      "prompt": "Evaluate (1+i)^4 using polar form.",
+      "steps": [
+        {
+          "math": "1+i=\\sqrt2e^{i\\pi/4}",
+          "reason": "Equal positive components give a π/4 direction and radius √2."
+        },
+        {
+          "math": "(1+i)^4=(\\sqrt2)^4e^{i\\pi}=4(-1)=-4",
+          "reason": "The fourth power raises the radius and quadruples the angle."
+        }
+      ],
+      "conclusion": "A complex base can have a real power."
+    },
+    {
+      "title": "Use a negative power",
+      "prompt": "Evaluate (2e^(iπ/3))^(-2).",
+      "steps": [
+        {
+          "math": "r=2^{-2}=\\frac14,\\qquad\\theta=-2\\left(\\frac\\pi3\\right)=-\\frac{2\\pi}3",
+          "reason": "The negative exponent inverts the radius and reverses the rotation."
+        },
+        {
+          "math": "z=\\frac14e^{-i2\\pi/3}=-\\frac18-\\frac{\\sqrt3}8i",
+          "reason": "Euler's formula verifies the rectangular components."
+        }
+      ],
+      "conclusion": "Negative powers require a nonzero base."
+    },
+    {
+      "title": "Distinguish the principal square root",
+      "prompt": "Find every solution of z²=-9.",
+      "steps": [
+        {
+          "math": "z=3e^{i(\\pi+2\\pi k)/2},\\quad k=0,1",
+          "reason": "The root radius is 3 and the two angles differ by π."
+        },
+        {
+          "math": "z\\in\\{3i,-3i\\},\\qquad\\sqrt{-9}=3i",
+          "reason": "Both solve the equation, but the principal square root is the positive-imaginary one."
+        }
+      ],
+      "conclusion": "Type both values when the field asks for a root set."
+    },
+    {
+      "title": "Three roots of a positive real",
+      "prompt": "Find all cube roots of 8.",
+      "steps": [
+        {
+          "math": "z=2e^{i2\\pi k/3},\\quad k=0,1,2",
+          "reason": "The root radius is 2 and the directions are 0, 2π/3, and 4π/3."
+        },
+        {
+          "math": "z\\in\\{2,-1+\\sqrt3i,-1-\\sqrt3i\\}",
+          "reason": "Convert all three directions into exact rectangular values."
+        },
+        {
+          "math": "(2e^{i2\\pi k/3})^3=8e^{i2\\pi k}=8",
+          "reason": "Cubing verifies every candidate at once."
+        }
+      ],
+      "conclusion": "A positive real number has nonreal cube roots as well as its real cube root."
+    },
+    {
+      "title": "Four roots of a negative real",
+      "prompt": "Find all fourth roots of -16.",
+      "steps": [
+        {
+          "math": "z=2e^{i(\\pi/4+k\\pi/2)},\\quad k=0,1,2,3",
+          "reason": "The initial angle π is divided by 4, and adjacent roots differ by π/2."
+        },
+        {
+          "math": "z\\in\\{\\sqrt2+\\sqrt2i,-\\sqrt2+\\sqrt2i,-\\sqrt2-\\sqrt2i,\\sqrt2-\\sqrt2i\\}",
+          "reason": "Each direction has component magnitudes √2."
+        },
+        {
+          "math": "z^4=16e^{i(\\pi+2\\pi k)}=-16",
+          "reason": "The fourth power verifies the target and the four distinct points exhaust the roots."
+        }
+      ],
+      "conclusion": "All sign combinations appear in this particular example."
+    },
+    {
+      "title": "Let components cancel",
+      "prompt": "Add 2e^(iπ/2)+2e^(-iπ/2).",
+      "steps": [
+        {
+          "math": "2e^{i\\pi/2}=2i,\\qquad2e^{-i\\pi/2}=-2i",
+          "reason": "Convert each addend separately."
+        },
+        {
+          "math": "2i+(-2i)=0",
+          "reason": "The imaginary components cancel exactly."
+        }
+      ],
+      "conclusion": "Adding the radii and angles would incorrectly give 4."
+    },
+    {
+      "title": "Count distinct zero roots",
+      "prompt": "Solve z^4=0 and report distinct roots and multiplicity.",
+      "steps": [
+        {
+          "math": "z^4=0\\implies |z|^4=0\\implies z=0",
+          "reason": "A nonzero radius could not have a zero fourth power."
+        },
+        {
+          "math": "\\{z:z^4=0\\}=\\{0\\},\\qquad\\text{multiplicity}=4",
+          "reason": "Four repeated polynomial factors produce one distinct value."
+        }
+      ],
+      "conclusion": "Enter zero once in the root set."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Find every cube root of -8. The root radius is 2.",
+    "before": [
+      "Write -8=8e^(iπ).",
+      "Use angles (π+2πk)/3 for k=0,1,2."
+    ],
+    "question": {
+      "id": "f09-l04-guided",
+      "familyId": "guided-f09-l04",
+      "familyVersion": 1,
+      "courseId": "f09",
+      "objectiveId": "m01-l04",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the complete set of exact roots and the number of distinct roots.",
+      "fields": [
+        {
+          "id": "roots",
+          "kind": "roots",
+          "label": "Complete root set",
+          "expected": [
+            "1+sqrt(3)i",
+            "-2",
+            "1-sqrt(3)i"
+          ],
+          "numberSystem": "complex",
+          "unit": "",
+          "help": "Separate roots with commas; use i and sqrt(3)."
+        },
+        {
+          "id": "count",
+          "kind": "rational",
+          "label": "Distinct root count",
+          "expected": "3",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "List one angle for each k before converting to rectangular values.",
+        "Use angles (π+2πk)/3 for k=0,1,2.",
+        "The directions are π/3, π, and 5π/3, giving 1+√3i, -2, and 1-√3i."
+      ],
+      "explanation": [
+        "The directions are π/3, π, and 5π/3, giving 1+√3i, -2, and 1-√3i.",
+        "Cubing each gives -8; the three directions are distinct."
+      ],
+      "answerSummary": "The directions are π/3, π, and 5π/3, giving 1+√3i, -2, and 1-√3i. Cubing each gives -8; the three directions are distinct."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-complex-lab",
+    "mode": "roots",
+    "prompt": "Choose a root order, root radius, and positive or negative real target. Predict every distinct complex root and the count; reveal evenly spaced points and a power-back table. Test zero separately from nonzero root circles."
+  },
+  "practice": [
+    {
+      "familyId": "f09-complex-polar-operation",
+      "variant": "multiply"
+    },
+    {
+      "familyId": "f09-complex-polar-operation",
+      "variant": "divide"
+    },
+    {
+      "familyId": "f09-complex-polar-operation",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "f09-complex-power",
+      "variant": "positive"
+    },
+    {
+      "familyId": "f09-complex-power",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f09-complex-power",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f09-complex-roots",
+      "variant": "square"
+    },
+    {
+      "familyId": "f09-complex-roots",
+      "variant": "cube"
+    },
+    {
+      "familyId": "f09-complex-roots",
+      "variant": "fourth"
+    },
+    {
+      "familyId": "f09-complex-roots",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f09-complex-polar-sum",
+      "variant": "cartesian"
+    },
+    {
+      "familyId": "f09-complex-polar-sum",
+      "variant": "cancellation"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f09-complex-polar-operation",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f09-complex-power",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f09-complex-roots",
+      "variant": "all-orders"
+    },
+    {
+      "familyId": "f09-complex-polar-sum",
+      "variant": "cartesian"
+    }
+  ],
+  "summary": [
+    "Polar products add angles; quotients subtract angles and need a nonzero divisor.",
+    "Integer powers act on radius and angle; negative powers need a nonzero base.",
+    "Include every distinct root and distinguish that set from a principal square root.",
+    "Use rectangular components for addition and cancellation."
+  ],
+  "retrieval": "Find all fourth roots of 16 from memory, verify their fourth powers, and explain why the principal fourth-root notation alone does not list every complex solution. Then add i and -i using components.",
+  "readings": [
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 10.5: Polar Form of Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/10-5-polar-form-of-complex-numbers",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.6 (PDF pages 5–9): Euler's formula, polar arithmetic, and nth roots",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=5",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    }
+  ]
+}
