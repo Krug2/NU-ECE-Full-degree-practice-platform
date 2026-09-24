@@ -23,6 +23,7 @@ import { equalLogarithmic, parseLogarithmic } from "./logarithmic-number";
 import { logRewriteLabCaseSchema } from "./log-rewrite-investigation";
 import { formatLogarithmicIntervals } from "./logarithmic-intervals";
 import { modelLabCaseSchema } from "./model-investigation";
+import { parsePiNumber } from "./pi-number";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -66,6 +67,10 @@ const logarithmicIntervalField=z.object({
   help:z.string().min(1).max(500).default("Give the complete set in interval notation, such as (2*ln(4), inf). Use U for a union, R for all real inputs, or empty. Keep endpoints exact, use brackets only for included endpoints, and retain the stated operating domain."),
 }).strict().refine(field=>{try{return formatLogarithmicIntervals(field.expected).length<=500;}catch{return false;}},"Use valid exact interval keys that fit the answer field");
 const piField = z.object({ ...fieldBase, kind: z.literal("pi-multiple"), expected: rational, unit: z.string().max(60).default("") }).strict();
+const piExpressionField=z.object({
+  ...fieldBase,kind:z.literal("pi-expression"),expected:z.string().min(1).max(200),unit:z.string().max(60).default(""),
+  help:z.string().min(1).max(500).default("Keep pi exact. Use pi or π, numbers, fractions, parentheses and arithmetic, such as 180/pi or 20-6*pi. Supported equivalent forms are accepted; do not replace pi with a rounded decimal."),
+}).strict().refine(field=>{try{parsePiNumber(field.expected);return true;}catch{return false;}},"Invalid exact expression in pi");
 const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: z.array(exact).max(8), numberSystem: z.enum(["real", "complex"]), unit: z.string().max(60).default("") }).strict()
   .refine(field => {
     try {
@@ -90,7 +95,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, logarithmicField, logarithmicRootsField, logarithmicIntervalField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, logarithmicField, logarithmicRootsField, logarithmicIntervalField, rootsField, rootListField, polynomialField, rationalExpressionField, piField,piExpressionField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({

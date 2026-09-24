@@ -8,6 +8,7 @@ import { parsePiMultiple } from "./angles";
 import { equalRootLists,parseRootList } from "./root-list";
 import { equalLogarithmic, equalLogarithmicSets, parseLogarithmic, parseLogarithmicSet } from "./logarithmic-number";
 import { equalLogarithmicIntervals,parseLogarithmicIntervals } from "./logarithmic-intervals";
+import { equalPiNumbers,parsePiNumber } from "./pi-number";
 
 export type FieldResult = { correct: boolean; valid: boolean; message: string };
 export function gradeField(field: AnswerField, input: string): FieldResult {
@@ -17,6 +18,10 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     return choice ? { correct: choice.id === field.correct, valid: true, message: choice.feedback } : { correct: false, valid: false, message: "Choose one of the available answers." };
   }
   try {
+    if(field.kind==="pi-expression"){
+      const correct=equalPiNumbers(parsePiNumber(input),parsePiNumber(field.expected));
+      return {correct,valid:true,message:correct?"This is an equivalent exact value.":"Keep pi exact, retain the whole expression, and check the requested quantity and units. A rounded decimal is a different exact value."};
+    }
     if(field.kind==="logarithmic-intervals"){
       const correct=equalLogarithmicIntervals(parseLogarithmicIntervals(input),field.expected);
       return {correct,valid:true,message:correct?"The complete exact interval set and endpoint choices are correct.":"Keep the logarithmic boundaries exact. Check every interval, strict or included endpoint, excluded point and operating-domain restriction; a rounded boundary changes the set."};
