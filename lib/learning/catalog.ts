@@ -15,11 +15,12 @@ import transformationLesson from "@/content/lessons/mth-215/m02-l02.json";
 import compositionLesson from "@/content/lessons/mth-215/m02-l03.json";
 import calibrationLesson from "@/content/lessons/mth-215/m02-l04.json";
 import polynomialLesson from "@/content/lessons/mth-215/m03-l01.json";
+import rootsLesson from "@/content/lessons/mth-215/m03-l02.json";
 import { lessonSchema, packSchema } from "./contracts";
 import { availableFamilyIds } from "./generate";
 
 export const learningPacks = [packSchema.parse(packData), phs231Pack];
-export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson),lessonSchema.parse(polynomialLesson),...phs231Lessons];
+export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson),lessonSchema.parse(polynomialLesson),lessonSchema.parse(rootsLesson),...phs231Lessons];
 export const learningPack = (courseId: string) => learningPacks.find(pack => pack.courseId === courseId);
 export const lessonById = (courseId: string, lessonId: string) => lessons.find(lesson => lesson.courseId === courseId && lesson.id === lessonId);
 
