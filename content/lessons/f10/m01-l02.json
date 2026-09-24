@@ -1,0 +1,320 @@
+{
+  "id": "m01-l02",
+  "courseId": "f10",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Loops and indexed collections",
+  "objective": "Trace counted and condition-controlled loops, use valid zero-based list indices, and accumulate or filter values while accounting for empty inputs and termination.",
+  "why": "Loops apply a small rule repeatedly, and indexed collections hold the values that rule visits. Correct initialization, bounds, and updates let the same program handle one item, many items, or no items.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Values, assignment, and decisions"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A Python `for` loop visits each item in an iterable in order. `range(start, stop, step)` generates integer values, excluding stop. Step must be nonzero; its sign determines the direction. An empty range executes the body zero times.",
+        "A `while` loop checks its condition before every iteration. A list of length n has nonnegative indices 0 through n-1. Initialize totals before traversal and update them inside the body."
+      ]
+    },
+    {
+      "heading": "Count visits before tracing calculations",
+      "paragraphs": [
+        "For `range(2,8,2)`, begin at 2, add 2 each time, and stop before 8: the visited values are 2, 4, and 6. For a negative step, continue while the current value is greater than the excluded stop. `range(3,-2,-2)` visits 3, 1, and -1.",
+        "`range(n)` starts at zero with step 1. `range(0)` is empty, and a direction pointing away from the stop also gives no values. A zero step raises ValueError rather than creating an endless range. Write the visited sequence first when an endpoint feels uncertain."
+      ]
+    },
+    {
+      "heading": "An accumulator carries earlier work forward",
+      "paragraphs": [
+        "A running sum begins at the additive identity zero. Each iteration adds one new contribution to the existing total. If initialization is placed inside the loop, earlier contributions are erased and only later work survives.",
+        "A count is another accumulator: add 1 for each accepted item. A filter places its condition around the updates. For an inclusive threshold, an equal value is accepted. On an empty list, neither update runs, so both sum and count retain zero. This is useful behavior, not a special failure."
+      ]
+    },
+    {
+      "heading": "A while loop needs progress toward stopping",
+      "paragraphs": [
+        "The condition is checked before the body. If it is initially false, the body never runs. If true, the body must eventually change relevant state so the condition becomes false, unless some explicit exit ends the loop.",
+        "A useful trace records the condition, the body update, and the next condition. In a doubling loop starting at a positive integer, a finite positive bound is eventually reached. A missing update can make the condition remain true indefinitely. These activities analyze bounded examples and do not execute arbitrary learner loops."
+      ]
+    },
+    {
+      "heading": "Lists connect positions with values",
+      "paragraphs": [
+        "A Python list is a mutable, ordered collection. The first element is `items[0]`, the final nonnegative index is `len(items)-1`, and `items[-1]` accesses the last element when the list is nonempty. Access outside the valid range raises IndexError; it does not return zero.",
+        "Replacing `items[1]` changes one existing element and keeps the length fixed. Appending adds a new element at the end. The practice here focuses on reading, replacement, and traversal of small numeric lists. Python lists are not C++ arrays; later courses explain fixed sizes, element types, and memory behavior in their own language."
+      ]
+    },
+    {
+      "heading": "Nested loops and a useful invariant",
+      "paragraphs": [
+        "If every one of m outer iterations runs an inner loop exactly n times, the body runs m×n times. If either range is empty, the count is zero. When inner bounds depend on the outer index, compute each inner count separately instead of automatically multiplying two fixed lengths.",
+        "An invariant is a statement that remains true at a chosen point in each iteration. For a running sum, after processing k items, total equals the sum of those first k items. Initialization establishes it, each update preserves it, and completion connects it to the desired full sum. This reasoning supports tests without treating a few examples as a proof."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "List the range values",
+      "prompt": "```python\nvalues = list(range(2, 8, 2))\n```",
+      "steps": [
+        {
+          "math": "2,4,6",
+          "reason": "Start at 2 and repeatedly add the step while staying below 8."
+        },
+        {
+          "math": "\\text{count}=3,\\qquad\\text{sum}=12",
+          "reason": "Count the visited values, not the endpoints."
+        }
+      ],
+      "conclusion": "The stop 8 is excluded."
+    },
+    {
+      "title": "Preserve the initializer for empty input",
+      "prompt": "```python\ntotal = 7\nfor index in range(0):\n    total = total + index\n```",
+      "steps": [
+        {
+          "math": "\\text{iterations}=0",
+          "reason": "The range contains no indices."
+        },
+        {
+          "math": "\\text{total}=7",
+          "reason": "No assignment inside the body executes."
+        }
+      ],
+      "conclusion": "A for loop need not run once."
+    },
+    {
+      "title": "Carry a sum forward",
+      "prompt": "```python\ntotal = 0\nfor value in [3, -2, 4]:\n    total = total + value\n```",
+      "steps": [
+        {
+          "math": "\\text{total}:0\\to3\\to1",
+          "reason": "The negative item reduces the accumulated sum."
+        },
+        {
+          "math": "\\text{total}:1\\to5",
+          "reason": "The final contribution is added to prior work."
+        }
+      ],
+      "conclusion": "Initialize once, then retain state across iterations."
+    },
+    {
+      "title": "Filter with an inclusive comparison",
+      "prompt": "```python\ncount = 0\ntotal = 0\nfor value in [1, 2, 4]:\n    if value >= 2:\n        count = count + 1\n        total = total + value\n```",
+      "steps": [
+        {
+          "math": "\\text{accepted values}:2,4",
+          "reason": "The equality-boundary item is included."
+        },
+        {
+          "math": "\\text{count}=2,\\qquad\\text{total}=6",
+          "reason": "The two accumulators answer different questions."
+        }
+      ],
+      "conclusion": "Rejected values leave both accumulators unchanged."
+    },
+    {
+      "title": "Check a while condition before the body",
+      "prompt": "```python\nvalue = 3\ncount = 0\nwhile value < 10:\n    value = value * 2\n    count = count + 1\n```",
+      "steps": [
+        {
+          "math": "\\text{value}:3\\to6\\to12",
+          "reason": "Two doublings execute while the preceding value is below 10."
+        },
+        {
+          "math": "12<10\\ \\text{is False},\\quad\\text{count}=2",
+          "reason": "The next condition ends the loop."
+        }
+      ],
+      "conclusion": "The final value can exceed the bound."
+    },
+    {
+      "title": "Identify a missing progress update",
+      "prompt": "```python\nvalue = 1\nwhile value < 5:\n    print(value)\n```",
+      "steps": [
+        {
+          "math": "\\text{value remains }1",
+          "reason": "Printing does not modify the tested value."
+        },
+        {
+          "math": "1<5\\ \\text{remains True}",
+          "reason": "Nothing in the body can make the condition false."
+        }
+      ],
+      "conclusion": "This loop does not terminate on its own; analyze it rather than running it unbounded."
+    },
+    {
+      "title": "Use valid list indices",
+      "prompt": "```python\nitems = [8, 3, 5]\nfirst = items[0]\nlast = items[-1]\nitems[1] = 9\n```",
+      "steps": [
+        {
+          "math": "\\text{first}=8,\\quad\\text{last}=5",
+          "reason": "Zero selects the first element and -1 selects the last."
+        },
+        {
+          "math": "\\text{items}=[8,9,5],\\quad\\text{length}=3",
+          "reason": "Replacement preserves the number of elements."
+        },
+        {
+          "math": "\\text{items[3] would raise IndexError}",
+          "reason": "Index equal to length is past the end."
+        }
+      ],
+      "conclusion": "Position and stored value are different concepts."
+    },
+    {
+      "title": "Count a nested body",
+      "prompt": "```python\ncount = 0\nfor row in range(3):\n    for column in range(2):\n        count = count + 1\n```",
+      "steps": [
+        {
+          "math": "\\text{inner executions per row}=2",
+          "reason": "The inner loop starts again for each row."
+        },
+        {
+          "math": "\\text{count}=3\\cdot2=6",
+          "reason": "There are three complete groups of two."
+        }
+      ],
+      "conclusion": "The product rule applies because the inner count is fixed."
+    }
+  ],
+  "guided": {
+    "title": "Finish the trace",
+    "setup": "Trace a filter over a small list.",
+    "before": [
+      "The comparison accepts 2 and 5 but rejects -1.",
+      "Update count and total only inside the true branch."
+    ],
+    "question": {
+      "id": "f10-l02-guided",
+      "familyId": "guided-f10-l02",
+      "familyVersion": 1,
+      "courseId": "f10",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": false,
+      "prompt": "```python\ntotal = 0\ncount = 0\nfor value in [-1, 2, 5]:\n    if value >= 2:\n        total = total + value\n        count = count + 1\n```\nGive final values.",
+      "fields": [
+        {
+          "id": "total",
+          "kind": "rational",
+          "label": "Final total",
+          "expected": "7",
+          "unit": ""
+        },
+        {
+          "id": "count",
+          "kind": "rational",
+          "label": "Final count",
+          "expected": "2",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the current state before each statement.",
+        "Update count and total only inside the true branch.",
+        "The accepted contributions are 2 and 5."
+      ],
+      "explanation": [
+        "The accepted contributions are 2 and 5.",
+        "Their sum is 7 and their count is 2."
+      ],
+      "answerSummary": "The accepted contributions are 2 and 5. Their sum is 7 and their count is 2."
+    },
+    "after": "Explain each state change before beginning independent practice. Guided feedback is assisted work."
+  },
+  "interaction": {
+    "kind": "refresher-programming-lab",
+    "mode": "loop",
+    "prompt": "Choose a small list and threshold. Predict filtered sum and count, then step through every iteration with before/after state. Compare empty, all-rejected and boundary-equal inputs."
+  },
+  "practice": [
+    {
+      "familyId": "f10-range",
+      "variant": "positive"
+    },
+    {
+      "familyId": "f10-range",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f10-range",
+      "variant": "empty"
+    },
+    {
+      "familyId": "f10-loop",
+      "variant": "sum"
+    },
+    {
+      "familyId": "f10-loop",
+      "variant": "filter"
+    },
+    {
+      "familyId": "f10-loop",
+      "variant": "while"
+    },
+    {
+      "familyId": "f10-loop",
+      "variant": "nested"
+    },
+    {
+      "familyId": "f10-list",
+      "variant": "index"
+    },
+    {
+      "familyId": "f10-list",
+      "variant": "update"
+    },
+    {
+      "familyId": "f10-list",
+      "variant": "bounds"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f10-range",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f10-loop",
+      "variant": "filter"
+    },
+    {
+      "familyId": "f10-loop",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f10-list",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "range excludes its stop and rejects a zero step.",
+    "Empty input means zero body executions.",
+    "Initialize accumulators before traversal.",
+    "Use valid indices and check progress toward termination."
+  ],
+  "retrieval": "Trace range(5,0,-2), then sum its visited values. Explain why items[len(items)] fails and why a missing while update can prevent termination.",
+  "readings": [
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 3.1.3: Lists, indexing, copying and mutation",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#lists",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    },
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 3.2: First steps: while loops and indentation",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#first-steps-towards-programming",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    },
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 4.2–4.3: For loops and range",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#for-statements",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    }
+  ]
+}
