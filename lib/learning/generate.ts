@@ -25,9 +25,11 @@ import { polynomialZeroFamilyIds,polynomialZeroQuestion } from "./families/mth-p
 import { polynomialSignFamilyIds,polynomialSignQuestion } from "./families/mth-polynomial-signs";
 import { divisionFamilyIds,divisionQuestion } from "./families/mth-division";
 import { divisionReasoningFamilyIds,divisionReasoningQuestion } from "./families/mth-division-reasoning";
+import { rootSearchFamilyIds,rootSearchQuestion } from "./families/mth-root-search";
+import { rootCompletionFamilyIds,rootCompletionQuestion } from "./families/mth-root-completion";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion]] as const){
+for(const [ids,generate] of [[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion],[rootSearchFamilyIds,rootSearchQuestion],[rootCompletionFamilyIds,rootCompletionQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
 for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion],[polynomialZeroFamilyIds,polynomialZeroQuestion],[polynomialSignFamilyIds,polynomialSignQuestion]] as const){
