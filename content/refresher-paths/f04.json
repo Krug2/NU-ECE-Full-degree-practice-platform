@@ -1,0 +1,98 @@
+{
+  "courseId": "f04",
+  "version": 1,
+  "quickRoute": "Try the four diagnostic probes and follow any review recommendation. Read each lesson's Quick recall, then try its independent checkpoint. Finish the mixed recall check after addressing all four objectives. An untested skill still needs practice even if the short diagnostic feels familiar.",
+  "fullRoute": "Start with right triangles and calculator modes. Continue through directed angles and circular measurements, wave graphs and inverse values, then identities and complete solutions. Work through the reasoned examples, guided problems, investigations, and varied independent practice. Pause between topics and save your next step in lesson notes.",
+  "diagnostic": [
+    {
+      "familyId": "f04-diagnostic-triangles",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f04-diagnostic-circle",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f04-diagnostic-waves",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f04-diagnostic-identities",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f04-recall-triangles",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f04-recall-circle",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f04-recall-waves",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f04-recall-identities",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f04-diagnostic-triangles": "m01-l01",
+    "f04-recall-triangles": "m01-l01",
+    "f04-diagnostic-circle": "m01-l02",
+    "f04-recall-circle": "m01-l02",
+    "f04-diagnostic-waves": "m01-l03",
+    "f04-recall-waves": "m01-l03",
+    "f04-diagnostic-identities": "m01-l04",
+    "f04-recall-identities": "m01-l04"
+  },
+  "support": [
+    {
+      "courseId": "f02",
+      "reason": "Revisit factoring, exact radicals, and domain restrictions when the algebra blocks trigonometric reasoning."
+    },
+    {
+      "courseId": "f03",
+      "reason": "Connect sinusoidal transformations and inverse ranges to function concepts."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "Reconnect right-triangle, unit-circle, identity, and equation skills with the algebra and trigonometry course."
+    },
+    {
+      "courseId": "csc-208",
+      "reason": "Prepare for trigonometric limits and derivative rules while keeping angles in radians."
+    },
+    {
+      "courseId": "phs-231",
+      "reason": "Resolve signed vector components and describe circular motion."
+    },
+    {
+      "courseId": "phs-232",
+      "reason": "Read phase and frequency in oscillations and waves."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Manipulate exact identities and periodic models in engineering analysis."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Interpret alternating signals, angular frequency, and phase in circuit models."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Read sinusoidal signals and changes of amplitude, time scale, and delay."
+    },
+    {
+      "courseId": "cee-430",
+      "reason": "Prepare for periodic fields, phase relationships, and wave descriptions."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "For first-time instruction, use the MTH 215 course path and its available foundation lessons, together with the precise free OpenStax sections linked in these lessons. The later MTH 215 trigonometry modules remain planned. Return to F02 for algebra gaps or F03 for functions and inverse reasoning; this refresher is not a replacement for a full course."
+  }
+}

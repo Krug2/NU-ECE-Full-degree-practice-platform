@@ -1,0 +1,37 @@
+{
+  "courseId": "f04",
+  "title": "Trigonometry",
+  "version": 1,
+  "status": "building",
+  "introduction": "Recover angle sense, exact ratios, wave interpretation, and complete equation reasoning. Use the diagnostic for specific review suggestions, or work through the full explanations and investigations. This optional refresher does not award university credit or determine enrollment eligibility. Familiarity and assisted practice are separate from independent checkpoint evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From triangle ratios to periodic models",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Right triangles and calculator modes",
+          "objective": "Use right-triangle geometry and side ratios, recover acute angles, and keep angle units and calculator modes consistent."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Radians, the unit circle, and exact values",
+          "objective": "Locate directed angles, evaluate all six trigonometric ratios with correct signs and domains, and use radians in circular measurements."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Sinusoidal graphs, phase, and inverse values",
+          "objective": "Interpret sinusoidal amplitude, period, midline, and phase in angular and time models, and select inverse-trigonometric principal values."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Identities and complete trigonometric solutions",
+          "objective": "Use foundational, sum, and double-angle identities with domain restrictions and return every solution in a stated interval without losing zero factors."
+        }
+      ]
+    }
+  ]
+}
