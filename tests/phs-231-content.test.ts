@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import elasticityData from "../content/lessons/phs-231/m08-l02.json";
 import staticsData from "../content/lessons/phs-231/m08-l01.json";
 import rollingData from "../content/lessons/phs-231/m07-l03.json";
 import angularData from "../content/lessons/phs-231/m07-l02.json";
@@ -31,7 +32,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData, staticsData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData, staticsData, elasticityData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -47,6 +48,16 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks both elastic range bounds before establishing a guided deformation",()=>{
+  const q=lessonSchema.parse(elasticityData).guided.question;
+  const force=300,area=2e-6,modulus=100e9,gaugeLength=1,stressCap=100e6;
+  const demand=force/area,candidateStrain=demand/modulus,lastForce=stressCap*area;
+  expect(candidateStrain).toBeLessThan(.002);expect(demand).toBeGreaterThan(stressCap);
+  const response={stress:String(demand/1e6),limit:String(stressCap/1e6),force:String(lastForce),extension:String(stressCap/modulus*gaugeLength*1000),model:"unknown"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  for(const wrong of [{stress:"300"},{stress:"0.15"},{limit:"200"},{force:"300"},{extension:"1.5"},{model:"strain"},{model:"double"},{model:"modulus"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("rejects a balanced statics candidate when the local friction capacity fails",()=>{
