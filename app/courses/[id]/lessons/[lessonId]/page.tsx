@@ -16,5 +16,5 @@ export default async function LessonPage({params}:{params:Promise<{id:string;les
   if(!lesson||!pack)notFound();
   const available=[...pack.bridges,...pack.modules.flatMap(item=>item.lessons)].filter(item=>lessonById(id,item.id));
   const index=available.findIndex(item=>item.id===lessonId);
-  return <LessonReader key={`${id}/${lessonId}`} lesson={lesson} previous={available[index-1]} next={available[index+1]}/>;
+  return <LessonReader key={`${id}/${lessonId}`} lesson={lesson} previous={available[index-1]} next={available[index+1]} releaseStatus={pack.status}/>;
 }
