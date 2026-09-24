@@ -1,0 +1,201 @@
+{
+  "kind": "practical",
+  "id": "m01-l02",
+  "courseId": "f12",
+  "version": 1,
+  "title": "Read technical text and decode notation",
+  "objective": "Extract a technical passage's claim and conditions, define its symbols and units, translate its notation into a small checked example, and record a precise unresolved question.",
+  "why": "A technical page compresses ideas into symbols, conditions, and examples. Reading it well means reconstructing those ideas, not merely recognizing the words. A small symbol key and a checked example can turn a dense paragraph into something you can use.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Retrieve, check, and plan the next session"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Preview the heading and the question the passage is trying to answer. Read a small part, then write its main claim in your own words. Keep the conditions, define the symbols and units, and test the claim with one simple example.",
+        "Finish with a precise question. 'Does the stated rate apply to each channel or all channels?' points toward a useful answer. 'I do not understand anything' describes a feeling but does not yet identify the next piece to resolve."
+      ]
+    },
+    {
+      "heading": "Read for a claim and its conditions",
+      "paragraphs": [
+        "A technical claim often has a condition attached: constant speed, a nonzero denominator, a specified input interval, or a fixed sample spacing. Underline or note the condition with the equation it supports. Removing it can turn a useful statement into an overclaim.",
+        "Separate a definition from a model and from an observation. 'T denotes the sample interval' defines a symbol. 'Samples are uniformly spaced' is a model condition. 'The last two timestamps differ by 0.01 s' is an observation. They play different roles when you check the reasoning."
+      ]
+    },
+    {
+      "heading": "Build a symbol and unit key",
+      "paragraphs": [
+        "Read each unfamiliar symbol using the definition in context. A subscript usually labels an item: $v_0$ can mean initial velocity, while $t_n$ can mean the time of sample n. A subscript is not automatically multiplication or an exponent.",
+        "Function notation describes an input-output relationship. In $f(x)$, x is supplied to the rule named f; it is not generally f times x. Uppercase and lowercase letters may name different quantities, and a Greek letter needs a definition just as an English letter does. Never infer units solely from the letter chosen."
+      ]
+    },
+    {
+      "heading": "Preserve equality, approximation, and grouping",
+      "paragraphs": [
+        "An equals sign states equality. The symbol $\\approx$ marks an approximation, such as $1/3\\approx0.333$. Keep the distinction when a result is rounded for display. An approximate decimal can be useful without being exactly equal to the original fraction.",
+        "Parentheses and fraction bars group operations. The entire numerator or denominator under a bar may need parentheses when typed on one line. A superscript can mean a power, but conventions such as inverse-function notation need context. If the notation is unclear, find its definition before applying an algebra rule."
+      ]
+    },
+    {
+      "heading": "Test an example and ask what it shows",
+      "paragraphs": [
+        "Choose an input inside the stated domain, substitute it carefully, and check the output's unit or scale. Try an easy boundary or zero input when allowed. This can reveal a mistaken interpretation and gives you something concrete to compare with the passage.",
+        "One matching example supports your reading of that example; it does not prove a general claim. If the text claims a rule for every input, look for its explanation or derivation. Record whether your next need is a definition, a proof step, a missing condition, or an observation."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Read a constant-rate model",
+      "scenario": "Original passage: 'With constant speed v and no stops, traveled distance satisfies d = vt for elapsed time t. Let v = 8 km/h and t = 1.5 h.'",
+      "steps": [
+        {
+          "action": "Paraphrase: while the stated speed is constant and the trip has no stops, distance is speed times elapsed time.",
+          "reason": "The conditions remain attached to the relationship."
+        },
+        {
+          "action": "Key: d is distance in km, v is speed in km/h, and t is elapsed time in h. Compute d = 8 × 1.5 = 12 km.",
+          "reason": "The hour unit cancels, and each symbol has one role."
+        },
+        {
+          "action": "Check that 12 km in 1.5 h gives 8 km/h. Ask whether a reported trip time includes waiting.",
+          "reason": "The reconstruction checks the example; the question tests whether the same boundary applies to another situation."
+        }
+      ],
+      "conclusion": "Copying only d = vt would lose information needed to decide when to use it."
+    },
+    {
+      "title": "A subscript labels an initial value",
+      "scenario": "Original passage: 'V(t) = V₀ + qt describes a tank with initial volume V₀ = 10 L, constant inflow q = 3 L/min, and no outflow.'",
+      "steps": [
+        {
+          "action": "Read V₀ as 'initial volume.' It is a named quantity, not V multiplied by zero.",
+          "reason": "The passage explicitly defines the subscript's meaning."
+        },
+        {
+          "action": "At t = 4 min, V(4) = 10 + 3 × 4 = 22 L. At t = 0, V(0) = 10 L.",
+          "reason": "The zero-input check confirms that the symbol represents the initial state."
+        },
+        {
+          "action": "Ask whether the inflow remains constant throughout the interval.",
+          "reason": "The equation is a supplied model; its simple appearance does not remove the assumption."
+        }
+      ],
+      "conclusion": "A symbol key and a zero-input check prevent a notation error before it spreads into the calculation."
+    },
+    {
+      "title": "Function notation is an action on an input",
+      "scenario": "Original passage: 'For 0 ≤ x ≤ 4, let f(x) = 3x + 2. Evaluate f(2).'",
+      "steps": [
+        {
+          "action": "Identify x as the input and f(x) as the output of the named rule. The allowed inputs run from 0 through 4, including both endpoints.",
+          "reason": "The function name and domain are part of the definition."
+        },
+        {
+          "action": "Substitute x = 2: f(2) = 3 × 2 + 2 = 8.",
+          "reason": "The expression describes what the function does to the supplied input."
+        },
+        {
+          "action": "Check f(0) = 2 and ask what, if anything, defines f outside 0–4.",
+          "reason": "The formula can be evaluated algebraically elsewhere, but the supplied function's stated domain still limits this definition."
+        }
+      ],
+      "conclusion": "The notation f(2) requests one output. It does not mean twice a standalone number named f."
+    },
+    {
+      "title": "Keep a rounding statement honest",
+      "scenario": "A note says 'One third equals 0.333 exactly; multiplying back gives one.'",
+      "steps": [
+        {
+          "action": "Write $1/3\\approx0.333$, since the decimal has been rounded to three places.",
+          "reason": "A finite three-digit decimal is a nearby rational number, not the exact third."
+        },
+        {
+          "action": "Check 0.333 × 3 = 0.999, while (1/3) × 3 = 1 exactly.",
+          "reason": "The reconstruction exposes the difference without relying on how familiar the decimal looks."
+        },
+        {
+          "action": "Keep the exact fraction for later symbolic work and state the rounding when reporting a decimal.",
+          "reason": "The representation should match the purpose and avoid unnecessary accumulated rounding."
+        }
+      ],
+      "conclusion": "An approximation symbol communicates useful information about the result; it is not decorative punctuation."
+    }
+  ],
+  "guided": {
+    "prompt": "Read this original passage: 'A logger has N = 3 identical channels, each at r = 100 samples/(channel·s), for T = 4 s. Each sample uses w = 2 bytes. Raw payload B = NrTw excludes metadata.' Produce a claim, symbol key, example and question.",
+    "steps": [
+      "Paraphrase what B counts and what it excludes. Define each symbol and unit.",
+      "Calculate the example with a separate sample-count check, then ask one question about a missing cost."
+    ],
+    "review": [
+      "The claim counts only raw sample payload for all three continuously recording channels; metadata is excluded.",
+      "N is channel count, r is per-channel sample rate, T is duration, w is bytes/sample, and B is bytes.",
+      "There are 3 × 100 × 4 = 1200 samples, giving B = 2400 bytes. Ask whether timestamps are stored per sample or per block before estimating whole-file size."
+    ]
+  },
+  "task": {
+    "family": "study-orientation",
+    "fields": [
+      {
+        "id": "claim",
+        "label": "Main claim and conditions in your own words",
+        "help": "State the relationship and keep its assumptions, domain, or exclusions."
+      },
+      {
+        "id": "symbols",
+        "label": "Symbol, notation, and unit key",
+        "help": "Define each relevant symbol, subscript, operation, and unit."
+      },
+      {
+        "id": "example",
+        "label": "A small example and its check",
+        "help": "Substitute a permitted input and verify the output using another simple check."
+      },
+      {
+        "id": "question",
+        "label": "Precise question and where to look next",
+        "help": "Name a precise ambiguity or limit and how you would resolve it."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "conditions",
+        "label": "My paraphrase keeps the assumptions and allowed inputs."
+      },
+      {
+        "id": "notation",
+        "label": "I defined symbols and units without confusing labels with operations."
+      },
+      {
+        "id": "example",
+        "label": "I checked an example and stated a specific remaining question."
+      }
+    ]
+  },
+  "summary": [
+    "Extract the claim together with the conditions that support it.",
+    "Define notation from context instead of guessing from appearance.",
+    "Keep exact equality, approximation, grouping, and units visible.",
+    "Use a small checked example and a precise question to guide the next reading."
+  ],
+  "retrieval": "Close the passage after reading. Rebuild its symbol key and one condition from memory, then reopen it to check what you omitted.",
+  "readings": [
+    {
+      "title": "OpenStax, College Success · 5.2: Effective Reading Strategies",
+      "url": "https://openstax.org/books/college-success/pages/5-2-effective-reading-strategies",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    },
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 1.1: Real Numbers: Algebra Essentials",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-1-real-numbers-algebra-essentials",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    }
+  ]
+}
