@@ -12,4 +12,5 @@ import trigonometry from "@/content/learning-packs/f04.json";
 import exponentials from "@/content/learning-packs/f05.json";
 
 const packs = [arithmetic, algebra, functions, trigonometry, exponentials, measurement, vectors, calculus, complex, programming, engineering, orientation];
-export const refresherAvailable = (courseId: string) => packs.some(pack => pack.courseId === courseId && ["preview", "reviewed"].includes(pack.status));
+export const refresherReleaseStatus = (courseId: string) => packs.find(pack => pack.courseId === courseId)?.status;
+export const refresherAvailable = (courseId: string) => ["preview", "reviewed"].includes(refresherReleaseStatus(courseId) ?? "");
