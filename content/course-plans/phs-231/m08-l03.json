@@ -264,5 +264,12 @@
       "checkedAt": "2026-09-24",
       "use": "Opened the 10-page primary lecture for cyclic stress mean and amplitude, load ratio, life scatter, and dependence on test conditions. No universal endurance or actual service-life rating is inferred."
     }
-  ]
+  ],
+  "implementation": {
+    "engine": "4a916e3",
+    "engineTests": 8,
+    "independentEnginePaths": 180,
+    "status": "engine technically checked; generators, UI, teaching, registration, and browser verification pending",
+    "note": "Independent piecewise quadrature and force-displacement integration check loading, recovered and nonrecoverable work; tests cover exact fracture, lost postfracture knowledge, original geometry, brittle versus ductile records, zero and subyield cycles, plateau maxima, very close events, and invalid domains. A test fixture initially violated the declared fracture-versus-maximum condition and was corrected; the schema was retained. No lesson is published from this engine alone."
+  }
 }

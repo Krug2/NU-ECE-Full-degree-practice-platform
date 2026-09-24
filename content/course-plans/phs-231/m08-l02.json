@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m08-l02",
   "version": 1,
-  "status": "detailed plan; implementation and verification pending",
+  "status": "implemented and technically verified; independent subject review and pilot validation not performed",
   "title": "Stress, strain, and elastic response",
   "objective": "Relate tensile, shear, and bulk stress to deformation within a stated linear elastic regime and propagate measurement limits.",
   "officialScope": {
@@ -305,5 +305,36 @@
       "checkedAt": "2026-09-24",
       "use": "Verify that a prefix is inseparable from its unit and is raised to the power in area or volume conversions; printed unit conventions."
     }
-  ]
+  ],
+  "implementation": {
+    "plan": "c7a169d",
+    "engine": "f74f502",
+    "families": "4c6c57a",
+    "sharedRegistration": "d01e549",
+    "lesson": "c2ecf32",
+    "browserAndPresentation": "709f671",
+    "teaching": {
+      "sections": 9,
+      "paragraphs": 35,
+      "workedExamples": 13,
+      "guidedExamples": 1,
+      "practiceVariants": 18,
+      "checkpointQuestions": 4
+    },
+    "verification": {
+      "independentGeneratedCases": 900,
+      "enginePaths": 180,
+      "focusedEngineAndFamilyTests": 27,
+      "contentAndProgressTests": 83,
+      "fullUnitTests": 1115,
+      "fullUnitFiles": 120,
+      "fullUnitTimeoutSeconds": 60,
+      "lint": "passed",
+      "typecheck": "passed",
+      "productionPages": 93,
+      "browserWorkflows": 8,
+      "browserMinutes": 5.1,
+      "notes": "Initial browser failure identified duplicated units; visual review identified excess small-strain rounding. Both were corrected, relevant content checks and the production build were repeated, and all eight browser workflows passed with their existing 60-second limit. Desktop and mobile diagrams and tables, keyboard access, actual checkpoint completion, reload, and backup restoration were inspected or tested. Controls intentionally reset on reload; saved evidence and notes persist."
+    }
+  }
 }
