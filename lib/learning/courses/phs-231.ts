@@ -1,3 +1,4 @@
+import validation from "@/content/lessons/phs-231/m09-l02.json";
 import numerical from "@/content/lessons/phs-231/m09-l01.json";
 import pack from "@/content/learning-packs/phs-231.json";
 import measurement from "@/content/lessons/phs-231/m01-l01.json";
@@ -23,4 +24,4 @@ import collision from "@/content/lessons/phs-231/m06-l02.json";
 import { lessonSchema, packSchema } from "../contracts";
 
 export const phs231Pack = packSchema.parse(pack);
-export const phs231Lessons = [lessonSchema.parse(measurement), lessonSchema.parse(vectors), lessonSchema.parse(motion), lessonSchema.parse(frames), lessonSchema.parse(projectiles), lessonSchema.parse(forces), lessonSchema.parse(friction), lessonSchema.parse(drag), lessonSchema.parse(circular), lessonSchema.parse(gravity), lessonSchema.parse(work), lessonSchema.parse(energy), lessonSchema.parse(impulse), lessonSchema.parse(collision), lessonSchema.parse(rotation), lessonSchema.parse(angular), lessonSchema.parse(rolling), lessonSchema.parse(statics), lessonSchema.parse(elasticity), lessonSchema.parse(materials), lessonSchema.parse(numerical)];
+export const phs231Lessons = [lessonSchema.parse(measurement), lessonSchema.parse(vectors), lessonSchema.parse(motion), lessonSchema.parse(frames), lessonSchema.parse(projectiles), lessonSchema.parse(forces), lessonSchema.parse(friction), lessonSchema.parse(drag), lessonSchema.parse(circular), lessonSchema.parse(gravity), lessonSchema.parse(work), lessonSchema.parse(energy), lessonSchema.parse(impulse), lessonSchema.parse(collision), lessonSchema.parse(rotation), lessonSchema.parse(angular), lessonSchema.parse(rolling), lessonSchema.parse(statics), lessonSchema.parse(elasticity), lessonSchema.parse(materials), lessonSchema.parse(numerical), lessonSchema.parse(validation)];

@@ -1,0 +1,710 @@
+{
+  "id": "m09-l02",
+  "courseId": "phs-231",
+  "moduleId": "m09",
+  "version": 1,
+  "title": "Validate a mechanical subsystem",
+  "objective": "Combine force, energy, numerical, and measurement evidence into a reproducible investigation with a transparent self-assessment rubric.",
+  "why": "A model can fit its calibration data, converge numerically, and still fail to support the intended physical claim. This project joins force, energy, uncertainty and numerical reasoning in a reproducible record, then asks you to revise only as far as the evidence warrants.",
+  "estimatedMinutes": 480,
+  "prerequisites": [
+    {
+      "lessonId": "m09-l01",
+      "label": "Numerical integration and convergence evidence"
+    },
+    {
+      "lessonId": "m08-l03",
+      "label": "Plasticity, fracture, and evidence limits"
+    },
+    {
+      "lessonId": "m01-l01",
+      "label": "Units, measurement, and uncertainty"
+    },
+    {
+      "lessonId": "m03-l01",
+      "label": "Force inventories and Newton's laws"
+    },
+    {
+      "lessonId": "m05-l01",
+      "label": "Work and power"
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Energy accounting and model boundaries"
+    },
+    {
+      "courseId": "mth-215",
+      "lessonId": "m02-l04",
+      "label": "Algebra preparation: rates and linear calibration",
+      "note": "Use the available prerequisite lesson to refresh slope, calibration and the limits of an affine model."
+    },
+    {
+      "courseId": "f08",
+      "lessonId": "m01-l05",
+      "label": "Calculus refresher: accumulation and initial values",
+      "note": "This targeted refresher supports the calculations; it does not replace an academic calculus prerequisite."
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus I academic preparation",
+      "note": "This academic prerequisite course is under construction. The official alternative prerequisites remain listed in the course overview; the refresher does not change them."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define the claim before inspecting the answer",
+      "paragraphs": [
+        "An engineering model is useful when it answers a stated question within a stated range. Here the question is whether a linear spring and viscous element can predict signed horizontal force at imposed states, and whether a numerical method solves the resulting motion equation accurately enough at a chosen time. These are two related questions with different evidence. A force fit does not establish numerical accuracy; convergence does not establish the force law.",
+        "Choose the moving body as the translational system and take rightward displacement x from the spring's equilibrium position as positive. In the stipulated horizontal model, weight and support normal balance vertically. The horizontal mechanical inventory is spring force −kx and viscous force −bv, giving m x''=−kx−bv with m>0, k>0 and b≥0. A stationary support and ideal dashpot are assumptions. Sliding friction, support motion, contact loss, geometric nonlinearity and damage require separate terms or a different model.",
+        "The observation equation is $y=-kx-bv+z+e$, where y is the reported sensor output in newtons, z is an additive output zero, and e denotes the stated observation discrepancy. A spring-only force sensor would not measure the total spring-plus-drag force. This investigation explicitly supplies synthetic observations of the sum; do not transfer that sensor interpretation to an unspecified physical apparatus.",
+        "Write acceptance rules before using held-out values. A proposed study rule is that every held-out sensor residual magnitude is within its justified allowance, and a completed numerical run at T=4 s has absolute position error at most 0.002 m and absolute velocity error at most 0.01 m/s against an independent solution of the same equation. These are proposed teaching tolerances, not official NU requirements, physical certification, or a bound on total hardware error. State which ranges and comparisons they cover."
+      ]
+    },
+    {
+      "heading": "Verification, calibration, and validation ask different questions",
+      "paragraphs": [
+        "Verification asks whether arithmetic and algorithms implement the chosen equations. Independent hand calculations, dimensions, exact equilibrium, analytic trajectories and controlled step refinement can expose implementation mistakes. An implementation agreeing with itself through two wrappers is a weaker check than a separate derivation that could fail differently.",
+        "Calibration uses specified reference data to estimate parameters or observation corrections. In this project the origin and static pair inform zero and stiffness, and the opposite-velocity pair informs the viscous term. Record which rows you used. Validation then freezes those choices and compares predictions with held-out observations. Retuning parameters until the held-out residuals disappear converts those rows into calibration evidence; reserve new independent conditions for a subsequent validation claim.",
+        "All records supplied here are generated from a disclosed equation and rounded by a disclosed rule. This is a rehearsal of validation reasoning using synthetic evidence. It can test arithmetic, interpretation and a deliberately misspecified candidate. It is not an independent physical validation of a spring, sensor or material. Label generated values as synthetic even if their units and noise-like rounding resemble measurements.",
+        "The five calibration states and nine held-out states are imposed pairs (x,v), not successive frames of a moving cart. State number is an index, not time. Differences between neighboring rows cannot be divided by an imagined time step, and their force values cannot be integrated as a trajectory without a separately specified path. Interpolation creates new computed values, not new independent observations."
+      ]
+    },
+    {
+      "heading": "Separate sensor correction from mechanical force",
+      "paragraphs": [
+        "At an exact known-zero-force condition x=v=0, the ideal observation law gives y=z. For the baseline record this reading is 0.04 N. Subtracting it from another output corrects the observation under the assumption that zero remains the same. It does not apply a new force to the body. At x=0.04 m and v=0, y=−0.28 N corresponds to mechanical force −0.32 N.",
+        "Two static states with a common zero satisfy $y_- - y_+=k(x_+-x_-)$. Thus $k=(y_- - y_+)/(x_+-x_-)$ for distinct positions. With x=±0.04 m and outputs 0.36 and −0.28 N, the positive separation is 0.08 m and k=8 N/m. Averaging these symmetric-state outputs yields the zero for an exact linear spring. A single y/x quotient mixes the slope, sign and any nonzero offset.",
+        "An additive correction is not a gain correction. If the sensor instead follows $y=gF+z$ with nonzero gain g, recover force as $(y-z)/g$. A zero reference and a nonzero force reference identify the two parameters of this assumed affine observation model. They do not establish its validity at every untested force, temperature or time. A fixed common zero cancels in a difference, while gain error and changing zero generally remain.",
+        "A viscous coefficient has units N/(m/s)=kg/s. At fixed x, reverse v while holding the model parameters and sensor zero fixed. The output difference $y(x,-v)-y(x,+v)=2bv$ isolates b. The mean removes this antisymmetric term. Check the positive velocity separation and the observed-minus-predicted residual convention; losing either sign can make a restoring or dissipative term look like a driving force."
+      ]
+    },
+    {
+      "heading": "Data can leave a parameter unidentified",
+      "paragraphs": [
+        "If every calibration velocity is zero, any value of b gives the same predicted static forces. More precise static readings or more static displacements may improve a stiffness estimate but cannot create information about drag. This is an identifiability limitation: the chosen experiment does not distinguish those parameter values, even with perfect arithmetic.",
+        "If all states instead obey v=cx for one known c, the law becomes $F=-(k+bc)x$. The data identify the effective stiffness K=k+bc, not k and b separately. For c=2 s⁻¹ and K=8.4 N/m, both k=8 N/m with b=0.2 kg/s and k=7.4 N/m with b=0.5 kg/s predict exactly the same force on this line of states. More points on that line do not make the equations independent.",
+        "Use controlled variation to separate terms: static displaced states for k, zero-position moving states for b, and independent zero-force conditions for z. The investigation supplies these distinct calibration conditions. Real instruments would also need measurement ranges, bandwidth and corrections. Even independently identifiable parameters are only identifiable within the specified law; the possibility of an omitted force or nonlinear sensor remains.",
+        "Changing mass or stiffness is parameter sensitivity because it changes the continuous equation. Halving h while keeping m, k, b, initial state and final time fixed is numerical refinement. Changing both k and h together confounds those questions. In a useful comparison, record what was deliberately varied, what was held fixed, and which predicted quantity should respond."
+      ]
+    },
+    {
+      "heading": "Compare residuals with the uncertainty model actually supplied",
+      "paragraphs": [
+        "Define the residual as $r=y-\\hat y$ with $\\hat y=-kx-bv+z$. Equivalently, subtract the candidate zero from y and compare that corrected value with −kx−bv. The sign tells which way the observation departs from prediction; compatibility uses |r|. For a closed allowance B>0, the row is compatible when |r|≤B. The remaining margin B−|r| is zero on the boundary and negative outside it.",
+        "Here x and v are exact synthetic inputs, and the generated sensor output is rounded to the nearest 0.01 N. The rounding discrepancy is bounded by 0.005 N, including the stipulated tie endpoints. The controls let you add a declared comparison allowance, but the interface does not prove that allowance. A wider interval can turn a failed row into a compatible row without improving the force law. Explain its source and preserve the original rule in your notebook.",
+        "With exact x and v and independently bounded candidate parameter errors B_k, B_b and B_z, one conservative sensor-prediction allowance is $|x|B_k+|v|B_b+B_z$, to which the observation bound can be added. This triangle-inequality bound permits reinforcement and may be conservative. If position or velocity is also uncertain, products and shared corrections need their own analysis; do not silently use the exact-input formula as a complete measurement budget.",
+        "A worst-case bound is not a standard deviation. Under an explicitly supplied standard-uncertainty model, $u^2(y_1-y_2)=u_1^2+u_2^2-2\\operatorname{Cov}(y_1,y_2)$. The covariance matters: an identical common error cancels in the difference while separate endpoint errors can reinforce. Root-sum-square is appropriate only under its assumptions; neither an arbitrary bound nor a normalized residual supplies a 95% confidence statement."
+      ]
+    },
+    {
+      "heading": "Use patterns to propose a discriminating check",
+      "paragraphs": [
+        "First fit the baseline record with k=8 N/m, b=0.2 kg/s and z=0.04 N. With only the rounding allowance, the supplied rows are compatible. Now omit b while retaining the other choices. Static states still fit, but nonzero-velocity residuals change sign with velocity. Compare the same x at opposite v; then propose new velocities and an independent zero check before concluding that viscous damping explains a physical discrepancy.",
+        "The nonlinear record includes an additional restoring term −500x³ N, with coefficient 500 N/m³. At v=0 and fixed linear candidate k=8, its ideal unrounded residual scales by eight when displacement doubles. With the actual rounded calibration readings at ±0.04 m, a linear secant fit gives k=8.75 N/m and z=0.04 N. It can look adequate locally and fail at |x|=0.08 m. State which candidate is fixed when discussing cubic scaling; refitting its slope changes the residual function.",
+        "The drift record preserves the baseline physical law but adds 0.03 N to the validation group's sensor zero. With the old zero, its held-out residuals shift while calibration remains compatible. Moving the single candidate zero to 0.07 N can fit that later group while spoiling the earlier group. A group-dependent correction needs evidence of drift and provenance; it is not a new physical force. A constant residual alone does not uniquely identify its cause.",
+        "The interface discloses its generating law so you can reproduce every row. Treat it as source information for this synthetic study, not as a discovery about hardware. For an actual unresolved pattern, propose an observation that separates alternatives: independent zero-force references for drift, new static magnitudes plus sensor-linearity checks for cubic behavior, or matched-position velocity reversals for damping. Preserve failed models and explain why a revision is better supported."
+      ]
+    },
+    {
+      "heading": "Check the motion and the energy account independently",
+      "paragraphs": [
+        "Use the previous numerical investigation with m=0.5 kg, k=8 N/m, b=0.2 kg/s, x0=0.08 m, v0=0, T=4 s and base h=0.1 s. Derive initial force −0.64 N, acceleration −1.28 m/s² and mechanical energy 0.0256 J before running. The sensor zero belongs only to the force-observation study and must not enter this motion equation.",
+        "The damped analytic reference is $x(t)=e^{-0.2t}[0.08\\cos(\\omega_d t)+(0.016/\\omega_d)\\sin(\\omega_d t)]$ with $\\omega_d=\\sqrt{15.96}$ s⁻¹. Its derivative is $v(t)=-(1.28/\\omega_d)e^{-0.2t}\\sin(\\omega_d t)$. At 4 s these are approximately −0.035108045877 m and 0.038680861744 m/s. Verify that x(0), v(0), and the initial acceleration match the specified state and law. An additional undamped check sets b=0 and gives x=0.08 cos(4t), v=−0.32 sin(4t).",
+        "Compare at least velocity-first Euler and explicit midpoint at h=0.1, 0.05 and 0.025 s, giving six completed common-endpoint rows. Record actual last width, final x and v, signed errors, and the energy balance residual. Also inspect simultaneous explicit Euler to see why convergence evidence matters. Its coarse error can overwhelm the signal. A stopped run has no requested-endpoint error; a small error at an earlier state cannot satisfy a rule at T.",
+        "For the stipulated spring-drag model, $E=(mv^2+kx^2)/2$ obeys $dE/dt=-bv^2$. Thus $E(T)+D(T)=E(0)$ with $D=\\int_0^T bv^2\\,dt\\geq0$. The app estimates D by trapezoids on the computed velocities, so its reported residual $R=E+D_{trap}-E_0$ includes both numerical state error and dissipation-integration error. It is not automatically measured heat or evidence of an energy source. A small residual alone may hide compensating errors; compare states with the analytic reference too."
+      ]
+    },
+    {
+      "heading": "Carry limits into the acceptance decision",
+      "paragraphs": [
+        "At T=4 s the velocity-first run with h=0.025 s has approximately x error +0.001110436 m and v error +0.006433668 m/s. The midpoint run at that step has approximately +0.000293892 m and +0.003601541 m/s. Both meet the proposed endpoint numerical tolerances for this supplied model; the midpoint h=0.05 s run misses the velocity tolerance even though its position error is below 0.002 m. Apply every condition rather than selecting the best-looking column.",
+        "These endpoint checks do not bound the maximum error between samples. Reference-relative error is undefined where the reference is zero. Use absolute error and, if useful, an explicitly declared nonzero displacement or velocity scale. Do not replace an undefined ratio by zero or imply that more displayed digits improve the underlying model or measurement.",
+        "Keep four entries in the error budget: discretization evidence, uncertain physical inputs, observation correction and resolution, and model discrepancy. Only combine quantities with compatible units and justified dependence assumptions. Even if the numerical position error is under 0.002 m, an unbounded physical model discrepancy prevents a claim that a real cart's total position error is under that amount.",
+        "A defensible conclusion identifies the tested ranges, dataset provenance, frozen candidate, allowance, actual endpoint completion, failed checks and untested conditions. A compatible interval does not prove exact agreement; a failed interval does not uniquely identify a cause. If you revise the model using validation data, label the revision and explain how future independent states would test it."
+      ]
+    },
+    {
+      "heading": "Complete the project record in reproducible stages",
+      "paragraphs": [
+        "Stage 1: Start the notebook below. Write a question and acceptance rule before revealing residuals. State coordinates, system boundary, force inventory, sensor equation, parameter units, operating states and numerical endpoint. The proposed values above provide a workable default; if you choose another rule, explain why and retain it when judging the results. Save the draft.",
+        "Stage 2: Use the five baseline calibration readings. Show the zero, paired stiffness and paired viscous-coefficient calculations, and a bounded stiffness interval from the two ±0.005 N reading allowances. Identify what the static pair alone cannot establish. Freeze your candidate. Predict state 7 before revealing the table, then retain at least three held-out rows with x, v, observed and predicted output, signed residual, bound and decision. Download the CSV and record its dataset and parameters.",
+        "Stage 3: Compare an omitted-drag candidate and at least one nonlinear or drift case. Keep the controlled inputs and calibration/validation roles explicit. Include one incompatible row and one proposed discriminating next observation. Then perform the six numerical refinement runs specified above, derive an initial-state or first-step fixture independently, and include the signed energy residual. Save before following the link to the preceding lesson; paste the numerical table and parameters into this notebook when you return.",
+        "Stage 4: Apply the original rule, separate error sources, record a limited conclusion and name an untested condition. Include enough arithmetic and numeric rows for another learner to reproduce the result. Finish all eight sections, self-assess the five rubric criteria, and acknowledge the declaration. The target is at least 12/15 with no zero. Record the project, export a full progress backup in Settings, and begin a revision if needed; the submitted snapshot remains preserved."
+      ]
+    },
+    {
+      "heading": "Interpret the rubric and any optional physical extension honestly",
+      "paragraphs": [
+        "The five self-assessment criteria are: claim/boundary/units/provenance; calibration/uncertainty/identifiability; held-out residuals/controlled comparison; independent mechanics/refinement/energy; and reproducibility/limitations/revision. For each, 0 means missing or unsupported, 1 means partial with a material error or omitted assumption, 2 means substantially justified with a specific smaller gap, and 3 means complete reproducible reasoning with checks and limits.",
+        "The application requires all notebook sections, quantitative entries in calibration, validation and numerics, every rubric score and the declaration. It checks record structure and the stated threshold; it does not evaluate whether a paragraph is scientifically correct or whether a pasted table supports its claim. The project is recorded as learner self-assessment separately from automatically checked question evidence. No independent subject review, learner pilot or official academic credit is claimed.",
+        "The required project is entirely simulated and requires no physical equipment or purchase. This PHS 231 lecture investigation does not import an equipment requirement from a separate official laboratory. A physical extension would need its own question, instrument specifications, calibration procedure, sampling/trigger limits, uncertainty budget and independent observations. A force sensor's range, saturation, resolution, zero drift, alignment, gain and bandwidth all affect what its output can support.",
+        "Any optional physical proposal must use secure, low-energy apparatus within manufacturer limits, with body parts outside pinch and recoil paths. Do not propose overhead loads, fracture tests, pressure tests, improvised powered drives or tensioning unsupported hardware. Stop if a component loosens or a sensor overloads. This lesson supplies no hardware setup procedure; a future physical experiment needs an appropriate approved procedure and equipment-specific safety review before execution."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Separate force, acceleration, and output",
+      "prompt": "A 0.5 kg body is at x=0.02 m and v=0.1 m/s, with k=8 N/m, b=0.2 kg/s and sensor zero z=0.04 N.",
+      "steps": [
+        {
+          "math": "F=-8(0.02)-0.2(0.1)=-0.18\\ \\mathrm{N}",
+          "reason": "Add the physical horizontal force terms with their signs."
+        },
+        {
+          "math": "a=F/m=-0.36\\ \\mathrm{m/s^2},\\qquad y=F+z=-0.14\\ \\mathrm{N}",
+          "reason": "Acceleration uses physical net force; the observation adds a correction that does not act on the body."
+        }
+      ],
+      "conclusion": "The sensor output is not interchangeable with the modeled net force before correcting its zero."
+    },
+    {
+      "title": "Calibrate stiffness without confusing the zero",
+      "prompt": "Static outputs at x=−0.04 and +0.04 m are 0.36 and −0.28 N. Assume one exact linear law with a common additive zero.",
+      "steps": [
+        {
+          "math": "k=\\frac{0.36-(-0.28)}{0.04-(-0.04)}=8\\ \\mathrm{N/m}",
+          "reason": "Subtract paired readings so the common zero cancels; divide by the positive position separation."
+        },
+        {
+          "math": "z=\\frac{0.36+(-0.28)}2=0.04\\ \\mathrm{N}",
+          "reason": "At symmetric positions the spring contributions cancel in the mean."
+        },
+        {
+          "math": "F(0.03)=-8(0.03)=-0.24\\ \\mathrm{N},\\quad \\hat y=-0.20\\ \\mathrm{N}",
+          "reason": "Predict physical force first and sensor output second at a new state."
+        }
+      ],
+      "conclusion": "The pair identifies k and z under the stated law. It contains no information about viscous drag at v=0."
+    },
+    {
+      "title": "Use matched velocities to isolate drag",
+      "prompt": "At x=0.02 m, the exact baseline outputs are −0.10 N at v=−0.1 m/s and −0.14 N at v=+0.1 m/s.",
+      "steps": [
+        {
+          "math": "b=\\frac{-0.10-(-0.14)}{0.1-(-0.1)}=0.2\\ \\mathrm{kg/s}",
+          "reason": "The paired difference cancels the fixed spring force and zero."
+        },
+        {
+          "math": "\\bar y=-0.12\\ \\mathrm{N}=-8(0.02)+0.04\\ \\mathrm{N}",
+          "reason": "The mean removes the odd velocity term and cross-checks stiffness and zero."
+        },
+        {
+          "math": "P_{\\mathrm{drag}}=-bv^2=-0.002\\ \\mathrm{W}",
+          "reason": "Mechanical power is negative for dissipative drag; the positive transfer out is 0.002 W."
+        }
+      ],
+      "conclusion": "The inference depends on matched position, unchanged parameters and a common sensor zero."
+    },
+    {
+      "title": "A bounded stiffness interval",
+      "prompt": "The paired static readings are 0.36 and −0.28 N, each with allowed error ±0.005 N. Their exact separation is 0.08 m.",
+      "steps": [
+        {
+          "math": "D=0.64\\ \\mathrm{N},\\qquad B_D=0.005+0.005=0.010\\ \\mathrm{N}",
+          "reason": "In a worst-case difference, one endpoint error can be positive while the other is negative."
+        },
+        {
+          "math": "k_{\\min}=0.630/0.08=7.875,\\qquad k_{\\max}=0.650/0.08=8.125\\ \\mathrm{N/m}",
+          "reason": "Divide allowed force-difference endpoints by the known positive separation."
+        },
+        {
+          "math": "B_k=0.125\\ \\mathrm{N/m}",
+          "reason": "The central stiffness is 8 N/m with this deterministic half-width."
+        }
+      ],
+      "conclusion": "A common fixed zero cancels. Position error, gain error and drift are excluded here, and no confidence level follows."
+    },
+    {
+      "title": "Equality is included in a closed bound",
+      "prompt": "A held-out output is −0.14 N. A candidate predicts −0.135 N, with an allowed residual magnitude 0.005 N.",
+      "steps": [
+        {
+          "math": "r=-0.14-(-0.135)=-0.005\\ \\mathrm{N}",
+          "reason": "Keep the observed-minus-predicted order."
+        },
+        {
+          "math": "|r|/B=1,\\qquad B-|r|=0",
+          "reason": "The magnitude is exactly the allowed endpoint, so the closed-bound comparison is compatible."
+        }
+      ],
+      "conclusion": "Compatible does not mean exact or physically validated. A prediction of −0.13 N would give residual −0.01 N and fail the same bound."
+    },
+    {
+      "title": "Correlation changes a difference uncertainty",
+      "prompt": "Two readings each have standard uncertainty 0.01 N and correlation coefficient ρ=1. Compare their difference with the uncorrelated case.",
+      "steps": [
+        {
+          "math": "\\operatorname{Var}(y_1-y_2)=0.01^2+0.01^2-2(1)(0.01)(0.01)=0",
+          "reason": "Perfectly common equal uncertainty cancels in this difference under the supplied covariance model."
+        },
+        {
+          "math": "\\rho=0:\\quad u(y_1-y_2)=0.01\\sqrt2\\ \\mathrm{N}",
+          "reason": "Without covariance the variances add; this is a different dependence assumption."
+        }
+      ],
+      "conclusion": "A zero uncertainty for the difference does not make the two readings individually exact. These are standard uncertainties, not worst-case intervals."
+    },
+    {
+      "title": "Repeated data can still leave a free parameter",
+      "prompt": "Every known-zero corrected state follows v=2x with v in m/s and x in m, and every force is F=−8.4x N.",
+      "steps": [
+        {
+          "math": "F=-kx-b(2x)=-(k+2b)x,\\qquad k+2b=8.4\\ \\mathrm{N/m}",
+          "reason": "The factor 2 has units s⁻¹. All records identify the same parameter combination."
+        },
+        {
+          "math": "8+2(0.2)=7.4+2(0.5)=8.4",
+          "reason": "Two different positive stiffnesses and nonnegative damping coefficients reproduce every such record."
+        }
+      ],
+      "conclusion": "A new condition outside the v=2x line can separate k and b. More points restricted to that line cannot."
+    },
+    {
+      "title": "Correct both sensor gain and zero",
+      "prompt": "An exact reference F=0 gives output 0.1 N; F=2 N gives output 3.1 N. A later output is −0.65 N. Assume y=gF+z.",
+      "steps": [
+        {
+          "math": "z=0.1\\ \\mathrm{N},\\qquad g=(3.1-0.1)/2=1.5",
+          "reason": "The zero reference isolates the intercept; the nonzero reference determines slope."
+        },
+        {
+          "math": "F=\\frac{-0.65-0.1}{1.5}=-0.5\\ \\mathrm{N}",
+          "reason": "Subtract the output offset before dividing by gain."
+        }
+      ],
+      "conclusion": "A zero correction alone would leave a gain error. The two-point calibration does not prove linearity outside its tested conditions."
+    },
+    {
+      "title": "A local fit misses a nonlinear restoring term",
+      "prompt": "The nonlinear synthetic law has k=8 N/m, c=500 N/m³ and z=0.04 N. At v=0 its rounded outputs are 0.39 N at −0.04 m and −0.31 N at +0.04 m.",
+      "steps": [
+        {
+          "math": "k_{\\mathrm{fit}}=\\frac{0.39-(-0.31)}{0.08}=8.75\\ \\mathrm{N/m},\\qquad z_{\\mathrm{fit}}=0.04\\ \\mathrm{N}",
+          "reason": "Fit the displayed calibration readings rather than silently using unrounded hidden values."
+        },
+        {
+          "math": "y_{\\mathrm{ideal}}(0.08)=-8(0.08)-500(0.08)^3+0.04=-0.856\\ \\mathrm{N}",
+          "reason": "The held-out rounded output is therefore −0.86 N."
+        },
+        {
+          "math": "\\hat y=-8.75(0.08)+0.04=-0.66\\ \\mathrm{N},\\qquad r=-0.20\\ \\mathrm{N}",
+          "reason": "Freeze the calibrated linear candidate and test the larger displacement."
+        }
+      ],
+      "conclusion": "The residual is forty times the 0.005 N rounding bound. It motivates a richer model or sensor investigation; enlarging the allowance does not improve the fit."
+    },
+    {
+      "title": "A drifting zero is not a driving force",
+      "prompt": "The drift dataset adds 0.03 N only to the validation group's zero. Compare one unchanged physical state under old and new corrections.",
+      "steps": [
+        {
+          "math": "F=-0.18\\ \\mathrm{N},\\quad y_{\\mathrm{later}}=-0.18+0.07=-0.11\\ \\mathrm{N}",
+          "reason": "The physical force stays fixed while the observation zero changes."
+        },
+        {
+          "math": "r_{\\mathrm{old}}=-0.11-(-0.18+0.04)=0.03\\ \\mathrm{N}",
+          "reason": "Using the old zero leaves a group shift."
+        },
+        {
+          "math": "y_{\\mathrm{later}}-0.07=-0.18\\ \\mathrm{N}",
+          "reason": "A supported later zero correction recovers the same mechanical force."
+        }
+      ],
+      "conclusion": "Using 0.07 N for every group would spoil the earlier calibration. Preserve both records and obtain independent zero references before diagnosing real drift."
+    },
+    {
+      "title": "An observation bias carries into an area",
+      "prompt": "A spring F=−8x is traversed from x=0 to 0.08 m. Its force sensor adds z=0.04 N. Compare actual spring work and uncorrected sensor area.",
+      "steps": [
+        {
+          "math": "W_s=\\int_0^{0.08}-8x\\,dx=-0.0256\\ \\mathrm{J}",
+          "reason": "The actual spring force opposes the increasing displacement."
+        },
+        {
+          "math": "A_z=0.04(0.08)=0.0032\\ \\mathrm{J},\\qquad A_y=-0.0224\\ \\mathrm{J}",
+          "reason": "The constant observation bias integrates to offset times displacement."
+        },
+        {
+          "math": "\\Delta U_s=+0.0256\\ \\mathrm{J}=-W_s",
+          "reason": "The conservative spring account uses its actual force, not the biased area."
+        }
+      ],
+      "conclusion": "The 0.0032 J difference is an observation contribution, not invented stored spring energy or automatic net work."
+    },
+    {
+      "title": "Independently audit a velocity-first step",
+      "prompt": "Use m=0.5 kg, k=8 N/m, b=0.2 kg/s, x0=0.08 m, v0=0 and h=0.1 s. This velocity-first scheme evaluates drag at the old velocity.",
+      "steps": [
+        {
+          "math": "a_0=-\\frac{8(0.08)+0.2(0)}{0.5}=-1.28\\ \\mathrm{m/s^2}",
+          "reason": "Build the old-state force inventory before updating."
+        },
+        {
+          "math": "v_1=-0.128\\ \\mathrm{m/s},\\qquad x_1=0.08+0.1(-0.128)=0.0672\\ \\mathrm{m}",
+          "reason": "Position uses the updated velocity, unlike simultaneous explicit Euler."
+        },
+        {
+          "math": "E_1=0.25(0.128)^2+4(0.0672)^2=0.02215936\\ \\mathrm{J}",
+          "reason": "Recompute energy from this scheme's actual state."
+        },
+        {
+          "math": "D_{\\mathrm{trap}}=0.00016384\\ \\mathrm{J},\\qquad R=0.02215936+0.00016384-0.0256=-0.0032768\\ \\mathrm{J}",
+          "reason": "Trapezoidal drag-power integration and state error both enter the residual."
+        }
+      ],
+      "conclusion": "Do not relabel the negative account residual as independently measured heat. Compare refined states and energy accounts separately."
+    },
+    {
+      "title": "Check an analytic endpoint",
+      "prompt": "For the same damped model, let α=b/(2m)=0.2 s⁻¹ and ωd=√15.96 s⁻¹.",
+      "steps": [
+        {
+          "math": "x(t)=e^{-\\alpha t}\\left[0.08\\cos(\\omega_dt)+\\frac{0.016}{\\omega_d}\\sin(\\omega_dt)\\right]",
+          "reason": "The coefficients enforce x(0)=0.08 m and v(0)=0. The frequency follows k/m−α²."
+        },
+        {
+          "math": "v(t)=-\\frac{1.28}{\\omega_d}e^{-\\alpha t}\\sin(\\omega_dt)",
+          "reason": "Differentiate the product and use ωd²+α²=16 to combine the sine terms."
+        },
+        {
+          "math": "x(4)\\approx-0.035108045877\\ \\mathrm{m},\\qquad v(4)\\approx0.038680861744\\ \\mathrm{m/s}",
+          "reason": "This independent same-equation reference supports the endpoint error comparison."
+        }
+      ],
+      "conclusion": "It verifies a solution of the stipulated law. It does not observe the motion of hardware."
+    },
+    {
+      "title": "Six common-endpoint comparisons",
+      "prompt": "Keep m=0.5 kg, k=8 N/m, b=0.2 kg/s, x0=0.08 m, v0=0 and T=4 s fixed. Listed errors are numerical minus analytic.",
+      "steps": [
+        {
+          "math": "\\begin{array}{c|rr}h\\ (\\mathrm{s})&e_x\\ (\\mathrm{m})&e_v\\ (\\mathrm{m/s})\\\\\\hline0.1&0.007759961&0.037317487\\\\0.05&0.002661842&0.014803777\\\\0.025&0.001110436&0.006433668\\end{array}",
+          "reason": "These are velocity-first Euler results from 40, 80 and 160 completed steps. The final widths equal the requested steps for this divisible interval."
+        },
+        {
+          "math": "\\begin{array}{c|rr}h\\ (\\mathrm{s})&e_x\\ (\\mathrm{m})&e_v\\ (\\mathrm{m/s})\\\\\\hline0.1&0.004439119&0.060263542\\\\0.05&0.001049802&0.014643336\\\\0.025&0.000293892&0.003601541\\end{array}",
+          "reason": "These are explicit midpoint results with the same physical inputs and endpoints; both midpoint components are formed from the old state."
+        },
+        {
+          "math": "h=0.025:\\quad |e_x|<0.002\\ \\mathrm{m},\\qquad |e_v|<0.01\\ \\mathrm{m/s}",
+          "reason": "Both methods meet the proposed endpoint criteria at the finest step. Midpoint at 0.05 s passes position but fails velocity."
+        }
+      ],
+      "conclusion": "The two methods and three widths supply six records. Include values, units, completion and energy residuals in your own table rather than reporting only a favorable row."
+    },
+    {
+      "title": "An energy residual can conceal a state error",
+      "prompt": "For explicit midpoint at h=0.05 s in the preceding example, the endpoint energy-account residual is about 0.000005642523 J, while velocity error is about 0.014643336 m/s.",
+      "steps": [
+        {
+          "math": "|R|\\approx5.642523\\times10^{-6}\\ \\mathrm{J}",
+          "reason": "State error and trapezoidal dissipation error nearly cancel in this account."
+        },
+        {
+          "math": "|e_v|\\approx0.014643336\\ \\mathrm{m/s}>0.01\\ \\mathrm{m/s}",
+          "reason": "The independent velocity criterion still fails despite the small energy residual."
+        }
+      ],
+      "conclusion": "One well-balanced scalar account does not certify every state variable. Keep the analytic state comparison and the energy check."
+    },
+    {
+      "title": "Propagate only the bounds you actually have",
+      "prompt": "Assume exact x=0.08 m and v=0.2 m/s, with allowed parameter errors Bk=0.125 N/m, Bb=0.01 kg/s and Bz=0.005 N, plus observation rounding bound 0.005 N.",
+      "steps": [
+        {
+          "math": "B_{\\mathrm{prediction}}\\leq0.08(0.125)+0.2(0.01)+0.005=0.017\\ \\mathrm{N}",
+          "reason": "Use the triangle inequality for the linear candidate's parameter dependence; no independence or distribution is needed for this conservative bound."
+        },
+        {
+          "math": "B_r\\leq0.017+0.005=0.022\\ \\mathrm{N}",
+          "reason": "Add the separate observation allowance when all stated errors may reinforce."
+        }
+      ],
+      "conclusion": "This bound does not include uncertain x or v, omitted nonlinear forces, or future drift. If parameters share calibration observations, this conservative sum may double-count common contributions; use a joint model for a tighter justified result."
+    },
+    {
+      "title": "Write a limited, reproducible conclusion",
+      "prompt": "A baseline candidate meets the held-out rounding bounds, and the completed midpoint h=0.025 s run meets both proposed endpoint tolerances. The nonlinear record fails for the locally fitted linear candidate.",
+      "steps": [
+        {
+          "math": "|r_i|\\leq0.005\\ \\mathrm{N}\\quad\\text{for all supplied baseline held-out states}",
+          "reason": "Report the dataset, candidate k=8, b=0.2, z=0.04, exact synthetic inputs and rounded-output rule alongside this statement."
+        },
+        {
+          "math": "|e_x(4)|\\approx0.000293892\\ \\mathrm{m},\\quad |e_v(4)|\\approx0.003601541\\ \\mathrm{m/s}",
+          "reason": "Specify the completed method, step and independent reference rather than a generic claim of accuracy."
+        }
+      ],
+      "conclusion": "A defensible conclusion is that these synthetic baseline checks support the frozen candidate and numerical settings for the tested states and endpoint. It does not establish hardware behavior. Preserve the nonlinear failure and propose new static states plus an independent sensor-linearity check."
+    }
+  ],
+  "guided": {
+    "title": "Audit a calibrated candidate that omits drag",
+    "setup": "The baseline calibration gives y(0,0)=0.04 N; static readings at x=−0.04 and +0.04 m are 0.36 and −0.28 N. At x=0 and v=−0.1 and +0.1 m/s, outputs are 0.06 and 0.02 N. A deliberately incomplete candidate keeps the calibrated stiffness and zero but sets b=0. Test it on a held-out state x=0.02 m, v=0.1 m/s, observed output −0.14 N, using only the closed 0.005 N rounding allowance.",
+    "before": [
+      "Use the origin and paired static readings to establish zero and stiffness.",
+      "Use the moving pair to identify b under the stipulated linear law, then remember that the deliberately incomplete candidate still sets b=0.",
+      "Compute that candidate's sensor output before forming the held-out residual. Keep the inferred coefficient separate from the omitted term in this candidate."
+    ],
+    "question": {
+      "id": "phs231-validation-guided",
+      "familyId": "phs231-validation-evidence",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m09-l02",
+      "category": "application",
+      "critical": true,
+      "parameters": {},
+      "prompt": "Find the calibrated zero, stiffness and viscous coefficient; the deliberately drag-free candidate's sensor prediction; its observed-minus-predicted residual and normalized residual magnitude. Decide compatibility and the next supported step.",
+      "fields": [
+        {
+          "id": "zero",
+          "label": "Calibrated sensor zero",
+          "kind": "rational",
+          "expected": "1/25",
+          "unit": "N",
+          "help": "Use an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "stiffness",
+          "label": "Calibrated stiffness",
+          "kind": "rational",
+          "expected": "8",
+          "unit": "N/m",
+          "help": "Use an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "drag",
+          "label": "Coefficient supported by the moving calibration pair",
+          "kind": "rational",
+          "expected": "1/5",
+          "unit": "kg/s",
+          "help": "Use an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "prediction",
+          "label": "Sensor prediction from the candidate with b=0",
+          "kind": "rational",
+          "expected": "-3/25",
+          "unit": "N",
+          "help": "Use an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "residual",
+          "label": "Observed minus incomplete-candidate prediction",
+          "kind": "rational",
+          "expected": "-1/50",
+          "unit": "N",
+          "help": "Use an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "ratio",
+          "label": "Absolute residual divided by its bound",
+          "kind": "rational",
+          "expected": "4",
+          "unit": "1",
+          "help": "Use an exact value or equivalent fraction in the labeled unit."
+        },
+        {
+          "id": "decision",
+          "label": "Does the incomplete candidate meet this bound?",
+          "kind": "choice",
+          "correct": "outside",
+          "options": [
+            {
+              "id": "outside",
+              "label": "No; its held-out discrepancy exceeds the allowed magnitude",
+              "feedback": "The magnitude is 0.02 N, four times the 0.005 N allowance."
+            },
+            {
+              "id": "negative",
+              "label": "Yes; a negative residual is automatically inside a positive bound",
+              "feedback": "Compatibility compares absolute residual, not just its sign."
+            },
+            {
+              "id": "static",
+              "label": "Yes; matching static calibration guarantees all moving states",
+              "feedback": "The omitted viscous term vanishes in static calibration but not in this moving state."
+            }
+          ]
+        },
+        {
+          "id": "revision",
+          "label": "What next step does this evidence support?",
+          "kind": "choice",
+          "correct": "targeted",
+          "options": [
+            {
+              "id": "targeted",
+              "label": "Test the calibrated viscous candidate on further held-out states and check competing sensor explanations",
+              "feedback": "The moving pair supports a drag coefficient within the supplied law; new independent states test the revised prediction."
+            },
+            {
+              "id": "universal",
+              "label": "Declare a universally valid physical drag law from these synthetic values",
+              "feedback": "Synthetic evidence and a finite state range do not establish universal physical validity."
+            },
+            {
+              "id": "inflate",
+              "label": "Silently widen the original bound until the failed row passes",
+              "feedback": "That changes the rule without adding evidence; a revised allowance needs justification and a preserved record."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "At the origin the output is the zero. Divide the static output difference by the positive 0.08 m position separation.",
+        "The opposite-velocity output difference is 0.04 N across 0.2 m/s. The tested candidate nevertheless omits this fitted viscous term.",
+        "With b=0, predict −8(0.02)+0.04 N. Subtract this from −0.14 N and compare the absolute residual with 0.005 N."
+      ],
+      "explanation": [
+        "The zero is 0.04 N and stiffness is [0.36−(−0.28)]/0.08=8 N/m.",
+        "The moving pair identifies b=(0.06−0.02)/0.2=0.2 kg/s under a common zero and the supplied force law.",
+        "The deliberately incomplete candidate predicts −8(0.02)+0.04=−0.12 N. Its residual is −0.14−(−0.12)=−0.02 N, with magnitude-to-bound ratio 4.",
+        "The row is outside the original bound. Adding the supported viscous term predicts −0.14 N here, but this synthetic agreement still needs a limited claim and further independent checks."
+      ],
+      "answerSummary": "z=0.04 N; k=8 N/m; b=0.2 kg/s. The candidate with b=0 predicts −0.12 N, leaves residual −0.02 N, and fails the bound by a ratio of four."
+    },
+    "after": "State what a static calibration could never tell you about b. Then explain why revising a candidate with a held-out answer changes the role of that row in a future validation claim."
+  },
+  "interaction": {
+    "kind": "phs231-validation",
+    "prompt": "Calibrate a candidate from supplied synthetic states, predict a held-out output, and examine residuals before revising the model. Compare omitted drag, nonlinearity and sensor drift, then preserve your numerical and force evidence in the project notebook.",
+    "initial": {
+      "dataset": "baseline",
+      "springNPerM": 8,
+      "dragKgPerS": 0,
+      "zeroN": 0.04,
+      "additionalBoundN": 0
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "units"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "provenance"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "calibration-offset"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "stiffness-interval"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "residual-bound"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "covariance"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "work-check"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "sensor-scale"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "validation-split"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "acceptance"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "damping-pair"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "nonlinear-pair"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "identifiability"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "energy-source"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "coarse-step"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "clipped-run"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "parameter-change"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "offset-drift"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "relative-error"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "revision-plan"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "calibration-offset"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "residual-bound"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "identifiability"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "revision-plan"
+    }
+  ],
+  "summary": [
+    "Define a signed model, observation equation, finite operating range and acceptance rule before viewing held-out results. Distinguish physical force from a sensor correction.",
+    "Verification, calibration and validation use evidence for different purposes. Synthetic records rehearse the reasoning; they are not independent physical observations.",
+    "Static data do not identify viscous drag. Coupled v=cx records identify k+bc; independent conditions are needed to separate coefficients.",
+    "Residual means observed minus predicted. Closed bounds include equality; worst-case bounds, standard uncertainties and confidence claims require different assumptions.",
+    "Residual patterns motivate discriminating checks, not unique causes. Freeze the candidate for each comparison, preserve failures and reserve new data after a revision.",
+    "Keep numerical refinement separate from parameter sensitivity. Compare completed common endpoints, both state components and the energy ledger; a small account residual can conceal a state error.",
+    "A notebook records eight sections and five self-assessment criteria, with immutable submitted snapshots and explicit revision. Structural completion does not independently grade the reasoning.",
+    "The twenty practice variants cover distinct calculations and interpretations. The four-question checkpoint samples key skills; full course completion still requires the course's broader assessments and review."
+  ],
+  "retrieval": "After a delay, derive zero, stiffness and damping from a new set of distinct states. Give a second parameter pair that is indistinguishable when v=cx. Explain one residual pattern with two competing causes and choose a new discriminating observation. Reproduce one numerical refinement row, distinguish its energy-account residual from its state error, and revise your project conclusion without claiming unobserved physical validity.",
+  "readings": [
+    {
+      "title": "NIST: Basic definitions of measurement uncertainty",
+      "url": "https://physics.nist.gov/cuu/Uncertainty/basic.html",
+      "purpose": "Free primary guidance on measurement models, corrections and the standard-deviation meaning of standard uncertainty. The lesson's deterministic bounds are explicitly different."
+    },
+    {
+      "title": "NIST: Combining uncertainty components",
+      "url": "https://physics.nist.gov/cuu/Uncertainty/combination.html",
+      "purpose": "Primary guidance on sensitivity coefficients and covariance in combined standard uncertainty. Use the assumptions; do not automatically assign a confidence level to a residual bound."
+    },
+    {
+      "title": "OpenStax University Physics Volume 1: Drag Force and Terminal Speed",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed",
+      "purpose": "Free context for drag models and their physical regimes. This project stipulates a linear viscous element and does not claim every aerodynamic force follows that law."
+    }
+  ]
+}
