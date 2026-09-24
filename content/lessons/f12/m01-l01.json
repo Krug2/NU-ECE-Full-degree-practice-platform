@@ -1,0 +1,201 @@
+{
+  "kind": "practical",
+  "id": "m01-l01",
+  "courseId": "f12",
+  "version": 1,
+  "title": "Retrieve, check, and plan the next session",
+  "objective": "Perform a brief closed-reference retrieval attempt, compare it with a source, record a specific correction, and plan a feasible spaced return with a concrete task and fallback.",
+  "why": "Returning after time away can make every topic feel equally urgent. A short attempt, a useful correction, and a clear next visit turn that uncertainty into a manageable task. The aim is to collect evidence about what you can produce, then use it to choose what to study next.",
+  "estimatedMinutes": 35,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Choose one small question. Close the reference, attempt an answer, then compare with a trustworthy explanation. Keep both the attempt and one specific correction. Plan when you will return, what you will do, and what a smaller fallback would look like.",
+        "Reading can rebuild understanding; retrieval asks you to produce it. Feeling familiar, completing a guided comparison, and working independently are different observations. Record them honestly instead of treating time on a page as mastery."
+      ]
+    },
+    {
+      "heading": "Use retrieval to locate the next step",
+      "paragraphs": [
+        "A useful recall prompt has a visible outcome: explain why units cancel, trace a three-line program, sketch a graph from memory, or solve one equation while naming the reason for each step. 'Do I understand this?' is harder to check because it does not require an observable response.",
+        "Keep the scope small enough to attempt. If you cannot start, write the first missing definition or step, then study that part. An empty attempt is information about what instruction is needed; repeatedly guessing without checking does not supply that instruction."
+      ]
+    },
+    {
+      "heading": "Compare and correct",
+      "paragraphs": [
+        "After the attempt, open the reference and compare the reasoning, assumptions, and answer. Write a correction that identifies a cause: 'I included the excluded range endpoint' or 'I divided by 60 when converting minutes to seconds.' Then try a changed example to see whether the correction is usable.",
+        "Retrieval research supports using attempts as part of learning, including benefits on delayed recall in controlled studies. It does not mean every difficult task should begin without instruction, or that one successful attempt proves permanent understanding. The linked study tested prose recall; applying the principle to engineering practice still requires checking actual task performance."
+      ]
+    },
+    {
+      "heading": "Plan a feasible return",
+      "paragraphs": [
+        "A plan needs a trigger, a duration, and a deliverable. 'After dinner on Thursday, spend 20 minutes explaining the unit conversion and solving two new examples' is easier to begin than 'study units.' Include time to check work and decide the next action, not only time to generate answers.",
+        "Return after a delay and attempt recall again before rereading. Example gaps such as two days and later in the week are starting choices, not a universal optimal schedule. Shorten or lengthen your plan in response to what you can retrieve and the demands of the material. This lesson does not create reminders or automatic appointments."
+      ]
+    },
+    {
+      "heading": "Use a fallback without hiding the evidence",
+      "paragraphs": [
+        "If a planned session becomes impossible, choose a smaller action that preserves the habit: one five-minute recall-and-check cycle, followed by a new time for the longer application. Record that change instead of marking the original task complete.",
+        "In this refresher, the practical artifact is your attempt, comparison, and return plan. The app checks that required entries and self-check criteria are present. Your familiarity selection stays separate, and completion does not certify the quality of every explanation. Save your draft so the next visit begins with useful context."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A familiar example becomes a recall prompt",
+      "scenario": "A learner has reread a minute-to-second conversion several times and recognizes every line.",
+      "steps": [
+        {
+          "action": "Close the example. Prompt: 'Convert 7 minutes to seconds and explain why the conversion multiplies rather than divides.'",
+          "reason": "The prompt asks for both an answer and the meaning of the operation, so recognition alone cannot satisfy it."
+        },
+        {
+          "action": "Attempt: '7/60 seconds.' After checking, write: 'Each minute contains 60 seconds, so 7 min × 60 s/min = 420 s.'",
+          "reason": "The record preserves the initial error and explains the conversion factor through unit cancellation."
+        },
+        {
+          "action": "Try 9 minutes without the example, then check against 540 seconds.",
+          "reason": "Changing the number provides a small application of the corrected reasoning."
+        }
+      ],
+      "conclusion": "The useful evidence is the unaided attempt and the specific repair. Familiarity helped the learner recognize the topic but did not establish reliable conversion."
+    },
+    {
+      "title": "A boundary mistake selects review",
+      "scenario": "For Python range(4), a learner writes the sequence 0, 1, 2, 3, 4.",
+      "steps": [
+        {
+          "action": "Keep the attempt and compare it with the rule: the upper endpoint is excluded.",
+          "reason": "The error is not a vague lack of programming ability; it is one boundary convention."
+        },
+        {
+          "action": "Correct the sequence to 0, 1, 2, 3, with four values. State that 4 is the stop bound, not an included value.",
+          "reason": "Naming the cause helps distinguish a value from a count."
+        },
+        {
+          "action": "Choose a fresh prompt: 'What values does range(2) produce, and how many?'",
+          "reason": "A small changed case directly probes the convention that was missed."
+        }
+      ],
+      "conclusion": "A targeted return to F10's loop lesson is more actionable than repeating every programming topic."
+    },
+    {
+      "title": "A realistic 25-minute session",
+      "scenario": "A learner has 25 minutes today and can return two days later.",
+      "steps": [
+        {
+          "action": "Allocate 4 minutes to recall, 6 to the exact gap, 10 to fresh application, and 5 to check and plan. Total: 25 minutes.",
+          "reason": "The allocation reserves time for feedback and fits the actual available block."
+        },
+        {
+          "action": "Write a return cue: 'Two days later, after lunch, spend 15 minutes solving one new conversion and explaining the unit factors.'",
+          "reason": "A cue and concrete task reduce the decisions required to start."
+        },
+        {
+          "action": "Define the fallback: 'If that block disappears, do a five-minute recall-and-check cycle and choose a new application time.'",
+          "reason": "The smaller action is feasible without pretending it replaces the entire original task."
+        }
+      ],
+      "conclusion": "The schedule is an example to adapt. Its quality depends on whether the learner can use it and whether later attempts reveal progress."
+    },
+    {
+      "title": "Recover a missed session",
+      "scenario": "A planned evening session was missed. The next available time is shorter.",
+      "steps": [
+        {
+          "action": "Record 'session missed; no recall evidence collected' rather than checking off the plan.",
+          "reason": "Honest history keeps attendance, intention, and actual work distinct."
+        },
+        {
+          "action": "Use the shorter block for one prompt: explain the first step of the previous example, then check it.",
+          "reason": "A bounded task can reveal where to resume without requiring the whole lesson to be reread."
+        },
+        {
+          "action": "Schedule the remaining application task at the next feasible time and retain the earlier correction note.",
+          "reason": "The plan changes while the useful learning record remains available."
+        }
+      ],
+      "conclusion": "A missed appointment calls for a revised plan, not an invented completion record."
+    }
+  ],
+  "guided": {
+    "prompt": "You have 20 minutes to revisit the rule that a constant-rate amount equals rate times duration. Write a recall prompt, an attempted answer, a comparison note, and a return plan.",
+    "steps": [
+      "Close the rule after reading it once and attempt a small example from memory.",
+      "Reopen the rule, identify a specific correction or a verified detail, then state a feasible next session and fallback."
+    ],
+    "review": [
+      "One prompt is: 'At 3 L/min for 4 min, how much is added, and why?' A correct explanation gives 12 L because minutes cancel in the product. Preserve your actual attempt if it differed.",
+      "A 20-minute allocation could be 4 minutes recall, 6 focused review, 5 fresh work and 5 checking/planning.",
+      "Name a real return cue and a new example. If only five minutes are available, do one recall-and-check cycle and reschedule the larger task."
+    ]
+  },
+  "task": {
+    "family": "study-orientation",
+    "fields": [
+      {
+        "id": "attempt",
+        "label": "Retrieval prompt and unaided attempt",
+        "help": "Write the prompt and what you actually produced with the source closed."
+      },
+      {
+        "id": "correction",
+        "label": "Source check and specific correction",
+        "help": "Name the source and the exact step you corrected or verified."
+      },
+      {
+        "id": "plan",
+        "label": "Next session: trigger, duration, and task",
+        "help": "Choose a feasible return trigger, duration, and observable task."
+      },
+      {
+        "id": "fallback",
+        "label": "Fallback and evidence to check next time",
+        "help": "State a smaller fallback and what you will try to retrieve next time."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "attempt",
+        "label": "I attempted recall before checking a reference and kept what I actually recalled."
+      },
+      {
+        "id": "feedback",
+        "label": "I checked against a source and named a specific correction or verified detail."
+      },
+      {
+        "id": "return",
+        "label": "My next session has a feasible trigger, task, duration, and fallback."
+      }
+    ]
+  },
+  "summary": [
+    "Ask a question that requires an observable answer or explanation.",
+    "Keep the unaided attempt before checking and correcting it.",
+    "Plan a concrete return with time for feedback and a feasible fallback.",
+    "Use later recall to adjust the plan; completion and familiarity are different evidence."
+  ],
+  "retrieval": "At your next planned visit, answer yesterday's prompt before opening the correction. Record what still needs review and select one new application.",
+  "readings": [
+    {
+      "title": "OpenStax, College Success · 6.2: Studying",
+      "url": "https://openstax.org/books/college-success/pages/6-2-studying",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    },
+    {
+      "title": "OpenStax, College Success · 3.4: How to Manage Time",
+      "url": "https://openstax.org/books/college-success/pages/3-4-how-to-manage-time",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    },
+    {
+      "title": "Psychological Science; free author-hosted PDF at Purdue · 17(3), 249–255; abstract, experiments 1–2: Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
+      "url": "https://learninglab.psych.purdue.edu/downloads/2006/2006_Roediger_Karpicke_PsychSci.pdf",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    }
+  ]
+}
