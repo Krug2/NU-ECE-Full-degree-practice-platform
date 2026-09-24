@@ -19,9 +19,11 @@ import { compositionFamilyIds, compositionQuestion } from "./families/mth-compos
 import { inverseFamilyIds, inverseQuestion } from "./families/mth-inverse";
 import { calibrationFamilyIds, calibrationQuestion } from "./families/mth-calibration";
 import { rateFamilyIds, rateQuestion } from "./families/mth-rates";
+import { polynomialStructureFamilyIds,polynomialStructureQuestion } from "./families/mth-polynomial-structure";
+import { polynomialReasoningFamilyIds,polynomialReasoningQuestion } from "./families/mth-polynomial-reasoning";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion]] as const){
+for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
 }
 export const availableFamilyIds = new Set(generators.keys());
