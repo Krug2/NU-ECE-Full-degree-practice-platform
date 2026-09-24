@@ -3,7 +3,7 @@
   "title": "Calculus-based Physics 1",
   "version": 1,
   "status": "building",
-  "introduction": "Learn to build, calculate, and check mechanical models using vectors and calculus. The full sequence covers motion, forces, gravity, energy, momentum, rotation, equilibrium, materials, and numerical validation. Available lessons have original teaching and saved practice; the remaining lessons and assessments are under construction. Introductory physics and calculus preparation remain necessary.",
+  "introduction": "Learn to build, calculate, and check mechanical models using vectors and calculus. All 22 lessons and the simulation project are available, covering motion, forces, gravity, energy, momentum, rotation, equilibrium, materials, and numerical validation. Course assessments and the complete release audit are still being built. Introductory physics and calculus preparation remain necessary.",
   "bridges": [],
   "modules": [
     {

@@ -1,18 +1,96 @@
 {
-  "courseId":"phs-231","id":"mechanical-validation","version":1,"status":"proposed",
-  "title":"Validate a cart and spring model",
-  "purpose":"Connect a force model, calculus, mechanical energy, numerical integration, uncertainty, and technical reporting. Oscillatory behavior is an application here; the full oscillations course belongs to PHS 232.",
-  "requiredRoute":"Browser simulation with a downloadable time table and a saved structured notebook. Label all generated observations simulated. It is a conceptual and computational investigation, not a physical laboratory credit.",
-  "officialEquipment":"No PHS 231 equipment requirement was established by the current public description. Do not infer the introductory physics lab's kit requirement for this lecture course.",
-  "model":{"system":"One-dimensional mass m on an ideal horizontal spring with stiffness k; optional viscous resistance b.","equations":["dx/dt = v","m dv/dt = -k x - b v","E = m v^2/2 + k x^2/2","dE/dt = -b v^2"],"domain":"m>0, k>0, b>=0; small displacement in the spring's stated linear range; rigid cart, no dry friction, no end stops, and fixed reference at equilibrium.","baseline":{"massKg":0.5,"springNPerM":8,"dragKgPerS":0,"initialPositionM":0.08,"initialVelocityMPerS":0,"durationS":4,"stepSizesS":[0.1,0.05,0.025]},"anchorChecks":"Initial energy 0.0256 J; angular frequency 4 rad/s; initial acceleration -1.28 m/s^2. For b=0, x(t)=0.08 cos(4t), v(t)=-0.32 sin(4t), period pi/2 s. Derive these independently before relying on the simulator."},
-  "tasks":[
-    {"id":"question","instructions":"State a measurable question about the influence of step size or damping. Define coordinates, system boundary, units, and every idealization.","evidence":"A model statement and a prediction about displacement, velocity, and energy trends before running the simulation."},
-    {"id":"analytic","instructions":"Derive acceleration and initial energy from the parameters. For the undamped baseline, verify the supplied cosine solution by two derivatives and initial conditions; predict its period and first equilibrium-crossing speed.","evidence":"Labeled calculations and one dimensional check; crossing speed magnitude 0.32 m/s, first crossing velocity -0.32 m/s."},
-    {"id":"convergence","instructions":"Run explicit and semi-implicit Euler at all three step sizes. Record the exact update order. Compare position at identical times with the analytic baseline and compute the largest absolute energy residual over each run.","evidence":"Six run records with method, h, duration, initial conditions, final errors, and energy residuals. Explain step-halving trends without claiming the semi-implicit method exactly conserves energy."},
-    {"id":"controlled-comparison","instructions":"Add b=0.2 kg/s while holding the other parameters fixed. Halve the smallest step again. Compare the mechanical-energy change with a numerical integral of -b v^2.","evidence":"A trace/table, a dissipation ledger, and a residual. Explain why energy loss is expected and how discretization error differs from physical damping."},
-    {"id":"uncertainty","instructions":"Treat m in [0.49,0.51] kg and k in [7.8,8.2] N/m as supplied bounded inputs. Predict the undamped period interval from its monotonic dependence on m and k. Compare interval spread with numerical step sensitivity.","evidence":"Endpoint calculation with seconds, explanation of which endpoints maximize and minimize period, and a statement that bounded inputs are not probability distributions."},
-    {"id":"report","instructions":"Explain whether the original question was answered, identify one unsupported assumption, propose a discriminating next measurement, and revise one claim after inspecting residuals.","evidence":"A reproducible notebook including raw simulated data provenance, calculations, comparison, limitations, and revision. Save, reload, export a backup, and confirm restored content."}
+  "courseId": "phs-231",
+  "id": "mechanical-validation",
+  "version": 2,
+  "status": "Implemented in m09-l02 with technical verification; no independent subject review or pilot validation.",
+  "title": "Validate a cart and spring model",
+  "purpose": "Connect a force model, calculus, mechanical energy, numerical integration, uncertainty, and technical reporting. Oscillatory behavior is an application here; the full oscillations course belongs to PHS 232.",
+  "requiredRoute": "Browser simulation with a downloadable time table and a saved structured notebook. Label all generated observations simulated. It is a conceptual and computational investigation, not a physical laboratory credit.",
+  "officialEquipment": "No PHS 231 equipment requirement was established by the current public description. Do not infer the introductory physics lab's kit requirement for this lecture course.",
+  "model": {
+    "system": "One-dimensional mass m on an ideal horizontal spring with stiffness k; optional viscous resistance b.",
+    "equations": [
+      "dx/dt = v",
+      "m dv/dt = -k x - b v",
+      "E = m v^2/2 + k x^2/2",
+      "dE/dt = -b v^2"
+    ],
+    "domain": "m>0, k>0, b>=0; small displacement in the spring's stated linear range; rigid cart, no dry friction, no end stops, and fixed reference at equilibrium.",
+    "baseline": {
+      "massKg": 0.5,
+      "springNPerM": 8,
+      "dragKgPerS": 0.2,
+      "initialPositionM": 0.08,
+      "initialVelocityMPerS": 0,
+      "durationS": 4,
+      "stepSizesS": [
+        0.1,
+        0.05,
+        0.025
+      ]
+    },
+    "anchorChecks": "Initial force -0.64 N, acceleration -1.28 m/s^2 and energy 0.0256 J. With b=0.2 kg/s, alpha=0.2 1/s and omega_d=sqrt(15.96) rad/s; at T=4 s, x=-0.03510804587702741 m and v=0.038680861744117 m/s. Verify the damped solution by differentiating and checking both initial conditions. The undamped case b=0 is a separate analytic limit, with omega=4 rad/s and period pi/2 s."
+  },
+  "tasks": [
+    {
+      "id": "question",
+      "instructions": "State the tested claim, system boundary, coordinates, units, assumptions, and acceptance rule before generating results.",
+      "evidence": "A narrow falsifiable claim and separate force-comparison and numerical-error targets."
+    },
+    {
+      "id": "model",
+      "instructions": "Derive the spring and viscous forces, both first-order state equations, initial force/acceleration/energy and the mechanical-energy balance. Independently check the supplied analytic solution or one numerical update.",
+      "evidence": "Labeled equations, derivative or update calculations, and a dimension check."
+    },
+    {
+      "id": "provenance",
+      "instructions": "Identify the selected synthetic dataset and all generating, candidate, numerical and measurement parameters. Distinguish imposed force-reading states from a time trajectory.",
+      "evidence": "Exported force CSV and numerical CSV, actual step widths/endpoints, settings and a reproducible account; never relabel simulated records as physical data."
+    },
+    {
+      "id": "calibration",
+      "instructions": "Estimate the output zero from the zero-state reading, stiffness from opposite static positions and drag from matched opposite velocities. Keep these rows separate from held-out checks.",
+      "evidence": "The five calibration rows, parameter calculations with units, bounds and assumptions; distinguish calibration from independent validation."
+    },
+    {
+      "id": "validation",
+      "instructions": "Use at least three held-out rows, including position and velocity changes. Compare the calibrated baseline with omitted drag and either the nonlinear or drift dataset. Freeze a candidate before checking held-out rows.",
+      "evidence": "Measured output, physical-force prediction, predicted output, signed residual, allowance and compatibility for each selected row. Explain systematic residuals and why recalibration or a wider allowance does not establish every model claim."
+    },
+    {
+      "id": "numerics",
+      "instructions": "At m=0.5 kg, k=8 N/m, b=0.2 kg/s, x0=0.08 m, v0=0 and T=4 s, run semi-implicit Euler and explicit midpoint at h=0.1, 0.05 and 0.025 s. Use identical actual endpoints and an independent analytic reference. Explicit Euler is available as an additional diagnostic.",
+      "evidence": "At least six rows with method, h, actual endpoint, x and v errors, and E(T)-E(0)+D_trap. Explain convergence, remaining error and why a small balance residual does not guarantee a small state error."
+    },
+    {
+      "id": "limitations",
+      "instructions": "Separate parameter uncertainty, instrument quantization, numerical error and physical model inadequacy. Explain what the synthetic check can and cannot establish and which parameter combinations the selected states identify.",
+      "evidence": "A bounded claim and a discriminating next observation. No claim of real-world validation or official laboratory completion from the simulator."
+    },
+    {
+      "id": "revision",
+      "instructions": "Revisit the original acceptance rule without silently changing it. Record the rejected explanation, chosen revision and expected discriminating result; preserve earlier submissions.",
+      "evidence": "Eight completed notebook sections, numerical evidence in calibration/validation/numerics, a declared learner self-assessment, a preserved submission and export/reload/restore checks."
+    }
   ],
-  "rubric":{"scale":"0 absent/incorrect; 1 partial with material gap; 2 adequate and reproducible; 3 correct with a justified independent check.","criteria":["Question, axes, and model assumptions","Analytic prediction with units and initial conditions","Reproducible method and convergence evidence","Conservation/dissipation accounting","Uncertainty and model-limit reasoning","Clear report, provenance, and revision"],"completionDefault":"At least 2 in every criterion plus all required evidence. Numeric checks support the rubric but do not automatically grade reasoning. A self-rating is labeled self-assessment; independent review is recorded only if actually provided."},
-  "optionalPhysicalExtension":{"activity":"Observe a small, freely moving object in an existing safe tabletop setup and compare position timing with a model, only if suitable equipment is already available.","safety":"Do not build launchers, suspend overhead masses, stretch high-energy springs, break material samples, use rotating power tools, or pressurize containers. Keep motion low energy and contained, clear the area, and stop if a spring, support, or attachment is damaged. The required simulation needs none of these activities.","measurement":"Record instrument resolution, camera frame interval if used, parallax, timing uncertainty, mass and length estimates, repetitions, and raw observations. Do not substitute simulation output for missing physical measurements.","evidenceDistinction":"Optional physical observations can extend the report, but are not claimed to satisfy an official NU lab, instrument competency, or equipment requirement."}
+  "rubric": {
+    "scale": "0 missing or unusable evidence; 1 material gap; 2 smaller gap; 3 complete with a justified independent check.",
+    "criteria": [
+      "Scope, model and provenance",
+      "Calibration reasoning and identifiability",
+      "Held-out validation and model limits",
+      "Numerical refinement and energy checks",
+      "Revision, reproducibility and communication"
+    ],
+    "completionDefault": "At least 12 of 15 with no zero, all eight evidence sections and the learner declaration. This is proposed self-assessment. The app checks required sections and numerical entries but does not independently grade the scientific reasoning or award course completion."
+  },
+  "optionalPhysicalExtension": {
+    "activity": "Observe a small, freely moving object in an existing safe tabletop setup and compare position timing with a model, only if suitable equipment is already available.",
+    "safety": "Do not build launchers, suspend overhead masses, stretch high-energy springs, break material samples, use rotating power tools, or pressurize containers. Keep motion low energy and contained, clear the area, and stop if a spring, support, or attachment is damaged. The required simulation needs none of these activities.",
+    "measurement": "Record instrument resolution, camera frame interval if used, parallax, timing uncertainty, mass and length estimates, repetitions, and raw observations. Do not substitute simulation output for missing physical measurements.",
+    "evidenceDistinction": "Optional physical observations can extend the report, but are not claimed to satisfy an official NU lab, instrument competency, or equipment requirement."
+  },
+  "supersedes": "Version 1 was an early proposed undamped project with six rubric criteria. The implemented project uses a damped baseline, held-out force evidence, and five criteria. The original undamped period-bound exercise is an optional extension, not a missing required task or a completed learner claim.",
+  "acceptance": "Declare acceptance before observing residuals. The lesson's proposed example uses +/-0.005 N as a quantization bound, not a probabilistic confidence interval; additional allowances need a documented reason. Numerical endpoint targets are |position error|<=0.002 m and |velocity error|<=0.01 m/s at the same requested T=4 s. Check force-model agreement, discretization and energy accounting separately.",
+  "optionalAnalyticExtension": "For the undamped limit only, m in [0.49,0.51] kg and k in [7.8,8.2] N/m give T in [2*pi*sqrt(0.49/8.2), 2*pi*sqrt(0.51/7.8)] s. This uses monotonic bounds, not a probability distribution; distinguish parameter spread from step-size sensitivity. The extension is not part of the required five-criterion record."
 }
