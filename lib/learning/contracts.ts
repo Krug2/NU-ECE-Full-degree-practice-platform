@@ -1,3 +1,4 @@
+import { phs231NumericalActivitySchema } from "./phs-231-numerical";
 import { z } from "zod";
 import { parseRational } from "./rational";
 import { normalizeIntervals } from "./intervals";
@@ -153,6 +154,7 @@ export const lessonSchema = z.object({
     phs231StaticsActivitySchema,
     phs231ElasticActivitySchema,
     phs231MaterialActivitySchema,
+    phs231NumericalActivitySchema,
     z.object({kind:z.literal("refresher-programming-lab"),mode:z.enum(["state","loop","function","debug"]),prompt:text}).strict(),
     z.object({kind:z.literal("refresher-complex-lab"),mode:z.enum(["arithmetic","conjugate","polar","roots"]),prompt:text}).strict(),
     z.object({kind:z.literal("refresher-calculus-lab"),mode:z.enum(["limit","secant","chain","accumulation","initial"]),prompt:text}).strict(),
