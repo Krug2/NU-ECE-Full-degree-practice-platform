@@ -1,0 +1,505 @@
+{
+  "id": "m04-l02",
+  "courseId": "phs-231",
+  "moduleId": "m04",
+  "version": 1,
+  "title": "Gravity, orbits, and Newton's synthesis",
+  "objective": "Relate inverse-square gravity to near-surface weight, circular orbital motion, escape energy, and Kepler's scaling laws.",
+  "why": "The same force model can explain a falling object and an orbiting satellite. Extending a near-surface calculation to an orbit requires attention to distance, vector direction, and changing gravitational strength. You will derive orbital relationships, connect force to energy, and identify what each result does and does not establish.",
+  "estimatedMinutes": 135,
+  "prerequisites": [
+    {
+      "lessonId": "m04-l01",
+      "label": "Circular acceleration and actual force inventories"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Vector components and superposition"
+    },
+    {
+      "lessonId": "m02-l01",
+      "label": "Derivative and definite-integral reasoning"
+    },
+    {
+      "lessonId": "m03-l01",
+      "label": "Gravity, normal force, and apparent weight"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. The derivatives and integrals needed for this lesson are developed explicitly below. The later energy module will generalize this lesson's energy argument."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "State the source model and the separation",
+      "paragraphs": [
+        "Newton's gravitational force between two point masses is attractive, with magnitude F=GMm/r². G is the universal gravitational constant; M is source mass, m is test mass, and r>0 is their separation. G has units m³/(kg s²), making the complete expression a force in newtons. The two bodies exert equal and opposite forces on each other.",
+        "Outside a spherically symmetric source, the field is the same as if its mass were concentrated at its center. For that exterior model, use center distance r=R+h, where R is source radius and h≥0 is altitude. At the surface h=0, distance is R, not zero. The exterior formula with the whole source mass is not generally an interior formula.",
+        "It is convenient to combine G and source mass into μ=GM, with units m³/s². The field magnitude is g(r)=μ/r², and force on a small body is mg(r). Distinguish G, μ, and g: G is a proportionality constant; μ belongs to a selected source; g depends on position around that source.",
+        "Unless stated otherwise, our orbital calculations hold a dominant source fixed and treat the test mass as negligible compared with it. Both bodies actually respond to their mutual attraction. For comparable masses, relative separation follows a gravitational parameter G(M+m), and each body moves about the pair's center of mass. The fixed-source approximation must not silently be applied to an equal-mass pair."
+      ]
+    },
+    {
+      "heading": "Add gravitational fields as vectors",
+      "paragraphs": [
+        "Let the test position be the vector x and a point source position be X. Its field at the test position is $\\mathbf g(\\mathbf x)=\\mu(\\mathbf X-\\mathbf x)/|\\mathbf X-\\mathbf x|^3$. The numerator points toward the source. Dividing it by one power of distance makes a unit direction, leaving an inverse-square magnitude.",
+        "For a source at the origin, this becomes -μ x/|x|³. A positive x-coordinate therefore gives a negative x-component of acceleration. A body left of the origin has a positive acceleration component toward the source. Force is m times the complete acceleration vector.",
+        "For several sources, add their vector fields component by component. Magnitudes add only when directions agree. Perpendicular contributions require a Pythagorean magnitude after component addition. Opposing contributions can cancel at particular locations even though each source still exerts a nonzero attraction.",
+        "The point-source formula excludes each source location because division by zero occurs there. A real extended body's interior requires a mass-distribution model. For spherical symmetry, only the enclosed mass contributes to the interior field; exterior spherical shells cancel. Uniform density gives enclosed mass proportional to r³ and hence interior g proportional to r, but that result requires the uniform-density assumption."
+      ]
+    },
+    {
+      "heading": "Recover the near-surface approximation and apparent weight",
+      "paragraphs": [
+        "At the surface of a nonrotating spherical source, g0=μ/R². At altitude h, the ratio to surface gravity is $g(h)/g_0=R^2/(R+h)^2$. An altitude equal to R puts the body at center distance 2R and reduces the field to one quarter of its surface value, not one half.",
+        "When |h| is much smaller than R over an exterior region, the factor (1+h/R)^(-2) changes little; its first-order expansion is approximately 1-2h/R. Treating g as constant is a local approximation whose error grows with the modeled height interval. Real Earth also has rotation, nonspherical shape, and density variation; those are omitted from this spherical model.",
+        "A contact-force scale measures support, not directly the gravitational interaction. An occupant and a nearby spacecraft in common free fall can have approximately zero relative support while both experience substantial gravity. In a circular orbit their nonzero inward acceleration is supplied by gravity; no real outward force cancels it in the inertial frame.",
+        "The common-free-fall explanation is local. Gravity varies across an extended spacecraft, and disturbances can require small contact forces. Our ideal zero scale reading neglects those variations and all thrust; it does not claim that gravitational acceleration vanishes at orbital altitude."
+      ]
+    },
+    {
+      "heading": "Derive a circular orbit from Newton's second law",
+      "paragraphs": [
+        "Choose an exterior circle of fixed center radius r around the dominant source. Velocity must be tangent to this circle. With gravity as the only force, the inward equation is μm/r²=mv²/r. Test mass cancels, giving $v_c=\\sqrt{\\mu/r}$ as the positive circular speed.",
+        "Circular speed decreases with increasing radius, even though the circumference grows. The positive period is $T=2\\pi r/v_c=2\\pi\\sqrt{r^3/\\mu}$. Squaring gives T²=4π²r³/μ. Dimensionally, r³/μ has units of seconds squared, as required.",
+        "Specifying speed alone does not determine a circular orbit. At a given radius, the circular magnitude must be paired with tangential velocity and the assumed central force. An outward radial launch with that same speed has a different path. A source surface or atmosphere can also invalidate an otherwise mathematical orbit.",
+        "A higher circle is a separate possible state, not a trajectory obtained simply by turning a radius control. Transfers require a change in velocity and energy, with their own timing and force assumptions. The investigation compares circular states; it does not calculate a transfer maneuver."
+      ]
+    },
+    {
+      "heading": "Connect the circular result to Kepler's three laws",
+      "paragraphs": [
+        "In the ideal Newtonian two-body setting, a noncolliding bound orbit is an ellipse with the attracting focus at the dominant source. Its semimajor axis a is half its longest diameter. The source is at one focus, not generally the ellipse's geometric center. A circle is the special case with zero eccentricity.",
+        "Kepler's area law says that the radius vector sweeps equal areas in equal times. For a short time dt, the area is approximately |r×v|dt/2. Differentiating r×v gives v×v+r×a=0 for a central acceleration parallel to r. Thus the area rate is constant. This is a preview of angular-momentum conservation, developed more fully in the rotation module.",
+        "At the nearest and farthest points, velocity is perpendicular to the radius, so r_near v_near=r_far v_far. The body moves faster near the source. Equal area rate is not constant speed around a noncircular ellipse.",
+        "For the same dominant source, the ellipse's period satisfies $T^2=4\\pi^2a^3/\\mu$. Our circular derivation establishes its special case a=r; a full ellipse derivation needs additional orbit analysis. Here we use the general ideal relation with its assumptions stated. If r_near and r_far are known, a=(r_near+r_far)/2 and eccentricity e=(r_far-r_near)/(r_far+r_near), with 0≤e<1 for an ellipse.",
+        "The instantaneous circular-speed formula sqrt(μ/r) is not valid at every point of an eccentric ellipse. The semimajor axis, energy, and angular momentum constrain its changing speed. Perturbations from other bodies, nonspherical sources, drag, and relativistic effects can also change the simple ideal laws."
+      ]
+    },
+    {
+      "heading": "Build the energy tools needed here",
+      "paragraphs": [
+        "The broader work-and-energy module comes next, so derive the needed identity directly. Dot Newton's law m dv/dt=F with velocity v. Since d(|v|²)/dt=2v·dv/dt, this gives d(m|v|²/2)/dt=F·v. Define kinetic energy K=m|v|²/2; a joule is a newton metre, or kg m²/s².",
+        "Integrating the force component along displacement gives work W=∫F·dr and therefore ΔK=W for the resultant force on this constant-mass body. An inward gravitational force does negative work during an outward displacement. Force perpendicular to displacement does no work, even though it can change velocity direction.",
+        "For radial gravity F_r=-μm/r², define potential energy by dU/dr=-F_r. Since the derivative of -1/r is +1/r², integration gives U=-μm/r+C. Choose C=0 so U tends to zero at infinite separation. Then $\\Delta U=\\mu m(1/r_1-1/r_2)$.",
+        "Differentiating the proposed potential is an independent sign check: -dU/dr=-μm/r² recovers the attractive radial force. Moving outward increases U toward zero, so an increasing potential need not be a positive potential. Changing the reference constant changes energy labels, not force or energy differences.",
+        "With only this fixed-source gravitational interaction, ΔK=-ΔU, so E=K+U is constant. This neglects source recoil in the dominant-source approximation. Drag, thrust, or changing the source model can transfer mechanical energy; conservation must then be reconsidered with a stated system and additional terms."
+      ]
+    },
+    {
+      "heading": "Interpret circular binding energy and local escape",
+      "paragraphs": [
+        "In a circular orbit, v_c²=μ/r, so K=μm/(2r), U=-μm/r, and $E_c=-\\mu m/(2r)$. Potential energy is -2K and total energy is -K. At a larger circular radius, speed and kinetic energy are lower, but total energy is greater because it is less negative.",
+        "At infinity under the chosen reference, U tends to zero and kinetic energy cannot be negative. Thus a negative total energy cannot reach infinity without added energy. This is a binding statement, not proof of a safe orbit: a negative-energy trajectory can intersect an extended source or, for radial motion, fall directly into it.",
+        "The ideal escape threshold has E=0, which gives $v_{\\mathrm{esc}}=\\sqrt{2\\mu/r}=\\sqrt2\\,v_c$ at a given exterior radius. Test mass cancels. A radial outward launch at that threshold recedes with speed tending to zero; infinite distance is approached as a limit, not reached after a finite flight time.",
+        "For positive energy, a collision-free escaping path retains speed at infinity given by E=m v_infinity²/2. Energy alone does not prevent an initially inward path from hitting the source. The radial outward escape questions avoid that ambiguity explicitly.",
+        "The mechanical-energy increase from a circular orbit to zero total energy is -E_c. It is not a fuel amount, an engine efficiency, or the work required along every practical maneuver. The model omits atmosphere, changing spacecraft mass, and propulsion details."
+      ]
+    },
+    {
+      "heading": "Locate a radial turning point without inventing a circular path",
+      "paragraphs": [
+        "For a body launched radially outward, specific energy is ε=E/m=v0²/2-μ/r0, with units J/kg or m²/s². If ε<0, outward motion reaches a finite maximum center distance. At that turning point radial velocity is zero, and there is no tangential velocity in this radial model.",
+        "Set ε=-μ/r_max to find r_max=-μ/ε. It exceeds the launch radius for a positive subescape outward speed. The body then returns inward and may hit the source surface; the exterior trajectory must stop or change its model at that contact.",
+        "On a nonradial ellipse, nearest and farthest radii also mark radial turning points, but tangential speed remains nonzero. Setting all kinetic energy to zero there would be wrong. For an ellipse with semimajor axis a, E=-μm/(2a); combining that with K+U gives $v^2=\\mu(2/r-1/a)$, which explains why the circular formula is a special case.",
+        "If a computed speed squared is negative, the claimed state is inaccessible under the assumed energy. If ε=0, the radial turning-radius formula would divide by zero; return to the limiting escape interpretation. For ε>0, there is no finite outward turning point in the ideal isolated exterior model."
+      ]
+    },
+    {
+      "heading": "Investigate controlled changes and report the limits",
+      "paragraphs": [
+        "For a fixed source and test mass, multiplying circular radius by k multiplies field strength by k^-2, circular speed by k^-1/2, period by k^(3/2), and signed circular total energy by k^-1. Both energies are negative, so their ratio is positive. For k>1 the energy moves closer to zero.",
+        "Changing test mass alone changes gravitational force, K, U, and E in direct proportion, while leaving acceleration, circular speed, period, and local escape speed unchanged. Changing source parameter μ instead multiplies field strength by the same factor, speeds by its square root, and period by its inverse square root at fixed radius.",
+        "Before checking the investigation, predict four dimensionless radius ratios. Record at least three comparisons, one check of F=mg and E=K+U, and one explanation of why an interior radius is rejected. Then change only mass and only μ in separate trials. A comparison is meaningful only when the quantities held fixed are stated.",
+        "The concentric-circle drawing uses one distance scale, and the complete tables supply the same numerical information. Use keyboard inputs and ratio buttons; save evidence and limitations in lesson notes. These are hypothetical analytic states, not measured planetary data, a time integration, or a transfer simulator."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Measure altitude from the correct origin",
+      "prompt": "A hypothetical spherical source has μ=800 m³/s² and radius R=4 m. A 3 kg test body is at altitude h=4 m. Find gravitational acceleration and force, and compare with the surface field.",
+      "steps": [
+        {
+          "math": "r=R+h=4+4=8\\,\\mathrm m",
+          "reason": "The inverse-square distance is from the source center."
+        },
+        {
+          "math": "g(r)=800/8^2=12.5\\,\\mathrm{m/s^2},\\qquad F=3(12.5)=37.5\\,\\mathrm N",
+          "reason": "Compute field first, then multiply by test mass for force."
+        },
+        {
+          "math": "g_0=800/4^2=50\\,\\mathrm{m/s^2},\\qquad g(r)/g_0=1/4",
+          "reason": "Doubling center distance quarters the field."
+        }
+      ],
+      "conclusion": "Acceleration is 12.5 m/s² toward the center and force magnitude is 37.5 N. Using the altitude 4 m as the entire separation would overestimate both by a factor of four."
+    },
+    {
+      "title": "Superpose two perpendicular fields",
+      "prompt": "A point source with μA=18 m³/s² is at (3,0) m, and one with μB=48 m³/s² is at (0,-4) m. Find the field at the origin and force on a 2 kg body there.",
+      "steps": [
+        {
+          "math": "\\mathbf g_A=(18/3^2,0)=(2,0)\\,\\mathrm{m/s^2}",
+          "reason": "The first attraction points right toward its source."
+        },
+        {
+          "math": "\\mathbf g_B=(0,-48/4^2)=(0,-3)\\,\\mathrm{m/s^2}",
+          "reason": "The second attraction points downward."
+        },
+        {
+          "math": "\\mathbf g=(2,-3)\\,\\mathrm{m/s^2},\\qquad|\\mathbf g|=\\sqrt{13}\\,\\mathrm{m/s^2}",
+          "reason": "Add vectors before taking their norm."
+        },
+        {
+          "math": "\\mathbf F=2\\mathbf g=(4,-6)\\,\\mathrm N,\\qquad|\\mathbf F|=2\\sqrt{13}\\,\\mathrm N",
+          "reason": "Test mass multiplies every field component."
+        }
+      ],
+      "conclusion": "The total field is (2,-3) m/s², not a magnitude of 2+3=5 m/s². Each contribution points toward its own source."
+    },
+    {
+      "title": "Find a cancellation point and enforce its domain",
+      "prompt": "Two fixed point sources lie at x=0 and x=12 m with μL=4 and μR=16 m³/s². Find where the field cancels between them.",
+      "steps": [
+        {
+          "math": "\\frac4{x^2}=\\frac{16}{(12-x)^2},\\qquad0<x<12",
+          "reason": "Only between the sources do the two attractions have opposite directions."
+        },
+        {
+          "math": "\\frac2x=\\frac4{12-x}\\Rightarrow24-2x=4x\\Rightarrow x=4\\,\\mathrm m",
+          "reason": "Both distances are positive in this interval, so take their positive square roots."
+        },
+        {
+          "math": "g_L=4/4^2=1/4,\\qquad g_R=16/8^2=1/4\\,\\mathrm{m/s^2}",
+          "reason": "The opposite signed components have equal magnitude."
+        }
+      ],
+      "conclusion": "Cancellation occurs 4 m from the left source. On either exterior ray the attractions point in the same direction, so a magnitude-only equation cannot establish another cancellation there."
+    },
+    {
+      "title": "Derive the full state of a circular orbit",
+      "prompt": "A 3 kg test body follows an exterior circle of radius 8 m about a fixed source with μ=128 m³/s². Find speed, period, force, and mechanical energy, using U=0 at infinity.",
+      "steps": [
+        {
+          "math": "\\frac{\\mu}{r^2}=\\frac{v^2}{r}\\Rightarrow v^2=128/8=16\\Rightarrow v=4\\,\\mathrm{m/s}",
+          "reason": "Gravity supplies the circular acceleration; the test mass cancels."
+        },
+        {
+          "math": "T=\\frac{2\\pi(8)}4=4\\pi\\,\\mathrm s,\\qquad g=128/64=2\\,\\mathrm{m/s^2}",
+          "reason": "Use circumference divided by the constant speed and independently evaluate the field."
+        },
+        {
+          "math": "F=mg=6\\,\\mathrm N=\\frac{3(4^2)}8",
+          "reason": "The gravitational and required inward force calculations agree."
+        },
+        {
+          "math": "K=\\tfrac12(3)(16)=24\\,\\mathrm J,\\qquad U=-128(3)/8=-48\\,\\mathrm J",
+          "reason": "Kinetic energy is positive; potential is negative under the chosen reference."
+        },
+        {
+          "math": "E=K+U=-24\\,\\mathrm J=-\\frac{\\mu m}{2r}",
+          "reason": "Both routes give the same circular total energy."
+        }
+      ],
+      "conclusion": "Speed is 4 m/s, period is 4π s, and gravity supplies 6 N inward. Total energy is -24 J. Adding 24 J of mechanical energy reaches the zero-energy threshold, without yet specifying a practical maneuver."
+    },
+    {
+      "title": "Compare higher circles at fixed source and mass",
+      "prompt": "Keep the preceding source and test mass fixed, but compare a separate circular orbit of radius 32 m with the reference radius 8 m.",
+      "steps": [
+        {
+          "math": "k=32/8=4,\\qquad\\frac{g_1}{g_0}=k^{-2}=1/16",
+          "reason": "The field obeys the inverse-square law."
+        },
+        {
+          "math": "\\frac{v_1}{v_0}=k^{-1/2}=1/2,\\qquad\\frac{T_1}{T_0}=k^{3/2}=8",
+          "reason": "The slower speed and longer circumference both increase the period."
+        },
+        {
+          "math": "\\frac{E_1}{E_0}=1/4,\\qquad E_1=(-24)/4=-6\\,\\mathrm J",
+          "reason": "The ratio of negative circular energies is positive."
+        },
+        {
+          "math": "v_1=2\\,\\mathrm{m/s},\\quad T_1=32\\pi\\,\\mathrm s,\\quad E_1-E_0=18\\,\\mathrm J",
+          "reason": "Convert the ratios back to dimensional values and compare signed energies."
+        }
+      ],
+      "conclusion": "The higher circle is slower but has greater total energy, -6 J instead of -24 J. This state comparison is not a simulated transfer or a fuel calculation."
+    },
+    {
+      "title": "Distinguish radial return from the escape threshold",
+      "prompt": "At r0=8 m around μ=128 m³/s², launch a test body radially outward at 4 m/s. Find its maximum radius, and compare the local escape speed.",
+      "steps": [
+        {
+          "math": "\\varepsilon=\\frac{4^2}2-\\frac{128}8=8-16=-8\\,\\mathrm{J/kg}",
+          "reason": "Compute specific kinetic plus potential energy under the zero-at-infinity reference."
+        },
+        {
+          "math": "v(r_{\\max})=0\\Rightarrow-8=-128/r_{\\max}\\Rightarrow r_{\\max}=16\\,\\mathrm m",
+          "reason": "This radial trajectory has no tangential kinetic energy at its outward turning point."
+        },
+        {
+          "math": "v_{\\mathrm{esc}}=\\sqrt{2(128)/8}=\\sqrt{32}=4\\sqrt2\\,\\mathrm{m/s}",
+          "reason": "Set total energy to zero to find the radial outward escape threshold."
+        },
+        {
+          "math": "v_0=4\\sqrt2\\Rightarrow\\varepsilon=0",
+          "reason": "At the threshold, speed tends to zero only as radius tends to infinity; there is no finite outward turning radius."
+        }
+      ],
+      "conclusion": "At 4 m/s the radial launch reaches 16 m and returns. A tangential launch at the same 4 m/s would instead produce the 8 m circle. Speed without direction does not specify an orbit."
+    },
+    {
+      "title": "Use the ellipse's semimajor axis in the period law",
+      "prompt": "An exterior elliptical orbit has nearest radius 4 m and farthest radius 12 m around μ=128 m³/s². Find semimajor axis, eccentricity, period, and the near-to-far speed ratio.",
+      "steps": [
+        {
+          "math": "a=(4+12)/2=8\\,\\mathrm m,\\qquad e=(12-4)/(12+4)=1/2",
+          "reason": "These distances are measured from the attracting focus; their sum is the major-axis length."
+        },
+        {
+          "math": "T=2\\pi\\sqrt{8^3/128}=4\\pi\\,\\mathrm s",
+          "reason": "The general ideal period law uses a, not either instantaneous radius."
+        },
+        {
+          "math": "4v_{\\mathrm{near}}=12v_{\\mathrm{far}}\\Rightarrow v_{\\mathrm{near}}/v_{\\mathrm{far}}=3",
+          "reason": "At the apsides, equal swept-area rates equate radius times tangential speed."
+        },
+        {
+          "math": "v_{\\mathrm{near}}^2=128(2/4-1/8)=48,\\qquad v_{\\mathrm{far}}^2=128(2/12-1/8)=16/3",
+          "reason": "The energy relation independently gives a squared speed ratio of nine, consistent with the speed ratio three."
+        }
+      ],
+      "conclusion": "The semimajor axis is 8 m, eccentricity is 1/2, and period is 4π s. This matches the 8 m circle's period while its speed varies around the ellipse."
+    }
+  ],
+  "guided": {
+    "title": "Connect orbital gravity to a zero support reading",
+    "setup": "A nonrotating spherical source has radius 2 m and μ=72 m³/s². A small spacecraft and a freely floating occupant share a circular orbit at altitude 6 m. Ignore atmosphere, thrust, and field variation across the cabin.",
+    "before": [
+      "Use center distance r=R+h, not altitude alone.",
+      "Compute g=μ/r², circular speed sqrt(μ/r), and period 2πr/v.",
+      "Distinguish the gravitational field from a scale that measures support force."
+    ],
+    "question": {
+      "id": "phs231-guided-gravity",
+      "familyId": "phs231-gravity-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m04-l02",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find the center distance, gravitational acceleration magnitude, circular speed, period, and the ideal support-force reading on the freely floating occupant. Explain the zero reading.",
+      "fields": [
+        {
+          "id": "radius",
+          "kind": "rational",
+          "label": "Orbital center distance",
+          "expected": "8",
+          "unit": "m"
+        },
+        {
+          "id": "field",
+          "kind": "rational",
+          "label": "Gravitational acceleration magnitude",
+          "expected": "9/8",
+          "unit": "m/s²"
+        },
+        {
+          "id": "speed",
+          "kind": "exact",
+          "label": "Circular speed",
+          "expected": "3",
+          "unit": "m/s"
+        },
+        {
+          "id": "period",
+          "kind": "pi-multiple",
+          "label": "Orbital period",
+          "expected": "16/3",
+          "unit": "s"
+        },
+        {
+          "id": "scale",
+          "kind": "rational",
+          "label": "Ideal support-force reading",
+          "expected": "0",
+          "unit": "N"
+        },
+        {
+          "id": "reason",
+          "kind": "choice",
+          "label": "Zero-support interpretation",
+          "correct": "freefall",
+          "options": [
+            {
+              "id": "freefall",
+              "label": "The cabin and occupant fall together under nonzero gravity",
+              "feedback": "Both accelerate inward at 9/8 m/s². The occupant needs no support to share that motion in the stated local idealization."
+            },
+            {
+              "id": "zero",
+              "label": "Gravity becomes zero beyond the surface",
+              "feedback": "At center distance 8 m, μ/r²=72/64=9/8 m/s², which is nonzero."
+            },
+            {
+              "id": "outward",
+              "label": "An actual outward force balances gravity in the inertial frame",
+              "feedback": "Balanced forces would give zero acceleration, contradicting the circular orbit. Gravity is the nonzero inward resultant here."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "R": 2,
+        "h": 6,
+        "mu": 72
+      },
+      "hints": [
+        "Center distance is 2+6=8 m.",
+        "g=72/64=9/8 m/s²; v=sqrt(72/8)=3 m/s; T=16*pi/3 s.",
+        "The support-force reading is zero because cabin and occupant share free fall, not because gravity is absent."
+      ],
+      "explanation": [
+        "The orbital radius is 8 m, giving field magnitude 9/8 m/s² and circular speed 3 m/s.",
+        "One revolution covers 16π m, so its period is 16π/3 s. The force check is v²/r=9/8 m/s².",
+        "The occupant and cabin have the same ideal gravitational acceleration. No support force is needed; the zero scale reading coexists with nonzero gravity."
+      ],
+      "answerSummary": "r=8 m; g=9/8 m/s²; v=3 m/s; T=16*pi/3 s; support reading 0 N because of common free fall."
+    },
+    "after": "A correct calculation preserves both the center-distance geometry and the distinction between gravity and support."
+  },
+  "interaction": {
+    "kind": "phs231-gravity",
+    "prompt": "Predict how field strength, circular speed, period, and signed circular energy change when the center radius is scaled. Compare separate exterior orbits, then vary test mass and source parameter independently.",
+    "initial": {
+      "mu": 128,
+      "sourceRadius": 2,
+      "referenceRadius": 8,
+      "radiusRatio": 4,
+      "mass": 3
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "height"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "circular"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "scaling"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "source-mass"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "escape"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "energy"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "turning"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "kepler"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "vector"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "superposition"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "zero-field"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "weightless"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "domain"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "ellipse"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "units"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "circular"
+    },
+    {
+      "familyId": "phs231-gravity-interpretation",
+      "variant": "superposition"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "turning"
+    },
+    {
+      "familyId": "phs231-gravity-orbit",
+      "variant": "kepler"
+    }
+  ],
+  "summary": [
+    "Use center-to-center separation and state the source model. An exterior spherical field is not the full-mass formula applied inside a body.",
+    "Distinguish G, source parameter μ=GM, position-dependent acceleration g=μ/r², gravitational force mg, and contact-force scale readings.",
+    "Add gravitational fields as vectors, with attractions directed toward their sources and source points excluded from the point model.",
+    "A fixed-source circular orbit needs tangential velocity with speed sqrt(μ/r); its period is 2πsqrt(r³/μ).",
+    "Kepler's laws concern the attracting focus, equal swept-area rates, and period squared proportional to semimajor axis cubed. Equal area rate is not constant speed.",
+    "With U=0 at infinity, U=-μm/r and circular total energy is -μm/(2r). Raising a circular radius makes total energy less negative even though speed decreases.",
+    "The ideal local escape speed is sqrt(2μ/r). An outward radial launch at the threshold approaches infinity with speed tending to zero.",
+    "Negative energy makes infinity inaccessible without additional energy, but does not guarantee avoidance of collision.",
+    "For a subescape radial outward launch, ε=v0²/2-μ/r0<0 gives the finite turning radius -μ/ε. Nonradial apsides retain tangential kinetic energy.",
+    "A zero support reading can coexist with nonzero orbital gravity. The fixed-source, exterior, no-drag model has explicit limits."
+  ],
+  "retrieval": "For μ=128 m³/s² and exterior r=8 m, derive the circular speed, period, and specific circular energy. Then launch radially outward at the same speed. Check after working: circular v=4 m/s, T=4π s, and E/m=-8 J/kg. The radial launch instead turns at r=16 m. Local escape speed is 4sqrt(2) m/s. The different paths show that direction matters even when radius, speed, and energy initially match. Neither negative energy nor a zero support reading means gravity is absent.",
+  "readings": [
+    {
+      "title": "OpenStax: Newton's Law of Universal Gravitation",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-1-newtons-law-of-universal-gravitation",
+      "purpose": "Additional instruction on attractive vector forces, point sources, and source approximations."
+    },
+    {
+      "title": "OpenStax: Gravitation Near Earth's Surface",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-2-gravitation-near-earths-surface",
+      "purpose": "Further reading on field strength, source radius, altitude, and interior assumptions."
+    },
+    {
+      "title": "OpenStax: Gravitational Potential Energy and Total Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-3-gravitational-potential-energy-and-total-energy",
+      "purpose": "Additional energy-reference and escape instruction."
+    },
+    {
+      "title": "OpenStax: Satellite Orbits and Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy",
+      "purpose": "Alternative circular-orbit derivations and apparent-weightlessness discussion."
+    },
+    {
+      "title": "OpenStax: Kepler's Laws of Planetary Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-5-keplers-laws-of-planetary-motion",
+      "purpose": "Further study of elliptical geometry, equal areas, and the general period law."
+    }
+  ]
+}

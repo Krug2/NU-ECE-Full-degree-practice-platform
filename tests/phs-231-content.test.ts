@@ -14,6 +14,7 @@ import forceData from "../content/lessons/phs-231/m03-l01.json";
 import frictionData from "../content/lessons/phs-231/m03-l02.json";
 import dragData from "../content/lessons/phs-231/m03-l03.json";
 import circularData from "../content/lessons/phs-231/m04-l01.json";
+import gravityData from "../content/lessons/phs-231/m04-l02.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
@@ -22,7 +23,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -38,6 +39,15 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks the guided orbital radius, period, and weightlessness using independent force balance",()=>{
+  const q=lessonSchema.parse(gravityData).guided.question;
+  const response={radius:"2+6",field:"72/64",speed:"sqrt(9)",period:"2*pi*8/3",scale:"0",reason:"freefall"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(gradeQuestion(q,{...response,radius:"6"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,field:"0"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,reason:"outward"}).correct).toBe(false);
 });
 
 it("checks guided contact loss against the actual force inventory",()=>{
