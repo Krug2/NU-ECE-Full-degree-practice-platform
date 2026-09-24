@@ -70,7 +70,7 @@
     "otherMajorCourses": 23,
     "nextLesson": "m09-l01",
     "nextCourseAfterPhs231Completion": "phs-232",
-    "inProgress": "Numerical integration has a detailed primary-source plan (a2d4910) and an independently checked engine (6310a5c). Its 20 planned variants, investigation UI, teaching, registration, and browser checks remain pending. The engine alone is not an available lesson."
+    "inProgress": "Numerical integration has a detailed primary-source plan (a2d4910), independently checked engine (6310a5c), and 20 variants across sampled-data (def46f5) and time-step (9b3433e) families. Investigation UI, teaching, registration, and browser checks remain pending. These unregistered parts alone are not an available lesson."
   },
   "sharedCommits": [
     {
@@ -322,6 +322,16 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "09b4c8301d9a2b4fff9e286f600665d1d06b0aff",
+        "mergeCommit": "e29c368",
+        "resolvedFiles": [
+          "components/learning/lesson-reader.tsx",
+          "lib/learning/catalog.ts",
+          "lib/learning/contracts.ts"
+        ],
+        "preserved": "All upstream exponential instruction, refresher and practical content, activities, diagnostics, question families, progress extensions, and tests are retained alongside twenty physics lessons. Cross-course preparation links remain compatible. Prerequisite lessons, plans, and development order match this source snapshot. The shared origin/main ref advanced to 2efdc8c during verification; that later snapshot is not included in this merge. Lint, type checking, the 150-page production build, 1882 unit tests, and all 26 selected browser tests passed. Four optional CPython checks were skipped because F10_PYTHON was not configured."
+      },
+      {
         "sourceCommit": "de03daad2d9fba1dcab2954eae85f47b388e56ed",
         "mergeCommit": "18d1579",
         "resolvedFiles": [
@@ -411,26 +421,33 @@
     ]
   },
   "verification": {
-    "status": "The twenty delivered lessons are technically checked; course release gates remain open. The full 1149-test run passed with the documented 60-second per-test allowance. All eleven fracture browser workflows passed across a ten-pass run and a separate unchanged accessibility retry.",
+    "status": "The twenty delivered lessons are technically checked; course release gates remain open. The merged source snapshot passed 1882 unit tests with four optional CPython checks skipped, and all 26 selected production browser workflows passed in one run.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
     "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the twenty delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser check retains its recorded integration scope. These checks do not establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 1149,
-      "files": 123,
+      "passed": 1882,
+      "skipped": 4,
+      "files": 214,
       "command": "pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
-      "note": "All 1149 tests passed in one 308.19-second run of the twenty-lesson application; full lint, type checking, and the 94-page production build passed. Material/fracture families cover all 20 variants over 50 seeds each (1000 independent cases), and the material engine covers 180 independently integrated paths. The subsequent unregistered numerical engine passed 12 tests with 210 independent matrix-reference paths and 15 extreme parameter/method trials; those 12 tests are not included in 1149. No numerical lesson is published by that engine alone.",
+      "note": "Merged twenty-lesson application: 1882 tests passed in one 371.12-second run; four upstream optional CPython execution checks were skipped without F10_PYTHON. Full lint, type checking, and the 150-page production build passed. Subsequent sampled-data and time-step families passed 22 focused tests covering 1000 independent deterministic cases; they are not included in the 1882 count and are not registered as an available lesson yet.",
       "previousRun": {
-        "passed": 1115,
-        "files": 120,
+        "passed": 1149,
+        "files": 123,
         "command": "pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
-        "note": "All tests passed in one 407.52-second run for the nineteen-lesson application. This run used unchanged assertions and a CLI 60-second per-test allowance because earlier default-timeout content tests had exceeded five seconds under shared-machine load. The elasticity families cover all 18 variants over 50 seeds each (900 independent cases); the engine adds 180 independently integrated paths and eight tests. After correcting duplicate displayed units and small-strain formatting, the 39 PHS content tests passed again, scoped lint and type checking passed, the 93-page production build passed, and all eight elasticity browser workflows passed. The subsequent unregistered fracture engine passed eight additional tests with 180 independent paths, lint, and type checking; those eight are not included in 1115.",
+        "note": "All 1149 tests passed in one 308.19-second run of the twenty-lesson application; full lint, type checking, and the 94-page production build passed. Material/fracture families cover all 20 variants over 50 seeds each (1000 independent cases), and the material engine covers 180 independently integrated paths. The subsequent unregistered numerical engine passed 12 tests with 210 independent matrix-reference paths and 15 extreme parameter/method trials; those 12 tests are not included in 1149. No numerical lesson is published by that engine alone.",
         "previousRun": {
-          "passed": 1085,
-          "files": 118,
-          "command": "pnpm exec vitest run --maxWorkers=1; content-file retry used --testTimeout=60000",
-          "note": "Coverage passed across runs, not an uninterrupted default-timeout full-suite pass. First complete run: 1084 passed, one unchanged MTH 215 content test exceeded 5 seconds. Second: 1081 passed, four MTH content tests exceeded 5 seconds under slower shared-machine execution. All 41 tests in lesson-content.test.ts then passed with unchanged assertions and a CLI 60-second per-test allowance (29.86 seconds total). The other 117 files had passed. Focused PHS content and progress run passed all 80 tests. The subsequent unpublished elasticity engine passed eight additional tests including 180 independent paths; those eight are not included in 1085."
+          "passed": 1115,
+          "files": 120,
+          "command": "pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
+          "note": "All tests passed in one 407.52-second run for the nineteen-lesson application. This run used unchanged assertions and a CLI 60-second per-test allowance because earlier default-timeout content tests had exceeded five seconds under shared-machine load. The elasticity families cover all 18 variants over 50 seeds each (900 independent cases); the engine adds 180 independently integrated paths and eight tests. After correcting duplicate displayed units and small-strain formatting, the 39 PHS content tests passed again, scoped lint and type checking passed, the 93-page production build passed, and all eight elasticity browser workflows passed. The subsequent unregistered fracture engine passed eight additional tests with 180 independent paths, lint, and type checking; those eight are not included in 1115.",
+          "previousRun": {
+            "passed": 1085,
+            "files": 118,
+            "command": "pnpm exec vitest run --maxWorkers=1; content-file retry used --testTimeout=60000",
+            "note": "Coverage passed across runs, not an uninterrupted default-timeout full-suite pass. First complete run: 1084 passed, one unchanged MTH 215 content test exceeded 5 seconds. Second: 1081 passed, four MTH content tests exceeded 5 seconds under slower shared-machine execution. All 41 tests in lesson-content.test.ts then passed with unchanged assertions and a CLI 60-second per-test allowance (29.86 seconds total). The other 117 files had passed. Focused PHS content and progress run passed all 80 tests. The subsequent unpublished elasticity engine passed eight additional tests including 180 independent paths; those eight are not included in 1085."
+          }
         }
       }
     },
@@ -517,11 +534,19 @@
         }
       ],
       "integrationSuite": {
-        "passed": 23,
+        "passed": 26,
         "failed": 0,
-        "commit": "18d1579",
-        "scope": "Selected integration regression suite passed on the merged production build in 9.4 minutes: variation (3), radicals (3), rolling (7), shared learning/resume/checkpoint/conflict and backup workflows (7), large-history capacity (1), and mobile navigation/sticky lesson links (2). This is a selected 23-test run, not a relabeled full-suite run. Earlier full-suite records retain their original scope."
-      }
+        "commit": "e29c368",
+        "scope": "Selected integration regression suite passed in one 8.6-minute run on the merged production build: exponential instruction and investigation (3), calculus refresher F08 (5), shared learning/resume/checkpoint/conflict and backup workflows (7), and materials/fracture (11). Includes desktop/mobile accessibility, keyboard operation, direct reloads, and real question/evidence/notes export/reset/restore. Earlier full suites keep their original scope; this is not a full browser-suite claim."
+      },
+      "previousIntegrationSuites": [
+        {
+          "passed": 23,
+          "failed": 0,
+          "commit": "18d1579",
+          "scope": "Selected integration regression suite passed on the merged production build in 9.4 minutes: variation (3), radicals (3), rolling (7), shared learning/resume/checkpoint/conflict and backup workflows (7), large-history capacity (1), and mobile navigation/sticky lesson links (2). This is a selected 23-test run, not a relabeled full-suite run. Earlier full-suite records retain their original scope."
+        }
+      ]
     },
     "staticChecks": [
       "lint passed",
