@@ -19,11 +19,11 @@ const controls:[keyof RotationInput,string,number,number,number][]=[
 ];
 type Result={input:RotationInput;state:ReturnType<typeof rotationRun>};
 function RotorPlot({result,index}:{result:Result;index:number}){
-  const id=useId(),p=result.input,s=result.state.samples[index],extent=Math.max(.1,p.diskRadius,p.radiusA,p.radiusB,p.driveRadius),scale=120/extent,x=(v:number)=>210+v*scale,y=(v:number)=>180-v*scale;
-  const norm=Math.hypot(...s.driveForce),fx=norm?s.driveForce[0]*55/norm:0,fy=norm?s.driveForce[1]*55/norm:0;
-  return <figure><svg viewBox="0 0 440 370" role="img" aria-labelledby={id}><title id={id}>{`Rotor at t=${display(s.time)} s. Fixed z points out of the page. Point A is blue, B is a brown outlined circle, and the drive location is a square. The force arrow shows direction only. Equivalent positions, velocities, and accelerations follow in the point-state table.`}</title>
+  const id=useId(),p=result.input,s=result.state.samples[index],extent=Math.max(.1,p.diskRadius,p.radiusA,p.radiusB,p.driveRadius),scale=105/extent,x=(v:number)=>210+v*scale,y=(v:number)=>180-v*scale;
+  const norm=Math.hypot(...s.driveForce),fx=norm?s.driveForce[0]*45/norm:0,fy=norm?s.driveForce[1]*45/norm:0;
+  return <figure><svg viewBox="50 0 340 370" role="img" aria-labelledby={id}><title id={id}>{`Rotor at t=${display(s.time)} s. Fixed z points out of the page. Point A is blue, B is a brown outlined circle, and the drive location is a square. The force arrow shows direction only. Equivalent positions, velocities, and accelerations follow in the point-state table.`}</title>
     <defs><marker id={`${id}-arrow`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#31523e"/></marker></defs>
-    <text x="220" y="22" textAnchor="middle" fontSize="16" fill="#243b38">Fixed-axis rotor: snapshot in the xy plane</text>
+    <text x="220" y="22" textAnchor="middle" fontSize="16" fill="#243b38">Rotor in fixed xy coordinates</text>
     <circle cx="210" cy="180" r={p.diskRadius*scale} fill="#e4efee" stroke="#718f87"/>
     <line x1="65" x2="357" y1="180" y2="180" stroke="#718f87"/><line x1="210" x2="210" y1="40" y2="318" stroke="#718f87"/>
     <text x="360" y="184" fontSize="15" fill="#243b38">+x</text><text x="216" y="47" fontSize="15" fill="#243b38">+y</text>
@@ -64,7 +64,7 @@ export function Phs231RotationLab({activity}:{activity:RotationActivity}){
     {result&&s&&<div className="notice">
       <p>Total inertia: <strong>{display(result.state.inertia)} kg m²</strong>. Net axial torque: <strong>{display(result.state.torque)} N m</strong>. Constant angular acceleration: <strong>{display(result.state.alpha)} rad/s²</strong>.</p>
       <p>At the end: <strong>ω={display(result.state.final.omega)} rad/s</strong>; signed angular displacement <strong>{display(result.state.final.theta)} rad</strong>; total angular travel <strong>{display(result.state.final.travel)} rad</strong>.</p>
-      <p>{result.state.alpha===0?(result.input.omega0===0?"The rotor remains at rest because both initial angular velocity and net axial torque are zero.":"Zero net torque preserves the initial angular velocity. Each off-axis point still has radial acceleration."):(result.state.zeroSpeedTime===null?"Angular velocity has no zero within this trial. Compare the signs of ω and α to decide whether speed is increasing or decreasing.":`Angular velocity is zero at t=${display(result.state.zeroSpeedTime)} s. The specified signed torque stays active: this is not a holding brake. An interior zero is a reversal, while an endpoint zero needs a later force rule to predict continuation.`)}</p>
+      <p>{result.state.alpha===0?(result.input.omega0===0?"The rotor remains at rest because both initial angular velocity and net axial torque are zero.":"Zero net torque preserves the initial angular velocity. Each off-axis point still has radial acceleration."):(result.state.zeroSpeedTime===null?"Angular velocity has no zero within this trial. Compare the signs of ω and α to decide whether speed is increasing or decreasing.":result.state.zeroSpeedTime===0?"The trial starts from rest; the specified nonzero signed torque immediately changes angular velocity.":result.state.zeroSpeedTime===result.input.duration?"Angular velocity reaches zero at the final instant. Motion beyond this trial needs a later force rule; instantaneous rest does not establish a holding brake.":`Angular velocity is zero at t=${display(result.state.zeroSpeedTime)} s inside the trial. The specified signed torque stays active, so the rotor reverses. This is not a holding brake.`)}</p>
       <div className="phs231-table" role="region" tabIndex={0} aria-label="Inertia and axial torque contributions"><table><caption>Independent mass and loading accounts</caption><thead><tr><th scope="col">Contribution</th><th scope="col">Rule</th><th scope="col">Value</th><th scope="col">Unit</th></tr></thead><tbody>
         {[["Disk","M R²/2",result.state.diskI,"kg m²"],["Point A","mA rA²",result.state.aI,"kg m²"],["Point B","mB rB²",result.state.bI,"kg m²"],["Tangential drive","drive radius × Ft",result.state.driveTorque,"N m"],["Radial drive","zero axial lever arm",0,"N m"],["Additional couple","specified signed moment",result.input.couple,"N m"]].map(([label,rule,value,unit])=><tr key={label}><th scope="row">{label}</th><td>{rule}</td><td>{display(Number(value))}</td><td>{unit}</td></tr>)}
       </tbody></table></div>
@@ -78,4 +78,3 @@ export function Phs231RotationLab({activity}:{activity:RotationActivity}){
     </div>}
   </div>;
 }
-
