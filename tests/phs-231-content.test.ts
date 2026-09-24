@@ -8,13 +8,14 @@ import packData from "../content/learning-packs/phs-231.json";
 import unitsData from "../content/lessons/phs-231/m01-l01.json";
 import vectorData from "../content/lessons/phs-231/m01-l02.json";
 import motionData from "../content/lessons/phs-231/m02-l01.json";
+import frameData from "../content/lessons/phs-231/m02-l02.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
   expect(pack.status).toBe("building");
   expect(pack.modules.flatMap(m=>m.lessons)).toHaveLength(22);
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
-  for(const data of [unitsData, vectorData, motionData]) {
+  for(const data of [unitsData, vectorData, motionData, frameData]) {
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
     const visit=(value:unknown):void=>{
@@ -30,6 +31,14 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
   }
+});
+
+it("checks the observer chain and exact relative speed in the guided frame fixture",()=>{
+  const q=lessonSchema.parse(frameData).guided.question;
+  const answer={x:"5-2",y:"-2-1",z:"1-(-1)",speed:"sqrt(9+9+4)",acceleration:"same"};
+  expect(gradeQuestion(q,answer).correct).toBe(true);
+  expect(gradeQuestion(q,{...answer,y:"-1"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...answer,acceleration:"subtract"}).correct).toBe(false);
 });
 
 it("checks signed motion areas in the guided fixture and rejects a sign-only speed rule",()=>{
