@@ -63,6 +63,7 @@
 .coefficient-table caption { text-align:left;margin-bottom:12px;font-weight:600; }
 .calibration-controls { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px; }
 .calibration-table-wrap { max-width:100%;overflow-x:auto; }
+.division-coefficients input { width:6rem;max-width:none;padding:8px;border:1px solid var(--line);border-radius:5px;font:inherit;background:var(--paper);color:var(--ink); }
 .calibration-figure .coefficient-table { font-size:13px; }
 @media(max-width:620px){.calibration-controls{grid-template-columns:1fr}.calibration-figure svg text{font-size:20px}}
 .coefficient-table th,.coefficient-table td { text-align:left;padding:9px 8px;border-bottom:1px solid var(--line); }
