@@ -1,3 +1,6 @@
+import complexPack from "@/content/learning-packs/f09.json";
+import complexPath from "@/content/refresher-paths/f09.json";
+import { f09Lessons } from "./f09";
 import calculusPack from "@/content/learning-packs/f08.json";
 import calculusPath from "@/content/refresher-paths/f08.json";
 import { f08Lessons } from "./f08";
@@ -28,7 +31,7 @@ import { f05Lessons } from "./f05";
 import { lessonSchema, packSchema } from "../contracts";
 import { refresherPathSchema } from "./contracts";
 
-export const refresherPacks = [packSchema.parse(pack), packSchema.parse(algebraPack), packSchema.parse(functionsPack), packSchema.parse(trigPack), packSchema.parse(explogPack), packSchema.parse(measurementPack), packSchema.parse(vectorPack), packSchema.parse(calculusPack)];
-export const refresherLessons = [...[l01, l02, l03, l04].map(data => lessonSchema.parse(data)), ...f02Lessons, ...f03Lessons, ...f04Lessons, ...f05Lessons, ...f06Lessons, ...f07Lessons, ...f08Lessons];
-export const refresherPaths = [refresherPathSchema.parse(path), refresherPathSchema.parse(algebraPath), refresherPathSchema.parse(functionsPath), refresherPathSchema.parse(trigPath), refresherPathSchema.parse(explogPath), refresherPathSchema.parse(measurementPath), refresherPathSchema.parse(vectorPath), refresherPathSchema.parse(calculusPath)];
+export const refresherPacks = [packSchema.parse(pack), packSchema.parse(algebraPack), packSchema.parse(functionsPack), packSchema.parse(trigPack), packSchema.parse(explogPack), packSchema.parse(measurementPack), packSchema.parse(vectorPack), packSchema.parse(calculusPack), packSchema.parse(complexPack)];
+export const refresherLessons = [...[l01, l02, l03, l04].map(data => lessonSchema.parse(data)), ...f02Lessons, ...f03Lessons, ...f04Lessons, ...f05Lessons, ...f06Lessons, ...f07Lessons, ...f08Lessons, ...f09Lessons];
+export const refresherPaths = [refresherPathSchema.parse(path), refresherPathSchema.parse(algebraPath), refresherPathSchema.parse(functionsPath), refresherPathSchema.parse(trigPath), refresherPathSchema.parse(explogPath), refresherPathSchema.parse(measurementPath), refresherPathSchema.parse(vectorPath), refresherPathSchema.parse(calculusPath), refresherPathSchema.parse(complexPath)];
 export const refresherPath = (courseId: string) => refresherPaths.find(path => path.courseId === courseId);
