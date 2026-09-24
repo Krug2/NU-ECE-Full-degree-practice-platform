@@ -10,14 +10,16 @@ import { generateQuestions } from "../lib/learning/generate";
 const variants=["single","equal-arguments","sum","difference","two-roots","excluded-root","original-hole","empty","identity-domain","mixed"];
 const number=(source:string)=>{const r=parseRational(source);return Number(r.numerator)/Number(r.denominator);};
 it.each(variants)("checks %s candidates against the original arguments and complete domains",variant=>{
-  const modes=new Set<number>(),flags=new Set<number>(),exponents=new Set<number>(),counts=new Set<number>();
+  const modes=new Set<number>(),flags=new Set<number>(),exponents=new Set<number>(),counts=new Set<number>(),argumentSigns=new Set<number>();
   for(let seed=0;seed<(variant==="mixed"?180:50);seed++){
     const q=logEquationQuestion("mth-log-equation",variant,"log-equations-"+seed,"q-1"),{mode,bn,bd,p,flag,a,d,x0,t,c,f,h,width,k,s,margin}=q.parameters,b=bn/bd,T=b**p,target=`(${bn}/${bd})^(${p})`,responses:Record<string,string>={},solutions:number[]=[],candidateValues:number[]=[],domains:Record<string,string>={},numeric:Record<string,number>={};
     const half=`(${k},inf)`,punctured=`(-inf,${h}) U (${h},inf)`,outside=`(-inf,${h}) U (${k},inf)`;
     if(mode===0){
       domains.domain=a>0?`(-(${c})/(${a}),inf)`:`(-inf,-(${c})/(${a}))`;responses.argument=flag?`exp(${p})`:target;responses.solutions=`((${responses.argument})-(${c}))/(${a})`;numeric.argument=flag?Math.exp(p):T;solutions.push((numeric.argument-c)/a);
     }else if(mode===1){
-      domains.domain=`(${Math.max(-c/a,-f/d)===-f/d?`-(${f})/${d}`:`-(${c})/${a}`},inf)`;responses.solutions=String(x0);responses.argument=String(t);solutions.push(x0);
+      domains.domain=`(${Math.max(-c/a,-f/d)===-f/d?`-(${f})/${d}`:`-(${c})/${a}`},inf)`;responses.candidates=String(x0);responses.argument=String(t);responses.solutions=t>0?String(x0):"none";candidateValues.push(x0);if(t>0)solutions.push(x0);argumentSigns.add(Math.sign(t));
+      expect(f-c-(a-d)*x0).toBe(0);expect(a*x0+c).toBe(t);expect(d*x0+f).toBe(t);
+      if(t<=0){expect(x0).toBeLessThanOrEqual(Math.max(-c/a,-f/d));expect(gradeQuestion(q,{...responses,...domains,solutions:String(x0)}).correct).toBe(false);}
     }else if(mode===2){
       const D=`${width**2}+4*(${target})`,low=`(${h+k}-sqrt(${D}))/2`,high=`(${h+k}+sqrt(${D}))/2`;
       domains.domain=half;responses.linear=String(-h-k);responses.constant=`${h*k}-(${target})`;responses.candidates=`${high},${low}`;responses.solutions=high;
@@ -36,7 +38,7 @@ it.each(variants)("checks %s candidates against the original arguments and compl
     }else{
       domains["left-domain"]=outside;domains["right-domain"]=half;domains.solutions=half;responses.reason="common-domain";
     }
-    Object.assign(responses,domains);expect(q).toEqual(logEquationQuestion("mth-log-equation",variant,"log-equations-"+seed,"q-1"));expect(q).toMatchObject({objectiveId:"m05-l03",critical:true,familyVersion:1});
+    Object.assign(responses,domains);expect(q).toEqual(logEquationQuestion("mth-log-equation",variant,"log-equations-"+seed,"q-1"));expect(q).toMatchObject({objectiveId:"m05-l03",critical:true,familyVersion:2});
     expect(gradeQuestion(q,responses).correct).toBe(true);modes.add(mode);flags.add(flag);exponents.add(p);counts.add(solutions.length);
     for(const x of solutions){
       let left=0,right=0;
@@ -73,6 +75,7 @@ it.each(variants)("checks %s candidates against the original arguments and compl
     for(const text of strings)for(const match of text.matchAll(/\$([^$]+)\$/g))expect(()=>katex.renderToString(match[1],{strict:"error",trust:false})).not.toThrow();
   }
   expect([...flags].sort()).toEqual([0,1]);
+  if(variant==="equal-arguments"){expect([...argumentSigns].sort()).toEqual([-1,0,1]);expect([...counts].sort()).toEqual([0,1]);}
   if(variant==="difference")expect([...counts].sort()).toEqual([0,1]);
   if(variant==="two-roots")expect([...counts]).toEqual([2]);
   if(variant==="mixed"){expect([...modes].sort((a,b)=>a-b)).toEqual([0,1,2,3,4,5,6,7,8]);expect([...exponents].sort((a,b)=>a-b)).toEqual([-2,-1,0,1,2,3]);}

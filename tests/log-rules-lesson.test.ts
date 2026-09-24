@@ -5,6 +5,7 @@ import coverage from "../content/course-plans/mth-215/m05-l03-coverage.json";
 import { lessonSchema,type AnswerField } from "../lib/learning/contracts";
 import { gradeQuestion } from "../lib/learning/grading";
 import { formatIntervals,parseIntervals } from "../lib/learning/intervals";
+import { formatLogarithmicIntervals } from "../lib/learning/logarithmic-intervals";
 import { checkRewriteValue } from "../lib/learning/log-rewrite-investigation";
 import { inspectLogRewrite } from "../lib/learning/logarithm-rewrites";
 import { generateQuestions } from "../lib/learning/generate";
@@ -15,6 +16,7 @@ const lesson=lessonSchema.parse(data);
 const answer=(field:AnswerField):string=>{
   if(field.kind==="choice")return field.correct;
   if(field.kind==="intervals")return formatIntervals(field.expected);
+  if(field.kind==="logarithmic-intervals")return formatLogarithmicIntervals(field.expected);
   if(field.kind==="numeric")return field.expected.toFixed(6);
   if(field.kind==="roots"||field.kind==="root-list"||field.kind==="logarithmic-roots")return field.expected.join(";")||"none";
   return field.expected;

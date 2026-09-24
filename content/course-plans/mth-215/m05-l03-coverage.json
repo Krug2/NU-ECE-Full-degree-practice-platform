@@ -1,8 +1,8 @@
 {
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
-  "status": "draft",
-  "contentStages": 6,
+  "status": "authored",
+  "contentStages": 8,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -120,10 +120,12 @@
       ],
       "practice": [
         "mth-log-rewrite:false-sum",
-        "mth-log-rewrite:mixed-bases"
+        "mth-log-rewrite:mixed-bases",
+        "mth-log-rules:product",
+        "mth-log-rules:quotient"
       ],
       "independentCheck": "mth-log-rewrite:mixed",
-      "retrieval": "Give both an exact counterexample and an accidental agreement for a false sum rule, then repair a different-base combination."
+      "retrieval": "Give exact counterexamples for false sum, difference and product-of-logarithms rules. Find an accidental agreement for the false sum rule, then repair a different-base combination."
     },
     {
       "skill": "Change base and separate exact from approximate results",
@@ -253,6 +255,87 @@
       ],
       "independentCheck": "mth-log-equation:mixed",
       "retrieval": "Solve an equality of logarithms and check both original arguments, including a case where the algebraic candidate must be rejected."
+    },
+    {
+      "skill": "Solve logarithm sums with every candidate checked",
+      "instruction": [
+        "Solve logarithm sums with every candidate checked"
+      ],
+      "examples": [
+        "A logarithm sum yields one retained quadratic root",
+        "Keep an irrational logarithmic-equation candidate exact"
+      ],
+      "practice": [
+        "mth-log-equation:sum"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Solve a sum of logarithms, retain every algebraic candidate long enough to explain its original-domain check, and keep irrational roots exact."
+    },
+    {
+      "skill": "Solve logarithm differences with the original restrictions",
+      "instruction": [
+        "Solve logarithm differences with the original restrictions"
+      ],
+      "examples": [
+        "A valid quotient target produces one solution",
+        "A quotient target of one leaves a contradiction",
+        "A positive quotient can conceal two invalid arguments"
+      ],
+      "practice": [
+        "mth-log-equation:difference"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Classify quotient targets above one, equal to one and below one for the same shifted-log difference."
+    },
+    {
+      "skill": "Keep both roots of a squared argument",
+      "instruction": [
+        "Keep both roots of a squared argument"
+      ],
+      "examples": [
+        "A squared argument gives two exact shifted roots",
+        "A zero logarithm value still permits both square branches"
+      ],
+      "practice": [
+        "mth-log-equation:two-roots",
+        "mth-log-rewrite:even-power",
+        "mth-log-rewrite:shifted-absolute"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Solve a squared logarithm argument with both branches and explain how an absolute value preserves the complete solution set."
+    },
+    {
+      "skill": "Reject original zero arguments and canceled holes",
+      "instruction": [
+        "Reject original zero arguments and canceled holes"
+      ],
+      "examples": [
+        "Reject the zero-argument candidate",
+        "A canceled hole removes the only candidate"
+      ],
+      "practice": [
+        "mth-log-equation:excluded-root",
+        "mth-log-equation:original-hole"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Find every algebraic candidate, then distinguish a zero logarithm argument from an excluded denominator. Explain why neither can be restored by simplification."
+    },
+    {
+      "skill": "Distinguish empty domains, unattainable targets and domain-restricted identities",
+      "instruction": [
+        "Distinguish empty domains, unattainable targets and domain-restricted identities"
+      ],
+      "examples": [
+        "An empty original domain rules out every input",
+        "An everywhere-defined logarithm can miss the target",
+        "An identity keeps its common original domain"
+      ],
+      "practice": [
+        "mth-log-equation:empty",
+        "mth-log-equation:identity-domain"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Give one equation with an empty original domain, one with a nonempty domain but no solution, and one identity whose complete solution is a restricted interval. Justify each complete set."
     }
   ]
 }

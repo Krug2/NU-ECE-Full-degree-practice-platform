@@ -43,6 +43,7 @@ import { exponentialLabCaseSchema } from "./exponential-investigation";
 import { logarithmLabCaseSchema } from "./logarithm-investigation";
 import { equalLogarithmic, parseLogarithmic } from "./logarithmic-number";
 import { logRewriteLabCaseSchema } from "./log-rewrite-investigation";
+import { formatLogarithmicIntervals } from "./logarithmic-intervals";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -80,6 +81,11 @@ const logarithmicRootsField = z.object({
     return field.expected.join(", ").length<=500 && values.every((value,index)=>!values.slice(0,index).some(other=>equalLogarithmic(value,other)));
   } catch { return false; }
 }, "Exact real solution keys must be distinct and fit the answer field");
+const logarithmicIntervalField=z.object({
+  ...fieldBase,kind:z.literal("logarithmic-intervals"),unit:z.string().max(60).default(""),
+  expected:z.array(z.object({lower:logarithmic.nullable(),upper:logarithmic.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8),
+  help:z.string().min(1).max(500).default("Give the complete set in interval notation, such as (2*ln(4), inf). Use U for a union, R for all real inputs, or empty. Keep endpoints exact, use brackets only for included endpoints, and retain the stated operating domain."),
+}).strict().refine(field=>{try{return formatLogarithmicIntervals(field.expected).length<=500;}catch{return false;}},"Use valid exact interval keys that fit the answer field");
 const piField = z.object({ ...fieldBase, kind: z.literal("pi-multiple"), expected: rational, unit: z.string().max(60).default("") }).strict();
 const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: z.array(exact).max(8), numberSystem: z.enum(["real", "complex"]), unit: z.string().max(60).default("") }).strict()
   .refine(field => {
@@ -105,7 +111,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, logarithmicField, logarithmicRootsField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, logarithmicField, logarithmicRootsField, logarithmicIntervalField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({
@@ -119,7 +125,7 @@ export const questionSchema = z.object({
 }).strict().refine(item => unique(item.fields.map(field => field.id)), "Duplicate answer fields").superRefine((item, ctx) => {
   for (const field of item.fields) if (field.kind === "rational-expression") {
     const domain = item.fields.find(other => other.id === field.domainFieldId);
-    if (!(domain?.kind === "intervals" || domain?.kind === "roots" && domain.numberSystem === "real")) ctx.addIssue({ code: "custom", message: "A rational expression requires a separate original-domain answer" });
+    if (!(domain?.kind === "intervals" || domain?.kind === "logarithmic-intervals" || domain?.kind === "roots" && domain.numberSystem === "real")) ctx.addIssue({ code: "custom", message: "A rational expression requires a separate original-domain answer" });
   }
 });
 export type Question = z.infer<typeof questionSchema>;
