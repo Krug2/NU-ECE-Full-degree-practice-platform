@@ -239,6 +239,15 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "f28070dc4edd25c5884cb8eca78937919f424c10",
+        "mergeCommit": "41ba887",
+        "resolvedFiles": [
+          "components/learning/lesson-reader.tsx",
+          "lib/learning/catalog.ts"
+        ],
+        "preserved": "All upstream root-search, rational-function, and sign-chart instruction, activities, generators, exact interval endpoints, and tests are retained alongside fourteen physics lessons. Prerequisite lesson files, plans, and development order match this main snapshot. 830 unit tests across 95 files, lint, type checking, and production build passed. Browser outcome and the corrected save-wait test are recorded below."
+      },
+      {
         "sourceCommit": "d804cada544e7b2c9ff04bf2841e34fe05295d69",
         "mergeCommit": "d491b1a",
         "resolvedFiles": [
@@ -323,9 +332,14 @@
     },
     "browser": {
       "fullSuite": {
-        "passed": 95,
-        "failed": 0,
-        "scope": "All browser tests passed in 12.0 minutes on the merged production build, including MTH 215 division, all eleven available physics lessons, large history, schema migrations, multi-tab conflicts, recovery, real backup restoration, desktop and mobile accessibility, and sticky navigation."
+        "passed": 112,
+        "failed": 1,
+        "scope": "Full merged production suite: 113 tests ran in 18.6 minutes with fourteen physics lessons and the new prerequisite root-search, rational-function, and sign-chart lessons. All but the projectile mid-entry reload workflow passed.",
+        "retry": {
+          "passed": 1,
+          "commit": "ea00ae5",
+          "scope": "The trace showed the last field was still saving when the test reloaded; the preceding field had persisted. The app already displays a pending save and warns before leaving. The test now waits for the public saved confirmation and checks both restored fields. It passed in 5.6 seconds on the same production build. No grading, persistence behavior, assertion threshold, or timeout was weakened; this is not reported as an uninterrupted 113-test pass."
+        }
       },
       "focusedSuite": {
         "passed": 3,
@@ -359,6 +373,11 @@
             "passed": 1,
             "scope": "The single timed-out transformation interaction passed unchanged in 26.5 seconds on the same production build with the same 60-second limit. No timeout or assertion was relaxed; the original full run is not reported as an uninterrupted 87-test pass."
           }
+        },
+        {
+          "passed": 95,
+          "failed": 0,
+          "scope": "All browser tests passed in 12.0 minutes on the merged production build, including MTH 215 division, all eleven available physics lessons, large history, schema migrations, multi-tab conflicts, recovery, real backup restoration, desktop and mobile accessibility, and sticky navigation."
         }
       ]
     },
@@ -371,7 +390,8 @@
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",
-      "f206b0e removes prohibited per-polyline ARIA labels; chart-level descriptions, legends, and equivalent energy tables remain available."
+      "f206b0e removes prohibited per-polyline ARIA labels; chart-level descriptions, legends, and equivalent energy tables remain available.",
+      "ea00ae5 waits for confirmed persistence before a projectile checkpoint reload and verifies both the root set and future-time field."
     ]
   },
   "scopeReference": "../major-courses.json"
