@@ -201,7 +201,7 @@
         ],
         [
           "circular-measure",
-          "arc-sector"
+          "all"
         ]
       ],
       "mistakes": [
@@ -233,7 +233,7 @@
         "cee-324",
         "cee-430"
       ],
-      "acceptance": "Required questions cover directed angles and references, direct ratios, reciprocal domain cases, and exact circular quantities. Speed remains in practice and a checkpoint variant must include it within the circular-measure question."
+      "acceptance": "Required questions cover directed angles and references, direct ratios, reciprocal domain cases, and a combined circular-measure checkpoint for arc length, sector area, angular speed, and tangential speed."
     },
     {
       "id": "m01-l03",
