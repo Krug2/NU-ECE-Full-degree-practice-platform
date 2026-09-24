@@ -1,0 +1,317 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m06-l01",
+  "checkedAt": "2026-09-24",
+  "status": "proposed teaching and verification plan; not a delivered lesson",
+  "title": "Impulse and center-of-mass motion",
+  "objective": "Integrate force to obtain impulse and use a system's external impulse to predict total momentum and center-of-mass motion.",
+  "alignment": "Develops the official PHS 231 momentum topic in the researched course scope. Teaching sequence, examples, investigation, generators, and assessment defaults are proposed for this platform and are not an official NU syllabus or grading policy.",
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "purpose": "Signed vector components and norms"
+    },
+    {
+      "lessonId": "m02-l01",
+      "purpose": "Time derivatives, signed areas, and definite integration"
+    },
+    {
+      "lessonId": "m02-l02",
+      "purpose": "Inertial observers and Galilean velocity changes"
+    },
+    {
+      "lessonId": "m03-l01",
+      "purpose": "Recipient-specific force inventories and Newton's third law"
+    },
+    {
+      "lessonId": "m05-l01",
+      "purpose": "Distinguish work from impulse and kinetic energy from momentum"
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "System boundaries and internal energy conversion"
+    },
+    {
+      "courseId": "csc-208",
+      "status": "under construction",
+      "purpose": "Develop the exact integral operations required here while linking to calculus preparation when available"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Momentum is a vector",
+      "teaching": "Define p=mv for positive constant mass in a chosen inertial frame. Preserve signed components in one, two, and three dimensions. Compare momentum and kinetic energy: equal speed reversals change momentum, while equal momenta at different masses need not imply equal kinetic energy.",
+      "critical": [
+        "Use kg m/s, equivalent to N s, not joules.",
+        "A vector sum is not the sum of speed magnitudes."
+      ]
+    },
+    {
+      "topic": "Impulse-momentum theorem",
+      "teaching": "Integrate dp/dt=Fnet over a time interval to get Jnet=pf-pi. Separate impulse by a named force from net impulse. Derive final velocity, distinguish average and peak forces, and state constant-mass conditions.",
+      "critical": [
+        "Force-time area is impulse; force-position area is work.",
+        "Impulse direction follows vector change, not necessarily the final velocity.",
+        "For a vehicle losing mass, track a closed collection or account for momentum flux; do not apply a fixed-mass vehicle formula blindly."
+      ]
+    },
+    {
+      "topic": "Resolved force histories",
+      "teaching": "Evaluate constant, triangular, piecewise signed, and polynomial force histories. Show that equal impulses can have different peak forces and transient motion. Compare duration changes at fixed impulse and fixed shape with changes of shape at fixed duration.",
+      "critical": [
+        "Net zero impulse can contain large opposing contributions.",
+        "A longer duration fixes a smaller average force at fixed impulse, but does not by itself determine the peak without a shape condition.",
+        "Neglect of external impulses during a brief interaction needs a scale comparison."
+      ]
+    },
+    {
+      "topic": "External versus internal impulse",
+      "teaching": "Specify a constant-mass system and add its particle equations. Internal pairs cancel in total momentum under the Newtonian third-law assumptions; external impulse changes total P. A zero external force at every instant gives constant P throughout, while a zero integrated external impulse only matches endpoint totals.",
+      "critical": [
+        "Internal forces can change individual momenta.",
+        "Conserved total momentum does not conserve kinetic energy.",
+        "A system choice can move an interaction between internal and external categories."
+      ]
+    },
+    {
+      "topic": "Discrete center of mass",
+      "teaching": "Define Rcm=Σmi ri/M, Vcm=P/M, and M Acm=ΣFext for fixed masses and an inertial frame. Work signed coordinates componentwise and use translation and mass-scale invariance. CM need not lie on material, but positive masses place it within their convex hull.",
+      "critical": [
+        "Use mass weights, not an unweighted coordinate average unless masses match.",
+        "CM is a geometric/dynamical summary, not necessarily a material particle.",
+        "Only external forces govern acceleration of the system CM."
+      ]
+    },
+    {
+      "topic": "Continuous and composite mass",
+      "teaching": "Replace sums by M=∫dm and Rcm=(1/M)∫r dm, with line, area, or volume density as appropriate. Derive a linearly varying rod density and use symmetry. Model a hole by subtracting a removed mass distribution, not by claiming negative physical mass.",
+      "critical": [
+        "Require nonnegative density, positive total mass, and correct density units.",
+        "Integrate total mass as well as the first moment for nonuniform density.",
+        "A removed piece must lie within the original object and leave positive mass."
+      ]
+    },
+    {
+      "topic": "Observer changes and kinetic decomposition",
+      "teaching": "For a frame translating at constant velocity u, show P'=P-Mu and Vcm'=Vcm-u. Derive Ktotal=M|Vcm|²/2+Σmi|vi-Vcm|²/2 by canceling the weighted relative-velocity sum. The internal relative kinetic term is unchanged by a Galilean boost.",
+      "critical": [
+        "The CM frame has zero total momentum, not zero individual velocities or kinetic energy.",
+        "External impulse determines CM velocity but not internal energy conversion.",
+        "Force resultant times CM displacement accounts for CM kinetic change, not necessarily all work on an extended deforming system."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "vector-impulse",
+      "given": "m=2 kg, vi=(3,-1,0) m/s, vf=(-1,2,4) m/s",
+      "expected": "J=(-8,6,8) N s, |J|=2sqrt41 N s; Ki=10 J and Kf=21 J.",
+      "independent": "Integrate any constant net force J/T over a chosen positive duration and separately compare kinetic-energy norms."
+    },
+    {
+      "id": "normalized-pulse",
+      "given": "M=2 kg, V0=(1,2,-1) m/s, net external impulse J=(6,-4,2) N s, T=2 s",
+      "expected": "Final Vcm=(4,0,0) m/s. Average force=(3,-2,1) N. A triangular pulse has peak magnitude2sqrt14 N; rectangular has sqrt14 N. Symmetric profiles give displacement(5,2,-1) m. A front-loaded linear pulse gives(6,4/3,-2/3) m.",
+      "independent": "Numerically integrate each force component, then integrate velocity to get CM displacement; endpoint momentum agrees while transients differ."
+    },
+    {
+      "id": "zero-net-impulse",
+      "given": "m=2 kg with vx=1 m/s; positive triangular pulse of peak8 N lasting1 s, followed by -2 N for2 s",
+      "expected": "First impulse4 N s, second-4 N s; final velocity1 m/s, average force over3 s zero, intermediate speed3 m/s. K rises by8 J then falls by8 J.",
+      "independent": "Piecewise constant/linear acceleration integration and signed geometric areas."
+    },
+    {
+      "id": "contact-versus-net",
+      "given": "m=.5 kg, vy changes from -4 to +2 m/s during .1 s floor contact, g=10 m/s²",
+      "expected": "Net impulse3 N s upward; gravity impulse-.5 N s; contact impulse3.5 N s and mean contact35 N. Peak is not determined.",
+      "independent": "Mean net acceleration60 m/s² requires mean net force30 N; add weight5 N for contact."
+    },
+    {
+      "id": "discrete-cm",
+      "given": "Masses2,1,3 kg at(0,0,1),(3,0,-1),(0,2,0) m; velocities(1,0,0),(-2,1,0),(0,-1,2) m/s",
+      "expected": "M=6 kg, Rcm=(1/2,1,1/6) m, P=(0,-2,6) kg m/s, Vcm=(0,-1/3,1) m/s. With zero external force, Rcm after3 s is(1/2,0,19/6) m.",
+      "independent": "Evolve each free particle before mass-weighting and compare with evolving the weighted initial CM."
+    },
+    {
+      "id": "variable-density",
+      "given": "Rod0≤x≤3 m with λ(x)=(2 kg/m)(1+x/(3 m))",
+      "expected": "M=9 kg, first moment15 kg m, xcm=5/3 m.",
+      "independent": "Decompose density into a uniform rod and a triangular addition; verify with quadrature."
+    },
+    {
+      "id": "cutout",
+      "given": "Uniform8 m by4 m plate of area density1 kg/m². Remove a2 m by1 m rectangle centered at(6,1) m; the cutout lies wholly inside.",
+      "expected": "Remaining mass30 kg; CM=(58/15,31/15) m, shifting left and upward from(4,2) m.",
+      "independent": "Sum the remaining rectangular subregions with positive masses and compare with subtraction bookkeeping."
+    },
+    {
+      "id": "internal-conversion",
+      "given": "Isolated pair of2 and3 kg initially at rest, centered at positions3 and-2 m; an internal release gives impulses+6 and-6 N s",
+      "expected": "Final velocities3 and-2 m/s; P=0 and Vcm=0. Ktotal rises to15 J from a corresponding internal store decrease. Subsequent free CM stays at0.",
+      "independent": "Add each momentum and weighted free position; compute both kinetic energies separately."
+    },
+    {
+      "id": "observer-and-energy",
+      "given": "The preceding velocities are3 and-2 m/s in one frame; a second inertial observer moves at+1 m/s",
+      "expected": "New velocities2 and-3 m/s; P'=-5 kg m/s, Vcm'=-1 m/s, Ktotal'=35/2 J. CM kinetic5/2 J plus internal relative kinetic15 J equals35/2 J.",
+      "independent": "Compute both frame totals from individual velocities and compare the relative-velocity kinetic term."
+    },
+    {
+      "id": "external-resultant",
+      "given": "mA=2 kg,mB=3 kg; external forces on A and B are(4,0) and(0,6) N. Internal force on A from B is(5,-2) N, with opposite force on B.",
+      "expected": "aA=(9/2,-1),aB=(-5/3,8/3) m/s²; Acm=(4/5,6/5) m/s².",
+      "independent": "Mass-weight individual accelerations, then compare with total external force divided by total mass."
+    }
+  ],
+  "families": {
+    "phs231-impulse-area": [
+      "vector",
+      "constant",
+      "triangle",
+      "piecewise",
+      "polynomial",
+      "average",
+      "duration",
+      "work-contrast"
+    ],
+    "phs231-center-mass": [
+      "discrete",
+      "motion",
+      "external",
+      "internal",
+      "density",
+      "cutout",
+      "frame",
+      "kinetic-split"
+    ]
+  },
+  "guided": "Use the vertical-contact fixture. Require net impulse, gravity impulse, contact impulse, mean contact force, and recognition that a peak force is not determined without a time profile. Explain why omitting the weight impulse would give the wrong contact average.",
+  "investigation": {
+    "kind": "phs231-impulse",
+    "model": "A closed constant-mass Newtonian system under a prescribed net external vector pulse. Track CM velocity, momentum, and displacement; do not invent individual trajectories or internal kinetic energy. A single particle is a special case.",
+    "inputs": {
+      "mass": "0.1..20 kg",
+      "initialVelocity": "three components from-20..20 m/s",
+      "impulse": "three components from-100..100 N s",
+      "duration": "0.01..10 s",
+      "profile": [
+        "constant",
+        "symmetric triangle",
+        "symmetric parabola",
+        "front-loaded linear"
+      ]
+    },
+    "normalizedForce": "F(t)=J f(u)/T, u=t/T in[0,1]. Force is zero outside the pulse. Endpoint jumps for constant/front-loaded pulses are finite force jumps, not delta impulses.",
+    "profiles": [
+      {
+        "id": "constant",
+        "force": "f=1",
+        "cumulative": "H=u",
+        "integratedCumulative": "G=u²/2",
+        "peakFactor": 1
+      },
+      {
+        "id": "triangle",
+        "force": "f=4u to u=.5; then4(1-u)",
+        "cumulative": "H=2u² to u=.5; then1-2(1-u)²",
+        "integratedCumulative": "G=2u³/3 to u=.5; then u-.5+2(1-u)³/3",
+        "peakFactor": 2
+      },
+      {
+        "id": "parabola",
+        "force": "f=6u(1-u)",
+        "cumulative": "H=3u²-2u³",
+        "integratedCumulative": "G=u³-u⁴/2",
+        "peakFactor": 1.5
+      },
+      {
+        "id": "front-loaded",
+        "force": "f=2(1-u)",
+        "cumulative": "H=2u-u²",
+        "integratedCumulative": "G=u²-u³/3",
+        "peakFactor": 2
+      }
+    ],
+    "kinematics": [
+      "P=P0+J H(u)",
+      "Vcm=V0+J H(u)/M",
+      "Rcm-Rcm0=V0 t+J T G(u)/M"
+    ],
+    "predictions": [
+      "three final CM velocity components",
+      "peak external-force magnitude"
+    ],
+    "accessibleOutput": [
+      "Signed force-time component plot with labeled axes and selectable displayed component",
+      "Equivalent table for force, accumulated impulse, CM velocity, and CM displacement",
+      "Peak and mean force comparison across profiles at the same impulse and duration",
+      "Keyboard inputs and presets; no motion animation required"
+    ],
+    "domainNotes": [
+      "For this nonnegative normalized-shape family, J=0 switches the entire pulse off. A general zero-integral force can still have nonzero opposing segments; the lesson and practice cover that case.",
+      "Equal impulses fix final momentum at fixed initial state but do not fix displacement, peak force, or the time history.",
+      "The system's internal kinetic energy is unspecified. Any CM kinetic quantity must be labeled translational CM energy, not total system energy.",
+      "At t=T report the pulse's left-limit force if showing the final shape sample, and separately state that the force is zero after the interval."
+    ],
+    "evidence": "Keep J fixed and vary T, then compare all four profiles at one duration. Record final CM velocity, peak force, and displacement; explain which results are fixed by impulse and which depend on timing. Include the zero-J model limitation and a worked three-particle CM check in notes."
+  },
+  "verification": {
+    "seedsPerVariant": 50,
+    "independentChecks": [
+      "Geometric signed force-time areas and exact polynomial quadrature",
+      "Numerical force and velocity integration for all pulse profiles, including piecewise joins and endpoints",
+      "Momentum sums before and after inertial-frame changes",
+      "Translation, uniform mass scaling, and convex-hull bounds for CM",
+      "Independent positive-region decomposition of plate cutouts",
+      "Continuous mass and first-moment quadrature with λ≥0",
+      "Internal impulse cancellation and kinetic-energy decomposition",
+      "Independent gravity correction for contact versus net impulse",
+      "Equivalent exact expressions, radicals, invalid values, units, and complete component responses"
+    ],
+    "edges": [
+      "zero and reversing components",
+      "nonzero pulses with zero net impulse",
+      "zero vector in the normalized pulse model",
+      "duration extremes",
+      "pulse joins and one-sided endpoint force values",
+      "α=-1 density with one zero endpoint",
+      "zero/missing/negative mass rejection",
+      "physically valid cutout boundaries and positive remaining mass",
+      "equal and unequal masses",
+      "relative velocities and nonzero CM-frame kinetic energy"
+    ],
+    "browser": "Desktop/mobile visual and accessibility review; keyboard component/profile controls; signed impulse and gravity correction feedback; deterministic checkpoint calculations; reload, notes, and real backup export/reset/restore.",
+    "assessment": "Sixteen practice variants and four lesson checkpoint slots, plus planned module/cumulative coverage. These remain proposed defaults until authored and verified.",
+    "review": "Independent subject review and pilot validation have not occurred."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Linear Momentum",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-1-linear-momentum",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider section accessed. Optional further reading; author original teaching, examples, and questions and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Impulse and Collisions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider section accessed. Optional further reading; author original teaching, examples, and questions and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Conservation of Linear Momentum",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-3-conservation-of-linear-momentum",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider section accessed. Optional further reading; author original teaching, examples, and questions and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Center of Mass",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider section accessed. Optional further reading; author original teaching, examples, and questions and verify their calculations independently."
+    }
+  ]
+}
