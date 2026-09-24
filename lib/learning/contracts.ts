@@ -14,6 +14,7 @@ import { phs231FrameActivitySchema } from "./phs-231-frames";
 import { phs231MotionActivitySchema } from "./phs-231-motion";
 import { phs231ForceActivitySchema } from "./phs-231-forces";
 import { phs231FrictionActivitySchema } from "./phs-231-friction";
+import { phs231CircularActivitySchema } from "./phs-231-circular";
 import { phs231DragActivitySchema } from "./phs-231-drag";
 import { calibrationCaseSchema } from "./calibration";
 import { polynomialCaseSchema } from "./polynomial-exploration";
@@ -105,6 +106,7 @@ export const lessonSchema = z.object({
     phs231ForceActivitySchema,
     phs231FrictionActivitySchema,
     phs231DragActivitySchema,
+    phs231CircularActivitySchema,
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
