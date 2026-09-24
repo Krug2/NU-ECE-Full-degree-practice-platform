@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m09-l01",
   "version": 1,
-  "status": "detailed plan; implementation and verification pending",
+  "status": "available and technically verified; full-course release gates remain open",
   "title": "Numerical integration and convergence evidence",
   "objective": "Implement bounded time steps, compare numerical methods with an analytic case, and distinguish discretization error from model and measurement error.",
   "officialScope": {
@@ -285,10 +285,25 @@
   ],
   "implementation": {
     "engine": "6310a5c",
-    "tests": 12,
+    "families": [
+      "def46f5",
+      "9b3433e"
+    ],
+    "sharedConnection": "6c6c3ee",
+    "teaching": "a481bd3",
+    "browser": "269a24e",
+    "visual": "1a054ea",
+    "engineTests": 12,
     "independentParameterPaths": 210,
     "extremeParameterMethodTrials": 15,
-    "status": "engine checked; families, UI, teaching, registration, and browser verification pending",
-    "note": "Independent matrix exponentials, discrete matrix powers, analytic under/critical/overdamped fixtures, endpoint clipping, sampled error metrics, exact-rest and instability edges, and exported CSV checks passed. An extreme-case JSON roundtrip exposed signed zero in initial acceleration; zero normalization corrected it. Nonrepresentable relative errors remain explicit and all stored numerical rows remain finite. Lint and type checking passed. The engine is not registered as an available lesson."
+    "familyTests": 22,
+    "independentSeedCases": 1000,
+    "workedExamples": 17,
+    "guidedExamples": 1,
+    "practiceVariants": 20,
+    "checkpointItems": 4,
+    "status": "Lesson available and technically checked; no independent subject review or pilot validation claimed.",
+    "checks": "47 focused content/progress tests passed. Full unit run: 1909 passed, four optional CPython checks skipped and subsequently passed in an eight-test focused execution run. Lint, types and the 151-page production build passed. All 12 browser workflows passed, and four desktop/mobile workflows passed again after the zero-centered signed-axis refinement.",
+    "tables": "Every computed sample is available through 100-row table pages and complete full-precision CSV. Eight initial screenshots plus corrected signed mobile plots were inspected."
   }
 }
