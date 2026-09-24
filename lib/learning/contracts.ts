@@ -9,6 +9,7 @@ import { transformedFunctionSchema } from "./transformations";
 import { machineSchema } from "./function-machines";
 import { phs231MeasurementActivitySchema } from "./phs-231-measurement";
 import { phs231VectorActivitySchema } from "./phs-231-vectors";
+import { phs231ProjectileActivitySchema } from "./phs-231-projectiles";
 import { phs231FrameActivitySchema } from "./phs-231-frames";
 import { phs231MotionActivitySchema } from "./phs-231-motion";
 import { calibrationCaseSchema } from "./calibration";
@@ -95,6 +96,7 @@ export const lessonSchema = z.object({
     phs231VectorActivitySchema,
     phs231MotionActivitySchema,
     phs231FrameActivitySchema,
+    phs231ProjectileActivitySchema,
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
