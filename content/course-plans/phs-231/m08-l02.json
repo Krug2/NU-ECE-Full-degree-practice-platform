@@ -1,0 +1,309 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m08-l02",
+  "version": 1,
+  "status": "detailed plan; implementation and verification pending",
+  "title": "Stress, strain, and elastic response",
+  "objective": "Relate tensile, shear, and bulk stress to deformation within a stated linear elastic regime and propagate measurement limits.",
+  "officialScope": {
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "checkedAt": "2026-09-24",
+    "requirement": "NU's PHS 231 description explicitly includes statics, elasticity, and fracture. This lesson supplies elasticity; m08-l03 supplies plasticity, fracture, and evidence limits.",
+    "distinction": "Lesson ordering, examples, synthetic material properties, supported apparatus models, 18 practice variants, four-question checkpoint, and rubric are proposed teaching choices. No official equipment requirement, independent subject review, or pilot validation has been established."
+  },
+  "prerequisites": [
+    {
+      "lessonId": "m08-l01",
+      "purpose": "Internal-force cuts, support forces, static candidates, and compatibility for redundant supports."
+    },
+    {
+      "lessonId": "m01-l01",
+      "purpose": "Squared and cubed unit conversion, finite allowed bounds, and measurement resolution."
+    },
+    {
+      "lessonId": "m05-l01",
+      "purpose": "Quasistatic work as an integral and the factor one half for linear force growth."
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "Recoverable energy versus dissipated energy and model validity."
+    },
+    {
+      "courseId": "csc-208",
+      "status": "under construction",
+      "purpose": "Integrals of varying axial force and derivatives of energy; develop the needed calculus locally."
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Internal load versus whole-body resultant",
+      "teaching": "Two opposite end forces can give zero external resultant while leaving nonzero internal axial force. Isolate one side of a cut; do not sum the magnitudes of the two end forces. Nominal normal stress uses original cross-sectional area; tensile sign positive, compression negative. Uniform stress is an approximation away from load introductions and flaws.",
+      "critical": [
+        "Zero resultant does not imply zero deformation.",
+        "A pair of end forces of magnitude F gives nominal stress F/A, not 2F/A."
+      ]
+    },
+    {
+      "topic": "Units and geometric normalization",
+      "teaching": "Pa=N/m²; MPa=N/mm²; GPa=1000MPa. Square the length conversion for area and cube it for volume. Engineering strain=(L-L0)/L0, not L/L0. State percentage and microstrain conventions. Circular area πd²/4, not πd². Original versus deformed area distinguished, with engineering quantities used throughout.",
+      "critical": [
+        "1mm²=10^-6m².",
+        "Strain is dimensionless and is not a displacement."
+      ]
+    },
+    {
+      "topic": "Axial linear elasticity and geometry",
+      "teaching": "Derive sigma=E epsilon, delta=F L0/(E A0), k=E A0/L0, compliance=1/k. Material modulus differs from specimen stiffness. Signed compression allowed only in a supplied short, laterally supported ideal model; no buckling criterion inferred. Compare fixed-force and fixed-displacement experiments.",
+      "critical": [
+        "A modulus is not a spring constant.",
+        "A larger area changes stiffness but not the material's E.",
+        "Boundary conditions determine the effect of changing geometry."
+      ]
+    },
+    {
+      "topic": "Shear and bulk response",
+      "teaching": "Engineering shear gamma=delta_x/h≈angle for small angles in radians; tau=G gamma; tau is tangential force per loaded face area. A homogeneous static shear element needs complementary face tractions to balance moments. Hydrostatic pressure increment Δp positive in compression gives volumetric strain ΔV/V0=-Δp/K, compressibility1/K. Shear uses shape change, bulk uses volume change; fluids have no static shear modulus within the simple fluid model.",
+      "critical": [
+        "Use the area of the sheared face and transverse height.",
+        "Do not drop the minus sign in bulk strain.",
+        "Do not multiply equal pressure forces on different faces into a net compressive force."
+      ]
+    },
+    {
+      "topic": "Reversible energy",
+      "teaching": "Integrate gradually increasing force from the stress-free reference. U=F delta/2=F²L/(2EA)=EA delta²/(2L), with energy density u=sigma²/(2E). Corresponding shear u=tau²/(2G) and bulk incremental u=(Δp)²/(2K). Explain zero closed-cycle work only inside a validated reversible linear range; full loading/unloading beyond that range is not determined by E.",
+      "critical": [
+        "Final force times full displacement misses the one-half factor.",
+        "Energy remains nonnegative for signed compression.",
+        "Elastic and linear are distinct properties."
+      ]
+    },
+    {
+      "topic": "Compatibility and nonuniform loading",
+      "teaching": "Series members share axial force and add extensions; parallel members between translation-only rigid plates share end displacement and add forces. Derive equivalent stiffness and check each member's range separately. Integrate N(x)/(E(x)A(x)) for a supplied variable axial-force model; include a hanging bar's own weight without assuming uniform stress.",
+      "critical": [
+        "Parallel load sharing is proportional to stiffness only under the stated compatibility and preload assumptions.",
+        "An average stress does not locate the peak stress.",
+        "Buckling and bending are outside the simple axial model."
+      ]
+    },
+    {
+      "topic": "Lateral strain and isotropic consistency",
+      "teaching": "Introduce Poisson ratio ν=-epsilon_transverse/epsilon_axial in uniaxial loading. With homogeneous isotropic small-strain elasticity only, give E=2G(1+ν)=3K(1-2ν); positive finite E,G,K imply -1<ν<1/2. Derive small volume strain as the sum of three normal strains. Label this a bridge to later materials/circuit-mounting work; no tensor algebra prerequisite.",
+      "critical": [
+        "The isotropic relations are not universal for wood, crystals, or composites.",
+        "ν=1/2 is an incompressible limiting model, not a finite-K substitution."
+      ]
+    },
+    {
+      "topic": "Measurement, inference, and uncertainty",
+      "teaching": "Estimate stiffness from differences in load and measured extension to cancel a constant zero offset. Distinguish specimen strain from fixture or grip compliance. Infer E only with known gauge length and original area. Propagate bounded F,L,A,E by monotone endpoint combinations, and diameter bounds through d². Compare displacement signal with instrument resolution without inventing probability distributions.",
+      "critical": [
+        "A fit of apparatus extension can underestimate specimen E if fixture compliance is ignored.",
+        "Synthetic data are not physical measurements.",
+        "Allowed intervals and approximate relative sensitivities are different claims."
+      ]
+    },
+    {
+      "topic": "Validity and next lesson",
+      "teaching": "Use supplied stress and strain limits for hypothetical materials; limit equality is included and labeled limiting. A failed range check means the linear model cannot establish deformation, not necessarily that fracture occurs. In a loading-unloading investigation, once loading exceeds the declared range, later unloading values remain unestablished even when the load becomes small. Next lesson supplies additional plasticity and failure evidence.",
+      "critical": [
+        "Do not extrapolate Hooke's law beyond its stated range.",
+        "Do not assume zero residual extension after an unsupported excursion.",
+        "No home tensioning, breaking, pressurizing, or suspended-load experiment is assigned."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "axial",
+      "input": "F200N,L2m,A4mm²,E100GPa; synthetic linear stress limit100MPa,strain limit.002",
+      "expected": "sigma50MPa,epsilon1/2000=500microstrain,delta1mm,k200000N/m,U.1J,u12500J/m³; two end forces are not doubled."
+    },
+    {
+      "id": "signed-compression",
+      "input": "Short laterally supported synthetic axial specimen F-120N,L.5m,A3mm²,E80GPa,within supplied limits",
+      "expected": "sigma-40MPa,epsilon-.0005,delta-.25mm,k480000N/m,U.015J. No buckling conclusion follows."
+    },
+    {
+      "id": "diameter",
+      "input": "Round specimen d2mm,F80piN,L1m,E100GPa,within declared limits",
+      "expected": "A=pi mm²,sigma80MPa,epsilon.0008,delta.8mm,k100000pi N/m,U4pi/125J; doubling diameter gives4timesarea andstiffness,one-quarterstressandextensionatfixedforce."
+    },
+    {
+      "id": "control",
+      "input": "Baseline axial specimen, doublearea while preserving E,L; compare fixedF200N versusfixeddelta1mm",
+      "expected": "AtfixedF:stress25MPa,delta.5mm,U.05J. Atfixeddelta:stress50MPa,F400N,U.2J. Eunchanged."
+    },
+    {
+      "id": "shear",
+      "input": "Ideal homogeneous shear element F120N,A60mm²,h.02m,G.8GPa,balanced complementary boundary tractions",
+      "expected": "tau2MPa,gamma.0025,shift50micrometers,U.003J,u2500J/m³. Applied face area differs from the side area; no Young-modulus substitution."
+    },
+    {
+      "id": "bulk",
+      "input": "Pressureincrement4MPa,K2GPa,V0=500cm³; stated small-strain range includes this case",
+      "expected": "volumestrain-.002,deltaV-1cm³,finalV499cm³,compressibility5e-10Pa^-1,incrementalU2J. Pressureincreasecausesvolumedecrease."
+    },
+    {
+      "id": "series",
+      "input": "SameF100N through two axial segments: L1=1m,A1=2mm²,E1=100GPa;L2=.5m,A2=1mm²,E2=50GPa",
+      "expected": "delta1=.5mm,delta2=1mm,total1.5mm,keq200000/3N/m,U.075J;stresses50and100MPa,strains.0005and.002;checkeachprovidedlimit."
+    },
+    {
+      "id": "parallel",
+      "input": "Equal-length1m bars between translation-only rigidplates, no preload; E1=100GPa,A1=2mm²;E2=50GPa,A2=6mm²;totalF250N",
+      "expected": "k1=200000,k2=300000N/m;commonextension.5mm;F1=100,F2=150N;stress50,25MPa;U.0625J."
+    },
+    {
+      "id": "selfweight",
+      "input": "Hanginguniformrod L2m,A10mm²,E100GPa,rho5000kg/m³,g10m/s²,endload100N; x measured upward fromlowerend",
+      "expected": "N(x)=100+.5xN,max101N;maxstress10.1MPa;delta=PL/(EA)+rho*g*L²/(2E)=.201mm;U=integralN²/(2EA)dx=30301/3000000J."
+    },
+    {
+      "id": "poisson",
+      "input": "HomogeneousisotropicE120GPa,nu1/4,uniaxialstress60MPa",
+      "expected": "G48GPa,K80GPa,axialstrain.0005,eachlateralstrain-.000125,first-ordervolumestrain.00025. These are small-strain predictions, not exact finite-volume geometry."
+    },
+    {
+      "id": "instrument",
+      "input": "Synthetic F=[0,100,200]N,apparatusextension=[.3,.9,1.5]mm,gaugelength2m,area4mm²;knownfixturecompliance.001mm/N",
+      "expected": "Differencescancel.3mmoffset;totalcompliance.006mm/N,specimen.005mm/N,correctedE100GPa. IgnoringfixturegivesE250/3GPa. A .1mm instrument resolution is 10% of the 1mm specimen extension; it is not automatically a standard uncertainty."
+    },
+    {
+      "id": "bounds",
+      "input": "IndependentF[198,202]N,L[1.99,2.01]m,A[3.9,4.1]mm²,E[98,102]GPa",
+      "expected": "Extension in[6567/6970,6767/6370]mm bymonotoniccorners; maxnominalstress2020/39MPa. A ±1% diameter interval yields exact extension factors1/(1.01)^2 and1/(.99)^2 atfixedotherinputs, approximately±2%onlytofirstorder."
+    },
+    {
+      "id": "range-history",
+      "input": "BaselineaxialgeometryE100GPa,L2m,A4mm²,stresslimit100MPa,strainlimit.002; rampF0→500→0N",
+      "expected": "LimitingadmittedF400N,delta2mm,U.4J,firstboundatloadingfraction.8. Peak500Nexceedsgivenlinearstressrange; deformationandunloadingremainunestablishedafterthatpoint. A peak400Nstaysadmitted,unloadsreversiblytozeroextensionandzeroenergy."
+    }
+  ],
+  "families": [
+    {
+      "id": "phs231-elastic-deformation",
+      "variants": [
+        "axial",
+        "units",
+        "diameter",
+        "scaling",
+        "shear",
+        "bulk",
+        "energy",
+        "series",
+        "parallel",
+        "selfweight"
+      ],
+      "coverage": "Signed constitutive calculations, SI normalization, round-area geometry, controlled scaling, load sharing, and integrated nonuniform stress.",
+      "criticalVariants": [
+        "units",
+        "bulk",
+        "series",
+        "parallel"
+      ]
+    },
+    {
+      "id": "phs231-elastic-model",
+      "variants": [
+        "validity",
+        "inverse",
+        "poisson",
+        "calibration",
+        "uncertainty",
+        "resolution",
+        "cycle",
+        "control"
+      ],
+      "coverage": "Linear-domain checks, identification limits, isotropic assumptions, offset and fixture corrections, bounded measurements, instrument evidence, unloading history, and boundary-condition interpretation.",
+      "criticalVariants": [
+        "validity",
+        "poisson",
+        "calibration",
+        "uncertainty",
+        "resolution",
+        "cycle",
+        "control"
+      ]
+    }
+  ],
+  "assessmentDefaults": {
+    "practice": "All18variants with3hints,independentanswers,completeworkedsolutions,units,andmisconceptionfeedback.",
+    "checkpointVariants": [
+      "axial",
+      "shear",
+      "bulk",
+      "validity"
+    ],
+    "checkpointPolicy": "Axial and shear procedural slots noncritical; bulk sign and validity critical. Existing75%thresholdpluscriticalrequirements is a proposed platformdefault, notNU policy."
+  },
+  "guided": {
+    "fixture": "AxialspecimenF300N,L1m,A2mm²,E100GPa,providedlinearstresslimit100MPa andstrainlimit.002",
+    "expected": "Demandstress150MPa,forcelimit200N,limitextension1mm; assumedlinearpeakstrain.0015 is belowthe strain ceilingbutstressrangefails. Actual300Ndeformation isnotestablished. Zero whole-bodyresultantandapositivearea do not rescue the constitutivemodel.",
+    "feedback": [
+      "Use2F/A",
+      "Convertmm²as10^-3m²",
+      "Ignorethestresslimitbecausecalculatedstrainissmall",
+      "Treatmodulusasstrength",
+      "ReportHookeextrapolationasactualextension"
+    ]
+  },
+  "investigation": {
+    "kind": "phs231-elasticity",
+    "models": "Separate axial, shear, and bulk modes. All are uniform hypothetical small-strain constitutive models about a stated reference, with stress and strain limits. Axial and shear use signed face force, original face area, and length or layer height. Bulk uses a nonnegative pressure increment and reference volume. No post-range material law, apparatus safety rating, buckling, bending, thermal change, viscoelasticity, or plastic unloading is modeled.",
+    "inputDesign": "Discriminated model records: axial/shear mode,lengthM .01..5,areaMm2 .1..1000,modulusGPa .001..300,loadN -5000..5000,stressLimitMPa .01..1000,strainLimit .00001...05. Bulk mode,volumeCm3 .1..5000,modulusGPa .001..300,pressureMPa0..1000,pressureLimitMPa .01..1000,strainLimit .00001...05. Explicit units and finite-positive geometry/moduli; zero load admitted.",
+    "baseline": "Axial L2m,A4mm²,E100GPa,F200N,stresslimit100MPa,strainlimit.002. Shear presetF120N,A60mm²,h.02m,G.8GPa. Bulk presetΔp4MPa,V500cm³,K2GPa.",
+    "loading": "Quasistatic load path0→signed requested peak→0, parameterized by loading stage0..2 rather than physical time. Exact bound sample inserted. At peakoutside supplied range, mark states strictly after first bound as unestablished, including unloading and finalzero load; no invented zero permanent set. At an admitted peak, reversible unloading retraces the constitutive curve and energy returns to zero.",
+    "equations": "Axial sigmaMPa=F/Amm²,epsilon=sigmaMPa/(1000E_GPa),deltaM=epsilon*L,U=.5*F*deltaM. Shear tauMPa=F/Amm²,gamma=tauMPa/(1000G_GPa),shiftM=gamma*h,U=.5*F*shiftM. Bulk epsilonV=-pressureMPa/(1000K_GPa),deltaVcm3=epsilonV*Vcm3,U=pressureMPa²*Vcm3/(2000K_GPa). Stressbound=min(suppliedstresslimit,1000modulusGPa*strainlimit); compare absolute demand foraxial/shear. Constitutiveoutputsnullwhenunestablished; appliedstressandhistoryflagremainknown.",
+    "predictions": "Peak signed stress (bulk pressure increase labeled separately), range decision, and peak strain/deformation only for admitted peaks. If outside, require an explicit not-established decision rather than accepting an extrapolated numerical displacement as actual behavior.",
+    "outputs": "Constitutive response and energy only for admitted history, applied-load and stress records, exact limiting state, modulus-versus-stiffness distinction, complete equivalent table, force/displacement or pressure/volume chart, schematic deformation explicitly magnified with actual numbers, and keyboard stage controls. Show rejected portions as unknown, never as a continued line. Comparison presets changeonevariable orboundarycondition andrequestfreshpredictions.",
+    "evidence": "State units, sourceofsyntheticparameters, loadcontrol, modelrange, peakprediction, exactboundary, reversibleorunestablishedunloading, and one geometrycomparison. Save notes; controlsresetonreload. Eight-pointselfrubric:unitsandmodel,independentcalculation,range/historydecision,reproduciblecomparisonandlimitations;0missing1partial2justified.",
+    "safety": "Simulation only. No wire tensioning, overhead weights, breaking specimens, pressurizing containers, or physical shear fixture is assigned. Official equipment requirements have not been established by the public PHS231 lecture description."
+  },
+  "verification": {
+    "seedMinimumPerVariant": 50,
+    "independentChecks": [
+      "Faceforcecutversusnetexternalforce;unitinvariantsPa=N/m²andMPa=N/mm².",
+      "Integrate linear force versus displacement and stress versus strain by independent quadrature.",
+      "Solve series and parallel constraints as independent small linear systems and check each member's stress.",
+      "Integrate spatial axial force for the self-weight case instead of substituting the closed form.",
+      "Check bulk deformation sign and pressure work through signed volume integration.",
+      "Verify Poisson/isotropic results using three normal-stress equations rather than identical E,G,K formula substitution.",
+      "Enumerate measurement-bound corners and diameter endpoints; test zero offset and fixture compliance separately.",
+      "Test exact linear bounds and adjacent points, zero and negative loads, zero strain invalidinference, finitepositivegeometry, equal stiffness, invalidandcomplexanswers, and JSONsnapshotroundtrip.",
+      "Browsercheck allthree modes, rangehistoryafteroverload, keyboard tables/slider, mobile/desktopaccessible diagrams, independentcheckpointanswers, reload, export/reset/restore notesandquestions."
+    ],
+    "review": "Independent subject review and pilot validation have not been performed."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Stress, Strain, and Elastic Modulus",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-3-stress-strain-and-elastic-modulus",
+      "checkedAt": "2026-09-24",
+      "use": "Coverage check and free companion for axial, shear, and bulk definitions. Use original numerical examples and explicit signed convention rather than copying source examples."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Elasticity and Plasticity",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity",
+      "checkedAt": "2026-09-24",
+      "use": "Distinguish proportional/elastic range and unsupported extrapolation; full plasticity and fracture reasoning belongs in m08-l03."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "Engineering Mechanics I: Isotropic Elasticity, Lecture 22",
+      "url": "https://ocw.mit.edu/courses/1-050-engineering-mechanics-i-fall-2007/resources/lec22/",
+      "checkedAt": "2026-09-24",
+      "use": "PDF opened and checked for energy-based separation of volumetric and shear response and the assumptions behind isotropic constitutive equations. Optional extension; full tensor mathematics is not required."
+    },
+    {
+      "provider": "NIST",
+      "title": "SI Guide: Rules for Units and Prefixes",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-6-rules-and-style-conventions-printing-and-using",
+      "checkedAt": "2026-09-24",
+      "use": "Verify that a prefix is inseparable from its unit and is raised to the power in area or volume conversions; printed unit conventions."
+    }
+  ]
+}
