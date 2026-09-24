@@ -1,0 +1,739 @@
+{
+  "id": "m09-l01",
+  "courseId": "phs-231",
+  "moduleId": "m09",
+  "version": 1,
+  "title": "Numerical integration and convergence evidence",
+  "objective": "Implement bounded time steps, compare numerical methods with an analytic case, and distinguish discretization error from model and measurement error.",
+  "why": "A calculation can look smooth, precise, and physically plausible while using the wrong update order, comparing different times, or hiding missing measurements. Learn to build an auditable numerical prediction and state exactly which assumptions and evidence support it.",
+  "estimatedMinutes": 300,
+  "prerequisites": [
+    {
+      "lessonId": "m02-l01",
+      "label": "Signed motion graphs and initial conditions",
+      "note": "Refresh displacement versus distance and velocity change versus final velocity."
+    },
+    {
+      "lessonId": "m03-l03",
+      "label": "Velocity-dependent force and analytic decay",
+      "note": "Review net force, linear drag, and the exact exponential model."
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Mechanical-energy accounts",
+      "note": "Set the system boundary and distinguish mechanical loss from a measured thermal partition."
+    },
+    {
+      "lessonId": "m01-l01",
+      "label": "Units and measurement bounds",
+      "note": "Review finite resolution, deterministic bounds, and unsupported statistical claims."
+    },
+    {
+      "lessonId": "m05-l01",
+      "label": "Work as an integral",
+      "note": "Review signed force-position area and the net-work requirement."
+    },
+    {
+      "courseId": "f08",
+      "lessonId": "m01-l04",
+      "label": "Calculus refresher: signed accumulation",
+      "note": "Optional targeted repair for integrals, cancellation, distance, and average velocity."
+    },
+    {
+      "courseId": "f08",
+      "lessonId": "m01-l05",
+      "label": "Calculus refresher: initial values",
+      "note": "Optional targeted repair for constants of integration and supplied initial conditions."
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus I preparation",
+      "note": "This academic prerequisite course is under construction. The available refreshers and calculations below support study without replacing the academic prerequisite."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Two different integration problems",
+      "paragraphs": [
+        "A table of rates asks how much accumulated between observations. An initial-value problem instead supplies a rate law and a starting state, and asks you to predict later states. These are related, but their evidence differs. Adding points interpolated from a measured table creates no new observations. Taking smaller steps in an equation creates a more resolved calculation of that equation, not a new experiment.",
+        "For strictly increasing times $t_0<t_1<\\cdots<t_N$, define actual widths $h_i=t_{i+1}-t_i>0$. There are N intervals and N+1 endpoint samples. The left sum is $\\sum h_i v_i$, the right sum is $\\sum h_i v_{i+1}$, and the trapezoid sum is their mean, $\\sum h_i(v_i+v_{i+1})/2$. Each product has units of velocity times time, hence displacement. Unequal widths must stay attached to their own intervals.",
+        "The trapezoid is exact for a velocity explicitly defined to be linear between each pair of samples. For a measured velocity with unknown behavior between times, it is an approximation under an interpolation assumption. A midpoint sum uses velocity at each interval's time midpoint. Averaging endpoint velocities is not an independently measured midpoint value; it equals the midpoint only under the linear assumption.",
+        "State whether the observations are measured, simulated, or exact values of a supplied function. Check units before combining columns. A repeated timestamp is not a positive-width interval; conflicting values at one time need an explanation. Out-of-order records may represent acquisition order, separate trials, or a data error. Do not silently sort or merge them and then claim an unchanged experiment."
+      ]
+    },
+    {
+      "heading": "Signed area, initial values, and reversals",
+      "paragraphs": [
+        "Velocity area gives displacement, $x(t_N)-x(t_0)=\\int v\\,dt$. Add the initial position once to obtain final position. Acceleration area gives velocity change, $v(t_N)-v(t_0)=\\int a\\,dt$, so final velocity needs its initial value. A force component integrated along its corresponding displacement gives that force's work, $W=\\int F_x\\,dx$. Only the sum of all relevant force work is the net work in the work–energy theorem.",
+        "Distance is $\\int |v|\\,dt$, not generally $|\\int v\\,dt|$. For a linear interval with opposite-sign velocities a and b, solve $a+(b-a)\\tau/h=0$ to locate $\\tau=-ah/(b-a)$ inside the interval. Split there and add two positive triangular areas. Joining the endpoint speeds by one straight line skips the V-shaped corner and overestimates the distance.",
+        "Average velocity is displacement divided by elapsed time. An unweighted mean of all sample velocities generally counts the endpoints incorrectly and ignores unequal time intervals. Average acceleration and mean force over a position interval have the analogous integral divided by the appropriate time or distance interval. Their denominators must be positive for these definitions.",
+        "Matching endpoint velocities do not establish a constant velocity. For example, adding $A t(T-t)$ to a constant velocity leaves its values at t=0 and t=T unchanged but changes displacement by $AT^3/6$. Here A has units m/s³. Without an interior model, new observations, or a justified derivative bound, a computed endpoint trapezoid is known but the actual displacement and distance remain undetermined."
+      ]
+    },
+    {
+      "heading": "Quadrature error has assumptions",
+      "paragraphs": [
+        "For an exact twice-differentiable rate f on an interval of length T, with uniform width h=T/N and $|f''|\\leq M$, the composite trapezoid error magnitude satisfies $|I_T-I|\\leq MT h^2/12$. The units of M, T, and h combine into the integral's units. This is a bound supplied by smoothness and a derivative bound; it cannot be inferred from a smooth-looking plot of a few noisy samples.",
+        "A local quadratic $f(t)=A+Bt+Ct^2$ illustrates both magnitude and sign. The exact uniform trapezoid error is $I_T-I=CT^3/(6N^2)$. Positive curvature makes the secant lie above the function. Halving h quarters this error; negative curvature reverses its sign. A trapezoid can still be exact for a different piecewise-linear model through the same sample values. Always identify which underlying function is being integrated.",
+        "For two equal intervals of width h, the standard Simpson 1/3 rule is $I_S=h(f_0+4f_1+f_2)/3$. It integrates any polynomial through degree three exactly in exact arithmetic. Its composite form needs an even number of equal intervals. The usual smooth fourth-derivative bound is $|I_S-I|\\leq M_4 T h^4/180$ when $|f^{(4)}|\\leq M_4$. Do not use the standard 1:4:1 weights on an unequal grid; a separately derived unequal-node rule is a different formula.",
+        "Higher polynomial order is not automatically a better interpretation of a measurement. Extra curvature can follow noise, and neither trapezoid nor Simpson removes sensor bias. Use an analytically integrable synthetic case to check an implementation, then separately examine measurement resolution, sampling adequacy, and the physical assumptions. A good numerical check is one part of validation."
+      ]
+    },
+    {
+      "heading": "Rounding, timestamps, and the limits of more points",
+      "paragraphs": [
+        "Suppose exact timestamps are given, each displayed endpoint velocity has a bounded error $|e_i|\\leq u_i$, and linear interpolation of true endpoint values is explicitly assumed. Write the trapezoid displacement as $\\sum w_i v_i$. Endpoint weights are half an adjacent interval; an interior sample's weight is half the sum of its two adjacent intervals. The allowed displacement-error magnitude is at most $\\sum |w_i|u_i$. With positive time widths and common u, this reduces to u times total duration.",
+        "For rounding to a step q, the usual half-step model gives u=q/2, including tie endpoints only if that is the stated convention. A worst-case bound permits all errors to reinforce. It is not a standard deviation or a confidence interval. Adding error bounds in quadrature needs a justified probabilistic model and dependence assumptions; sample count alone supplies neither.",
+        "Timing errors change both widths and, in an interpolated model, the meaning of the sample locations. A common offset of every timestamp leaves widths unchanged, while a clock scale error changes all of them together. The same timestamp may appear in two neighboring widths, so their errors need not be independent. Treat timing calibration, correlation, and provenance explicitly instead of silently using the velocity-only bound.",
+        "Drawing extra points on the same interpolated line does not reduce the original endpoint uncertainty or reveal hidden reversals. More decimal places do not improve the original resolution. Smaller numerical steps may reduce discretization error while leaving measurement-input uncertainty and model discrepancy unchanged. Report these as separate contributions whenever their evidence differs."
+      ]
+    },
+    {
+      "heading": "An initial-value problem specifies a state and a law",
+      "paragraphs": [
+        "For translational mechanics, use $x'=v$ and $v'=a(t,x,v)=F_{net}(t,x,v)/m$ with a stated positive constant mass. Initial position and velocity are both required. A second-order position equation has become two coupled first-order equations; storing only x would omit part of the state. Force inventories, signs, units, and validity domains remain necessary when a computer performs the arithmetic.",
+        "The investigation uses $a=-(kx+bv)/m$, with k>0 and b≥0, and signed displacement from equilibrium. It assumes a linear spring, ideal viscous drag, fixed mass and support, and no contact changes, friction threshold, or material failure. These are teaching assumptions. Oscillation serves as a mechanics verification case here; the broader subject is developed in the following physics course.",
+        "A reproducible step record includes the model, parameter units, method, initial state, requested duration, nominal step, each actual width, and any stopping rule. Use $h_n=\\min(h,T-t_n)$ on a final partial interval and evaluate the update with that actual width. Do not compute past T and relabel the result, or discard the leftover interval and call the preceding state the endpoint.",
+        "The investigation limits base runs to 2000 requested steps and their refinements to 8000. If a computed position would exceed one million meters or velocity one hundred million meters per second, it stops before accepting that state. These are computation bounds, not physical barriers or predictions of material failure. An incomplete path has no error value at the requested final time. Its last accepted state is still a documented numerical state at an earlier time."
+      ]
+    },
+    {
+      "heading": "Update order defines the numerical method",
+      "paragraphs": [
+        "Simultaneous explicit Euler is $x_{n+1}=x_n+h_n v_n$ and $v_{n+1}=v_n+h_n a(t_n,x_n,v_n)$. Compute both right-hand sides from the old state before overwriting anything. If an acceleration is evaluated from an already updated position, you have changed the method even if the variable names look similar.",
+        "The velocity-first semi-implicit Euler method used here first computes $v_{n+1}=v_n+h_n a(t_n,x_n,v_n)$, then $x_{n+1}=x_n+h_n v_{n+1}$. It is also called Euler–Cromer for this mechanics update. Its position increment uses the new velocity. In this particular implementation, velocity-dependent drag still uses the old velocity; there is no implicit equation solving drag at the new velocity. State the convention instead of relying on the word implicit alone.",
+        "Explicit midpoint makes a provisional half-step state: $x_m=x_n+h_n v_n/2$ and $v_m=v_n+h_n a_n/2$. Evaluate $a_m=a(t_n+h_n/2,x_m,v_m)$, then take the full step $x_{n+1}=x_n+h_n v_m$ and $v_{n+1}=v_n+h_n a_m$. Both midpoint components come from the old state before the second acceleration evaluation. This is an explicit two-stage method, not the implicit midpoint method.",
+        "For a smooth well-posed problem over a fixed finite time, explicit Euler and this velocity-first method generally have first-order global error; explicit midpoint has second-order global error under suitable smoothness. Euler's one-step local state error is order h² and accumulates into order h global error. Midpoint has order h³ local error and order h² global error. A one-step accuracy statement and a fixed-final-time accuracy statement therefore use different powers. Stability, nonsmooth events, and floating-point error can invalidate a naive order inference."
+      ]
+    },
+    {
+      "heading": "Analytic comparisons and controlled refinement",
+      "paragraphs": [
+        "A reference solution must solve the same equation, initial conditions, units, and endpoint time. For the undamped spring, $\\omega=\\sqrt{k/m}$ and $x(t)=x_0\\cos(\\omega t)+(v_0/\\omega)\\sin(\\omega t)$, while $v(t)=-\\omega x_0\\sin(\\omega t)+v_0\\cos(\\omega t)$. Differentiate to check the force law, then substitute t=0 to check both initial values. This verifies a numerical method against a model, not a real apparatus.",
+        "For viscous damping let $\\alpha=b/(2m)$. If $\\alpha<\\omega$, set $\\beta=\\sqrt{\\omega^2-\\alpha^2}$ and use $x=e^{-\\alpha t}[x_0\\cos(\\beta t)+(v_0+\\alpha x_0)\\sin(\\beta t)/\\beta]$. At $\\alpha=\\omega$, the continuous limiting expression is $x=e^{-\\alpha t}[x_0+(v_0+\\alpha x_0)t]$. Above that boundary the two real exponents are $r_{\\pm}=-\\alpha\\pm\\sqrt{\\alpha^2-\\omega^2}$; coefficients in $x=C_+e^{r_+t}+C_-e^{r_-t}$ follow from x0 and v0. A negative discriminant or repeated root requires its own expression, not an invalid real square root or division by zero.",
+        "Compare h, h/2, and h/4 while keeping the physical problem fixed. For a supplied exact relation $Q(h)=Q_*+Ch^p$ with C nonzero, successive differences have ratio $[Q(h)-Q(h/2)]/[Q(h/2)-Q(h/4)]=2^p$. Thus $p=\\log_2(\\text{ratio})$, and the finest value can be extrapolated by subtracting the last difference divided by $2^p-1$. In a general computation this is evidence for a leading-error regime, not an exact theorem based solely on three outputs.",
+        "A difference ratio is unavailable if its denominator is zero, and changing signs or dominant terms can make the simple order estimate misleading. A final position can accidentally agree even while velocity or phase is wrong. Inspect both state components, errors over the sampled path, and relevant invariants. Do not compare different endpoints, accept an incomplete run as complete, or change the physical parameters while calling the result a refinement test."
+      ]
+    },
+    {
+      "heading": "Stability differs from accuracy and positivity",
+      "paragraphs": [
+        "For the scalar test model $y'=-\\lambda y$ with λ>0, explicit Euler gives $y_{n+1}=(1-\\lambda h)y_n$. Its exact solution decays positively from positive initial data. Numerical magnitudes decay only for $|1-\\lambda h|<1$, equivalent to $0<\\lambda h<2$. Positivity is stricter: nonnegative updates require λh≤1. A method can have decaying magnitudes while producing unphysical alternating signs for a positive quantity.",
+        "At λh=1, the numerical solution reaches zero after one step even though the exact positive solution does not vanish at finite time. At λh=2, the multiplier is −1: the amplitude does not decay. Above two, the computed magnitude grows although the differential equation is dissipative. These are algorithm properties for this scalar model; they are not evidence for an energy source or a universal step bound for every system.",
+        "For undamped spring motion, simultaneous explicit Euler multiplies $v^2+\\omega^2x^2$ by $1+(\\omega h)^2$ each equal step. Explicit midpoint multiplies it by $1+(\\omega h)^4/4$. Both inject numerical energy at every positive fixed step for a nonzero state. Midpoint's higher order reduces finite-time error as h shrinks, but it is still not exactly energy preserving.",
+        "Velocity-first Euler for this undamped system has matrix $\\begin{pmatrix}1-q^2&q\\\\-q&1\\end{pmatrix}$ in coordinates $(x,v/\\omega)$, with q=ωh. Its determinant is one and trace $2-q^2$. Repeated steps are bounded for the strict interval 0<q<2. At q=2 the repeated eigenvalue −1 has a nonzero Jordan part and generic amplitudes grow; exceptional initial states do not establish general stability. For q>2 one reciprocal eigenvalue has magnitude above one. Determinant one preserves area, not the physical energy of every state. Damping changes this matrix and needs a new check."
+      ]
+    },
+    {
+      "heading": "Audit energy without inventing a physical source",
+      "paragraphs": [
+        "For the supplied spring-drag model, $E=mv^2/2+kx^2/2$. Multiply $m v'=-kx-bv$ by v and use x'=v to obtain $dE/dt=-bv^2$. Hence $E(t)+D(t)-E(0)=0$ where $D(t)=\\int_0^t b v^2\\,dt$. With b=0, E stays constant. With b>0, mechanical energy is transferred into the ideal dissipative element; a thermal partition or temperature rise would need additional physical information.",
+        "In the investigation, $D_{trap}=\\sum b(v_n^2+v_{n+1}^2)h_n/2$ uses approximate numerical velocities. Even if those endpoint velocities were exact, the trapezoid of their squares would generally still approximate the integral. The displayed residual $R=E_{num}+D_{trap}-E_0$ therefore combines errors from time stepping and dissipation quadrature. A small residual is useful but does not prove every state value is accurate.",
+        "Record signed errors when direction matters: numerical minus reference position can change sign. Absolute error is its magnitude. Reference-relative error divides by the magnitude of a nonzero reference. At an exact zero reference that ratio is undefined, not zero or an arbitrarily large manufactured percentage. You can report absolute error or divide by a separately declared physical comparison scale, clearly identifying that different normalization.",
+        "Floating-point arithmetic also contributes error. Repeated tiny steps can accumulate roundoff, and subtracting nearly equal values can lose relative accuracy. More printed digits do not prove those digits are meaningful. Keep unrounded values through the calculation, document the output precision, and use tolerances suited to units and scales. The investigation displays nine significant digits, exports its underlying floating-point values, and labels an unavailable relative error when its reference is zero or its ratio cannot be represented."
+      ]
+    },
+    {
+      "heading": "A reproducible calculation supports a limited conclusion",
+      "paragraphs": [
+        "Build an error budget from justified contributions. A numerical discretization estimate, a measurement-input bound, a time-calibration bound, and model discrepancy describe different things. Add worst-case magnitudes conservatively when no probability model is given. If a model-discrepancy bound is missing, the sum of the other bounds is a partial budget, not a certified bound on total physical prediction error.",
+        "Choose a step by a stated purpose: for example, resolve the displacement and velocity within declared tolerances over a fixed duration while preserving important qualitative behavior. Support that choice with a reference case, refinement, actual widths, and an energy or balance check. State whether the tolerance concerns one endpoint or all observed sample times; sampled extrema alone do not rigorously bound every intermediate time.",
+        "Your evidence record should let another learner reproduce the run without guessing: law, initial conditions, units, method and update order, step schedule, requested endpoint, completion status, predictions, reference calculation, error table, and one revision. Label a CSV of synthetic states as simulated data. A downloaded table is evidence of the computation, not an independent experiment validating the assumptions.",
+        "The next lesson combines mechanics, measurement, numerical checks, and a structured project record. This investigation uses no physical equipment. If you later choose to measure a real system, define instrument resolution and calibration, attachment and load limits, and experiment-specific safeguards before collecting data. No physical spring loading, breaking, overhead mass, or powered apparatus is required for this lesson."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Integrate unequal velocity intervals",
+      "prompt": "A synthetic piecewise-linear velocity has values [2, -2, 4, 0] m/s at times [0, 1, 3, 4] s. Initial position is -1 m.",
+      "steps": [
+        {
+          "math": "h_0=1,\\quad h_1=2,\\quad h_2=1\\ \\mathrm{s}",
+          "reason": "Subtract adjacent timestamps. The record has four samples but three intervals."
+        },
+        {
+          "math": "\\Delta x=\\tfrac12(2-2)(1)+\\tfrac12(-2+4)(2)+\\tfrac12(4+0)(1)=4\\ \\mathrm{m}",
+          "reason": "Keep signs and use each actual width. The first signed interval cancels."
+        },
+        {
+          "math": "x(4)=-1+4=3\\ \\mathrm{m},\\qquad \\bar v=4/4=1\\ \\mathrm{m/s}",
+          "reason": "Add initial position once, and divide displacement by elapsed time for average velocity."
+        }
+      ],
+      "conclusion": "The displacement is 4 m, final position 3 m, and average velocity 1 m/s. None is automatically the distance."
+    },
+    {
+      "title": "Split the same record at reversals",
+      "prompt": "Find the distance for the preceding explicitly linear record, including zeros inside the first two intervals.",
+      "steps": [
+        {
+          "math": "t_{z1}=\\tfrac12\\ \\mathrm{s},\\qquad t_{z2}=1+\\frac{2}{2+4}(2)=\\tfrac53\\ \\mathrm{s}",
+          "reason": "Use linear interpolation. The second zero is measured from the time-1 start of its interval."
+        },
+        {
+          "math": "s_0=\\tfrac12(2)(\\tfrac12)+\\tfrac12(2)(\\tfrac12)=1\\ \\mathrm{m}",
+          "reason": "The two equal positive triangles add even though their signed displacement cancels."
+        },
+        {
+          "math": "s_1=\\tfrac12(2)(\\tfrac23)+\\tfrac12(4)(\\tfrac43)=\\tfrac{10}{3}\\ \\mathrm{m},\\quad s_2=2\\ \\mathrm{m}",
+          "reason": "Split the second interval at its zero, then include the final nonnegative interval."
+        },
+        {
+          "math": "s=1+\\tfrac{10}{3}+2=\\tfrac{19}{3}\\ \\mathrm{m}\\ne|4\\ \\mathrm{m}|",
+          "reason": "Distance sums absolute motion. Trapezoids joining only endpoint speeds would instead give 10 m and overestimate both crossing intervals."
+        }
+      ],
+      "conclusion": "The reversal times and supplied interpolation establish 19/3 m of distance. Without an interior model the endpoint samples alone would not establish it."
+    },
+    {
+      "title": "Acceleration area needs an initial velocity",
+      "prompt": "A synthetic acceleration is linear through (t,a) = (0,2), (1,4), and (3,0), in seconds and m/s². Initial velocity is -1 m/s.",
+      "steps": [
+        {
+          "math": "\\Delta v_0=\\tfrac12(2+4)(1)=3\\ \\mathrm{m/s},\\quad\\Delta v_1=\\tfrac12(4+0)(2)=4\\ \\mathrm{m/s}",
+          "reason": "Acceleration times time changes velocity, not position."
+        },
+        {
+          "math": "v(3)=-1+3+4=6\\ \\mathrm{m/s},\\qquad\\bar a=\\frac{7}{3}\\ \\mathrm{m/s^2}",
+          "reason": "The integrated change is 7 m/s. Initial velocity changes the final state, but not the velocity change."
+        }
+      ],
+      "conclusion": "Final velocity is 6 m/s. Computing 7 m/s and calling it final velocity would omit the initial condition."
+    },
+    {
+      "title": "Compare quadrature with an exact polynomial",
+      "prompt": "Use v(t)=1+3t+2t² m/s for 0≤t≤2 s, with coefficients carrying SI time powers. Compare exact, trapezoid, and Simpson displacement.",
+      "steps": [
+        {
+          "math": "I=\\left[t+\\tfrac32t^2+\\tfrac23t^3\\right]_0^2=\\tfrac{40}{3}\\ \\mathrm{m}",
+          "reason": "Integrate the specified exact polynomial before using a numerical rule. This is an independent target."
+        },
+        {
+          "math": "v(0)=1,\\ v(1)=6,\\ v(2)=15;\\quad I_T(1)=\\tfrac12(1+6)+\\tfrac12(6+15)=14\\ \\mathrm{m}",
+          "reason": "Two unit-width trapezoids overestimate this upward-curving velocity."
+        },
+        {
+          "math": "I_T(\\tfrac12)=\\tfrac{27}{2},\\quad I_T(\\tfrac14)=\\tfrac{107}{8};\\qquad e_T=\\tfrac23,\\ \\tfrac16,\\ \\tfrac1{24}\\ \\mathrm{m}",
+          "reason": "Direct summation at the refined nodes quarters the error each time."
+        },
+        {
+          "math": "I_S=\\frac{1}{3}(1+4\\cdot6+15)=\\frac{40}{3}\\ \\mathrm{m};\\quad\\frac{MT h^2}{12}=\\frac{4\\cdot2}{12}=\\frac23\\ \\mathrm{m}\\ (h=1)",
+          "reason": "Equal spacing permits Simpson, which is exact for this quadratic. The constant second derivative also attains the trapezoid bound."
+        }
+      ],
+      "conclusion": "This is a verified comparison for exact synthetic samples. It does not make Simpson universally exact for noisy motion records."
+    },
+    {
+      "title": "Audit the spacing before applying Simpson",
+      "prompt": "The same polynomial is sampled at t=0,1,3 s, giving velocities 1,6,28 m/s.",
+      "steps": [
+        {
+          "math": "h_0=1\\ \\mathrm{s},\\quad h_1=2\\ \\mathrm{s};\\qquad I_T=\\tfrac12(1+6)(1)+\\tfrac12(6+28)(2)=\\tfrac{75}{2}\\ \\mathrm{m}",
+          "reason": "Actual widths give the valid trapezoid approximation."
+        },
+        {
+          "math": "I=\\left[t+\\tfrac32t^2+\\tfrac23t^3\\right]_0^3=\\tfrac{69}{2}\\ \\mathrm{m}",
+          "reason": "The supplied polynomial can still be integrated independently."
+        },
+        {
+          "math": "\\frac{1}{3}(1+4\\cdot6+28)=\\frac{53}{3}\\ne\\frac{69}{2}",
+          "reason": "The standard h=1 Simpson expression is inapplicable: these three nodes do not span two equal intervals. Its output is not a valid approximation under that formula's assumptions."
+        }
+      ],
+      "conclusion": "Use the irregular trapezoid or derive appropriate unequal-node weights. Three points alone do not authorize the usual Simpson weights."
+    },
+    {
+      "title": "Carry endpoint rounding through an area",
+      "prompt": "For the first irregular velocity record, assume exact timestamps and each displayed velocity rounded to 0.2 m/s. Include both half-step endpoints as allowed, assume true linear interpolation, and exclude timing error.",
+      "steps": [
+        {
+          "math": "(w_0,w_1,w_2,w_3)=(\\tfrac12,\\tfrac32,\\tfrac32,\\tfrac12)\\ \\mathrm{s},\\qquad u_v=0.1\\ \\mathrm{m/s}",
+          "reason": "An interior velocity participates in two adjacent trapezoids."
+        },
+        {
+          "math": "u_x=\\sum_i|w_i|u_v=(\\tfrac12+\\tfrac32+\\tfrac32+\\tfrac12)(0.1)=0.4\\ \\mathrm{m}",
+          "reason": "All endpoint errors may have the same sign, so the worst case adds their weighted magnitudes."
+        },
+        {
+          "math": "\\Delta x_{true}\\in[4-0.4,4+0.4]=[3.6,4.4]\\ \\mathrm{m}",
+          "reason": "Subtract and add the allowed error to the displayed estimate. This interval is conditional on the stated interpolation and exact times."
+        }
+      ],
+      "conclusion": "This is an allowed interval, not a 95% confidence interval. Replotting the same line with more points does not shrink it."
+    },
+    {
+      "title": "Compute three first steps from the same state",
+      "prompt": "Use m=0.5 kg, k=8 N/m, b=0, x0=0.08 m, v0=0, and h=0.1 s.",
+      "steps": [
+        {
+          "math": "a_0=-\\frac{8(0.08)}{0.5}=-1.28\\ \\mathrm{m/s^2};\\quad E_0=\\tfrac12(8)(0.08)^2=0.0256\\ \\mathrm{J}",
+          "reason": "Start with the same force, acceleration, and energy for every algorithm."
+        },
+        {
+          "math": "x_{E}=0.08+0.1(0)=0.08,\\quad v_E=0+0.1(-1.28)=-0.128;\\quad E_E=0.029696\\ \\mathrm{J}",
+          "reason": "Explicit Euler uses the old velocity in position. The updated kinetic energy is already positive while spring energy is unchanged."
+        },
+        {
+          "math": "v_C=-0.128,\\quad x_C=0.08+0.1(-0.128)=0.0672;\\quad E_C=0.02215936\\ \\mathrm{J}",
+          "reason": "Velocity-first Euler uses the updated velocity in position, so its first energy change is negative in this case."
+        },
+        {
+          "math": "x_m=0.08,\\ v_m=-0.064,\\ a_m=-1.28;\\quad x_M=0.0736,\\ v_M=-0.128,\\ E_M=0.02576384\\ \\mathrm{J}",
+          "reason": "Explicit midpoint uses the half-step velocity for its full position increment. It still has a small positive energy error."
+        },
+        {
+          "math": "x(0.1)=0.08\\cos(0.4),\\quad v(0.1)=-0.32\\sin(0.4)",
+          "reason": "The independent analytic reference uses ω=4 s⁻¹ and the same time. None of the three finite-step states is exactly this reference."
+        }
+      ],
+      "conclusion": "Identical initial acceleration does not imply identical finite-step position. Update ordering explains the different energies."
+    },
+    {
+      "title": "Sum constant-acceleration updates",
+      "prompt": "Let x0=1 m, v0=-2 m/s, a=3 m/s², T=2 s, and h=0.5 s. Compare four numerical steps.",
+      "steps": [
+        {
+          "math": "v(T)=-2+3(2)=4\\ \\mathrm{m/s};\\quad x(T)=1-2(2)+\\tfrac12(3)(2)^2=3\\ \\mathrm{m}",
+          "reason": "The constant acceleration gives an analytic target at the common endpoint."
+        },
+        {
+          "math": "x_E=1+0.5[-2-0.5+1+2.5]=1.5\\ \\mathrm{m}",
+          "reason": "Explicit Euler sums the old velocities from the four intervals."
+        },
+        {
+          "math": "x_C=1+0.5[-0.5+1+2.5+4]=4.5\\ \\mathrm{m}",
+          "reason": "Velocity-first Euler sums the new velocities."
+        },
+        {
+          "math": "x_M=1+0.5[-1.25+0.25+1.75+3.25]=3\\ \\mathrm{m};\\quad e_E=-\\frac{aTh}{2}=-1.5\\ \\mathrm{m}",
+          "reason": "The midpoint velocities integrate a linear velocity exactly. Explicit and velocity-first biases are opposite."
+        }
+      ],
+      "conclusion": "All final velocities are exact here. Midpoint's exact position in this special case does not prove universal exactness."
+    },
+    {
+      "title": "Clip the last step instead of changing the endpoint",
+      "prompt": "Let x0=0, v0=1 m/s, a=2 m/s², T=1 s, and nominal h=0.3 s.",
+      "steps": [
+        {
+          "math": "(h_0,h_1,h_2,h_3)=(0.3,0.3,0.3,0.1)\\ \\mathrm{s};\\quad\\sum h_i^2=0.28\\ \\mathrm{s^2}",
+          "reason": "The final 0.1-second interval must be included with its actual width."
+        },
+        {
+          "math": "x(1)=1+\\tfrac12(2)=2\\ \\mathrm{m};\\quad v(1)=1+2=3\\ \\mathrm{m/s}",
+          "reason": "Use the requested physical time for the exact reference."
+        },
+        {
+          "math": "x_E=2-\\tfrac12(2)(0.28)=1.72\\ \\mathrm{m};\\quad x_C=2+0.28=2.28\\ \\mathrm{m};\\quad x_M=2\\ \\mathrm{m}",
+          "reason": "Each interval contributes a constant-acceleration Euler position error of minus a*h_i²/2. The sum uses actual squared widths, not T times the nominal width."
+        }
+      ],
+      "conclusion": "A state computed at 1.2 s cannot be called the state at 1 s. A state stopped at 0.9 s also answers a different question."
+    },
+    {
+      "title": "Separate decay, positivity, and a marginal boundary",
+      "prompt": "Use y'=-4y with positive y0 and compare explicit Euler at h=0.125,0.25,0.375,0.5,0.625 s.",
+      "steps": [
+        {
+          "math": "r=1-4h\\in\\{0.5,0,-0.5,-1,-1.5\\},\\qquad y_n=r^ny_0",
+          "reason": "One scalar multiplier controls the repeated numerical sequence."
+        },
+        {
+          "math": "|r|<1\\iff0<h<0.5\\ \\mathrm{s};\\qquad r\\geq0\\iff h\\leq0.25\\ \\mathrm{s}",
+          "reason": "Stable decaying magnitude and nonnegative states impose different restrictions."
+        },
+        {
+          "math": "y_{exact}(t)=y_0e^{-4t}>0\\quad\\text{for finite }t",
+          "reason": "The exact model neither flips sign nor reaches zero in one finite step. The zero multiplier is stable but still inaccurate."
+        }
+      ],
+      "conclusion": "The five numerical cases respectively decay positively, extinguish immediately, alternate with decay, alternate without decay, and alternate with growth."
+    },
+    {
+      "title": "Check the undamped energy factor and the strict boundary",
+      "prompt": "For the baseline ω=4 s⁻¹ and h=0.1 s, compute two energy factors; then inspect velocity-first Euler at h=0.5 s.",
+      "steps": [
+        {
+          "math": "q=0.4;\\quad\\frac{E_{E,new}}{E_{old}}=1+q^2=1.16,\\qquad\\frac{E_{M,new}}{E_{old}}=1+\\frac{q^4}{4}=1.0064",
+          "reason": "Expanding the two updates in the energy quadratic gives growth factors independent of the phase of a nonzero state."
+        },
+        {
+          "math": "q=4(0.5)=2;\\quad(x_1,v_1)=(-0.24,-0.64),\\quad(x_2,v_2)=(0.40,1.28)",
+          "reason": "At the velocity-first boundary, start at x0=0.08 m, v0=0 and update velocity before position."
+        },
+        {
+          "math": "(x_3,v_3)=(-0.56,-1.92);\\qquad |x_1|<|x_2|<|x_3|",
+          "reason": "These growing amplitudes refute a claim that the endpoint q=2 is generally bounded. The units are meters and m/s."
+        }
+      ],
+      "conclusion": "Use 0<ωh<2 for the stated undamped velocity-first method. Higher order, determinant one, and a unit-magnitude eigenvalue each require more reasoning than a blanket conservation claim."
+    },
+    {
+      "title": "Audit damping with an approximate dissipation integral",
+      "prompt": "Use the baseline m=0.5 kg, k=8 N/m, x0=0.08 m, v0=0, h=0.1 s, now with b=0.2 kg/s. Take one simultaneous explicit-Euler step.",
+      "steps": [
+        {
+          "math": "a_0=-1.28\\ \\mathrm{m/s^2},\\quad x_1=0.08\\ \\mathrm{m},\\quad v_1=-0.128\\ \\mathrm{m/s}",
+          "reason": "Old velocity is zero, so the first old-state drag force is zero."
+        },
+        {
+          "math": "E_0=0.0256\\ \\mathrm{J},\\quad E_1=0.029696\\ \\mathrm{J},\\quad D_{trap}=\\frac{0.1(0.2)}{2}(0^2+0.128^2)=0.00016384\\ \\mathrm{J}",
+          "reason": "Dissipation integrates power b*v², using both numerical endpoint velocities."
+        },
+        {
+          "math": "R=E_1+D_{trap}-E_0=0.00425984\\ \\mathrm{J}",
+          "reason": "The residual is positive. Subtracting D instead of adding it would use the wrong energy account."
+        }
+      ],
+      "conclusion": "This result diagnoses a numerical account error. It does not demonstrate physical energy creation or measure heat released to the room."
+    },
+    {
+      "title": "Infer an order only under a stated error law",
+      "prompt": "At the same endpoint, Q(h)=5.16 m, Q(h/2)=5.04 m, and Q(h/4)=5.01 m. For this exercise Q(s)=Qstar+C*s^p is explicitly exact.",
+      "steps": [
+        {
+          "math": "d_1=5.16-5.04=0.12\\ \\mathrm{m},\\quad d_2=5.04-5.01=0.03\\ \\mathrm{m}",
+          "reason": "Subtract successive results at the same physical time."
+        },
+        {
+          "math": "2^p=d_1/d_2=4\\quad\\Rightarrow\\quad p=2",
+          "reason": "The common nonzero coefficient cancels only under the supplied relation."
+        },
+        {
+          "math": "Q_*=5.01-\\frac{0.03}{4-1}=5.00\\ \\mathrm{m},\\qquad |Q(h/4)-Q_*|=0.01\\ \\mathrm{m}",
+          "reason": "Extrapolate from the finest result using the inferred power."
+        }
+      ],
+      "conclusion": "The exact error relation makes this result exact in the exercise. For a measured or general numerical problem, three matching ratios alone do not certify the physical truth."
+    },
+    {
+      "title": "Use a declared scale at a zero reference",
+      "prompt": "A model reference position is zero and a computed position is 0.002 m. A declared comparison length is 0.08 m. Separate justified output bounds are 0.001 m from measurement inputs and 0.003 m from discretization, with model discrepancy unbounded.",
+      "steps": [
+        {
+          "math": "e_{abs}=|0.002-0|=0.002\\ \\mathrm{m},\\quad\\frac{e_{abs}}{|x_{ref}|}\\text{ is undefined}",
+          "reason": "Do not replace the zero denominator by an invented small value."
+        },
+        {
+          "math": "e_{scale}=\\frac{0.002}{0.08}=0.025=2.5\\%,\\qquad u_{partial}=0.001+0.003=0.004\\ \\mathrm{m}",
+          "reason": "The percentage uses the declared length, not the zero reference. Worst-case bounds add without a probability model."
+        }
+      ],
+      "conclusion": "The partial bound is not a complete physical-error bound because model discrepancy is missing. Neither a small relative-looking number nor more decimal places fixes that omission."
+    },
+    {
+      "title": "Convert time and velocity before accumulating",
+      "prompt": "A linear-interpolation record has times [0,200,600] ms and velocities [100,-50,50] cm/s.",
+      "steps": [
+        {
+          "math": "t=[0,0.2,0.6]\\ \\mathrm{s},\\quad v=[1,-0.5,0.5]\\ \\mathrm{m/s}",
+          "reason": "Convert both columns. Converting only milliseconds would leave a centimeter-based result mislabeled as meters."
+        },
+        {
+          "math": "\\Delta x=\\tfrac12(1-0.5)(0.2)+\\tfrac12(-0.5+0.5)(0.4)=0.05\\ \\mathrm{m}",
+          "reason": "Use signed endpoint means and the unequal widths."
+        },
+        {
+          "math": "\\bar v=\\frac{0.05}{0.6}=\\frac1{12}\\ \\mathrm{m/s}",
+          "reason": "Average velocity uses total displacement divided by total elapsed time."
+        }
+      ],
+      "conclusion": "This establishes displacement under the stated interpolation. Distance would require splitting both sign-changing intervals."
+    },
+    {
+      "title": "Integrate one applied force without inventing net work",
+      "prompt": "An applied x-directed force is linear through (x,Fx)=(0,-2),(2,4),(3,0) in meters and newtons, while the body moves through increasing x.",
+      "steps": [
+        {
+          "math": "W_0=\\tfrac12(-2+4)(2)=2\\ \\mathrm{J},\\qquad W_1=\\tfrac12(4+0)(1)=2\\ \\mathrm{J}",
+          "reason": "A negative force contribution can do negative work locally; the signed interval area accounts for it."
+        },
+        {
+          "math": "W=4\\ \\mathrm{J},\\qquad\\bar F_x=\\frac{W}{3\\ \\mathrm{m}}=\\frac43\\ \\mathrm{N}",
+          "reason": "The mean force over this position interval has force units."
+        },
+        {
+          "math": "\\Delta K=W_{net}=W_{this\\ force}+\\sum W_{other\\ forces}",
+          "reason": "The prompt supplies one force, so its 4 J cannot be equated to kinetic-energy change without the other work contributions."
+        }
+      ],
+      "conclusion": "Force-position area is work. Force-time area would instead be impulse; axis units identify which quantity was integrated."
+    },
+    {
+      "title": "Show why matching samples leave missing motion",
+      "prompt": "Two exact observations give v(0)=v(2)=0, with no interior law or acceleration bound.",
+      "steps": [
+        {
+          "math": "I_T=\\tfrac12(0+0)(2)=0\\ \\mathrm{m}",
+          "reason": "The endpoint trapezoid approximation is well defined."
+        },
+        {
+          "math": "v_A(t)=0,\\qquad v_B(t)=3t(2-t)\\ \\mathrm{m/s}\\quad(0\\leq t\\leq2\\ \\mathrm{s})",
+          "reason": "Both functions match the observations; the second uses coefficients with the required SI time powers."
+        },
+        {
+          "math": "\\int_0^2v_A\\,dt=0,\\qquad\\int_0^2v_B\\,dt=\\left[3t^2-t^3\\right]_0^2=4\\ \\mathrm{m}",
+          "reason": "Two compatible interior curves have different displacements, so the observations cannot establish a unique one."
+        }
+      ],
+      "conclusion": "The missing information is physical behavior between samples. More interpolated points or displayed digits do not supply it."
+    }
+  ],
+  "guided": {
+    "title": "Audit a first numerical energy account",
+    "setup": "Use m=0.5 kg, k=8 N/m, b=0.2 kg/s, x0=0.08 m, v0=0, and h=0.1 s. Perform one simultaneous explicit-Euler step. Then use the trapezoid of b*v² over that numerical step to estimate dissipated mechanical energy.",
+    "before": [
+      "The old acceleration is $a_0=-(kx_0+bv_0)/m=-1.28$ m/s². Both Euler increments must use the old state.",
+      "Initial mechanical energy is $E_0=0.0256$ J. Compute $E_1=(mv_1^2+kx_1^2)/2$, $D_{trap}=bh(v_0^2+v_1^2)/2$, and $R=E_1+D_{trap}-E_0$."
+    ],
+    "question": {
+      "id": "phs231-numerical-guided",
+      "familyId": "phs231-numerical-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m09-l01",
+      "category": "application",
+      "critical": true,
+      "parameters": {
+        "mass": 0.5,
+        "spring": 8,
+        "drag": 0.2,
+        "x0": 0.08,
+        "v0": 0,
+        "h": 0.1
+      },
+      "prompt": "Complete the numerical state and energy account. Choose the interpretation supported by a synthetic calculation.",
+      "fields": [
+        {
+          "id": "position",
+          "label": "Updated position",
+          "kind": "rational",
+          "expected": ".08",
+          "unit": "m",
+          "help": "Use a fraction or exact finite decimal in the labeled unit."
+        },
+        {
+          "id": "velocity",
+          "label": "Updated velocity",
+          "kind": "rational",
+          "expected": "-.128",
+          "unit": "m/s",
+          "help": "Use a fraction or exact finite decimal in the labeled unit."
+        },
+        {
+          "id": "energy",
+          "label": "Updated mechanical energy",
+          "kind": "rational",
+          "expected": ".029696",
+          "unit": "J",
+          "help": "Use a fraction or exact finite decimal in the labeled unit."
+        },
+        {
+          "id": "dissipation",
+          "label": "Trapezoid dissipation estimate",
+          "kind": "rational",
+          "expected": ".00016384",
+          "unit": "J",
+          "help": "Use a fraction or exact finite decimal in the labeled unit."
+        },
+        {
+          "id": "residual",
+          "label": "Energy balance residual",
+          "kind": "rational",
+          "expected": ".00425984",
+          "unit": "J",
+          "help": "Use a fraction or exact finite decimal in the labeled unit."
+        },
+        {
+          "id": "claim",
+          "label": "What does the residual establish?",
+          "kind": "choice",
+          "correct": "numerical",
+          "options": [
+            {
+              "id": "numerical",
+              "label": "The numerical state and approximate dissipation have a balance error; this is not a measured energy source",
+              "feedback": "The stated continuous model satisfies E+D-E0=0. Here both the state and D are numerical approximations. Refine them and compare with the analytic model."
+            },
+            {
+              "id": "source",
+              "label": "A physical energy source has been measured because the residual is positive",
+              "feedback": "Every value is computed from a synthetic model. No independent measurement of a source has been made."
+            },
+            {
+              "id": "heat",
+              "label": "The residual is the exact heat released to the surroundings",
+              "feedback": "D is already an approximate mechanical dissipation account, and R is its mismatch with the numerical energy. Neither establishes a measured thermal partition."
+            },
+            {
+              "id": "conserved",
+              "label": "The mechanical energy must be forced back to E0 before recording the state",
+              "feedback": "Rescaling an inconsistent numerical state would hide its error and alter the method. Audit the state that the stated update actually produced."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Explicit Euler keeps x1=x0+h*v0; v0 is zero here. Do not substitute the already updated velocity into position.",
+        "Square the updated velocity in both kinetic energy and the endpoint drag power. D_trap uses the mean of the two endpoint powers.",
+        "Add D_trap to E1, then subtract E0. Interpret the mismatch as a numerical audit under the supplied law."
+      ],
+      "explanation": [
+        "Both increments use the old state: $x_1=0.08+0.1(0)=0.08$ m and $v_1=0+0.1(-1.28)=-0.128$ m/s.",
+        "Thus $E_1=0.5(0.5)(0.128)^2+0.5(8)(0.08)^2=0.029696$ J.",
+        "The trapezoid dissipation estimate is $D_{trap}=0.2(0.1)(0^2+0.128^2)/2=0.00016384$ J.",
+        "The residual is $0.029696+0.00016384-0.0256=0.00425984$ J. This positive mismatch combines numerical state and dissipation-integration errors; it does not measure a physical source or a thermal partition."
+      ],
+      "answerSummary": "x1=0.08 m; v1=-0.128 m/s; E1=0.029696 J; D_trap=0.00016384 J; R=0.00425984 J. The residual diagnoses the numerical account."
+    },
+    "after": "Explain why the first explicit-Euler position stayed fixed while its velocity changed. Then change only the method to velocity-first Euler and recompute the state before making an energy comparison."
+  },
+  "interaction": {
+    "kind": "phs231-numerical",
+    "prompt": "Predict one step, then compare three refinements of the same mechanical model. Inspect the actual time widths, analytic state, energy, and dissipation ledger. Find a step-size choice supported by evidence, and identify what the simulation cannot establish about a physical apparatus.",
+    "initial": {
+      "method": "semi",
+      "massKg": 0.5,
+      "springNPerM": 8,
+      "dragKgPerS": 0,
+      "positionM": 0.08,
+      "velocityMPerS": 0,
+      "durationS": 4,
+      "stepS": 0.1
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "unequal"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "reversal"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "acceleration"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "work"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "curvature"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "refinement"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "rounding"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "missing-sample"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "units"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "simpson"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "explicit-step"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "semi-step"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "midpoint-step"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "constant-acceleration"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "decay-stability"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "oscillator-energy"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "oscillator-stability"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "endpoint"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "energy-audit"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "error-budget"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "unequal"
+    },
+    {
+      "familyId": "phs231-sampled-integration",
+      "variant": "rounding"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "explicit-step"
+    },
+    {
+      "familyId": "phs231-step-audit",
+      "variant": "energy-audit"
+    }
+  ],
+  "summary": [
+    "Identify whether you are integrating sampled rates or solving an initial-value law. Preserve actual widths, units, initial conditions, and provenance.",
+    "Trapezoids are exact for supplied piecewise-linear interpolation. Reversals require splitting speed areas; matching endpoints do not determine unknown interior motion.",
+    "Quadrature bounds require stated smoothness and derivative bounds. Simpson's usual weights require equal spacing; higher order does not remove measurement uncertainty.",
+    "Old, updated, and midpoint states are distinct. Update order defines the method. Clip the final actual width so completed comparisons use the same physical endpoint.",
+    "Local step error, fixed-time global error, stability, positivity, and exact conservation are different properties. The undamped velocity-first interval is strict: 0<ωh<2.",
+    "Check analytic cases, controlled refinement, both state components, and energy ledgers. Incomplete runs have no requested-endpoint error; sampled maxima are not rigorous between-node bounds.",
+    "Reference-relative error is undefined at zero. Report absolute or explicitly declared-scale error, retain numerical precision honestly, and separate discretization, measurement, and model uncertainty.",
+    "The twenty practice variants cover the planned calculations and interpretations. A four-item checkpoint samples key skills; it does not test every variant or independently validate the course."
+  ],
+  "retrieval": "After a delay, integrate a new irregular signed-velocity table and find any within-interval zeros before computing distance. Derive the first step of explicit Euler, velocity-first Euler, and explicit midpoint from the same spring-drag state. Explain local versus global error, the strict semi-implicit boundary, and why a second-order method can gain numerical energy. Design a common-endpoint refinement table and identify the missing evidence in a claim of physical accuracy.",
+  "readings": [
+    {
+      "title": "OpenStax Calculus Volume 2, 3.6: Numerical Integration",
+      "url": "https://openstax.org/books/calculus-volume-2/pages/3-6-numerical-integration",
+      "purpose": "Free supplemental derivations of composite trapezoid and Simpson rules and their smoothness-dependent error bounds. The original lesson develops irregular data, signs, and uncertainty separately."
+    },
+    {
+      "title": "University of Maryland: Numerical integration in mechanics",
+      "url": "https://physics.umd.edu/hep/drew/numerical_integration/",
+      "purpose": "Additional mechanics examples and comparisons of time-step algorithms. Keep local and global error distinct, and use the strictly derived stability conditions in this lesson."
+    },
+    {
+      "title": "Brown University: Euler and Euler–Cromer methods",
+      "url": "https://www.cfm.brown.edu/people/dobrush/am34/Mathematica/ch4/euler.html",
+      "purpose": "Supplemental context for old-state and velocity-first updates. Derive the midpoint stages from the differential equation as shown here; a displayed midpoint formula on the linked page contains a transcription error."
+    },
+    {
+      "title": "MIT OpenCourseWare 2.086: Initial-value problem self-study",
+      "url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-spring-2013/4466187e306b84af9b0659cf051b980d_MIT2_086S13_quiz2_selfstud.pdf",
+      "purpose": "Free further initial-value and numerical-comparison exercises. The app's examples, generated practice, solutions, and investigation are self-contained."
+    }
+  ]
+}
