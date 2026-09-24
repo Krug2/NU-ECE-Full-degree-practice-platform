@@ -1,0 +1,303 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m07-l03",
+  "checkedAt": "2026-09-24",
+  "status": "Detailed implementation plan; not yet delivered.",
+  "title": "Rolling constraints and coupled translation",
+  "objective": "Solve rolling motion using translation, rotation, and a verified no-slip constraint, including the required static friction.",
+  "alignment": "Develops rotational and translational mechanics within the verified official PHS 231 description. The sequence, contact model, examples, simulation, and assessment defaults are proposed platform teaching choices, not an official NU syllabus or equipment requirement.",
+  "prerequisites": [
+    {
+      "lessonId": "m07-l01",
+      "purpose": "Rigid point kinematics, inertia, torque about CM, and angular variables"
+    },
+    {
+      "lessonId": "m07-l02",
+      "purpose": "Angular momentum versus energy, torque power, and choice of origin"
+    },
+    {
+      "lessonId": "m03-l02",
+      "purpose": "Required versus available static friction, kinetic contact forces, and relative slip"
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "Translational and rotational energy accounts, dissipation, and validity domains"
+    },
+    {
+      "lessonId": "m02-l02",
+      "purpose": "Velocities relative to a translating surface"
+    },
+    {
+      "courseId": "csc-208",
+      "status": "under construction",
+      "purpose": "Derivatives and integration of motion; required steps are developed locally"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Rolling sign convention and preparation",
+      "teaching": "Use ramp-aligned +x downhill and +y normal outward. Signed omega is positive in the clockwise/downhill-rolling sense, so the angular-velocity vector is minus omega zhat. Distinguish the shape's contact radius R from the inertia ratio beta=Icm/(mR²). Review force and CM torque equations, tangent versus normal acceleration, and static-friction bounds.",
+      "critical": [
+        "Write the sign convention before using v=R omega.",
+        "Do not use a fixed-origin rotational equation about an arbitrary accelerating material point."
+      ]
+    },
+    {
+      "topic": "Point kinematics and contact",
+      "teaching": "For any rim point relative to CM, vpoint=(v+omega y,-omega x) and apoint=(a+alpha y-omega²x,-alpha x-omega²y). At the bottom, slip velocity is u=v-R omega on a stationary plane. Under no slip the top velocity is 2v, but the bottom material point can have nonzero normal acceleration R omega². Derive a cycloid from a named initially contacting material point for constant-speed rolling.",
+      "critical": [
+        "Zero instantaneous contact velocity does not mean the same material point remains on the ground or has zero acceleration.",
+        "Top speed is 2v only when the no-slip relation holds on a stationary surface."
+      ]
+    },
+    {
+      "topic": "Translation and rotation equations",
+      "teaching": "For a symmetric rigid circular body with hub force F parallel to the plane and signed applied couple M in the positive rolling sense, use ma=mg sin(theta)+F+f, I alpha=M-fR, N=mg cos(theta). Solve a=R alpha conditionally to obtain areq and freq, then test |freq|<=mu_s N. CM torque is valid with the translating CM origin; no universal fixed-contact shortcut is invoked.",
+      "critical": [
+        "Static friction is solved, not automatically set to mu_s N.",
+        "Friction can point with or against CM motion, depending on torque and slip tendency."
+      ]
+    },
+    {
+      "topic": "Passive incline and inertia comparison",
+      "teaching": "With F=M=0, a=g sin(theta)/(1+beta), f=-beta mg sin(theta)/(1+beta), and minimum mu_s=beta tan(theta)/(1+beta). Compare hoop, solid disk, and solid sphere only after checking all their traction requirements. Identify mass/radius cancellation for geometrically similar bodies, and limits of inferring shape from a measured inertia ratio.",
+      "critical": [
+        "Increasing available static friction above the requirement does not change the ideal rolling acceleration.",
+        "An equal release height does not guarantee ideal rolling if the friction bound fails."
+      ]
+    },
+    {
+      "topic": "Energy and work",
+      "teaching": "Derive K=mvcm²/2+Icm omega²/2 by cancellation of CM-relative cross terms. Under no slip use K=m(1+beta)v²/2. Show stationary ideal point-contact static friction has zero total body power f(v-R omega) although its translation and rotation contributions need not vanish individually. For sliding, heat rate is mu_k N |u| and kinetic-friction work on the body is f u. Treat finite deformation, rolling resistance, and moving surfaces separately.",
+      "critical": [
+        "Do not count only translational energy or set total friction work equal to f times CM travel.",
+        "Static friction can transfer energy on a moving surface; zero work is not a universal rule."
+      ]
+    },
+    {
+      "topic": "Driven wheels and force offsets",
+      "teaching": "Compare a hub pull with an applied axle couple; derive the friction direction for each. Map a tangential force at signed height h relative to CM to a hub force plus rolling couple Fh. Track actual application-point power F(v+omega h). Include the special offset h=beta R requiring zero contact friction for compatible rolling on a level plane.",
+      "critical": [
+        "A drive torque is an applied external couple, not automatically a tangential force at the contact.",
+        "Net force and CM torque both determine whether contact tends to slip."
+      ]
+    },
+    {
+      "topic": "Rolling uphill, stopping, and reversal",
+      "teaching": "Use signed velocity and constant downhill rolling acceleration to find first rest and height gain. Uphill velocity can be negative while static friction remains uphill because it must enforce the coupled acceleration. At rest, gravity and torque equations still act; this is not an unspecified holding brake.",
+      "critical": [
+        "Friction need not reverse at a reversal of CM velocity.",
+        "A zero center speed with nonzero spin is not a rolling stop."
+      ]
+    },
+    {
+      "topic": "Slipping, catching rolling, and reverse slip",
+      "teaching": "When u is nonzero, f=-mu_k N sign(u), a and alpha follow separately, and udot=a-R alpha. Integrate to the first future u=0 event only if udot opposes u. At that event test static feasibility; either continue rolling or restart sliding in the free-acceleration tendency. Constant forces and mu_k<=mu_s prevent chatter. Zero friction is covered without division by mu_k.",
+      "critical": [
+        "Do not impose v=R omega during a sliding interval.",
+        "A momentary zero slip does not guarantee the static force needed to maintain it is available."
+      ]
+    },
+    {
+      "topic": "Moving surface extension",
+      "teaching": "For a translating belt at speed U, relative slip is u=v-R omega-U. A constant-U no-slip state still gives a=R alpha, but the contact point's ground velocity is U, and contact power on the body is fU. For changing U, use a-R alpha=Udot. State the observer and interface when describing work and heat.",
+      "critical": [
+        "Static contact on a moving belt can do positive or negative work while producing no ideal sliding heat.",
+        "Do not apply the stationary-plane simulation to a moving belt without modifying its boundary conditions."
+      ]
+    },
+    {
+      "topic": "Measurement, uncertainty, and evidence",
+      "teaching": "Compare measured v and R omega with their uncertainties, calibrate radius and timing, distinguish rolling resistance and deformation from Coulomb sliding, and use interval extrema for the no-slip margin. The simulation includes no physical release or spinning hardware procedure. Its infinite plane, rigid body, point contact, constant loads, and friction coefficients are explicit assumptions.",
+      "critical": [
+        "A small slip residual relative to instrument uncertainty does not prove exact no slip.",
+        "The friction threshold is a model condition, not a safe experimental slope or equipment rating."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "point-state",
+      "input": "R=.5m,v2m/s,omega4rad/s,a1m/s²,alpha2rad/s²; clockwise positive",
+      "expected": "Bottom v=(0,0),a=(0,8); top v=(4,0),a=(2,-8); right rim v=(2,-2),a=(-7,-1). Instantaneous rest does not imply zero acceleration."
+    },
+    {
+      "id": "passive-incline",
+      "input": "m2kg,R.5m,beta.5,g10,slope=rise/run=.75; mu_s .3,mu_k .2; initialrest,T2s",
+      "expected": "I.25,N16,freq=-4,staticlimit4.8,criticalmu1/4; a4,alpha8; finalx8,v8,angle16,omega16,Ktrans64,Krot32,K96,Wgravity96,heat0."
+    },
+    {
+      "id": "shape-comparison",
+      "input": "Same slope .75,g10; drop h.6m,rest; beta1,.5,.4 for hoop,disk,sphere; mu_s .4 permits all",
+      "expected": "a3,4,30/7; finalspeed sqrt6,sqrt8,sqrt(60/7); minimum mu_s 3/8,1/4,3/14. Similar mass/radius factors cancel."
+    },
+    {
+      "id": "uphill",
+      "input": "Same passive disk on slope .75 but v0=-3,omega0=-6",
+      "expected": "a4,alpha8,f=-4 unchanged; firstrest t3/4s,x=-9/8m,heightgain27/40m; initialK27/2J equals mg heightgain. Then rolls downhill under the same loading if traction remains valid."
+    },
+    {
+      "id": "drive-friction",
+      "input": "Level,m2,R.5,beta.5,mu_s.3,g10; compare hubF6,M0 with F0,M3",
+      "expected": "Both a2,alpha4. Hub pull f=-2; axle drive f=+4; N20,limit6 permits both. Static friction directions differ."
+    },
+    {
+      "id": "offset-force",
+      "input": "Level,m2,R.5,beta.5,F6 at signed height h; initialrollingv2,omega4",
+      "expected": "At h=.25=beta R, M1.5,f0,a3,alpha6. At top h=.5, M3,f2,a4,alpha8; inputpower F(v+omega h)=24W, with translational Kdot16 and rotational Kdot8."
+    },
+    {
+      "id": "insufficient-traction",
+      "input": "Passive baseline but mu_s.2,mu_k.1,initialrest,T2",
+      "expected": "Required |-4|>3.2 so slidingdown starts. f=-1.6,a5.2,alpha3.2,udot3.6; finalv10.4,omega6.4,x10.4,angle6.4,u7.2; K113.28,Wgravity124.8,heat11.52J."
+    },
+    {
+      "id": "slide-to-roll",
+      "input": "Level,m2,R.5,beta.5,g10,mu_s.3,mu_k.2,F=M0; v0=3,omega0=0,T2",
+      "expected": "Initialf=-4,a=-2,alpha8,udot=-6; u reaches0 at .5s withv2,omega4,x1.25,angle1,K6 versusKi9,heat3. Then rolls steadily: finalx4.25,angle7,v2,omega4,friction0."
+    },
+    {
+      "id": "overspin",
+      "input": "Same level body, v0=0,omega0=12,T2",
+      "expected": "Initialu=-6,f+4,a2,alpha-8; catcht1s,v2,omega4,x1,angle8,K6,heat12. Afterward finalx3,angle12. Friction initially accelerates CM in +x."
+    },
+    {
+      "id": "frictionless",
+      "input": "Passive incline .75,mu_s=mu_k=0,initialrest,T1; separately levelplane,v0=2,omega0=4",
+      "expected": "Incline:a6,alpha0,finalv6,omega0,x3,K36,Wgravity36,slipping. Level compatible initialmotion keeps rolling withzero friction; no claim that all rolling requires nonzero friction."
+    },
+    {
+      "id": "slip-reversal",
+      "input": "Level,m2,R.5,beta.5,g10,mu_s.1,mu_k.05,F=-9,M0; v0=1,omega0=0,T1",
+      "expected": "Requiredstaticf+3 exceeds2. Initialf-1,a-5,alpha2; u hits0 at1/6s,x7/72,angle1/36,v1/6,omega1/3. Then slipreverses,f+1,a-4,alpha-2. At1s:x-83/72,angle-7/18,v-19/6,omega-4/3,u-5/2; K41/4,hubwork83/8,heat9/8J."
+    },
+    {
+      "id": "moving-belt",
+      "input": "Level,m2,R.5,beta.5,F6,M0; beltU1,v2,omega2; sufficientstaticfriction",
+      "expected": "Relativecontactslip0,f=-2,a2,alpha4. Frictionpoweronbody fU=-2W,hubpower12W,Kdot10W; idealinterfaceheat0. The stationary-surface zero-work statement does not apply."
+    },
+    {
+      "id": "uncertain-traction",
+      "input": "Passive disk beta.5, slope in [.7,.8], mu_s in [.23,.28], independent allowed intervals",
+      "expected": "Requiredmu in [7/30,4/15]; availableinterval overlaps so no-slip cannot be guaranteed or ruledout. If mu_s lowerbound increases to .27, all stated combinations pass. These are allowed bounds, not confidence probabilities."
+    }
+  ],
+  "families": [
+    {
+      "id": "phs231-rolling-motion",
+      "variants": [
+        "point",
+        "incline",
+        "energy",
+        "compare",
+        "driven",
+        "offset",
+        "uphill",
+        "transition"
+      ],
+      "coverage": "Rigid point velocities/accelerations, coupled passive motion, energy partition, shape comparisons, force/torque signs, offsets, reversal, and a slip-to-roll event."
+    },
+    {
+      "id": "phs231-rolling-validity",
+      "variants": [
+        "threshold",
+        "slipping",
+        "overspin",
+        "frictionless",
+        "contact",
+        "power",
+        "belt",
+        "uncertainty"
+      ],
+      "coverage": "Static traction boundaries, independently evolving translation/spin, kinetic-friction direction, zero-friction limits, contact acceleration, power and heat, moving-surface restrictions, and interval evidence."
+    }
+  ],
+  "guided": {
+    "fixture": "Baseline passive incline and its insufficient-traction variation.",
+    "fields": [
+      "Required static friction",
+      "Available static-friction magnitude",
+      "Actual center acceleration",
+      "Actual angular acceleration",
+      "Regime"
+    ],
+    "misconceptions": [
+      "Set f=mu_s N rather than solving its required value.",
+      "Apply a=R alpha even after traction fails.",
+      "Treat friction as opposite CM motion instead of relative contact motion.",
+      "Count only translational kinetic energy."
+    ]
+  },
+  "investigation": {
+    "kind": "phs231-rolling",
+    "model": "A symmetric rigid body of mass m, fixed radius R, and I=beta mR² on an infinite stationary straight plane. +x points down the plane, +y outward, and positive scalar omega is clockwise in this frame. A constant force F acts at CM parallel to the plane; a separate constant couple M acts in the positive rolling sense. N=mg cos(theta). Coulomb static/kinetic friction with 0<=mu_k<=mu_s, no rolling resistance, deformation, impact, drag, or normal separation.",
+    "inputs": "mass .1..20kg; radius .05..2m; beta .1..1; slope rise/run 0..2; g1..20m/s²; mu_s0..1.5,mu_k0..mu_s; F-50..50N; M-20..20Nm; v0-10..10m/s; omega0-40..40rad/s; duration .1..10s. Defaultm2,R.5,beta.5,slope.75,g10,mu_s.3,mu_k.2,F=M=v0=omega0=0,T2.",
+    "equations": "sin(theta)=slope/sqrt(1+slope²),cos(theta)=1/sqrt(1+slope²); u=v-R omega; a=(mg sin+F+f)/m; alpha=(M-fR)/I; requiredstatic f=(M/R-beta(mg sin+F))/(1+beta); rolling a=(mg sin+F+M/R)/(m(1+beta)). If u!=0 use f=-mu_k N sign(u), and integrate constant a,alpha. At futureu0, test static capacity: roll if feasible, otherwise reverse slip in the sign of the friction-free udot. Constant loads and mu_k<=mu_s permit at most one sliding-to-zero event; equality is static-feasible within machine-rounding tolerance.",
+    "outputs": "Analytic piecewise phases and any exact transition event, 81 regular samples plus event time, x,v,unwrappedrollingangle,omega,a,alpha,slipvelocity,friction,normal,translational/rotational/totalK,gravitywork,hubwork,couplework,frictionwork,thermalconversion,momentum/energy residuals. Rim-point position/velocity/acceleration for an initially contacting material point and instantaneous bottom/top velocities. Diagram in ramp-aligned coordinates; velocity and rim-motion interpretation with complete equivalent tables.",
+    "work": "Friction work on body per constant-force phase is f(delta x-R delta angle); cumulativeheat is its negative for this stationary plane. Gravity and hub work use CM displacement, couple work uses signed angle. K-K0=Wgravity+Whub+Wcouple+Wfriction. Static contact totalpower=f u=0 even though separate translational and rotational contributions may be nonzero.",
+    "predictions": "Required static friction, available static-friction magnitude, actual initial CM acceleration, and actual initial angular acceleration. Reveal actual regime and event history with separate demand/capacity evidence.",
+    "limits": "No physical release or powered-wheel procedure. The model predicts neither safe slopes nor hardware ratings. Exploratory controls reset on reload; lesson notes and assessments persist. A moving-belt extension is taught separately and is not silently simulated with stationary-plane equations."
+  },
+  "verification": {
+    "seedMinimumPerVariant": 50,
+    "independentChecks": [
+      "Solve the force/torque/constraint linear system independently for rolling candidates.",
+      "Reconstruct rim point velocities and accelerations by numerical differentiation of lab-coordinate trajectories.",
+      "Integrate each applied force power and couple power separately and compare with individual translational and rotational energies.",
+      "Integrate relative slip distance for frictional heat; do not merely define heat as the energy residual.",
+      "Check piecewise event time with the relative-acceleration zero equation, continuity of x/angle/v/omega, and correct static versus reverse-slip branch.",
+      "Test at least 50 deterministic seeds for every family variant, including equivalent radicals, units, all choice branches, and invalid inputs.",
+      "Check partial phases and whole histories against a numerical small-step contact solver where practical, away from exact threshold ambiguity.",
+      "Complete checkpoint, wait for confirmed persistence, reload, export/reset/restore answers, evidence, and notes."
+    ],
+    "edges": [
+      "Exactly at static capacity",
+      "Just below and above capacity",
+      "Zero mu_k with and without compatible initial rolling",
+      "Negative initial motion and overspin",
+      "Static friction with or against CM motion",
+      "One instant of u=0 without sustainable rolling",
+      "Initialrest",
+      "Event at trialendpoint",
+      "No event within interval",
+      "Friction-free udot0",
+      "Pure driving couple",
+      "Force offset canceling requiredfriction",
+      "High beta and steep slope",
+      "Finite extreme input values",
+      "Inadmissible mu_k>mu_s or nonpositive geometry",
+      "Moving-belt contact power and no-slip uncertainty overlap"
+    ],
+    "review": "Independent subject review and pilot validation have not been performed."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Rolling Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion",
+      "checkedAt": "2026-09-24",
+      "use": "Definitions and coverage check for rolling, slip, traction, and energy; all lesson derivations, examples, diagrams, and generators are original."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "35.5 Contact Point of a Wheel Rolling Without Slipping",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/35-5-contact-point-of-a-wheel-rolling-without-slipping/",
+      "checkedAt": "2026-09-24",
+      "use": "Free companion on instantaneous contact-point kinematics."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "36.1 Friction on a Rolling Wheel",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/36-1-friction-on-a-rolling-wheel/",
+      "checkedAt": "2026-09-24",
+      "use": "Companion on conditional static friction and the zero-friction steady ideal limit."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "37.1 Kinetic Energy of Translation and Rotation",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/37-1-kinetic-energy-of-translation-and-rotation/",
+      "checkedAt": "2026-09-24",
+      "use": "Free derivation of translational plus CM rotational kinetic energy."
+    }
+  ]
+}
