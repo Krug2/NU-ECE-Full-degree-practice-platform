@@ -12,13 +12,17 @@ import frameData from "../content/lessons/phs-231/m02-l02.json";
 import projectileData from "../content/lessons/phs-231/m02-l03.json";
 import forceData from "../content/lessons/phs-231/m03-l01.json";
 import frictionData from "../content/lessons/phs-231/m03-l02.json";
+import dragData from "../content/lessons/phs-231/m03-l03.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
   expect(pack.status).toBe("building");
   expect(pack.modules.flatMap(m=>m.lessons)).toHaveLength(22);
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
-  for(const data of [unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData]) {
+});
+
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+    const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
     const visit=(value:unknown):void=>{
@@ -33,7 +37,16 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
-  }
+});
+
+it("checks the guided drag transient using a convergent exponential series and the original force equation",()=>{
+  const q=lessonSchema.parse(dragData).guided.question;
+  let term=1,sum=1;for(let n=1;n<=18;n++){term/=-n;sum+=term;}
+  const v=20*(1-sum),a=10-.5*v;
+  const response={terminal:"10/.5",tau:"1/.5",velocity:v.toFixed(6),acceleration:a.toFixed(6),meaning:"balance"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(gradeQuestion(q,{...response,velocity:"20"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,meaning:"one-tau"}).correct).toBe(false);
 });
 
 it("checks both guided coupled-body equations and rejects the wrong friction regime",()=>{
