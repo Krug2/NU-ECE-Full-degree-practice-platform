@@ -29,9 +29,11 @@ import { rootSearchFamilyIds,rootSearchQuestion } from "./families/mth-root-sear
 import { rootCompletionFamilyIds,rootCompletionQuestion } from "./families/mth-root-completion";
 import { rationalGraphFamilyIds,rationalGraphQuestion } from "./families/mth-rational-graphs";
 import { rationalBehaviorFamilyIds,rationalBehaviorQuestion } from "./families/mth-rational-behavior";
+import { signSolutionFamilyIds,signSolutionQuestion } from "./families/mth-sign-solutions";
+import { signReasoningFamilyIds,signReasoningQuestion } from "./families/mth-sign-reasoning";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion],[rootSearchFamilyIds,rootSearchQuestion],[rootCompletionFamilyIds,rootCompletionQuestion],[rationalGraphFamilyIds,rationalGraphQuestion],[rationalBehaviorFamilyIds,rationalBehaviorQuestion]] as const){
+for(const [ids,generate] of [[signSolutionFamilyIds,signSolutionQuestion],[signReasoningFamilyIds,signReasoningQuestion],[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion],[rootSearchFamilyIds,rootSearchQuestion],[rootCompletionFamilyIds,rootCompletionQuestion],[rationalGraphFamilyIds,rationalGraphQuestion],[rationalBehaviorFamilyIds,rationalBehaviorQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
 for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion],[polynomialZeroFamilyIds,polynomialZeroQuestion],[polynomialSignFamilyIds,polynomialSignQuestion]] as const){
