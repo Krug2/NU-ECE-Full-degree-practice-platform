@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import rotationData from "../content/lessons/phs-231/m07-l01.json";
 import collisionData from "../content/lessons/phs-231/m06-l02.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
@@ -27,7 +28,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -43,6 +44,15 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks the guided rotor by separate mass and moment inventories and a signed velocity integral",()=>{
+  const q=lessonSchema.parse(rotationData).guided.question;
+  const inertia=2/2+1+2/4,torque=6/2-1,alpha=torque/inertia,omega=-1+2*alpha;
+  const response={inertia:String(inertia),torque:String(torque),alpha:String(alpha),omega:"-1+2*(2/(2/2+1+2/4))",meaning:"reversal"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(1/alpha).toBe(5/4);expect(1/alpha).toBeLessThan(2);expect(omega).toBeCloseTo(3/5,12);
+  for(const wrong of [{inertia:"3"},{torque:"4"},{alpha:"-4/5"},{omega:"-3/5"},{meaning:"hold"},{meaning:"slows"},{meaning:"radial"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks the guided oblique collision using momentum and separation equations, then a direct energy sum",()=>{

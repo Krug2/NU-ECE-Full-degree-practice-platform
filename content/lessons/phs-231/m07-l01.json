@@ -1,0 +1,646 @@
+{
+  "id": "m07-l01",
+  "courseId": "phs-231",
+  "moduleId": "m07",
+  "version": 1,
+  "title": "Angular motion, torque, and rotational inertia",
+  "objective": "Relate angular and tangential variables, calculate torque about a stated axis, and derive or combine moments of inertia.",
+  "why": "A motor can apply a large force yet produce little turning effect, and two objects with the same mass can respond very differently to the same torque. The missing information is geometry relative to a chosen axis. You will connect angular motion to the motion of each point, calculate force moments, build rotational inertia from a mass distribution, and solve fixed-axis motion while checking the assumptions that make each equation valid.",
+  "estimatedMinutes": 195,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Vector components, projections, and cross products"
+    },
+    {
+      "lessonId": "m02-l01",
+      "label": "Derivatives, integrals, and signed motion through a reversal"
+    },
+    {
+      "lessonId": "m03-l01",
+      "label": "External force inventories and constraint forces"
+    },
+    {
+      "lessonId": "m04-l01",
+      "label": "Radians, radial acceleration, and tangential acceleration"
+    },
+    {
+      "lessonId": "m06-l01",
+      "label": "Mass density, center of mass, and composite bodies"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. Review power-rule differentiation and definite integrals; the required steps are developed locally below."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Specify an axis, a sign, and an unwrapped angle",
+      "paragraphs": [
+        "A rigid body keeps the distances between its material points fixed in the model. In fixed-axis rotation, each off-axis point follows a circle centered on the same stationary line. Choose an inertial reference frame, an origin on that line, and a positive unit direction n along it. The right-hand rule fixes positive rotation: point your right thumb along n and curl your fingers in the positive turning sense.",
+        "Let θ(t) be an unwrapped angular coordinate in radians. It records accumulated turning rather than just the visible orientation of a painted mark. Angles θ and θ+2π have the same orientation but differ by one full turn. A time series of an encoder that reports only one-turn angles must be unwrapped consistently before differences or derivatives can represent accumulated motion.",
+        "Define signed angular velocity $\\omega=d\\theta/dt$ and angular acceleration $\\alpha=d\\omega/dt$. Angular speed is $|\\omega|$. Their units are rad/s and rad/s². A radian is a ratio of arc length to radius, so it is dimensionless in SI dimensional analysis; retaining the rad label still helps distinguish angular rate from another inverse-time quantity. Convert degrees or revolutions before using radian-based derivatives or linear-speed formulas.",
+        "For example, a signed rate q revolutions/minute becomes $\\omega=q(2\\pi)/60=q\\pi/30$ rad/s. A negative result refers to the chosen sense, not to an impossible speed. Finite rotations about different axes generally do not commute, so do not treat arbitrary three-dimensional orientation changes as ordinary additive vectors. The fixed-axis coordinate used here avoids that complication."
+      ]
+    },
+    {
+      "heading": "Integrate angular motion and keep track of reversals",
+      "paragraphs": [
+        "The calculus parallels signed translation: $\\omega(t)=\\omega_0+\\int_0^t\\alpha(u)\\,du$ and $\\theta(t)=\\theta_0+\\int_0^t\\omega(u)\\,du$. Initial angular velocity and initial angle are separate conditions. If α depends on time, replacing it by its endpoint value throughout the interval generally changes both answers.",
+        "When α is constant, integration gives $\\omega=\\omega_0+\\alpha t$ and $\\Delta\\theta=\\omega_0t+\\alpha t^2/2$. Eliminating time gives $\\omega^2=\\omega_0^2+2\\alpha\\Delta\\theta$. The squared equation does not by itself choose the sign of final ω or establish which part of a reversing trajectory is intended. Retain a time or direction check.",
+        "Signed angular displacement is $\\int\\omega\\,dt$, while total angular travel is $\\int|\\omega|\\,dt$. If ω crosses zero, split the latter integral at that instant. For constant nonzero α, the candidate is $t_*=-\\omega_0/\\alpha$; it belongs to the trial only if it lies in the stated interval. An endpoint zero is different from an interior reversal.",
+        "For nonzero ω, the speed increases when ω and α have the same sign and decreases when their signs differ. Negative α can speed up a clockwise rotor. At ω=0 with nonzero α, the rotor is instantaneously at rest but is not in equilibrium. A drive that maintains the same signed torque can carry it through rest into reverse motion; a dry brake or holding controller needs its own continuation rule."
+      ]
+    },
+    {
+      "heading": "Recover each point's complete motion",
+      "paragraphs": [
+        "Write the angular vectors as $\\boldsymbol\\omega=\\omega\\mathbf n$ and $\\boldsymbol\\alpha=\\alpha\\mathbf n$ for the fixed unit axis. For a body point at r from the stationary origin, $\\mathbf v=\\boldsymbol\\omega\\times\\mathbf r$. Its speed is $\\rho|\\omega|$, where $\\rho$ is perpendicular distance to the axis. A coordinate along the axis does not increase that radius.",
+        "Differentiate the velocity vector, including the changing position: $\\mathbf a=\\boldsymbol\\alpha\\times\\mathbf r+\\boldsymbol\\omega\\times(\\boldsymbol\\omega\\times\\mathbf r)$. The first term is tangential; the second points inward toward the axis. In a local radial/tangential basis, $\\mathbf a=\\rho\\alpha\\,\\mathbf e_t-\\rho\\omega^2\\,\\mathbf e_r$. The two perpendicular components must both be included in total acceleration.",
+        "For the z axis and instantaneous r=(x,y,z), $\\mathbf v=(-\\omega y,\\omega x,0)$ and $\\mathbf a=(-\\alpha y-\\omega^2x,\\alpha x-\\omega^2y,0)$. Consequently $|\\mathbf a|=\\rho\\sqrt{\\alpha^2+\\omega^4}$. All points share ω and α, but their linear speeds and accelerations vary with radius. A point on the axis has zero velocity in this fixed-axis model, even if its z coordinate is nonzero.",
+        "During steady nonzero rotation, α=0 but inward acceleration remains. At an instant of zero ω, inward acceleration vanishes but tangential acceleration may remain. A radial force can therefore be essential to constrain a point even though it produces no axial torque. Torque determines the angular response; it does not replace the complete force balance needed to find support loads."
+      ]
+    },
+    {
+      "heading": "Calculate a force moment before projecting onto an axis",
+      "paragraphs": [
+        "A force F applied at position r relative to origin O produces torque $\\boldsymbol\\tau_O=\\mathbf r\\times\\mathbf F$. The order matters. Expand it as $(yF_z-zF_y,\\ zF_x-xF_z,\\ xF_y-yF_x)$ in a right-handed Cartesian system. For several forces, compute their moments about the same origin before summing.",
+        "The magnitude is $rF|\\sin\\phi|=F\\ell_\\perp$, where $\\ell_\\perp$ is perpendicular distance from O to the force's line of action. The axial scalar that drives rotation about unit direction n is $\\tau_n=\\mathbf n\\cdot\\boldsymbol\\tau_O$. It can be negative or zero even when the full torque vector has nonzero magnitude. Use that component, rather than the norm, in the fixed-axis equation.",
+        "For planar xy loading about z, the signed moment is xFy−yFx. A force parallel to the radius has zero moment about the center. A tangential force has the full radius as its lever arm. Sliding a force's application point along its own line leaves its torque about the same origin unchanged, because the added displacement is parallel to F.",
+        "If the origin moves from O to O′ by vector a, the new position is r−a, so $\\boldsymbol\\tau_{O'}=\\boldsymbol\\tau_O-\\mathbf a\\times\\mathbf F$. For a force system, replace F in the shift term by net force. A pure couple consists of equal and opposite forces on distinct lines; its net force is zero and its torque vector is independent of origin. Its component still depends on which axis direction is chosen.",
+        "Report torque in N m. It has the same dimensions as energy, but a moment of force is not itself a scalar energy transfer. The distinction matters when a force changes direction, when an axis constrains motion, and when rotational work is calculated in the next lesson."
+      ]
+    },
+    {
+      "heading": "Build rotational inertia from perpendicular distances",
+      "paragraphs": [
+        "For point masses rotating with the same angular velocity, each speed is $\\rho_i|\\omega|$. Summing their kinetic energies gives $K=\\sum_i m_i\\rho_i^2\\omega^2/2=I_n\\omega^2/2$, where $I_n=\\sum_i m_i\\rho_i^2$. This defines moment of inertia about the selected axis. It has units kg m² and is nonnegative.",
+        "For an axis through O with unit direction n, calculate $\\rho_i^2=|\\mathbf r_i|^2-(\\mathbf r_i\\cdot\\mathbf n)^2$. Equivalently, $\\rho_i=|\\mathbf r_i\\times\\mathbf n|$. These are useful independent geometry checks. The full distance to O is appropriate only when the position is perpendicular to the axis.",
+        "Moving a point mass from radius r to 2r multiplies its inertia contribution by four. Doubling its mass only doubles that contribution. Equal total masses can therefore have very different inertias. When a disk and added masses are combined, scaling only the point-mass radii does not scale the disk's contribution.",
+        "The radius of gyration k is defined by $I=Mk^2$, so $k=\\sqrt{I/M}$ for positive total mass. It is a mass-weighted root-mean-square perpendicular distance, not necessarily the location of any actual piece. An ideal point mass on the axis contributes zero. A finite body whose center lies on the axis can still have nonzero inertia because much of its material lies away from that center.",
+        "These comparisons describe distinct rigid configurations. Moving masses inward while a rotor is already spinning changes the inertia during the motion and can involve internal work and angular-momentum constraints. That is developed in the following lesson; it is not represented by replacing a radius halfway through the constant-inertia simulation."
+      ]
+    },
+    {
+      "heading": "Integrate distributed mass instead of memorizing shapes alone",
+      "paragraphs": [
+        "For continuous material, $I=\\int\\rho^2\\,dm$. Choose a mass element compatible with the geometry: $dm=\\lambda(x)\\,dx$ for a slender rod, $dm=\\sigma\\,dA$ for a thin lamina, or $dm=\\rho_m\\,dV$ for a volume density. Here $\\rho_m$ denotes mass density and must not be confused with perpendicular radius. Check both the density's units and its normalization by recovering total mass.",
+        "A uniform slender rod of mass M and length L, perpendicular to an axis through its midpoint, has $dm=(M/L)\\,dx$ and $I=(M/L)\\int_{-L/2}^{L/2}x^2\\,dx=ML^2/12$. About a parallel axis at its end, integrate over $0\\le x\\le L$ to obtain $ML^2/3$. The factor of four difference comes from geometry, although the rod's mass has not changed.",
+        "For a uniform disk, use concentric thin rings. A ring at radius r with width dr has area $2\\pi r\\,dr$ and mass $dm=\\sigma2\\pi r\\,dr$. Then $I=2\\pi\\sigma\\int_0^Rr^3\\,dr=\\pi\\sigma R^4/2=MR^2/2$. Equal radial widths do not have equal ring masses; omitting the circumference factor would integrate the wrong density.",
+        "A uniform annulus with inner radius a and outer radius b has $M=\\pi\\sigma(b^2-a^2)$ and $I=\\pi\\sigma(b^4-a^4)/2=M(a^2+b^2)/2$. At a=0 this becomes the disk result. At fixed M, as the material concentrates near b, it approaches the thin-hoop result $Mb^2$. These limiting checks test both the algebra and the physical trend.",
+        "For a nonuniform rod, first integrate its actual density for M and its first moment for the CM. Its geometric midpoint may not be the CM, and the uniform-rod formula does not apply merely because its outline is straight. The density example below checks its CM-axis inertia both by shifting from an end and by the defining integral."
+      ]
+    },
+    {
+      "heading": "Shift axes correctly and account for missing material",
+      "paragraphs": [
+        "Let a parallel axis be a perpendicular distance d from a CM axis. Express each perpendicular position as the sum of its CM-relative part and the CM displacement. Expanding the square gives $I=I_{\\rm cm}+Md^2+2\\mathbf d\\cdot\\int\\mathbf r_{\\perp,\\rm cm}\\,dm$. The last term vanishes because the first moment about the CM is zero. Thus $I=I_{\\rm cm}+Md^2$.",
+        "The theorem requires parallel directions, and its reference term is the inertia about the parallel CM axis. If a known reference axis is already away from the CM, adding M times a further shift squared misses a cross term. Find the full new distance from the CM or perform a direct integral. Among parallel axes, the CM axis has the smallest inertia.",
+        "A different result holds for a planar lamina lying in xy: $I_x=\\int y^2dm$, $I_y=\\int x^2dm$, and $I_z=\\int(x^2+y^2)dm$, so $I_z=I_x+I_y$. The three axes must intersect at the same point with z perpendicular to the lamina. For a body with thickness, $I_x+I_y-I_z=2\\int z^2dm$ generally is not zero. The planar theorem cannot be generalized by ignoring the extra mass distribution.",
+        "Composite inertia is additive when every component is evaluated about the same final axis. Include a component's own-center inertia and shift it as needed. For a hole, compute the mass and shifted inertia of the material that would occupy that hole at the original density, then subtract it. A removed off-center piece subtracts a first moment as well as mass and inertia.",
+        "If the requested axis is through the remaining object's CM, first find that new CM using remaining mass and first moment. Then shift the remaining inertia using the remaining mass. Using the original disk mass in the last step would no longer describe the actual object. Check that the final inertia is nonnegative and smaller than the remaining inertia about an offset parallel axis."
+      ]
+    },
+    {
+      "heading": "Use the axial torque balance within its fixed-axis scope",
+      "paragraphs": [
+        "For a point constrained to a fixed circle, tangential acceleration is $\\rho\\alpha$ and the axial moment of its tangential force is $\\rho F_t=m\\rho^2\\alpha$. Sum over a rigid body with fixed radii, accounting for cancellation of internal moments, to obtain $\\sum\\tau_{\\rm ext,n}=I_n\\alpha$. All moments and I refer to the same fixed inertial axis, and I stays constant during the trial.",
+        "This is an equation for an axial component. It does not assert that every torque vector for a freely tumbling three-dimensional body equals one scalar I times the angular-acceleration vector. A general body can need an inertia tensor and additional rotational equations. The fixed-axis supports can supply other forces or moments while maintaining the stipulated constraint.",
+        "Draw a torque inventory: drive, load, bearing, and any other external axial moments. Forces acting on the axis give zero moment about it; radial forces give zero axial moment. A specified frictional or bearing couple must still be included. Zero net torque means zero angular acceleration, which permits steady nonzero rotation.",
+        "For constant net torque, $\\alpha=\\tau_{\\rm net}/I$ is constant and the earlier angular kinematics apply. For a time-dependent prescribed torque, integrate $\\alpha(t)=\\tau_{\\rm net}(t)/I$. A torque depending on angle or speed instead produces a differential equation coupled to that motion; do not replace it with a constant just because one initial value is known.",
+        "The simulation uses co-rotating radial and tangential actuator components at a separately controlled drive radius. It holds geometry fixed within each trial. This makes the mass-placement experiment interpretable: when only point radii change, the drive torque stays the same. A real force held in a fixed laboratory direction could instead have a changing tangential component and torque."
+      ]
+    },
+    {
+      "heading": "Combine translation and rotation at a massive pulley",
+      "paragraphs": [
+        "For a mass m descending while a light cord unwinds from a fixed pulley, choose downward positive for the mass and the unwinding sense positive for rotation. The equations are $mg-T=ma$, $TR=I\\alpha$, and $a=R\\alpha$ when the cord remains taut and does not slip. The bearing contributes no axial torque in this ideal model.",
+        "Eliminate T and α: $T=(I/R^2)a$ and $a=mg/(m+I/R^2)$. The quantity $I/R^2$ has mass units and accounts for the angular acceleration of the pulley. Then $T=m(g-a)$ and $\\alpha=a/R$. Positive I makes the descending mass accelerate more slowly than g and makes tension nonzero.",
+        "For two hanging masses with $m_H>m_L$, write $m_Hg-T_H=m_Ha$ and $T_L-m_Lg=m_La$. The pulley needs $(T_H-T_L)R=I\\alpha$ and $a=R\\alpha$. Combining gives $a=(m_H-m_L)g/(m_H+m_L+I/R^2)$. The tensions generally differ; the difference supplies the pulley's angular acceleration.",
+        "A massless-pulley approximation sets I=0 and can yield equal tensions for that ideal constraint. It is not valid to carry that equality into a problem with nonzero pulley inertia and acceleration. Conversely, no slip is an assumption that needs adequate contact traction; these equations do not prove that any particular rope and surface will enforce it.",
+        "An inverse measurement can estimate $I=\\tau_{\\rm net}/\\alpha$ when nonzero α and actual net axial torque are known. If a proposed added point mass sits at radius R, $m_{\\rm added}=(I-I_{\\rm base})/R^2$. Require R>0 and a nonnegative inferred mass. A negative result rejects that proposed exact model or its data; it is not a negative mass to install."
+      ]
+    },
+    {
+      "heading": "Treat simulation and measurement as different evidence",
+      "paragraphs": [
+        "An analytic investigation checks consequences of stated assumptions. It does not establish actual bearing losses, rigid-body strength, encoder accuracy, motor torque, or safe operating speed. The activity below assigns no motor, flywheel, spinning-tool, or hanging-load construction. Its point masses, massless arms, ideal axle, and prescribed drive describe a mathematical model.",
+        "Measured angular data need an axis convention, angle calibration, correct turn unwrapping, and a timebase. Numerical differentiation can magnify position noise, while a timing bias can affect both velocity and acceleration. Compare a trend over an appropriate interval and report resolution and assumptions rather than treating all displayed digits as independent accuracy.",
+        "For an exactly known base inertia and a point mass at nonnegative measured radius, $I=I_b+mr^2$ increases with r and m. Positive acceleration $\\alpha=\\tau/I$ increases with positive torque and decreases with I. Given independent allowed intervals, pair the smallest torque with largest inertia for the lower acceleration bound, and the largest torque with smallest inertia for the upper bound.",
+        "These endpoint bounds are not standard deviations or confidence intervals unless a probability model has also been supplied. For a point-mass contribution alone, a small relative radius error has approximately twice that relative effect on inertia; the exact square or exact endpoint interval remains the safer calculation for larger bounds. A fixed base contribution changes the relative sensitivity of the total.",
+        "Record each investigation as a prediction, stated controls, computed table, and explanation of the comparison. Keep the drive lever fixed when testing mass placement. Test radial loading separately, and compare signed angle with total angular travel across a reversal. Save those observations in lesson notes so that the reasoning, as well as checkpoint evidence, can be resumed and backed up."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Differentiate the angle, then assemble full acceleration",
+      "prompt": "A rotor has θ(t)=2−3t+t³ rad, with t in seconds. At t=2 s, find its angular state and the speed and acceleration magnitudes of a point 1/2 m from the fixed axis.",
+      "steps": [
+        {
+          "math": "\\theta(2)=4\\ \\mathrm{rad},\\quad \\omega(t)=-3+3t^2,\\quad \\alpha(t)=6t",
+          "reason": "Substitute into the original angle for position, but differentiate the whole function before evaluating velocity and acceleration. Each coefficient carries the corresponding SI units."
+        },
+        {
+          "math": "\\omega(2)=9\\ \\mathrm{rad/s},\\quad\\alpha(2)=12\\ \\mathrm{rad/s^2},\\quad v=(1/2)|9|=9/2\\ \\mathrm{m/s}",
+          "reason": "Both angular velocity and acceleration are positive, so the point is speeding up at this instant. Its speed uses perpendicular radius."
+        },
+        {
+          "math": "a_t=(1/2)(12)=6,\\quad a_r=(1/2)(9^2)=81/2\\quad(\\mathrm{m/s^2})",
+          "reason": "The tangential part changes speed and the inward part changes direction. Neither may be omitted from total acceleration."
+        },
+        {
+          "math": "|\\mathbf a|=\\sqrt{6^2+(81/2)^2}=\\frac{\\sqrt{6705}}2\\ \\mathrm{m/s^2}",
+          "reason": "The components are perpendicular. Adding their magnitudes would overstate the norm; using only 6 would omit the larger radial part."
+        }
+      ],
+      "conclusion": "The angle changed by 4−2=2 rad from the initial instant, but that alone does not determine total angular travel if the rotor reversed earlier. Position, velocity, and acceleration answer different questions."
+    },
+    {
+      "title": "Project a three-dimensional torque onto the permitted axis",
+      "prompt": "A force (4,5,−2) N acts at r=(2,−1,3) m relative to O. Find its torque vector and its component about unit axis n=(0,3/5,4/5). Then move the origin to O′=(1,0,0) m.",
+      "steps": [
+        {
+          "math": "\\boldsymbol\\tau_O=\\big((-1)(-2)-3(5),\\ 3(4)-2(-2),\\ 2(5)-(-1)(4)\\big)=(-13,16,14)\\ \\mathrm{N\\,m}",
+          "reason": "Use r cross F in that order. The torque is perpendicular to both r and F; their dot products with this result are zero."
+        },
+        {
+          "math": "\\tau_n=(0,3/5,4/5)\\cdot(-13,16,14)=104/5\\ \\mathrm{N\\,m}",
+          "reason": "The specified rotation is driven by the axial projection, not by the magnitude of the whole torque vector."
+        },
+        {
+          "math": "\\mathbf r'=(1,-1,3),\\quad \\boldsymbol\\tau_{O'}=\\mathbf r'\\times\\mathbf F=(-13,14,9)\\ \\mathrm{N\\,m}",
+          "reason": "Recompute the position relative to the new origin while leaving the physical force unchanged."
+        },
+        {
+          "math": "\\boldsymbol\\tau_O-(1,0,0)\\times(4,5,-2)=(-13,16,14)-(0,2,5)=(-13,14,9)",
+          "reason": "The origin-shift identity supplies an independent check of the recomputed torque."
+        }
+      ],
+      "conclusion": "A torque answer needs both its reference origin and, for an axial scalar, the axis direction. Changing the reference generally changes a single force's moment."
+    },
+    {
+      "title": "A couple changes rotation despite zero resultant force",
+      "prompt": "Forces (0,3,0) N at (2,0,0) m and (0,−3,0) N at (−1,0,0) m act on one body. Find net force and axial torque, including a check about the shifted origin x=4 m.",
+      "steps": [
+        {
+          "math": "\\mathbf F_{\\rm net}=(0,3,0)+(0,-3,0)=\\mathbf0",
+          "reason": "The forces cancel as vectors. This says nothing yet about their moments because they act on different lines."
+        },
+        {
+          "math": "\\tau_z=2(3)+(-1)(-3)=9\\ \\mathrm{N\\,m}",
+          "reason": "Each force contributes positive z torque. Their perpendicular line separation is 3 m, giving the same result 3 N times 3 m."
+        },
+        {
+          "math": "\\tau_z'=(2-4)(3)+(-1-4)(-3)=-6+15=9\\ \\mathrm{N\\,m}",
+          "reason": "Both lever positions change with origin, but their shift contributions cancel because net force is zero."
+        }
+      ],
+      "conclusion": "The pure couple's torque vector is origin independent. The equality does not extend to arbitrary force systems with nonzero resultant force."
+    },
+    {
+      "title": "The same particles have different inertias about different axes",
+      "prompt": "Point masses 2 kg and 1 kg are at (1,2,3) m and (−2,0,1) m. Find inertia about z, about x, and about the line through the origin with unit direction (0,3/5,4/5).",
+      "steps": [
+        {
+          "math": "I_z=2(1^2+2^2)+1((-2)^2+0^2)=14\\ \\mathrm{kg\\,m^2}",
+          "reason": "For z, only x and y contribute to squared perpendicular distance. The z coordinates do not."
+        },
+        {
+          "math": "I_x=2(2^2+3^2)+1(0^2+1^2)=27\\ \\mathrm{kg\\,m^2}",
+          "reason": "Changing axis direction changes which material lies far from the axis, even though neither mass moved."
+        },
+        {
+          "math": "\\rho_A^2=14-(18/5)^2=26/25,\\quad \\rho_B^2=5-(4/5)^2=109/25\\quad(\\mathrm{m^2})",
+          "reason": "For the sloped unit axis, subtract the square of the parallel projection from each full position norm squared."
+        },
+        {
+          "math": "I_n=2(26/25)+109/25=161/25\\ \\mathrm{kg\\,m^2}",
+          "reason": "Weight each squared perpendicular distance by its own mass. The cross-product norm gives a second way to check each distance."
+        }
+      ],
+      "conclusion": "Rotational inertia belongs to a mass distribution together with an axis. It is not a single shape label independent of geometry."
+    },
+    {
+      "title": "Integrate a rod and expose a wrong axis shift",
+      "prompt": "A uniform slender rod has M=3 kg and L=2 m. Find its inertia about its midpoint, about an end, and about a perpendicular axis 1/2 m beyond that end.",
+      "steps": [
+        {
+          "math": "\\lambda=3/2\\ \\mathrm{kg/m},\\quad I_{\\rm cm}=\\frac32\\int_{-1}^{1}x^2\\,dx=1\\ \\mathrm{kg\\,m^2}",
+          "reason": "The mass element is λ dx. Its normalization integrates to 3 kg, and x is the distance coordinate perpendicular to the selected axis."
+        },
+        {
+          "math": "I_{\\rm end}=\\frac32\\int_0^2x^2\\,dx=4\\ \\mathrm{kg\\,m^2}",
+          "reason": "A direct integral changes the distance of every mass element, providing a check independent of the axis-shift formula."
+        },
+        {
+          "math": "d=1+1/2=3/2\\ \\mathrm m,\\quad I_{\\rm new}=1+3(3/2)^2=31/4\\ \\mathrm{kg\\,m^2}",
+          "reason": "The new axis is 3/2 m from the CM, not 1/2 m. The parallel-axis theorem uses this full distance."
+        },
+        {
+          "math": "I_{\\rm end}+3(1/2)^2=19/4\\ne31/4",
+          "reason": "This tempting calculation shifts from a non-CM axis using a formula whose cross term vanishes only at the CM. It omits the rod's first moment about the end."
+        }
+      ],
+      "conclusion": "The end-axis result is valid, but it cannot be used as if the end were the CM. A direct integral about the new axis gives the same 31/4 kg m²."
+    },
+    {
+      "title": "A density gradient shifts both the center and the inertia",
+      "prompt": "A slender rod spans 0≤x≤3 m with λ(x)=2(1+x/3) kg/m. Find its mass, CM coordinate, end-axis inertia, and inertia about a parallel CM axis.",
+      "steps": [
+        {
+          "math": "M=\\int_0^3(2+2x/3)\\,dx=9\\ \\mathrm{kg},\\quad Q=\\int_0^3x(2+2x/3)\\,dx=15\\ \\mathrm{kg\\,m}",
+          "reason": "The growing density makes the rod heavier near its right end. Integrate actual density rather than assuming its midpoint is the CM."
+        },
+        {
+          "math": "x_{\\rm cm}=Q/M=5/3\\ \\mathrm m",
+          "reason": "The result is greater than the midpoint 3/2 m and less than the far endpoint, consistent with the density trend."
+        },
+        {
+          "math": "I_0=\\int_0^3x^2(2+2x/3)\\,dx=18+27/2=63/2\\ \\mathrm{kg\\,m^2}",
+          "reason": "Weight squared end-axis distance by density. The x³ contribution is required for the nonuniform rod."
+        },
+        {
+          "math": "I_{\\rm cm}=63/2-9(5/3)^2=13/2\\ \\mathrm{kg\\,m^2}",
+          "reason": "Subtract M times the squared CM offset to move from the end to the parallel CM axis."
+        },
+        {
+          "math": "\\int_0^3(x-5/3)^2(2+2x/3)\\,dx=13/2,\\quad k_{\\rm cm}=\\sqrt{(13/2)/9}=\\sqrt{26}/6\\ \\mathrm m",
+          "reason": "A direct CM-distance integral independently checks the shift. The radius of gyration uses the same CM-axis inertia and total mass."
+        }
+      ],
+      "conclusion": "A rod's outline alone does not justify the uniform-rod inertia formula. Density, CM, and the selected axis all affect the calculation."
+    },
+    {
+      "title": "Derive an annulus and compare mass placement",
+      "prompt": "A uniform thin annulus has mass 4 kg, inner radius 1 m, and outer radius 2 m. Find its inertia about the central perpendicular axis and compare with a 4 kg disk and thin hoop of outer radius 2 m.",
+      "steps": [
+        {
+          "math": "\\sigma=\\frac4{\\pi(2^2-1^2)}=\\frac4{3\\pi}\\ \\mathrm{kg/m^2},\\quad dm=\\sigma\\,2\\pi r\\,dr",
+          "reason": "Normalize the mass using annular area. The circumference factor supplies the increasing area of rings farther from the center."
+        },
+        {
+          "math": "I=\\int_1^2r^2\\sigma2\\pi r\\,dr=\\frac83\\left[\\frac{r^4}{4}\\right]_1^2=10\\ \\mathrm{kg\\,m^2}",
+          "reason": "The integration combines radius squared from inertia with radius from the ring area. Using just dr as mass would be wrong."
+        },
+        {
+          "math": "I_{\\rm disk}=\\frac12(4)(2^2)=8,\\quad I_{\\rm hoop}=4(2^2)=16\\quad(\\mathrm{kg\\,m^2})",
+          "reason": "The disk places more of its mass near the center; the hoop places all mass at the outer radius. The annulus falls between them."
+        }
+      ],
+      "conclusion": "All three objects have equal mass and outer radius, but their inertias differ. Under the same fixed-axis net torque, the annulus has less angular acceleration than the disk and more than the hoop."
+    },
+    {
+      "title": "Subtract a hole about a common axis, then find the new CM",
+      "prompt": "A uniform disk originally has mass 8 kg and radius 2 m. A circular hole of radius 1 m centered at (1,0) m is removed. Find the remaining inertia about the original central perpendicular axis and about the parallel axis through the remaining CM.",
+      "steps": [
+        {
+          "math": "m_h=8\\frac{1^2}{2^2}=2\\ \\mathrm{kg},\\quad M_r=8-2=6\\ \\mathrm{kg}",
+          "reason": "The removed material has the same area density as the original disk, so its mass follows the area ratio. The hole is internally tangent and contained."
+        },
+        {
+          "math": "I_{\\rm full}=\\tfrac12(8)(2^2)=16,\\quad I_{h,O}=\\tfrac12(2)(1^2)+2(1^2)=3\\quad(\\mathrm{kg\\,m^2})",
+          "reason": "Shift the hole's own-center inertia to the original disk axis before subtracting. Its offset contribution is 2 kg m²."
+        },
+        {
+          "math": "I_{r,O}=16-3=13\\ \\mathrm{kg\\,m^2},\\quad x_{{\\rm cm},r}=\\frac{8(0)-2(1)}6=-1/3\\ \\mathrm m",
+          "reason": "Subtract both inertia and first moment. Removing material on the right shifts the remaining CM to the left."
+        },
+        {
+          "math": "I_{r,\\rm cm}=13-6(1/3)^2=37/3\\ \\mathrm{kg\\,m^2}",
+          "reason": "Use the remaining mass and its actual offset to shift back to its CM axis. The result is smaller than the remaining original-axis inertia, as expected."
+        }
+      ],
+      "conclusion": "Using only the hole's own-center inertia would give 15 rather than 13 kg m² about O. Using the original mass in the last shift would also describe the wrong object."
+    },
+    {
+      "title": "An ideal signed drive carries a rotor through rest",
+      "prompt": "A disk of mass 2 kg and radius 1 m carries point A of 1 kg at radius 1 m and point B of 2 kg at radius 1/2 m. A co-rotating force at drive radius 1/2 m has radial component 4 N and tangential component 6 N. An additional couple is −1 N m. Initially ω=−1 rad/s. All parameters stay fixed for 2 s.",
+      "steps": [
+        {
+          "math": "I=\\tfrac12(2)(1^2)+1(1^2)+2(1/2)^2=5/2\\ \\mathrm{kg\\,m^2}",
+          "reason": "The disk and each added point contribute about the same fixed axis. The actuator radius is not used in the inertia sum."
+        },
+        {
+          "math": "\\tau_z=(1/2)(6)-1=2\\ \\mathrm{N\\,m},\\quad\\alpha=2/(5/2)=4/5\\ \\mathrm{rad/s^2}",
+          "reason": "The radial force contributes no axial moment. Include the opposing couple before dividing by I."
+        },
+        {
+          "math": "\\omega(2)=-1+(4/5)(2)=3/5,\\quad \\Delta\\theta(2)=-2+\\tfrac12(4/5)(2^2)=-2/5\\ \\mathrm{rad}",
+          "reason": "Angular velocity becomes positive even though the net angular displacement remains negative over the full interval."
+        },
+        {
+          "math": "t_*=\\frac{1}{4/5}=5/4\\ \\mathrm s,\\quad\\theta(t_*)=-5/8\\ \\mathrm{rad}",
+          "reason": "Solve for zero angular velocity and check that it lies inside the 2 s trial. This is the reversal point."
+        },
+        {
+          "math": "\\Theta_{\\rm travel}=5/8+\\big(-2/5+5/8\\big)=17/20\\ \\mathrm{rad}",
+          "reason": "Add the magnitudes of the two signed angular segments. Taking just the magnitude of final displacement would lose the return motion."
+        },
+        {
+          "math": "v_A=3/5\\ \\mathrm{m/s},\\quad a_{t,A}=4/5,\\quad a_{r,A}=9/25\\quad(\\mathrm{m/s^2})",
+          "reason": "Use the final angular velocity for radial acceleration and the constant angular acceleration for tangential acceleration."
+        }
+      ],
+      "conclusion": "Positive torque initially slows the clockwise motion, then speeds up the counterclockwise motion. The prescribed drive does not switch off or hold at rest."
+    },
+    {
+      "title": "Find tension from coupled pulley equations",
+      "prompt": "A 2 kg mass descends while unwinding a taut no-slip cord from a uniform disk pulley of mass 4 kg and radius 1/2 m. The axle is fixed with negligible bearing torque; g=10 m/s². Find mass acceleration, cord tension, and angular acceleration.",
+      "steps": [
+        {
+          "math": "I=\\tfrac12(4)(1/2)^2=1/2\\ \\mathrm{kg\\,m^2}",
+          "reason": "The pulley has rotational inertia even though its center stays fixed. It must be included in the dynamic response."
+        },
+        {
+          "math": "20-T=2a,\\quad T(1/2)=(1/2)\\alpha,\\quad a=(1/2)\\alpha",
+          "reason": "Write translation for the hanging mass, rotation for the pulley, and the no-slip constraint. The two positive senses are chosen consistently."
+        },
+        {
+          "math": "T=2a,\\quad 20=4a,\\quad a=5\\ \\mathrm{m/s^2},\\quad T=10\\ \\mathrm N,\\quad\\alpha=10\\ \\mathrm{rad/s^2}",
+          "reason": "Eliminate tension and angular acceleration, then substitute back. Tension is neither zero nor equal to the 20 N weight."
+        },
+        {
+          "math": "TR=5\\ \\mathrm{N\\,m}=I\\alpha,\\quad mg-T=10\\ \\mathrm N=ma",
+          "reason": "Check each original force and torque equation independently, rather than only checking the combined formula."
+        },
+        {
+          "math": "a_{\\rm two}=\\frac{(3-1)10}{3+1+2}=10/3,\\quad T_H=20,\\quad T_L=40/3",
+          "reason": "As a separate comparison, use the same pulley with 3 kg and 1 kg on opposite sides. Acceleration is in m/s² and tensions in N. Their difference supplies the pulley torque; setting them equal would remove that required moment."
+        }
+      ],
+      "conclusion": "The rope must remain taut and not slip for a=Rα to hold. These are supplied model assumptions, not a validation of a particular physical setup."
+    },
+    {
+      "title": "Bound acceleration without inventing a confidence level",
+      "prompt": "A rotor has known base inertia 1 kg m² and a 2 kg point mass at a radius in [0.4,0.6] m. Its positive net torque lies in [3,5] N m. All combinations within those intervals are allowed. Bound I and α.",
+      "steps": [
+        {
+          "math": "I_{\\min}=1+2(2/5)^2=33/25,\\quad I_{\\max}=1+2(3/5)^2=43/25\\quad(\\mathrm{kg\\,m^2})",
+          "reason": "The radius is nonnegative, so squared radius and inertia both increase over the allowed interval."
+        },
+        {
+          "math": "\\alpha_{\\min}=\\frac3{43/25}=\\frac{75}{43},\\quad \\alpha_{\\max}=\\frac5{33/25}=\\frac{125}{33}\\quad(\\mathrm{rad/s^2})",
+          "reason": "Positive torque divided by positive inertia is smallest with the smallest numerator and largest denominator, and largest with the opposite endpoints."
+        },
+        {
+          "math": "\\frac3{33/25}=\\frac{25}{11},\\quad\\frac5{43/25}=\\frac{125}{43}",
+          "reason": "The other two corner combinations lie inside the derived acceleration bounds. This checks that pairing both lower endpoints would not give the minimum."
+        }
+      ],
+      "conclusion": "The result is a worst-case allowed interval under the stated model. No probability distribution was given, so it is not a confidence interval or a one-standard-deviation uncertainty."
+    }
+  ],
+  "guided": {
+    "title": "Separate mass placement from force leverage",
+    "setup": "A rigid rotor has a 2 kg uniform disk of radius 1 m, a 1 kg point mass at radius 1 m, and a 2 kg point mass at radius 1/2 m. A co-rotating actuator at radius 1/2 m supplies radial force 4 N and positive tangential force 6 N. An additional axial couple is −1 N m. The fixed-axis rotor starts at ω=−1 rad/s and keeps these constant parameters for 2 s.",
+    "before": [
+      "Use the same central perpendicular axis for the disk and both point masses.",
+      "The actuator radius sets its torque arm and is independent of either point-mass radius.",
+      "The force's radial component is required in a complete force inventory but has zero moment about this axis."
+    ],
+    "question": {
+      "id": "phs231-guided-rotation",
+      "familyId": "phs231-guided-rotation",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m07-l01",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find total axial inertia, net axial torque, angular acceleration, and final angular velocity. Then explain what happens at the zero-speed instant.",
+      "fields": [
+        {
+          "id": "inertia",
+          "label": "Total rotor inertia",
+          "expected": "5/2",
+          "unit": "kg m²",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "torque",
+          "label": "Net axial torque",
+          "expected": "2",
+          "unit": "N m",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "alpha",
+          "label": "Constant angular acceleration",
+          "expected": "4/5",
+          "unit": "rad/s²",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "omega",
+          "label": "Final angular velocity",
+          "expected": "3/5",
+          "unit": "rad/s",
+          "kind": "rational",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "meaning",
+          "label": "Interpret the moment of zero angular velocity",
+          "kind": "choice",
+          "correct": "reversal",
+          "options": [
+            {
+              "id": "reversal",
+              "label": "The signed torque remains active, so the rotor reverses during the trial",
+              "feedback": "The zero occurs at 5/4 s inside the 2 s interval. Positive torque first slows the negative rotation and then accelerates positive rotation."
+            },
+            {
+              "id": "hold",
+              "label": "The rotor reaches zero speed and must stay there",
+              "feedback": "Zero velocity at an instant is not force or torque equilibrium. The specified torque is still 2 N m, so angular acceleration remains nonzero."
+            },
+            {
+              "id": "slows",
+              "label": "Positive angular acceleration means speed increases throughout",
+              "feedback": "Initially ω is negative and α positive, so angular speed decreases. It increases only after the reversal."
+            },
+            {
+              "id": "radial",
+              "label": "The radial force adds another 2 N m to the axial torque",
+              "feedback": "The radial force points along its lever position, so their cross product is zero. Its effect on constraint loads is separate from axial angular acceleration."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "diskMass": 2,
+        "diskRadius": 1,
+        "massA": 1,
+        "radiusA": 1,
+        "massB": 2,
+        "radiusB": 0.5,
+        "driveRadius": 0.5,
+        "radial": 4,
+        "tangential": 6,
+        "couple": -1,
+        "omega0": -1,
+        "duration": 2
+      },
+      "hints": [
+        "The disk contributes MR²/2, while the two ideal point masses contribute mr² each.",
+        "The tangential drive contributes (1/2)(6)=3 N m. Add the −1 N m couple, then divide by the full inertia.",
+        "I=5/2 kg m², τ=2 N m, α=4/5 rad/s², and ω(2)=−1+(4/5)2=3/5 rad/s. The zero occurs at t=5/4 s."
+      ],
+      "explanation": [
+        "Total inertia is 1+1+1/2=5/2 kg m². Squared mass radii are required; neither the disk's full mass nor the drive lever may replace them.",
+        "Only the tangential drive force contributes to axial torque. Its 3 N m moment and the opposing −1 N m couple leave 2 N m.",
+        "The constant angular acceleration is 2/(5/2)=4/5 rad/s², giving final angular velocity 3/5 rad/s.",
+        "The initial angular velocity is negative. It reaches zero at 5/4 s, then becomes positive while the prescribed torque remains active.",
+        "The full force balance would still be needed to determine bearing and support loads. Zero axial moment of the radial force does not make that force nonexistent."
+      ],
+      "answerSummary": "I=5/2 kg m²; net torque=2 N m; α=4/5 rad/s²; final ω=3/5 rad/s. The rotor reverses at 5/4 s."
+    },
+    "after": "Check each inertia contribution and each axial moment separately. Then verify that the zero-speed time lies inside the trial; the sign of angular acceleration alone does not tell you whether speed is increasing."
+  },
+  "interaction": {
+    "kind": "phs231-rotation",
+    "prompt": "Predict a rigid rotor's inertia, axial torque, angular acceleration, and final angular velocity. Separate changes in mass placement from changes in force leverage; inspect point acceleration and angular travel through a reversal.",
+    "initial": {
+      "diskMass": 2,
+      "diskRadius": 1,
+      "massA": 1,
+      "radiusA": 1,
+      "massB": 2,
+      "radiusB": 0.5,
+      "driveRadius": 0.5,
+      "radialForce": 4,
+      "tangentialForce": 6,
+      "couple": -1,
+      "omega0": -1,
+      "duration": 2
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "angular"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "accumulate"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "point"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "torque"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "couple"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "driven"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "pulley"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "stopping"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "particles"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "rod"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "density"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "annulus"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "cutout"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "axes"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "bounds"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "point"
+    },
+    {
+      "familyId": "phs231-rotation-dynamics",
+      "variant": "torque"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "cutout"
+    },
+    {
+      "familyId": "phs231-inertia-model",
+      "variant": "inverse"
+    }
+  ],
+  "summary": [
+    "Specify a fixed inertial axis, a right-hand positive sense, and an unwrapped radian angle.",
+    "Differentiate θ for signed ω and α; integrate with both initial conditions. Split absolute angular travel at reversals.",
+    "Full point acceleration contains tangential and inward radial terms. Zero α does not generally mean zero acceleration.",
+    "Compute r cross F about a stated origin and project onto the allowed unit axis. Use perpendicular lever arms and N m units.",
+    "Build I from squared perpendicular distances and actual mass density. Same mass does not imply same inertia.",
+    "Shift from a parallel CM axis using I=Icm+Md². The perpendicular-axis theorem needs a planar lamina.",
+    "Add or subtract components about one common axis, then use the remaining mass and CM when shifting a cutout body.",
+    "For a rigid body on a fixed axis with constant I, net external axial torque equals Iα. Include all load and bearing moments.",
+    "Coupled translation needs both force and torque equations plus a valid no-slip constraint. A massive pulley generally requires unequal tensions.",
+    "Bounds from allowed measurement intervals are different from statistical confidence. Simulations test a model, not actual apparatus limits."
+  ],
+  "retrieval": "A uniform disk of mass 4 kg and radius 1/2 m carries two point masses of 1 kg each at radius 1/2 m. About its fixed perpendicular central axis, a tangential force of 6 N at radius 1/2 m and an opposing couple of 1 N m act from initial ω=−2 rad/s. Find I, α, first zero-speed time, and signed angle and total travel after 2 s. Check after working: I=1 kg m², net torque=2 N m, α=2 rad/s², zero speed at 1 s, signed angle=0 rad, and total travel=2 rad. A point at radius 1/2 m has inward acceleration 2 m/s² at the final instant despite the zero net angular displacement.",
+  "readings": [
+    {
+      "title": "OpenStax: Rotational Variables",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-1-rotational-variables",
+      "purpose": "Angular quantities and point-motion definitions. The lesson explicitly distinguishes signed tangential velocity from speed and includes radial acceleration in the full vector."
+    },
+    {
+      "title": "OpenStax: Calculating Moments of Inertia",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "purpose": "Distributed-mass integrals and axis theorem background; original examples are independently calculated."
+    },
+    {
+      "title": "OpenStax: Torque",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+      "purpose": "Vector torque, right-hand orientation, and lever arms."
+    },
+    {
+      "title": "OpenStax: Newton's Second Law for Rotation",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-7-newtons-second-law-for-rotation",
+      "purpose": "Fixed-axis dynamics. The scalar equation is restricted to the stated axial component; no arbitrary 3D scalar-inertia claim is made."
+    },
+    {
+      "title": "MIT OpenCourseWare: 29.4 Parallel Axis Theorem",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/resources/29-3/",
+      "purpose": "Free video/transcript companion on parallel axes and the CM reference."
+    }
+  ]
+}
