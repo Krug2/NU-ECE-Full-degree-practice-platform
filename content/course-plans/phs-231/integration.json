@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "All PHS 231 instruction, assessments, review and project workflows are implemented. The complete release audit is in progress; no major course is declared complete yet.",
+  "status": "PHS 231 is complete as a technical preview (d079a2e). All 22 lessons, 34 assessment forms, targeted review and project workflows are implemented and verified. No independent subject review or learner pilot validation is claimed. All 23 other major courses remain in scope.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -72,13 +72,11 @@
   },
   "remaining": {
     "phs231Lessons": 0,
-    "phs231Features": [
-      "Complete coverage and release audit, fresh integrated checks and final release copy"
-    ],
+    "phs231Features": [],
     "otherMajorCourses": 23,
     "nextLesson": null,
     "nextCourseAfterPhs231Completion": "phs-232",
-    "inProgress": "Complete PHS 231's technical release audit before PHS 232. All 23 other major courses remain in scope."
+    "inProgress": "PHS 232 official-source research and complete course planning follow this completed PHS 231 release audit."
   },
   "sharedCommits": [
     {
@@ -562,7 +560,7 @@
     ]
   },
   "verification": {
-    "status": "Full unit, lint, type, production-build and browser coverage checks passed; three long browser tests required a separate rerun with increased whole-test budgets. Corrected zoom/reflow checks passed. Final released-state copy and preview checks are in progress.",
+    "status": "Technical release checks complete. Full unit, lint, types, production build and browser coverage passed with the separately documented timeout reruns. Released-state regression and final desktop/mobile preview checks passed. Review and pilot limitations remain explicit.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
     "capacity": "Six full study cycles with 672 saved attempts, 5160 frozen questions, 33 retained assessment results and six 24,000-character submitted project records round-trip in 19,054,194 formatted UTF-8 backup bytes, under the 50,000,000-byte policy. Explicit removal of all attempt details leaves 237,173 bytes with summaries, notes and projects preserved. The test uses representative submitted responses, not a claim of learner mastery. Whole-major-curriculum history remains unaudited.",
@@ -776,6 +774,13 @@
         "commit": "d918795",
         "scope": "Course, assessment and project at 320 CSS pixels and at 720 by 500 CSS pixels with device scale 2, equivalent to a 1440 by 1000 display at 200 percent browser zoom. Reduced motion, keyboard input, focus hit testing, control bounds, non-overlapping regions and accessibility checks passed; all six screenshots inspected.",
         "corrections": "The initial CSS zoom simulation left desktop media queries active and produced crowding; it was replaced with a reduced layout viewport. A subsequent project assertion encountered ordinary vertical scrolling and now scrolls the focused control into view before checking its entire bounds. No product assertion was removed."
+      },
+      "releaseSuite": {
+        "passed": 16,
+        "failed": 0,
+        "durationMinutes": 3.2,
+        "releaseCommit": "d079a2e",
+        "scope": "Released-state PHS 231 course, lesson and assessment copy at desktop/mobile sizes; curriculum and dashboard availability; measurement reasoning; actual backup export/reset/restore; shared workspace, refresher and mobile-navigation regressions."
       }
     },
     "staticChecks": [
@@ -783,7 +788,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile views were inspected for all 22 lessons. The validation lesson adds distinct dot/square output markers and circle/triangle residual markers, explicit non-time state indexing, complete scrollable tables, and readable notebook fields and score choices. Six plot/table screenshots plus initial and final notebook mobile screenshots were inspected. Preview uses 3001; browser tests use 3101.",
+    "visual": "Desktop and 390-pixel mobile views were inspected for all 22 lessons. The validation lesson adds distinct dot/square output markers and circle/triangle residual markers, explicit non-time state indexing, complete scrollable tables, and readable notebook fields and score choices. Six plot/table screenshots plus initial and final notebook mobile screenshots were inspected. Preview uses 3001; browser tests use 3101. Final release screenshots at 1440 and 390 pixels on 3001 show readable course and preparation views. Both keyboard readiness links work after awaiting navigation, with no page overflow or runtime errors. Six final zoom-equivalent/reflow views were also inspected; see browser.reflow.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",
@@ -801,6 +806,19 @@
       "recoveryCommit": "e9ea83c",
       "courseBrowserCommit": "0a8ec66",
       "resourceAuditCommit": "1e8ea72"
+    },
+    "releaseUnit": {
+      "passed": 140,
+      "files": 3,
+      "durationSeconds": 45.89,
+      "scope": "PHS 231 content, whole lesson-catalog checks and the new two-test lightweight availability registry consistency check. This focused run follows the 2146-test full run; it is not relabeled as a new full-suite run."
+    },
+    "finalBuild": {
+      "pages": 188,
+      "lint": "passed",
+      "typecheck": "passed",
+      "build": "passed",
+      "releaseCommit": "d079a2e"
     }
   },
   "scopeReference": "../major-courses.json"

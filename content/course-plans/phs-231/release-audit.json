@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "version": 1,
   "checkedAt": "2026-09-24",
-  "technicalRelease": "pending final integrated checks",
+  "technicalRelease": "complete technical preview; d079a2e",
   "officialAlignment": {
     "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
     "checkedAt": "2026-09-24",
@@ -270,13 +270,14 @@
     "typecheck": "Full pnpm typecheck passed.",
     "productionBuild": "pnpm build passed; 188 static pages. Browser run uses this production build on 3101.",
     "fullBrowser": "296 tests ran: 293 passed and three long investigation tests exhausted their 60-second budgets. Only those budgets changed to 180 seconds (c83dadb); all three passed with unchanged assertions. Coverage passed across runs, not in one uninterrupted run.",
-    "visual": "All 22 lessons plus assessment/course views were inspected on desktop and mobile. Six corrected reduced-motion, zoom-equivalent and 320-pixel reflow workflows passed with keyboard and accessibility assertions (d918795); screenshots inspected. Final released-state preview on 3001 remains pending.",
-    "scopeAndPrivacy": "Only major-course authored content and necessary compatible shared extensions. Prerequisite files match integrated main snapshot 26f17fc2345def7bb52df018a5915637aa66bd19. No private academic records or personal planning data are included."
+    "visual": "All 22 lessons plus assessment/course views were inspected on desktop and mobile. Six corrected reduced-motion, zoom-equivalent and 320-pixel reflow workflows passed with keyboard and accessibility assertions (d918795). Final released course and readiness views were inspected at 1440 and 390 pixels on preview port 3001; status, keyboard navigation, preparation disclosure and lack of page overflow were checked. The one-off preview script was corrected to await route completion before reading the URL; no application change was needed.",
+    "scopeAndPrivacy": "Only major-course authored content and necessary compatible shared extensions. Prerequisite files match integrated main snapshot 26f17fc2345def7bb52df018a5915637aa66bd19. No private academic records or personal planning data are included.",
+    "finalRelease": "Released-state checks: 140 focused unit tests across three files passed in 45.89 seconds, full lint and types passed, and the 188-page production build passed. All 16 targeted browser workflows passed in 3.2 minutes, including desktop/mobile availability, workspace recovery, refresher regression and mobile navigation."
   },
   "review": {
     "independentSubjectReview": "not performed",
     "pilotValidation": "not performed",
     "technicalReview": "Implementation checks and separately derived mathematical/physical fixtures are recorded in the test files and integration ledger; they are not an independent subject-review claim."
   },
-  "remaining": "Finish and record the integrated release checks before promoting the pack to technical preview and starting PHS 232. All 23 other major courses remain in scope."
+  "remaining": "PHS 231 technical implementation and release audit are complete. Independent subject review and learner pilot validation have not occurred. Continue with PHS 232 research and planning; all 23 other major courses remain in scope. Whole-major-curriculum history capacity requires a later audit."
 }
