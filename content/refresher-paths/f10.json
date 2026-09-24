@@ -1,0 +1,86 @@
+{
+  "courseId": "f10",
+  "version": 1,
+  "quickRoute": "Use four diagnostic probes, read Quick recall, complete each lesson checkpoint and the mixed recall.",
+  "fullRoute": "Trace values and branches, loops and lists, function calls and shared data, then debug against contracts and boundary tests. Predict before stepping through each activity.",
+  "diagnostic": [
+    {
+      "familyId": "f10-diagnostic-state",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f10-diagnostic-loop",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f10-diagnostic-function",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f10-diagnostic-debug",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f10-recall-state",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f10-recall-loop",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f10-recall-function",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f10-recall-debug",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f10-diagnostic-state": "m01-l01",
+    "f10-recall-state": "m01-l01",
+    "f10-diagnostic-loop": "m01-l02",
+    "f10-recall-loop": "m01-l02",
+    "f10-diagnostic-function": "m01-l03",
+    "f10-recall-function": "m01-l03",
+    "f10-diagnostic-debug": "m01-l04",
+    "f10-recall-debug": "m01-l04"
+  },
+  "support": [
+    {
+      "courseId": "f01",
+      "reason": "Review signed arithmetic, grouping and comparisons."
+    },
+    {
+      "courseId": "f03",
+      "reason": "Reconnect function inputs and outputs while distinguishing program state and side effects."
+    },
+    {
+      "courseId": "csc-242",
+      "reason": "Study introductory programming concepts in the full course."
+    },
+    {
+      "courseId": "csc-252",
+      "reason": "Learn C++ syntax, types, arrays and memory behavior without assuming Python rules transfer."
+    },
+    {
+      "courseId": "cee-340",
+      "reason": "Apply structured code and debugging to embedded systems."
+    },
+    {
+      "courseId": "csc-436",
+      "reason": "Prepare for program behavior and diagnostics in networked systems."
+    },
+    {
+      "courseId": "cee-430",
+      "reason": "Use indexed data, loops and tested functions in signal-processing work."
+    }
+  ],
+  "escalation": {
+    "courseId": "csc-242",
+    "text": "For first-time programming instruction, follow CSC 242 and the free official Python tutorial sections. CSC 252 supplies the C++ language-specific behavior that this Python-based refresher does not teach."
+  }
+}
