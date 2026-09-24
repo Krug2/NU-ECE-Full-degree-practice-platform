@@ -153,6 +153,30 @@
         "Solve the argument equation to obtain all algebraic candidates, then compare each one with the common original domain. Equal positive arguments verify the original logarithms immediately. Equal zero or equal negative arguments do not give an equality of real logarithms because those logarithms are undefined.",
         "A candidate is provisional, not automatically a solution. Report the complete retained set, which may be empty even when the argument equation has a perfectly valid real root. If the argument equation becomes an identity, only inputs in the original common domain remain eligible."
       ]
+    },
+    {
+      "heading": "Solve logarithm sums with every candidate checked",
+      "paragraphs": [
+        "A sum of same-base logarithms can be combined after every original argument has been required to be positive. For shifted linear arguments, the product often produces a quadratic equation. Solve that quadratic completely before rejecting candidates, so the reason for each rejection remains visible.",
+        "The combined positive product can admit two negative original factors. Such a candidate may satisfy the quadratic and even the condensed logarithm equation, while failing the original separate logarithms. The common original domain is the deciding condition, not the sign of the product alone.",
+        "An irrational candidate can be kept exact using a square root. Compare it with the original domain boundary using exact inequalities and verify its positive arguments symbolically. Rounded graph intersections can suggest candidates but cannot establish that the complete set has been found or that an exact boundary is included."
+      ]
+    },
+    {
+      "heading": "Solve logarithm differences with the original restrictions",
+      "paragraphs": [
+        "A difference $\\log_b A(x)-\\log_b B(x)$ becomes $\\log_b(A(x)/B(x))$ on the common original domain A(x)>0 and B(x)>0. Keep the numerator and denominator in their original order. The positive denominator condition permits clearing it when solving the resulting equation.",
+        "When the required quotient equals one, collecting terms may remove x and leave a contradiction. Check that case before dividing by the coefficient of x. When a candidate exists, it can still produce two negative original arguments, even though their quotient is positive.",
+        "A valid candidate must make each original argument positive and produce the required quotient. Verify the original difference using the valid quotient identity on that domain. Report no solutions if the reduced equation is contradictory or if every algebraic candidate fails an original condition."
+      ]
+    },
+    {
+      "heading": "Keep both roots of a squared argument",
+      "paragraphs": [
+        "In $\\log_b((x-h)^2)=c$, the original square must be strictly positive, so x=h is excluded and inputs on either side remain allowed. Converting the logarithm gives $(x-h)^2=b^c$, with a strictly positive right-hand side.",
+        "Taking the square root yields $|x-h|=\\sqrt{b^c}$, so the two shifted roots are $x=h-\\sqrt{b^c}$ and $x=h+\\sqrt{b^c}$. The positive distance makes the roots distinct, and neither equals the excluded point h. Substitute both into the original square rather than keeping only the positive shifted branch.",
+        "An expansion using $2\\log_b(x-h)$ would silently discard x<h. The full-domain expansion uses $2\\log_b|x-h|$. This is an example where a domain-preserving identity directly controls whether an equation solution set is complete."
+      ]
     }
   ],
   "examples": [
@@ -888,6 +912,167 @@
         }
       ],
       "conclusion": "There are no real solutions. Equality of two negative arguments cannot validate an original real logarithm equation."
+    },
+    {
+      "title": "A logarithm sum yields one retained quadratic root",
+      "prompt": "Solve $\\log_3(x-1)+\\log_3(x+1)=1$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x-1>0,\\quad x+1>0\\quad\\Longrightarrow\\quad x>1",
+          "reason": "Both separate logarithms must exist."
+        },
+        {
+          "math": "\\log_3((x-1)(x+1))=1\\quad\\Longrightarrow\\quad x^2-1=3",
+          "reason": "Combine only on the recorded domain, then use the exponential target."
+        },
+        {
+          "math": "x^2=4\\quad\\Longrightarrow\\quad x=-2\\text{ or }x=2",
+          "reason": "List both algebraic candidates before checking the original equation."
+        },
+        {
+          "math": "x=-2:\\ (-3,-1)\\text{ are invalid arguments};\\qquad x=2:\\ (1,3)\\text{ are positive}",
+          "reason": "The candidate -2 fails the original logarithms; the candidate 2 passes both argument checks."
+        },
+        {
+          "math": "\\log_3 1+\\log_3 3=0+1=1",
+          "reason": "Substitute the retained input into the original sum."
+        }
+      ],
+      "conclusion": "The complete solution set is {2}. A positive product at -2 does not define the two separate original logarithms."
+    },
+    {
+      "title": "Keep an irrational logarithmic-equation candidate exact",
+      "prompt": "Solve $\\ln(x-1)+\\ln(x-2)=\\ln5$ exactly.",
+      "steps": [
+        {
+          "math": "x>2,\\qquad(x-1)(x-2)=5",
+          "reason": "On the common original domain, combine the left side and equate positive arguments."
+        },
+        {
+          "math": "x^2-3x-3=0\\quad\\Longrightarrow\\quad x=\\frac{3\\pm\\sqrt{21}}2",
+          "reason": "Solve the resulting quadratic with the exact quadratic formula."
+        },
+        {
+          "math": "\\frac{3-\\sqrt{21}}2<1,\\qquad\\frac{3+\\sqrt{21}}2>2",
+          "reason": "Because sqrt(21)>1, the smaller candidate lies below both required boundaries and the larger lies above both."
+        },
+        {
+          "math": "(x-1)(x-2)=\\frac{(1+\\sqrt{21})(-1+\\sqrt{21})}{4}=5",
+          "reason": "At the larger candidate, both arguments are positive and their product is exactly 5."
+        },
+        {
+          "math": "S=\\left\\{\\frac{3+\\sqrt{21}}2\\right\\}",
+          "reason": "Only the larger exact candidate satisfies the original equation."
+        }
+      ],
+      "conclusion": "The square-root expression is the complete exact answer. No rounded domain decision is needed."
+    },
+    {
+      "title": "A valid quotient target produces one solution",
+      "prompt": "Solve $\\ln(x+2)-\\ln(x-1)=\\ln2$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x+2>0,\\quad x-1>0\\quad\\Longrightarrow\\quad x>1",
+          "reason": "The original common domain also keeps the denominator positive."
+        },
+        {
+          "math": "\\frac{x+2}{x-1}=2\\quad\\Longrightarrow\\quad x+2=2x-2",
+          "reason": "Combine the logarithms in the given order and clear the permitted denominator."
+        },
+        {
+          "math": "x=4,\\qquad x+2=6>0,\\quad x-1=3>0",
+          "reason": "The unique algebraic candidate belongs to the original domain."
+        },
+        {
+          "math": "\\ln6-\\ln3=\\ln2",
+          "reason": "Substitution checks the original difference."
+        }
+      ],
+      "conclusion": "The complete solution set is {4}."
+    },
+    {
+      "title": "A quotient target of one leaves a contradiction",
+      "prompt": "Solve $\\ln(x+2)-\\ln(x-1)=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x>1,\\qquad\\frac{x+2}{x-1}=e^0=1",
+          "reason": "Retain the common domain and convert the zero logarithm output to argument one."
+        },
+        {
+          "math": "x+2=x-1\\quad\\Longrightarrow\\quad2=-1",
+          "reason": "The x terms cancel and leave an impossible constant statement."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "No input solves the original equation."
+        }
+      ],
+      "conclusion": "On x>1 the quotient is 1+3/(x-1), which is always above one. Its logarithm can approach zero but cannot equal zero."
+    },
+    {
+      "title": "A positive quotient can conceal two invalid arguments",
+      "prompt": "Solve $\\ln(x+2)-\\ln(x-1)=\\ln(1/2)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x>1,\\qquad\\frac{x+2}{x-1}=\\frac12",
+          "reason": "State the original common domain before combining the logarithms."
+        },
+        {
+          "math": "2(x+2)=x-1\\quad\\Longrightarrow\\quad x=-5",
+          "reason": "The algebraic quotient equation gives one real candidate."
+        },
+        {
+          "math": "x+2=-3,\\qquad x-1=-6,\\qquad\\frac{-3}{-6}=\\frac12",
+          "reason": "The quotient has the required positive value, but both original logarithm arguments are negative."
+        },
+        {
+          "math": "-5\\notin(1,\\infty),\\qquad S=\\varnothing",
+          "reason": "Reject the candidate using the original conditions."
+        }
+      ],
+      "conclusion": "There are no real solutions to the original logarithm difference, despite the valid positive quotient in the simplified equation."
+    },
+    {
+      "title": "A squared argument gives two exact shifted roots",
+      "prompt": "Solve $\\log_2((x-3)^2)=3$ exactly.",
+      "steps": [
+        {
+          "math": "x\\ne3,\\qquad(x-3)^2=2^3=8",
+          "reason": "Keep the original excluded zero and convert the logarithm statement."
+        },
+        {
+          "math": "|x-3|=\\sqrt8=2\\sqrt2",
+          "reason": "The square root gives a positive distance from the shifted zero."
+        },
+        {
+          "math": "x=3-2\\sqrt2\\text{ or }x=3+2\\sqrt2",
+          "reason": "Both signs of the shifted input satisfy the squared equation."
+        },
+        {
+          "math": "(\\pm2\\sqrt2)^2=8>0,\\qquad\\log_2 8=3",
+          "reason": "Each root makes the original argument positive and produces the required logarithm."
+        }
+      ],
+      "conclusion": "The complete solution set contains both 3-2 sqrt(2) and 3+2 sqrt(2)."
+    },
+    {
+      "title": "A zero logarithm value still permits both square branches",
+      "prompt": "Solve $\\ln((x+1)^2)=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x\\ne-1,\\qquad(x+1)^2=e^0=1",
+          "reason": "A zero logarithm value means argument one, not argument zero."
+        },
+        {
+          "math": "x+1=1\\text{ or }x+1=-1\\quad\\Longrightarrow\\quad x=0\\text{ or }x=-2",
+          "reason": "Retain both square-root branches."
+        },
+        {
+          "math": "x=0:\\ \\ln1=0,\\qquad x=-2:\\ \\ln1=0",
+          "reason": "Both candidates are in the original domain and solve the original equation."
+        }
+      ],
+      "conclusion": "The complete set is {-2,0}. Replacing the original logarithm with 2 ln(x+1) would incorrectly remove the solution -2."
     }
   ],
   "guided": {
