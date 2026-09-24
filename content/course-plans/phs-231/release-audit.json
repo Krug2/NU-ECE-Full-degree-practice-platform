@@ -265,11 +265,11 @@
     "method": "Public HTTP GET and provider-title inspection; teaching relevance and source distinctions were reviewed during authoring. Availability does not establish independent subject review."
   },
   "releaseChecks": {
-    "fullUnit": "pending fresh integrated run",
-    "lint": "pending fresh integrated run",
-    "typecheck": "pending fresh integrated run",
-    "productionBuild": "pending fresh integrated run",
-    "fullBrowser": "pending fresh integrated run on 3101",
+    "fullUnit": "2146 tests passed across 244 files, no skips; 284.27 seconds. F10_PYTHON configured; pnpm exec vitest run --maxWorkers=1 --testTimeout=60000.",
+    "lint": "Full pnpm lint passed.",
+    "typecheck": "Full pnpm typecheck passed.",
+    "productionBuild": "pnpm build passed; 188 static pages. Browser run uses this production build on 3101.",
+    "fullBrowser": "296-test full run in progress on 3101; no final result yet.",
     "visual": "All 22 lessons plus assessment/course views have desktop/mobile inspection records in integration.json. Final zoom, reflow, reduced-motion and 3001 preview checks are pending.",
     "scopeAndPrivacy": "Only major-course authored content and necessary compatible shared extensions. Prerequisite files match integrated main snapshot 26f17fc2345def7bb52df018a5915637aa66bd19. No private academic records or personal planning data are included."
   },
