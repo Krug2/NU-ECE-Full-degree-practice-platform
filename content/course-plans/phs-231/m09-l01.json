@@ -1,0 +1,286 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m09-l01",
+  "version": 1,
+  "status": "detailed plan; implementation and verification pending",
+  "title": "Numerical integration and convergence evidence",
+  "objective": "Implement bounded time steps, compare numerical methods with an analytic case, and distinguish discretization error from model and measurement error.",
+  "officialScope": {
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "checkedAt": "2026-09-24",
+    "requirement": "The official PHS 231 description includes graphical and numerical integration in calculus-based mechanics.",
+    "distinction": "The proposed algorithms, original fixtures, synthetic data, 20 variants, checkpoint, and investigation rubric are teaching choices. Oscillatory motion is a numerical verification case here; the full oscillations subject belongs to PHS 232. No official equipment, assessment policy, independent subject review, or pilot validation is inferred."
+  },
+  "prerequisites": [
+    {
+      "lessonId": "m02-l01",
+      "purpose": "Signed velocity and acceleration integrals, initial conditions, and displacement versus distance."
+    },
+    {
+      "lessonId": "m03-l03",
+      "purpose": "Force laws with velocity dependence and analytic linear-decay comparisons."
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "Mechanical-energy and dissipation accounts, system boundaries, and model limits."
+    },
+    {
+      "lessonId": "m01-l01",
+      "purpose": "Units, timestamp and velocity resolution, allowed bounds versus probabilities."
+    },
+    {
+      "lessonId": "m05-l01",
+      "purpose": "Force-displacement work and independent integration."
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "From rates or samples to accumulated quantities",
+      "teaching": "Define increasing time nodes and actual unequal intervals. Derive left, right, midpoint when midpoint data exist, and trapezoid accumulation. Identify whether the table is measured or generated and whether piecewise interpolation is assumed. Velocity area gives signed displacement; acceleration area gives velocity change, requiring the initial value for final velocity. Force-position area gives work. No silent sorting, duplicate timestamps, or interpolation invented as observation.",
+      "critical": [
+        "Use interval width, not sample count.",
+        "The n-interval grid has n+1 endpoint samples.",
+        "Sampling and ODE stepping are distinct problems."
+      ]
+    },
+    {
+      "topic": "Reversals, units, and interpolation limits",
+      "teaching": "Integrate absolute piecewise-linear velocity by inserting its within-interval zero crossings to obtain distance. The trapezoid of endpoint speeds can overestimate a crossing interval's distance. Convert milliseconds and centimeters before accumulation. A zero displacement does not establish no motion. Unobserved fast variation between sample times cannot be excluded merely by connecting samples.",
+      "critical": [
+        "Keep signs before summing displacement.",
+        "No extra samples can be manufactured by plotting interpolated points.",
+        "Do not infer zero distance from identical endpoints."
+      ]
+    },
+    {
+      "topic": "Quadrature accuracy and uncertainty",
+      "teaching": "Independently integrate an original quadratic velocity law and compare trapezoid approximations at h,h/2,h/4. Derive error scaling from the quadratic case, then state a supplied smooth-second-derivative bound M(T)h²/12 for uniform steps. Simpson's 1/3 rule is optional but precisely requires the stated equal spacing and even interval count. Compute finite rounding-error bounds from trapezoid weights; distinguish them from quadrature error and probability.",
+      "critical": [
+        "More displayed digits do not establish accuracy.",
+        "A curvature bound needs justified smoothness and M.",
+        "An algebraic rule's exactness for a polynomial does not remove measurement error."
+      ]
+    },
+    {
+      "topic": "Initial-value problem and update order",
+      "teaching": "Write dx/dt=v and dv/dt=a(t,x,v) with initial x and v. Explicit Euler uses old x and old v for every derivative. Velocity-first semi-implicit Euler computes a_old, v_new, then x_new with v_new; this is not a fully implicit damping solve. Explicit midpoint advances a temporary midpoint state and evaluates both derivatives there. Provide plain pseudocode, units, and one-step calculations without requiring a programming language.",
+      "critical": [
+        "Updating a variable in place can change the algorithm.",
+        "Midpoint acceleration must use the midpoint state and time.",
+        "Constant-acceleration formulas cannot be applied as exact formulas to arbitrary variable forces."
+      ]
+    },
+    {
+      "topic": "Common endpoints and controlled step refinement",
+      "teaching": "Bound step count and run duration. Include t=0 once; clip a final step to the requested endpoint and report its actual width. Compare the same physical time and initial data at h,h/2,h/4. Establish first-order global error for Euler with an exact constant-acceleration sum and distinguish it from its local one-step error. Explain second-order midpoint under the smooth fixed-horizon conditions.",
+      "critical": [
+        "A different final time confounds a convergence comparison.",
+        "A shorter final step must update every state with the same width.",
+        "A zero error at one sample can conceal errors elsewhere."
+      ]
+    },
+    {
+      "topic": "Stability is different from accuracy",
+      "teaching": "For v'=-lambda v derive Euler's multiplier 1-lambda*h; distinguish positive monotone decay, alternating decaying iterates, nondecaying boundary, and growing iterates. For an undamped spring derive explicit Euler's energy multiplier 1+(omega*h)². Show that reducing h improves a finite-time answer without making long-time Euler energy exactly conserved. For velocity-first semi-implicit Euler, the undamped linear stability range is 0<omega*h<2; the equality boundary generally has linear growth and is not a robust admissible choice. An exact equilibrium trajectory alone cannot establish stability.",
+      "critical": [
+        "Bounded numerical motion can still have phase and amplitude error.",
+        "Second order alone does not guarantee long-time energy conservation.",
+        "A stability result for one force law is not universal."
+      ]
+    },
+    {
+      "topic": "Analytic and independent checks",
+      "teaching": "Use the project baseline m=.5kg,k=8N/m,b=0,x0=.08m,v0=0. Verify x=.08cos(4t),v=-.32sin(4t) by derivatives and initial data; derive E0=.0256J and acceleration -1.28m/s². Compare x and v errors separately, maximum absolute errors over the sampled path, and energy residual. Relative error is undefined when the reference is zero; use absolute or a clearly chosen nonzero scale. Preserve full precision internally.",
+      "critical": [
+        "The numerical routine is not its own analytic oracle.",
+        "Small energy error does not prove small position or phase error.",
+        "An equilibrium or endpoint cancellation is not sufficient validation."
+      ]
+    },
+    {
+      "topic": "Damping and energy bookkeeping",
+      "teaching": "Use m v'=-kx-bv, with b≥0, and derive dE/dt=-bv². Estimate D=integral b v² dt from each numerical path using the actual sample widths, report the independent quadrature rule, and form residual E(t)+D(t)-E0. D≥0 is a physical-model expectation, while a nonzero residual can include trajectory and dissipation-quadrature error. Do not label numerical energy drift as physical heating.",
+      "critical": [
+        "Mechanical energy is not conserved when drag acts.",
+        "A dissipation integral computed from an approximate path is itself approximate.",
+        "Step refinement cannot validate an omitted force or incorrect parameter."
+      ]
+    },
+    {
+      "topic": "Error diagnosis and reproducible evidence",
+      "teaching": "Separate algorithm/discretization error, arithmetic roundoff, parameter or measurement uncertainty, and model discrepancy. Explain why refinement can plateau, why a supplied Richardson estimate depends on an asymptotic C h^p regime, and why convergence is evidence about a chosen model rather than proof of the real system. Preserve input parameters, method/update order, exact endpoint, step counts, provenance, raw numerical rows, and the comparison metric.",
+      "critical": [
+        "No invented confidence level from a step difference.",
+        "No guarantee that each individual component error decreases monotonically.",
+        "A simulation cannot be relabeled a physical observation."
+      ]
+    },
+    {
+      "topic": "Investigation and preparation for the project",
+      "teaching": "Predict one-step state and the sign of energy change, run controlled method/step comparisons, inspect all rows with keyboard controls, and download the time table. Include analytic baseline comparisons and damped dissipation accounts. Stop safely and explicitly if a numerical trajectory exceeds a documented computation bound; never clip an unstable trajectory into an apparently stable one. Save evidence and a limitation in lesson notes; the structured project notebook is in m09-l02.",
+      "critical": [
+        "Complete equivalent table, accessible legends, and no automatic motion.",
+        "Nonfinite or bounded-computation stops remain visible in comparisons.",
+        "This required investigation is entirely simulated."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "unequal-velocity",
+      "input": "Times [0,1,3,4] s and velocities [2,-2,4,0] m/s with explicitly linear interpolation between nodes.",
+      "expected": "Signed interval displacements 0,2,2 m, total 4 m. Zero crossings at .5 and 5/3 s. Interval distances 1,10/3,2 m; total 19/3 m. Trapezoid applied directly to endpoint speeds would incorrectly give 10 m."
+    },
+    {
+      "id": "acceleration-initial",
+      "input": "Times [0,1,3] s; acceleration [2,4,0] m/s² linear between nodes; v0=-1m/s.",
+      "expected": "Delta v=3+4=7m/s; final v=6m/s. The integral is not final velocity without initial data."
+    },
+    {
+      "id": "quadrature",
+      "input": "v(t)=1+3t+2t² m/s over [0,2]s; trapezoid at h=1,.5,.25s.",
+      "expected": "Exact displacement40/3m. Approximations14,27/2,107/8m; errors2/3,1/6,1/24m. Ratios4. M=4m/s³ gives error bound M*T*h²/12, attained here. Three-point Simpson with h1 is40/3m."
+    },
+    {
+      "id": "rounding",
+      "input": "Unequal velocity fixture, exact times and each displayed velocity rounded to .2m/s nearest-step precision.",
+      "expected": "Velocity error bound.1m/s; trapezoid weights[.5,1.5,1.5,.5]s; displacement rounding bound .4m. Allowed interval[3.6,4.4]m under supplied interpolation, without a confidence claim."
+    },
+    {
+      "id": "one-step",
+      "input": "m=.5kg,k=8N/m,b=0,x0=.08m,v0=0,h=.1s.",
+      "expected": "a0=-1.28m/s². Explicit: x1=.08m,v1=-.128m/s,E1=.029696J. Velocity-first semi-implicit: x1=.0672m,v1=-.128m/s,E1=.02215936J. Explicit midpoint: x1=.0736m,v1=-.128m/s,E1=.02576384J. Exact x1=.08cos(.4),v1=-.32sin(.4)."
+    },
+    {
+      "id": "constant-acceleration",
+      "input": "x0=1m,v0=-2m/s,a=3m/s²,T=2s,uniform h=.5s.",
+      "expected": "Exact x=3m,v=4m/s. Explicit Euler x=1.5m; semi-implicit x=4.5m; both final velocities4m/s. Midpoint x=3m. Signed position errors -a*T*h/2 and +a*T*h/2; halving h halves their magnitudes."
+    },
+    {
+      "id": "clipped-endpoint",
+      "input": "x0=0,v0=1m/s,a=2m/s²,T=1s,requested h=.3s.",
+      "expected": "Actual widths .3,.3,.3,.1s; four steps and five rows. Explicit x=1.72m; semi-implicit x=2.28m; midpoint and exact x=2m; all v=3m/s. Sum widths²=.28s²."
+    },
+    {
+      "id": "decay-stability",
+      "input": "v'=-4v, v0=2m/s. Compare h=.125,.25,.375,.5,.625s.",
+      "expected": "Multipliers .5,0,-.5,-1,-1.5: respectively monotone decay, one-step zero artifact, alternating decay, undamped alternation, growing alternation. Exact exponential stays positive at every finite time; decay stability alone is not physical positivity or accuracy."
+    },
+    {
+      "id": "spring-energy",
+      "input": "Undamped project baseline with omega4rad/s and h=.1s.",
+      "expected": "Explicit energy multiplier1.16 each full step; after10steps E=.0256*(1.16)^10J. Semi-implicit physical energy is not exact; at first step ratio.8656. Explicit midpoint energy multiplier1+.4^4/4=1.0064, so second order does not make it exactly energy preserving."
+    },
+    {
+      "id": "semi-boundary",
+      "input": "m=.5,k=8,x0=.08,v0=0,velocity-first semi-implicit with h=.5s (omega*h=2).",
+      "expected": "First states (x,v)=(-.24,-.64),(.4,1.28),(-.56,-1.92). Growth at the boundary despite finite individual steps; h just below .5 is only a boundedness condition, not an accuracy guarantee."
+    },
+    {
+      "id": "damping-ledger",
+      "input": "A supplied numerical path has m=.5kg,k=8N/m,b=.2kg/s, x0=.08m,v0=0; at .1s explicit state x=.08,v=-.128.",
+      "expected": "E0=.0256J, E1=.029696J; trapezoid D=.00016384J; residual E1+D-E0=.00425984J. The numerical energy gain and residual do not prove the modeled drag generates energy."
+    },
+    {
+      "id": "refinement",
+      "input": "A supplied smooth-regime scalar sequence Q(h)=Qstar+C*h² gives 5.16,5.04,5.01 at h,h/2,h/4.",
+      "expected": "Successive differences .12 and .03 give ratio4 and observed order2. Under this exact supplied error model, Qstar=5 and finest remaining error .01. Without the asymptotic model, the same estimate is evidence rather than a rigorous bound."
+    },
+    {
+      "id": "relative-error",
+      "input": "A reference displacement is zero at a comparison time; numerical displacement is .002m.",
+      "expected": "Absolute error .002m; relative error divided by the zero reference is undefined. A separately declared scale .08m permits scaled error .025, but it is not relative error to the zero displacement."
+    },
+    {
+      "id": "missing-dynamics",
+      "input": "Two measured velocities are both zero at t0 and t1; no interpolation, acceleration bound, or intermediate samples are supplied.",
+      "expected": "A zero trapezoid approximation does not establish zero actual displacement or distance. Additional time samples or a justified behavior bound are needed."
+    }
+  ],
+  "questionFamilies": {
+    "phs231-sampled-integration": [
+      "unequal",
+      "reversal",
+      "acceleration",
+      "work",
+      "curvature",
+      "refinement",
+      "rounding",
+      "missing-sample",
+      "units",
+      "simpson"
+    ],
+    "phs231-step-audit": [
+      "explicit-step",
+      "semi-step",
+      "midpoint-step",
+      "constant-acceleration",
+      "decay-stability",
+      "oscillator-energy",
+      "oscillator-stability",
+      "endpoint",
+      "energy-audit",
+      "error-budget"
+    ]
+  },
+  "checkpoint": [
+    "phs231-sampled-integration:unequal",
+    "phs231-sampled-integration:rounding",
+    "phs231-step-audit:explicit-step",
+    "phs231-step-audit:energy-audit"
+  ],
+  "interaction": {
+    "kind": "phs231-numerical",
+    "model": "One-dimensional horizontal ideal cart and linear spring, m v'=-kx-bv. Compare explicit Euler, velocity-first semi-implicit Euler, and explicit midpoint with declared update formulas. This is a synthetic model-checking experiment. No end stops, dry friction, or measured apparatus data are implied.",
+    "initial": {
+      "massKg": 0.5,
+      "springNPerM": 8,
+      "dragKgPerS": 0,
+      "positionM": 0.08,
+      "velocityMPerS": 0,
+      "durationS": 4,
+      "stepS": 0.1,
+      "method": "semi"
+    },
+    "domain": "Positive finite m and k, nonnegative b; finite initial state; bounded duration, positive requested h, and a documented maximum number of steps. Always include initial and exact requested final time unless a clearly reported numerical-magnitude bound terminates the trial. Refinements use h/2 and h/4 at identical times and initial conditions. Invalid inputs clear stale output.",
+    "oracle": "Use an independently derived closed-form constant-coefficient damped oscillator with separate underdamped, critically damped, and overdamped branches and stable near-critical evaluation, or an equivalently independently verified matrix exponential. Check b=0 against the separate trigonometric formula and critical/overdamped cases against analytic fixtures; never use the same stepping routine as the reference.",
+    "metrics": "Position and velocity signed/absolute error at equal timestamps; maximum absolute sampled position/velocity error; initial/final energy; maximum |E-E0| for b0; numerical D=trapezoid(b*v²) and E+D-E0 for b≥0; explicit undefined relative errors at zero references. Label maxima as sampled, not continuous-time extrema.",
+    "prediction": "Calculate initial acceleration and one full or endpoint-clipped step's position and velocity; predict the sign of that step's physical-energy change for the selected algorithm. Numerical energy change is distinct from the exact model's sign.",
+    "presentation": "Position/time and energy-account plots with clearly labeled numerical and analytic series and non-color legend cues, step comparison table, keyboard-selected sample, bounded complete table with sticky headers, and downloadable CSV containing model inputs, method, step widths, timestamps, state, reference state, errors, and energy/dissipation account. No automatic playback.",
+    "evidence": "Record all six explicit/semi runs at h=.1,.05,.025 for the fixed baseline, then one midpoint and one damped/refined comparison. Show one hand-computed step, one analytic initial-condition check, comparison at a common time, a separate parameter-uncertainty statement, and a revised claim. Save notes; structured notebook persistence is implemented in m09-l02.",
+    "rubric": "Four 0–2 criteria: reproducible inputs and units; independent one-step and analytic checks; common-time controlled refinement; error diagnosis and justified limitations. Proposed target6/8 with no zero."
+  },
+  "verification": {
+    "fixtures": "Independently derive unequal-interval weights, crossing triangles, exact polynomial integrals, recurrence sums, two-by-two update matrices, and analytic energy/decay identities. Audit the fixture values before implementation.",
+    "families": "At least50 deterministic seeds per20 variants plus zero references, exact endpoints, exact stability boundaries, nonzero initial velocity, signed acceleration, uneven grids, false interpolation assumptions, equivalent rational/numeric input, invalid input, and required interpretation.",
+    "engine": "Compare at least200 bounded parameter trials against independent matrix powers and/or high-order reference solutions at identical times; check under/critical/overdamping, near-critical continuity, zero state, negative initial state, final-step clipping, h>T, tight grid caps, stable and unstable regions, and explicit reported stops. Verify exported table rows independently; no state clipping to hide instability.",
+    "browser": "Independent predictions and misconception feedback, all methods and damping controls, exact endpoints, convergence comparisons, unknown/undefined metrics, safe computation stops, desktop/mobile screenshots and accessibility, keyboard sampling and scrolling, downloaded numerical table correctness, reload and actual checkpoint/notes/evidence backup restoration.",
+    "review": "No independent subject review or pilot validation has occurred."
+  },
+  "resources": [
+    {
+      "title": "OpenStax Calculus Volume 2: Numerical Integration",
+      "url": "https://openstax.org/books/calculus-volume-2/pages/3-6-numerical-integration",
+      "checkedAt": "2026-09-24",
+      "use": "Primary textbook section for trapezoidal and Simpson quadrature definitions and the smoothness conditions of error bounds. Original mechanics fixtures and derivations will be used."
+    },
+    {
+      "title": "University of Maryland: Numerical Integration with Examples",
+      "url": "https://physics.umd.edu/hep/drew/numerical_integration/",
+      "checkedAt": "2026-09-24",
+      "use": "Primary university teaching page for Euler update ordering and numerical energy diagnostics. Its loose language about equality and error order is not copied: distinguish approximations, local versus global errors, and the fixed time horizon."
+    },
+    {
+      "title": "Brown University: Euler Methods",
+      "url": "https://www.cfm.brown.edu/people/dobrush/am34/Mathematica/ch4/euler.html",
+      "checkedAt": "2026-09-24",
+      "use": "Primary university lecture page verifies the velocity-first Euler-Cromer ordering. Its displayed midpoint formula has transcription problems; derive the midpoint state and force evaluation independently rather than copying that line."
+    },
+    {
+      "title": "MIT OpenCourseWare 2.086: Initial-value problem self-study",
+      "url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-spring-2013/4466187e306b84af9b0659cf051b980d_MIT2_086S13_quiz2_selfstud.pdf",
+      "checkedAt": "2026-09-24",
+      "use": "Opened the four-page primary exercise guide; its ODE exercise checks a computed step against hand work and an exact solution before examining poor coarse-step behavior. No problem statement or solution is copied."
+    }
+  ]
+}
