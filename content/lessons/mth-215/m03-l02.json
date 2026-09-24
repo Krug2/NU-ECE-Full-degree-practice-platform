@@ -1,0 +1,225 @@
+{
+  "id":"m03-l02",
+  "courseId":"mth-215",
+  "moduleId":"m03",
+  "version":1,
+  "title":"Zeros, multiplicity, and graph shape",
+  "objective":"Read zeros and multiplicities from factored form and explain crossing or touching behavior.",
+  "why":"A polynomial's zeros can describe a balance point, a signal crossing, or a zero residual in a model. The factors reveal where the output is zero, whether its sign changes there, and what additional information is needed to recover the whole rule.",
+  "estimatedMinutes":180,
+  "prerequisites":[
+    {"label":"Degree and end behavior","lessonId":"m03-l01"},
+    {"label":"Factoring and polynomial expressions","lessonId":"b03"},
+    {"label":"Inequalities and interval notation","lessonId":"m01-l02"},
+    {"label":"Functions, domains, and graphs","lessonId":"m02-l01"}
+  ],
+  "sections":[
+    {"heading":"Connect a zero, a factor, and an intercept","paragraphs":[
+      "A real zero r of p satisfies p(r) = 0. The corresponding x-intercept is the point (r, 0), not just the number r. A linear factor x - r makes the product zero at that input. A nonzero constant multiplier changes output values but creates no new zero.",
+      "For a complete product of linear factors, set each factor equal to zero. In $(2x+3)^2(x-4)$, the factor 2x + 3 vanishes at -3/2. Its zero is not -3. The other zero is 4. The square repeats the first factor; it does not create a second root location.",
+      "Keep zero sets separate from multiplicity records. Write each distinct zero once in a set, then record how many times its factor occurs. This avoids confusing the number of x-intercepts with degree."
+    ]},
+    {"heading":"Count multiplicity after combining repeated factors","paragraphs":[
+      "A zero r has multiplicity m when $p(x)=(x-r)^m g(x)$ and $g(r)\\ne0$. The nonzero condition matters: if g contains another x - r factor, that factor must also be counted. Multiplicity is a positive integer for an actual zero of a nonzero polynomial.",
+      "For example, $(x-2)^2(x+1)(x-2)$ contains three copies of x - 2. The zero 2 has multiplicity 3, while -1 has multiplicity 1. The two root locations account for four linear factors and total degree 4.",
+      "If a nonzero polynomial is given as a constant times a complete product of real linear factors, its degree is the sum of their multiplicities. Without that complete factorization, the real zeros need not account for the whole degree. The factor $x^2+1$ adds degree 2 without adding any real zero. The zero polynomial is excluded from these finite root-count statements."
+    ]},
+    {"heading":"Explain crossing and touching with local signs","paragraphs":[
+      "Near a root r, write $p(x)=(x-r)^m g(x)$ with $g(r)\\ne0$. On a sufficiently small interval around r, the continuous polynomial g keeps its nonzero sign. The repeated factor therefore determines whether p changes sign as x passes through r.",
+      "An odd power of x - r is negative just to the left and positive just to the right. Multiplication by the nearby nonzero factor may reverse both signs, but the signs remain opposite. Odd multiplicity makes the graph cross the x-axis.",
+      "An even power of x - r is positive on both sides. The full polynomial has the same nearby sign on both sides and equals zero at r, so it touches the axis and turns. It has a local minimum of zero when nearby values are positive and a local maximum of zero when they are negative.",
+      "Multiplicity 3 or 5 can produce a flattened crossing. A flat tangent is not automatically a turning point: the graph still passes from one sign to the other without reversing direction at that root. Crossing establishes odd multiplicity; touching establishes even multiplicity. Neither observation alone identifies the exact exponent."
+    ]},
+    {"heading":"Build a sign chart across the entire line","paragraphs":[
+      "Sort the distinct real roots from smallest to largest. They split the number line into open intervals. On an interval containing no root, a polynomial cannot change sign: continuity would require a zero between a positive value and a negative value.",
+      "Choose one convenient test input from each interval. Find the sign of every factor after applying its exponent, then include the leading scale. An even power of a nonzero factor is positive; an odd power preserves its sign. An odd number of negative contributions gives a negative product.",
+      "You can also move across the roots from one known interval sign. Flip the sign at every odd-multiplicity root and keep it at every even-multiplicity root. For a complete product of monic real linear factors, the far-right sign is the sign of the nonzero multiplier.",
+      "At each root itself, the output is zero. Zero is neither positive nor negative. Keep the root values separate from the signs on the open intervals."
+    ]},
+    {"heading":"Read the y-intercept and reflect the graph","paragraphs":[
+      "The y-intercept is (0, p(0)). Substitute x = 0 into the full product, including the multiplier and every repeated factor. If zero is one of the roots, the y-intercept is the origin. That is one shared intercept, not an additional distinct zero.",
+      "Multiplication by a negative constant reverses the sign of every nonzero output. It exchanges portions above and below the x-axis without moving any root or changing its multiplicity. A crossing stays a crossing; a touch stays a touch. A positive multiplier stretches or compresses the outputs while preserving signs.",
+      "Changing a multiplicity is a different operation. It can change degree, the far-end pattern, and signs on intervals. Compare the complete factorizations before and after the change instead of assuming only a tiny neighborhood is affected."
+    ]},
+    {"heading":"Use signs to solve a polynomial inequality","paragraphs":[
+      "For p(x) > 0, include the open intervals where the sign chart is positive and exclude every root. For p(x) < 0, use the negative intervals and again exclude the roots. An even-multiplicity root still interrupts a strict inequality even when the sign is the same on both sides.",
+      "For p(x) greater than or equal to zero or less than or equal to zero, add every root because equality is allowed. A root may be an isolated included point if both neighboring intervals fail the inequality. Write a single-point interval such as [2, 2] when using the app's interval-entry fields.",
+      "For $p(x)=-(x+1)^2(x-2)^2$, the polynomial is negative away from its two roots. The inequality p(x) greater than or equal to zero therefore has only the two solutions -1 and 2. It does not include the interval between them."
+    ]},
+    {"heading":"Reconstruct a polynomial from roots and one point","paragraphs":[
+      "Suppose the degree is exactly the sum of the specified multiplicities, so those factors account for the entire polynomial. Write $p(x)=a\\prod_i(x-r_i)^{m_i}$ with an unknown nonzero a. Root conditions determine the factors; a separate nonroot point determines the scale.",
+      "For a point $(x_0,y_0)$ with $x_0$ different from every root, the factor product is nonzero. Substitute the point and solve $a=y_0/\\prod_i(x_0-r_i)^{m_i}$. Restore a to the whole polynomial, then check the root conditions, degree, and supplied point.",
+      "The outside multiplier equals the leading coefficient only when all variable factors are monic. In $a(2x+1)^2(x-2)$, the leading coefficient is 4a. A different but equivalent factored form can therefore have a different outside multiplier while defining exactly the same polynomial."
+    ]},
+    {"heading":"Recognize insufficient or inconsistent conditions","paragraphs":[
+      "A point at an already specified root with output zero adds no information about scale. Substitution gives 0 = a times 0, which every nonzero a satisfies. Do not divide by that zero factor product.",
+      "A point at a specified root with nonzero output is inconsistent. A zero-output point away from all specified roots is also inconsistent when the stated degree says the given factors are complete. Setting a = 0 would produce the zero polynomial and destroy the required degree and finite multiplicities.",
+      "If the degree or complete factorization is missing, even all real zeros with exact multiplicities and a nonroot point need not specify a unique polynomial. Multiplying a candidate by $x^2+1$ introduces no real zero; adjusting its scale can preserve the given point. State the degree assumption before claiming uniqueness."
+    ]},
+    {"heading":"Use graphs without overclaiming what they show","paragraphs":[
+      "The investigation compares an original polynomial with a changed one on shared axes. A local view isolates one zero, while a wider view includes every root from the known factorization. Exact root and sign tables provide the same conclusions without depending on a drawing.",
+      "A sampled graph may hide a small feature, make a crossing look like a touch, or miss a root outside the window. Apparent flatness is also affected by scale. Use the exact factors to establish multiplicity; use the graph to interpret the result.",
+      "Knowing that a graph crosses at r tells you the multiplicity is odd, but it does not by itself distinguish 1, 3, or 5. Knowing only the visible real intercepts does not prove that their multiplicities sum to the polynomial's degree."
+    ]},
+    {"heading":"Interpret a zero in an engineering model","paragraphs":[
+      "If a polynomial models a signed calibration error, a zero represents zero modeled error. An odd-multiplicity zero changes the error's sign; an even-multiplicity zero reaches zero and returns to the same sign. These are different behaviors even though both points lie on the horizontal axis.",
+      "Keep that interpretation within the model's validated interval. Exact algebra establishes properties of the formula. It does not establish that a physical system follows the formula outside the supported range."
+    ]}
+  ],
+  "examples":[
+    {"title":"Two distinct zeros can give degree three","prompt":"Analyze $p(x)=(x+2)(x-1)^2$.","steps":[
+      {"math":"x+2=0\\Rightarrow x=-2,\\qquad x-1=0\\Rightarrow x=1","reason":"Solve each linear factor separately."},
+      {"math":"m_{-2}=1,\\qquad m_1=2,\\qquad \\deg p=1+2=3","reason":"Count repeated factors for degree, but list the two zero locations only once."},
+      {"math":"p(0)=2(-1)^2=2","reason":"The y-intercept is (0, 2)."},
+      {"math":"p(x)=x^3-3x+2","reason":"Expansion confirms the degree and provides an independent form for checking values."}
+    ],"conclusion":"The graph crosses at -2 and touches at 1. It has two distinct real zeros and degree 3."},
+    {"title":"Solve a nonmonic factor correctly","prompt":"Analyze $p(x)=3(2x+1)^2(x-2)$.","steps":[
+      {"math":"2x+1=0\\Rightarrow x=-\\frac12,\\qquad x-2=0\\Rightarrow x=2","reason":"The coefficient 2 changes the zero of the first factor."},
+      {"math":"m_{-1/2}=2,\\quad m_2=1,\\quad L(x)=3(2x)^2x=12x^3","reason":"The degree is 3 and the leading coefficient is 12, not 3."},
+      {"math":"p(0)=3(1)^2(-2)=-6","reason":"Substitute zero into the complete product."}
+    ],"conclusion":"The zero -1/2 is a touch, the zero 2 is a crossing, and the y-intercept is (0, -6)."},
+    {"title":"Combine factors belonging to the same zero","prompt":"Find multiplicities in $p(x)=(x-2)^2(x+1)(x-2)$.","steps":[
+      {"math":"(x-2)^2(x-2)=(x-2)^3","reason":"Repeated occurrences of the same linear factor add their exponents."},
+      {"math":"p(x)=(x-2)^3(x+1),\\qquad \\deg p=4","reason":"There are four linear factors counted with repetition."},
+      {"math":"p(0)=(-2)^3(1)=-8","reason":"The factors give the y-intercept directly."}
+    ],"conclusion":"The distinct zeros are 2 and -1. Their multiplicities are 3 and 1, so both are crossings even though the total degree is even."},
+    {"title":"A zero at the origin can be a flattened crossing","prompt":"Describe $p(x)=-x^3(x-4)^2$ near its zeros.","steps":[
+      {"math":"x=0\\text{ has multiplicity }3,\\qquad x=4\\text{ has multiplicity }2","reason":"The factor x is x - 0, so the origin is one of the zeros."},
+      {"math":"p(0)=0,\\qquad \\deg p=3+2=5","reason":"The x- and y-intercepts coincide at the origin."},
+      {"math":"x<0\\text{ near }0:\\ p(x)>0;\\qquad x>0\\text{ near }0:\\ p(x)<0","reason":"The squared factor is positive near zero. The negative scale reverses the sign of the cubic factor."},
+      {"math":"p(x)<0\\quad\\text{on both sides sufficiently near }4","reason":"Near 4, x cubed is positive and the squared factor is positive away from its zero."}
+    ],"conclusion":"At zero the graph crosses while flattening. At 4 it touches from below and turns, making a local maximum of zero."},
+    {"title":"Build a complete sign chart","prompt":"Find the signs of $p(x)=-2(x+3)^2(x-1)^3$.","steps":[
+      {"math":"-3<1","reason":"The distinct roots divide the line into three open intervals."},
+      {"math":"p(-4)=250,\\qquad p(0)=18,\\qquad p(2)=-50","reason":"These exact test values give positive, positive, and negative signs on the three intervals."},
+      {"math":"\\begin{array}{c|ccc}x&(-\\infty,-3)&(-3,1)&(1,\\infty)\\\\\\hline\\operatorname{sign}p&+&+&-\\end{array}","reason":"Continuity and the absence of additional roots preserve each interval sign."},
+      {"math":"p(-3)=p(1)=0","reason":"The roots themselves have output zero, separate from the open-interval signs."}
+    ],"conclusion":"The even root -3 preserves sign and touches. The odd root 1 changes sign and crosses. The negative multiplier is essential to the chart."},
+    {"title":"Include isolated roots in a nonstrict inequality","prompt":"Solve $-(x+1)^2(x-2)^2\\ge0$.","steps":[
+      {"math":"(x+1)^2\\ge0,\\qquad (x-2)^2\\ge0","reason":"Both squares are nonnegative."},
+      {"math":"-(x+1)^2(x-2)^2\\le0","reason":"The negative multiplier makes the product nonpositive everywhere."},
+      {"math":"p(x)=0\\Longleftrightarrow x=-1\\text{ or }x=2","reason":"To be both nonnegative and nonpositive, the product must be zero."},
+      {"math":"\\{-1,2\\}=[-1,-1]\\cup[2,2]","reason":"Only these two isolated points satisfy the inequality."}
+    ],"conclusion":"Do not include the interval between the roots. For the strict inequality p(x) > 0, the solution set would be empty."},
+    {"title":"Recover the scale and complete rule","prompt":"Find the degree-3 polynomial with a simple zero at -2, a double zero at 1, and p(0) = -6.","steps":[
+      {"math":"p(x)=a(x+2)(x-1)^2","reason":"The stated degree is exactly the sum of the two multiplicities."},
+      {"math":"-6=a(2)(-1)^2=2a\\Rightarrow a=-3","reason":"The nonroot point gives a nonzero factor product, so division is valid."},
+      {"math":"p(x)=-3(x+2)(x-1)^2=-3x^3+9x-6","reason":"Restore the scale to the complete product; expansion gives an equivalent rule."},
+      {"math":"p(-2)=0,\\quad p(1)=0,\\quad p(0)=-6","reason":"Check the zeros and supplied point. The factor exponents and leading term check multiplicity and degree."}
+    ],"conclusion":"The degree condition and nonroot point determine this polynomial uniquely."},
+    {"title":"Distinguish outside scale from leading coefficient","prompt":"A cubic has a double zero at -1/2, a simple zero at 2, and p(0) = 8. Use $p(x)=a(2x+1)^2(x-2)$.","steps":[
+      {"math":"8=a(1)^2(-2)=-2a\\Rightarrow a=-4","reason":"Substitute into the displayed nonmonic factorization."},
+      {"math":"L(x)=-4(2x)^2x=-16x^3","reason":"The leading coefficient is -16 even though the outside multiplier is -4."},
+      {"math":"p(x)=-16\\left(x+\\frac12\\right)^2(x-2)","reason":"Extracting 2 from the squared factor moves a factor of 4 into the multiplier."}
+    ],"conclusion":"Both forms define the same polynomial. A multiplier's value depends on the chosen normalization of the factors."},
+    {"title":"Audit a point before dividing","prompt":"A degree-2 polynomial must have simple zeros -1 and 2. Compare three proposed extra points.","steps":[
+      {"math":"p(x)=a(x+1)(x-2),\\qquad a\\ne0","reason":"The roots already account for the entire degree."},
+      {"math":"(-1,0):\\quad 0=a(0)(-3)","reason":"Every nonzero scale satisfies this point. The condition is insufficient to select one."},
+      {"math":"(-1,4):\\quad 4=a(0)(-3)","reason":"This is impossible because -1 must be a zero."},
+      {"math":"(0,0):\\quad 0=a(1)(-2)\\Rightarrow a=0","reason":"A zero scale would violate the required degree. This point is also inconsistent with the complete root specification."}
+    ],"conclusion":"A root point cannot determine scale, and incompatible points cannot be repaired by accepting the zero polynomial."},
+    {"title":"Missing degree can leave different valid polynomials","prompt":"The only real zeros are -1 and 1, each simple, and p(0) = -1. Is the polynomial unique without a stated degree?","steps":[
+      {"math":"p(x)=x^2-1=(x-1)(x+1)","reason":"This degree-2 polynomial satisfies the conditions."},
+      {"math":"q(x)=(x^2-1)(x^2+1)=x^4-1","reason":"The positive factor x squared + 1 introduces no real zero or extra multiplicity at either real zero."},
+      {"math":"p(0)=q(0)=-1","reason":"Both polynomials also pass through the supplied nonroot point."}
+    ],"conclusion":"The conditions do not determine a unique polynomial. Specifying degree 2 would exclude the extra quadratic factor."},
+    {"title":"A crossing does not reveal an exact multiplicity","prompt":"Compare the local behaviors of powers centered at x = 1.","steps":[
+      {"math":"(x-1)^3\\quad\\text{and}\\quad(x-1)^5","reason":"Both have odd multiplicity and cross the axis while flattening at 1."},
+      {"math":"(x-1)^2\\quad\\text{and}\\quad(x-1)^4","reason":"Both have even multiplicity and touch the axis before turning."},
+      {"math":"\\text{crossing}\\Rightarrow m\\text{ odd};\\qquad\\text{touching}\\Rightarrow m\\text{ even}","reason":"The described sign behavior determines parity, not a unique exponent."}
+    ],"conclusion":"Use exact factors or additional algebraic constraints to establish multiplicity. A finite sketch is supporting evidence."},
+    {"title":"Interpret crossings of a modeled error signal","prompt":"A signed error model $e(t)=(t-1)(t-3)^2$ is validated on $0\\le t\\le4$. Interpret its zeros within that interval.","steps":[
+      {"math":"e(1)=0,\\quad m_1=1;\\qquad e(3)=0,\\quad m_3=2","reason":"The first zero is simple and the second is double."},
+      {"math":"e(0)=-9,\\qquad e(2)=1,\\qquad e(4)=3","reason":"The factors give negative, positive, and positive signs on the intervals separated by the roots."},
+      {"math":"t=1:\\ \\text{sign change};\\qquad t=3:\\ \\text{no sign change}","reason":"The simple zero crosses between error signs. The double zero reaches zero and returns to positive modeled error."}
+    ],"conclusion":"Both times have zero modeled error, but their nearby behaviors differ. The factorization does not extend the model's validated physical interval."}
+  ],
+  "guided":{
+    "title":"Annotate a complete factorization",
+    "setup":"Analyze $p(x)=-2(x+1)^2(x-3)$. Keep the zero locations, multiplicities, degree, intercept, and interval sign separate.",
+    "before":["The nonzero multiplier -2 does not create a zero.","The factor x + 1 repeats twice; the factor x - 3 occurs once."],
+    "question":{
+      "id":"guided-roots","familyId":"mth-guided-roots","familyVersion":1,"courseId":"mth-215","objectiveId":"m03-l02","category":"conceptual","critical":true,
+      "prompt":"Complete every part of the factor analysis.",
+      "fields":[
+        {"id":"zeros","kind":"roots","label":"Distinct real zeros","numberSystem":"real","expected":["-1","3"],"help":"Separate distinct values with commas."},
+        {"id":"multiplicity","kind":"rational","label":"Multiplicity at x = -1","expected":"2"},
+        {"id":"degree","kind":"rational","label":"Total degree","expected":"3"},
+        {"id":"intercept","kind":"rational","label":"p(0)","expected":"6"},
+        {"id":"behavior","kind":"choice","label":"Behavior at x = -1","correct":"touch","options":[
+          {"id":"cross","label":"Crosses the x-axis","feedback":"A crossing needs odd multiplicity; this factor is squared."},
+          {"id":"touch","label":"Touches and turns","feedback":"Even multiplicity keeps the nearby signs the same."}
+        ]},
+        {"id":"sign","kind":"choice","label":"Sign on (-1, 3)","correct":"positive","options":[
+          {"id":"positive","label":"Positive","feedback":"The negative scale times the negative x - 3 factor gives a positive product."},
+          {"id":"negative","label":"Negative","feedback":"Include both the negative scale and the negative linear factor."}
+        ]}
+      ],
+      "parameters":{},
+      "hints":["Solve each linear factor for its zero.","Sum the multiplicities for degree, then substitute x = 0 for the y-intercept.","At x = 0 the value is 6. The squared factor gives a touch at -1."],
+      "explanation":["The distinct zeros are -1 and 3, with multiplicities 2 and 1.","The degree is 3, and p(0) = -2 times 1 times -3 = 6.","The even zero -1 touches and turns. Between -1 and 3, the product is positive."],
+      "answerSummary":"Zeros -1, 3; multiplicity 2 at -1; degree 3; p(0) = 6; touches at -1; positive on (-1, 3)."
+    },
+    "after":"Guided work is practice. Use the independent checkpoint to record evidence for this objective."
+  },
+  "interaction":{
+    "kind":"root-multiplicity-lab",
+    "prompt":"Choose a zero, change its multiplicity, and predict the degree, distinct zero count, crossing or touching, and nearby signs. Reveal the comparison, inspect the exact tables, then change the scale or graph window and explain what stays the same.",
+    "cases":[
+      {"title":"A simple zero and a double zero","model":{"scale":"1","roots":[{"root":"-2","multiplicity":1},{"root":"1","multiplicity":2}]}},
+      {"title":"Negative scale with a flattened crossing","model":{"scale":"-2","roots":[{"root":"-3","multiplicity":2},{"root":"1","multiplicity":3}]}},
+      {"title":"The origin as a repeated zero","model":{"scale":"1","roots":[{"root":"0","multiplicity":2},{"root":"3","multiplicity":1}]}},
+      {"title":"A fractional zero","model":{"scale":"2","roots":[{"root":"-1/2","multiplicity":1},{"root":"2","multiplicity":2}]}},
+      {"title":"Three distinct crossings","model":{"scale":"1","roots":[{"root":"-1","multiplicity":1},{"root":"1","multiplicity":1},{"root":"3","multiplicity":1}]}}
+    ]
+  },
+  "practice":[
+    {"familyId":"mth-factor-zeros","variant":"two"},
+    {"familyId":"mth-factor-zeros","variant":"three"},
+    {"familyId":"mth-factor-zeros","variant":"zero"},
+    {"familyId":"mth-factor-zeros","variant":"nonmonic"},
+    {"familyId":"mth-factor-zeros","variant":"repeated"},
+    {"familyId":"mth-root-behavior","variant":"odd"},
+    {"familyId":"mth-root-behavior","variant":"even"},
+    {"familyId":"mth-root-behavior","variant":"flat-crossing"},
+    {"familyId":"mth-root-behavior","variant":"reflection"},
+    {"familyId":"mth-root-behavior","variant":"graph-limits"},
+    {"familyId":"mth-root-behavior","variant":"incomplete-roots"},
+    {"familyId":"mth-polynomial-sign","variant":"interval"},
+    {"familyId":"mth-polynomial-sign","variant":"negative-scale"},
+    {"familyId":"mth-polynomial-sign","variant":"zero-value"},
+    {"familyId":"mth-polynomial-sign","variant":"positive-set"},
+    {"familyId":"mth-polynomial-sign","variant":"nonnegative-set"},
+    {"familyId":"mth-polynomial-sign","variant":"negative-set"},
+    {"familyId":"mth-polynomial-sign","variant":"nonpositive-set"},
+    {"familyId":"mth-polynomial-sign","variant":"isolated-zero"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"integer-scale"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"fraction-scale"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"nonmonic-form"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"root-point"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"inconsistent-point"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"extra-zero"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"missing-degree"}
+  ],
+  "checkpoint":[
+    {"familyId":"mth-factor-zeros","variant":"mixed"},
+    {"familyId":"mth-root-behavior","variant":"mixed"},
+    {"familyId":"mth-polynomial-sign","variant":"mixed"},
+    {"familyId":"mth-polynomial-reconstruct","variant":"mixed"}
+  ],
+  "summary":[
+    "A zero is an input r with p(r) = 0; its intercept is the point (r, 0). Nonmonic factors require solving the entire linear equation.",
+    "Combine factors belonging to the same zero. Distinct zero count and total multiplicity are different quantities.",
+    "Odd multiplicity crosses and changes sign; even multiplicity touches, turns, and preserves the nearby sign.",
+    "Real-root multiplicities account for degree only when the specified factors are complete. A positive quadratic can add degree without a real intercept.",
+    "A sign chart uses open intervals between roots and treats each root's zero output separately. Nonstrict inequalities can include isolated roots.",
+    "A nonzero scale preserves roots and multiplicities; a negative scale reverses every nonzero output sign.",
+    "A complete degree condition and compatible nonroot point determine the scale. Root points, contradictory points, and a missing degree need separate treatment.",
+    "Exact algebra establishes the root behavior. A finite graph and a physical model's validation interval have distinct limitations."
+  ],
+  "retrieval":"Without opening your notes, analyze (x + 2)(x - 1)^2: list distinct zeros and multiplicities, find p(0), explain each crossing or touch, and give the sign on all three intervals. Then explain why specifying only those real zeros and one point needs a degree condition to determine a unique polynomial.",
+  "readings":[
+    {"title":"OpenStax: Graphs of Polynomial Functions","url":"https://openstax.org/books/college-algebra-2e/pages/5-3-graphs-of-polynomial-functions","purpose":"Read the factor, multiplicity, and graph discussions. Use exact algebra to distinguish a supported multiplicity from a visual guess."},
+    {"title":"OpenStax: Zeros of Polynomial Functions","url":"https://openstax.org/books/college-algebra-2e/pages/5-5-zeros-of-polynomial-functions","purpose":"Focus on constructing a polynomial from zeros, a stated degree, and a point. Division and complete complex-root methods continue in later lessons."}
+  ]
+}
