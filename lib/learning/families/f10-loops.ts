@@ -1,0 +1,32 @@
+import { randomFrom } from "../random";
+import { choice,num,programQuestion,pythonRange,type ProgramCase } from "../refreshers/programming";
+export const f10LoopFamilyIds=["f10-range","f10-loop","f10-list"];
+export function f10LoopCase(family:string,variant:string,seed:string):ProgramCase{
+ const r=randomFrom(seed),a=r.integer(-3,3),step=r.integer(1,3),n=r.integer(0,5),t=r.integer(-2,3),values=Array.from({length:n},()=>r.integer(-4,6)),start=r.integer(1,3),bound=r.integer(2,18),outer=r.integer(0,4),inner=r.integer(0,4),p={a,step,n,t,start,bound,outer,inner};
+ const make=(intro:string,code:string,fields:ProgramCase["fields"],checks:Record<string,string>,explanation:string[]):ProgramCase=>({intro,code,fields,checks,explanation,parameters:p});
+ if(family==="f10-range"){
+  if(!["positive","negative","empty","audit"].includes(variant))throw Error("Unknown range variant");
+  const specs=variant==="audit"?[[a,a+n*step,step],[a,a-n*step,-step],[a,a,step]]:[variant==="negative"?[a,a-n*step,-step]:variant==="empty"?[a,a,step]:[a,a+n*step,step]];
+  const code:string[]=[],fields:ProgramCase["fields"]=[],checks:Record<string,string>={};
+  specs.forEach(([begin,end,inc],i)=>{const items=pythonRange(begin,end,inc);code.push(`values${i} = list(range(${begin}, ${end}, ${inc}))`);fields.push(num("count"+i,`Number of values in values${i}`,items.length),num("sum"+i,`Sum of values${i} (zero if empty)`,items.reduce((s,v)=>s+v,0)));checks["count"+i]=`len(values${i})`;checks["sum"+i]=`sum(values${i})`;});
+  if(variant==="audit")fields.push(choice("step","Can range use a zero step?","no",[["no","No; a zero step raises ValueError","A step must make progress in one direction."],["yes","Yes; it repeats the start forever","Python rejects a zero range step instead of repeating it."]]));
+  return make("Count visited values and their sum. range excludes its stop in either direction.",code.join("\n"),fields,checks,["Write the start, then add the step while remaining strictly before the stop in the step's direction.","An empty range contributes no values and a sum of zero; a zero step is invalid."]);
+ }
+ if(family==="f10-loop"){
+  if(!["sum","filter","while","nested","audit"].includes(variant))throw Error("Unknown loop variant");
+  if(variant==="sum"||variant==="filter"){
+   const filter=variant==="filter",selected=values.filter(v=>!filter||v>=t);
+   return make(filter?"Trace an inclusive filter, total and count.":"Trace a running sum and visit count.",`items = [${values.join(", ")}]\ntotal = 0\ncount = 0\nfor value in items:\n${filter?`    if value >= ${t}:\n        total = total + value\n        count = count + 1`:"    total = total + value\n    count = count + 1"}`,[num("total","Final total",selected.reduce((s,v)=>s+v,0)),num("count","Final count",selected.length)],{total:"total",count:"count"},["Initialize once before the loop. Update only for an accepted value.",`The accepted values are [${selected.join(", ")}]. The empty case keeps total and count at zero.`]);
+  }
+  if(variant==="nested")return make("Count body executions in two nested loops.",`count = 0\nfor row in range(${outer}):\n    for column in range(${inner}):\n        count = count + 1`,[num("count","Final count",outer*inner)],{count:"count"},[`Each of ${outer} outer iterations contains ${inner} inner iterations, for ${outer*inner} executions. If either range is empty, there are none.`]);
+  let end=start,iterations=0;while(end<bound){end*=2;iterations++;}
+  const audit=variant==="audit";return make("Trace the condition before each body execution; then assess a missing update.",`value = ${start}\ncount = 0\nwhile value < ${bound}:\n    value = value * 2\n    count = count + 1`+(audit?`\nnested = 0\nfor row in range(${outer}):\n    for column in range(${inner}):\n        nested = nested + 1`:""),[num("value","Final value",end),num("count","Number of while iterations",iterations),...(audit?[num("nested","Nested body executions",outer*inner),choice("termination",`If value starts at 1, bound is 5, and value never changes, does while value < 5 terminate?`,"no",[["no","No","The condition remains true forever."],["yes","Yes","Rechecking an unchanged true condition cannot end the loop."]])]:[])],{value:"value",count:"count",...(audit?{nested:"nested"}:{})},[`The loop doubles ${start} until reaching ${end}; this takes ${iterations} iterations.`,"The condition is checked first. A missing update may leave it permanently true."]);
+ }
+ if(family!=="f10-list"||!["index","update","bounds","audit"].includes(variant))throw Error("Unknown list case");
+ const items=[r.integer(-4,5),r.integer(-4,5),r.integer(-4,5)],replacement=r.integer(6,10),code=`items = [${items.join(", ")}]`;
+ if(variant==="bounds"){const c=make("Identify the failure. A list of length 3 has nonnegative indices 0, 1 and 2.",code+"\nvalue = items[len(items)]",[choice("error","Outcome","index",[["index","IndexError","The index equal to the length is past the end."],["last","Returns the last element","The final nonnegative index is length minus one."],["zero","Returns zero","Python does not invent a value for an invalid index."]])],{},["The requested index is 3, so execution raises IndexError."]);c.error="IndexError";return c;}
+ const update=variant!=="index",audit=variant==="audit";
+ return make(update?"Trace a list element replacement without changing its length.":"Read a zero-based first index and a negative last index.",code+(update?`\nitems[1] = ${replacement}`:""),[num("first","items[0]",items[0]),num("last","items[-1]",items[2]),...(update?[num("middle","items[1]",replacement)]:[]),...(audit?[num("length","len(items)",3),choice("bounds","What would items[3] do now?","index",[["index","Raise IndexError","Replacing an element keeps the length at 3."],["replacement","Return the replacement","The replacement was at index 1."],["last","Return the last element","The last nonnegative index is 2."]])]:[])],{first:"items[0]",last:"items[-1]",...(update?{middle:"items[1]"}:{}),...(audit?{length:"len(items)"}:{})},["Index 0 is first; -1 is last. Element replacement changes one value but does not append another item."]);
+}
+export function f10LoopQuestion(family:string,variant:string,seed:string,id:string){return programQuestion(family,id,"m01-l02",f10LoopCase(family,variant,seed));}
+
