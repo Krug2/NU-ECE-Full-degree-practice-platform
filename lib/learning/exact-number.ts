@@ -40,17 +40,22 @@ function rationalValue(value: ExactNumber): Rational {
 function squareRoot(value: ExactNumber): ExactNumber {
   const rational = rationalValue(value);
   if (rational.numerator === 0n) return new Map();
-  let remaining = absolute(rational.numerator * rational.denominator), outside = 1n, inside = 1n;
-  if (remaining > 1_000_000n) throw new Error("Use a smaller fraction inside sqrt().");
-  for (let factor = 2n; factor * factor <= remaining; factor++) {
-    let count = 0;
-    while (remaining % factor === 0n) { remaining /= factor; count++; }
-    outside *= factor ** BigInt(Math.floor(count / 2));
-    if (count % 2) inside *= factor;
-  }
-  inside *= remaining;
-  if (rational.numerator < 0n) inside = -inside;
-  return new Map([[inside, divideRational({ numerator: outside, denominator: 1n }, { numerator: rational.denominator, denominator: 1n })]]);
+  const numerator=absolute(rational.numerator),denominator=rational.denominator;
+  if (numerator > 1_000_000n || denominator > 1_000_000n) throw new Error("Use a smaller fraction inside sqrt().");
+  const factors=(input:bigint)=>{
+    let remaining=input,outside=1n,inside=1n;
+    for(let factor=2n;factor*factor<=remaining;factor++){
+      let count=0;
+      while(remaining%factor===0n){remaining/=factor;count++;}
+      outside*=factor**BigInt(Math.floor(count/2));
+      if(count%2)inside*=factor;
+    }
+    return {outside,inside:inside*remaining};
+  };
+  const top=factors(numerator),bottom=factors(denominator),sign=rational.numerator<0n?-1n:1n;
+  const radicand=top.inside*bottom.inside;
+  if (radicand > 1_000_000n) throw new Error("Use a smaller fraction inside sqrt().");
+  return new Map([[sign*radicand, divideRational({numerator:top.outside,denominator:1n},{numerator:bottom.outside*bottom.inside,denominator:1n})]]);
 }
 
 export function divideExact(a: ExactNumber, b: ExactNumber): ExactNumber {
