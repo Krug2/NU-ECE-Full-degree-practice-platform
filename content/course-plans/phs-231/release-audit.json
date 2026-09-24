@@ -1,0 +1,282 @@
+{
+  "courseId": "phs-231",
+  "version": 1,
+  "checkedAt": "2026-09-24",
+  "technicalRelease": "pending final integrated checks",
+  "officialAlignment": {
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "checkedAt": "2026-09-24",
+    "credits": 3,
+    "creditUnit": "semester",
+    "prerequisiteSource": "overview.json",
+    "distinction": "The following topic labels paraphrase the current public description. Lesson sequencing, question counts, permitted aids, thresholds, study estimates and the project are proposed platform teaching choices, not an official NU syllabus or assessment policy."
+  },
+  "coverage": [
+    {
+      "topic": "Kinematics in one, two and three dimensions",
+      "lessons": [
+        "m02-l01",
+        "m02-l02",
+        "m02-l03"
+      ],
+      "evidence": "Signed position/velocity/acceleration calculus, reversals and distance; vector trajectories and inertial relative motion; admissible projectile contact times and unequal heights.",
+      "checks": [
+        "tests/phs-231-motion.test.ts",
+        "tests/phs-231-frames.test.ts",
+        "tests/phs-231-projectiles.test.ts"
+      ]
+    },
+    {
+      "topic": "Differentiation and integration in mechanics",
+      "lessons": [
+        "m02-l01",
+        "m03-l03",
+        "m05-l01",
+        "m06-l01",
+        "m07-l01",
+        "m07-l02"
+      ],
+      "evidence": "Initial-value integrals, linear-drag differential equations, vector work, impulse and center-of-mass accumulation, inertia integrals, angular impulse and separate radial/motor work.",
+      "checks": [
+        "tests/phs-231-drag.test.ts",
+        "tests/phs-231-work.test.ts",
+        "tests/phs-231-impulse-families.test.ts",
+        "tests/phs-231-rotation-families.test.ts",
+        "tests/phs-231-angular-families.test.ts"
+      ]
+    },
+    {
+      "topic": "Graphical motion analysis and numerical integration",
+      "lessons": [
+        "m02-l01",
+        "m09-l01"
+      ],
+      "evidence": "Slope versus signed area, irregular samples, reversal intervals, trapezoidal/Simpson assumptions, explicit and velocity-first Euler, midpoint, same-endpoint refinement, stability and energy/dissipation residuals.",
+      "checks": [
+        "tests/phs-231-motion.test.ts",
+        "tests/phs-231-sampled-integration.test.ts",
+        "tests/phs-231-step-audit.test.ts",
+        "tests/phs-231-numerical.test.ts",
+        "tests/phs-231-numerical-content.test.ts"
+      ]
+    },
+    {
+      "topic": "Vector algebra and geometric interpretation",
+      "lessons": [
+        "m01-l02",
+        "m02-l02",
+        "m05-l01",
+        "m07-l01"
+      ],
+      "evidence": "Three-dimensional components and directions, undefined zero-vector direction, projections, dot/cross products, work and torque with units and order.",
+      "checks": [
+        "tests/phs-231-vectors.test.ts",
+        "tests/phs-231-frames.test.ts",
+        "tests/phs-231-work.test.ts",
+        "tests/phs-231-rotation-families.test.ts"
+      ]
+    },
+    {
+      "topic": "Dynamics and Newton's laws",
+      "lessons": [
+        "m03-l01",
+        "m03-l02",
+        "m03-l03"
+      ],
+      "evidence": "External force inventories and system boundaries, constraints and contact loss, static/sliding friction with relative-motion direction, linear versus quadratic drag and finite-time/zero-drag limits.",
+      "checks": [
+        "tests/phs-231-forces.test.ts",
+        "tests/phs-231-friction.test.ts",
+        "tests/phs-231-drag.test.ts"
+      ]
+    },
+    {
+      "topic": "Uniform and nonuniform circular motion",
+      "lessons": [
+        "m04-l01",
+        "m07-l01"
+      ],
+      "evidence": "Radial/tangential acceleration, changing speed, vector direction, actual forces supplying radial acceleration, contact feasibility and complete point acceleration in rotation.",
+      "checks": [
+        "tests/phs-231-circular.test.ts",
+        "tests/phs-231-rotation.test.ts"
+      ]
+    },
+    {
+      "topic": "Gravitation",
+      "lessons": [
+        "m04-l02"
+      ],
+      "evidence": "Inverse-square exterior fields, superposition, potential reference, bound circular orbits, source/test mass scaling, escape energy and limits of circular-orbit transfer claims.",
+      "checks": [
+        "tests/phs-231-gravity.test.ts"
+      ]
+    },
+    {
+      "topic": "Vector work and energy",
+      "lessons": [
+        "m05-l01",
+        "m05-l02"
+      ],
+      "evidence": "Line-integral work, kinetic energy, conservative potential, accessible energy regions, spring/ramp/friction accounts, instantaneous power, finite turning versus asymptotic equilibrium, and model boundaries.",
+      "checks": [
+        "tests/phs-231-work.test.ts",
+        "tests/phs-231-energy.test.ts"
+      ]
+    },
+    {
+      "topic": "Linear momentum",
+      "lessons": [
+        "m06-l01",
+        "m06-l02"
+      ],
+      "evidence": "Impulse and center-of-mass motion, system isolation, oblique collision/contact normals, restitution, lab/CM descriptions, energy loss and non-approach gating.",
+      "checks": [
+        "tests/phs-231-impulse-families.test.ts",
+        "tests/phs-231-impulse.test.ts",
+        "tests/phs-231-collision-families.test.ts",
+        "tests/phs-231-collision.test.ts"
+      ]
+    },
+    {
+      "topic": "Rotational motion",
+      "lessons": [
+        "m07-l01",
+        "m07-l02",
+        "m07-l03"
+      ],
+      "evidence": "Inertia and axes, torque, fixed-axis kinematics, angular momentum, changing-radius systems, work and energy accounts, rolling/sliding transitions, friction feasibility and contact power.",
+      "checks": [
+        "tests/phs-231-rotation-families.test.ts",
+        "tests/phs-231-angular-families.test.ts",
+        "tests/phs-231-rolling-families.test.ts",
+        "tests/phs-231-rolling.test.ts"
+      ]
+    },
+    {
+      "topic": "Static equilibrium",
+      "lessons": [
+        "m08-l01"
+      ],
+      "evidence": "Independent force and torque equations, distributed loads, unilateral supports, friction, tipping/contact windows, alternate moment origins and sign checks.",
+      "checks": [
+        "tests/phs-231-statics-families.test.ts",
+        "tests/phs-231-statics.test.ts"
+      ]
+    },
+    {
+      "topic": "Elasticity",
+      "lessons": [
+        "m08-l02"
+      ],
+      "evidence": "Axial, shear and bulk response, signed stress/strain, geometry and material properties, work/energy, bounded measurements, and simultaneous stress/strain validity limits.",
+      "checks": [
+        "tests/phs-231-elasticity-families.test.ts",
+        "tests/phs-231-elasticity.test.ts"
+      ]
+    },
+    {
+      "topic": "Fracture and limits of material models",
+      "lessons": [
+        "m08-l03"
+      ],
+      "evidence": "Engineering stress-strain records, yield/strength/toughness distinctions, loading and unloading, permanent strain, supplied flaw/concentration/fatigue models and documented terminal fracture limits.",
+      "checks": [
+        "tests/phs-231-material-evidence.test.ts",
+        "tests/phs-231-fracture-audit.test.ts",
+        "tests/phs-231-materials.test.ts"
+      ]
+    }
+  ],
+  "additionalTeaching": [
+    {
+      "purpose": "Measurement and preparation support",
+      "lessons": [
+        "m01-l01"
+      ],
+      "evidence": "SI and powered-prefix conversion, dimensional coefficients, resolution/bias/repeatability, bounded versus standard uncertainty, and numerical input restrictions.",
+      "checks": [
+        "tests/phs-231-measurement.test.ts"
+      ],
+      "preparation": "Links to authored MTH 215 and refresher lessons. PHS 104, CSC 208 and CSC 209 remain academic preparation under construction; local explanations do not complete those courses."
+    },
+    {
+      "purpose": "Integrated investigation and communication",
+      "lessons": [
+        "m09-l02"
+      ],
+      "evidence": "Simulation-only calibration and held-out comparison, sensor correction, residual bounds, omitted drag/nonlinearity/drift, numerical and analytic/energy checks, eight preserved notebook sections and a five-criterion self-assessment rubric.",
+      "checks": [
+        "tests/phs-231-validation.test.ts",
+        "tests/phs-231-validation-evidence.test.ts",
+        "tests/phs-231-model-diagnosis.test.ts",
+        "tests/phs-231-project-content.test.ts",
+        "tests/phs-231-project-records.test.ts",
+        "tests/e2e/phs-231-project-notebook.spec.ts"
+      ],
+      "boundary": "Synthetic imposed states are not measurements of a physical experiment or a sampled trajectory. No physical apparatus or official PHS 231 equipment requirement is inferred from the public course description."
+    }
+  ],
+  "deliveredCounts": {
+    "lessons": 22,
+    "modules": 9,
+    "workedExamples": 209,
+    "guidedTasks": 22,
+    "interactiveInvestigations": 22,
+    "questionFamilies": 45,
+    "practiceVariants": 316,
+    "independentSeedCasesMinimum": 15800,
+    "checkpointItemsPerLesson": 4,
+    "readinessForms": 1,
+    "moduleForms": 9,
+    "cumulativeForms": 2,
+    "targetedReviewForms": 22,
+    "uniqueReadingUrls": 69
+  },
+  "assessmentCoverage": {
+    "definitions": "lib/learning/courses/phs-231-assessments.ts",
+    "blueprints": "cumulative-blueprints.json",
+    "checks": [
+      "tests/phs-231-cumulative-blueprint.test.ts",
+      "tests/phs-231-assessments.test.ts",
+      "tests/phs-231-course-progress.test.ts"
+    ],
+    "scope": "Each of 22 original objectives appears in a four-question module form and in both complementary cumulative parts, with a separate four-question targeted review. Every published form has 50 deterministic-seed coverage checks. Readiness retains its true original prerequisite/refresher objective identities.",
+    "completion": "Current lesson evidence, nine passed module forms, both passed cumulative parts, a valid submitted self-assessed project and no unresolved failed current review. Aggregate totals cannot hide a failed objective. Readiness and practice do not award completion.",
+    "limits": "Sparse sampled checks support a transparent self-study recommendation, not credit or exhaustive mastery. No psychometric calibration or independent learner pilot has occurred."
+  },
+  "persistence": {
+    "check": "tests/phs-231-course-capacity.test.ts",
+    "cycles": 6,
+    "attempts": 672,
+    "frozenQuestions": 5160,
+    "submittedProjectRecords": 6,
+    "retainedAssessmentResults": 33,
+    "backupBytes": 19054194,
+    "backupPolicyBytes": 50000000,
+    "afterExplicitAttemptDetailRemovalBytes": 237173,
+    "behavior": "Real browser export/reset/import preserves answers, snapshots, evidence, assessment summaries and project records. Failed saves and conflicting edits retain recoverable drafts. Detail removal is explicit and keeps summaries and notebooks. Ordinary schema-1/2 backups remain readable.",
+    "limit": "Whole-major-curriculum history capacity has not yet been audited."
+  },
+  "resourceVerification": {
+    "report": "resource-audit.json",
+    "available": 69,
+    "total": 69,
+    "method": "Public HTTP GET and provider-title inspection; teaching relevance and source distinctions were reviewed during authoring. Availability does not establish independent subject review."
+  },
+  "releaseChecks": {
+    "fullUnit": "pending fresh integrated run",
+    "lint": "pending fresh integrated run",
+    "typecheck": "pending fresh integrated run",
+    "productionBuild": "pending fresh integrated run",
+    "fullBrowser": "pending fresh integrated run on 3101",
+    "visual": "All 22 lessons plus assessment/course views have desktop/mobile inspection records in integration.json. Final zoom, reflow, reduced-motion and 3001 preview checks are pending.",
+    "scopeAndPrivacy": "Only major-course authored content and necessary compatible shared extensions. Prerequisite files match integrated main snapshot 26f17fc2345def7bb52df018a5915637aa66bd19. No private academic records or personal planning data are included."
+  },
+  "review": {
+    "independentSubjectReview": "not performed",
+    "pilotValidation": "not performed",
+    "technicalReview": "Implementation checks and separately derived mathematical/physical fixtures are recorded in the test files and integration ledger; they are not an independent subject-review claim."
+  },
+  "remaining": "Finish and record the integrated release checks before promoting the pack to technical preview and starting PHS 232. All 23 other major courses remain in scope."
+}
