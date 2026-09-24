@@ -57,9 +57,10 @@
     "currentCourse": "phs-231",
     "currentCourseProgress": {
       "plannedLessons": 22,
-      "availableLessons": 21,
-      "nextLesson": "m09-l02",
-      "integrationRecord": "phs-231/integration.json"
+      "availableLessons": 22,
+      "nextLesson": null,
+      "integrationRecord": "phs-231/integration.json",
+      "nextWork": "Readiness, module/cumulative assessments, targeted review, capacity and final release audit."
     },
     "completedCourses": [],
     "remainingCourses": [

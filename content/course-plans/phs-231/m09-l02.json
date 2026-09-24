@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m09-l02",
   "version": 1,
-  "status": "detailed plan; implementation and verification pending",
+  "status": "Lesson available and technically checked; course-wide assessments and release audit remain.",
   "title": "Validate a mechanical subsystem",
   "objective": "Combine force, energy, numerical, and measurement evidence into a reproducible investigation with a transparent self-assessment rubric.",
   "officialScope": {
@@ -244,5 +244,31 @@
     }
   ],
   "independentSubjectReview": "not performed",
-  "pilotValidation": "not performed"
+  "pilotValidation": "not performed",
+  "implementation": {
+    "plan": "98d4d29",
+    "engine": "ffb7f10",
+    "records": "e33e7e1",
+    "notebook": "3cbb88f",
+    "families": [
+      "d5bd7b9",
+      "1d9f41c"
+    ],
+    "comparisonUi": "1f1324d",
+    "sharedConnection": "c096b4c",
+    "teaching": "18f8331",
+    "browser": [
+      "05034a1",
+      "0942aa5"
+    ],
+    "workedExamples": 17,
+    "guidedExamples": 1,
+    "practiceVariants": 20,
+    "checkpointItems": 4,
+    "independentSeedCases": 1000,
+    "independentEngineCases": 240,
+    "recordTests": 12,
+    "contentFixtureTests": 3,
+    "verification": "1962 full unit checks passed including optional Python execution; lint, types and the 152-page build passed. All 14 browser workflows passed after the pre-save validation fix. Final mobile rubric/record copy passed all five notebook workflows and both desktop/mobile accessibility audits again, with visual inspection. No independent subject review or pilot validation is claimed."
+  }
 }
