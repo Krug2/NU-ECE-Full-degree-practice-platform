@@ -1,0 +1,12 @@
+{
+  "courseId": "f10",
+  "status": "planned",
+  "humanReview": "pending",
+  "checks": [
+    "Independently execute generated Python snippets with an available Python runtime and compare expected fields; also use separate arithmetic/loop/list oracles for 100 seeds per structure.",
+    "Test empty/singleton lists, both step directions, excluded endpoints, equality thresholds, negative floor division, alias/copy behavior, missing returns, invalid indices and numerical tolerances.",
+    "Check code indentation and escaping in prompts, examples and feedback, complete objective coverage and deterministic seeds.",
+    "Exercise all four guided traces/activities, diagnostic routing, independent checkpoints, resume, notes, backup, keyboard, desktop/mobile Axe and screenshots; full test/lint/type/build.",
+    "Only then mark preview, record human review pending, push and begin F11 detailed planning."
+  ]
+}
