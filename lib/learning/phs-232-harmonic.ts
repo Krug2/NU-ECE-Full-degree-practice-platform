@@ -44,7 +44,7 @@ export function harmonicState(model: HarmonicModel, time: number) {
   const velocity = model.velocity * c - model.omega * model.position * s;
   const acceleration = -model.omega * model.omega * position;
   const velocityRoundoff = 32 * Number.EPSILON * model.maximumSpeed * Math.max(1, Math.abs(angle));
-  const direction = model.amplitude === 0 ? "rest" : Math.abs(velocity) <= velocityRoundoff ? "turning" : velocity > 0 ? "positive" : "negative";
+  const direction: "rest" | "turning" | "positive" | "negative" = model.amplitude === 0 ? "rest" : Math.abs(velocity) <= velocityRoundoff ? "turning" : velocity > 0 ? "positive" : "negative";
   return { time, position: position || 0, velocity: velocity || 0, acceleration: acceleration || 0, direction };
 }
 

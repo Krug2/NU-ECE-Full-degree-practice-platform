@@ -1,0 +1,19 @@
+.phs232-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0}
+.phs232-predictions{border:1px solid var(--line,#d5dde0);border-radius:8px;padding:1rem;margin:1rem 0;min-width:0}
+.phs232-predictions legend{font-weight:650;padding:0 .4rem}
+.phs232-checks{display:grid;gap:.75rem;margin:1rem 0}
+.phs232-checks label{display:flex;gap:.6rem;align-items:flex-start}
+.phs232-checks input{width:auto!important;margin-top:.2rem}
+.phs232-table{overflow-x:auto;max-width:100%;margin:1rem 0}
+.phs232-table table{border-collapse:collapse;width:100%;font-size:.9rem}
+.phs232-table caption{text-align:left;font-weight:650;padding:.5rem 0}
+.phs232-table th,.phs232-table td{padding:.6rem;text-align:left;border-bottom:1px solid var(--line,#d5dde0)}
+.phs232-investigation input,.phs232-investigation select{min-width:0;width:100%}
+.phs232-investigation input[type=range]{scroll-margin-block:1rem}
+.phs232-investigation figure{margin:1rem 0;min-width:0}
+.phs232-investigation svg{width:100%;height:auto;max-width:600px;display:block;margin:1rem auto}
+.phs232-investigation figcaption{font-size:.9rem}
+.phs232-investigation details{margin:1rem 0}
+.phs232-investigation summary{cursor:pointer;padding:.5rem 0;font-weight:650}
+.phs232-investigation li{margin:.65rem 0}
+@media(max-width:560px){.phs232-controls{grid-template-columns:1fr}.phs232-table th,.phs232-table td{padding:.45rem;font-size:.8rem}.phs232-investigation svg text{font-size:22px}}
