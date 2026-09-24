@@ -1,0 +1,13 @@
+{
+  "courseId": "f12",
+  "status": "planned",
+  "independentHumanReview": "pending",
+  "checks": [
+    "Strict plans/content/links/complete objective coverage; all inline math renders.",
+    "100 seeds per lesson cover all three scenario structures, deterministic outputs and sensible constraints; independent oracles check passage arithmetic, unit-circle values, grouping and notation.",
+    "Actual file download/read/compare, invalid JSON, wrong format, mismatch and size limits; no numerical evidence from tools.",
+    "Every practical objective: draft save/reload, assisted label, fresh independent record, retained completion, notes, export/reset/import, two-tab conflict and corrupt-record recovery.",
+    "Desktop/mobile all pages plus active tool states, keyboard, Axe, overflow, console errors and visual review.",
+    "Run full tests including CPython, lint, types and production build on owned worktree; isolated 3102 browser tests, 3002 preview. Label preview only afterward; human review pending."
+  ]
+}
