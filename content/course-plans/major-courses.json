@@ -56,10 +56,12 @@
   "status": {
     "currentCourse": "phs-232",
     "currentCourseProgress": {
-      "phase": "official-source research and complete course planning",
-      "plannedLessons": null,
+      "phase": "implementation",
+      "plannedLessons": 31,
       "availableLessons": 0,
-      "nextWork": "Verify current NU description and academic dependencies, map complete subject coverage and assessment evidence, then implement each verified slice.",
+      "nextLesson": "m01-l01",
+      "nextWork": "Build and independently verify harmonic motion, phase, initial conditions and event timing, then complete its teaching and accessible investigation.",
+      "integrationRecord": "phs-232/integration.json",
       "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },
     "completedCourses": [
