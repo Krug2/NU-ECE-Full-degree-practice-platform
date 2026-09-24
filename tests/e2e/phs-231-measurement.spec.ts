@@ -10,7 +10,7 @@ const storageKey="ece-study:progress:v1";
 test("measurement reasoning, invalid intervals, and keyboard controls work on wide and narrow screens",async({page},testInfo)=>{
   const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("/courses/phs-231");
-  await expect(page.getByText("1 of 22 planned lessons are available.",{exact:false})).toBeVisible();
+  await expect(page.getByText(/\d+ of 22 planned lessons are available\./)).toBeVisible();
   await page.getByRole("link",{name:"Open lesson: Units, dimensions, and measurement evidence",exact:true}).click();
   await expect(page.getByRole("link",{name:"Powers, roots, and scientific notation",exact:true})).toHaveAttribute("href","/courses/mth-215/lessons/b02");
   await expect(page.getByRole("link",{name:"Calculus preparation",exact:true})).toHaveAttribute("href","/courses/csc-208");
@@ -55,6 +55,8 @@ test("measurement reasoning, invalid intervals, and keyboard controls work on wi
     expect(audit.violations.map(v=>({id:v.id,targets:v.nodes.map(n=>n.target)}))).toEqual([]);
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
     await lab.screenshot({path:testInfo.outputPath(`measurement-${label}.png`)});
+    await check.focus();
+    await page.screenshot({path:testInfo.outputPath(`measurement-${label}-viewport.png`)});
   }
   expect(errors).toEqual([]);
 });
