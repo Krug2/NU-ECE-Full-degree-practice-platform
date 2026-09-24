@@ -1,0 +1,53 @@
+{
+  "courseId": "f02",
+  "checkedAt": "2026-09-23",
+  "provider": "OpenStax, Rice University",
+  "book": "Algebra and Trigonometry 2e",
+  "author": "Jay Abramson and contributing authors",
+  "policy": "Link-only verification; source ECE Study lessons retain their original instruction and attributions. No textbook text or illustrations are imported. Free web access, no sign-in required; internal lessons remain self-contained.",
+  "sources": [
+    {
+      "section": "1.4",
+      "title": "Polynomials",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-4-polynomials",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "1.5",
+      "title": "Factoring Polynomials",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-5-factoring-polynomials",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "1.6",
+      "title": "Rational Expressions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-6-rational-expressions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "2.2",
+      "title": "Linear Equations in One Variable",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-2-linear-equations-in-one-variable",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "2.5",
+      "title": "Quadratic Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-5-quadratic-equations",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "2.6",
+      "title": "Other Types of Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-6-other-types-of-equations",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "2.7",
+      "title": "Linear Inequalities and Absolute Value Inequalities",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-7-linear-inequalities-and-absolute-value-inequalities",
+      "checkedAt": "2026-09-23"
+    }
+  ],
+  "license": "Consult the publisher's current terms before copying external content. This implementation links to exact sections and reuses only existing original ECE Study instruction."
+}

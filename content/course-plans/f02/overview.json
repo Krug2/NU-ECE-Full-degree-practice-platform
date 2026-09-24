@@ -1,0 +1,101 @@
+{
+  "courseId": "f02",
+  "planVersion": 1,
+  "status": "planned",
+  "title": "Algebra manipulation",
+  "learner": "Returning learners who can calculate with signed fractions but have lost reliable algebraic steps. Prior course credit does not count as current evidence.",
+  "assumedKnowledge": [
+    "F01 signed arithmetic, fraction operations, powers, and real roots"
+  ],
+  "scope": "Distribute and factor expressions; solve and classify linear equations; rearrange formulas with restrictions; solve linear, compound, and absolute-value inequalities; solve quadratics in the requested number system; simplify rational expressions and retain domains; reject extraneous candidates after clearing denominators or squaring.",
+  "boundaries": [
+    "No course credit or enrollment decisions.",
+    "Systems, matrices, full polynomial theory, and nonlinear inequality sign charts belong to the full MTH 215 course.",
+    "Complex numbers here support quadratic roots; F09 will develop rectangular/polar operations and Euler form.",
+    "First-time learners may take the full MTH 215 path. Arithmetic gaps should return to F01."
+  ],
+  "sequence": [
+    "m01-l01",
+    "m01-l02",
+    "m01-l03",
+    "m01-l04",
+    "m01-l05",
+    "m01-l06"
+  ],
+  "routes": [
+    {
+      "id": "recall",
+      "behavior": "Use six diagnostic probes, review the summary and misconception feedback for any gap, then take the relevant independent lesson checkpoints. Finish a four-question mixed checkpoint whose multipart questions cover all six objectives.",
+      "estimatedMinutes": "45 to 120 when most ideas are retained"
+    },
+    {
+      "id": "full",
+      "behavior": "Follow six lessons with complete explanations, worked examples, guided work, keyboard investigations, varied practice, and independent checkpoints. Save notes and resume through the same progress APIs.",
+      "estimatedMinutes": "Approximately 5 to 8 focused hours, with additional practice as needed"
+    }
+  ],
+  "reuse": {
+    "source": "Committed MTH 215 lessons and families from the original efdbec3 baseline retained in this worktree.",
+    "policy": "Use runtime adapters over the original lesson objects and generators, not forked copies of their explanations or grading. Add original refresher recall guidance, purpose, retrieval prompts, exact reading links, and explicit local prerequisites. Original MTH lessons, family IDs, and saved attempts remain untouched.",
+    "lessons": {
+      "m01-l01": "mth-215/b03",
+      "m01-l02": "mth-215/m01-l01",
+      "m01-l03": "mth-215/m01-l02",
+      "m01-l04": "mth-215/m01-l03",
+      "m01-l05": "mth-215/b04",
+      "m01-l06": "mth-215/m01-l04"
+    },
+    "overlap": "F01 supplies numeric signs, fractions, and roots; F02 applies the identical rules to symbolic expressions. F03 will use algebra to reason about functions; F09 will extend complex-number representation. Reuse shared polynomial, interval, rational-expression, exact-number, and root-set graders."
+  },
+  "assessment": {
+    "diagnostic": {
+      "id": "diagnostic",
+      "mode": "practice",
+      "length": 6,
+      "coverage": "Distribution, linear equations, negative-coefficient inequalities, quadratic roots, original rational restrictions, and extraneous radical candidates. One probe per objective; diagnostic success only suggests where to study."
+    },
+    "lessonCheckpoints": "Four questions per objective; all F02 items required. Add combined structures where necessary so a whole-number total cannot hide unchecked subskills. In particular rational-expression checkpoints include simplification, addition, division, and invalid cancellation; restriction checkpoints retain original domains and candidate checks.",
+    "recall": {
+      "id": "recall",
+      "length": 4,
+      "targets": [
+        [
+          "m01-l01",
+          "m01-l02"
+        ],
+        [
+          "m01-l03"
+        ],
+        [
+          "m01-l04"
+        ],
+        [
+          "m01-l05",
+          "m01-l06"
+        ]
+      ],
+      "interpretation": "A sample covering every objective, not a substitute for all six lesson checkpoints."
+    },
+    "recommendations": "Question-family mappings may identify multiple objectives for one multipart question; preserve field-level results so a wrong part recommends only its objective. Missed skills stay visible until a later independent lesson check. Familiarity and reading never create evidence.",
+    "retry": "New seed and immutable snapshots on each retry; no hints during checkpoints."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "RefresherPath.targets maps a screen family to either a lesson ID or a record of part prefixes to lesson IDs.",
+      "reason": "Multipart mixed questions can cover more than four objectives within the existing fixed four-question checkpoint contract. Grade each mapped part separately for targeted feedback; do not redesign attempt storage."
+    },
+    {
+      "interface": "adaptRefresherLesson(sourceLesson, JSON descriptor) and wrap source generators under stable F02 IDs",
+      "reason": "Share instructional explanations and answer rules without maintaining divergent copies."
+    }
+  ],
+  "acceptance": [
+    "All six objectives have a complete source lesson, original recall guidance, worked examples, guided practice, existing meaningful keyboard activity, multiple generators, independent checkpoint, and exact free reading.",
+    "No source lesson IDs or questions in MTH 215 change.",
+    "Every multipart field maps to its correct objective, including rational-expression domain field IDs.",
+    "Independent arithmetic/algebra checks and source-family regression sweeps pass.",
+    "Full browser diagnostic to recommendation to checkpoint journey, saved notes, reload, mixed evidence, backup, desktop/mobile, and accessibility pass.",
+    "Tests, lint, typecheck, and production build pass before preview availability.",
+    "Record implementer verification separately from pending independent human review. Finish F02 before planning F03."
+  ]
+}
