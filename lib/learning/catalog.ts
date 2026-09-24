@@ -22,12 +22,13 @@ import signChartLesson from "@/content/lessons/mth-215/m04-l02.json";
 import variationLesson from "@/content/lessons/mth-215/m04-l03.json";
 import radicalLesson from "@/content/lessons/mth-215/m04-l04.json";
 import exponentialLesson from "@/content/lessons/mth-215/m05-l01.json";
+import logarithmLesson from "@/content/lessons/mth-215/m05-l02.json";
 import { lessonSchema, packSchema } from "./contracts";
 import { availableFamilyIds } from "./generate";
 import { refresherPacks, refresherLessons } from "./refreshers/catalog";
 
 export const learningPacks = [packSchema.parse(packData), ...refresherPacks];
-export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson),lessonSchema.parse(polynomialLesson),lessonSchema.parse(rootsLesson),lessonSchema.parse(divisionLesson),lessonSchema.parse(completeRootsLesson),lessonSchema.parse(rationalFunctionLesson),lessonSchema.parse(signChartLesson),lessonSchema.parse(variationLesson),lessonSchema.parse(radicalLesson),lessonSchema.parse(exponentialLesson)];
+export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson),lessonSchema.parse(polynomialLesson),lessonSchema.parse(rootsLesson),lessonSchema.parse(divisionLesson),lessonSchema.parse(completeRootsLesson),lessonSchema.parse(rationalFunctionLesson),lessonSchema.parse(signChartLesson),lessonSchema.parse(variationLesson),lessonSchema.parse(radicalLesson),lessonSchema.parse(exponentialLesson),lessonSchema.parse(logarithmLesson)];
 lessons.push(...refresherLessons);
 export const learningPack = (courseId: string) => learningPacks.find(pack => pack.courseId === courseId);
 export const lessonById = (courseId: string, lessonId: string) => lessons.find(lesson => lesson.courseId === courseId && lesson.id === lessonId);
