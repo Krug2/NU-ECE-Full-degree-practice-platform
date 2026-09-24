@@ -8,7 +8,7 @@ import { practicalCase } from "../../lib/learning/refreshers/practical-cases";
 import { practicalKey,readPractical } from "../../lib/learning/refreshers/practical-records";
 import { readStoredProgress,restoreProgress } from "./progress";
 const json=(path:string)=>JSON.parse(readFileSync(new URL("../../content/"+path,import.meta.url),"utf8"));
-const practicalPacks:LearningPack[]=["f11"].map(id=>json("learning-packs/"+id+".json"));
+const practicalPacks:LearningPack[]=["f11","f12"].map(id=>json("learning-packs/"+id+".json"));
 const practicalPaths:PracticalPath[]=practicalPacks.map(p=>json("refresher-paths/"+p.courseId+".json"));
 const practicalLessons:PracticalLesson[]=practicalPacks.flatMap(p=>p.modules.flatMap(m=>m.lessons.map(l=>json("lessons/"+p.courseId+"/"+l.id+".json"))));
 async function snapshot(page:Page,lesson:PracticalLesson){return readPractical((await readStoredProgress(page)).learning.notes[lesson.courseId]?.[practicalKey(lesson.id)],lesson)!;}
