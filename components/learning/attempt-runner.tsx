@@ -71,9 +71,11 @@ function AttemptSession({attempt,removed,onDraftCopied,onBusy,onCloseRemoved}:{a
 }
 
 export function AttemptRunner({lesson,onlyMode}:{lesson:AssessmentSource;onlyMode?:Attempt["mode"]}){
-  const {data,ready,locked}=useStudy(),[mode,setMode]=useState<Attempt["mode"]>(onlyMode??"practice");
+  const {data,ready,locked}=useStudy(),[modeChoice,setMode]=useState<Attempt["mode"]>();
   const [message,setMessage]=useState(""),[busy,setBusy]=useState(false),[starting,setStarting]=useState(false);
   const [selected,setSelected]=useState<Attempt|null>(null);
+  const activeMode=[...data.learning.attempts].reverse().find(attempt=>attempt.courseId===lesson.courseId&&attempt.lessonId===lesson.id&&attempt.status==="active")?.mode;
+  const mode=modeChoice??onlyMode??selected?.mode??activeMode??"practice";
   const attempts=data.learning.attempts.filter(attempt=>attempt.courseId===lesson.courseId&&attempt.lessonId===lesson.id&&attempt.mode===mode),latest=attempts.at(-1);
   const retained=selected?.courseId===lesson.courseId&&selected.lessonId===lesson.id&&selected.mode===mode?selected:null;
   const saved=retained?attempts.find(attempt=>attempt.id===retained.id):latest,current=saved??retained,removed=!!retained&&!saved;
