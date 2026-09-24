@@ -70,6 +70,14 @@
   },
   "sharedCommits": [
     {
+      "commit": "add449b",
+      "summary": "clarified pi",
+      "files": [
+        "lib/learning/grading.ts"
+      ],
+      "integration": "Changes only incorrect-answer copy for an exact multiple of pi. The former angle-conversion instruction was misleading for circular area, rotational quantities, and elastic energy. Feedback now asks for an exact coefficient and the labeled unit; answer schemas and grading arithmetic are unchanged. Existing grading and angle tests passed (29 tests), and scoped lint passed. Preserve any upstream arithmetic changes when integrating this one-line copy adjustment."
+    },
+    {
       "commit": "c50e0c3",
       "summary": "connected statics",
       "files": [
