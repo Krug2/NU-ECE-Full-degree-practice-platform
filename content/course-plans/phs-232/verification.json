@@ -1,0 +1,52 @@
+{
+  "courseId":"phs-232",
+  "version":1,
+  "status":"Required checks before implementation and release; no PHS 232 technical verification is claimed yet.",
+  "independence":"Reference calculations must be derived separately from the production generator or activity. Calling a generator's own solution helper is not an independent answer check. Source review, implementation verification, independent subject review and learner pilot validation are separate claims.",
+  "coverageCrosswalk":[
+    {"officialTopic":"Oscillatory behavior","lessons":["m01-l01","m01-l02","m01-l03","m01-l04","m08-l02"],"evidence":"Initial-value reconstruction, physical restoring models, all damping regimes, driven phase and power, free electrical oscillation and output-dependent resonance."},
+    {"officialTopic":"Wave propagation","lessons":["m02-l01","m02-l02","m02-l03","m09-l02","m09-l03"],"evidence":"Wave equation, mechanical energy transport, interference, boundaries and modes, acoustic measurements, Doppler effects and electromagnetic propagation."},
+    {"officialTopic":"Electrostatic fields including continuous sources","lessons":["m03-l01","m03-l02","m10-l01"],"evidence":"Signed discrete superposition, density/geometry integrals, symmetry, singular domains and independently checked numerical quadrature."},
+    {"officialTopic":"Gauss's law","lessons":["m03-l03","m03-l04","m09-l01"],"evidence":"Oriented flux, enclosed charge, valid symmetry reductions, conductor charge allocation, boundaries and local field-law interpretation."},
+    {"officialTopic":"Potential for general charge distributions","lessons":["m04-l01","m10-l01"],"evidence":"Discrete and continuous potentials, finite references for nonconvergent infinite-source conventions, path integrals, gradients and numerical checks."},
+    {"officialTopic":"Storage and use of electric energy","lessons":["m04-l02","m04-l03","m05-l03","m08-l02"],"evidence":"Geometric and network capacitance, dielectric/source conditions, electromechanical work and transient/cyclic storage."},
+    {"officialTopic":"Current and resistance","lessons":["m05-l01","m05-l02"],"evidence":"Charge-density flux, carrier drift, resistivity, geometry, material-model limits, source/load power and instrument loading."},
+    {"officialTopic":"Magnetism and magnetic fields","lessons":["m06-l01","m06-l02","m06-l03"],"evidence":"Lorentz trajectories, current forces and dipoles, material limitations, Biot-Savart integration and Ampere symmetry."},
+    {"officialTopic":"Induction and power transmission","lessons":["m07-l01","m07-l02","m07-l03","m08-l03"],"evidence":"Flux and circulation, moving circuits, induced fields, self/mutual inductance, generators, transformer models, losses and power accounting."},
+    {"officialTopic":"DC and AC circuits","lessons":["m05-l02","m05-l03","m07-l02","m08-l01","m08-l02","m08-l03","m10-l02"],"evidence":"Kirchhoff constraints, RC/RL states, complex impedance, LC/RLC response, resonance, real/reactive power and a sustained circuit investigation."},
+    {"officialTopic":"Maxwell's equations and electromagnetic waves","lessons":["m09-l01","m09-l02","m09-l03"],"evidence":"Integral/local laws, continuity and displacement current, transverse solutions, polarization, field energy and momentum transport."}
+  ],
+  "questionFamilies":{
+    "initialPlan":{"families":62,"variants":372,"minimumSeedsPerVariant":50,"minimumIndependentCases":18600},
+    "flexibility":"These are initial subject-driven decompositions, not caps. Add or split families and variants if needed to teach and assess a topic well. Keep the plan, actual registry and independently checked coverage synchronized.",
+    "fixtures":["At least 50 deterministic seeds for every variant; repeat seeds to establish identical immutable questions, inputs and answers.","Independently derived numeric, symbolic or analytic reference results, including geometry and physical invariants specified in modules.json.","Units and prefix powers; vector and phase signs; peak/RMS conventions; source/reference choices; domain and boundary cases.","Supported equivalent rational, radical, pi, interval or approximate answers; explicitly invalid/empty/nonfinite/malformed input; meaningful wrong answers for each misconception.","No accidental duplicate prompts within a form; stable original course/objective identities; complete useful hints and worked solutions.","Critical interpretation cannot be bypassed by a close number or a high total. Tolerances reflect stated approximations and never silently relax a physical admissibility boundary."]
+  },
+  "investigations":{
+    "physics":"Check plotted and exported data against independent calculations at endpoints, reversals, discontinuities and representative interior states. Include singularity exclusions, field-law balances, conservative/dissipative energy accounts, circuit constraints and convergence failures.",
+    "interaction":"Predict before reveal where useful; allow explicit parameter changes, reset and reproducible state selection. Clearly separate simulation output, synthetic observations and any externally sourced data. Changes invalidate stale predictions visibly.",
+    "accessibility":"Every plot has an equivalent labeled table or complete text account. All controls, probe movement, reveal and reset actions work with a keyboard; dragging and color alone cannot carry required meaning. Provide visible focus, useful labels, error association, reduced-motion operation and scrollable tables without page overflow.",
+    "persistence":"Save relevant investigation choices and notebook work using the shared repository. Test reload, version changes, concurrent edits, unavailable storage and recovery without silent replacement."
+  },
+  "assessmentAndEvidence":[
+    "Validate all 44 planned forms at 50 seeds, every question assignment and original source identity, and both complementary cumulative blueprints.",
+    "Test objective thresholds and critical failures independently of displayed aggregate scores.",
+    "Ensure readiness and assisted practice create no independent completion evidence; a copied stale answer becomes practice.",
+    "Retain latest independent failures after detail deletion; require a fresh pass for the failed required form.",
+    "Exercise the actual learner path: checkpoint, module miss, targeted repair, fresh independent success, cumulative parts, submitted project and review cue.",
+    "Label synthetic completion fixtures as test fixtures; do not describe them as a learner pilot or independent course review."
+  ],
+  "storageAndBackup":{
+    "compatibility":"Old schema-1/2 backups and ordinary lesson attempts must remain readable. Additive course/project fields need explicit validation, immutable versioned identities and unsupported-data recovery. Shared changes belong in separate focused commits.",
+    "realBrowser":"Use actual export, reset and import, then inspect restored answers, frozen forms, retained outcomes, notes, bookmarks, project drafts and submitted revisions. Simulate failed writes and conflicting tabs with recoverable user choices.",
+    "capacity":"Measure the exact formatted backup size for six representative complete study cycles across both PHS 231 and PHS 232, with long legitimate project records and notes. Check the existing 5000-attempt and 50 MB policies rather than assuming one-course capacity scales to the major curriculum.",
+    "growth":"Before a release exceeds policy, implement and verify a visible compatible remedy such as an explicit archival/export workflow or a justified capacity extension. Never silently discard old attempts or summaries. Continue auditing whole-major storage as courses accumulate."
+  },
+  "integration":{
+    "unit":"Run focused independent fixtures for each slice and the appropriate complete suite at integration/release boundaries. Set F10_PYTHON to the bundled runtime so prerequisite Python checks actually execute.",
+    "static":"Run lint, full type checking and a production build. Build before starting browser tests; stop only this task's owned preview process before rebuilding.",
+    "browser":"Use 3101 and one worker on the shared machine. Cover desktop and mobile learning behavior, keyboard actions, accessibility, reload, backup and failure recovery. Select additional shared regressions when contracts, grading or components change.",
+    "visual":"Inspect every lesson, activity and project state at desktop and mobile sizes. Audit 320-pixel reflow and a reduced CSS viewport representing 200 percent browser zoom, with reduced motion. Inspect the actual production preview on 3001.",
+    "honesty":"Record failures, fixes and reruns with their actual scope. Do not relabel an across-runs success as one uninterrupted pass. Do not remove meaningful assertions simply to make a test pass."
+  },
+  "release":"Recheck all source links and official description, audit every coverage row and prepared dependency, publish accurate availability and study estimates, and record relevant commits and integration requirements. Only after all implementation gates pass can PHS 232 become a technical preview."
+}

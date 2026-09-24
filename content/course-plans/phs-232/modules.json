@@ -1,0 +1,430 @@
+{
+  "courseId":"phs-232",
+  "version":1,
+  "status":"Complete proposed coverage map; none of these lessons is implemented yet.",
+  "use":"Every lesson requires original instruction, stated notation and domains, worked reasoning, guided feedback, an accessible investigation, deterministic practice and a checkpoint. The entries below specify subject-specific coverage and evidence; assessments.json and verification.json add the shared release conditions. Family names are planned identifiers, not registered implementations.",
+  "modules":[
+    {
+      "id":"m01","title":"Oscillation, damping and driving","requires":[],
+      "lessons":[
+        {
+          "id":"m01-l01","title":"Harmonic motion, phase and initial conditions",
+          "objective":"Reconstruct and check a harmonic trajectory from physical parameters or initial conditions, including phase, direction and admissible event times.",
+          "requires":[],
+          "coverage":["Restoring force and the equation x''=-omega²x","Period, frequency, angular frequency and radians","Position, velocity and acceleration as related functions","Amplitude and phase from x(0),v(0), with quadrant and zero-amplitude cases","Position crossings, turning points, repeated solutions and requested time windows","Phase-space ellipse and dimensional checks"],
+          "examples":["A 0.5 kg mass on an 8 N/m spring starts at x=0.03 m with v=-0.16 m/s; derive A=0.05 m and the correct phase, then verify both initial conditions.","Find the first positive return and the opposite-direction crossing; distinguish a full state recurrence from a repeated position.","Compare an unchanged physical trajectory written with two equivalent phases and a shift of the time origin."],
+          "misconceptions":["Using frequency in place of angular frequency","Choosing phase with arccos alone and losing velocity direction","Equating zero velocity with zero acceleration","Giving only a principal trigonometric root"],
+          "investigation":"Keyboard-controlled time probe with synchronized x, v, a and phase-plane views; predict a sign or crossing before revealing it. Numeric table and state descriptions provide the full alternative to plots. Sampling changes must expose aliasing rather than suggest a changed physical frequency.",
+          "families":[{"id":"phs232-harmonic-state","variants":["parameter-frequency","state-from-phase","initial-state-inverse","derivative-sign","phase-equivalence","zero-state"]},{"id":"phs232-harmonic-events","variants":["first-crossing","directed-crossing","turning-point","window-count","state-recurrence","sample-alias"]}],
+          "independentChecks":"Verify states with a 2 by 2 rotation matrix, both initial conditions and x²+(v/omega)²=A². Enumerate roots independently in bounded time intervals. Include zero amplitude, t=0 exclusions, negative initial position and velocity, and equivalent phases.",
+          "readings":["v1-15.1","v1-15.3","mit-oscillations"]
+        },
+        {
+          "id":"m01-l02","title":"Energy, physical oscillators and stable equilibrium",
+          "objective":"Derive a local oscillation model from force, torque or potential energy and assess its frequency and small-amplitude limits.",
+          "requires":["m01-l01"],
+          "coverage":["Exchange between kinetic and spring energy","Shift of equilibrium under constant force","Effective stiffness and U'' at stable or unstable equilibria","Simple, physical and torsional pendulums","Parallel/series springs and effective inertia","Small-angle approximation and amplitude-dependent period limits"],
+          "examples":["Separate a vertical spring's static extension from its oscillation amplitude and period.","Derive a uniform rod pendulum's small-angle period about an end from I and center-of-mass torque.","Use a quartic potential to locate equilibria and compare local curvature without calling a negative-curvature point an oscillator."],
+          "misconceptions":["Adding mg to the restoring stiffness","Confusing potential curvature with potential height","Using a point-mass pendulum formula for a rigid body","Treating small-angle error as zero"],
+          "investigation":"Compare linearized and nonlinear pendulum trajectories at controlled initial angles, using identical integration resolution and an energy diagnostic. Plot period estimates with a table of crossing times and convergence evidence.",
+          "families":[{"id":"phs232-oscillator-energy","variants":["energy-partition","turning-amplitude","vertical-offset","spring-combination","speed-bound","parameter-scaling"]},{"id":"phs232-oscillator-model","variants":["simple-pendulum","physical-pendulum","torsion","potential-curvature","unstable-equilibrium","small-angle-error"]}],
+          "independentChecks":"Integrate force to potential, differentiate the potential back, and check energy at independently chosen phases. Use analytic small-angle periods and converged quadrature of the nonlinear pendulum period; reject impossible energies or negative inertia.",
+          "readings":["v1-15.2","v1-15.4"]
+        },
+        {
+          "id":"m01-l03","title":"Free decay and damping regimes",
+          "objective":"Classify and solve a damped oscillator's initial-value response and distinguish amplitude, energy and settling measures.",
+          "requires":["m01-l01","m01-l02"],
+          "coverage":["Viscous damping coefficient units","Characteristic roots and underdamped, critical and overdamped responses","Damped versus natural frequency","Initial-condition constants and signed zero crossings","Peak ratios and logarithmic decrement","Dissipated power, energy balance and limits of an exponential energy envelope"],
+          "examples":["Use m=1 kg, k=25 N/m and b=6 kg/s to derive decaying oscillation with damped frequency 4 rad/s.","Compare b=10 and b=12 with the same initial displacement; retain the critical repeated-root term.","Infer a damping rate from separated positive peaks and state which model assumptions support it."],
+          "misconceptions":["Using the underdamped formula at every damping value","Replacing instantaneous energy by its envelope","Assuming critical damping minimizes every possible settling definition"],
+          "investigation":"Compare all three regimes with common initial conditions and tabulated displacement, velocity, energy and accumulated dissipation. Peak picking and a stated settling band reveal why the chosen measurement matters.",
+          "families":[{"id":"phs232-free-decay","variants":["regime","underdamped-state","critical-state","overdamped-state","initial-constants","zero-damping"]},{"id":"phs232-damping-evidence","variants":["decrement","peak-spacing","energy-balance","envelope-limit","settling-definition","model-rejection"]}],
+          "independentChecks":"Compare analytic roots against an independently implemented matrix-exponential or high-accuracy ODE reference. Check E'= -b v² and continuity approaching critical damping; test b=0, both signs of initial velocity and near-repeated roots.",
+          "readings":["v1-15.5","mit-damping"]
+        },
+        {
+          "id":"m01-l04","title":"Driven response, resonance and power transfer",
+          "objective":"Predict a driven oscillator's steady amplitude, phase and average power while separating transient behavior and distinct resonance criteria.",
+          "requires":["m01-l03"],
+          "coverage":["Sinusoidal forcing and transient plus steady solution","Amplitude and phase with a quadrant-aware denominator","Low/high-frequency limits","Displacement, velocity and power resonance","Quality factor and the domain of narrow-band approximations","Cycle work, average dissipation and undamped resonant growth"],
+          "examples":["Compare forcing below, at and above the natural frequency with fixed force amplitude.","Find a displacement peak that differs from the velocity/power peak, including damping too large for a nonzero displacement peak.","Explain why an undamped resonant drive has no bounded sinusoidal steady state."],
+          "misconceptions":["Calling every peak omega0","Treating steady state as the initial response","Losing phase quadrants","Letting a zero damping denominator yield an ordinary finite answer"],
+          "investigation":"Frequency sweep with displacement, velocity and average-power curves; select a measured output before predicting its peak. A time trace and complete table distinguish startup from settled cycles.",
+          "families":[{"id":"phs232-driven-response","variants":["amplitude","phase","static-limit","high-frequency-limit","transient-condition","undamped-resonance"]},{"id":"phs232-resonance-power","variants":["displacement-peak","velocity-peak","average-power","cycle-work","quality-factor","no-interior-peak"]}],
+          "independentChecks":"Substitute complex or real sine/cosine coefficients into the differential equation, integrate work over an integer cycle, and independently differentiate the squared amplitude to find admissible maxima.",
+          "readings":["v1-15.6","mit-driving"]
+        }
+      ]
+    },
+    {
+      "id":"m02","title":"Traveling waves, superposition and sound","requires":["m01"],
+      "lessons":[
+        {
+          "id":"m02-l01","title":"Wave functions and transport of energy",
+          "objective":"Interpret a traveling wave's direction, local motion and energy transport using its derivatives and medium parameters.",
+          "requires":["m01-l01","m01-l02"],
+          "coverage":["Transverse and longitudinal disturbances","Travel direction from constant phase","Wave number, wavelength, frequency and phase speed","Partial derivatives and the one-dimensional wave equation","String tension and linear mass density","Local particle velocity versus propagation speed","Energy density and average string-wave power"],
+          "examples":["Differentiate y(x,t)=A cos(kx-omega t+phi) at a fixed position and follow one crest separately.","Infer a string's wave speed and average power from tension, density and amplitude.","Test a proposed function against a stated wave equation rather than recognizing its shape alone."],
+          "misconceptions":["Identifying particle speed with wave speed","Reading direction from a snapshot","Treating average power as proportional to amplitude"],
+          "investigation":"Move position and time probes independently on a wave; compare crest motion with a tagged medium point. A derivative table, energy account and controllable sample spacing are available without animation.",
+          "families":[{"id":"phs232-traveling-wave","variants":["direction","phase-speed","local-velocity","local-acceleration","phase-delay","wave-equation"]},{"id":"phs232-wave-transport","variants":["string-speed","density-unit","average-power","energy-density","amplitude-scaling","medium-change"]}],
+          "independentChecks":"Use shifted-profile transport and symbolic derivatives, not the displayed graph generator. Verify energy flux equals speed times mean energy density for the ideal string and test both travel directions.",
+          "readings":["v1-16.1","v1-16.2","v1-16.3","v1-16.4"]
+        },
+        {
+          "id":"m02-l02","title":"Superposition, reflection and normal modes",
+          "objective":"Construct superposed waves that satisfy boundary conditions and identify their nodes, allowed modes and energy behavior.",
+          "requires":["m02-l01"],
+          "coverage":["Linear superposition and coherent phase","Fixed/free reflection signs and transmitted amplitude","Standing waves as counter-propagating traveling waves","Fixed-fixed and mixed boundary spectra","Nodes versus instants of zero displacement","Two identical coupled oscillators and symmetric/antisymmetric modes","Beat envelopes and mode superposition limits"],
+          "examples":["Derive allowed wavelengths on a fixed-fixed string and a mixed-boundary string.","Superpose equal counter-propagating waves and locate permanent nodes.","Check two coupled masses' in-phase and out-of-phase motions directly against their two force equations."],
+          "misconceptions":["A standing wave transports the same net power as one traveling constituent","Every zero in one frame is a node","Intensity always adds for coherent sources","Every boundary has the same harmonic series"],
+          "investigation":"Choose boundary conditions and excite modes; compare a node probe, snapshots and constituent powers. A two-mass panel connects mode shapes to the continuum pattern using numeric tables and keyboard steps.",
+          "families":[{"id":"phs232-wave-superposition","variants":["phase-resultant","fixed-reflection","free-reflection","node-location","net-power","coherent-intensity"]},{"id":"phs232-wave-modes","variants":["fixed-spectrum","mixed-spectrum","mode-index","coupled-symmetric","coupled-antisymmetric","beat-envelope"]}],
+          "independentChecks":"Substitute endpoint conditions, integrate flux over a cycle, and diagonalize only the explicit two-by-two coupled system in the test reference. Include cancellation, unequal amplitudes and prohibited mode numbers.",
+          "readings":["v1-16.5","v1-16.6","mit-coupled"]
+        },
+        {
+          "id":"m02-l03","title":"Sound, intensity and moving sources",
+          "objective":"Relate pressure waves and sound measurements to intensity, interference and relative source-observer motion within a stated medium.",
+          "requires":["m02-l01","m02-l02"],
+          "coverage":["Pressure and displacement phase relation","Acoustic speed and the limited ideal-gas model","Intensity, inverse-square spreading and decibel reference","Coherent versus incoherent combination","Open/closed air-column boundary conditions","Beats and classical Doppler signs","Subsonic domain and shock-cone extension"],
+          "examples":["Convert an intensity ratio into a level difference without adding decibels directly.","Separate a moving source from a moving observer relative to stationary air.","Compare pressure nodes and displacement antinodes at an ideal open end."],
+          "misconceptions":["Decibels are an absolute linear intensity","Source and observer speeds are interchangeable","Frequency and wave speed both change for a moving listener"],
+          "investigation":"A spacetime wavefront diagram and arrival-time table compare source and observer motion. Synthetic level and beat measurements show the effect of reference and coherence. No loud audio is required or emitted automatically.",
+          "families":[{"id":"phs232-sound-measurement","variants":["pressure-intensity","level-difference","spreading","incoherent-sources","air-column","beat-rate"]},{"id":"phs232-doppler","variants":["moving-source","moving-observer","both-moving","receding","domain-limit","shock-angle"]}],
+          "independentChecks":"Calculate consecutive arrival times geometrically before comparing with the Doppler formula. Verify inverse-square ratios, pressure/intensity units and log conversions; reject zero or negative classical denominators.",
+          "readings":["v1-17.1","v1-17.3","v1-17.4","v1-17.6","v1-17.7","v1-17.8"]
+        }
+      ]
+    },
+    {
+      "id":"m03","title":"Electric sources, flux and conductors","requires":[],
+      "lessons":[
+        {
+          "id":"m03-l01","title":"Charge, force and the electric field",
+          "objective":"Calculate signed vector electric forces and fields from discrete sources and distinguish source properties from the response of a test charge.",
+          "requires":[],
+          "coverage":["Charge conservation and quantization","Conductors, insulators and induction","Coulomb's law with source-to-observation vectors","Three-dimensional superposition","Field versus force and test-charge sign","Dipole moment, torque and the far-field limit","Field-line interpretation without literal trajectories"],
+          "examples":["Sum the field from positive and negative charges at an off-axis point before multiplying by the test charge.","Locate a zero-field point and reject a root outside the assumed region.","Compare an exact two-charge dipole calculation with its large-distance approximation."],
+          "misconceptions":["Field direction changes when the test charge changes","Adding force magnitudes instead of components","Treating field lines as material paths"],
+          "investigation":"Move discrete sources and a probe using number inputs or keyboard steps. Predict vector signs before revealing components, force and a source-contribution table; singular observation points are excluded explicitly.",
+          "families":[{"id":"phs232-charge-field","variants":["charge-account","pair-force","vector-superposition","negative-test-charge","field-zero","singular-point"]},{"id":"phs232-electric-dipole","variants":["dipole-direction","torque","axial-field","equatorial-field","far-field-error","field-line-meaning"]}],
+          "independentChecks":"Use separately constructed displacement vectors and pairwise force antisymmetry. Check scaling with distance and charge, symmetry cancellation and exact-versus-dipole residuals.",
+          "readings":["v2-5.1","v2-5.2","v2-5.3","v2-5.4","v2-5.7"]
+        },
+        {
+          "id":"m03-l02","title":"Fields of continuous charge distributions",
+          "objective":"Set up and evaluate electric-field integrals with correct density, geometry, vector direction and admissible observation points.",
+          "requires":["m03-l01"],
+          "coverage":["Line, surface and volume density units","Source and observation coordinates","Finite rods, arcs, rings and axial disks","Symmetry cancellation before integration","Nonuniform density and total-charge normalization","Numerical quadrature for general distributions","Far-field, infinite-source and near-source limits"],
+          "examples":["Integrate the field on a uniformly charged ring's axis and check the center and far field.","Compute an axial disk field by adding rings, keeping the signed side of the disk.","Compare a nonuniform finite rod's exact integral with successively refined midpoint sums."],
+          "misconceptions":["Pulling a varying distance outside an integral","Using the wrong differential charge","Replacing every extended source by a point at its center"],
+          "investigation":"Refine a source discretization and compare component sums with analytic special cases. Report cell size, nearest-source distance and convergence; never hide a singular point behind a softening parameter.",
+          "families":[{"id":"phs232-distributed-field","variants":["rod-integral","ring-axis","disk-axis","arc-components","density-normalization","nonuniform-source"]},{"id":"phs232-field-limits","variants":["far-field","symmetry-zero","infinite-limit","side-sign","singular-domain","quadrature-refinement"]}],
+          "independentChecks":"Integrate with a separately implemented adaptive rule, compare analytic ring/disk/rod formulas, and test dimensional density conversions and total charge. Include both sides of a plane and finite-domain edge points.",
+          "readings":["v2-5.5","mit-em-readings"]
+        },
+        {
+          "id":"m03-l03","title":"Electric flux and the proper use of Gauss's law",
+          "objective":"Calculate oriented flux and use Gauss's law to determine a field only when the source symmetry supports the required reduction.",
+          "requires":["m03-l02"],
+          "coverage":["Oriented area and flux through open and closed surfaces","Enclosed versus external charge","Spherical, cylindrical and planar symmetry","Piecewise fields inside and outside nonconducting distributions","Uniform versus varying volume density","Gaussian surfaces are mathematical boundaries","Why an integral law does not always determine the local field"],
+          "examples":["Calculate flux through each face of a box in a nonuniform field and infer net enclosed charge.","Derive a charged solid sphere's interior and exterior fields, including continuity.","Explain why an off-center source prevents a simple E times area substitution on a chosen sphere."],
+          "misconceptions":["Zero flux means zero field","Only enclosed charges contribute to the field","E is automatically constant on any Gaussian surface"],
+          "investigation":"Compare face-resolved flux and enclosed charge while moving an external source. Symmetric and asymmetric cases share a flux table but expose different local field patterns.",
+          "families":[{"id":"phs232-electric-flux","variants":["tilted-area","closed-box","external-source","net-charge","nonuniform-field","orientation"]},{"id":"phs232-gauss-field","variants":["solid-sphere","shell","cylinder","plane","radial-density","symmetry-failure"]}],
+          "independentChecks":"Numerically integrate surface flux independently of the field solver and integrate density over volume. Check r=0 limits, interface continuity and exterior inverse-square behavior.",
+          "readings":["v2-6.1","v2-6.2","v2-6.3"]
+        },
+        {
+          "id":"m03-l04","title":"Conductors, cavities and electrostatic boundaries",
+          "objective":"Determine charge allocation and field constraints in electrostatic conductors while distinguishing metal, cavities and surrounding space.",
+          "requires":["m03-l03"],
+          "coverage":["Electrostatic equilibrium versus a current-carrying conductor","Zero interior metal field and tangential surface field","Surface-charge jump in normal field","Induced charge on cavity and exterior surfaces","Isolated versus grounded conductors","Shielding limits and charged cavities","Concentric spherical examples and nonspherical local-field limits"],
+          "examples":["Place charge q inside a cavity of an isolated conductor with total charge Q and derive inner and outer net charges.","Distinguish an empty shielded cavity from a cavity containing an off-center charge.","Use a pillbox to relate an exterior normal field to local surface density without assuming uniform density."],
+          "misconceptions":["A conductor's cavity is always field-free","Grounding means every conductor surface has zero charge","Uniform net charge implies uniform local density"],
+          "investigation":"A region and charge-account explorer compares isolated/grounded spherical shells and off-center qualitative cases. Accessible tables identify what Gauss's law determines and what remains unknown.",
+          "families":[{"id":"phs232-conductor-charge","variants":["isolated-shell","charged-cavity","grounded-shell","multiple-cavities","charge-conservation","symmetry-limit"]},{"id":"phs232-electric-boundary","variants":["metal-field","cavity-field","normal-jump","tangential-field","equilibrium-limit","shielding-claim"]}],
+          "independentChecks":"Use charge conservation plus Gaussian surfaces lying inside metal, with separately derived region fields in spherical fixtures. Keep net-charge conclusions distinct from unsupported local distributions.",
+          "readings":["v2-6.4","v2-7.5"]
+        }
+      ]
+    },
+    {
+      "id":"m04","title":"Potential, capacitance and electric energy","requires":["m03"],
+      "lessons":[
+        {
+          "id":"m04-l01","title":"Potential, work and field reconstruction",
+          "objective":"Connect electrostatic field and potential through line integrals and gradients, retaining reference choices and source-domain restrictions.",
+          "requires":["m03-l02","m03-l04"],
+          "coverage":["Potential difference, potential energy and external work","Finite charge sums and continuous-source potential integrals","Reference at infinity when the integral converges","Finite reference differences for infinite lines and planes","Gradient components and equipotential geometry","Gauge shifts and unchanged physics","Path independence and its electrostatic boundary"],
+          "examples":["Obtain the potential of a charged ring on its axis and differentiate it to recover the field.","Compute a line-charge potential difference without assigning zero potential at infinity.","Differentiate a two-variable polynomial potential and compare work along two paths."],
+          "misconceptions":["V=0 implies E=0","Potential and potential energy are interchangeable","Every source permits V(infinity)=0"],
+          "investigation":"Compare two integration paths, a potential contour map and numerical gradient vectors; an additive gauge changes values but not forces. Tables expose integration error and source exclusions.",
+          "families":[{"id":"phs232-electric-potential","variants":["point-sum","continuous-source","reference-difference","work-sign","energy-account","infinite-reference"]},{"id":"phs232-potential-field","variants":["gradient","equipotential","path-independence","gauge-shift","stationary-potential","domain"]}],
+          "independentChecks":"Differentiate independently derived scalar potentials and perform separate path quadrature. Check a finite gauge change, negative charges and paths near excluded source points.",
+          "readings":["v2-7.1","v2-7.2","v2-7.3","v2-7.4"]
+        },
+        {
+          "id":"m04-l02","title":"Capacitance, networks and stored energy",
+          "objective":"Determine capacitance, charge, voltage and energy for specified geometries and connected capacitors, with topology and source conditions explicit.",
+          "requires":["m04-l01"],
+          "coverage":["Capacitance as a geometry/material relation","Parallel plate, coaxial and spherical geometries","Series and parallel conservation constraints","Equivalent capacitance versus individual energy","Charging work and one-half QV","Isolated redistribution and missing energy","Fringing and idealization limits"],
+          "examples":["Derive coaxial capacitance by integrating the radial field between the conductors.","Resolve a mixed three-capacitor network and check every node charge and voltage sum.","Connect two isolated charged capacitors and account for the decrease in electrostatic energy."],
+          "misconceptions":["Series capacitors have equal voltages","Capacitance grows just because more charge is supplied","Lost stored energy violates conservation"],
+          "investigation":"Switch between stated capacitor connections and source-connected/isolated states. Predict charge and energy before seeing a complete component table and conservation residuals.",
+          "families":[{"id":"phs232-capacitance","variants":["plates","coaxial","spherical","series","parallel","mixed-network"]},{"id":"phs232-capacitor-energy","variants":["charging-work","field-density","redistribution","source-work","geometry-scaling","fringing-limit"]}],
+          "independentChecks":"Integrate field energy over the geometry and compare with one-half CV². Solve charge/voltage constraints independently and audit dimensions, limiting separations and redistribution energy.",
+          "readings":["v2-8.1","v2-8.2","v2-8.3"]
+        },
+        {
+          "id":"m04-l03","title":"Dielectrics and electromechanical energy accounting",
+          "objective":"Predict a capacitor's response to dielectric or geometry changes by distinguishing fixed charge, fixed voltage and the work of external sources.",
+          "requires":["m04-l02"],
+          "coverage":["Polarization and bound versus free charge","Linear dielectric constant and breakdown limits","Fixed-Q and fixed-V changes","Partially filled capacitors and interface geometry","Source work, field-energy change and mechanical work","Electrostatic force from a consistent energy account","Uncertainty in thickness, permittivity and measured capacitance"],
+          "examples":["Insert a dielectric into disconnected and battery-connected capacitors and compare Q,V,E and U.","Combine dielectric layers perpendicular or parallel to the field and justify the equivalent network.","Find insertion force at fixed voltage while including battery work, avoiding the wrong sign from field energy alone."],
+          "misconceptions":["Dielectric insertion always reduces stored energy","Free and bound charge are the same account","Differentiating field energy alone is valid at fixed voltage"],
+          "investigation":"An ideal capacitor energy ledger compares source and isolation controls, dielectric insertion and geometric uncertainty. Results are synthetic and do not authorize testing breakdown or handling charged hardware.",
+          "families":[{"id":"phs232-dielectric-response","variants":["fixed-charge","fixed-voltage","bound-charge","layered-medium","parallel-fill","breakdown-limit"]},{"id":"phs232-electric-work","variants":["battery-work","mechanical-work","force-sign","energy-balance","thickness-bound","model-limit"]}],
+          "independentChecks":"Compute charge and source work separately, use virtual work with the appropriate controlled quantity, and bracket monotone parameter uncertainties. Test zero insertion, identical media and both source states.",
+          "readings":["v2-8.4","v2-8.5","mit-em-readings"]
+        }
+      ]
+    },
+    {
+      "id":"m05","title":"Current, DC networks and switching","requires":["m04"],
+      "lessons":[
+        {
+          "id":"m05-l01","title":"Current density, resistance and material response",
+          "objective":"Relate charge transport to current, local fields, resistance and heating while identifying the limits of an ohmic material model.",
+          "requires":["m04-l01"],
+          "coverage":["Current as a rate and density as a vector flux","Carrier density, signed drift and conventional current","Microscopic versus macroscopic Ohm relations","Resistance of uniform and nonuniform conductors","Resistivity and restricted temperature models","Electrical power and energy","Non-ohmic IV data and instrument resolution"],
+          "examples":["Integrate a radially varying current density through a circular cross-section.","Compare wire resistance after changing length and area at constant material volume.","Use synthetic IV readings to reject a constant-resistance fit outside its stated range."],
+          "misconceptions":["Charge is consumed in a resistor","Resistance and resistivity have the same units","Ohm's law is universal","Electron drift equals signal speed"],
+          "investigation":"Explore geometry and synthetic IV curves with a fitted slope, power column and residual bounds. Temperature is a stated input or a specified thermal model, not an unexplained automatic correction.",
+          "families":[{"id":"phs232-current-density","variants":["charge-rate","flux-profile","carrier-drift","signed-current","continuity","area-conversion"]},{"id":"phs232-resistance","variants":["geometry","nonuniform-wire","temperature","power","iv-slope","nonohmic-limit"]}],
+          "independentChecks":"Integrate density and resistivity directly, compare electrical work with charge times voltage, and test area scaling, sign reversal and endpoint uncertainty without circular use of displayed fits.",
+          "readings":["v2-9.1","v2-9.2","v2-9.3","v2-9.4","v2-9.5"]
+        },
+        {
+          "id":"m05-l02","title":"DC circuit constraints and instrument loading",
+          "objective":"Solve a DC network with signed current and voltage references, verify power balance, and predict how a real meter changes the circuit.",
+          "requires":["m05-l01"],
+          "coverage":["Emf, terminal voltage and internal resistance","Topology, nodes and series/parallel criteria","Kirchhoff current and loop equations","Two-loop systems and negative current results","Voltmeters, ammeters and loading","Open/short limits and impossible ideal-source connections","Circuit energy and steady charge conservation"],
+          "examples":["Solve a two-source two-loop network and interpret a negative branch current.","Calculate voltage-divider loading by a finite-input-resistance meter.","Check whether a source delivers or absorbs power under the chosen reference convention."],
+          "misconceptions":["An emf is a mechanical force","A negative current makes a solution invalid","A voltmeter has no effect","Geometric appearance alone determines series connection"],
+          "investigation":"Switch a finite meter into a fixed, clearly labeled circuit and compare predictions with node/branch tables. Solve and show charge/power residuals. Schematic nodes have an equivalent connection list.",
+          "families":[{"id":"phs232-dc-network","variants":["internal-resistance","series-parallel","two-loop","current-sign","source-power","invalid-topology"]},{"id":"phs232-meter-loading","variants":["voltmeter","ammeter","divider","open-limit","short-limit","power-audit"]}],
+          "independentChecks":"Use a separately assembled nodal conductance matrix and branch power sum. Include source opposition, disconnected branches and finite meter limits. Do not model inconsistent ideal voltage sources as a numeric finite solution.",
+          "readings":["v2-10.1","v2-10.2","v2-10.3","v2-10.4"]
+        },
+        {
+          "id":"m05-l03","title":"RC switching, initial conditions and time scales",
+          "objective":"Derive and check a first-order circuit transient with a specified pre-switch state, final value and admissible switching model.",
+          "requires":["m04-l02","m05-l02"],
+          "coverage":["Capacitor voltage continuity under finite current","Effective resistance seen after switching","General exponential approach to a nonzero final value","Signed current and power during charging/discharging","Threshold times and unreachable targets","Energy dissipated and supplied","Measured traces, time resolution and fitting limits"],
+          "examples":["Switch a precharged capacitor to a different source and calculate voltage and current immediately and later.","Solve a settling threshold using a logarithm with its domain checked.","Compare capacitor-energy change with source work and resistor heating."],
+          "misconceptions":["A capacitor is always an open circuit","Voltage changes instantaneously through finite resistance","One time constant means complete charging","Every requested threshold is reached"],
+          "investigation":"A switch-state explorer compares analytic traces with numerical integration and synthetic sampled measurements; a table includes capacitor voltage, current and accumulated energy terms. Restore the chosen state on reload.",
+          "families":[{"id":"phs232-rc-state","variants":["charge","discharge","nonzero-initial","new-source","effective-resistance","initial-continuity"]},{"id":"phs232-rc-evidence","variants":["threshold-time","unreachable-threshold","time-constant","energy-balance","fit-resolution","ideal-switch-limit"]}],
+          "independentChecks":"Solve the linear ODE independently and integrate resistor power analytically. Check t=0 and long time, signed initial differences, zero response and parameter bounds.",
+          "readings":["v2-10.5","mit-em-readings"]
+        }
+      ]
+    },
+    {
+      "id":"m06","title":"Magnetic forces and their sources","requires":["m02","m05"],
+      "lessons":[
+        {
+          "id":"m06-l01","title":"Lorentz force and charged-particle motion",
+          "objective":"Predict charged-particle force and trajectory in specified uniform fields with consistent vector signs and energy reasoning.",
+          "requires":["m03-l01","m02-l01"],
+          "coverage":["Magnetic-field units and oriented cross products","Lorentz force with electric and magnetic terms","Circular and helical motion","Signed curvature, radius, period and pitch","Velocity selectors and crossed fields","Magnetic force does no instantaneous work","Nonrelativistic and uniform-field limits"],
+          "examples":["Find force and curvature for positive and negative charges with the same initial velocity.","Decompose helical motion into parallel and perpendicular velocity.","Derive a velocity selector's condition and show which charges are deflected when speed changes."],
+          "misconceptions":["Magnetic force changes speed in a static magnetic field","Radius uses the total helical speed","Right-hand direction ignores charge sign"],
+          "investigation":"A stepped 3D trajectory with vector components and a state table compares charge sign and field orientation. Energy and parallel velocity serve as visible invariants; no color or motion cue is the sole explanation.",
+          "families":[{"id":"phs232-lorentz-force","variants":["vector-force","charge-sign","parallel-motion","electric-magnetic","selector","work-rate"]},{"id":"phs232-magnetic-orbit","variants":["radius","period","pitch","center","direction","speed-limit"]}],
+          "independentChecks":"Use analytic rotation of perpendicular velocity and a dot-product work test. Include parallel and zero velocity, negative charge, zero field and explicitly rejected relativistic use.",
+          "readings":["v2-11.2","v2-11.3","v2-11.6","v2-11.7"]
+        },
+        {
+          "id":"m06-l02","title":"Currents, magnetic dipoles and material models",
+          "objective":"Calculate force, torque and energy for current-carrying conductors and magnetic dipoles while identifying the assumptions of simple material models.",
+          "requires":["m06-l01","m05-l01"],
+          "coverage":["Force integral on a current-carrying wire","Closed loops in uniform and nonuniform fields","Magnetic moment, torque and orientation energy","Stable and unstable dipole orientations","Parallel-current force","Diamagnetic, paramagnetic and ferromagnetic distinctions","Linear permeability, hysteresis and saturation limits"],
+          "examples":["Sum forces on a rectangular loop in a uniform field and derive its torque.","Compare dipole energy at aligned and opposed orientations.","Read a supplied hysteresis loop and distinguish a local slope model from a single universal permeability."],
+          "misconceptions":["Zero net force means zero torque","Every magnetic material has constant permeability","A dipole feels no force in a field gradient"],
+          "investigation":"Change loop orientation and a supplied field gradient, with component forces and torque tables. A synthetic material curve makes model range and hysteresis history explicit.",
+          "families":[{"id":"phs232-current-force","variants":["straight-segment","bent-wire","closed-loop","loop-torque","parallel-currents","gradient-force"]},{"id":"phs232-magnetic-material","variants":["dipole-energy","stable-orientation","linear-model","hysteresis","saturation","material-class"]}],
+          "independentChecks":"Integrate force segment by segment and calculate torque about two origins when net force is zero. Differentiate dipole energy and compare with torque; material data checks remain within the supplied model range.",
+          "readings":["v2-11.4","v2-11.5","v2-12.3","v2-12.7"]
+        },
+        {
+          "id":"m06-l03","title":"Biot-Savart, Ampere's law and magnetic geometry",
+          "objective":"Compute magnetostatic fields from currents and justify when a circulation law can determine their spatial dependence.",
+          "requires":["m06-l01","m06-l02","m03-l03"],
+          "coverage":["Biot-Savart vector integrals","Finite and infinite straight wires","Circular loop axis and superposition","Ampere circulation and enclosed signed current","Solenoids, toroids and long-device approximations","Fields inside extended current distributions","Limits of magnetostatic symmetry arguments"],
+          "examples":["Integrate the field on a loop axis and check its center and far-field behavior.","Derive the interior and exterior field of a wire with a stated radial current density.","Contrast an ideal infinite solenoid with a finite-axis field calculation."],
+          "misconceptions":["Zero enclosed current guarantees zero field","Ampere's law supplies constant B on any loop","A finite solenoid has exactly zero exterior field"],
+          "investigation":"Compare line-integral circulation with sampled local fields for symmetric and asymmetric current layouts. A source-segment refinement table is available beside the vector plot.",
+          "families":[{"id":"phs232-current-field","variants":["finite-wire","wire-superposition","loop-axis","arc-field","dipole-limit","source-direction"]},{"id":"phs232-ampere-field","variants":["solid-wire","radial-current","solenoid","toroid","circulation","symmetry-failure"]}],
+          "independentChecks":"Use independent segment quadrature and analytic special cases; check right-hand orientation, signed circulation, interface limits and scaling with current.",
+          "readings":["v2-12.1","v2-12.2","v2-12.4","v2-12.5","v2-12.6"]
+        }
+      ]
+    },
+    {
+      "id":"m07","title":"Induction, inductance and power transfer","requires":["m06"],
+      "lessons":[
+        {
+          "id":"m07-l01","title":"Changing flux and induced electric fields",
+          "objective":"Calculate signed induced emf for a specified circuit and distinguish transformer induction, motional emf and electrostatic potential difference.",
+          "requires":["m06-l03","m04-l01","m05-l02"],
+          "coverage":["Loop/normal orientation and magnetic flux","Faraday and Lenz signs","Changing field, area or orientation","Motional emf and magnetic force on charges","Nonconservative induced electric fields","Moving rods, loops and energy conversion","Piecewise entry/exit and assumptions behind the flux rule"],
+          "examples":["Determine emf and current sign in a loop with increasing flux using a declared normal.","Move a rod through a uniform field and balance mechanical input with resistor heating.","Compare two voltmeter paths in a changing magnetic field without assigning one global scalar potential."],
+          "misconceptions":["Induced current always opposes the magnetic field","Emf is flux rather than its rate","A nonconservative field has path-independent voltage"],
+          "investigation":"Control a loop's motion through a finite field region and inspect signed flux, emf, current, force and power. A static table covers every transition; moving geometry and sign conventions remain explicit.",
+          "families":[{"id":"phs232-induction-flux","variants":["changing-field","rotating-loop","changing-area","piecewise-flux","orientation-reversal","lenz-direction"]},{"id":"phs232-induced-work","variants":["moving-rod","mechanical-power","induced-field","path-dependence","eddy-loss","flux-rule-domain"]}],
+          "independentChecks":"Differentiate independently constructed flux histories, integrate Lorentz force along a moving rod, and compare mechanical work with electrical dissipation. Check zero rate and reversal of both loop/normal conventions.",
+          "readings":["v2-13.1","v2-13.2","v2-13.3","v2-13.4","v2-13.5"]
+        },
+        {
+          "id":"m07-l02","title":"Inductance, coupled coils and RL transients",
+          "objective":"Relate current to flux linkage, stored magnetic energy and inductive voltage, including mutual coupling and initial-value circuit behavior.",
+          "requires":["m07-l01","m05-l03"],
+          "coverage":["Flux linkage versus one-turn flux","Self and mutual inductance with polarity conventions","Energy and the bound on mutual coupling","Linear inductor voltage and current continuity","RL rise/decay with nonzero initial current","Field energy density and solenoid inductance","Switching-model limits and back-emf"],
+          "examples":["Derive a long solenoid's inductance and compare circuit and field energy.","Solve an RL switch to a new source while retaining the pre-switch current.","Audit whether supplied L1,L2,M values permit nonnegative stored energy for all currents."],
+          "misconceptions":["Inductor current jumps through a finite voltage","Mutual-inductance sign is independent of terminal references","Any arbitrarily large M is physically admissible"],
+          "investigation":"A coupled-coil energy table and RL transient explorer show current continuity, voltage polarity and energy flow. The model rejects an indefinite inductance matrix and incompatible ideal switch states.",
+          "families":[{"id":"phs232-inductance","variants":["flux-linkage","solenoid","mutual-voltage","dot-convention","coupling-bound","field-energy"]},{"id":"phs232-rl-transient","variants":["rise","decay","initial-current","new-source","energy-balance","switch-limit"]}],
+          "independentChecks":"Integrate magnetic energy independently and inspect the two-coil quadratic form at extreme current ratios. Verify the RL solution by substitution and analytic dissipation integration.",
+          "readings":["v2-14.1","v2-14.2","v2-14.3","v2-14.4"]
+        },
+        {
+          "id":"m07-l03","title":"Generators, transformers and transmission losses",
+          "objective":"Build a power account for idealized generators and transformers and evaluate the assumptions behind voltage conversion and reduced line losses.",
+          "requires":["m07-l02","m01-l04"],
+          "coverage":["Generator emf from rotating flux linkage","Back-emf and electromechanical power","Ideal transformer turns, voltage and current ratios","Reflected resistance and power conservation","Specified winding/core losses and efficiency","Transmission current and I²R loss","Frequency, saturation and steady-DC limitations"],
+          "examples":["Derive a rotating coil's sinusoidal emf amplitude from its geometry and speed.","Reflect a resistive load through an ideal transformer and account for both currents.","Compare line losses at two transmission voltages while retaining the same delivered power and stated line model."],
+          "misconceptions":["A transformer creates power","Steady DC can be transformed indefinitely by the AC model","Increasing voltage eliminates all losses"],
+          "investigation":"A simulation-only source-transformer-line-load ledger varies turns ratio and specified losses. Accessible tables show input, delivered power and residuals; no mains wiring or physical transformer construction is assigned.",
+          "families":[{"id":"phs232-generation","variants":["rotating-emf","frequency","back-emf","torque-power","flux-limit","dc-limit"]},{"id":"phs232-power-transfer","variants":["turns-ratio","current-ratio","reflected-load","line-loss","efficiency","source-limit"]}],
+          "independentChecks":"Differentiate flux directly, compare torque times angular speed with electrical power, and independently solve the resistive equivalent circuit. Check passive losses, zero load and infeasible requested delivery.",
+          "readings":["v2-13.6","v2-13.7","v2-15.6"]
+        }
+      ]
+    },
+    {
+      "id":"m08","title":"Alternating circuits and resonance","requires":["m07"],
+      "lessons":[
+        {
+          "id":"m08-l01","title":"Sinusoids, phasors and impedance",
+          "objective":"Translate between time-domain sinusoids and complex phasors to solve a linear sinusoidal circuit with consistent amplitude and phase conventions.",
+          "requires":["m01-l04","m07-l02"],
+          "coverage":["Peak and RMS conventions","Real-part exp(j omega t) representation","Derivative and integral correspondence","Resistive, capacitive and inductive impedances","Series and parallel complex combinations","Reference phases, quadrants and physical real signals","Validity only at one frequency in steady linear response"],
+          "examples":["Convert a sine-based voltage into the stated cosine phasor convention.","Solve a series RLC current and component voltages, then reconstruct a time-domain waveform.","Compare a parallel admittance calculation with direct branch-current sums."],
+          "misconceptions":["A phasor is a physical complex-valued voltage","RMS and peak amplitudes can be mixed","Impedance magnitudes add as scalars","All phase angles come from a one-quadrant arctangent"],
+          "investigation":"A phasor diagram synchronized with static time samples exposes reference rotation, component phase and complex sums. All vectors have a rectangular/polar table and keyboard inputs.",
+          "families":[{"id":"phs232-phasor","variants":["time-to-phasor","phasor-to-time","reference-shift","peak-rms","derivative","phase-quadrant"]},{"id":"phs232-ac-network","variants":["series-impedance","parallel-admittance","component-voltage","branch-current","complex-balance","frequency-domain-limit"]}],
+          "independentChecks":"Solve sine/cosine coefficients directly without the production complex helpers, then compare sampled real signals and Kirchhoff residuals. Test pure R,L,C limits and zero-valued phase ambiguity.",
+          "readings":["v2-15.1","v2-15.2","v2-15.3"]
+        },
+        {
+          "id":"m08-l02","title":"Electrical oscillation and resonance evidence",
+          "objective":"Relate free LC/RLC transients to driven resonance and interpret the measured response, damping and bandwidth for a specified output.",
+          "requires":["m08-l01","m01-l03","m01-l04"],
+          "coverage":["LC exchange of magnetic and electric energy","RLC natural modes and mechanical analogy","Series driven-current resonance","Component-voltage peaks and output-dependent resonance","Quality factor and bandwidth with stated definitions","Transient versus swept steady response","Component tolerances and parasitic loss"],
+          "examples":["Derive an LC oscillation from initial capacitor charge and inductor current.","Compare current and capacitor-voltage peaks in a damped series circuit.","Infer component or loss information from a frequency sweep while identifying what resonance alone cannot determine."],
+          "misconceptions":["Every circuit output peaks at the same frequency","A resonance frequency separately identifies both L and C","A fast sweep is automatically steady state"],
+          "investigation":"Sweep frequency or step the time response with explicit settling conditions. Peak, half-power and component-voltage tables support quantitative comparisons and uncertainty bounds.",
+          "families":[{"id":"phs232-electrical-oscillation","variants":["lc-state","lc-energy","rlc-regime","initial-conditions","damped-frequency","resistance-limit"]},{"id":"phs232-circuit-resonance","variants":["current-peak","capacitor-peak","bandwidth","quality-factor","parameter-identifiability","sweep-settling"]}],
+          "independentChecks":"Use the differential-equation state matrix for transients and independently differentiated transfer-function magnitudes for peak conditions. Check cycle energy balance and exact half-power roots before using a high-Q approximation.",
+          "readings":["v2-14.5","v2-14.6","v2-15.5"]
+        },
+        {
+          "id":"m08-l03","title":"Average power, RMS and power factor",
+          "objective":"Compute real energy transfer and distinguish it from reactive exchange and apparent power under stated waveform and reference conditions.",
+          "requires":["m08-l01","m08-l02","m07-l03"],
+          "coverage":["Instantaneous power and cycle averaging","RMS from its defining integral","Complex power with the conjugate convention","Real, reactive and apparent power units","Leading/lagging current and power factor","Reactive compensation and unchanged real load power","Nonsinusoidal waveforms and limits of cosine-only power factor"],
+          "examples":["Integrate the product of sinusoidal voltage and current and recover Vrms Irms cos(phi).", "Separate real and reactive power for an RLC load and verify resistor heating.","Compare true power factor with phase displacement for a supplied non-sinusoidal current."],
+          "misconceptions":["Reactive power is net energy consumed per cycle","Apparent power equals real power","RMS is always peak divided by square root of two","Compensation removes the real energy demand"],
+          "investigation":"A waveform and power ledger compares resistive, inductive, capacitive and explicitly harmonic cases. Numeric integration, sample refinement and tables provide the answer independent of the plotted area.",
+          "families":[{"id":"phs232-ac-power","variants":["average-power","complex-power","reactive-sign","apparent-power","leading-lagging","compensation"]},{"id":"phs232-rms-waveform","variants":["sinusoidal-rms","piecewise-rms","harmonic-rms","true-power-factor","sampling-error","passive-bound"]}],
+          "independentChecks":"Perform separate exact or high-resolution time integration and compare with complex-power calculations. Test the bound |P|<=Vrms Irms, purely reactive loads, reference reversal and non-sinusoidal counterexamples.",
+          "readings":["v2-15.4","mit-em-readings"]
+        }
+      ]
+    },
+    {
+      "id":"m09","title":"Maxwell's synthesis and electromagnetic waves","requires":["m08"],
+      "lessons":[
+        {
+          "id":"m09-l01","title":"Maxwell's equations and charge continuity",
+          "objective":"Use integral field laws to check charge continuity and displacement current, and interpret their local differential forms with stated material assumptions.",
+          "requires":["m03-l03","m06-l03","m07-l01","m08-l01"],
+          "coverage":["Four vacuum field equations in integral form","Divergence and curl through flux/circulation limits","Continuity equation and charge conservation","Displacement current in a charging capacitor","Two spanning surfaces with one common loop","Electrostatic and magnetostatic limits","Material and boundary qualifications"],
+          "examples":["Calculate the same magnetic circulation using a wire-cutting surface and a capacitor-gap surface.","Integrate a supplied current-density divergence to find a charge-accumulation rate.","Check a proposed field's curl and divergence against its stated sources."],
+          "misconceptions":["Displacement current is charge crossing a vacuum gap","Gauss's magnetic law says magnetic fields vanish","Static versions of the laws cover every changing field"],
+          "investigation":"Compare surfaces spanning a charging-capacitor loop and track conduction, displacement and total current. A source/field ledger and local derivative table expose inconsistent field proposals.",
+          "families":[{"id":"phs232-maxwell-integral","variants":["electric-flux","magnetic-flux","faraday-circulation","ampere-maxwell","surface-choice","static-limit"]},{"id":"phs232-field-continuity","variants":["charge-rate","current-divergence","displacement-current","local-curl","source-consistency","boundary-limit"]}],
+          "independentChecks":"Compute volume and surface balances by separate integrals and check analytic derivatives of polynomial field fixtures. Preserve oriented signs and compare both capacitor surfaces.",
+          "readings":["v2-16.1","mit-em-readings"]
+        },
+        {
+          "id":"m09-l02","title":"Electromagnetic wave solutions and polarization",
+          "objective":"Construct a plane electromagnetic wave consistent with Maxwell's equations and interpret its direction, polarization and medium-dependent speed.",
+          "requires":["m09-l01","m02-l01","m02-l02"],
+          "coverage":["Vacuum wave equation from coupled curl equations","Transverse E,B and propagation orientation","E/B ratio and consistent constants","Linear and circular polarization from component phase","Homogeneous linear medium and constitutive assumptions","Frequency, wavelength and phase speed across a boundary","Spectrum categories without assigning a false material medium to vacuum waves"],
+          "examples":["Construct B for an E wave traveling in a stated positive or negative axis direction.","Show how two orthogonal electric components with a phase difference determine polarization.","Calculate wavelength change across a nondispersive interface while frequency remains fixed."],
+          "misconceptions":["E and B are parallel","Field direction alone fixes propagation direction","All media have vacuum E/B ratio","Wave frequency changes merely because speed changes"],
+          "investigation":"Step a plane wave in time with vector arrows, component traces and an orientation table. Change phase and medium assumptions; a consistency check uses both curl laws and the direction of E cross B.",
+          "families":[{"id":"phs232-em-wave","variants":["wave-speed","field-ratio","propagation-sign","curl-check","medium-wavelength","transverse-condition"]},{"id":"phs232-polarization","variants":["linear-state","circular-state","relative-phase","orthogonal-components","boundary-frequency","spectrum-order"]}],
+          "independentChecks":"Differentiate both fields analytically, check the two curl equations and zero divergences, and use an independent cross product to verify propagation. Include sign-reversed waves and degenerate polarization.",
+          "readings":["v2-16.1","v2-16.2","v2-16.5","mit-em-waves"]
+        },
+        {
+          "id":"m09-l03","title":"Field energy, intensity and radiation pressure",
+          "objective":"Account for energy and momentum carried by electromagnetic waves and distinguish local fields, average intensity and material interaction models.",
+          "requires":["m09-l02","m08-l03"],
+          "coverage":["Electric and magnetic energy density","Poynting vector and its time average","Power through an oriented aperture","Absorption, reflection and momentum transfer","Radiation pressure for stated incidence models","Polarizer transmission and coherent superposition","Inverse-square spreading, near-field and material-loss limits"],
+          "examples":["Compute a plane wave's mean intensity from peak E and separately from mean energy density.","Compare absorbed and perfectly reflected normal-incidence momentum flux.","Apply two ideal polarizers in sequence and distinguish unpolarized input from a known linear state."],
+          "misconceptions":["Peak and average intensity are interchangeable","A perfectly reflecting surface absorbs all incident energy","Near fields always obey a spherical inverse-square law"],
+          "investigation":"An energy/momentum ledger varies aperture orientation, reflection and polarization. Accessible tables compare instantaneous and cycle-averaged quantities; no laser, high-power radiation or physical optical experiment is required.",
+          "families":[{"id":"phs232-em-energy","variants":["field-density","poynting-vector","mean-intensity","aperture-power","spreading","near-field-limit"]},{"id":"phs232-radiation-transfer","variants":["absorption-pressure","reflection-pressure","partial-reflection","linear-polarizer","unpolarized-input","energy-momentum-account"]}],
+          "independentChecks":"Integrate sinusoidal fields over a full period, use momentum balance for incoming/outgoing waves, and compare with energy flux divided by c. Test zero transmission and both field amplitude conventions.",
+          "readings":["v2-16.3","v2-16.4","mit-polarization"]
+        }
+      ]
+    },
+    {
+      "id":"m10","title":"Numerical evidence and a sustained investigation","requires":["m09"],
+      "lessons":[
+        {
+          "id":"m10-l01","title":"Numerical field and circuit checks",
+          "objective":"Evaluate a numerical physical prediction using independent representations, refinement and explicit numerical-versus-measurement uncertainty.",
+          "requires":["m03-l02","m04-l01","m08-l02","m09-l01"],
+          "coverage":["Quadrature of finite source distributions","Numerical potential gradients and separately summed fields","Mesh refinement, cancellation and singularity exclusion","Charge, power and field-law residuals","Independent analytic special cases","Finite precision, truncation and measurement bounds","Limits of apparent convergence and shared-code agreement"],
+          "examples":["Compare a ring-axis field integral with an analytic value across three quadrature resolutions.","Compute a potential gradient independently and expose a too-large or too-small finite-difference step.","Check a circuit solution's equation and power residuals while showing that the wrong physical model can still have tiny residuals."],
+          "misconceptions":["More digits establish physical accuracy","Agreement between two views of the same calculation is independent verification","A small residual validates every model assumption"],
+          "investigation":"A reproducible field benchmark compares source quadrature, potential differentiation and analytic limits with exportable full-precision tables. Fixed run identifiers and stated domains preserve the evidence on reload.",
+          "families":[{"id":"phs232-numerical-evidence","variants":["refinement-ratio","gradient-step","quadrature-bound","cancellation","singularity","analytic-reference"]},{"id":"phs232-physical-residual","variants":["charge-balance","power-balance","field-law","units","model-versus-solver","measurement-separation"]}],
+          "independentChecks":"Use independent algorithms with distinct discretizations and analytic fixtures, including near-cancellation and excluded singular geometries. Cross-check exported rows rather than only the displayed rounded summary.",
+          "readings":["v2-5.5","v2-7.4","mit-em-readings"]
+        },
+        {
+          "id":"m10-l02","title":"Investigate a resonant circuit model",
+          "objective":"Design, analyze and report a reproducible simulation investigation that distinguishes competing resonant-circuit models using calibrated observations and independent energy checks.",
+          "requires":["m08-l02","m08-l03","m10-l01"],
+          "coverage":["Question, prediction and controlled variables","Synthetic observation provenance and calibration","Training versus held-out frequencies","Amplitude and phase evidence with stated measurement bounds","Loss, parameter variation and instrument-loading alternatives","Identifiability, power balance and numerical checks","Reproducible saved records, uncertainty-aware conclusions and revision history"],
+          "examples":["Use off-resonance amplitude and phase to distinguish excess series resistance from a changed capacitor value.","Reject a candidate that matches resonance but fails held-out phase or power observations.","Write a bounded conclusion that distinguishes a supported model from proof of unique physical cause."],
+          "misconceptions":["A synthetic dataset is a measured experiment","The best fit proves a unique mechanism","Calibration and validation can reuse all the same observations without qualification"],
+          "investigation":"The full saved project is specified in project.json. Learners record a prediction before reveal, choose informative frequency samples, compare at least two models, export evidence, and submit a self-assessed report. Practice calculations and the report remain distinct from independent quiz evidence.",
+          "families":[{"id":"phs232-project-inference","variants":["parameter-identifiability","heldout-selection","phase-diagnostic","calibration-bound","loading-model","unsupported-claim"]},{"id":"phs232-project-audit","variants":["power-balance","model-residual","uncertainty-interval","reproducibility","rubric-evidence","revision-conclusion"]}],
+          "independentChecks":"Generate observations and verify predictions through independent real sine/cosine equations and time-averaged power, not the production phasor helper. Audit all exported observations, retained report versions and uncertainty endpoints.",
+          "readings":["v2-15.3","v2-15.4","v2-15.5","mit-em-readings"]
+        }
+      ]
+    }
+  ]
+}
