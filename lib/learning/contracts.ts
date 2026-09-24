@@ -9,6 +9,7 @@ import { transformedFunctionSchema } from "./transformations";
 import { machineSchema } from "./function-machines";
 import { phs231MeasurementActivitySchema } from "./phs-231-measurement";
 import { phs231VectorActivitySchema } from "./phs-231-vectors";
+import { calibrationCaseSchema } from "./calibration";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -90,6 +91,7 @@ export const lessonSchema = z.object({
   interaction: z.discriminatedUnion("kind",[
     phs231MeasurementActivitySchema,
     phs231VectorActivitySchema,
+    z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
     z.object({ kind:z.literal("parabola-explorer"),prompt:text,a:z.number().int().min(-3).max(3).refine(value=>value!==0),h:z.number().int().min(-4).max(4),k:z.number().int().min(-5).max(5) }).strict(),
