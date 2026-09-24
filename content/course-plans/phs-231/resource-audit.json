@@ -1,0 +1,992 @@
+{
+  "courseId": "phs-231",
+  "checkedAt": "2026-09-24",
+  "method": "Public HTTP GET to each unique reading linked in the 22 authored lessons, following redirects and recording the provider title where supplied. This is an availability recheck, not a new independent subject review; topic relevance was checked in the lesson plans. A successful status alone does not establish pedagogical correctness.",
+  "readings": [
+    {
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-5-combined-standard-uncertainty",
+      "titles": [
+        "NIST: Combined Standard Uncertainty"
+      ],
+      "lessons": [
+        "m01-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-5-combined-standard-uncertainty",
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "NIST TN 1297: 5. Combined Standard Uncertainty | NIST",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-introduction",
+      "titles": [
+        "OpenStax: Units and Measurement"
+      ],
+      "lessons": [
+        "m01-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/1-introduction",
+      "contentType": "text/html",
+      "pageTitle": "Ch. 1 Introduction - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+      "titles": [
+        "NIST: SI units"
+      ],
+      "lessons": [
+        "m01-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.nist.gov/pml/special-publication-330/sp-330-section-2",
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "SP 330 - Section 2 | NIST",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/",
+      "titles": [
+        "MIT OpenCourseWare: Classical Mechanics"
+      ],
+      "lessons": [
+        "m01-l01",
+        "m01-l02",
+        "m02-l01",
+        "m02-l03",
+        "m03-l01",
+        "m03-l02",
+        "m03-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/",
+      "contentType": "text/html",
+      "pageTitle": "Classical Mechanics | Physics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/",
+      "titles": [
+        "MIT OpenCourseWare: Single Variable Calculus"
+      ],
+      "lessons": [
+        "m01-l01",
+        "m02-l01",
+        "m02-l02",
+        "m03-l03",
+        "m04-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/",
+      "contentType": "text/html",
+      "pageTitle": "Single Variable Calculus | Mathematics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/2-4-products-of-vectors",
+      "titles": [
+        "OpenStax: Products of Vectors"
+      ],
+      "lessons": [
+        "m01-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/2-4-products-of-vectors",
+      "contentType": "text/html",
+      "pageTitle": "2.4 Products of Vectors - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-1-displacement-and-velocity-vectors",
+      "titles": [
+        "OpenStax: Displacement and Velocity Vectors"
+      ],
+      "lessons": [
+        "m01-l02",
+        "m02-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/4-1-displacement-and-velocity-vectors",
+      "contentType": "text/html",
+      "pageTitle": "4.1 Displacement and Velocity Vectors - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/3-6-finding-velocity-and-displacement-from-acceleration",
+      "titles": [
+        "OpenStax: Finding Velocity and Displacement from Acceleration"
+      ],
+      "lessons": [
+        "m02-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/3-6-finding-velocity-and-displacement-from-acceleration",
+      "contentType": "text/html",
+      "pageTitle": "3.6 Finding Velocity and Displacement from Acceleration - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-2-acceleration-vector",
+      "titles": [
+        "OpenStax: Acceleration Vector"
+      ],
+      "lessons": [
+        "m02-l02",
+        "m02-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/4-2-acceleration-vector",
+      "contentType": "text/html",
+      "pageTitle": "4.2 Acceleration Vector - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions",
+      "titles": [
+        "OpenStax: Relative Motion in One and Two Dimensions"
+      ],
+      "lessons": [
+        "m02-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions",
+      "contentType": "text/html",
+      "pageTitle": "4.5 Relative Motion in One and Two Dimensions - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion",
+      "titles": [
+        "OpenStax: Projectile Motion"
+      ],
+      "lessons": [
+        "m02-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion",
+      "contentType": "text/html",
+      "pageTitle": "4.3 Projectile Motion - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/5-5-newtons-third-law",
+      "titles": [
+        "OpenStax: Newton's Third Law"
+      ],
+      "lessons": [
+        "m03-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/5-5-newtons-third-law",
+      "contentType": "text/html",
+      "pageTitle": "5.5 Newton’s Third Law - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws",
+      "titles": [
+        "OpenStax: Solving Problems with Newton's Laws"
+      ],
+      "lessons": [
+        "m03-l01",
+        "m03-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/6-1-solving-problems-with-newtons-laws",
+      "contentType": "text/html",
+      "pageTitle": "6.1 Solving Problems with Newton’s Laws - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+      "titles": [
+        "OpenStax: Friction"
+      ],
+      "lessons": [
+        "m03-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/6-2-friction",
+      "contentType": "text/html",
+      "pageTitle": "6.2 Friction - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed",
+      "titles": [
+        "OpenStax: Drag Force and Terminal Speed",
+        "OpenStax University Physics Volume 1: Drag Force and Terminal Speed"
+      ],
+      "lessons": [
+        "m03-l03",
+        "m09-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed",
+      "contentType": "text/html",
+      "pageTitle": "6.4 Drag Force and Terminal Speed - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion",
+      "titles": [
+        "OpenStax: Uniform and Nonuniform Circular Motion"
+      ],
+      "lessons": [
+        "m04-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion",
+      "contentType": "text/html",
+      "pageTitle": "4.4 Uniform and Nonuniform Circular Motion - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-3-centripetal-force",
+      "titles": [
+        "OpenStax: Centripetal Force"
+      ],
+      "lessons": [
+        "m04-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/6-3-centripetal-force",
+      "contentType": "text/html",
+      "pageTitle": "6.3 Centripetal Force - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-1-newtons-law-of-universal-gravitation",
+      "titles": [
+        "OpenStax: Newton's Law of Universal Gravitation"
+      ],
+      "lessons": [
+        "m04-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/13-1-newtons-law-of-universal-gravitation",
+      "contentType": "text/html",
+      "pageTitle": "13.1 Newton's Law of Universal Gravitation - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-2-gravitation-near-earths-surface",
+      "titles": [
+        "OpenStax: Gravitation Near Earth's Surface"
+      ],
+      "lessons": [
+        "m04-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/13-2-gravitation-near-earths-surface",
+      "contentType": "text/html",
+      "pageTitle": "13.2 Gravitation Near Earth's Surface - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-3-gravitational-potential-energy-and-total-energy",
+      "titles": [
+        "OpenStax: Gravitational Potential Energy and Total Energy"
+      ],
+      "lessons": [
+        "m04-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/13-3-gravitational-potential-energy-and-total-energy",
+      "contentType": "text/html",
+      "pageTitle": "13.3 Gravitational Potential Energy and Total Energy - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy",
+      "titles": [
+        "OpenStax: Satellite Orbits and Energy"
+      ],
+      "lessons": [
+        "m04-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy",
+      "contentType": "text/html",
+      "pageTitle": "13.4 Satellite Orbits and Energy - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-5-keplers-laws-of-planetary-motion",
+      "titles": [
+        "OpenStax: Kepler's Laws of Planetary Motion"
+      ],
+      "lessons": [
+        "m04-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/13-5-keplers-laws-of-planetary-motion",
+      "contentType": "text/html",
+      "pageTitle": "13.5 Kepler's Laws of Planetary Motion - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-1-work",
+      "titles": [
+        "OpenStax: Work"
+      ],
+      "lessons": [
+        "m05-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/7-1-work",
+      "contentType": "text/html",
+      "pageTitle": "7.1 Work - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy",
+      "titles": [
+        "OpenStax: Kinetic Energy"
+      ],
+      "lessons": [
+        "m05-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy",
+      "contentType": "text/html",
+      "pageTitle": "7.2 Kinetic Energy - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-3-work-energy-theorem",
+      "titles": [
+        "OpenStax: Work-Energy Theorem"
+      ],
+      "lessons": [
+        "m05-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/7-3-work-energy-theorem",
+      "contentType": "text/html",
+      "pageTitle": "7.3 Work-Energy Theorem - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+      "titles": [
+        "OpenStax: Power"
+      ],
+      "lessons": [
+        "m05-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+      "contentType": "text/html",
+      "pageTitle": "7.4 Power - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-1-potential-energy-of-a-system",
+      "titles": [
+        "OpenStax: Potential Energy of a System"
+      ],
+      "lessons": [
+        "m05-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/8-1-potential-energy-of-a-system",
+      "contentType": "text/html",
+      "pageTitle": "8.1 Potential Energy of a System - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-2-conservative-and-non-conservative-forces",
+      "titles": [
+        "OpenStax: Conservative and Non-Conservative Forces"
+      ],
+      "lessons": [
+        "m05-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/8-2-conservative-and-non-conservative-forces",
+      "contentType": "text/html",
+      "pageTitle": "8.2 Conservative and Non-Conservative Forces - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy",
+      "titles": [
+        "OpenStax: Conservation of Energy"
+      ],
+      "lessons": [
+        "m05-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy",
+      "contentType": "text/html",
+      "pageTitle": "8.3 Conservation of Energy - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-4-potential-energy-diagrams-and-stability",
+      "titles": [
+        "OpenStax: Potential Energy Diagrams and Stability"
+      ],
+      "lessons": [
+        "m05-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/8-4-potential-energy-diagrams-and-stability",
+      "contentType": "text/html",
+      "pageTitle": "8.4 Potential Energy Diagrams and Stability - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-5-sources-of-energy",
+      "titles": [
+        "OpenStax: Sources of Energy"
+      ],
+      "lessons": [
+        "m05-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/8-5-sources-of-energy",
+      "contentType": "text/html",
+      "pageTitle": "8.5 Sources of Energy - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy",
+      "titles": [
+        "OpenStax: College Physics: Conservation of Energy"
+      ],
+      "lessons": [
+        "m05-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy",
+      "contentType": "text/html",
+      "pageTitle": "7.6 Conservation of Energy - College Physics 2e | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-1-linear-momentum",
+      "titles": [
+        "OpenStax: Linear Momentum"
+      ],
+      "lessons": [
+        "m06-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-1-linear-momentum",
+      "contentType": "text/html",
+      "pageTitle": "9.1 Linear Momentum - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions",
+      "titles": [
+        "OpenStax: Impulse and Collisions"
+      ],
+      "lessons": [
+        "m06-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-2-impulse-and-collisions",
+      "contentType": "text/html",
+      "pageTitle": "9.2 Impulse and Collisions - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-3-conservation-of-linear-momentum",
+      "titles": [
+        "OpenStax: Conservation of Linear Momentum"
+      ],
+      "lessons": [
+        "m06-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-3-conservation-of-linear-momentum",
+      "contentType": "text/html",
+      "pageTitle": "9.3 Conservation of Linear Momentum - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass",
+      "titles": [
+        "OpenStax: Center of Mass"
+      ],
+      "lessons": [
+        "m06-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-6-center-of-mass",
+      "contentType": "text/html",
+      "pageTitle": "9.6 Center of Mass - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions",
+      "titles": [
+        "OpenStax: Types of Collisions"
+      ],
+      "lessons": [
+        "m06-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions",
+      "contentType": "text/html",
+      "pageTitle": "9.4 Types of Collisions - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-5-collisions-in-multiple-dimensions",
+      "titles": [
+        "OpenStax: Collisions in Multiple Dimensions"
+      ],
+      "lessons": [
+        "m06-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-5-collisions-in-multiple-dimensions",
+      "contentType": "text/html",
+      "pageTitle": "9.5 Collisions in Multiple Dimensions - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/a867999737497c79fd8ffe97641c503f_MIT16_07F09_Lec09.pdf",
+      "titles": [
+        "MIT OpenCourseWare: 16.07 Dynamics, Lecture 9: Linear Impulse and Momentum; Collisions"
+      ],
+      "lessons": [
+        "m06-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/a867999737497c79fd8ffe97641c503f_MIT16_07F09_Lec09.pdf",
+      "contentType": "application/pdf",
+      "pageTitle": null,
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/2-003j-dynamics-and-control-i-spring-2007/resources/lec06/",
+      "titles": [
+        "MIT OpenCourseWare: 2.003J Dynamics and Control I: Lecture 6"
+      ],
+      "lessons": [
+        "m06-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/2-003j-dynamics-and-control-i-spring-2007/resources/lec06/",
+      "contentType": "text/html",
+      "pageTitle": "lec06.pdf | Dynamics and Control I | Mechanical Engineering | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-1-rotational-variables",
+      "titles": [
+        "OpenStax: Rotational Variables"
+      ],
+      "lessons": [
+        "m07-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-1-rotational-variables",
+      "contentType": "text/html",
+      "pageTitle": "10.1 Rotational Variables - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "titles": [
+        "OpenStax: Calculating Moments of Inertia"
+      ],
+      "lessons": [
+        "m07-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "contentType": "text/html",
+      "pageTitle": "10.5 Calculating Moments of Inertia - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+      "titles": [
+        "OpenStax: Torque"
+      ],
+      "lessons": [
+        "m07-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+      "contentType": "text/html",
+      "pageTitle": "10.6 Torque - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-7-newtons-second-law-for-rotation",
+      "titles": [
+        "OpenStax: Newton's Second Law for Rotation"
+      ],
+      "lessons": [
+        "m07-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-7-newtons-second-law-for-rotation",
+      "contentType": "text/html",
+      "pageTitle": "10.7 Newton’s Second Law for Rotation - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/resources/29-3/",
+      "titles": [
+        "MIT OpenCourseWare: 29.4 Parallel Axis Theorem"
+      ],
+      "lessons": [
+        "m07-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/resources/29-3/",
+      "contentType": "text/html",
+      "pageTitle": "29.4 Parallel Axis Theorem | Classical Mechanics | Physics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-2-angular-momentum",
+      "titles": [
+        "OpenStax: Angular Momentum"
+      ],
+      "lessons": [
+        "m07-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/11-2-angular-momentum",
+      "contentType": "text/html",
+      "pageTitle": "11.2 Angular Momentum - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
+      "titles": [
+        "OpenStax: Conservation of Angular Momentum"
+      ],
+      "lessons": [
+        "m07-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
+      "contentType": "text/html",
+      "pageTitle": "11.3 Conservation of Angular Momentum - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-8-work-and-power-for-rotational-motion",
+      "titles": [
+        "OpenStax: Work and Power for Rotational Motion"
+      ],
+      "lessons": [
+        "m07-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-8-work-and-power-for-rotational-motion",
+      "contentType": "text/html",
+      "pageTitle": "10.8 Work and Power for Rotational Motion - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-11-angular-momentum/",
+      "titles": [
+        "MIT OpenCourseWare: Week 11, Angular Momentum"
+      ],
+      "lessons": [
+        "m07-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-11-angular-momentum/",
+      "contentType": "text/html",
+      "pageTitle": "Week 11: Angular Momentum | Classical Mechanics | Physics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion",
+      "titles": [
+        "OpenStax: Rolling Motion"
+      ],
+      "lessons": [
+        "m07-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion",
+      "contentType": "text/html",
+      "pageTitle": "11.1 Rolling Motion - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/35-5-contact-point-of-a-wheel-rolling-without-slipping/",
+      "titles": [
+        "MIT OpenCourseWare: Contact Point of a Wheel Rolling Without Slipping"
+      ],
+      "lessons": [
+        "m07-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/35-5-contact-point-of-a-wheel-rolling-without-slipping/",
+      "contentType": "text/html",
+      "pageTitle": "35.5 Contact Point of a Wheel Rolling Without Slipping | Classical Mechanics | Physics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/36-1-friction-on-a-rolling-wheel/",
+      "titles": [
+        "MIT OpenCourseWare: Friction on a Rolling Wheel"
+      ],
+      "lessons": [
+        "m07-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/36-1-friction-on-a-rolling-wheel/",
+      "contentType": "text/html",
+      "pageTitle": "36.1 Friction on a Rolling Wheel | Classical Mechanics | Physics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/37-1-kinetic-energy-of-translation-and-rotation/",
+      "titles": [
+        "MIT OpenCourseWare: Kinetic Energy of Translation and Rotation"
+      ],
+      "lessons": [
+        "m07-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/37-1-kinetic-energy-of-translation-and-rotation/",
+      "contentType": "text/html",
+      "pageTitle": "37.1 Kinetic Energy of Translation and Rotation | Classical Mechanics | Physics | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium",
+      "titles": [
+        "OpenStax: Conditions for Static Equilibrium"
+      ],
+      "lessons": [
+        "m08-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium",
+      "contentType": "text/html",
+      "pageTitle": "12.1 Conditions for Static Equilibrium - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-2-examples-of-static-equilibrium",
+      "titles": [
+        "OpenStax: Examples of Static Equilibrium"
+      ],
+      "lessons": [
+        "m08-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/12-2-examples-of-static-equilibrium",
+      "contentType": "text/html",
+      "pageTitle": "12.2 Examples of Static Equilibrium - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/1-050-solid-mechanics-fall-2004/resources/class04_4/",
+      "titles": [
+        "MIT OpenCourseWare: Solid Mechanics, Class Exercise 4"
+      ],
+      "lessons": [
+        "m08-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/1-050-solid-mechanics-fall-2004/resources/class04_4/",
+      "contentType": "text/html",
+      "pageTitle": "class04_4.pdf | Solid Mechanics | Civil and Environmental Engineering | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-3-stress-strain-and-elastic-modulus",
+      "titles": [
+        "OpenStax: Stress, Strain, and Elastic Modulus"
+      ],
+      "lessons": [
+        "m08-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/12-3-stress-strain-and-elastic-modulus",
+      "contentType": "text/html",
+      "pageTitle": "12.3 Stress, Strain, and Elastic Modulus - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity",
+      "titles": [
+        "OpenStax: Elasticity and Plasticity"
+      ],
+      "lessons": [
+        "m08-l02",
+        "m08-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/12-4-elasticity-and-plasticity",
+      "contentType": "text/html",
+      "pageTitle": "12.4 Elasticity and Plasticity - University Physics Volume 1 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/1-050-engineering-mechanics-i-fall-2007/resources/lec22/",
+      "titles": [
+        "MIT OpenCourseWare: Isotropic Elasticity, Lecture 22"
+      ],
+      "lessons": [
+        "m08-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/1-050-engineering-mechanics-i-fall-2007/resources/lec22/",
+      "contentType": "text/html",
+      "pageTitle": "lec22.pdf | Engineering Mechanics I | Civil and Environmental Engineering | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-6-rules-and-style-conventions-printing-and-using",
+      "titles": [
+        "NIST: Rules for Units and Prefixes"
+      ],
+      "lessons": [
+        "m08-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-6-rules-and-style-conventions-printing-and-using",
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "NIST Guide to the SI, Chapter 6: Rules and Style Conventions for Printing and Using Units | NIST",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_ss/",
+      "titles": [
+        "MIT OpenCourseWare: Stress-Strain Curves"
+      ],
+      "lessons": [
+        "m08-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_ss/",
+      "contentType": "text/html",
+      "pageTitle": "Stress-Strain Curves – 3.11 Fall 1999 | Mechanics of Materials | Materials Science and Engineering | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_frac/",
+      "titles": [
+        "MIT OpenCourseWare: Introduction to Fracture Mechanics"
+      ],
+      "lessons": [
+        "m08-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_frac/",
+      "contentType": "text/html",
+      "pageTitle": "Introduction to Fracture Mechanics – 3.11 Fall 1999 | Mechanics of Materials | Materials Science and Engineering | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_fatigue-1/",
+      "titles": [
+        "MIT OpenCourseWare: Fatigue"
+      ],
+      "lessons": [
+        "m08-l03"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/3-11-mechanics-of-materials-fall-1999/resources/mit3_11f99_fatigue-1/",
+      "contentType": "text/html",
+      "pageTitle": "Fatigue – 3.11 Fall 1999 | Mechanics of Materials | Materials Science and Engineering | MIT OpenCourseWare",
+      "available": true
+    },
+    {
+      "url": "https://openstax.org/books/calculus-volume-2/pages/3-6-numerical-integration",
+      "titles": [
+        "OpenStax Calculus Volume 2, 3.6: Numerical Integration"
+      ],
+      "lessons": [
+        "m09-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://openstax.org/books/calculus-volume-2/pages/3-6-numerical-integration",
+      "contentType": "text/html",
+      "pageTitle": "3.6 Numerical Integration - Calculus Volume 2 | OpenStax",
+      "available": true
+    },
+    {
+      "url": "https://physics.umd.edu/hep/drew/numerical_integration/",
+      "titles": [
+        "University of Maryland: Numerical integration in mechanics"
+      ],
+      "lessons": [
+        "m09-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://physics.umd.edu/hep/drew/numerical_integration/",
+      "contentType": "text/html",
+      "pageTitle": "Simulation and Numerical Integration",
+      "available": true
+    },
+    {
+      "url": "https://www.cfm.brown.edu/people/dobrush/am34/Mathematica/ch4/euler.html",
+      "titles": [
+        "Brown University: Euler and Euler–Cromer methods"
+      ],
+      "lessons": [
+        "m09-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.cfm.brown.edu/people/dobrush/am34/Mathematica/ch4/euler.html",
+      "contentType": "text/html; charset=UTF-8",
+      "pageTitle": "MATHEMATICA TUTORIAL, Part 2.4: Euler methods",
+      "available": true
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-spring-2013/4466187e306b84af9b0659cf051b980d_MIT2_086S13_quiz2_selfstud.pdf",
+      "titles": [
+        "MIT OpenCourseWare 2.086: Initial-value problem self-study"
+      ],
+      "lessons": [
+        "m09-l01"
+      ],
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/2-086-numerical-computation-for-mechanical-engineers-spring-2013/4466187e306b84af9b0659cf051b980d_MIT2_086S13_quiz2_selfstud.pdf",
+      "contentType": "application/pdf",
+      "pageTitle": null,
+      "available": true
+    },
+    {
+      "url": "https://physics.nist.gov/cuu/Uncertainty/basic.html",
+      "titles": [
+        "NIST: Basic definitions of measurement uncertainty"
+      ],
+      "lessons": [
+        "m09-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://physics.nist.gov/cuu/Uncertainty/basic.html",
+      "contentType": "text/html",
+      "pageTitle": "Basic definitions of uncertainty",
+      "available": true
+    },
+    {
+      "url": "https://physics.nist.gov/cuu/Uncertainty/combination.html",
+      "titles": [
+        "NIST: Combining uncertainty components"
+      ],
+      "lessons": [
+        "m09-l02"
+      ],
+      "status": 200,
+      "finalUrl": "https://physics.nist.gov/cuu/Uncertainty/combination.html",
+      "contentType": "text/html",
+      "pageTitle": "Combining uncertainty components",
+      "available": true
+    }
+  ],
+  "uniqueUrls": 69,
+  "available": 69,
+  "pending": []
+}
