@@ -1,8 +1,9 @@
 import mathematics from "@/content/learning-packs/mth-215.json";
 import mechanics from "@/content/learning-packs/phs-231.json";
+import physicsTwo from "@/content/learning-packs/phs-232.json";
 import { refresherReleaseStatus } from "./refreshers/availability";
 
-const degreePacks = [mathematics, mechanics];
+const degreePacks = [mathematics, mechanics, physicsTwo];
 export type LearningPathStatus = "planned" | "building" | "preview" | "reviewed";
 
 export function learningPathStatus(courseId: string): LearningPathStatus {

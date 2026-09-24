@@ -16,7 +16,8 @@ it("keeps the lightweight availability registry aligned with every registered le
 it("distinguishes authored lessons, previews and unavailable curriculum entries", () => {
   expect(learningPathLabel("mth-215")).toBe("Lessons in development");
   expect(learningPathLabel("f02")).toBe("Available preview");
-  expect(learningPathLabel("phs-232")).toBe("Planning ahead");
+  expect(learningPathLabel("phs-232")).toBe("Lessons in development");
+  expect(learningPathLabel("csc-310")).toBe("Planning ahead");
   expect(learningPathStatus("missing-course")).toBe("planned");
   expect(learningPathReleased("missing-course")).toBe(false);
 });

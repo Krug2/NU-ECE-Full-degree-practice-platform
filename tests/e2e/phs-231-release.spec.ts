@@ -8,7 +8,7 @@ for (const viewport of [{ width: 1440, height: 960 }, { width: 390, height: 844 
     page.on("pageerror", error => errors.push(error.message));
     await page.goto("/curriculum");
     const search = page.getByRole("searchbox", { name: "Search courses" });
-    for (const [code, status] of [["PHS 231", "Available preview"], ["MTH 215", "Lessons in development"], ["PHS 232", "Planning ahead"]]) {
+    for (const [code, status] of [["PHS 231", "Available preview"], ["MTH 215", "Lessons in development"], ["PHS 232", "Lessons in development"], ["CSC 310", "Planning ahead"]]) {
       await search.fill(code);
       await expect(page.locator(".course-card")).toHaveCount(1);
       await expect(page.locator(".course-card .status-dot")).toHaveText(status);
