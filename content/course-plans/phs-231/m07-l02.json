@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m07-l02",
   "checkedAt": "2026-09-24",
-  "status": "Detailed implementation plan; not yet delivered.",
+  "status": "Implemented and technically verified; independent subject review and pilot validation have not been performed.",
   "title": "Angular momentum and rotational work",
   "objective": "Use external torque and angular impulse to track angular momentum and distinguish its conservation from energy conservation.",
   "alignment": "Continues the rotational-motion content of the verified official PHS 231 scope. The chosen sequence, changing-radius simulation, original examples, and assessment policies are proposed platform teaching choices, not an official NU syllabus or physical laboratory requirement.",
@@ -296,5 +296,16 @@
       "checkedAt": "2026-09-24",
       "use": "Free lessons on particle angular momentum, fixed-axis rigid bodies, torque, and angular impulse, with worked material and practice."
     }
-  ]
+  ],
+  "delivery": {
+    "lessonCommit": "423dc35",
+    "sharedCommit": "5fb893f",
+    "browserCommit": "54d576e",
+    "workedExamples": 13,
+    "practiceVariants": 16,
+    "checkpointQuestions": 4,
+    "seedCases": 800,
+    "unitSuitePassed": 848,
+    "browserWorkflowsPassed": 3
+  }
 }
