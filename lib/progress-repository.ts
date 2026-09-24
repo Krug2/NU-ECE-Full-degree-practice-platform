@@ -77,11 +77,11 @@ export class ProgressRepository{
       return record;
     });
   }
-  update(change:(current:Progress)=>Progress,expectedRevision?:number):Promise<StoredProgress>{
+  update(change:(current:Progress,revision:number)=>Progress,expectedRevision?:number):Promise<StoredProgress>{
     return this.transaction("readwrite",async store=>{
       const current=decodeRecord(await requestValue(store.get(progressRecordKey)));
       if(expectedRevision!==undefined&&current.revision!==expectedRevision)throw new ProgressStorageError("conflict","Saved progress changed in another tab. Reload the saved version before applying this change.");
-      const data=validateProgress(change(structuredClone(current.data)));
+      const data=validateProgress(change(structuredClone(current.data),current.revision));
       const record:StoredProgress={storageVersion:1,revision:nextRevision(current),data};
       await requestValue(store.put(record,progressRecordKey));
       return record;
