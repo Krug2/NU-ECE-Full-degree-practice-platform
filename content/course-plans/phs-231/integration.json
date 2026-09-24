@@ -1,6 +1,6 @@
 {
   "courseId": "phs-231",
-  "updatedAt": "2026-09-23",
+  "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
   "status": "PHS 231 is under construction: eleven of 22 lessons are available. No major course is complete.",
@@ -203,6 +203,16 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "d804cada544e7b2c9ff04bf2841e34fe05295d69",
+        "mergeCommit": "d491b1a",
+        "resolvedFiles": [
+          "components/learning/lesson-reader.tsx",
+          "lib/learning/catalog.ts",
+          "lib/learning/generate.ts"
+        ],
+        "preserved": "MTH 215 polynomial-division lesson and activity, division families, root-search/completion engines and families, and multiplicity-preserving root-list fields and grading. All upstream registrations plus eleven physics lessons and cross-course preparation are retained. Prerequisite content, plans, and development order match this upstream snapshot. 640 unit tests, lint, type checking, production build, and all 95 browser tests passed."
+      },
+      {
         "sourceCommit": "a9e133d469c333fcef93885ad5779faec82819d4",
         "mergeCommit": "52c1a25",
         "resolvedFiles": [
@@ -270,30 +280,37 @@
     "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the eleven delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 530,
-      "files": 69,
+      "passed": 640,
+      "files": 78,
       "command": "pnpm exec vitest run --maxWorkers=2",
-      "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. The work lesson adds 800 seeded cases, including negative work, path dependence, moving friction, equivalent expressions, and first-limiting-point interpretation."
+      "note": "Combined snapshot after integrating d804cada through d491b1a, including eleven physics lessons. All authored physics variants run at least 50 deterministic seeds. The next energy lesson remains under construction and is not counted as delivered."
     },
     "browser": {
       "fullSuite": {
-        "passed": 86,
-        "failed": 1,
-        "scope": "Merged prerequisite roots/multiplicity work through 52c1a25, with nine physics lessons. The transformation interaction test reached the unchanged 60-second test limit while filling inputs after both accessibility audits; no assertion mismatch was reported. All other 86 browser tests passed."
+        "passed": 95,
+        "failed": 0,
+        "scope": "All browser tests passed in 12.0 minutes on the merged production build, including MTH 215 division, all eleven available physics lessons, large history, schema migrations, multi-tab conflicts, recovery, real backup restoration, desktop and mobile accessibility, and sticky navigation."
       },
       "focusedSuite": {
         "passed": 3,
         "scope": "Work lesson: signed graph area and power, perpendicular force, finite stop, energy barrier, asymptotic equilibrium, exact rest, invalid domains and answers, desktop/mobile accessibility, keyboard controls, reload, and actual checkpoint plus notes export/reset/restore. The initial browser run had one test try to inspect a collapsed table; after opening the table explicitly, all three passed. Earlier full-suite and gravity records retain their original scope."
       },
       "port": 3101,
-      "retry": {
-        "passed": 1,
-        "scope": "The single timed-out transformation interaction passed unchanged in 26.5 seconds on the same production build with the same 60-second limit. No timeout or assertion was relaxed; the original full run is not reported as an uninterrupted 87-test pass."
-      },
       "previousFocusedSuites": [
         {
           "passed": 2,
           "scope": "Gravity lesson after the nine-lesson integration run: exact periods and radicals, apparent weightlessness, controlled source/mass changes, interior-domain rejection, desktop and mobile accessibility, keyboard controls, reloads, and actual checkpoint export/reset/restore. The fullSuite and retry entries retain their earlier integration snapshot and are not relabeled as a full ten-lesson run."
+        }
+      ],
+      "previousFullSuites": [
+        {
+          "passed": 86,
+          "failed": 1,
+          "scope": "Merged prerequisite roots/multiplicity work through 52c1a25, with nine physics lessons. The transformation interaction test reached the unchanged 60-second test limit while filling inputs after both accessibility audits; no assertion mismatch was reported. All other 86 browser tests passed.",
+          "retry": {
+            "passed": 1,
+            "scope": "The single timed-out transformation interaction passed unchanged in 26.5 seconds on the same production build with the same 60-second limit. No timeout or assertion was relaxed; the original full run is not reported as an uninterrupted 87-test pass."
+          }
         }
       ]
     },
