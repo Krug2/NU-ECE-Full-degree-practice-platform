@@ -13,10 +13,13 @@ import { f03Lessons } from "./f03";
 import trigPack from "@/content/learning-packs/f04.json";
 import trigPath from "@/content/refresher-paths/f04.json";
 import { f04Lessons } from "./f04";
+import explogPack from "@/content/learning-packs/f05.json";
+import explogPath from "@/content/refresher-paths/f05.json";
+import { f05Lessons } from "./f05";
 import { lessonSchema, packSchema } from "../contracts";
 import { refresherPathSchema } from "./contracts";
 
-export const refresherPacks = [packSchema.parse(pack), packSchema.parse(algebraPack), packSchema.parse(functionsPack), packSchema.parse(trigPack)];
-export const refresherLessons = [...[l01, l02, l03, l04].map(data => lessonSchema.parse(data)), ...f02Lessons, ...f03Lessons, ...f04Lessons];
-export const refresherPaths = [refresherPathSchema.parse(path), refresherPathSchema.parse(algebraPath), refresherPathSchema.parse(functionsPath), refresherPathSchema.parse(trigPath)];
+export const refresherPacks = [packSchema.parse(pack), packSchema.parse(algebraPack), packSchema.parse(functionsPack), packSchema.parse(trigPack), packSchema.parse(explogPack)];
+export const refresherLessons = [...[l01, l02, l03, l04].map(data => lessonSchema.parse(data)), ...f02Lessons, ...f03Lessons, ...f04Lessons, ...f05Lessons];
+export const refresherPaths = [refresherPathSchema.parse(path), refresherPathSchema.parse(algebraPath), refresherPathSchema.parse(functionsPath), refresherPathSchema.parse(trigPath), refresherPathSchema.parse(explogPath)];
 export const refresherPath = (courseId: string) => refresherPaths.find(path => path.courseId === courseId);
