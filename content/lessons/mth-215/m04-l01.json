@@ -1,0 +1,768 @@
+{
+  "id": "m04-l01",
+  "courseId": "mth-215",
+  "moduleId": "m04",
+  "version": 1,
+  "title": "Holes, asymptotes, and intercepts",
+  "objective": "Identify original domain exclusions, removable holes, vertical asymptotes, intercepts, and end behavior of a rational function.",
+  "why": "Cancellation can make a formula easier to evaluate while hiding a missing input. A reliable rational-function analysis keeps the original domain beside the reduced formula, then uses factors and division to explain the graph. These distinctions prepare you for limits, rational inequalities, and models whose inputs have physical restrictions.",
+  "estimatedMinutes": 230,
+  "prerequisites": [
+    {
+      "label": "Rational expressions and restrictions",
+      "lessonId": "b04"
+    },
+    {
+      "label": "Function domains and graphs",
+      "lessonId": "m02-l01"
+    },
+    {
+      "label": "Zeros and multiplicity",
+      "lessonId": "m03-l02"
+    },
+    {
+      "label": "Polynomial division",
+      "lessonId": "m03-l03"
+    },
+    {
+      "label": "Complete polynomial roots",
+      "lessonId": "m03-l04"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Start with the original function and its real domain",
+      "paragraphs": [
+        "A rational function is a quotient P(x)/D(x) of polynomials, with D not the zero polynomial. Unless another restriction is supplied, its real domain consists of every real input at which the original denominator is nonzero. The word rational describes the form of the function, not a requirement that its input or output be a rational number.",
+        "Factor or solve the original denominator before canceling. Repeated zeros exclude one input each. A quadratic denominator may exclude two irrational real inputs, one repeated real input, or no real inputs. Nonreal roots do not remove points from a real domain.",
+        "A nonzero constant denominator excludes nothing. The quotient may be a polynomial. A denominator that is identically zero does not define a rational function on any real input. Distinguish that invalid formula from a nonzero polynomial denominator that vanishes at a few inputs.",
+        "Write the domain beside every later formula. A simplified expression without those restrictions can define a different function, even when it agrees with the original at every allowed input."
+      ]
+    },
+    {
+      "heading": "Cancel factors while preserving the function's identity",
+      "paragraphs": [
+        "Cancellation divides the whole numerator and denominator by a common nonzero factor. It applies to factors of the complete polynomials, not matching terms inside sums. Factor first, retain numerical coefficients, and use polynomial multiplication to check the reduction.",
+        "If $P=C A$ and $D=C B$, then $P/D=A/B$ at original allowed inputs, where both C and B are nonzero. The reduced formula A/B may also accept a zero of C. That additional value belongs to an extension, not automatically to the original function.",
+        "Cancel all common factors before classifying discontinuities. Canceling one copy of a repeated factor may leave other copies in the denominator. A remaining denominator zero has different graph behavior from a completely removed one.",
+        "Equal formulas on the original domain do not justify assigning a value at an originally excluded input. In particular, 0/0 is undefined. It is neither zero nor a special numerical answer called a hole."
+      ]
+    },
+    {
+      "heading": "Use multiplicity to distinguish holes from poles",
+      "paragraphs": [
+        "Suppose x=a is an original denominator zero. Write the relevant factors as $P(x)=(x-a)^n A(x)$ and $D(x)=(x-a)^m B(x)$, where A(a) and B(a) are nonzero and m is positive. A missing numerator factor means n=0.",
+        "If n is at least m, all denominator copies disappear after cancellation. The reduced value is finite and the original graph has a removable hole. When n equals m the missing height is A(a)/B(a). When n is greater than m, a numerator copy remains and the missing height is zero.",
+        "If m is greater than n, a denominator power remains. The graph has a vertical asymptote at x=a, with remaining pole order m-n. The same excluded input is not also a hole merely because some copies canceled.",
+        "For an identically zero numerator, all allowed outputs are zero. Each real denominator zero is a missing point at height zero, and there are no poles. Handle this separately because the zero polynomial does not have a finite root multiplicity."
+      ]
+    },
+    {
+      "heading": "Find a hole's two coordinates without filling it",
+      "paragraphs": [
+        "A hole is a missing point (a,b). The original denominator identifies its x-coordinate a. Evaluate the fully reduced formula at a to obtain the finite missing height b. Use exact fractions or radicals when they occur.",
+        "The reduced formula explains the nearby trend. The original function remains undefined at a. A separate function could be defined to equal b there, but that is an extension that must be stated explicitly.",
+        "Draw an open circle at the exact missing point. A hole on the x-axis is not an x-intercept, and a hole on the y-axis is not a y-intercept. A graphing tool can miss a hole if its sampling does not land on the excluded input.",
+        "Nearby numerical values illustrate a hole's height, but they do not prove that the point belongs to the graph. Keep the original denominator test as the deciding evidence."
+      ]
+    },
+    {
+      "heading": "Check intercept candidates in the original domain",
+      "paragraphs": [
+        "An x-intercept is an actual point (a,0). Solve for real zeros of the numerator, then reject every candidate excluded by the original denominator. Equivalently, solve the reduced numerator and still apply the original exclusions.",
+        "A repeated allowed zero gives one distinct x-intercept. A fully canceled denominator root can leave a zero in the reduced numerator, but that location is still a hole and must be rejected as an intercept.",
+        "To find a y-intercept, first check whether the original denominator is nonzero at x=0. If it is, evaluate f(0). If zero is excluded, the graph has no y-intercept, even if the reduced formula assigns a finite value there.",
+        "For an identically zero numerator, every allowed input lies on the x-axis. This is an infinite zero set with any original excluded points removed, not an empty finite list of intercepts."
+      ]
+    },
+    {
+      "heading": "Read both sides of each vertical asymptote",
+      "paragraphs": [
+        "Near a remaining pole a, write the reduced expression as $H(x)/(x-a)^r$, where H(a) is finite and nonzero. Near enough to a, H(x) has the same sign as H(a). Use that sign and the parity of r to determine the one-sided behavior.",
+        "To the right of a, x-a is positive. To the left it is negative. An odd denominator power reverses the sign across the pole, while an even power has the same sign on both sides. A negative H(a) reverses both output directions.",
+        "The notation $x\\to a^-$ means approach from inputs smaller than a, and $x\\to a^+$ means approach from larger inputs. The output may tend to positive or negative infinity. These describe unbounded nearby values; f(a) itself is undefined.",
+        "For rational functions, a remaining real denominator zero is outside the domain, so the graph cannot contain a point on that vertical line. This restriction is different from the behavior of a horizontal or slant asymptote."
+      ]
+    },
+    {
+      "heading": "Find horizontal behavior from degrees and leading coefficients",
+      "paragraphs": [
+        "After collecting like terms and handling a zero numerator separately, let n and m be the numerator and denominator degrees. If n<m, the quotient tends to zero at both infinite ends. Its horizontal asymptote is y=0.",
+        "If n=m, the quotient tends to the ratio of leading coefficients. Keep their signs and numerical scale. Lower-degree terms disappear relative to the leading powers as the magnitude of x increases.",
+        "One justification is to divide numerator and denominator by $x^m$ for nonzero x. Every term with a negative power of x tends to zero. This concerns very large positive or negative inputs; it says nothing about whether the graph equals that output at a finite input.",
+        "If n>m, there is no horizontal asymptote. Polynomial division describes the appropriate higher-degree trend. For a reduced constant function, the horizontal line is the graph itself at every allowed input; explicitly identify that exact coincidence."
+      ]
+    },
+    {
+      "heading": "Use division for slant and higher polynomial trends",
+      "paragraphs": [
+        "Polynomial division gives $P=DQ+R$, with R zero or of degree less than D. On the original domain, $f=Q+R/D$. Therefore $f(x)-Q(x)=R(x)/D(x)$ tends to zero at both infinite ends.",
+        "If Q has degree one and R is nonzero, y=Q(x) is a slant asymptote. Its slope and intercept come from the entire quotient, not only the ratio of leading coefficients. Keep the remainder in the exact identity.",
+        "If Q has degree two or higher, the same argument describes a polynomial end trend. Do not call a quadratic trend a horizontal or slant line. In this lesson, identify the polynomial and its degree category.",
+        "If R=0, the original function already agrees exactly with Q at every allowed input. It may be a line or a higher polynomial with holes. State this exact agreement and the missing inputs instead of suggesting a separate curve that only gets closer.",
+        "The relevant closeness is the vertical difference f-Q tending to zero. A ratio tending to one alone would not establish that difference. The proper-remainder identity gives the stronger statement needed here."
+      ]
+    },
+    {
+      "heading": "Allow finite intersections with an end asymptote",
+      "paragraphs": [
+        "A horizontal or slant asymptote describes infinite-end behavior. It is not a wall. A graph may meet or cross it at one or more finite inputs.",
+        "From $f=Q+R/D$, an intersection with y=Q(x) requires R(x)=0 and an allowed original input. For a constant horizontal level L, the equivalent equation is $P(x)-L D(x)=0$, with the original denominator restrictions retained.",
+        "A nonzero constant remainder gives no intersections. A nonconstant remainder may have real zeros that produce intersections. Some algebraic candidates may instead be holes or poles and must be removed.",
+        "If R is identically zero, every allowed point lies on Q. Describe coincidence over the original domain rather than listing a few isolated intersections. A finite graph window cannot settle any of these cases by itself."
+      ]
+    },
+    {
+      "heading": "Build a graph from exact features, then choose a useful window",
+      "paragraphs": [
+        "Use this order: record the original domain; factor and reduce; classify each exclusion; calculate hole coordinates; find actual intercepts; determine one-sided pole behavior; divide for the end trend; then choose sample values in each allowed interval.",
+        "Represent holes with open circles and poles with dashed vertical lines. Keep branches separated at excluded inputs. Mark horizontal or slant trends separately and retain valid intersections with them.",
+        "Choose both horizontal and vertical scales. A small window can hide a pole, a hole, an intercept, or the eventual end trend. Large magnitudes near a pole can also flatten the rest of a graph visually.",
+        "The interactive graph in this lesson is a finite numerical approximation. Its exact comparison table and feature analysis supply the algebraic information that the picture may omit. Changing the viewport changes the picture, not the domain."
+      ]
+    },
+    {
+      "heading": "Apply supplied model restrictions after the algebra",
+      "paragraphs": [
+        "A model can impose a time interval, positive length, nonnegative count, or another input condition. Intersect that condition with the original algebraic domain. Do not discard either restriction.",
+        "If a model has a removable hole, the reduced value can suggest a continuous extension, but the original formula alone does not authorize that extension. The context must justify assigning an output at the missing input.",
+        "An end asymptote concerns inputs of arbitrarily large magnitude. If a supplied model is valid only on a bounded interval, its algebraic end behavior is not automatically a physical prediction outside that interval.",
+        "Before moving on, be able to explain why a canceled zero can remain excluded, why a partial cancellation can leave a pole, why a hole at height zero is not an intercept, and why an end asymptote can be crossed."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Find real exclusions before reducing",
+      "prompt": "Find the real domain of $f(x)=1/((2x-1)(x+3))$.",
+      "steps": [
+        {
+          "math": "(2x-1)(x+3)=0\\quad\\Longrightarrow\\quad x=\\frac12,\\,-3",
+          "reason": "A product is zero when a factor is zero. Both candidates are real."
+        },
+        {
+          "math": "\\operatorname{Dom}(f)=(-\\infty,-3)\\cup(-3,\\tfrac12)\\cup(\\tfrac12,\\infty)",
+          "reason": "Remove both inputs. The constant numerator supplies no factors to cancel."
+        }
+      ],
+      "conclusion": "The domain omits -3 and 1/2. Both are vertical asymptotes because each denominator factor remains."
+    },
+    {
+      "title": "A polynomial formula with a missing input",
+      "prompt": "Analyze the cancellation in $f(x)=(x^2-9)/(x-3)$.",
+      "steps": [
+        {
+          "math": "x^2-9=(x-3)(x+3),\\qquad x\\ne3",
+          "reason": "Record the original exclusion before cancellation."
+        },
+        {
+          "math": "f(x)=x+3\\quad(x\\ne3),\\qquad g(3)=6",
+          "reason": "The reduced polynomial g has a value at 3 that the original quotient does not."
+        },
+        {
+          "math": "f(299/100)=599/100,\\qquad f(301/100)=601/100",
+          "reason": "Exact nearby values illustrate the missing height. They do not make f(3) defined."
+        }
+      ],
+      "conclusion": "The graph is y=x+3 with a hole at (3,6). There is no vertical asymptote, and the line agrees exactly with the function on its original domain."
+    },
+    {
+      "title": "One hole and one pole",
+      "prompt": "Find the features of $f(x)=((x-2)(x+1))/((x-2)(x-4))$.",
+      "steps": [
+        {
+          "math": "x\\ne2,4,\\qquad f(x)=\\frac{x+1}{x-4}\\quad(x\\ne2,4)",
+          "reason": "Only the common x-2 factor cancels. The x-4 factor remains."
+        },
+        {
+          "math": "g(2)=\\frac{3}{-2}=-\\frac32",
+          "reason": "The hole is (2,-3/2). At x=4 the reduced denominator still vanishes."
+        },
+        {
+          "math": "x+1=0\\Rightarrow x=-1,\\qquad f(0)=-\\frac14",
+          "reason": "These inputs are allowed, giving intercepts (-1,0) and (0,-1/4)."
+        },
+        {
+          "math": "\\frac{x+1}{x-4}=1+\\frac5{x-4}",
+          "reason": "The horizontal asymptote is y=1. The positive remainder gives negative infinity from the left of 4 and positive infinity from the right."
+        }
+      ],
+      "conclusion": "The original domain excludes 2 and 4. Only 2 is a hole; only 4 is a vertical asymptote. The nonzero constant remainder means the graph never meets y=1."
+    },
+    {
+      "title": "Some cancellation still leaves an asymptote",
+      "prompt": "Classify x=1 for $f(x)=(x-1)/(x-1)^3$.",
+      "steps": [
+        {
+          "math": "f(x)=\\frac1{(x-1)^2},\\qquad x\\ne1",
+          "reason": "One numerator copy cancels one of three denominator copies."
+        },
+        {
+          "math": "m-n=3-1=2",
+          "reason": "Two denominator copies remain, so the excluded input is a pole of order two."
+        },
+        {
+          "math": "x\\to1^-:\\ f(x)\\to+\\infty,\\qquad x\\to1^+:\\ f(x)\\to+\\infty",
+          "reason": "The squared denominator is positive on both sides and approaches zero."
+        }
+      ],
+      "conclusion": "There is no hole at 1. Classify using the remaining multiplicity, not merely the presence of a shared factor."
+    },
+    {
+      "title": "A zero-height hole is not an intercept",
+      "prompt": "Find the intercepts of $f(x)=(x+2)^3/(x+2)^2$.",
+      "steps": [
+        {
+          "math": "f(x)=x+2\\quad(x\\ne-2),\\qquad g(-2)=0",
+          "reason": "Full denominator cancellation leaves a zero-height hole."
+        },
+        {
+          "math": "x+2=0\\Rightarrow x=-2\\notin\\operatorname{Dom}(f)",
+          "reason": "The only zero of the reduced formula is excluded."
+        },
+        {
+          "math": "f(0)=2",
+          "reason": "Zero itself is allowed in the original denominator."
+        }
+      ],
+      "conclusion": "There are no x-intercepts. The hole is (-2,0), and the y-intercept is (0,2)."
+    },
+    {
+      "title": "Keep fractional locations and leading scale",
+      "prompt": "Analyze $f(x)=((2x-1)(3x+2))/((2x-1)(2x+3))$.",
+      "steps": [
+        {
+          "math": "x\\ne\\frac12,-\\frac32,\\qquad f(x)=\\frac{3x+2}{2x+3}",
+          "reason": "The shared factor cancels, but neither original exclusion disappears."
+        },
+        {
+          "math": "g(\\tfrac12)=\\frac{3/2+2}{1+3}=\\frac78",
+          "reason": "The hole has exact coordinates (1/2,7/8)."
+        },
+        {
+          "math": "x=-\\frac32\\text{ is a pole},\\qquad y=\\frac32\\text{ is the horizontal asymptote}",
+          "reason": "The pole comes from the remaining denominator. The horizontal level uses the actual leading coefficient ratio."
+        }
+      ],
+      "conclusion": "Do not turn 2x-1 into x-1 when locating its zero, and do not discard the factors' numerical scales."
+    },
+    {
+      "title": "Irrational exclusions remain real missing points",
+      "prompt": "Find the holes of $f(x)=x(x^2-2)/(x^2-2)$.",
+      "steps": [
+        {
+          "math": "x^2-2=0\\Rightarrow x=\\pm\\sqrt2",
+          "reason": "Both excluded inputs are real even though neither is rational."
+        },
+        {
+          "math": "f(x)=x\\quad(x\\ne\\pm\\sqrt2)",
+          "reason": "The reduced formula is a line restricted to the original domain."
+        },
+        {
+          "math": "g(\\sqrt2)=\\sqrt2,\\qquad g(-\\sqrt2)=-\\sqrt2",
+          "reason": "Evaluate that line at each removed input to locate both holes."
+        }
+      ],
+      "conclusion": "The holes are (sqrt(2),sqrt(2)) and (-sqrt(2),-sqrt(2)). The origin is allowed and is both an x-intercept and the y-intercept."
+    },
+    {
+      "title": "A denominator with no real zeros",
+      "prompt": "Analyze $f(x)=1/(x^2+4)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x^2+4\\ge4>0",
+          "reason": "The denominator is positive for every real input. Its nonreal zeros do not restrict this real graph."
+        },
+        {
+          "math": "f(0)=\\frac14,\\qquad f(x)>0",
+          "reason": "There is a y-intercept and no x-intercept."
+        },
+        {
+          "math": "\\lim_{x\\to\\pm\\infty}\\frac1{x^2+4}=0",
+          "reason": "The denominator degree is larger, so the horizontal asymptote is y=0. Here lim records the end trend; no calculus rules are needed."
+        }
+      ],
+      "conclusion": "There are no holes or vertical asymptotes. The graph approaches y=0 but never meets it because the numerator is never zero."
+    },
+    {
+      "title": "The zero numerator needs an infinite zero set",
+      "prompt": "Analyze $f(x)=0/(x^2-4)$.",
+      "steps": [
+        {
+          "math": "x^2-4=(x-2)(x+2),\\qquad x\\ne-2,2",
+          "reason": "The original denominator still imposes its exclusions."
+        },
+        {
+          "math": "f(x)=0\\quad\\text{for every allowed }x",
+          "reason": "All allowed points lie on the x-axis."
+        },
+        {
+          "math": "(-2,0)\\text{ and }(2,0)\\text{ are missing}",
+          "reason": "The reduced constant can fill these heights, but the original quotient cannot."
+        }
+      ],
+      "conclusion": "The x-intercept set is every real input except -2 and 2. There are two holes, no poles, and exact agreement with y=0 everywhere in the domain."
+    },
+    {
+      "title": "Check left and right signs separately",
+      "prompt": "Describe the pole of $f(x)=-3/(x+1)^3$. Compare an even denominator power.",
+      "steps": [
+        {
+          "math": "x=-1,\\qquad (-3)/(-1/10)^3=3000,\\qquad (-3)/(1/10)^3=-3000",
+          "reason": "The nearby input values are -11/10 and -9/10. An odd power keeps the denominator's negative sign on the left."
+        },
+        {
+          "math": "x\\to-1^-:\\ f(x)\\to+\\infty,\\qquad x\\to-1^+:\\ f(x)\\to-\\infty",
+          "reason": "The numerator is negative and the denominator reverses sign."
+        },
+        {
+          "math": "-\\frac3{(x+1)^2}\\to-\\infty\\text{ from both sides of }-1",
+          "reason": "An even denominator power is positive on both sides, so the negative numerator gives the same output direction."
+        }
+      ],
+      "conclusion": "Neither function has a value at -1. Infinity is a description of nearby growth, not an assigned output."
+    },
+    {
+      "title": "An equal-degree horizontal level",
+      "prompt": "Find the horizontal asymptote of $f(x)=(3x^2-2)/(2x^2+5)$ and test whether it is met.",
+      "steps": [
+        {
+          "math": "\\frac{3x^2-2}{2x^2+5}=\\frac{3-2/x^2}{2+5/x^2}\\quad(x\\ne0)",
+          "reason": "For the infinite ends, divide numerator and denominator by x squared."
+        },
+        {
+          "math": "f(x)\\to\\frac32\\quad(x\\to\\pm\\infty)",
+          "reason": "The lower-power terms vanish in this rewritten quotient."
+        },
+        {
+          "math": "f(x)-\\frac32=-\\frac{19}{4x^2+10}",
+          "reason": "The exact difference is always negative and never zero."
+        }
+      ],
+      "conclusion": "The horizontal asymptote is y=3/2. This particular graph never meets it, but that conclusion comes from the nonzero difference, not a universal prohibition."
+    },
+    {
+      "title": "A slant line comes from the whole quotient",
+      "prompt": "Find the end trend of $f(x)=(2x^2+3x-1)/(x-2)$.",
+      "steps": [
+        {
+          "math": "2x^2+3x-1=(x-2)(2x+7)+13",
+          "reason": "Polynomial division gives the full linear quotient and a proper remainder."
+        },
+        {
+          "math": "f(x)=2x+7+\\frac{13}{x-2},\\qquad x\\ne2",
+          "reason": "Retain the remainder in the exact formula."
+        },
+        {
+          "math": "f(x)-(2x+7)=\\frac{13}{x-2}\\to0\\quad(x\\to\\pm\\infty)",
+          "reason": "The vertical difference tends to zero on both ends."
+        }
+      ],
+      "conclusion": "The slant asymptote is y=2x+7. Its intercept 7 cannot be found from the leading-coefficient ratio alone. The constant remainder means there are no intersections with this line."
+    },
+    {
+      "title": "A higher-degree end trend",
+      "prompt": "Describe the infinite-end behavior of $f(x)=(x^3-8)/x$.",
+      "steps": [
+        {
+          "math": "f(x)=x^2-\\frac8x,\\qquad x\\ne0",
+          "reason": "Division produces a quadratic quotient."
+        },
+        {
+          "math": "f(x)-x^2=-\\frac8x\\to0\\quad(x\\to\\pm\\infty)",
+          "reason": "The proper remainder establishes the vanishing difference."
+        }
+      ],
+      "conclusion": "The end trend is y=x^2. There is no horizontal or slant asymptote. A polynomial trend of degree two is not a line."
+    },
+    {
+      "title": "Horizontal and slant asymptotes can be crossed",
+      "prompt": "Find intersections with the end trends of $f(x)=x/(x^2+4)$ and $h(x)=(x^3+1)/(x^2+1)$.",
+      "steps": [
+        {
+          "math": "f(x)\\to0,\\qquad f(0)=0",
+          "reason": "The first denominator is nonzero at zero, so (0,0) is a real intersection with the horizontal asymptote."
+        },
+        {
+          "math": "h(x)=x+\\frac{1-x}{x^2+1}",
+          "reason": "The second function has slant asymptote y=x."
+        },
+        {
+          "math": "1-x=0\\Rightarrow x=1,\\qquad h(1)=1",
+          "reason": "The remainder vanishes at an allowed input, giving intersection (1,1)."
+        }
+      ],
+      "conclusion": "Both functions cross their end asymptotes at finite inputs. The intersections are compatible with the required behavior at infinity."
+    },
+    {
+      "title": "An algebraic intersection candidate can be a hole",
+      "prompt": "Does $f(x)=x^2/(x(x^2+4))$ meet its horizontal asymptote?",
+      "steps": [
+        {
+          "math": "x\\ne0,\\qquad f(x)=\\frac{x}{x^2+4}\\quad(x\\ne0)",
+          "reason": "The original factor x excludes zero even after cancellation."
+        },
+        {
+          "math": "y=0,\\qquad \\frac{x}{x^2+4}=0\\Rightarrow x=0",
+          "reason": "The horizontal trend is zero, and the only algebraic candidate to meet it is zero."
+        },
+        {
+          "math": "0\\notin\\operatorname{Dom}(f)",
+          "reason": "Reject the candidate in the original domain."
+        }
+      ],
+      "conclusion": "This graph has a hole at (0,0), no x-intercepts, no y-intercept, and no intersection with its horizontal asymptote."
+    },
+    {
+      "title": "Intersect the model interval with the algebraic domain",
+      "prompt": "A supplied calibration model is $f(t)=((t-2)(t+3))/((t-2)(t+1))$ for $0\\le t\\le5$ seconds. Find the allowed time domain and interpret the missing time.",
+      "steps": [
+        {
+          "math": "(t-2)(t+1)=0\\Rightarrow t=2,-1",
+          "reason": "These are the original algebraic exclusions."
+        },
+        {
+          "math": "[0,5]\\setminus\\{2,-1\\}=[0,2)\\cup(2,5]",
+          "reason": "The negative exclusion is already outside the supplied time interval. Time 2 splits the interval."
+        },
+        {
+          "math": "g(t)=\\frac{t+3}{t+1},\\qquad g(2)=\\frac53",
+          "reason": "The reduced value gives the finite height of the missing point."
+        },
+        {
+          "math": "g(t)\\to1\\quad(t\\to\\infty)",
+          "reason": "This is an algebraic end statement. The supplied model is only authorized through time 5."
+        }
+      ],
+      "conclusion": "The original model remains undefined at time 2. Assigning 5/3 there would extend it, and applying the model beyond time 5 would require separate justification."
+    },
+    {
+      "title": "Construct a graph from its required features",
+      "prompt": "Construct an original quotient with a hole at x=2, a pole at x=-3, an x-intercept at x=5, and horizontal asymptote y=-2. Require quadratic numerator and denominator and a monic denominator.",
+      "steps": [
+        {
+          "math": "D(x)=(x-2)(x+3)",
+          "reason": "The hole and pole inputs must both be zeros of the original denominator. The requested quadratic monic denominator fixes its factors and scale."
+        },
+        {
+          "math": "N(x)=-2(x-2)(x-5)",
+          "reason": "Repeat the hole factor in the numerator, include the allowed zero at 5, and choose leading coefficient -2 to obtain the horizontal level."
+        },
+        {
+          "math": "f(x)=-2(x-5)/(x+3),\\quad x\\ne2,-3",
+          "reason": "Reduction confirms the pole at -3 and the allowed zero at 5, while retaining the hole exclusion."
+        },
+        {
+          "math": "g(2)=6/5",
+          "reason": "The finite reduced value gives hole coordinates (2,6/5)."
+        }
+      ],
+      "conclusion": "The original factored numerator and denominator preserve the shared factor that creates the hole. Without the degree and scale requirements, listed graph features need not determine a unique formula."
+    }
+  ],
+  "guided": {
+    "title": "Keep a missing zero out of the intercept list",
+    "setup": "Analyze $f(x)=((x-2)^2(x+1))/((x-2)(x-3))$. Keep the original restrictions while finding the reduced formula, discontinuities, intercepts, and end trend.",
+    "before": [
+      "The original denominator vanishes at 2 and 3.",
+      "Cancel only one copy of x-2. A numerator copy remains.",
+      "Decide whether each excluded input has a finite reduced value or a remaining pole. Then check every intercept candidate in the original domain."
+    ],
+    "question": {
+      "id": "m04-l01-guided",
+      "familyId": "mth-rational-features",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m04-l01",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Complete the feature analysis. A zero-height hole must stay separate from an intercept.",
+      "fields": [
+        {
+          "id": "reduced",
+          "label": "Reduced expression",
+          "kind": "rational-expression",
+          "domainFieldId": "excluded",
+          "expected": "((x-2)*(x+1))/(x-3)",
+          "help": "Enter a single fraction with its entire numerator and denominator in parentheses."
+        },
+        {
+          "id": "excluded",
+          "label": "All original excluded inputs",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "2",
+            "3"
+          ],
+          "help": "List distinct exact values separated by commas, or empty if there are none."
+        },
+        {
+          "id": "holes",
+          "label": "Inputs with holes",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "2"
+          ],
+          "help": "List distinct exact values separated by commas, or empty if there are none."
+        },
+        {
+          "id": "poles",
+          "label": "Vertical asymptote inputs",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "3"
+          ],
+          "help": "List distinct exact values separated by commas, or empty if there are none."
+        },
+        {
+          "id": "x",
+          "label": "All real x-intercept inputs",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "-1"
+          ],
+          "help": "List distinct exact values separated by commas, or empty if there are none."
+        },
+        {
+          "id": "height",
+          "label": "Hole height at x = 2",
+          "kind": "rational",
+          "expected": "0"
+        },
+        {
+          "id": "y",
+          "label": "Y-intercept output",
+          "kind": "rational",
+          "expected": "2/3"
+        },
+        {
+          "id": "trend",
+          "label": "End trend Q(x)",
+          "kind": "polynomial",
+          "form": "equivalent",
+          "expected": "x+2"
+        }
+      ],
+      "hints": [
+        "Keep both original exclusions even after removing one common factor.",
+        "The reduced numerator is zero at -1 and 2, but only one of those inputs is allowed.",
+        "Divide x^2-x-2 by x-3. The quotient is x+2 and the remainder is 4."
+      ],
+      "explanation": [
+        "The reduced formula is (x^2-x-2)/(x-3), with x=2 and x=3 excluded.",
+        "The hole is (2,0); the pole is x=3. The only x-intercept is (-1,0), and the y-intercept is (0,2/3).",
+        "The identity $x^2-x-2=(x-3)(x+2)+4$ gives slant trend y=x+2."
+      ],
+      "answerSummary": "Exclude 2 and 3; hole (2,0); pole 3; x-intercept -1; y-intercept 2/3; trend x+2."
+    },
+    "after": "Explain why the same reduced zero is rejected as an intercept but still determines a hole's height. Guided work provides support; the checkpoint checks your independent analysis."
+  },
+  "interaction": {
+    "kind": "rational-function-lab",
+    "prompt": "Predict the original value, reduced value, and input type before revealing the exact comparison. Change the input and graph window to see which conclusions depend on algebra and which details a finite picture can hide.",
+    "cases": [
+      {
+        "title": "A line with one missing point",
+        "expression": "(x^2-1)/(x-1)",
+        "inspect": "1"
+      },
+      {
+        "title": "A hole and a separate pole",
+        "expression": "((x-1)*(x-2))/((x-1)*(x+3))",
+        "inspect": "1"
+      },
+      {
+        "title": "Partial cancellation with an even pole",
+        "expression": "(x-1)/((x-1)^3)",
+        "inspect": "1"
+      },
+      {
+        "title": "A hole on the x-axis",
+        "expression": "((x+2)^3)/((x+2)^2)",
+        "inspect": "-2"
+      },
+      {
+        "title": "Crossing a horizontal asymptote",
+        "expression": "x/(x^2+1)",
+        "inspect": "0"
+      },
+      {
+        "title": "A slant line and a remaining pole",
+        "expression": "(2*x^2+3*x-1)/(x-2)",
+        "inspect": "2"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-rational-features",
+      "variant": "hole-pole"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "partial-cancel"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "hole-zero"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "fractional-hole"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "no-real-exclusions"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "irrational-holes"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "multiple-holes"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "zero-numerator"
+    },
+    {
+      "familyId": "mth-rational-features",
+      "variant": "construction"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "hole-zero"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "y-excluded"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "repeated-zero"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "no-real-zero"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "irrational-zero"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "no-intercepts"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "zero-numerator"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "lower"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "equal"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "slant"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "quadratic-trend"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "exact-line"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "crossing-horizontal"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "crossing-slant"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "excluded-crossing"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "negative-leading"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "partial-pole"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "restored-hole"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "asymptote-crossing"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "graph-window"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "side-signs"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "model-domain"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-rational-features",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-rational-intercepts",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-rational-end",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-rational-audit",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "Record every real zero of the original denominator before cancellation.",
+    "Full denominator cancellation creates a hole; partial cancellation can leave a pole. Preserve original numerical scale.",
+    "A hole's height comes from the reduced formula, while the original input remains excluded.",
+    "Find intercepts only at allowed original inputs. A missing point on an axis is not an intercept.",
+    "Use the local sign and remaining pole multiplicity to describe both one-sided directions.",
+    "Degree comparison gives horizontal behavior. Division supplies slant or higher polynomial trends through a vanishing remainder term.",
+    "End asymptotes can be crossed at finite allowed inputs. Solve the remainder equation and reject original exclusions.",
+    "A zero remainder means exact agreement with the quotient on the original domain, with any holes retained.",
+    "Intersect supplied model restrictions with the algebraic domain. A finite graph or table supplements exact reasoning."
+  ],
+  "retrieval": "Without looking back, analyze (x-1)^2/((x-1)(x+2)): state the original domain, the hole and its height, the pole, both intercepts, and the horizontal asymptote. Then compare it with x/(x^2+1) and explain why one may meet its horizontal asymptote while the other does not. Later, redo the analysis with a different canceled factor and explain which features change.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 5.6 Rational Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-6-rational-functions",
+      "purpose": "Optional free reading on real domains, removable discontinuities, vertical and horizontal asymptotes, and rational graphs. Use the built-in lesson and exact checks for practice."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 5.4 Dividing Polynomials",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-4-dividing-polynomials",
+      "purpose": "Review the quotient and proper-remainder identity that explains slant and higher polynomial end trends."
+    }
+  ]
+}
