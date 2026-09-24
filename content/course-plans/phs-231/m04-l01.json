@@ -1,0 +1,53 @@
+{
+  "courseId":"phs-231",
+  "lessonId":"m04-l01",
+  "status":"Implementation plan; this file is not an available lesson",
+  "objective":"Separate radial and tangential acceleration and use actual forces to sustain a circular path with constant or changing speed.",
+  "preparation":["m01-l02 vector components and norms","m02-l02 vector differentiation","m03-l01 force inventories and unilateral contact","m03-l02 static-friction feasibility"],
+  "conventions":{
+    "coordinates":"Fixed x right, y up. Angle theta increases counterclockwise from +x and uses radians in derivatives.",
+    "basis":"e_r=(cos(theta),sin(theta)); e_theta=(-sin(theta),cos(theta)). e_r is outward.",
+    "motion":"For fixed radius r>0, v=r omega e_theta and a=-r omega² e_r+r alpha e_theta. Speed is r|omega|.",
+    "tangential":"The signed e_theta component r alpha differs from the rate of change of nonnegative speed when omega<0. At a reversal, do not assume the derivative of speed is two-sided.",
+    "force":"Centripetal describes the inward component of the net force. It is not an additional interaction."
+  },
+  "teachingSequence":[
+    "Relate arc length, radians, signed angular velocity, speed, and the positive period for uniform nonzero rotation.",
+    "Differentiate the position vector, including the changing unit vectors, to derive radial and tangential terms.",
+    "Resolve total acceleration and distinguish constant speed from constant velocity.",
+    "Use real force inventories for a flat friction-supported circle and a frictionless bank.",
+    "Choose inward axes at the top and bottom of a vertical circle; solve the support constraint and check its sign.",
+    "Distinguish a local top-of-loop contact condition from the later energy question of whether the top can be reached."
+  ],
+  "workedFixtures":[
+    {"case":"changing speed at rightmost point","inputs":{"radius":2,"omega":3,"alpha":1},"expected":"r=(2,0) m; v=(0,6) m/s; a=(-18,2) m/s²; |a|=2sqrt(82) m/s²."},
+    {"case":"clockwise motion","inputs":{"radius":2,"omega":-3,"alpha":1},"expected":"At theta=0, v=(0,-6) m/s while a=(-18,2) m/s². Speed is decreasing because v dot a<0."},
+    {"case":"uniform period","inputs":{"radius":3,"speed":6},"expected":"|omega|=2 rad/s and T=pi s; speed nonzero, radial acceleration=12 m/s²."},
+    {"case":"top of vertical loop","inputs":{"mass":1,"radius":2,"speed":6,"gravity":10},"expected":"Required inward normal=8 N; at speed sqrt(20) m/s it is zero; at 4 m/s the required -2 N is impossible and contact is lost."},
+    {"case":"bottom of vertical loop","inputs":{"mass":1,"radius":2,"speed":6,"gravity":10},"expected":"Upward inward normal=28 N. Gravity is outward relative to the center at the bottom."},
+    {"case":"flat circle","inputs":{"radius":20,"speed":10,"gravity":10},"expected":"Minimum ideal static coefficient=1/2. Required radial force per kg is 5 N/kg."},
+    {"case":"frictionless 45-degree bank","inputs":{"radius":10,"mass":2,"gravity":10},"expected":"Design speed=10 m/s and normal magnitude=20sqrt(2) N."}
+  ],
+  "generatorBlueprint":{
+    "phs231-circular-components":["arc","period","cartesian","nonuniform","scaling","zero-speed"],
+    "phs231-circular-forces":["flat","banked","top","bottom","threshold","inventory"],
+    "minimumSeedsPerVariant":50,
+    "oracles":["Differentiate Cartesian position independently using centered finite differences.","Check r dot v=0, r dot a=-|v|², and orthogonal acceleration norms.","Project actual forces into radial and tangential axes and verify both component equations.","Check zero speed, both rotation directions, zero tangential acceleration, contact equality, and impossible support."]
+  },
+  "investigation":{
+    "type":"Instantaneous-state simulation with a vertical circular track and an explicit tangential actuator",
+    "inputs":["radius","nonnegative speed","clockwise or counterclockwise motion","signed counterclockwise tangential acceleration","angular location","mass","gravity"],
+    "reasoning":"Predict inward radial acceleration, total acceleration magnitude, required inward normal force, and contact feasibility.",
+    "normalConstraint":"For an object inside the circular track, N_required=m(v²/r-g sin(theta)). The track can push inward, not pull outward.",
+    "tangentialActuator":"To prescribe a_theta, the actuator must supply F_theta=m a_theta+mg cos(theta). State this explicitly rather than silently imposing nonuniform speed.",
+    "infeasibleCase":"Display the target circular kinematics as infeasible when N_required<0. The actual normal is zero; do not present the prescribed circular path as the ensuing trajectory.",
+    "accessibility":"Keyboard number inputs and quarter-turn controls; vector directions with labeled magnitudes; a complete component table. Distinguish diagram direction arrows from any quantitative arrow-length scale.",
+    "persistence":"State that exploratory controls reset; save comparisons in lesson notes. Practice and checkpoint snapshots use the existing persistent store."
+  },
+  "resources":[
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion","checkedAt":"2026-09-23","verified":"Primary-provider page covers uniform and nonuniform vector kinematics. The shorter old uniform-only URL did not resolve."},
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/6-3-centripetal-force","checkedAt":"2026-09-23","verified":"Primary-provider page covers centripetal force as a resultant, flat curves, and frictionless banking."}
+  ],
+  "releaseChecks":["Original complete explanations and worked solutions","Guided feedback for a fictitious extra centripetal force and incorrect support sign","Deterministic practice and four-question checkpoint","Independent seeded checks and edge cases","Production build, desktop/mobile rendering, keyboard access, reloads, and actual backup restoration"],
+  "notClaimed":["Official NU week-by-week syllabus","Independent subject review","Pilot validation","Real-world safe operating limits"]
+}
