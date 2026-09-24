@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-23",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: ten of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: eleven of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -16,13 +16,14 @@
       "m03-l02",
       "m03-l03",
       "m04-l01",
-      "m04-l02"
+      "m04-l02",
+      "m05-l01"
     ],
-    "questionFamilies": 21,
-    "questionVariants": 112,
+    "questionFamilies": 23,
+    "questionVariants": 128,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 10,
-    "workedExamples": 59,
+    "guidedExamples": 11,
+    "workedExamples": 68,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -33,11 +34,12 @@
       "Static thresholds, relative sliding, and loss of friction capacity",
       "Linear-drag transients, time constants, upward launches, and the zero-drag limit",
       "Circular vector components, signed tangential acceleration, actual force inventories, and infeasible track contact",
-      "Exterior circular-orbit comparisons with inverse-square fields, mass and source scaling, energy references, and explicit transfer limitations"
+      "Exterior circular-orbit comparisons with inverse-square fields, mass and source scaling, energy references, and explicit transfer limitations",
+      "Signed work and kinetic-energy curves, with finite turns, inaccessible energy barriers, asymptotic equilibrium, exact rest, and instantaneous power"
     ]
   },
   "remaining": {
-    "phs231Lessons": 12,
+    "phs231Lessons": 11,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
       "Energy, momentum, rotation, equilibrium, material, and numerical investigations",
@@ -48,10 +50,20 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m05-l01",
+    "nextLesson": "m05-l02",
     "nextCourseAfterPhs231Completion": "phs-232"
   },
   "sharedCommits": [
+    {
+      "commit": "1b4af54",
+      "summary": "enabled work",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-work and two families. The analytic engine and boundary fixtures are in 0757934; d8016ac adds 800 deterministic variant cases checked with independent areas, quadrature, force-equation trajectories, and limits. The course-specific component is included. Content and registration are 05301a9; keyboard, mobile, domain, exact-answer, reload, and actual checkpoint/notes export-reset-restore workflows are 8d4f234. Existing answer fields and backups remain compatible."
+    },
     {
       "commit": "0924228",
       "summary": "enabled gravity",
@@ -252,16 +264,16 @@
     ]
   },
   "verification": {
-    "status": "The ten delivered lessons are technically checked; the course release gates remain open.",
+    "status": "The eleven delivered lessons are technically checked; the course release gates remain open.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the ten delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the eleven delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 521,
-      "files": 68,
+      "passed": 530,
+      "files": 69,
       "command": "pnpm exec vitest run --maxWorkers=2",
-      "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. An unrestricted run encountered timeout failures across existing files under CPU contention; the full run with two workers passed without changing assertions or timeouts."
+      "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. The work lesson adds 800 seeded cases, including negative work, path dependence, moving friction, equivalent expressions, and first-limiting-point interpretation."
     },
     "browser": {
       "fullSuite": {
@@ -270,21 +282,27 @@
         "scope": "Merged prerequisite roots/multiplicity work through 52c1a25, with nine physics lessons. The transformation interaction test reached the unchanged 60-second test limit while filling inputs after both accessibility audits; no assertion mismatch was reported. All other 86 browser tests passed."
       },
       "focusedSuite": {
-        "passed": 2,
-        "scope": "Gravity lesson after the nine-lesson integration run: exact periods and radicals, apparent weightlessness, controlled source/mass changes, interior-domain rejection, desktop and mobile accessibility, keyboard controls, reloads, and actual checkpoint export/reset/restore. The fullSuite and retry entries retain their earlier integration snapshot and are not relabeled as a full ten-lesson run."
+        "passed": 3,
+        "scope": "Work lesson: signed graph area and power, perpendicular force, finite stop, energy barrier, asymptotic equilibrium, exact rest, invalid domains and answers, desktop/mobile accessibility, keyboard controls, reload, and actual checkpoint plus notes export/reset/restore. The initial browser run had one test try to inspect a collapsed table; after opening the table explicitly, all three passed. Earlier full-suite and gravity records retain their original scope."
       },
       "port": 3101,
       "retry": {
         "passed": 1,
         "scope": "The single timed-out transformation interaction passed unchanged in 26.5 seconds on the same production build with the same 60-second limit. No timeout or assertion was relaxed; the original full run is not reported as an uninterrupted 87-test pass."
-      }
+      },
+      "previousFocusedSuites": [
+        {
+          "passed": 2,
+          "scope": "Gravity lesson after the nine-lesson integration run: exact periods and radicals, apparent weightlessness, controlled source/mass changes, interior-domain rejection, desktop and mobile accessibility, keyboard controls, reloads, and actual checkpoint export/reset/restore. The fullSuite and retry entries retain their earlier integration snapshot and are not relabeled as a full ten-lesson run."
+        }
+      ]
     },
     "staticChecks": [
       "lint passed",
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the ten delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
+    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the eleven delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses."
