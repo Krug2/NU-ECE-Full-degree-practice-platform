@@ -1,0 +1,320 @@
+{
+  "id": "m01-l02",
+  "courseId": "f09",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Conjugates, magnitude, division, and equations",
+  "objective": "Use conjugation and magnitude identities, divide by nonzero complex numbers including axis cases, and solve and verify a linear complex equation.",
+  "why": "Conjugation connects complex arithmetic to distance. It turns a complex denominator into a positive real number, makes reciprocals understandable, and gives a direct way to verify a solution.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Rectangular numbers and arithmetic"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For z=a+bi, its conjugate is a-bi. Its magnitude is |z|=√(a²+b²), the distance from the origin. Multiplying a number by its conjugate gives its squared magnitude: $z\\overline z=a^2+b^2$.",
+        "To divide by w≠0, multiply numerator and denominator by the conjugate of w. The resulting real denominator is |w|². Check the quotient by multiplying it by the original divisor."
+      ]
+    },
+    {
+      "heading": "A reflection is not an additive inverse",
+      "paragraphs": [
+        "Conjugation keeps the real coordinate and reverses the imaginary coordinate. It reflects a point across the real axis. Negating a complex number reverses both coordinates, which rotates its direction halfway around the origin.",
+        "Conjugating twice returns the starting point. A number equals its own conjugate exactly when its imaginary coefficient is zero, so every real number is unchanged. Conjugation also respects sums and products; you can conjugate the result or conjugate each operand first."
+      ]
+    },
+    {
+      "heading": "Magnitude measures distance",
+      "paragraphs": [
+        "The real and imaginary axes meet at right angles, so the Pythagorean theorem gives |a+bi|=√(a²+b²). Magnitude is a real, nonnegative value. It equals zero only at the complex zero; it never becomes negative because an individual coordinate is negative.",
+        "In $(a+bi)(a-bi)$ the cross terms cancel. The remaining term -b²i² becomes +b², giving a²+b². This is the squared magnitude, not the magnitude itself. Taking the nonnegative square root recovers the distance."
+      ]
+    },
+    {
+      "heading": "Why the conjugate creates a reciprocal",
+      "paragraphs": [
+        "For nonzero w, the identity w·conjugate(w)=|w|² lets us divide both sides by the positive real number |w|². Thus $w^{-1}=\\overline w/|w|^2$. Multiplying w by this expression gives 1, which is precisely the defining property of a reciprocal.",
+        "Complex division z/w means z times that reciprocal. Multiplying numerator and denominator by the same nonzero conjugate preserves the quotient, just as multiplying a real fraction by a/a preserves its value. Keep parentheses around both numerator factors while distributing."
+      ]
+    },
+    {
+      "heading": "Axis cases and the forbidden zero",
+      "paragraphs": [
+        "A purely real divisor is valid unless it is zero. A purely imaginary divisor is also valid unless it is zero: for example, 1/i=-i because i(-i)=1. The condition c²+d²>0 checks both cases at once.",
+        "Division by zero is undefined. If z≠0, no value q can satisfy 0q=z. If z=0, every q satisfies 0q=0, so that equation cannot specify a unique quotient either. Neither case gives a defined value for z/0."
+      ]
+    },
+    {
+      "heading": "Solve an equation and check the original statement",
+      "paragraphs": [
+        "In αz=β with α≠0, multiply both sides by α⁻¹ to get z=β/α. This step produces a candidate, but substituting it into the original equation provides an independent arithmetic check. A product-back check is especially useful when a conjugate or subtraction sign may have been lost.",
+        "If α=0, inspect β instead of dividing. The equation 0z=0 permits every complex number, while 0z=β with β≠0 has no solution. The independent exercises here focus on a unique solution with a nonzero coefficient."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Reflect one coordinate",
+      "prompt": "Compare the conjugate and negative of z=-2+5i.",
+      "steps": [
+        {
+          "math": "\\overline z=-2-5i",
+          "reason": "Conjugation reverses only the imaginary coefficient."
+        },
+        {
+          "math": "-z=2-5i",
+          "reason": "The additive inverse reverses both coordinates."
+        }
+      ],
+      "conclusion": "These two operations agree only when the real part is zero."
+    },
+    {
+      "title": "Distance and its square",
+      "prompt": "Find |-3+4i| and the conjugate product.",
+      "steps": [
+        {
+          "math": "|-3+4i|=\\sqrt{(-3)^2+4^2}=\\sqrt{25}=5",
+          "reason": "Distance uses squared coordinates and the nonnegative square root."
+        },
+        {
+          "math": "(-3+4i)(-3-4i)=9+16=25",
+          "reason": "The conjugate product equals the squared distance."
+        }
+      ],
+      "conclusion": "The magnitude is 5; the squared magnitude is 25."
+    },
+    {
+      "title": "Conjugate twice",
+      "prompt": "Conjugate 3-2i twice and explain what happens to a real number.",
+      "steps": [
+        {
+          "math": "\\overline{3-2i}=3+2i,\\qquad\\overline{\\overline{3-2i}}=3-2i",
+          "reason": "Two sign reversals restore the imaginary coefficient."
+        },
+        {
+          "math": "\\overline{-4+0i}=-4-0i=-4",
+          "reason": "A real number has no imaginary displacement to reflect."
+        }
+      ],
+      "conclusion": "Every real number is its own conjugate."
+    },
+    {
+      "title": "Build a reciprocal",
+      "prompt": "Find 1/(1-2i).",
+      "steps": [
+        {
+          "math": "\\frac1{1-2i}=\\frac{1+2i}{(1-2i)(1+2i)}",
+          "reason": "Multiply top and bottom by the denominator's conjugate."
+        },
+        {
+          "math": "\\frac{1+2i}{1+4}=\\frac15+\\frac25i",
+          "reason": "The positive real denominator is the squared magnitude."
+        },
+        {
+          "math": "(1-2i)\\left(\\frac15+\\frac25i\\right)=1",
+          "reason": "Multiplication verifies the reciprocal."
+        }
+      ],
+      "conclusion": "The reciprocal is not obtained by separately inverting the components."
+    },
+    {
+      "title": "Divide two general complex numbers",
+      "prompt": "Calculate (3+2i)/(1-i).",
+      "steps": [
+        {
+          "math": "\\frac{(3+2i)(1+i)}{(1-i)(1+i)}=\\frac{1+5i}{2}",
+          "reason": "The numerator is 3+5i+2i²=1+5i; the denominator is 2."
+        },
+        {
+          "math": "\\left(\\frac12+\\frac52i\\right)(1-i)=3+2i",
+          "reason": "Multiplying the quotient back recovers the numerator."
+        }
+      ],
+      "conclusion": "The quotient is 1/2+(5/2)i."
+    },
+    {
+      "title": "Divisors on either axis",
+      "prompt": "Calculate (2-4i)/(2i) and (2-4i)/2.",
+      "steps": [
+        {
+          "math": "\\frac{2-4i}{2i}=\\frac{(2-4i)(-2i)}4=-2-i",
+          "reason": "A nonzero imaginary divisor has a valid positive squared magnitude."
+        },
+        {
+          "math": "\\frac{2-4i}{2}=1-2i",
+          "reason": "A real scalar divides both coordinates."
+        }
+      ],
+      "conclusion": "Neither nonzero axis case is excluded from complex division."
+    },
+    {
+      "title": "Reject a zero divisor",
+      "prompt": "Can either 3/0 or 0/0 define one complex value?",
+      "steps": [
+        {
+          "math": "0q=3\\quad\\text{has no solution}",
+          "reason": "Multiplication by zero cannot recover a nonzero numerator."
+        },
+        {
+          "math": "0q=0\\quad\\text{holds for every }q",
+          "reason": "This does not select a unique quotient."
+        }
+      ],
+      "conclusion": "Both divisions are undefined."
+    },
+    {
+      "title": "Solve and substitute",
+      "prompt": "Solve (1+i)z=3-i.",
+      "steps": [
+        {
+          "math": "z=\\frac{3-i}{1+i}=\\frac{(3-i)(1-i)}2=\\frac{2-4i}{2}=1-2i",
+          "reason": "The coefficient is nonzero, so division is permitted."
+        },
+        {
+          "math": "(1+i)(1-2i)=1-i-2i^2=3-i",
+          "reason": "Substitution verifies the result in the original equation."
+        }
+      ],
+      "conclusion": "The unique solution is 1-2i."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Divide 4+2i by 1+i, then verify the quotient.",
+    "before": [
+      "Multiply numerator and denominator by 1-i.",
+      "The denominator becomes 2 and the numerator becomes 6-2i."
+    ],
+    "question": {
+      "id": "f09-l02-guided",
+      "familyId": "guided-f09-l02",
+      "familyVersion": 1,
+      "courseId": "f09",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the exact quotient and the result of multiplying it by the original denominator.",
+      "fields": [
+        {
+          "id": "quotient",
+          "kind": "exact",
+          "label": "Quotient",
+          "expected": "3-i",
+          "unit": ""
+        },
+        {
+          "id": "check",
+          "kind": "exact",
+          "label": "Product-back result",
+          "expected": "4+2i",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Identify the nonzero divisor and its conjugate first.",
+        "The denominator becomes 2 and the numerator becomes 6-2i.",
+        "(6-2i)/2=3-i."
+      ],
+      "explanation": [
+        "(6-2i)/2=3-i.",
+        "The check (3-i)(1+i)=4+2i recovers the original numerator."
+      ],
+      "answerSummary": "(6-2i)/2=3-i. The check (3-i)(1+i)=4+2i recovers the original numerator."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-complex-lab",
+    "mode": "conjugate",
+    "prompt": "Change a numerator and denominator. Predict the denominator's conjugate, squared magnitude, and quotient. Reveal reflected points, the quotient, and a product-back check. Set the denominator to zero and inspect the explicit undefined-state message."
+  },
+  "practice": [
+    {
+      "familyId": "f09-complex-conjugate",
+      "variant": "reflection"
+    },
+    {
+      "familyId": "f09-complex-conjugate",
+      "variant": "norm"
+    },
+    {
+      "familyId": "f09-complex-conjugate",
+      "variant": "identity"
+    },
+    {
+      "familyId": "f09-complex-conjugate",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f09-complex-division",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "f09-complex-division",
+      "variant": "real-axis"
+    },
+    {
+      "familyId": "f09-complex-division",
+      "variant": "imaginary-axis"
+    },
+    {
+      "familyId": "f09-complex-division",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f09-source-complex",
+      "variant": "divide"
+    },
+    {
+      "familyId": "f09-complex-equation",
+      "variant": "linear"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f09-complex-conjugate",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f09-complex-division",
+      "variant": "axes-audit"
+    },
+    {
+      "familyId": "f09-source-complex",
+      "variant": "divide"
+    },
+    {
+      "familyId": "f09-complex-equation",
+      "variant": "linear"
+    }
+  ],
+  "summary": [
+    "Conjugation reflects the imaginary coordinate; negation reverses both coordinates.",
+    "Magnitude is nonnegative and its square equals the conjugate product.",
+    "Only zero is forbidden as a complex divisor.",
+    "Verify division and linear equations by multiplying back."
+  ],
+  "retrieval": "Without notes, find the conjugate and magnitude of 1-2i, then use them to find its reciprocal. Explain why dividing by 2i is valid but dividing by zero is not.",
+  "readings": [
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 2.4: Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-4-complex-numbers",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.3 (PDF pages 2–3): Terminology and basic arithmetic",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=2",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.4 (PDF pages 4): The complex plane and geometry",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=4",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    }
+  ]
+}
