@@ -1,3 +1,4 @@
+import { restoreProgress,readStoredProgress } from "./progress";
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
@@ -39,7 +40,7 @@ test("a high checkpoint score cannot conceal a missed original restriction",asyn
   const lesson=lessonSchema.parse(JSON.parse(await readFile(new URL("../../content/lessons/mth-215/m01-l04.json",import.meta.url),"utf8")));
   const attempt=createAttempt(lesson,"checkpoint","restriction-browser-fixture");
   const data={schemaVersion:2,profile:{displayName:"",weeklyHours:5},plan:[],bookmarks:[],notes:{},confidence:{},sessions:[],learning:{attempts:[attempt],evidence:[],notes:{}}};
-  await page.goto("/");await page.evaluate(data=>localStorage.setItem("ece-study:progress:v1",JSON.stringify(data)),data);
+  await restoreProgress(page,data);
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   for(let index=0;index<attempt.questions.length;index++){
     for(const field of attempt.questions[index].fields){
@@ -53,6 +54,6 @@ test("a high checkpoint score cannot conceal a missed original restriction",asyn
   }
   await expect(page.getByRole("heading",{name:"Keep working on this objective",exact:true})).toBeVisible();
   await expect(page.locator(".attempt-results")).toContainText("3 of 4 correct");
-  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem("ece-study:progress:v1")!));
+  const saved=await readStoredProgress(page);
   expect(saved.learning.evidence).toEqual([]);
 });
