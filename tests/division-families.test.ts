@@ -34,6 +34,7 @@ it.each(["linear","nonmonic","quadratic","missing-powers","exact","smaller","fra
     if(variant==="quadratic")expect(r).toHaveLength(2);
     if(variant==="exact")expect(r).toEqual([0]);
     if(variant==="smaller")expect(q).toEqual([0]);
+    if(variant==="fraction")expect(parsePolynomial(key(question,"quotient")).some(c=>c.denominator===2n)).toBe(true);
     expect(gradeQuestion(question,{...response(question),quotient:"("+key(question,"quotient")+")+1"}).correct).toBe(false);
     expect(gradeQuestion(question,{...response(question),remainder:"("+key(question,"remainder")+")+1"}).correct).toBe(false);
   }

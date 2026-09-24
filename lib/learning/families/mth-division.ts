@@ -16,7 +16,7 @@ export function divisionQuestion(familyId:string,variant:string,seed:string,id:s
     const root=nonzero(),a=nonzero(),b=rng.integer(-3,3),c=nonzero();
     let d=[-root,1],q=[b,c,a],r=[nonzero()];
     if(variant==="nonmonic"||variant==="fraction")d=[-root,rng.integer(2,3)];
-    if(variant==="fraction")q=[nonzero()/2,b,a];
+    if(variant==="fraction")q=[(2*rng.integer(0,1)+1)*(rng.integer(0,1)?1:-1)/2,b,a];
     if(variant==="quadratic"){d=[c,rng.integer(-2,2),rng.integer(1,2)];q=[b,0,a];r=[nonzero(),nonzero()];}
     if(variant==="missing-powers")q=[b,a*root,a];
     if(variant==="exact")r=[0];
