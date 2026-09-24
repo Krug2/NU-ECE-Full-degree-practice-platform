@@ -53,10 +53,12 @@ import { expEquationFamilyIds,expEquationQuestion } from "./families/mth-exp-equ
 import { logEquationFamilyIds,logEquationQuestion } from "./families/mth-log-equation";
 import { powerLevelFamilyIds,powerLevelQuestion } from "./families/mth-power-level";
 import { modelTimescaleFamilyIds,modelTimescaleQuestion } from "./families/mth-model-timescale";
+import { modelThresholdFamilyIds,modelThresholdQuestion } from "./families/mth-model-threshold";
 
 const generators=new Map<string,typeof linearQuestion>();
 for(const id of powerLevelFamilyIds)generators.set(id,powerLevelQuestion);
 for(const id of modelTimescaleFamilyIds)generators.set(id,modelTimescaleQuestion);
+for(const id of modelThresholdFamilyIds)generators.set(id,modelThresholdQuestion);
 for(const id of logRuleFamilyIds)generators.set(id,logRuleQuestion);
 for(const id of logRewriteFamilyIds)generators.set(id,logRewriteQuestion);
 for(const id of expEquationFamilyIds)generators.set(id,expEquationQuestion);
