@@ -81,7 +81,7 @@ const workedExample = z.object({
 export const lessonSchema = z.object({
   id, courseId: id, moduleId: id, version: z.number().int().positive(), title: text,
   objective: text, why: text, estimatedMinutes: z.number().int().positive(),
-  prerequisites: z.array(z.object({ label: text, lessonId: id }).strict()),
+  prerequisites: z.array(z.object({ label: text, lessonId: id.optional(), courseId: id.optional(), note: text.optional() }).strict().refine(item => !!item.lessonId || !!item.courseId, "Preparation requires a lesson or course")),
   sections: z.array(z.object({ heading: text, paragraphs: z.array(text).min(1) }).strict()).min(2),
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
