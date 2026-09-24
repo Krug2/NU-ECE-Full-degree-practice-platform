@@ -269,8 +269,8 @@
     "lint": "Full pnpm lint passed.",
     "typecheck": "Full pnpm typecheck passed.",
     "productionBuild": "pnpm build passed; 188 static pages. Browser run uses this production build on 3101.",
-    "fullBrowser": "296-test full run in progress on 3101; no final result yet.",
-    "visual": "All 22 lessons plus assessment/course views have desktop/mobile inspection records in integration.json. Final zoom, reflow, reduced-motion and 3001 preview checks are pending.",
+    "fullBrowser": "296 tests ran: 293 passed and three long investigation tests exhausted their 60-second budgets. Only those budgets changed to 180 seconds (c83dadb); all three passed with unchanged assertions. Coverage passed across runs, not in one uninterrupted run.",
+    "visual": "All 22 lessons plus assessment/course views were inspected on desktop and mobile. Six corrected reduced-motion, zoom-equivalent and 320-pixel reflow workflows passed with keyboard and accessibility assertions (d918795); screenshots inspected. Final released-state preview on 3001 remains pending.",
     "scopeAndPrivacy": "Only major-course authored content and necessary compatible shared extensions. Prerequisite files match integrated main snapshot 26f17fc2345def7bb52df018a5915637aa66bd19. No private academic records or personal planning data are included."
   },
   "review": {

@@ -82,6 +82,35 @@
   },
   "sharedCommits": [
     {
+      "commit": "52ace5a",
+      "summary": "tracked availability",
+      "files": [
+        "lib/learning/availability.ts",
+        "lib/learning/refreshers/availability.ts",
+        "tests/learning-availability.test.ts"
+      ],
+      "integration": "Adds a lightweight metadata registry without importing lesson bodies into global client components. Two consistency checks compare every registered degree and refresher pack against its real status. Register future degree packs here when registering their lessons. Existing refresher availability API remains compatible. Scoped lint and full types passed."
+    },
+    {
+      "commit": "9603519",
+      "summary": "showed availability",
+      "files": [
+        "components/ui.tsx",
+        "components/dashboard.tsx",
+        "components/curriculum-browser.tsx"
+      ],
+      "integration": "Uses actual pack status for course cards, the selected dashboard path and released-pack count. Removes misleading blanket outline labels. Prerequisite content is unchanged. Scoped lint and full types passed; released-state browser verification follows."
+    },
+    {
+      "commit": "41614e2",
+      "summary": "clarified release",
+      "files": [
+        "app/courses/[id]/page.tsx",
+        "app/courses/[id]/assessments/[assessmentId]/page.tsx"
+      ],
+      "integration": "Release copy follows pack status and states the limits of technical preview and proposed assessment defaults. Existing building courses and routes remain compatible. Scoped lint and full types passed."
+    },
+    {
       "commit": "5ece0c0",
       "summary": "showed release",
       "files": [
@@ -533,7 +562,7 @@
     ]
   },
   "verification": {
-    "status": "The fresh integrated unit suite, full lint, types and 188-page production build passed. The 296-test full browser run is in progress; final release remains pending.",
+    "status": "Full unit, lint, type, production-build and browser coverage checks passed; three long browser tests required a separate rerun with increased whole-test budgets. Corrected zoom/reflow checks passed. Final released-state copy and preview checks are in progress.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
     "capacity": "Six full study cycles with 672 saved attempts, 5160 frozen questions, 33 retained assessment results and six 24,000-character submitted project records round-trip in 19,054,194 formatted UTF-8 backup bytes, under the 50,000,000-byte policy. Explicit removal of all attempt details leaves 237,173 bytes with summaries, notes and projects preserved. The test uses representative submitted responses, not a claim of learner mastery. Whole-major-curriculum history remains unaudited.",
@@ -544,7 +573,7 @@
       "files": 244,
       "command": "F10_PYTHON configured; pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
       "durationSeconds": 284.27,
-      "note": "All checks passed in one run against integrated main snapshot 26f17fc. This includes all 34 assessment blueprints across 50 seeds, retained evidence, recovery contracts, and repeated-study capacity. Full lint, type checking and the 188-page build also passed. Browser release verification is in progress.",
+      "note": "All checks passed in one run against integrated main snapshot 26f17fc. This includes all 34 assessment blueprints across 50 seeds, retained evidence, recovery contracts, and repeated-study capacity. Full lint, type checking and the 188-page build also passed. Later release-label checks are recorded separately.",
       "previousRun": {
         "passed": 2057,
         "skipped": 0,
@@ -600,13 +629,16 @@
     },
     "browser": {
       "fullSuite": {
-        "passed": 112,
-        "failed": 1,
-        "scope": "Full merged production suite: 113 tests ran in 18.6 minutes with fourteen physics lessons and the new prerequisite root-search, rational-function, and sign-chart lessons. All but the projectile mid-entry reload workflow passed.",
+        "passed": 293,
+        "failed": 3,
+        "total": 296,
+        "duration": "1.9 hours",
+        "scope": "Full production suite on port 3101 with one browser worker. All failures exhausted the 60-second whole-test budget in long investigation workflows; no mathematical or behavioral assertion failed.",
         "retry": {
-          "passed": 1,
-          "commit": "ea00ae5",
-          "scope": "The trace showed the last field was still saving when the test reloaded; the preceding field had persisted. The app already displays a pending save and warns before leaving. The test now waits for the public saved confirmation and checks both restored fields. It passed in 5.6 seconds on the same production build. No grading, persistence behavior, assertion threshold, or timeout was weakened; this is not reported as an uninterrupted 113-test pass."
+          "passed": 3,
+          "failed": 0,
+          "commit": "c83dadb",
+          "scope": "Extended only the three long test budgets to 180 seconds. Unchanged assertions passed in 48.0, 34.4 and 26.3 seconds. One recorded accessibility evaluation had consumed 29.2 seconds in the original run. Coverage passed across runs; this is not an uninterrupted 296-test pass."
         }
       },
       "focusedSuite": {
@@ -705,6 +737,16 @@
           "passed": 95,
           "failed": 0,
           "scope": "All browser tests passed in 12.0 minutes on the merged production build, including MTH 215 division, all eleven available physics lessons, large history, schema migrations, multi-tab conflicts, recovery, real backup restoration, desktop and mobile accessibility, and sticky navigation."
+        },
+        {
+          "passed": 112,
+          "failed": 1,
+          "scope": "Full merged production suite: 113 tests ran in 18.6 minutes with fourteen physics lessons and the new prerequisite root-search, rational-function, and sign-chart lessons. All but the projectile mid-entry reload workflow passed.",
+          "retry": {
+            "passed": 1,
+            "commit": "ea00ae5",
+            "scope": "The trace showed the last field was still saving when the test reloaded; the preceding field had persisted. The app already displays a pending save and warns before leaving. The test now waits for the public saved confirmation and checks both restored fields. It passed in 5.6 seconds on the same production build. No grading, persistence behavior, assertion threshold, or timeout was weakened; this is not reported as an uninterrupted 113-test pass."
+          }
         }
       ],
       "integrationSuite": {
@@ -726,7 +768,15 @@
           "commit": "18d1579",
           "scope": "Selected integration regression suite passed on the merged production build in 9.4 minutes: variation (3), radicals (3), rolling (7), shared learning/resume/checkpoint/conflict and backup workflows (7), large-history capacity (1), and mobile navigation/sticky lesson links (2). This is a selected 23-test run, not a relabeled full-suite run. Earlier full-suite records retain their original scope."
         }
-      ]
+      ],
+      "reflow": {
+        "passed": 6,
+        "failed": 0,
+        "durationSeconds": 33.6,
+        "commit": "d918795",
+        "scope": "Course, assessment and project at 320 CSS pixels and at 720 by 500 CSS pixels with device scale 2, equivalent to a 1440 by 1000 display at 200 percent browser zoom. Reduced motion, keyboard input, focus hit testing, control bounds, non-overlapping regions and accessibility checks passed; all six screenshots inspected.",
+        "corrections": "The initial CSS zoom simulation left desktop media queries active and produced crowding; it was replaced with a reduced layout viewport. A subsequent project assertion encountered ordinary vertical scrolling and now scrolls the focused control into view before checking its entire bounds. No product assertion was removed."
+      }
     },
     "staticChecks": [
       "lint passed",
