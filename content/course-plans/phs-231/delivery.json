@@ -1,0 +1,25 @@
+{
+  "courseId":"phs-231","version":1,
+  "implementationOrder":[
+    {"id":"d01","work":"Research and complete coverage, resource, assessment, project, and delivery plans.","verification":"Every published topic maps to an objective; dependencies are acyclic; all 24 major courses remain in scope. Plans are labeled proposed."},
+    {"id":"d02","work":"Add narrowly scoped cross-course preparation support and a course-specific measurement/vector investigation. Register only authored PHS 231 content.","verification":"Existing MTH 215 JSON still parses. Existing lesson links and saved backups remain valid. New prerequisite links reach available lessons or explicitly labeled course pages."},
+    {"id":"d03","work":"Author and verify quantities and vector lessons, families, investigations, and readiness routing.","verification":"At least 50 deterministic seeds per variant, independent conversion/bounds/vector fixtures, zero and boundary cases, desktop/mobile, keyboard, reload, and backup checks."},
+    {"id":"d04","work":"Author kinematics and dynamics modules in dependency order.","verification":"Derivative/integral inverse checks, reversal distances, 3D components, flight roots, force-agent accounting, friction regimes, and drag limits."},
+    {"id":"d05","work":"Author circular motion, gravity, energy, and momentum modules.","verification":"Contact feasibility, orbit scaling, work/energy cross-checks, system boundaries, collision momentum and energy residuals."},
+    {"id":"d06","work":"Author rotation, equilibrium, elasticity, and fracture modules.","verification":"Cross-product signs, inertia integrals, rolling friction feasibility, support constraints, area conversions, stress-strain integrals, and interpretation."},
+    {"id":"d07","work":"Build numerical investigations and the persistent project notebook.","verification":"Independent analytic baseline, update-order fixtures, step-halving, energy residuals, uncertainty endpoints, rubric and provenance workflow."},
+    {"id":"d08","work":"Add reusable multi-objective assessment support in a separate compatible commit; connect PHS 231 quizzes, cumulative forms, and targeted review.","verification":"Old attempt and backup fixtures pass. Coverage cannot be replaced by aggregate score. Snapshot preservation, forbidden hints, invalid blueprint rejection, conflict and capacity behavior are tested."},
+    {"id":"d09","work":"Audit all mappings and complete a full learner journey.","verification":"Unit suite, lint, typecheck, production build, desktop/mobile browser tests on 3101, keyboard and visual inspection on 3001, real backup restoration, resource recheck, and documented actual review status."}
+  ],
+  "sharedChangePolicy":"Each shared extension gets its own focused commit and a recorded integration entry with files, hash, compatibility behavior, and checks. Keep prerequisite-specific edits out of this branch. Fetch main at integration boundaries; merge or otherwise incorporate it only in this worktree without rewriting published prerequisite history. Review conflicts rather than replacing files wholesale.",
+  "releaseGates":[
+    "All 22 mapped lessons contain actual teaching, examples, practice, checkpoint, accessible investigation, and verified readings; no plan or unavailable lesson is counted as authored.",
+    "Every planned family and variant has deterministic 50-seed tests and independent reference answers or physical invariants, with explicit critical and invalid-input cases.",
+    "Every objective is present in module and cumulative assessment coverage; targeted repair and project evidence are usable.",
+    "Progress survives reload and export/import; existing backups still parse; a realistic full-course history fits the tested capacity policy or the policy is extended compatibly with visible recovery.",
+    "Visual review covers wide and narrow layouts, table overflow, math, focus, labels, keyboard-only actions, zoom, and reduced motion.",
+    "All relevant automated checks pass and published availability matches the delivered content.",
+    "Independent subject review and pilot validation remain explicitly unperformed until evidence exists. A technical preview is not relabeled reviewed."
+  ],
+  "remainingWork":"Implementation and all release gates remain open until verified evidence is recorded. Begin PHS 232 only after PHS 231's technical completion audit; do not let course-count pressure replace depth."
+}
