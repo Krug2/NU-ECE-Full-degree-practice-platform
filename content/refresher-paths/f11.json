@@ -1,0 +1,163 @@
+{
+  "courseId": "f11",
+  "version": 1,
+  "quickRoute": "Use four short scenario judgments to locate a gap, read Quick recall, then create a fresh independently completed practical record for each lesson.",
+  "fullRoute": "Build a problem frame, estimate with units, audit results, then revise and communicate. Use guided reviews as needed and retain their assistance label.",
+  "diagnostic": {
+    "id": "f11-diagnostic",
+    "familyId": "practical-diagnostic-f11",
+    "familyVersion": 1,
+    "courseId": "f11",
+    "objectiveId": "diagnostic",
+    "category": "conceptual",
+    "critical": false,
+    "prompt": "Choose the most useful judgment in each situation. Feedback links to specific lessons; this does not record practical completion or a mastery score.",
+    "fields": [
+      {
+        "id": "frame",
+        "kind": "choice",
+        "label": "A page says 12, 3 and 4 beside an unlabeled box. What should you do before choosing an equation?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "frame",
+            "label": "Name the quantities, units, boundary and unknown",
+            "feedback": "Labels connect the picture to a physical model."
+          },
+          {
+            "id": "calculate",
+            "label": "Multiply the three numbers",
+            "feedback": "Arithmetic cannot supply missing meanings or a requested output."
+          },
+          {
+            "id": "decorate",
+            "label": "Make the box more detailed",
+            "feedback": "Visual detail does not replace useful labels."
+          }
+        ],
+        "correct": "frame"
+      },
+      {
+        "id": "estimate",
+        "kind": "choice",
+        "label": "You want travel time from 12 km and 4 km/h. Which relationship has the right meaning and units?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "divide",
+            "label": "Distance divided by speed",
+            "feedback": "km divided by km/h gives hours."
+          },
+          {
+            "id": "multiply",
+            "label": "Distance multiplied by speed",
+            "feedback": "That has units km²/h, not time."
+          },
+          {
+            "id": "add",
+            "label": "Distance plus speed",
+            "feedback": "Unlike dimensions cannot be added."
+          }
+        ],
+        "correct": "divide"
+      },
+      {
+        "id": "check",
+        "kind": "choice",
+        "label": "A storage calculation has units of bytes but forgot the number of channels. What does the unit check establish?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "necessary",
+            "label": "It checks dimensions but does not prove the value",
+            "feedback": "A missing dimensionless channel count can preserve units and change the result."
+          },
+          {
+            "id": "complete",
+            "label": "The answer is fully correct",
+            "feedback": "Correct units alone do not establish numerical or model correctness."
+          },
+          {
+            "id": "reject",
+            "label": "The answer must have the wrong dimensions",
+            "feedback": "The omitted factor is dimensionless, so this claim is too strong."
+          }
+        ],
+        "correct": "necessary"
+      },
+      {
+        "id": "revise",
+        "kind": "choice",
+        "label": "Your corrected answer differs from yesterday's. What makes the revision useful to a future reader?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "record",
+            "label": "Keep the earlier claim and explain the corrected step and checks",
+            "feedback": "A revision log preserves the reason for the change."
+          },
+          {
+            "id": "replace",
+            "label": "Erase the earlier result and keep only the new number",
+            "feedback": "That hides what changed and why the new result is more trustworthy."
+          },
+          {
+            "id": "confidence",
+            "label": "Write that you are now very confident",
+            "feedback": "Confidence is not a record of evidence or method."
+          }
+        ],
+        "correct": "record"
+      }
+    ],
+    "parameters": {},
+    "hints": [
+      "Name the unknown and model boundary.",
+      "Use units and independent checks without overclaiming what they prove.",
+      "Preserve the reason for a revision."
+    ],
+    "explanation": [
+      "Labels connect the picture to a physical model.",
+      "km divided by km/h gives hours.",
+      "A missing dimensionless channel count can preserve units and change the result.",
+      "A revision log preserves the reason for the change."
+    ],
+    "answerSummary": "Frame the situation, use a meaningful relationship, check more than units, and retain the revision evidence."
+  },
+  "targets": {
+    "frame": "m01-l01",
+    "estimate": "m01-l02",
+    "check": "m01-l03",
+    "revise": "m01-l04"
+  },
+  "support": [
+    {
+      "courseId": "f06",
+      "reason": "Review conversions, dimensional consistency, precision, and measurement."
+    },
+    {
+      "courseId": "phs-104",
+      "reason": "Develop full physical models when a supplied simple relationship is not enough."
+    },
+    {
+      "courseId": "phs-231",
+      "reason": "Carry diagrams, signs, units, and checks into mechanics."
+    },
+    {
+      "courseId": "cee-310l",
+      "reason": "Record circuit measurements, calculations, and model limits."
+    },
+    {
+      "courseId": "cee-324l",
+      "reason": "Document sampling assumptions and signal-processing observations."
+    },
+    {
+      "courseId": "cee-340",
+      "reason": "Make storage and timing assumptions visible in embedded work."
+    }
+  ],
+  "escalation": {
+    "courseId": "phs-104",
+    "text": "If you need to learn how physical laws produce a model, use the full introductory physics course. For rusty arithmetic or unit conversions, review F01 and F06 before applying these habits."
+  }
+}
