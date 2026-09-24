@@ -67,8 +67,8 @@ export function rollingRun(input:RollingInput){
     return {...Object.fromEntries(Object.entries(numbers).map(([key,n])=>[key,normalized(n)])) as typeof numbers,
       kind:phase.kind,pointPosition,pointVelocity,pointAcceleration};
   };
-  const regular=Array.from({length:81},(_,i)=>p.duration*i/80).filter(t=>!events.some(e=>Math.abs(t-e.time)<=roundoff(t,e.time)));
-  const times=[...regular,...events.map(e=>e.time)].sort((a,b)=>a-b);
+  const regular=Array.from({length:81},(_,i)=>p.duration*i/80).filter(t=>t===0||t===p.duration||!events.some(e=>Math.abs(t-e.time)<=roundoff(t,e.time)));
+  const times=[...new Set([...regular,...events.map(e=>e.time)])].sort((a,b)=>a-b);
   const samples=times.map(sample);
-  return {inertia,normal,sine,cosine,requiredFriction:normalized(requiredFriction),staticLimit,feasible,initialSlip,initialKinetic,phases,events,samples,initial:samples[0],final:sample(p.duration)};
+  return {inertia,normal,sine,cosine,requiredFriction:normalized(requiredFriction),staticLimit,feasible,initialSlip,initialKinetic,phases,events,samples,initial:sample(0),final:sample(p.duration)};
 }

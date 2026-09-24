@@ -54,6 +54,13 @@ describe("rolling demand, actual Coulomb contact, and piecewise transitions",()=
     for(const shift of [-1e-6,0,1e-6]){const r=rollingRun({...base,muStatic:.25+shift,muKinetic:.2});expect(r.feasible).toBe(shift>=0);expect(r.initial.kind).toBe(shift>=0?"rolling":"sliding");}
   });
 
+  it("preserves the actual initial state when a finite slip reversal is extremely close to time zero",()=>{
+    const r=rollingRun({...base,mass:.1,radius:.05,beta:.1,slope:0,muStatic:.001,muKinetic:.0005,force:-50,v0:1e-12,omega0:0});
+    expect(r.events[0].time).toBeGreaterThan(0);expect(r.events[0].time).toBeLessThan(1e-14);
+    expect(r.samples[0].time).toBe(0);expect(r.initial.time).toBe(0);expect(r.initial.v).toBe(1e-12);expect(r.initial.friction).toBeLessThan(0);
+    const event=r.samples.find(s=>s.time===r.events[0].time)!;expect(event).toBeDefined();expect(event.friction).toBeGreaterThan(0);expect(r.samples).toHaveLength(82);
+  });
+
   it("checks 200 deterministic trials with independent force/torque solutions, power quadrature, heat integrals, and impulse balances",()=>{
     const branches=new Set<string>();
     for(let seed=0;seed<200;seed++){
