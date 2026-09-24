@@ -77,3 +77,19 @@
 .log-rewrite-lab .calibration-table-wrap { margin:16px 0; }
 .log-rewrite-lab .coefficient-table { width:100%;min-width:26rem; }
 @media(max-width:620px){.log-rewrite-lab .activity-controls{grid-template-columns:1fr}}
+.model-lab .activity-controls { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.model-lab code { white-space:normal;overflow-wrap:anywhere; }
+.model-lab .coefficient-table { min-width:34rem; }
+.model-lab .calibration-table-wrap { margin:18px 0; }
+.model-endpoint { display:flex;align-items:center;gap:10px;line-height:1.6; }
+.model-endpoint input { width:18px;height:18px;min-height:0;accent-color:var(--green); }
+.model-observations { display:grid;gap:16px;margin:20px 0; }
+.model-observation { min-width:0;display:grid;grid-template-columns:1fr 1fr auto;align-items:end;gap:14px;padding:16px;border:1px solid var(--line);border-radius:8px; }
+.model-observation legend { padding:0 6px;font-size:14px;font-weight:600; }
+.model-observation .field { margin:0; }
+.model-observation input { width:100%; }
+.model-fitting-tool form>.button { margin:0 8px 10px 0; }
+.model-fit-parameters { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:18px;background:var(--soft);border-radius:8px; }
+.model-fit-parameters dt { font-size:13px;color:var(--ink); }
+.model-fit-parameters dd { margin:5px 0 0;font-size:15px;overflow-wrap:anywhere; }
+@media(max-width:620px){.model-lab .activity-controls,.model-observation,.model-fit-parameters{grid-template-columns:1fr}.model-figure svg text{font-size:28px}.model-observation .button{justify-self:start}}
