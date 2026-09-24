@@ -37,8 +37,8 @@ it("refuses to silently adopt a changed source lesson version", () => {
   sources.b05 = { ...sources.b05, version: 2 };
   expect(() => adaptRefresherLessons(adapters, sources)).toThrow("Review changed source content");
 });
-it.each(f03Lessons)("$id checks deterministic answers, figure snapshots, and exact graders for every structure", lesson => {
-  for (let seed = 0; seed < 50; seed++) for (const slot of [...lesson.practice, ...lesson.checkpoint]) {
+it.each(f03Lessons.flatMap(lesson=>[...lesson.practice,...lesson.checkpoint].map((slot,index)=>({lesson,slot,label:`${lesson.id}/${index}/${slot.familyId}/${slot.variant}`}))))("$label checks deterministic answers, figure snapshots, and exact graders", ({lesson,slot}) => {
+  for (let seed = 0; seed < 50; seed++) {
     const q = f03Question(slot.familyId, slot.variant, String(seed), "q1");
     expect(q.objectiveId).toBe(lesson.id);
     expect(q.courseId).toBe("f03");
