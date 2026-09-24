@@ -411,7 +411,7 @@
       "checkpoint": [
         [
           "debug",
-          "classify"
+          "classify-audit"
         ],
         [
           "debug",
