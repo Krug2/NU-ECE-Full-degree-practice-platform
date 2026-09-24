@@ -1,0 +1,798 @@
+{
+  "id": "m04-l02",
+  "courseId": "mth-215",
+  "moduleId": "m04",
+  "version": 1,
+  "title": "Polynomial and rational inequalities",
+  "objective": "Build a sign chart and return every interval satisfying a polynomial or rational inequality.",
+  "why": "Inequalities describe ranges of valid inputs, such as operating times or parameter values. A root list alone cannot tell you which ranges work. A sign chart combines algebra, the original domain, and endpoint decisions to explain every included interval, missing input, and isolated solution.",
+  "estimatedMinutes": 220,
+  "prerequisites": [
+    {
+      "label": "Linear inequalities and interval notation",
+      "lessonId": "m01-l02"
+    },
+    {
+      "label": "Factoring foundations",
+      "lessonId": "b03"
+    },
+    {
+      "label": "Zeros and multiplicity",
+      "lessonId": "m03-l02"
+    },
+    {
+      "label": "Holes, asymptotes, and intercepts",
+      "lessonId": "m04-l01"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "An inequality asks for a set of inputs",
+      "paragraphs": [
+        "Solving $x^2-5x+6=0$ finds the inputs where the output is zero. Solving $x^2-5x+6>0$ asks for every input where the output is positive. Those inputs usually fill intervals, not just a list of roots. The roots organize the investigation, but they are not automatically the answer.",
+        "The symbols $>$ and $<$ are strict: equality does not qualify. The symbols $\\ge$ and $\\le$ include equality when the original expression is defined. A rational expression can be undefined at a boundary, so a non-strict symbol alone never guarantees a closed endpoint.",
+        "Keep three records as you work: the original domain, the sign on each open interval, and the inclusion decision at each boundary. A correct solution must satisfy all three. If the problem supplies a physical domain such as $0\\le t\\le8$, that restriction is an additional condition."
+      ]
+    },
+    {
+      "heading": "Create a comparison with zero",
+      "paragraphs": [
+        "Move all terms to one side before locating the zeros for your sign chart. For $P(x)/D(x)\\ge c$, use $[P(x)-cD(x)]/D(x)\\ge0$ on the original domain $D(x)\\ne0$. Subtraction preserves the inequality direction; it does not require guessing the sign of the denominator.",
+        "For example, $(x+1)/(x-1)>1$ becomes $[(x+1)-(x-1)]/(x-1)>0$, or $2/(x-1)>0$. The old numerator zero at -1 is not a zero of the comparison expression. The correct boundary comes from the original denominator at 1.",
+        "If both sides contain fractions, first list the excluded inputs from every original denominator. Combine the difference over a common denominator while retaining that list. Factors can cancel during simplification, but a previously undefined input must remain excluded. When distributing a minus sign, subtract the entire numerator in parentheses."
+      ]
+    },
+    {
+      "heading": "Find and order every critical input",
+      "paragraphs": [
+        "For a nonzero comparison numerator, solve the numerator and original denominator separately. Their real zeros are the critical inputs. Write each distinct input once, in increasing order. Repeated factors affect the sign behavior but do not create extra locations on the number line.",
+        "Factor completely enough to identify every real zero. A factor $2x+3$ vanishes at $-3/2$, not at -3. A factor $x^2-2$ contributes $-\\sqrt2$ and $\\sqrt2$. A factor $x^2+4$ is positive for every real input and contributes no real boundary. A missing rational root does not prove that there are no real roots.",
+        "Keep a canceled original denominator zero in the partition. At that input the original expression is still undefined, and its sign may or may not change across the gap. If the comparison numerator is identically zero, it has no finite list of zeros: partition only at original exclusions and analyze the zero expression on its allowed domain."
+      ]
+    },
+    {
+      "heading": "Why one test per open interval is enough",
+      "paragraphs": [
+        "A polynomial is continuous on the real line. A rational expression is continuous wherever its denominator is nonzero. After partitioning at every real numerator and denominator zero, the comparison expression cannot change from positive to negative within an open interval: it would have to pass through zero or become undefined, and those possible inputs are already boundaries.",
+        "Choose one convenient input strictly inside each open interval and evaluate the comparison expression. Its sign represents that entire interval. Testing a boundary does not test the interval: the boundary might be a zero or an excluded input. Testing several points in one interval does not establish the sign on a different interval.",
+        "For $(-\\infty,-2)$ you can choose -3; for $(-2,1)$ you can choose 0; for $(1,\\infty)$ you can choose 2. A midpoint is convenient for bounded intervals, but there is no midpoint involving infinity. Choose any finite interior value for an unbounded interval. Keep fractions exact so rounding does not move a test point across a close boundary."
+      ]
+    },
+    {
+      "heading": "Use factor signs and multiplicities carefully",
+      "paragraphs": [
+        "A sign chart can record each factor's sign and then combine them. For a product, an odd number of negative factors makes a negative result. For a quotient, equal nonzero numerator and denominator signs give a positive result; opposite signs give a negative result. Include any negative numerical coefficient.",
+        "At a zero of odd multiplicity, a real polynomial factor changes sign. At a zero of even multiplicity, it keeps its sign on both sides. Thus $(x-a)^2$ is positive for every $x\\ne a$, but zero at a. An even denominator factor is also positive away from its zero, yet its zero is excluded rather than allowed.",
+        "If a factor occurs in both numerator and denominator, compare the signs after cancellation only on the original domain. The effective exponent is the numerator order minus the denominator order; an odd difference changes the nearby quotient sign, including at a canceled hole. Do not alternate signs automatically at every listed input. Test points provide a direct check of your multiplicity reasoning."
+      ]
+    },
+    {
+      "heading": "Choose intervals first, then decide every boundary",
+      "paragraphs": [
+        "A positive interval qualifies for $>0$ or $\\ge0$. A negative interval qualifies for $<0$ or $\\le0$. If the comparison expression is zero throughout an allowed interval, it qualifies only for the non-strict relations. These interval decisions concern open intervals; no endpoint has been included yet.",
+        "At an allowed numerator zero, include the point for $\\le0$ or $\\ge0$, and exclude it for strict relations. At an original denominator zero, always exclude the point. A hole is just as undefined as a pole, even when the reduced formula has a finite value.",
+        "Check allowed zeros even when neither neighboring interval qualifies. For $(x-1)^2\\le0$, the square is positive on both sides but zero at 1. The complete solution is the isolated point $[1,1]$. Omitting it because no open interval qualifies would lose the only solution."
+      ]
+    },
+    {
+      "heading": "Cancellation never repairs an original exclusion",
+      "paragraphs": [
+        "Consider $(x-1)^2/[(x-1)(x+2)]\\ge0$. The original denominator excludes both 1 and -2. Away from those inputs, the quotient equals $(x-1)/(x+2)$. The reduced signs are positive to the left of -2, negative between -2 and 1, and positive to the right of 1.",
+        "The original function has a hole at 1, where the reduced expression would be zero. The non-strict relation does not include 1 because the original quotient has no value there. The solution is $(-\\infty,-2)\\cup(1,\\infty)$. The sign changes across this hole, demonstrating that a gap is not necessarily a no-change boundary.",
+        "If instead the same factor cancels completely from numerator and denominator with no remaining copy, the nearby signs can agree. Still keep the excluded input. Two qualifying intervals separated by a missing point cannot be merged into an interval that fills that point."
+      ]
+    },
+    {
+      "heading": "Write the entire solution in exact interval notation",
+      "paragraphs": [
+        "Use a parenthesis for an excluded endpoint and a square bracket for an included endpoint. Infinity is a direction, not a real number, so it always uses a parenthesis. Join separate pieces with union. In this app, type U between intervals, -inf and inf at unbounded ends, and empty if no input qualifies.",
+        "An isolated allowed input a can be entered as [a,a]. For example, $(-\\infty,-2]\\cup\\{1\\}$ is entered as (-inf,-2] U [1,1]. A strict inequality can leave two qualifying intervals on either side of an even zero while still excluding that zero. Do not join them across the missing point.",
+        "Merge pieces when there is no missing input between them. For instance, $[-3,1]\\cup[1,4]=[-3,4]$. The set $(-3,1)\\cup(1,4)$ cannot be replaced by $(-3,4)$ because that would add 1. Equivalent interval unions are accepted, but every included point must satisfy the original inequality."
+      ]
+    },
+    {
+      "heading": "Keep irrational boundaries exact",
+      "paragraphs": [
+        "For $x^2-2\\le0$, the boundaries are $\\pm\\sqrt2$. The exact solution is $[-\\sqrt2,\\sqrt2]$. Rounding to $[-1.41,1.41]$ removes some valid inputs, while rounding to $[-1.42,1.42]$ includes invalid inputs. Approximate positions help sketch a chart but do not replace exact endpoints.",
+        "Use exact comparisons to order boundaries. Since $1<\\sqrt3<2$, the sequence $-\\sqrt3,-1,1,\\sqrt3$ is increasing. Suitable test inputs are -2, -3/2, 0, 3/2, and 2. For example, $-\\sqrt3<-3/2<-1$ follows from $3>(3/2)^2>1$, with the negative ordering reversed appropriately.",
+        "The answer fields support rational numbers and real quadratic radicals such as sqrt(2) or 1+sqrt(2). Equivalent exact forms are accepted. Select an answer representation supported by the question rather than silently rounding a boundary."
+      ]
+    },
+    {
+      "heading": "Handle constant and zero cases directly",
+      "paragraphs": [
+        "A comparison with no real critical inputs still needs a conclusion. Because $x^2+4>0$ for all real x, the inequality $x^2+4<0$ has no solutions and $x^2+4\\ge0$ has every real input as a solution. A constant negative expression satisfies $<0$ and $\\le0$ everywhere in its original domain.",
+        "If the comparison numerator is identically zero and the denominator is nonzero at the input, the quotient is exactly zero. A non-strict comparison then accepts every allowed input; a strict comparison accepts none. For $0/(x^2-1)\\ge0$, remove -1 and 1 from the real line even though every remaining output is zero.",
+        "The expression 0/0 is undefined. It must not be treated as zero, as an equality case, or as a reason to restore an excluded input. Separately, a denominator that is the zero polynomial defines no rational function on real inputs; it is not an ordinary zero-numerator case."
+      ]
+    },
+    {
+      "heading": "Audit multiplication by a variable expression",
+      "paragraphs": [
+        "Multiplication by a positive quantity preserves an inequality; multiplication by a negative quantity reverses it. A variable denominator can have both signs across its domain. Therefore multiplying by it without case analysis can create false solutions and lose valid ones.",
+        "For $(x+2)/(x-3)>0$, the input 0 gives $-2/3$, so it does not qualify. Multiplying blindly by $x-3$ would produce $x+2>0$, which incorrectly accepts 0. One counterexample is enough to disprove the claimed equivalence.",
+        "A valid branch analysis handles $x<3$ and $x>3$ separately. On the negative-denominator branch, reverse the relation and intersect the resulting condition with $x<3$. On the positive branch, keep the relation and intersect with $x>3$. Combine the branch solutions only after those intersections.",
+        "An alternative is to multiply by $D(x)^2$, which is strictly positive on the original domain. Then $[N(x)/D(x)]\\mathrel{\\square}0$ is equivalent to $N(x)D(x)\\mathrel{\\square}0$ with the original exclusions retained. This does not permit including zeros of D: the transformation is reversible only where the original fraction was defined."
+      ]
+    },
+    {
+      "heading": "Intersect a model answer with its allowed inputs",
+      "paragraphs": [
+        "A supplied engineering model can restrict inputs more tightly than its formula does. First solve the mathematical inequality with all denominator exclusions. Then intersect its solution with the specified measurement range, time window, or physical constraints. Include a window endpoint only if the original formula is defined there and satisfies the comparison.",
+        "Suppose a calibration model is $R(t)=3(t-2)/(t-5)$ and is specified only for $0\\le t\\le8$ seconds. Requiring a nonnegative response gives $t\\le2$ or $t>5$ mathematically. Restricting to the supplied window gives $[0,2]\\cup(5,8]$ seconds. Negative times and times above 8 are outside the stated model even though the formula can be evaluated at many of them.",
+        "A denominator zero inside the operating window splits the permitted times. Do not bridge it with a continuous-looking interval. Keep units on the final interval interpretation; the endpoints are values of the input variable, not response outputs."
+      ]
+    },
+    {
+      "heading": "Check a solution without replacing the reasoning",
+      "paragraphs": [
+        "Verify one input from every reported interval in the original inequality, and also one input from any omitted interval. Check each finite boundary directly when defined. Compare those results with the sign chart and endpoint decisions. This catches wrong relation directions, missing intervals, lost exclusions, and isolated points.",
+        "A graph can help visualize where the output lies above or below the comparison value, but a finite viewing window can hide roots, holes, or narrow intervals. Exact factorization and the original domain establish completeness. The activity's number line deliberately shows ordered regions rather than a measured graph.",
+        "Practice explaining a decision rather than only naming a sign: 'This whole interval qualifies because the comparison quotient is positive there, but this boundary is excluded because the original denominator is zero.' That statement distinguishes sign reasoning from endpoint reasoning and makes your answer auditable."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A quadratic inequality is more than its roots",
+      "prompt": "Solve $x^2-5x+6>0$.",
+      "steps": [
+        {
+          "math": "x^2-5x+6=(x-2)(x-3)",
+          "reason": "The two distinct zeros are 2 and 3, so there are three open intervals."
+        },
+        {
+          "math": "f(0)=6>0,\\qquad f(5/2)=-1/4<0,\\qquad f(4)=2>0",
+          "reason": "These test inputs lie in the left, middle, and right intervals."
+        },
+        {
+          "math": "(-\\infty,2)\\cup(3,\\infty)",
+          "reason": "Keep the positive intervals and exclude both zeros because the relation is strict."
+        }
+      ],
+      "conclusion": "A root list would miss every nonzero solution. The complete answer consists of two intervals."
+    },
+    {
+      "title": "An even zero can be an isolated solution",
+      "prompt": "Solve $(x+2)(x-1)^2\\le0$.",
+      "steps": [
+        {
+          "math": "x=-2,\\quad x=1",
+          "reason": "The critical inputs have orders 1 and 2."
+        },
+        {
+          "math": "f(-3)=-16<0,\\quad f(0)=2>0,\\quad f(2)=4>0",
+          "reason": "The sign changes at -2 but not at 1. Only the left open interval qualifies."
+        },
+        {
+          "math": "f(-2)=0,\\quad f(1)=0",
+          "reason": "Both zeros are allowed by the non-strict relation."
+        },
+        {
+          "math": "(-\\infty,-2]\\cup[1,1]",
+          "reason": "Include the isolated zero at 1 even though both neighboring intervals are positive."
+        }
+      ],
+      "conclusion": "Type (-inf,-2] U [1,1]. Omitting 1 loses a valid solution."
+    },
+    {
+      "title": "Track a negative leading factor and merge correctly",
+      "prompt": "Solve $-2(x+3)(x-1)^2(x-4)\\ge0$.",
+      "steps": [
+        {
+          "math": "-3<1<4",
+          "reason": "Partition at all three distinct zeros. The middle zero has even order."
+        },
+        {
+          "math": "f(-4)=-400<0,\\quad f(0)=24>0,\\quad f(2)=20>0,\\quad f(5)=-256<0",
+          "reason": "The negative numerical factor reverses the signs of the product without it."
+        },
+        {
+          "math": "[-3,1]\\cup[1,4]=[-3,4]",
+          "reason": "All three zeros are allowed and equality is included, so the two interior pieces join."
+        }
+      ],
+      "conclusion": "The solution is $[-3,4]$. For the strict relation $>0$, the answer would instead be $(-3,1)\\cup(1,4)$."
+    },
+    {
+      "title": "Nonmonic factors create fractional boundaries",
+      "prompt": "Solve $(2x+3)(3x-2)<0$.",
+      "steps": [
+        {
+          "math": "2x+3=0\\Rightarrow x=-3/2,\\qquad3x-2=0\\Rightarrow x=2/3",
+          "reason": "Solve each linear factor rather than reading its constant as a root."
+        },
+        {
+          "math": "f(-2)=8>0,\\quad f(0)=-6<0,\\quad f(1)=5>0",
+          "reason": "The product is negative only in the middle interval."
+        },
+        {
+          "math": "(-3/2,2/3)",
+          "reason": "The strict relation excludes both endpoints."
+        }
+      ],
+      "conclusion": "Both fractional endpoints remain exact."
+    },
+    {
+      "title": "Use exact radical endpoints",
+      "prompt": "Solve $x^2-2\\le0$.",
+      "steps": [
+        {
+          "math": "x^2-2=(x-\\sqrt2)(x+\\sqrt2)",
+          "reason": "The two real boundaries are irrational, but can be written exactly."
+        },
+        {
+          "math": "f(-2)=2>0,\\quad f(0)=-2<0,\\quad f(2)=2>0",
+          "reason": "Only the middle interval has the required negative sign."
+        },
+        {
+          "math": "[-\\sqrt2,\\sqrt2]",
+          "reason": "Include the two allowed zeros because equality is permitted."
+        }
+      ],
+      "conclusion": "Enter [-sqrt(2),sqrt(2)], not an interval with rounded decimal boundaries."
+    },
+    {
+      "title": "Separate a numerator zero from a denominator zero",
+      "prompt": "Solve $(x-2)/(x+1)\\ge0$.",
+      "steps": [
+        {
+          "math": "x\\ne-1,\\qquad x-2=0\\Rightarrow x=2",
+          "reason": "The left boundary is excluded; the right boundary is an allowed zero."
+        },
+        {
+          "math": "f(-2)=4>0,\\quad f(0)=-2<0,\\quad f(3)=1/4>0",
+          "reason": "Equal numerator and denominator signs give positive quotient intervals."
+        },
+        {
+          "math": "(-\\infty,-1)\\cup[2,\\infty)",
+          "reason": "Exclude -1 but include 2."
+        }
+      ],
+      "conclusion": "A non-strict relation does not make the denominator boundary closed."
+    },
+    {
+      "title": "A rational inequality can also have an isolated zero",
+      "prompt": "Solve $(x-1)^2/(x+2)\\le0$.",
+      "steps": [
+        {
+          "math": "x\\ne-2,\\qquad x=1\\text{ is a double numerator zero}",
+          "reason": "The numerator is positive away from 1; the denominator supplies the sign."
+        },
+        {
+          "math": "f(-3)=-16<0,\\quad f(0)=1/2>0,\\quad f(2)=1/4>0",
+          "reason": "Only the interval left of -2 has negative outputs."
+        },
+        {
+          "math": "(-\\infty,-2)\\cup[1,1]",
+          "reason": "The allowed zero at 1 is a separate solution; the pole at -2 is excluded."
+        }
+      ],
+      "conclusion": "Both the isolated point and the open pole boundary are necessary."
+    },
+    {
+      "title": "An even pole need not reverse a sign",
+      "prompt": "Solve $-2/(x-1)^2<0$.",
+      "steps": [
+        {
+          "math": "(x-1)^2>0\\quad\\text{for }x\\ne1",
+          "reason": "The denominator is positive on both allowed intervals."
+        },
+        {
+          "math": "\\frac{-2}{(x-1)^2}<0\\quad\\text{for }x\\ne1",
+          "reason": "The negative numerator makes every allowed output negative."
+        },
+        {
+          "math": "(-\\infty,1)\\cup(1,\\infty)",
+          "reason": "Both intervals qualify, but the pole separates them."
+        }
+      ],
+      "conclusion": "Alternating signs at every critical value would misclassify one entire interval."
+    },
+    {
+      "title": "A canceled hole can still separate different signs",
+      "prompt": "Solve $(x-1)^2/[(x-1)(x+2)]\\ge0$.",
+      "steps": [
+        {
+          "math": "x\\ne1,-2,\\qquad \\frac{(x-1)^2}{(x-1)(x+2)}=\\frac{x-1}{x+2}",
+          "reason": "The equality of formulas holds only on the original domain."
+        },
+        {
+          "math": "f(-3)=4>0,\\quad f(0)=-1/2<0,\\quad f(2)=1/4>0",
+          "reason": "The effective first power at the hole changes the nearby sign."
+        },
+        {
+          "math": "(-\\infty,-2)\\cup(1,\\infty)",
+          "reason": "Both critical inputs came from the original denominator and remain open."
+        }
+      ],
+      "conclusion": "Using [1,inf) would incorrectly fill the original hole."
+    },
+    {
+      "title": "Move a nonzero comparison value first",
+      "prompt": "Solve $(x+1)/(x-1)>1$.",
+      "steps": [
+        {
+          "math": "\\frac{x+1}{x-1}-1=\\frac{(x+1)-(x-1)}{x-1}=\\frac2{x-1}",
+          "reason": "Subtract the whole denominator in the combined numerator. Retain x different from 1."
+        },
+        {
+          "math": "\\frac2{x-1}>0\\iff x-1>0",
+          "reason": "Here the numerator is a known positive constant, so the quotient is positive exactly where the denominator is positive."
+        },
+        {
+          "math": "(1,\\infty)",
+          "reason": "There is no allowed numerator zero in this comparison."
+        }
+      ],
+      "conclusion": "Partitioning at -1 from the old numerator would analyze the wrong comparison."
+    },
+    {
+      "title": "Order rational poles among irrational zeros",
+      "prompt": "Solve $(x^2+1)/(x^2-1)\\le2$.",
+      "steps": [
+        {
+          "math": "\\frac{x^2+1}{x^2-1}-2=\\frac{3-x^2}{x^2-1},\\qquad x\\ne-1,1",
+          "reason": "The new numerator zeros are plus and minus square root of 3."
+        },
+        {
+          "math": "-\\sqrt3<-1<1<\\sqrt3",
+          "reason": "This exact ordering gives five open intervals."
+        },
+        {
+          "math": "h(-2)=-1/3,\\ h(-3/2)=3/5,\\ h(0)=-3,\\ h(3/2)=3/5,\\ h(2)=-1/3",
+          "reason": "Choose the negative intervals for the comparison less than or equal to zero."
+        },
+        {
+          "math": "(-\\infty,-\\sqrt3]\\cup(-1,1)\\cup[\\sqrt3,\\infty)",
+          "reason": "Include numerator zeros and exclude both original poles."
+        }
+      ],
+      "conclusion": "The middle interval is part of the solution even though the two outside intervals also qualify."
+    },
+    {
+      "title": "A zero numerator retains the original domain",
+      "prompt": "Solve $0/(x^2-1)\\ge0$ and compare it with the strict relation $>0$.",
+      "steps": [
+        {
+          "math": "x^2-1=(x-1)(x+1),\\qquad x\\ne-1,1",
+          "reason": "The domain excludes both denominator zeros before the output is evaluated."
+        },
+        {
+          "math": "\\frac0{x^2-1}=0\\quad\\text{at every allowed input}",
+          "reason": "Every allowed input satisfies the non-strict comparison and none satisfies the strict comparison."
+        },
+        {
+          "math": "(-\\infty,-1)\\cup(-1,1)\\cup(1,\\infty)\\quad\\text{for }\\ge0;\\qquad\\varnothing\\quad\\text{for }>0",
+          "reason": "List only the denominator zeros as partition boundaries; the zero numerator is not a finite root set."
+        }
+      ],
+      "conclusion": "Neither version assigns a value to 0/0 at an excluded input."
+    },
+    {
+      "title": "No real zeros still gives a definite answer",
+      "prompt": "Solve $x^2+4<0$, $x^2+4\\ge0$, and $-3\\le0$.",
+      "steps": [
+        {
+          "math": "x^2\\ge0\\Rightarrow x^2+4\\ge4>0",
+          "reason": "The positive quadratic has no real zeros and stays positive."
+        },
+        {
+          "math": "\\{x:x^2+4<0\\}=\\varnothing,\\qquad\\{x:x^2+4\\ge0\\}=\\mathbb R",
+          "reason": "A missing boundary does not mean the sign question is unanswered."
+        },
+        {
+          "math": "-3\\le0\\text{ is true for every real }x",
+          "reason": "A constant comparison also has a truth set, even though x does not appear."
+        }
+      ],
+      "conclusion": "Enter empty for the first solution and (-inf,inf) for either of the other two."
+    },
+    {
+      "title": "Disprove an unknown-sign multiplication, then repair it",
+      "prompt": "A learner replaces $(x+2)/(x-3)>0$ with $x+2>0$. Audit and solve.",
+      "steps": [
+        {
+          "math": "x=0:\\qquad\\frac{0+2}{0-3}=-2/3<0,\\qquad0+2>0",
+          "reason": "The proposed condition accepts an input that the original rejects."
+        },
+        {
+          "math": "x<3:\\quad x+2<0\\Rightarrow x<-2",
+          "reason": "On the negative-denominator branch, reverse the relation and retain the branch restriction."
+        },
+        {
+          "math": "x>3:\\quad x+2>0\\Rightarrow x>3",
+          "reason": "On the positive-denominator branch, keep the relation and intersect with x greater than 3."
+        },
+        {
+          "math": "(-\\infty,-2)\\cup(3,\\infty)",
+          "reason": "Combine the two branch solutions, retaining open endpoints for this strict comparison."
+        }
+      ],
+      "conclusion": "The sign of the multiplier, not the visual act of crossing a fraction bar, determines the relation direction."
+    },
+    {
+      "title": "A positive square is safe only on the original domain",
+      "prompt": "Solve $(x+2)/(x-3)\\ge0$ by multiplying by $(x-3)^2$.",
+      "steps": [
+        {
+          "math": "x\\ne3\\Rightarrow(x-3)^2>0",
+          "reason": "The multiplier is strictly positive at every input where the original expression is defined."
+        },
+        {
+          "math": "(x+2)(x-3)\\ge0,\\qquad x\\ne3",
+          "reason": "One denominator copy cancels; the original exclusion remains a separate condition."
+        },
+        {
+          "math": "\\bigl((-\\infty,-2]\\cup[3,\\infty)\\bigr)\\setminus\\{3\\}=(-\\infty,-2]\\cup(3,\\infty)",
+          "reason": "The transformed polynomial accepts 3, but that input is not part of the original problem."
+        }
+      ],
+      "conclusion": "Multiplication by a denominator square preserves the solution only with the original domain attached."
+    },
+    {
+      "title": "Restrict a calibration response to a time window",
+      "prompt": "For $R(t)=3(t-2)/(t-5)$ on $0\\le t\\le8$ seconds, find all times with $R(t)\\ge0$.",
+      "steps": [
+        {
+          "math": "R(0)=6/5>0,\\quad R(3)=-3/2<0,\\quad R(6)=12>0",
+          "reason": "Test the intervals separated by the numerator zero 2 and the excluded time 5."
+        },
+        {
+          "math": "(-\\infty,2]\\cup(5,\\infty)",
+          "reason": "This is the unrestricted mathematical solution."
+        },
+        {
+          "math": "\\bigl((-\\infty,2]\\cup(5,\\infty)\\bigr)\\cap[0,8]=[0,2]\\cup(5,8]",
+          "reason": "Intersect with the supplied closed window, keeping the missing time excluded."
+        }
+      ],
+      "conclusion": "The allowed times are [0,2] U (5,8] seconds."
+    },
+    {
+      "title": "A positive factor contributes no real boundary",
+      "prompt": "Solve $(x+1)(x-3)(x^2+4)<0$.",
+      "steps": [
+        {
+          "math": "x^2+4>0\\quad\\text{for every real }x",
+          "reason": "This factor changes output magnitudes but never reverses the sign."
+        },
+        {
+          "math": "(x+1)(x-3)<0",
+          "reason": "Dividing by the known positive factor is reversible over the whole real domain."
+        },
+        {
+          "math": "(-1,3)",
+          "reason": "The two linear factors have opposite signs exactly between their zeros."
+        }
+      ],
+      "conclusion": "Do not invent real critical inputs for a strictly positive quadratic factor."
+    }
+  ],
+  "guided": {
+    "title": "Keep a hole while assembling a complete sign chart",
+    "setup": "Solve $\\frac{(x-1)^2(x+2)}{(x-1)(x-3)}\\ge0$. The original expression has both a canceled factor and a remaining pole.",
+    "before": [
+      "The original denominator excludes 1 and 3. Away from those inputs, the quotient equals $(x-1)(x+2)/(x-3)$.",
+      "The distinct critical inputs are -2, 1, and 3. Test -3, 0, 2, and 4 in the four open intervals.",
+      "Their comparison outputs are -2/3, 2/3, -4, and 18, respectively. Use those signs, then decide the boundaries from the original expression."
+    ],
+    "question": {
+      "id": "guided-sign-chart",
+      "familyId": "mth-guided-sign-chart",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m04-l02",
+      "category": "procedural",
+      "critical": false,
+      "prompt": "Give the complete solution, retain all original exclusions, and decide whether the canceled input belongs.",
+      "fields": [
+        {
+          "id": "solution",
+          "label": "Complete inequality solution",
+          "kind": "intervals",
+          "expected": [
+            {
+              "lower": "-2",
+              "upper": "1",
+              "lowerClosed": true,
+              "upperClosed": false
+            },
+            {
+              "lower": "3",
+              "upper": null,
+              "lowerClosed": false,
+              "upperClosed": false
+            }
+          ],
+          "help": "Use U between intervals, inf for the unbounded end, and brackets only at included endpoints."
+        },
+        {
+          "id": "critical",
+          "label": "All distinct critical inputs",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "-2",
+            "1",
+            "3"
+          ]
+        },
+        {
+          "id": "excluded",
+          "label": "All original excluded inputs",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "1",
+            "3"
+          ]
+        },
+        {
+          "id": "hole",
+          "label": "Include the canceled input x = 1?",
+          "kind": "choice",
+          "correct": "no",
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes",
+              "feedback": "The original denominator is zero at 1, so cancellation does not restore this input."
+            },
+            {
+              "id": "no",
+              "label": "No",
+              "feedback": "The hole remains excluded even though the reduced numerator is zero there."
+            }
+          ]
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "The positive open intervals lie between -2 and 1, and to the right of 3.",
+        "The original function is defined and zero at -2. It is undefined at both 1 and 3.",
+        "Close the endpoint at -2, keep 1 and 3 open, and join the two qualifying intervals with U."
+      ],
+      "explanation": [
+        "The interval signs from left to right are negative, positive, negative, positive.",
+        "The allowed zero -2 is included by the non-strict relation. The original denominator excludes 1 and 3.",
+        "The complete solution is [-2,1) U (3,inf)."
+      ],
+      "answerSummary": "[-2,1) U (3,inf); critical inputs -2,1,3; exclude 1,3; do not include the hole."
+    },
+    "after": "This guided work supports learning. Demonstrate the objective with a fresh independent checkpoint that checks solution sets, endpoints, and valid transformations."
+  },
+  "interaction": {
+    "kind": "sign-chart-lab",
+    "prompt": "Build a complete sign chart before revealing its number line. For each case, predict the critical inputs, choose and test an interior point in every interval, decide all endpoints, and enter the full solution. Then change the relation and explain what changes.",
+    "cases": [
+      {
+        "right": "0",
+        "title": "Repeated zero and an isolated solution",
+        "expression": "(x+2)*(x-1)^2",
+        "relation": "le"
+      },
+      {
+        "right": "0",
+        "title": "One numerator zero and one pole",
+        "expression": "(x-2)/(x+1)",
+        "relation": "ge"
+      },
+      {
+        "right": "0",
+        "title": "A canceled hole that changes sign",
+        "expression": "((x-1)^2)/((x-1)*(x+2))",
+        "relation": "ge"
+      },
+      {
+        "right": "0",
+        "title": "An even pole with negative outputs",
+        "expression": "-2/((x-1)^2)",
+        "relation": "lt"
+      },
+      {
+        "right": "0",
+        "title": "Exact irrational boundaries",
+        "expression": "x^2-2",
+        "relation": "le"
+      },
+      {
+        "right": "1",
+        "title": "A nonzero comparison value",
+        "expression": "(x+1)/(x-1)",
+        "relation": "gt"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "repeated"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "quartic"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "fractional"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "irrational"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "positive-factor"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "isolated-zero"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "no-real-zeros"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "constant"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "zero"
+    },
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "nonzero-right"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "simple"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "repeated-numerator"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "repeated-denominator"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "canceled-hole"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "even-hole"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "four-boundaries"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "nonzero-right"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "irrational"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "zero"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "positive-denominator"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "nonmonic"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "zero"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "pole"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "hole"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "partial-pole"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "isolated-zero"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "irrational-zero"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "crossing-hole"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "unknown-sign"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "negative-branch"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "positive-branch"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "safe-square"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "restored-pole"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "nonzero-right"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "model-domain"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-polynomial-inequality",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-rational-inequality",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-sign-boundary",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-sign-audit",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "Move all terms to one side before finding zeros, and retain every original domain exclusion.",
+    "Partition at every distinct real comparison-numerator zero and original denominator zero.",
+    "One interior test input establishes the sign on an interval once all critical inputs have been found.",
+    "Odd and even multiplicities affect sign changes; allowed zeros and excluded inputs have different endpoint rules.",
+    "Non-strict relations include allowed zeros, even isolated ones, but never include original denominator zeros.",
+    "Use exact endpoints, preserve holes between intervals, and intersect model solutions with the stated input domain.",
+    "Multiplication by an unknown-sign expression requires branches. A positive denominator square is reversible only on the retained original domain."
+  ],
+  "retrieval": "Without notes, solve (x+2)(x-1)^2 <= 0 and explain the isolated solution. Then solve (x-2)/(x+1) >= 0 and explain why its two boundary decisions differ. Change each relation to strict, and give a counterexample to multiplying a rational inequality by its denominator without checking the sign.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 5.3: Graphs of Polynomial Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-3-graphs-of-polynomial-functions",
+      "purpose": "Review how real zeros and their multiplicities organize polynomial sign behavior."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 5.6: Rational Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-6-rational-functions",
+      "purpose": "Revisit original domains, holes, and poles before making rational-inequality endpoint decisions."
+    },
+    {
+      "title": "OpenStax Intermediate Algebra 2e, 9.8: Solve Quadratic Inequalities",
+      "url": "https://openstax.org/books/intermediate-algebra-2e/pages/9-8-solve-quadratic-inequalities",
+      "purpose": "Compare interval testing, graph interpretation, and strict versus non-strict quadratic solutions."
+    }
+  ]
+}

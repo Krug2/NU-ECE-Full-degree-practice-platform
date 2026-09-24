@@ -39,9 +39,15 @@ import { polynomialZeroFamilyIds,polynomialZeroQuestion } from "./families/mth-p
 import { polynomialSignFamilyIds,polynomialSignQuestion } from "./families/mth-polynomial-signs";
 import { divisionFamilyIds,divisionQuestion } from "./families/mth-division";
 import { divisionReasoningFamilyIds,divisionReasoningQuestion } from "./families/mth-division-reasoning";
+import { rootSearchFamilyIds,rootSearchQuestion } from "./families/mth-root-search";
+import { rootCompletionFamilyIds,rootCompletionQuestion } from "./families/mth-root-completion";
+import { rationalGraphFamilyIds,rationalGraphQuestion } from "./families/mth-rational-graphs";
+import { rationalBehaviorFamilyIds,rationalBehaviorQuestion } from "./families/mth-rational-behavior";
+import { signSolutionFamilyIds,signSolutionQuestion } from "./families/mth-sign-solutions";
+import { signReasoningFamilyIds,signReasoningQuestion } from "./families/mth-sign-reasoning";
 
 const generators=new Map<string,typeof linearQuestion>();
-for(const [ids,generate] of [[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion]] as const){
+for(const [ids,generate] of [[signSolutionFamilyIds,signSolutionQuestion],[signReasoningFamilyIds,signReasoningQuestion],[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion],[rootSearchFamilyIds,rootSearchQuestion],[rootCompletionFamilyIds,rootCompletionQuestion],[rationalGraphFamilyIds,rationalGraphQuestion],[rationalBehaviorFamilyIds,rationalBehaviorQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
 for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion],[polynomialZeroFamilyIds,polynomialZeroQuestion],[polynomialSignFamilyIds,polynomialSignQuestion],[phs231MeasurementFamilyIds,phs231MeasurementQuestion],[phs231VectorFamilyIds,phs231VectorQuestion],[phs231MotionFamilyIds,phs231MotionQuestion],[phs231FrameFamilyIds,phs231FrameQuestion],[phs231ProjectileFamilyIds,phs231ProjectileQuestion],[phs231ForceFamilyIds,phs231ForceQuestion],[phs231FrictionFamilyIds,phs231FrictionQuestion],[phs231DragFamilyIds,phs231DragQuestion],[phs231CircularFamilyIds,phs231CircularQuestion],[phs231GravityFamilyIds,phs231GravityQuestion],[phs231WorkFamilyIds,phs231WorkQuestion],[phs231EnergyFamilyIds,phs231EnergyQuestion],[phs231ImpulseFamilyIds,phs231ImpulseQuestion],[phs231CollisionFamilyIds,phs231CollisionQuestion]] as const){
