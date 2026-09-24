@@ -87,6 +87,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("refresher-programming-lab"),mode:z.enum(["state","loop","function","debug"]),prompt:text}).strict(),
     z.object({kind:z.literal("refresher-complex-lab"),mode:z.enum(["arithmetic","conjugate","polar","roots"]),prompt:text}).strict(),
     z.object({kind:z.literal("refresher-calculus-lab"),mode:z.enum(["limit","secant","chain","accumulation","initial"]),prompt:text}).strict(),
     z.object({kind:z.literal("refresher-vector-lab"),mode:z.enum(["components","addition","dot","cross","coordinates"]),prompt:text}).strict(),
