@@ -46,6 +46,7 @@ import { logRewriteLabCaseSchema } from "./log-rewrite-investigation";
 import { formatLogarithmicIntervals } from "./logarithmic-intervals";
 import { modelLabCaseSchema } from "./model-investigation";
 import { parsePiNumber } from "./pi-number";
+import { rotationLabCaseSchema } from "./rotation-investigation";
 import { phs232HarmonicActivitySchema } from "./phs-232-harmonic";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
@@ -154,6 +155,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("rotation-lab"),prompt:text,cases:z.array(rotationLabCaseSchema).min(3).max(6)}).strict(),
     phs232HarmonicActivitySchema,
     z.object({kind:z.literal("model-lab"),prompt:text,cases:z.array(modelLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("log-rewrite-lab"),prompt:text,cases:z.array(logRewriteLabCaseSchema).min(3).max(6)}).strict(),

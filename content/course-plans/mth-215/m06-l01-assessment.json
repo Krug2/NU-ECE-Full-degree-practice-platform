@@ -1,8 +1,8 @@
 {
   "courseId": "mth-215",
   "lessonId": "m06-l01",
-  "status": "assessment draft",
-  "lessonAvailable": false,
+  "status": "implemented and verified",
+  "lessonAvailable": true,
   "objective": "Convert degree and radian measures, identify coterminal angles, and calculate an arc length with consistent units.",
   "families": {
     "mth-angle-measure": [
@@ -84,5 +84,23 @@
     "All named practice variants and mixed critical checkpoints",
     "Coverage, retrieval, accessibility, mobile, keyboard and persistence verification"
   ],
+  "delivery": {
+    "checkedAt": "2026-09-24",
+    "instructionSections": 22,
+    "workedExamples": 44,
+    "guidedFields": 8,
+    "investigationCases": 6,
+    "practiceVariants": 38,
+    "checkpointFamilies": 4,
+    "verification": [
+      "Exact pi arithmetic, certified angle ordering, unit conversions, circular measures and motion checks passed",
+      "Every planned practice variant checked across varied seeds using independent answer reconstructions",
+      "Lesson schema, all authored mathematics, guided answers, six investigation cases and coverage mappings passed",
+      "Full unit suite passed with 1936 tests across 216 files; lint, types and the production build passed",
+      "Four lesson browser journeys verified guided feedback, stale-result clearing, keyboard controls, mobile accessibility, notes, practice, critical checkpoints and backup restoration",
+      "Diagram accessible name and description separated; the affected six-case accessibility journey repeated successfully and its mobile screenshot inspected"
+    ],
+    "courseStatus": "building"
+  },
   "independentSubjectReview": "not yet performed"
 }
