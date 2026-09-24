@@ -1,0 +1,1309 @@
+{
+  "courseId": "phs-232",
+  "version": 1,
+  "checkedAt": "2026-09-24",
+  "usage": "Outbound primary-source readings supplement original course instruction. No external assessment or paid account is required.",
+  "method": "Provider chapter indexes supply section URLs; each selected public page was retrieved with HTTP GET and its title checked. Topic relevance is mapped in modules.json. This is availability verification, not independent subject review.",
+  "resources": [
+    {
+      "id": "mit-coupled",
+      "title": "Lecture 4: Coupled Oscillators, Normal Modes",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-4/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-4/",
+      "pageTitle": "Lecture 4: Coupled Oscillators, Normal Modes | Physics III: Vibrations and Waves | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l02"
+      ]
+    },
+    {
+      "id": "mit-damping",
+      "title": "Lecture 2: Damped Free Oscillators",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-2/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-2/",
+      "pageTitle": "Lecture 2: Damped Free Oscillators | Physics III: Vibrations and Waves | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l03"
+      ]
+    },
+    {
+      "id": "mit-driving",
+      "title": "Lecture 3: Driven Oscillators, Transient Phenomena, Resonance",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-3/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-3/",
+      "pageTitle": "Lecture 3: Driven Oscillators, Transient Phenomena, Resonance | Physics III: Vibrations and Waves | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l04"
+      ]
+    },
+    {
+      "id": "mit-em-readings",
+      "title": "Electricity and Magnetism: Readings",
+      "url": "https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/pages/readings/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/pages/readings/",
+      "pageTitle": "Readings | Physics II: Electricity and Magnetism | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l02",
+        "m04-l03",
+        "m05-l03",
+        "m08-l03",
+        "m09-l01",
+        "m10-l01",
+        "m10-l02"
+      ]
+    },
+    {
+      "id": "mit-em-waves",
+      "title": "Lecture 12: Maxwell's Equation, Electromagnetic Waves",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-ii-electromagnetic-waves/lecture-12/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-ii-electromagnetic-waves/lecture-12/",
+      "pageTitle": "Lecture 12: Maxwell's Equation, Electromagnetic Waves | Physics III: Vibrations and Waves | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l02"
+      ]
+    },
+    {
+      "id": "mit-oscillations",
+      "title": "Lecture 1: Periodic Oscillations, Harmonic Oscillators",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-1/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-1/",
+      "pageTitle": "Lecture 1: Periodic Oscillations, Harmonic Oscillators | Physics III: Vibrations and Waves | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l01"
+      ]
+    },
+    {
+      "id": "mit-polarization",
+      "title": "Lecture 17: Polarization, Polarizer",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-iii-optics/lecture-17/",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-iii-optics/lecture-17/",
+      "pageTitle": "Lecture 17: Polarization, Polarizer | Physics III: Vibrations and Waves | Physics | MIT OpenCourseWare",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l03"
+      ]
+    },
+    {
+      "id": "v1-15.1",
+      "title": "15.1 Simple Harmonic Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-1-simple-harmonic-motion",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-1-simple-harmonic-motion",
+      "pageTitle": "15.1 Simple Harmonic Motion - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l01"
+      ]
+    },
+    {
+      "id": "v1-15.2",
+      "title": "15.2 Energy in Simple Harmonic Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-2-energy-in-simple-harmonic-motion",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-2-energy-in-simple-harmonic-motion",
+      "pageTitle": "15.2 Energy in Simple Harmonic Motion - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l02"
+      ]
+    },
+    {
+      "id": "v1-15.3",
+      "title": "15.3 Comparing Simple Harmonic Motion and Circular Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-3-comparing-simple-harmonic-motion-and-circular-motion",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-3-comparing-simple-harmonic-motion-and-circular-motion",
+      "pageTitle": "15.3 Comparing Simple Harmonic Motion and Circular Motion - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l01"
+      ]
+    },
+    {
+      "id": "v1-15.4",
+      "title": "15.4 Pendulums",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums",
+      "pageTitle": "15.4 Pendulums - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l02"
+      ]
+    },
+    {
+      "id": "v1-15.5",
+      "title": "15.5 Damped Oscillations",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations",
+      "pageTitle": "15.5 Damped Oscillations - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l03"
+      ]
+    },
+    {
+      "id": "v1-15.6",
+      "title": "15.6 Forced Oscillations",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations",
+      "pageTitle": "15.6 Forced Oscillations - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m01-l04"
+      ]
+    },
+    {
+      "id": "v1-16.1",
+      "title": "16.1 Traveling Waves",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves",
+      "pageTitle": "16.1 Traveling Waves - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l01"
+      ]
+    },
+    {
+      "id": "v1-16.2",
+      "title": "16.2 Mathematics of Waves",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves",
+      "pageTitle": "16.2 Mathematics of Waves - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l01"
+      ]
+    },
+    {
+      "id": "v1-16.3",
+      "title": "16.3 Wave Speed on a Stretched String",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-3-wave-speed-on-a-stretched-string",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-3-wave-speed-on-a-stretched-string",
+      "pageTitle": "16.3 Wave Speed on a Stretched String - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l01"
+      ]
+    },
+    {
+      "id": "v1-16.4",
+      "title": "16.4 Energy and Power of a Wave",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-4-energy-and-power-of-a-wave",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-4-energy-and-power-of-a-wave",
+      "pageTitle": "16.4 Energy and Power of a Wave - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l01"
+      ]
+    },
+    {
+      "id": "v1-16.5",
+      "title": "16.5 Interference of Waves",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves",
+      "pageTitle": "16.5 Interference of Waves - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l02"
+      ]
+    },
+    {
+      "id": "v1-16.6",
+      "title": "16.6 Standing Waves and Resonance",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance",
+      "pageTitle": "16.6 Standing Waves and Resonance - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l02"
+      ]
+    },
+    {
+      "id": "v1-17.1",
+      "title": "17.1 Sound Waves",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-1-sound-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-1-sound-waves",
+      "pageTitle": "17.1 Sound Waves - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l03"
+      ]
+    },
+    {
+      "id": "v1-17.3",
+      "title": "17.3 Sound Intensity",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-3-sound-intensity",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-3-sound-intensity",
+      "pageTitle": "17.3 Sound Intensity - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l03"
+      ]
+    },
+    {
+      "id": "v1-17.4",
+      "title": "17.4 Normal Modes of a Standing Sound Wave",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-4-normal-modes-of-a-standing-sound-wave",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-4-normal-modes-of-a-standing-sound-wave",
+      "pageTitle": "17.4 Normal Modes of a Standing Sound Wave - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l03"
+      ]
+    },
+    {
+      "id": "v1-17.6",
+      "title": "17.6 Beats",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-6-beats",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-6-beats",
+      "pageTitle": "17.6 Beats - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l03"
+      ]
+    },
+    {
+      "id": "v1-17.7",
+      "title": "17.7 The Doppler Effect",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-7-the-doppler-effect",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-7-the-doppler-effect",
+      "pageTitle": "17.7 The Doppler Effect - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l03"
+      ]
+    },
+    {
+      "id": "v1-17.8",
+      "title": "17.8 Shock Waves",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-8-shock-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-8-shock-waves",
+      "pageTitle": "17.8 Shock Waves - University Physics Volume 1 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m02-l03"
+      ]
+    },
+    {
+      "id": "v2-5.1",
+      "title": "5.1 Electric Charge",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-1-electric-charge",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-1-electric-charge",
+      "pageTitle": "5.1 Electric Charge - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l01"
+      ]
+    },
+    {
+      "id": "v2-5.2",
+      "title": "5.2 Conductors, Insulators, and Charging by Induction",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction",
+      "pageTitle": "5.2 Conductors, Insulators, and Charging by Induction - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l01"
+      ]
+    },
+    {
+      "id": "v2-5.3",
+      "title": "5.3 Coulomb's Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-3-coulombs-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-3-coulombs-law",
+      "pageTitle": "5.3 Coulomb's Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l01"
+      ]
+    },
+    {
+      "id": "v2-5.4",
+      "title": "5.4 Electric Field",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+      "pageTitle": "5.4 Electric Field - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l01"
+      ]
+    },
+    {
+      "id": "v2-5.5",
+      "title": "5.5 Calculating Electric Fields of Charge Distributions",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-5-calculating-electric-fields-of-charge-distributions",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-5-calculating-electric-fields-of-charge-distributions",
+      "pageTitle": "5.5 Calculating Electric Fields of Charge Distributions - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l02",
+        "m10-l01"
+      ]
+    },
+    {
+      "id": "v2-5.7",
+      "title": "5.7 Electric Dipoles",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-7-electric-dipoles",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-7-electric-dipoles",
+      "pageTitle": "5.7 Electric Dipoles - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l01"
+      ]
+    },
+    {
+      "id": "v2-6.1",
+      "title": "6.1 Electric Flux",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/6-1-electric-flux",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/6-1-electric-flux",
+      "pageTitle": "6.1 Electric Flux - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l03"
+      ]
+    },
+    {
+      "id": "v2-6.2",
+      "title": "6.2 Explaining Gauss’s Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/6-2-explaining-gausss-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/6-2-explaining-gausss-law",
+      "pageTitle": "6.2 Explaining Gauss’s Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l03"
+      ]
+    },
+    {
+      "id": "v2-6.3",
+      "title": "6.3 Applying Gauss’s Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/6-3-applying-gausss-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/6-3-applying-gausss-law",
+      "pageTitle": "6.3 Applying Gauss’s Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l03"
+      ]
+    },
+    {
+      "id": "v2-6.4",
+      "title": "6.4 Conductors in Electrostatic Equilibrium",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/6-4-conductors-in-electrostatic-equilibrium",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/6-4-conductors-in-electrostatic-equilibrium",
+      "pageTitle": "6.4 Conductors in Electrostatic Equilibrium - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l04"
+      ]
+    },
+    {
+      "id": "v2-7.1",
+      "title": "7.1 Electric Potential Energy",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-1-electric-potential-energy",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/7-1-electric-potential-energy",
+      "pageTitle": "7.1 Electric Potential Energy - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l01"
+      ]
+    },
+    {
+      "id": "v2-7.2",
+      "title": "7.2 Electric Potential and Potential Difference",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-2-electric-potential-and-potential-difference",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/7-2-electric-potential-and-potential-difference",
+      "pageTitle": "7.2 Electric Potential and Potential Difference - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l01"
+      ]
+    },
+    {
+      "id": "v2-7.3",
+      "title": "7.3 Calculations of Electric Potential",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-3-calculations-of-electric-potential",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/7-3-calculations-of-electric-potential",
+      "pageTitle": "7.3 Calculations of Electric Potential - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l01"
+      ]
+    },
+    {
+      "id": "v2-7.4",
+      "title": "7.4 Determining Field from Potential",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-4-determining-field-from-potential",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/7-4-determining-field-from-potential",
+      "pageTitle": "7.4 Determining Field from Potential - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l01",
+        "m10-l01"
+      ]
+    },
+    {
+      "id": "v2-7.5",
+      "title": "7.5 Equipotential Surfaces and Conductors",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/7-5-equipotential-surfaces-and-conductors",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/7-5-equipotential-surfaces-and-conductors",
+      "pageTitle": "7.5 Equipotential Surfaces and Conductors - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m03-l04"
+      ]
+    },
+    {
+      "id": "v2-8.1",
+      "title": "8.1 Capacitors and Capacitance",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance",
+      "pageTitle": "8.1 Capacitors and Capacitance - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l02"
+      ]
+    },
+    {
+      "id": "v2-8.2",
+      "title": "8.2 Capacitors in Series and in Parallel",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-2-capacitors-in-series-and-in-parallel",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/8-2-capacitors-in-series-and-in-parallel",
+      "pageTitle": "8.2 Capacitors in Series and in Parallel - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l02"
+      ]
+    },
+    {
+      "id": "v2-8.3",
+      "title": "8.3 Energy Stored in a Capacitor",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor",
+      "pageTitle": "8.3 Energy Stored in a Capacitor - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l02"
+      ]
+    },
+    {
+      "id": "v2-8.4",
+      "title": "8.4 Capacitor with a Dielectric",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric",
+      "pageTitle": "8.4 Capacitor with a Dielectric - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l03"
+      ]
+    },
+    {
+      "id": "v2-8.5",
+      "title": "8.5 Molecular Model of a Dielectric",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-5-molecular-model-of-a-dielectric",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/8-5-molecular-model-of-a-dielectric",
+      "pageTitle": "8.5 Molecular Model of a Dielectric - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m04-l03"
+      ]
+    },
+    {
+      "id": "v2-9.1",
+      "title": "9.1 Electrical Current",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-1-electrical-current",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/9-1-electrical-current",
+      "pageTitle": "9.1 Electrical Current - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l01"
+      ]
+    },
+    {
+      "id": "v2-9.2",
+      "title": "9.2 Model of Conduction in Metals",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-2-model-of-conduction-in-metals",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/9-2-model-of-conduction-in-metals",
+      "pageTitle": "9.2 Model of Conduction in Metals - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l01"
+      ]
+    },
+    {
+      "id": "v2-9.3",
+      "title": "9.3 Resistivity and Resistance",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance",
+      "pageTitle": "9.3 Resistivity and Resistance - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l01"
+      ]
+    },
+    {
+      "id": "v2-9.4",
+      "title": "9.4 Ohm's Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-4-ohms-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/9-4-ohms-law",
+      "pageTitle": "9.4 Ohm's Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l01"
+      ]
+    },
+    {
+      "id": "v2-9.5",
+      "title": "9.5 Electrical Energy and Power",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power",
+      "pageTitle": "9.5 Electrical Energy and Power - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l01"
+      ]
+    },
+    {
+      "id": "v2-10.1",
+      "title": "10.1 Electromotive Force",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force",
+      "pageTitle": "10.1 Electromotive Force - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l02"
+      ]
+    },
+    {
+      "id": "v2-10.2",
+      "title": "10.2 Resistors in Series and Parallel",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
+      "pageTitle": "10.2 Resistors in Series and Parallel - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l02"
+      ]
+    },
+    {
+      "id": "v2-10.3",
+      "title": "10.3 Kirchhoff's Rules",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules",
+      "pageTitle": "10.3 Kirchhoff's Rules - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l02"
+      ]
+    },
+    {
+      "id": "v2-10.4",
+      "title": "10.4 Electrical Measuring Instruments",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/10-4-electrical-measuring-instruments",
+      "pageTitle": "10.4 Electrical Measuring Instruments - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l02"
+      ]
+    },
+    {
+      "id": "v2-10.5",
+      "title": "10.5 RC Circuits",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits",
+      "pageTitle": "10.5 RC Circuits - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m05-l03"
+      ]
+    },
+    {
+      "id": "v2-11.2",
+      "title": "11.2 Magnetic Fields and Lines",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-2-magnetic-fields-and-lines",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-2-magnetic-fields-and-lines",
+      "pageTitle": "11.2 Magnetic Fields and Lines - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l01"
+      ]
+    },
+    {
+      "id": "v2-11.3",
+      "title": "11.3 Motion of a Charged Particle in a Magnetic Field",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+      "pageTitle": "11.3 Motion of a Charged Particle in a Magnetic Field - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l01"
+      ]
+    },
+    {
+      "id": "v2-11.4",
+      "title": "11.4 Magnetic Force on a Current-Carrying Conductor",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-4-magnetic-force-on-a-current-carrying-conductor",
+      "pageTitle": "11.4 Magnetic Force on a Current-Carrying Conductor - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l02"
+      ]
+    },
+    {
+      "id": "v2-11.5",
+      "title": "11.5 Force and Torque on a Current Loop",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-5-force-and-torque-on-a-current-loop",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-5-force-and-torque-on-a-current-loop",
+      "pageTitle": "11.5 Force and Torque on a Current Loop - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l02"
+      ]
+    },
+    {
+      "id": "v2-11.6",
+      "title": "11.6 The Hall Effect",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-6-the-hall-effect",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-6-the-hall-effect",
+      "pageTitle": "11.6 The Hall Effect - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l01"
+      ]
+    },
+    {
+      "id": "v2-11.7",
+      "title": "11.7 Applications of Magnetic Forces and Fields",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-7-applications-of-magnetic-forces-and-fields",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-7-applications-of-magnetic-forces-and-fields",
+      "pageTitle": "11.7 Applications of Magnetic Forces and Fields - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l01"
+      ]
+    },
+    {
+      "id": "v2-12.1",
+      "title": "12.1 The Biot-Savart Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-1-the-biot-savart-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-1-the-biot-savart-law",
+      "pageTitle": "12.1 The Biot-Savart Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l03"
+      ]
+    },
+    {
+      "id": "v2-12.2",
+      "title": "12.2 Magnetic Field Due to a Thin Straight Wire",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-2-magnetic-field-due-to-a-thin-straight-wire",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-2-magnetic-field-due-to-a-thin-straight-wire",
+      "pageTitle": "12.2 Magnetic Field Due to a Thin Straight Wire - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l03"
+      ]
+    },
+    {
+      "id": "v2-12.3",
+      "title": "12.3 Magnetic Force between Two Parallel Currents",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-3-magnetic-force-between-two-parallel-currents",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-3-magnetic-force-between-two-parallel-currents",
+      "pageTitle": "12.3 Magnetic Force between Two Parallel Currents - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l02"
+      ]
+    },
+    {
+      "id": "v2-12.4",
+      "title": "12.4 Magnetic Field of a Current Loop",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-4-magnetic-field-of-a-current-loop",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-4-magnetic-field-of-a-current-loop",
+      "pageTitle": "12.4 Magnetic Field of a Current Loop - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l03"
+      ]
+    },
+    {
+      "id": "v2-12.5",
+      "title": "12.5 Ampère’s Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-5-amperes-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-5-amperes-law",
+      "pageTitle": "12.5 Ampère’s Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l03"
+      ]
+    },
+    {
+      "id": "v2-12.6",
+      "title": "12.6 Solenoids and Toroids",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-6-solenoids-and-toroids",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-6-solenoids-and-toroids",
+      "pageTitle": "12.6 Solenoids and Toroids - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l03"
+      ]
+    },
+    {
+      "id": "v2-12.7",
+      "title": "12.7 Magnetism in Matter",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/12-7-magnetism-in-matter",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/12-7-magnetism-in-matter",
+      "pageTitle": "12.7 Magnetism in Matter - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m06-l02"
+      ]
+    },
+    {
+      "id": "v2-13.1",
+      "title": "13.1 Faraday’s Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law",
+      "pageTitle": "13.1 Faraday’s Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l01"
+      ]
+    },
+    {
+      "id": "v2-13.2",
+      "title": "13.2 Lenz's Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-2-lenzs-law",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-2-lenzs-law",
+      "pageTitle": "13.2 Lenz's Law - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l01"
+      ]
+    },
+    {
+      "id": "v2-13.3",
+      "title": "13.3 Motional Emf",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-3-motional-emf",
+      "pageTitle": "13.3 Motional Emf - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l01"
+      ]
+    },
+    {
+      "id": "v2-13.4",
+      "title": "13.4 Induced Electric Fields",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-4-induced-electric-fields",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-4-induced-electric-fields",
+      "pageTitle": "13.4 Induced Electric Fields - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l01"
+      ]
+    },
+    {
+      "id": "v2-13.5",
+      "title": "13.5 Eddy Currents",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-5-eddy-currents",
+      "pageTitle": "13.5 Eddy Currents - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l01"
+      ]
+    },
+    {
+      "id": "v2-13.6",
+      "title": "13.6 Electric Generators and Back Emf",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-6-electric-generators-and-back-emf",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-6-electric-generators-and-back-emf",
+      "pageTitle": "13.6 Electric Generators and Back Emf - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l03"
+      ]
+    },
+    {
+      "id": "v2-13.7",
+      "title": "13.7 Applications of Electromagnetic Induction",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-7-applications-of-electromagnetic-induction",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-7-applications-of-electromagnetic-induction",
+      "pageTitle": "13.7 Applications of Electromagnetic Induction - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l03"
+      ]
+    },
+    {
+      "id": "v2-14.1",
+      "title": "14.1 Mutual Inductance",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-1-mutual-inductance",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/14-1-mutual-inductance",
+      "pageTitle": "14.1 Mutual Inductance - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l02"
+      ]
+    },
+    {
+      "id": "v2-14.2",
+      "title": "14.2 Self-Inductance and Inductors",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-2-self-inductance-and-inductors",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/14-2-self-inductance-and-inductors",
+      "pageTitle": "14.2 Self-Inductance and Inductors - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l02"
+      ]
+    },
+    {
+      "id": "v2-14.3",
+      "title": "14.3 Energy in a Magnetic Field",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-3-energy-in-a-magnetic-field",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/14-3-energy-in-a-magnetic-field",
+      "pageTitle": "14.3 Energy in a Magnetic Field - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l02"
+      ]
+    },
+    {
+      "id": "v2-14.4",
+      "title": "14.4 RL Circuits",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/14-4-rl-circuits",
+      "pageTitle": "14.4 RL Circuits - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l02"
+      ]
+    },
+    {
+      "id": "v2-14.5",
+      "title": "14.5 Oscillations in an LC Circuit",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/14-5-oscillations-in-an-lc-circuit",
+      "pageTitle": "14.5 Oscillations in an LC Circuit - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l02"
+      ]
+    },
+    {
+      "id": "v2-14.6",
+      "title": "14.6 RLC Series Circuits",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/14-6-rlc-series-circuits",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/14-6-rlc-series-circuits",
+      "pageTitle": "14.6 RLC Series Circuits - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l02"
+      ]
+    },
+    {
+      "id": "v2-15.1",
+      "title": "15.1 AC Sources",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-1-ac-sources",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-1-ac-sources",
+      "pageTitle": "15.1 AC Sources - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l01"
+      ]
+    },
+    {
+      "id": "v2-15.2",
+      "title": "15.2 Simple AC Circuits",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-2-simple-ac-circuits",
+      "pageTitle": "15.2 Simple AC Circuits - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l01"
+      ]
+    },
+    {
+      "id": "v2-15.3",
+      "title": "15.3 RLC Series Circuits with AC",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-3-rlc-series-circuits-with-ac",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-3-rlc-series-circuits-with-ac",
+      "pageTitle": "15.3 RLC Series Circuits with AC - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l01",
+        "m10-l02"
+      ]
+    },
+    {
+      "id": "v2-15.4",
+      "title": "15.4 Power in an AC Circuit",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-4-power-in-an-ac-circuit",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-4-power-in-an-ac-circuit",
+      "pageTitle": "15.4 Power in an AC Circuit - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l03",
+        "m10-l02"
+      ]
+    },
+    {
+      "id": "v2-15.5",
+      "title": "15.5 Resonance in an AC Circuit",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-5-resonance-in-an-ac-circuit",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-5-resonance-in-an-ac-circuit",
+      "pageTitle": "15.5 Resonance in an AC Circuit - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m08-l02",
+        "m10-l02"
+      ]
+    },
+    {
+      "id": "v2-15.6",
+      "title": "15.6 Transformers",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
+      "pageTitle": "15.6 Transformers - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m07-l03"
+      ]
+    },
+    {
+      "id": "v2-16.1",
+      "title": "16.1 Maxwell’s Equations and Electromagnetic Waves",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/16-1-maxwells-equations-and-electromagnetic-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/16-1-maxwells-equations-and-electromagnetic-waves",
+      "pageTitle": "16.1 Maxwell’s Equations and Electromagnetic Waves - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l01",
+        "m09-l02"
+      ]
+    },
+    {
+      "id": "v2-16.2",
+      "title": "16.2 Plane Electromagnetic Waves",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/16-2-plane-electromagnetic-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/16-2-plane-electromagnetic-waves",
+      "pageTitle": "16.2 Plane Electromagnetic Waves - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l02"
+      ]
+    },
+    {
+      "id": "v2-16.3",
+      "title": "16.3 Energy Carried by Electromagnetic Waves",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/16-3-energy-carried-by-electromagnetic-waves",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/16-3-energy-carried-by-electromagnetic-waves",
+      "pageTitle": "16.3 Energy Carried by Electromagnetic Waves - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l03"
+      ]
+    },
+    {
+      "id": "v2-16.4",
+      "title": "16.4 Momentum and Radiation Pressure",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/16-4-momentum-and-radiation-pressure",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/16-4-momentum-and-radiation-pressure",
+      "pageTitle": "16.4 Momentum and Radiation Pressure - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l03"
+      ]
+    },
+    {
+      "id": "v2-16.5",
+      "title": "16.5 The Electromagnetic Spectrum",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/16-5-the-electromagnetic-spectrum",
+      "provider": "OpenStax",
+      "verifiedUrl": "https://openstax.org/books/university-physics-volume-2/pages/16-5-the-electromagnetic-spectrum",
+      "pageTitle": "16.5 The Electromagnetic Spectrum - University Physics Volume 2 | OpenStax",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed to read this page.",
+      "usedBy": [
+        "m09-l02"
+      ]
+    }
+  ]
+}
