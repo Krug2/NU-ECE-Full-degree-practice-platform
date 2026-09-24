@@ -33,7 +33,7 @@ it.each(Object.entries(classes))("classifies %s without confusing coefficients, 
   }
   expect(prompts.size).toBeGreaterThan(10);
 });
-it.each(["even-positive","even-negative","odd-positive","odd-negative","reordered","canceled","factored"])("predicts %s ends using independent parity and sign checks",variant=>{
+it.each(["even","odd","even-positive","even-negative","odd-positive","odd-negative","reordered","canceled","factored"])("predicts %s ends using independent parity and sign checks",variant=>{
   for(let seed=0;seed<50;seed++){
     const question=polynomialStructureQuestion("mth-leading-ends",variant,String(seed),"q1"),{a,b,c,n}=question.parameters;
     verify(question);expect(question).toEqual(polynomialStructureQuestion("mth-leading-ends",variant,String(seed),"q1"));
@@ -47,6 +47,20 @@ it.each(["even-positive","even-negative","odd-positive","odd-negative","reordere
     if(variant.endsWith("positive"))expect(a).toBeGreaterThan(0);
     if(variant.endsWith("negative"))expect(a).toBeLessThan(0);
   }
+});
+it("varies checkpoint signs and classification cases across reproducible seeds",()=>{
+  for(const parity of ["even","odd"]){
+    const signs=new Set(Array.from({length:50},(_,seed)=>key(polynomialStructureQuestion("mth-leading-ends",parity,String(seed),"q1"),"right")));
+    expect(signs).toEqual(new Set(["up","down"]));
+  }
+  const degrees=new Set<string>(),classifications=new Set<string>();
+  for(let seed=0;seed<50;seed++){
+    const question=polynomialStructureQuestion("mth-polynomial-classify","mixed",String(seed),"q1");verify(question);
+    expect(question).toEqual(polynomialStructureQuestion("mth-polynomial-classify","mixed",String(seed),"q1"));
+    degrees.add(key(question,"degree"));classifications.add(key(question,"classification"));
+  }
+  expect(degrees).toEqual(new Set(["degree","zero-degree","undefined","not-polynomial"]));
+  expect(classifications).toEqual(new Set(["yes","no"]));
 });
 it("rejects missing variants and does not let one correct end conceal another incorrect answer",()=>{
   expect(()=>polynomialStructureQuestion("missing","polynomial","s","q1")).toThrow("Unknown");

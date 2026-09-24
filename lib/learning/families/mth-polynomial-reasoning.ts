@@ -11,6 +11,7 @@ export function polynomialReasoningQuestion(familyId:string,variant:string,seed:
   const a=rng.integer(1,5)*(rng.integer(0,1)?1:-1),b=rng.integer(1,9)*(rng.integer(0,1)?1:-1);
   const bounds=[{id:"bound",label:"An upper bound; the actual number can be smaller",feedback:"Degree n gives at most n - 1 turning points. It does not require all of them to occur."},{id:"exact",label:"The exact number every polynomial of this degree must have",feedback:"Compare x cubed with a cubic that has a local maximum and minimum. Equal degrees can have different numbers of turns."}];
   if(familyId==="mth-turning-bound"){
+    if(variant==="mixed")variant=["upper-bound","counterexample","minimum","graph"][rng.integer(0,3)];
     if(variant==="upper-bound"||variant==="counterexample"){
       const n=variant==="counterexample"?2*rng.integer(1,3)+1:rng.integer(3,8),bound=n-1;
       return questionSchema.parse({...base,critical:true,category:"conceptual",parameters:{a,n},

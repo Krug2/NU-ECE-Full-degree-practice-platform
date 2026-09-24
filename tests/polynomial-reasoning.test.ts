@@ -64,3 +64,12 @@ it("rejects unknown variants and an exact-count misconception even with the righ
   const question=polynomialReasoningQuestion("mth-turning-bound","upper-bound","s","q1");
   expect(gradeQuestion(question,{bound:key(question,"bound"),meaning:"exact"}).correct).toBe(false);
 });
+it("varies the turning-point reasoning required by a checkpoint",()=>{
+  const forms=new Set<string>();
+  for(let seed=0;seed<50;seed++){
+    const question=polynomialReasoningQuestion("mth-turning-bound","mixed",String(seed),"q1");verify(question);
+    expect(question).toEqual(polynomialReasoningQuestion("mth-turning-bound","mixed",String(seed),"q1"));
+    forms.add(question.fields.map(field=>field.id).join(","));
+  }
+  expect(forms.size).toBe(4);
+});

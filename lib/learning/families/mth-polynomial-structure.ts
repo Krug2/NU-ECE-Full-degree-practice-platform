@@ -10,6 +10,7 @@ export function polynomialStructureQuestion(familyId:string,variant:string,seed:
   const a=rng.integer(1,5)*(rng.integer(0,1)?1:-1),b=rng.integer(-6,6),c=rng.integer(1,7)*(rng.integer(0,1)?1:-1);
   if(familyId==="mth-polynomial-classify"){
     const n=rng.integer(2,8);
+    if(variant==="mixed")variant=["polynomial","negative-power","radical","exponential","variable-denominator","canceled","constant","zero","irrational-coefficient"][rng.integer(0,8)];
     const cases:Record<string,{formula:string;degree:string;reason:string}>={
       polynomial:{formula:`\\frac{${a}}{2}x^{${n}}+(${c})`,degree:"degree",reason:"A fractional coefficient is allowed. The variable exponents are nonnegative integers, and the nonzero leading coefficient gives degree "+n+"."},
       "negative-power":{formula:`${a}x^{-2}+(${c})`,degree:"not-polynomial",reason:"The nonzero variable term has a negative exponent. Its natural domain also excludes zero."},
@@ -38,7 +39,7 @@ export function polynomialStructureQuestion(familyId:string,variant:string,seed:
       explanation:[item.reason,"Neither the number of displayed terms nor the largest exponent that cancels determines the degree.","Degree zero and undefined degree are different cases."],answerSummary:(polynomial?"Polynomial. ":"Not a polynomial on all R. ")+item.reason});
   }
   if(familyId!=="mth-leading-ends")throw new Error("Unknown polynomial structure family");
-  if(!["even-positive","even-negative","odd-positive","odd-negative","reordered","canceled","factored"].includes(variant))throw new Error("Unknown leading-term task");
+  if(!["even","odd","even-positive","even-negative","odd-positive","odd-negative","reordered","canceled","factored"].includes(variant))throw new Error("Unknown leading-term task");
   const even=variant.startsWith("even"),odd=variant.startsWith("odd"),n=even?2*rng.integer(1,3):odd?2*rng.integer(0,2)+1:rng.integer(2,6);
   const leading=variant.endsWith("positive")?Math.abs(a):variant.endsWith("negative")?-Math.abs(a):a;
   const standard=`(${leading})*x^${n}+(${b})*x^${n-1}+(${c})`;
