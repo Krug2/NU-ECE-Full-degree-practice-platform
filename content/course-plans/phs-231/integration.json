@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: seventeen of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: eighteen of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -23,13 +23,14 @@
       "m06-l02",
       "m07-l01",
       "m07-l02",
-      "m07-l03"
+      "m07-l03",
+      "m08-l01"
     ],
-    "questionFamilies": 35,
-    "questionVariants": 222,
+    "questionFamilies": 37,
+    "questionVariants": 238,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 17,
-    "workedExamples": 134,
+    "guidedExamples": 18,
+    "workedExamples": 148,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -47,14 +48,15 @@
       "Smooth oblique collision and common-velocity sticking comparisons, passive restitution, rotated contact normals, non-approach gating, and lab/CM velocity diagrams with momentum and energy ledgers",
       "Fixed-axis rotor with independent mass radii and drive leverage, signed torque inventory, full point acceleration, reversal travel, keyboard snapshots, and separate configuration comparisons",
       "Changing-radius disk and masses with conserved angular momentum or motor-controlled speed, separate motor/radial work, transient radial kinetic energy, body-frame geometry, and complete keyboard-accessible time tables",
-      "Coupled rolling and sliding with required versus available static friction, exact catch and reverse-slip events, independent translation/spin, marked material-point motion, signed power and heat, and complete keyboard-accessible histories"
+      "Coupled rolling and sliding with required versus available static friction, exact catch and reverse-slip events, independent translation/spin, marked material-point motion, signed power and heat, and complete keyboard-accessible histories",
+      "Static beam reactions with unilateral contacts, local friction, distributed loads, raised forces and couples, exact moving-load windows, independent-origin residuals, and complete keyboard-accessible force and sweep tables"
     ]
   },
   "remaining": {
-    "phs231Lessons": 5,
+    "phs231Lessons": 4,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Equilibrium, material, and numerical investigations",
+      "Material and numerical investigations",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -62,10 +64,21 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m08-l01",
-    "nextCourseAfterPhs231Completion": "phs-232"
+    "nextLesson": "m08-l02",
+    "nextCourseAfterPhs231Completion": "phs-232",
+    "inProgress": "Stress, strain, and elastic response has a detailed primary-source plan (c7a169d) and a verified three-mode constitutive engine (f74f502). Its two families with 18 planned variants, activity UI, teaching, content registration, and browser checks are not yet delivered; it is not counted as an available lesson."
   },
   "sharedCommits": [
+    {
+      "commit": "c50e0c3",
+      "summary": "connected statics",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-statics and two families through existing additive registration points with the course-specific component. Plan 4a24645, engine fe599f1 (200 independent load-quadrature and matrix-equilibrium trials), families 3622a71 (800 independent cases across 16 variants), lesson f5867ed, and seven browser workflows plus bounded keyboard table f9feb64. Existing answer fields and progress/backup schemas remain unchanged. Preserve every prerequisite registration."
+    },
     {
       "commit": "4afc585",
       "summary": "enabled rolling",
@@ -357,23 +370,23 @@
     "preview": "pnpm dev --port 3001",
     "browserTests": "pnpm exec playwright test --config playwright.major.config.ts",
     "checks": [
-      "pnpm exec vitest run --maxWorkers=2",
+      "pnpm exec vitest run --maxWorkers=1",
       "pnpm lint",
       "pnpm typecheck",
       "pnpm build"
     ]
   },
   "verification": {
-    "status": "The seventeen delivered lessons are technically checked; course release gates remain open.",
+    "status": "The eighteen delivered lessons are technically checked; course release gates remain open. Full-unit default-timeout runs and their successful content-test retry are distinguished below.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the seventeen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the eighteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 1060,
-      "files": 116,
-      "command": "pnpm exec vitest run --maxWorkers=1",
-      "note": "Complete combined unit suite after merging 21 prerequisite commits through de03daa. Physics deterministic-variant, independent engine, guided-answer, content, and backup checks passed with the new upstream variation, radical, inverse, and exponential checks. The new statics files remain unpublished work and are not counted in this merge snapshot."
+      "passed": 1085,
+      "files": 118,
+      "command": "pnpm exec vitest run --maxWorkers=1; content-file retry used --testTimeout=60000",
+      "note": "Coverage passed across runs, not an uninterrupted default-timeout full-suite pass. First complete run: 1084 passed, one unchanged MTH 215 content test exceeded 5 seconds. Second: 1081 passed, four MTH content tests exceeded 5 seconds under slower shared-machine execution. All 41 tests in lesson-content.test.ts then passed with unchanged assertions and a CLI 60-second per-test allowance (29.86 seconds total). The other 117 files had passed. Focused PHS content and progress run passed all 80 tests. The subsequent unpublished elasticity engine passed eight additional tests including 180 independent paths; those eight are not included in 1085."
     },
     "browser": {
       "fullSuite": {
@@ -388,7 +401,7 @@
       },
       "focusedSuite": {
         "passed": 7,
-        "scope": "Rolling lesson: all seven workflows passed in 3.5 minutes on the production build. Tests check guided traction feedback, point kinematics, energy partition, all presets, actual slip catches/reversal, endpoint transitions, exact and failed static capacity, invalid and complex input, keyboard controls and scrolling tables, desktop/mobile accessibility, reload, and an actual independently answered checkpoint plus notes export/reset/restore. Two initially combined workflows exceeded the existing 60-second timeout; they were split by viewport and behavior with all assertions and time limits retained. Following a mobile-label enlargement and rebuild, both complete desktop/mobile accessibility and screenshot workflows passed again in 1.5 minutes; all five final screenshots were inspected."
+        "scope": "Statics: all seven workflows passed on the production build in 2.9 minutes. Tests establish guided local-friction feedback, independent reactions and alternate-origin moments, exact friction and lift-off boundaries, empty/singleton/full load windows, distributed-load reversal and applied-couple comparisons, invalid/complex/nonfinite predictions, keyboard controls, desktop/mobile accessibility, direct reload, and a genuinely answered checkpoint with question/evidence/notes export/reset/restore. Visual review then bounded the long sweep table and added a sticky header. After rebuilding, both complete desktop/mobile workflows passed again in 45.6 seconds, including horizontal and vertical keyboard scrolling. All five final screenshots were inspected."
       },
       "port": 3101,
       "previousFocusedSuites": [
@@ -419,6 +432,10 @@
         {
           "passed": 3,
           "scope": "Angular momentum lesson: all three workflows passed on the production build in 1.8 minutes. Checks cover guided misconceptions, both angular constraints, independent midpoint work/force values, duration scaling, no spin, unchanged radii, extreme valid inputs with scientific-notation predictions, invalid and complex answers, keyboard controls and tables, desktop/mobile accessibility and inspected diagrams/plots, reload, and actual origin/capture/accessibility/controlled-work checkpoint plus notes export/reset/restore. The earlier full-suite entry retains its fourteen-lesson integration scope."
+        },
+        {
+          "passed": 7,
+          "scope": "Rolling lesson: all seven workflows passed in 3.5 minutes on the production build. Tests check guided traction feedback, point kinematics, energy partition, all presets, actual slip catches/reversal, endpoint transitions, exact and failed static capacity, invalid and complex input, keyboard controls and scrolling tables, desktop/mobile accessibility, reload, and an actual independently answered checkpoint plus notes export/reset/restore. Two initially combined workflows exceeded the existing 60-second timeout; they were split by viewport and behavior with all assertions and time limits retained. Following a mobile-label enlargement and rebuild, both complete desktop/mobile accessibility and screenshot workflows passed again in 1.5 minutes; all five final screenshots were inspected."
         }
       ],
       "previousFullSuites": [
@@ -449,7 +466,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile screenshots inspected for all seventeen delivered lessons. Rolling distinguishes a marked material point from the current contact location, labels the ramp-aligned following view, and supplies equivalent motion/energy tables. Diagram fonts and plot margins were enlarged after mobile inspection. Keyboard controls, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior passed. Preview port 3001 was restarted after its previous process stopped; the rolling lesson returned HTTP 200 with the correct title.",
+    "visual": "Desktop and 390-pixel mobile screenshots inspected for all eighteen delivered lessons. Statics clearly labels its location schematic as partial and supplies a complete external force inventory, distinguishes candidate negative reactions from admitted contacts, and shows the admissible interval on a reaction plot. The bounded sweep table keeps its header visible while scrolling with the keyboard. All seven statics browser workflows passed; both visual/accessibility workflows passed again after the table improvement. Preview port 3001 is restarted after pausing only this task's preview during memory-sensitive checks.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",

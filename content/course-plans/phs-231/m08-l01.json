@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m08-l01",
   "checkedAt": "2026-09-24",
-  "status": "Detailed implementation plan; not yet delivered.",
+  "status": "implemented and technically verified; independent subject review and pilot validation not performed",
   "title": "Static equilibrium and support reactions",
   "objective": "Solve force and torque equilibrium for a rigid body and assess support, contact, and tipping constraints.",
   "alignment": "Develops equilibrium within the verified official PHS 231 subject coverage. This teaching sequence, contact model, activities, and assessment choices are proposed platform design, not an official NU syllabus or equipment requirement.",
@@ -242,7 +242,7 @@
     "model": "Rigid horizontal beam on two unilateral supports at a<b. Left support supplies vertical NA and horizontal Coulomb static friction; right support is smooth and supplies only vertical NB. Uniform beam weight W acts at L/2; external linear downward line load w(x) runs across0..L; a downward point load P moves along0..L. Signed horizontal force H is transmitted through an ideal massless rigid attachment at height h, and separate signed CCW couple M acts. Static candidate only; no post-failure dynamics, compliance, strength, damping, or hardware procedure.",
     "inputs": "L1..12m; supports0..L separatedbyatleast.1m; W.1..200N; P0..300N; loadposition0..L; w0,w1 0..100N/m; H-100..100N; h0..4m; M-300..300Nm; mu_s0..1.5. DefaultL6,a1,b4,W60,P60,x3,w0=w1=0,H12,h1,M0,mu_s.4.",
     "equations": "Q=L(w0+w1)/2; J=L²(w0+2w1)/6; D=W+Q+P>0; A=W L/2+J+P x+hH-M. NB=(A-aD)/(b-a),NA=(bD-A)/(b-a),fA=-H. CandidateadmissibleiffNA>=0,NB>=0,|H|<=mu_s NA. DistributedcentroidJ/Q isundefinedwhenQ0. Downwardloadcentroid(W L/2+J+Px)/D differsfromeffectiveverticalreactionlineA/D whenhH-M nonzero.",
-    "outputs": "Candidate force inventory, normals, friction demand/capacity/margin, separate failed constraints, vertical-load centroid, effective support line, and force/moment residuals about0,A,B. An affine moving-load sweep includes0,L,selectedposition, and all exact constraint boundaries within0..L; complete equivalent table, reaction-versus-position plot, and force diagram. Show the feasible position interval or explicitly none. Negative candidates remain visible as incompatible requirements, never clipped into a claimed new equilibrium.",
+    "outputs": "Candidate force inventory, normals, friction demand/capacity/margin, separate failed constraints, vertical-load centroid, effective support line, and force/moment residuals about0,A,B. An affine moving-load sweep includes0,L,selectedposition, and all exact constraint boundaries within0..L; complete equivalent table, reaction-versus-position plot, and clearly labeled location schematic with a complete external force inventory. Show the feasible position interval or explicitly none. Negative candidates remain visible as incompatible requirements, never clipped into a claimed new equilibrium.",
     "predictions": "NA, NB, requiredsignedfriction, and a contact decision: admitted; positive-contact candidate fails friction; or unilateral contact fails. Exact boundary remains admitted but is explicitly marked limiting. Predictions refer to the chosen initial position; the sweep slider then compares positions under otherwise unchanged loading.",
     "accessibility": "Keyboard-controlled numeric inputs, selected sweep slider with Home/End/arrows, exact-boundary buttons, table regions with keyboard overflow, text-identifiable force directions, diagram descriptions, and no automatic motion. Diagram text sized for mobile and tables supply every numerical result.",
     "limits": "No material strength, support compliance, cable elasticity, or dynamic fall is modeled. Static feasibility does not establish global stability or safe hardware loading. The simulation is not a physical ladder, suspended-load, or elevated-weight experiment. Controls reset onreload; notes and assessments persist."
@@ -282,7 +282,15 @@
       "Stablequarticwithzeroquadraticcurvature",
       "Invalidsupportorderoroffbeamload"
     ],
-    "review": "Independent subject review and pilot validation have not been performed."
+    "review": "Independent subject review and pilot validation have not been performed.",
+    "delivery": {
+      "lessonCommit": "f5867ed",
+      "sharedCommit": "c50e0c3",
+      "browserCommit": "f9feb64",
+      "families": "16 variants, 50 independent deterministic cases each",
+      "engine": "200 independent quadrature and equilibrium-matrix trials plus boundary/domain fixtures",
+      "browser": "Seven production workflows passed; both desktop/mobile workflows passed again after table layout improvement. Notes, full question snapshots, independently supplied checkpoint answers, and evidence survived reload and export/reset/restore."
+    }
   },
   "resources": [
     {
