@@ -1,0 +1,273 @@
+{
+  "courseId": "f03",
+  "moduleId": "m01",
+  "version": 1,
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "sourceId": "b05",
+      "title": "Coordinates, scales, and lines",
+      "requires": [],
+      "why": "Graphs become useful only after their coordinates, units, and scales have meaning. Recover these foundations before reading functions or interpreting measurements. The line investigation lets you separate what changes in a drawing from what changes in the mathematical relationship.",
+      "recall": [
+        "Read the horizontal coordinate first and apply each axis scale independently. The numerical slope uses changes in quantities, not the apparent angle on a stretched screen.",
+        "Keep one point order in both differences. A horizontal line has zero rise and nonzero run; a vertical line has zero run. An intercept is a coordinate at a zero input or output, not a rate."
+      ],
+      "estimatedMinutes": 50,
+      "retrieval": "From A=(-2,3) and B=(4,-1), calculate both signed changes and the exact slope. Reverse both points, then create a horizontal and a vertical example and explain the different results.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §2.1: The Rectangular Coordinate Systems and Graphs",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-1-the-rectangular-coordinate-systems-and-graphs",
+          "purpose": "Additional examples of the rectangular coordinate systems and graphs. Full original ECE Study instruction is included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §4.1: Linear Functions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-1-linear-functions",
+          "purpose": "Additional examples of linear functions. Full original ECE Study instruction is included above."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f03-coordinate-read",
+          "variant": "scaled"
+        },
+        {
+          "familyId": "f03-line-slope",
+          "variant": "general"
+        },
+        {
+          "familyId": "f03-line-kinds",
+          "variant": "horizontal-vertical"
+        },
+        {
+          "familyId": "f03-linear-intercept",
+          "variant": "position"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "b05",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      },
+      "objective": "Read scaled coordinates, find signed slopes with units, distinguish zero and undefined slope, and interpret intercepts."
+    },
+    {
+      "id": "m01-l02",
+      "sourceId": "m02-l01",
+      "title": "Function inputs, domains, and piecewise rules",
+      "requires": [
+        "m01-l01"
+      ],
+      "why": "A graph, table, and formula describe the same kind of input-output process only when their domains agree. Rebuild function notation and branch selection so later models do not accidentally include impossible inputs or invented interpolations.",
+      "recall": [
+        "A function gives exactly one output to each allowed input. Different inputs may share an output; one input may not have two different outputs. A missing input is undefined, not automatically zero.",
+        "For a formula, begin with its original restrictions. For a piecewise rule, choose the branch using the input condition before evaluating, and keep each open or closed endpoint when combining ranges."
+      ],
+      "estimatedMinutes": 100,
+      "retrieval": "Explain why repeated outputs are allowed in a function. Evaluate a piecewise rule exactly at its branch boundary, then give a reciprocal square-root domain with its excluded endpoint.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.1: Functions and Function Notation",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-1-functions-and-function-notation",
+          "purpose": "Additional examples of functions and function notation. Full original ECE Study instruction is included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.2: Domain and Range",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-2-domain-and-range",
+          "purpose": "Additional examples of domain and range. Full original ECE Study instruction is included above."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f03-function-relation",
+          "variant": "graph-mixed"
+        },
+        {
+          "familyId": "f03-function-evaluate",
+          "variant": "rule"
+        },
+        {
+          "familyId": "f03-function-domain",
+          "variant": "reciprocal-root"
+        },
+        {
+          "familyId": "f03-piecewise-function",
+          "variant": "boundary"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m02-l01",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      },
+      "objective": "Classify a function, evaluate complete inputs, preserve its domain, and read finite and piecewise ranges without inventing outputs."
+    },
+    {
+      "id": "m01-l03",
+      "sourceId": "m02-l02",
+      "title": "Transformations and graph features",
+      "requires": [
+        "m01-l02"
+      ],
+      "why": "Graph transformations connect remembered shapes with new functions and engineering signals. Recover the point mapping and then use it to justify domains, zeros, and changing behavior. This avoids treating a shifted drawing as a collection of unrelated rules.",
+      "recall": [
+        "For g(x)=a f(b(x-h))+k, an old point (u,v) becomes (h+u/b, k+av), with nonzero a and b. Derive the input equation instead of guessing the horizontal direction.",
+        "Carry endpoint inclusion with the transformed point. A local turn need not be the highest or lowest point on the whole domain; a bound at an excluded endpoint may never be attained."
+      ],
+      "estimatedMinutes": 110,
+      "retrieval": "Map (2,-1) through g(x)=-2f(3(x-4))+5. State the input equation that determines the new horizontal coordinate, then explain why a local maximum need not be an absolute maximum.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.3: Rates of Change and Behavior of Graphs",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-3-rates-of-change-and-behavior-of-graphs",
+          "purpose": "Additional examples of rates of change and behavior of graphs. Full original ECE Study instruction is included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.5: Transformation of Functions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-5-transformation-of-functions",
+          "purpose": "Additional examples of transformation of functions. Full original ECE Study instruction is included above."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f03-transform-point",
+          "variant": "combined"
+        },
+        {
+          "familyId": "f03-transform-domain",
+          "variant": "sqrt"
+        },
+        {
+          "familyId": "f03-transform-features",
+          "variant": "quadratic"
+        },
+        {
+          "familyId": "f03-graph-extrema",
+          "variant": "turns"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m02-l02",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      },
+      "objective": "Map points through shifts, scales, and reflections; transform domains and ranges; distinguish intercepts, monotonic intervals, and local versus absolute extrema."
+    },
+    {
+      "id": "m01-l04",
+      "sourceId": "m02-l03",
+      "title": "Composition and inverse functions",
+      "requires": [
+        "m01-l02",
+        "m01-l03"
+      ],
+      "why": "Sensor chains and changing representations use composition. Recovering an input uses an inverse only when the original process retains enough information. These lessons keep order, units, and domain restrictions visible at every step.",
+      "recall": [
+        "Composition uses the inner output as the outer input. Check that the original input belongs to the inner domain and its output belongs to the outer domain.",
+        "An inverse reverses the input-output process, not the numerical value. Repeated outputs may require a domain restriction. Check both compositions on the respective domains before calling two rules inverse functions."
+      ],
+      "estimatedMinutes": 130,
+      "retrieval": "Compare f(g(x)) and g(f(x)) for f(x)=2x-1 and g(x)=x^2. Explain why the inverse of squaring needs a branch and why one successful composition is insufficient.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.4: Composition of Functions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-4-composition-of-functions",
+          "purpose": "Additional examples of composition of functions. Full original ECE Study instruction is included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.7: Inverse Functions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-7-inverse-functions",
+          "purpose": "Additional examples of inverse functions. Full original ECE Study instruction is included above."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f03-compose-formula",
+          "variant": "both"
+        },
+        {
+          "familyId": "f03-compose-domain",
+          "variant": "reciprocal-root"
+        },
+        {
+          "familyId": "f03-inverse-rule",
+          "variant": "quadratic"
+        },
+        {
+          "familyId": "f03-inverse-verify",
+          "variant": "unrestricted"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m02-l03",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      },
+      "objective": "Compose in the stated order with both domain checks, restrict inverse branches when necessary, and verify both inverse identities."
+    },
+    {
+      "id": "m01-l05",
+      "sourceId": "m02-l04",
+      "title": "Average rates and linear calibration",
+      "requires": [
+        "m01-l01",
+        "m01-l02",
+        "m01-l04"
+      ],
+      "why": "A calculated line is a model with a scope. Reconnect slope and intercept with units, compare averages over different intervals, and test predictions against observations. Difference quotients provide an optional bridge to calculus; instantaneous rates are developed in F08 and the full calculus courses.",
+      "recall": [
+        "An average rate divides total output change by total input change. With unequal intervals, combine the changes and durations rather than taking an unweighted mean of the interval rates.",
+        "Two distinct calibration inputs determine a line, but do not prove that an actual device is linear everywhere. Keep calibration and operating intervals, slope units, invertibility, and measured residuals separate."
+      ],
+      "estimatedMinutes": 150,
+      "retrieval": "A position changes by 6 m in 2 s and then by -3 m in 3 s. Find the overall average velocity. Explain why two fitted calibration points do not prove a device follows that line between or beyond the points.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §3.3: Rates of Change and Behavior of Graphs",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-3-rates-of-change-and-behavior-of-graphs",
+          "purpose": "Additional examples of rates of change and behavior of graphs. Full original ECE Study instruction is included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §4.1: Linear Functions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-1-linear-functions",
+          "purpose": "Additional examples of linear functions. Full original ECE Study instruction is included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §4.2: Modeling with Linear Functions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-2-modeling-with-linear-functions",
+          "purpose": "Additional examples of modeling with linear functions. Full original ECE Study instruction is included above."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f03-calibration-fit",
+          "variant": "equation"
+        },
+        {
+          "familyId": "f03-average-rate",
+          "variant": "table-changing"
+        },
+        {
+          "familyId": "f03-calibration-predict",
+          "variant": "inverse"
+        },
+        {
+          "familyId": "f03-calibration-residual",
+          "variant": "positive"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m02-l04",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      },
+      "objective": "Calculate interval average rates, fit and interpret a linear model, recover an input when valid, and assess residuals and prediction scope."
+    }
+  ]
+}
