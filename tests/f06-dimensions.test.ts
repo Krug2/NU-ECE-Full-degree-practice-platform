@@ -48,3 +48,6 @@ it("retains real-log domain restrictions and distinguishes angular conversion fr
   expect(gradeQuestion(log,{argument:"right",detail:"any"}).correct).toBe(false);
   expect(gradeQuestion(trig,{argument:"right",detail:"yes"}).correct).toBe(false);
 });
+it("distinguishes all three function-argument prompts for practice deduplication",()=>{
+ expect(new Set(["log","exp","trig"].map(v=>f06DimensionQuestion("f06-dim-argument",v,"seed","q").prompt)).size).toBe(3);
+});
