@@ -41,6 +41,10 @@ const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: 
       return values.every((value, index) => (field.numberSystem === "complex" || realExact(value)) && !values.slice(0, index).some(other => equalExact(value, other)));
     } catch { return false; }
   }, "Root keys must be distinct and match the requested number system");
+const rootListField=z.object({...fieldBase,kind:z.literal("root-list"),expected:z.array(exact).max(12),numberSystem:z.enum(["real","complex"]),unit:z.string().max(60).default("")}).strict().refine(field=>{
+  try{return field.numberSystem==="complex"||field.expected.every(value=>realExact(parseExact(value)));}
+  catch{return false;}
+},"Root-list keys must match the requested number system.");
 const polynomialField = z.object({
   ...fieldBase, kind: z.literal("polynomial"), expected: z.string().max(200), unit: z.string().max(60).default(""),
   form: z.enum(["equivalent", "expanded", "factored"]),
@@ -54,7 +58,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField, rationalExpressionField, piField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({

@@ -5,6 +5,7 @@ import { equalExact, equalRootSets, parseExact, parseRootSet, realExact } from "
 import { checkPolynomialForm, parsePolynomial } from "./polynomial";
 import { checkRationalExpression } from "./rational-expression";
 import { parsePiMultiple } from "./angles";
+import { equalRootLists,parseRootList } from "./root-list";
 
 export type FieldResult = { correct: boolean; valid: boolean; message: string };
 export function gradeField(field: AnswerField, input: string): FieldResult {
@@ -29,6 +30,12 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
       if (field.numberSystem === "real" && !values.every(realExact)) return { correct: false, valid: true, message: "This question asks for real values. Nonreal numbers do not belong in the requested set." };
       const correct = equalRootSets(values, field.expected.map(parseExact));
       return { correct, valid: true, message: correct ? "The complete set of distinct values is correct." : "Include every requested value and no extras. Keep values exact and check the original expression's restrictions." };
+    }
+    if(field.kind==="root-list"){
+      const values=parseRootList(input);
+      if(field.numberSystem==="real"&&!values.every(realExact))return {correct:false,valid:true,message:"List only real roots for this question, repeating each according to its multiplicity."};
+      const correct=equalRootLists(values,field.expected.map(parseExact));
+      return {correct,valid:true,message:correct?"Every root and its multiplicity is correct.":"Check every root and repeat it exactly as often as its multiplicity. A missing conjugate, extra value, or wrong repetition changes the answer."};
     }
     if(field.kind==="intervals"){
       const correct=equalIntervals(parseIntervals(input),field.expected);
