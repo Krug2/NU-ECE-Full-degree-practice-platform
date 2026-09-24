@@ -1,0 +1,212 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m05-l01",
+  "status": "Implementation plan; this file is not an available lesson",
+  "objective": "Calculate signed work for constant and position-dependent forces and verify it against kinetic-energy change.",
+  "preparation": [
+    "m01-l02 dot products and vector components",
+    "m02-l01 definite integrals, initial conditions, and reversals",
+    "m03-l01 net force and system choice",
+    "m03-l02 relative sliding for friction direction",
+    "m04-l02 introductory kinetic/potential energy identity"
+  ],
+  "teachingSequence": [
+    "Define work by a named force as the integral of its component along a directed path, with joule units and signs.",
+    "Reduce a constant vector force to its dot product with displacement; distinguish displacement from traveled distance.",
+    "Evaluate affine, polynomial, piecewise, and spring force integrals with the correct limits and units of coefficients.",
+    "Parameterize a simple planar path and compare two paths for a position-dependent nonconservative force.",
+    "Derive the constant-mass particle work-energy theorem from F_net dot v; sum the work of all forces before using it.",
+    "Check endpoint and intermediate reachability; distinguish a finite turning point, asymptotic limiting point, and an exact rest equilibrium.",
+    "Explain when fixed constraints do zero work and how moving support or friction can do positive work in a selected inertial frame.",
+    "Connect instantaneous power F dot v to average work divided by elapsed time, without inferring elapsed time from energy alone."
+  ],
+  "workedFixtures": [
+    {
+      "case": "three-dimensional constant force",
+      "inputs": {
+        "force": [
+          -2,
+          3,
+          4
+        ],
+        "displacement": [
+          5,
+          -1,
+          2
+        ]
+      },
+      "expected": "Work=-5 J; reversing displacement reverses work."
+    },
+    {
+      "case": "affine force with independent motion solution",
+      "inputs": {
+        "A": 4,
+        "B": 2,
+        "mass": 2,
+        "v0": 2,
+        "L": 3
+      },
+      "expected": "Work=21 J, K0=4 J, Kfinal=25 J, speed=5 m/s. Independent solution x(t)=2(exp(t)-1), v(t)=2exp(t) reaches x=3 at ln(5/2) s."
+    },
+    {
+      "case": "spring crossing equilibrium",
+      "inputs": {
+        "k": 8,
+        "x0": -0.5,
+        "x1": 0.25
+      },
+      "expected": "Spring work=k(x0²-x1²)/2=0.75 J. The sign comes from the endpoints, not from adding unsigned areas."
+    },
+    {
+      "case": "two paths through the same endpoints",
+      "inputs": {
+        "force": "F=(y,0) in SI",
+        "endpoint": [
+          2,
+          4
+        ]
+      },
+      "expected": "Along y=x² from x=0 to2, W=8/3 J; along y=2x, W=4 J. A position-dependent force need not be conservative."
+    },
+    {
+      "case": "moving support",
+      "inputs": {
+        "mass": 2,
+        "g": 10,
+        "upwardDisplacement": 3,
+        "constantSpeed": true
+      },
+      "expected": "Normal work=+60 J and weight work=-60 J; net work zero. A normal force is not universally work-free."
+    },
+    {
+      "case": "finite stopping point",
+      "inputs": {
+        "mass": 2,
+        "v0": 3,
+        "netForce": -3,
+        "L": 4
+      },
+      "expected": "Initial K=9 J; forward motion stops at x=3 m after 2 s. Formal endpoint candidate K(4)=-3 J is inaccessible."
+    },
+    {
+      "case": "positive endpoint energy beyond a barrier",
+      "inputs": {
+        "mass": 2,
+        "v0": 3,
+        "A": -6,
+        "B": 2,
+        "L": 6
+      },
+      "expected": "K(x)=(x-3)² J. The endpoint candidate is 9 J, but x(t)=3(1-exp(-t)) approaches x=3 asymptotically and cannot reach 6 on the stated motion."
+    },
+    {
+      "case": "vector power",
+      "inputs": {
+        "force": [
+          4,
+          -2,
+          1
+        ],
+        "velocity": [
+          3,
+          1,
+          -2
+        ]
+      },
+      "expected": "Instantaneous power=8 W; the perpendicular portions of force do not contribute."
+    }
+  ],
+  "generatorBlueprint": {
+    "phs231-work-integral": [
+      "constant",
+      "affine",
+      "reversed",
+      "piecewise",
+      "polynomial",
+      "spring",
+      "parametric",
+      "net-energy"
+    ],
+    "phs231-work-direction": [
+      "friction",
+      "moving-surface",
+      "normal",
+      "power",
+      "average-power",
+      "stopping",
+      "speed-scaling",
+      "barrier"
+    ],
+    "minimumSeedsPerVariant": 50,
+    "oracles": [
+      "Independent dot products, geometric signed areas, and numerical quadrature",
+      "Differentiate force antiderivatives and kinetic-energy identities",
+      "Cross-check selected trajectories with independent acceleration solutions or converged integration",
+      "Zero work, reversed limits, orthogonal vectors, zero speed, negative candidate kinetic energy, and interior barriers",
+      "Reject units in numeric fields and invalid domains; accept equivalent exact answers"
+    ]
+  },
+  "investigation": {
+    "type": "Energy along a proposed straight path with an explicit forward-motion feasibility check",
+    "assumptions": "A constant-mass particle is constrained to a fixed horizontal straight guide that can supply transverse forces without work. The net along-guide force is A+B*x, where A=F*cos(theta), and all other along-guide forces are absent. Initial x=0 and nonnegative forward speed are stated. No time integration is displayed.",
+    "inputs": [
+      "constant force magnitude F and angle theta from +x",
+      "position slope B in N/m",
+      "mass",
+      "initial forward speed",
+      "proposed endpoint L>0"
+    ],
+    "energy": "K(x)=m*v0²/2+A*x+B*x²/2; formal work to L=A*L+B*L²/2",
+    "feasibility": "Do not report a real final speed from negative K. Search for the first zero of K in the proposed interval. A simple zero with negative slope is a finite turn; a double zero is an asymptotic limit. An exactly resting body with nonpositive initial forward force does not start along the proposed positive path, including the F(0)=0 equilibrium.",
+    "predictions": [
+      "signed formal work along the proposed path",
+      "candidate endpoint kinetic energy",
+      "forward-motion feasibility"
+    ],
+    "accessibleOutput": [
+      "Signed force-position area plot with labeled scales",
+      "Kinetic-energy-versus-position plot with first limiting point",
+      "Equivalent interval and endpoint tables",
+      "Keyboard controls and explicit units; exploratory controls reset"
+    ],
+    "evidence": "Compare positive, negative, and zero work; record a reversed or oblique-force prediction; demonstrate both a negative endpoint candidate and a positive endpoint beyond a barrier. Save one independent force/energy check and a domain explanation in notes.",
+    "boundary": "A prescribed path integral can be calculated even if the body cannot reach its endpoint under the specified initial state and net force. Label formal work and actual reachable motion separately."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Work",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-1-work",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original instruction, examples, and questions will be authored."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Kinetic Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original instruction, examples, and questions will be authored."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Work-Energy Theorem",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-3-work-energy-theorem",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original instruction, examples, and questions will be authored."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Power",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original instruction, examples, and questions will be authored."
+    }
+  ],
+  "releaseChecks": [
+    "Full explanations, worked reasoning, guided misconceptions, practice, and checkpoint",
+    "All variants over 50 seeds and independent boundaries",
+    "Numerical checks must not silently pass an unreachable intermediate interval",
+    "Desktop/mobile, keyboard, accessibility, reload, backup restoration",
+    "No claim of independent review or pilot validation"
+  ]
+}
