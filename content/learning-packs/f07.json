@@ -2,7 +2,7 @@
   "courseId": "f07",
   "title": "Vectors and geometry",
   "version": 1,
-  "status": "building",
+  "status": "preview",
   "introduction": "Recover components, magnitude and direction, vector arithmetic, dot and cross products, and coordinate geometry. This optional refresher does not award university credit or determine enrollment eligibility. Familiarity and assisted work are separate from independent checkpoint evidence. Independent human review is pending.",
   "bridges": [],
   "modules": [
