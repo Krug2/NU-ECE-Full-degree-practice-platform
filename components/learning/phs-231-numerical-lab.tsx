@@ -25,7 +25,7 @@ function HistoryPlot({run,duration,index,kind}:{run:Run;duration:number;index:nu
     energy:{title:"Mechanical energy (J)",actual:(r:Sample)=>r.energy,reference:(r:Sample)=>r.exactEnergy},
     balance:{title:"Energy balance residual (J)",actual:(r:Sample)=>r.balanceResidual,reference:()=>0},
   }[kind];
-  const all=run.samples.flatMap(r=>[configuration.actual(r),configuration.reference(r)]),lo=Math.min(0,...all),hi=Math.max(0,...all),flat=hi===lo,min=flat?-.5:lo,max=flat?.5:hi,span=max-min;
+  const all=run.samples.flatMap(r=>[configuration.actual(r),configuration.reference(r)]),lo=Math.min(0,...all),hi=Math.max(0,...all),flat=hi===lo,magnitude=flat?.5:Math.max(Math.abs(lo),hi),min=kind==="energy"?0:-magnitude,max=kind==="energy"?(flat?1:hi):magnitude,span=max-min;
   const x=(time:number)=>85+250*time/duration,y=(value:number)=>210-158*(value-min)/span;
   const line=(read:(s:Sample)=>number)=>run.samples.map(row=>`${x(row.time)},${y(read(row))}`).join(" ");
   return <figure><svg viewBox="0 0 360 270" role="img" aria-labelledby={id}><title id={id}>{`${configuration.title} versus time in seconds. Solid blue is the computed path. Dashed brown is ${kind==="balance"?"zero for an exact energy account":"the analytic reference for the same model"}. A dark dot marks the selected numerical sample. Gray after a stopped run means no numerical path was computed there. The selected-state and complete path tables give equivalent values.`}</title>
@@ -36,7 +36,7 @@ function HistoryPlot({run,duration,index,kind}:{run:Run;duration:number;index:nu
     <polyline points={line(configuration.actual)} fill="none" stroke="#145f84" strokeWidth="3"/>
     <circle cx={x(s.time)} cy={y(configuration.actual(s))} r="5" fill="#243b38"/>
     <text x="210" y="262" textAnchor="middle" fontSize="18" fill="#243b38">Time (s)</text>
-  </svg><figcaption>Blue solid: {kind==="balance"?"E + D_trap − E0 on the numerical path":"numerical "+(kind==="position"?"position":"energy")}. Brown dashed: {kind==="balance"?"zero, the exact-model account":"analytic "+(kind==="position"?"position":"energy")+" at the same sampled times"}. The dark dot is selected by the keyboard time control. Lines join computed samples; they do not supply new observations. {flat&&"The zero trace uses a centered one-unit display range."} {!run.completed&&"Gray marks the uncomputed remainder of the requested interval."}</figcaption></figure>;
+  </svg><figcaption>Blue solid: {kind==="balance"?"E + D_trap − E0 on the numerical path":"numerical "+(kind==="position"?"position":"energy")}. Brown dashed: {kind==="balance"?"zero, the exact-model account":"analytic "+(kind==="position"?"position":"energy")+" at the same sampled times"}. The dark dot is selected by the keyboard time control. Lines join computed samples; they do not supply new observations. {flat&&"The zero trace uses a one-unit display range."} {!run.completed&&"Gray marks the uncomputed remainder of the requested interval."}</figcaption></figure>;
 }
 export function Phs231NumericalLab({activity}:{activity:NumericalActivity}){
   const [method,setMethod]=useState(activity.initial.method),[values,setValues]=useState(valuesFor(activity.initial)),[predictions,setPredictions]=useState(["","",""]),[energySign,setEnergySign]=useState(""),[result,setResult]=useState<Result|null>(null),[message,setMessage]=useState(""),[refinement,setRefinement]=useState<0|1|2>(0),[index,setIndex]=useState(0),[page,setPage]=useState(0);
