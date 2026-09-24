@@ -42,8 +42,15 @@ import { exponentialPatternFamilyIds,exponentialPatternQuestion } from "./famili
 import { exponentialFactorFamilyIds,exponentialFactorQuestion } from "./families/mth-exponential-factor";
 import { exponentialGraphFamilyIds,exponentialGraphQuestion } from "./families/mth-exponential-graph";
 import { exponentialAuditFamilyIds,exponentialAuditQuestion } from "./families/mth-exponential-audit";
+import { logInverseFamilyIds,logInverseQuestion } from "./families/mth-log-inverse";
+import { logDomainFamilyIds,logDomainQuestion } from "./families/mth-log-domain";
+import { logGraphFamilyIds,logGraphQuestion } from "./families/mth-log-graph";
+import { logAuditFamilyIds,logAuditQuestion } from "./families/mth-log-audit";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const [ids,generate] of [[logInverseFamilyIds,logInverseQuestion],[logDomainFamilyIds,logDomainQuestion],[logGraphFamilyIds,logGraphQuestion],[logAuditFamilyIds,logAuditQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
 for(const [ids,generate] of [[exponentialPatternFamilyIds,exponentialPatternQuestion],[exponentialFactorFamilyIds,exponentialFactorQuestion],[exponentialGraphFamilyIds,exponentialGraphQuestion],[exponentialAuditFamilyIds,exponentialAuditQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
