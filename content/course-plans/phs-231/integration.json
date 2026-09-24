@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: fourteen of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: fifteen of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -20,13 +20,14 @@
       "m05-l01",
       "m05-l02",
       "m06-l01",
-      "m06-l02"
+      "m06-l02",
+      "m07-l01"
     ],
-    "questionFamilies": 29,
-    "questionVariants": 174,
+    "questionFamilies": 31,
+    "questionVariants": 190,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 14,
-    "workedExamples": 97,
+    "guidedExamples": 15,
+    "workedExamples": 108,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -41,14 +42,15 @@
       "Signed work and kinetic-energy curves, with finite turns, inaccessible energy barriers, asymptotic equilibrium, exact rest, and instantaneous power",
       "Attached-spring ramp energy ledgers with kinetic friction, reference shifts, first-stop limits, and actual versus untraveled dissipation",
       "Three-dimensional external force pulses, signed impulse histories, CM displacement timing, fixed-shape peak scaling, and zero-impulse limitations",
-      "Smooth oblique collision and common-velocity sticking comparisons, passive restitution, rotated contact normals, non-approach gating, and lab/CM velocity diagrams with momentum and energy ledgers"
+      "Smooth oblique collision and common-velocity sticking comparisons, passive restitution, rotated contact normals, non-approach gating, and lab/CM velocity diagrams with momentum and energy ledgers",
+      "Fixed-axis rotor with independent mass radii and drive leverage, signed torque inventory, full point acceleration, reversal travel, keyboard snapshots, and separate configuration comparisons"
     ]
   },
   "remaining": {
-    "phs231Lessons": 8,
+    "phs231Lessons": 7,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Rotation, equilibrium, material, and numerical investigations",
+      "Angular momentum, rolling, equilibrium, material, and numerical investigations",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -56,10 +58,20 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m07-l01",
+    "nextLesson": "m07-l02",
     "nextCourseAfterPhs231Completion": "phs-232"
   },
   "sharedCommits": [
+    {
+      "commit": "d743bac",
+      "summary": "enabled rotation",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-rotation and two families, using the course-specific component included here. Engine 186e338 is checked with independent distributed-mass quadrature, Cartesian force moments, numerical trajectory derivatives, signed integration, and domain edges. Families f7a24ae have 850 independent seeded cases across 16 variants. Authored lesson and registration are b81aef2; browser and mobile-rendering refinements are 4527784. Existing answer fields and backup schemas remain compatible."
+    },
     {
       "commit": "17005f3",
       "summary": "enabled collisions",
@@ -319,16 +331,16 @@
     ]
   },
   "verification": {
-    "status": "The fourteen delivered lessons are technically checked; the course release gates remain open.",
+    "status": "The fifteen delivered lessons are technically checked; course release gates remain open.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the fourteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the fifteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 664,
-      "files": 83,
+      "passed": 839,
+      "files": 97,
       "command": "pnpm exec vitest run --maxWorkers=2",
-      "note": "All authored physics variants run at least 50 deterministic seeds plus edge and invariant fixtures. Collision adds 700 variant cases, independent normal/tangent and frame checks, exact-root equivalents, energy and system-boundary audits, and uncertainty-corner tests."
+      "note": "All authored variants receive at least 50 deterministic seeds plus independent fixtures. Rotation adds 850 cases across 16 variants, including all angular-rate signs, zero-radius bounds, valid and impossible inverse models, all prescribed axes, and finite-thickness theorem restrictions. The full suite passed after replacing a floating-point guided-test answer with its exact derived expression."
     },
     "browser": {
       "fullSuite": {
@@ -343,7 +355,7 @@
       },
       "focusedSuite": {
         "passed": 3,
-        "scope": "Collision lesson: all three workflows passed on the production build in 58.9 seconds. Checks cover misconception feedback, normal/tangent separation, smooth e0 versus full sticking, elastic and rotated contact, non-approach gating, invalid inputs, keyboard CM diagrams, equivalent tables, desktop/mobile accessibility and visual inspection, reload, exact-vector checkpoint completion, and actual question/evidence/notes export/reset/restore."
+        "scope": "Rotation lesson: all three workflows passed on the final production build in 49.5 seconds, after enlarging the mobile diagram. Checks cover radial/axial force distinctions, inertia and torque inventories, reversals, zero torque, initial rest and endpoint stops, no-added-mass limits, invalid inputs, keyboard snapshots and scrolling tables, desktop/mobile accessibility and visual inspection, reload, and actual generated vector/composite/inverse checkpoint plus notes export/reset/restore."
       },
       "port": 3101,
       "previousFocusedSuites": [
@@ -362,6 +374,10 @@
         {
           "passed": 3,
           "scope": "Impulse lesson: guided net/contact force distinction, all four pulse shapes, same-impulse displacement differences, duration scaling, negative components, zero-impulse interpretation, invalid inputs, desktop/mobile accessibility and visual inspection, keyboard controls, reload, and actual checkpoint plus notes export/reset/restore. Two investigation tests passed initially. The checkpoint test used the wrong field label after reload; the saved answer was present. After correcting that locator, the checkpoint workflow passed separately on the same production build. No product behavior or assertion was weakened."
+        },
+        {
+          "passed": 3,
+          "scope": "Collision lesson: all three workflows passed on the production build in 58.9 seconds. Checks cover misconception feedback, normal/tangent separation, smooth e0 versus full sticking, elastic and rotated contact, non-approach gating, invalid inputs, keyboard CM diagrams, equivalent tables, desktop/mobile accessibility and visual inspection, reload, exact-vector checkpoint completion, and actual question/evidence/notes export/reset/restore."
         }
       ],
       "previousFullSuites": [
@@ -386,7 +402,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the fourteen delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
+    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the fifteen delivered lessons. The rotation diagram was enlarged after visual review and inspected again. Keyboard controls, accessible equivalent tables, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked. The new lesson also returned HTTP 200 on preview port 3001.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",

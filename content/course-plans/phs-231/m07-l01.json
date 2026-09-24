@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m07-l01",
   "checkedAt": "2026-09-24",
-  "status": "Detailed implementation plan; not yet delivered.",
+  "status": "Implemented and technically verified; independent subject review and pilot validation have not been performed.",
   "title": "Angular motion, torque, and rotational inertia",
   "objective": "Relate angular and tangential variables, calculate torque about a stated axis, and derive or combine moments of inertia.",
   "alignment": "Develops rotational motion within the verified official PHS 231 description. This lesson sequence, models, examples, and assessment defaults are platform proposals, not an official NU syllabus or equipment requirement. Official prerequisite wording and its ambiguity remain in the course overview.",
