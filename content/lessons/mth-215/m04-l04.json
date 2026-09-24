@@ -1,0 +1,1003 @@
+{
+  "id": "m04-l04",
+  "courseId": "mth-215",
+  "moduleId": "m04",
+  "version": 1,
+  "title": "Radical functions and restricted inverses",
+  "objective": "Analyze a radical function's domain and range and verify an inverse on the correct restricted domain.",
+  "why": "Recovering an input from an output is a common engineering task. A square-root calculation can produce a plausible number while using the wrong branch or an output the original model never reaches. This lesson connects roots, transformations, inequalities, and compositions so that an inverse includes its formula and the inputs on which it actually works.",
+  "estimatedMinutes": 270,
+  "prerequisites": [
+    {
+      "label": "Powers, roots, and exact values",
+      "lessonId": "b02"
+    },
+    {
+      "label": "Function transformations",
+      "lessonId": "m02-l02"
+    },
+    {
+      "label": "Composition and inverse relationships",
+      "lessonId": "m02-l03"
+    },
+    {
+      "label": "Sign charts and excluded inputs",
+      "lessonId": "m04-l02"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "A root symbol assigns one value",
+      "paragraphs": [
+        "The principal square root of a nonnegative real number is the nonnegative number whose square gives that radicand. Thus $\\sqrt{49}=7$. Solving the equation $u^2=49$ asks a different question: every value that squares to 49, so its solutions are $u=7$ and $u=-7$. A function must assign one output to each allowed input; attaching a plus-or-minus sign to its value would change it into a relation with two outputs at most positive inputs.",
+        "The same distinction applies to fourth roots: $\\sqrt[4]{81}=3$, while $u^4=81$ has two real solutions, -3 and 3. At zero those two candidates coincide, so $u^4=0$ has just one distinct real solution. A negative radicand has no real even root. Keep the real-number setting explicit rather than entering zero when a value is undefined.",
+        "Odd powers preserve sign and are one-to-one on the real line. The real cube root of -125 is -5, and the real fifth root of -32 is -2. Odd roots need neither a nonnegative radicand nor a plus-or-minus pair. The negative sign outside an even root, as in $-\\sqrt{49}$, negates its one principal value; it does not add another branch to that function."
+      ]
+    },
+    {
+      "heading": "Read exponents in the real-number setting",
+      "paragraphs": [
+        "A root index describes the power it reverses: $\\sqrt[n]{u}=u^{1/n}$ where that real expression is defined. For positive u, rational-exponent calculations follow the familiar exponent rules. For negative u, use the root interpretation with a reduced rational exponent and an odd denominator when a real value is intended. For instance, $(-8)^{1/3}=-2$, while a real square root of -8 does not exist.",
+        "Do not let calculator conventions replace the definition. Some calculators evaluate a negative fractional power through complex arithmetic or require a dedicated real-root function. First determine the allowed domain and sign, then evaluate. A non-perfect cube root is still a defined real number; a decimal display is an approximation to it.",
+        "For an even index n, $\\sqrt[n]{u^n}=|u|$ for every real u. For an odd index, $\\sqrt[n]{u^n}=u$. The absolute value is necessary because even powers erase sign before the principal root is taken. This identity will decide which inverse branch actually returns the original input."
+      ]
+    },
+    {
+      "heading": "Separate the inside restriction from the outside range",
+      "paragraphs": [
+        "Consider $r(x)=a\\sqrt[n]{b(x-h)}+k$ with nonzero real a and b. When n is even, the radicand requires $b(x-h)\\ge0$. If b is positive, x is at least h; if b is negative, x is at most h. The turning point is (h,k), and it belongs to the graph because zero is an allowed radicand.",
+        "An even root before the outer transformations has range $[0,\\infty)$. Multiplication by positive a keeps it nonnegative; multiplication by negative a reverses the inequality. Adding k gives range $[k,\\infty)$ for positive a and $(-\\infty,k]$ for negative a. The sign of b controls the input side; the sign of a controls the output side. Neither can be inferred from the other.",
+        "For odd n, both the domain and range of this transformed root function are all real numbers. The point (h,k) is a center of the transformed graph, not an endpoint of its domain. These conclusions assume nonzero scales and the full natural real domain; a separately stated operating window can restrict it further."
+      ]
+    },
+    {
+      "heading": "Map anchor points before sketching",
+      "paragraphs": [
+        "If (u,v) is on the parent graph $v=\\sqrt[n]{u}$, solve $b(x-h)=u$ to obtain $x=h+u/b$. The transformed output is $y=av+k$. Therefore the anchor map is $(u,v)\\mapsto(h+u/b,av+k)$. The horizontal scale factor is $1/|b|$, and the vertical scale factor is $|a|$.",
+        "A negative b reflects the parent input coordinate before the horizontal translation. A negative a reflects the parent output before the vertical translation. Track the steps in that order rather than deciding from the final point whether a reflection occurred. A transformed point can end up positive after translation even when its parent coordinate was reflected.",
+        "Choose perfect-power radicands for exact anchors: 0, 1, 4, 9 for a square root; signed cubes for a cube root; 0, 1, 16, 81 for a fourth root. Check both the mapped coordinates and the complete domain/range. A few points guide a sketch but do not establish all its allowed inputs."
+      ]
+    },
+    {
+      "heading": "Use the sign of a rational radicand",
+      "paragraphs": [
+        "For $r(x)=\\sqrt{P(x)/Q(x)}$, retain every zero of the original denominator Q, then require the quotient to be nonnegative. Partition the line at numerator and denominator zeros and use the sign-chart method. Numerator zeros may be included when Q is nonzero; denominator zeros are always excluded.",
+        "Canceling a common factor helps analyze the remaining sign, but it never restores an excluded input. A canceled denominator zero can leave a missing point inside an otherwise allowed radical domain. Check whether each proposed endpoint is an allowed zero or an original exclusion before choosing a bracket.",
+        "A nonnegative quotient does not require a nonnegative numerator and denominator separately. Two negative factors can have a positive quotient. Consequently, $\\sqrt{P/Q}$ cannot always be split into $\\sqrt P/\\sqrt Q$ in real arithmetic. The split requires the separate roots to exist and the denominator root to be nonzero."
+      ]
+    },
+    {
+      "heading": "A root in a denominator changes the endpoint rule",
+      "paragraphs": [
+        "For $1/\\sqrt{R(x)}$, require $R(x)>0$, together with every restriction in the original expression. Zero is allowed under a numerator square root but cannot produce a denominator value of zero. The same distinction holds for any even index.",
+        "An odd root of a rational expression accepts positive, zero, and negative radicands, wherever the original quotient is defined. Its reciprocal excludes both original denominator zeros and allowed zeros of the radicand. Thus an odd index removes the sign restriction but does not remove division-by-zero restrictions.",
+        "Handle zero carefully. A radicand that is identically zero gives a zero root on its original domain, while its reciprocal is nowhere defined. A radicand that is negative except at one allowed zero can give a singleton domain. These cases require a sign argument, not a rule that every radical domain must be a half-line."
+      ]
+    },
+    {
+      "heading": "An inverse function needs a one-to-one original",
+      "paragraphs": [
+        "A function is one-to-one when distinct allowed inputs always give distinct outputs. The horizontal-line test checks this on a graph. The vertical-line test only checks whether a relation is a function; it does not establish one-to-one behavior. A full quadratic passes the vertical test and fails the horizontal test.",
+        "The inverse relation exchanges every input-output pair. If the original repeats an output, the inverse relation assigns multiple outputs to that input and is not an inverse function. For an even-power graph $a(x-h)^n+k$, select a domain on one side of h to remove that ambiguity. Both $x\\ge h$ and $x\\le h$ are possible choices, but they define different original functions and different inverses.",
+        "An inverse exchanges the original domain and range. Write all four sets before accepting a formula: $D_g=R_f$ and $R_g=D_f$. The formula alone is incomplete. A naturally defined algebraic extension can fail to invert the specified original function."
+      ]
+    },
+    {
+      "heading": "Derive the inverse and select its sign from the branch",
+      "paragraphs": [
+        "Start with $y=a(x-h)^n+k$. Subtract k and divide by nonzero a to get $(x-h)^n=(y-k)/a$. For even n, solving gives two algebraic signs when the radicand is positive. The original restriction chooses the sign: $g(y)=h+\\sqrt[n]{(y-k)/a}$ on the right branch, and $g(y)=h-\\sqrt[n]{(y-k)/a}$ on the left branch.",
+        "The sign of a determines which output values are possible, so it affects the inverse domain. It does not choose the sign preceding the root. For example, a downward-opening parabola restricted to its right side still needs the plus-root inverse because its inverse outputs must be at least h.",
+        "At y=k both branch formulas return h. Agreement at this one endpoint does not make the two inverses interchangeable. Use an interior input as well, and test an input outside the selected original branch to see why the restriction matters."
+      ]
+    },
+    {
+      "heading": "A root can invert to a restricted polynomial",
+      "paragraphs": [
+        "For $r(x)=a\\sqrt[n]{b(x-h)}+k$, isolate the root before raising to the nth power. The inverse expression is $g(y)=h+\\frac{1}{b}\\left(\\frac{y-k}{a}\\right)^n$. Its domain must remain the original root function's range. With even n, the polynomial formula may be defined for all real y while the inverse function is defined on only one half-line.",
+        "Preserve the sign condition $(y-k)/a\\ge0$ for even roots. Raising an equation to an even power erases that information. A value on the other side of k can satisfy the powered equation yet fail the original root equation.",
+        "With odd n, there is no sign restriction from the root, so this transformed-root inverse uses all real inputs unless the original problem imposed a narrower domain. Always derive the inverse domain from the actual original range rather than guessing it from the displayed formula."
+      ]
+    },
+    {
+      "heading": "Check both composition orders on their own starting domains",
+      "paragraphs": [
+        "To establish an inverse pair, show $g(f(x))=x$ for every x in the stated domain of f and $f(g(y))=y$ for every y in the stated domain of g. Each inner output must be accepted by the outer function. These statements have different starting sets even when the same letter is used in both formulas.",
+        "One successful composition is insufficient. The pair $f(x)=x^2$ on all real x and $g(y)=\\sqrt y$ on nonnegative y satisfies $f(g(y))=y$, but $g(f(x))=|x|$ rather than x for negative x. Alternatively, restricting g too much can make one identity true while leaving some valid original outputs outside g's domain.",
+        "For exact symbolic checking, keep the principal-root absolute value until the domain justifies simplifying it. For numerical checking, test an interior point, the included endpoint, and an excluded input. Finite tests can find errors and illustrate a proof, but passing a few tests is not a proof for every input."
+      ]
+    },
+    {
+      "heading": "Use absolute value to verify a left branch",
+      "paragraphs": [
+        "On $x\\le h$, the expression x-h is nonpositive, so $|x-h|=h-x$. If an inverse uses the left branch, its composition with the original even power becomes $h-|x-h|=h-(h-x)=x$. On the right branch, $h+|x-h|=x$ instead.",
+        "The wrong sign can still agree at x=h. Away from that endpoint it can return the reflected input $2h-x$, or it can send an intermediate value outside a restricted outer domain. Keep these two failure modes distinct: a wrong numerical return and an undefined composition are different outcomes.",
+        "A full even-power original paired with one inverse branch folds two possible original inputs onto that one branch. Choosing a branch is therefore part of defining the function being inverted, not merely a cosmetic preference about a plus or minus symbol."
+      ]
+    },
+    {
+      "heading": "Odd powers reverse without a branch choice",
+      "paragraphs": [
+        "The transformed odd-power function $f(x)=a(x-h)^n+k$ with odd n and nonzero a is one-to-one on the real line, including when a is negative. Its inverse is $g(y)=h+\\sqrt[n]{(y-k)/a}$. Odd roots already preserve sign, so no extra plus-or-minus choice is used. Both domains and both ranges are all real numbers.",
+        "This conclusion concerns a transformed single odd power. It does not say that every polynomial of odd degree is one-to-one. For example, $x^3-x$ takes the same value zero at -1, 0, and 1, so its full inverse relation is not a function. Inspect the function you actually have.",
+        "When a cube-root or fifth-root intermediate is not a perfect root, keep its exact symbolic meaning through a composition. Rounding an intermediate number before applying the next function can spoil an exact identity numerically. The investigation labels rounded displays and uses the exact matched-pair identities for the final returned values."
+      ]
+    },
+    {
+      "heading": "Reflect ordered pairs across the diagonal",
+      "paragraphs": [
+        "If (p,q) belongs to f, then (q,p) belongs to its inverse. On equal horizontal and vertical scales, exchanging these coordinates reflects the graph across $y=x$. Closed endpoints exchange coordinates too, as do missing points if the original domain omits an input.",
+        "The diagonal is a reflection guide, not an assertion that the graphs meet only there. For $f(x)=-x$, the inverse is the same function and the graphs share off-diagonal points such as (1,-1). Use the coordinate exchange, not an unsupported intersection shortcut.",
+        "A plotted curve has a finite viewing window and numerical sampling. Its visible extent is not the mathematical domain. Use the domain statements and exact tables to check points outside the window or close to a boundary; a rounded picture cannot decide whether an endpoint is included."
+      ]
+    },
+    {
+      "heading": "Inverse notation is different from a reciprocal",
+      "paragraphs": [
+        "The inverse $f^{-1}(y)$ recovers an original input from an output. The reciprocal $1/f(x)$ divides one by the original output. They answer different questions, have different units in physical models, and usually have different domains.",
+        "The inverse domain is the original range. The reciprocal domain is the original domain with any inputs making f zero removed. A function can have a reciprocal wherever its outputs are nonzero and still fail to have an inverse because it repeats outputs.",
+        "Check notation by substitution rather than appearance. An inverse should reverse the original operation on the stated sets. Multiplying f(x) by its reciprocal gives 1 when defined; composing f with its inverse returns the starting input. Those are different tests."
+      ]
+    },
+    {
+      "heading": "Reject candidates that only satisfy a powered equation",
+      "paragraphs": [
+        "Before squaring a radical equation, record the original radicand restriction and any required sign of the other side. In $\\sqrt{R(x)}=S(x)$, a real solution requires both $R(x)\\ge0$ and $S(x)\\ge0$. The equation $R(x)=S(x)^2$ can admit additional candidates where S is negative.",
+        "Solve the powered equation completely, then substitute every candidate into the original equation. Distinguish a candidate outside the original domain from a candidate that is defined but gives unequal sides. Both are rejected, but for different reasons.",
+        "The same audit applies while finding an inverse of an even-root function. A polynomial rearrangement can produce a real number for an impossible target output. Check the original range before interpreting that number as a valid recovered input."
+      ]
+    },
+    {
+      "heading": "Carry units and operating limits through an inverse",
+      "paragraphs": [
+        "Suppose an instrument law maps a length L in metres to a voltage V in volts on a stated operating interval. The inverse maps volts back to metres. Its allowed voltage interval is the image of the entire allowed length interval, including the correct open or closed endpoints.",
+        "For a monotone branch, evaluate the endpoint responses and put them in increasing order. A decreasing branch reverses their order. A requested voltage outside that interval may have a real algebraic preimage while lying outside the validated model. Report the algebraic candidate and the operating decision separately.",
+        "Before declaring the work complete, state the original domain and range, derive the inverse with its branch and units, check both composition orders, and test boundary behavior. Keep exact quantities until the last step, and say explicitly when a reported value is approximate."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Principal value and all equation solutions",
+      "prompt": "Compare $\\sqrt[4]{81}$, the real solutions of $u^4=81$, and the real solutions of $u^4=0$.",
+      "steps": [
+        {
+          "math": "\\sqrt[4]{81}=3",
+          "reason": "The root symbol selects the nonnegative real fourth root."
+        },
+        {
+          "math": "u^4=81\\Longrightarrow u\\in\\{-3,3\\}",
+          "reason": "Both signs have the same positive fourth power."
+        },
+        {
+          "math": "u^4=0\\Longrightarrow u=0",
+          "reason": "The two signed candidates coincide at zero."
+        }
+      ],
+      "conclusion": "A single root value and a complete equation solution set are different answers. A real fourth root of -81 is undefined."
+    },
+    {
+      "title": "Negative inside scale",
+      "prompt": "Find the domain, range, and an anchor of $r(x)=2\\sqrt{-3(x-2)}+1$.",
+      "steps": [
+        {
+          "math": "-3(x-2)\\ge0\\Longrightarrow x\\le2",
+          "reason": "Dividing by a negative reverses the inequality. The zero endpoint is allowed."
+        },
+        {
+          "math": "D_r=(-\\infty,2],\\quad R_r=[1,\\infty)",
+          "reason": "The positive outer scale puts every output at or above 1."
+        },
+        {
+          "math": "(u,v)=(9,3)\\mapsto(2+9/(-3),2\\cdot3+1)=(-1,7)",
+          "reason": "Map a perfect-square parent anchor."
+        }
+      ],
+      "conclusion": "The graph extends left from (2,1), while its output values extend upward."
+    },
+    {
+      "title": "Negative outside scale",
+      "prompt": "Analyze $s(x)=-2\\sqrt{3(x+1)}+4$.",
+      "steps": [
+        {
+          "math": "3(x+1)\\ge0\\Longrightarrow x\\ge-1",
+          "reason": "The inside scale is positive, so the input restriction points right."
+        },
+        {
+          "math": "-2\\sqrt{3(x+1)}\\le0\\Longrightarrow s(x)\\le4",
+          "reason": "The outside negative factor reverses the root range."
+        },
+        {
+          "math": "(9,3)\\mapsto(-1+9/3,-2\\cdot3+4)=(2,-2)",
+          "reason": "The point is reflected vertically before being translated."
+        }
+      ],
+      "conclusion": "The domain is $[-1,\\infty)$ and the range is $(-\\infty,4]$. Input and output restrictions come from different factors."
+    },
+    {
+      "title": "A signed fifth-root anchor",
+      "prompt": "Evaluate $t(x)=-3\\sqrt[5]{2(x+4)}+1$ at x=-20 and state its domain and range.",
+      "steps": [
+        {
+          "math": "2(-20+4)=-32,\\quad \\sqrt[5]{-32}=-2",
+          "reason": "An odd root accepts a negative radicand and preserves its sign."
+        },
+        {
+          "math": "t(-20)=-3(-2)+1=7",
+          "reason": "Apply the outer scale and translation after taking the root."
+        },
+        {
+          "math": "D_t=R_t=\\mathbb R",
+          "reason": "The nonzero affine transformations preserve the full real input and output sets."
+        }
+      ],
+      "conclusion": "The point (-4,1) is a center, not a leftmost endpoint."
+    },
+    {
+      "title": "Fourth-root scaling",
+      "prompt": "Map an anchor and find both scale factors for $r(x)=\\tfrac12\\sqrt[4]{16(x-2)}-3$.",
+      "steps": [
+        {
+          "math": "(u,v)=(16,2)\\mapsto(2+16/16,\\tfrac12\\cdot2-3)=(3,-2)",
+          "reason": "Use a parent fourth-power anchor."
+        },
+        {
+          "math": "\\text{horizontal factor}=\\tfrac1{16},\\quad\\text{vertical factor}=\\tfrac12",
+          "reason": "The inside coefficient divides the parent input coordinate."
+        },
+        {
+          "math": "D_r=[2,\\infty),\\quad R_r=[-3,\\infty)",
+          "reason": "The positive scales preserve both endpoint directions."
+        }
+      ],
+      "conclusion": "The formula can also simplify because the fourth root of 16 is 2; the anchor calculation agrees with that simplification."
+    },
+    {
+      "title": "A rational radicand with two allowed pieces",
+      "prompt": "Find the real domain of $r(x)=\\sqrt{(x-2)/(x+3)}$.",
+      "steps": [
+        {
+          "math": "x\\ne-3,\\quad \\frac{x-2}{x+3}\\ge0",
+          "reason": "Keep the original denominator exclusion before checking the sign."
+        },
+        {
+          "math": "(-\\infty,-3):+;\\quad(-3,2):-;\\quad(2,\\infty):+",
+          "reason": "The quotient is positive when both factors have the same sign."
+        },
+        {
+          "math": "D_r=(-\\infty,-3)\\cup[2,\\infty)",
+          "reason": "Include the numerator zero 2 and exclude the denominator zero -3."
+        }
+      ],
+      "conclusion": "At x=-4 the radicand is 6. This allowed input would be lost if both numerator and denominator were incorrectly required to be nonnegative."
+    },
+    {
+      "title": "Move the even root into a denominator",
+      "prompt": "Find the domain of $q(x)=1/\\sqrt{(x-2)/(x+3)}$.",
+      "steps": [
+        {
+          "math": "x\\ne-3,\\quad \\frac{x-2}{x+3}>0",
+          "reason": "The denominator root must be real and nonzero."
+        },
+        {
+          "math": "D_q=(-\\infty,-3)\\cup(2,\\infty)",
+          "reason": "The sign intervals are unchanged, but the allowed zero at 2 is now excluded."
+        }
+      ],
+      "conclusion": "Strictness belongs to the radicand condition because the complete root is in the denominator."
+    },
+    {
+      "title": "A canceled factor leaves a hole",
+      "prompt": "Find the domain of $r(x)=\\sqrt{(x-1)(x+2)/(x-1)}$.",
+      "steps": [
+        {
+          "math": "x\\ne1,\\quad \\frac{(x-1)(x+2)}{x-1}=x+2\\quad(x\\ne1)",
+          "reason": "Record the original exclusion before canceling."
+        },
+        {
+          "math": "x+2\\ge0\\Longrightarrow x\\ge-2",
+          "reason": "The reduced expression gives the sign condition on its retained domain."
+        },
+        {
+          "math": "D_r=[-2,1)\\cup(1,\\infty)",
+          "reason": "Remove the original excluded input from the allowed half-line."
+        }
+      ],
+      "conclusion": "The root is zero at -2, but it has no value at 1 even though the reduced formula would give the square root of 3."
+    },
+    {
+      "title": "Odd roots retain division restrictions",
+      "prompt": "Compare $\\sqrt[3]{(x-2)/(x+3)}$ and its reciprocal.",
+      "steps": [
+        {
+          "math": "D_{\\mathrm{root}}=(-\\infty,-3)\\cup(-3,\\infty)",
+          "reason": "An odd root accepts every sign, but the original quotient is undefined at -3."
+        },
+        {
+          "math": "D_{\\mathrm{reciprocal}}=(-\\infty,-3)\\cup(-3,2)\\cup(2,\\infty)",
+          "reason": "The reciprocal also excludes the radicand zero at 2."
+        }
+      ],
+      "conclusion": "Removing a sign restriction does not remove denominator restrictions."
+    },
+    {
+      "title": "A singleton and an empty radical domain",
+      "prompt": "Compare $\\sqrt{-x^2}$ and $1/\\sqrt{-x^2}$.",
+      "steps": [
+        {
+          "math": "-x^2\\ge0\\Longleftrightarrow x=0",
+          "reason": "A nonpositive quantity can be nonnegative only at zero."
+        },
+        {
+          "math": "D_{\\sqrt{-x^2}}=\\{0\\},\\quad\\sqrt{-0^2}=0",
+          "reason": "The numerator-root expression exists at exactly one input."
+        },
+        {
+          "math": "-x^2>0\\text{ has no real solution}",
+          "reason": "The reciprocal needs a positive radicand and therefore has empty domain."
+        }
+      ],
+      "conclusion": "Radical domains need not be intervals with positive length."
+    },
+    {
+      "title": "When quotient splitting fails",
+      "prompt": "At x=-4, compare $\\sqrt{(x-2)/(x+3)}$ with the proposed split $\\sqrt{x-2}/\\sqrt{x+3}$.",
+      "steps": [
+        {
+          "math": "\\sqrt{\\frac{-6}{-1}}=\\sqrt6",
+          "reason": "The original quotient is positive and its real root exists."
+        },
+        {
+          "math": "\\sqrt{-6}\\text{ and }\\sqrt{-1}\\text{ are not real}",
+          "reason": "Neither separate root exists in the stated real-number setting."
+        }
+      ],
+      "conclusion": "The proposed split changes which real inputs are allowed and is invalid here."
+    },
+    {
+      "title": "Right-branch inverse of a shifted quadratic",
+      "prompt": "Invert $f(x)=2(x+1)^2+3$ on $x\\ge-1$.",
+      "steps": [
+        {
+          "math": "y-3=2(x+1)^2\\Longrightarrow (x+1)^2=\\frac{y-3}{2}",
+          "reason": "Undo the outside operations first."
+        },
+        {
+          "math": "x+1=\\sqrt{\\frac{y-3}{2}}",
+          "reason": "The original right branch requires x+1 to be nonnegative."
+        },
+        {
+          "math": "g(y)=-1+\\sqrt{\\frac{y-3}{2}},\\quad D_g=[3,\\infty),\\ R_g=[-1,\\infty)",
+          "reason": "Exchange the original range and domain."
+        },
+        {
+          "math": "f(1)=11,\\quad g(11)=1,\\quad g(3)=-1",
+          "reason": "Check an interior point and the included endpoint."
+        }
+      ],
+      "conclusion": "The minus-root expression would invert a different original branch."
+    },
+    {
+      "title": "The same formula on the left branch",
+      "prompt": "Invert $f(x)=2(x+1)^2+3$ on $x\\le-1$.",
+      "steps": [
+        {
+          "math": "x+1\\le0\\Longrightarrow x+1=-\\sqrt{\\frac{y-3}{2}}",
+          "reason": "Select the sign from the original input restriction."
+        },
+        {
+          "math": "g(y)=-1-\\sqrt{\\frac{y-3}{2}},\\quad D_g=[3,\\infty),\\ R_g=(-\\infty,-1]",
+          "reason": "The inverse now returns only the left-side inputs."
+        },
+        {
+          "math": "g(11)=-3,\\quad f(-3)=11",
+          "reason": "The same target output now recovers a different input."
+        }
+      ],
+      "conclusion": "Both branches agree at the endpoint but give different answers for every larger target output."
+    },
+    {
+      "title": "A downward parabola still needs the right sign",
+      "prompt": "Invert $f(x)=-3(x-2)^2+5$ on $x\\ge2$.",
+      "steps": [
+        {
+          "math": "(x-2)^2=\\frac{5-y}{3},\\quad x-2\\ge0",
+          "reason": "The negative coefficient reverses the output direction, while the selected input branch stays right."
+        },
+        {
+          "math": "g(y)=2+\\sqrt{\\frac{5-y}{3}},\\quad D_g=(-\\infty,5],\\ R_g=[2,\\infty)",
+          "reason": "The inverse sign is plus because its outputs must be at least 2."
+        },
+        {
+          "math": "g(2)=3,\\quad f(3)=2",
+          "reason": "Verify a point on the selected branch."
+        }
+      ],
+      "conclusion": "A negative outer coefficient does not imply a minus-root inverse."
+    },
+    {
+      "title": "A restricted fourth power",
+      "prompt": "Invert $f(x)=\\tfrac12(x+2)^4-1$ on $x\\le-2$.",
+      "steps": [
+        {
+          "math": "(x+2)^4=2(y+1),\\quad x+2\\le0",
+          "reason": "Undo the offset and scale, then retain the branch sign."
+        },
+        {
+          "math": "g(y)=-2-\\sqrt[4]{2(y+1)},\\quad D_g=[-1,\\infty),\\ R_g=(-\\infty,-2]",
+          "reason": "The principal fourth root is nonnegative, so negate it on this branch."
+        },
+        {
+          "math": "g(7)=-2-\\sqrt[4]{16}=-4,\\quad f(-4)=7",
+          "reason": "Use an exact fourth-power anchor."
+        }
+      ],
+      "conclusion": "Writing both root signs would give an inverse relation, not the inverse function of this restricted original."
+    },
+    {
+      "title": "A root inverse must keep its restricted input set",
+      "prompt": "Invert $r(x)=-2\\sqrt{4-x}+3$.",
+      "steps": [
+        {
+          "math": "D_r=(-\\infty,4],\\quad R_r=(-\\infty,3]",
+          "reason": "The inside and outside reflections restrict opposite coordinates."
+        },
+        {
+          "math": "\\frac{3-y}{2}=\\sqrt{4-x}\\Longrightarrow x=4-\\frac{(3-y)^2}{4}",
+          "reason": "Isolate the nonnegative root before squaring."
+        },
+        {
+          "math": "g(y)=4-\\frac{(3-y)^2}{4},\\quad D_g=(-\\infty,3],\\ R_g=(-\\infty,4]",
+          "reason": "The polynomial expression retains the original root range as its domain."
+        },
+        {
+          "math": "g(-1)=0,\\quad r(0)=-1",
+          "reason": "Check a valid inverse pair."
+        }
+      ],
+      "conclusion": "At y=5 the polynomial extension gives 3, but r(3)=1 rather than 5. The inverse function rejects y=5."
+    },
+    {
+      "title": "Prove both identities on the left branch",
+      "prompt": "For $f(x)=2(x+1)^2+3$ on $x\\le-1$ and $g(y)=-1-\\sqrt{(y-3)/2}$ on $y\\ge3$, verify both compositions.",
+      "steps": [
+        {
+          "math": "g(f(x))=-1-\\sqrt{(x+1)^2}=-1-|x+1|",
+          "reason": "Keep the absolute value produced by the principal square root."
+        },
+        {
+          "math": "x\\le-1\\Longrightarrow |x+1|=-(x+1)\\Longrightarrow g(f(x))=x",
+          "reason": "The branch justifies the final simplification."
+        },
+        {
+          "math": "f(g(y))=2\\left(-\\sqrt{\\frac{y-3}{2}}\\right)^2+3=y\\quad(y\\ge3)",
+          "reason": "The inverse output is on the original left branch, so the outer function accepts it."
+        }
+      ],
+      "conclusion": "Each identity holds on its own starting domain, including its endpoint."
+    },
+    {
+      "title": "One composition hides a folded input",
+      "prompt": "Test $f(x)=(x-2)^2$ on all real x with $g(y)=2+\\sqrt y$ on nonnegative y.",
+      "steps": [
+        {
+          "math": "f(g(y))=y\\quad(y\\ge0)",
+          "reason": "Squaring reverses the principal root for these target inputs."
+        },
+        {
+          "math": "g(f(x))=2+|x-2|",
+          "reason": "The other order returns a folded value, not every original input."
+        },
+        {
+          "math": "g(f(0))=g(4)=4\\ne0",
+          "reason": "A single counterexample disproves the claimed inverse pair."
+        }
+      ],
+      "conclusion": "Restrict f to x at least 2 to make this g its inverse. Merely writing the plus sign does not restrict f automatically."
+    },
+    {
+      "title": "An inverse domain that is too small",
+      "prompt": "Let $f(x)=x^2$ for $x\\ge0$, but define $g(y)=\\sqrt y$ only for $y\\ge4$. Are these inverses?",
+      "steps": [
+        {
+          "math": "f(g(y))=y\\quad(y\\ge4)",
+          "reason": "This identity holds on the proposed g domain."
+        },
+        {
+          "math": "g(f(1))=g(1)\\text{ is undefined}",
+          "reason": "The original output 1 is outside the unnecessarily restricted g domain."
+        },
+        {
+          "math": "R_f=[0,\\infty)\\ne D_g=[4,\\infty)",
+          "reason": "The set mismatch explains the failed round trip."
+        }
+      ],
+      "conclusion": "The correct inverse domain is the complete original range, including outputs below 4."
+    },
+    {
+      "title": "A decreasing cubic and an approximate intermediate",
+      "prompt": "Invert $f(x)=-2(x-1)^3+3$ on the real line.",
+      "steps": [
+        {
+          "math": "(x-1)^3=\\frac{3-y}{2}\\Longrightarrow g(y)=1+\\sqrt[3]{\\frac{3-y}{2}}",
+          "reason": "A real cube root preserves sign, so there is only one branch."
+        },
+        {
+          "math": "g(5)=1+\\sqrt[3]{-1}=0,\\quad f(0)=5",
+          "reason": "Check an exact signed-root point."
+        },
+        {
+          "math": "g(4)=1-\\sqrt[3]{1/2}\\approx0.2062994740",
+          "reason": "This intermediate is real but not a rational or square-root expression."
+        },
+        {
+          "math": "f(g(4))=4",
+          "reason": "The exact identity uses the unrounded cube root."
+        }
+      ],
+      "conclusion": "Both domains and ranges are all real numbers. The displayed decimal is not the definition of the inverse value."
+    },
+    {
+      "title": "Reflect exact coordinate pairs",
+      "prompt": "For $f(x)=2(x+1)^2+3$ restricted to $x\\ge-1$, reflect the endpoint and an interior point.",
+      "steps": [
+        {
+          "math": "(-1,3)\\mapsto(3,-1)",
+          "reason": "An included endpoint remains included after swapping coordinates."
+        },
+        {
+          "math": "(1,11)\\mapsto(11,1)",
+          "reason": "The inverse reverses this input-output pair."
+        },
+        {
+          "math": "g(11)=-1+\\sqrt{(11-3)/2}=1",
+          "reason": "The inverse formula agrees with the reflected table."
+        }
+      ],
+      "conclusion": "Use equal axis scales to visualize reflection across y=x; the visible plotting window does not determine the domains."
+    },
+    {
+      "title": "Recover an input or take a reciprocal",
+      "prompt": "For $f(x)=2(x+1)^2+3$ on $x\\ge-1$, compare $f^{-1}(11)$ and $1/f(11)$.",
+      "steps": [
+        {
+          "math": "f^{-1}(11)=-1+\\sqrt{\\frac{11-3}{2}}=1",
+          "reason": "The inverse finds the original input that produced output 11."
+        },
+        {
+          "math": "\\frac1{f(11)}=\\frac1{2(11+1)^2+3}=\\frac1{291}",
+          "reason": "The reciprocal instead evaluates the original at input 11, then divides one by the result."
+        },
+        {
+          "math": "D_{f^{-1}}=[3,\\infty),\\quad D_{1/f}=[-1,\\infty)",
+          "reason": "The original never equals zero, so the reciprocal keeps the whole original domain."
+        }
+      ],
+      "conclusion": "The inverse and reciprocal have different values and different input sets."
+    },
+    {
+      "title": "An extraneous root that is still in the radical domain",
+      "prompt": "Solve $\\sqrt{x+6}=x$ over the reals.",
+      "steps": [
+        {
+          "math": "x+6\\ge0\\Longrightarrow x\\ge-6,\\qquad x\\ge0",
+          "reason": "The radical domain and the nonnegative right-side requirement are separate conditions."
+        },
+        {
+          "math": "x+6=x^2\\Longrightarrow(x-3)(x+2)=0",
+          "reason": "Squaring produces the candidates 3 and -2."
+        },
+        {
+          "math": "x=3:\\ \\sqrt9=3;\\qquad x=-2:\\ \\sqrt4=2\\ne-2",
+          "reason": "Substitute both candidates into the original equation."
+        }
+      ],
+      "conclusion": "The only solution is 3. The rejected candidate -2 gives a defined radical, but its negative right side cannot equal the principal root."
+    },
+    {
+      "title": "An inverse with a finite operating window",
+      "prompt": "A supplied instrument model is $V=2(L-1)^2+3$, with L in metres, V in volts, and $1\\le L\\le4$. Recover L at V=11 and assess V=35.",
+      "steps": [
+        {
+          "math": "V(1)=3,\\quad V(4)=21\\Longrightarrow R_V=[3,21]",
+          "reason": "The selected right branch increases across the closed length window. The coefficient has units volts per square metre."
+        },
+        {
+          "math": "L(V)=1+\\sqrt{\\frac{V-3}{2}},\\quad D_L=[3,21],\\ R_L=[1,4]",
+          "reason": "The inverse returns metres and accepts only the voltage image of the stated window."
+        },
+        {
+          "math": "L(11)=3\\ \\mathrm m,\\qquad L_{\\mathrm{extension}}(35)=5\\ \\mathrm m",
+          "reason": "Both are real algebraic calculations, but only the first stays within the allowed length interval."
+        }
+      ],
+      "conclusion": "V=35 is outside the operating range. Five metres is an algebraic extrapolation, not an accepted inverse result for this model."
+    }
+  ],
+  "guided": {
+    "title": "Recover the left branch completely",
+    "setup": "Let $f(x)=3(x-2)^2-1$ on $x\\le2$. Determine its inverse g and check it, including the turning input.",
+    "before": [
+      "Find the original range before solving for an inverse.",
+      "Choose the root sign that returns inputs at or below 2.",
+      "Write both inverse sets and check the starting domain of each composition."
+    ],
+    "question": {
+      "id": "guided-radical-inverse",
+      "familyId": "mth-restricted-inverse",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m04-l04",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "Complete the inverse of $f(x)=3(x-2)^2-1$ on $x\\le2$. In the final decision, x=3 is an original input, not an inverse input.",
+      "fields": [
+        {
+          "id": "formula",
+          "label": "Inverse formula",
+          "kind": "choice",
+          "correct": "left",
+          "options": [
+            {
+              "id": "left",
+              "label": "$g(x)=2-\\sqrt{(x+1)/3}$",
+              "feedback": "The minus-root expression returns only inputs at or below 2.",
+              "accessibleLabel": "g of x equals 2 minus the square root of ((x plus 1) divided by 3)."
+            },
+            {
+              "id": "right",
+              "label": "$g(x)=2+\\sqrt{(x+1)/3}$",
+              "feedback": "This returns the other original branch.",
+              "accessibleLabel": "g of x equals 2 plus the square root of ((x plus 1) divided by 3)."
+            },
+            {
+              "id": "reciprocal",
+              "label": "$g(x)=1/(3(x-2)^2-1)$",
+              "feedback": "A reciprocal divides one by an output; it does not reverse the function.",
+              "accessibleLabel": "g of x equals 1 divided by (3 times (x minus 2) squared, minus 1)."
+            }
+          ]
+        },
+        {
+          "id": "domain",
+          "label": "Inverse domain",
+          "kind": "intervals",
+          "expected": [
+            {
+              "lower": "-1",
+              "upper": null,
+              "lowerClosed": true,
+              "upperClosed": false
+            }
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Inverse range",
+          "kind": "intervals",
+          "expected": [
+            {
+              "lower": null,
+              "upper": "2",
+              "lowerClosed": false,
+              "upperClosed": true
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "label": "Recovered input g(11)",
+          "kind": "exact",
+          "expected": "0"
+        },
+        {
+          "id": "roundtrip",
+          "label": "Returned value g(f(-1))",
+          "kind": "exact",
+          "expected": "-1"
+        },
+        {
+          "id": "boundary",
+          "label": "Turning value g(-1)",
+          "kind": "exact",
+          "expected": "2"
+        },
+        {
+          "id": "probe",
+          "label": "Does the original function accept x = 3?",
+          "kind": "choice",
+          "correct": "no",
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes",
+              "feedback": "The specified original branch stops at 2. An available polynomial extension does not change that domain."
+            },
+            {
+              "id": "no",
+              "label": "No",
+              "feedback": "The original input 3 lies outside x at or below 2."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Use the original range as the inverse domain.",
+        "After isolating the square, the original restriction says x minus 2 is nonpositive.",
+        "Check both 11 and -1 against the inverse domain, and check -1 and 3 against the original domain."
+      ],
+      "explanation": [
+        "The original range is $[-1,\\infty)$, and solving gives $g(y)=2-\\sqrt{(y+1)/3}$.",
+        "The inverse range is $(-\\infty,2]$. Its values are $g(11)=0$ and $g(-1)=2$.",
+        "Since $f(-1)=26$, $g(f(-1))=g(26)=-1$. The original input 3 is excluded by the stated branch."
+      ],
+      "answerSummary": "Minus-root inverse; domain [-1, inf), range (-inf, 2]; g(11)=0, g(f(-1))=-1, g(-1)=2; original input 3 is excluded."
+    },
+    "after": "This is supported practice. Explain the branch choice and both domains before moving to the independent checkpoint."
+  },
+  "interaction": {
+    "kind": "radical-lab",
+    "prompt": "Predict the original domain and range, decide whether an inverse function exists, and identify both inverse sets. Then predict both composition orders. Change a branch or input to test the restriction that makes each round trip work.",
+    "cases": [
+      {
+        "title": "Quadratic: right branch",
+        "kind": "power",
+        "model": {
+          "degree": 2,
+          "a": "2",
+          "h": "-1",
+          "k": "3",
+          "branch": "right"
+        },
+        "originalInput": "1",
+        "inverseInput": "11",
+        "radius": 3
+      },
+      {
+        "title": "Quadratic: left branch",
+        "kind": "power",
+        "model": {
+          "degree": 2,
+          "a": "2",
+          "h": "-1",
+          "k": "3",
+          "branch": "left"
+        },
+        "originalInput": "-3",
+        "inverseInput": "11",
+        "radius": 3
+      },
+      {
+        "title": "Downward quadratic: right branch",
+        "kind": "power",
+        "model": {
+          "degree": 2,
+          "a": "-3",
+          "h": "2",
+          "k": "5",
+          "branch": "right"
+        },
+        "originalInput": "3",
+        "inverseInput": "2",
+        "radius": 2
+      },
+      {
+        "title": "Reflected root: restricted polynomial inverse",
+        "kind": "root",
+        "model": {
+          "degree": 2,
+          "transform": {
+            "a": "-2",
+            "b": "-1",
+            "h": "4",
+            "k": "3"
+          }
+        },
+        "originalInput": "0",
+        "inverseInput": "-1",
+        "radius": 3
+      },
+      {
+        "title": "Decreasing cubic: all real inputs",
+        "kind": "power",
+        "model": {
+          "degree": 3,
+          "a": "-2",
+          "h": "1",
+          "k": "3",
+          "branch": "all"
+        },
+        "originalInput": "0",
+        "inverseInput": "5",
+        "radius": 2
+      },
+      {
+        "title": "Fourth power: left branch",
+        "kind": "power",
+        "model": {
+          "degree": 4,
+          "a": "1/2",
+          "h": "-2",
+          "k": "-1",
+          "branch": "left"
+        },
+        "originalInput": "-4",
+        "inverseInput": "7",
+        "radius": 2
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "linear-even"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "negative-inner"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "negative-outer"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "odd-root"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "fourth-root"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "rational-radicand"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "denominator-root"
+    },
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "canceled-hole"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "anchors"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "reflections"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "scale"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "endpoint"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "input-recovery"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "signed-odd"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "fourth-power"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "principal-value"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "right-branch"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "left-branch"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "downward"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "scaled-shifted"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "root-to-power"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "cubic"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "fourth-branch"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "physical-window"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "wrong-branch"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "unrestricted-power"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "inverse-domain"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "one-composition"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "principal-sign"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "absolute-value"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "reciprocal-confusion"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "extraneous-candidate"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-radical-domain",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-radical-transform",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-restricted-inverse",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-radical-audit",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "Even roots use their principal nonnegative values; solving an even-power equation can require both signs. Odd roots preserve sign.",
+    "For an even-root transformation, the inside factor determines the domain direction and the outside factor determines the range direction.",
+    "Retain original denominator exclusions, require a nonnegative even radicand, and strengthen that to positive when the root is in a denominator.",
+    "Choose an even-power inverse sign from the original branch, then exchange domain and range. A polynomial inverse can still have a restricted domain.",
+    "Prove both compositions on their respective domains. Preserve absolute values and sign conditions until the branch justifies removing them.",
+    "An inverse reverses a mapping. A reciprocal divides one by an output. Physical operating windows restrict inverse inputs beyond mere algebraic existence."
+  ],
+  "retrieval": "Without notes, invert $f(x)=4(x+3)^2-2$ on $x\\le-3$. State both inverse sets, recover the input for output 14, and check both composition orders including the endpoint. Then find the domain of $1/\\sqrt{(x-1)/(x+2)}$ and explain the two excluded critical inputs. Finally explain why $\\sqrt{(x+3)^2}$ cannot be replaced by x+3 on the whole real line. Revisit the lesson before retrying if you lose a branch or an original restriction.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 5.7: Inverses and radical functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-7-inverses-and-radical-functions",
+      "purpose": "Supplement the branch and domain work with polynomial inverses and radical functions."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 3.7: Inverse functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/3-7-inverse-functions",
+      "purpose": "Review one-to-one mappings, coordinate exchange, and the two composition identities."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 1.3: Radicals and rational exponents",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/1-3-radicals-and-rational-exponents",
+      "purpose": "Refresh principal roots, even and odd indices, and real-number restrictions."
+    }
+  ]
+}
