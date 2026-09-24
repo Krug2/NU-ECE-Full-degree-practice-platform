@@ -1,0 +1,45 @@
+{
+  "lessonId": "m05-l03",
+  "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
+  "status": "draft",
+  "contentStages": 1,
+  "independentSubjectReview": "not yet performed",
+  "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
+  "coverage": [
+    {
+      "skill": "Preserve both values and allowed inputs",
+      "instruction": [
+        "Preserve both values and allowed inputs"
+      ],
+      "examples": [
+        "Equal on a shared domain is not full equivalence",
+        "An absolute value preserves both branches"
+      ],
+      "practice": [
+        "mth-log-rewrite:even-power",
+        "mth-log-rewrite:shifted-absolute"
+      ],
+      "independentCheck": "mth-log-rewrite:mixed",
+      "retrieval": "Give an input that distinguishes two domains, then repair the rewrite using an absolute value."
+    },
+    {
+      "skill": "Derive product and quotient rules",
+      "instruction": [
+        "Derive product and quotient rules"
+      ],
+      "examples": [
+        "A product becomes a sum of logarithms",
+        "A quotient keeps its order",
+        "Two negative factors cannot be split into real logs"
+      ],
+      "practice": [
+        "mth-log-rules:product",
+        "mth-log-rules:quotient",
+        "mth-log-rewrite:product-domain",
+        "mth-log-rewrite:quotient-domain"
+      ],
+      "independentCheck": "mth-log-rules:mixed",
+      "retrieval": "Derive a product and a quotient rule from exponent arithmetic, then test a pair of negative factors against the hypotheses."
+    }
+  ]
+}
