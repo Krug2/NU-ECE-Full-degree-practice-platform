@@ -1,7 +1,7 @@
 {
   "courseId": "f01",
   "planVersion": 1,
-  "status": "planned",
+  "status": "implemented-preview",
   "title": "Arithmetic and notation",
   "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
   "learner": "A returning learner who has previously used arithmetic but cannot reliably recall signs, fraction operations, powers, or mathematical notation. Prior credit is neither assumed evidence nor a reason to withhold explanation.",

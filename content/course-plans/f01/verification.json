@@ -1,0 +1,79 @@
+{
+  "courseId": "f01",
+  "verifiedAt": "2026-09-23",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 4,
+    "diagnosticProbes": 8,
+    "lessonCheckpointQuestions": 16,
+    "mixedRecallQuestions": 4,
+    "evidence": "Four independent lesson checkpoints plus the mixed sample are required for full F01 evidence. Any later miss receives a review recommendation. Diagnostic and practice results never create independent lesson evidence."
+  },
+  "checks": [
+    {
+      "command": "pnpm test",
+      "result": "360 tests passed in 49 files, including the original foundation suites and F01 correctness, coverage, evidence, and backup tests."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed production compilation, TypeScript, and generation of 70 pages."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts --output tmp/f01-browser tests/e2e/refreshers.spec.ts",
+      "result": "4 passed against this worktree's production build on port 3102. Verified entry from curriculum, gap-specific diagnostic routing, guided feedback, invalid arithmetic, keyboard prediction, immutable resume, active checkpoint mode, cross-tab mode isolation, all four checkpoints, mixed recall, retries, evidence isolation, notes, and backup export/reset/import."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/foundations.spec.ts tests/e2e/calibration.spec.ts tests/e2e/learning.spec.ts tests/e2e/storage.spec.ts tests/e2e/progress-repository.spec.ts tests/e2e/attempt-recovery.spec.ts tests/e2e/drafts.spec.ts tests/e2e/navigation.spec.ts tests/e2e/mobile.spec.ts",
+      "result": "32 shared browser regression tests passed. After the active-checkpoint resume correction, the 18 learning, attempt-recovery, storage, and mobile tests were run again and passed."
+    }
+  ],
+  "mathematics": "New generator structures were checked across 60 to 100 seeds with independent integer arithmetic, cross-products, quotient/remainder rounding, and explicit accepted equivalents, near misses, invalid input, and unit-label fixtures. Existing MTH 215 source families and saved identifiers are unchanged. Guided answers and worked arithmetic were checked separately from random generation.",
+  "accessibility": "Axe WCAG 2 A/AA and WCAG 2.1 AA reported no violations on the F01 overview and all four lessons at 1440x1000 and 390x844. No horizontal page overflow or KaTeX errors. Keyboard prediction and guided controls exercised. Desktop overview, mobile overview, and mobile fraction-guided screenshots visually inspected. This is automated and implementer visual verification, not a full assistive-technology or human usability audit.",
+  "sources": "Exact OpenStax sections and access details are recorded in resources.json. Instruction and new exercises are original; resources are link-only.",
+  "sharedInterfaces": [
+    {
+      "files": [
+        "lib/learning/attempts.ts",
+        "components/learning/attempt-runner.tsx"
+      ],
+      "change": "AssessmentSource narrows input to existing attempt fields; onlyMode selects diagnostic practice or mixed checkpoint. Active attempts resume in their saved mode without changing an open selected draft. No storage or grading schema changes."
+    },
+    {
+      "files": [
+        "lib/learning/catalog.ts",
+        "lib/learning/generate.ts",
+        "app/courses/[id]/page.tsx"
+      ],
+      "change": "Small imports and registration delegate refresher content, families, and overview to isolated refresher modules."
+    },
+    {
+      "files": [
+        "components/learning/lesson-reader.tsx",
+        "components/ui.tsx",
+        "components/curriculum-browser.tsx"
+      ],
+      "change": "Optional-refresher labels and verified preview availability; existing course behavior is retained."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f01",
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Not university credit or enrollment evidence.",
+    "Independent human subject and assistive-technology review is pending.",
+    "The inherited local progress and 1 MB backup policy is unchanged; the primary chat owns persistence evolution.",
+    "F02 through F12 remain planned at this F01 verification milestone."
+  ]
+}
