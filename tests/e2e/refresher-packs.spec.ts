@@ -9,6 +9,7 @@ import type { Question, LearningPack } from "../../lib/learning/contracts";
 const algebra: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f02.json", import.meta.url), "utf8"));
 const functions: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f03.json", import.meta.url), "utf8"));
 const trigonometry: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f04.json", import.meta.url), "utf8"));
+const exponentials: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f05.json", import.meta.url), "utf8"));
 
 async function fillAnswer(area: Locator, question: Question, wrong = false) {
   const answers = refresherAnswers(question);
@@ -22,7 +23,7 @@ async function fillAnswer(area: Locator, question: Question, wrong = false) {
   }
 }
 
-for (const pack of [algebra, functions, trigonometry]) {
+for (const pack of [algebra, functions, trigonometry, exponentials]) {
   const course = pack.courseId, lessons = pack.modules.flatMap(module => module.lessons);
   test(`${course}: diagnostic gaps, exact resume, notes, and backup round trip`, async ({ page }, testInfo) => {
     const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
