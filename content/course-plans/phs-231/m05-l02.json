@@ -1,0 +1,277 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m05-l02",
+  "status": "proposed teaching and verification plan; not a delivered lesson",
+  "checkedAt": "2026-09-23",
+  "title": "Energy systems, potential, and efficiency",
+  "objective": "Choose a system boundary, account for potential and dissipated energy, and determine reachable states and power requirements.",
+  "alignment": "Extends the official PHS 231 work-and-energy coverage documented in overview.json. This sequence, item bank, investigation, and checkpoint are our instructional design, not NU-prescribed lesson counts, grading policy, laboratory equipment, or enrollment advice.",
+  "prerequisites": [
+    {
+      "lessonId": "m05-l01",
+      "purpose": "Signed work, kinetic energy, power, and whole-path reachability"
+    },
+    {
+      "lessonId": "m03-l02",
+      "purpose": "Kinetic-friction assumptions and static-friction limitations at rest"
+    },
+    {
+      "lessonId": "m04-l01",
+      "purpose": "Unilateral normal-force constraints in a vertical loop"
+    },
+    {
+      "lessonId": "m04-l02",
+      "purpose": "Near-surface versus inverse-square gravitational energy and its reference"
+    },
+    {
+      "lessonId": "m02-l01",
+      "purpose": "Derivatives, force integrals, and turning points"
+    },
+    {
+      "courseId": "csc-208",
+      "status": "under construction",
+      "purpose": "Differentiation and integration preparation; develop the exact operations needed here without duplicating the calculus course"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "System boundaries",
+      "teaching": "Separate particle work-energy, a mechanical K+U account, and a larger isolated system including thermal/internal energy. Potential belongs to an interaction; retain only one representation of conservative work. Define positive external work and heat into a closed system, exclude mass transfer, and distinguish heat transfer from stored thermal energy.",
+      "checks": [
+        "Gravity work and gravitational potential are alternate representations, not two independent inputs.",
+        "Internal friction reduces mechanical energy while the larger insulated stationary-surface system conserves the modeled total."
+      ]
+    },
+    {
+      "topic": "Conservative forces and potential",
+      "teaching": "Derive Wc=-ΔU and F=-dU/dx, then introduce the negative gradient componentwise. Explain arbitrary additive constants and time-independent-potential assumptions. A curl-free local test needs a suitable simply connected domain; direct construction of a global potential is a stronger check.",
+      "checks": [
+        "Differentiate potential rather than equating force to its value.",
+        "A reference shift changes numerical U and E together, leaving K and motion unchanged.",
+        "An explicitly time-dependent potential can change mechanical energy through its changing parameters."
+      ]
+    },
+    {
+      "topic": "Gravity and springs",
+      "teaching": "Develop mgy for approximately uniform g and kx²/2 for an ideal spring measured from unstretched length. Add interactions using one coordinate and correct geometry. A vertical spring's force-equilibrium extension differs from its first release turning extension.",
+      "checks": [
+        "Use vertical height, not ramp path length, in mgh.",
+        "Separate permanent spring attachment from a spring that releases a projectile at zero compression.",
+        "Keep the spring model within its declared range."
+      ]
+    },
+    {
+      "topic": "Dissipation and applied work",
+      "teaching": "For fixed rough surfaces on a known sliding path, include μk N times path length in the thermal account. Derive Δ(K+U)=Wother or Δ(K+U+Ethermal)=Wexternal for the stated insulated model. Explain that friction can be positive work on one moving body and that thermal partition between contacts is not supplied by μk.",
+      "checks": [
+        "Do not label all frictional mechanical loss as heat transferred across the chosen boundary.",
+        "Do not use the forward kinetic-friction law after the first stop without a static-friction and reversal model."
+      ]
+    },
+    {
+      "topic": "Potential diagrams and accessibility",
+      "teaching": "Use K=E-U for time-independent conservative one-dimensional motion. Distinguish the algebraically allowed set from the connected region a given trajectory can visit. Treat simple turning zeros, double-zero asymptotic barrier thresholds, and exact rest correctly.",
+      "checks": [
+        "Allowed regions may be disconnected.",
+        "At exactly the barrier energy, a smooth maximum can be approached only asymptotically.",
+        "Energy cannot replace a normal-force or tension feasibility check."
+      ]
+    },
+    {
+      "topic": "Equilibrium and stability",
+      "teaching": "Equilibrium requires U'=0. Minima restore small displacements, maxima repel, and U''=0 is inconclusive. Compare positive quartic, negative quartic, cubic, and constant potentials. Neutral classification refers explicitly to small displacements from rest. Introduce ω≈sqrt(U''/m) only near a nondegenerate minimum.",
+      "checks": [
+        "Zero slope is not zero speed.",
+        "Force zero at a point does not prove stable equilibrium.",
+        "A small-oscillation frequency is a local approximation for a nonlinear potential."
+      ]
+    },
+    {
+      "topic": "Power and efficiency",
+      "teaching": "Connect useful energy to required average input power over a duration, or useful instantaneous mechanical power to constant-speed loads. Define η=Euseful/Ein for specified positive transfers, 0<η≤1, with unused energy accounted for; multiply stage efficiencies. Distinguish this conversion efficiency from a heat-pump coefficient of performance.",
+      "checks": [
+        "Power and energy have different units.",
+        "Divide useful output by efficiency for input requirements.",
+        "A ratio exceeding one contradicts the specified single-input conversion model, rather than proving energy creation."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "reference",
+      "given": "m=2 kg, g=10 m/s², rise from y=-1 m to y=2 m; shift U by +50 J",
+      "expected": "ΔU=60 J and Wg=-60 J both before and after the shift; U values change from -20,40 J to 30,90 J.",
+      "independent": "Integrate the constant force -20 N over +3 m."
+    },
+    {
+      "id": "vertical-spring",
+      "given": "m=1 kg, g=10 m/s², k=20 N/m; start at rest with an unstrained attached spring; downward x positive",
+      "expected": "U=10x²-10x J in SI numerical coordinates; equilibrium x=0.5 m, first lower turn x=1 m; speed at equilibrium sqrt(5) m/s.",
+      "independent": "x(t)=0.5[1-cos(sqrt(20)t)] m yields the turning position and peak speed."
+    },
+    {
+      "id": "rough-attached-ramp",
+      "given": "m=2 kg, g=10, sinθ=3/5, cosθ=4/5, μk=1/4, k=8 N/m, initial compression c=0.5 m, initial speed 4 m/s; s=0.5 m uphill",
+      "expected": "K0=16 J, Us0=1 J; at s=.5, Ug=6 J, Us=0, thermal rise=2 J, K=9 J and v=3 m/s. First forward stop s=1 m. The insulated modeled total is17 J.",
+      "independent": "Until the stop, 2s''=-12-8s. The solution s=-1.5+1.5cos(2t)+2sin(2t) has maximum1 m and confirms the speed at .5 m."
+    },
+    {
+      "id": "released-spring",
+      "given": "m=1 kg initially at rest against a frictionless horizontal spring k=100 N/m compressed .2 m; it leaves at zero compression and enters a rough uphill ramp with sinθ=3/5, cosθ=4/5, μk=1/4, g=10",
+      "expected": "Launch energy2 J, exit speed2 m/s, uphill force opposing motion8 N, first stopdistance.25 m, rise.15 m and thermal rise.5 J.",
+      "independent": "Ramp acceleration -8 m/s²; v²=4-16s reaches zero at s=.25."
+    },
+    {
+      "id": "external-ledger",
+      "given": "A closed system receives40 J external work and5 J heat; ΔK=10 J and ΔU=20 J; no other stored forms change",
+      "expected": "Thermal/internal energy rise15 J. Heat is an input transfer, not an additional stored component.",
+      "independent": "45 J input equals10+20+15 J stored changes."
+    },
+    {
+      "id": "loop",
+      "given": "Frictionless entry from rest at height H=9 m above a circle's bottom; radius4 m, mass2 kg, g=10, one-sided inner track",
+      "expected": "Formal top speed squared20 m²/s², required top normal-10 N; top circle is infeasible. Minimum release height for maintained contact is10 m.",
+      "independent": "Top inward force balance requires v²≥gR, while energy requires v²=2g(H-2R)."
+    },
+    {
+      "id": "gradient",
+      "given": "U=(2 J/m²)x²+(3 J/m²)xy+(4 J/m²)y²+C at (1,-2) m",
+      "expected": "F=(2,13) N, independent of C. Mixed derivatives agree and explicit U is defined over the whole plane.",
+      "independent": "Centered directional finite differences of U and rectangular path integrals."
+    },
+    {
+      "id": "double-well",
+      "given": "U=(1 J/m⁴)(x²-4m²)², E=1 J, initial x=2 m",
+      "expected": "Equilibria0,±2 m;0 is unstable,±2 stable. Allowed coordinates satisfy x² from3 to5 m², but this trajectory stays in the right interval[sqrt3,sqrt5] m. Barrier energy16 J; an incoming threshold trajectory approaches0 asymptotically.",
+      "independent": "Factor E-U, examine signs on all intervals, and compare the near-zero threshold K=8x²-x⁴ with a linear-in-|x| speed."
+    },
+    {
+      "id": "efficiency",
+      "given": "A device delivers120 J useful energy over3 s with conversion efficiency.75; a second stage has efficiency.8",
+      "expected": "First-stage input160 J, other outputs40 J, average input power160/3 W. Combined efficiency.6;120 J final useful output needs200 J initial input.",
+      "independent": "Track each stage's input and output energy without using the combined-efficiency formula."
+    }
+  ],
+  "families": {
+    "phs231-energy-account": [
+      "reference",
+      "vertical",
+      "rough-ramp",
+      "spring-launch",
+      "external",
+      "efficiency",
+      "series-efficiency",
+      "motor",
+      "loop"
+    ],
+    "phs231-energy-landscape": [
+      "force",
+      "gradient",
+      "turning",
+      "stability",
+      "wells",
+      "threshold",
+      "frequency"
+    ]
+  },
+  "guided": "Use the attached rough-ramp fixture. Require thermal rise, final K, speed, conserved modeled total, and the system interpretation. Misconceptions include conserving only K+U with friction, double-counting gravitational work, and declaring a kinetic-friction stop to be permanent rest.",
+  "investigation": {
+    "kind": "phs231-energy",
+    "model": "A constant-mass body already moving uphill on a fixed straight rough guide, permanently attached to an ideal spring parallel to the guide. Spring extension q=s-c. Uniform gravity, kinetic friction during forward sliding, and no external energy transfer in the enlarged insulated body-guide-spring-source model. Model the initial forward branch only.",
+    "inputs": {
+      "mass": "0.1..20 kg",
+      "initialSpeed": "0.1..20 m/s, strictly positive",
+      "gravity": "0.1..20 m/s²",
+      "riseRatio": "sinθ from0..1",
+      "friction": "μk from0..1",
+      "stiffness": "0..200 N/m",
+      "compression": "0..2 m",
+      "distance": "0.05..10 m",
+      "reference": "-1000..1000 J additive potential constant"
+    },
+    "formulas": [
+      "N=mg sqrt(1-sin²θ), f=μkN",
+      "Ug(s)=mg s sinθ; Us(s)=k(s-c)²/2; U=Ug+Us+C",
+      "ΔEthermal=f s on the initial forward branch",
+      "Kcandidate=mv0²/2+kc²/2-k(s-c)²/2-mg s sinθ-fs",
+      "Initial total=mv0²/2+kc²/2+C; reached rows sum K+U+ΔEthermal to that value"
+    ],
+    "feasibility": "K(s) is concave for k≥0, with positive initial K. Solve the first positive zero stably, including k=0 and zero resistance. Stop the actual ledger at that first zero. Do not display negative K as a realized state or assign thermal energy to untraveled path. An endpoint beyond the stop may have a labeled formal candidate, but the actual ledger is evaluated at the stop. Do not infer subsequent static rest or reversal.",
+    "controls": "Predictions for thermal rise and kinetic energy at the proposed endpoint, plus endpoint reachability. Include endpoint, first stop, spring's unstrained location if in range, and force-zero points in the table.",
+    "accessibility": "Keyboard numeric controls and presets; labeled energy curves/bars; equivalent tables with units and the reference constant shown separately. Short outcome labels. Notes persist; exploratory controls explicitly reset.",
+    "evidence": "Record the default .5 m ledger, the 1 m stop, an unreachable endpoint, a friction-free comparison, a reference shift, and a no-spring limit. Explain which energy is conserved under each boundary."
+  },
+  "verification": {
+    "seedCountPerVariant": 50,
+    "independentMethods": [
+      "Analytic force-equation solutions for vertical spring and attached ramp",
+      "Numerical work integrals and potential-gradient finite differences",
+      "Energy gauge-shift invariance across negative and positive references",
+      "Per-stage efficiency ledgers and dimensions",
+      "Polynomial sign regions, directional forces near equilibria, and small-amplitude force curvature",
+      "Vertical-loop force feasibility independent of energy",
+      "Strict invalid-input tests and equivalent fractions/radicals/root sets"
+    ],
+    "edges": [
+      "zero stiffness",
+      "zero friction",
+      "horizontal and vertical limits",
+      "positive speed near lower bound",
+      "tiny nonzero stiffness with stable root evaluation",
+      "stop exactly at endpoint",
+      "endpoint beyond stop",
+      "reference shifts through negative total energy",
+      "quartic zero curvature",
+      "disconnected allowed sets",
+      "asymptotic threshold versus finite simple turn",
+      "η=1 and rejected nonpositive or above-one conversion efficiencies"
+    ],
+    "browser": "Desktop/mobile visual review and accessibility; keyboard/prediction feedback; realistic checkpoint calculations, reload, notes, actual backup export/reset/restore; retain all prerequisite workflows.",
+    "assessment": "Sixteen distinct practice variants, four checkpoint slots, and later module/cumulative coverage from assessments.json. Proposed defaults only; no module assessment claimed finished here.",
+    "review": "Independent subject review and pilot validation have not occurred."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Potential Energy of a System",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-1-potential-energy-of-a-system",
+      "checkedAt": "2026-09-23",
+      "verification": "Free primary-provider section accessed. Link for optional further reading; author original teaching and examples, and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Conservative and Non-Conservative Forces",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-2-conservative-and-non-conservative-forces",
+      "checkedAt": "2026-09-23",
+      "verification": "Free primary-provider section accessed. Link for optional further reading; author original teaching and examples, and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Conservation of Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy",
+      "checkedAt": "2026-09-23",
+      "verification": "Free primary-provider section accessed. Link for optional further reading; author original teaching and examples, and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Potential Energy Diagrams and Stability",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-4-potential-energy-diagrams-and-stability",
+      "checkedAt": "2026-09-23",
+      "verification": "Free primary-provider section accessed. Link for optional further reading; author original teaching and examples, and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Sources of Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-5-sources-of-energy",
+      "checkedAt": "2026-09-23",
+      "verification": "Free primary-provider section accessed. Link for optional further reading; author original teaching and examples, and verify their calculations independently."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "College Physics: Conservation of Energy",
+      "url": "https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy",
+      "checkedAt": "2026-09-23",
+      "verification": "Free primary-provider section accessed. Link for optional further reading; author original teaching and examples, and verify their calculations independently."
+    }
+  ]
+}
