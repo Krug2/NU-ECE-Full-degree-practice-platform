@@ -1,0 +1,1589 @@
+{
+  "id": "m05-l04",
+  "courseId": "mth-215",
+  "moduleId": "m05",
+  "version": 1,
+  "title": "Decay, thresholds, and logarithmic scales",
+  "objective": "Fit a simple exponential model, solve for a threshold time, and interpret a logarithm of a dimensionless ratio.",
+  "why": "Exponential models describe repeated fractional change. Engineering work also asks when a response enters an allowed region, how sampling affects that decision, and what a logarithmic report actually compares. You will connect observations, exact algebra, units and model limitations rather than treating a calculator output as a complete answer.",
+  "estimatedMinutes": 330,
+  "prerequisites": [
+    {
+      "lessonId": "b01",
+      "label": "Exact arithmetic and notation"
+    },
+    {
+      "lessonId": "b04",
+      "label": "Fractions and ratios"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Inequalities and intervals"
+    },
+    {
+      "lessonId": "m02-l04",
+      "label": "Models and inverse interpretation"
+    },
+    {
+      "lessonId": "m04-l03",
+      "label": "Variation and units"
+    },
+    {
+      "lessonId": "m05-l01",
+      "label": "Exponential functions and factors"
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Logarithms as inverses"
+    },
+    {
+      "lessonId": "m05-l03",
+      "label": "Log rules and complete equation checks"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define the quantities and the model's operating domain",
+      "paragraphs": [
+        "Start a model by naming its measured quantity, time unit, reference observation and permitted operating times. We will use $Y(t)=L+C\\exp(k(t-t_0))$. Here L is a supplied baseline, C is the signed deviation from L at the reference time, and k is a signed continuous rate. At $t=t_0$, the exponential factor is one, so $Y(t_0)=L+C$. This value need not be Y(0).",
+        "An exponential argument must be dimensionless. If t and the reference time are numerical values in seconds, k is a numerical rate per second. In a physical quantity equation, a rate measured in reciprocal seconds multiplies an elapsed time measured in seconds. Convert milliseconds or minutes before using a seconds-based formula.",
+        "A real formula may accept every finite real time while a supplied physical model is permitted only on a smaller interval. Keep that operating interval with every answer. The model alone does not justify predictions outside it. A plotting window and an activity's input limits are separate from the mathematical domain."
+      ]
+    },
+    {
+      "heading": "Fit a model from two positive observations",
+      "paragraphs": [
+        "For the positive model $Y(t)=A\\exp(kt)$ with A>0, two observations at distinct times can identify A and k. Divide the second equation by the first to eliminate A: $Y_1/Y_0=\\exp(k(t_1-t_0))$. Both readings must be strictly positive for this model. The ratio is dimensionless when the quantities use compatible units.",
+        "Take natural logarithms and divide by the nonzero elapsed time: $k=\\ln(Y_1/Y_0)/(t_1-t_0)$. A ratio above one over a positive elapsed time gives growth; a ratio between zero and one gives decay. A fractional rate is normal. Do not divide a raw change in voltage by time and call it the exponential rate.",
+        "Use the first observation to recover the anchored model, then substitute both original times. Two distinct positive observations determine one model within this specified family. They do not establish that this family is a correct physical law."
+      ]
+    },
+    {
+      "heading": "Keep the reference time separate from time zero",
+      "paragraphs": [
+        "An anchored form keeps the first recorded time visible: $Y(t)=Y_0\\exp(k(t-t_0))$ for a zero-baseline positive model. The coefficient is the reading at the reference time. Using it as the coefficient of $\\exp(kt)$ without the shift generally changes the model.",
+        "To rewrite the model with a time-zero coefficient, use $A=Y_0\\exp(-kt_0)$. A time-zero value recovered this way is an extrapolation when zero lies outside the original observation interval. It is a value of the chosen formula, not a new measured observation.",
+        "Reversing the order of the same two observations changes both the elapsed-time sign and the logarithmic ratio sign. Their quotient gives the same rate. Keep the actual times instead of sorting values and forgetting their paired inputs."
+      ]
+    },
+    {
+      "heading": "Check constant and incompatible observations",
+      "paragraphs": [
+        "Inspect degenerate cases before dividing. Equal positive readings at two distinct times give a ratio of one, so k=0. The positive-amplitude family then contains a constant function. Its constant behavior should not be described as nonzero growth or decay.",
+        "Two copies of the same time and value supply only one independent observation. They do not identify a rate. Two different exact values at the same time contradict the definition of a function. These are different failures: insufficient information versus incompatible information.",
+        "A positive-amplitude exponential stays strictly positive at every finite real time. A zero or negative reading cannot be fitted within that specified positive family. If the family instead allows a supplied baseline and a signed deviation, different cases become possible; changing the family is an explicit modeling decision."
+      ]
+    },
+    {
+      "heading": "Fit deviations from a supplied baseline",
+      "paragraphs": [
+        "With a supplied baseline L, fit the deviations $D_i=Y_i-L$. For two distinct times and nonzero deviations, the ratio $D_1/D_0$ must be positive. Then $k=\\ln(D_1/D_0)/(t_1-t_0)$ and the signed anchored amplitude is $C=D_0$.",
+        "A negative deviation is allowed in the signed model. If C<0 and k<0, its magnitude decays while the output increases toward L from below. The output's direction depends on both C and k. Opposite nonzero deviation signs cannot be joined by one fixed-amplitude exponential because its exponential factor remains positive.",
+        "One exact zero deviation forces C=0 and hence a constant equal to the baseline at every time. If both observations equal that supplied baseline, the function is determined but its rate is unidentifiable: any finite k multiplies the same zero amplitude. Finally, if L is not supplied, two unequal readings do not determine all three parameters L, C and k."
+      ]
+    },
+    {
+      "heading": "Convert step factors, percentages and continuous rates",
+      "paragraphs": [
+        "A factor B over an interval $\\Delta t$ and a signed continuous rate k describe the same exponential change when $B=\\exp(k\\Delta t)$. Thus $k=\\ln(B)/\\Delta t$. A percentage change p over that interval gives B=1+p/100 for growth or B=1-p/100 for a decrease with 0<p<100.",
+        "The signed fractional change B-1 is not generally ln(B). Dividing a percentage fraction by the interval is therefore not the exact continuous rate. Also distinguish k<0 from the positive decay constant $\\lambda=-k$ and the positive time constant $\\tau=1/\\lambda$.",
+        "Changing time units changes the numerical rate. If one minute becomes 60 seconds, the per-second numerical rate is the per-minute rate divided by 60. The product of numerical rate and matching numerical elapsed time stays unchanged."
+      ]
+    },
+    {
+      "heading": "Use additional data to challenge a fit",
+      "paragraphs": [
+        "A model fitted to two exact readings matches those two readings by construction. Test it against additional data. An original-unit residual is observed minus fitted. A positive residual means the observation is above the prediction; a negative residual means it is below.",
+        "Interpolation predicts at a time between the original observed times. Extrapolation predicts outside that interval. Both remain predictions, but extrapolation relies on carrying the model into an unobserved region. Even several small residuals do not establish indefinite physical behavior.",
+        "If readings are declared exact, a nonzero residual means that reading does not exactly agree with the candidate model. Real measurements can include uncertainty and other effects. Interpreting that uncertainty requires information beyond a residual alone; do not invent a measurement tolerance to force agreement."
+      ]
+    },
+    {
+      "heading": "Understand a fit to several observations",
+      "paragraphs": [
+        "When several positive observations do not lie on one exponential curve, a fitting method must state what it minimizes. This lesson's tool fits a least-squares line to $\\ell_i=\\ln(Y_i/Y_{\\rm ref})$, using a strictly positive reference in the same units as Y. The logarithms are dimensionless. It does not fit an unknown added baseline.",
+        "Let $\\bar t$ and $\\bar\\ell$ be the arithmetic means. The fitted line is $\\widehat\\ell=\\bar\\ell+k(t-\\bar t)$, where $k=\\sum_i(t_i-\\bar t)\\ell_i/\\sum_i(t_i-\\bar t)^2$. The denominator must be nonzero, so not all observation times may be equal. Repeated times are otherwise allowed. Exponentiating gives $\\widehat Y=Y_{\\rm ref}\\exp(\\bar\\ell+k(t-\\bar t))$.",
+        "Inspect both logarithmic residuals and residuals in the original units. Minimizing one squared-error sum does not minimize the other. Changing the positive reference shifts all logarithmic observations by the same constant, leaving the fitted physical curve unchanged. The in-app table accepts three to six observations, keeps invalid entries visible, and labels numerical fitted results as approximations."
+      ]
+    },
+    {
+      "heading": "Derive doubling time and half-life",
+      "paragraphs": [
+        "A doubling time is an elapsed interval over which a positive exponential quantity is multiplied by two. Solve $\\exp(kT_d)=2$ to obtain $T_d=\\ln2/k$. This is a positive future interval when k>0. A positive growing signal does not have a positive future half-life; its algebraic half-value time lies in the past.",
+        "For a decaying positive quantity or a decaying nonzero deviation magnitude, solve $\\exp(kT_h)=1/2$. The half-life is $T_h=\\ln(1/2)/k=-\\ln2/k$ for k<0. Conversely, a supplied positive half-life gives $k=-\\ln2/T_h$. A constant positive quantity never halves or doubles, so do not divide by k=0.",
+        "The amplitude cancels because these are ratio questions. Each additional half-life multiplies the remaining amount by 1/2, and each doubling interval multiplies it by two. These are elapsed intervals, not necessarily the clock readings where the corresponding values occur."
+      ]
+    },
+    {
+      "heading": "Distinguish a time constant from a half-life",
+      "paragraphs": [
+        "A decay written as $\\exp(-t/\\tau)$ has a positive time constant $\\tau$. At t=tau, the exponential factor is $\\exp(-1)=1/e$, approximately 0.3679. A time constant is therefore not a half-life. Their relation is $T_h=\\tau\\ln2$.",
+        "For a nonzero-baseline model, these factors apply to the deviation from the baseline. First multiply the signed deviation, then add the baseline back. Halving the deviation does not generally halve the total measured output.",
+        "A more negative signed rate means a larger positive decay constant and a shorter half-life. For example, rates -1/2 and -1/5 per second correspond to time constants 2 and 5 seconds. Compare matching units and distinguish the signed rates from their positive time constants."
+      ]
+    },
+    {
+      "heading": "Separate elapsed time from additional time",
+      "paragraphs": [
+        "To reach a specified remaining fraction r of a positive starting value, solve $\\exp(k\\Delta t)=r$. The elapsed interval is $\\Delta t=\\ln(r)/k$ when k is nonzero and r>0. For decay and 0<r<1, this interval is positive. A fraction of zero cannot be reached at a finite time by a nonzero exponential.",
+        "Specify which observation starts the clock. In an anchored model, solving with the ratio to the reference reading gives elapsed time since that reference, and the final clock reading is $t=t_0+\\Delta t$. A later measurement can become the start of a new waiting interval because equal elapsed intervals apply the same exponential factor.",
+        "For an additional waiting-time question, divide the target deviation by the current deviation at the later observation. Dividing by the original initial deviation instead computes a different elapsed time. A final substitution in the original time-zero or anchored model checks that the clock readings agree."
+      ]
+    },
+    {
+      "heading": "Solve an equality with a target",
+      "paragraphs": [
+        "For a target H in $Y(t)=L+C\\exp(k(t-t_0))$, first check whether C or k is zero. Otherwise, equality requires $r=(H-L)/C>0$. A positive r gives the unique unrestricted equality time $t_*=t_0+\\ln(r)/k$. If r is zero or negative, there is no finite equality time.",
+        "This equation solution is provisional until the time restriction is checked. A negative time can be a correct value for the unrestricted formula and still be outside future operation. Do not turn it into a positive time by taking an absolute value.",
+        "A supplied voltage law $V(t)=V_\\infty+(V_0-V_\\infty)\\exp(-t/\\tau)$ is an instance of this same algebra. The problem supplies the physical relationship, the units and tau>0. No additional circuit formula is needed to solve its threshold."
+      ]
+    },
+    {
+      "heading": "Solve the complete threshold inequality",
+      "paragraphs": [
+        "An equality time is a boundary for an inequality, not the whole answer. For an increasing model, values above a reachable target occur to the right of its equality time; values below it occur to the left. A decreasing model reverses those sides. A signed deviation below a baseline can change the direction, so inspect the full output.",
+        "Strict comparisons exclude equality and use an open endpoint at the crossing. Inclusive comparisons include it. Intersect the resulting time set with the operating domain, retaining every domain endpoint condition. If you divide an inequality by a negative quantity during algebra, reverse the inequality sign.",
+        "A nonempty open interval can have a lower boundary without a least member. Saying that a signal is strictly below a target for t>c does not mean it first satisfies the strict condition at c. At c it equals the target. Distinguish the boundary, an included minimum when one exists, and later permitted times."
+      ]
+    },
+    {
+      "heading": "Check baselines and initial equality",
+      "paragraphs": [
+        "A nonzero exponential deviation never becomes zero at a finite time. Thus the baseline of a nonconstant shifted model is not a finite equality target. A target on the other side of that baseline is also unattainable. The corresponding inequality may still hold throughout the operating interval or nowhere.",
+        "At initial equality, strict and inclusive conditions can differ at time zero. Determine what happens immediately after zero from the model's direction, then keep or exclude zero according to the comparison. Do not discard the whole domain merely because the initial value already meets the threshold.",
+        "For $L-C_0\\exp(-t/\\tau)$ with C0>0, the output increases from below L while the deviation magnitude decreases. Its baseline restriction is an upper bound, not a lower bound. Substitute a simple time and inspect the sign when unsure of the direction."
+      ]
+    },
+    {
+      "heading": "Respect finite windows and constant models",
+      "paragraphs": [
+        "An operating window is part of the problem. Intersect the unrestricted threshold set with that window even when its algebraic crossing is real. A crossing after the final permitted time does not provide a solution inside the window.",
+        "If equality occurs exactly at the final time, an inclusive condition can leave only that endpoint. A strict condition can leave nothing. Excluding the final time from the operating domain can remove that singleton as well. Keep these set operations explicit instead of relying on a plotted curve's apparent contact.",
+        "For a constant model, test its single output directly. The requested condition is then true for every operating time or false for every operating time. Neither dividing by a zero rate nor reporting an infinite crossing time is appropriate."
+      ]
+    },
+    {
+      "heading": "Find the first valid sampled observation",
+      "paragraphs": [
+        "A sampling schedule restricts time further. If readings occur at $t=s_0+n\\Delta$ for integers n>=0 and a positive step Delta, find the smallest permitted integer whose time satisfies the original condition and the operating domain. A finite sampling horizon can leave no valid reading even when the unrestricted formula eventually crosses.",
+        "For a condition that begins after a crossing, compare the adjacent scheduled times around that crossing. If a sample lands exactly on the crossing, an inclusive condition accepts it and a strict condition does not. Do not make that decision from a rounded crossing; use the exact expression or substitute the scheduled times.",
+        "Do not automatically round a crossing upward for every problem. A condition can already hold at the first reading, apply only before a crossing, or fail throughout the operating window. First solve the correct continuous set, then apply the stated schedule. Report no predecessor when the first valid reading is the schedule's first one."
+      ]
+    },
+    {
+      "heading": "Build a dimensionless power ratio",
+      "paragraphs": [
+        "This lesson uses the supplied power-level formula $D=10\\log_{10}(P/P_{\\rm ref})$, where D is the numerical level in decibels. Both powers must be strictly positive, of the same kind and expressed in compatible units. Their quotient is dimensionless. State the reference with a reported level.",
+        "Convert units before forming the ratio. Dividing a value written in watts by the bare numerical value of a reference written in milliwatts introduces a factor-of-one-thousand error. Dividing watts by volts does not give the required ratio of powers at all.",
+        "A negative D means positive measured power below its reference. D=0 means the powers are equal, not that the measured power is zero. A zero measured power has no finite logarithmic level under this formula."
+      ]
+    },
+    {
+      "heading": "Convert between a power level and a ratio",
+      "paragraphs": [
+        "Invert the supplied formula by dividing by ten, then raising ten to that value: $P/P_{\\rm ref}=10^{D/10}$. This ratio is positive for every finite real D. Keep exact powers of ten when the requested answer is exact.",
+        "Recover a measured power with $P=P_{\\rm ref}10^{D/10}$. If the measured power is known and the reference is unknown, rearrange to $P_{\\rm ref}=P/10^{D/10}$. Identify which quantity is the numerator and which is the reference before multiplying or dividing.",
+        "An exact logarithmic level and its rounded decimal are different mathematical values unless the decimal is exact. For example, a doubling of power gives 10*log10(2) dB, approximately 3.0103 dB. A report of exactly 3 dB corresponds to $10^{3/10}$, which is close to but not exactly two."
+      ]
+    },
+    {
+      "heading": "Keep level differences and references consistent",
+      "paragraphs": [
+        "For two levels using the same positive reference, subtract in a consistent order: $D_2-D_1=10\\log_{10}(P_2/P_1)$. The common reference cancels in the quotient. Reversing the order of the powers reverses the sign of the level difference.",
+        "Individual levels still depend on their reference. If a fixed measured power is reported against a larger reference, its level decreases. The measured power has not changed; only the comparison denominator has changed.",
+        "Do not cancel different references. In general the level difference also contains $10\\log_{10}(P_{{\\rm ref},1}/P_{{\\rm ref},2})$. Either convert the reports to a common reference or retain the separate reference factors explicitly."
+      ]
+    },
+    {
+      "heading": "Separate multiplicative gains from added powers",
+      "paragraphs": [
+        "When a problem supplies successive multiplicative power gains, the total power ratio is their product. The logarithm product identity turns that product into a sum of level differences. This is why the decibel differences of such stages add.",
+        "A supplied sum of powers is a different relationship. Compute that sum in compatible power units, divide by the chosen reference, and only then take its logarithm. There is no identity that turns the logarithm of a sum into the sum of logarithms.",
+        "Use the stated physical combination law. Do not assume that arbitrary signal amplitudes or arbitrary powers combine in a particular way without the needed relationship. The exercises here explicitly supply either a multiplication of gains or an addition of powers."
+      ]
+    },
+    {
+      "heading": "Derive the amplitude coefficient from a supplied relationship",
+      "paragraphs": [
+        "A coefficient of twenty does not follow merely from seeing voltage units. Start with the supplied power formula and a stated relationship between power and amplitude. If positive amplitude magnitudes satisfy $P/P_{\\rm ref}=(A/A_{\\rm ref})^2$, the logarithm power rule gives $D=20\\log_{10}(A/A_{\\rm ref})$.",
+        "The amplitude ratio must compare compatible quantities, and the squared-ratio relationship must actually be supplied or justified by other given information. Arbitrary voltage ratios alone do not determine corresponding power ratios.",
+        "This distinction is about the premises of the calculation, not a memorized choice between ten and twenty. A different supplied relationship between amplitude and power can lead to a different conversion. State the relationship before simplifying."
+      ]
+    },
+    {
+      "heading": "Audit the model and the reported result",
+      "paragraphs": [
+        "Audit a reported result before accepting it. Check model premises, units, positive logarithm arguments, a nonzero rate when dividing, the full operating domain, exact endpoint inclusion, and the difference between continuous and sampled time. Substitute representative values on each claimed side of a threshold.",
+        "A calculator or plot can display a rounded baseline value even though a nonzero deviation remains. Exact formulas and the positivity of the exponential resolve that case. Likewise, do not turn an invalid zero logarithm argument into a large finite negative number or change a past crossing into a future one by dropping a sign.",
+        "An exact fit to finite data is evidence about those observations within the chosen family. It is not proof of causality or continued behavior. Keep the model's supplied range of use visible and use later observations to challenge it. This lesson's four-item checkpoint samples the four critical families; it does not assess all 36 named variants in a single form."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Interpret a supplied voltage formula with seconds and volts",
+      "prompt": "Interpret $V(t)=5+12\\exp(-(t-2)/4)$ for $2\\le t\\le10$, with t numerically in seconds and V in volts.",
+      "steps": [
+        {
+          "math": "L=5,\\quad C=12,\\quad t_0=2,\\quad k=-\\frac14",
+          "reason": "The model is anchored at two seconds, with a 12-volt deviation above a 5-volt baseline."
+        },
+        {
+          "math": "V(2)=5+12\\exp(0)=17",
+          "reason": "Substituting the reference time removes the exponential change."
+        },
+        {
+          "math": "V(6)=5+12\\exp(-1)=5+\\frac{12}{e}",
+          "reason": "Four seconds after the reference observation, the deviation has been multiplied by 1/e."
+        }
+      ],
+      "conclusion": "The operating times are [2,10] s. The reference reading is 17 V at 2 s, not an observation at time zero."
+    },
+    {
+      "title": "Reject an exponent that mixes milliseconds with a seconds-based rate",
+      "prompt": "Use $V(t)=10\\exp(-t/2)$ at 600 ms when t is numerically measured in seconds.",
+      "steps": [
+        {
+          "math": "600\\,\\mathrm{ms}=\\frac{600}{1000}\\,\\mathrm{s}=\\frac35\\,\\mathrm{s}",
+          "reason": "Convert the time before entering the formula."
+        },
+        {
+          "math": "-\\frac{t}{2}=-\\frac{3/5}{2}=-\\frac3{10}",
+          "reason": "The numerical exponent now corresponds to elapsed seconds divided by the two-second time constant."
+        },
+        {
+          "math": "V=10\\exp(-3/10)",
+          "reason": "Keep this exact expression until an approximation is explicitly requested."
+        }
+      ],
+      "conclusion": "Entering 600 directly would describe 600 seconds, not 600 milliseconds. The unit conversion changes the input, not the underlying physical response."
+    },
+    {
+      "title": "Derive a growing model from two observations",
+      "prompt": "Fit a positive exponential through Y(0)=5 V and Y(4)=20 V, with time in seconds.",
+      "steps": [
+        {
+          "math": "\\frac{20}{5}=4=\\exp(4k)",
+          "reason": "Divide the readings to remove the positive amplitude."
+        },
+        {
+          "math": "k=\\frac{\\ln4}{4}=\\frac{\\ln2}{2}",
+          "reason": "Invert the exponential and divide by the four-second interval."
+        },
+        {
+          "math": "Y(t)=5\\exp\\!\\left(\\frac{\\ln2}{2}t\\right),\\qquad Y(2)=10",
+          "reason": "The time-zero reading fixes the amplitude, and two seconds multiplies it by two."
+        }
+      ],
+      "conclusion": "This model gives 5 V at zero and 20 V at four seconds. Its signed rate is ln(2)/2 per second."
+    },
+    {
+      "title": "Fit a fractional decay factor over a nonunit interval",
+      "prompt": "Fit Y(0)=18 V and Y(6)=2 V with a positive exponential.",
+      "steps": [
+        {
+          "math": "\\frac2{18}=\\frac19=\\exp(6k)",
+          "reason": "The ratio is positive and below one, indicating decay over the six-second interval."
+        },
+        {
+          "math": "k=\\frac{\\ln(1/9)}6=-\\frac{\\ln3}{3}",
+          "reason": "Retain the negative logarithm instead of discarding its sign."
+        },
+        {
+          "math": "Y(t)=18\\exp\\!\\left(-\\frac{\\ln3}{3}t\\right),\\qquad Y(3)=6",
+          "reason": "Three seconds multiplies the value by one third; another three seconds gives 2 V."
+        }
+      ],
+      "conclusion": "Equal time intervals apply equal factors. Here the factor per three seconds is 1/3, not a fixed subtraction of 8 V."
+    },
+    {
+      "title": "Construct an anchored model when the first observation is later than zero",
+      "prompt": "Observations are Y(3)=8 V and Y(9)=2 V. Construct an anchored model.",
+      "steps": [
+        {
+          "math": "\\Delta t=9-3=6,\\qquad \\frac{Y(9)}{Y(3)}=\\frac14",
+          "reason": "Use elapsed time, not the later clock reading alone."
+        },
+        {
+          "math": "k=\\frac{\\ln(1/4)}6=-\\frac{\\ln2}{3}",
+          "reason": "The negative rate corresponds to the falling readings."
+        },
+        {
+          "math": "Y(t)=8\\exp\\!\\left(-\\frac{\\ln2}{3}(t-3)\\right)",
+          "reason": "The shift makes the exponential factor equal one at the eight-volt observation."
+        }
+      ],
+      "conclusion": "The model is anchored at 3 s. Its displayed coefficient 8 is Y(3), not Y(0)."
+    },
+    {
+      "title": "Recover the time-zero coefficient and verify both observations",
+      "prompt": "Recover time zero for the same observations and verify the resulting model.",
+      "steps": [
+        {
+          "math": "Y(0)=8\\exp\\!\\left(-\\frac{\\ln2}{3}(-3)\\right)=16",
+          "reason": "Moving backward by three seconds reverses one halving interval."
+        },
+        {
+          "math": "Y(t)=16\\exp\\!\\left(-\\frac{\\ln2}{3}t\\right)",
+          "reason": "This is the equivalent form with time-zero coefficient."
+        },
+        {
+          "math": "Y(3)=16\\cdot\\frac12=8,\\qquad Y(9)=16\\cdot\\frac18=2",
+          "reason": "Check the two observations used to construct the model."
+        }
+      ],
+      "conclusion": "The formula predicts 16 V at zero. Since the supplied observations began at 3 s, treat that prediction as extrapolation."
+    },
+    {
+      "title": "Recognize equal positive outputs as a constant model",
+      "prompt": "Classify observations Y(1)=7 and Y(5)=7 for a positive zero-baseline exponential.",
+      "steps": [
+        {
+          "math": "\\exp(4k)=\\frac77=1",
+          "reason": "The times are distinct, so the four-second interval contains rate information."
+        },
+        {
+          "math": "4k=\\ln1=0,\\qquad k=0",
+          "reason": "The unique rate is zero."
+        },
+        {
+          "math": "Y(t)=7\\exp(0)=7",
+          "reason": "The identified function is constant."
+        }
+      ],
+      "conclusion": "A unit multiplication factor and zero rate are a valid constant member of this family."
+    },
+    {
+      "title": "Distinguish contradictory same-time readings from insufficient data",
+      "prompt": "Compare repeated records (2,5), (2,5) with conflicting records (2,5), (2,6).",
+      "steps": [
+        {
+          "math": "5\\exp(k(2-2))=5\\quad\\text{for every }k",
+          "reason": "Every anchored rate passes through the repeated five-unit observation."
+        },
+        {
+          "math": "\\Delta t=2-2=0",
+          "reason": "Dividing a log ratio by this elapsed time cannot identify k."
+        },
+        {
+          "math": "Y(2)=5\\quad\\text{and}\\quad Y(2)=6",
+          "reason": "The conflicting records demand two different exact outputs from one function input."
+        }
+      ],
+      "conclusion": "Repeated equal records are insufficient to identify the rate. Conflicting exact records are incompatible with a function."
+    },
+    {
+      "title": "Reject nonpositive data for a strictly positive exponential model",
+      "prompt": "Can Y(0)=4 and Y(1)=0 fit Y=A exp(kt) with A>0 and finite real k?",
+      "steps": [
+        {
+          "math": "A=4,\\qquad 0=4\\exp(k)",
+          "reason": "The first observation fixes the positive amplitude."
+        },
+        {
+          "math": "\\exp(k)>0\\quad\\text{for every finite real }k",
+          "reason": "An exponential can approach zero without attaining it."
+        },
+        {
+          "math": "0\\ne4\\exp(k)",
+          "reason": "No choice of a finite rate can satisfy the second observation."
+        }
+      ],
+      "conclusion": "There is no fit in the declared positive family. A logarithm of zero does not repair the contradiction."
+    },
+    {
+      "title": "Fit an approach to a nonzero baseline from above",
+      "prompt": "Fit V(0)=15 V and V(4)=6 V when the baseline is supplied as 3 V.",
+      "steps": [
+        {
+          "math": "D_0=15-3=12,\\qquad D_1=6-3=3",
+          "reason": "Subtract the baseline before forming a ratio."
+        },
+        {
+          "math": "k=\\frac{\\ln(3/12)}4=-\\frac{\\ln2}{2}",
+          "reason": "The deviation decreases by a factor of four over four seconds."
+        },
+        {
+          "math": "V(t)=3+12\\exp\\!\\left(-\\frac{\\ln2}{2}t\\right),\\qquad V(2)=9",
+          "reason": "At two seconds the deviation is six volts, to which the baseline is added back."
+        }
+      ],
+      "conclusion": "The total voltage ratio 6/15 would be the wrong input to the zero-baseline fitting formula."
+    },
+    {
+      "title": "Fit an increasing approach from below",
+      "prompt": "Fit V(0)=3 V and V(2)=6 V when the baseline is 9 V.",
+      "steps": [
+        {
+          "math": "D_0=-6,\\qquad D_1=-3,\\qquad \\frac{D_1}{D_0}=\\frac12",
+          "reason": "Both signed deviations are negative, but their ratio is positive."
+        },
+        {
+          "math": "k=\\frac{\\ln(1/2)}2=-\\frac{\\ln2}{2}",
+          "reason": "The deviation magnitude halves over the two-second interval."
+        },
+        {
+          "math": "V(t)=9-6\\exp\\!\\left(-\\frac{\\ln2}{2}t\\right)",
+          "reason": "The negative deviation becomes smaller in magnitude, so the voltage increases toward nine."
+        }
+      ],
+      "conclusion": "A negative decay rate does not by itself mean that the full output decreases."
+    },
+    {
+      "title": "Explain why an unknown baseline needs more information",
+      "prompt": "Show why readings Y(0)=2 and Y(1)=4 do not identify an unspecified baseline.",
+      "steps": [
+        {
+          "math": "Y_a(t)=2\\cdot2^t,\\qquad Y_b(t)=1+3^t",
+          "reason": "These models use different baselines and rates."
+        },
+        {
+          "math": "Y_a(0)=Y_b(0)=2,\\qquad Y_a(1)=Y_b(1)=4",
+          "reason": "Both fit the supplied observations exactly."
+        },
+        {
+          "math": "Y_a(2)=8,\\qquad Y_b(2)=10",
+          "reason": "They make different additional predictions, so the first two points do not select one model."
+        }
+      ],
+      "conclusion": "A two-point fit is unique only after its model family and required baseline information are specified."
+    },
+    {
+      "title": "Convert a per-minute rate into a per-second rate",
+      "prompt": "Convert a doubling-time model from minutes to seconds when doubling takes two minutes.",
+      "steps": [
+        {
+          "math": "k_{\\rm min}=\\frac{\\ln2}{2}",
+          "reason": "The signed rate is measured per minute in this form."
+        },
+        {
+          "math": "k_{\\rm s}=\\frac{k_{\\rm min}}{60}=\\frac{\\ln2}{120}",
+          "reason": "There are sixty seconds per minute."
+        },
+        {
+          "math": "\\exp(2k_{\\rm min})=\\exp(120k_{\\rm s})=2",
+          "reason": "Both unit choices produce the same physical multiplication factor."
+        }
+      ],
+      "conclusion": "A rate without its time unit is incomplete information."
+    },
+    {
+      "title": "Contrast a signed continuous rate with a per-step percentage",
+      "prompt": "A positive quantity grows by 20 percent every three minutes. Find its exact continuous rate.",
+      "steps": [
+        {
+          "math": "B=1+\\frac{20}{100}=\\frac65",
+          "reason": "Add the fractional increase to the original whole quantity."
+        },
+        {
+          "math": "k=\\frac{\\ln(6/5)}3",
+          "reason": "The logarithm converts the three-minute multiplication factor into a continuous rate."
+        },
+        {
+          "math": "\\exp(3k)=\\frac65,\\qquad k\\ne\\frac{0.20}{3}",
+          "reason": "Substitution verifies the factor; the percentage shortcut is a different number."
+        }
+      ],
+      "conclusion": "The exact rate is ln(6/5)/3 per minute. A 20 percent increase means a factor of 1.20, not 0.20."
+    },
+    {
+      "title": "Compute a nonzero residual at an extra observation",
+      "prompt": "The model Y(t)=2*2^t fits (0,2) and (2,8). An extra reading at t=1 is 5. Compute its residual.",
+      "steps": [
+        {
+          "math": "\\widehat Y(1)=2\\cdot2=4",
+          "reason": "Substitute the additional time into the candidate model."
+        },
+        {
+          "math": "r=Y-\\widehat Y=5-4=1",
+          "reason": "Use observed minus fitted, in the original measurement units."
+        },
+        {
+          "math": "0<1<2",
+          "reason": "The extra time lies inside the original observation interval."
+        }
+      ],
+      "conclusion": "This is an interpolation with a positive residual of one unit. The extra exact reading does not lie on the fitted curve."
+    },
+    {
+      "title": "Distinguish interpolation from unsupported extrapolation",
+      "prompt": "The same model predicts a reading at t=3; the observed value is 15.",
+      "steps": [
+        {
+          "math": "\\widehat Y(3)=2\\cdot2^3=16",
+          "reason": "Extend the candidate formula to the requested time."
+        },
+        {
+          "math": "r=15-16=-1",
+          "reason": "The observed value is one unit below the prediction."
+        },
+        {
+          "math": "3>2",
+          "reason": "This time lies beyond the original observation interval."
+        }
+      ],
+      "conclusion": "This is extrapolation with a negative residual. Neither matching the first two points nor a small later discrepancy proves a continuing physical law."
+    },
+    {
+      "title": "Use the in-app logarithm-based fit and inspect its residual table",
+      "prompt": "Fit a logarithmic least-squares model to voltages 1, 4 and 4 at times 0, 1 and 2 s, using a 1 V reference.",
+      "steps": [
+        {
+          "math": "\\ell=(0,2\\ln2,2\\ln2),\\quad \\bar t=1,\\quad\\bar\\ell=\\frac43\\ln2",
+          "reason": "Transform all three positive observations and compute both means."
+        },
+        {
+          "math": "k=\\frac{(-1)\\cdot0+0\\cdot2\\ln2+1\\cdot2\\ln2}{1+0+1}=\\ln2",
+          "reason": "Apply the centered-time least-squares formula."
+        },
+        {
+          "math": "\\widehat Y(t)=2^{4/3}\\exp((\\ln2)(t-1))=2^{1/3}2^t",
+          "reason": "Exponentiate the fitted line and express the result in volts."
+        },
+        {
+          "math": "\\widehat Y(0)=2^{1/3},\\quad\\widehat Y(1)=2^{4/3},\\quad\\widehat Y(2)=2^{7/3}",
+          "reason": "A fit to all three points need not interpolate any one of them exactly."
+        }
+      ],
+      "conclusion": "Enter these observations in the fitting tool. Compare the original voltages with the approximately 1.259921, 2.519842 and 5.039684 V fitted values."
+    },
+    {
+      "title": "Explain which squared errors the fitted line minimizes",
+      "prompt": "For the same data, compare logarithmic least squares with squared errors in volts.",
+      "steps": [
+        {
+          "math": "r_{\\log}=\\left(-\\frac13\\ln2,\\frac23\\ln2,-\\frac13\\ln2\\right),\\qquad \\sum r_{\\log}=0",
+          "reason": "Subtract the fitted logarithms from the observed logarithms."
+        },
+        {
+          "math": "S(A)=(1-A)^2+(4-2A)^2+(4-4A)^2",
+          "reason": "Keep the rate ln(2) fixed and consider original-unit errors for the model A*2^t."
+        },
+        {
+          "math": "S(A)=21\\left(A-\\frac{25}{21}\\right)^2+\\frac{68}{21}",
+          "reason": "Completing the square identifies an amplitude that lowers this different loss."
+        },
+        {
+          "math": "\\frac{25}{21}\\ne2^{1/3}",
+          "reason": "The original-unit loss is smaller at 25/21 than at the logarithmic fit's amplitude, even without changing the rate."
+        }
+      ],
+      "conclusion": "This concrete alternative shows that the logarithmic fit does not minimize original-unit squared error. Always name the fitting objective instead of calling one method universally best."
+    },
+    {
+      "title": "Recover a positive doubling time from a growth rate",
+      "prompt": "A positive signal has signed rate 3/5 per minute. Find its doubling time.",
+      "steps": [
+        {
+          "math": "\\exp\\!\\left(\\frac35T_d\\right)=2",
+          "reason": "Set the target-to-starting ratio equal to two."
+        },
+        {
+          "math": "T_d=\\frac53\\ln2",
+          "reason": "The positive rate and positive logarithm produce a positive elapsed interval."
+        },
+        {
+          "math": "\\exp\\!\\left(\\frac35(2T_d)\\right)=4",
+          "reason": "Two equal doubling intervals apply the factor two twice."
+        }
+      ],
+      "conclusion": "The doubling time is 5*ln(2)/3 minutes, independent of the positive starting amplitude."
+    },
+    {
+      "title": "Recover a half-life and its signed decay rate",
+      "prompt": "A decaying signal has signed rate -2/5 per second. Find its half-life, then reconstruct its rate from that half-life.",
+      "steps": [
+        {
+          "math": "\\exp\\!\\left(-\\frac25T_h\\right)=\\frac12",
+          "reason": "A half-life reduces the initial positive quantity by one half."
+        },
+        {
+          "math": "T_h=\\frac{\\ln(1/2)}{-2/5}=\\frac52\\ln2",
+          "reason": "Both numerator and denominator are negative."
+        },
+        {
+          "math": "k=-\\frac{\\ln2}{T_h}=-\\frac{\\ln2}{(5/2)\\ln2}=-\\frac25",
+          "reason": "The inverse relation recovers the original signed rate."
+        }
+      ],
+      "conclusion": "A supplied half-life of 6 minutes would similarly give k=-ln(2)/6 per minute. Retain the stated time unit."
+    },
+    {
+      "title": "Evaluate the fraction remaining after one time constant",
+      "prompt": "For $V(t)=3+10\\exp(-t/4)$, find the deviation fraction and voltage after one time constant.",
+      "steps": [
+        {
+          "math": "\\tau=4\\,\\mathrm{s},\\qquad k=-\\frac14\\,\\mathrm{s}^{-1}",
+          "reason": "Read the positive time constant from the supplied exponent."
+        },
+        {
+          "math": "\\frac{V(4)-3}{V(0)-3}=\\exp(-1)=\\frac1e",
+          "reason": "The ratio is formed from deviations, not total voltages."
+        },
+        {
+          "math": "V(4)=3+\\frac{10}{e}",
+          "reason": "Restore the three-volt baseline after scaling the deviation."
+        }
+      ],
+      "conclusion": "One time constant leaves 1/e of the signed initial deviation. The full voltage is not simply 13/e."
+    },
+    {
+      "title": "Compare the half-life and time constant of the same decay",
+      "prompt": "Compare the half-life and time constant for that same model, and use the relation to compare decay speeds.",
+      "steps": [
+        {
+          "math": "T_h=4\\ln2<4=\\tau",
+          "reason": "Because 0<ln(2)<1, the deviation halves before one time constant has elapsed."
+        },
+        {
+          "math": "V(T_h)=3+10\\cdot\\frac12=8\\ne\\frac{13}{2}",
+          "reason": "The initial voltage is 13 V, but halving its deviation produces 8 V."
+        },
+        {
+          "math": "2\\ln2<5\\ln2",
+          "reason": "For time constants two and five seconds, the first model has the shorter half-life."
+        }
+      ],
+      "conclusion": "Use time constants and half-lives to compare decay speeds, while keeping total output separate from deviation."
+    },
+    {
+      "title": "Recover time since the reference observation",
+      "prompt": "A model has Y(2)=18 V and rate -ln(3)/3 per second. When does it reach 2 V?",
+      "steps": [
+        {
+          "math": "\\frac{2}{18}=\\frac19=\\exp\\!\\left(-\\frac{\\ln3}{3}\\Delta t\\right)",
+          "reason": "Form the target/reference ratio using the reading at two seconds."
+        },
+        {
+          "math": "\\Delta t=\\frac{\\ln(1/9)}{-\\ln3/3}=6",
+          "reason": "This is elapsed time since that reference observation."
+        },
+        {
+          "math": "t=2+6=8",
+          "reason": "Add the reference clock reading to the elapsed interval."
+        }
+      ],
+      "conclusion": "The model reaches 2 V at clock time 8 s, after an additional six seconds from the supplied reading."
+    },
+    {
+      "title": "Find additional decay time from a later measurement",
+      "prompt": "For Y(t)=24 exp(-t/3), the current reading is 6 V at t=3 ln(4). Find the additional time to 2 V and the total time from zero.",
+      "steps": [
+        {
+          "math": "\\frac26=\\frac13=\\exp(-\\Delta t/3)",
+          "reason": "Use the current six-volt reading as the start of the additional interval."
+        },
+        {
+          "math": "\\Delta t=3\\ln3",
+          "reason": "This is the additional waiting time."
+        },
+        {
+          "math": "t=3\\ln4+3\\ln3=3\\ln12",
+          "reason": "Add the time already elapsed."
+        },
+        {
+          "math": "Y(3\\ln12)=24\\exp(-\\ln12)=2",
+          "reason": "Check the final clock time in the original model."
+        }
+      ],
+      "conclusion": "Additional time is 3*ln(3) s; total time since zero is 3*ln(12) s. These answer different questions."
+    },
+    {
+      "title": "Solve the supplied voltage threshold exactly",
+      "prompt": "Use $V(t)=2+8\\exp(-t/3)$ on [0,12] s to find when V equals 4 V.",
+      "steps": [
+        {
+          "math": "\\exp(-t/3)=\\frac{4-2}{8}=\\frac14",
+          "reason": "Subtract the supplied baseline before forming the dimensionless target ratio."
+        },
+        {
+          "math": "-\\frac t3=\\ln(1/4),\\qquad t=3\\ln4",
+          "reason": "Take the natural logarithm and preserve the decay sign."
+        },
+        {
+          "math": "V(3\\ln4)=2+8\\cdot\\frac14=4",
+          "reason": "Substitution verifies the original voltage."
+        },
+        {
+          "math": "0<3\\ln4<12",
+          "reason": "The crossing belongs to the permitted operating interval."
+        }
+      ],
+      "conclusion": "The exact equality time is 3*ln(4) s, approximately 4.1589 s."
+    },
+    {
+      "title": "Keep a negative algebraic crossing separate from future operating times",
+      "prompt": "For Y(t)=2 exp(t/4), find the equality time for Y=1 and check future operation [0,12] s.",
+      "steps": [
+        {
+          "math": "\\exp(t/4)=\\frac12",
+          "reason": "The target-to-initial ratio is positive but below one."
+        },
+        {
+          "math": "t=4\\ln(1/2)=-4\\ln2<0",
+          "reason": "A growing model reached the smaller value in its past."
+        },
+        {
+          "math": "(-4\\ln2)\\notin[0,12]",
+          "reason": "The unrestricted equality time is outside the requested operating interval."
+        }
+      ],
+      "conclusion": "There is no future operating equality. The model is already above 1 throughout [0,12] s."
+    },
+    {
+      "title": "Use an increasing model to select the correct side of a crossing",
+      "prompt": "Find all times in [0,8] s when Y(t)=3 exp(t/2) is strictly greater than 9.",
+      "steps": [
+        {
+          "math": "\\exp(t/2)>3",
+          "reason": "Divide by the positive amplitude without reversing the comparison."
+        },
+        {
+          "math": "t>2\\ln3",
+          "reason": "The natural logarithm is increasing, and the model grows."
+        },
+        {
+          "math": "\\{t\\in[0,8]:Y(t)>9\\}=(2\\ln3,8]",
+          "reason": "Exclude the equality crossing and include the permitted final time."
+        }
+      ],
+      "conclusion": "The full answer is an interval. A single equality time would not solve the strict inequality."
+    },
+    {
+      "title": "Use a decreasing model with strict and inclusive boundaries",
+      "prompt": "For V(t)=12 exp(-t/3) on [0,12] s, compare V<=3 with V<3.",
+      "steps": [
+        {
+          "math": "\\exp(-t/3)\\le\\frac14\\quad\\Longrightarrow\\quad-\\frac t3\\le\\ln(1/4)",
+          "reason": "Take logarithms after dividing by the positive amplitude."
+        },
+        {
+          "math": "t\\ge3\\ln4",
+          "reason": "Multiplying by negative three reverses the inequality."
+        },
+        {
+          "math": "V\\le3:\\ [3\\ln4,12],\\qquad V<3:\\ (3\\ln4,12]",
+          "reason": "Only the equality boundary changes between these conditions."
+        }
+      ],
+      "conclusion": "Retain the exact logarithmic boundary; rounding it changes the set of times described."
+    },
+    {
+      "title": "Explain why an open interval has no smallest crossing time",
+      "prompt": "Explain why the strict condition t>c, with c=3 ln(4) and t<=12, has no least continuous time.",
+      "steps": [
+        {
+          "math": "c<t\\le12",
+          "reason": "Take any permitted time in the nonempty strict solution set."
+        },
+        {
+          "math": "t'=\\frac{c+t}{2},\\qquad c<t'<t",
+          "reason": "A midpoint between the boundary and that time is still permitted and is earlier."
+        },
+        {
+          "math": "c\\notin(c,12]",
+          "reason": "The boundary itself is excluded because the strict condition fails at equality."
+        }
+      ],
+      "conclusion": "Every permitted time has an earlier permitted time. The crossing is a lower boundary, not the first time satisfying the strict condition."
+    },
+    {
+      "title": "Show that a decaying deviation never reaches zero in finite time",
+      "prompt": "Can V(t)=9-6 exp(-t/2) equal 9 or exceed 9 at any finite t>=0?",
+      "steps": [
+        {
+          "math": "\\exp(-t/2)>0\\quad\\Longrightarrow\\quad6\\exp(-t/2)>0",
+          "reason": "The nonzero deviation magnitude remains positive at finite times."
+        },
+        {
+          "math": "V(t)=9-6\\exp(-t/2)<9",
+          "reason": "The model stays strictly below its baseline."
+        },
+        {
+          "math": "V(t)=9\\quad\\Longrightarrow\\quad\\exp(-t/2)=0",
+          "reason": "The equality would require an impossible finite exponential value."
+        }
+      ],
+      "conclusion": "On any supplied future operating interval, V<9 holds everywhere and V>=9 holds nowhere. Approaching a baseline does not make it an attained value."
+    },
+    {
+      "title": "Classify a target already met at the initial time",
+      "prompt": "At t=0, V(t)=12 exp(-t/3) equals 12. Classify its comparisons with 12 on [0,12] s.",
+      "steps": [
+        {
+          "math": "V(0)=12,\\qquad V(t)<12\\text{ for }t>0",
+          "reason": "The positive signal strictly decreases after its initial reading."
+        },
+        {
+          "math": "V\\le12:\\ [0,12],\\qquad V<12:\\ (0,12]",
+          "reason": "The inclusive condition retains zero, while the strict one excludes it."
+        },
+        {
+          "math": "V\\ge12:\\ [0,0],\\qquad V>12:\\ \\varnothing",
+          "reason": "Only initial equality satisfies the inclusive reverse comparison."
+        }
+      ],
+      "conclusion": "Initial equality can produce the full interval, an open initial endpoint, a singleton or an empty set, depending on the requested comparison."
+    },
+    {
+      "title": "Check an increasing approach from below",
+      "prompt": "For V(t)=9-6 exp(-t/2), find V>=7 on [0,12] s.",
+      "steps": [
+        {
+          "math": "-6\\exp(-t/2)\\ge-2\\quad\\Longrightarrow\\quad\\exp(-t/2)\\le\\frac13",
+          "reason": "Dividing by the negative deviation reverses the comparison."
+        },
+        {
+          "math": "t\\ge2\\ln3",
+          "reason": "Taking logarithms and dividing by the negative rate reverses it again."
+        },
+        {
+          "math": "\\{t\\in[0,12]:V(t)\\ge7\\}=[2\\ln3,12]",
+          "reason": "The voltage increases through the target from below."
+        }
+      ],
+      "conclusion": "A decaying deviation can accompany an increasing output. This is why the sign of k alone is insufficient to choose the time interval."
+    },
+    {
+      "title": "Clip the solution set to a closed operating interval",
+      "prompt": "The condition for 12 exp(-t/3)<3 is t>3 ln(4). Apply operating windows [0,4] and [0,5].",
+      "steps": [
+        {
+          "math": "3\\ln4\\approx4.1589>4",
+          "reason": "The crossing lies after the first window's final time."
+        },
+        {
+          "math": "(3\\ln4,\\infty)\\cap[0,4]=\\varnothing",
+          "reason": "No time in the first window satisfies the strict threshold."
+        },
+        {
+          "math": "(3\\ln4,\\infty)\\cap[0,5]=(3\\ln4,5]",
+          "reason": "The second window includes some times after the crossing."
+        }
+      ],
+      "conclusion": "The same unrestricted formula gives different operating solutions when the authorized window changes."
+    },
+    {
+      "title": "Handle a crossing at the last permitted time",
+      "prompt": "For V(t)=8(1/2)^(t/2), the target is 1 V. Compare final-time conditions on [0,6] and [0,6).",
+      "steps": [
+        {
+          "math": "8\\left(\\frac12\\right)^{6/2}=1",
+          "reason": "The target is reached exactly at six seconds."
+        },
+        {
+          "math": "V\\le1\\text{ on }[0,6]:\\ [6,6],\\qquad V<1\\text{ on }[0,6]:\\ \\varnothing",
+          "reason": "Inclusive equality retains the last permitted point; strict inequality does not."
+        },
+        {
+          "math": "V\\le1\\text{ on }[0,6):\\ \\varnothing",
+          "reason": "Removing the final operating point also removes the inclusive singleton."
+        }
+      ],
+      "conclusion": "Both the threshold comparison and the operating-domain endpoint affect inclusion."
+    },
+    {
+      "title": "Treat a constant model without division by zero",
+      "prompt": "Let V(t)=4 V for every operating time in [0,12] s. Classify equality and two inequalities.",
+      "steps": [
+        {
+          "math": "V(t)=4\\text{ for all }t\\in[0,12]",
+          "reason": "There is no time-dependent change to solve for."
+        },
+        {
+          "math": "V=4:\\ [0,12],\\qquad V<4:\\ \\varnothing",
+          "reason": "Equality holds throughout the window; the strict-lower condition never holds."
+        },
+        {
+          "math": "V>3:\\ [0,12]",
+          "reason": "Compare the constant output with the new target directly."
+        }
+      ],
+      "conclusion": "A constant can be represented by zero rate or zero deviation. Its threshold problem is a direct comparison, not logarithmic division."
+    },
+    {
+      "title": "Compare a fractional continuous crossing with two adjacent samples",
+      "prompt": "For 12 exp(-t/3)<3 on [0,12] s, readings are taken at each integer second. Find the first valid sample.",
+      "steps": [
+        {
+          "math": "t>3\\ln4,\\qquad4<3\\ln4<5",
+          "reason": "Locate the exact continuous boundary between adjacent scheduled times."
+        },
+        {
+          "math": "V(4)=12\\exp(-4/3)\\approx3.1632>3",
+          "reason": "The preceding sample fails the original strict condition."
+        },
+        {
+          "math": "V(5)=12\\exp(-5/3)\\approx2.2665<3",
+          "reason": "The next sample satisfies it, so it is the first valid scheduled reading."
+        }
+      ],
+      "conclusion": "The first valid sample is 5 s. There is still no least continuous time in (3*ln(4),12]."
+    },
+    {
+      "title": "Distinguish strict and inclusive conditions at an exact sample crossing",
+      "prompt": "For V(t)=8(1/2)^(t/2), readings occur at 0,2,4,...,12 s. Compare first samples for V<=1 and V<1.",
+      "steps": [
+        {
+          "math": "V(4)=2,\\qquad V(6)=1,\\qquad V(8)=\\frac12",
+          "reason": "These are exact values at consecutive scheduled readings."
+        },
+        {
+          "math": "V\\le1:\\ t_{\\rm first}=6",
+          "reason": "The inclusive condition accepts the exact equality sample."
+        },
+        {
+          "math": "V<1:\\ t_{\\rm first}=8",
+          "reason": "The strict condition rejects the six-second sample and accepts the next one."
+        }
+      ],
+      "conclusion": "A ceiling applied to a rounded crossing can miss this difference. Check equality and the adjacent samples exactly."
+    },
+    {
+      "title": "Convert milliwatts and watts before taking a logarithm",
+      "prompt": "Find the referenced level of 3 W relative to 250 mW.",
+      "steps": [
+        {
+          "math": "P_{\\rm ref}=250\\,\\mathrm{mW}=\\frac14\\,\\mathrm{W}",
+          "reason": "Convert both powers into compatible units."
+        },
+        {
+          "math": "\\frac{P}{P_{\\rm ref}}=\\frac{3}{1/4}=12",
+          "reason": "The watt units cancel, leaving a dimensionless positive ratio."
+        },
+        {
+          "math": "D=10\\log_{10}(12)\\approx10.7918",
+          "reason": "Evaluate the base-ten logarithm only after the ratio is formed."
+        }
+      ],
+      "conclusion": "The level is exactly 10*log10(12) dB relative to 250 mW. Keeping the reference identifies what the report compares."
+    },
+    {
+      "title": "Interpret a negative level as a positive power below its reference",
+      "prompt": "Interpret the level of 1 mW relative to 4 mW.",
+      "steps": [
+        {
+          "math": "\\frac{P}{P_{\\rm ref}}=\\frac14>0",
+          "reason": "Both supplied powers are positive, even though the measured one is smaller."
+        },
+        {
+          "math": "D=10\\log_{10}(1/4)=-20\\log_{10}2\\approx-6.0206",
+          "reason": "A ratio below one has a negative logarithm."
+        },
+        {
+          "math": "P=1\\,\\mathrm{mW}>0",
+          "reason": "The negative level has not made the measured power negative."
+        }
+      ],
+      "conclusion": "A negative referenced level is entirely compatible with a strictly positive power."
+    },
+    {
+      "title": "Report exact and rounded forms of a noninteger level",
+      "prompt": "Express a doubled power ratio as an exact level and compare it with exactly 3 dB.",
+      "steps": [
+        {
+          "math": "D=10\\log_{10}2\\approx3.0103",
+          "reason": "The logarithmic expression is the exact level for a ratio of two."
+        },
+        {
+          "math": "10^{(10\\log_{10}2)/10}=2",
+          "reason": "Inverting the exact level recovers the exact original ratio."
+        },
+        {
+          "math": "10^{3/10}\\approx1.995262\\ne2",
+          "reason": "Using exactly three as the level describes a slightly different ratio."
+        }
+      ],
+      "conclusion": "Round only when the answer requests an approximation. Do not replace an exact boundary or power ratio with a convenient nearby decimal."
+    },
+    {
+      "title": "Recover a power from a specified level and reference",
+      "prompt": "First recover measured power for -10 dB relative to 2 mW. Separately, find the reference when a measured 6 mW is reported at 10 dB.",
+      "steps": [
+        {
+          "math": "10^{-10/10}=\\frac1{10},\\qquad P=2\\cdot\\frac1{10}=\\frac15\\,\\mathrm{mW}",
+          "reason": "For the first report, multiply the known reference by its ratio."
+        },
+        {
+          "math": "\\frac15\\,\\mathrm{mW}=\\frac1{5000}\\,\\mathrm{W}",
+          "reason": "Convert the recovered quantity if watts are requested."
+        },
+        {
+          "math": "10^{10/10}=10,\\qquad P_{\\rm ref}=\\frac6{10}=\\frac35\\,\\mathrm{mW}",
+          "reason": "For the separate second report, divide the known measured power by its ratio."
+        }
+      ],
+      "conclusion": "The two cases use the same ratio identity but solve for different unknown quantities."
+    },
+    {
+      "title": "Compare two levels with the same reference",
+      "prompt": "P1=2 mW and P2=8 mW both use a 1 mW reference. Find D2-D1.",
+      "steps": [
+        {
+          "math": "D_1=10\\log_{10}2,\\qquad D_2=10\\log_{10}8",
+          "reason": "Write both reports against the same reference."
+        },
+        {
+          "math": "D_2-D_1=10\\log_{10}(8/2)=10\\log_{10}4",
+          "reason": "The quotient cancels the common reference."
+        },
+        {
+          "math": "\\frac{P_2}{P_1}=4",
+          "reason": "The positive difference reports a factor-of-four increase from the first power to the second."
+        }
+      ],
+      "conclusion": "The level difference is 20*log10(2) dB, independent of the particular shared reference."
+    },
+    {
+      "title": "Change the reference without changing the measured power",
+      "prompt": "Keep measured power fixed at 6 W while changing the reference from 2 W to 3 W.",
+      "steps": [
+        {
+          "math": "D_{\\rm old}=10\\log_{10}3,\\qquad D_{\\rm new}=10\\log_{10}2",
+          "reason": "Form each ratio using its own specified reference."
+        },
+        {
+          "math": "D_{\\rm new}-D_{\\rm old}=10\\log_{10}(2/3)<0",
+          "reason": "The larger new reference lowers the reported level."
+        },
+        {
+          "math": "P_{\\rm old}=P_{\\rm new}=6\\,\\mathrm{W}",
+          "reason": "The physical measured quantity was held fixed."
+        }
+      ],
+      "conclusion": "A change in referenced level can reflect a changed reference rather than a changed power."
+    },
+    {
+      "title": "Combine two specified power gain ratios",
+      "prompt": "A system supplies power gain ratios G1=4 and G2=1/2 with P_out/P_in=G1*G2. Combine the gains and their level differences.",
+      "steps": [
+        {
+          "math": "G_{\\rm total}=4\\cdot\\frac12=2",
+          "reason": "Apply the supplied multiplication law to the dimensionless power ratios."
+        },
+        {
+          "math": "\\Delta D_1=10\\log_{10}4,\\qquad\\Delta D_2=10\\log_{10}(1/2)",
+          "reason": "Translate each stage's power ratio into a level difference."
+        },
+        {
+          "math": "\\Delta D_{\\rm total}=\\Delta D_1+\\Delta D_2=10\\log_{10}2",
+          "reason": "The logarithm of a positive product equals the sum of its logarithms."
+        }
+      ],
+      "conclusion": "The combined gain is two. Adding the stage level differences follows from the supplied product of gains."
+    },
+    {
+      "title": "Add supplied powers before finding their total referenced level",
+      "prompt": "The supplied law is P_total=P1+P2, where each power is 1 mW. Use a 1 mW reference.",
+      "steps": [
+        {
+          "math": "P_{\\rm total}=1+1=2\\,\\mathrm{mW}",
+          "reason": "Add the underlying powers as the problem specifies."
+        },
+        {
+          "math": "D_{\\rm total}=10\\log_{10}2",
+          "reason": "Apply the referenced logarithmic formula after adding the powers."
+        },
+        {
+          "math": "D_1+D_2=0+0=0\\ne10\\log_{10}2",
+          "reason": "Adding the separate referenced levels would produce the wrong answer."
+        }
+      ],
+      "conclusion": "This counterexample shows why addition of powers and multiplication of power gains require different operations."
+    },
+    {
+      "title": "Derive 20 log10 of a positive amplitude ratio from its squared power ratio",
+      "prompt": "Positive amplitudes are A=3 V and A_ref=1 V, and the problem supplies P/P_ref=(A/A_ref)^2. Derive the power level.",
+      "steps": [
+        {
+          "math": "\\frac{A}{A_{\\rm ref}}=3,\\qquad\\frac{P}{P_{\\rm ref}}=3^2=9",
+          "reason": "Use the explicitly supplied squared-ratio relationship."
+        },
+        {
+          "math": "D=10\\log_{10}9=10\\log_{10}(3^2)",
+          "reason": "Apply the power-level formula to the power ratio."
+        },
+        {
+          "math": "D=20\\log_{10}3",
+          "reason": "The factor two comes from the logarithm of the squared amplitude ratio."
+        }
+      ],
+      "conclusion": "The twenty coefficient is justified by the supplied relationship and positivity, not by the unit name alone."
+    },
+    {
+      "title": "Identify the missing information in an unsupported voltage-to-power conversion",
+      "prompt": "A positive voltage amplitude ratio is two, but no power relationship is given. Is the power ratio necessarily four?",
+      "steps": [
+        {
+          "math": "r=\\frac{A}{A_{\\rm ref}}=2",
+          "reason": "The amplitude ratio itself is known."
+        },
+        {
+          "math": "\\frac{P}{P_{\\rm ref}}=r^2\\ \\Longrightarrow\\ 4",
+          "reason": "This conclusion would follow if that relationship were supplied."
+        },
+        {
+          "math": "\\frac{P}{P_{\\rm ref}}=\\frac{r^2}{4}\\ \\Longrightarrow\\ 1",
+          "reason": "A different explicitly supplied relationship would give a different power ratio for the same amplitude ratio."
+        }
+      ],
+      "conclusion": "The amplitude ratio alone does not select a power relationship. More information is needed before reporting a power level."
+    },
+    {
+      "title": "Reject zero and negative logarithm arguments",
+      "prompt": "Audit a power report with a 1 mW reference when the proposed measured power is zero, then when it is -2 mW.",
+      "steps": [
+        {
+          "math": "P=0\\ \\Longrightarrow\\ P/P_{\\rm ref}=0",
+          "reason": "Zero is outside the domain of a finite real logarithm."
+        },
+        {
+          "math": "P=-2\\,\\mathrm{mW}\\ \\Longrightarrow\\ P/P_{\\rm ref}=-2",
+          "reason": "A negative argument also has no real logarithm."
+        },
+        {
+          "math": "P>0,\\qquad P_{\\rm ref}>0",
+          "reason": "Both positivity conditions belong to the supplied positive-power model."
+        }
+      ],
+      "conclusion": "Neither report defines a finite real level under the given formula. Even a positive quotient of two negative numbers would still violate its stated positive-power premises."
+    },
+    {
+      "title": "Check units, original substitution and a finite display near an asymptote",
+      "prompt": "A display rounds V(24)=9-6 exp(-48) to 9 V. Has the model reached its baseline?",
+      "steps": [
+        {
+          "math": "6\\exp(-48)>0",
+          "reason": "The deviation magnitude is tiny but strictly positive."
+        },
+        {
+          "math": "V(24)=9-6\\exp(-48)<9",
+          "reason": "The exact value remains below nine volts."
+        },
+        {
+          "math": "V(t)=9\\ \\Longrightarrow\\ \\exp(-2t)=0",
+          "reason": "No finite real time can make this nonzero exponential deviation vanish."
+        }
+      ],
+      "conclusion": "The rounded display does not prove equality. Use exact expressions and domain reasoning near a baseline."
+    },
+    {
+      "title": "Explain why an exact fit alone cannot prove continued physical behavior",
+      "prompt": "Two observations are Y(0)=2 and Y(1)=4. Does matching them prove indefinite exponential growth?",
+      "steps": [
+        {
+          "math": "E(t)=2\\cdot2^t,\\qquad L(t)=2+2t",
+          "reason": "An exponential and a linear candidate are different possible model families."
+        },
+        {
+          "math": "E(0)=L(0)=2,\\qquad E(1)=L(1)=4",
+          "reason": "Both reproduce the two given observations."
+        },
+        {
+          "math": "E(2)=8,\\qquad L(2)=6",
+          "reason": "They disagree at another time, so the observations alone do not establish the continuing law."
+        }
+      ],
+      "conclusion": "Model choice needs its stated assumptions and further evidence. A fitted curve is a tool for reasoning, not a guarantee of future physical behavior."
+    }
+  ],
+  "practice": [
+    {
+      "familyId": "mth-model-fit",
+      "variant": "two-point"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "shifted-origin"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "time-units"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "known-baseline"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "constant-data"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "invalid-data"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "extra-observation"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "log-linear-fit"
+    },
+    {
+      "familyId": "mth-model-fit",
+      "variant": "residual-audit"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "half-life"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "doubling-time"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "rate-to-time"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "time-constant"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "remaining-fraction"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "observed-change"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "additional-time"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "rate-comparison"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "equality"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "strict-inequality"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "inclusive-inequality"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "past-crossing"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "initial-equality"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "unattainable-baseline"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "finite-window"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "sampled-crossing"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "constant-model"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "voltage-decay"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "level-from-ratio"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "ratio-from-level"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "measured-power"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "changed-reference"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "level-difference"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "cascaded-gains"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "additive-powers"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "amplitude-condition"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "invalid-input"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-model-fit",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-model-timescale",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-model-threshold",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-power-level",
+      "variant": "mixed"
+    }
+  ],
+  "guided": {
+    "title": "Separate a continuous threshold from sampled readings",
+    "setup": "Use the supplied model $V(t)=2+8\\exp(-t/3)$, with V in volts and t numerically in seconds, for $0\\le t\\le12$. The target is 4 V. Readings occur at 0,1,2,...,12 seconds.",
+    "before": [
+      "Identify the supplied baseline and the signed rate before taking logarithms.",
+      "Solve equality first, then distinguish strict and inclusive conditions within the operating interval.",
+      "Check the first valid scheduled reading and its predecessor in the original voltage formula."
+    ],
+    "question": {
+      "id": "guided-modeling",
+      "familyId": "guided-model-threshold",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m05-l04",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the dimensionless target deviation ratio, signed rate, exact equality time, and the complete strict and inclusive time sets. Find the first sampled time for V<4 and its predecessor. Finally decide whether the strict continuous condition has a least time.",
+      "fields": [
+        {
+          "id": "ratio",
+          "label": "Dimensionless target deviation ratio",
+          "kind": "rational",
+          "expected": "1/4"
+        },
+        {
+          "id": "rate",
+          "label": "Signed rate",
+          "kind": "rational",
+          "expected": "-1/3",
+          "unit": "1/s"
+        },
+        {
+          "id": "crossing",
+          "label": "Exact equality time for V = 4",
+          "kind": "logarithmic",
+          "expected": "3*ln(4)",
+          "unit": "s"
+        },
+        {
+          "id": "strict",
+          "label": "Complete operating time set for V < 4",
+          "kind": "logarithmic-intervals",
+          "expected": [
+            {
+              "lower": "3*ln(4)",
+              "upper": "12",
+              "lowerClosed": false,
+              "upperClosed": true
+            }
+          ],
+          "unit": "s"
+        },
+        {
+          "id": "inclusive",
+          "label": "Complete operating time set for V <= 4",
+          "kind": "logarithmic-intervals",
+          "expected": [
+            {
+              "lower": "3*ln(4)",
+              "upper": "12",
+              "lowerClosed": true,
+              "upperClosed": true
+            }
+          ],
+          "unit": "s"
+        },
+        {
+          "id": "sample",
+          "label": "First valid sampled time for V < 4",
+          "kind": "rational",
+          "expected": "5",
+          "unit": "s"
+        },
+        {
+          "id": "predecessor",
+          "label": "Immediately preceding sampled time",
+          "kind": "rational",
+          "expected": "4",
+          "unit": "s"
+        },
+        {
+          "id": "least",
+          "label": "Does the strict continuous solution set have a least time?",
+          "kind": "choice",
+          "correct": "no",
+          "options": [
+            {
+              "id": "no",
+              "label": "No, its lower boundary is excluded",
+              "feedback": "For any permitted time after the crossing, an earlier permitted time lies between it and the crossing."
+            },
+            {
+              "id": "yes",
+              "label": "Yes, the equality time is its least time",
+              "feedback": "At the equality crossing V equals 4, so the strict V<4 condition is not satisfied."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Subtract the 2 V baseline and divide by the initial 8 V deviation; the resulting positive ratio is dimensionless.",
+        "Taking logarithms gives (-1/3)*t=ln(1/4). The decreasing output is below the target after that crossing.",
+        "The crossing lies strictly between 4 and 5 seconds. Check both sampled readings, and remember that the strict continuous boundary itself is excluded."
+      ],
+      "explanation": [
+        "The target deviation ratio is (4-2)/8=1/4 and the signed rate is -1/3 per second.",
+        "The exact crossing is 3*ln(4) s. The strict set is (3*ln(4),12], while the inclusive set is [3*ln(4),12].",
+        "V(4)=2+8*exp(-4/3) is approximately 4.1088 V, so it fails V<4. V(5)=2+8*exp(-5/3) is approximately 3.5110 V, so the first valid scheduled reading is 5 s.",
+        "The strict continuous set has no least member. A first discrete reading does not create a least continuous time."
+      ],
+      "answerSummary": "Ratio 1/4; rate -1/3 per second; crossing 3*ln(4) s; strict (3*ln(4),12]; inclusive [3*ln(4),12]; first sample 5 s; predecessor 4 s; no least strict continuous time."
+    },
+    "after": "The guided check supports your reasoning and does not award independent evidence. In the investigation, change the target or sampling step and explain why the continuous boundary and the first recorded reading can behave differently."
+  },
+  "interaction": {
+    "kind": "model-lab",
+    "prompt": "Predict each model's direction, exact operating range and target reachability before solving. Retain the operating domain, compare the first valid scheduled reading with its predecessor, and explain any strict boundary. Then use the separate fitting tool to challenge a logarithmic fit with changed observations.",
+    "cases": [
+      {
+        "model": {
+          "baseline": "0",
+          "deviation": "12",
+          "origin": "0",
+          "rate": "-1/3"
+        },
+        "target": "3",
+        "horizon": "12",
+        "horizonClosed": true,
+        "sampleStep": "1",
+        "comparison": "<=",
+        "title": "A supplied voltage decay"
+      },
+      {
+        "model": {
+          "baseline": "0",
+          "deviation": "12",
+          "origin": "0",
+          "rate": "-1/3"
+        },
+        "target": "3",
+        "horizon": "12",
+        "horizonClosed": true,
+        "sampleStep": "1",
+        "comparison": "<",
+        "title": "A strict threshold and sampled readings"
+      },
+      {
+        "model": {
+          "baseline": "9",
+          "deviation": "-6",
+          "origin": "0",
+          "rate": "-1/2"
+        },
+        "target": "7",
+        "horizon": "12",
+        "horizonClosed": true,
+        "sampleStep": "1",
+        "comparison": ">=",
+        "title": "An approach from below"
+      },
+      {
+        "model": {
+          "baseline": "0",
+          "deviation": "2",
+          "origin": "0",
+          "rate": "1/4"
+        },
+        "target": "1",
+        "horizon": "12",
+        "horizonClosed": true,
+        "sampleStep": "1",
+        "comparison": ">",
+        "title": "A crossing outside future time"
+      },
+      {
+        "model": {
+          "baseline": "0",
+          "deviation": "8",
+          "origin": "0",
+          "rate": "ln(1/2)/2"
+        },
+        "target": "1",
+        "horizon": "12",
+        "horizonClosed": true,
+        "sampleStep": "2",
+        "comparison": "<=",
+        "title": "An exact sample boundary"
+      },
+      {
+        "model": {
+          "baseline": "0",
+          "deviation": "4",
+          "origin": "0",
+          "rate": "0"
+        },
+        "target": "4",
+        "horizon": "12",
+        "horizonClosed": true,
+        "sampleStep": "1",
+        "comparison": "=",
+        "title": "A constant model"
+      }
+    ]
+  },
+  "summary": [
+    "Declare the supplied model, reference time, units and operating interval. For $Y=L+C\\exp(k(t-t_0))$, C is a signed deviation at the reference time, and the exponent must be dimensionless.",
+    "Two distinct observations with compatible nonzero deviations give $k=\\ln((Y_1-L)/(Y_0-L))/(t_1-t_0)$. Check the model premises first. Repeated readings, contradictory readings, zero amplitudes and unknown baselines require separate reasoning.",
+    "A logarithmic least-squares fit minimizes squared residuals of ln(observed/reference). Inspect original-unit residuals too, and do not claim that this is the same fitting objective or proof of a physical law.",
+    "For positive exponential growth, $T_d=\\ln2/k$. For a decaying nonzero magnitude, $T_h=-\\ln2/k$. A time constant leaves 1/e of the initial deviation and satisfies $T_h=\\tau\\ln2$.",
+    "Choose the starting observation for a ratio carefully. Additional waiting time, time since a reference observation and a final clock reading are distinct quantities.",
+    "A reachable nonconstant equality target gives $t_*=t_0+\\ln((H-L)/C)/k$. Use the complete output direction for inequalities and intersect every result with its operating domain.",
+    "Strict boundaries are excluded. Constants, baseline targets, initial equality and finite operating endpoints can produce all permitted times, a singleton or no permitted times. An open continuous solution set can have no least time.",
+    "Apply the sampling schedule only after solving the continuous condition. Check the first valid reading and its predecessor exactly, especially when a crossing lands on a sample.",
+    "Use the supplied $D=10\\log_{10}(P/P_{\\rm ref})$ only with positive compatible powers and an explicit reference. Invert it with $P/P_{\\rm ref}=10^{D/10}$, preserving exact values until rounding is requested.",
+    "Multiplicative gains give additive level differences. Supplied additive powers must be summed before taking a logarithm. A twenty-log amplitude form needs the stated squared power-ratio relationship.",
+    "All 36 named variants are available in practice. Each checkpoint selects one critical question per family and requires all four independently; one form does not test every named variant or establish full course mastery."
+  ],
+  "retrieval": "After a delay, fit a known-baseline exponential from two observations at nonzero reference times and verify both points. Reconstruct a half-life and a time constant, then distinguish an additional waiting interval from total elapsed time. Solve a strict threshold as a complete exact interval, apply a finite operating window and find the first valid scheduled reading with its predecessor. Explain why a baseline may be unattainable and why a strict continuous condition need not have a least time. Finally invert a referenced power level, compare a product of gains with a supplied sum of powers, and state the extra relationship needed for an amplitude conversion. Use new values and explain the premises without consulting a key.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 6.7: Exponential and Logarithmic Models",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-7-exponential-and-logarithmic-models",
+      "purpose": "Optional further examples of growth, decay, half-life and models with a supplied baseline. Other model families discussed in the chapter are additional context; retain the assumptions and operating limits of each problem."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 6.8: Fitting Exponential Models to Data",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-8-fitting-exponential-models-to-data",
+      "purpose": "Optional fitting and residual context. This app explicitly uses least squares of logarithmic observations, provides its own fitting tool and requires strictly positive logarithm arguments."
+    },
+    {
+      "title": "NIST Guide to the SI, section 8.7: Logarithmic quantities and units",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "purpose": "Definitions of referenced power and amplitude levels, including the squared-ratio premise connecting their formulas. Keep the reference explicit and use the supplied decibel formula."
+    }
+  ]
+}

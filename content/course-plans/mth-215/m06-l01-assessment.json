@@ -1,0 +1,88 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l01",
+  "status": "assessment draft",
+  "lessonAvailable": false,
+  "objective": "Convert degree and radian measures, identify coterminal angles, and calculate an arc length with consistent units.",
+  "families": {
+    "mth-angle-measure": [
+      "degrees-to-radians",
+      "radians-to-degrees",
+      "ordinary-radians",
+      "turns",
+      "decimal-degrees",
+      "dms",
+      "radian-definition",
+      "unit-equivalence",
+      "directed-definition"
+    ],
+    "mth-angle-location": [
+      "degree-representative",
+      "radian-representative",
+      "signed-turns",
+      "coterminal-test",
+      "coterminal-family",
+      "quadrants",
+      "quadrantal-rays",
+      "reference-angle",
+      "interval-convention"
+    ],
+    "mth-circular-measure": [
+      "arc-length",
+      "angle-from-arc",
+      "radius-from-arc",
+      "sector-area",
+      "angle-from-area",
+      "radius-from-area",
+      "unit-audit",
+      "radius-scaling",
+      "multi-turn-distance",
+      "arc-versus-chord",
+      "sector-overlap"
+    ],
+    "mth-circular-motion": [
+      "angular-rate",
+      "rpm",
+      "tangential-speed",
+      "inverse-motion",
+      "period",
+      "wheel-distance",
+      "reversal-path",
+      "rest",
+      "validity"
+    ]
+  },
+  "checkpoint": [
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "mixed"
+    }
+  ],
+  "checkpointRule": "Every question is critical and all four must be correct independently. A four-question form samples four families, not all 38 named variants.",
+  "conventions": {
+    "referenceAngle": "Strictly acute; axes have no acute reference angle.",
+    "principalAngle": "Use the exact interval named in the question; zero is allowed in [0,2pi), while a least positive coterminal angle is 2pi for an axis at zero.",
+    "motion": "Track signed net rotation separately from nonnegative total angular travel, arc distance and speed.",
+    "sector": "Ordinary geometric sector area uses a nonnegative sweep no greater than a full turn. Repeatedly swept area and unique covered region are explicitly different."
+  },
+  "activationRequirements": [
+    "Complete original instruction and worked examples",
+    "Exact conversion and terminal-ray grading, including ordinary radians",
+    "Guided practice and a radius/angle investigation",
+    "All named practice variants and mixed critical checkpoints",
+    "Coverage, retrieval, accessibility, mobile, keyboard and persistence verification"
+  ],
+  "independentSubjectReview": "not yet performed"
+}
