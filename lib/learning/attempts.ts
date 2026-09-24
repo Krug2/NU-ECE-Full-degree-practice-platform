@@ -35,7 +35,8 @@ export const learningSchema=z.object({
 export type LearningProgress = z.infer<typeof learningSchema>;
 export const emptyLearning=():LearningProgress=>({attempts:[],evidence:[],notes:{}});
 
-export function createAttempt(lesson:Lesson, mode:Attempt["mode"], seed=crypto.randomUUID(), now=new Date()):Attempt {
+export type AssessmentSource = Pick<Lesson, "id" | "courseId" | "version" | "practice" | "checkpoint">;
+export function createAttempt(lesson:AssessmentSource, mode:Attempt["mode"], seed=crypto.randomUUID(), now=new Date()):Attempt {
   return attemptSchema.parse({id:crypto.randomUUID(),courseId:lesson.courseId,lessonId:lesson.id,lessonVersion:lesson.version,mode,status:"active",revision:0,seed,startedAt:now.toISOString(),submittedAt:null,position:0,questions:generateQuestions(mode==="practice"?lesson.practice:lesson.checkpoint,seed),responses:{},hints:{}});
 }
 export function attemptResult(attempt:Attempt) {
