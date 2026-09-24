@@ -24,7 +24,10 @@ for (const pack of [algebra]) {
   const course = pack.courseId, lessons = pack.modules.flatMap(module => module.lessons);
   test(`${course}: diagnostic gaps, exact resume, notes, and backup round trip`, async ({ page }, testInfo) => {
     const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
-    await page.goto(`/courses/${course}`);
+    await page.goto("/curriculum?group=refresher");
+    const card = page.locator("article").filter({ has: page.getByRole("heading", { name: pack.title, exact: true }) });
+    await expect(card).toContainText(pack.status === "building" ? "Planning ahead" : "Available preview");
+    await card.getByRole("link", { name: pack.title, exact: true }).click();
     await page.getByLabel("How familiar does this feel?", { exact: true }).selectOption("comfortable");
     await expect(page.getByTestId("refresher-evidence")).toContainText(`0 of ${lessons.length}`);
     const diagnostic = page.locator("#diagnostic");
