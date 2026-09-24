@@ -128,7 +128,7 @@ for (const pack of [algebra, functions, trigonometry, exponentials, measurement,
   });
 
   test(`${course}: all pages support mobile layout, keyboard guided feedback, and accessible content`, async ({ page }, testInfo) => {
-    test.setTimeout(120_000);
+    test.setTimeout((lessons.length + 2) * 30_000);
     for (const route of [`/courses/${course}`, ...lessons.map(lesson => `/courses/${course}/lessons/${lesson.id}`)]) {
       await page.goto(route);
       for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {

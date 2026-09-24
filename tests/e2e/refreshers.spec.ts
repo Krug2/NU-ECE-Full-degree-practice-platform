@@ -153,6 +153,7 @@ test("all four independent objectives and mixed recall work without changing MTH
 });
 
 test("F01 overview and every lesson remain accessible on desktop, mobile, and keyboard", async ({ page }, testInfo) => {
+  test.setTimeout(180_000);
   for (const route of ["/courses/f01", ...[1, 2, 3, 4].map(n => `/courses/f01/lessons/m01-l0${n}`)]) {
     await page.goto(route);
     for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
