@@ -1,0 +1,12 @@
+{
+  "courseId": "f11",
+  "status": "planned",
+  "humanReview": "pending",
+  "checks": [
+    "Validate every original calculation and all travel/buffer/fill generators with independent dimensional and arithmetic oracles across 100 seeds; test zero/invalid model inputs at utility boundaries.",
+    "Validate strict practical-content and record schemas, 5000-character note limit, version mismatch, corrupted records, sticky assistance, and retained completed work while a fresh draft is started.",
+    "Diagnostic feedback identifies lesson-specific gaps without numerical mastery; confidence, visits and diagnostic never create completion records.",
+    "Verify draft save/reload, assisted and independent completion, rubric requirements, last-completed retention, notes, export/reset/import, concurrency/conflict protection, keyboard and desktop/mobile Axe/screenshots.",
+    "Run all applicable tests, lint, type checks and build. Label preview only after verification; human review pending. Finish F11 before detailed F12 planning."
+  ]
+}

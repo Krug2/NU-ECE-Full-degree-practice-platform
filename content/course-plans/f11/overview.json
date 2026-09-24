@@ -1,0 +1,149 @@
+{
+  "courseId": "f11",
+  "title": "Engineering work habits",
+  "plannedAt": "2026-09-24",
+  "status": "planned",
+  "learner": "Returning engineering learners who can perform basic calculations but need a repeatable way to frame, check and document work.",
+  "assumedKnowledge": [
+    "Basic arithmetic and unit meanings; F06 is linked when conversions need review."
+  ],
+  "scope": {
+    "include": [
+      "Frame the problem and make a useful sketch",
+      "Estimate first and carry units through the model",
+      "Check reasonableness and model limits",
+      "Revise and leave a reproducible work record"
+    ],
+    "exclude": [
+      "Formal engineering design approval, professional certification, laboratory safety procedures, advanced uncertainty statistics and discipline-specific physical laws beyond supplied simple models."
+    ]
+  },
+  "routes": {
+    "quick": "Use four short scenario judgments to locate a gap, read Quick recall, then create a fresh independently completed practical record for each lesson.",
+    "full": "Build a problem frame, estimate with units, audit results, then revise and communicate. Use guided reviews as needed and retain their assistance label."
+  },
+  "reuse": {
+    "overlap": [
+      "F06 already assesses unit conversions, precision and measurement mathematically; F11 applies them inside a work record.",
+      "F03 and F10 supply model and debugging language; this refresher focuses on an auditable process."
+    ],
+    "implementation": "Reuse QuestionFields and grading for unscored diagnostic judgments only, MathText, page/lesson styles, confidence and plan APIs, useStudyDraft and saveProgress, notes and existing backup. No changes to persistence, backup schema or numerical evidence."
+  },
+  "assessment": {
+    "diagnostic": [
+      {
+        "lessonId": "m01-l01",
+        "prompt": "A page says 12, 3 and 4 beside an unlabeled box. What should you do before choosing an equation?",
+        "correct": "frame",
+        "options": [
+          [
+            "frame",
+            "Name the quantities, units, boundary and unknown",
+            "Labels connect the picture to a physical model."
+          ],
+          [
+            "calculate",
+            "Multiply the three numbers",
+            "Arithmetic cannot supply missing meanings or a requested output."
+          ],
+          [
+            "decorate",
+            "Make the box more detailed",
+            "Visual detail does not replace useful labels."
+          ]
+        ]
+      },
+      {
+        "lessonId": "m01-l02",
+        "prompt": "You want travel time from 12 km and 4 km/h. Which relationship has the right meaning and units?",
+        "correct": "divide",
+        "options": [
+          [
+            "divide",
+            "Distance divided by speed",
+            "km divided by km/h gives hours."
+          ],
+          [
+            "multiply",
+            "Distance multiplied by speed",
+            "That has units km²/h, not time."
+          ],
+          [
+            "add",
+            "Distance plus speed",
+            "Unlike dimensions cannot be added."
+          ]
+        ]
+      },
+      {
+        "lessonId": "m01-l03",
+        "prompt": "A storage calculation has units of bytes but forgot the number of channels. What does the unit check establish?",
+        "correct": "necessary",
+        "options": [
+          [
+            "necessary",
+            "It checks dimensions but does not prove the value",
+            "A missing dimensionless channel count can preserve units and change the result."
+          ],
+          [
+            "complete",
+            "The answer is fully correct",
+            "Correct units alone do not establish numerical or model correctness."
+          ],
+          [
+            "reject",
+            "The answer must have the wrong dimensions",
+            "The omitted factor is dimensionless, so this claim is too strong."
+          ]
+        ]
+      },
+      {
+        "lessonId": "m01-l04",
+        "prompt": "Your corrected answer differs from yesterday's. What makes the revision useful to a future reader?",
+        "correct": "record",
+        "options": [
+          [
+            "record",
+            "Keep the earlier claim and explain the corrected step and checks",
+            "A revision log preserves the reason for the change."
+          ],
+          [
+            "replace",
+            "Erase the earlier result and keep only the new number",
+            "That hides what changed and why the new result is more trustworthy."
+          ],
+          [
+            "confidence",
+            "Write that you are now very confident",
+            "Confidence is not a record of evidence or method."
+          ]
+        ]
+      }
+    ],
+    "practical": "Each objective has a generated fresh scenario, four substantive artifact fields and three explicit self-check criteria. Completion requires saved work, all rubric acknowledgments and a completion timestamp. The app validates presence, not semantic correctness.",
+    "assistance": "Revealing a possible review irreversibly marks the active task assisted. A new task has a new seed; the prior completed artifact is retained. Confidence and page visits create no practical evidence.",
+    "evidence": "Draft, assisted task recorded, or independent task recorded (self-checked). No percentage, numerical mastery, numerical evidence record, university credit or eligibility claim."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Scoped PracticalLesson and PracticalPath schemas; practical catalog alongside assessed lesson catalog. Course and lesson routes dispatch to practical views before existing readers.",
+      "reason": "The existing Lesson contract requires four numerical checkpoint questions. Creating dummy questions would misrepresent practical evidence.",
+      "integration": "Reuse existing visual components/styles and APIs. Add only two route dispatches and availability registration; keep assessed readers, grading and storage contracts unchanged."
+    },
+    {
+      "interface": "learning.notes[courseId]['practical-'+lessonId] stores a versioned JSON envelope with active work and last completed work, each with seed, fields, rubric flags, assistance and completion time.",
+      "integration": "Each field is at most 400 characters, at most four fields; serialize within the existing 5000-character limit. Ordinary lesson and course notes remain separate. Compare the stored string on save to prevent stale overwrites. Unsupported/corrupt versions remain preserved until deliberately replaced."
+    },
+    {
+      "interface": "learning.notes[courseId]['practical-diagnostic'] stores a small versioned response record.",
+      "integration": "Show individual feedback and linked review destinations without a total score. This never writes learning.evidence or course completion."
+    }
+  ],
+  "verification": [
+    "Validate every original calculation and all travel/buffer/fill generators with independent dimensional and arithmetic oracles across 100 seeds; test zero/invalid model inputs at utility boundaries.",
+    "Validate strict practical-content and record schemas, 5000-character note limit, version mismatch, corrupted records, sticky assistance, and retained completed work while a fresh draft is started.",
+    "Diagnostic feedback identifies lesson-specific gaps without numerical mastery; confidence, visits and diagnostic never create completion records.",
+    "Verify draft save/reload, assisted and independent completion, rubric requirements, last-completed retention, notes, export/reset/import, concurrency/conflict protection, keyboard and desktop/mobile Axe/screenshots.",
+    "Run all applicable tests, lint, type checks and build. Label preview only after verification; human review pending. Finish F11 before detailed F12 planning."
+  ]
+}
