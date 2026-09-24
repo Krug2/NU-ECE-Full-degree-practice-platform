@@ -1,0 +1,12 @@
+{
+  "courseId": "f08",
+  "status": "planned",
+  "humanReview": "pending",
+  "checks": [
+    "Check all structures over at least100seeds against independent symbolic coefficients, direct substitutions, analytic one-sided signs, and numeric finite differences where appropriate.",
+    "Independently integrate by power moments and compare derivative/antiderivative round trips; check signed versus absolute accumulation and all initial conditions.",
+    "Check equivalent polynomial and fractional answers; retain original domains, h≠0, zero-width bounds, nonzero substitution slopes and radian conventions; render all KaTeX.",
+    "Exercise every guided/activity route plus full diagnostic, checkpoint, mixed recall, notes/resume/backup; keyboard, desktop/mobile, Axe; full tests, lint, types, production build.",
+    "Release as preview only after verification; human review remains pending. Finish F08 before detailed planning of F09."
+  ]
+}
