@@ -1,0 +1,72 @@
+{
+  "courseId": "f07",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 5,
+    "workedExamples": 33,
+    "practiceStructures": 46,
+    "diagnosticProbes": 5,
+    "lessonCheckpointQuestions": 20,
+    "mixedRecallQuestions": 4,
+    "evidence": "F07 checkpoint identities keep independent evidence separate from familiarity, visits, diagnostics, and assisted explorations."
+  },
+  "checks": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "804 tests passed across 86 files."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed; subsequent diagram and browser changes also passed targeted lint."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed, including the diagram update."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript, and 100 static pages, including the final preview build."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts --grep [fF]07 --workers=2 --output=tmp/f07-browser",
+      "result": "All eight journeys passed: all five guided activities, every lesson/mixed checkpoint, diagnostic routing and exact resume/notes/backup recovery, and all-page desktop/mobile accessibility and layout."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts tests/e2e/f07.spec.ts --workers=2 --output=tmp/f07-diagrams",
+      "result": "All five activity journeys passed after visual improvements, including a regression check that a zero resultant has no directional arrowhead."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --grep f07.*diagnostic --workers=1 --output=tmp/f07-entry",
+      "result": "Passed the final Available preview entry, diagnostic routing, exact resume, notes, and export/reset/import recovery."
+    },
+    {
+      "command": "pnpm exec vitest run tests/f07-content.test.ts --maxWorkers=2",
+      "result": "All six final content/metadata checks passed."
+    }
+  ],
+  "mathematics": "Independent checks cover endpoint differences, positive norms, dimensionless normalization, signed combinations, equilibrants, quadrant reconstruction, active rotation matrices, exact standard-angle components, scalar dot products, angle cosines, projection residual perpendicularity, target-zero conditions, signed work, a separate determinant oracle for cross products, antisymmetry and Lagrange's identity, triangle/parallelogram area, ordered torque, all-coordinate line membership, plane residual normalization, and coordinate reconstruction including axial/origin ambiguity. Families use 100 seeds per structure, lessons and screens 50.",
+  "instruction": "Five original lessons provide quick recall and full explanation routes, 33 reasoned examples, guided work, five prediction activities, varied practice, independent checkpoints, and targeted routing. Existing F04 exact trigonometric utilities and generic exact/rational graders are reused without changing source lesson or attempt identities.",
+  "accessibility": "No Axe WCAG 2 A/AA or WCAG 2.1 AA violations, horizontal overflow, or KaTeX errors in the browser journeys. All activities and guided work operate by keyboard. Diagrams use equal axis scales, distinct line styles, separate legends, numeric tables, and point markers for zero vectors. Desktop overview and revised mobile addition/projection screenshots were inspected.",
+  "sources": "Six precise free OpenStax Calculus Volume 3 sections (2.1–2.5 and 2.7) were verified and attributed in resources.json. Prose, exercises, and diagrams are original. Right-handed Cartesian axes, degree ranges, and the spherical azimuth/inclination convention are explicit.",
+  "sharedInterfaces": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-vector-lab', mode: 'components' | 'addition' | 'dot' | 'cross' | 'coordinates', prompt: string }.",
+      "integration": "One strict union member and reader dispatch; new scoped modules render keyboard inputs, existing question fields, SVG diagrams, and equivalent tables. No storage, grading, backup, or app-shell redesign."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f07",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional refresher content does not award university credit or establish enrollment eligibility.",
+    "Independent human subject and assistive-technology review remain pending.",
+    "General basis transformations, vector fields, differential operators, and physical dynamics derivations belong to the corresponding full courses.",
+    "F08 through F12 remain planned at this verification milestone."
+  ]
+}

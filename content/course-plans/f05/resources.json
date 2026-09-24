@@ -1,0 +1,82 @@
+{
+  "courseId": "f05",
+  "checkedAt": "2026-09-23",
+  "sources": [
+    {
+      "id": "os-6.1",
+      "section": "6.1",
+      "title": "Exponential Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-1-exponential-functions",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.2",
+      "section": "6.2",
+      "title": "Graphs of Exponential Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-2-graphs-of-exponential-functions",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.3",
+      "section": "6.3",
+      "title": "Logarithmic Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-3-logarithmic-functions",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.4",
+      "section": "6.4",
+      "title": "Graphs of Logarithmic Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-4-graphs-of-logarithmic-functions",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.5",
+      "section": "6.5",
+      "title": "Logarithmic Properties",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-5-logarithmic-properties",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.6",
+      "section": "6.6",
+      "title": "Exponential and Logarithmic Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-6-exponential-and-logarithmic-equations",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.7",
+      "section": "6.7",
+      "title": "Exponential and Logarithmic Models",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-7-exponential-and-logarithmic-models",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "os-6.8",
+      "section": "6.8",
+      "title": "Fitting Exponential Models to Data",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-8-fitting-exponential-models-to-data",
+      "provider": "OpenStax, Rice University",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "id": "nist-8.7",
+      "section": "8.7",
+      "title": "Logarithmic quantities and units: level, neper, bel",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "provider": "National Institute of Standards and Technology",
+      "checkedAt": "2026-09-23"
+    }
+  ],
+  "policy": "Opened the precise free section pages to verify subject matter and resource links. All instructional prose, examples, and diagrams will be original ECE Study work. No textbook exercises or figures are copied.",
+  "attribution": "OpenStax Algebra and Trigonometry 2e by Jay Abramson and contributing authors, Rice University; NIST Special Publication 811, section 8.7.",
+  "license": "Links and factual verification only. Preserve existing source-bridge attribution and consult publisher terms before any future copying.",
+  "decibelScope": "NIST 8.7 defines power and field level ratios and stresses an explicit reference. Use 10 log10 for a stated power ratio; derive any 20 log10 shortcut from the supplied squared-amplitude relation. Describe references explicitly rather than assuming an unstated instrument unit."
+}

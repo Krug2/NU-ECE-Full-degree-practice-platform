@@ -1,0 +1,285 @@
+{
+  "id": "m01-l01",
+  "courseId": "f07",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Components, displacement, and unit direction",
+  "objective": "Distinguish points from vectors, compute two- and three-dimensional displacements and magnitudes, and normalize nonzero vectors while handling zero correctly.",
+  "why": "Vectors keep direction attached to size. In physics and engineering, a signed component, a positive length, and a point's location answer different questions. Recovering those distinctions makes later force, field, and signal calculations easier to check.",
+  "estimatedMinutes": 40,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A vector in an orthonormal Cartesian frame is an ordered set of signed components. The displacement from P to Q is $\\overrightarrow{PQ}=Q-P$. Its magnitude is $\\sqrt{v_x^2+v_y^2+v_z^2}$, omitting z in the plane.",
+        "For a nonzero vector, divide every component by its magnitude to obtain a unit direction. The zero vector has magnitude zero and no unique direction. Try the worked examples and checkpoint if this is familiar; use the fuller explanation when you cannot justify a step."
+      ]
+    },
+    {
+      "heading": "A point locates; a vector displaces",
+      "paragraphs": [
+        "A point such as (2,-1) identifies a location relative to an origin. A displacement such as ⟨-3,4⟩ describes a change: three units toward negative x and four toward positive y. Adding that displacement to the point gives (-1,3). Keep the coordinate order fixed; exchanging x and y generally gives a different vector.",
+        "An arrow can represent a free vector even when its tail is not at the origin. Two translated arrows represent equal free vectors if their ordered components agree. That mathematical convention does not imply that moving the application point of a physical force preserves its torque. State what your vector represents."
+      ]
+    },
+    {
+      "heading": "Subtract endpoints in the direction of travel",
+      "paragraphs": [
+        "The terminal point is the destination and the initial point is the start. Subtract start from destination in every coordinate. Reversing the endpoints negates every component; it does not change the distance between the points.",
+        "Displacement depends only on the endpoints. Distance traveled along a path depends on the route. A trip that returns to its starting point has zero net displacement but may have positive path length. The checkpoint includes this distinction so that a correct zero does not hide an incorrect interpretation."
+      ]
+    },
+    {
+      "heading": "Magnitude comes from perpendicular components",
+      "paragraphs": [
+        "In an orthonormal frame the axes are perpendicular and each basis direction has unit length. The Pythagorean theorem therefore combines squared components. Component signs disappear after squaring because length cannot be negative. The magnitude of (3,-4) is 5, not -1 or 7.",
+        "In three dimensions, first combine two perpendicular components into their planar length, then combine that length with the third component. Squaring the intermediate length gives the familiar sum of three squares. This formula relies on the stated orthonormal frame; arbitrary nonperpendicular coordinate bases need different treatment."
+      ]
+    },
+    {
+      "heading": "Normalize without changing direction",
+      "paragraphs": [
+        "The standard basis vectors are i=(1,0,0), j=(0,1,0), and k=(0,0,1). Writing v=vx i+vy j+vz k makes each directional contribution explicit. The components have the units of v, while the standard basis vectors themselves are dimensionless.",
+        "A unit vector has magnitude one. For v≠0, $\\widehat v=v/\\|v\\|$ removes the size while preserving direction, and $v=\\|v\\|\\widehat v$ puts the size back. Check both facts after normalizing. At v=0 the divisor is zero, so there is no uniquely defined normalized direction; do not silently choose an axis."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Subtract terminal minus initial",
+      "prompt": "Find the displacement from P=(2,-1) m to Q=(-1,3) m.",
+      "steps": [
+        {
+          "math": "Q-P=\\langle-1-2,3-(-1)\\rangle=\\langle-3,4\\rangle\\,\\mathrm m",
+          "reason": "Each component is destination minus start."
+        },
+        {
+          "math": "\\|Q-P\\|=\\sqrt{(-3)^2+4^2}=5\\,\\mathrm m",
+          "reason": "The nonnegative length combines perpendicular changes."
+        }
+      ],
+      "conclusion": "The displacement is (-3,4) m and the straight-line distance is 5 m."
+    },
+    {
+      "title": "Translate an arrow",
+      "prompt": "Compare arrows from (0,0) to (2,-3) and from (5,1) to (7,-2).",
+      "steps": [
+        {
+          "math": "\\langle2-0,-3-0\\rangle=\\langle2,-3\\rangle",
+          "reason": "Compute the first displacement."
+        },
+        {
+          "math": "\\langle7-5,-2-1\\rangle=\\langle2,-3\\rangle",
+          "reason": "The second displacement has the same ordered components."
+        }
+      ],
+      "conclusion": "These are equal free vectors even though their tails differ."
+    },
+    {
+      "title": "Find a spatial distance",
+      "prompt": "Find the displacement from (1,2,-1) to (3,-1,5), in metres.",
+      "steps": [
+        {
+          "math": "\\Delta r=\\langle2,-3,6\\rangle\\,\\mathrm m",
+          "reason": "Subtract the initial coordinate from the terminal coordinate in each position."
+        },
+        {
+          "math": "\\|\\Delta r\\|=\\sqrt{4+9+36}=7\\,\\mathrm m",
+          "reason": "The three perpendicular squared components sum to 49."
+        }
+      ],
+      "conclusion": "The vector has three signed components; its distance is the single scalar 7 m."
+    },
+    {
+      "title": "Construct a planar unit direction",
+      "prompt": "Normalize v=(3,-4) m.",
+      "steps": [
+        {
+          "math": "\\|v\\|=5\\,\\mathrm m",
+          "reason": "Find the original positive length."
+        },
+        {
+          "math": "\\widehat v=\\langle3/5,-4/5\\rangle,\\qquad\\|\\widehat v\\|^2=9/25+16/25=1",
+          "reason": "Divide both components by the same length and verify unit magnitude."
+        }
+      ],
+      "conclusion": "The unit direction is dimensionless and still points toward positive x and negative y."
+    },
+    {
+      "title": "Retain an exact unit vector",
+      "prompt": "Normalize v=(1,1,1).",
+      "steps": [
+        {
+          "math": "\\|v\\|=\\sqrt{1+1+1}=\\sqrt3",
+          "reason": "Keep the radical exact rather than rounding early."
+        },
+        {
+          "math": "\\widehat v=\\left\\langle\\frac1{\\sqrt3},\\frac1{\\sqrt3},\\frac1{\\sqrt3}\\right\\rangle",
+          "reason": "Divide every component by the magnitude."
+        },
+        {
+          "math": "\\|\\widehat v\\|^2=3(1/3)=1",
+          "reason": "The squared components confirm the length."
+        }
+      ],
+      "conclusion": "Equivalent rationalized components √3/3 are also valid."
+    },
+    {
+      "title": "Recognize a zero displacement",
+      "prompt": "A path starts and ends at (2,5) m. Determine the net vector.",
+      "steps": [
+        {
+          "math": "\\Delta r=\\langle2-2,5-5\\rangle=\\langle0,0\\rangle\\,\\mathrm m",
+          "reason": "The endpoints determine the displacement."
+        },
+        {
+          "math": "\\|\\Delta r\\|=0,\\qquad\\Delta r/\\|\\Delta r\\|\\text{ is undefined}",
+          "reason": "Zero length cannot supply a unique normalized direction."
+        }
+      ],
+      "conclusion": "The path length is unknown; it need not be zero."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "A point moves from P=(1,-2,3) m to Q=(3,1,9) m. First recover its signed displacement.",
+    "before": [
+      "Subtract P from Q component by component.",
+      "Use the squared components for magnitude, then divide by the positive length."
+    ],
+    "question": {
+      "id": "f07-l01-guided",
+      "familyId": "guided-f07-l01",
+      "familyVersion": 1,
+      "courseId": "f07",
+      "objectiveId": "m01-l01",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the three displacement components, its magnitude, and the x component of its unit direction.",
+      "fields": [
+        {
+          "id": "x",
+          "kind": "rational",
+          "label": "Displacement x",
+          "expected": "2",
+          "unit": "m"
+        },
+        {
+          "id": "y",
+          "kind": "rational",
+          "label": "Displacement y",
+          "expected": "3",
+          "unit": "m"
+        },
+        {
+          "id": "z",
+          "kind": "rational",
+          "label": "Displacement z",
+          "expected": "6",
+          "unit": "m"
+        },
+        {
+          "id": "magnitude",
+          "kind": "exact",
+          "label": "Magnitude",
+          "expected": "7",
+          "unit": "m"
+        },
+        {
+          "id": "unit-x",
+          "kind": "exact",
+          "label": "Unit-direction x",
+          "expected": "2/7",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Use the squared components for magnitude, then divide by the positive length.",
+        "The displacement is (2,3,6) m and the magnitude is sqrt(4+9+36)=7 m."
+      ],
+      "explanation": [
+        "The displacement is (2,3,6) m and the magnitude is sqrt(4+9+36)=7 m.",
+        "The x component of the dimensionless unit direction is 2/7."
+      ],
+      "answerSummary": "The displacement is (2,3,6) m and the magnitude is sqrt(4+9+36)=7 m. The x component of the dimensionless unit direction is 2/7."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-vector-lab",
+    "mode": "components",
+    "prompt": "Change initial and terminal planar points. Predict displacement and magnitude, then reveal a labeled arrow and equivalent component table. Translate both endpoints and explain invariance."
+  },
+  "practice": [
+    {
+      "familyId": "f07-displacement",
+      "variant": "plane"
+    },
+    {
+      "familyId": "f07-displacement",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-magnitude",
+      "variant": "plane"
+    },
+    {
+      "familyId": "f07-magnitude",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-unit-vector",
+      "variant": "plane"
+    },
+    {
+      "familyId": "f07-unit-vector",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-unit-vector",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f07-vector-meaning",
+      "variant": "translation"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f07-displacement",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-magnitude",
+      "variant": "plane"
+    },
+    {
+      "familyId": "f07-unit-vector",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-vector-meaning",
+      "variant": "zero"
+    }
+  ],
+  "summary": [
+    "Points locate positions; displacement vectors describe ordered signed changes.",
+    "Magnitude is a nonnegative scalar built from perpendicular squared components.",
+    "Normalize only nonzero vectors; zero displacement does not determine path length."
+  ],
+  "retrieval": "Reverse the endpoints in the first worked example. State which components change, which magnitude stays the same, and why a unit direction for zero is undefined.",
+  "readings": [
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.1: Vectors in the Plane",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-1-vectors-in-the-plane",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    },
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.2: Vectors in Three Dimensions",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-2-vectors-in-three-dimensions",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    }
+  ]
+}

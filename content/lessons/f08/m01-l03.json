@@ -1,0 +1,332 @@
+{
+  "id": "m01-l03",
+  "courseId": "f08",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Product, quotient, chain, and elementary rules",
+  "objective": "Apply product, quotient, and chain rules, including elementary trigonometric, exponential, logarithmic, reciprocal, and root derivatives on valid domains.",
+  "why": "Engineering models combine changing quantities. The correct derivative depends on whether those quantities are added, multiplied, divided, or composed. Recovering that structure is more reliable than trying to recognize an entire expression at once.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Derivative meaning, polynomial rules, and rates"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For differentiable u and v, $(uv)'=u'v+uv'$ and $(u/v)'=(u'v-uv')/v^2$ where v≠0. A composition obeys $[F(g(x))]'=F'(g(x))g'(x)$. The inner derivative is a factor, not an optional detail.",
+        "With radian arguments, $(\\sin x)'=\\cos x$ and $(\\cos x)'=-\\sin x$. Also $(e^x)'=e^x$ and $(\\ln x)'=1/x$ for x>0. Apply the chain rule when x is replaced by a changing inner expression."
+      ]
+    },
+    {
+      "heading": "Identify the outer operation",
+      "paragraphs": [
+        "An expression such as (x²+1)(3x-2) is a product of two functions. The term x²+1 itself is a sum. Work from the outer operation inward: choose the product rule, then use polynomial rules inside each factor. This avoids applying a familiar rule to the wrong structural level.",
+        "You can sometimes expand a polynomial product before differentiating. That is a valid alternative and a useful independent check. For nonpolynomial factors, the product structure often remains the clearest route. Equivalent expanded and factored polynomial answers are accepted in the practice."
+      ]
+    },
+    {
+      "heading": "Why a product needs two terms",
+      "paragraphs": [
+        "When both factors change, the product changes because the first factor changes while the second is held at its local value, and because the second changes while the first is held at its local value. The derivative captures both contributions: u′v and uv′.",
+        "Multiplying u′ and v′ alone omits the original factor values. For example, differentiating x·x that way would give1, whereas the derivative of x² is 2x. Use that small counterexample if you need to reconstruct the product rule from memory."
+      ]
+    },
+    {
+      "heading": "Keep the quotient order and domain",
+      "paragraphs": [
+        "In the quotient rule, the numerator is derivative of the top times the bottom, minus the top times derivative of the bottom. The denominator is the original bottom squared. Reversing the subtraction changes the sign; forgetting the square changes both the value and the units.",
+        "The original denominator must stay nonzero. An algebraic simplification of the derivative does not restore an excluded point of the original function. State the domain before substituting a value, especially when a factored cancellation might hide an original restriction."
+      ]
+    },
+    {
+      "heading": "A chain combines two rates",
+      "paragraphs": [
+        "In y=F(u) with u=g(x), a small change in x first changes u, which then changes y. The rate dy/dx is the product of the outer rate with respect to u and the inner rate with respect to x. Evaluate the outer derivative at the actual inner value, not at an unrelated x.",
+        "For (ax+b)^n, the outer power rule gives n(ax+b)^(n-1), then the inner derivative supplies a. A negative a reverses the sign when the other factor is positive. If a=0, the entire composition is constant and its derivative is zero. Keep the factor until you have checked those cases."
+      ]
+    },
+    {
+      "heading": "Elementary functions retain their conditions",
+      "paragraphs": [
+        "For a differentiable inner u, the chain rules give $[\\sin u]'=\\cos(u)u'$, $[\\cos u]'=-\\sin(u)u'$, $[e^u]'=e^u u'$, and $[\\ln u]'=u'/u$ where u>0. The logarithm condition belongs to the original real-valued function; u≠0 alone is not enough.",
+        "The negative-power rule applies on its valid domain, so (x-a)^(-n) excludes x=a. For $\\sqrt{u(x)}$, the usual derivative $u'(x)/(2\\sqrt{u(x)})$ applies where u>0. At u=0, investigate separately. For the nonconstant affine radicands used here, the function exists at the zero boundary but has no finite derivative there."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Differentiate both changing factors",
+      "prompt": "Find the derivative of (x²+1)(3x-2).",
+      "steps": [
+        {
+          "math": "f'(x)=(2x)(3x-2)+(x^2+1)(3)",
+          "reason": "The product rule accounts for the change of each factor."
+        },
+        {
+          "math": "f'(x)=6x^2-4x+3x^2+3=9x^2-4x+3",
+          "reason": "Collect terms only after retaining both contributions."
+        },
+        {
+          "math": "f(x)=3x^3-2x^2+3x-2",
+          "reason": "Expanding the original product supplies an independent polynomial check."
+        }
+      ],
+      "conclusion": "Differentiating the expanded form gives the same result."
+    },
+    {
+      "title": "Keep a quotient's subtraction order",
+      "prompt": "Differentiate (2x+1)/(x-3) and state its domain.",
+      "steps": [
+        {
+          "math": "g'(x)=\\frac{2(x-3)-(2x+1)}{(x-3)^2}",
+          "reason": "Use top derivative times bottom minus top times bottom derivative."
+        },
+        {
+          "math": "g'(x)=\\frac{-7}{(x-3)^2},\\qquad x\\ne3",
+          "reason": "The x terms cancel, while the original denominator restriction remains."
+        }
+      ],
+      "conclusion": "The negative sign and squared denominator both matter."
+    },
+    {
+      "title": "Recover the inner factor",
+      "prompt": "Differentiate (2x-1)³.",
+      "steps": [
+        {
+          "math": "u=2x-1,\\quad \\frac{du}{dx}=2,\\quad \\frac{d(u^3)}{du}=3u^2",
+          "reason": "Identify the inner and outer changes separately."
+        },
+        {
+          "math": "f'(x)=3(2x-1)^2\\cdot2=6(2x-1)^2",
+          "reason": "Multiply the rates and return to x."
+        }
+      ],
+      "conclusion": "At x=1, the derivative is 6, not3."
+    },
+    {
+      "title": "Use radian trigonometric rules",
+      "prompt": "Differentiate sin(4x) and cos(3x), with radian arguments.",
+      "steps": [
+        {
+          "math": "\\frac d{dx}\\sin(4x)=4\\cos(4x)",
+          "reason": "The sine derivative gives cosine and the inner slope contributes 4."
+        },
+        {
+          "math": "\\frac d{dx}\\cos(3x)=-3\\sin(3x)",
+          "reason": "The cosine derivative introduces a minus sign, and the inner slope contributes 3."
+        },
+        {
+          "math": "S'(0)=4,\\qquad C'(0)=0",
+          "reason": "At zero, cosine is 1 and sine is 0."
+        }
+      ],
+      "conclusion": "The radian convention is part of these formulas."
+    },
+    {
+      "title": "Differentiate a decreasing exponential",
+      "prompt": "Find the derivative of e^(-2x) and evaluate it at 0.",
+      "steps": [
+        {
+          "math": "u=-2x,\\qquad u'=-2",
+          "reason": "The inner expression decreases as x increases."
+        },
+        {
+          "math": "f'(x)=-2e^{-2x},\\qquad f'(0)=-2",
+          "reason": "Multiply the unchanged exponential by the inner slope."
+        }
+      ],
+      "conclusion": "The negative derivative agrees with a decreasing exponential."
+    },
+    {
+      "title": "Keep a logarithm's real domain",
+      "prompt": "Differentiate ln(3x+1).",
+      "steps": [
+        {
+          "math": "3x+1>0\\quad\\Longleftrightarrow\\quad x>-1/3",
+          "reason": "A real logarithm needs a positive argument before any derivative rule is applied."
+        },
+        {
+          "math": "f'(x)=\\frac3{3x+1}",
+          "reason": "Divide the inner derivative by the inner expression."
+        },
+        {
+          "math": "f'(0)=3",
+          "reason": "The evaluation point lies inside the original domain."
+        }
+      ],
+      "conclusion": "The formula does not authorize evaluating the original logarithm for x≤-1/3."
+    },
+    {
+      "title": "Check negative powers and roots",
+      "prompt": "Differentiate (x+2)^(-2) and sqrt(2x+3).",
+      "steps": [
+        {
+          "math": "\\frac d{dx}(x+2)^{-2}=-2(x+2)^{-3},\\quad x\\ne-2",
+          "reason": "The integer power rule permits either sign of a nonzero base."
+        },
+        {
+          "math": "\\frac d{dx}\\sqrt{2x+3}=\\frac2{2\\sqrt{2x+3}}=\\frac1{\\sqrt{2x+3}}",
+          "reason": "The root is a one-half power, and the inner derivative contributes 2."
+        },
+        {
+          "math": "2x+3>0\\quad\\Longleftrightarrow\\quad x>-3/2",
+          "reason": "The finite derivative's denominator excludes the zero-radicand boundary."
+        }
+      ],
+      "conclusion": "The root itself allows x=-3/2; this finite derivative does not."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Let f(x)=(3x-1)^4 and evaluate the derivative at x=1.",
+    "before": [
+      "The inner value at 1 is 2.",
+      "Differentiate the outer fourth power with respect to its input, then multiply by the inner slope 3."
+    ],
+    "question": {
+      "id": "f08-l03-guided",
+      "familyId": "guided-f08-l03",
+      "familyVersion": 1,
+      "courseId": "f08",
+      "objectiveId": "m01-l03",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the inner value, outer derivative at that value, inner derivative, and full derivative at 1.",
+      "fields": [
+        {
+          "id": "inner",
+          "kind": "rational",
+          "label": "Inner value",
+          "expected": "2",
+          "unit": ""
+        },
+        {
+          "id": "outer",
+          "kind": "rational",
+          "label": "Outer derivative value",
+          "expected": "32",
+          "unit": ""
+        },
+        {
+          "id": "factor",
+          "kind": "rational",
+          "label": "Inner derivative",
+          "expected": "3",
+          "unit": ""
+        },
+        {
+          "id": "derivative",
+          "kind": "rational",
+          "label": "Full derivative",
+          "expected": "96",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Differentiate the outer fourth power with respect to its input, then multiply by the inner slope 3.",
+        "The inner value is 2, so the outer derivative is 4·2³=32."
+      ],
+      "explanation": [
+        "The inner value is 2, so the outer derivative is 4·2³=32.",
+        "Multiplying by the inner derivative3 gives f′(1)=96."
+      ],
+      "answerSummary": "The inner value is 2, so the outer derivative is 4·2³=32. Multiplying by the inner derivative3 gives f′(1)=96."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-calculus-lab",
+    "mode": "chain",
+    "prompt": "Change a signed inner slope, intercept, and outer power. Predict outer derivative, inner derivative, and their product at a point; reveal a composition table and a local change comparison."
+  },
+  "practice": [
+    {
+      "familyId": "f08-derivative-rules",
+      "variant": "product"
+    },
+    {
+      "familyId": "f08-derivative-rules",
+      "variant": "quotient"
+    },
+    {
+      "familyId": "f08-derivative-rules",
+      "variant": "chain-power"
+    },
+    {
+      "familyId": "f08-derivative-elementary",
+      "variant": "sin"
+    },
+    {
+      "familyId": "f08-derivative-elementary",
+      "variant": "cos"
+    },
+    {
+      "familyId": "f08-derivative-elementary",
+      "variant": "exp"
+    },
+    {
+      "familyId": "f08-derivative-elementary",
+      "variant": "log"
+    },
+    {
+      "familyId": "f08-derivative-domain",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "f08-derivative-domain",
+      "variant": "root"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f08-derivative-rules",
+      "variant": "product-quotient"
+    },
+    {
+      "familyId": "f08-derivative-rules",
+      "variant": "chain-power"
+    },
+    {
+      "familyId": "f08-derivative-elementary",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f08-derivative-domain",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "Choose a rule from the expression's outer operation.",
+    "Products need two terms; quotients need an ordered subtraction and squared denominator.",
+    "A composition multiplies outer and inner rates.",
+    "Use radians for trig derivatives and keep logarithm, reciprocal, and root domains explicit."
+  ],
+  "retrieval": "Write the product, quotient, and chain rules from memory. Test the product rule on x·x, then explain why ln(2x-1) and sqrt(2x-1) have different conditions for their finite derivatives.",
+  "readings": [
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.3: Differentiation Rules",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.5: Derivatives of Trigonometric Functions",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-5-derivatives-of-trigonometric-functions",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.6: The Chain Rule",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-6-the-chain-rule",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 3.9: Derivatives of Exponential and Logarithmic Functions",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-9-derivatives-of-exponential-and-logarithmic-functions",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    }
+  ]
+}

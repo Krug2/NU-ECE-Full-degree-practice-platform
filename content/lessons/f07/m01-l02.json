@@ -1,0 +1,295 @@
+{
+  "id": "m01-l02",
+  "courseId": "f07",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Vector arithmetic, resultants, and coordinate directions",
+  "objective": "Combine vectors componentwise, interpret signed scaling and equilibrants, and convert between planar magnitude-direction and Cartesian components with correct quadrants.",
+  "why": "Resultants combine the directional effects of forces and displacements. Component arithmetic keeps signs explicit, while magnitude-direction form helps you interpret the geometry. Moving reliably between the two prevents plausible-looking quadrant and length errors.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Components, displacement, and unit direction"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Add and subtract matching vector components in one common coordinate frame. Scale every component by the scalar. A negative scalar reverses direction, while magnitude scales by its absolute value.",
+        "For a planar vector with magnitude R and direction θ counterclockwise from +x, $(v_x,v_y)=(R\\cos\\theta,R\\sin\\theta)$. Recover direction using both signs, with θ in the specified interval. This lesson uses degrees and 0≤θ<360; zero has no unique direction."
+      ]
+    },
+    {
+      "heading": "Tip-to-tail addition is component addition",
+      "paragraphs": [
+        "A displacement u followed by a displacement v ends at the same final point as one displacement u+v. Draw v with its tail at u's tip, then connect the original start to the final tip. The horizontal changes add and the vertical changes add independently.",
+        "Vector addition is commutative, but subtraction changes direction: u-v=u+(-v). Magnitudes cannot generally be added to obtain the resultant magnitude. Two opposite vectors can cancel completely even though each has a positive magnitude. The activity reveals both the arrows and their signed components."
+      ]
+    },
+    {
+      "heading": "Scale the entire vector",
+      "paragraphs": [
+        "In ku, every component is multiplied by k. For k>0 the direction stays the same; for k<0 it reverses; for k=0 the result is zero. The magnitude is |k| times the original magnitude, because a length cannot inherit a negative sign.",
+        "A linear combination such as 2u-v can be evaluated by scaling first and adding second. Keep parentheses around negative components. In three dimensions the same componentwise rule applies to z. Always use compatible units and the same coordinate frame before adding."
+      ]
+    },
+    {
+      "heading": "A balancing vector negates the whole resultant",
+      "paragraphs": [
+        "A resultant is the vector sum of the supplied contributions. An equilibrant is the additional vector that makes that sum zero, so it is the negative of the resultant. It is not generally the negative of just the last force.",
+        "These exercises supply the forces and ask for their algebraic balance. A complete mechanics problem may also require a diagram, physical assumptions, and torque balance. Distinguish the supplied vector calculation from a claim that every condition for mechanical equilibrium has been established."
+      ]
+    },
+    {
+      "heading": "Quadrants belong to the answer",
+      "paragraphs": [
+        "The formulas x=R cosθ and y=R sinθ use a positive magnitude and an explicitly defined angle. A reference triangle gives component sizes; the quadrant supplies their signs. At an axis, one component is exactly zero rather than merely very small.",
+        "For the reverse conversion, arctan(y/x) alone loses quadrant information because opposite vectors share the same ratio. Use atan2(y,x), or construct the reference angle and then choose the correct quadrant from both signs. Handle x=0 directly. Always check that the resulting sine and cosine reproduce the original component signs."
+      ]
+    },
+    {
+      "heading": "Distinguish moving an arrow from moving the axes",
+      "paragraphs": [
+        "An active positive 90° rotation of a planar arrow in fixed axes maps (x,y) to (-y,x). Repeating it twice gives (-x,-y); three times gives (y,-x). Every such rotation preserves squared magnitude.",
+        "Rotating the coordinate axes while leaving the physical arrow fixed is a different operation and uses the opposite component transformation. This refresher's rotation exercises explicitly keep the axes fixed. In later coordinate-system work, read the convention before choosing a formula."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Add before finding magnitude",
+      "prompt": "Add u=(3,1) m and v=(-1,4) m.",
+      "steps": [
+        {
+          "math": "u+v=\\langle3-1,1+4\\rangle=\\langle2,5\\rangle\\,\\mathrm m",
+          "reason": "Combine corresponding signed components."
+        },
+        {
+          "math": "\\|u+v\\|=\\sqrt{2^2+5^2}=\\sqrt{29}\\,\\mathrm m",
+          "reason": "Find length after constructing the resultant."
+        }
+      ],
+      "conclusion": "The result is not obtained by adding the two original magnitudes."
+    },
+    {
+      "title": "Form a spatial linear combination",
+      "prompt": "Compute 2(1,-2,3)-(-2,1,4).",
+      "steps": [
+        {
+          "math": "2u=\\langle2,-4,6\\rangle,\\qquad-v=\\langle2,-1,-4\\rangle",
+          "reason": "Apply each outside scalar to every component."
+        },
+        {
+          "math": "2u-v=\\langle4,-5,2\\rangle",
+          "reason": "Add the scaled component lists."
+        }
+      ],
+      "conclusion": "The subtraction sign affects all three components."
+    },
+    {
+      "title": "Interpret a negative scale",
+      "prompt": "Multiply (3,-4) by -2.",
+      "steps": [
+        {
+          "math": "-2\\langle3,-4\\rangle=\\langle-6,8\\rangle",
+          "reason": "Both component signs reverse."
+        },
+        {
+          "math": "\\|{-2v}\\|=2\\sqrt{3^2+(-4)^2}=10",
+          "reason": "Magnitude uses the absolute scale factor."
+        }
+      ],
+      "conclusion": "The arrow reverses direction and doubles its length."
+    },
+    {
+      "title": "Find an equilibrant",
+      "prompt": "Forces are (4,0),(-1,2),(0,-5) N.",
+      "steps": [
+        {
+          "math": "R=\\langle4-1+0,0+2-5\\rangle=\\langle3,-3\\rangle\\,\\mathrm N",
+          "reason": "Sum all supplied forces."
+        },
+        {
+          "math": "E=-R=\\langle-3,3\\rangle\\,\\mathrm N,\\qquad R+E=0",
+          "reason": "Negate the entire resultant and verify the balance."
+        }
+      ],
+      "conclusion": "This force sum is zero after adding the equilibrant; torque conditions are a separate question."
+    },
+    {
+      "title": "Resolve an exact direction",
+      "prompt": "A force has magnitude 10 N at 150° from +x.",
+      "steps": [
+        {
+          "math": "F_x=10\\cos150^\\circ=-5\\sqrt3\\,\\mathrm N",
+          "reason": "The x component is negative in quadrant II."
+        },
+        {
+          "math": "F_y=10\\sin150^\\circ=5\\,\\mathrm N",
+          "reason": "The y component is positive and uses sine."
+        }
+      ],
+      "conclusion": "The exact vector is (-5√3,5) N and its norm is 10 N."
+    },
+    {
+      "title": "Repair a lost quadrant",
+      "prompt": "Find the direction of (-3,-3).",
+      "steps": [
+        {
+          "math": "\\arctan((-3)/(-3))=45^\\circ",
+          "reason": "The ratio gives a reference angle but loses the two negative signs."
+        },
+        {
+          "math": "\\theta=180^\\circ+45^\\circ=225^\\circ",
+          "reason": "Both components are negative, placing the arrow in quadrant III."
+        }
+      ],
+      "conclusion": "Use 225° in the requested interval; 45° points in the opposite direction."
+    },
+    {
+      "title": "Rotate actively in fixed axes",
+      "prompt": "Rotate (2,-1) by +90°.",
+      "steps": [
+        {
+          "math": "(x,y)\\mapsto(-y,x)",
+          "reason": "A positive quarter turn moves +x toward +y."
+        },
+        {
+          "math": "(2,-1)\\mapsto(1,2),\\qquad2^2+(-1)^2=1^2+2^2=5",
+          "reason": "Apply the mapping and check preserved squared length."
+        }
+      ],
+      "conclusion": "The rotated vector is (1,2)."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "A 4 N force points at 60° counterclockwise from +x. A second force is (-1,2) N.",
+    "before": [
+      "Resolve the first force using exact cosine and sine.",
+      "Add the second force's signed components."
+    ],
+    "question": {
+      "id": "f07-l02-guided",
+      "familyId": "guided-f07-l02",
+      "familyVersion": 1,
+      "courseId": "f07",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the Cartesian resultant components.",
+      "fields": [
+        {
+          "id": "x",
+          "kind": "exact",
+          "label": "Resultant x",
+          "expected": "1",
+          "unit": "N"
+        },
+        {
+          "id": "y",
+          "kind": "exact",
+          "label": "Resultant y",
+          "expected": "2*sqrt(3)+2",
+          "unit": "N"
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Add the second force's signed components.",
+        "The first force is (2,2sqrt(3)) N."
+      ],
+      "explanation": [
+        "The first force is (2,2sqrt(3)) N.",
+        "Adding (-1,2) gives (1,2sqrt(3)+2) N."
+      ],
+      "answerSummary": "The first force is (2,2sqrt(3)) N. Adding (-1,2) gives (1,2sqrt(3)+2) N."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-vector-lab",
+    "mode": "addition",
+    "prompt": "Change two planar vectors and a signed scalar. Predict a linear combination and magnitude, then reveal tip-to-tail arrows and components. Test cancellation and explain why lengths alone cannot be added."
+  },
+  "practice": [
+    {
+      "familyId": "f07-vector-combine",
+      "variant": "sum"
+    },
+    {
+      "familyId": "f07-vector-combine",
+      "variant": "difference"
+    },
+    {
+      "familyId": "f07-vector-combine",
+      "variant": "linear"
+    },
+    {
+      "familyId": "f07-vector-combine",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-resultant",
+      "variant": "equilibrant"
+    },
+    {
+      "familyId": "f07-resultant",
+      "variant": "cancellation"
+    },
+    {
+      "familyId": "f07-polar-vector",
+      "variant": "to-cartesian"
+    },
+    {
+      "familyId": "f07-polar-vector",
+      "variant": "direction"
+    },
+    {
+      "familyId": "f07-polar-vector",
+      "variant": "axis"
+    },
+    {
+      "familyId": "f07-rotate-vector",
+      "variant": "quarter-turn"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f07-vector-combine",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-resultant",
+      "variant": "equilibrant"
+    },
+    {
+      "familyId": "f07-polar-vector",
+      "variant": "to-cartesian"
+    },
+    {
+      "familyId": "f07-polar-vector",
+      "variant": "direction"
+    }
+  ],
+  "summary": [
+    "Combine signed components before calculating a resultant magnitude.",
+    "An equilibrant negates the full resultant; negative scaling reverses direction.",
+    "State angle units, reference axis, quadrant, and whether an arrow or its coordinate axes are rotating."
+  ],
+  "retrieval": "Two forces have equal magnitude and opposite directions. Explain their resultant and its direction. Then find the quadrant of a vector with negative x and positive y without calculating an angle.",
+  "readings": [
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.1: Vectors in the Plane",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-1-vectors-in-the-plane",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    },
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.2: Vectors in Three Dimensions",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-2-vectors-in-three-dimensions",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    }
+  ]
+}

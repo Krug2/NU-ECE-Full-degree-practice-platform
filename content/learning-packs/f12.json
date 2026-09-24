@@ -1,0 +1,37 @@
+{
+  "courseId": "f12",
+  "title": "Study and tool orientation",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Practice a repeatable study cycle, decode technical notation, check calculator settings, and verify a saved file. Build a portfolio of original practical tasks with assistance labeled separately. Completion is self-checked; independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Study deliberately and check your tools",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Retrieve, check, and plan the next session",
+          "objective": "Perform a brief closed-reference retrieval attempt, compare it with a source, record a specific correction, and plan a feasible spaced return with a concrete task and fallback."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Read technical text and decode notation",
+          "objective": "Extract a technical passage's claim and conditions, define its symbols and units, translate its notation into a small checked example, and record a precise unresolved question."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Check calculator settings and expression entry",
+          "objective": "Predict a benchmark result, match degree or radian mode to the input, enter grouping and scientific notation explicitly, and explain discrepancies before trusting displayed digits."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Organize files and verify a recoverable copy",
+          "objective": "Choose a descriptive file and revision scheme, save and reopen a harmless practice artifact, compare its contents with an expected marker, and explain how app progress exports and restores affect saved work."
+        }
+      ]
+    }
+  ]
+}

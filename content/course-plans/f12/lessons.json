@@ -1,0 +1,447 @@
+{
+  "courseId": "f12",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Retrieve, check, and plan the next session",
+      "objective": "Perform a brief closed-reference retrieval attempt, compare it with a source, record a specific correction, and plan a feasible spaced return with a concrete task and fallback.",
+      "requires": [],
+      "scope": [
+        "Familiarity versus unaided retrieval",
+        "Prompt design and attempt-check-correct cycle",
+        "Specific time/trigger, duration, deliverable and fallback",
+        "Adapt spacing to observed recall; no universal schedule or score"
+      ],
+      "examples": [
+        "Replace rereading with a two-question recall attempt",
+        "Use a missed unit conversion to select review",
+        "Fit a 25-minute session and a later return",
+        "Recover a missed session without abandoning the plan"
+      ],
+      "guided": "Write a recall prompt, an attempted answer, a specific correction and a feasible next visit from a supplied short topic.",
+      "activity": "Seeded retrieval-planning worksheet with closed-reference instruction and attempt/correction fields; self-checked completion records the cycle rather than a mastery score.",
+      "practiceFamilies": [
+        "unit-conversion",
+        "function-input",
+        "loop-range"
+      ],
+      "fields": [
+        [
+          "attempt",
+          "Retrieval prompt and unaided attempt"
+        ],
+        [
+          "correction",
+          "Source check and specific correction"
+        ],
+        [
+          "plan",
+          "Next session: trigger, duration, and task"
+        ],
+        [
+          "fallback",
+          "Fallback and evidence to check next time"
+        ]
+      ],
+      "rubric": [
+        [
+          "attempt",
+          "I attempted recall before checking a reference and kept what I actually recalled."
+        ],
+        [
+          "feedback",
+          "I checked against a source and named a specific correction or verified detail."
+        ],
+        [
+          "return",
+          "My next session has a feasible trigger, task, duration, and fallback."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "A worked example feels familiar, but you cannot explain its first step with the page closed. What should you do next?",
+        "correct": "retrieve",
+        "options": [
+          [
+            "retrieve",
+            "Attempt a small recall prompt, check it, and target the gap",
+            "An unaided attempt makes the missing step visible and gives feedback a purpose."
+          ],
+          [
+            "familiar",
+            "Count the familiar feeling as independent evidence",
+            "Recognition while reading does not show that you can retrieve or apply the reasoning."
+          ],
+          [
+            "repeat",
+            "Only reread until every sentence looks familiar",
+            "Rereading can clarify content, but it does not replace trying to produce the reasoning."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Vague plan to study more",
+          "No observable outcome",
+          "Name a small deliverable and return trigger."
+        ],
+        [
+          "Answer copied before recall",
+          "Recognition mistaken for retrieval",
+          "Preserve the unaided attempt before comparison."
+        ],
+        [
+          "Missed session treated as failure of the entire plan",
+          "All-or-nothing planning",
+          "Use a smaller fallback and reschedule the next concrete step."
+        ]
+      ],
+      "readings": [
+        "cs-6.2",
+        "cs-3.4",
+        "rk-2006"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "csc-242",
+        "cee-300",
+        "cee-324"
+      ]
+    },
+    {
+      "id": "m01-l02",
+      "title": "Read technical text and decode notation",
+      "objective": "Extract a technical passage's claim and conditions, define its symbols and units, translate its notation into a small checked example, and record a precise unresolved question.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "Preview and question before dense reading",
+        "Definitions, assumptions, domain and conclusion",
+        "Equality versus approximation, subscripts, function notation and units",
+        "Paraphrase, small-example check and precise question"
+      ],
+      "examples": [
+        "Read a constant-rate model without dropping its condition",
+        "Distinguish v₀ from v multiplied by zero",
+        "Turn f(x) into an input-output statement",
+        "Summarize a rounding claim with ≈ instead of ="
+      ],
+      "guided": "Read an original short storage-rate passage, create a symbol key, test a numerical example and state an excluded cost.",
+      "activity": "Three seeded original technical passages: rate model, affine function and sampling interval. Learner produces claim, notation, example and question.",
+      "practiceFamilies": [
+        "rate-passage",
+        "function-passage",
+        "sampling-passage"
+      ],
+      "fields": [
+        [
+          "claim",
+          "Main claim and conditions in your own words"
+        ],
+        [
+          "symbols",
+          "Symbol, notation, and unit key"
+        ],
+        [
+          "example",
+          "A small example and its check"
+        ],
+        [
+          "question",
+          "Precise question and where to look next"
+        ]
+      ],
+      "rubric": [
+        [
+          "conditions",
+          "My paraphrase keeps the assumptions and allowed inputs."
+        ],
+        [
+          "notation",
+          "I defined symbols and units without confusing labels with operations."
+        ],
+        [
+          "example",
+          "I checked an example and stated a specific remaining question."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "A passage says d = vt for constant speed v. Your notes keep the equation but omit 'constant speed.' What is missing?",
+        "correct": "condition",
+        "options": [
+          [
+            "condition",
+            "A condition that limits when the model applies",
+            "The equation's meaning depends on its stated model conditions."
+          ],
+          [
+            "nothing",
+            "Nothing; the equation applies to every motion",
+            "A formula without its conditions can be used outside its scope."
+          ],
+          [
+            "font",
+            "Only a formatting detail",
+            "The phrase constrains the model rather than its appearance."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Every word highlighted",
+          "No extracted claim",
+          "Write one claim, its conditions and one example."
+        ],
+        [
+          "Subscript treated as multiplication",
+          "Notation guessed from appearance",
+          "Consult the definition before manipulating a symbol."
+        ],
+        [
+          "Equation copied without a domain",
+          "Conditions lost",
+          "Keep the allowed inputs and assumptions beside the relationship."
+        ]
+      ],
+      "readings": [
+        "cs-5.2",
+        "alg-1.1"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "phs-231",
+        "cee-300",
+        "cee-310"
+      ]
+    },
+    {
+      "id": "m01-l03",
+      "title": "Check calculator settings and expression entry",
+      "objective": "Predict a benchmark result, match degree or radian mode to the input, enter grouping and scientific notation explicitly, and explain discrepancies before trusting displayed digits.",
+      "requires": [
+        "m01-l02"
+      ],
+      "scope": [
+        "Known-angle checks in degrees and radians",
+        "Parentheses, unary minus and power grouping",
+        "Scientific notation and display rounding",
+        "Inverse function versus reciprocal; device syntax differs"
+      ],
+      "examples": [
+        "Compare sin(30°) with sin(π/6)",
+        "Diagnose sin(30) in radian mode",
+        "Compare -3² and (-3)² and group a denominator",
+        "Read 2.5e-3 and distinguish inverse sine from reciprocal"
+      ],
+      "guided": "Predict a half-unit sine benchmark, verify it in matching modes, then compare two expressions that differ only in grouping.",
+      "activity": "Keyboard-accessible bounded calculator lab: degree/radian setting, predefined numeric inputs including π fractions, sine/cosine/inverse-sine, explicit grouping/scientific-notation cases, required prediction, immediate explanatory feedback and reset on changes. Local practice never writes completion.",
+      "practiceFamilies": [
+        "angle-check",
+        "grouping-check",
+        "scientific-check"
+      ],
+      "fields": [
+        [
+          "setup",
+          "Intended quantity, notation, and settings"
+        ],
+        [
+          "prediction",
+          "Prediction and independent benchmark"
+        ],
+        [
+          "observation",
+          "Tool result and expression actually entered"
+        ],
+        [
+          "explanation",
+          "Discrepancy, correction, and recheck"
+        ]
+      ],
+      "rubric": [
+        [
+          "settings",
+          "I matched the angle unit and settings or stated why angle mode is irrelevant."
+        ],
+        [
+          "entry",
+          "I recorded explicit grouping and notation rather than only a display value."
+        ],
+        [
+          "check",
+          "I compared the result with a benchmark and explained any discrepancy."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "A calculator gives about -0.988 for sin(30), while you expected 0.5 for 30°. What is the first useful check?",
+        "correct": "mode",
+        "options": [
+          [
+            "mode",
+            "Check whether the input was interpreted in radians",
+            "Thirty radians and thirty degrees are different angles."
+          ],
+          [
+            "round",
+            "Round the displayed value to 0.5",
+            "Rounding cannot explain this discrepancy."
+          ],
+          [
+            "trust",
+            "Accept the display because it has many digits",
+            "Digits do not establish that the intended quantity was entered."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Radian/degree mismatch",
+          "Input unit not checked",
+          "Use a known benchmark before the main calculation."
+        ],
+        [
+          "Missing denominator parentheses",
+          "Linear entry loses fraction grouping",
+          "Write the exact intended expression with parentheses."
+        ],
+        [
+          "Scientific e mistaken for Euler's number",
+          "Display convention confused with algebra",
+          "Read e-3 in the stated calculator convention as times ten to minus three."
+        ],
+        [
+          "Inverse sine mistaken for reciprocal",
+          "Overloaded superscript notation",
+          "Read the function name and check its input/output meaning."
+        ]
+      ],
+      "readings": [
+        "alg-7.1",
+        "alg-7.3",
+        "alg-1.1"
+      ],
+      "supports": [
+        "f01",
+        "f04",
+        "f06",
+        "mth-215",
+        "cee-324",
+        "cee-430"
+      ]
+    },
+    {
+      "id": "m01-l04",
+      "title": "Organize files and verify a recoverable copy",
+      "objective": "Choose a descriptive file and revision scheme, save and reopen a harmless practice artifact, compare its contents with an expected marker, and explain how app progress exports and restores affect saved work.",
+      "requires": [
+        "m01-l03"
+      ],
+      "scope": [
+        "Filename, folder, extension and revision purpose",
+        "Save/download versus verified readable copy",
+        "Local browser progress, export, import review and replacement",
+        "Independent copies and safe restore rehearsal; no forced reset or external account"
+      ],
+      "examples": [
+        "Replace final-final names with a descriptive revision",
+        "Reopen a practice artifact and compare a marker",
+        "Review a dated progress export before replacing newer work",
+        "Preserve a malformed or older file and locate a readable copy"
+      ],
+      "guided": "Prepare a file naming rule, use the local sample round-trip tool and record exactly what was reopened and verified.",
+      "activity": "Local-only synthetic JSON round-trip: draft a short marker note, download a clearly labeled practice file, select it again, validate its small strict schema and compare exact marker/revision/content. Invalid/wrong files get targeted feedback. This is separate from real progress exports; link existing Settings for actual backup and import review.",
+      "practiceFamilies": [
+        "version-choice",
+        "restore-review",
+        "reopen-check"
+      ],
+      "fields": [
+        [
+          "organization",
+          "Folder, descriptive filename, and revision rule"
+        ],
+        [
+          "roundtrip",
+          "Saved file and observed reopen check"
+        ],
+        [
+          "backup",
+          "Progress export and restore plan"
+        ],
+        [
+          "recovery",
+          "Failure response and next verification"
+        ]
+      ],
+      "rubric": [
+        [
+          "file",
+          "I saved and reopened the harmless practice file and compared its marker and contents."
+        ],
+        [
+          "versions",
+          "My naming rule distinguishes purpose, revision, and file type."
+        ],
+        [
+          "restore",
+          "I explained backup verification and replacement without discarding newer work."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "You downloaded a progress backup last month, then added newer notes. What should happen before importing the old file as a replacement?",
+        "correct": "review",
+        "options": [
+          [
+            "review",
+            "Export current work, inspect the chosen backup, and review what replacement means",
+            "A readable older backup can still omit newer work; replacement is not a merge."
+          ],
+          [
+            "replace",
+            "Replace immediately because any backup is current",
+            "The file's date and contents matter."
+          ],
+          [
+            "rename",
+            "Rename the old file with today's date and import it",
+            "Renaming does not update the file's contents."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Download counted as verified recovery",
+          "File never reopened",
+          "Compare a known content marker after reopening."
+        ],
+        [
+          "Two copies only on one device",
+          "Same failure affects both",
+          "Plan another suitable location for an independent copy."
+        ],
+        [
+          "Old backup assumed to merge",
+          "Replacement semantics missed",
+          "Export current work and review the replacement summary first."
+        ],
+        [
+          "Extension renamed to convert a file",
+          "Name mistaken for format",
+          "Use the appropriate export; keep the extension matching actual content."
+        ]
+      ],
+      "readings": [
+        "loc-records"
+      ],
+      "supports": [
+        "phs-104a",
+        "csc-242",
+        "cee-310l",
+        "cee-324l",
+        "cee-340"
+      ]
+    }
+  ]
+}

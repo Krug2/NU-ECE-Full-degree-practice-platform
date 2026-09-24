@@ -1,0 +1,201 @@
+{
+  "courseId": "f08",
+  "resources": [
+    {
+      "id": "cv1-2.2",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "2.2",
+      "title": "The Limit of a Function",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/2-2-the-limit-of-a-function",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-2.3",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "2.3",
+      "title": "The Limit Laws",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/2-3-the-limit-laws",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-2.4",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "2.4",
+      "title": "Continuity",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/2-4-continuity",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-3.1",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "3.1",
+      "title": "Defining the Derivative",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-3.3",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "3.3",
+      "title": "Differentiation Rules",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-3.4",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "3.4",
+      "title": "Derivatives as Rates of Change",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-4-derivatives-as-rates-of-change",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-3.5",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "3.5",
+      "title": "Derivatives of Trigonometric Functions",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-5-derivatives-of-trigonometric-functions",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-3.6",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "3.6",
+      "title": "The Chain Rule",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-6-the-chain-rule",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-3.9",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "3.9",
+      "title": "Derivatives of Exponential and Logarithmic Functions",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-9-derivatives-of-exponential-and-logarithmic-functions",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-4.10",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "4.10",
+      "title": "Antiderivatives",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/4-10-antiderivatives",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-5.2",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "5.2",
+      "title": "The Definite Integral",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-5.3",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "5.3",
+      "title": "The Fundamental Theorem of Calculus",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    },
+    {
+      "id": "cv1-5.5",
+      "provider": "OpenStax, Calculus Volume 1",
+      "authors": [
+        "Gilbert Strang",
+        "Edwin Herman"
+      ],
+      "section": "5.5",
+      "title": "Substitution",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-5-substitution",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML; no account needed.",
+      "license": "The current page identifies CC BY-NC-SA 4.0. Linked as further reading and used to check mathematical facts; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and its stated formulas/conditions."
+    }
+  ],
+  "authorship": "All in-app explanations, examples, questions, and diagrams are original. External sources verify standard mathematical facts and provide optional deeper reading."
+}

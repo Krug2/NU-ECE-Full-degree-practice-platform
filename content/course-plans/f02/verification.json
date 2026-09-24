@@ -1,0 +1,65 @@
+{
+  "courseId": "f02",
+  "verifiedAt": "2026-09-23",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 6,
+    "diagnosticProbes": 6,
+    "lessonCheckpointQuestions": 24,
+    "mixedRecallQuestions": 4,
+    "evidence": "Six lesson checkpoints and a four-question multipart mixed check are separate from MTH 215 evidence. Each missed part routes to its own objective; later short-sample success cannot erase a missing independent lesson check."
+  },
+  "checks": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "365 tests passed in 50 files. The uncapped run hit three 5-second test timeouts while running 50 workers; limiting concurrency passed the complete unchanged suite."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript, and generation of 76 pages."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --output tmp/f02-browser",
+      "result": "4 passed on this worktree's production build on port 3102: diagnostic gap routing, practice feedback, immutable resume, lesson and overview notes, backup export/reset/import, all six independent checkpoints, mixed recall, retries, course evidence isolation, keyboard guided feedback, and polynomial investigation."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refreshers.spec.ts tests/e2e/refresher-packs.spec.ts --output tmp/f02-release",
+      "result": "8 passed against the final preview build, covering the complete F01 and F02 journeys."
+    }
+  ],
+  "mathematics": "All adapted practice and checkpoint slots were swept over 50 deterministic seeds and graded with valid exact, interval, factored, root-set, and restricted rational-expression answers. Original source suites independently check coefficients, substitution, domains, roots, inequalities, equivalent answers, and invalid inputs. Rational checkpoint coverage includes addition and division. Mixed dependent domain IDs and per-part recommendations are explicitly tested.",
+  "reuse": "Six existing original ECE Study MTH 215 lessons are composed at runtime with original F02 recall guidance, local sequencing, precise readings, and isolated family/course/objective IDs. Source prose, examples, guided fields, and activities are identical to the verified source; a version guard requires review before a changed source version is adapted.",
+  "accessibility": "No Axe WCAG 2 A/AA or WCAG 2.1 AA violations, horizontal page overflow, or KaTeX errors on the overview and six lessons at 1440x1000 and 390x844. Keyboard guided feedback exercised on all six pages; polynomial prediction compares matching sample values with unequal coefficients. Desktop/mobile overview and mobile investigation screenshots inspected. This does not replace independent human or assistive-technology review.",
+  "sources": "Exact free OpenStax sections and link-only attribution are in resources.json.",
+  "sharedInterfaces": [
+    {
+      "interface": "RefresherPath.targets: Record<familyId, lessonId | Record<partPrefix, lessonId>>",
+      "purpose": "Route multipart misses without changing persisted attempts or the grading schema."
+    },
+    {
+      "interface": "adaptRefresherLessons(descriptors, sources)",
+      "purpose": "Compose original source lessons with refresher-specific routes, IDs, guidance, prerequisites, and reviewed source versions. It leaves the source content untouched."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f02",
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional study does not award university credit or enrollment eligibility.",
+    "Independent human review remains pending.",
+    "The existing progress and backup policies remain owned by the primary chat.",
+    "F03 through F12 are still planned at this verification milestone."
+  ]
+}

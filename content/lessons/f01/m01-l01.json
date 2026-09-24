@@ -1,0 +1,278 @@
+{
+  "id": "m01-l01",
+  "courseId": "f01",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Signed numbers and operation order",
+  "objective": "Compare signed values, calculate signed changes, and evaluate grouped arithmetic in the correct order while identifying undefined division.",
+  "why": "Signs describe direction as well as amount. A circuit current, a displacement, or a change in temperature can be negative without being wrong. Reliable arithmetic lets you reason about those quantities instead of guessing which minus sign to keep. This optional lesson rebuilds a small set of habits that you can use in MTH 215, physics, and circuit analysis.",
+  "estimatedMinutes": 40,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Read the operation before applying a sign rule. Subtracting a number adds its opposite: $a-b=a+(-b)$. Absolute value is distance from zero, so it cannot be negative.",
+        "Evaluate groups first, then powers, then multiplication and division from left to right, then addition and subtraction from left to right. A fraction bar groups its complete numerator and denominator. Division by zero is undefined.",
+        "If those statements feel familiar, predict the investigation's results and try the independent checkpoint. The worked examples and guided practice are here whenever you need to rebuild the reasoning."
+      ]
+    },
+    {
+      "heading": "A position and a distance answer different questions",
+      "paragraphs": [
+        "A number line increases to the right. The number -7 is less than -2 because it lies farther left. Yet -7 is farther from zero: $|-7|=7$ while $|-2|=2$. A larger distance from zero does not mean a larger signed value. Zero is neither positive nor negative.",
+        "The relation $-7<-2$ says which value comes first on the line. The expression $|-7|$ asks for a distance. An expression names a value; an equation such as $|-7|=7$ makes a claim that two expressions have the same value. The equals sign is not a signal to write the next unrelated calculation."
+      ]
+    },
+    {
+      "heading": "Treat addition as a change",
+      "paragraphs": [
+        "Begin at the first number. Adding a positive change moves right; adding a negative change moves left. Starting at -5 and adding 8 takes five steps to zero and three farther right, ending at 3. Starting at -5 and adding -8 moves eight steps farther left, ending at -13.",
+        "Subtraction reverses the change being removed. Subtracting -8 adds its opposite, +8: $-5-(-8)=-5+8=3$. Write this intermediate step when two adjacent minus signs are confusing. The phrase 'two negatives make a positive' is too vague to guide addition: $-5+(-8)$ is still negative.",
+        "Check a signed change by reversing it. If -5 plus 8 is 3, then 3 minus 8 should return -5. The check asks a different question from repeating the same arithmetic."
+      ]
+    },
+    {
+      "heading": "Products, quotients, and zero",
+      "paragraphs": [
+        "A positive multiplier repeats a signed quantity; multiplying a negative quantity by a positive number gives a negative product. Multiplying by a negative number reverses direction. Thus equal signs give a positive product and different signs give a negative one. These are multiplication and division rules, not addition rules.",
+        "Division asks for a missing factor. The quotient $12/(-3)=-4$ because $(-3)(-4)=12$. For any nonzero a, $0/a=0$ because only zero multiplied by a gives zero.",
+        "A zero denominator does not define a real quotient. The equation $0q=5$ has no solution, while $0q=0$ has every real solution rather than one selected answer. So both 5/0 and 0/0 are undefined. Never replace either with zero or cancel a zero factor."
+      ]
+    },
+    {
+      "heading": "Read grouping before calculating",
+      "paragraphs": [
+        "Parentheses specify a complete group. A power applies to its base: $-4^2=-(4^2)=-16$, but $(-4)^2=16$ because the negative sign belongs to the parenthesized base. Writing the base explicitly prevents a common calculator-entry error.",
+        "Multiplication and division have equal priority. In $24/3\\cdot2$, divide first because it appears first, giving $8\\cdot2=16$. In $24/(3\\cdot2)$, the group makes the entire product the denominator, giving 4. Addition and subtraction likewise share priority: $10-3+2=9$.",
+        "A displayed fraction such as $\\frac{2+6}{3+1}$ groups both sums. Type (2+6)/(3+1) to preserve that meaning. Typing 2+6/3+1 gives a different expression. In input fields, use * for multiplication and ^ for an integer power. Write one intentional transformation per line."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A reading crosses zero",
+      "prompt": "A temperature is -6 degrees C and rises by 9 degrees C. Find the new reading and its distance from zero.",
+      "steps": [
+        {
+          "math": "-6+9=(-6+6)+3=3",
+          "reason": "Six degrees of the rise reach zero; the remaining three degrees move above zero."
+        },
+        {
+          "math": "|3|=3",
+          "reason": "The distance from zero is nonnegative."
+        },
+        {
+          "math": "3-9=-6",
+          "reason": "Undo the rise to recover the starting reading."
+        }
+      ],
+      "conclusion": "The reading is 3 degrees C. A positive change can start from a negative reading."
+    },
+    {
+      "title": "A minus sign inside or outside a square",
+      "prompt": "Compare -4 squared as written without parentheses with the square of negative four.",
+      "steps": [
+        {
+          "math": "-4^2=-(4\\cdot4)=-16",
+          "reason": "In -4^2 the exponent belongs to 4. Apply the leading minus after squaring."
+        },
+        {
+          "math": "(-4)^2=(-4)(-4)=16",
+          "reason": "Parentheses include the sign in the base; two negative factors multiply to a positive value."
+        }
+      ],
+      "conclusion": "The base, not the visual proximity of the sign, decides which operation is performed."
+    },
+    {
+      "title": "Equal priority is not a fixed multiplication-first rule",
+      "prompt": "Evaluate 24/3*2 and 24/(3*2).",
+      "steps": [
+        {
+          "math": "24/3\\cdot2=8\\cdot2=16",
+          "reason": "Without a denominator group, division and multiplication proceed left to right."
+        },
+        {
+          "math": "24/(3\\cdot2)=24/6=4",
+          "reason": "Here the denominator's group must be completed before division."
+        }
+      ],
+      "conclusion": "Both calculations are valid, but they describe different expressions."
+    },
+    {
+      "title": "A fraction bar carries grouping",
+      "prompt": "Evaluate (2+6)/(3+1) and compare it with the ungrouped entry 2+6/3+1.",
+      "steps": [
+        {
+          "math": "\\frac{2+6}{3+1}=\\frac84=2",
+          "reason": "The fraction bar makes each complete sum a group."
+        },
+        {
+          "math": "2+6/3+1=2+2+1=5",
+          "reason": "In this inline expression only 6 is divided by 3."
+        },
+        {
+          "math": "2(3+1)=8=2+6",
+          "reason": "Multiplying the first quotient by its denominator recovers its numerator."
+        }
+      ],
+      "conclusion": "Preserve the written structure when moving a calculation into a tool."
+    }
+  ],
+  "guided": {
+    "title": "Finish a signed calculation",
+    "setup": "Evaluate $-8-(-3)+2(5-7)$ without skipping the grouped difference.",
+    "before": [
+      "Rewrite the subtraction as $-8+3+2(5-7)$.",
+      "The multiplication applies to the whole difference in parentheses."
+    ],
+    "question": {
+      "id": "f01-l01-guided",
+      "familyId": "guided-f01-signs",
+      "familyVersion": 1,
+      "courseId": "f01",
+      "objectiveId": "m01-l01",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Give the difference inside parentheses, its product with 2, and the final value.",
+      "fields": [
+        {
+          "id": "difference",
+          "kind": "rational",
+          "label": "Grouped difference",
+          "expected": "-2"
+        },
+        {
+          "id": "product",
+          "kind": "rational",
+          "label": "Twice that difference",
+          "expected": "-4"
+        },
+        {
+          "id": "value",
+          "kind": "rational",
+          "label": "Final value",
+          "expected": "-9"
+        }
+      ],
+      "hints": [
+        "Subtracting 7 from 5 moves two units left of zero.",
+        "Multiply -2 by positive 2.",
+        "Combine -8+3-4."
+      ],
+      "explanation": [
+        "The inner difference is -2 and its product with 2 is -4.",
+        "The remaining sum is -8+3-4=-9."
+      ],
+      "answerSummary": "Difference -2; product -4; final value -9."
+    },
+    "after": "Before checking, explain why adding the last term moves the running total left. Guided feedback is assistance, not independent evidence."
+  },
+  "interaction": {
+    "kind": "arithmetic-lab",
+    "prompt": "Predict before checking. Choose each starting expression, then change just one pair of parentheses or one sign. Explain the result in your notes. You may also try 1/0 to see why an invalid expression must be repaired.",
+    "examples": [
+      {
+        "label": "A leading minus",
+        "expression": "-4^2+6*2",
+        "explanation": "Square 4, apply its leading minus, and add 12. The result is -4."
+      },
+      {
+        "label": "A negative base",
+        "expression": "(-4)^2+6*2",
+        "explanation": "The sign belongs to the squared base. The result is 28."
+      },
+      {
+        "label": "Equal priority",
+        "expression": "24/3*2",
+        "explanation": "Divide first, then multiply: the result is 16."
+      },
+      {
+        "label": "Grouped denominator",
+        "expression": "24/(3*2)",
+        "explanation": "The entire product is the divisor. The result is 4."
+      },
+      {
+        "label": "A grouped fraction",
+        "expression": "(2+6)/(3+1)",
+        "explanation": "Evaluate each complete sum, then divide 8 by 4."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "f01-signed-change",
+      "variant": "add"
+    },
+    {
+      "familyId": "f01-signed-change",
+      "variant": "subtract"
+    },
+    {
+      "familyId": "f01-signed-change",
+      "variant": "compare"
+    },
+    {
+      "familyId": "f01-sign-precedence",
+      "variant": "square"
+    },
+    {
+      "familyId": "f01-operation-order",
+      "variant": "chain"
+    },
+    {
+      "familyId": "f01-operation-order",
+      "variant": "grouped"
+    },
+    {
+      "familyId": "f01-operation-order",
+      "variant": "fraction-bar"
+    },
+    {
+      "familyId": "f01-signed-change",
+      "variant": "zero"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f01-signed-change",
+      "variant": "subtract"
+    },
+    {
+      "familyId": "f01-sign-precedence",
+      "variant": "square"
+    },
+    {
+      "familyId": "f01-operation-order",
+      "variant": "chain"
+    },
+    {
+      "familyId": "f01-signed-change",
+      "variant": "zero"
+    }
+  ],
+  "summary": [
+    "Position determines order; absolute value describes distance.",
+    "Subtraction adds the opposite. Name the operation before choosing a sign rule.",
+    "Parentheses and fraction bars define complete groups; multiplication and division share priority.",
+    "A negative base needs parentheses. A zero denominator never defines a real quotient."
+  ],
+  "retrieval": "Tomorrow, without opening this page, explain why -5-(-2)=-3, -5+(-2)=-7, and (-5)(-2)=10. Then write two calculator entries that differ only by denominator parentheses and predict both results.",
+  "readings": [
+    {
+      "title": "OpenStax Prealgebra 2e §2.1: Use the Language of Algebra",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/2-1-use-the-language-of-algebra",
+      "purpose": "Grouping, operation precedence, and expression versus equation"
+    },
+    {
+      "title": "OpenStax Prealgebra 2e §3.2: Add Integers",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/3-2-add-integers",
+      "purpose": "Signed changes and number-line models"
+    },
+    {
+      "title": "OpenStax Prealgebra 2e §3.3: Subtract Integers",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/3-3-subtract-integers",
+      "purpose": "Subtraction as addition of the opposite"
+    }
+  ]
+}

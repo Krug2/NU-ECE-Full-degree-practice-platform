@@ -1,0 +1,328 @@
+{
+  "id": "m01-l02",
+  "courseId": "f01",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Fractions, decimals, and proportions",
+  "objective": "Calculate exact fractional quantities, convert decimals and percentages, and solve a proportion while preserving the reference whole and units.",
+  "why": "A fraction is a usable quantity, not an unfinished division. Engineering calculations often combine ratios, partial lengths, and percentages. Keeping those values exact makes it easier to catch a wrong reference whole or an invalid simplification before it affects a later model.",
+  "estimatedMinutes": 50,
+  "prerequisites": [
+    {
+      "label": "Signed numbers and operation order",
+      "lessonId": "m01-l01"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A fraction $a/b$ is a quotient with nonzero denominator. Add or subtract by matching denominators. Multiply by multiplying numerators and denominators. Divide by a nonzero fraction by multiplying by its reciprocal.",
+        "Percent means per hundred of a specified whole. A proportion preserves a ratio under a stated model. Use a fraction or a terminating decimal as an exact answer; type 1+3/4 or 7/4 for a mixed number, not the ambiguous text 1 3/4."
+      ]
+    },
+    {
+      "heading": "Name the size of each part",
+      "paragraphs": [
+        "In 3/4, the denominator says the whole has been divided into four equal parts and the numerator counts three of those parts. A numerator can exceed its denominator: 7/4 means seven quarters, or 1+3/4. A negative fraction lies left of zero and is handled by the same sign rules as other numbers.",
+        "Multiplying the entire numerator and denominator by the same nonzero number multiplies by one. Thus $3/4=9/12$. Reducing reverses this: $18/24=3/4$. A sign may be placed in the numerator or in front of the fraction; two negative signs cancel because they form a positive quotient.",
+        "To add 1/3 and 1/4, rename both in twelfths: $4/12+3/12=7/12$. The part size stays twelfths while the counts add. The tempting result 2/7 changes both the size and count of the parts, so it is not the sum. Any common denominator works; the least common denominator often keeps the numbers smaller."
+      ]
+    },
+    {
+      "heading": "Multiplication scales; division asks how many",
+      "paragraphs": [
+        "Multiplying by 3/4 takes three quarters of a quantity. A product such as $(2/3)(3/5)$ equals 6/15, or 2/5. Common nonzero factors may be canceled before multiplying because the cancellation divides the whole numerator and denominator by the same number.",
+        "Division asks how many divisor-sized quantities fit into the dividend. If 3/4 m of wire is divided into pieces of length 1/8 m, the quotient is 6 pieces. Algebraically, $(3/4)/(1/8)=(3/4)(8/1)=6$. Multiplying by the divisor's reciprocal makes its contribution equal to one. Only the divisor is inverted.",
+        "The divisor must be nonzero. Check a quotient by multiplying it by the original divisor: 6 pieces times 1/8 m per piece recovers 3/4 m. A quotient can be larger than its dividend's number when the divisor is a proper fraction. That does not contradict the meaning of division."
+      ]
+    },
+    {
+      "heading": "Terms and factors are different structures",
+      "paragraphs": [
+        "Factors multiply to form a whole expression; terms are added. In $6\\cdot5/(6\\cdot7)$, 6 is a factor of both complete products and can be canceled, leaving 5/7. In $(6+5)/(6+7)$, crossing out the added 6 would change 11/13 into 5/7.",
+        "A small numerical counterexample is a useful way to disprove an invalid rule. It does not prove a rule for all inputs, but one mismatch is enough to show that a proposed universal shortcut fails. For example, $(2+3)/(2+5)=5/7$ while 3/5 is a different value.",
+        "When fractions eventually contain variables, the same whole-factor rule applies, with original denominator restrictions retained. That algebra belongs in F02 and the MTH 215 fractions-containing-variables bridge; this lesson keeps the numbers visible."
+      ]
+    },
+    {
+      "heading": "Decimals and percentages are other representations",
+      "paragraphs": [
+        "A terminating decimal is an exact fraction if it is stated exactly. The value 0.375 has three decimal places, so it equals 375/1000, which reduces to 3/8. A rounded display of 1/3 as 0.333 is different: the fraction continues with more digits. F01's notation lesson returns to this distinction.",
+        "A percentage number multiplies a fraction by 100: $3/8=0.375=37.5\\%$. Conversely, 37.5% means 37.5/100. In the practice fields, enter the percentage number alone when asked, so 37.5 answers a percentage-number field. Read each label to avoid applying the factor of 100 twice.",
+        "The reference whole matters. Using 25% of a 12 m roll means using 3 m and leaving 9 m. The used 3 m is one third of the remaining 9 m, not one quarter of it. Changing the reference whole changes the percentage even though the lengths stay the same."
+      ]
+    },
+    {
+      "heading": "A proportion depends on a model",
+      "paragraphs": [
+        "Suppose four identical components have mass 10 g. The ratio is 10/4 g per component. Under that constant-mass model, seven components have mass $(10/4)7=17.5$ g. The count grows by a factor of 7/4, and the total mass grows by the same factor.",
+        "The equality $a/b=c/d$ with nonzero denominators is equivalent to $ad=bc$, obtained by multiplying both sides by bd. Cross-products are a check on a correctly formed proportion, not a reason to assume a relationship is proportional.",
+        "An additive offset can break proportionality. A container plus four components may weigh 10 g, but doubling the component count does not double the container's mass. Use only the relationship the problem states. Retain units to explain what the ratio means and to check that the requested result is a length, mass, or count."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Subtract fractional lengths",
+      "prompt": "A cable segment is 7/6 m long. A 3/4 m piece is removed. How much remains?",
+      "steps": [
+        {
+          "math": "\\frac76-\\frac34=\\frac{14}{12}-\\frac9{12}",
+          "reason": "Twelfths give both lengths the same part size."
+        },
+        {
+          "math": "\\frac{14-9}{12}=\\frac5{12}",
+          "reason": "Subtract counts of twelfths, keeping the denominator."
+        },
+        {
+          "math": "\\frac5{12}+\\frac34=\\frac{14}{12}=\\frac76",
+          "reason": "The remaining length plus the removed piece recovers the original."
+        }
+      ],
+      "conclusion": "The remaining 5/12 m is positive and smaller than the original segment."
+    },
+    {
+      "title": "Count pieces using a reciprocal",
+      "prompt": "How many 3/8 m pieces fit exactly into 9/4 m of wire, with no waste?",
+      "steps": [
+        {
+          "math": "\\frac94\\div\\frac38=\\frac94\\cdot\\frac83",
+          "reason": "Invert the nonzero divisor, which represents length per piece."
+        },
+        {
+          "math": "\\frac{9\\cdot8}{4\\cdot3}=6",
+          "reason": "Cancel complete common factors, then multiply."
+        },
+        {
+          "math": "6\\cdot\\frac38=\\frac{18}{8}=\\frac94",
+          "reason": "Six pieces recover the original total length."
+        }
+      ],
+      "conclusion": "The quotient is a count of six pieces. The assumed no-waste model is part of the question."
+    },
+    {
+      "title": "Read a decimal as a fraction and percent",
+      "prompt": "Convert the exact decimal 0.375.",
+      "steps": [
+        {
+          "math": "0.375=\\frac{375}{1000}=\\frac38",
+          "reason": "Three decimal places mean thousandths; dividing numerator and denominator by 125 reduces the fraction."
+        },
+        {
+          "math": "100\\left(\\frac38\\right)=37.5",
+          "reason": "Multiply the proportion by 100 to get the percentage number."
+        },
+        {
+          "math": "37.5\\%=\\frac{37.5}{100}=0.375",
+          "reason": "Convert back to check that the factor of 100 was used once."
+        }
+      ],
+      "conclusion": "The three representations describe the same exact proportion."
+    },
+    {
+      "title": "Scale a quantity and preserve the whole",
+      "prompt": "Four identical components have total mass 10 g. Separately, 30% of a 15 m cable roll is used.",
+      "steps": [
+        {
+          "math": "\\frac{10}{4}\\cdot7=\\frac{35}{2}",
+          "reason": "A constant 10/4 g per component gives 17.5 g for seven components."
+        },
+        {
+          "math": "15\\cdot\\frac{30}{100}=\\frac92",
+          "reason": "The used cable length is 4.5 m because the original 15 m is the reference whole."
+        },
+        {
+          "math": "15-\\frac92=\\frac{21}{2}",
+          "reason": "The remaining length is 10.5 m, not the used percentage itself."
+        }
+      ],
+      "conclusion": "A proportion produces a quantity with units; a percentage alone is a dimensionless ratio."
+    }
+  ],
+  "guided": {
+    "title": "Finish a roll-length calculation",
+    "setup": "A roll starts with 12 m of cable. You use 3/8 of the original length.",
+    "before": [
+      "The used length is $12(3/8)$ m.",
+      "The remaining fraction of the original roll is $1-3/8$."
+    ],
+    "question": {
+      "id": "f01-l02-guided",
+      "familyId": "guided-f01-fractions",
+      "familyVersion": 1,
+      "courseId": "f01",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": true,
+      "prompt": "Give the used length, remaining length, and remaining fraction of the original roll.",
+      "fields": [
+        {
+          "id": "used",
+          "kind": "rational",
+          "label": "Used length",
+          "expected": "9/2",
+          "unit": "m"
+        },
+        {
+          "id": "remaining",
+          "kind": "rational",
+          "label": "Remaining length",
+          "expected": "15/2",
+          "unit": "m"
+        },
+        {
+          "id": "fraction",
+          "kind": "rational",
+          "label": "Remaining fraction",
+          "expected": "5/8"
+        }
+      ],
+      "hints": [
+        "Multiply 12 by 3/8; do not divide by 3/8.",
+        "Subtract the used length from 12, or multiply 12 by 5/8.",
+        "The used length is 4.5 m and the remaining length is 7.5 m."
+      ],
+      "explanation": [
+        "The used length is 36/8=9/2 m.",
+        "The remaining fraction is 5/8 and the remaining length is 12 times 5/8=15/2 m. The two lengths add to 12 m."
+      ],
+      "answerSummary": "Used 9/2 m; remaining 15/2 m; fraction 5/8."
+    },
+    "after": "Explain why the remaining fraction 5/8 has no metre unit, while the remaining length does. Try another original length before taking a checkpoint."
+  },
+  "interaction": {
+    "kind": "arithmetic-lab",
+    "prompt": "Predict each result. Change a denominator, replace addition with multiplication, or change the reference whole in the percent calculation. Explain why the change matters before checking again.",
+    "examples": [
+      {
+        "label": "Common-sized fraction parts",
+        "expression": "1/3+1/4",
+        "explanation": "A common denominator of 12 gives 7/12."
+      },
+      {
+        "label": "Divide by a part size",
+        "expression": "(9/4)/(3/8)",
+        "explanation": "Multiplication by 8/3 gives six pieces."
+      },
+      {
+        "label": "Factors can cancel",
+        "expression": "(6*5)/(6*7)",
+        "explanation": "The whole products share a nonzero factor 6; the value is 5/7."
+      },
+      {
+        "label": "Added terms cannot cancel",
+        "expression": "(6+5)/(6+7)",
+        "explanation": "The value is 11/13, not 5/7."
+      },
+      {
+        "label": "A percent of a named whole",
+        "expression": "15*(30/100)",
+        "explanation": "Thirty percent of 15 is 4.5, or 9/2 exactly."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "f01-signed-fractions",
+      "variant": "add"
+    },
+    {
+      "familyId": "f01-signed-fractions",
+      "variant": "subtract"
+    },
+    {
+      "familyId": "f01-signed-fractions",
+      "variant": "multiply"
+    },
+    {
+      "familyId": "f01-signed-fractions",
+      "variant": "divide"
+    },
+    {
+      "familyId": "f01-signed-fractions",
+      "variant": "length"
+    },
+    {
+      "familyId": "f01-fraction-reason",
+      "variant": "common"
+    },
+    {
+      "familyId": "f01-fraction-reason",
+      "variant": "cancel"
+    },
+    {
+      "familyId": "f01-fraction-reason",
+      "variant": "decimal"
+    },
+    {
+      "familyId": "f01-proportion",
+      "variant": "direct"
+    },
+    {
+      "familyId": "f01-proportion",
+      "variant": "percent"
+    },
+    {
+      "familyId": "f01-proportion",
+      "variant": "remaining"
+    },
+    {
+      "familyId": "f01-proportion",
+      "variant": "reverse"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f01-fraction-pair",
+      "variant": "sum-difference"
+    },
+    {
+      "familyId": "f01-fraction-pair",
+      "variant": "product-quotient"
+    },
+    {
+      "familyId": "f01-proportion",
+      "variant": "combined"
+    },
+    {
+      "familyId": "f01-fraction-reason",
+      "variant": "decimal"
+    }
+  ],
+  "summary": [
+    "Common denominators rename quantities using equal-sized parts; they are needed for addition and subtraction.",
+    "Multiply by the reciprocal of a nonzero divisor and check by multiplying back.",
+    "Cancel factors of complete products, not matching added terms.",
+    "A terminating decimal can be exact. Percent means a ratio per hundred of a named whole.",
+    "A proportion is justified by the model, such as constant mass per component; units explain the ratio."
+  ],
+  "retrieval": "In a later session, find 2/3+1/6 and (2/3)/(1/6) without notes. Explain why one answer is smaller than one and the other is greater than one. Then compute 20% of 35 m and name the reference whole.",
+  "readings": [
+    {
+      "title": "OpenStax Prealgebra 2e §4.3: Multiply and Divide Mixed Numbers and Complex Fractions",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/4-3-multiply-and-divide-mixed-numbers-and-complex-fractions",
+      "purpose": "Improper fractions and reciprocal division"
+    },
+    {
+      "title": "OpenStax Prealgebra 2e §4.5: Add and Subtract Fractions with Different Denominators",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/4-5-add-and-subtract-fractions-with-different-denominators",
+      "purpose": "Equivalent parts and common denominators"
+    },
+    {
+      "title": "OpenStax Prealgebra 2e §5.1: Decimals",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/5-1-decimals",
+      "purpose": "Place value and rounding"
+    },
+    {
+      "title": "OpenStax Prealgebra 2e §6.2: Solve General Applications of Percent",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent",
+      "purpose": "Part, percent, and reference whole"
+    },
+    {
+      "title": "OpenStax Prealgebra 2e §6.5: Solve Proportions and their Applications",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/6-5-solve-proportions-and-their-applications",
+      "purpose": "Constant ratios and nonzero denominators"
+    }
+  ]
+}

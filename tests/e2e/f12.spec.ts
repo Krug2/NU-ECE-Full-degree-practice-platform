@@ -1,0 +1,34 @@
+import { expect,test } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+import { readFile } from "node:fs/promises";
+import { readStoredProgress } from "./progress";
+test("f12: calculator modes, grouping and inverse meaning support keyboard checks",async({page},testInfo)=>{
+ await page.goto("/courses/f12/lessons/m01-l03");const lab=page.locator("#tool-lab"),angle=lab.getByTestId("angle-feedback"),check=lab.getByRole("button",{name:"Compare angle prediction",exact:true});
+ await check.focus();await check.press("Enter");await expect(angle).toContainText("Enter a finite");
+ await lab.getByLabel("Predicted angle-check result",{exact:true}).fill(".5");await check.click();await expect(angle).toContainText("agrees");await expect(lab).toContainText("Computed result: 0.5");
+ await lab.getByLabel("Angle mode",{exact:true}).selectOption("radians");await expect(lab.getByText(/Computed result:/)).toHaveCount(0);await check.click();await expect(angle).toContainText("differs");await expect(lab).toContainText("-0.988031624");
+ await lab.getByLabel("Numeric input",{exact:true}).selectOption("pi-six");await check.click();await expect(angle).toContainText("agrees");
+ await lab.getByLabel("Operation",{exact:true}).selectOption("asin");await lab.getByLabel("Numeric input",{exact:true}).selectOption("thirty");await check.click();await expect(angle).toContainText("between -1 and 1");
+ await lab.getByLabel("Numeric input",{exact:true}).selectOption("half");await lab.getByLabel("Predicted angle-check result",{exact:true}).fill(".523599");await check.click();await expect(angle).toContainText("agrees");
+ await lab.getByLabel("Angle mode",{exact:true}).selectOption("degrees");await lab.getByLabel("Predicted angle-check result",{exact:true}).fill("30");await check.click();await expect(lab).toContainText("Computed result: 30 (degrees)");
+ for(const [i,value] of["2","10","-9","9","2.5e-3","72000"].entries()){await lab.getByLabel("Expression to inspect",{exact:true}).selectOption(String(i));await lab.getByLabel("Predicted expression result",{exact:true}).fill(value);const compare=lab.getByRole("button",{name:"Compare expression prediction",exact:true});await compare.focus();await compare.press("Enter");await expect(lab.getByTestId("entry-feedback")).toContainText("agrees");}
+ await page.setViewportSize({width:390,height:844});expect((await new AxeBuilder({page}).include("#tool-lab").withTags(["wcag2a","wcag2aa","wcag21aa"]).analyze()).violations).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await lab.screenshot({path:testInfo.outputPath("f12-calculator-mobile.png")});
+ const saved=await readStoredProgress(page);expect(saved.learning.evidence).toEqual([]);expect(saved.learning.attempts).toEqual([]);expect(saved.learning.notes.f12).toBeUndefined();
+});
+test("f12: real practice download and reopen verifies contents and handles wrong files",async({page},testInfo)=>{
+ await page.goto("/courses/f12/lessons/m01-l04");const lab=page.locator("#tool-lab"),button=lab.getByRole("button",{name:"Download practice file",exact:true}),status=lab.getByRole("status");
+ await lab.getByLabel("Practice file note",{exact:true}).fill("short");await button.click();await expect(status).toContainText("at least 10");
+ await lab.getByLabel("Practice file note",{exact:true}).fill("Use a known angle before the main calculation.");await lab.getByLabel("Practice file revision",{exact:true}).selectOption("2");await button.focus();const download=page.waitForEvent("download");await button.press("Enter");const file=testInfo.outputPath("practice-r02.json");await(await download).saveAs(file);const record=JSON.parse(await readFile(file,"utf8"));
+ expect(record.revision).toBe(2);expect(record.note).toBe("Use a known angle before the main calculation.");expect(record.marker).toMatch(/^orientation-/);
+ const reopen=lab.getByLabel("Reopen the downloaded practice file",{exact:true});await reopen.setInputFiles(file);await expect(status).toContainText("Reopen check passed");
+ for(const [value,message] of[["{broken","not readable JSON"],[JSON.stringify({schemaVersion:2}),"not the practice-file format"],[JSON.stringify({...record,marker:"orientation-different"}),"different practice round"],[JSON.stringify({...record,revision:1}),"revision differs"],[JSON.stringify({...record,note:"Another note in the selected file."}),"note content differs"],[" ".repeat(20001),"20 KB maximum"]]){await reopen.setInputFiles({name:"selected.json",mimeType:"application/json",buffer:Buffer.from(value)});await expect(status).toContainText(message);}
+ await reopen.setInputFiles({name:"changed-note.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify({...record,note:record.note+" "}))});await expect(status).toContainText("note content differs");
+ await reopen.setInputFiles(file);await expect(status).toContainText("Reopen check passed");
+ await page.setViewportSize({width:390,height:844});expect((await new AxeBuilder({page}).include("#tool-lab").withTags(["wcag2a","wcag2aa","wcag21aa"]).analyze()).violations).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await lab.screenshot({path:testInfo.outputPath("f12-file-mobile.png")});
+ const saved=await readStoredProgress(page);expect(saved.learning.evidence).toEqual([]);expect(saved.learning.attempts).toEqual([]);expect(saved.learning.notes.f12).toBeUndefined();
+});
+test("f12: a retrieval source can be closed and checked without confusing task review assistance",async({page})=>{
+ await page.goto("/courses/f12/lessons/m01-l01");const task=page.locator("#practical-task");await task.getByRole("button",{name:"Start practical task",exact:true}).click();const source=task.locator("details").first(),summary=source.locator("summary");await summary.focus();await summary.press("Enter");await expect(source).toHaveJSProperty("open",true);await summary.press("Enter");await expect(source).toHaveJSProperty("open",false);
+ await task.getByLabel("Retrieval prompt and unaided attempt",{exact:true}).fill("I attempted the requested example before reopening the source.");await task.getByRole("button",{name:"Save practical draft",exact:true}).click();await expect(task.getByRole("status")).toHaveText("Practical draft saved.");let record=JSON.parse((await readStoredProgress(page)).learning.notes.f12["practical-m01-l01"]);expect(record.active.assisted).toBe(false);await summary.press("Enter");await expect(source).toHaveJSProperty("open",true);
+ await task.getByRole("button",{name:"Show one possible review (marks this task assisted)",exact:true}).click();await expect(task.getByRole("heading",{name:"One possible review",exact:true})).toBeVisible();record=JSON.parse((await readStoredProgress(page)).learning.notes.f12["practical-m01-l01"]);expect(record.active.assisted).toBe(true);expect(record.completed).toBeNull();
+});

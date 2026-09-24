@@ -1,0 +1,347 @@
+{
+  "id": "m01-l02",
+  "courseId": "f05",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Logarithms reverse exponentials",
+  "objective": "Use exponential and logarithmic inverse relationships to evaluate exact values, enforce valid bases and positive arguments, and interpret logarithmic graph features.",
+  "why": "A logarithm recovers the exponent needed to produce a positive value. This makes it useful for solving elapsed-time questions and interpreting wide ratios, while its domain tells you when a calculation has no real meaning.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Exponential change and graph features"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "The statements $b^y=x$ and $\\log_b x=y$ say the same thing when b>0, b is not 1, and x>0. Read a logarithm as an exponent question. A negative logarithm output is allowed; a zero or negative logarithm argument is not.",
+        "Natural logarithms use base e, written ln. Common logarithms use base 10, often written log on a calculator; always identify the intended base. To find a domain, require the whole original argument to be strictly positive before applying any log rules."
+      ]
+    },
+    {
+      "heading": "Undo the function by asking for an exponent",
+      "paragraphs": [
+        "For a fixed positive base other than 1, the exponential is one-to-one: different real exponents give different positive outputs. It therefore has an inverse on positive outputs. For example, $2^3=8$ becomes $\\log_2 8=3$. This does not mean dividing 8 by 2; it asks which power of 2 gives 8.",
+        "The inverse relationships are $\\log_b(b^y)=y$ for every real y, and $b^{\\log_b x}=x$ for x>0. If 0<b<1, the exponential and its logarithmic inverse both decrease. Logarithm outputs still cover every real value. The argument's positivity and the output's sign are different questions."
+      ]
+    },
+    {
+      "heading": "Negative and fractional answers are ordinary exponents",
+      "paragraphs": [
+        "Since $2^{-3}=1/8$, a logarithm of 1/8 in base 2 is -3. Since $4^{-3/2}=(\\sqrt4)^{-3}=1/8$, the same argument in base 4 gives -3/2. For b>1, arguments between zero and one give negative outputs; an argument of one gives zero; arguments above one give positive outputs.",
+        "The constant e is approximately 2.71828. It plays a central role in continuous change, but ln still follows exactly the same inverse definition. You can estimate a logarithm between known powers before using a calculator. Avoid rounding the argument or intermediate powers when an exact fraction is available."
+      ]
+    },
+    {
+      "heading": "Solve the original argument inequality",
+      "paragraphs": [
+        "The domain of $\\ln(7-2x)$ comes from 7-2x>0, so x<7/2. Dividing an inequality by -2 reverses its direction, and equality is excluded because ln(0) has no real value. This is stricter than a square-root condition, where a zero radicand is allowed.",
+        "For $\\ln((x-1)(x+3))$, require the product to be positive. Both factors can be positive or both can be negative, yielding x>1 or x<-3. Replacing this immediately with ln(x-1)+ln(x+3) would wrongly remove the negative-factor interval. The next lesson explains exactly when log rules preserve the original domain."
+      ]
+    },
+    {
+      "heading": "Exchange input and output to read the inverse graph",
+      "paragraphs": [
+        "The point (3,8) on y=2^x becomes (8,3) on y=log base 2 of x. Exchanging coordinates reflects the graph across y=x. The exponential's all-real domain becomes the logarithm's all-real range, and the exponential's positive range becomes the logarithm's positive-input domain.",
+        "For $A\\log_b(s(x-h))+k$ with nonzero A and s equal to 1 or -1, require s(x-h)>0. The vertical asymptote is x=h, and the output range is all real numbers. The anchor occurs where the argument equals one, at x=h+s, with output k. Track a horizontal reflection s=-1, a negative A, and the base's direction separately. Unlike an exponential, a logarithm has a vertical input boundary."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Convert a reciprocal power",
+      "prompt": "Evaluate $\\log_2(1/8)$.",
+      "steps": [
+        {
+          "math": "2^{-3}=1/8",
+          "reason": "Recognize the argument as a power of the base."
+        },
+        {
+          "math": "\\log_2(1/8)=-3",
+          "reason": "Read the exponent as the logarithm's output."
+        }
+      ],
+      "conclusion": "A negative answer is valid because the original argument 1/8 is positive."
+    },
+    {
+      "title": "Recover a fractional exponent",
+      "prompt": "Evaluate $\\log_4(1/8)$ exactly.",
+      "steps": [
+        {
+          "math": "4^{1/2}=2",
+          "reason": "Connect the base 4 with the known power of 2."
+        },
+        {
+          "math": "4^{-3/2}=(4^{1/2})^{-3}=2^{-3}=1/8",
+          "reason": "Use the root and negative-power rules."
+        },
+        {
+          "math": "\\log_4(1/8)=-3/2",
+          "reason": "The matching exponent is the exact answer."
+        }
+      ],
+      "conclusion": "Changing the base changes the exponent required to reach the same argument."
+    },
+    {
+      "title": "Zero output is different from zero input",
+      "prompt": "Compare $\\log_3 1$ with $\\log_3 0$.",
+      "steps": [
+        {
+          "math": "3^0=1\\quad\\Longrightarrow\\quad\\log_3 1=0",
+          "reason": "Zero is a valid logarithm output."
+        },
+        {
+          "math": "3^y>0\\quad\\text{for every real }y",
+          "reason": "No real exponent produces zero."
+        },
+        {
+          "math": "\\log_3 0\\quad\\text{is undefined in the reals}",
+          "reason": "Zero lies outside the inverse function's domain."
+        }
+      ],
+      "conclusion": "Do not replace an invalid logarithm input with a zero answer."
+    },
+    {
+      "title": "A negative coefficient reverses the domain inequality",
+      "prompt": "Find the real domain of $\\ln(7-2x)$.",
+      "steps": [
+        {
+          "math": "7-2x>0",
+          "reason": "The argument must be strictly positive."
+        },
+        {
+          "math": "-2x>-7\\quad\\Longrightarrow\\quad x<7/2",
+          "reason": "Reverse the inequality when dividing by a negative number."
+        },
+        {
+          "math": "D=(-\\infty,7/2)",
+          "reason": "Exclude the zero-argument boundary."
+        }
+      ],
+      "conclusion": "The input x=3 is allowed; x=7/2 and larger values are not."
+    },
+    {
+      "title": "A positive product can have two negative factors",
+      "prompt": "Find the domain of $\\ln((x-1)(x+3))$.",
+      "steps": [
+        {
+          "math": "(x-1)(x+3)>0",
+          "reason": "Check the original product before rewriting the logarithm."
+        },
+        {
+          "math": "x<-3:\\ (-)(-)>0,\\qquad -3<x<1:\\ (-)(+)<0",
+          "reason": "Use the factor zeros to split the real line."
+        },
+        {
+          "math": "x>1:\\ (+)(+)>0",
+          "reason": "The right exterior interval is also valid."
+        },
+        {
+          "math": "D=(-\\infty,-3)\\cup(1,\\infty)",
+          "reason": "Exclude both zeros and retain both positive-product intervals."
+        }
+      ],
+      "conclusion": "A sum of the two separate logarithms would only exist on x>1, so it would not preserve this full domain."
+    },
+    {
+      "title": "Reflect a point to the inverse",
+      "prompt": "Use the point (3,8) on y=2^x.",
+      "steps": [
+        {
+          "math": "2^3=8",
+          "reason": "The original function takes input 3 to output 8."
+        },
+        {
+          "math": "\\log_2 8=3",
+          "reason": "The inverse takes input 8 back to output 3."
+        },
+        {
+          "math": "(3,8)\\longleftrightarrow(8,3)",
+          "reason": "Exchange the coordinate roles."
+        }
+      ],
+      "conclusion": "The graphs reflect across y=x; the inverse point need not lie on the original curve."
+    },
+    {
+      "title": "Read a shifted logarithm",
+      "prompt": "Describe $g(x)=\\log_2(x+2)-1$.",
+      "steps": [
+        {
+          "math": "x+2>0\\quad\\Longrightarrow\\quad x>-2",
+          "reason": "The input shift moves the domain boundary to -2."
+        },
+        {
+          "math": "D=(-2,\\infty),\\quad R=\\mathbb R,\\quad x=-2",
+          "reason": "State the domain, range, and vertical asymptote."
+        },
+        {
+          "math": "g(0)=\\log_2 2-1=0",
+          "reason": "Substitute to locate the zero, which is also the y-intercept."
+        },
+        {
+          "math": "g(-1)=\\log_2 1-1=-1",
+          "reason": "The shifted anchor uses argument one."
+        }
+      ],
+      "conclusion": "The graph increases, has anchor (-1,-1), and crosses the axes at (0,0)."
+    }
+  ],
+  "guided": {
+    "title": "Recover the exponent and preserve the domain",
+    "setup": "Use the inverse definition first, then check the separate argument and base conditions.",
+    "before": [
+      "Write 1/27 as a power of 3.",
+      "Remember that a logarithm's base must be positive and not equal to one.",
+      "Solve 5-x>0 without including its boundary."
+    ],
+    "question": {
+      "id": "f05-l02-guided",
+      "familyId": "guided-f05-l02",
+      "familyVersion": 1,
+      "courseId": "f05",
+      "objectiveId": "m01-l02",
+      "category": "procedural",
+      "critical": false,
+      "parameters": {},
+      "prompt": "Evaluate log base 3 of 1/27. Decide which proposed base, 1 or 1/2, is valid. Give the complete domain of ln(5-x).",
+      "fields": [
+        {
+          "id": "value",
+          "kind": "rational",
+          "label": "Exact logarithm",
+          "expected": "-3"
+        },
+        {
+          "id": "base",
+          "kind": "choice",
+          "label": "Valid logarithm base",
+          "correct": "half",
+          "options": [
+            {
+              "id": "one",
+              "label": "1",
+              "feedback": "The exponential 1^x is constant and cannot have a logarithmic inverse."
+            },
+            {
+              "id": "half",
+              "label": "1/2",
+              "feedback": "A positive base below one is valid and produces a decreasing function."
+            }
+          ]
+        },
+        {
+          "id": "domain",
+          "kind": "intervals",
+          "label": "Domain of ln(5-x)",
+          "expected": [
+            {
+              "lower": null,
+              "upper": "5",
+              "lowerClosed": false,
+              "upperClosed": false
+            }
+          ],
+          "help": "Use interval notation."
+        }
+      ],
+      "hints": [
+        "3^(-3)=1/27.",
+        "The base 1/2 is positive and differs from one.",
+        "5-x>0 gives x<5, so use (-inf,5)."
+      ],
+      "explanation": [
+        "The logarithm is -3 and the valid proposed base is 1/2.",
+        "The original argument condition gives the open interval (-infinity,5)."
+      ],
+      "answerSummary": "-3; base 1/2; domain (-infinity,5)."
+    },
+    "after": "Explain why the negative output -3 is valid but a negative argument would not be. Then try a product-domain problem in practice."
+  },
+  "interaction": {
+    "kind": "refresher-explog-lab",
+    "mode": "inverse",
+    "prompt": "Select a valid base, enter a positive argument, and predict its logarithm. Compare inverse point pairs and a labeled graph/table; reject zero, negative arguments, base one, and invalid typed input clearly."
+  },
+  "practice": [
+    {
+      "familyId": "f05-log-meaning",
+      "variant": "forward"
+    },
+    {
+      "familyId": "f05-log-meaning",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "f05-log-meaning",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f05-log-meaning",
+      "variant": "fractional"
+    },
+    {
+      "familyId": "f05-log-domain",
+      "variant": "affine"
+    },
+    {
+      "familyId": "f05-log-domain",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f05-log-domain",
+      "variant": "squared"
+    },
+    {
+      "familyId": "f05-log-domain",
+      "variant": "product"
+    },
+    {
+      "familyId": "f05-log-graph",
+      "variant": "shifted"
+    },
+    {
+      "familyId": "f05-log-graph",
+      "variant": "reflected"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f05-log-meaning",
+      "variant": "fractional"
+    },
+    {
+      "familyId": "f05-log-domain",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f05-log-domain",
+      "variant": "product"
+    },
+    {
+      "familyId": "f05-log-graph",
+      "variant": "reflected"
+    }
+  ],
+  "summary": [
+    "A logarithm returns an exponent, not a quotient.",
+    "Require a positive argument and a positive base different from one.",
+    "Inverse graphs exchange coordinates, domains, and ranges.",
+    "Find the original domain before splitting a logarithm into separate terms."
+  ],
+  "retrieval": "Recover log base 9 of 1/27 exactly, and find the domain of ln((x-2)(x+1)). Explain why splitting the product into separate logs would lose valid inputs.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.3: Logarithmic Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-3-logarithmic-functions",
+      "purpose": "Use this free section for additional explanations and practice when the refresher is not enough."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.4: Graphs of Logarithmic Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-4-graphs-of-logarithmic-functions",
+      "purpose": "Use this free section for additional explanations and practice when the refresher is not enough."
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "kind": "practical",
+  "id": "m01-l03",
+  "courseId": "f11",
+  "version": 1,
+  "title": "Check reasonableness and model limits",
+  "objective": "Audit a result with independent checks of dimensions, sign, scale and limiting behavior, identify the first unsupported step, and explain what remains uncertain.",
+  "why": "Checking an answer means looking for evidence that could expose a mistake. Repeating the same keystrokes often repeats the same error. A useful audit tests the meaning, dimensions, scale, and behavior of the model, then repairs the earliest unsupported step.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Estimate first and carry units through the model"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Ask four questions: Are the dimensions compatible with the requested quantity? Does the sign or direction make sense? Is the scale consistent with a simple estimate? Does the model behave sensibly when an input becomes zero or changes by a clear factor?",
+        "If a check fails, find the first unsupported statement. Correct its cause and reconstruct the result using another route. Keep remaining assumptions visible; a corrected calculation is still conditional on its model."
+      ]
+    },
+    {
+      "heading": "What a unit check can and cannot establish",
+      "paragraphs": [
+        "A result for time should have time dimensions. Dividing an inflow rate in L/min by a volume in L yields 1/min, so that ratio cannot directly be a duration. This check rejects a relationship without needing a numerical answer.",
+        "Correct dimensions do not prove correctness. A missing factor of three, a wrong unit conversion, or an incorrect initial value can preserve the final unit label. Count labels such as channel and sample help you audit the model even though counts do not introduce new physical dimensions."
+      ]
+    },
+    {
+      "heading": "Sign, scale, and limiting behavior",
+      "paragraphs": [
+        "For positive distance and positive speed, the modeled elapsed time is nonnegative. For a target above the initial fill level and positive inflow, filling time is positive. A negative answer should trigger a review of subtraction order, sign conventions, or whether the situation is even described by that model.",
+        "At fixed positive speed, zero distance gives zero travel time. At fixed positive inflow, a target equal to the initial level gives zero added filling time. Do not substitute a zero denominator and call the result zero: zero speed with positive distance is outside the finite travel-time formula, and a target below the initial level cannot be reached by inflow alone."
+      ]
+    },
+    {
+      "heading": "Find the first cause",
+      "paragraphs": [
+        "Read the work as a sequence of claims. Check the input interpretation, equation, substitution, unit conversion, arithmetic, and reporting in that order. The first unsupported step explains more than an unexplained replacement of the final number.",
+        "Use an independent reconstruction where possible: multiply a candidate time by the rate to recover an amount, count samples per second before counting all samples, or compare with a simple benchmark. Two versions of the same mistaken formula are not two independent checks."
+      ]
+    },
+    {
+      "heading": "Separate calculation errors from model limits",
+      "paragraphs": [
+        "An observed filling time can disagree with a mathematically correct constant-rate prediction because the rate changes. Before blaming either the arithmetic or the observation, check definitions, initial conditions, timing, units, and whether the constant-rate assumption fits.",
+        "State what is known and what observation would resolve the remaining doubt. A practical audit is successful when it produces a defensible correction and a clear limit, not when it claims that every possible error has been eliminated."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A minute label hides an hour result",
+      "scenario": "A report uses d = 30 km and v = 15 km/h, computes 30/15 = 2, and reports '2 min.'",
+      "steps": [
+        {
+          "action": "The quotient (30 km)/(15 km/h) is 2 h. The first error is attaching the minute unit without conversion.",
+          "reason": "The division and numerical quotient are correct. The unit label changes the meaning by a factor of 60."
+        },
+        {
+          "action": "Convert 2 h × 60 min/h = 120 min. Reconstruct distance: 15 km/h × 2 h = 30 km.",
+          "reason": "Explicit conversion repairs the cause, and multiplication checks the result against the given distance."
+        },
+        {
+          "action": "Check scale: at 15 km/h, only 0.5 km is traveled in 2 min. Zero distance would give zero time.",
+          "reason": "A short benchmark exposes the incorrect minute answer without merely redoing the original division."
+        }
+      ],
+      "conclusion": "The reported unit name alone was not enough. The corrected result is 120 min under the constant-speed, no-stops model."
+    },
+    {
+      "title": "Bytes with a missing channel count",
+      "scenario": "Four channels produce 250 samples/s each for 10 s at 2 bytes/sample. A report calculates 250 × 10 × 2 = 5000 bytes.",
+      "steps": [
+        {
+          "action": "The expression counts one channel's payload. The first omission is treating a per-channel sample rate as the combined rate.",
+          "reason": "The final byte dimension can look correct even though a dimensionless count factor is missing."
+        },
+        {
+          "action": "All channels produce 4 × 250 = 1000 samples/s. Over 10 s this is 10,000 samples, requiring 20,000 bytes.",
+          "reason": "Counting the total sample stream reconstructs the result in a different grouping."
+        },
+        {
+          "action": "Check four identical contributions: 4 × 5000 = 20,000 bytes. Doubling duration should double this value; setting duration to zero should make it zero.",
+          "reason": "Additivity and limiting behavior test the model beyond its final unit."
+        }
+      ],
+      "conclusion": "The correct payload is 20,000 bytes. This still excludes overhead and assumes every channel records for the full interval."
+    },
+    {
+      "title": "A reversed fill-time ratio",
+      "scenario": "A tank must gain 36 L at 6 L/min. A report uses 6/36 and labels the result minutes.",
+      "steps": [
+        {
+          "action": "The proposed ratio has units (L/min)/L = 1/min, not time.",
+          "reason": "The dimensional failure points to a reversed relationship before any decimal arithmetic."
+        },
+        {
+          "action": "Use t = added volume/rate = (36 L)/(6 L/min) = 6 min.",
+          "reason": "Each minute contributes 6 L, so six minutes are needed to accumulate 36 L."
+        },
+        {
+          "action": "Reconstruct 6 L/min × 6 min = 36 L. Doubling inflow should halve the duration to 3 min, while the reversed ratio would grow.",
+          "reason": "The changed-input test exposes an incorrect dependence as well as an incorrect dimension."
+        }
+      ],
+      "conclusion": "Both units and model behavior support the corrected ratio. The result assumes constant inflow and no outflow."
+    },
+    {
+      "title": "An observation challenges the model",
+      "scenario": "A tank needs 40 L. A constant 5 L/min model predicts 8 min, but an observed fill took 10 min.",
+      "steps": [
+        {
+          "action": "Verify the prediction: 40 L divided by 5 L/min is 8 min. Check whether 40 L refers to added volume and whether timing included setup or pauses.",
+          "reason": "Differences in definitions or initial conditions can explain a mismatch before the physical model is changed."
+        },
+        {
+          "action": "If the added volume and 10 min duration are reliable, the interval's average net inflow was 40/10 = 4 L/min.",
+          "reason": "This is an inferred average from the observation. It does not establish that instantaneous inflow was constant at 4 L/min."
+        },
+        {
+          "action": "Record a possible cause, such as decreasing inflow, as a hypothesis. Next, observe volume at several intermediate times.",
+          "reason": "Intermediate observations can distinguish a changing rate from a single inaccurate starting-rate reading."
+        }
+      ],
+      "conclusion": "The arithmetic may be right while the constant-rate assumption is inadequate. Preserve that distinction in the report."
+    }
+  ],
+  "guided": {
+    "prompt": "Three channels record 400 samples/s each for 15 s at 2 bytes/sample. A report claims 12,000 bytes from 400 × 15 × 2. Audit the first error and verify a repair.",
+    "steps": [
+      "Explain what the reported expression actually counts and whether its dimensions alone reject it.",
+      "Reconstruct the total sample count, then use a second check such as equal contributions or doubled duration.",
+      "State what the repaired payload model still excludes."
+    ],
+    "review": [
+      "12,000 bytes is one channel's payload. The missing factor of three is a model-count error; a byte unit does not prove the value.",
+      "Combined samples = 3 × 400 × 15 = 18,000. At 2 bytes/sample the payload is 36,000 bytes. Three equal 12,000-byte contributions agree.",
+      "Doubling duration gives 72,000 bytes. This assumes continuous sampling and excludes metadata, padding, and compression."
+    ]
+  },
+  "task": {
+    "family": "engineering-work",
+    "fields": [
+      {
+        "id": "checks",
+        "label": "Dimension, sign, scale, and limit checks",
+        "help": "Audit units plus sign, estimate, and a zero or changed-input case."
+      },
+      {
+        "id": "error",
+        "label": "First error or unsupported step",
+        "help": "Identify the first wrong interpretation, relation, conversion, or claim."
+      },
+      {
+        "id": "correction",
+        "label": "Corrected reasoning and independent verification",
+        "help": "Repair that cause and verify by reconstructing an input or using a second route."
+      },
+      {
+        "id": "limits",
+        "label": "Remaining uncertainty and next observation",
+        "help": "State an unresolved assumption and an observation that would test it."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "checks",
+        "label": "I used more than one independent check, including units and scale or limiting behavior."
+      },
+      {
+        "id": "cause",
+        "label": "I identified a cause instead of changing an unexplained final number."
+      },
+      {
+        "id": "limits",
+        "label": "I verified the correction and stated a limit of the model."
+      }
+    ]
+  },
+  "summary": [
+    "Correct dimensions are necessary, but they do not prove the value.",
+    "Use independent scale, sign, and limiting-case checks.",
+    "Repair the first cause and reconstruct the result.",
+    "Distinguish arithmetic errors, input interpretation, and model mismatch."
+  ],
+  "retrieval": "Later, invent a wrong result with correct final units. Explain which additional check detects it and which assumption would still remain after correction.",
+  "readings": [
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.4: Dimensional Analysis",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    },
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.7: Solving Problems in Physics",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-7-solving-problems-in-physics",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "courseId": "f03",
+  "title": "Functions and graphs",
+  "status": "planned",
+  "plannedAt": "2026-09-23",
+  "learner": "Returning learners who have previously met algebra and graphs but need to recover connected reasoning, representation, and model interpretation.",
+  "assumedKnowledge": [
+    "Signed arithmetic and fractions from F01",
+    "Equivalent transformations, interval notation, and root restrictions from F02"
+  ],
+  "scope": {
+    "include": [
+      "Coordinate scales, lines, intercepts, and rate units",
+      "Function meaning, domain/range, finite data, and piecewise boundaries",
+      "Point transformations, graph features, and extrema",
+      "Composition, inverse domains, and two-sided verification",
+      "Average rates, linear calibration, residuals, and supported predictions"
+    ],
+    "exclude": [
+      "A complete first course in algebra",
+      "Formal limits and differentiation, deferred to F08 and CSC 208",
+      "Regression estimation and measurement uncertainty beyond the stated deterministic tasks",
+      "Logarithms and periodic functions, reviewed in F04 and F05"
+    ]
+  },
+  "routes": {
+    "quick": "Take five diagnostic probes, read the Quick recall section for suggested lessons, then use independent lesson checkpoints and the four-question mixed review. Short-screen success does not certify a whole objective.",
+    "full": "Follow the five lessons in order, including complete built-in explanations, worked examples, guided work, investigations, practice with hints, and fresh independent checkpoints. Pause the longer source lessons between sections and preserve questions in notes.",
+    "escalation": {
+      "courseId": "mth-215",
+      "text": "Use the complete MTH 215 sequence for first-time instruction or gaps beyond these topics. Return to F01 or F02 when numerical or symbolic operations block function reasoning."
+    }
+  },
+  "reuse": {
+    "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+    "sourceLessons": {
+      "m01-l01": "mth-215/b05",
+      "m01-l02": "mth-215/m02-l01",
+      "m01-l03": "mth-215/m02-l02",
+      "m01-l04": "mth-215/m02-l03",
+      "m01-l05": "mth-215/m02-l04"
+    },
+    "implementation": "Use the F02 adapter and source-version guard. Preserve original source prose, examples, figure descriptions, guided fields, activities, and answer rules; add original refresher framing and independent F03 IDs.",
+    "overlap": "B05 provides the coordinate bridge. M02 supplies functions, transformations, composition/inverses, and calibration. F06 later deepens measurement units; F07 develops vector geometry; F08 develops instantaneous rates."
+  },
+  "assessment": {
+    "diagnostic": {
+      "id": "diagnostic",
+      "length": 5,
+      "coverage": [
+        "Scaled coordinates",
+        "Reciprocal-root domain",
+        "Inside-shift point mapping",
+        "Composition domain",
+        "Calibration slope with units"
+      ]
+    },
+    "lessonCheckpoints": "Four required questions per lesson. Strengthen source checkpoints with horizontal/vertical distinctions, interior versus absolute extrema, both inverse identities, and average rates over unequal intervals.",
+    "mixed": {
+      "length": 4,
+      "coverage": [
+        [
+          "m01-l01",
+          "m01-l02"
+        ],
+        [
+          "m01-l03"
+        ],
+        [
+          "m01-l04"
+        ],
+        [
+          "m01-l05"
+        ]
+      ],
+      "design": "First question combines a textual intercept model with a domain problem; remaining questions retain necessary figures or use explicitly separated textual parts. No figure is silently dropped."
+    },
+    "evidence": "Confidence, reading, and hints never create independent evidence. Diagnostics and practice guide review. Required lesson checkpoints and mixed recall have separate immutable seeds and snapshots.",
+    "recommendations": "Use existing per-family and per-part target mappings. A miss remains a review need until a later independent lesson check."
+  },
+  "acceptance": [
+    "All five full lessons, local prerequisite links, exact readings, original refresher recall, and expanded objective coverage exist.",
+    "All source instructions and figures remain intact; source IDs and saved MTH attempts remain unchanged.",
+    "New boundary questions independently checked; reused family suites verify domains, graphs, transformations, inverse identities, weighted rates, units, and residuals.",
+    "Browser tests cover curriculum entry, diagnostic gap routing, all independent checkpoints, mixed recall, retries, notes, exact resume, backups, mobile, keyboard, and Axe.",
+    "Unit tests, lint, typecheck, and production build pass. Record implementer verification separately from independent human review.",
+    "Finish F03 before the detailed F04 plan."
+  ]
+}

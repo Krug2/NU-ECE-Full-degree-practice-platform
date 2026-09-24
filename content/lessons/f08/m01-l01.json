@@ -1,0 +1,314 @@
+{
+  "id": "m01-l01",
+  "courseId": "f08",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Limits, one-sided behavior, and continuity",
+  "objective": "Evaluate elementary limits, compare one-sided behavior, and distinguish a nearby limit from a function value and continuity.",
+  "why": "Limits describe what a model approaches; they do not merely evaluate a formula at one point. That distinction is the bridge from algebra to instantaneous rates and continuous accumulation. A missing value, a jump, and an unbounded response need different repairs.",
+  "estimatedMinutes": 40,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For a finite two-sided limit, the left and right approaches must agree. The value at the approaching point may be different or absent. Continuity at a means that f(a) exists, the finite limit exists, and they match.",
+        "Substitute directly into polynomials and other functions only where continuity and domain conditions allow it. An expression such as 0/0 is an indeterminate form, not a numerical answer. Factor or rationalize away from the excluded input, then evaluate the simplified nearby behavior."
+      ]
+    },
+    {
+      "heading": "Read the approach before evaluating the point",
+      "paragraphs": [
+        "The notation $\\lim_{x\\to a}f(x)=L$ describes values of f at inputs arbitrarily close to a, with x different from a. It asks whether these outputs approach L. There is no requirement that f(a) already equal L. Think of the value at the point as one separate dot on a graph, and the limit as the behavior of the surrounding branches.",
+        "A table can suggest an approach, but a few samples cannot prove a limit for an arbitrary function. A graph also has finite resolution. In this refresher, formulas and stated branch rules justify conclusions; the tables and plots help you inspect those rules. Small inputs and rounded outputs are supporting evidence, not a replacement for reasoning."
+      ]
+    },
+    {
+      "heading": "Simplify a neighborhood, not an undefined value",
+      "paragraphs": [
+        "A polynomial is continuous at every real input, so substituting a produces its limit there. For a quotient, substitution works when the denominator's limiting value is nonzero. If both numerator and denominator tend to zero, the usual quotient limit rule cannot yet be applied.",
+        "Factoring can expose a common factor. Cancel it only at inputs where it is nonzero. The original and simplified formulas then agree near the excluded point, which is enough to compare their limits. The cancellation does not change the original domain or make the original value defined. With square roots, multiplying by a conjugate often creates the same kind of useful cancellation."
+      ]
+    },
+    {
+      "heading": "Compare both sides",
+      "paragraphs": [
+        "A left-hand limit uses inputs smaller than a; a right-hand limit uses inputs larger than a. If both finite limits exist and are equal, that common value is the two-sided limit. If they differ, no two-sided limit exists, even if a point value is neatly assigned between them.",
+        "For piecewise rules, evaluate the approach using the rule on that side. A strict inequality can exclude the endpoint while the branch still approaches a clear endpoint value. Do not accidentally use the rule selected by an equality sign when the question asks about nearby behavior."
+      ]
+    },
+    {
+      "heading": "Continuity needs three checks",
+      "paragraphs": [
+        "At an interior point, first check that f(a) is defined. Next check that the two-sided limit exists. Finally compare the two numbers. A removable discontinuity has a finite common limit but a missing or mismatched point value. Assigning that one point the limit repairs continuity.",
+        "A jump cannot be repaired merely by changing one isolated point, because its left and right limits disagree. At an endpoint of a restricted domain, continuity is evaluated from within that domain; the examples and checkpoints here state their domains and use interior junctions unless otherwise specified."
+      ]
+    },
+    {
+      "heading": "Unbounded behavior and the radian convention",
+      "paragraphs": [
+        "Writing that a function tends to positive infinity means its values become arbitrarily large and positive near the approach. Infinity is not a real number to assign as f(a), and an infinite limit is not a finite limit. A reciprocal with a simple zero denominator often has opposite signs on its two sides. Squaring that denominator keeps it positive, so check the numerator sign too.",
+        "The standard limit $\\lim_{u\\to 0}\\sin(u)/u=1$ uses radians. Thus $\\sin(kx)/x=k[\\sin(kx)/(kx)]$ tends to k for nonzero k. If k=0, the expression is zero for every nonzero x, so the limit is also zero. The exercise generators use nonzero k to practice the change of scale."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Substitute where continuity permits it",
+      "prompt": "Evaluate the limit of 2x²-3x+1 as x approaches -2.",
+      "steps": [
+        {
+          "math": "\\lim_{x\\to-2}(2x^2-3x+1)=2(-2)^2-3(-2)+1",
+          "reason": "A polynomial is continuous at the requested input."
+        },
+        {
+          "math": "2(4)+6+1=15",
+          "reason": "Square before multiplying and preserve the negative input's sign."
+        }
+      ],
+      "conclusion": "The limit and this polynomial's point value are both 15."
+    },
+    {
+      "title": "Keep a hole after cancellation",
+      "prompt": "Find the limit of (x²-9)/(x-3) as x approaches 3, and describe its original value there.",
+      "steps": [
+        {
+          "math": "\\frac{x^2-9}{x-3}=\\frac{(x-3)(x+3)}{x-3}=x+3\\quad(x\\ne3)",
+          "reason": "Factor the difference of squares and retain the canceled-factor restriction."
+        },
+        {
+          "math": "\\lim_{x\\to 3}(x+3)=6,\\qquad f(3)\\text{ undefined}",
+          "reason": "Nearby formulas agree, but the original quotient still divides by zero at 3."
+        }
+      ],
+      "conclusion": "The finite limit is 6. A continuous extension would define the missing point as 6."
+    },
+    {
+      "title": "Use a conjugate",
+      "prompt": "Evaluate the limit of (sqrt(x+4)-2)/x as x approaches 0.",
+      "steps": [
+        {
+          "math": "\\frac{\\sqrt{x+4}-2}{x}\\frac{\\sqrt{x+4}+2}{\\sqrt{x+4}+2}=\\frac{x}{x(\\sqrt{x+4}+2)}",
+          "reason": "The conjugate turns the numerator into (x+4)-4=x."
+        },
+        {
+          "math": "\\frac{1}{\\sqrt{x+4}+2}\\longrightarrow\\frac14",
+          "reason": "For nearby nonzero x, cancel x; the remaining denominator tends to 4."
+        }
+      ],
+      "conclusion": "The original quotient excludes zero, but its limit is 1/4."
+    },
+    {
+      "title": "Find a jump from branch rules",
+      "prompt": "Let f(x)=x+1 for x<2, f(2)=9, and f(x)=5-x for x>2. Then change the right rule to 6-x.",
+      "steps": [
+        {
+          "math": "\\lim_{x\\to 2^-}(x+1)=3,\\qquad\\lim_{x\\to 2^+}(5-x)=3",
+          "reason": "With the first right branch, both approaches agree."
+        },
+        {
+          "math": "\\lim_{x\\to 2^+}(6-x)=4\\ne3",
+          "reason": "After changing the branch, the two one-sided limits disagree."
+        }
+      ],
+      "conclusion": "Originally the limit was 3 despite point value 9. After the branch change, no two-sided limit exists."
+    },
+    {
+      "title": "Repair a removable mismatch",
+      "prompt": "For x≠1, let f(x)=x²+2; set f(1)=k. Find k for continuity.",
+      "steps": [
+        {
+          "math": "\\lim_{x\\to 1}f(x)=1^2+2=3",
+          "reason": "The surrounding polynomial fixes the nearby limit independently of k."
+        },
+        {
+          "math": "f(1)=k=3",
+          "reason": "Continuity requires the defined point to equal that limit."
+        }
+      ],
+      "conclusion": "Choosing k=3 repairs the mismatch; no other point needs to change."
+    },
+    {
+      "title": "Track the signs at a pole",
+      "prompt": "Compare 1/(x-2) and 1/(x-2)² as x approaches 2.",
+      "steps": [
+        {
+          "math": "x\\to 2^-:\\quad x-2<0,\\qquad x\\to 2^+:\\quad x-2>0",
+          "reason": "The first denominator approaches zero from opposite signs."
+        },
+        {
+          "math": "\\frac1{x-2}\\to-\\infty\\text{ from left},\\quad+\\infty\\text{ from right}",
+          "reason": "A positive numerator divided by a small signed denominator follows that sign."
+        },
+        {
+          "math": "\\frac1{(x-2)^2}\\to+\\infty\\text{ from both sides}",
+          "reason": "The squared denominator is positive on either side."
+        }
+      ],
+      "conclusion": "Neither has a finite real limit or a defined value at 2. Their unbounded behaviors differ."
+    },
+    {
+      "title": "Rescale the sine limit",
+      "prompt": "Evaluate the limit of sin(3x)/x as x approaches 0 in radians.",
+      "steps": [
+        {
+          "math": "\\frac{\\sin(3x)}x=3\\frac{\\sin(3x)}{3x}\\quad(x\\ne0)",
+          "reason": "Insert the same nonzero factor into the denominator and compensate outside."
+        },
+        {
+          "math": "3\\lim_{x\\to 0}\\frac{\\sin(3x)}{3x}=3",
+          "reason": "The inner argument approaches zero, so the standard radian ratio tends to 1."
+        }
+      ],
+      "conclusion": "The scale factor survives the limit; simply answering 1 would lose it."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Define f(x)=(x²-4)/(x-2) for x≠2, and assign f(2)=7.",
+    "before": [
+      "Factor the numerator into (x-2)(x+2).",
+      "Cancel only for x≠2; compare the nearby limit with the separately assigned point."
+    ],
+    "question": {
+      "id": "f08-l01-guided",
+      "familyId": "guided-f08-l01",
+      "familyVersion": 1,
+      "courseId": "f08",
+      "objectiveId": "m01-l01",
+      "category": "application",
+      "critical": false,
+      "prompt": "Find the limit as x approaches 2, the assigned value f(2), and whether the defined function is continuous at 2.",
+      "fields": [
+        {
+          "id": "limit",
+          "kind": "rational",
+          "label": "Nearby limit",
+          "expected": "4",
+          "unit": ""
+        },
+        {
+          "id": "point",
+          "kind": "rational",
+          "label": "Assigned point value",
+          "expected": "7",
+          "unit": ""
+        },
+        {
+          "id": "continuous",
+          "kind": "choice",
+          "label": "Continuous at 2?",
+          "correct": "no",
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes",
+              "feedback": "The limit must equal the point value, not merely exist."
+            },
+            {
+              "id": "no",
+              "label": "No",
+              "feedback": "The limit 4 differs from the assigned value 7."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Cancel only for x≠2; compare the nearby limit with the separately assigned point.",
+        "The nearby quotient equals x+2, so the limit is 4."
+      ],
+      "explanation": [
+        "The nearby quotient equals x+2, so the limit is 4.",
+        "The assigned value is 7. Continuity fails because these values differ."
+      ],
+      "answerSummary": "The nearby quotient equals x+2, so the limit is 4. The assigned value is 7. Continuity fails because these values differ."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-calculus-lab",
+    "mode": "limit",
+    "prompt": "Change a junction, left/right approach values, and the isolated point. Predict existence and continuity, then reveal exact nearby values and a plot. Changing only the point must leave the limit unchanged."
+  },
+  "practice": [
+    {
+      "familyId": "f08-limit-finite",
+      "variant": "polynomial"
+    },
+    {
+      "familyId": "f08-limit-finite",
+      "variant": "removable"
+    },
+    {
+      "familyId": "f08-limit-finite",
+      "variant": "rationalize"
+    },
+    {
+      "familyId": "f08-limit-finite",
+      "variant": "sine"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "jump"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "continuous"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "removable-point"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "square-pole"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f08-limit-finite",
+      "variant": "standard-audit"
+    },
+    {
+      "familyId": "f08-limit-finite",
+      "variant": "removable"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "junction"
+    },
+    {
+      "familyId": "f08-limit-behavior",
+      "variant": "pole-audit"
+    }
+  ],
+  "summary": [
+    "A limit describes nearby behavior; a point value is a separate evaluation.",
+    "Compare left and right approaches before claiming a two-sided limit.",
+    "Cancellation preserves a limit near a hole without restoring the original domain.",
+    "Continuity matches a defined value to its limit; standard sine limits use radians."
+  ],
+  "retrieval": "Without opening the examples, explain how a function can have limit 4 and value 7 at the same input. Then predict what changing only that assigned value can and cannot repair.",
+  "readings": [
+    {
+      "title": "OpenStax, Calculus Volume 1 · 2.2: The Limit of a Function",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/2-2-the-limit-of-a-function",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 2.3: The Limit Laws",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/2-3-the-limit-laws",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 2.4: Continuity",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/2-4-continuity",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    }
+  ]
+}

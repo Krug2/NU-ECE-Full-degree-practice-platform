@@ -1,0 +1,393 @@
+{
+  "id": "m01-l04",
+  "courseId": "f05",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Growth, decay, and threshold times",
+  "objective": "Fit exponential models, relate discrete factors to continuous rates, and determine doubling, half-life, and threshold times with correct units and model limits.",
+  "why": "Engineering models often describe a quantity by its initial size and a repeated factor or continuous rate. Solving for a threshold means recovering time while keeping units, the allowed time domain, and the model's assumptions visible.",
+  "estimatedMinutes": 45,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Exponential change and graph features"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Logarithms reverse exponentials"
+    },
+    {
+      "lessonId": "m01-l03",
+      "label": "Log rules and equations with domain checks"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Two useful forms are $Q(t)=A b^{t/\\Delta}$ and $Q(t)=A e^{kt}$, with A>0, b>0, and a positive time step Delta. They agree when $k=\\ln(b)/\\Delta$. The exponent is dimensionless: k carries reciprocal-time units.",
+        "For growth k>0, doubling time is ln(2)/k. For decay k<0, half-life is -ln(2)/k. Writing decay as $A e^{-t/\\tau}$ gives time constant tau and half-life tau ln(2). To find a target B>0, solve t=ln(B/A)/k for k different from zero, then check the allowed time domain."
+      ]
+    },
+    {
+      "heading": "Fit the assumed exponential from positive data",
+      "paragraphs": [
+        "For positive measurements Q(t1)=Q1 and Q(t2)=Q2 at distinct times, dividing cancels A: $Q_2/Q_1=e^{k(t_2-t_1)}$. Take logs to recover k=ln(Q2/Q1)/(t2-t1), then use A=Q1 exp(-k t1). If a discrete step Delta is preferred, its factor is b=exp(k Delta).",
+        "A factor found across a three-second interval is not automatically a per-second factor. Divide the log ratio by elapsed time or take the corresponding positive root to convert it. Equal positive measurements fit the constant case k=0. Fitting two points exactly does not establish a physical mechanism or justify distant extrapolation; noisy data need fuller model-fitting methods."
+      ]
+    },
+    {
+      "heading": "A factor and a continuous rate describe different numerical quantities",
+      "paragraphs": [
+        "A 5% increase each second means the one-second factor is 1.05. Its continuous rate is ln(1.05) per second, approximately 0.048790, not exactly 0.05. Conversely, a continuous rate k=0.05 per second gives one-second factor exp(0.05), approximately 1.051271, or about 5.1271% growth.",
+        "Always attach the interval to a percentage. For a factor b every Delta seconds, use exp(k Delta)=b. In exp(k t), seconds cancel reciprocal seconds. The initial coefficient carries the output units. Taking a logarithm of a target/initial ratio is valid because matching output units cancel first."
+      ]
+    },
+    {
+      "heading": "Characteristic times depend on the rate",
+      "paragraphs": [
+        "At doubling, Q(t)/A=2; at half-life, Q(t)/A=1/2. The initial size cancels, so the elapsed characteristic time depends on rate and time units rather than the starting amount. Doubling time is meaningful for growth and half-life for decay in this positive model.",
+        "A time constant is a different landmark. In exp(-t/tau), setting t=tau makes the exponent -1, leaving 1/e or about 36.8% of the initial amount. Half the initial amount remains earlier, at tau ln(2), about 0.693 tau. Read whether the supplied number is a rate, a half-life, or a time constant before inserting it into a formula."
+      ]
+    },
+    {
+      "heading": "Classify a threshold before solving for it",
+      "paragraphs": [
+        "For a positive decay beginning at A at time zero, every target strictly between zero and A is reached once at a positive time. The initial value A is reached at t=0. A target larger than A would require a negative time; if the problem requires t>=0, that target is unreachable within the requested model interval.",
+        "Exact zero is approached but never reached at a finite time, so do not ask a real logarithm to evaluate ln(0). A negative target is also outside the positive model's range. For the constant case k=0, avoid dividing by zero: if the target equals A, every allowed time works; otherwise no time works. These classifications should precede calculator work."
+      ]
+    },
+    {
+      "heading": "Use supplied engineering models without hiding assumptions",
+      "paragraphs": [
+        "A statement such as V(t)=12 exp(-t/3) volts with t in seconds supplies a mathematical decay model. You can solve its threshold questions without assuming a circuit derivation. First compare the target with 12 V, divide by the initial value, take the log, and keep the decay sign until isolating time.",
+        "Substitute the final time into the original model using unrounded intermediate values. A tiny negative time for a slightly rounded initial target can be a numerical artifact, so keep exact ratios when available. This refresher uses ideal positive exponential models; measured noise, offsets, saturation, and multi-stage dynamics need the appropriate full course and a model suited to those conditions."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Fit a two-point growth model",
+      "prompt": "Assume Q(t)=A b^t, with t measured numerically in seconds, through (1,15) and (3,60).",
+      "steps": [
+        {
+          "math": "\\frac{60}{15}=b^{3-1}=b^2=4",
+          "reason": "Divide to remove A and count two one-second steps."
+        },
+        {
+          "math": "b=2",
+          "reason": "Choose the positive base for this exponential model."
+        },
+        {
+          "math": "A=15/2",
+          "reason": "Use the first point: A times 2 equals 15."
+        },
+        {
+          "math": "Q(t)=(15/2)2^t,\\quad Q(3)=(15/2)8=60",
+          "reason": "Verify the recovered initial value and factor against the second point."
+        }
+      ],
+      "conclusion": "The fitted initial amount is 7.5 units and the per-second factor is 2 under the stated model."
+    },
+    {
+      "title": "Convert a half-life to a continuous rate",
+      "prompt": "A positive quantity halves every 4 seconds.",
+      "steps": [
+        {
+          "math": "Q(t)=A(1/2)^{t/4}",
+          "reason": "Count elapsed four-second intervals in the exponent."
+        },
+        {
+          "math": "(1/2)^{t/4}=e^{(\\ln(1/2)/4)t}",
+          "reason": "Use b^u=exp(u ln b)."
+        },
+        {
+          "math": "k=-\\ln2/4\\approx-0.173286795\\ \\mathrm{s}^{-1}",
+          "reason": "The negative rate represents decay; its reciprocal-time units cancel seconds."
+        }
+      ],
+      "conclusion": "At t=4 seconds the multiplier is exactly 1/2."
+    },
+    {
+      "title": "Reach a quarter of the initial voltage",
+      "prompt": "Given V(t)=12 exp(-t/3) volts, find when it reaches 3 V for t>=0 seconds.",
+      "steps": [
+        {
+          "math": "3/12=1/4=e^{-t/3}",
+          "reason": "Divide matching voltage units to form a dimensionless ratio."
+        },
+        {
+          "math": "\\ln(1/4)=-t/3\\quad\\Longrightarrow\\quad t=3\\ln4",
+          "reason": "Keep the negative sign through inversion."
+        },
+        {
+          "math": "t\\approx4.158883083\\ \\mathrm{s}",
+          "reason": "Round only the final time."
+        },
+        {
+          "math": "12e^{-(3\\ln4)/3}=12/4=3",
+          "reason": "Substitute the exact time to verify the target."
+        }
+      ],
+      "conclusion": "A positive time is consistent with a lower target in a decreasing model."
+    },
+    {
+      "title": "A time constant is not a half-life",
+      "prompt": "For the same decay, compare 3 seconds with the time when half remains.",
+      "steps": [
+        {
+          "math": "V(3)/12=e^{-1}\\approx0.367879441",
+          "reason": "One time constant makes the exponent -1."
+        },
+        {
+          "math": "e^{-t/3}=1/2\\quad\\Longrightarrow\\quad t=3\\ln2",
+          "reason": "A half-life uses the target ratio 1/2."
+        },
+        {
+          "math": "t\\approx2.079441542\\ \\mathrm{s}<3\\ \\mathrm{s}",
+          "reason": "The model reaches one half before it reaches 1/e."
+        }
+      ],
+      "conclusion": "The time constant is 3 seconds, while the half-life is about 2.079 seconds."
+    },
+    {
+      "title": "Find a growth doubling time",
+      "prompt": "A model grows with continuous rate 0.08 per second.",
+      "steps": [
+        {
+          "math": "e^{0.08t}=2",
+          "reason": "Cancel the positive initial value."
+        },
+        {
+          "math": "t=\\ln2/0.08\\approx8.664339757\\ \\mathrm{s}",
+          "reason": "Take natural logs and divide by the rate."
+        },
+        {
+          "math": "e^{0.08(\\ln2/0.08)}=2",
+          "reason": "Substitution verifies the multiplier independently of initial size."
+        }
+      ],
+      "conclusion": "The doubling time is about 8.664 seconds."
+    },
+    {
+      "title": "Convert a five-percent step increase",
+      "prompt": "Find the continuous rate equivalent to 5% growth every one second.",
+      "steps": [
+        {
+          "math": "b=1+5/100=1.05",
+          "reason": "The factor includes the unchanged 100%."
+        },
+        {
+          "math": "k=\\ln(1.05)\\approx0.048790164\\ \\mathrm{s}^{-1}",
+          "reason": "The stated interval is one second."
+        },
+        {
+          "math": "e^{k(1\\ \\mathrm{s})}=1.05",
+          "reason": "The recovered one-second factor checks the conversion."
+        }
+      ],
+      "conclusion": "The continuous rate differs from the numerical percentage rate 0.05 per second."
+    },
+    {
+      "title": "Classify boundary targets before taking logs",
+      "prompt": "For V(t)=12 exp(-t/3), compare targets 12 V, 0 V, and 24 V on t>=0.",
+      "steps": [
+        {
+          "math": "V(0)=12",
+          "reason": "The initial target is reached immediately."
+        },
+        {
+          "math": "12e^{-t/3}>0\\quad\\text{for finite }t",
+          "reason": "Exact zero is never reached at a finite real time."
+        },
+        {
+          "math": "12e^{-t/3}=24\\quad\\Longrightarrow\\quad t=-3\\ln2<0",
+          "reason": "The larger target belongs only to times outside the requested nonnegative domain."
+        }
+      ],
+      "conclusion": "The first target has one allowed time; the other two have no allowed time."
+    },
+    {
+      "title": "Handle a constant model separately",
+      "prompt": "For C(t)=7 units on t>=0, compare targets 7 and 8.",
+      "steps": [
+        {
+          "math": "C(t)=7e^{0t}=7",
+          "reason": "A zero rate makes the output constant."
+        },
+        {
+          "math": "C(t)=7:\\quad t\\in[0,\\infty)",
+          "reason": "Every allowed time reaches the matching target."
+        },
+        {
+          "math": "C(t)=8:\\quad S=\\varnothing",
+          "reason": "No time can change the constant output."
+        }
+      ],
+      "conclusion": "The expression ln(target/7)/0 is not a valid method. Compare the target directly with the constant value."
+    }
+  ],
+  "guided": {
+    "title": "Find a decay threshold with units",
+    "setup": "Use V(t)=10 exp(-t/2) volts, with t in seconds, and target 2 V.",
+    "before": [
+      "Form the dimensionless target/initial ratio.",
+      "Read the continuous rate from the exponent.",
+      "Take a natural logarithm and solve for a nonnegative time."
+    ],
+    "question": {
+      "id": "f05-l04-guided",
+      "familyId": "guided-f05-l04",
+      "familyVersion": 1,
+      "courseId": "f05",
+      "objectiveId": "m01-l04",
+      "category": "procedural",
+      "critical": false,
+      "parameters": {},
+      "prompt": "For the supplied decay, give the target/initial ratio, continuous rate in reciprocal seconds, and time to reach 2 V.",
+      "fields": [
+        {
+          "id": "ratio",
+          "kind": "rational",
+          "label": "Dimensionless target / initial ratio",
+          "expected": "1/5"
+        },
+        {
+          "id": "rate",
+          "kind": "rational",
+          "label": "Continuous rate k",
+          "expected": "-1/2",
+          "unit": "1/s"
+        },
+        {
+          "id": "time",
+          "kind": "numeric",
+          "label": "Threshold time",
+          "expected": 3.2188758248682006,
+          "unit": "s",
+          "absoluteTolerance": 0.0005000001,
+          "relativeTolerance": 0,
+          "help": "Use a calculator and round only the final answer to at least three decimal places."
+        }
+      ],
+      "hints": [
+        "The ratio is 2/10=1/5.",
+        "The exponent -t/2 gives k=-1/2 per second.",
+        "Solve t=-2 ln(1/5)=2 ln5."
+      ],
+      "explanation": [
+        "The ratio is 1/5 and the continuous rate is -1/2 per second.",
+        "The time is 2ln5, approximately 3.218876 seconds. Substitution gives 10/5=2 volts."
+      ],
+      "answerSummary": "Ratio 1/5; rate -1/2 1/s; time about 3.218876 s."
+    },
+    "after": "Explain why the time is positive. Then classify the target zero before attempting the next calculation."
+  },
+  "interaction": {
+    "kind": "refresher-explog-lab",
+    "mode": "decay",
+    "prompt": "Choose a time constant, initial value, and target fraction. Predict finite/immediate/unreachable behavior and any finite threshold time, then compare the curve, positive samples, and threshold line."
+  },
+  "practice": [
+    {
+      "familyId": "f05-model-fit",
+      "variant": "growth"
+    },
+    {
+      "familyId": "f05-model-fit",
+      "variant": "decay"
+    },
+    {
+      "familyId": "f05-model-fit",
+      "variant": "step"
+    },
+    {
+      "familyId": "f05-growth-time",
+      "variant": "half"
+    },
+    {
+      "familyId": "f05-growth-time",
+      "variant": "double"
+    },
+    {
+      "familyId": "f05-growth-time",
+      "variant": "tau"
+    },
+    {
+      "familyId": "f05-threshold",
+      "variant": "finite"
+    },
+    {
+      "familyId": "f05-threshold",
+      "variant": "initial"
+    },
+    {
+      "familyId": "f05-threshold",
+      "variant": "past"
+    },
+    {
+      "familyId": "f05-threshold",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f05-threshold",
+      "variant": "constant"
+    },
+    {
+      "familyId": "f05-rate-conversion",
+      "variant": "discrete"
+    },
+    {
+      "familyId": "f05-rate-conversion",
+      "variant": "continuous"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f05-model-fit",
+      "variant": "decay"
+    },
+    {
+      "familyId": "f05-growth-time",
+      "variant": "both"
+    },
+    {
+      "familyId": "f05-threshold",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f05-rate-conversion",
+      "variant": "continuous"
+    }
+  ],
+  "summary": [
+    "State the assumed exponential form and the interval attached to its factor.",
+    "Use k=ln(b)/Delta to connect discrete factors with continuous rates.",
+    "Distinguish half-life, doubling time, and time constant.",
+    "Classify zero, initial, past-only, and constant targets before solving.",
+    "Check the original model and units after recovering a time."
+  ],
+  "retrieval": "Fit a positive exponential through outputs 8 at time 0 and 2 at time 6 seconds. Give its half-life, continuous rate, and time to reach 1 unit. Explain why exact zero has no finite threshold time.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.1: Exponential Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-1-exponential-functions",
+      "purpose": "Extend these methods with the precise free section and its additional examples."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.6: Exponential and Logarithmic Equations",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-6-exponential-and-logarithmic-equations",
+      "purpose": "Extend these methods with the precise free section and its additional examples."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.7: Exponential and Logarithmic Models",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-7-exponential-and-logarithmic-models",
+      "purpose": "Extend these methods with the precise free section and its additional examples."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.8: Fitting Exponential Models to Data",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-8-fitting-exponential-models-to-data",
+      "purpose": "Extend these methods with the precise free section and its additional examples."
+    }
+  ]
+}

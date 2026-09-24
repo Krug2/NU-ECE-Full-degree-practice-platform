@@ -1,0 +1,281 @@
+{
+  "lessonId": "m05-l01",
+  "objective": "Distinguish additive from multiplicative change and interpret an exponential model's initial value, base, and asymptote.",
+  "independentSubjectReview": "not yet performed",
+  "assessmentPolicy": "Thirty-three named practice variants cover the planned subtopics, including a finite operating-window audit added during coverage review. Four mixed critical checkpoint items sample the four families. All four selected items must pass without assistance; one checkpoint does not claim to test every variant.",
+  "coverage": [
+    {
+      "skill": "Exponents change the input's role",
+      "instruction": [
+        "Exponents change the input's role"
+      ],
+      "examples": [
+        "Power or exponential?"
+      ],
+      "practice": [
+        "mth-exponential-audit:power-confusion"
+      ],
+      "independentCheck": "mth-exponential-audit:mixed",
+      "retrieval": "Identify where the variable appears and compare zero and negative inputs."
+    },
+    {
+      "skill": "Recognize valid bases and constant cases",
+      "instruction": [
+        "Recognize valid bases and constant cases"
+      ],
+      "examples": [
+        "Audit four proposed bases",
+        "Constants, zeros, and alternating signs"
+      ],
+      "practice": [
+        "mth-exponential-audit:base-validity",
+        "mth-exponential-pattern:constant-table"
+      ],
+      "independentCheck": "mth-exponential-audit:mixed",
+      "retrieval": "Explain why a negative ratio sequence is not a standard exponential on every real input."
+    },
+    {
+      "skill": "Read equal-step tables",
+      "instruction": [
+        "Read equal-step tables"
+      ],
+      "examples": [
+        "A linear table over two-second steps",
+        "An exponential table over the same steps",
+        "Unequal gaps need unequal factors",
+        "A single inconsistent record rejects an exact pattern"
+      ],
+      "practice": [
+        "mth-exponential-pattern:linear-table",
+        "mth-exponential-pattern:geometric-table",
+        "mth-exponential-pattern:unequal-steps",
+        "mth-exponential-pattern:contradiction"
+      ],
+      "independentCheck": "mth-exponential-pattern:mixed",
+      "retrieval": "Check input spacing before comparing differences or ratios, and use every record."
+    },
+    {
+      "skill": "Recover the time origin and step factor",
+      "instruction": [
+        "Recover the time origin and step factor"
+      ],
+      "examples": [
+        "The first record is not time zero"
+      ],
+      "practice": [
+        "mth-exponential-pattern:step-model",
+        "mth-exponential-pattern:initial-value"
+      ],
+      "independentCheck": "mth-exponential-pattern:mixed",
+      "retrieval": "Recover time zero from a first record at a nonzero reference time."
+    },
+    {
+      "skill": "Evaluate without losing exactness",
+      "instruction": [
+        "Evaluate without losing exactness"
+      ],
+      "examples": [
+        "Negative and rational inputs",
+        "An exact expression and a decimal request"
+      ],
+      "practice": [
+        "mth-exponential-graph:y-intercept",
+        "mth-exponential-graph:anchor-map",
+        "mth-exponential-audit:power-confusion"
+      ],
+      "independentCheck": "mth-exponential-graph:mixed",
+      "retrieval": "Evaluate a negative and a fractional input, keeping exact and approximate values distinct."
+    },
+    {
+      "skill": "Separate a coefficient, an anchor, and an intercept",
+      "instruction": [
+        "Separate a coefficient, an anchor, and an intercept"
+      ],
+      "examples": [
+        "Coefficient, anchor, and vertical intercept"
+      ],
+      "practice": [
+        "mth-exponential-pattern:initial-value",
+        "mth-exponential-graph:y-intercept",
+        "mth-exponential-audit:coefficient-initial"
+      ],
+      "independentCheck": "mth-exponential-graph:mixed",
+      "retrieval": "Distinguish a, f(h), and f(0) in a shifted formula."
+    },
+    {
+      "skill": "Convert percentages to multipliers",
+      "instruction": [
+        "Convert percentages to multipliers"
+      ],
+      "examples": [
+        "Repeated growth is a product",
+        "Loss percentage and remaining percentage",
+        "Read a factor as a signed rate"
+      ],
+      "practice": [
+        "mth-exponential-factor:percent-growth",
+        "mth-exponential-factor:percent-decay",
+        "mth-exponential-factor:factor-percent"
+      ],
+      "independentCheck": "mth-exponential-factor:mixed",
+      "retrieval": "Convert a factor to the remaining percentage and the signed percentage change."
+    },
+    {
+      "skill": "Compose changes and reverse them",
+      "instruction": [
+        "Compose changes and reverse them"
+      ],
+      "examples": [
+        "Two different percentage changes",
+        "Undo with a reciprocal"
+      ],
+      "practice": [
+        "mth-exponential-factor:repeated-change",
+        "mth-exponential-factor:reverse-change"
+      ],
+      "independentCheck": "mth-exponential-factor:mixed",
+      "retrieval": "Undo a change with its reciprocal rather than negating its percentage."
+    },
+    {
+      "skill": "Change the length of the time step",
+      "instruction": [
+        "Change the length of the time step"
+      ],
+      "examples": [
+        "Convert a three-second factor"
+      ],
+      "practice": [
+        "mth-exponential-factor:step-conversion"
+      ],
+      "independentCheck": "mth-exponential-factor:mixed",
+      "retrieval": "Take the positive root of a multi-second factor and interpret its new interval."
+    },
+    {
+      "skill": "Read a supplied compounding rule",
+      "instruction": [
+        "Read a supplied compounding rule"
+      ],
+      "examples": [
+        "Nominal rate and effective rate"
+      ],
+      "practice": [
+        "mth-exponential-factor:compound-rate"
+      ],
+      "independentCheck": "mth-exponential-factor:mixed",
+      "retrieval": "Count updates and distinguish nominal from effective rate."
+    },
+    {
+      "skill": "Use the natural exponential carefully",
+      "instruction": [
+        "Use the natural exponential carefully"
+      ],
+      "examples": [
+        "A continuous coefficient is not a discrete percentage",
+        "Audit a linearized exponential factor"
+      ],
+      "practice": [
+        "mth-exponential-factor:continuous-rate",
+        "mth-exponential-audit:rate-confusion",
+        "mth-exponential-graph:natural-form"
+      ],
+      "independentCheck": "mth-exponential-factor:mixed",
+      "retrieval": "Compute an effective interval percentage from a continuous-rate coefficient."
+    },
+    {
+      "skill": "Read domain, range, and the baseline",
+      "instruction": [
+        "Read domain, range, and the baseline"
+      ],
+      "examples": [
+        "A growing positive graph",
+        "A decaying graph with a shifted baseline",
+        "Growing distance and decreasing output"
+      ],
+      "practice": [
+        "mth-exponential-graph:positive-growth",
+        "mth-exponential-graph:positive-decay",
+        "mth-exponential-graph:negative-outer",
+        "mth-exponential-graph:shifted-baseline",
+        "mth-exponential-audit:asymptote"
+      ],
+      "independentCheck": "mth-exponential-graph:mixed",
+      "retrieval": "State the open range boundary, approach end and side, and signed output direction."
+    },
+    {
+      "skill": "Combine reflections and coordinate scales",
+      "instruction": [
+        "Combine reflections and coordinate scales"
+      ],
+      "examples": [
+        "A horizontal reflection and compression",
+        "Both reflections with a horizontal stretch"
+      ],
+      "practice": [
+        "mth-exponential-graph:horizontal-reflection",
+        "mth-exponential-graph:anchor-map"
+      ],
+      "independentCheck": "mth-exponential-graph:mixed",
+      "retrieval": "Map a parent anchor using both coordinate scales and both signs."
+    },
+    {
+      "skill": "Test ratios relative to a nonzero baseline",
+      "instruction": [
+        "Test ratios relative to a nonzero baseline"
+      ],
+      "examples": [
+        "Subtract the baseline before taking ratios"
+      ],
+      "practice": [
+        "mth-exponential-pattern:shifted-table",
+        "mth-exponential-audit:offset-ratio"
+      ],
+      "independentCheck": "mth-exponential-pattern:mixed",
+      "retrieval": "Explain why a nonzero baseline changes which ratios remain constant."
+    },
+    {
+      "skill": "Separate a formula from an observation schedule",
+      "instruction": [
+        "Separate a formula from an observation schedule"
+      ],
+      "examples": [
+        "A formula can extend beyond the sampling indices",
+        "A finite operating window has a finite range"
+      ],
+      "practice": [
+        "mth-exponential-audit:discrete-domain",
+        "mth-exponential-audit:operating-window"
+      ],
+      "independentCheck": "mth-exponential-audit:mixed",
+      "retrieval": "Separate a full formula domain, recorded indices, and a closed physical window with its attained output range."
+    },
+    {
+      "skill": "Judge finite evidence and finite displays",
+      "instruction": [
+        "Judge finite evidence and finite displays"
+      ],
+      "examples": [
+        "A rounded display does not reach the asymptote",
+        "Finite agreement cannot prove a universal law",
+        "A single inconsistent record rejects an exact pattern"
+      ],
+      "practice": [
+        "mth-exponential-audit:asymptote",
+        "mth-exponential-audit:finite-evidence",
+        "mth-exponential-pattern:contradiction"
+      ],
+      "independentCheck": "mth-exponential-audit:mixed",
+      "retrieval": "Give a finite-data counterexample and explain why rounded equality does not prove exact equality."
+    }
+  ],
+  "verificationSources": [
+    "tests/exponential-functions.test.ts",
+    "tests/exponential-investigation.test.ts",
+    "tests/exponential-pattern-families.test.ts",
+    "tests/exponential-factor-families.test.ts",
+    "tests/exponential-graph-families.test.ts",
+    "tests/exponential-audit-families.test.ts",
+    "tests/exponential-lesson.test.ts",
+    "tests/lesson-content.test.ts",
+    "tests/choice-labels.test.ts"
+  ]
+}

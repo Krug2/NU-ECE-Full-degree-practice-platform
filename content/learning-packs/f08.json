@@ -1,0 +1,42 @@
+{
+  "courseId": "f08",
+  "title": "Calculus recall",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Recover limits and continuity, derivatives and composite rules, signed accumulation, antiderivatives, and initial conditions. This optional refresher does not award university credit or establish enrollment eligibility. Familiarity and assisted work are separate from independent checkpoint evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From nearby change to accumulated change",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Limits, one-sided behavior, and continuity",
+          "objective": "Evaluate elementary limits, compare one-sided behavior, and distinguish a nearby limit from a function value and continuity."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Derivative meaning, polynomial rules, and rates",
+          "objective": "Connect secants to instantaneous derivatives, differentiate polynomials, construct tangent lines, and interpret first and second derivatives with units and nondifferentiable corners."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Product, quotient, chain, and elementary rules",
+          "objective": "Apply product, quotient, and chain rules, including elementary trigonometric, exponential, logarithmic, reciprocal, and root derivatives on valid domains."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Integrals, signed accumulation, and the fundamental theorem",
+          "objective": "Evaluate definite polynomial integrals, distinguish signed accumulation from total area or distance, and use the fundamental theorem with variable bounds and average values."
+        },
+        {
+          "id": "m01-l05",
+          "title": "Antiderivatives, substitution, and initial conditions",
+          "objective": "Recover antiderivatives with constants, reverse simple chain rules, and use one or two initial conditions to select and verify a particular function."
+        }
+      ]
+    }
+  ]
+}

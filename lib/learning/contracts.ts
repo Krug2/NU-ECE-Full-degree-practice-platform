@@ -37,6 +37,8 @@ import { rationalFunctionCaseSchema } from "./rational-function";
 import { signChartCaseSchema } from "./sign-chart";
 import { variationLabCaseSchema } from "./variation-investigation";
 import { radicalLabCaseSchema } from "./radical-investigation";
+import { exponentialLabCaseSchema } from "./exponential-investigation";
+import { logarithmLabCaseSchema } from "./logarithm-investigation";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -121,6 +123,8 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("logarithm-lab"),prompt:text,cases:z.array(logarithmLabCaseSchema).min(3).max(6)}).strict(),
+    z.object({kind:z.literal("exponential-lab"),prompt:text,cases:z.array(exponentialLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("radical-lab"),prompt:text,cases:z.array(radicalLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("variation-lab"),prompt:text,cases:z.array(variationLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("sign-chart-lab"),prompt:text,cases:z.array(signChartCaseSchema).min(3).max(6)}).strict(),
@@ -149,6 +153,13 @@ export const lessonSchema = z.object({
     phs231StaticsActivitySchema,
     phs231ElasticActivitySchema,
     phs231MaterialActivitySchema,
+    z.object({kind:z.literal("refresher-programming-lab"),mode:z.enum(["state","loop","function","debug"]),prompt:text}).strict(),
+    z.object({kind:z.literal("refresher-complex-lab"),mode:z.enum(["arithmetic","conjugate","polar","roots"]),prompt:text}).strict(),
+    z.object({kind:z.literal("refresher-calculus-lab"),mode:z.enum(["limit","secant","chain","accumulation","initial"]),prompt:text}).strict(),
+    z.object({kind:z.literal("refresher-vector-lab"),mode:z.enum(["components","addition","dot","cross","coordinates"]),prompt:text}).strict(),
+    z.object({kind:z.literal("refresher-measurement-lab"),mode:z.enum(["prefix","conversion","dimensions","rounding","measurement"]),prompt:text}).strict(),
+    z.object({kind:z.literal("refresher-explog-lab"),mode:z.enum(["growth","inverse","rules","decay","decibels"]),prompt:text}).strict(),
+    z.object({kind:z.literal("refresher-trig-lab"),mode:z.enum(["circle","wave","equations"]),prompt:text}).strict(),
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),

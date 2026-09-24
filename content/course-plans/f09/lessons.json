@@ -1,0 +1,512 @@
+{
+  "courseId": "f09",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Rectangular numbers and arithmetic",
+      "objective": "Interpret real and imaginary components, use powers of i and principal negative square roots, and add, subtract, scale, and multiply complex numbers.",
+      "requires": [],
+      "scope": [
+        "i²=-1; electrical j means the same imaginary unit, but existing answer fields accept i",
+        "a+bi represents coordinates(a,b); Im(z)=b is real, not bi",
+        "Real numbers and zero are included among complex numbers",
+        "Addition/subtraction/scaling by components; multiplication distributes with i²=-1",
+        "Powers of i cycle modulo4 including negative exponents",
+        "Principal square root of a negative real versus both solutions of a squared equation"
+      ],
+      "workedExamples": [
+        "Interpret -3+4i and write its real/imaginary parts",
+        "Translate electrical2-j3 into app notation2-3i",
+        "Add(2-3i)+(-5+i)=-3-2i",
+        "Subtract(1+4i)-(-2+3i)=3+i",
+        "Scale -2(3-i)=-6+2i",
+        "Multiply(2+i)(1-3i)=5-5i",
+        "Reduce i^27 and i^(-3)",
+        "Principal sqrt(-12)=2sqrt(3)i, while z²=-12 has two roots"
+      ],
+      "guided": "Distribute a complex product and identify its components.",
+      "interaction": {
+        "kind": "refresher-complex-lab",
+        "mode": "arithmetic",
+        "purpose": "Change two rectangular numbers and choose addition, subtraction, or multiplication. Predict the exact result, then reveal component arithmetic and a complex-plane comparison. Explain why multiplication cannot use componentwise multiplication."
+      },
+      "practice": [
+        [
+          "complex-components",
+          "read"
+        ],
+        [
+          "complex-components",
+          "electrical"
+        ],
+        [
+          "complex-components",
+          "classification"
+        ],
+        [
+          "complex-arithmetic",
+          "add"
+        ],
+        [
+          "complex-arithmetic",
+          "subtract"
+        ],
+        [
+          "complex-arithmetic",
+          "scale"
+        ],
+        [
+          "source-complex",
+          "multiply"
+        ],
+        [
+          "complex-unit",
+          "positive-power"
+        ],
+        [
+          "complex-unit",
+          "negative-power"
+        ],
+        [
+          "complex-unit",
+          "negative-root"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "complex-components",
+          "audit"
+        ],
+        [
+          "complex-arithmetic",
+          "audit"
+        ],
+        [
+          "source-complex",
+          "multiply"
+        ],
+        [
+          "complex-unit",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Report bi as the imaginary part",
+          "Confusing a coordinate with its basis factor",
+          "Im(a+bi)=b; multiplying that coefficient by i rebuilds the imaginary term."
+        ],
+        [
+          "Use i²=1",
+          "Importing ordinary positive-square intuition",
+          "The defining relation is i²=-1; distribute before collecting real terms."
+        ],
+        [
+          "Treat one square root as every equation solution",
+          "Confusing a function value with a root set",
+          "The principal square root is one choice; solving z²=w requires all branches."
+        ]
+      ],
+      "readings": [
+        "at2-2.4",
+        "mit-4.3"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-209",
+        "cee-300",
+        "cee-310",
+        "cee-324"
+      ],
+      "acceptance": "Four checkpoints cover coordinate meaning including real/zero cases, signed arithmetic, full complex products, cyclic powers, and principal versus all square roots."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Conjugates, magnitude, division, and equations",
+      "objective": "Use conjugation and magnitude identities, divide by nonzero complex numbers including axis cases, and solve and verify a linear complex equation.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "Conjugation reflects the imaginary coordinate; distinguish conjugate from additive inverse",
+        "|z|=sqrt(a²+b²), z conjugate(z)=|z|²; magnitude nonnegative and zero only at z0",
+        "Reciprocal conjugate(z)/|z|² for z≠0",
+        "Complex division uses a nonzero denominator; pure real or pure imaginary denominators are permitted",
+        "Linear alpha z=beta and substitution verification; no systems of complex equations"
+      ],
+      "workedExamples": [
+        "Conjugate -2+5i=-2-5i while its negative is2-5i",
+        "Magnitude of -3+4i is5 and z zbar=25",
+        "Conjugate twice recovers the number; real numbers equal their conjugates",
+        "Reciprocal of1-2i=(1+2i)/5",
+        "Divide(3+2i)/(1-i)=(1+5i)/2",
+        "Divide(2-4i)/(2i)=-2-i and divide by a real scalar",
+        "Reject division by0 even if numerator is0",
+        "Solve(1+i)z=3-i, obtaining1-2i and verify"
+      ],
+      "guided": "Use a conjugate to divide, then check by multiplying the quotient back.",
+      "interaction": {
+        "kind": "refresher-complex-lab",
+        "mode": "conjugate",
+        "purpose": "Change a numerator and denominator. Predict the denominator's conjugate, squared magnitude, and quotient. Reveal reflected points, the quotient, and a product-back check. Set the denominator to zero and inspect the explicit undefined-state message."
+      },
+      "practice": [
+        [
+          "complex-conjugate",
+          "reflection"
+        ],
+        [
+          "complex-conjugate",
+          "norm"
+        ],
+        [
+          "complex-conjugate",
+          "identity"
+        ],
+        [
+          "complex-conjugate",
+          "zero"
+        ],
+        [
+          "complex-division",
+          "reciprocal"
+        ],
+        [
+          "complex-division",
+          "real-axis"
+        ],
+        [
+          "complex-division",
+          "imaginary-axis"
+        ],
+        [
+          "complex-division",
+          "zero"
+        ],
+        [
+          "source-complex",
+          "divide"
+        ],
+        [
+          "complex-equation",
+          "linear"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "complex-conjugate",
+          "audit"
+        ],
+        [
+          "complex-division",
+          "axes-audit"
+        ],
+        [
+          "source-complex",
+          "divide"
+        ],
+        [
+          "complex-equation",
+          "linear"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Negate both parts when conjugating",
+          "Confusing reflection with additive inverse",
+          "Keep the real part and reverse only the imaginary coefficient."
+        ],
+        [
+          "Use a²-b² as the conjugate product",
+          "Forgetting the second minus from i²",
+          "(bi)(-bi) contributes positive b²."
+        ],
+        [
+          "Divide matching components",
+          "Mistaking complex division for independent real divisions",
+          "Multiply numerator and denominator by the denominator's conjugate."
+        ],
+        [
+          "Exclude a pure imaginary divisor",
+          "Confusing nonreal with zero",
+          "Only the complex zero is forbidden; check c²+d²>0."
+        ]
+      ],
+      "readings": [
+        "at2-2.4",
+        "mit-4.3",
+        "mit-4.4"
+      ],
+      "supports": [
+        "mth-215",
+        "cee-300",
+        "cee-310",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Independent work covers conjugate versus negative, positive norm identities and zero, both denominator axes and zero rejection, general division, and a verified equation."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Polar coordinates, arguments, and Euler form",
+      "objective": "Convert between rectangular, polar, and Euler forms, select a principal argument in the stated range, and use conjugate exponential identities while treating zero's argument as undefined.",
+      "requires": [
+        "m01-l02"
+      ],
+      "scope": [
+        "r≥0 and z=r(cosθ+i sinθ)=r e^(iθ), radians in Euler form",
+        "Argument modulo2π; principal Arg in(-π,π], degree equivalents(-180,180] when explicitly requested",
+        "atan2 uses both signs; negative real axis principalπ, not-π",
+        "Exact standard-angle conversions and general numeric phase to3decimaldegrees",
+        "Zero modulus permits every geometric angle but has no defined argument",
+        "Euler real/imaginary projections and inverse identities for cosine and sine"
+      ],
+      "workedExamples": [
+        "-sqrt(3)+i has modulus2 and principal angle5π/6",
+        "-1-i has modulus sqrt(2) and principal angle-3π/4",
+        "Negative real and imaginary axes need explicit angle choices",
+        "Convert4e^(-iπ/6) to2sqrt(3)-2i",
+        "Convert e^(i5π/2) to i and principalπ/2",
+        "For -2+3i, atan2 gives about123.690 degrees",
+        "Zero has modulus0 and undefined argument",
+        "Recover cosine/sine from a conjugate pair of unit exponentials"
+      ],
+      "guided": "Convert one exact rectangular number to modulus/principal argument and back using Euler's formula.",
+      "interaction": {
+        "kind": "refresher-complex-lab",
+        "mode": "polar",
+        "purpose": "Change nonnegative radius and a degree-labeled standard angle. Predict rectangular value and its principal radian argument, then reveal an equal-scale complex-plane plot and conversion table. Compare full-turn shifts and radius zero."
+      },
+      "practice": [
+        [
+          "complex-polar",
+          "to-polar"
+        ],
+        [
+          "complex-polar",
+          "axes"
+        ],
+        [
+          "complex-polar",
+          "general"
+        ],
+        [
+          "complex-polar",
+          "zero"
+        ],
+        [
+          "complex-polar",
+          "from-polar"
+        ],
+        [
+          "complex-polar",
+          "euler"
+        ],
+        [
+          "complex-euler",
+          "coterminal"
+        ],
+        [
+          "complex-euler",
+          "projections"
+        ],
+        [
+          "complex-euler",
+          "inverse"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "complex-polar",
+          "to-polar"
+        ],
+        [
+          "complex-polar",
+          "general"
+        ],
+        [
+          "complex-polar",
+          "euler"
+        ],
+        [
+          "complex-euler",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Use arctan(b/a) without quadrant repair",
+          "The ratio loses both component signs",
+          "Use atan2 or explicitly combine a reference angle with the quadrant."
+        ],
+        [
+          "Write e^(i90) for90degrees",
+          "Mixing an angle label with Euler's radian convention",
+          "Convert90degrees toπ/2 before writing the exponential."
+        ],
+        [
+          "Demand one angle for zero",
+          "Extending nonzero polar reasoning to a singular point",
+          "Every angle gives the same zero point, so Arg(0) is undefined."
+        ],
+        [
+          "Return a coterminal angle outside the requested interval",
+          "Ignoring the chosen representation",
+          "Normalize to(-π,π], including+π on the negative real axis."
+        ]
+      ],
+      "readings": [
+        "at2-10.5",
+        "mit-4.5",
+        "mit-4.6",
+        "mit-4.7"
+      ],
+      "supports": [
+        "csc-209",
+        "cee-300",
+        "cee-310",
+        "cee-324",
+        "cee-420",
+        "cee-430"
+      ],
+      "acceptance": "Checkpoint verifies exact and numeric quadrants, Euler conversion with radians, coterminal/principal distinctions, zero, and conjugate exponential identities."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Polar operations, powers, and all roots",
+      "objective": "Use polar multiplication, division, and integer powers, recover all distinct low-order roots, and choose rectangular addition when polar angles cannot be added directly.",
+      "requires": [
+        "m01-l03"
+      ],
+      "scope": [
+        "Multiplication multiplies radii/adds arguments; division divides radii/subtracts arguments for nonzero divisor",
+        "Integer powers including negative powers of nonzero numbers and zeroth power",
+        "All nth roots r^(1/n)e^(i(θ+2πk)/n), k0..n-1, n2/3/4",
+        "Nonzero roots evenly spaced; z^n=0 has one distinct root0 with multiplicityn",
+        "Principal square root differs from all roots; keep stated branch convention",
+        "Addition/subtraction use rectangular components; no addition-of-angles shortcut",
+        "Prepares phasor/impedance work without claiming to teach AC circuit models or transform theory"
+      ],
+      "workedExamples": [
+        "(2e^(iπ/3))(3e^(-iπ/6))=6e^(iπ/6)",
+        "(4e^(-iπ/2))/(2e^(iπ/4))=2e^(-i3π/4)",
+        "(1+i)^4=-4 by magnitude and phase",
+        "(2e^(iπ/3))^(-2)=1/4 e^(-i2π/3)",
+        "Square roots of-9 are±3i; principal value3i",
+        "Cube roots of8 are2,-1±sqrt(3)i",
+        "Fourth roots of-16 are±sqrt(2)±sqrt(2)i",
+        "Add2e^(iπ/2)+2e^(-iπ/2)=0 despite positive magnitudes",
+        "z^4=0 has one distinct root, not four different zero arguments"
+      ],
+      "guided": "Find every cube root of a positive real value and verify their powers.",
+      "interaction": {
+        "kind": "refresher-complex-lab",
+        "mode": "roots",
+        "purpose": "Choose a root order, root radius, and positive or negative real target. Predict every distinct complex root and the count; reveal evenly spaced points and a power-back table. Test zero separately from nonzero root circles."
+      },
+      "practice": [
+        [
+          "complex-polar-operation",
+          "multiply"
+        ],
+        [
+          "complex-polar-operation",
+          "divide"
+        ],
+        [
+          "complex-polar-operation",
+          "reciprocal"
+        ],
+        [
+          "complex-power",
+          "positive"
+        ],
+        [
+          "complex-power",
+          "negative"
+        ],
+        [
+          "complex-power",
+          "zero"
+        ],
+        [
+          "complex-roots",
+          "square"
+        ],
+        [
+          "complex-roots",
+          "cube"
+        ],
+        [
+          "complex-roots",
+          "fourth"
+        ],
+        [
+          "complex-roots",
+          "zero"
+        ],
+        [
+          "complex-polar-sum",
+          "cartesian"
+        ],
+        [
+          "complex-polar-sum",
+          "cancellation"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "complex-polar-operation",
+          "audit"
+        ],
+        [
+          "complex-power",
+          "audit"
+        ],
+        [
+          "complex-roots",
+          "all-orders"
+        ],
+        [
+          "complex-polar-sum",
+          "cartesian"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Add magnitudes and angles for addition",
+          "Transferring multiplication's rule to another operation",
+          "Convert to rectangular components before adding."
+        ],
+        [
+          "Divide the angle but omit2πk",
+          "Using only one representative of the original argument",
+          "Add full turns before division to reveal every distinct root."
+        ],
+        [
+          "Report repeated coterminal roots",
+          "Not checking distinct points",
+          "Use exactly k0 throughn-1 for a nonzero target and verify powers."
+        ],
+        [
+          "Ignore zero in negative powers",
+          "Applying reciprocal rules without a nonzero base",
+          "Zero has no reciprocal, while positive powers and their zero roots are defined."
+        ]
+      ],
+      "readings": [
+        "at2-10.5",
+        "mit-4.6"
+      ],
+      "supports": [
+        "csc-209",
+        "cee-300",
+        "cee-310",
+        "cee-324",
+        "cee-420",
+        "cee-430"
+      ],
+      "acceptance": "Four independent checks cover polar product/quotient, positive/negative/zero power rules, complete square/cube/fourth root sets and principal/zero distinctions, and rectangular addition."
+    }
+  ]
+}

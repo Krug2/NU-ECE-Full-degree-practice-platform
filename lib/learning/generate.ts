@@ -59,8 +59,23 @@ import { radicalDomainFamilyIds,radicalDomainQuestion } from "./families/mth-rad
 import { radicalTransformFamilyIds,radicalTransformQuestion } from "./families/mth-radical-transform";
 import { restrictedInverseFamilyIds,restrictedInverseQuestion } from "./families/mth-restricted-inverse";
 import { radicalAuditFamilyIds,radicalAuditQuestion } from "./families/mth-radical-audit";
+import { exponentialPatternFamilyIds,exponentialPatternQuestion } from "./families/mth-exponential-pattern";
+import { exponentialFactorFamilyIds,exponentialFactorQuestion } from "./families/mth-exponential-factor";
+import { exponentialGraphFamilyIds,exponentialGraphQuestion } from "./families/mth-exponential-graph";
+import { exponentialAuditFamilyIds,exponentialAuditQuestion } from "./families/mth-exponential-audit";
+import { refresherFamilyIds, refresherQuestion } from "./families/refreshers";
+import { logInverseFamilyIds,logInverseQuestion } from "./families/mth-log-inverse";
+import { logDomainFamilyIds,logDomainQuestion } from "./families/mth-log-domain";
+import { logGraphFamilyIds,logGraphQuestion } from "./families/mth-log-graph";
+import { logAuditFamilyIds,logAuditQuestion } from "./families/mth-log-audit";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const [ids,generate] of [[logInverseFamilyIds,logInverseQuestion],[logDomainFamilyIds,logDomainQuestion],[logGraphFamilyIds,logGraphQuestion],[logAuditFamilyIds,logAuditQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
+for(const [ids,generate] of [[exponentialPatternFamilyIds,exponentialPatternQuestion],[exponentialFactorFamilyIds,exponentialFactorQuestion],[exponentialGraphFamilyIds,exponentialGraphQuestion],[exponentialAuditFamilyIds,exponentialAuditQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
 for(const [ids,generate] of [[radicalDomainFamilyIds,radicalDomainQuestion],[radicalTransformFamilyIds,radicalTransformQuestion],[restrictedInverseFamilyIds,restrictedInverseQuestion],[radicalAuditFamilyIds,radicalAuditQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
@@ -69,6 +84,10 @@ for(const [ids,generate] of [[basicVariationFamilyIds,basicVariationQuestion],[j
 }
 for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion],[polynomialZeroFamilyIds,polynomialZeroQuestion],[polynomialSignFamilyIds,polynomialSignQuestion],[phs231MeasurementFamilyIds,phs231MeasurementQuestion],[phs231VectorFamilyIds,phs231VectorQuestion],[phs231MotionFamilyIds,phs231MotionQuestion],[phs231FrameFamilyIds,phs231FrameQuestion],[phs231ProjectileFamilyIds,phs231ProjectileQuestion],[phs231ForceFamilyIds,phs231ForceQuestion],[phs231FrictionFamilyIds,phs231FrictionQuestion],[phs231DragFamilyIds,phs231DragQuestion],[phs231CircularFamilyIds,phs231CircularQuestion],[phs231GravityFamilyIds,phs231GravityQuestion],[phs231WorkFamilyIds,phs231WorkQuestion],[phs231EnergyFamilyIds,phs231EnergyQuestion],[phs231ImpulseFamilyIds,phs231ImpulseQuestion],[phs231CollisionFamilyIds,phs231CollisionQuestion],[phs231RotationFamilyIds,phs231RotationQuestion],[phs231AngularFamilyIds,phs231AngularQuestion],[phs231RollingFamilyIds,phs231RollingQuestion],[phs231StaticsFamilyIds,phs231StaticsQuestion],[phs231ElasticFamilyIds,phs231ElasticQuestion],[phs231MaterialEvidenceFamilyIds,phs231MaterialEvidenceQuestion],[phs231FractureAuditFamilyIds,phs231FractureAuditQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
+}
+for (const id of refresherFamilyIds) {
+  if (generators.has(id)) throw new Error("Duplicate refresher family");
+  generators.set(id, refresherQuestion);
 }
 export const availableFamilyIds = new Set(generators.keys());
 export function generateQuestions(slots: QuestionSlot[], seed: string): Question[] {

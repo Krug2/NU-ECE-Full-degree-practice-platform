@@ -1,0 +1,324 @@
+{
+  "id": "m01-l03",
+  "courseId": "f04",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Sinusoidal graphs, phase, and inverse values",
+  "objective": "Interpret sinusoidal amplitude, period, midline, and phase in angular and time models, and select inverse-trigonometric principal values.",
+  "why": "Sine and cosine turn rotation into a changing coordinate. Reading their scale, timing, and phase lets you interpret a signal before calculating individual samples. Inverse values solve a different problem: they recover one angle under a declared range convention.",
+  "estimatedMinutes": 85,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Radians, the unit circle, and exact values"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For $y=A\\sin(B(x-h))+D$ or its cosine version, amplitude is $|A|$, midline is D, and period is $2\\pi/|B|$ when x is in radians and $B\\neq0$. The written phase shift is h. Negative A or B changes orientation, not the positive amplitude or period.",
+        "Inverse sine returns an angle in $[-\\pi/2,\\pi/2]$; inverse cosine in $[0,\\pi]$; inverse tangent in $(-\\pi/2,\\pi/2)$. Sine and cosine inverses accept only inputs in [-1,1]. A principal inverse value is one selected angle, not every solution to an equation."
+      ]
+    },
+    {
+      "heading": "A moving coordinate becomes a graph",
+      "paragraphs": [
+        "As a point rotates on the unit circle, its vertical coordinate traces sine and its horizontal coordinate traces cosine. Both stay between -1 and 1 and repeat after $2\\pi$ radians. Sine starts at 0 and rises; cosine starts at 1. Their quarter-cycle anchors capture the main shape without pretending the curve is made of straight line segments.",
+        "Adding D shifts every output by D. Multiplying by A scales every distance from the midline by $|A|$; a negative A reflects the outputs across that midline. The output interval is $[D-|A|,D+|A|]$. Amplitude is a distance, so reporting a negative amplitude confuses magnitude with orientation."
+      ]
+    },
+    {
+      "heading": "Factor the input before reading phase",
+      "paragraphs": [
+        "The internal angle $B(x-h)$ is zero at x=h. A full internal turn requires an input increase of $2\\pi/|B|$, explaining the period formula. With negative B, increasing x runs through the circle clockwise; the graph still repeats after a positive input interval.",
+        "If the model is written $A\\sin(Bx+C)+D$, solve $Bx+C=0$ to get $h=-C/B$. The raw constant C is a phase angle, not the horizontal shift. For example, $3x+\\pi/2=3(x+\\pi/6)$, so the written shift is $-\\pi/6$. A shift plus any whole period gives an equivalent wave; these questions request the shift from the displayed factorization."
+      ]
+    },
+    {
+      "heading": "Build and check a cycle",
+      "paragraphs": [
+        "Start at h, then move right by T/4 four times, where $T=2\\pi/|B|$. For positive B, sine's internal values are 0, 1, 0, -1, 0 and cosine's are 1, 0, -1, 0, 1. Multiply each by A and add D. For negative B, sine's signs reverse; cosine's sequence stays the same because cosine is even.",
+        "The first and last anchor share an output because they are one period apart. Their inputs differ. To evaluate another point, calculate the entire internal angle before applying the trigonometric function; do not apply the outside scaling to the input. Check that every output lies within the claimed range."
+      ]
+    },
+    {
+      "heading": "Time signals: radians per second versus cycles per second",
+      "paragraphs": [
+        "In $v(t)=A\\sin(\\omega t+\\phi)+D$, let t be seconds, v be volts, positive $\\omega$ be rad/s, and $\\phi$ be radians. The frequency in cycles per second is $f=\\omega/(2\\pi)$ hertz, and the period is $T=1/f=2\\pi/\\omega$ seconds. The delay written as $t-h$ is $h=-\\phi/\\omega$ seconds.",
+        "A coefficient of $4\\pi$ rad/s therefore means 2 Hz, not 4pi Hz. A positive delay moves the starting phase to a later time; a negative delay advances it. Angle and time phase values are related by the angular frequency, so attaching seconds to a raw phase angle is incorrect. The same amplitude and midline ideas now carry volts."
+      ]
+    },
+    {
+      "heading": "Why an inverse needs a principal range",
+      "paragraphs": [
+        "Sine repeats, and even within a single turn it usually gives the same output at two different angles. An inverse function must assign one output to each accepted input. Restricting sine to $[-\\pi/2,\\pi/2]$ makes it one-to-one; cosine uses $[0,\\pi]$ and tangent uses $(-\\pi/2,\\pi/2)$. Tangent's endpoints are excluded because tangent is undefined there.",
+        "The inputs of arcsin and arccos lie in [-1,1]; arctan accepts every finite real input. The inverse outputs are angles, so label them in radians or degrees as requested. The notation $\\sin^{-1}$ commonly means arcsin, whereas $\\csc\\theta=1/\\sin\\theta$ is a reciprocal. Writing arcsin explicitly avoids this ambiguity."
+      ]
+    },
+    {
+      "heading": "Inverse compositions do not erase every angle",
+      "paragraphs": [
+        "For a valid ratio u, $\\sin(\\arcsin u)=u$. In the other order, $\\arcsin(\\sin\\theta)=\\theta$ only when theta lies in the selected principal range. Otherwise, choose the angle in that range with the same sine. Similar restrictions apply to cosine and tangent.",
+        "For example, sine at 150 degrees is 1/2, so inverse sine returns 30 degrees, not 150. That result is correct for the inverse function but incomplete as the answer to sin(theta)=1/2 over a full turn. The next lesson recovers every branch. If these transformations are new, revisit F03's function and inverse lessons before relying on a calculator shortcut."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A reflected sine wave",
+      "prompt": "Read $y=-3\\sin(2(x-\\pi/4))+1$ and find five anchors.",
+      "steps": [
+        {
+          "math": "|A|=3,\\quad D=1,\\quad T=\\frac{2\\pi}{2}=\\pi,\\quad h=\\frac\\pi4",
+          "reason": "Take the absolute coefficient for amplitude and use the factored input for shift."
+        },
+        {
+          "math": "[D-|A|,D+|A|]=[-2,4],\\quad T/4=\\pi/4",
+          "reason": "The range surrounds the midline and consecutive anchors are a quarter-period apart."
+        },
+        {
+          "math": "x:\\ \\pi/4,\\ \\pi/2,\\ 3\\pi/4,\\ \\pi,\\ 5\\pi/4",
+          "reason": "Start at the shift, then add the quarter-period repeatedly."
+        },
+        {
+          "math": "y:\\ 1,\\ -2,\\ 1,\\ 4,\\ 1",
+          "reason": "Apply -3 times the sine sequence 0,1,0,-1,0, then add 1."
+        }
+      ],
+      "conclusion": "Amplitude is 3, period pi, and the wave initially falls from its midline because A is negative."
+    },
+    {
+      "title": "A phase constant must be divided",
+      "prompt": "Read $y=2\\cos(3x+\\pi/2)-1$.",
+      "steps": [
+        {
+          "math": "3x+\\pi/2=3(x+\\pi/6)",
+          "reason": "Factor the input multiplier from the entire argument."
+        },
+        {
+          "math": "h=-\\pi/6,\\quad T=2\\pi/3,\\quad |A|=2,\\quad D=-1",
+          "reason": "The expression x+pi/6 is x minus a negative shift."
+        },
+        {
+          "math": "y(h)=2\\cos0-1=1,\\quad \\text{range }[-3,1]",
+          "reason": "Cosine starts at its signed extreme, which checks both the offset and range."
+        }
+      ],
+      "conclusion": "The written shift is -pi/6, not -pi/2. The wave starts this cycle at its maximum of 1."
+    },
+    {
+      "title": "Translate a signal's angular rate",
+      "prompt": "For $v(t)=2\\sin(4\\pi t-\\pi/2)+1$ volts, find amplitude, frequency, period, and delay.",
+      "steps": [
+        {
+          "math": "\\omega=4\\pi\\ \\mathrm{rad/s},\\quad f=\\frac{4\\pi}{2\\pi}=2\\ \\mathrm{Hz}",
+          "reason": "A complete cycle corresponds to 2pi radians."
+        },
+        {
+          "math": "T=1/f=1/2\\ \\mathrm s,\\quad h=-\\frac{-\\pi/2}{4\\pi}=1/8\\ \\mathrm s",
+          "reason": "Convert angular frequency to a time period and phase angle to a time delay."
+        },
+        {
+          "math": "v(t)=2\\sin(4\\pi(t-1/8))+1",
+          "reason": "Refactor the model and substitute t=1/8 to check that the phase is zero."
+        }
+      ],
+      "conclusion": "Amplitude is 2 V, midline 1 V, period 1/2 s, and delay 1/8 s. At the delay, the sine contribution is zero."
+    },
+    {
+      "title": "Find the selected inverse representatives",
+      "prompt": "Evaluate $\\arcsin(\\sin(5\\pi/6))$, $\\arccos(\\cos(7\\pi/6))$, and $\\arctan(\\tan(3\\pi/4))$.",
+      "steps": [
+        {
+          "math": "\\sin(5\\pi/6)=1/2,\\quad \\arcsin(1/2)=\\pi/6",
+          "reason": "Select the angle between -pi/2 and pi/2 with that sine."
+        },
+        {
+          "math": "\\cos(7\\pi/6)=-\\sqrt3/2,\\quad \\arccos(-\\sqrt3/2)=5\\pi/6",
+          "reason": "Select the angle between 0 and pi with that cosine."
+        },
+        {
+          "math": "\\tan(3\\pi/4)=-1,\\quad \\arctan(-1)=-\\pi/4",
+          "reason": "Select the angle strictly between -pi/2 and pi/2 with that tangent."
+        }
+      ],
+      "conclusion": "The inverse functions return pi/6, 5pi/6, and -pi/4. None of the original angles was in its inverse's required range."
+    },
+    {
+      "title": "A domain check comes before a calculator result",
+      "prompt": "Compare arcsin(6/5) with the reciprocal of sin(pi/6).",
+      "steps": [
+        {
+          "math": "6/5>1,\\quad -1\\leq\\sin\\theta\\leq1",
+          "reason": "No real angle can have sine 6/5."
+        },
+        {
+          "math": "\\arcsin(6/5)\\ \\text{has no real value}",
+          "reason": "This is a domain failure, not a rounding issue or a request for a coterminal angle."
+        },
+        {
+          "math": "\\csc(\\pi/6)=1/\\sin(\\pi/6)=1/(1/2)=2",
+          "reason": "A reciprocal acts on the sine result and returns a ratio, not an angle."
+        }
+      ],
+      "conclusion": "Inverse sine and reciprocal sine perform different operations. Keep the input and output types visible."
+    },
+    {
+      "title": "A negative input multiplier",
+      "prompt": "Find the first three anchors of $y=2\\sin(-2x)$ starting at x=0.",
+      "steps": [
+        {
+          "math": "T=2\\pi/|-2|=\\pi,\\quad T/4=\\pi/4",
+          "reason": "Use the magnitude of the input multiplier for a positive period."
+        },
+        {
+          "math": "x=0,\\pi/4,\\pi/2\\ \\Longrightarrow\\ -2x=0,-\\pi/2,-\\pi",
+          "reason": "Increasing x makes the internal angle decrease."
+        },
+        {
+          "math": "y=0,-2,0",
+          "reason": "The negative internal quarter-turn produces a negative sine."
+        }
+      ],
+      "conclusion": "The period remains pi, but the wave initially falls. Replacing B by its magnitude without changing orientation would give the wrong samples."
+    }
+  ],
+  "guided": {
+    "title": "Read the model before calculating",
+    "setup": "Use $y=-2\\sin(3(x+\\pi/6))+4$ and a separate inverse-sine expression.",
+    "before": [
+      "Identify the outside coefficient, midline, and factored shift.",
+      "Use a positive period and distinguish it from the phase shift.",
+      "Read the principal inverse range before simplifying an inverse composition."
+    ],
+    "question": {
+      "id": "f04-l03-guided",
+      "familyId": "guided-f04-l03",
+      "familyVersion": 1,
+      "courseId": "f04",
+      "objectiveId": "m01-l03",
+      "category": "conceptual",
+      "critical": false,
+      "parameters": {},
+      "prompt": "For $y=-2\\sin(3(x+\\pi/6))+4$, find amplitude, period, and written shift. Also evaluate $\\arcsin(\\sin(5\\pi/6))$. All angle answers are in radians.",
+      "fields": [
+        {
+          "id": "amplitude",
+          "kind": "rational",
+          "label": "Amplitude",
+          "expected": "2"
+        },
+        {
+          "id": "period",
+          "kind": "pi-multiple",
+          "label": "Period",
+          "expected": "2/3",
+          "unit": "rad"
+        },
+        {
+          "id": "shift",
+          "kind": "pi-multiple",
+          "label": "Written shift",
+          "expected": "-1/6",
+          "unit": "rad"
+        },
+        {
+          "id": "inverse",
+          "kind": "pi-multiple",
+          "label": "Principal inverse-sine value",
+          "expected": "1/6",
+          "unit": "rad"
+        }
+      ],
+      "hints": [
+        "Amplitude is an absolute distance; the negative coefficient controls reflection.",
+        "The input repeats after 2pi/3 and is zero at x=-pi/6.",
+        "Sine at 5pi/6 is 1/2; its principal inverse-sine angle is pi/6."
+      ],
+      "explanation": [
+        "Amplitude is |-2|=2.",
+        "The period is 2pi/|3|=2pi/3 and the written shift is -pi/6.",
+        "The principal inverse-sine value of 1/2 is pi/6, within [-pi/2,pi/2]."
+      ],
+      "answerSummary": "Amplitude 2; period 2pi/3; shift -pi/6; inverse value pi/6."
+    },
+    "after": "Predict the first output at x=-pi/6 and explain why it is the midline. Then change sine to cosine and predict the new starting output."
+  },
+  "interaction": {
+    "kind": "refresher-trig-lab",
+    "mode": "wave",
+    "prompt": "Change one model feature at a time. Predict the amplitude, exact period, and starting value, then compare the curve and its exact quarter-cycle anchors."
+  },
+  "practice": [
+    {
+      "familyId": "f04-wave-features",
+      "variant": "angular"
+    },
+    {
+      "familyId": "f04-wave-features",
+      "variant": "cosine"
+    },
+    {
+      "familyId": "f04-wave-features",
+      "variant": "signal"
+    },
+    {
+      "familyId": "f04-wave-sample",
+      "variant": "sine"
+    },
+    {
+      "familyId": "f04-wave-sample",
+      "variant": "cosine"
+    },
+    {
+      "familyId": "f04-inverse-values",
+      "variant": "principal"
+    },
+    {
+      "familyId": "f04-inverse-values",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f04-inverse-values",
+      "variant": "domain"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f04-wave-features",
+      "variant": "angular"
+    },
+    {
+      "familyId": "f04-wave-features",
+      "variant": "signal"
+    },
+    {
+      "familyId": "f04-wave-sample",
+      "variant": "cosine"
+    },
+    {
+      "familyId": "f04-inverse-values",
+      "variant": "principal"
+    }
+  ],
+  "summary": [
+    "Read amplitude and range from the outside scaling and offset.",
+    "Factor the input to distinguish a phase angle from a horizontal or time shift.",
+    "Angular frequency is measured in rad/s; ordinary frequency counts cycles per second.",
+    "An inverse function's domain and principal range determine which angle it can return."
+  ],
+  "retrieval": "For v(t)=-4cos(6pi t+pi)+2, identify amplitude, midline, frequency, period, and written time shift. Separately, explain why arcsin(sin(5pi/6)) is not 5pi/6.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §8.1: Graphs of the Sine and Cosine Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/8-1-graphs-of-the-sine-and-cosine-functions",
+      "purpose": "Review additional graph and inverse-function examples after the original explanations above."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §8.3: Inverse Trigonometric Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/8-3-inverse-trigonometric-functions",
+      "purpose": "Review additional graph and inverse-function examples after the original explanations above."
+    }
+  ]
+}

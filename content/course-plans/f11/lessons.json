@@ -1,0 +1,436 @@
+{
+  "courseId": "f11",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Frame the problem and make a useful sketch",
+      "objective": "Create a labeled sketch or equivalent text diagram, define the system boundary and unknown, and separate supplied facts from modeling assumptions.",
+      "requires": [],
+      "scope": [
+        "Purpose and required output",
+        "Boundary, components, flow or direction, symbols and units",
+        "Given, inferred and assumed quantities",
+        "Model limitations and an actionable missing-information question"
+      ],
+      "examples": [
+        "Travel-time sketch with a stated positive direction and one unknown",
+        "Data-buffer block diagram with channels, sampling rate and storage boundary",
+        "Filling-volume sketch with initial state and inflow",
+        "Repair a diagram that labels numbers but omits their meanings"
+      ],
+      "guided": "Annotate a supplied buffer scenario with knowns, an unknown, boundary and one assumption.",
+      "activity": "Editable problem frame and diagram description; compare against a possible review only after attempting, then revise.",
+      "practiceFamilies": [
+        "travel",
+        "buffer",
+        "fill"
+      ],
+      "fields": [
+        [
+          "frame",
+          "Problem, boundary, and requested output"
+        ],
+        [
+          "sketch",
+          "Labeled sketch or equivalent text diagram"
+        ],
+        [
+          "knowns",
+          "Knowns, unknowns, symbols, and units"
+        ],
+        [
+          "assumptions",
+          "Assumptions and missing information"
+        ]
+      ],
+      "rubric": [
+        [
+          "boundary",
+          "I named what is inside and outside the model and the requested output."
+        ],
+        [
+          "labels",
+          "My sketch or text diagram labels connections or directions, symbols and units."
+        ],
+        [
+          "assumptions",
+          "I separated stated facts from assumptions and named a useful question."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "A page says 12, 3 and 4 beside an unlabeled box. What should you do before choosing an equation?",
+        "correct": "frame",
+        "options": [
+          [
+            "frame",
+            "Name the quantities, units, boundary and unknown",
+            "Labels connect the picture to a physical model."
+          ],
+          [
+            "calculate",
+            "Multiply the three numbers",
+            "Arithmetic cannot supply missing meanings or a requested output."
+          ],
+          [
+            "decorate",
+            "Make the box more detailed",
+            "Visual detail does not replace useful labels."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Equation chosen before the unknown is defined",
+          "Pattern matching by numbers",
+          "State the output and model boundary first."
+        ],
+        [
+          "Unlabeled sketch",
+          "Confusing illustration with a model",
+          "Attach symbol meanings, units and directions."
+        ],
+        [
+          "Assumption treated as data",
+          "Hidden simplification",
+          "Mark assumptions and explain when they could fail."
+        ]
+      ],
+      "readings": [
+        "up1-1.7"
+      ],
+      "supports": [
+        "phs-104",
+        "phs-231",
+        "cee-310",
+        "cee-310l",
+        "cee-340"
+      ]
+    },
+    {
+      "id": "m01-l02",
+      "title": "Estimate first and carry units through the model",
+      "objective": "Record a rough prediction before detailed calculation, use a dimensionally consistent relationship, and explain how one uncertain input changes the result.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "Order-of-magnitude and bounded estimates",
+        "A justified equation with units on every input and result",
+        "Explicit unit conversion and sensible reporting precision",
+        "One-at-a-time sensitivity as a model check, not an uncertainty distribution"
+      ],
+      "examples": [
+        "Travel time estimated before a distance/speed calculation",
+        "Buffer size from channels times sample rate times duration times bytes",
+        "Fill duration with litres and litres per minute",
+        "Compare two plausible rates and report a range rather than false precision"
+      ],
+      "guided": "Write a rough storage estimate, carry units through the product, then double the duration and predict its effect.",
+      "activity": "Seeded estimate worksheet with separate pre-calculation prediction, unit audit and sensitivity fields; reveal comparison marks the record assisted.",
+      "practiceFamilies": [
+        "travel",
+        "buffer",
+        "fill"
+      ],
+      "fields": [
+        [
+          "estimate",
+          "Rough prediction before calculation"
+        ],
+        [
+          "calculation",
+          "Relationship, substitution, units, and result"
+        ],
+        [
+          "sensitivity",
+          "One changed input and the predicted effect"
+        ],
+        [
+          "limits",
+          "Precision, assumptions, and limits"
+        ]
+      ],
+      "rubric": [
+        [
+          "estimate",
+          "I wrote a rough expectation before the detailed result."
+        ],
+        [
+          "units",
+          "My relationship and conversions carry units consistently."
+        ],
+        [
+          "sensitivity",
+          "I checked one input change and avoided unsupported precision."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "You want travel time from 12 km and 4 km/h. Which relationship has the right meaning and units?",
+        "correct": "divide",
+        "options": [
+          [
+            "divide",
+            "Distance divided by speed",
+            "km divided by km/h gives hours."
+          ],
+          [
+            "multiply",
+            "Distance multiplied by speed",
+            "That has units km²/h, not time."
+          ],
+          [
+            "add",
+            "Distance plus speed",
+            "Unlike dimensions cannot be added."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Estimate after seeing the answer",
+          "Losing an independent check",
+          "Record a rough prediction first."
+        ],
+        [
+          "Units dropped mid-calculation",
+          "Treating physical quantities as bare numbers",
+          "Keep conversion factors and units visible."
+        ],
+        [
+          "Calculator digits presented as certainty",
+          "Ignoring input/model quality",
+          "Report precision justified by the data and assumptions."
+        ]
+      ],
+      "readings": [
+        "up1-1.4",
+        "up1-1.5",
+        "up1-1.6"
+      ],
+      "supports": [
+        "f06",
+        "phs-104",
+        "phs-231",
+        "cee-300",
+        "cee-310l",
+        "cee-324l"
+      ]
+    },
+    {
+      "id": "m01-l03",
+      "title": "Check reasonableness and model limits",
+      "objective": "Audit a result with independent checks of dimensions, sign, scale and limiting behavior, identify the first unsupported step, and explain what remains uncertain.",
+      "requires": [
+        "m01-l02"
+      ],
+      "scope": [
+        "Correct dimensions are necessary but not sufficient",
+        "Sign/direction, estimate comparison, zero or doubled-input behavior",
+        "Independent reconstruction and data versus model mismatch",
+        "Repair the first cause and retain uncertainty"
+      ],
+      "examples": [
+        "A unit-correct travel result is still off by a factor of 60",
+        "A buffer formula omits its channel factor",
+        "A fill-time formula reverses rate and volume",
+        "A measured result differs from a constant-rate model"
+      ],
+      "guided": "Audit a flawed buffer solution with a channel omission; distinguish a dimension check from a value check.",
+      "activity": "Seeded flawed-report audit; record the first error, independent checks, correction and a model limitation before revealing reference reasoning.",
+      "practiceFamilies": [
+        "travel",
+        "buffer",
+        "fill"
+      ],
+      "fields": [
+        [
+          "checks",
+          "Dimension, sign, scale, and limit checks"
+        ],
+        [
+          "error",
+          "First error or unsupported step"
+        ],
+        [
+          "correction",
+          "Corrected reasoning and independent verification"
+        ],
+        [
+          "limits",
+          "Remaining uncertainty and next observation"
+        ]
+      ],
+      "rubric": [
+        [
+          "checks",
+          "I used more than one independent check, including units and scale or limiting behavior."
+        ],
+        [
+          "cause",
+          "I identified a cause instead of changing an unexplained final number."
+        ],
+        [
+          "limits",
+          "I verified the correction and stated a limit of the model."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "A storage calculation has units of bytes but forgot the number of channels. What does the unit check establish?",
+        "correct": "necessary",
+        "options": [
+          [
+            "necessary",
+            "It checks dimensions but does not prove the value",
+            "A missing dimensionless channel count can preserve units and change the result."
+          ],
+          [
+            "complete",
+            "The answer is fully correct",
+            "Correct units alone do not establish numerical or model correctness."
+          ],
+          [
+            "reject",
+            "The answer must have the wrong dimensions",
+            "The omitted factor is dimensionless, so this claim is too strong."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Units used as the only check",
+          "Overclaiming what dimensional analysis proves",
+          "Add a scale, limiting-case or reconstruction check."
+        ],
+        [
+          "Final number patched without a cause",
+          "Losing the reasoning chain",
+          "Find the first divergence and recompute from there."
+        ],
+        [
+          "Mismatch blamed only on arithmetic",
+          "Ignoring model assumptions",
+          "Check both observations and simplifying assumptions."
+        ]
+      ],
+      "readings": [
+        "up1-1.4",
+        "up1-1.7"
+      ],
+      "supports": [
+        "phs-104a",
+        "phs-231",
+        "cee-310l",
+        "cee-324l",
+        "cee-420l"
+      ]
+    },
+    {
+      "id": "m01-l04",
+      "title": "Revise and leave a reproducible work record",
+      "objective": "Preserve an initial attempt, document a specific evidence-based revision, and produce a concise final record with inputs, method, result, checks and next action.",
+      "requires": [
+        "m01-l03"
+      ],
+      "scope": [
+        "Dated/reproducible record without private data",
+        "Before/after reasoning and why a change is warranted",
+        "Correction versus model change",
+        "Independent practical task with rubric; self-check evidence not automatic mastery"
+      ],
+      "examples": [
+        "Correct a minutes-to-hours conversion while preserving the original",
+        "Revise a buffer assumption from one channel to three",
+        "Update a fill model after observed rate changes",
+        "Write a handoff paragraph with result, checks, assumptions and next measurement"
+      ],
+      "guided": "Turn a flawed short report into a revision log and a reproducible final explanation.",
+      "activity": "Save a draft, retain a completed artifact, start a fresh scenario and revise without erasing the last completed record. Assistance remains labeled when a reference is revealed.",
+      "practiceFamilies": [
+        "travel",
+        "buffer",
+        "fill"
+      ],
+      "fields": [
+        [
+          "original",
+          "Original attempt and what prompted review"
+        ],
+        [
+          "revision",
+          "Specific change and the evidence for it"
+        ],
+        [
+          "final",
+          "Reproducible final explanation"
+        ],
+        [
+          "next",
+          "Independent check and next action"
+        ]
+      ],
+      "rubric": [
+        [
+          "history",
+          "I retained the original claim and explained the revision."
+        ],
+        [
+          "reproduce",
+          "Another learner can reconstruct my inputs, units, method and result."
+        ],
+        [
+          "next",
+          "I recorded an independent check, a model limitation and a concrete next action."
+        ]
+      ],
+      "diagnostic": {
+        "prompt": "Your corrected answer differs from yesterday's. What makes the revision useful to a future reader?",
+        "correct": "record",
+        "options": [
+          [
+            "record",
+            "Keep the earlier claim and explain the corrected step and checks",
+            "A revision log preserves the reason for the change."
+          ],
+          [
+            "replace",
+            "Erase the earlier result and keep only the new number",
+            "That hides what changed and why the new result is more trustworthy."
+          ],
+          [
+            "confidence",
+            "Write that you are now very confident",
+            "Confidence is not a record of evidence or method."
+          ]
+        ]
+      },
+      "mistakes": [
+        [
+          "Only the final number is saved",
+          "Treating the answer as the whole solution",
+          "Preserve inputs, method, units, checks and assumptions."
+        ],
+        [
+          "Original attempt erased",
+          "Losing error history",
+          "Record the cause and before/after reasoning."
+        ],
+        [
+          "Completion called mastery",
+          "Overstating a self-checked artifact",
+          "Label practical completion, assistance and human-review limits explicitly."
+        ]
+      ],
+      "readings": [
+        "up1-1.7",
+        "up1-1.6"
+      ],
+      "supports": [
+        "phs-104a",
+        "cee-310l",
+        "cee-324l",
+        "cee-420l",
+        "cee-340"
+      ]
+    }
+  ]
+}

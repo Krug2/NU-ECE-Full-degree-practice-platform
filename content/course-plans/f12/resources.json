@@ -1,0 +1,102 @@
+{
+  "courseId": "f12",
+  "resources": [
+    {
+      "id": "cs-6.2",
+      "provider": "OpenStax, College Success",
+      "authors": "Amy Baldwin",
+      "section": "6.2",
+      "title": "Studying",
+      "url": "https://openstax.org/books/college-success/pages/6-2-studying",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/college-success/pages/preface",
+      "use": "Verify retrieval, spacing and active study concepts, not learning-style matching.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "cs-3.4",
+      "provider": "OpenStax, College Success",
+      "authors": "Amy Baldwin",
+      "section": "3.4",
+      "title": "How to Manage Time",
+      "url": "https://openstax.org/books/college-success/pages/3-4-how-to-manage-time",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/college-success/pages/preface",
+      "use": "Verify time-on-task estimates, feasible planning and adaptation.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "cs-5.2",
+      "provider": "OpenStax, College Success",
+      "authors": "Amy Baldwin",
+      "section": "5.2",
+      "title": "Effective Reading Strategies",
+      "url": "https://openstax.org/books/college-success/pages/5-2-effective-reading-strategies",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/college-success/pages/preface",
+      "use": "Verify question-driven reading and recitation; original technical passages provided in app.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "rk-2006",
+      "provider": "Psychological Science; free author-hosted PDF at Purdue",
+      "authors": "Henry L. Roediger III and Jeffrey D. Karpicke",
+      "section": "17(3), 249–255; abstract, experiments 1–2",
+      "title": "Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention",
+      "url": "https://learninglab.psych.purdue.edu/downloads/2006/2006_Roediger_Karpicke_PsychSci.pdf",
+      "license": "Copyright 2006 Association for Psychological Science; link and original summary only, no reproduction",
+      "licenseUrl": "https://learninglab.psych.purdue.edu/downloads/2006/2006_Roediger_Karpicke_PsychSci.pdf",
+      "use": "Primary evidence that recall practice can improve delayed retention despite familiarity from restudy; does not prescribe a universal schedule or prove engineering transfer for every learner.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "alg-1.1",
+      "provider": "OpenStax, Algebra and Trigonometry 2e",
+      "authors": "Jay Abramson and contributing authors",
+      "section": "1.1",
+      "title": "Real Numbers: Algebra Essentials",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-1-real-numbers-algebra-essentials",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/preface",
+      "use": "Verify grouping, notation and angle benchmarks. Original examples and bounded tool, not a device-specific manual.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "alg-7.1",
+      "provider": "OpenStax, Algebra and Trigonometry 2e",
+      "authors": "Jay Abramson and contributing authors",
+      "section": "7.1",
+      "title": "Angles",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/preface",
+      "use": "Verify grouping, notation and angle benchmarks. Original examples and bounded tool, not a device-specific manual.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "alg-7.3",
+      "provider": "OpenStax, Algebra and Trigonometry 2e",
+      "authors": "Jay Abramson and contributing authors",
+      "section": "7.3",
+      "title": "Unit Circle",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-3-unit-circle",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/preface",
+      "use": "Verify grouping, notation and angle benchmarks. Original examples and bounded tool, not a device-specific manual.",
+      "verifiedAt": "2026-09-24"
+    },
+    {
+      "id": "loc-records",
+      "provider": "Library of Congress, Digital Preservation",
+      "authors": "Library of Congress",
+      "section": "Personal Archiving: Keeping Personal Digital Records, Archiving Tips",
+      "title": "Personal Digital Records",
+      "url": "https://digitalpreservation.gov/personalarchiving/records.html",
+      "license": "Link-only reference; no page text or images reproduced",
+      "licenseUrl": "https://www.loc.gov/legal/",
+      "use": "Verify descriptive naming, multiple copies in different locations, and periodic readability checks. App-specific export/restore instructions verified against committed Settings and progress code.",
+      "verifiedAt": "2026-09-24"
+    }
+  ],
+  "attribution": "Original prose, examples, scenarios and tools. Sources verify facts and supply free further reading; no exercises, research passages, tables or images copied."
+}

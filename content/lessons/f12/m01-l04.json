@@ -1,0 +1,198 @@
+{
+  "kind": "practical",
+  "id": "m01-l04",
+  "courseId": "f12",
+  "version": 1,
+  "title": "Organize files and verify a recoverable copy",
+  "objective": "Choose a descriptive file and revision scheme, save and reopen a harmless practice artifact, compare its contents with an expected marker, and explain how app progress exports and restores affect saved work.",
+  "why": "A saved result is useful only if you can find the intended version and read it again. File habits protect the reasoning you have already built. A small harmless rehearsal makes naming, copying, and recovery concrete before you depend on them for important work.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l03",
+      "label": "Check calculator settings and expression entry"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Give a file a descriptive purpose and revision, keep its extension consistent with its actual format, and reopen it to compare known contents. Maintain a suitable independent copy when the work matters. A successful download alone does not establish that the right information can be recovered.",
+        "ECE Study progress stays in the current browser's storage. Save drafts, export progress through Settings, and review a selected backup before replacing current progress. Importing a backup replaces the saved state; it does not merge older and newer notes."
+      ]
+    },
+    {
+      "heading": "Name the purpose and version",
+      "paragraphs": [
+        "A useful name tells you what the file contains and which revision it represents. For example, study/f12/calculator-check-r02.json separates a folder, a purpose, a revision, and a file type. A consistent date can also help if its meaning is clear, such as the date of export rather than the date you later copied the file.",
+        "Names such as final-final-new do not define a reliable revision order. Even a clear revision number is only a label until you inspect the contents. Renaming a text file with a different extension does not convert its internal format; use the appropriate export when a different format is needed."
+      ]
+    },
+    {
+      "heading": "Verify contents, not just existence",
+      "paragraphs": [
+        "Choose a harmless known marker such as a short practice note. Save or download the file, find it in the intended folder, then open it again and compare the marker and expected revision. If the filename looks right but the contents differ, keep investigating before relying on that copy.",
+        "The activity below creates a small synthetic JSON file with a note, revision, and unique marker. Select the downloaded file to compare it locally. This file is an exercise artifact, not an ECE Study progress backup. The check tells you that this selected file matches this practice round; it does not establish that every file on the device is protected."
+      ]
+    },
+    {
+      "heading": "Use the real progress backup deliberately",
+      "paragraphs": [
+        "Before exporting real progress, save each practical draft and ordinary note you want included. Open Settings and choose Export progress, then locate the downloaded JSON file. Store it under a name whose purpose and export date you can recognize. Keep a known note or completed artifact in mind as a content check.",
+        "To examine an import, choose Import a progress backup in Settings and read the review. Replacement can remove work added after that file was exported. Export the current state first, inspect the chosen file, and choose Replace with this backup only when that is the state you intend to restore. You do not need to reset current progress to practice reviewing an import."
+      ]
+    },
+    {
+      "heading": "Plan recovery and state what was actually tested",
+      "paragraphs": [
+        "Two copies on the same device may be affected by the same failure. Choose another suitable location for an independent copy, and periodically verify that the files can still be opened. The Library of Congress reference explains these general preservation habits; this app does not automatically create or synchronize external copies.",
+        "If a file is unreadable or appears older than expected, preserve it while you look for another readable version. Do not claim a complete restore test when you only checked a filename or viewed an import summary. Record the exact operation you performed, what matched, what remains untested, and the next verification."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Replace ambiguous final names",
+      "scenario": "A folder contains notes-final.json, notes-final-new.json, and notes-final-new2.json.",
+      "steps": [
+        {
+          "action": "Inspect the contents and identify the purpose and revision of each before changing names.",
+          "reason": "The newest-looking filename may still contain older material."
+        },
+        {
+          "action": "Adopt a consistent name such as f12-calculator-check-r01.json and r02.json, with a short revision note inside the work record.",
+          "reason": "Purpose and sequence become visible, while the record explains what changed."
+        },
+        {
+          "action": "Keep the extension .json only for actual JSON content; keep a prior useful revision until the intended copy is verified.",
+          "reason": "A filename should describe the format and history rather than pretend to transform either."
+        }
+      ],
+      "conclusion": "A naming convention improves finding a file. Reopening and checking its contents establishes which work it actually contains."
+    },
+    {
+      "title": "Reopen a harmless practice artifact",
+      "scenario": "A learner enters the note 'Check degree mode with a known angle' and selects revision 2 in the practice tool.",
+      "steps": [
+        {
+          "action": "Download the practice file and locate it. Note the actual filename and folder, including any duplicate-name suffix added by the browser.",
+          "reason": "Knowing where the file landed is part of being able to retrieve it later."
+        },
+        {
+          "action": "Select the downloaded file in the reopen field and compare revision, marker, and note with the expected contents.",
+          "reason": "The content check is stronger than observing that a file exists."
+        },
+        {
+          "action": "Record: 'I reopened this practice JSON; the three expected fields matched. I have not restored real app progress.'",
+          "reason": "The record states the evidence at its actual scope."
+        }
+      ],
+      "conclusion": "The practice file can be recreated freely. It contains fictional study content and never replaces real progress."
+    },
+    {
+      "title": "Review an older progress export",
+      "scenario": "A hypothetical Monday backup exists, but the browser now contains a useful Wednesday correction.",
+      "steps": [
+        {
+          "action": "Save the Wednesday correction and export the current state before considering replacement.",
+          "reason": "A new export preserves the work that the Monday file cannot contain."
+        },
+        {
+          "action": "Inspect the intended file and review its import summary in Settings. Decide whether the older state is actually wanted.",
+          "reason": "A valid older backup can still omit important newer notes."
+        },
+        {
+          "action": "If only practicing file selection, stop after reviewing it. If deliberately restoring, verify a known note afterward and record what was restored.",
+          "reason": "Viewing a review and replacing saved progress are different operations and should not be confused."
+        }
+      ],
+      "conclusion": "Import replacement is not a merge. A date change in a filename cannot add the missing Wednesday content to Monday's backup."
+    },
+    {
+      "title": "Respond to a failed reopen",
+      "scenario": "A chosen file has the expected name, but the practice checker reports a different marker.",
+      "steps": [
+        {
+          "action": "Preserve the file and compare its revision, note, and location with the expected practice round.",
+          "reason": "A mismatch may indicate the wrong copy rather than a damaged file."
+        },
+        {
+          "action": "Locate the file downloaded for the current round, reopen it, and confirm the content match.",
+          "reason": "Selecting a correct readable copy addresses the evidence rather than hiding the warning."
+        },
+        {
+          "action": "Record the failure and resolution, then plan another suitable copy and a later readability check for important work.",
+          "reason": "The rehearsal becomes a repeatable recovery procedure with a clear next action."
+        }
+      ],
+      "conclusion": "A warning is useful when it prevents an unverified file from being treated as reliable recovery evidence."
+    }
+  ],
+  "guided": {
+    "prompt": "Create a harmless practice file with a specific note and revision 1. Download it, locate it, and select it again. Then explain how this differs from exporting and restoring real ECE Study progress.",
+    "steps": [
+      "Write a naming rule before downloading, then record the actual file you find.",
+      "Compare the reopened note, revision, and marker. State exactly what passed and what has not been tested.",
+      "Describe the current-export and import-review steps you would use before replacing real progress."
+    ],
+    "review": [
+      "A useful rule includes topic, revision or export date, and the correct extension. Record the actual browser filename rather than guessing where it was saved.",
+      "A passed practice check means the selected synthetic file matches the current practice round's contents. It does not mean real progress was exported or restored.",
+      "Save drafts, export current progress through Settings, inspect the intended backup and review replacement before choosing it. Preserve current work if an older export would omit newer notes."
+    ]
+  },
+  "activity": "file-round-trip",
+  "task": {
+    "family": "study-orientation",
+    "fields": [
+      {
+        "id": "organization",
+        "label": "Folder, descriptive filename, and revision rule",
+        "help": "Name a folder, file purpose, correct extension, and revision or date convention."
+      },
+      {
+        "id": "roundtrip",
+        "label": "Saved file and observed reopen check",
+        "help": "Actually save and reopen the practice file; record its filename and observed content match."
+      },
+      {
+        "id": "backup",
+        "label": "Progress export and restore plan",
+        "help": "Explain how to save drafts, export current progress, and review a replacement."
+      },
+      {
+        "id": "recovery",
+        "label": "Failure response and next verification",
+        "help": "State how to handle a wrong/unreadable copy and when to verify another copy."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "file",
+        "label": "I saved and reopened the harmless practice file and compared its marker and contents."
+      },
+      {
+        "id": "versions",
+        "label": "My naming rule distinguishes purpose, revision, and file type."
+      },
+      {
+        "id": "restore",
+        "label": "I explained backup verification and replacement without discarding newer work."
+      }
+    ]
+  },
+  "summary": [
+    "Use names and revisions that help you find and distinguish files.",
+    "Reopen a saved copy and compare expected contents before relying on it.",
+    "Export current progress before considering an older replacement; import is not a merge.",
+    "Record what you actually tested and keep a plan for another readable copy."
+  ],
+  "retrieval": "On a later visit, find a saved practice artifact without relying on the recent-download list. Explain its purpose and revision, reopen it, and record whether the expected contents remain readable.",
+  "readings": [
+    {
+      "title": "Library of Congress, Digital Preservation · Personal Archiving: Keeping Personal Digital Records, Archiving Tips: Personal Digital Records",
+      "url": "https://digitalpreservation.gov/personalarchiving/records.html",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    }
+  ]
+}

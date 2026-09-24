@@ -1,0 +1,134 @@
+{
+  "courseId": "f06",
+  "version": 1,
+  "quickRoute": "Five diagnostic probes target the five lessons. Read Quick recall and try each independent checkpoint, followed by the four-question mixed recall.",
+  "fullRoute": "Work the five lessons in sequence, including reasoned examples, guided questions, prediction activities, and varied practice. Use lesson notes to document your unit chain and next step.",
+  "diagnostic": [
+    {
+      "familyId": "f06-diagnostic-prefix",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-diagnostic-conversion",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-diagnostic-dimensions",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-diagnostic-rounding",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-diagnostic-measurement",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f06-recall-conversions",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-recall-dimensions",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-recall-precision",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f06-recall-measurement",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f06-diagnostic-prefix": "m01-l01",
+    "f06-diagnostic-conversion": "m01-l02",
+    "f06-diagnostic-dimensions": "m01-l03",
+    "f06-diagnostic-rounding": "m01-l04",
+    "f06-diagnostic-measurement": "m01-l05",
+    "f06-recall-conversions": {
+      "p1": "m01-l01",
+      "p2": "m01-l02"
+    },
+    "f06-recall-dimensions": "m01-l03",
+    "f06-recall-precision": "m01-l04",
+    "f06-recall-measurement": "m01-l05"
+  },
+  "support": [
+    {
+      "courseId": "f01",
+      "reason": "Recover exact fractions, powers of ten, and scientific notation."
+    },
+    {
+      "courseId": "f03",
+      "reason": "Read labeled scales and interpret rates and linear-model units."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "Connect the reused foundation practice to its original algebra lessons."
+    },
+    {
+      "courseId": "phs-104",
+      "reason": "Prepare unit conversion, dimensional reasoning, and numerical reporting for physical models."
+    },
+    {
+      "courseId": "phs-231",
+      "reason": "Prepare unit conversion, dimensional reasoning, and numerical reporting for physical models."
+    },
+    {
+      "courseId": "phs-232",
+      "reason": "Prepare unit conversion, dimensional reasoning, and numerical reporting for physical models."
+    },
+    {
+      "courseId": "phs-104a",
+      "reason": "Prepare to document measurement units, instrument resolution, reference discrepancies, and explicitly stated uncertainty models."
+    },
+    {
+      "courseId": "cee-310l",
+      "reason": "Prepare to document measurement units, instrument resolution, reference discrepancies, and explicitly stated uncertainty models."
+    },
+    {
+      "courseId": "cee-324l",
+      "reason": "Prepare to document measurement units, instrument resolution, reference discrepancies, and explicitly stated uncertainty models."
+    },
+    {
+      "courseId": "cee-420l",
+      "reason": "Prepare to document measurement units, instrument resolution, reference discrepancies, and explicitly stated uncertainty models."
+    },
+    {
+      "courseId": "csc-208",
+      "reason": "Interpret dimensional parameters and function arguments in mathematical models."
+    },
+    {
+      "courseId": "csc-209",
+      "reason": "Interpret dimensional parameters and function arguments in mathematical models."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Interpret dimensional parameters and function arguments in mathematical models."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Check electrical quantity scales, model dimensions, and reported measurements before interpreting a result."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Check electrical quantity scales, model dimensions, and reported measurements before interpreting a result."
+    },
+    {
+      "courseId": "cee-420",
+      "reason": "Check electrical quantity scales, model dimensions, and reported measurements before interpreting a result."
+    },
+    {
+      "courseId": "cee-340",
+      "reason": "Check electrical quantity scales, model dimensions, and reported measurements before interpreting a result."
+    }
+  ],
+  "escalation": {
+    "courseId": "phs-104",
+    "text": "The full introductory physics course and its lab are the next course destinations; their learning packs are not yet authored in this baseline. Precise free OpenStax sections provide a fuller explanation now. F01 and F03 supply authored arithmetic and graph support."
+  }
+}

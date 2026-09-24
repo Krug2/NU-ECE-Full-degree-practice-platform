@@ -1,0 +1,68 @@
+{
+  "courseId": "f05",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 5,
+    "workedExamples": 36,
+    "practiceStructures": 57,
+    "diagnosticProbes": 5,
+    "lessonCheckpointQuestions": 20,
+    "mixedRecallQuestions": 4,
+    "evidence": "Independent lesson checkpoints and mixed recall use separate F05 identities. Visits, confidence, diagnostic answers, guided questions, and investigations do not establish objective evidence."
+  },
+  "checks": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "687 tests passed across 68 files."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed across the application, libraries, and tests."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript, and static generation of 90 pages, including the final preview build."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts tests/e2e/f05.spec.ts --grep [fF]05 --output tmp/f05-browser",
+      "result": "All eight journeys passed on the production build: all five guided investigations, diagnostic routing and exact reload/resume with backup recovery, all lesson and mixed checkpoints, and every page's desktop/mobile accessibility and layout."
+    },
+    {
+      "command": "pnpm test tests/f05-content.test.ts --maxWorkers=2",
+      "result": "Final preview metadata and objective/source coverage checks passed."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --grep f05.*diagnostic --output tmp/f05-entry",
+      "result": "Passed final Available preview curriculum entry, diagnostic targeting, exact reload/resume, notes, and export/reset/import recovery."
+    }
+  ],
+  "mathematics": "Independent oracles test exact power relations, graph domains and ranges, original logarithm arguments, fractional and negative logarithm outputs, identity counterexamples, transformed-polynomial candidate filtering, original-equation substitution, two-point model fitting, discrete/continuous conversion, characteristic times, all threshold boundary cases including zero rate, inverse decibel ratios, resistance-based power calculations, and cascade versus independent power addition. Generator structures retain 100-seed checks with rounding, equivalent exact answers, invalid division, and units; lesson and screen coverage uses 50 seeds. Worked-example numerical values are separately checked through their original power or exponential relationships.",
+  "instruction": "Five original lessons include quick recall and full explanation routes, 36 reasoned worked examples, guided questions, keyboard prediction activities with equivalent tables, varied independent practice, and complete objective checkpoints. Existing MTH 215 exponent-rule generators are reused without changing their source IDs or answers. Later MTH 215 exponential/logarithmic lessons are correctly identified as planned.",
+  "accessibility": "No Axe WCAG 2 A/AA or WCAG 2.1 AA violations, horizontal overflow, or KaTeX errors on the overview and all five lessons at desktop and 390x844 mobile sizes. Five guided questions and all activities work by keyboard. Invalid bases and arguments have visible alerts; changes reset predictions. Browser checks cover wrong predictions, a misleading agreeing identity sample, negative-input domain loss, zero and past-only thresholds, and the unequal-resistance power-gain distinction. Desktop overview and mobile exponential and decibel screenshots were inspected.",
+  "sources": "Eight precise OpenStax Algebra and Trigonometry 2e sections and NIST SP 811 section 8.7 are verified and attributed in resources.json. Instruction and examples are original; decibel references and the condition connecting amplitude level with power gain are explicit.",
+  "sharedInterfaces": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-explog-lab', mode: 'growth' | 'inverse' | 'rules' | 'decay' | 'decibels', prompt: string }.",
+      "purpose": "Render scoped prediction activities with existing question fields and graders. Storage, backup formats, and grading infrastructure are unchanged."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f05",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "This optional refresher does not award university credit or determine enrollment eligibility.",
+    "Independent human subject and assistive-technology review remain pending.",
+    "Physical circuit derivations, general impedance power, coherent interference, noisy-data regression, and models beyond the stated exponential forms require the corresponding full courses.",
+    "F06 through F12 remain planned at this verification milestone."
+  ]
+}

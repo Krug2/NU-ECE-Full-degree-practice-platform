@@ -1,0 +1,64 @@
+{
+  "courseId": "f07",
+  "checkedAt": "2026-09-24",
+  "sources": [
+    {
+      "id": "cv3-2.1",
+      "section": "2.1",
+      "title": "Vectors in the Plane",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-1-vectors-in-the-plane",
+      "provider": "OpenStax Calculus Volume 3",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "cv3-2.2",
+      "section": "2.2",
+      "title": "Vectors in Three Dimensions",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-2-vectors-in-three-dimensions",
+      "provider": "OpenStax Calculus Volume 3",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "cv3-2.3",
+      "section": "2.3",
+      "title": "The Dot Product",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-3-the-dot-product",
+      "provider": "OpenStax Calculus Volume 3",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "cv3-2.4",
+      "section": "2.4",
+      "title": "The Cross Product",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-4-the-cross-product",
+      "provider": "OpenStax Calculus Volume 3",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "cv3-2.5",
+      "section": "2.5",
+      "title": "Equations of Lines and Planes in Space",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-5-equations-of-lines-and-planes-in-space",
+      "provider": "OpenStax Calculus Volume 3",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "cv3-2.7",
+      "section": "2.7",
+      "title": "Cylindrical and Spherical Coordinates",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-7-cylindrical-and-spherical-coordinates",
+      "provider": "OpenStax Calculus Volume 3",
+      "checkedAt": "2026-09-24"
+    }
+  ],
+  "attribution": {
+    "textbook": "OpenStax Calculus Volume 3, Gilbert Strang and Edwin Herman; Rice University.",
+    "license": "CC BY-NC-SA 4.0 as displayed by OpenStax. Links are references; no textbook prose or figures are reproduced.",
+    "authorship": "All lesson prose, worked examples, questions, and diagrams are original."
+  },
+  "conventions": [
+    "Right-handed orthonormal Cartesian axes; degrees explicitly used in introductory coordinate conversions.",
+    "Spherical azimuth theta about z and inclination phi from +z are defined every time; other books may use other symbols.",
+    "Zero vectors have no unique direction or angle; coordinate singularities are identified explicitly."
+  ]
+}

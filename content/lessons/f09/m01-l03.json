@@ -1,0 +1,333 @@
+{
+  "id": "m01-l03",
+  "courseId": "f09",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Polar coordinates, arguments, and Euler form",
+  "objective": "Convert between rectangular, polar, and Euler forms, select a principal argument in the stated range, and use conjugate exponential identities while treating zero's argument as undefined.",
+  "why": "Polar form separates a complex number's size from its direction. Euler's formula connects that geometry to exponentials, which later makes oscillations, phase shifts, and multiplication easier to describe.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Conjugates, magnitude, division, and equations"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For a nonzero complex number, write $z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta}$ with r=|z|>0. Euler's formula uses radians. Recover rectangular coordinates with a=r cosθ and b=r sinθ.",
+        "Arguments differ by whole turns. This refresher chooses the principal argument Arg(z) in (-π,π], or (-180°,180°] when degrees are explicitly requested. The negative real axis uses +π. Zero has magnitude zero and no defined argument."
+      ]
+    },
+    {
+      "heading": "One point has many angle descriptions",
+      "paragraphs": [
+        "A radius and angle locate a point by its distance and direction from the origin. Turning by 2π radians returns to the same point, so θ, θ+2π, and θ-2π describe the same nonzero complex number.",
+        "A principal argument chooses one representative from those angles. Our interval excludes -π and includes +π. Other books may use [0,2π), so compare complex values before deciding that two angle descriptions disagree. When a question requests our principal interval, enter its representative rather than any coterminal angle."
+      ]
+    },
+    {
+      "heading": "Use both coordinate signs",
+      "paragraphs": [
+        "The magnitude follows from √(a²+b²). For an argument, tanθ=b/a can help find a reference angle, but the ratio alone loses quadrant information: 1+i and -1-i have the same ratio and opposite directions.",
+        "For arbitrary coordinates, atan2(b,a) uses both signs and handles the axes. Check the displayed unit and normalize its result to the stated interval. For familiar ratios, use exact reference triangles instead of rounding an angle. The signs of cosine and sine must reproduce the original real and imaginary parts."
+      ]
+    },
+    {
+      "heading": "Euler's formula expresses rotation",
+      "paragraphs": [
+        "Euler's identity $e^{i\\theta}=\\cos\\theta+i\\sin\\theta$ places the unit complex exponential on the unit circle. Multiplying by r changes its distance from the origin. The imaginary unit in the exponent does not mean that the exponent's numerical angle can be in any unit: θ is a radian measure.",
+        "For example, a 90° turn is π/2 radians and gives e^(iπ/2)=i. Writing e^(i90) instead means 90 radians. In these lessons, degree controls are labeled explicitly and the conversion table shows the corresponding radian expression."
+      ]
+    },
+    {
+      "heading": "Conjugate exponentials recover sine and cosine",
+      "paragraphs": [
+        "Changing θ to -θ leaves cosine unchanged and reverses sine. Therefore e^(-iθ) is the conjugate of e^(iθ). Adding the pair cancels imaginary parts; subtracting cancels real parts.",
+        "The resulting identities are $\\cos\\theta=(e^{i\\theta}+e^{-i\\theta})/2$ and $\\sin\\theta=(e^{i\\theta}-e^{-i\\theta})/(2i)$. The factor i in the sine denominator matters. These are algebraic identities, not approximations, and later support sinusoidal representations in engineering."
+      ]
+    },
+    {
+      "heading": "Zero is a special case",
+      "paragraphs": [
+        "If r=0, multiplying any unit-circle point by r produces zero. No direction is selected, so Arg(0) is undefined even though 0·e^(iθ)=0 for every θ. A calculator may display an angle for a zero input as a software convention; that display does not create a mathematical argument.",
+        "Before reporting an argument, check whether both coordinates are zero. When converting a nonzero value, verify both radius and direction by reconstructing its coordinates. This catches quadrant mistakes that a magnitude-only check cannot detect."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "An exact second-quadrant angle",
+      "prompt": "Convert -√3+i to modulus and principal argument.",
+      "steps": [
+        {
+          "math": "r=\\sqrt{(-\\sqrt3)^2+1^2}=2",
+          "reason": "The component squares give a radius of 2."
+        },
+        {
+          "math": "\\cos\\theta=-\\frac{\\sqrt3}2,\\quad\\sin\\theta=\\frac12,\\quad\\operatorname{Arg}z=\\frac{5\\pi}6",
+          "reason": "The signs select quadrant II and the reference angle is π/6."
+        }
+      ],
+      "conclusion": "The polar form is 2e^(i5π/6)."
+    },
+    {
+      "title": "A third-quadrant point in the chosen interval",
+      "prompt": "Find the principal argument of -1-i.",
+      "steps": [
+        {
+          "math": "r=\\sqrt2,\\qquad\\theta=\\frac{5\\pi}4",
+          "reason": "Both negative coordinates give a third-quadrant angle."
+        },
+        {
+          "math": "\\operatorname{Arg}z=\\frac{5\\pi}4-2\\pi=-\\frac{3\\pi}4",
+          "reason": "Subtract a full turn to enter (-π,π]."
+        }
+      ],
+      "conclusion": "The positive angle 5π/4 is valid as an argument but is not the requested principal representative."
+    },
+    {
+      "title": "Handle the axes directly",
+      "prompt": "Find the principal arguments of -3 and -2i.",
+      "steps": [
+        {
+          "math": "\\operatorname{Arg}(-3)=\\pi",
+          "reason": "The negative real axis uses the included endpoint +π."
+        },
+        {
+          "math": "\\operatorname{Arg}(-2i)=-\\frac\\pi2",
+          "reason": "The negative imaginary axis points downward."
+        }
+      ],
+      "conclusion": "No division by a zero real component is needed."
+    },
+    {
+      "title": "Convert an Euler expression",
+      "prompt": "Write 4e^(-iπ/6) in rectangular form.",
+      "steps": [
+        {
+          "math": "4e^{-i\\pi/6}=4\\left(\\frac{\\sqrt3}2-\\frac12i\\right)",
+          "reason": "Use the unit-circle cosine and sine at -π/6."
+        },
+        {
+          "math": "2\\sqrt3-2i",
+          "reason": "Scale both components by the radius."
+        }
+      ],
+      "conclusion": "Squaring the components confirms the original magnitude 4."
+    },
+    {
+      "title": "Remove a full turn",
+      "prompt": "Evaluate e^(i5π/2) and state its principal argument.",
+      "steps": [
+        {
+          "math": "\\frac{5\\pi}2=2\\pi+\\frac\\pi2,\\qquad e^{i5\\pi/2}=i",
+          "reason": "A whole turn leaves the unit-circle point unchanged."
+        },
+        {
+          "math": "\\operatorname{Arg}(i)=\\frac\\pi2",
+          "reason": "The principal representative lies in the required interval."
+        }
+      ],
+      "conclusion": "The angle written in an exponential need not already be principal."
+    },
+    {
+      "title": "A general angle from coordinates",
+      "prompt": "Find the magnitude and principal angle of -2+3i to three decimal degrees.",
+      "steps": [
+        {
+          "math": "r=\\sqrt{(-2)^2+3^2}=\\sqrt{13}",
+          "reason": "Keep the magnitude exact."
+        },
+        {
+          "math": "\\operatorname{atan2}(3,-2)\\approx123.690^\\circ",
+          "reason": "Both signs select quadrant II; a one-argument arctangent alone would select the wrong quadrant."
+        },
+        {
+          "math": "\\sqrt{13}\\cos(123.690^\\circ)\\approx-2,\\quad\\sqrt{13}\\sin(123.690^\\circ)\\approx3",
+          "reason": "Reconstruct both coordinates to check the approximation."
+        }
+      ],
+      "conclusion": "The degree label is part of the answer."
+    },
+    {
+      "title": "Do not assign a direction to zero",
+      "prompt": "Interpret 0·e^(iπ/3).",
+      "steps": [
+        {
+          "math": "0e^{i\\pi/3}=0,\\qquad|0|=0",
+          "reason": "A zero radius collapses the point to the origin."
+        },
+        {
+          "math": "0e^{i\\theta}=0\\quad\\text{for every real }\\theta",
+          "reason": "No single direction is distinguished."
+        }
+      ],
+      "conclusion": "Arg(0) is undefined."
+    },
+    {
+      "title": "Recover trigonometric parts",
+      "prompt": "Add and subtract e^(iθ) and e^(-iθ).",
+      "steps": [
+        {
+          "math": "e^{i\\theta}+e^{-i\\theta}=2\\cos\\theta",
+          "reason": "The opposite imaginary terms cancel."
+        },
+        {
+          "math": "e^{i\\theta}-e^{-i\\theta}=2i\\sin\\theta",
+          "reason": "The real terms cancel and the imaginary terms double."
+        },
+        {
+          "math": "\\cos\\theta=\\frac{e^{i\\theta}+e^{-i\\theta}}2,\\quad\\sin\\theta=\\frac{e^{i\\theta}-e^{-i\\theta}}{2i}",
+          "reason": "Divide by the complete coefficient in each identity."
+        }
+      ],
+      "conclusion": "The sine identity needs division by 2i, not just 2."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Convert 1-√3i to polar form using the principal interval (-π,π].",
+    "before": [
+      "The radius is √(1+3)=2.",
+      "The point is in quadrant IV, with cosine 1/2 and sine -√3/2."
+    ],
+    "question": {
+      "id": "f09-l03-guided",
+      "familyId": "guided-f09-l03",
+      "familyVersion": 1,
+      "courseId": "f09",
+      "objectiveId": "m01-l03",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give its magnitude, principal radian argument, and reconstructed rectangular value.",
+      "fields": [
+        {
+          "id": "radius",
+          "kind": "exact",
+          "label": "Magnitude",
+          "expected": "2",
+          "unit": ""
+        },
+        {
+          "id": "angle",
+          "kind": "pi-multiple",
+          "label": "Principal argument",
+          "expected": "-1/3",
+          "unit": "radians",
+          "help": "Enter a multiple of pi, such as -pi/3."
+        },
+        {
+          "id": "value",
+          "kind": "exact",
+          "label": "Reconstructed value",
+          "expected": "1-sqrt(3)i",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Identify the quadrant and keep angle units explicit.",
+        "The point is in quadrant IV, with cosine 1/2 and sine -√3/2.",
+        "The principal argument is -π/3 and the magnitude is 2."
+      ],
+      "explanation": [
+        "The principal argument is -π/3 and the magnitude is 2.",
+        "Euler's formula gives 2[cos(-π/3)+i sin(-π/3)]=1-√3i."
+      ],
+      "answerSummary": "The principal argument is -π/3 and the magnitude is 2. Euler's formula gives 2[cos(-π/3)+i sin(-π/3)]=1-√3i."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-complex-lab",
+    "mode": "polar",
+    "prompt": "Change nonnegative radius and a degree-labeled standard angle. Predict rectangular value and its principal radian argument, then reveal an equal-scale complex-plane plot and conversion table. Compare full-turn shifts and radius zero."
+  },
+  "practice": [
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "to-polar"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "axes"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "general"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "from-polar"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "euler"
+    },
+    {
+      "familyId": "f09-complex-euler",
+      "variant": "coterminal"
+    },
+    {
+      "familyId": "f09-complex-euler",
+      "variant": "projections"
+    },
+    {
+      "familyId": "f09-complex-euler",
+      "variant": "inverse"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "to-polar"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "general"
+    },
+    {
+      "familyId": "f09-complex-polar",
+      "variant": "euler"
+    },
+    {
+      "familyId": "f09-complex-euler",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "Nonzero complex numbers have magnitude and direction; arguments differ by full turns.",
+    "Use both component signs and the stated principal interval.",
+    "Euler angles use radians.",
+    "Zero's argument is undefined; conjugate exponentials recover sine and cosine."
+  ],
+  "retrieval": "Convert -1+i to an exact Euler form and reconstruct it. Explain why 3π/4 and -5π/4 describe the same point but only one is principal here. Then state what changes for zero.",
+  "readings": [
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 10.5: Polar Form of Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/10-5-polar-form-of-complex-numbers",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.5 (PDF pages 4): Polar coordinates",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=4",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.6 (PDF pages 5–9): Euler's formula, polar arithmetic, and nth roots",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=5",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.7 (PDF pages 10): Inverse Euler formula",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=10",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    }
+  ]
+}

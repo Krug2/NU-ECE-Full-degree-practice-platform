@@ -1,0 +1,311 @@
+{
+  "courseId": "f02",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "source": "b03",
+      "title": "Expansion and factoring",
+      "requires": [],
+      "objective": "Distribute with signs, collect like terms, factor common factors and simple quadratics, and check by expansion.",
+      "recall": [
+        "Factor an entire expression, not selected added terms. Start with the greatest common factor; then match a quadratic's leading, middle, and constant coefficients.",
+        "Expansion is the reverse check for factorization. A matching single input is evidence at that input only; it does not prove a polynomial identity."
+      ],
+      "workedExamples": [
+        "Distribute a subtraction",
+        "Extract a common factor",
+        "Factor a nonmonic quadratic",
+        "Difference of squares versus squared difference"
+      ],
+      "activity": "polynomial-lab",
+      "families": [
+        "mth-polynomial-expand",
+        "mth-common-factor",
+        "mth-quadratic-factor",
+        "mth-factor-audit"
+      ],
+      "mistakes": [
+        [
+          "Lose a minus during distribution",
+          "Treating subtraction as removal of only the first term",
+          "Distribute the negative multiplier to every term."
+        ],
+        [
+          "Omit the middle term of a square",
+          "Forgetting the two cross products",
+          "Write all four products before collecting."
+        ],
+        [
+          "Correct value but wrong requested form",
+          "Equivalence confused with representation",
+          "Check both algebraic equality and expanded/factored structure."
+        ]
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "cee-300"
+      ],
+      "reading": [
+        "1.4",
+        "1.5"
+      ]
+    },
+    {
+      "id": "m01-l02",
+      "source": "m01-l01",
+      "title": "Linear equations and formula rearrangement",
+      "requires": [
+        "m01-l01"
+      ],
+      "objective": "Isolate a specified variable, state any divisor restrictions, and verify a proposed solution by substitution.",
+      "recall": [
+        "An equation asserts equality. Apply the same reversible operation to both sides and check whether a divisor could be zero.",
+        "After collecting terms, a nonzero coefficient gives one solution; a true constant statement gives all real solutions; a false statement gives none. Verify candidates in the original relationship."
+      ],
+      "workedExamples": [
+        "Variables on both sides",
+        "Recover temperature from calibration"
+      ],
+      "activity": "equation-balance",
+      "families": [
+        "mth-linear-balance",
+        "mth-linear-formula",
+        "mth-linear-validity"
+      ],
+      "mistakes": [
+        [
+          "Delete a constant on one side",
+          "Shortcut replaces an equivalent transformation",
+          "Subtract the constant from both sides."
+        ],
+        [
+          "Conclude x=0 when variable terms cancel",
+          "Confusing no remaining variable with zero value",
+          "Classify the remaining true or false constant statement."
+        ],
+        [
+          "Divide by a possibly zero parameter",
+          "Ignoring the operation's domain",
+          "State the nonzero condition and inspect the zero case in the original equation."
+        ]
+      ],
+      "supports": [
+        "mth-215",
+        "phs-104",
+        "cee-310"
+      ],
+      "reading": [
+        "2.2"
+      ]
+    },
+    {
+      "id": "m01-l03",
+      "source": "m01-l02",
+      "title": "Inequalities and absolute value",
+      "requires": [
+        "m01-l02"
+      ],
+      "objective": "Express the full solution set of a linear, compound, or absolute-value inequality with correct endpoints.",
+      "recall": [
+        "An inequality's answer is a set, not one convenient value. Dividing by a negative reverses order; adding the same number does not.",
+        "AND means overlap and OR means union. Absolute value measures distance, so compare the threshold with zero before drawing an inside interval or two outside regions. Infinity is never an included endpoint."
+      ],
+      "workedExamples": [
+        "Negative coefficient and reversed order",
+        "Inclusive tolerance interval"
+      ],
+      "activity": "interval-builder",
+      "families": [
+        "mth-inequality-linear",
+        "mth-inequality-compound",
+        "mth-inequality-distance"
+      ],
+      "mistakes": [
+        [
+          "Forget to reverse order",
+          "Treating a negative divisor like a positive one",
+          "Test one value on each side of the boundary in the original inequality."
+        ],
+        [
+          "Confuse AND with OR",
+          "Combining conditions without set meaning",
+          "Keep only shared values for AND; keep any permitted value for OR."
+        ],
+        [
+          "Include a strict endpoint",
+          "Ignoring equality condition",
+          "Substitute the endpoint and read the original relation."
+        ]
+      ],
+      "supports": [
+        "mth-215",
+        "csc-220",
+        "cee-310"
+      ],
+      "reading": [
+        "2.7"
+      ]
+    },
+    {
+      "id": "m01-l04",
+      "source": "m01-l03",
+      "title": "Quadratics and complete root sets",
+      "requires": [
+        "m01-l01",
+        "m01-l02"
+      ],
+      "objective": "Choose a quadratic solution method, return every root in the requested number system, and verify the roots.",
+      "recall": [
+        "Set the equation equal to zero before using the zero-product property. A ready-made square may make the square-root method shorter than factoring.",
+        "The discriminant predicts the real-root count. Keep both branches when solving a nonzero square and distinguish a repeated root from two distinct values. Use i squared equals -1 only when complex roots are requested."
+      ],
+      "workedExamples": [
+        "Factored rational roots",
+        "Complete the square",
+        "Quadratic formula with radicals",
+        "Nonreal conjugate pair"
+      ],
+      "activity": "parabola-explorer",
+      "families": [
+        "mth-quadratic-roots",
+        "mth-quadratic-discriminant",
+        "mth-quadratic-method",
+        "mth-complex-arithmetic"
+      ],
+      "mistakes": [
+        [
+          "Drop the negative square-root branch",
+          "Principal root confused with solving",
+          "Substitute both signed candidates."
+        ],
+        [
+          "Use zero-product reasoning before making zero",
+          "Ignoring the property's hypothesis",
+          "Move all terms to one side first."
+        ],
+        [
+          "Report graph intercepts for nonreal roots",
+          "Number-system mismatch",
+          "A real graph has no real zero when the discriminant is negative."
+        ]
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "cee-300",
+        "cee-310"
+      ],
+      "reading": [
+        "2.5"
+      ]
+    },
+    {
+      "id": "m01-l05",
+      "source": "b04",
+      "title": "Rational expressions and original restrictions",
+      "requires": [
+        "m01-l01"
+      ],
+      "objective": "Find common denominators, cancel factors only, state original exclusions, and divide rational expressions without dividing by zero.",
+      "recall": [
+        "Record every original denominator zero before simplifying. Canceled factors still leave excluded inputs.",
+        "For division, the divisor must be defined and nonzero. For addition, use a common denominator and multiply the entire numerator by each missing factor. Retain any physical-domain restrictions separately."
+      ],
+      "workedExamples": [
+        "Cancel a factor with an excluded input",
+        "Subtract rational expressions",
+        "Nonzero divisor restriction",
+        "Clear a complex fraction",
+        "Reject cancellation across addition"
+      ],
+      "activity": "simplification-lab",
+      "families": [
+        "mth-rational-simplify",
+        "mth-rational-operations",
+        "mth-cancel-audit",
+        "mth-rational-model"
+      ],
+      "mistakes": [
+        [
+          "Restore a canceled input",
+          "Confusing reduced formula with original domain",
+          "Keep a separate original exclusions list."
+        ],
+        [
+          "Cancel across a sum",
+          "Term mistaken for a whole factor",
+          "Factor the complete numerator and denominator first."
+        ],
+        [
+          "Invert an undefined or zero divisor",
+          "Reciprocal rule applied without conditions",
+          "Check both the divisor's denominator and numerator before inverting."
+        ]
+      ],
+      "supports": [
+        "mth-215",
+        "csc-209",
+        "cee-300",
+        "cee-310"
+      ],
+      "reading": [
+        "1.6"
+      ]
+    },
+    {
+      "id": "m01-l06",
+      "source": "m01-l04",
+      "title": "Restrictions and extraneous solutions",
+      "requires": [
+        "m01-l03",
+        "m01-l04",
+        "m01-l05"
+      ],
+      "objective": "Solve rational and radical equations while preserving original restrictions and rejecting invalid candidate roots.",
+      "recall": [
+        "Record the original domain first. Multiplying by an excluded denominator or squaring a relation may admit candidates that were not original solutions.",
+        "After transforming, check every candidate in the original equation. Distinguish an undefined expression from a defined but false equality; both reject the candidate for different reasons."
+      ],
+      "workedExamples": [
+        "Cleared denominator and original exclusion",
+        "Only candidate forbidden",
+        "One extraneous squared candidate",
+        "Two genuine radical solutions"
+      ],
+      "activity": "candidate-audit",
+      "families": [
+        "mth-rational-equation",
+        "mth-radical-equation",
+        "mth-original-domain",
+        "mth-squaring-validity"
+      ],
+      "mistakes": [
+        [
+          "Accept every squared candidate",
+          "One-way implication treated as equivalence",
+          "Substitute back into the original radical equation."
+        ],
+        [
+          "Cancel an original denominator restriction",
+          "Simplified domain replaces original",
+          "Check original denominators before interpreting candidates."
+        ],
+        [
+          "Square only selected terms",
+          "A whole expression mistaken for separate powers",
+          "Expand the entire square including its cross term."
+        ]
+      ],
+      "supports": [
+        "mth-215",
+        "csc-209",
+        "cee-300"
+      ],
+      "reading": [
+        "1.6",
+        "2.6"
+      ]
+    }
+  ]
+}

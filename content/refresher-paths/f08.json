@@ -1,0 +1,118 @@
+{
+  "courseId": "f08",
+  "version": 1,
+  "quickRoute": "Five diagnostic probes route to individual lessons. Use Quick recall, then each independent lesson checkpoint and the mixed recall.",
+  "fullRoute": "Follow limits, derivative meaning, composite rules, accumulation, and initial conditions. Predict in each activity and save explanations in notes.",
+  "diagnostic": [
+    {
+      "familyId": "f08-diagnostic-limits",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-diagnostic-derivative",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-diagnostic-rules",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-diagnostic-integrals",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-diagnostic-initial",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f08-recall-foundations",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-recall-rules",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-recall-accumulation",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f08-recall-initial",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f08-diagnostic-limits": "m01-l01",
+    "f08-diagnostic-derivative": "m01-l02",
+    "f08-diagnostic-rules": "m01-l03",
+    "f08-diagnostic-integrals": "m01-l04",
+    "f08-diagnostic-initial": "m01-l05",
+    "f08-recall-foundations": {
+      "p1": "m01-l01",
+      "p2": "m01-l02"
+    },
+    "f08-recall-rules": "m01-l03",
+    "f08-recall-accumulation": "m01-l04",
+    "f08-recall-initial": "m01-l05"
+  },
+  "support": [
+    {
+      "courseId": "f02",
+      "reason": "Recover factoring, canceled-domain restrictions, and algebraic manipulation."
+    },
+    {
+      "courseId": "f03",
+      "reason": "Reconnect functions, coordinates, average rates, and finite difference quotients."
+    },
+    {
+      "courseId": "f04",
+      "reason": "Review radians and standard trigonometric values."
+    },
+    {
+      "courseId": "f05",
+      "reason": "Recover exponentials, logarithms, and their real domains."
+    },
+    {
+      "courseId": "f06",
+      "reason": "Interpret rates and accumulated quantities with consistent units."
+    },
+    {
+      "courseId": "csc-208",
+      "reason": "Study the full first calculus course, including first-time development of these ideas."
+    },
+    {
+      "courseId": "csc-209",
+      "reason": "Continue with integration techniques and other second-course topics beyond this refresher."
+    },
+    {
+      "courseId": "phs-231",
+      "reason": "Use derivatives and integrals to connect position, velocity, acceleration, and motion."
+    },
+    {
+      "courseId": "phs-232",
+      "reason": "Prepare for continuous field and accumulated physical-quantity models."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Build toward differential equations and advanced engineering mathematics."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Interpret changing and accumulated electrical quantities in circuit models."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Connect continuous signal rates and accumulation."
+    },
+    {
+      "courseId": "cee-430",
+      "reason": "Prepare the calculus reasoning used alongside discrete signal methods."
+    }
+  ],
+  "escalation": {
+    "courseId": "csc-208",
+    "text": "For first-time instruction, use the linked free Calculus Volume 1 sections and the CSC 208 course destination. CSC 209 extends beyond this refresher. Algebra, function, trig, and logarithm refreshers supply available prerequisite support."
+  }
+}
