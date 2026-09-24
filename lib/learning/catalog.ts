@@ -15,9 +15,11 @@ import compositionLesson from "@/content/lessons/mth-215/m02-l03.json";
 import calibrationLesson from "@/content/lessons/mth-215/m02-l04.json";
 import { lessonSchema, packSchema } from "./contracts";
 import { availableFamilyIds } from "./generate";
+import { refresherPacks, refresherLessons } from "./refreshers/catalog";
 
-export const learningPacks = [packSchema.parse(packData)];
+export const learningPacks = [packSchema.parse(packData), ...refresherPacks];
 export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson)];
+lessons.push(...refresherLessons);
 export const learningPack = (courseId: string) => learningPacks.find(pack => pack.courseId === courseId);
 export const lessonById = (courseId: string, lessonId: string) => lessons.find(lesson => lesson.courseId === courseId && lesson.id === lessonId);
 

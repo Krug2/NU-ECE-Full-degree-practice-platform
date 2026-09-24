@@ -1,0 +1,94 @@
+{
+  "courseId": "f01",
+  "version": 1,
+  "quickRoute": "Try the diagnostic without hints first, follow the suggested lesson links, and use each lesson's Quick recall section. Demonstrate each objective with its independent checkpoint, then try the mixed recall check.",
+  "fullRoute": "Study all four lessons in order. Follow the reasons in each worked example, finish the guided problem, predict in the investigation, practice with feedback, and take the independent checkpoint when ready.",
+  "diagnostic": [
+    {
+      "familyId": "f01-diagnostic-signs",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-order",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-fractions",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-proportion",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-powers",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-roots",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-scientific",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-diagnostic-exact",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f01-recall-numbers",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-recall-fractions",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-recall-powers",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f01-recall-notation",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f01-diagnostic-signs": "m01-l01",
+    "f01-diagnostic-order": "m01-l01",
+    "f01-diagnostic-fractions": "m01-l02",
+    "f01-diagnostic-proportion": "m01-l02",
+    "f01-diagnostic-powers": "m01-l03",
+    "f01-diagnostic-roots": "m01-l03",
+    "f01-diagnostic-scientific": "m01-l04",
+    "f01-diagnostic-exact": "m01-l04",
+    "f01-recall-numbers": "m01-l01",
+    "f01-recall-fractions": "m01-l02",
+    "f01-recall-powers": "m01-l03",
+    "f01-recall-notation": "m01-l04"
+  },
+  "support": [
+    {
+      "courseId": "mth-215",
+      "reason": "Signed arithmetic, exact fractions, and valid notation support algebraic transformations."
+    },
+    {
+      "courseId": "phs-104",
+      "reason": "Directions, ratios, and powers of ten support physical quantities."
+    },
+    {
+      "courseId": "phs-104a",
+      "reason": "Lab calculations need consistent scale and a reasonableness check."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Signed currents and proportional relationships require dependable arithmetic."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "If these ideas are new rather than rusty, use the linked Prealgebra sections within each lesson, then follow MTH 215's foundation bridges and full algebra lessons. F02 continues with algebra; F06 develops units and measurement."
+  }
+}
