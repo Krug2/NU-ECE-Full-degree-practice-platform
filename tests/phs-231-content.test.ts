@@ -9,13 +9,14 @@ import unitsData from "../content/lessons/phs-231/m01-l01.json";
 import vectorData from "../content/lessons/phs-231/m01-l02.json";
 import motionData from "../content/lessons/phs-231/m02-l01.json";
 import frameData from "../content/lessons/phs-231/m02-l02.json";
+import projectileData from "../content/lessons/phs-231/m02-l03.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
   expect(pack.status).toBe("building");
   expect(pack.modules.flatMap(m=>m.lessons)).toHaveLength(22);
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
-  for(const data of [unitsData, vectorData, motionData, frameData]) {
+  for(const data of [unitsData, vectorData, motionData, frameData, projectileData]) {
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
     const visit=(value:unknown):void=>{
@@ -31,6 +32,16 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
   }
+});
+
+it("checks the future projectile event and retains signs in the guided fixture",()=>{
+  const q=lessonSchema.parse(projectileData).guided.question;
+  const response={time:"3",displacement:"-4*3",vy:"10-10*3",top:"horizontal"};
+  expect(15+10*3-5*3*3).toBe(0);
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(gradeQuestion(q,{...response,time:"-1"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,vy:"20"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,top:"rest"}).correct).toBe(false);
 });
 
 it("checks the observer chain and exact relative speed in the guided frame fixture",()=>{
