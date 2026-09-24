@@ -1,0 +1,1230 @@
+{
+  "id": "m06-l01",
+  "courseId": "mth-215",
+  "moduleId": "m06",
+  "version": 1,
+  "title": "Radians, rotations, and arc length",
+  "objective": "Convert degree and radian measures, identify coterminal angles, and calculate an arc length with consistent units.",
+  "estimatedMinutes": 330,
+  "why": "An encoder can report a final direction while a motor has already completed several turns. A point near the rim travels farther than one near the center, even though both rotate through the same angle. This lesson connects angle units, exact terminal positions, curved distances, sector areas and rates. You will keep the complete motion, its units and its assumptions visible throughout a calculation.",
+  "prerequisites": [
+    {
+      "lessonId": "b01",
+      "label": "Exact arithmetic and notation"
+    },
+    {
+      "lessonId": "b02",
+      "label": "Powers and radicals"
+    },
+    {
+      "lessonId": "b04",
+      "label": "Fractions and ratios"
+    },
+    {
+      "lessonId": "b05",
+      "label": "Coordinates and axes"
+    },
+    {
+      "lessonId": "b06",
+      "label": "Triangle and angle vocabulary"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Intervals and endpoints"
+    },
+    {
+      "lessonId": "m04-l03",
+      "label": "Variation and units"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Name an angle and its directed rotation",
+      "paragraphs": [
+        "A ray begins at an endpoint and extends indefinitely in one direction. Two rays with a common endpoint form an angle; their common endpoint is the vertex. When an angle is named with three points, the vertex belongs in the middle. In standard position, place the vertex at the origin and the initial ray along the positive x-axis.",
+        "A directed angle also records a rotation from the initial ray to a terminal ray. Counterclockwise rotation is positive and clockwise rotation is negative. A zero rotation leaves the rays coincident. A whole turn also returns to the initial ray, but it describes movement that zero rotation does not.",
+        "Keep position and movement separate. A diagram of two rays can show a terminal direction while hiding completed revolutions. To reconstruct a path, specify its signed sweep and any reversals. We will first treat one directed sweep, then add multiple segments."
+      ]
+    },
+    {
+      "heading": "Measure radians as an arc-to-radius ratio",
+      "paragraphs": [
+        "A central angle has its vertex at a circle's center. For a nonnegative circular arc of length s on a circle of radius r>0, define its radian measure by $\\theta=s/r$. Match length units first. The length units cancel; the name radian tells us that the dimensionless ratio represents angular measure.",
+        "One radian means that the intercepted arc is as long as the radius. It does not mean one degree, and it does not automatically include pi. A radian value such as 7/5 is as legitimate as pi/6. On a unit-radius circle, the numerical arc length equals the numerical radian measure when compatible length units are used.",
+        "Scaling a circle and its arc by the same positive factor does not change s/r. That invariance makes radians a measure of angle rather than circle size. For a directed sweep, a signed circumferential displacement can be negative, while an ordinary arc length and traveled distance are nonnegative."
+      ]
+    },
+    {
+      "heading": "Build the turn, degree and radian conversions",
+      "paragraphs": [
+        "The circumference of a circle is $2\\pi r$. Dividing one full circumference by its radius gives a full-turn measure of $2\\pi$ radians. A turn is also defined as 360 degrees, so $2\\pi\\ \\mathrm{rad}=360^\\circ$ and $\\pi\\ \\mathrm{rad}=180^\\circ$.",
+        "Convert degrees to radians by multiplying the numerical degree value by pi/180. Convert radians to degrees by multiplying by 180/pi. Convert turns to radians by multiplying by 2pi, or to degrees by multiplying by 360. Write the unit relationship beside the arithmetic so the conversion factor is oriented correctly.",
+        "A conversion changes units, not the amount or direction of rotation. Preserve negative signs and full turns. Reducing an angle to a coterminal representative is a separate operation that answers a different question. Exact conversion normally retains pi until an approximation is explicitly requested."
+      ]
+    },
+    {
+      "heading": "Keep ordinary radians and pi exact",
+      "paragraphs": [
+        "Pi is a specific exact number, not a unit marker. Thus 2 radians and 2pi radians are different angles. Likewise, 180/pi degrees is an exact expression whose reciprocal pi must remain in the denominator. Ordinary radian values often arise from ratios of measured or supplied lengths.",
+        "An exact answer and a decimal approximation serve different purposes. The expression 180/pi identifies one exact value; a finite decimal such as 57.2958 identifies another value that approximates it. When a problem requests exact work, rounding cannot establish equality or decide a terminal-ray boundary.",
+        "The exact answer fields accept numbers, fractions, pi or π, parentheses and arithmetic, including expressions such as 180/pi or 20-6*pi. Equivalent supported expressions are accepted. Enter only the value; the field provides its units. A separate exact-radical field will say when a square root is needed."
+      ]
+    },
+    {
+      "heading": "Read decimal and sexagesimal angle measures",
+      "paragraphs": [
+        "A degree may be divided into 60 angular minutes, and each minute into 60 angular seconds. These angular units are not elapsed-time minutes and seconds. A magnitude D degrees, M minutes and S seconds equals $D+M/60+S/3600$ degrees, with 0<=M<60 and 0<=S<60 in normalized form.",
+        "Attach a negative sign to the entire magnitude: $-(D+M/60+S/3600)$. This matters for angles between -1 and 0 degrees, where the whole-degree component is zero. Negating zero while adding positive minutes would accidentally turn a small negative angle positive.",
+        "For decimal degrees, work first with the magnitude. Remove the whole degrees, multiply the remainder by 60 to find minutes, then multiply the remaining minute fraction by 60 to find seconds. Restore the sign on the whole DMS expression. Convert finite decimals to fractions before exact radian conversion."
+      ]
+    },
+    {
+      "heading": "Reduce angles to a specified interval",
+      "paragraphs": [
+        "A unique nonnegative representative is obtained by adding or subtracting whole turns until the value lies in the requested half-open interval: [0,360) degrees or [0,2pi) radians. Zero is included and the upper full-turn endpoint is excluded because those two values share a terminal ray.",
+        "For radians, write $\\theta=\\theta_0+2\\pi k$ with $0\\le\\theta_0<2\\pi$ and integer k. Equivalently, k is the floor of theta/(2pi), meaning the greatest integer no larger than that quotient. For negative angles this is generally different from rounding toward zero.",
+        "Other conventions produce other representatives. In (-pi,pi], the negative half-turn endpoint is excluded and positive pi is included. A least strictly positive coterminal angle is 2pi for the positive x-axis, whereas its least nonnegative representative is zero. Read the interval before choosing endpoints."
+      ]
+    },
+    {
+      "heading": "Account for the signed whole turns",
+      "paragraphs": [
+        "The integer k in a nonnegative-representative equation is an algebraic floor quotient. It tells you how many signed full turns must be added to the representative to reconstruct theta. It is not automatically the number of complete clockwise or counterclockwise revolutions in the traveled path.",
+        "For one directed sweep, count complete traveled turns using the nonnegative magnitude: take the floor of |theta|/(2pi), then retain the remaining angular magnitude. Record clockwise or counterclockwise separately. This decomposition follows actual travel from the initial ray.",
+        "For a negative partial turn, the nonnegative representative requires going almost a whole turn in the opposite direction. That is why an algebraic quotient of -1 can accompany zero complete traveled turns. Never use that representative's magnitude as the path distance."
+      ]
+    },
+    {
+      "heading": "Test and describe coterminal angles",
+      "paragraphs": [
+        "Two angles in the same standard position are coterminal exactly when their difference is an integer number of full turns. In degrees, (beta-alpha)/360 must be an integer. In radians, (beta-alpha)/(2pi) must be an integer. A noninteger quotient does not pass this test.",
+        "Every angle coterminal with theta has the form $\\theta+2\\pi k$, for every integer k, in radians. Use theta+360k in degrees. The index must include negative integers and zero as well as positive integers. Allowing every real k would include angles with different final rays.",
+        "Equal acute reference angles do not establish coterminality: several different quadrants can use the same acute triangle angle. Likewise, opposite rays on the same line are not the same ray; a half-turn difference generally fails the coterminal test."
+      ]
+    },
+    {
+      "heading": "Locate terminal rays exactly",
+      "paragraphs": [
+        "Reduce an angle to a nonnegative representative before locating its terminal ray. Quadrant I is between 0 and pi/2; quadrant II between pi/2 and pi; quadrant III between pi and 3pi/2; quadrant IV between 3pi/2 and 2pi. Each quadrant is open at its axis boundaries.",
+        "The four boundary rays are separate cases: zero is the positive x-axis, pi/2 the positive y-axis, pi the negative x-axis, and 3pi/2 the negative y-axis. A ray on an axis belongs to none of the four open quadrants. Adding full turns does not change these locations.",
+        "For ordinary radians, compare the exact representative against the exact boundaries. For example, 20 radians becomes 20-6pi after three full turns. A rounded picture can help you visualize its location, but it cannot prove a boundary decision when two values round to the same decimal."
+      ]
+    },
+    {
+      "heading": "Find an acute reference angle",
+      "paragraphs": [
+        "This lesson uses a strictly acute reference angle: the smaller positive angle between a non-axis terminal ray and the horizontal axis. It must satisfy $0<\\alpha<\\pi/2$. An axis ray has no strictly acute reference angle under this convention. Some tools extend reference-angle terminology to zero or right angles, so always state the convention.",
+        "For a representative theta0, the reference angle is theta0 in quadrant I, pi-theta0 in quadrant II, theta0-pi in quadrant III, and 2pi-theta0 in quadrant IV. These formulas measure distance to the nearer horizontal ray after the quadrant is known.",
+        "A reference angle captures an acute magnitude but loses quadrant and direction information. It cannot reconstruct the original angle without additional location data. Keep the reference angle, quadrant and full directed rotation as distinct results."
+      ]
+    },
+    {
+      "heading": "Derive and interpret circular arc length",
+      "paragraphs": [
+        "The radian definition theta=s/r rearranges to s=r*theta. For a positive sweep, s is its arc length. For a single clockwise sweep, r*theta is a signed circumferential displacement; its nonnegative traveled distance is $r|\\theta|$. State which quantity is requested.",
+        "A circular arc follows the circumference. A chord is a straight line joining two points on the circle. They generally have different lengths even though they share endpoints. A semicircular arc spans pi radians and has length pi*r; its chord is a diameter of length 2r.",
+        "The formula needs radians. Substituting a degree number directly multiplies distance by the wrong factor. Also retain the whole sweep: an angle reduced to a principal interval can locate the endpoint while omitting one or more traveled circumferences."
+      ]
+    },
+    {
+      "heading": "Recover an angle or radius from an arc",
+      "paragraphs": [
+        "When radius is known and positive, recover a positive central angle with theta=s/r using compatible arc and radius units. If s is explicitly a signed circumferential displacement, the recovered theta has the same sign. A nonnegative distance by itself does not determine clockwise versus counterclockwise direction.",
+        "When a nonzero signed angle and its signed arc are known, solve r=s/theta. The result must be positive. With a nonnegative distance instead, divide by the nonzero angular magnitude. Using a positive distance divided by a negative angle would produce an invalid negative radius because it mixes two different conventions.",
+        "Check zero before dividing. If theta=0 and s=0, every positive radius fits, so the radius is undetermined. If theta=0 and s is nonzero, no finite radius fits. An impossible or underdetermined setup should not be converted into a numerical answer by treating division by zero as zero."
+      ]
+    },
+    {
+      "heading": "Convert units before using the geometry",
+      "paragraphs": [
+        "Before using a ratio of lengths, convert them to compatible units. Before reporting area, square the length-unit conversion. For example, one centimeter is 1/100 meter, so one square centimeter is 1/10000 square meter. A radian ratio cancels matching length units.",
+        "Radius is half the diameter. Naming a supplied diameter D does not make D the radius in s=r*theta or A=r²*theta/2. Write r=D/2 first, then convert its length unit. Degrees must separately be multiplied by pi/180 before entering either radian formula.",
+        "Use units as a check on the operation. Arc length has one factor of length; area has two. A product of a length and a numerical degree value has not yet applied the degree-to-radian conversion. Relabeling the final answer cannot repair the incorrect numerical calculation."
+      ]
+    },
+    {
+      "heading": "Compare the same angle at different radii",
+      "paragraphs": [
+        "At a fixed radian angle, arc length s=r*theta is directly proportional to radius. Replacing r by c*r, for a positive scale c, replaces s by c*s. The ratio s/r and therefore the angle remain unchanged.",
+        "Area introduces two factors of radius, so at the same angle its scale is c². A radius increase by a factor of three triples arc length but multiplies sector area by nine. This dimensional distinction will recur in geometry, physical models and engineering measurements.",
+        "Holding arc length fixed is a different comparison. In theta=s/r, a larger radius gives a smaller angle for the same positive arc. Before discussing proportionality, name what is fixed and what is changing."
+      ]
+    },
+    {
+      "heading": "Derive sector area from a fraction of a disk",
+      "paragraphs": [
+        "An ordinary sector is the portion of a disk swept by a radius through a nonnegative angle no greater than one full turn. Its area is the same fraction of the whole disk as its angle is of a full turn: $A=(\\theta/(2\\pi))(\\pi r^2)=r^2\\theta/2$. Here theta is in radians.",
+        "A minor sector uses less than a half turn; a major sector uses more than a half turn and less than a full turn. Both use the same area formula when their actual sweep is supplied. Do not silently substitute the smaller angle between two rays for an explicitly requested major sector.",
+        "The complementary sector fills the rest of the disk and has area pi*r²-A. Ordinary sector area is nonnegative and cannot exceed the disk's area. For a clockwise sweep of at most one turn, use the angle's magnitude when asking about area."
+      ]
+    },
+    {
+      "heading": "Recover a sector angle or radius",
+      "paragraphs": [
+        "With a known positive radius, solve A=r²*theta/2 for theta=2A/r². For an ordinary sector, check both 0<=A<=pi*r² and 0<=theta<=2pi. Algebra can return a value outside that geometric scope; the scope check is part of the answer.",
+        "With a known positive angle and area, solve r²=2A/theta and take the positive square root. A nonperfect square is a valid exact radius. Cancel common pi factors before simplifying a radical when the supplied values allow it. The negative algebraic root is excluded by the positive-radius premise.",
+        "Zero angle needs separate treatment. Zero area with zero angle gives no unique radius, while positive area with zero angle is incompatible. If angle is positive but area is zero, the equation would require radius zero, which is outside the circle model used here."
+      ]
+    },
+    {
+      "heading": "Keep multiple turns and overlap visible",
+      "paragraphs": [
+        "A monotone rotation beyond one full turn traverses an entire circumference and continues. Its distance is radius times the complete angular magnitude, so reducing the angle before calculating distance loses completed motion.",
+        "An accumulated swept area can count the same region more than once. For a monotone sweep, the expression r²*|theta|/2 gives this area with multiplicity even beyond one turn. It then differs from the area of the unique region touched.",
+        "After one complete monotone turn, every point of the disk has been covered by the sweeping radius. Additional turns do not enlarge that unique region beyond pi*r². For paths with reversals, a net angle by itself cannot determine which regions were covered; keep the path segments."
+      ]
+    },
+    {
+      "heading": "Connect angular and tangential motion",
+      "paragraphs": [
+        "For a directed rotation over positive elapsed time, average signed angular rate is delta-theta/delta-t. For one motion segment with no reversal, average angular speed is |delta-theta|/delta-t. If angular rate is uniform, these rates apply throughout the interval; otherwise an average does not determine each instant's motion.",
+        "At fixed positive radius, nonnegative tangential speed is r times angular speed when the angle rate uses radians per matching time unit. A signed rate along the circumference can instead use r times signed angular rate. Keep that signed quantity distinct from speed.",
+        "Points fixed on a rigid rotating disk share the same angular change and angular speed. Their tangential speeds differ in proportion to radius. Convert radius to the desired length unit before multiplying, and retain a consistent time unit."
+      ]
+    },
+    {
+      "heading": "Convert revolutions, minutes and seconds",
+      "paragraphs": [
+        "Revolutions per minute counts turns per elapsed minute. Multiply by 2pi radians per turn and divide by 60 seconds per minute to obtain radians per second. If the rate is signed, preserve direction; a nonnegative rotational frequency or speed uses magnitude.",
+        "For nonzero uniform angular speed omega, the time to complete one revolution is T=2pi/omega. The reciprocal 1/T is revolutions per matching time unit. Multiplying angular speed by a supplied radius gives tangential speed, and dividing a requested angular sweep by that speed gives its duration.",
+        "Inverse problems require the same premises. Recover radius with r=v/omega only for compatible nonnegative speeds with omega>0, and recover time with theta/omega for the supplied monotone uniform sweep. At rest, no finite waiting time produces a complete revolution; 2pi/0 is not a finite period."
+      ]
+    },
+    {
+      "heading": "Model a supplied rolling relationship",
+      "paragraphs": [
+        "For a point moving on a fixed circle, r times total angular travel is its curved path distance. For a rolling wheel, the axle's straight travel can obey the same numerical relationship only when rolling without slipping is supplied. These are different geometric setups with an explicitly shared distance-per-turn relationship.",
+        "Under straight-line rolling without slipping, one complete revolution advances the axle by one circumference. Thus distance=(number of revolutions)*2pi*r=r*angular travel. Use half the diameter for radius and match length units. With reversals, total traveled distance and signed net axle displacement differ.",
+        "If slipping is unrestricted, measured wheel rotation does not uniquely determine axle travel. A locked wheel can slide without rotating, and a spinning wheel can rotate with little advance. Do not infer the no-slip relationship from an equation alone."
+      ]
+    },
+    {
+      "heading": "Track reversals and rest",
+      "paragraphs": [
+        "Break a path at every reversal. Add signed segment angles for net rotation, and add their absolute magnitudes for total angular travel. At fixed radius, multiply that total travel by radius for distance. Taking the absolute value only after adding can erase movement.",
+        "Over a multi-segment journey, average signed angular rate is net rotation divided by total elapsed time. Average angular speed uses total angular travel, and average tangential speed uses total distance. These averages can differ even when every segment individually has uniform speed.",
+        "A return to the initial ray may leave zero net rotation while traveled distance remains positive. Rest is different: every segment angle is zero and no distance accumulates. A stationary point does not complete a revolution after any finite waiting time, even though its position remains unchanged."
+      ]
+    },
+    {
+      "heading": "Audit a complete angular result",
+      "paragraphs": [
+        "End a calculation by checking its premises, units and interpretation. A physical circle here has positive radius. Rate quotients require positive elapsed time. Angles entering the arc and sector formulas use radians. Ordinary sector area is bounded by one disk, while accumulated sweep explicitly counts repeated coverage.",
+        "Check inverse data before division. Zero angle with zero arc leaves radius undetermined; zero angle with nonzero arc is inconsistent. A negative ratio of signed arc to signed angle cannot be a positive radius. Area-derived roots must be positive and must satisfy the original equation.",
+        "Finally ask whether the requested result describes a terminal ray, complete signed rotation, total traveled distance, a unique region or repeated coverage. State uniform-motion and no-slip assumptions when they are used. A correct decimal calculation of the wrong quantity is still the wrong answer."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Describe a clockwise sensor rotation",
+      "prompt": "A sensor turns clockwise through 220 degrees from standard position. Describe its initial ray, direction and signed angle.",
+      "steps": [
+        {
+          "math": "\\theta=-220^\\circ",
+          "reason": "Clockwise rotation receives a negative sign; the positive x-axis is the initial ray."
+        },
+        {
+          "math": "-220^\\circ+360^\\circ=140^\\circ",
+          "reason": "The same final ray is reached by a positive 140-degree rotation, but that is a different movement."
+        }
+      ],
+      "conclusion": "The sensor traveled clockwise through 220 degrees. Its terminal ray is in quadrant II; its motion was not counterclockwise through 140 degrees."
+    },
+    {
+      "title": "Distinguish a terminal ray from a completed motion",
+      "prompt": "Compare rotations of pi/3 and 13pi/3 radians.",
+      "steps": [
+        {
+          "math": "\\frac{13\\pi}{3}-\\frac{\\pi}{3}=4\\pi",
+          "reason": "Subtract the complete rotations."
+        },
+        {
+          "math": "4\\pi=2(2\\pi)",
+          "reason": "The difference is two full turns, so their final rays coincide."
+        }
+      ],
+      "conclusion": "Equal terminal rays do not imply equal rotation or equal traveled distance."
+    },
+    {
+      "title": "A seven-centimeter arc on a five-centimeter circle",
+      "prompt": "An arc measures 7 cm on a circle of radius 5 cm. Find its central angle.",
+      "steps": [
+        {
+          "math": "\\theta=\\frac{s}{r}=\\frac{7\\,\\mathrm{cm}}{5\\,\\mathrm{cm}}=\\frac75",
+          "reason": "Use compatible lengths in the defining ratio."
+        },
+        {
+          "math": "\\frac75\\cdot\\frac{180}{\\pi}=\\frac{252}{\\pi}",
+          "reason": "Multiplication by 180/pi expresses the same angle in degrees."
+        }
+      ],
+      "conclusion": "The angle is 7/5 radians, not 7pi/5 radians."
+    },
+    {
+      "title": "The same angle on a larger circle",
+      "prompt": "An arc of 1.2 m lies on a radius-0.4-m circle. Triple both lengths.",
+      "steps": [
+        {
+          "math": "\\theta=\\frac{1.2}{0.4}=3",
+          "reason": "The original arc is three radii long."
+        },
+        {
+          "math": "\\theta_{\\rm new}=\\frac{3.6}{1.2}=3",
+          "reason": "The common scale factor cancels from the ratio."
+        }
+      ],
+      "conclusion": "Both circles have a 3-radian central angle even though their arc lengths differ."
+    },
+    {
+      "title": "Convert a negative angle beyond one turn",
+      "prompt": "Convert -810 degrees into radians and signed turns.",
+      "steps": [
+        {
+          "math": "-810\\cdot\\frac{\\pi}{180}=-\\frac{9\\pi}{2}",
+          "reason": "Convert the entire signed degree value."
+        },
+        {
+          "math": "\\frac{-810}{360}=-\\frac94",
+          "reason": "Divide by degrees per full turn to obtain signed turns."
+        }
+      ],
+      "conclusion": "The rotation is -9pi/2 radians or -9/4 turns. It must not be replaced by its final principal angle during conversion."
+    },
+    {
+      "title": "Express a fractional revolution three ways",
+      "prompt": "Express five eighths of a counterclockwise revolution in degrees and radians.",
+      "steps": [
+        {
+          "math": "\\frac58\\cdot360^\\circ=225^\\circ",
+          "reason": "A full turn contains 360 degrees."
+        },
+        {
+          "math": "\\frac58\\cdot2\\pi=\\frac{5\\pi}{4}",
+          "reason": "A full turn contains 2pi radians."
+        }
+      ],
+      "conclusion": "All three values describe the same positive rotation."
+    },
+    {
+      "title": "Convert one radian to degrees",
+      "prompt": "Convert one radian into degrees exactly, then approximate to four decimal places.",
+      "steps": [
+        {
+          "math": "1\\cdot\\frac{180}{\\pi}=\\frac{180}{\\pi}",
+          "reason": "Keep the conversion factor exact."
+        },
+        {
+          "math": "\\frac{180}{\\pi}\\approx57.2958",
+          "reason": "Round only for the separately requested approximate display."
+        }
+      ],
+      "conclusion": "The exact answer is 180/pi degrees. The approximation should be marked with approximately, not exact equality."
+    },
+    {
+      "title": "Compare two radians with two pi radians",
+      "prompt": "On a radius-3-cm circle, compare arc travel for 2 radians and 2pi radians.",
+      "steps": [
+        {
+          "math": "s_1=3(2)=6\\ \\mathrm{cm}",
+          "reason": "The first rotation uses an ordinary radian value."
+        },
+        {
+          "math": "s_2=3(2\\pi)=6\\pi\\ \\mathrm{cm}",
+          "reason": "The second is one full turn and travels the circumference."
+        }
+      ],
+      "conclusion": "Inserting a pi factor changes the physical rotation and distance."
+    },
+    {
+      "title": "Convert a fractional degree to exact radians",
+      "prompt": "Convert 22.5 degrees to DMS and exact radians.",
+      "steps": [
+        {
+          "math": "0.5\\cdot60=30",
+          "reason": "The fractional degree contributes 30 minutes and no remaining seconds."
+        },
+        {
+          "math": "22.5\\cdot\\frac{\\pi}{180}=\\frac{\\pi}{8}",
+          "reason": "Treat 22.5 as 45/2 for exact conversion."
+        }
+      ],
+      "conclusion": "The angle is 22 degrees 30 minutes 0 seconds, or pi/8 radians."
+    },
+    {
+      "title": "Convert a negative degree-minute-second measurement",
+      "prompt": "Convert a negative angle with magnitude 0 degrees 20 minutes 30 seconds.",
+      "steps": [
+        {
+          "math": "-\\left(0+\\frac{20}{60}+\\frac{30}{3600}\\right)=-\\frac{41}{120}",
+          "reason": "The negative sign applies to both fractional components."
+        },
+        {
+          "math": "-\\frac{41}{120}\\cdot\\frac{\\pi}{180}=-\\frac{41\\pi}{21600}",
+          "reason": "Convert the entire signed value."
+        }
+      ],
+      "conclusion": "The zero whole-degree component does not erase the negative direction."
+    },
+    {
+      "title": "Normalize a negative radian measure",
+      "prompt": "Reduce -19pi/6 radians to [0,2pi).",
+      "steps": [
+        {
+          "math": "-\\frac{19\\pi}{6}+4\\pi=\\frac{5\\pi}{6}",
+          "reason": "Adding two full turns reaches the requested interval."
+        },
+        {
+          "math": "-\\frac{19\\pi}{6}=\\frac{5\\pi}{6}+2\\pi(-2)",
+          "reason": "The integer quotient is -2, and substitution recovers the original angle."
+        }
+      ],
+      "conclusion": "The representative is 5pi/6, but the original directed rotation remains -19pi/6."
+    },
+    {
+      "title": "Compare zero and one turn in two requested intervals",
+      "prompt": "Compare interval conventions for an angle of 2pi radians.",
+      "steps": [
+        {
+          "math": "2\\pi=0+2\\pi(1)",
+          "reason": "The representative in [0,2pi) is zero."
+        },
+        {
+          "math": "\\theta_{\\rm positive}=2\\pi,\\qquad\\theta_{(-\\pi,\\pi]}=0",
+          "reason": "Strict positivity excludes zero; the symmetric interval includes zero."
+        }
+      ],
+      "conclusion": "Zero and one full turn share a final ray but satisfy different requested conventions."
+    },
+    {
+      "title": "Interpret the quotient for minus pi over six",
+      "prompt": "Interpret the complete-turn counts for -pi/6 radians.",
+      "steps": [
+        {
+          "math": "-\\frac{\\pi}{6}=\\frac{11\\pi}{6}+2\\pi(-1)",
+          "reason": "The nonnegative-representative quotient is -1."
+        },
+        {
+          "math": "\\left\\lfloor\\frac{|{-\\pi/6}|}{2\\pi}\\right\\rfloor=0",
+          "reason": "The actual path has no complete clockwise turn, only a pi/6 clockwise remainder."
+        }
+      ],
+      "conclusion": "The algebraic quotient and traveled-turn count answer different questions."
+    },
+    {
+      "title": "Separate two clockwise turns and a remaining clockwise fraction",
+      "prompt": "Decompose -29pi/6 radians as both travel and a representative equation.",
+      "steps": [
+        {
+          "math": "\\frac{29\\pi}{6}=2(2\\pi)+\\frac{5\\pi}{6}",
+          "reason": "Its magnitude is two complete turns plus a 5pi/6 remainder."
+        },
+        {
+          "math": "-\\frac{29\\pi}{6}=\\frac{7\\pi}{6}+2\\pi(-3)",
+          "reason": "The unique representative is 7pi/6 with quotient -3."
+        }
+      ],
+      "conclusion": "The path contains two complete clockwise turns followed by 5pi/6 clockwise; it did not complete three clockwise turns."
+    },
+    {
+      "title": "Test two differently written rotations",
+      "prompt": "Are -75 degrees and 645 degrees coterminal?",
+      "steps": [
+        {
+          "math": "645-(-75)=720",
+          "reason": "Subtract the full signed measures."
+        },
+        {
+          "math": "\\frac{720}{360}=2\\in\\mathbb Z",
+          "reason": "The difference is an integer number of turns."
+        }
+      ],
+      "conclusion": "They are coterminal, although their signed rotations differ by two turns."
+    },
+    {
+      "title": "State a full coterminal family and check a proposed member",
+      "prompt": "Describe all angles coterminal with 20 radians and test 20+pi.",
+      "steps": [
+        {
+          "math": "\\theta_k=20+2\\pi k,\\quad k\\in\\mathbb Z",
+          "reason": "Integer full-turn additions give the complete family."
+        },
+        {
+          "math": "\\frac{(20+\\pi)-20}{2\\pi}=\\frac12\\notin\\mathbb Z",
+          "reason": "The proposed member differs by only half a turn."
+        }
+      ],
+      "conclusion": "20+pi is on the opposite ray, so it is not in the coterminal family."
+    },
+    {
+      "title": "Locate an angle with several turns",
+      "prompt": "Locate the terminal ray of -765 degrees.",
+      "steps": [
+        {
+          "math": "-765+3(360)=315",
+          "reason": "Add enough full turns to reach [0,360)."
+        },
+        {
+          "math": "270<315<360",
+          "reason": "The representative lies strictly inside quadrant IV."
+        }
+      ],
+      "conclusion": "The complete motion is clockwise, and its terminal ray lies in quadrant IV."
+    },
+    {
+      "title": "Classify all four quadrantal rays",
+      "prompt": "Classify 0, pi/2, pi and 3pi/2 without assigning them to quadrants.",
+      "steps": [
+        {
+          "math": "0\\longrightarrow+x,\\qquad\\frac\\pi2\\longrightarrow+y",
+          "reason": "The first two values identify the positive axis rays."
+        },
+        {
+          "math": "\\pi\\longrightarrow-x,\\qquad\\frac{3\\pi}{2}\\longrightarrow-y",
+          "reason": "The next two identify the negative axis rays."
+        }
+      ],
+      "conclusion": "All four are quadrantal angles, and all four are outside the open quadrants."
+    },
+    {
+      "title": "Reference angles in quadrants II and III",
+      "prompt": "Find reference angles for 2pi/3 in quadrant II and 7pi/6 in quadrant III.",
+      "steps": [
+        {
+          "math": "\\alpha_1=\\pi-\\frac{2\\pi}{3}=\\frac\\pi3",
+          "reason": "Measure back to the negative x-axis in quadrant II."
+        },
+        {
+          "math": "\\alpha_2=\\frac{7\\pi}{6}-\\pi=\\frac\\pi6",
+          "reason": "Measure forward from the negative x-axis in quadrant III."
+        }
+      ],
+      "conclusion": "Both results are strictly between zero and pi/2, as an acute reference angle must be."
+    },
+    {
+      "title": "The same acute reference angle with different terminal rays",
+      "prompt": "Compare 40 degrees, 140 degrees and 180 degrees.",
+      "steps": [
+        {
+          "math": "\\alpha_{40}=40^\\circ,\\qquad\\alpha_{140}=180^\\circ-140^\\circ=40^\\circ",
+          "reason": "Different quadrants can share the same reference magnitude."
+        },
+        {
+          "math": "140^\\circ-40^\\circ=100^\\circ,\\qquad180^\\circ\\longrightarrow-x",
+          "reason": "A 100-degree difference is not a full turn, and the 180-degree angle itself lies on an axis."
+        }
+      ],
+      "conclusion": "The first two angles share an acute reference angle but are not coterminal. The axis angle has no strictly acute reference angle."
+    },
+    {
+      "title": "Compare a semicircle's arc with its diameter",
+      "prompt": "Compare a semicircular arc and its chord on a radius-7-m circle.",
+      "steps": [
+        {
+          "math": "s=7\\pi\\ \\mathrm m",
+          "reason": "The semicircle sweeps pi radians."
+        },
+        {
+          "math": "c=2(7)=14\\ \\mathrm m,\\qquad\\frac{s}{c}=\\frac\\pi2>1",
+          "reason": "The chord is the diameter, and pi is greater than two."
+        }
+      ],
+      "conclusion": "The curved path is longer than the straight path between the same endpoints."
+    },
+    {
+      "title": "A clockwise rotation with positive traveled distance",
+      "prompt": "A point on a radius-9-cm circle moves clockwise through 4pi/3 radians.",
+      "steps": [
+        {
+          "math": "d_{\\rm signed}=9\\left(-\\frac{4\\pi}{3}\\right)=-12\\pi\\ \\mathrm{cm}",
+          "reason": "Retain the sign for circumferential displacement."
+        },
+        {
+          "math": "d_{\\rm traveled}=9\\left|{-\\frac{4\\pi}{3}}\\right|=12\\pi\\ \\mathrm{cm}",
+          "reason": "Distance uses the nonnegative sweep magnitude."
+        }
+      ],
+      "conclusion": "A negative signed arc is compatible with a positive traveled distance."
+    },
+    {
+      "title": "Recover an ordinary radian measure from two lengths",
+      "prompt": "A positive arc has length 9 cm on a radius-12-cm circle.",
+      "steps": [
+        {
+          "math": "\\theta=\\frac9{12}=\\frac34\\ \\mathrm{rad}",
+          "reason": "The positive radius permits division."
+        },
+        {
+          "math": "s=12\\cdot\\frac34=9\\ \\mathrm{cm}",
+          "reason": "Substitute the recovered angle into the original relationship."
+        }
+      ],
+      "conclusion": "The angle is an ordinary 3/4 radian. Direction would require additional information if only traveled distance were supplied."
+    },
+    {
+      "title": "Recover radius from an exact pi-valued arc",
+      "prompt": "A signed arc is -10pi m and its signed rotation is -5pi/4 radians.",
+      "steps": [
+        {
+          "math": "r=\\frac{-10\\pi}{-5\\pi/4}=8\\ \\mathrm m",
+          "reason": "The nonzero denominator and matching signs produce a positive radius."
+        },
+        {
+          "math": "8\\left(-\\frac{5\\pi}{4}\\right)=-10\\pi\\ \\mathrm m",
+          "reason": "Check the result in the signed arc equation."
+        }
+      ],
+      "conclusion": "The radius is positive even though both directed quantities are negative."
+    },
+    {
+      "title": "Repair a degree value substituted as radians",
+      "prompt": "A disk has diameter 80 mm. Find the arc for a 135-degree sector in meters.",
+      "steps": [
+        {
+          "math": "r=40\\ \\mathrm{mm}=\\frac1{25}\\ \\mathrm m,\\qquad\\theta=\\frac{3\\pi}{4}",
+          "reason": "Halve the diameter, convert millimeters, and convert degrees."
+        },
+        {
+          "math": "s=\\frac1{25}\\cdot\\frac{3\\pi}{4}=\\frac{3\\pi}{100}\\ \\mathrm m",
+          "reason": "Multiply only after the quantities have the required meanings and units."
+        }
+      ],
+      "conclusion": "Using 80 as the radius or 135 as a radian value would give a different distance."
+    },
+    {
+      "title": "Convert millimeters and meters before taking a ratio",
+      "prompt": "An arc is 0.09 m and its circle radius is 30 mm. Find the angle.",
+      "steps": [
+        {
+          "math": "s=90\\ \\mathrm{mm},\\qquad r=30\\ \\mathrm{mm}",
+          "reason": "Convert one length so both use millimeters."
+        },
+        {
+          "math": "\\theta=\\frac{90}{30}=3\\ \\mathrm{rad}",
+          "reason": "The compatible units cancel."
+        }
+      ],
+      "conclusion": "Dividing 0.09 by 30 without converting units would be wrong by a factor of one thousand."
+    },
+    {
+      "title": "Double a radius at a fixed angle",
+      "prompt": "Increase radius from 3 cm to 9 cm while holding theta=2/5 radians fixed.",
+      "steps": [
+        {
+          "math": "s_1=3\\cdot\\frac25=\\frac65,\\qquad s_2=9\\cdot\\frac25=\\frac{18}{5}\\ \\mathrm{cm}",
+          "reason": "The arc-length ratio is three."
+        },
+        {
+          "math": "A_1=\\frac12(3)^2\\frac25=\\frac95,\\qquad A_2=\\frac12(9)^2\\frac25=\\frac{81}{5}\\ \\mathrm{cm}^2",
+          "reason": "The area ratio is nine."
+        }
+      ],
+      "conclusion": "The angle stayed 2/5 radians; it did not triple."
+    },
+    {
+      "title": "Compare two equal arc lengths",
+      "prompt": "Two arcs both measure 6 cm, on circles with radii 3 cm and 12 cm.",
+      "steps": [
+        {
+          "math": "\\theta_1=\\frac63=2\\ \\mathrm{rad}",
+          "reason": "Divide the first arc by its radius."
+        },
+        {
+          "math": "\\theta_2=\\frac6{12}=\\frac12\\ \\mathrm{rad}",
+          "reason": "The four-times-larger radius produces one quarter of the angle."
+        }
+      ],
+      "conclusion": "Equal arc lengths need not subtend equal angles."
+    },
+    {
+      "title": "A minor sector in exact units",
+      "prompt": "Find the area of a radius-10-m sector with sweep pi/5.",
+      "steps": [
+        {
+          "math": "\\frac{\\theta}{2\\pi}=\\frac{\\pi/5}{2\\pi}=\\frac1{10}",
+          "reason": "The sector occupies one tenth of a full disk."
+        },
+        {
+          "math": "A=\\frac1{10}\\pi(10)^2=10\\pi\\ \\mathrm m^2",
+          "reason": "Apply that fraction to the whole disk area."
+        }
+      ],
+      "conclusion": "The same result follows from r²*theta/2, and its units are square meters."
+    },
+    {
+      "title": "A major sector and its complementary region",
+      "prompt": "A major sector has radius 6 cm and sweep 300 degrees. Find it and its complement.",
+      "steps": [
+        {
+          "math": "\\theta=\\frac{5\\pi}{3},\\qquad A=\\frac12(6)^2\\frac{5\\pi}{3}=30\\pi\\ \\mathrm{cm}^2",
+          "reason": "Use the supplied major sweep rather than the smaller angle."
+        },
+        {
+          "math": "A_{\\rm rest}=36\\pi-30\\pi=6\\pi\\ \\mathrm{cm}^2",
+          "reason": "Subtract from the full disk."
+        }
+      ],
+      "conclusion": "The major sector and its complement sum to the disk area."
+    },
+    {
+      "title": "Recover an angle from sector area",
+      "prompt": "A radius-8-m sector has area 12pi m². Recover its sweep.",
+      "steps": [
+        {
+          "math": "\\theta=\\frac{2(12\\pi)}{8^2}=\\frac{3\\pi}{8}",
+          "reason": "Isolate the angle by dividing by the positive squared radius."
+        },
+        {
+          "math": "0<\\frac{3\\pi}{8}<2\\pi,\\qquad\\frac12(64)\\frac{3\\pi}{8}=12\\pi",
+          "reason": "Check both the ordinary-sector bound and the original area equation."
+        }
+      ],
+      "conclusion": "The recovered angle is valid for an ordinary sector."
+    },
+    {
+      "title": "Recover a radius with an exact square root",
+      "prompt": "A sector with angle pi/4 has area 15pi cm². Recover the radius.",
+      "steps": [
+        {
+          "math": "r^2=\\frac{2(15\\pi)}{\\pi/4}=120\\ \\mathrm{cm}^2",
+          "reason": "The pi factors cancel before taking the root."
+        },
+        {
+          "math": "r=\\sqrt{120}=2\\sqrt{30}\\ \\mathrm{cm}",
+          "reason": "Choose the positive root and simplify its square factor."
+        }
+      ],
+      "conclusion": "The exact radius need not be rational. A negative square root does not represent a radius."
+    },
+    {
+      "title": "Travel through three and a quarter turns",
+      "prompt": "A point at radius 2 m travels monotonically through 3 and 1/4 turns.",
+      "steps": [
+        {
+          "math": "|\\theta|=\\frac{13}{4}(2\\pi)=\\frac{13\\pi}{2}",
+          "reason": "Retain all complete turns."
+        },
+        {
+          "math": "d=2\\cdot\\frac{13\\pi}{2}=13\\pi\\ \\mathrm m,\\qquad\\theta_0=\\frac\\pi2",
+          "reason": "The principal angle records only the final ray; using it for travel would give just pi meters."
+        }
+      ],
+      "conclusion": "The three lost circumferences account for the difference between pi and 13pi meters."
+    },
+    {
+      "title": "Contrast accumulated sweep with unique covered area",
+      "prompt": "A radius-3-cm ray sweeps counterclockwise through 5pi radians. Compare area measures.",
+      "steps": [
+        {
+          "math": "A_{\\rm accumulated}=\\frac12(3)^2(5\\pi)=\\frac{45\\pi}{2}\\ \\mathrm{cm}^2",
+          "reason": "The sweep counts coverage through two and a half turns."
+        },
+        {
+          "math": "A_{\\rm unique}=\\pi(3)^2=9\\pi\\ \\mathrm{cm}^2",
+          "reason": "The unique region is the disk, which was covered during the first full turn."
+        }
+      ],
+      "conclusion": "The accumulated area exceeds a disk because it counts repeats; it is not an ordinary single sector."
+    },
+    {
+      "title": "A clockwise uniform rotation",
+      "prompt": "At radius 5 m, a point rotates uniformly through -3pi radians in 4 seconds.",
+      "steps": [
+        {
+          "math": "\\omega_{\\rm signed}=\\frac{-3\\pi}{4}\\ \\mathrm{rad/s},\\qquad\\omega_{\\rm speed}=\\frac{3\\pi}{4}\\ \\mathrm{rad/s}",
+          "reason": "Direction affects signed rate, not the nonnegative speed."
+        },
+        {
+          "math": "v=5\\cdot\\frac{3\\pi}{4}=\\frac{15\\pi}{4}\\ \\mathrm{m/s}",
+          "reason": "Multiply the positive radius by angular speed."
+        }
+      ],
+      "conclusion": "The signed circumferential rate is negative, while the tangential speed is positive."
+    },
+    {
+      "title": "Equal angular speeds at two radii",
+      "prompt": "Two points on one disk are at radii 2 m and 8 m. Angular speed is 3/2 rad/s.",
+      "steps": [
+        {
+          "math": "v_1=2\\cdot\\frac32=3\\ \\mathrm{m/s}",
+          "reason": "Use the smaller radius."
+        },
+        {
+          "math": "v_2=8\\cdot\\frac32=12\\ \\mathrm{m/s}",
+          "reason": "The four-times-larger radius gives four times the tangential speed."
+        }
+      ],
+      "conclusion": "The points share angular speed but not tangential speed."
+    },
+    {
+      "title": "Convert revolutions per minute to an exact angular speed",
+      "prompt": "Convert 75 revolutions per minute to angular speed and revolution time.",
+      "steps": [
+        {
+          "math": "75\\cdot\\frac{2\\pi}{60}=\\frac{5\\pi}{2}\\ \\mathrm{rad/s}",
+          "reason": "Convert both the turn unit and the elapsed-time unit."
+        },
+        {
+          "math": "T=\\frac{2\\pi}{5\\pi/2}=\\frac45\\ \\mathrm s",
+          "reason": "A full revolution has angular magnitude 2pi."
+        }
+      ],
+      "conclusion": "The same frequency is 75/60=5/4 revolutions per second, whose reciprocal is 4/5 second."
+    },
+    {
+      "title": "Recover a revolution time and a tangential speed",
+      "prompt": "A point at radius 10 cm rotates uniformly at 7pi/3 rad/s. Find the time for a 7pi sweep and tangential speed.",
+      "steps": [
+        {
+          "math": "t=\\frac{7\\pi}{7\\pi/3}=3\\ \\mathrm s",
+          "reason": "Divide the requested complete sweep by angular speed."
+        },
+        {
+          "math": "v=\\frac1{10}\\cdot\\frac{7\\pi}{3}=\\frac{7\\pi}{30}\\ \\mathrm{m/s}",
+          "reason": "Convert the radius to 1/10 meter before calculating speed."
+        }
+      ],
+      "conclusion": "Three seconds is the requested multi-turn duration, not its single-revolution time, which is 6/7 second."
+    },
+    {
+      "title": "A wheel's stated distance per revolution",
+      "prompt": "A wheel of diameter 60 cm rolls without slipping for five revolutions in one direction.",
+      "steps": [
+        {
+          "math": "r=30\\ \\mathrm{cm}=\\frac3{10}\\ \\mathrm m,\\qquad C=\\frac{3\\pi}{5}\\ \\mathrm m",
+          "reason": "Halve the diameter and form the circumference."
+        },
+        {
+          "math": "d=5\\cdot\\frac{3\\pi}{5}=3\\pi\\ \\mathrm m",
+          "reason": "Each revolution advances the axle by one circumference under the stated condition."
+        }
+      ],
+      "conclusion": "The no-slip premise connects rotation to the axle's travel."
+    },
+    {
+      "title": "Recover revolutions from a travel distance",
+      "prompt": "A radius-0.45-m wheel travels 18pi m under straight-line rolling without slipping. Recover turns.",
+      "steps": [
+        {
+          "math": "C=2\\pi\\left(\\frac9{20}\\right)=\\frac{9\\pi}{10}\\ \\mathrm m",
+          "reason": "Use the exact radius 9/20 meter."
+        },
+        {
+          "math": "N=\\frac{18\\pi}{9\\pi/10}=20,\\qquad|\\theta|=40\\pi\\ \\mathrm{rad}",
+          "reason": "Divide distance by circumference, then convert turns to radians."
+        }
+      ],
+      "conclusion": "The recovered number of turns is dimensionless, and the angular travel is 40pi radians."
+    },
+    {
+      "title": "A forward rotation followed by a reversal",
+      "prompt": "At radius 2 m, move through +3pi in 2 seconds and then -3pi in 4 seconds.",
+      "steps": [
+        {
+          "math": "\\Delta\\theta=3\\pi-3\\pi=0,\\qquad\\Theta=|3\\pi|+|{-3\\pi}|=6\\pi",
+          "reason": "Separate net rotation from total angular travel."
+        },
+        {
+          "math": "d=2(6\\pi)=12\\pi\\ \\mathrm m,\\quad\\overline\\omega_{\\rm signed}=0,\\quad\\overline v=\\frac{12\\pi}{6}=2\\pi\\ \\mathrm{m/s}",
+          "reason": "Add elapsed times and divide the appropriate quantities by six seconds."
+        }
+      ],
+      "conclusion": "Zero net rotation does not mean that the point stayed still."
+    },
+    {
+      "title": "Zero net rotation after a full trip out and back",
+      "prompt": "A point at radius 4 m remains at rest for ten seconds.",
+      "steps": [
+        {
+          "math": "\\Delta\\theta=0,\\qquad\\Theta=0,\\qquad d=4(0)=0",
+          "reason": "No motion accumulates in any part of the interval."
+        },
+        {
+          "math": "\\overline\\omega=\\frac0{10}=0,\\qquad\\frac{2\\pi}{0}\\text{ is undefined}",
+          "reason": "Average rate is well defined because elapsed time is positive; a finite revolution time is not."
+        }
+      ],
+      "conclusion": "Rest differs from a moving path that happens to return to its starting position."
+    },
+    {
+      "title": "Reject an invalid radius or duration",
+      "prompt": "Compare three proposed arc setups: radius zero, zero angle with zero arc, and zero angle with a 2-m arc.",
+      "steps": [
+        {
+          "math": "r=0\\not>0",
+          "reason": "The first setup violates the positive-radius model before any ratio is taken."
+        },
+        {
+          "math": "0=r(0)\\text{ for all }r>0,\\qquad2=r(0)\\text{ for no }r>0",
+          "reason": "The other two setups are underdetermined and inconsistent respectively."
+        }
+      ],
+      "conclusion": "Do not assign the same numeric fallback to three different premise failures."
+    },
+    {
+      "title": "Audit a plausible answer that discarded complete turns",
+      "prompt": "A proposed ordinary sector has radius 4 m and area 20pi m².",
+      "steps": [
+        {
+          "math": "A_{\\rm disk}=16\\pi<20\\pi",
+          "reason": "The proposed area exceeds the entire disk."
+        },
+        {
+          "math": "\\theta=\\frac{2(20\\pi)}{16}=\\frac{5\\pi}{2}>2\\pi",
+          "reason": "The algebraic sweep confirms repeated coverage would be required."
+        }
+      ],
+      "conclusion": "The numbers could describe accumulated sweep, but they do not describe one ordinary sector under the stated premise."
+    }
+  ],
+  "practice": [
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "degrees-to-radians"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "radians-to-degrees"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "ordinary-radians"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "turns"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "decimal-degrees"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "dms"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "radian-definition"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "unit-equivalence"
+    },
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "directed-definition"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "degree-representative"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "radian-representative"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "signed-turns"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "coterminal-test"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "coterminal-family"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "quadrants"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "quadrantal-rays"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "reference-angle"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "interval-convention"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "arc-length"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "angle-from-arc"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "radius-from-arc"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "sector-area"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "angle-from-area"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "radius-from-area"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "unit-audit"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "radius-scaling"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "multi-turn-distance"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "arc-versus-chord"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "sector-overlap"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "angular-rate"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "rpm"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "tangential-speed"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "inverse-motion"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "period"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "wheel-distance"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "reversal-path"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "rest"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "validity"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-angle-measure",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-angle-location",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-circular-measure",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-circular-motion",
+      "variant": "mixed"
+    }
+  ],
+  "guided": {
+    "title": "Audit a clockwise rotation",
+    "setup": "A point at radius 8 cm rotates uniformly through -450 degrees in 5 seconds, without reversing. Keep the complete rotation separate from its final ray.",
+    "before": [
+      "Convert the full degree value to radians before using an arc or rate formula.",
+      "Use [0,2pi) for the requested representative, then solve for its integer whole-turn quotient.",
+      "For travel, count completed clockwise revolutions from the magnitude of the original angle."
+    ],
+    "question": {
+      "id": "guided-rotation",
+      "familyId": "mth-guided-rotation",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m06-l01",
+      "category": "application",
+      "critical": false,
+      "prompt": "Complete every part of the motion audit.",
+      "fields": [
+        {
+          "id": "angle",
+          "label": "Complete signed rotation",
+          "kind": "pi-expression",
+          "expected": "-5pi/2",
+          "unit": "rad"
+        },
+        {
+          "id": "representative",
+          "label": "Representative in [0, 2pi)",
+          "kind": "pi-expression",
+          "expected": "3pi/2",
+          "unit": "rad"
+        },
+        {
+          "id": "quotient",
+          "label": "Integer k in theta = representative + 2pi*k",
+          "kind": "rational",
+          "expected": "-2"
+        },
+        {
+          "id": "completed",
+          "label": "Complete traveled clockwise revolutions",
+          "kind": "rational",
+          "expected": "1",
+          "unit": "turns"
+        },
+        {
+          "id": "distance",
+          "label": "Nonnegative traveled distance",
+          "kind": "pi-expression",
+          "expected": "20pi",
+          "unit": "cm"
+        },
+        {
+          "id": "rate",
+          "label": "Signed angular rate",
+          "kind": "pi-expression",
+          "expected": "-pi/2",
+          "unit": "rad/s"
+        },
+        {
+          "id": "period",
+          "label": "Time for one revolution",
+          "kind": "rational",
+          "expected": "4",
+          "unit": "s"
+        },
+        {
+          "id": "reference",
+          "label": "Does a strictly acute reference angle exist?",
+          "kind": "choice",
+          "correct": "no",
+          "options": [
+            {
+              "id": "no",
+              "label": "No, the terminal ray is on an axis",
+              "feedback": "The representative is 3pi/2, on the negative y-axis. A right angle is not strictly acute."
+            },
+            {
+              "id": "yes",
+              "label": "Yes, every directed angle has a strictly acute reference angle",
+              "feedback": "This convention excludes zero and right angles. Axis rays need a separate answer."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "-450 degrees equals -5pi/2 radians.",
+        "Add two full turns to reach 3pi/2; the original path completed only one clockwise turn and a quarter more.",
+        "Distance uses 8*abs(-5pi/2); signed angular rate uses (-5pi/2)/5. A revolution time uses positive angular speed."
+      ],
+      "explanation": [
+        "The signed rotation is -5pi/2 radians, and its representative is 3pi/2 with algebraic quotient -2.",
+        "Its magnitude is one full turn plus pi/2, giving 20pi cm traveled distance.",
+        "The signed rate is -pi/2 rad/s; positive angular speed pi/2 yields revolution time 4 s. The axis ray has no strictly acute reference angle."
+      ],
+      "answerSummary": "-5pi/2 rad; representative 3pi/2; k=-2; one completed clockwise turn; distance 20pi cm; rate -pi/2 rad/s; revolution time 4 s; no acute reference angle."
+    },
+    "after": "Guided work checks your reasoning and does not award independent checkpoint evidence. Try another rotation with a different radius before continuing."
+  },
+  "interaction": {
+    "kind": "rotation-lab",
+    "prompt": "Predict the terminal ray and compare travel with net rotation. Calculate exact distances at two radii, then use the diagram and values to explain how direction, completed turns and radius affect the motion.",
+    "cases": [
+      {
+        "title": "A positive partial turn at two radii",
+        "first": "120",
+        "second": "0",
+        "unit": "degrees",
+        "radius": "3",
+        "scale": "2"
+      },
+      {
+        "title": "Clockwise motion with positive distance",
+        "first": "-150",
+        "second": "0",
+        "unit": "degrees",
+        "radius": "6",
+        "scale": "1/2"
+      },
+      {
+        "title": "Beyond one complete revolution",
+        "first": "810",
+        "second": "0",
+        "unit": "degrees",
+        "radius": "2",
+        "scale": "3"
+      },
+      {
+        "title": "A terminal ray on an axis",
+        "first": "-270",
+        "second": "0",
+        "unit": "degrees",
+        "radius": "4",
+        "scale": "3/2"
+      },
+      {
+        "title": "An ordinary radian from an arc ratio",
+        "first": "7/5",
+        "second": "0",
+        "unit": "radians",
+        "radius": "5",
+        "scale": "2"
+      },
+      {
+        "title": "A reversal with zero net rotation",
+        "first": "270",
+        "second": "-270",
+        "unit": "degrees",
+        "radius": "2",
+        "scale": "2"
+      }
+    ]
+  },
+  "summary": [
+    "One turn equals 360 degrees and 2pi radians. The radian ratio s/r uses matching length units; ordinary values such as 1 radian do not contain a hidden pi.",
+    "Conversions preserve the complete rotation. A representative in [0,2pi), a least strictly positive representative and a representative in (-pi,pi] use different endpoint conventions.",
+    "Coterminal angles differ by integer full turns. The algebraic floor quotient in a representative equation is distinct from the number of complete traveled clockwise revolutions.",
+    "Open quadrants exclude their axis rays. This lesson's reference angle is strictly acute; an axis ray has no such reference angle.",
+    "For a single directed sweep, signed arc is r*theta and distance is r*abs(theta). A chord is a different path. Keep radius, diameter, units and completed turns distinct.",
+    "Ordinary sector area is r² times its nonnegative radian sweep divided by two, with sweep at most 2pi. Repeated sweep counts coverage with multiplicity, while unique covered area cannot exceed the disk.",
+    "At fixed angle, radius scale c multiplies lengths by c and areas by c². Inverse formulas require nonzero divisors and a positive radius; underdetermined and inconsistent data need different conclusions.",
+    "Signed angular rate uses net rotation divided by positive elapsed time. Angular speed uses angular travel, and tangential speed uses distance. Uniform motion and rolling without slipping are explicit premises when used.",
+    "For reversals, add signed angles for net rotation and segment magnitudes for travel. Zero net rotation can coexist with positive distance; rest never completes a revolution in finite time.",
+    "Practice covers all 38 named variants. Each checkpoint samples one critical question from each of four families and requires all four independently. A single form does not assess every variant or establish full course mastery."
+  ],
+  "retrieval": "After a delay, convert a negative DMS measurement and an ordinary radian value exactly. Reconstruct a representative in each stated interval, its algebraic quotient and its actual completed travel turns. Locate an axis and a non-axis ray, explaining when an acute reference angle exists. Recover an arc, angle and positive radius with mixed units; compare an ordinary sector with accumulated and unique area after multiple turns. Convert rpm to rad/s, solve an inverse speed problem and state the no-slip premise for wheel travel. Finally construct a two-segment reversal with zero net rotation but nonzero distance, and audit a zero-denominator or inconsistent-geometry case. Use new values and explain each premise without consulting an answer key.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.1: Angles",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+      "purpose": "Optional further reading on standard position, angle conversion, coterminal rays, arc length and circular motion. Use this lesson's explicitly stated interval and strictly acute reference-angle conventions."
+    },
+    {
+      "title": "NIST Guide to the SI, section 8.1: Time and rotational frequency",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "purpose": "Optional context for rotational frequency, seconds and revolutions per minute. The built-in lesson supplies the calculations required for practice."
+    }
+  ]
+}

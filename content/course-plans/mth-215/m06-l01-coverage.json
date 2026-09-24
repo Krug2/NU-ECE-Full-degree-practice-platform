@@ -1,0 +1,355 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l01",
+  "status": "authored",
+  "objective": "Convert degree and radian measures, identify coterminal angles, and calculate an arc length with consistent units.",
+  "independentSubjectReview": "not yet performed",
+  "coverage": [
+    {
+      "topic": "Name an angle and its directed rotation",
+      "instruction": [
+        "Name an angle and its directed rotation"
+      ],
+      "examples": [
+        "Describe a clockwise sensor rotation",
+        "Distinguish a terminal ray from a completed motion"
+      ],
+      "practice": [
+        "mth-angle-measure:directed-definition"
+      ],
+      "independentCheck": "mth-angle-measure:mixed",
+      "retrieval": "Reconstruct name an angle and its directed rotation with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Measure radians as an arc-to-radius ratio",
+      "instruction": [
+        "Measure radians as an arc-to-radius ratio"
+      ],
+      "examples": [
+        "A seven-centimeter arc on a five-centimeter circle",
+        "The same angle on a larger circle"
+      ],
+      "practice": [
+        "mth-angle-measure:radian-definition",
+        "mth-angle-measure:unit-equivalence"
+      ],
+      "independentCheck": "mth-angle-measure:mixed",
+      "retrieval": "Reconstruct measure radians as an arc-to-radius ratio with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Build the turn, degree and radian conversions",
+      "instruction": [
+        "Build the turn, degree and radian conversions"
+      ],
+      "examples": [
+        "Convert a negative angle beyond one turn",
+        "Express a fractional revolution three ways"
+      ],
+      "practice": [
+        "mth-angle-measure:degrees-to-radians",
+        "mth-angle-measure:radians-to-degrees",
+        "mth-angle-measure:turns"
+      ],
+      "independentCheck": "mth-angle-measure:mixed",
+      "retrieval": "Reconstruct build the turn, degree and radian conversions with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Keep ordinary radians and pi exact",
+      "instruction": [
+        "Keep ordinary radians and pi exact"
+      ],
+      "examples": [
+        "Convert one radian to degrees",
+        "Compare two radians with two pi radians"
+      ],
+      "practice": [
+        "mth-angle-measure:ordinary-radians"
+      ],
+      "independentCheck": "mth-angle-measure:mixed",
+      "retrieval": "Reconstruct keep ordinary radians and pi exact with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Read decimal and sexagesimal angle measures",
+      "instruction": [
+        "Read decimal and sexagesimal angle measures"
+      ],
+      "examples": [
+        "Convert a fractional degree to exact radians",
+        "Convert a negative degree-minute-second measurement"
+      ],
+      "practice": [
+        "mth-angle-measure:decimal-degrees",
+        "mth-angle-measure:dms"
+      ],
+      "independentCheck": "mth-angle-measure:mixed",
+      "retrieval": "Reconstruct read decimal and sexagesimal angle measures with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Reduce angles to a specified interval",
+      "instruction": [
+        "Reduce angles to a specified interval"
+      ],
+      "examples": [
+        "Normalize a negative radian measure",
+        "Compare zero and one turn in two requested intervals"
+      ],
+      "practice": [
+        "mth-angle-location:degree-representative",
+        "mth-angle-location:radian-representative",
+        "mth-angle-location:interval-convention"
+      ],
+      "independentCheck": "mth-angle-location:mixed",
+      "retrieval": "Reconstruct reduce angles to a specified interval with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Account for the signed whole turns",
+      "instruction": [
+        "Account for the signed whole turns"
+      ],
+      "examples": [
+        "Interpret the quotient for minus pi over six",
+        "Separate two clockwise turns and a remaining clockwise fraction"
+      ],
+      "practice": [
+        "mth-angle-location:signed-turns"
+      ],
+      "independentCheck": "mth-angle-location:mixed",
+      "retrieval": "Reconstruct account for the signed whole turns with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Test and describe coterminal angles",
+      "instruction": [
+        "Test and describe coterminal angles"
+      ],
+      "examples": [
+        "Test two differently written rotations",
+        "State a full coterminal family and check a proposed member"
+      ],
+      "practice": [
+        "mth-angle-location:coterminal-test",
+        "mth-angle-location:coterminal-family"
+      ],
+      "independentCheck": "mth-angle-location:mixed",
+      "retrieval": "Reconstruct test and describe coterminal angles with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Locate terminal rays exactly",
+      "instruction": [
+        "Locate terminal rays exactly"
+      ],
+      "examples": [
+        "Locate an angle with several turns",
+        "Classify all four quadrantal rays"
+      ],
+      "practice": [
+        "mth-angle-location:quadrants",
+        "mth-angle-location:quadrantal-rays"
+      ],
+      "independentCheck": "mth-angle-location:mixed",
+      "retrieval": "Reconstruct locate terminal rays exactly with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Find an acute reference angle",
+      "instruction": [
+        "Find an acute reference angle"
+      ],
+      "examples": [
+        "Reference angles in quadrants II and III",
+        "The same acute reference angle with different terminal rays"
+      ],
+      "practice": [
+        "mth-angle-location:reference-angle"
+      ],
+      "independentCheck": "mth-angle-location:mixed",
+      "retrieval": "Reconstruct find an acute reference angle with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Derive and interpret circular arc length",
+      "instruction": [
+        "Derive and interpret circular arc length"
+      ],
+      "examples": [
+        "Compare a semicircle's arc with its diameter",
+        "A clockwise rotation with positive traveled distance"
+      ],
+      "practice": [
+        "mth-circular-measure:arc-length",
+        "mth-circular-measure:arc-versus-chord"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct derive and interpret circular arc length with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Recover an angle or radius from an arc",
+      "instruction": [
+        "Recover an angle or radius from an arc"
+      ],
+      "examples": [
+        "Recover an ordinary radian measure from two lengths",
+        "Recover radius from an exact pi-valued arc"
+      ],
+      "practice": [
+        "mth-circular-measure:angle-from-arc",
+        "mth-circular-measure:radius-from-arc"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct recover an angle or radius from an arc with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Convert units before using the geometry",
+      "instruction": [
+        "Convert units before using the geometry"
+      ],
+      "examples": [
+        "Repair a degree value substituted as radians",
+        "Convert millimeters and meters before taking a ratio"
+      ],
+      "practice": [
+        "mth-circular-measure:unit-audit"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct convert units before using the geometry with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Compare the same angle at different radii",
+      "instruction": [
+        "Compare the same angle at different radii"
+      ],
+      "examples": [
+        "Double a radius at a fixed angle",
+        "Compare two equal arc lengths"
+      ],
+      "practice": [
+        "mth-circular-measure:radius-scaling"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct compare the same angle at different radii with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Derive sector area from a fraction of a disk",
+      "instruction": [
+        "Derive sector area from a fraction of a disk"
+      ],
+      "examples": [
+        "A minor sector in exact units",
+        "A major sector and its complementary region"
+      ],
+      "practice": [
+        "mth-circular-measure:sector-area"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct derive sector area from a fraction of a disk with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Recover a sector angle or radius",
+      "instruction": [
+        "Recover a sector angle or radius"
+      ],
+      "examples": [
+        "Recover an angle from sector area",
+        "Recover a radius with an exact square root"
+      ],
+      "practice": [
+        "mth-circular-measure:angle-from-area",
+        "mth-circular-measure:radius-from-area"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct recover a sector angle or radius with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Keep multiple turns and overlap visible",
+      "instruction": [
+        "Keep multiple turns and overlap visible"
+      ],
+      "examples": [
+        "Travel through three and a quarter turns",
+        "Contrast accumulated sweep with unique covered area"
+      ],
+      "practice": [
+        "mth-circular-measure:multi-turn-distance",
+        "mth-circular-measure:sector-overlap"
+      ],
+      "independentCheck": "mth-circular-measure:mixed",
+      "retrieval": "Reconstruct keep multiple turns and overlap visible with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Connect angular and tangential motion",
+      "instruction": [
+        "Connect angular and tangential motion"
+      ],
+      "examples": [
+        "A clockwise uniform rotation",
+        "Equal angular speeds at two radii"
+      ],
+      "practice": [
+        "mth-circular-motion:angular-rate",
+        "mth-circular-motion:tangential-speed"
+      ],
+      "independentCheck": "mth-circular-motion:mixed",
+      "retrieval": "Reconstruct connect angular and tangential motion with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Convert revolutions, minutes and seconds",
+      "instruction": [
+        "Convert revolutions, minutes and seconds"
+      ],
+      "examples": [
+        "Convert revolutions per minute to an exact angular speed",
+        "Recover a revolution time and a tangential speed"
+      ],
+      "practice": [
+        "mth-circular-motion:rpm",
+        "mth-circular-motion:inverse-motion",
+        "mth-circular-motion:period"
+      ],
+      "independentCheck": "mth-circular-motion:mixed",
+      "retrieval": "Reconstruct convert revolutions, minutes and seconds with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Model a supplied rolling relationship",
+      "instruction": [
+        "Model a supplied rolling relationship"
+      ],
+      "examples": [
+        "A wheel's stated distance per revolution",
+        "Recover revolutions from a travel distance"
+      ],
+      "practice": [
+        "mth-circular-motion:wheel-distance"
+      ],
+      "independentCheck": "mth-circular-motion:mixed",
+      "retrieval": "Reconstruct model a supplied rolling relationship with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Track reversals and rest",
+      "instruction": [
+        "Track reversals and rest"
+      ],
+      "examples": [
+        "A forward rotation followed by a reversal",
+        "Zero net rotation after a full trip out and back"
+      ],
+      "practice": [
+        "mth-circular-motion:reversal-path",
+        "mth-circular-motion:rest"
+      ],
+      "independentCheck": "mth-circular-motion:mixed",
+      "retrieval": "Reconstruct track reversals and rest with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    },
+    {
+      "topic": "Audit a complete angular result",
+      "instruction": [
+        "Audit a complete angular result"
+      ],
+      "examples": [
+        "Reject an invalid radius or duration",
+        "Audit a plausible answer that discarded complete turns"
+      ],
+      "practice": [
+        "mth-circular-motion:validity"
+      ],
+      "independentCheck": "mth-circular-motion:mixed",
+      "retrieval": "Reconstruct audit a complete angular result with new values after a delay; explain the premises, exact result and a common wrong interpretation."
+    }
+  ]
+}
