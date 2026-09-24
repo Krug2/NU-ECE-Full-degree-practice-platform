@@ -1,0 +1,87 @@
+{
+  "courseId": "phs-231",
+  "version": 1,
+  "status": "Detailed implementation plan; course assessments are not yet available.",
+  "purpose": "Complete the planned readiness, module, cumulative and targeted-review experience after all 22 lessons, preserving the existing single-lesson checkpoint and backup behavior.",
+  "officialDistinction": "All assessment lengths, thresholds, permitted aids and review delays are proposed self-study defaults. They are not official NU examination rules, credit, or psychometric validation.",
+  "design": {
+    "storage": "Reuse learning.attempts and the normalized study repository. Add optional versioned assessment metadata to the existing attempt schema; retain practice/checkpoint modes so conflict-recovery copies can remain assisted practice. Old snapshots with no metadata must parse unchanged.",
+    "metadata": "Freeze assessment kind, title, blueprint version, and each represented original course/lesson/version with its question indices. Every question must be assigned exactly once to a matching original objective. Allow cross-course originals only through this explicit metadata, primarily for readiness reuse. Keep ordinary lesson attempts restricted to their original single objective.",
+    "immutability": "Questions and all assessment metadata are immutable after creation. Include metadata in revision identity and concurrent-change checks. Retain full questions, responses, seed, timestamps, method of assistance and submission status. Never regenerate an existing form after reload or a generator update.",
+    "grading": "Calculate per-objective correct/total and critical-item status from frozen questions. Independent assessment requires submitted checkpoint mode and no hints. Practice copies and readiness outcomes never create course or prerequisite completion evidence. Preserve ordinary four-question lesson-evidence behavior exactly.",
+    "retainedResults": "Add an optional, validated assessment-result collection under learning, absent from untouched old snapshots. Retain the latest independent submission summary for each course/assessment/version, including per-objective counts, critical status, assistance, date and pass/fail. Preserve these summaries when a learner deliberately removes question details. A newer failure must not be hidden by an older pass or deletion of the failed attempt; ordinary lesson evidence semantics remain unchanged. Readiness and assisted copies do not create completion evidence.",
+    "assistedRecovery": "A conflicting or unsaved assessment draft can be exported or kept as a new practice attempt with its metadata. It must not become independent assessment evidence merely because it later receives a high score.",
+    "uiReuse": "Extend the existing attempt session and write queue through focused backward-compatible changes. Keep hints and immediate explanations in practice only; independent feedback appears after submission. Show original-objective results and appropriate repair links, retain errors and earlier submissions, and provide explicit per-attempt removal only after export guidance.",
+    "routes": "Add /courses/[id]/assessments/[assessmentId] for registered assessment definitions and link PHS 231's course panel to readiness, nine module quizzes, two cumulative parts and original-objective review. Other course routes and their development order remain unchanged."
+  },
+  "readiness": {
+    "items": 8,
+    "topics": [
+      "unit conversion",
+      "vector components",
+      "degree/radian interpretation",
+      "derivative meaning and units",
+      "integration with an initial condition",
+      "admissible quadratic roots",
+      "force and system distinction",
+      "slope versus signed accumulation"
+    ],
+    "reuse": "Select verified existing question variants from available prerequisite/refresher or introductory mechanics lessons. Preserve each question's true original course and objective. Do not develop duplicate prerequisite lessons.",
+    "outcome": "Report each sampled skill and link its available repair lesson. Label PHS 104, CSC 208 and CSC 209 academic preparation as under construction where applicable; a refresher or short screen does not complete or waive those prerequisites. Permit exploration regardless of result."
+  },
+  "moduleQuizzes": {
+    "modules": 9,
+    "itemsPerObjective": 4,
+    "counts": {
+      "m01": 8,
+      "m02": 12,
+      "m03": 12,
+      "m04": 8,
+      "m05": 8,
+      "m06": 8,
+      "m07": 12,
+      "m08": 12,
+      "m09": 8
+    },
+    "blueprint": "Use each lesson's four-item checkpoint blueprint on fresh deterministic forms, covering at least two families. These are broader module sessions with separate evidence; do not reclassify an old lesson checkpoint as a module attempt.",
+    "passRule": "At least 3 of 4 fully correct for every objective, and every critical item correct, with no hints. A high aggregate total cannot cover a failed objective. Show all original-objective totals and repair links."
+  },
+  "cumulative": {
+    "parts": 2,
+    "itemsPerPart": 22,
+    "blueprint": "Publish two complementary selected variants per original lesson, one in each part. Map arithmetic, interpretation, model restrictions, conservation conditions and unit checks explicitly. Audit both combined coverage and the distinction from the module forms.",
+    "passRule": "Both independently submitted parts must pass their published per-objective requirements. With only one item for an objective in a part, that item must be correct; two sparse samples cannot average away a failed objective. A fresh full part can supersede a failed part while history remains visible.",
+    "limits": "These are sampled checks rather than exhaustive mastery tests. Both parts, current lesson evidence, all module evidence and a completed self-assessed project support only a transparent self-study completion recommendation."
+  },
+  "targetedReview": {
+    "route": "Provide a fresh four-question independent review for each PHS 231 objective, plus ordinary practice and its lesson link. Missed-objective results should make the appropriate review directly reachable.",
+    "evidence": "Preserve submitted review attempts separately. A successful review documents repair but does not retroactively turn an earlier failed module or cumulative form into a pass; a fresh required assessment remains available.",
+    "retention": "Offer a fresh review at least seven days after an independent successful assessment or repair. Keep the existing three-day lesson checkpoint cue distinct. The application cannot verify what a learner consulted outside it."
+  },
+  "completion": {
+    "required": [
+      "all 22 current lesson objectives demonstrated",
+      "all nine module quiz blueprints passed independently",
+      "both current cumulative blueprints passed independently",
+      "a preserved project artifact meeting the learner self-assessment rule"
+    ],
+    "notSufficient": [
+      "opening lessons",
+      "resource visits",
+      "self-reported confidence",
+      "readiness scores",
+      "assisted practice",
+      "a project self-rating alone"
+    ],
+    "status": "Expose separate current evidence, repair needed, delayed review due and course-release status. Do not label the course independently reviewed or piloted."
+  },
+  "verification": [
+    "Old single-objective attempts and schema-1/2 backups continue to parse and restore. Unknown or inconsistent assessment metadata fails explicitly without deleting stored data.",
+    "Validate duplicate or missing objective assignment, incorrect original identity, metadata mutation, version mismatches, out-of-range indices, wrong checkpoint size and unauthorized hints.",
+    "Independently construct per-objective pass/fail fixtures, including a high aggregate score with a weak objective and a critical failure, assisted copies, active/submitted distinctions and retained history.",
+    "Generate every published assessment blueprint across at least 50 deterministic seeds; all selected families must already have independent 50-seed mathematical tests. Validate source identities, unique questions, full coverage and immutable snapshots.",
+    "Exercise full module and cumulative sessions in the browser, mid-answer reload, back navigation, feedback timing, targeted repair, concurrent saves, old and new backups, quota failure and real export/reset/restore.",
+    "Measure a realistic repeated full-course history with lessons, module forms, two cumulative parts, targeted reviews and project revisions against the actual 50 MB and 5,000-attempt policies. Preserve evidence when deliberately removing attempt details.",
+    "Run full unit checks, lint, types, production build, relevant browser regressions, and desktop/mobile visual and keyboard review. Complete the course coverage/release audit before PHS 232."
+  ]
+}
