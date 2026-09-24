@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import type { Progress } from "./progress";
+import type { AttemptPatch } from "./learning/attempt-writes";
 import { downloadProgressText } from "./download-progress";
 import { openProgressRepository,type ReplacementCheck } from "./progress-repository";
 import { initialStudySnapshot,ProgressStore } from "./progress-store";
@@ -43,6 +44,7 @@ function subscribe(listener:()=>void){
 export function useStudy(){return useSyncExternalStore(subscribe,store.getSnapshot,()=>initialStudySnapshot);}
 export const getStudySnapshot=store.getSnapshot;
 export const saveProgress=(update:(data:Progress)=>Progress)=>store.save(update);
+export const saveAttemptProgress=(id:string,revision:number,patch:AttemptPatch)=>store.saveAttempt(id,revision,patch);
 export const reviewProgressReplacement=()=>store.reviewReplacement();
 export const replaceProgress=(data:Progress,expected:ReplacementCheck)=>store.replace(data,expected);
 export const retryProgressSave=()=>store.retry();
