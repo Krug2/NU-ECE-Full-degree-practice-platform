@@ -1,0 +1,337 @@
+{
+  "id": "m03-l03",
+  "courseId": "mth-215",
+  "moduleId": "m03",
+  "version": 1,
+  "title": "Division, remainders, and factors",
+  "objective": "Divide a polynomial, state quotient and remainder, and use the remainder to test a proposed factor.",
+  "why": "Factoring starts with a candidate, not a guarantee. Division tells you what remains after removing a proposed factor and gives an exact check on your algebra. The same identity helps simplify models, locate zeros, and describe the difference between a modeled output and a target.",
+  "estimatedMinutes": 180,
+  "prerequisites": [
+    {"label": "Polynomial operations and factoring", "lessonId": "b03"},
+    {"label": "Fractions and algebraic restrictions", "lessonId": "b04"},
+    {"label": "Degree and end behavior", "lessonId": "m03-l01"},
+    {"label": "Zeros and multiplicity", "lessonId": "m03-l02"}
+  ],
+  "sections": [
+    {
+      "heading": "The identity that makes division checkable",
+      "paragraphs": [
+        "For a polynomial P and a nonzero polynomial D, division seeks polynomials Q and R with $P(x)=D(x)Q(x)+R(x)$. P is the dividend, D the divisor, Q the quotient, and R the remainder. Finished division also requires R = 0 or the degree of R to be strictly smaller than the degree of D.",
+        "An identity alone is not enough. You could always write P = D times 0 + P, but that usually leaves more division to do. The degree condition identifies the point where no further leading term can be canceled by a polynomial quotient term.",
+        "These two requirements determine a unique quotient and remainder. If two pairs worked, subtracting the identities would make D times the difference of their quotients equal the difference of their remainders. A nonzero left side would have degree at least degree D, while a nonzero right side would have smaller degree. Therefore both differences must be zero."
+      ]
+    },
+    {
+      "heading": "Prepare the powers before doing arithmetic",
+      "paragraphs": [
+        "Collect like terms and place the dividend and divisor in descending powers. Include a position for every missing power, even when its coefficient is zero. For $x^3-4x+1$, the coefficient row is 1, 0, -4, 1. Dropping the zero would describe a different polynomial.",
+        "If P already has lower degree than D, stop immediately: Q = 0 and R = P. If P is the zero polynomial, Q = 0 and R = 0 for every nonzero D. Dividing by a nonzero constant divides each coefficient and leaves remainder zero. The zero polynomial is never a permitted divisor.",
+        "A polynomial divisor can have zeros as a function and still be a valid nonzero polynomial divisor. For example, x - 2 is allowed even though it evaluates to zero at x = 2. This distinction will matter when you rewrite division as a fraction."
+      ]
+    },
+    {
+      "heading": "Long division cancels one highest power at a time",
+      "paragraphs": [
+        "Divide the leading term of the current unprocessed polynomial by the leading term of D. Put that single term into Q. Multiply it by every term of D, align like powers, and subtract the entire product. The highest remaining power cancels exactly.",
+        "Keep the still-unprocessed lower terms. In the familiar stacked format, bringing down the next term exposes the next part to divide. In the activity here, the whole unprocessed polynomial stays visible, so no term disappears off the page.",
+        "After each step, P equals D times the quotient collected so far plus the unprocessed polynomial. Repeat until the unprocessed polynomial is zero or has smaller degree than D. At that point it is the final remainder.",
+        "The remainder need not be a number. A linear divisor leaves a constant remainder, but a quadratic divisor may leave a linear remainder. A cubic divisor may leave a quadratic, linear, or constant remainder."
+      ]
+    },
+    {
+      "heading": "Subtraction and nonmonic leading terms",
+      "paragraphs": [
+        "Subtract with parentheses. Subtracting $-3x^2+3x$ means adding $3x^2-3x$. Changing only the first sign corrupts the identity even if the highest power cancels.",
+        "When the divisor begins with 2x, dividing a leading term x by it contributes 1/2 to the quotient. Exact fractional coefficients are normal; do not round them or force an integer answer.",
+        "A useful local check is that the highest power disappears after each nonzero division step. A useful global check is to multiply the whole divisor by the whole quotient and add the remainder, then compare every coefficient with P. Checking one convenient input cannot prove a polynomial identity."
+      ]
+    },
+    {
+      "heading": "The standard synthetic table",
+      "paragraphs": [
+        "The standard one-input synthetic table is a compact version of division by a monic linear divisor $x-c$. Monic means its leading coefficient is 1. Solve x - c = 0 to find the table input. For x + 3, use c = -3. For the divisor x, use c = 0.",
+        "Write every dividend coefficient in descending order, including zeros. Bring down the first coefficient. Multiply that bottom entry by c and place the product under the next coefficient. Add that column. Multiply its new bottom entry by c and continue.",
+        "The last bottom entry is the remainder. The earlier bottom entries are coefficients of Q, starting one degree lower than P. A zero in the quotient row still occupies its place even if you omit that zero term when writing Q.",
+        "These multiply-and-add operations encode the same cancellations as long division. You should obtain identical Q and R from both methods when the divisor is x - c."
+      ]
+    },
+    {
+      "heading": "Choose a method that matches the divisor",
+      "paragraphs": [
+        "Use long division for any nonzero polynomial divisor. The standard synthetic table used in this lesson applies directly only to x - c. One table input cannot represent a quadratic divisor.",
+        "For a nonmonic linear divisor $D(x)=a(x-c)$ with a nonzero, you may first use synthetic division by x - c. If its quotient is S and remainder is R, then $P=(x-c)S+R=D(S/a)+R$. Divide the synthetic quotient by a to get the quotient for D. Leave the remainder unchanged.",
+        "For example, dividing by 2x - 1 uses c = 1/2 after normalization. Copying -1 into the table gives the wrong root. Using c = 1/2 but keeping the monic quotient unchanged also gives the wrong quotient for the original divisor. Always reconstruct with the original D."
+      ]
+    },
+    {
+      "heading": "Remainder theorem and factor theorem",
+      "paragraphs": [
+        "When D = x - c, the remainder is constant. Substitute x = c into $P(x)=(x-c)Q(x)+R$: the product vanishes, leaving $P(c)=R$. This is the remainder theorem. You can find the remainder by exact evaluation without completing the entire division.",
+        "The factor theorem follows: x - c is a factor of P exactly when P(c) = 0. A proposed root is confirmed by zero, rejected by a nonzero value. A graph that looks close to the axis is not an exact factor test.",
+        "The same evaluation gives the constant remainder for a nonmonic linear divisor a(x-c), because that divisor also vanishes at c. It does not directly extend to a higher-degree divisor as a single-number remainder rule: its remainder can be a polynomial.",
+        "A zero remainder removes one copy of the tested factor. It does not establish its full multiplicity. Divide again or analyze the remaining factorization before claiming how many copies occur."
+      ]
+    },
+    {
+      "heading": "Use a required factor to determine a parameter",
+      "paragraphs": [
+        "If an unknown coefficient must make x - c a factor, substitute c and require P(c) = 0. Solve the resulting equation for the unknown, then substitute back to verify the condition.",
+        "Keep track of which polynomial you are testing. To hit a target output T at c, the relevant factor condition is that x - c divides the error polynomial P - T. It need not divide P itself.",
+        "Exact polynomial reasoning checks the stated mathematical model. It does not establish whether a physical sensor or circuit follows that model; measurements and a justified modeling range are separate questions."
+      ]
+    },
+    {
+      "heading": "Polynomial identities and quotient domains",
+      "paragraphs": [
+        "The identity P = DQ + R is a polynomial identity and holds at every real input, including zeros of D. The quotient expression $P/D=Q+R/D$ is defined only where D is nonzero.",
+        "Even when the remainder is zero and P/D simplifies to Q, keep the original denominator restrictions. For $(x^2-1)/(x-1)$, the simplified rule is x + 1 for x not equal to 1. The original quotient is still undefined at 1.",
+        "When reporting a division result, state both Q and R. When reporting a rational expression, also state its excluded inputs. Dropping a nonzero remainder changes the function."
+      ]
+    },
+    {
+      "heading": "Audit the result before trusting it",
+      "paragraphs": [
+        "Check the setup: correct descending powers, zero placeholders, and the correct sign of c. Check the arithmetic: the entire product was subtracted and nonmonic leading coefficients were included.",
+        "Then check both final requirements: P = DQ + R as a full coefficient identity, and R = 0 or degree R less than degree D. A remainder with the same degree as D means the division is unfinished even if the identity is true.",
+        "Practice includes completing divisions, testing factors, and repairing plausible wrong answers. The independent checkpoint checks long division, synthetic setup, the factor theorem, and reconstruction. Each is required; three correct items cannot hide a missed critical check."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A missing coefficient stays in place",
+      "prompt": "Divide $x^3-4x+1$ by x - 2.",
+      "steps": [
+        {"math": "P=x^3+0x^2-4x+1,\\qquad x^3/x=x^2", "reason": "Reserve the x-squared column before selecting the first quotient term."},
+        {"math": "P-(x-2)x^2=2x^2-4x+1", "reason": "Subtract x cubed minus 2x squared from the entire dividend."},
+        {"math": "(2x^2-4x+1)-(x-2)(2x)=1", "reason": "The next quotient term is 2x. The remainder is now constant."},
+        {"math": "x^3-4x+1=(x-2)(x^2+2x)+1", "reason": "Multiplication reconstructs every coefficient, including the missing x-squared term."}
+      ],
+      "conclusion": "Q = x squared + 2x and R = 1. The quotient's constant coefficient is zero. The divisor is not a factor."
+    },
+    {
+      "title": "Subtract a product with negative terms",
+      "prompt": "Divide $2x^3-5x^2+4x-3$ by x - 1.",
+      "steps": [
+        {"math": "P-(x-1)(2x^2)=-3x^2+4x-3", "reason": "The first quotient term is 2x squared."},
+        {"math": "(-3x^2+4x-3)-(-3x^2+3x)=x-3", "reason": "The next quotient term is -3x. Subtract both terms of its product with the divisor."},
+        {"math": "(x-3)-(x-1)=-2", "reason": "The last quotient term is 1."},
+        {"math": "P=(x-1)(2x^2-3x+1)-2", "reason": "The remainder is a constant and the identity checks."}
+      ],
+      "conclusion": "Q = 2x squared - 3x + 1 and R = -2. Subtracting the negative quadratic term changes its sign."
+    },
+    {
+      "title": "A nonmonic divisor produces an exact fraction",
+      "prompt": "Divide $2x^3+3x^2-x+5$ by 2x - 1.",
+      "steps": [
+        {"math": "P-(2x-1)x^2=4x^2-x+5", "reason": "Divide 2x cubed by 2x to get x squared."},
+        {"math": "(4x^2-x+5)-(2x-1)(2x)=x+5", "reason": "The next quotient term is 2x."},
+        {"math": "(x+5)-(2x-1)\\frac12=\\frac{11}{2}", "reason": "Divide x by 2x to get 1/2. Keep the fraction exact."},
+        {"math": "P=(2x-1)\\left(x^2+2x+\\frac12\\right)+\\frac{11}{2}", "reason": "Multiplying by the original divisor verifies the quotient and remainder."}
+      ],
+      "conclusion": "Q = x squared + 2x + 1/2 and R = 11/2. A synthetic table at c = 1/2 would instead first give 2x squared + 4x + 1; dividing that quotient by 2 gives the result for 2x - 1."
+    },
+    {
+      "title": "A quadratic divisor leaves a linear remainder",
+      "prompt": "Divide $x^4+3x^2+2x+5$ by $x^2+1$.",
+      "steps": [
+        {"math": "P=x^4+0x^3+3x^2+2x+5", "reason": "There is no x-cubed term, so its coefficient is zero."},
+        {"math": "P-(x^2+1)x^2=2x^2+2x+5", "reason": "Cancel x to the fourth using the quotient term x squared."},
+        {"math": "(2x^2+2x+5)-2(x^2+1)=2x+3", "reason": "Cancel the remaining quadratic term."},
+        {"math": "P=(x^2+1)(x^2+2)+(2x+3)", "reason": "The linear remainder has degree 1, below the divisor's degree 2."}
+      ],
+      "conclusion": "Q = x squared + 2 and R = 2x + 3. Do not keep dividing until the remainder is constant; the polynomial quotient is already complete."
+    },
+    {
+      "title": "Recognize when no division step is needed",
+      "prompt": "Divide x + 2 by $x^2+1$. Then consider a zero dividend.",
+      "steps": [
+        {"math": "\\deg(x+2)=1<2=\\deg(x^2+1)", "reason": "A polynomial quotient term cannot cancel the linear leading term using a quadratic divisor."},
+        {"math": "x+2=(x^2+1)\\cdot0+(x+2)", "reason": "The valid quotient is zero and the dividend itself is the remainder."},
+        {"math": "0=(x^2+1)\\cdot0+0", "reason": "A zero dividend has zero quotient and zero remainder."}
+      ],
+      "conclusion": "A remainder can equal the original dividend when its degree is already small enough. A zero remainder is handled directly without assigning it an ordinary degree."
+    },
+    {
+      "title": "A positive synthetic input confirms a factor",
+      "prompt": "Divide $x^3-2x^2-5x+6$ by x - 3.",
+      "steps": [
+        {"math": "c=3,\\qquad (1,-2,-5,6)", "reason": "Use the zero of x - 3 and list all coefficients."},
+        {"math": "1;\\quad -2+3(1)=1;\\quad -5+3(1)=-2;\\quad 6+3(-2)=0", "reason": "Bring down, multiply, and add across the row."},
+        {"math": "P=(x-3)(x^2+x-2)+0", "reason": "The first three bottom entries give Q, and the last gives R."}
+      ],
+      "conclusion": "Q = x squared + x - 2 and R = 0. Therefore x - 3 is a factor and P(3) = 0."
+    },
+    {
+      "title": "An added constant in the divisor means a negative input",
+      "prompt": "Divide $x^3+2x^2-5x-6$ by x + 3.",
+      "steps": [
+        {"math": "x+3=x-(-3),\\qquad c=-3", "reason": "The input is the zero of the divisor, not the constant copied unchanged."},
+        {"math": "1;\\quad 2-3=-1;\\quad -5+3=-2;\\quad -6+6=0", "reason": "Using c = -3 produces the bottom row 1, -1, -2, 0."},
+        {"math": "P=(x+3)(x^2-x-2)", "reason": "The reconstruction confirms both the sign and the zero remainder."}
+      ],
+      "conclusion": "Q = x squared - x - 2 and R = 0. Using c = 3 would test x - 3 instead."
+    },
+    {
+      "title": "Two missing powers in a synthetic row",
+      "prompt": "Divide $2x^4-3x^2+5$ by x - 1.",
+      "steps": [
+        {"math": "c=1,\\qquad (2,0,-3,0,5)", "reason": "Both the x-cubed and x coefficients are zero."},
+        {"math": "2;\\quad 0+2=2;\\quad -3+2=-1;\\quad 0-1=-1;\\quad 5-1=4", "reason": "Each bottom entry belongs to exactly one coefficient column."},
+        {"math": "P=(x-1)(2x^3+2x^2-x-1)+4", "reason": "The quotient starts at degree 3, one below the dividend's degree."}
+      ],
+      "conclusion": "Q = 2x cubed + 2x squared - x - 1 and R = 4. Omitting either zero coefficient changes the problem."
+    },
+    {
+      "title": "Reject a proposed factor by evaluation",
+      "prompt": "Is x - 2 a factor of $P(x)=x^3-4x+1$?",
+      "steps": [
+        {"math": "P(2)=2^3-4(2)+1=1", "reason": "Evaluate exactly at the zero of the proposed factor."},
+        {"math": "R=1\\ne0", "reason": "The remainder theorem identifies the constant remainder."},
+        {"math": "P(x)-1=(x-2)(x^2+2x)", "reason": "Subtracting the target output 1 creates a different polynomial that does have the proposed factor."}
+      ],
+      "conclusion": "x - 2 is not a factor of P. It is a factor of P - 1; keep the tested polynomial clear."
+    },
+    {
+      "title": "Determine a constant from a required factor",
+      "prompt": "Choose k so x + 2 is a factor of $2x^3-3x^2+x+k$.",
+      "steps": [
+        {"math": "c=-2,\\qquad P(-2)=2(-8)-3(4)-2+k=-30+k", "reason": "Substitute the zero of x + 2 into the entire polynomial."},
+        {"math": "-30+k=0\\quad\\Rightarrow\\quad k=30", "reason": "A factor requires remainder zero."},
+        {"math": "2x^3-3x^2+x+30=(x+2)(2x^2-7x+15)", "reason": "Multiplication independently verifies the selected constant."}
+      ],
+      "conclusion": "k = 30. The required factor condition determines the unknown exactly."
+    },
+    {
+      "title": "A true identity can describe unfinished division",
+      "prompt": "A learner reports Q = $x^2+2x+1$ and R = 3 - x when dividing $x^3-4x+1$ by x - 2. Is this finished?",
+      "steps": [
+        {"math": "(x-2)(x^2+2x+1)+(3-x)=x^3-4x+1", "reason": "The proposed identity is true."},
+        {"math": "\\deg(3-x)=1=\\deg(x-2)", "reason": "The remainder violates the strict degree bound."},
+        {"math": "(3-x)-(-1)(x-2)=1", "reason": "One further quotient term, -1, reduces the remainder."},
+        {"math": "Q=x^2+2x,\\qquad R=1", "reason": "Subtract 1 from the proposed quotient and keep the final constant remainder."}
+      ],
+      "conclusion": "The reported division was unfinished. Verify both the identity and the degree bound."
+    },
+    {
+      "title": "Keep the original quotient restriction",
+      "prompt": "Simplify $(x^2-1)/(x-1)$ and distinguish it from its polynomial identity.",
+      "steps": [
+        {"math": "x^2-1=(x-1)(x+1)+0", "reason": "Polynomial division gives Q = x + 1 and R = 0."},
+        {"math": "\\frac{x^2-1}{x-1}=x+1\\quad\\text{for }x\\ne1", "reason": "Dividing the identity by x - 1 requires a nonzero denominator."},
+        {"math": "1^2-1=(1-1)(1+1)=0", "reason": "The polynomial identity remains valid at 1 even though the original quotient is undefined there."}
+      ],
+      "conclusion": "A canceled factor does not remove the original domain restriction."
+    },
+    {
+      "title": "Test whether a normalized model hits its target",
+      "prompt": "A dimensionless response model is $P(x)=x^3-2x^2+4x+1$ for inputs 0 through 4. Does it hit target 9 at x = 2?",
+      "steps": [
+        {"math": "P(2)=8-8+8+1=9", "reason": "The stated input lies in the modeling range."},
+        {"math": "E(x)=P(x)-9=x^3-2x^2+4x-8", "reason": "Define the signed error from the target."},
+        {"math": "E(x)=(x-2)(x^2+4),\\qquad E(2)=0", "reason": "The zero remainder for E confirms that the model hits the target at 2."}
+      ],
+      "conclusion": "x - 2 is a factor of the error polynomial E, while P(2) is 9 rather than zero. This is a statement about the given model."
+    }
+  ],
+  "guided": {
+    "title": "Finish a synthetic division and its factor check",
+    "setup": "Divide $P(x)=x^3+x^2-4x+1$ by x + 3. Work with every coefficient and use the final remainder to decide whether the divisor is a factor.",
+    "before": [
+      "Rewrite the divisor as x - (-3), so c = -3. The dividend coefficients are 1, 1, -4, 1.",
+      "Bring down 1. Multiply by -3, then add to 1 to get the next bottom entry -2.",
+      "Multiply -2 by -3, then add to -4. Continue one more column and interpret the bottom row."
+    ],
+    "question": {
+      "id": "guided-division",
+      "familyId": "guided-division",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m03-l03",
+      "category": "procedural",
+      "critical": true,
+      "prompt": "Complete the division of $x^3+x^2-4x+1$ by x + 3.",
+      "fields": [
+        {"id": "input", "kind": "rational", "label": "Synthetic input c", "expected": "-3"},
+        {"id": "quotient", "kind": "polynomial", "label": "Quotient Q(x)", "expected": "x^2-2*x+2", "form": "equivalent", "help": "Use x, *, ^, and exact coefficients."},
+        {"id": "remainder", "kind": "rational", "label": "Remainder R", "expected": "-5"},
+        {"id": "factor", "kind": "choice", "label": "Is x + 3 a factor?", "correct": "no", "options": [
+          {"id": "yes", "label": "Yes", "feedback": "A factor requires remainder zero. This division has a nonzero remainder."},
+          {"id": "no", "label": "No", "feedback": "The remainder is -5, so x + 3 is not a factor."}
+        ]}
+      ],
+      "parameters": {},
+      "hints": [
+        "The synthetic input is the zero of the divisor, -3.",
+        "The next two bottom entries are -4 + 6 = 2 and 1 - 6 = -5.",
+        "The bottom row 1, -2, 2, -5 gives a quadratic quotient and a constant remainder."
+      ],
+      "explanation": [
+        "The quotient is x squared - 2x + 2 and the remainder is -5.",
+        "$P(x)=(x+3)(x^2-2x+2)-5$. Multiplying back returns the original dividend.",
+        "P(-3) = -5, so x + 3 is not a factor."
+      ],
+      "answerSummary": "c = -3; Q = x^2 - 2x + 2; R = -5; not a factor."
+    },
+    "after": "Explain why the sign of c is negative and why the last bottom entry is not part of the quotient. This supported check is practice, separate from independent evidence."
+  },
+  "interaction": {
+    "kind": "division-lab",
+    "prompt": "Fill every coefficient, then predict each division step before checking it. After each accepted step, inspect the exact identity and coefficient comparison. For a monic linear divisor, repeat with the other method and explain why Q and R agree.",
+    "cases": [
+      {"title": "Missing quadratic term", "dividend": "x^3-4*x+1", "divisor": "x-2"},
+      {"title": "Negative synthetic input", "dividend": "x^3+2*x^2-5*x-6", "divisor": "x+3"},
+      {"title": "Nonmonic divisor and fractions", "dividend": "2*x^3+3*x^2-x+5", "divisor": "2*x-1"},
+      {"title": "Quadratic divisor", "dividend": "x^4+3*x^2+2*x+5", "divisor": "x^2+1"},
+      {"title": "Dividend already smaller", "dividend": "x+2", "divisor": "x^2+1"},
+      {"title": "Zero synthetic input", "dividend": "x^3-2*x^2", "divisor": "x"}
+    ]
+  },
+  "practice": [
+    {"familyId": "mth-long-division", "variant": "linear"},
+    {"familyId": "mth-long-division", "variant": "nonmonic"},
+    {"familyId": "mth-long-division", "variant": "quadratic"},
+    {"familyId": "mth-long-division", "variant": "missing-powers"},
+    {"familyId": "mth-long-division", "variant": "exact"},
+    {"familyId": "mth-long-division", "variant": "smaller"},
+    {"familyId": "mth-long-division", "variant": "fraction"},
+    {"familyId": "mth-synthetic-division", "variant": "positive-root"},
+    {"familyId": "mth-synthetic-division", "variant": "negative-root"},
+    {"familyId": "mth-synthetic-division", "variant": "zero-root"},
+    {"familyId": "mth-synthetic-division", "variant": "missing-coefficients"},
+    {"familyId": "mth-synthetic-division", "variant": "nonzero-remainder"},
+    {"familyId": "mth-remainder-theorem", "variant": "factor"},
+    {"familyId": "mth-remainder-theorem", "variant": "not-factor"},
+    {"familyId": "mth-remainder-theorem", "variant": "negative-root"},
+    {"familyId": "mth-remainder-theorem", "variant": "nonmonic"},
+    {"familyId": "mth-remainder-theorem", "variant": "zero-root"},
+    {"familyId": "mth-remainder-theorem", "variant": "parameter"},
+    {"familyId": "mth-remainder-theorem", "variant": "engineering"},
+    {"familyId": "mth-division-audit", "variant": "valid"},
+    {"familyId": "mth-division-audit", "variant": "wrong-remainder"},
+    {"familyId": "mth-division-audit", "variant": "wrong-sign"},
+    {"familyId": "mth-division-audit", "variant": "high-remainder"},
+    {"familyId": "mth-division-audit", "variant": "not-monic"},
+    {"familyId": "mth-division-audit", "variant": "quadratic-synthetic"}
+  ],
+  "checkpoint": [
+    {"familyId": "mth-long-division", "variant": "mixed"},
+    {"familyId": "mth-synthetic-division", "variant": "mixed"},
+    {"familyId": "mth-remainder-theorem", "variant": "mixed"},
+    {"familyId": "mth-division-audit", "variant": "mixed"}
+  ],
+  "summary": [
+    "Finished division requires P = DQ + R and either R = 0 or degree R less than degree D.",
+    "Reserve zero coefficients for missing powers. Long division cancels the highest remaining power and subtracts the entire product.",
+    "The standard synthetic table directly handles x - c. Read the last bottom entry as the remainder and the earlier entries as quotient coefficients.",
+    "For a nonmonic linear divisor a(x-c), divide the monic synthetic quotient by a and leave the remainder unchanged.",
+    "The remainder on division by a linear divisor with zero c is P(c). The divisor is a factor exactly when that remainder is zero.",
+    "The polynomial identity holds at all inputs, while the quotient expression retains the original denominator restrictions."
+  ],
+  "retrieval": "From memory, write the two requirements for finished division. Divide x^3 - 4x + 1 by x - 2 using both methods, keeping the missing coefficient. Then explain why P(2) determines the remainder and why a true identity with a linear remainder would still be unfinished.",
+  "readings": [
+    {"title": "OpenStax College Algebra 2e, 5.4: Dividing Polynomials", "url": "https://openstax.org/books/college-algebra-2e/pages/5-4-dividing-polynomials", "purpose": "Optional free reading on long division, complete coefficient rows, synthetic division, and reconstruction. The lesson provides its own instruction and original exercises."},
+    {"title": "OpenStax College Algebra 2e, 5.5: Zeros of Polynomial Functions", "url": "https://openstax.org/books/college-algebra-2e/pages/5-5-zeros-of-polynomial-functions", "purpose": "Read the remainder and factor theorem portions to connect division to exact zero testing. The following lesson develops complete root lists."}
+  ]
+}

@@ -34,8 +34,13 @@ import { polynomialStructureFamilyIds,polynomialStructureQuestion } from "./fami
 import { polynomialReasoningFamilyIds,polynomialReasoningQuestion } from "./families/mth-polynomial-reasoning";
 import { polynomialZeroFamilyIds,polynomialZeroQuestion } from "./families/mth-polynomial-zeros";
 import { polynomialSignFamilyIds,polynomialSignQuestion } from "./families/mth-polynomial-signs";
+import { divisionFamilyIds,divisionQuestion } from "./families/mth-division";
+import { divisionReasoningFamilyIds,divisionReasoningQuestion } from "./families/mth-division-reasoning";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const [ids,generate] of [[divisionFamilyIds,divisionQuestion],[divisionReasoningFamilyIds,divisionReasoningQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
 for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion],[polynomialZeroFamilyIds,polynomialZeroQuestion],[polynomialSignFamilyIds,polynomialSignQuestion],[phs231MeasurementFamilyIds,phs231MeasurementQuestion],[phs231VectorFamilyIds,phs231VectorQuestion],[phs231MotionFamilyIds,phs231MotionQuestion],[phs231FrameFamilyIds,phs231FrameQuestion],[phs231ProjectileFamilyIds,phs231ProjectileQuestion],[phs231ForceFamilyIds,phs231ForceQuestion],[phs231FrictionFamilyIds,phs231FrictionQuestion],[phs231DragFamilyIds,phs231DragQuestion],[phs231CircularFamilyIds,phs231CircularQuestion],[phs231GravityFamilyIds,phs231GravityQuestion],[phs231WorkFamilyIds,phs231WorkQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
 }

@@ -21,6 +21,7 @@ import { phs231DragActivitySchema } from "./phs-231-drag";
 import { calibrationCaseSchema } from "./calibration";
 import { polynomialCaseSchema } from "./polynomial-exploration";
 import { factoredPolynomialSchema } from "./factored-polynomial";
+import { divisionCaseSchema } from "./polynomial-division";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -51,6 +52,10 @@ const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: 
       return values.every((value, index) => (field.numberSystem === "complex" || realExact(value)) && !values.slice(0, index).some(other => equalExact(value, other)));
     } catch { return false; }
   }, "Root keys must be distinct and match the requested number system");
+const rootListField=z.object({...fieldBase,kind:z.literal("root-list"),expected:z.array(exact).max(12),numberSystem:z.enum(["real","complex"]),unit:z.string().max(60).default("")}).strict().refine(field=>{
+  try{return field.numberSystem==="complex"||field.expected.every(value=>realExact(parseExact(value)));}
+  catch{return false;}
+},"Root-list keys must match the requested number system.");
 const polynomialField = z.object({
   ...fieldBase, kind: z.literal("polynomial"), expected: z.string().max(200), unit: z.string().max(60).default(""),
   form: z.enum(["equivalent", "expanded", "factored"]),
@@ -64,7 +69,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, polynomialField, rationalExpressionField, piField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({
@@ -100,6 +105,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("division-lab"),prompt:text,cases:z.array(divisionCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("root-multiplicity-lab"),prompt:text,cases:z.array(z.object({title:text,model:factoredPolynomialSchema}).strict()).min(3).max(6)}).strict(),
     z.object({kind:z.literal("polynomial-ends-lab"),prompt:text,cases:z.array(polynomialCaseSchema).min(3).max(6)}).strict(),
     phs231MeasurementActivitySchema,
