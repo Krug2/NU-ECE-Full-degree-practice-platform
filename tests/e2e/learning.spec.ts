@@ -1,3 +1,4 @@
+import { restoreProgress,readStoredProgress } from "./progress";
 import { expect, test, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
@@ -5,7 +6,7 @@ import { createAttempt } from "../../lib/learning/attempts";
 import { lessonSchema } from "../../lib/learning/contracts";
 
 const route="/courses/mth-215/lessons/m01-l01";
-const key="ece-study:progress:v1";
+
 
 test("learn, investigate, resume practice, and restore learning in a backup",async({page},testInfo)=>{
   const errors:string[]=[];page.on("pageerror",error=>errors.push(error.message));
@@ -54,7 +55,7 @@ test("an independent checkpoint records evidence and survives reload",async({pag
   const lesson=lessonSchema.parse(JSON.parse(await readFile(new URL("../../content/lessons/mth-215/m01-l01.json",import.meta.url),"utf8")));
   const attempt=createAttempt(lesson,"checkpoint","browser-fixture");
   const data={schemaVersion:2,profile:{displayName:"",weeklyHours:5},plan:[],bookmarks:[],notes:{},confidence:{},sessions:[],learning:{attempts:[attempt],evidence:[],notes:{}}};
-  await page.goto("/");await page.evaluate(({key,data})=>localStorage.setItem(key,JSON.stringify(data)),{key,data});
+  await restoreProgress(page,data);
   await page.goto(route);
   await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   for(let i=0;i<attempt.questions.length;i++){
@@ -68,7 +69,7 @@ test("an independent checkpoint records evidence and survives reload",async({pag
   await expect(page.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
   await page.reload();await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   await expect(page.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
-  const stored=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),key);
+  const stored=await readStoredProgress(page);
   expect(stored.learning.evidence).toHaveLength(1);
   expect(stored.learning.evidence[0].correct).toBe(4);
 });
@@ -91,7 +92,7 @@ test("copying a completed checkpoint's stale draft creates practice without new 
   attempt.position=3;
   for(const question of attempt.questions)attempt.responses[question.id]=Object.fromEntries(question.fields.map(field=>[field.id,field.kind==="choice"?field.correct:String(field.expected)]));
   const data={schemaVersion:2,profile:{displayName:"",weeklyHours:5},plan:[],bookmarks:[],notes:{},confidence:{},sessions:[],learning:{attempts:[attempt],evidence:[],notes:{}}};
-  await page.goto("/");await page.evaluate(({key,data})=>localStorage.setItem(key,JSON.stringify(data)),{key,data});
+  await restoreProgress(page,data);
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   await expect(page.getByRole("button",{name:"Submit checkpoint",exact:true})).toBeVisible();
   const other=await context.newPage();await other.goto(route);
@@ -102,9 +103,9 @@ test("copying a completed checkpoint's stale draft creates practice without new 
   await expect(page.getByRole("button",{name:"Practice",exact:true})).toHaveAttribute("aria-pressed","true");
   await page.getByRole("button",{name:"Submit practice",exact:true}).click();
   await expect(page.getByRole("heading",{name:"Practice completed",exact:true})).toBeVisible();
-  const stored=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),key);
-  expect(stored.learning.attempts.at(-1).mode).toBe("practice");
-  expect(stored.learning.attempts.at(-1).questions).toEqual(attempt.questions);
+  const stored=await readStoredProgress(page);
+  expect(stored.learning.attempts.at(-1)?.mode).toBe("practice");
+  expect(stored.learning.attempts.at(-1)?.questions).toEqual(attempt.questions);
   expect(stored.learning.evidence).toHaveLength(1);
   expect(stored.learning.evidence[0].attemptId).toBe(attempt.id);
   await other.close();
@@ -122,4 +123,31 @@ test("lesson and practice are accessible on desktop and mobile and missing lesso
   await page.setViewportSize({width:390,height:844});await accessible(page);
   await page.screenshot({path:testInfo.outputPath("lesson-mobile.png")});
   const response=await page.goto("/courses/mth-215/lessons/not-a-lesson");expect(response?.status()).toBe(404);
+});
+test("rapid answer entry preserves every character and resumes after the saved message",async({page})=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  const answer=page.locator("#practice").getByLabel("x",{exact:true});
+  await answer.pressSequentially("(123456789/3)",{delay:0});
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  await expect(page.getByText("This attempt changed in another tab.",{exact:true})).toHaveCount(0);
+  await page.reload();await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("(123456789/3)");
+});
+
+test("a conflicting draft exports as practice without changing the saved attempt",async({page,context},testInfo)=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  await page.locator("#practice").getByLabel("x",{exact:true}).fill("7/3");
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  const other=await context.newPage();await other.goto(route);
+  await other.locator("#practice").getByLabel("x",{exact:true}).fill("9");
+  await expect(page.getByText("This attempt changed in another tab.",{exact:true})).toBeVisible();
+  const download=page.waitForEvent("download");
+  await page.getByRole("button",{name:"Export draft",exact:true}).click();
+  const file=testInfo.outputPath("draft.json");await(await download).saveAs(file);
+  const exported=JSON.parse(await readFile(file,"utf8")),original=exported.learning.attempts[0],draft=exported.learning.attempts.at(-1);
+  expect(draft.id).not.toBe(original.id);expect(draft.mode).toBe("practice");
+  expect(draft.status).toBe("active");expect(draft.revision).toBe(0);expect(draft.questions).toEqual(original.questions);
+  const first=draft.questions[0];expect(draft.responses[first.id][first.fields[0].id]).toBe("7/3");
+  expect(original.responses[first.id][first.fields[0].id]).toBe("9");expect(exported.learning.evidence).toHaveLength(0);
+  await other.reload();await expect(other.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("9");
+  await other.close();
 });

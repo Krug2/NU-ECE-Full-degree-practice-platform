@@ -25,9 +25,10 @@ export const attemptSchema = z.object({
   if(attempt.mode==="checkpoint" && attempt.questions.length!==4)ctx.addIssue({code:"custom",message:"Incomplete checkpoint blueprint"});
 });
 export type Attempt = z.infer<typeof attemptSchema>;
+export const attemptLimit=500;
 export const evidenceSchema=z.object({courseId:key,lessonId:key,lessonVersion:z.number().int().positive(),attemptId:z.uuid(),demonstratedAt:z.iso.datetime(),nextReviewAt:z.iso.datetime(),correct:z.number().int().min(3).max(4),total:z.literal(4)}).strict();
 export const learningSchema=z.object({
-  attempts:z.array(attemptSchema).max(500).refine(items=>new Set(items.map(item=>item.id)).size===items.length,"Duplicate attempts"),
+  attempts:z.array(attemptSchema).max(attemptLimit).refine(items=>new Set(items.map(item=>item.id)).size===items.length,"Duplicate attempts"),
   evidence:z.array(evidenceSchema).max(2000).refine(items=>new Set(items.map(item=>`${item.courseId}/${item.lessonId}/${item.lessonVersion}`)).size===items.length,"Duplicate evidence"),
   notes:z.record(key,z.record(key,z.string().max(5000))),
 }).strict();

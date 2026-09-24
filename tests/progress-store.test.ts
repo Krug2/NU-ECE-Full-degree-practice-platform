@@ -148,6 +148,12 @@ it("surfaces unavailable storage and refuses to export an empty replacement as r
   await expect(store.exportText()).rejects.toThrow("No readable progress");
   await expect(store.reviewReplacement()).rejects.toThrow("unavailable");
 });
+it("can export original legacy progress when the new database cannot open",async()=>{
+  const original=JSON.stringify({...emptyProgress(),plan:["mth-215"]});
+  const store=new ProgressStore({open:async()=>{throw new Error("Database denied");},legacy:()=>original});
+  await store.load();expect(store.getSnapshot().locked).toBe(true);
+  expect(await store.exportText()).toBe(original);
+});
 it("notifies subscribers only while subscribed and locks writes when storage closes",async()=>{
   const {store}=await setup(),listener=vi.fn(),unsubscribe=store.subscribe(listener);
   await store.load();expect(listener).toHaveBeenCalled();

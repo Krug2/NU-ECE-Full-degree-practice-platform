@@ -1,3 +1,4 @@
+import { readStoredProgress } from "./progress";
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
@@ -70,31 +71,40 @@ test("invalid imports preserve existing progress and cancelled resets do nothing
   await page.goto("/courses/f01");
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
   await page.goto("/settings");
-  const before = await page.evaluate(key => localStorage.getItem(key), storageKey);
+  const before = await readStoredProgress(page);
   await page.getByLabel("Import a progress backup", { exact: true }).setInputFiles({ name: "future.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify({ schemaVersion: 999 })) });
   await expect(page.getByText(/unsupported version or invalid progress/)).toBeVisible();
   await page.getByRole("button", { name: "Reset local progress", exact: true }).click();
   await page.getByRole("button", { name: "Keep my progress", exact: true }).click();
-  expect(await page.evaluate(key => localStorage.getItem(key), storageKey)).toBe(before);
+  expect(await readStoredProgress(page)).toEqual(before);
 });
 
 test("corrupt stored data is preserved until explicit recovery", async ({ page }) => {
   await page.addInitScript(key => localStorage.setItem(key, "{broken backup"), storageKey);
   await page.goto("/courses/f01");
-  await expect(page.getByRole("alert").filter({ hasText: "not valid JSON" })).toBeVisible();
+  await expect(page.getByRole("alert").filter({ hasText: "could not be migrated" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Add to my plan", exact: true })).toBeDisabled();
   expect(await page.evaluate(key => localStorage.getItem(key), storageKey)).toBe("{broken backup");
 });
 
-test("storage failures remain visible and changes can still be exported", async ({ page }) => {
-  await page.addInitScript(() => { Storage.prototype.setItem = () => { throw new DOMException("Full", "QuotaExceededError"); }; });
+test("storage failures remain visible and changes can still be exported", async ({ page },testInfo) => {
   await page.goto("/courses/f01");
+  await expect(page.getByRole("button",{name:"Add to my plan",exact:true})).toBeEnabled();
+  await page.evaluate(()=>{const put=IDBObjectStore.prototype.put;IDBObjectStore.prototype.put=function(){IDBObjectStore.prototype.put=put;throw new DOMException("Full","QuotaExceededError");};});
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
   await expect(page.getByRole("alert").filter({ hasText: "could not save your changes" })).toBeVisible();
+  expect((await readStoredProgress(page)).plan).toEqual([]);
   await page.getByRole("link", { name: "Open backup and recovery settings", exact: true }).click();
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Export progress", exact: true }).click();
-  expect((await downloadPromise).suggestedFilename()).toMatch(/^ece-study-.*\.json$/);
+  const file=testInfo.outputPath("unsaved-progress.json");await(await downloadPromise).saveAs(file);
+  expect(JSON.parse(await readFile(file,"utf8")).plan).toEqual(["f01"]);
+  const accessibility=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21aa"]).analyze();
+  expect(accessibility.violations).toEqual([]);
+  await page.screenshot({path:testInfo.outputPath("progress-recovery.png"),fullPage:true});
+  await page.getByRole("button",{name:"Retry saving",exact:true}).click();
+  await expect(page.getByText("Your unsaved change has now been saved.",{exact:true})).toBeVisible();
+  expect((await readStoredProgress(page)).plan).toEqual(["f01"]);
 });
 
 test("saved changes are reflected in another open tab", async ({ page, context }) => {

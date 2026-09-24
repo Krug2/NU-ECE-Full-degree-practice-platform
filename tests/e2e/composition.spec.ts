@@ -1,3 +1,4 @@
+import { restoreProgress } from "./progress";
 import { expect,test,type Locator } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
@@ -130,7 +131,7 @@ test("composition checkpoints restore formulas, inverse domains, and proof choic
   const lesson=lessonSchema.parse(JSON.parse(await readFile(new URL("../../content/lessons/mth-215/m02-l03.json",import.meta.url),"utf8")));
   const attempt=createAttempt(lesson,"checkpoint","composition-browser-fixture");
   const data={schemaVersion:2,profile:{displayName:"",weeklyHours:5},plan:[],bookmarks:[],notes:{},confidence:{},sessions:[],learning:{attempts:[attempt],evidence:[],notes:{}}};
-  await page.goto("/");await page.evaluate(data=>localStorage.setItem("ece-study:progress:v1",JSON.stringify(data)),data);
+  await restoreProgress(page,data);
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   for(let index=0;index<attempt.questions.length;index++){
     for(const field of attempt.questions[index].fields){

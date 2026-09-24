@@ -1,3 +1,4 @@
+import { restoreProgress,readStoredProgress } from "./progress";
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
@@ -54,7 +55,7 @@ test("a complete factoring checkpoint records independent refresher evidence", a
   const lesson = lessonSchema.parse(JSON.parse(await readFile(new URL("../../content/lessons/mth-215/b03.json", import.meta.url), "utf8")));
   const attempt = createAttempt(lesson, "checkpoint", "factoring-browser-fixture");
   const data = { schemaVersion: 2, profile: { displayName: "", weeklyHours: 5 }, plan: [], bookmarks: [], notes: {}, confidence: {}, sessions: [], learning: { attempts: [attempt], evidence: [], notes: {} } };
-  await page.goto("/"); await page.evaluate(data => localStorage.setItem("ece-study:progress:v1", JSON.stringify(data)), data);
+  await restoreProgress(page,data);
   await page.goto(route); await page.getByRole("button", { name: "Checkpoint", exact: true }).click();
   for (let index = 0; index < attempt.questions.length; index++) {
     const question = attempt.questions[index], { a, b, d, g, power } = question.parameters;
@@ -70,7 +71,7 @@ test("a complete factoring checkpoint records independent refresher evidence", a
   await expect(page.getByRole("heading", { name: "Objective demonstrated", exact: true })).toBeVisible();
   await page.reload();
   await expect(page.getByText("Objective demonstrated", { exact: true })).toBeVisible();
-  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem("ece-study:progress:v1")!));
+  const saved = await readStoredProgress(page);
   expect(saved.learning.evidence).toHaveLength(1);
   expect(saved.learning.evidence[0]).toMatchObject({ lessonId: "b03", attemptId: attempt.id });
 });

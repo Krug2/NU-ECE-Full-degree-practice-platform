@@ -36,6 +36,7 @@ export class ProgressStore{
           const text=this.options.legacy();this.recovery=text;return text;
         }));
       }catch(error){
+        if(!this.repository){try{this.recovery=this.options.legacy();}catch{}}
         try{
           const raw=await this.repository?.readRaw();
           if(raw!==undefined)this.recovery=JSON.stringify(raw,null,2);

@@ -1,3 +1,4 @@
+import { restoreProgress } from "./progress";
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import AxeBuilder from "@axe-core/playwright";
@@ -59,7 +60,7 @@ test("coordinate checkpoint snapshots survive backup export and restoration", as
   const lesson = lessonSchema.parse(JSON.parse(await readFile(new URL("../../content/lessons/mth-215/b05.json", import.meta.url), "utf8")));
   const attempt = createAttempt(lesson, "checkpoint", "coordinate-browser-fixture");
   const data = { schemaVersion: 2, profile: { displayName: "", weeklyHours: 5 }, plan: [], bookmarks: [], notes: {}, confidence: {}, sessions: [], learning: { attempts: [attempt], evidence: [], notes: {} } };
-  await page.goto("/"); await page.evaluate(data => localStorage.setItem("ece-study:progress:v1", JSON.stringify(data)), data);
+  await restoreProgress(page,data);
   await page.goto(route); await page.getByRole("button", { name: "Checkpoint", exact: true }).click();
   for (let index = 0; index < attempt.questions.length; index++) {
     for (const field of attempt.questions[index].fields) {

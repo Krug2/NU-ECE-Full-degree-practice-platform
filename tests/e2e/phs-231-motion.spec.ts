@@ -3,6 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 import { createAttempt } from "../../lib/learning/attempts";
 import { lessonSchema } from "../../lib/learning/contracts";
+import { restoreProgress } from "./progress";
 
 const route="/courses/phs-231/lessons/m02-l01";
 
@@ -63,7 +64,7 @@ test("a motion checkpoint grades independent calculus answers and survives expor
   const data=JSON.parse(await readFile(new URL("../../content/lessons/phs-231/m02-l01.json",import.meta.url),"utf8"));
   const attempt=createAttempt(lessonSchema.parse(data),"checkpoint","motion-browser-fixture");
   const backup={schemaVersion:2,profile:{displayName:"",weeklyHours:5},plan:[],bookmarks:[],notes:{},confidence:{},sessions:[],learning:{attempts:[attempt],evidence:[],notes:{}}};
-  await page.goto("/");await page.evaluate(data=>localStorage.setItem("ece-study:progress:v1",JSON.stringify(data)),backup);
+  await restoreProgress(page,backup);
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   const practice=page.locator("#practice");
   for(const [index,q] of attempt.questions.entries()) {
@@ -93,6 +94,7 @@ test("a motion checkpoint grades independent calculus answers and survives expor
   expect(exported.learning.evidence[0]).toMatchObject({courseId:"phs-231",lessonId:"m02-l01",correct:4});
   await page.getByRole("button",{name:"Reset local progress",exact:true}).click();await page.getByRole("button",{name:"Confirm reset",exact:true}).click();
   await page.getByLabel("Import a progress backup",{exact:true}).setInputFiles(path);await page.getByRole("button",{name:"Replace with this backup",exact:true}).click();
+  await expect(page.getByText(/^Backup restored\./)).toBeVisible();
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   await expect(practice.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
 });
