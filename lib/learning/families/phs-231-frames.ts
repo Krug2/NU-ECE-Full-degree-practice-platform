@@ -39,7 +39,7 @@ export function phs231FrameQuestion(familyId:string,variant:string,seed:string,i
       explanation:["The basis directions do not rotate, so the time derivative acts on the scalar components. This assumption is necessary; rotating axes require additional terms.",`${label} at t=${T} s is ${show(target)} ${unit}.`,...(variant==="speed"?[`Speed is the nonnegative norm of the velocity vector: sqrt(${squared}) m/s. Do not take the derivative of |r| in its place.`]:[]),"The position's constant offsets disappear from both velocity and acceleration. Check each component's derivative units independently."],answerSummary:`${label} ${show(target)} ${unit}${variant==="speed"?`; speed sqrt(${squared}) m/s`:""}.`});
   }
   const world=[rng.integer(-9,9),rng.integer(-9,9),rng.integer(-9,9)],observer=[rng.integer(-6,6),rng.integer(-6,6),rng.integer(-6,6)];
-  if(variant==="accelerated"&&observer.every(n=>n===0))observer[0]=1;
+  if(variant==="accelerated"&&observer.reduce((sum,n)=>sum+n*n,0)===0)observer[0]=1;
   const p={wx:world[0],wy:world[1],wz:world[2],ox:observer[0],oy:observer[1],oz:observer[2],rx:r[0],ry:r[1],rz:r[2],T};
   if(variant==="velocity"||variant==="compose") {
     const compose=variant==="compose",target=world.map((v,i)=>v+(compose?1:-1)*observer[i]);
