@@ -10,7 +10,7 @@ const route="/courses/phs-231/lessons/m01-l01";
 test("measurement reasoning, invalid intervals, and keyboard controls work on wide and narrow screens",async({page},testInfo)=>{
   const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("/courses/phs-231");
-  await expect(page.getByText(/\d+ of 22 planned lessons are available\./)).toBeVisible();
+  await expect(page.getByText(/All 22 lessons, readiness checks/)).toBeVisible();
   await page.getByRole("link",{name:"Open lesson: Units, dimensions, and measurement evidence",exact:true}).click();
   await expect(page.getByRole("link",{name:"Powers, roots, and scientific notation",exact:true})).toHaveAttribute("href","/courses/mth-215/lessons/b02");
   await expect(page.getByRole("link",{name:"Calculus preparation",exact:true})).toHaveAttribute("href","/courses/csc-208");
@@ -99,5 +99,7 @@ test("physics checkpoint answers and notes survive real backup export, reset, an
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   await expect(practice.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
   await expect(page.getByLabel("Reasoning, questions, or a worked solution to revisit",{exact:true})).toHaveValue(exported.learning.notes["phs-231"]["m01-l01"]);
-  const response=await page.goto("/courses/phs-231/lessons/m09-l02");expect(response?.status()).toBe(404);
+  const project=await page.goto("/courses/phs-231/lessons/m09-l02");expect(project?.status()).toBe(200);
+  await expect(page.getByRole("heading",{name:"Validate a mechanical subsystem",exact:true})).toBeVisible();
+  const response=await page.goto("/courses/phs-231/lessons/m99-l99");expect(response?.status()).toBe(404);
 });
