@@ -14,4 +14,4 @@ export const practicalLessonSchema=z.object({
 export type PracticalLesson=z.infer<typeof practicalLessonSchema>;
 export const practicalPathSchema=z.object({courseId:key,version:z.number().int().positive(),quickRoute:text,fullRoute:text,diagnostic:questionSchema,targets:z.record(key,key),support:z.array(z.object({courseId:key,reason:text}).strict()).min(1),escalation:z.object({courseId:key,text:text}).strict()}).strict();
 export type PracticalPath=z.infer<typeof practicalPathSchema>;
-export type PracticalCase={title:string;scenario:string;task:string;review:string[];model?:{kind:string;values:Record<string,number>;result:number;unit:string}};
+export type PracticalCase={title:string;scenario:string;task:string;review:string[];reference?:string;model?:{kind:string;values:Record<string,number>;result:number;unit:string}};
