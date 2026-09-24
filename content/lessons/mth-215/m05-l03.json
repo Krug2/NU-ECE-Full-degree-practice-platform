@@ -113,6 +113,30 @@
         "Every finite real power of a positive base is strictly positive. If the isolated target is zero or negative, there is no real solution and no valid logarithm to take. Approaching zero as an exponent grows without bound does not mean the exponential attains zero at a finite real input.",
         "If the isolated target is positive, take a logarithm in the appropriate base or use change of base, then undo the affine exponent. Keep a negative outside coefficient and a negative exponent coefficient separate; each participates in a different algebraic step. If a coefficient you intend to divide by is zero, first decide whether the remaining equation is an identity or contradiction instead of dividing by zero."
       ]
+    },
+    {
+      "heading": "Solve natural and different-base exponentials",
+      "paragraphs": [
+        "For an isolated natural exponential $e^{ax+c}=T$ with T>0, apply the inverse identity to obtain $ax+c=\\ln T$. The constant e and the logarithm expression are exact. Replacing either with a rounded decimal too early changes the exact equation you are solving.",
+        "If two positive exponential sides have different bases, take natural logarithms of both sides. For $b^{ax+c}=d^{mx+n}$, the result is $(ax+c)\\ln b=(mx+n)\\ln d$. Collecting terms gives $x(a\\ln b-m\\ln d)=n\\ln d-c\\ln b$. This is an affine equation in x even though its coefficients contain logarithms.",
+        "Check whether the exact coefficient of x is zero before dividing. When it is nonzero, the exact quotient gives the unique candidate. Substitution into the logarithmic equation checks the algebra, and the injectivity of the exponential function returns equality of the original positive sides. When the coefficient is zero, inspect the remaining constants as in the next section."
+      ]
+    },
+    {
+      "heading": "Recognize exponential identities and contradictions",
+      "paragraphs": [
+        "After rewriting bases or taking logarithms, an exponential equation can reduce to $Ax=C$. If A is nonzero, division yields one candidate. If A=0, the equation has become a statement about constants, and dividing by A is not a permitted step.",
+        "When A=0 and C=0, the reduced statement is true for every input allowed by the original equation. For the ordinary positive-base exponentials considered here, the original domain is all real numbers, so the complete solution set is R. When A=0 and C is nonzero, the statement is false for every input, giving an empty solution set.",
+        "The disappearance of x does not mean x equals zero. A solution set can contain one point, several points, an interval, every real input, or no input. State the complete set supported by the original equation and by the reversibility of the algebraic steps."
+      ]
+    },
+    {
+      "heading": "Use a quadratic substitution with u greater than zero",
+      "paragraphs": [
+        "An equation involving $b^{2x}$ and $b^x$ can be quadratic in the repeated quantity $u=b^x$. Because $b^{2x}=(b^x)^2=u^2$, an expression such as $b^{2x}-5b^x+6$ becomes $u^2-5u+6$. Record the substitution restriction u>0 before solving the quadratic.",
+        "Find every real quadratic candidate, including zero, negative and repeated roots when they occur. A quadratic with no real roots provides no real x solutions. Reject every nonpositive u candidate because no finite real x gives that value of a positive-base exponential. For each retained positive candidate, solve $x=\\log_b u$ exactly.",
+        "This process is complete because a valid exponential base gives a one-to-one map from all real x onto all positive u. Each positive quadratic root corresponds to exactly one real x, and there are no additional x solutions outside those retained candidates. A repeated positive u root produces one distinct solution value, even though its polynomial multiplicity is greater than one."
+      ]
     }
   ],
   "examples": [
@@ -592,6 +616,174 @@
         }
       ],
       "conclusion": "There are no real solutions. Check the isolated target rather than the sign of the original right-hand side."
+    },
+    {
+      "title": "Solve an equation with the natural base",
+      "prompt": "Solve $4e^{3x-2}+1=13$ exactly.",
+      "steps": [
+        {
+          "math": "4e^{3x-2}=12\\quad\\Longrightarrow\\quad e^{3x-2}=3",
+          "reason": "Isolate the positive exponential value before applying its inverse."
+        },
+        {
+          "math": "3x-2=\\ln3\\quad\\Longrightarrow\\quad x=\\frac{\\ln3+2}{3}",
+          "reason": "The natural logarithm recovers the complete exponent; then solve the affine equation."
+        },
+        {
+          "math": "4e^{3((\\ln3+2)/3)-2}+1=4e^{\\ln3}+1=13",
+          "reason": "The exact expression recovers the original target without rounding."
+        }
+      ],
+      "conclusion": "The unique solution is (ln(3)+2)/3. Retain this exact form unless a numerical approximation is separately requested."
+    },
+    {
+      "title": "Take logarithms when the bases differ",
+      "prompt": "Solve $2^{2x+1}=5^{x-1}$ exactly.",
+      "steps": [
+        {
+          "math": "(2x+1)\\ln2=(x-1)\\ln5",
+          "reason": "Both original sides are positive for every real input, so taking natural logarithms is reversible."
+        },
+        {
+          "math": "x(2\\ln2-\\ln5)=-\\ln5-\\ln2=-\\ln10",
+          "reason": "Distribute the exponents and collect all terms containing x."
+        },
+        {
+          "math": "x=\\frac{-\\ln10}{\\ln(4/5)}=\\frac{\\ln10}{\\ln(5/4)}",
+          "reason": "The denominator is nonzero because 4/5 is not one. The reciprocal-log identity simplifies the signs."
+        },
+        {
+          "math": "(2\\ln2-\\ln5)x+\\ln2+\\ln5=-\\ln(5/4)\\frac{\\ln10}{\\ln(5/4)}+\\ln10=0",
+          "reason": "The exact candidate makes the difference of the two original logarithmic sides zero. Exponentiating returns the original equality."
+        }
+      ],
+      "conclusion": "The complete solution set contains ln(10)/ln(5/4). Equating the original exponents directly would be invalid because their bases differ."
+    },
+    {
+      "title": "An exponential identity keeps every real input",
+      "prompt": "Solve $4^{x+1}=2^{2x+2}$ over the real numbers.",
+      "steps": [
+        {
+          "math": "4^{x+1}=(2^2)^{x+1}=2^{2x+2}",
+          "reason": "The power rule converts the left side into exactly the expression on the right."
+        },
+        {
+          "math": "2x+2=2x+2\\quad\\Longrightarrow\\quad0=0",
+          "reason": "The reduced equation is an identity, not a condition selecting one value of x."
+        },
+        {
+          "math": "D=\\mathbb R,\\qquad S=\\mathbb R",
+          "reason": "Both original exponential sides are defined for every real input, and the identity holds throughout that domain."
+        }
+      ],
+      "conclusion": "Every real x is a solution. The single value zero would be an incomplete answer."
+    },
+    {
+      "title": "Canceled x terms can leave a contradiction",
+      "prompt": "Solve $2^{x+1}=2^{x-2}$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x+1=x-2",
+          "reason": "The common valid base makes equality equivalent to equality of exponents."
+        },
+        {
+          "math": "1=-2",
+          "reason": "Subtracting x leaves unequal constants. No choice of x can change that contradiction."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "The original equation has no real solution."
+        }
+      ],
+      "conclusion": "No solution is the complete outcome. Do not divide by a zero x coefficient or infer x=0."
+    },
+    {
+      "title": "Two positive substitution roots give two solutions",
+      "prompt": "Solve $e^{2x}-5e^x+6=0$ exactly over the real numbers.",
+      "steps": [
+        {
+          "math": "u=e^x>0,\\qquad u^2-5u+6=0",
+          "reason": "Use the repeated exponential as one variable while keeping its positive range."
+        },
+        {
+          "math": "(u-2)(u-3)=0\\quad\\Longrightarrow\\quad u=2\\text{ or }u=3",
+          "reason": "Factor the complete quadratic and list both real candidates."
+        },
+        {
+          "math": "x=\\ln2\\text{ or }x=\\ln3",
+          "reason": "Both candidates are positive, so each has one real inverse-logarithm input."
+        },
+        {
+          "math": "u=2:\\ 4-10+6=0,\\qquad u=3:\\ 9-15+6=0",
+          "reason": "Each recovered exponential value satisfies the original polynomial expression in e^x."
+        }
+      ],
+      "conclusion": "The complete real solution set is {ln(2), ln(3)}. Reporting either one alone omits a valid branch."
+    },
+    {
+      "title": "Reject a negative substitution root and keep the positive one",
+      "prompt": "Solve $3^{2x}-2\\cdot3^x-3=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "u=3^x>0,\\qquad u^2-2u-3=(u-3)(u+1)=0",
+          "reason": "The quadratic has real candidates u=3 and u=-1."
+        },
+        {
+          "math": "u=-1\\text{ is rejected},\\qquad u=3\\text{ is retained}",
+          "reason": "Only strictly positive values belong to the range of the substitution."
+        },
+        {
+          "math": "3^x=3\\quad\\Longrightarrow\\quad x=1",
+          "reason": "Invert the retained positive candidate."
+        },
+        {
+          "math": "3^{2(1)}-2\\cdot3^1-3=9-6-3=0",
+          "reason": "Check the original equation at the retained input."
+        }
+      ],
+      "conclusion": "The complete solution set is {1}. Taking a real logarithm of the rejected value -1 is not valid."
+    },
+    {
+      "title": "Zero and negative substitution candidates can leave no solution",
+      "prompt": "Solve $2^{2x}+2^x=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "u=2^x>0,\\qquad u^2+u=u(u+1)=0",
+          "reason": "Solve the full quadratic rather than dividing away a possible algebraic root."
+        },
+        {
+          "math": "u=0\\text{ or }u=-1",
+          "reason": "These are all real roots of the quadratic in u."
+        },
+        {
+          "math": "0\\notin(0,\\infty),\\qquad-1\\notin(0,\\infty)",
+          "reason": "Neither candidate is attainable by the exponential substitution."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "With no retained positive u root, there is no real x solution. The original sum of two positive terms confirms the conclusion."
+        }
+      ],
+      "conclusion": "Both zero and negative substitution roots must be rejected. Approaching zero does not make u=0 attainable."
+    },
+    {
+      "title": "A repeated positive root gives one distinct input",
+      "prompt": "Solve $e^{2x}-4e^x+4=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "u=e^x>0,\\qquad u^2-4u+4=(u-2)^2=0",
+          "reason": "The quadratic has a repeated positive root."
+        },
+        {
+          "math": "u=2\\quad\\Longrightarrow\\quad x=\\ln2",
+          "reason": "A repeated root is one value, and the exponential has one real inverse input for that value."
+        },
+        {
+          "math": "e^{2\\ln2}-4e^{\\ln2}+4=4-8+4=0",
+          "reason": "The retained exact input satisfies the original equation."
+        }
+      ],
+      "conclusion": "The complete set is {ln(2)}, with the value listed once. Polynomial multiplicity does not create a second distinct x value."
     }
   ],
   "guided": {

@@ -2,7 +2,7 @@
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
   "status": "draft",
-  "contentStages": 4,
+  "contentStages": 5,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -173,6 +173,55 @@
       ],
       "independentCheck": "mth-exp-equation:mixed",
       "retrieval": "Isolate a shifted exponential with a negative scale, then explain separate zero-target and negative-target failures."
+    },
+    {
+      "skill": "Solve natural and different-base exponentials",
+      "instruction": [
+        "Solve natural and different-base exponentials"
+      ],
+      "examples": [
+        "Solve an equation with the natural base",
+        "Take logarithms when the bases differ"
+      ],
+      "practice": [
+        "mth-exp-equation:natural-base",
+        "mth-exp-equation:different-bases"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Solve one natural exponential and one different-base equality, keeping the coefficient and constant logarithms exact."
+    },
+    {
+      "skill": "Recognize exponential identities and contradictions",
+      "instruction": [
+        "Recognize exponential identities and contradictions"
+      ],
+      "examples": [
+        "An exponential identity keeps every real input",
+        "Canceled x terms can leave a contradiction"
+      ],
+      "practice": [
+        "mth-exp-equation:identity-or-empty"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Classify one identity and one contradiction after the x terms disappear, stating the complete original solution set."
+    },
+    {
+      "skill": "Use a quadratic substitution with u greater than zero",
+      "instruction": [
+        "Use a quadratic substitution with u greater than zero"
+      ],
+      "examples": [
+        "Two positive substitution roots give two solutions",
+        "Reject a negative substitution root and keep the positive one",
+        "Zero and negative substitution candidates can leave no solution",
+        "A repeated positive root gives one distinct input"
+      ],
+      "practice": [
+        "mth-exp-equation:quadratic-two",
+        "mth-exp-equation:quadratic-filter"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "State the range of u=b^x before solving, then classify two positive roots, one retained root, no retained roots and a repeated positive root."
     }
   ]
 }
