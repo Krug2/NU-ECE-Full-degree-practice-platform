@@ -3,6 +3,18 @@ import AxeBuilder from "@axe-core/playwright";
 
 const route="/courses/phs-231/lessons/m01-l02";
 
+test("a direct vector lesson load and reload hydrate the accessible SVG title",async({page})=>{
+  const errors:string[]=[];page.on("pageerror",error=>errors.push(error.message));
+  await page.goto(route);
+  const lab=page.locator("#investigate");
+  await lab.getByLabel("A x",{exact:true}).fill("4");
+  await expect(lab.getByRole("img")).toHaveAccessibleName(/A \(4, 4, 0\)/);
+  await page.reload();
+  await lab.getByLabel("A x",{exact:true}).fill("5");
+  await expect(lab.getByRole("img")).toHaveAccessibleName(/A \(5, 4, 0\)/);
+  expect(errors).toEqual([]);
+});
+
 test("vector products retain their order, units, and full 3D meaning with keyboard controls",async({page},testInfo)=>{
   const errors:string[]=[];page.on("pageerror",e=>errors.push(e.message));
   await page.goto("/courses/phs-231/lessons/m01-l01");
