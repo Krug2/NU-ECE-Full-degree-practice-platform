@@ -1,0 +1,44 @@
+{
+  "courseId": "f01",
+  "planVersion": 1,
+  "status": "planned",
+  "title": "Arithmetic and notation",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "learner": "A returning learner who has previously used arithmetic but cannot reliably recall signs, fraction operations, powers, or mathematical notation. Prior credit is neither assumed evidence nor a reason to withhold explanation.",
+  "assumedKnowledge": ["Read decimal digits and count whole-number quantities", "Recognize addition, subtraction, multiplication, and division symbols"],
+  "scope": "Signed arithmetic, order and grouping, exact fractions and decimals, proportions and percentages, integer powers and real square/cube roots, scientific notation, and exact versus approximate statements. All examples and exercises are original.",
+  "boundaries": ["No university credit, official grade, transfer decision, or enrollment eligibility", "Equation solving, inequalities and interval sets belong to F02 and MTH 215", "SI conversions, significant figures, and measurement uncertainty belong to F06", "Complex roots belong to F09; F01 identifies when a square root is not real", "Learners needing first-time instruction should use the linked Prealgebra sections, then MTH 215's foundation bridges and full algebra lessons"],
+  "sequence": ["m01-l01", "m01-l02", "m01-l03", "m01-l04"],
+  "routes": [
+    {"id": "recall", "name": "Quick recall", "behavior": "Use the eight-item diagnostic without hints first. Follow its skill-specific links, read each relevant lesson's summary, try its investigation, then take its four-item independent checkpoint. The four-item mixed checkpoint samples every lesson, but never substitutes for unassessed subskills.", "estimatedMinutes": "30 to 60 when most skills are retained"},
+    {"id": "full", "name": "Rebuild the understanding", "behavior": "Follow the four lessons in sequence: explanation, worked examples, guided work, prediction activity, varied practice, independent checkpoint, and delayed retrieval. Stop and resume through the existing saved-attempt and note APIs.", "estimatedMinutes": "150 to 220 plus further practice"},
+    {"id": "reference", "name": "Look up one idea", "behavior": "Open a lesson, summary, example, or exact reading directly. Reading, confidence, and interaction success do not award evidence."}
+  ],
+  "diagnostic": {
+    "id": "diagnostic",
+    "mode": "practice",
+    "length": 8,
+    "purpose": "Two probes per objective expose a specific next lesson. It is formative and optional, with hints and full feedback. It can never create independent evidence.",
+    "blueprint": ["signed change", "operation order", "fraction addition", "proportion", "negative exponent", "principal root", "scientific notation", "exact versus approximate"],
+    "recommendations": "Use question family mappings and actual submitted responses. A missed or assisted question recommends its lesson; an untested objective remains untested. A later independent lesson check is reported separately and may clear the recommendation. Confidence and visits are ignored."
+  },
+  "assessment": {
+    "lessonCheckpoints": "Four independent questions per lesson with feedback after submission. Every essential subskill is included using multi-part questions. All F01 checkpoint questions are required validity checks, so all four must be correct.",
+    "mixedCheckpoint": {"id": "recall", "length": 4, "coverage": ["m01-l01", "m01-l02", "m01-l03", "m01-l04"], "meaning": "A short transfer sample covering all four objectives. Full F01 coverage additionally requires independent evidence from all four lesson checkpoints."},
+    "retry": "Review missed reasoning and the linked lesson, then generate a fresh seeded set. Saved attempts retain their exact questions and family versions.",
+    "retention": "Use the existing three-day review dates and retrieval prompts. Earlier success remains historical evidence; a newer miss becomes a current review recommendation.",
+    "separation": "Every attempt uses courseId f01. MTH 215 family IDs, content, and saved attempts remain unchanged. F01 evidence never changes university-course completion."
+  },
+  "overlap": [
+    {"existing": "mth-215/b01", "f01": ["m01-l01", "m01-l02", "m01-l04"], "reuse": "Signed fraction, sign-precedence, and exact/approximate generators through new F01 family wrappers; shared rational grader and arithmetic lab", "boundary": "Keep interval notation in the existing bridge and F02. Add numeric-order, proportional-reasoning, percent, decimal, zero-division, and estimation families here."},
+    {"existing": "mth-215/b02", "f01": ["m01-l03", "m01-l04"], "reuse": "Exponent, principal-root, radical, and scientific-notation generators through stable F01 wrapper IDs", "boundary": "Use numeric real-root classification rather than requiring algebraic domain inequalities."},
+    {"existing": "mth-215/b03 and b04", "f01": ["m01-l02"], "reuse": "Same rule: only whole nonzero factors cancel", "boundary": "Numeric fraction cancellation here; polynomial factoring and variable exclusions remain in MTH 215 and F02."},
+    {"existing": "mth-215/b05, b06, m01-l01, m02-l04", "f01": ["m01-l01", "m01-l02", "m01-l04"], "reuse": "Existing accessible fields, worked-example presentation, notes, seeded assessment, and prediction-before-reveal interaction", "boundary": "No graph, calibration, equation, or trigonometry content is moved or renamed."}
+  ],
+  "sharedCapabilities": [
+    {"interface": "AssessmentSource = Pick<Lesson, 'id' | 'courseId' | 'version' | 'practice' | 'checkpoint'>; AttemptRunner({lesson: AssessmentSource, allowedModes?: ('practice' | 'checkpoint')[]})", "reason": "Reuse the saved-attempt system for formative diagnostic and mixed recall without constructing fake instruction or adding storage fields.", "storageChange": false},
+    {"interface": "RefresherPath({pack, versions}) registered only for course.group === 'refresher'", "reason": "Show optional routes, gap recommendations, and separate evidence without changing course completion or shared persistence.", "storageChange": false}
+  ],
+  "delivery": ["Plan and verify sources", "Add generators and independent correctness tests", "Author four lessons in small commits", "Add refresher overview and minimal registration separately", "Verify complete browser journey on ports 3002 and 3102", "Record actual verification and push before planning F02"],
+  "releasePolicy": "Use preview after automated and browser verification. Reviewed requires independent human subject review, which has not occurred. Leave F02 through F12 planned until each is built and verified."
+}

@@ -1,0 +1,102 @@
+{
+  "courseId": "f01",
+  "checkedAt": "2026-09-23",
+  "policy": "Link-only subject verification and further reading. No textbook prose, exercises, diagrams, or solutions are imported. All F01 instruction and new exercises are original; shared ECE Study families retain their existing implementation.",
+  "provider": "OpenStax, Rice University",
+  "attribution": [
+    {
+      "book": "Prealgebra 2e",
+      "authors": "Lynn Marecek, MaryAnne Anthony-Smith, Andrea Honeycutt Mathis",
+      "preface": "https://openstax.org/books/prealgebra-2e/pages/preface"
+    },
+    {
+      "book": "Algebra and Trigonometry 2e",
+      "authors": "Jay Abramson and contributing authors",
+      "preface": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/preface"
+    }
+  ],
+  "licenseNote": "The linked editions' current terms are displayed by OpenStax. This release links to the sources rather than redistributing them. Recheck the applicable license before importing any text or artwork.",
+  "sources": [
+    {
+      "id": "pre-2.1",
+      "title": "Prealgebra 2e §2.1: Use the Language of Algebra",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/2-1-use-the-language-of-algebra",
+      "purpose": "Grouping, operation precedence, and expression versus equation",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-3.2",
+      "title": "Prealgebra 2e §3.2: Add Integers",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/3-2-add-integers",
+      "purpose": "Signed changes and number-line models",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-3.3",
+      "title": "Prealgebra 2e §3.3: Subtract Integers",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/3-3-subtract-integers",
+      "purpose": "Subtraction as addition of the opposite",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-4.3",
+      "title": "Prealgebra 2e §4.3: Multiply and Divide Mixed Numbers and Complex Fractions",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/4-3-multiply-and-divide-mixed-numbers-and-complex-fractions",
+      "purpose": "Improper fractions and reciprocal division",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-4.5",
+      "title": "Prealgebra 2e §4.5: Add and Subtract Fractions with Different Denominators",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/4-5-add-and-subtract-fractions-with-different-denominators",
+      "purpose": "Equivalent parts and common denominators",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-5.1",
+      "title": "Prealgebra 2e §5.1: Decimals",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/5-1-decimals",
+      "purpose": "Place value and rounding",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-6.2",
+      "title": "Prealgebra 2e §6.2: Solve General Applications of Percent",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent",
+      "purpose": "Part, percent, and reference whole",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "pre-6.5",
+      "title": "Prealgebra 2e §6.5: Solve Proportions and their Applications",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/6-5-solve-proportions-and-their-applications",
+      "purpose": "Constant ratios and nonzero denominators",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "alg-1.2",
+      "title": "Algebra and Trigonometry 2e §1.2: Exponents and Scientific Notation",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-2-exponents-and-scientific-notation",
+      "purpose": "Exponent laws and powers of ten",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    },
+    {
+      "id": "alg-1.3",
+      "title": "Algebra and Trigonometry 2e §1.3: Radicals and Rational Exponents",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-3-radicals-and-rational-exponents",
+      "purpose": "Principal roots, real-root restrictions, and rational powers",
+      "checkedAt": "2026-09-23",
+      "access": "Free web reading without sign-in; internet required. The internal lesson contains the required instruction."
+    }
+  ],
+  "verification": "Opened each exact section and checked its topic. Negative exponents require nonzero bases, square roots select nonnegative values, fraction addition requires like denominators, and percent/proportion reasoning preserves the reference whole. Source checking by the implementer is not independent human review."
+}
