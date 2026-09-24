@@ -1,0 +1,86 @@
+{
+  "courseId": "f07",
+  "title": "Vectors and geometry",
+  "plannedAt": "2026-09-24",
+  "status": "planned",
+  "learner": "Returning learners who remember coordinate arithmetic and basic trigonometry but need to recover geometric meaning and reliable signed vector calculations.",
+  "assumedKnowledge": [
+    "F01 arithmetic and radicals",
+    "F02 basic algebra",
+    "F03 coordinate reading",
+    "F04 standard-angle trigonometry and inverse-angle quadrant checks",
+    "F06 consistent units"
+  ],
+  "scope": {
+    "include": [
+      "Components, displacement, and unit direction",
+      "Vector arithmetic, resultants, and coordinate directions",
+      "Dot products, angles, and projections",
+      "Cross products, orientation, and area",
+      "Lines, planes, and coordinate systems"
+    ],
+    "exclude": [
+      "A full linear algebra or multivariable calculus course",
+      "General basis matrices, eigenvectors, vector fields, differential operators, Jacobians",
+      "Unspecified coordinate or handedness conventions",
+      "Physical dynamics derivations beyond supplied constant-force/torque relationships"
+    ]
+  },
+  "routes": {
+    "quick": "Five diagnostic probes route to specific lessons. Use Quick recall and independent lesson checkpoints before the four-question mixed recall.",
+    "full": "Work components, arithmetic and directions, dot products and projections, ordered cross products, then lines/planes and coordinate systems. Predict in each activity, explain differences, and save reasoning in notes.",
+    "escalation": {
+      "courseId": "cee-300",
+      "text": "Use the linked free OpenStax Calculus Volume 3 sections for first-time instruction. CEE 300 and the full physics courses are the corresponding course destinations; their vector learning packs are not yet authored in this baseline. F03 and F04 provide available coordinate and trigonometry support."
+    }
+  },
+  "reuse": {
+    "overlap": [
+      "MTH 215 b05/F03 cover coordinates, signed changes, and distances in simple graphs.",
+      "MTH 215 b06/F04 cover right triangles, exact standard angles, and quadrant-aware direction.",
+      "F06 supplies unit conversion and dimensional checks for work and torque."
+    ],
+    "implementation": "Reuse exact/rational graders, F04 trigValue and standard-angle conventions, and existing progress/notes/backup. New vector questions retain F07 identities; source lessons and attempts remain unchanged."
+  },
+  "assessment": {
+    "diagnostic": [
+      {
+        "lessonId": "m01-l01",
+        "probe": "endpoint subtraction and magnitude"
+      },
+      {
+        "lessonId": "m01-l02",
+        "probe": "quadrant-aware direction"
+      },
+      {
+        "lessonId": "m01-l03",
+        "probe": "dot/projection meaning"
+      },
+      {
+        "lessonId": "m01-l04",
+        "probe": "ordered cross product"
+      },
+      {
+        "lessonId": "m01-l05",
+        "probe": "coordinate convention"
+      }
+    ],
+    "checkpoints": "Four critical questions per lesson; multiple fields cover each objective within the existing eight-field limit.",
+    "mixed": "Four checks: a multipart components/arithmetic question with p1/p2 routes, then dot/projection, cross/area, and geometry/coordinates. Independent lesson checkpoints provide fuller coverage.",
+    "evidence": "Visits, confidence, diagnostic, guided work, and activities do not establish objective evidence. F07 checkpoints and mixed recall use separate versioned evidence."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-vector-lab', mode: 'components' | 'addition' | 'dot' | 'cross' | 'coordinates', prompt: string }.",
+      "integration": "One strict union member and reader dispatch; new scoped modules render keyboard inputs, existing question fields, SVG diagrams, and equivalent tables. No storage, grading, backup, or app-shell redesign."
+    }
+  ],
+  "verification": [
+    "Independently check endpoints, norms, normalization, vector sums, scaling, equilibrants, quadrants, and exact trig component identities over at least 100 seeds per structure.",
+    "Check dot/angle/projection through symmetry, orthogonal residuals, Cauchy-Schwarz and explicit zero guards; check cross through determinant oracle, antisymmetry and perpendicularity.",
+    "Check area with planar determinants; torque order and units; line membership by all shared-parameter equations; plane residual/distance and coordinate round trips.",
+    "Test equivalent exact radicals/fractions, numeric angle tolerance, invalid expressions, zero direction, parallel inputs, pole/origin coordinate ambiguity, and all KaTeX rendering.",
+    "Verify all guided activities, independent checkpoints, mixed recall routing, notes, exact resume, backup, keyboard/mobile/Axe; run full tests, lint, typecheck, build.",
+    "Mark preview only after verification, with independent human review pending. Finish F07 before detailed planning of F08."
+  ]
+}

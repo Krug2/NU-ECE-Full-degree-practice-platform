@@ -1,0 +1,585 @@
+{
+  "courseId": "f07",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Components, displacement, and unit direction",
+      "objective": "Distinguish points from vectors, compute two- and three-dimensional displacements and magnitudes, and normalize nonzero vectors while handling zero correctly.",
+      "requires": [],
+      "scope": [
+        "Cartesian components in a stated orthonormal frame",
+        "Terminal minus initial displacement; distance versus displacement",
+        "Magnitude, translated equivalent vectors, standard basis, unit direction",
+        "Zero vector has zero magnitude but no unique direction"
+      ],
+      "workedExamples": [
+        "Displacement from (2,-1) to (-1,3) and magnitude 5",
+        "Equivalent arrows translated to different origins",
+        "Distance between (1,2,-1) and (3,-1,5) is 7",
+        "Normalize (3,-4) to (3/5,-4/5)",
+        "Normalize (1,1,1) using sqrt(3)",
+        "Zero displacement: magnitude zero and undefined unique unit direction"
+      ],
+      "guided": "Find a signed 3D displacement and its exact magnitude before normalizing.",
+      "interaction": {
+        "kind": "refresher-vector-lab",
+        "mode": "components",
+        "purpose": "Change initial and terminal planar points. Predict displacement and magnitude, then reveal a labeled arrow and equivalent component table. Translate both endpoints and explain invariance."
+      },
+      "practice": [
+        [
+          "displacement",
+          "plane"
+        ],
+        [
+          "displacement",
+          "space"
+        ],
+        [
+          "magnitude",
+          "plane"
+        ],
+        [
+          "magnitude",
+          "space"
+        ],
+        [
+          "unit-vector",
+          "plane"
+        ],
+        [
+          "unit-vector",
+          "space"
+        ],
+        [
+          "unit-vector",
+          "zero"
+        ],
+        [
+          "vector-meaning",
+          "translation"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "displacement",
+          "space"
+        ],
+        [
+          "magnitude",
+          "plane"
+        ],
+        [
+          "unit-vector",
+          "space"
+        ],
+        [
+          "vector-meaning",
+          "zero"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Reverse subtraction",
+          "Treating points as unlabeled numbers",
+          "Write terminal minus initial; reversing endpoints reverses the vector but preserves distance."
+        ],
+        [
+          "Add components for length",
+          "Confusing signed displacement with magnitude",
+          "Square and add perpendicular components, then take the nonnegative square root."
+        ],
+        [
+          "Normalize zero",
+          "Applying division without its condition",
+          "No unique unit direction exists because the magnitude divisor is zero."
+        ]
+      ],
+      "readings": [
+        "cv3-2.1",
+        "cv3-2.2"
+      ],
+      "supports": [
+        "phs-231",
+        "phs-232",
+        "cee-300",
+        "cee-324"
+      ],
+      "acceptance": "Every checkpoint distinguishes vector components from a scalar magnitude and covers nonzero normalization plus zero-direction reasoning."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Vector arithmetic, resultants, and coordinate directions",
+      "objective": "Combine vectors componentwise, interpret signed scaling and equilibrants, and convert between planar magnitude-direction and Cartesian components with correct quadrants.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "Addition, subtraction, signed scalar combinations in 2D/3D",
+        "Tip-to-tail resultants and equilibrants; magnitude of sum is not sum of magnitudes",
+        "Polar direction counterclockwise from +x in [0,360); degrees explicit",
+        "Standard-angle exact components and general atan2 direction; zero-resultant direction undefined",
+        "Active planar quarter-turn rotation in a fixed frame, distinguished from changing axes"
+      ],
+      "workedExamples": [
+        "(3,1)+(-1,4)=(2,5) and sqrt(29), not sum of magnitudes",
+        "2(1,-2,3)-(-2,1,4)=(4,-5,2)",
+        "Scale (3,-4) by -2: (-6,8), magnitude 10, reversed direction",
+        "Equilibrant of forces (4,0),(-1,2),(0,-5) is (-3,3)",
+        "Magnitude 10 at 150° gives (-5sqrt(3),5)",
+        "Direction of (-3,-3) is 225°, not arctan ratio 45°",
+        "Rotate (2,-1) actively +90° to (1,2) and preserve norm"
+      ],
+      "guided": "Resolve an exact-angle force and add a Cartesian force with units.",
+      "interaction": {
+        "kind": "refresher-vector-lab",
+        "mode": "addition",
+        "purpose": "Change two planar vectors and a signed scalar. Predict a linear combination and magnitude, then reveal tip-to-tail arrows and components. Test cancellation and explain why lengths alone cannot be added."
+      },
+      "practice": [
+        [
+          "vector-combine",
+          "sum"
+        ],
+        [
+          "vector-combine",
+          "difference"
+        ],
+        [
+          "vector-combine",
+          "linear"
+        ],
+        [
+          "vector-combine",
+          "space"
+        ],
+        [
+          "resultant",
+          "equilibrant"
+        ],
+        [
+          "resultant",
+          "cancellation"
+        ],
+        [
+          "polar-vector",
+          "to-cartesian"
+        ],
+        [
+          "polar-vector",
+          "direction"
+        ],
+        [
+          "polar-vector",
+          "axis"
+        ],
+        [
+          "rotate-vector",
+          "quarter-turn"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "vector-combine",
+          "space"
+        ],
+        [
+          "resultant",
+          "equilibrant"
+        ],
+        [
+          "polar-vector",
+          "to-cartesian"
+        ],
+        [
+          "polar-vector",
+          "direction"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Magnitude-only addition",
+          "Ignoring direction",
+          "Add signed components before calculating length."
+        ],
+        [
+          "Wrong angle quadrant",
+          "Using only arctan(y/x)",
+          "Use both signs and axis cases; atan2 retains quadrant information."
+        ],
+        [
+          "Negative scale as negative length",
+          "Mixing direction and magnitude",
+          "Magnitude uses the absolute scale factor; the vector direction reverses."
+        ]
+      ],
+      "readings": [
+        "cv3-2.1",
+        "cv3-2.2"
+      ],
+      "supports": [
+        "phs-231",
+        "phs-232",
+        "cee-300",
+        "cee-324",
+        "cee-340"
+      ],
+      "acceptance": "Independent work includes 3D combinations, a force balance, exact polar resolution, and quadrant-aware direction; zero cancellation is explicitly practiced."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Dot products, angles, and projections",
+      "objective": "Calculate dot products, classify and measure angles between nonzero vectors, and distinguish scalar components, vector projections, and work along a displacement.",
+      "requires": [
+        "m01-l01",
+        "m01-l02"
+      ],
+      "scope": [
+        "Dot product is a scalar, symmetric and distributive",
+        "Signed dot product and acute/right/obtuse angle for nonzero vectors",
+        "Projection onto a nonzero target, perpendicular remainder, signed scalar component",
+        "Work F dot displacement with units and explicit constant-force model",
+        "Zero-vector angle and projection onto zero are undefined"
+      ],
+      "workedExamples": [
+        "(2,-1,3) dot (4,2,-1)=3",
+        "(1,1) and (-1,2): acute angle despite one negative component",
+        "(1,0) and (-1,1): cosθ=-1/sqrt(2), θ=135°",
+        "Projection of (3,4) onto (1,0): (3,0), remainder (0,4)",
+        "Projection of (2,3) onto (1,1): (5/2,5/2), signed scalar component 5/sqrt(2)",
+        "Force (-2,1) N and displacement (3,0) m: work -6 J",
+        "Angle with zero versus dot with zero; projection onto zero undefined"
+      ],
+      "guided": "Compute a dot product and a projection coefficient, then verify orthogonality of the remainder.",
+      "interaction": {
+        "kind": "refresher-vector-lab",
+        "mode": "dot",
+        "purpose": "Change planar vectors and predict the dot product and projection. Reveal the projected arrow and perpendicular remainder. Test a negative projection, orthogonality, and a zero target with an explicit invalid-state message."
+      },
+      "practice": [
+        [
+          "dot-product",
+          "plane"
+        ],
+        [
+          "dot-product",
+          "space"
+        ],
+        [
+          "dot-product",
+          "sign"
+        ],
+        [
+          "vector-angle",
+          "general"
+        ],
+        [
+          "vector-angle",
+          "perpendicular"
+        ],
+        [
+          "vector-angle",
+          "zero"
+        ],
+        [
+          "projection",
+          "vector"
+        ],
+        [
+          "projection",
+          "scalar"
+        ],
+        [
+          "projection",
+          "zero"
+        ],
+        [
+          "vector-work",
+          "signed"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "dot-product",
+          "space"
+        ],
+        [
+          "vector-angle",
+          "general"
+        ],
+        [
+          "projection",
+          "audit"
+        ],
+        [
+          "vector-work",
+          "signed"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Return a vector dot product",
+          "Confusing operation types",
+          "Multiply matching components and sum to one scalar."
+        ],
+        [
+          "Projection denominator uses source",
+          "Reversing onto-direction",
+          "Divide by target dot target and multiply the target vector."
+        ],
+        [
+          "Use dot zero to assign angle with zero",
+          "Ignoring nonzero premise",
+          "The angle formula divides by both magnitudes."
+        ]
+      ],
+      "readings": [
+        "cv3-2.3"
+      ],
+      "supports": [
+        "phs-231",
+        "phs-232",
+        "cee-300",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Checkpoint covers scalar product, angle and nonzero conditions, vector/scalar projection with orthogonal remainder, and signed work."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Cross products, orientation, and area",
+      "objective": "Compute ordered three-dimensional cross products, verify perpendicularity, and use their direction and magnitude for area and a supplied torque model.",
+      "requires": [
+        "m01-l03"
+      ],
+      "scope": [
+        "Right-handed orthonormal frame and basis cycles",
+        "Signed determinant/component cross formula",
+        "Anticommutativity; zero cross for parallel or zero vectors",
+        "Parallelogram/triangle area and signed normal direction",
+        "Torque r cross F about a stated origin; order and N m units",
+        "No full rotational dynamics or vector-field calculus"
+      ],
+      "workedExamples": [
+        "i cross j=k; reversing order gives -k",
+        "(1,2,0) cross (0,1,3)=(6,-3,1) and orthogonality checks",
+        "Parallel (1,2,3),(2,4,6) cross to zero",
+        "Parallelogram from (3,0,0),(0,4,0): area12, triangle6",
+        "Planar ordered edges (2,1,0),(1,3,0): signed z5; reverse=-5",
+        "Position (0,2,0) m with force (3,0,0) N gives torque (0,0,-6) N m"
+      ],
+      "guided": "Compute a planar cross product's signed z component, then distinguish that vector from positive area.",
+      "interaction": {
+        "kind": "refresher-vector-lab",
+        "mode": "cross",
+        "purpose": "Change planar vectors embedded in 3D and swap their order. Predict signed normal and triangle area, then reveal the parallelogram with a signed normal label and numeric table. Test parallel vectors."
+      },
+      "practice": [
+        [
+          "cross-product",
+          "space"
+        ],
+        [
+          "cross-product",
+          "plane"
+        ],
+        [
+          "cross-product",
+          "reverse"
+        ],
+        [
+          "cross-product",
+          "parallel"
+        ],
+        [
+          "vector-area",
+          "parallelogram"
+        ],
+        [
+          "vector-area",
+          "triangle"
+        ],
+        [
+          "vector-torque",
+          "axis"
+        ],
+        [
+          "vector-torque",
+          "space"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "cross-product",
+          "space"
+        ],
+        [
+          "cross-product",
+          "reverse"
+        ],
+        [
+          "vector-area",
+          "triangle"
+        ],
+        [
+          "vector-torque",
+          "space"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Drop the middle-component sign",
+          "Memorizing a determinant incompletely",
+          "Compute each cyclic component or expand the determinant with alternating signs."
+        ],
+        [
+          "Swap order freely",
+          "Importing dot-product symmetry",
+          "Reversing cross order reverses its vector direction."
+        ],
+        [
+          "Report negative area",
+          "Confusing signed orientation with magnitude",
+          "Area is the nonnegative magnitude; the normal records orientation."
+        ]
+      ],
+      "readings": [
+        "cv3-2.4"
+      ],
+      "supports": [
+        "phs-231",
+        "phs-232",
+        "cee-300",
+        "cee-340"
+      ],
+      "acceptance": "Cross answers are checked independently through antisymmetry and orthogonality. Area and torque include units and distinct scalar/vector answers."
+    },
+    {
+      "id": "m01-l05",
+      "title": "Lines, planes, and coordinate systems",
+      "objective": "Use vector equations to test points on lines and planes, calculate perpendicular point-plane distance, and convert simple Cartesian, cylindrical, and spherical coordinates under explicitly stated conventions.",
+      "requires": [
+        "m01-l02",
+        "m01-l03",
+        "m01-l04"
+      ],
+      "scope": [
+        "r=p+t d with d nonzero; line versus segment t interval",
+        "Plane normal n dot (r-p)=0 with n nonzero",
+        "Point-plane distance absolute residual over norm",
+        "Cylindrical (r,θ,z), r>=0, degree θ from+x toward+y",
+        "Spherical (ρ,θ,φ): ρ>=0, θ azimuth, φ from+z, x=ρsinφcosθ; singular origin and axis nonuniqueness",
+        "Coordinates describe a point; Cartesian vector components are tied to a frame; no spherical vector-basis transformations or Jacobians"
+      ],
+      "workedExamples": [
+        "Line through (1,2,-1) direction(2,0,1) at t3 gives(7,2,2)",
+        "Test (5,2,1) on same line, and reject inconsistent component parameters",
+        "Plane through (1,0,2), normal(2,-1,3):2x-y+3z=8",
+        "Distance of (0,0,0) to plane2x-y+2z=6 is2",
+        "Cylindrical (4,150°,2) gives(-2sqrt(3),2,2)",
+        "Spherical (6,90°,60°) gives(0,3sqrt(3),3)",
+        "Point on +z axis has nonunique azimuth; origin has nonunique angles"
+      ],
+      "guided": "Use a line parameter and a plane normal, then convert one cylindrical point.",
+      "interaction": {
+        "kind": "refresher-vector-lab",
+        "mode": "coordinates",
+        "purpose": "Change a cylindrical radius, azimuth, and height. Predict Cartesian coordinates, inspect a top-down plot with a separate height table, and compare equivalent azimuths. Test r=0 and explain why azimuth becomes nonunique."
+      },
+      "practice": [
+        [
+          "vector-line",
+          "point"
+        ],
+        [
+          "vector-line",
+          "membership"
+        ],
+        [
+          "vector-line",
+          "segment"
+        ],
+        [
+          "vector-plane",
+          "constant"
+        ],
+        [
+          "vector-plane",
+          "membership"
+        ],
+        [
+          "vector-plane",
+          "distance"
+        ],
+        [
+          "cylindrical",
+          "to-cartesian"
+        ],
+        [
+          "cylindrical",
+          "from-cartesian"
+        ],
+        [
+          "spherical",
+          "to-cartesian"
+        ],
+        [
+          "spherical",
+          "axis"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "vector-line",
+          "audit"
+        ],
+        [
+          "vector-plane",
+          "audit"
+        ],
+        [
+          "cylindrical",
+          "to-cartesian"
+        ],
+        [
+          "spherical",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Use a different t for each coordinate",
+          "Ignoring one shared line parameter",
+          "Find one t and substitute it into every coordinate."
+        ],
+        [
+          "Treat a plane normal as a direction along the plane",
+          "Confusing tangent and perpendicular",
+          "Differences of plane points have zero dot product with the normal."
+        ],
+        [
+          "Interchange polar and azimuth angles",
+          "Relying on letter names alone",
+          "Read the explicit spherical convention and trace projection onto the xy plane."
+        ],
+        [
+          "Force a unique angle on an axis",
+          "Ignoring coordinate singularities",
+          "Coordinates may be nonunique even when the Cartesian point is well-defined."
+        ]
+      ],
+      "readings": [
+        "cv3-2.5",
+        "cv3-2.7"
+      ],
+      "supports": [
+        "phs-231",
+        "phs-232",
+        "cee-300",
+        "cee-340",
+        "cee-440"
+      ],
+      "acceptance": "Line/plane checkpoint uses shared parameters and perpendicular distance; both coordinate systems are tested with explicit conventions and singular-axis reasoning."
+    }
+  ]
+}
