@@ -15,6 +15,7 @@ import frictionData from "../content/lessons/phs-231/m03-l02.json";
 import dragData from "../content/lessons/phs-231/m03-l03.json";
 import circularData from "../content/lessons/phs-231/m04-l01.json";
 import gravityData from "../content/lessons/phs-231/m04-l02.json";
+import workData from "../content/lessons/phs-231/m05-l01.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
@@ -23,7 +24,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -39,6 +40,16 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks guided work using a force-equation trajectory and rejects endpoint-only reachability",()=>{
+  const q=lessonSchema.parse(workData).guided.question;
+  const t=Math.log(5/2),x=2*(Math.exp(t)-1),v=2*Math.exp(t),a=2*Math.exp(t);
+  expect(x).toBeCloseTo(3);expect(2*a).toBeCloseTo(4+2*x);
+  const kinetic=v*v,work=kinetic-4,power=2*a*v;
+  const response={work:String(work),kinetic:String(kinetic),speed:"sqrt(2*25/2)",power:String(power),reach:"whole"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  for(const incorrect of [{work:"30"},{kinetic:"21"},{speed:"-5"},{power:"21"},{reach:"endpoint"},{reach:"direction"}])expect(gradeQuestion(q,{...response,...incorrect}).correct).toBe(false);
 });
 
 it("checks the guided orbital radius, period, and weightlessness using independent force balance",()=>{

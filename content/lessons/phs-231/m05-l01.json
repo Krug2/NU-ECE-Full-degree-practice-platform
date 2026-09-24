@@ -1,0 +1,546 @@
+{
+  "id": "m05-l01",
+  "courseId": "phs-231",
+  "moduleId": "m05",
+  "version": 1,
+  "title": "Work as a vector line integral",
+  "objective": "Calculate signed work for constant and position-dependent forces and verify it against kinetic-energy change.",
+  "why": "A force may change speed, change direction, or transfer energy while another force removes it. Work connects the force model to a change in kinetic energy without first solving every detail of the motion. You will calculate that transfer with signs and units, compare different paths, and check whether an energy calculation describes a possible trajectory.",
+  "estimatedMinutes": 145,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Dot products and signed vector components"
+    },
+    {
+      "lessonId": "m02-l01",
+      "label": "Derivatives, definite integrals, and signed graph areas"
+    },
+    {
+      "lessonId": "m03-l01",
+      "label": "Particle models, net force, and normal forces"
+    },
+    {
+      "lessonId": "m03-l02",
+      "label": "Friction and relative sliding"
+    },
+    {
+      "lessonId": "m04-l02",
+      "label": "The force-to-energy bridge in orbital motion"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. This lesson develops each required integral and the derivative of kinetic energy explicitly. Use the earlier motion lesson for a targeted calculus refresher."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define work for a force, a point, and a frame",
+      "paragraphs": [
+        "Choose the moving particle, an inertial reference frame, and a force acting on that particle. Over a small displacement d r, the force does differential work dW=F·d r. The dot product selects the component of force along the displacement. Work is a signed scalar, measured in joules: 1 J=1 N m=1 kg m²/s².",
+        "For a constant vector force over a displacement Δr, W=F·Δr=|F||Δr|cos θ, where θ is the angle between the vectors. In Cartesian components, W=FxΔx+FyΔy+FzΔz. Force components and displacements must refer to the same axes and frame. A negative component is not automatically negative work; the product of two negative matching components is positive.",
+        "If force and displacement have a positive dot product, that force adds kinetic energy in the particle account. An opposing projection gives negative work. Perpendicular force gives zero instantaneous work. A nonzero force can therefore act while its work is zero, as with gravity in an ideal circular orbit. If the displacement is zero throughout an interval, mechanical work on the stationary point is zero even if maintaining a force requires metabolic or electrical energy elsewhere.",
+        "Identify whether a question asks for work by one force or net work by every force. A positive applied-force contribution may be canceled by friction or gravity. The work-energy theorem concerns the net contribution. For a deforming or rotating extended body, force at the center of mass and work at actual points of application require separate treatment; our derivation here uses a constant-mass particle.",
+        "Work and kinetic energy depend on the reference frame because displacement and velocity do. A second inertial observer generally obtains different values, but the work-energy theorem remains consistent when every quantity uses that observer's frame. Do not combine a conveyor-relative slip speed with a laboratory displacement when calculating laboratory-frame work."
+      ]
+    },
+    {
+      "heading": "Integrate a signed force-position graph",
+      "paragraphs": [
+        "In one dimension, a position-dependent force contributes $W_{a\\to b}=\\int_a^b F_x(x)\\,dx$. The limits encode direction: reversing the same prescribed path under the same position-dependent force reverses the sign of the integral. The differential dx is signed; it is not always a positive distance increment.",
+        "Read the integral as signed area under the Fx-versus-x graph. Rectangles, triangles, and trapezoids can provide an independent geometric calculation. Above-zero areas contribute positively when x increases; below-zero areas contribute negatively. A graph crossing zero must retain both contributions, not add their magnitudes. Piecewise graphs require a sum over intervals with their correct limits.",
+        "For $F_x(x)=A+Bx$, integration gives $W=A(b-a)+\\tfrac12B(b^2-a^2)$. Here A has units N and B has units N/m, so both terms have units N m. For a linear graph, the same result is the interval length times the average of the endpoint forces. This is a useful check, including when one endpoint force is negative.",
+        "The position-average force is W/(b-a) for b≠a. It is generally different from the time-average force (1/Δt)∫F dt because the particle may spend unequal times in equal position intervals. Force times elapsed time is impulse, with units N s; it is not work.",
+        "For polynomial forces, integrate term by term. If Fx=a x²+b, the coefficient a carries units N/m² and b carries N; work from 0 to L is aL³/3+bL. Differentiate an antiderivative to check it, then apply both limits. An indefinite integral alone is not a completed work calculation."
+      ]
+    },
+    {
+      "heading": "Follow the actual vector path",
+      "paragraphs": [
+        "In several dimensions, $W=\\int_C\\mathbf F\\cdot d\\mathbf r$. If a path is parameterized by u from u0 to u1, substitute its coordinates into the force and compute $W=\\int_{u_0}^{u_1}\\mathbf F(\\mathbf r(u))\\cdot\\mathbf r'(u)\\,du$. The parameter can be dimensionless; it need not be time. If the force explicitly depends on time, the prescribed trajectory must also specify the relevant timing.",
+        "Compute each component of d r. A force with only an x-component can still give path-dependent work if that component depends on y: the x-directed force encountered at a given x may differ between two paths. Using only the endpoints before establishing path independence loses that information.",
+        "For a constant vector force, the integral simplifies to F·(rB-rA) on any path between the endpoints. For a general position-dependent force field, that simplification is not justified. A force is conservative when its work is independent of the path in the stated domain; the next lesson connects this property to potential energy.",
+        "Retracing exactly the same curve under the same position-only force reverses its integral, even when that field is not conservative over other loops. A different return route need not cancel the outbound work. Kinetic friction is a separate case: its direction depends on relative sliding, so reversing motion changes the force law being evaluated."
+      ]
+    },
+    {
+      "heading": "Derive the work-energy theorem without dividing by velocity",
+      "paragraphs": [
+        "For a particle of constant mass in an inertial frame, Newton's law gives Fnet=m dv/dt. Dot both sides with velocity: $\\mathbf F_{\\mathrm{net}}\\cdot\\mathbf v=m\\mathbf v\\cdot d\\mathbf v/dt=d(\\tfrac12m\\mathbf v\\cdot\\mathbf v)/dt$. The product rule supplies the factor of two. This argument remains valid at an instant with v=0; no division by velocity was used.",
+        "Define kinetic energy $K=\\tfrac12m|\\mathbf v|^2\\ge0$. Integrating the time derivative along the actual motion gives $W_{\\mathrm{net}}=K_f-K_i$. The left side is the sum of every force's work, and the right side is the change, not the final energy by itself. Thus Kf=Ki+Wnet.",
+        "Kinetic energy depends on speed squared, not a signed velocity component. Reversing a velocity without changing its magnitude leaves K unchanged. Multiplying speed by three multiplies K by nine at fixed mass. Mass must remain positive, and K cannot be negative in this Newtonian particle model.",
+        "Given a realizable endpoint with Kf≥0, speed is sqrt(2Kf/m), the nonnegative magnitude. That scalar result does not determine a velocity direction or the time of arrival. Forces and geometry supply the remaining information. A negative computed Kf instead rejects the proposed endpoint under the stated starting state and force model; it is not a negative speed or an imaginary physical trajectory.",
+        "Energy reasoning and differential equations complement each other. For example, integrating a constant opposing force gives a stopping distance, while solving ma=F gives the stopping time and a separate distance check. Agreement between the two calculations is stronger evidence than merely substituting into the same energy formula twice."
+      ]
+    },
+    {
+      "heading": "Calculate spring work with a declared coordinate",
+      "paragraphs": [
+        "Let x measure a spring's extension from its unstrained equilibrium length, with positive x in the chosen direction. Within its ideal linear elastic range, the spring exerts Fx=-kx on the attached particle, with k>0 in N/m. This sign means the spring pulls or pushes toward x=0.",
+        "Integration gives $W_{\\mathrm{spring}}=\\int_{x_i}^{x_f}-kx\\,dx=\\tfrac12k(x_i^2-x_f^2)$. Moving toward equilibrium generally lets the spring do positive work; moving farther from equilibrium makes its work negative. Crossing equilibrium does not require a new formula because the signed force reverses there.",
+        "Keep x distinct from distance traveled and from an arbitrary laboratory origin. A negative extension is compression in this one-dimensional idealization; x² still enters the energy expression. If the two endpoint extensions have equal magnitudes, spring work is zero even though the spring may do positive work over one part and negative work over another.",
+        "The spring force here is one contribution to net work. Add gravity, friction, or applied work when present. Hooke's law is not a universal model beyond the spring's elastic range, after loss of contact, or for a device that only pulls. Treat those as separate physical conditions rather than silently extrapolating -kx."
+      ]
+    },
+    {
+      "heading": "Check normal forces and friction in the selected frame",
+      "paragraphs": [
+        "A normal force is perpendicular to its contact surface, not necessarily perpendicular to the particle's laboratory displacement. On a fixed smooth surface that constrains motion tangentially, the normal does zero work. A moving elevator floor can exert an upward normal while its passenger moves upward, so that normal does positive work.",
+        "For a passenger carried upward at constant speed in an inertial laboratory frame, N=mg. Over an upward displacement h, the normal does +mgh and gravity does -mgh. Net work and ΔK are zero. Zero net work does not mean each force did zero work.",
+        "Kinetic friction on a sliding body opposes its velocity relative to the contacting surface. On a fixed horizontal floor, a constant friction magnitude f does work -f times total sliding distance, including both legs of an out-and-back path. Net displacement zero does not make this friction work zero.",
+        "On a moving belt, friction can do positive, negative, or zero work on a body in the laboratory frame. If the belt outruns a body moving in the same direction, friction on that body points forward and can increase its kinetic energy. If the body is instantaneously stationary in the laboratory, its instantaneous friction power is zero despite nonzero relative sliding.",
+        "These observations do not eliminate frictional dissipation. With body and surface velocities vb and vs along one axis and friction force Ff on the body, the pair of friction powers sums to Ff(vb-vs)=-f|vb-vs|≤0 during sliding. The separate bodies' powers can have different signs while the combined mechanical energy decreases. The next lesson will place that energy in a system account."
+      ]
+    },
+    {
+      "heading": "Inspect the entire proposed interval, including zero-energy limits",
+      "paragraphs": [
+        "Using energy to infer motion requires more than checking the final expression. For the guide model Fnet,x=A+Bx and initial forward speed v0 at x=0, $K_{\\mathrm{candidate}}(x)=\\tfrac12mv_0^2+Ax+\\tfrac12Bx^2$. This algebraic expression can be evaluated anywhere, but it represents kinetic energy only where the specified trajectory can actually go.",
+        "A first simple zero reached while K decreases to zero is a finite turning point when the force there points backward. The body stops instantaneously and reverses. Continuing the forward energy expression through a region with K<0 is impossible. A later positive value beyond that region does not provide a route through it.",
+        "A double zero can behave differently. If K=c(x-b)² with c>0 and the particle starts to the left moving right, speed approaches zero in proportion to b-x. The travel time integral ∫dx/v then diverges logarithmically. The particle approaches b but does not arrive there at any finite time. It cannot jump to the branch beyond b even though K is nonnegative on both sides.",
+        "Initial rest also needs the force equation. If x=0 and v=0 with Fnet,x(0)=0 in our smooth affine model, the exact equilibrium solution remains at rest. A positive slope makes it unstable to a disturbance, but instability is not an unspecified initial push. If the initial force is negative, motion begins toward negative x, not along the proposed positive path.",
+        "The investigation reports the formal work integral separately from reachable motion. It marks a finite turn, an asymptotic limit, or no forward start. Use these distinctions to explain why a real square root at the proposed endpoint can still be insufficient evidence. The model describes the initial forward branch, not all later motion after reversal."
+      ]
+    },
+    {
+      "heading": "Use power to connect work to the rate of transfer",
+      "paragraphs": [
+        "Average power over a nonzero duration is $\\overline P=W/\\Delta t$. Instantaneous power by a force is $P=dW/dt=\\mathbf F\\cdot\\mathbf v$. A watt is a joule per second. Negative power means that force removes kinetic energy from the particle account at that instant.",
+        "Use instantaneous velocity with instantaneous force. If force and velocity are constant vectors over the interval, power is constant and W=PΔt. Otherwise, work is ∫P dt; multiplying final power by the whole duration is generally wrong. An average value alone does not establish the instantaneous value at any selected time.",
+        "For motion along a straight guide, P(x)=Fx(x)v(x) on a realized trajectory. The force-position graph determines work, and the force-velocity product gives its instantaneous rate. Two systems can transfer the same work over different times and have different average powers.",
+        "A force perpendicular to velocity has zero power even if it changes the velocity's direction. For example, a pure radial force in a circle changes direction without changing kinetic energy. A tangential force can add or remove kinetic energy, depending on its sign relative to the current motion.",
+        "State whose power is being calculated. Power by an actuator, friction, or gravity is not automatically net power. Likewise, mechanical output power does not by itself specify electrical input or efficiency; the next lesson supplies those energy-system boundaries."
+      ]
+    },
+    {
+      "heading": "Make and verify a work model",
+      "paragraphs": [
+        "Start with a force inventory and the particle's path or constraints. Name the reference frame, mass assumption, coordinates, units, and any physical range of the force law. Choose F·Δr for a constant vector force, a signed one-dimensional integral for a straight path, or a parameterized dot-product integral for a curved path.",
+        "Calculate contributions by named forces and add them only when net work is required. Check dimensions before using Kf=Ki+Wnet. A quick graph-area or antiderivative check can expose a missing sign, a factor of two, or forgotten integration limits.",
+        "Next audit the physical interpretation: K must be nonnegative along the reached motion; turning points, equilibrium, and constraints can limit the path. Report speed as a magnitude and identify what is still undetermined, such as direction, arrival time, or an external force needed to maintain a prescribed path.",
+        "For your investigation record, compare at least three force settings, include a perpendicular-force case, and examine both a finite stop and a nonnegative endpoint beyond a limiting point. Save the prediction, table evidence, one independent calculation, and an explanation in lesson notes. No physical apparatus is required for this analytic simulation."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Retain all three signed components",
+      "prompt": "A constant force F=(-2,3,4) N acts during displacement Δr=(5,-1,2) m. Find work by this force and its work for the reversed displacement.",
+      "steps": [
+        {
+          "math": "W=(-2)(5)+3(-1)+4(2)=-10-3+8=-5\\,\\mathrm J",
+          "reason": "Multiply matching components and add; a vector-magnitude product would discard direction."
+        },
+        {
+          "math": "W_{\\mathrm{reverse}}=(-2)(-5)+3(1)+4(-2)=5\\,\\mathrm J",
+          "reason": "Reversing displacement reverses every term while keeping the force unchanged."
+        },
+        {
+          "math": "W+W_{\\mathrm{reverse}}=0",
+          "reason": "These integrals cancel for the same constant force along the exact return."
+        }
+      ],
+      "conclusion": "The named force does -5 J outbound and +5 J on the reversed path. Its work does not establish net kinetic-energy change unless the other forces' work is also known."
+    },
+    {
+      "title": "Integrate work and check it against an exact trajectory",
+      "prompt": "A 2 kg particle starts at x=0 moving at 2 m/s along a fixed ideal guide. Its net along-guide force is Fx=(4 N)+(2 N/m)x. Find work and final speed at x=3 m.",
+      "steps": [
+        {
+          "math": "W=\\int_0^3(4+2x)\\,dx=[4x+x^2]_0^3=21\\,\\mathrm J",
+          "reason": "Here x is expressed in meters and force in newtons. The integral sums signed force-position area."
+        },
+        {
+          "math": "W=\\tfrac12(4+10)(3)=21\\,\\mathrm J",
+          "reason": "The endpoint forces are 4 N and 10 N; their trapezoid provides a geometric check."
+        },
+        {
+          "math": "K_i=\\tfrac12(2)(2^2)=4\\,\\mathrm J,\\quad K_f=4+21=25\\,\\mathrm J,\\quad v_f=\\sqrt{2(25)/2}=5\\,\\mathrm{m/s}",
+          "reason": "Force is positive throughout the interval, so the initial forward motion has no zero-energy barrier."
+        },
+        {
+          "math": "x(t)=(2\\,\\mathrm m)(e^{t/\\tau}-1),\\quad v(t)=(2\\,\\mathrm{m/s})e^{t/\\tau},\\quad \\tau=1\\,\\mathrm s",
+          "reason": "This independently solves m x''=4 N+(2 N/m)x with the stated initial position and velocity."
+        },
+        {
+          "math": "x=3\\,\\mathrm m\\Rightarrow t=\\tau\\ln(5/2),\\quad v=5\\,\\mathrm{m/s}",
+          "reason": "The force-equation solution reproduces the energy result at the same position."
+        }
+      ],
+      "conclusion": "Work is 21 J and the reached speed is 5 m/s. Using only the final 10 N force over all 3 m would incorrectly give 30 J."
+    },
+    {
+      "title": "Split a graph at its zero crossing",
+      "prompt": "A force-position graph rises from 0 to 6 N over 2 m, remains at 6 N for 1 m, then changes linearly from 6 N to -2 N over the final 4 m. The prescribed path goes toward increasing x. Find the total work.",
+      "steps": [
+        {
+          "math": "W_1=\\tfrac12(2)(6)=6\\,\\mathrm J,\\quad W_2=(1)(6)=6\\,\\mathrm J",
+          "reason": "The first triangle and middle rectangle both lie above zero."
+        },
+        {
+          "math": "W_3=\\tfrac12(6-2)(4)=8\\,\\mathrm J",
+          "reason": "Use the signed endpoint-force average for the last linear segment."
+        },
+        {
+          "math": "W_3=\\tfrac12(3)(6)-\\tfrac12(1)(2)=9-1=8\\,\\mathrm J",
+          "reason": "The last segment has slope -2 N/m and crosses zero 3 m into its 4 m span. Separate positive and negative triangles verify its signed area."
+        },
+        {
+          "math": "W_{\\mathrm{total}}=6+6+8=20\\,\\mathrm J",
+          "reason": "Sum all three directed contributions."
+        }
+      ],
+      "conclusion": "Total work by the specified force is 20 J. Adding the magnitudes of the last two triangles would give 10 J for that segment and overstate the total."
+    },
+    {
+      "title": "Let a spring pass through equilibrium",
+      "prompt": "An ideal spring with k=8 N/m acts on a particle moving from extension x=-0.5 m to x=0.25 m. Find work by the spring and its force at the endpoint.",
+      "steps": [
+        {
+          "math": "W_s=-\\int_{-0.5}^{0.25}8x\\,dx=4[(-0.5)^2-(0.25)^2]=0.75\\,\\mathrm J",
+          "reason": "The force reverses direction at equilibrium; one signed integral includes both parts."
+        },
+        {
+          "math": "W_{-0.5\\to0}=1\\,\\mathrm J,\\qquad W_{0\\to0.25}=-0.25\\,\\mathrm J",
+          "reason": "The spring adds energy approaching equilibrium and removes some after passing it."
+        },
+        {
+          "math": "F_s(0.25)=-8(0.25)=-2\\,\\mathrm N",
+          "reason": "Endpoint force points toward equilibrium despite positive total spring work."
+        }
+      ],
+      "conclusion": "The spring contributes +0.75 J over this path. Positive total work does not require its force to point forward at every point."
+    },
+    {
+      "title": "Compare two paths through the same endpoints",
+      "prompt": "The two-dimensional force field is F=((1 N/m)y,0). Compare its work from (0,0) m to (2,4) m along path C: r(u)=(2u,4u²) m and path S: r(u)=(2u,4u) m, with dimensionless 0≤u≤1.",
+      "steps": [
+        {
+          "math": "d\\mathbf r_C=(2,8u)\\,\\mathrm m\\,du,\\quad\\mathbf F_C=(4u^2,0)\\,\\mathrm N",
+          "reason": "Substitute each path's y-coordinate into the force before taking a dot product."
+        },
+        {
+          "math": "W_C=\\int_0^1 8u^2\\,du=8/3\\,\\mathrm J",
+          "reason": "Only the x-directed force contributes to F·d r, but its magnitude depends on the path's y-coordinate."
+        },
+        {
+          "math": "d\\mathbf r_S=(2,4)\\,\\mathrm m\\,du,\\quad W_S=\\int_0^1 8u\\,du=4\\,\\mathrm J",
+          "reason": "The straight path encounters a different force at intermediate x-values."
+        },
+        {
+          "math": "W_{C\\ \\mathrm{out},\\ S\\ \\mathrm{back}}=8/3-4=-4/3\\,\\mathrm J",
+          "reason": "The nonzero work around this loop demonstrates path dependence."
+        }
+      ],
+      "conclusion": "The curved path gives 8/3 J and the straight path 4 J. A force depending only on position is not automatically conservative in several dimensions."
+    },
+    {
+      "title": "A moving normal force can transfer energy",
+      "prompt": "An ideal elevator carries a 2 kg particle upward by 3 m at constant speed. Use g=10 m/s². Find work by the upward support and by gravity.",
+      "steps": [
+        {
+          "math": "N-mg=0\\Rightarrow N=20\\,\\mathrm N",
+          "reason": "Constant velocity means zero acceleration; the two vertical forces balance."
+        },
+        {
+          "math": "W_N=(20)(3)=60\\,\\mathrm J,\\quad W_g=(-20)(3)=-60\\,\\mathrm J",
+          "reason": "Both forces are parallel or antiparallel to the laboratory displacement."
+        },
+        {
+          "math": "W_{\\mathrm{net}}=60-60=0=\\Delta K",
+          "reason": "The net transfer vanishes while each individual contribution is nonzero."
+        }
+      ],
+      "conclusion": "Support does +60 J and gravity -60 J. The normal is perpendicular to the floor but parallel to this particle's laboratory displacement."
+    },
+    {
+      "title": "Reject an endpoint beyond a finite stop",
+      "prompt": "A 2 kg particle starts with velocity +3 m/s and experiences a constant net force -3 N along a guide. Is x=4 m reached on the initial forward motion? Start at x=0.",
+      "steps": [
+        {
+          "math": "K_i=\\tfrac12(2)(3^2)=9\\,\\mathrm J,\\quad K_{\\mathrm{candidate}}(x)=9-3x",
+          "reason": "Here x is in meters. Energy decreases with forward position."
+        },
+        {
+          "math": "K=0\\Rightarrow x_{\\mathrm{stop}}=3\\,\\mathrm m,\\quad K_{\\mathrm{candidate}}(4)=-3\\,\\mathrm J",
+          "reason": "The first zero occurs before the proposed endpoint; the negative endpoint candidate cannot be kinetic energy."
+        },
+        {
+          "math": "a=-3/2=-1.5\\,\\mathrm{m/s^2},\\quad 0=3-1.5t\\Rightarrow t_{\\mathrm{stop}}=2\\,\\mathrm s",
+          "reason": "Newton's law supplies an independent time calculation."
+        },
+        {
+          "math": "\\Delta x=3(2)+\\tfrac12(-1.5)(2^2)=3\\,\\mathrm m",
+          "reason": "Kinematics gives the same stopping position. The force remains negative at the stop, so motion reverses."
+        }
+      ],
+      "conclusion": "The particle reaches 3 m, stops momentarily, and reverses. It does not reach 4 m on the initial forward branch; there is no physical endpoint speed to report there."
+    },
+    {
+      "title": "A nonnegative energy expression can hide an asymptotic limit",
+      "prompt": "A 2 kg particle starts at x=0 with velocity +3 m/s. Its net along-guide force is Fx=(-6 N)+(2 N/m)x. Examine the proposed endpoint x=6 m.",
+      "steps": [
+        {
+          "math": "K_{\\mathrm{candidate}}(x)=9-6x+x^2=(x-3)^2",
+          "reason": "In SI numerical coordinates this energy in joules has a double zero at x=3 m and is positive again at x=6 m."
+        },
+        {
+          "math": "x(t)=(3\\,\\mathrm m)(1-e^{-t/\\tau}),\\quad v(t)=(3\\,\\mathrm{m/s})e^{-t/\\tau},\\quad\\tau=1\\,\\mathrm s",
+          "reason": "Direct substitution satisfies m x''=-6 N+(2 N/m)x and both initial conditions."
+        },
+        {
+          "math": "x(t)<3\\,\\mathrm m\\quad\\text{for every finite }t\\ge0",
+          "reason": "The exponential stays positive, so the particle never reaches the equilibrium at a finite time."
+        },
+        {
+          "math": "K_{\\mathrm{candidate}}(6)=9\\,\\mathrm J\\quad\\text{does not imply arrival}",
+          "reason": "The later positive value belongs to the formal expression beyond the trajectory's limiting point."
+        }
+      ],
+      "conclusion": "The particle approaches 3 m asymptotically. A final square root based on the candidate 9 J at 6 m would invent motion the force equation does not allow."
+    },
+    {
+      "title": "Compute instantaneous power as a dot product",
+      "prompt": "At an instant, a force F=(4,-2,1) N acts on a particle with velocity v=(3,1,-2) m/s. Find that force's power. If both vectors remain constant for 5 s, find its work over that interval.",
+      "steps": [
+        {
+          "math": "P=\\mathbf F\\cdot\\mathbf v=4(3)-2(1)+1(-2)=8\\,\\mathrm W",
+          "reason": "Use signed component products. The units N m/s are watts."
+        },
+        {
+          "math": "\\Delta\\mathbf r=\\mathbf v\\Delta t=(15,5,-10)\\,\\mathrm m",
+          "reason": "Constant velocity specifies the displacement during the five-second interval."
+        },
+        {
+          "math": "W=\\mathbf F\\cdot\\Delta\\mathbf r=60-10-10=40\\,\\mathrm J=P\\Delta t",
+          "reason": "The displacement calculation independently checks constant-power integration."
+        }
+      ],
+      "conclusion": "The named force supplies 8 W and, under the constant-vector condition, 40 J in 5 s. Other forces must maintain the stated constant velocity; this is not net work."
+    }
+  ],
+  "guided": {
+    "title": "Check an increasing force three ways",
+    "setup": "A 2 kg particle starts at x=0 with forward speed 2 m/s on a fixed ideal guide. All along-guide forces sum to Fx=(4 N)+(2 N/m)x. The particle moves to x=3 m.",
+    "before": [
+      "Use the endpoint forces 4 N and 10 N to compute the signed trapezoid area.",
+      "Add work to initial kinetic energy, then obtain speed from K=mv²/2.",
+      "For instantaneous net power at the endpoint, multiply the endpoint force by the endpoint speed."
+    ],
+    "question": {
+      "id": "phs231-guided-work",
+      "familyId": "phs231-work-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m05-l01",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find net work, final kinetic energy, final speed, and instantaneous net power at x=3 m. Select the reasoning that establishes the endpoint is reachable on the initial forward branch.",
+      "fields": [
+        {
+          "id": "work",
+          "kind": "rational",
+          "label": "Net work",
+          "expected": "21",
+          "unit": "J"
+        },
+        {
+          "id": "kinetic",
+          "kind": "rational",
+          "label": "Final kinetic energy",
+          "expected": "25",
+          "unit": "J"
+        },
+        {
+          "id": "speed",
+          "kind": "exact",
+          "label": "Final speed",
+          "expected": "5",
+          "unit": "m/s"
+        },
+        {
+          "id": "power",
+          "kind": "rational",
+          "label": "Instantaneous net power at the endpoint",
+          "expected": "50",
+          "unit": "W"
+        },
+        {
+          "id": "reach",
+          "kind": "choice",
+          "label": "Reachability reasoning",
+          "correct": "whole",
+          "options": [
+            {
+              "id": "whole",
+              "label": "Positive initial speed and positive force throughout the interval",
+              "feedback": "With K(0)=4 J and Fx=4+2x>0 on 0≤x≤3 m, energy increases throughout the forward interval; there is no limiting zero."
+            },
+            {
+              "id": "endpoint",
+              "label": "Any nonnegative endpoint energy always proves arrival",
+              "feedback": "A positive endpoint alone can hide an earlier turn or asymptotic limit. Here the force is positive throughout, which supplies the missing path check."
+            },
+            {
+              "id": "direction",
+              "label": "Kinetic energy gives a signed velocity automatically",
+              "feedback": "Kinetic energy gives speed magnitude. The initial forward direction and absence of a limiting point establish the branch here."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "mass": 2,
+        "speed": 2,
+        "a": 4,
+        "b": 2,
+        "L": 3
+      },
+      "hints": [
+        "Work is the signed trapezoid area (4+10)*3/2=21 J.",
+        "Initial K is 4 J, so final K=25 J and speed=sqrt(25)=5 m/s.",
+        "Endpoint power is 10*5=50 W. Positive force throughout the interval keeps the initial forward branch moving."
+      ],
+      "explanation": [
+        "Integrating 4+2x from 0 to 3 gives 21 J; the trapezoid area independently agrees.",
+        "Initial kinetic energy is 4 J, giving final kinetic energy 25 J and speed 5 m/s.",
+        "At the endpoint, force is 10 N and velocity is +5 m/s, so instantaneous net power is 50 W.",
+        "Because both initial speed and the along-guide force are positive on the entire interval, the particle reaches the endpoint. This conclusion uses the path, not just the endpoint's energy sign."
+      ],
+      "answerSummary": "Work 21 J; final K 25 J; speed 5 m/s; endpoint power 50 W; positive initial speed and positive force throughout establish the forward path."
+    },
+    "after": "The energy result, graph area, instantaneous power, and path interpretation must all agree."
+  },
+  "interaction": {
+    "kind": "phs231-work",
+    "prompt": "Predict signed work, candidate endpoint kinetic energy, and whether the initial forward motion reaches that endpoint. Change force angle and slope, then compare a finite stop, an energy barrier, exact rest, and an asymptotic limit.",
+    "initial": {
+      "mass": 2,
+      "initialSpeed": 2,
+      "forceMagnitude": 4,
+      "angleDegrees": 0,
+      "slope": 2,
+      "distance": 3
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "constant"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "affine"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "reversed"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "piecewise"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "polynomial"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "spring"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "parametric"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "net-energy"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "friction"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "moving-surface"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "normal"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "power"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "average-power"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "stopping"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "speed-scaling"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "barrier"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "constant"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "affine"
+    },
+    {
+      "familyId": "phs231-work-integral",
+      "variant": "parametric"
+    },
+    {
+      "familyId": "phs231-work-direction",
+      "variant": "barrier"
+    }
+  ],
+  "summary": [
+    "Work is a signed scalar: integrate F·d r along the stated path in one reference frame. One joule is one newton meter.",
+    "Constant-vector work is F·Δr. A variable-force calculation needs the force law, path, and signed integration limits.",
+    "A force-position integral is signed area, including negative regions. A position-average force need not equal a time-average force.",
+    "Position-dependent vector forces can be path dependent. Reversing the exact same path changes a position-only force's work sign; a different return path need not cancel it.",
+    "For a constant-mass particle in an inertial frame, net work equals the change in K=mv²/2. Add all force contributions and retain initial energy.",
+    "Kinetic energy is nonnegative and yields speed magnitude. A positive endpoint value alone does not establish an accessible path.",
+    "Inspect the first zero and initial state: finite turns, asymptotic equilibrium limits, and no forward start have different meanings.",
+    "An ideal spring exerts -kx and does work k(xi²-xf²)/2 within its valid elastic range.",
+    "Normal and friction work depend on the actual displacement and frame. A moving normal can do work; friction can add energy to one body while the combined sliding system dissipates it.",
+    "Instantaneous power is F·v, while average power is W/Δt. State the force and use the velocity from the same frame."
+  ],
+  "retrieval": "A 2 kg particle begins at x=0 with velocity +3 m/s. First apply net Fx=-3 N; then consider a separate run with Fx=-6 N+(2 N/m)x. Can either run reach x=6 m? Check after working: the constant-force run stops at x=3 m at t=2 s and reverses; the affine-force run has K=(x-3)² in SI numerical coordinates and approaches x=3 m only as t grows without bound. The second expression is positive at 6 m, yet no arrival occurs. Explain the difference using each force at the limiting position.",
+  "readings": [
+    {
+      "title": "OpenStax: Work",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-1-work",
+      "purpose": "Further instruction on signed force-position integrals and work along a vector path."
+    },
+    {
+      "title": "OpenStax: Kinetic Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-2-kinetic-energy",
+      "purpose": "Review the mass and speed dependence of kinetic energy."
+    },
+    {
+      "title": "OpenStax: Work-Energy Theorem",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-3-work-energy-theorem",
+      "purpose": "Additional particle work-energy derivations and applications."
+    },
+    {
+      "title": "OpenStax: Power",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+      "purpose": "Compare average power with the instantaneous force-velocity dot product."
+    }
+  ]
+}
