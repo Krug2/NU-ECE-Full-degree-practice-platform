@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: all 22 lessons are available and technically checked. Readiness, course assessments, targeted review and the complete release audit remain. No major course is complete.",
+  "status": "All PHS 231 instruction, assessments, review and project workflows are implemented. The complete release audit is in progress; no major course is declared complete yet.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -58,27 +58,85 @@
       "Synthetic engineering material records with explicit unloading, permanent extension, independent input/returned work, equal-modulus brittle and ductile comparisons, nonunique inverse branches, and a terminal fracture state with unknown later response",
       "Explicit, velocity-first and midpoint integration with three same-endpoint refinements, analytic under/critical/overdamped references, energy and approximate dissipation accounts, strict stability boundaries, incomplete-run reporting, keyboard samples, complete paged tables and full-precision CSV",
       "Synthetic mechanical validation with separate calibration/held-out states, candidate spring/drag/sensor corrections, closed residual bounds, nonlinear and drift comparisons, keyboard plots and tables, CSV provenance, and a persistent eight-section project notebook with immutable self-assessed submissions and revisions"
-    ]
+    ],
+    "assessments": {
+      "readiness": 1,
+      "moduleQuizzes": 9,
+      "cumulativeParts": 2,
+      "targetedReviews": 22,
+      "total": 34,
+      "definitionCommit": "0e088ff",
+      "coursePanelCommit": "9a3bc2a",
+      "policy": "Independent results retain original objectives and per-objective targets. Failed current reviews withhold the recommendation until repaired; a review does not override a failed required form."
+    }
   },
   "remaining": {
     "phs231Lessons": 0,
     "phs231Features": [
-      "Readiness screening and prerequisite repair routing",
-      "Module quizzes and multi-objective assessment support",
-      "Two-part cumulative assessment and targeted review",
-      "Full-course progress capacity audit",
-      "Complete coverage and release audit"
+      "Complete coverage and release audit, fresh integrated checks and final release copy"
     ],
     "otherMajorCourses": 23,
     "nextLesson": null,
     "nextCourseAfterPhs231Completion": "phs-232",
-    "inProgress": "Detailed readiness/module/cumulative/review implementation plan is 7bc2dcb. Extend multi-objective assessment snapshots compatibly, then implement the course assessments and final audit before PHS 232."
+    "inProgress": "Complete PHS 231's technical release audit before PHS 232. All 23 other major courses remain in scope."
   },
   "sharedCommits": [
     {
+      "commit": "5ece0c0",
+      "summary": "showed release",
+      "files": [
+        "components/learning/lesson-reader.tsx",
+        "app/courses/[id]/lessons/[lessonId]/page.tsx",
+        "components/course-workspace.tsx"
+      ],
+      "integration": "Course and lesson status now use the existing learning-pack status. The optional lesson-reader prop defaults to building, preserving existing callers. A preview displays its study sequence and topic readings rather than development steps. No pack is promoted by this shared change. Scoped lint and types passed; final released-state browser verification follows the complete audit."
+    },
+    {
+      "commit": "080b8df",
+      "summary": "linked assessments",
+      "files": [
+        "app/courses/[id]/page.tsx",
+        "components/course-workspace.tsx",
+        "components/learning/course-lessons.tsx"
+      ],
+      "integration": "Adds optional assessment-panel and availability-copy slots, with existing defaults for other courses. Only PHS 231 registers a panel; it depends on 9a3bc2a and passes compact metadata rather than all lesson JSON to the client. Empty, complete, failed and delayed-review course states and real backup restoration have browser checks in 0a8ec66."
+    },
+    {
+      "commit": "5bc07a3",
+      "summary": "opened assessments",
+      "files": [
+        "app/courses/[id]/assessments/[assessmentId]/page.tsx"
+      ],
+      "integration": "Registers the 34 PHS 231 forms from 0e088ff on a new route. Other course/assessment combinations remain unavailable. Academic preparation links preserve true source objectives and explicitly identify unbuilt physics/calculus preparation. Depends on the compatible assessment storage and runner commits; no prerequisite course assessment is published."
+    },
+    {
+      "commit": "ce787cc",
+      "summary": "ran assessments",
+      "files": [
+        "components/learning/attempt-runner.tsx",
+        "components/learning/assessment-summary.tsx",
+        "components/learning/assessment.css"
+      ],
+      "integration": "Extends the existing runner for frozen multi-objective forms, delayed independent feedback, assisted recovery, retained history and explicit detail removal. Ordinary lesson checkpoints preserve their current evidence behavior. Metadata participates in revision identity. Shared learning, assessment, and attempt-recovery browser checks pass; assessment-summary contrast was corrected before this commit. Integrate with d2d9c8b, 3cf0494 and cb89c05."
+    },
+    {
+      "commit": "cb89c05",
+      "summary": "assembled forms",
+      "files": [
+        "lib/learning/assessment-definition.ts",
+        "lib/learning/assessment-progress.ts"
+      ],
+      "integration": "Reusable blueprint validation requires taught source slots and complete original-objective mappings. Current retained results must match the published blueprint and objective versions. Helpers have no course runtime imports. Course definitions in 0e088ff exercise 50 deterministic seeds for all 34 forms."
+    },
+    {
       "commit": "3cf0494",
       "summary": "stored assessments",
-      "files": ["lib/learning/attempts.ts", "lib/progress.ts", "lib/progress-records.ts", "lib/progress-repository.ts"],
+      "files": [
+        "lib/learning/attempts.ts",
+        "lib/progress.ts",
+        "lib/progress-records.ts",
+        "lib/progress-repository.ts"
+      ],
       "integration": "Optional assessment metadata preserves original objectives, immutable snapshots and per-objective targets. Independent module, cumulative and review results are retained separately, including later failures after detail removal; readiness and practice create no completion evidence. Old single-lesson attempts and schema-1/2 backups remain readable without added empty fields. Integrate all four files together with d2d9c8b so normalized IndexedDB writes retain the new summaries. All 55 focused attempt, backup, byte-count and repository checks passed, including atomic quota rollback and a second connection; lint and types passed. Browser assessment publication follows separately."
     },
     {
@@ -359,6 +417,14 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "26f17fc2345def7bb52df018a5915637aa66bd19",
+        "mergeCommit": "591960c",
+        "resolvedFiles": [
+          "lib/learning/catalog.ts"
+        ],
+        "preserved": "Retains the incoming MTH 215 logarithm-rules lesson, interval grading, model-fitting code and tests alongside all physics lessons. Prerequisite lesson files, plans, learning pack and catalog match this exact main snapshot. Only the shared registration conflict required an additive resolution. All 99 focused tests, full lint and types passed. The fresh full integrated build and browser run follow the release audit."
+      },
+      {
         "sourceCommit": "9c25ff9679c7f141e63b3f8e7b08db55210d3bcd",
         "mergeCommit": "0792158",
         "resolvedFiles": [
@@ -460,17 +526,17 @@
     "preview": "pnpm dev --port 3001",
     "browserTests": "pnpm exec playwright test --config playwright.major.config.ts",
     "checks": [
-      "pnpm exec vitest run --maxWorkers=1",
+      "F10_PYTHON configured; pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
       "pnpm lint",
       "pnpm typecheck",
       "pnpm build"
     ]
   },
   "verification": {
-    "status": "All 22 lessons are technically checked; readiness, course assessments and release gates remain open. The merged application passed 2057 unit checks, lint, types, a 153-page build and 26 selected browser workflows.",
+    "status": "All implemented slices have checks; the fresh complete integrated release run is pending. Historical full-suite records below retain their original scope.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "One practice form, one checkpoint and notes per each of the 22 lessons round-trip within the current 50 MB policy. Project tests preserve up to 80 records, full 24,000-character records, older drafts and submitted revisions. Full repeated-study course-assessment capacity and whole-major-curriculum capacity remain unaudited.",
+    "capacity": "Six full study cycles with 672 saved attempts, 5160 frozen questions, 33 retained assessment results and six 24,000-character submitted project records round-trip in 19,054,194 formatted UTF-8 backup bytes, under the 50,000,000-byte policy. Explicit removal of all attempt details leaves 237,173 bytes with summaries, notes and projects preserved. The test uses representative submitted responses, not a claim of learner mastery. Whole-major-curriculum history remains unaudited.",
     "interactionPersistence": "Saved questions, answers, checkpoint evidence, lesson notes and project notebooks resume and restore through the shared store. Exploratory controls reset on reload as labeled. Notebook sections save explicitly; immutable submissions, revisions, conflicting drafts and unsupported records are preserved, with actual browser backup restoration checked.",
     "unit": {
       "passed": 2057,
@@ -668,7 +734,16 @@
       "a0bda29 preserves t=0 and a distinct exact contact event even when a slip reversal occurs less than 1e-14 s after the start.",
       "709f671 removes duplicate guided-field units and retains nine significant digits in elasticity accounts; the browser suite checks the actual 0.0000125 small-strain sample.",
       "05034a1 validates missing project evidence and rubric thresholds before saving, preserving useful field-level guidance; recorded-score copy and shortened rubric choices were checked on mobile."
-    ]
+    ],
+    "assessmentSlices": {
+      "unit": "37 course-definition checks include 1700 whole forms (34 x 50 seeds; 11,400 generated question slots) and deterministic repeats; source-family mathematics has separate independent 50-seed variant checks. Six course-progress fixtures and the repeated-history capacity check passed. Fifty-five focused attempt/backup/repository/byte checks passed after the shared storage change.",
+      "browser": "17 selected tests passed on the 187-page production build: seven assessment workflows, seven shared learning workflows and three existing attempt-recovery checks. Five course-evidence browser checks passed, including real export/reset/restore and fresh independently solved repair. Three new assessment-recovery tests passed after correcting a fixture to use the existing global settings recovery flow while storage is locked. The two course desktop/mobile audits passed again for screenshot inspection. Two measurement/backup availability checks passed after replacing an obsolete project-404 expectation.",
+      "visual": "Desktop and 390-pixel assessment/result/course screenshots inspected; equivalent tables remain keyboard scrollable with no page overflow. Axe checks passed. Whole-course zoom/reduced-motion and final preview checks remain in the release audit.",
+      "capacityCommit": "92ff2fb",
+      "recoveryCommit": "e9ea83c",
+      "courseBrowserCommit": "0a8ec66",
+      "resourceAuditCommit": "1e8ea72"
+    }
   },
   "scopeReference": "../major-courses.json"
 }
