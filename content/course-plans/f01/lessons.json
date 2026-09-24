@@ -17,7 +17,7 @@
         {"error": "Two minuses always make plus", "cause": "Applying multiplication's sign rule to addition", "feedback": "Name the operation first. Adding two negative changes moves farther left."},
         {"error": "Multiply before dividing everywhere", "cause": "Reading an acronym as six priority levels", "feedback": "Multiplication and division share a level and proceed left to right unless grouping changes the expression."}
       ],
-      "supports": ["mth-215", "phs-104a", "phs-104b", "cee-310"],
+      "supports": ["mth-215", "phs-104a", "phs-104", "cee-310"],
       "resources": ["pre-2.1", "pre-3.2", "pre-3.3"],
       "acceptance": "Four independent checkpoint items include sign, grouping, comparison, and undefined-division evidence. Tests compute results with integer arithmetic, not the production parser."
     },
@@ -37,7 +37,7 @@
         {"error": "Divide both fractions upside down", "cause": "Memorizing reciprocal without its role", "feedback": "Multiply the dividend by the divisor's reciprocal; verify by multiplying the answer by the original divisor."},
         {"error": "25 percent means multiply by 25", "cause": "Omitting per hundred", "feedback": "Write 25/100 before multiplying and identify the whole to which it applies."}
       ],
-      "supports": ["mth-215", "phs-104a", "phs-104b", "cee-310", "cee-310l"],
+      "supports": ["mth-215", "phs-104a", "phs-104", "cee-310", "cee-310l"],
       "resources": ["pre-4.5", "pre-4.3", "pre-5.1", "pre-6.2", "pre-6.5"],
       "acceptance": "Equivalent reduced/unreduced fractions and terminating decimals pass; rounded repeating decimals fail exact tasks. Units are displayed separately, and input containing incompatible unit text is invalid."
     },
@@ -77,7 +77,7 @@
         {"error": "Every displayed decimal is exact", "cause": "Treating calculator display as a symbolic equality", "feedback": "A finite display of a repeating decimal is approximate. Keep the fraction until the requested final rounding."},
         {"error": "A computed number is automatically reasonable", "cause": "No independent estimate", "feedback": "Compare the sign and power of ten with a rough calculation before trusting the digits."}
       ],
-      "supports": ["mth-215", "phs-104a", "phs-104b", "phs-232", "cee-310l", "cee-324l"],
+      "supports": ["mth-215", "phs-104a", "phs-104", "phs-232", "cee-310l", "cee-324l"],
       "resources": ["alg-1.2", "pre-5.1"],
       "acceptance": "Exercise positive, negative, and zero scientific exponents, normalization carry, equivalent exact inputs, rounded near misses, and notation that could hide a scale error. Measurement precision remains F06's scope."
     }

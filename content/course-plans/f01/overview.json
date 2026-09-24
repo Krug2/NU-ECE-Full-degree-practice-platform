@@ -36,7 +36,7 @@
     {"existing": "mth-215/b05, b06, m01-l01, m02-l04", "f01": ["m01-l01", "m01-l02", "m01-l04"], "reuse": "Existing accessible fields, worked-example presentation, notes, seeded assessment, and prediction-before-reveal interaction", "boundary": "No graph, calibration, equation, or trigonometry content is moved or renamed."}
   ],
   "sharedCapabilities": [
-    {"interface": "AssessmentSource = Pick<Lesson, 'id' | 'courseId' | 'version' | 'practice' | 'checkpoint'>; AttemptRunner({lesson: AssessmentSource, allowedModes?: ('practice' | 'checkpoint')[]})", "reason": "Reuse the saved-attempt system for formative diagnostic and mixed recall without constructing fake instruction or adding storage fields.", "storageChange": false},
+    {"interface": "AssessmentSource = Pick<Lesson, 'id' | 'courseId' | 'version' | 'practice' | 'checkpoint'>; AttemptRunner({lesson: AssessmentSource, onlyMode?: 'practice' | 'checkpoint'})", "reason": "Reuse the saved-attempt system for formative diagnostic and mixed recall without constructing fake instruction or adding storage fields.", "storageChange": false},
     {"interface": "RefresherPath({pack, versions}) registered only for course.group === 'refresher'", "reason": "Show optional routes, gap recommendations, and separate evidence without changing course completion or shared persistence.", "storageChange": false}
   ],
   "delivery": ["Plan and verify sources", "Add generators and independent correctness tests", "Author four lessons in small commits", "Add refresher overview and minimal registration separately", "Verify complete browser journey on ports 3002 and 3102", "Record actual verification and push before planning F02"],
