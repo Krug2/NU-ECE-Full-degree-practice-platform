@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m07-l03",
   "checkedAt": "2026-09-24",
-  "status": "Detailed implementation plan; not yet delivered.",
+  "status": "Implemented and technically verified. The full PHS 231 course remains under construction.",
   "title": "Rolling constraints and coupled translation",
   "objective": "Solve rolling motion using translation, rotation, and a verified no-slip constraint, including the required static friction.",
   "alignment": "Develops rotational and translational mechanics within the verified official PHS 231 description. The sequence, contact model, examples, simulation, and assessment defaults are proposed platform teaching choices, not an official NU syllabus or equipment requirement.",
@@ -299,5 +299,16 @@
       "checkedAt": "2026-09-24",
       "use": "Free derivation of translational plus CM rotational kinetic energy."
     }
-  ]
+  ],
+  "delivery": {
+    "lessonCommit": "4891690",
+    "sharedCommit": "4afc585",
+    "browserCommit": "8cd30e3",
+    "workedExamples": 13,
+    "practiceVariants": 16,
+    "checkpointQuestions": 4,
+    "seedCases": 800,
+    "unitSuitePassed": 861,
+    "browserWorkflowsPassed": 7
+  }
 }

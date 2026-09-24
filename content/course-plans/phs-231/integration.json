@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: sixteen of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: seventeen of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -22,13 +22,14 @@
       "m06-l01",
       "m06-l02",
       "m07-l01",
-      "m07-l02"
+      "m07-l02",
+      "m07-l03"
     ],
-    "questionFamilies": 33,
-    "questionVariants": 206,
+    "questionFamilies": 35,
+    "questionVariants": 222,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 16,
-    "workedExamples": 121,
+    "guidedExamples": 17,
+    "workedExamples": 134,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -45,14 +46,15 @@
       "Three-dimensional external force pulses, signed impulse histories, CM displacement timing, fixed-shape peak scaling, and zero-impulse limitations",
       "Smooth oblique collision and common-velocity sticking comparisons, passive restitution, rotated contact normals, non-approach gating, and lab/CM velocity diagrams with momentum and energy ledgers",
       "Fixed-axis rotor with independent mass radii and drive leverage, signed torque inventory, full point acceleration, reversal travel, keyboard snapshots, and separate configuration comparisons",
-      "Changing-radius disk and masses with conserved angular momentum or motor-controlled speed, separate motor/radial work, transient radial kinetic energy, body-frame geometry, and complete keyboard-accessible time tables"
+      "Changing-radius disk and masses with conserved angular momentum or motor-controlled speed, separate motor/radial work, transient radial kinetic energy, body-frame geometry, and complete keyboard-accessible time tables",
+      "Coupled rolling and sliding with required versus available static friction, exact catch and reverse-slip events, independent translation/spin, marked material-point motion, signed power and heat, and complete keyboard-accessible histories"
     ]
   },
   "remaining": {
-    "phs231Lessons": 6,
+    "phs231Lessons": 5,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Rolling, equilibrium, material, and numerical investigations",
+      "Equilibrium, material, and numerical investigations",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -60,10 +62,20 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m07-l03",
+    "nextLesson": "m08-l01",
     "nextCourseAfterPhs231Completion": "phs-232"
   },
   "sharedCommits": [
+    {
+      "commit": "4afc585",
+      "summary": "enabled rolling",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-rolling and two families through existing compatible registration points, with the course-specific component. Engine ae36ee8 has 200 independently checked trials, force/power and impulse integrals, finite-difference material-point trajectories, and numerical event convergence; a0bda29 preserves the initial sample for a near-zero event. Families 6ca44c7 check 800 independently derived cases across 16 variants. Lesson registration is 4891690; seven browser workflows and improved mobile diagram labels are 8cd30e3. Existing answer fields and progress/backup schemas remain unchanged. Preserve every prerequisite registration."
+    },
     {
       "commit": "5fb893f",
       "summary": "enabled momentum",
@@ -343,16 +355,16 @@
     ]
   },
   "verification": {
-    "status": "The sixteen delivered lessons are technically checked; course release gates remain open.",
+    "status": "The seventeen delivered lessons are technically checked; course release gates remain open.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the sixteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the seventeen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 848,
-      "files": 99,
-      "command": "pnpm exec vitest run --maxWorkers=2",
-      "note": "All authored variants receive at least 50 deterministic seeds plus independent fixtures. Angular momentum adds 800 cases across 16 variants, including origin shifts, vector impulses, capture/support impulse, internal coupling, energy accessibility, signed motor power, torsion, braking, and controlled-radius work. Negative zero is normalized in question parameters for exact snapshot round trips. Guided radial work is independently integrated; an initially missing factor in its test answer was corrected before the full suite passed."
+      "passed": 861,
+      "files": 101,
+      "command": "pnpm exec vitest run --maxWorkers=1",
+      "note": "All variants receive at least 50 deterministic seeds plus independent fixtures. Rolling adds 800 cases across 16 variants and 200 contact-engine trials. The first full run with two workers, concurrent with lint/type checks, passed 860 tests and timed out in one unchanged MTH 215 content test. The full suite then passed all 861 with one worker; no timeout or assertion was relaxed."
     },
     "browser": {
       "fullSuite": {
@@ -366,8 +378,8 @@
         }
       },
       "focusedSuite": {
-        "passed": 3,
-        "scope": "Angular momentum lesson: all three workflows passed on the production build in 1.8 minutes. Checks cover guided misconceptions, both angular constraints, independent midpoint work/force values, duration scaling, no spin, unchanged radii, extreme valid inputs with scientific-notation predictions, invalid and complex answers, keyboard controls and tables, desktop/mobile accessibility and inspected diagrams/plots, reload, and actual origin/capture/accessibility/controlled-work checkpoint plus notes export/reset/restore. The earlier full-suite entry retains its fourteen-lesson integration scope."
+        "passed": 7,
+        "scope": "Rolling lesson: all seven workflows passed in 3.5 minutes on the production build. Tests check guided traction feedback, point kinematics, energy partition, all presets, actual slip catches/reversal, endpoint transitions, exact and failed static capacity, invalid and complex input, keyboard controls and scrolling tables, desktop/mobile accessibility, reload, and an actual independently answered checkpoint plus notes export/reset/restore. Two initially combined workflows exceeded the existing 60-second timeout; they were split by viewport and behavior with all assertions and time limits retained. Following a mobile-label enlargement and rebuild, both complete desktop/mobile accessibility and screenshot workflows passed again in 1.5 minutes; all five final screenshots were inspected."
       },
       "port": 3101,
       "previousFocusedSuites": [
@@ -394,6 +406,10 @@
         {
           "passed": 3,
           "scope": "Rotation lesson: all three workflows passed on the final production build in 49.5 seconds, after enlarging the mobile diagram. Checks cover radial/axial force distinctions, inertia and torque inventories, reversals, zero torque, initial rest and endpoint stops, no-added-mass limits, invalid inputs, keyboard snapshots and scrolling tables, desktop/mobile accessibility and visual inspection, reload, and actual generated vector/composite/inverse checkpoint plus notes export/reset/restore."
+        },
+        {
+          "passed": 3,
+          "scope": "Angular momentum lesson: all three workflows passed on the production build in 1.8 minutes. Checks cover guided misconceptions, both angular constraints, independent midpoint work/force values, duration scaling, no spin, unchanged radii, extreme valid inputs with scientific-notation predictions, invalid and complex answers, keyboard controls and tables, desktop/mobile accessibility and inspected diagrams/plots, reload, and actual origin/capture/accessibility/controlled-work checkpoint plus notes export/reset/restore. The earlier full-suite entry retains its fourteen-lesson integration scope."
         }
       ],
       "previousFullSuites": [
@@ -418,12 +434,13 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for all sixteen delivered lessons. The angular lesson diagrams explicitly use a body frame, and the kinetic-energy plot includes radial energy with equivalent tables. Keyboard controls, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked. The new lesson returned HTTP 200 on preview port 3001.",
+    "visual": "Desktop and 390-pixel mobile screenshots inspected for all seventeen delivered lessons. Rolling distinguishes a marked material point from the current contact location, labels the ramp-aligned following view, and supplies equivalent motion/energy tables. Diagram fonts and plot margins were enlarged after mobile inspection. Keyboard controls, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior passed. Preview port 3001 was restarted after its previous process stopped; the rolling lesson returned HTTP 200 with the correct title.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",
       "f206b0e removes prohibited per-polyline ARIA labels; chart-level descriptions, legends, and equivalent energy tables remain available.",
-      "ea00ae5 waits for confirmed persistence before a projectile checkpoint reload and verifies both the root set and future-time field."
+      "ea00ae5 waits for confirmed persistence before a projectile checkpoint reload and verifies both the root set and future-time field.",
+      "a0bda29 preserves t=0 and a distinct exact contact event even when a slip reversal occurs less than 1e-14 s after the start."
     ]
   },
   "scopeReference": "../major-courses.json"
