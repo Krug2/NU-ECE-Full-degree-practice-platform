@@ -16,6 +16,7 @@ import dragData from "../content/lessons/phs-231/m03-l03.json";
 import circularData from "../content/lessons/phs-231/m04-l01.json";
 import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
+import energyData from "../content/lessons/phs-231/m05-l02.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
@@ -24,7 +25,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -40,6 +41,15 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks the guided energy ledger against separate spring, gravity, and friction work",()=>{
+  const q=lessonSchema.parse(energyData).guided.question;
+  const springWork=(4+0)/2*.5,gravityWork=-20*.3,frictionWork=-.25*16*.5;
+  const K=16+springWork+gravityWork+frictionWork,thermal=-frictionWork;
+  const response={thermal:String(thermal),kinetic:String(K),speed:`sqrt(2*${K}/2)`,total:String(K+6+thermal),account:"thermal"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  for(const wrong of [{kinetic:"11"},{thermal:"0"},{total:"15"},{account:"mechanical"},{account:"gravity"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks guided work using a force-equation trajectory and rejects endpoint-only reachability",()=>{

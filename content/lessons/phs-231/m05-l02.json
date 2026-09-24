@@ -1,0 +1,590 @@
+{
+  "id": "m05-l02",
+  "courseId": "phs-231",
+  "moduleId": "m05",
+  "version": 1,
+  "title": "Energy systems, potential, and efficiency",
+  "objective": "Choose a system boundary, account for potential and dissipated energy, and determine reachable states and power requirements.",
+  "why": "Energy methods become reliable when you decide which bodies and interactions belong in the account. A spring, a rough surface, or a motor can change where energy is stored without changing the conservation principle. You will choose that boundary, derive forces from potential, test which motions are accessible, and calculate the input energy or power needed for a useful output.",
+  "estimatedMinutes": 155,
+  "prerequisites": [
+    {
+      "lessonId": "m05-l01",
+      "label": "Work integrals, kinetic energy, power, and endpoint feasibility"
+    },
+    {
+      "lessonId": "m03-l02",
+      "label": "Kinetic friction and the separate conditions at rest"
+    },
+    {
+      "lessonId": "m04-l01",
+      "label": "Normal-force constraints in circular motion"
+    },
+    {
+      "lessonId": "m04-l02",
+      "label": "Gravitational potential, reference levels, and energy limits"
+    },
+    {
+      "courseId": "mth-215",
+      "lessonId": "b02",
+      "label": "Optional refresher: powers and exact radicals"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "This course is under construction. The potential derivatives and integrals needed here are developed explicitly. For each partial derivative, hold the other coordinate constant."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Choose a system before writing an energy equation",
+      "paragraphs": [
+        "A system is the set of bodies and interactions you choose to study; everything else is outside its boundary. List the relevant energy stores and transfers. The same motion can be described using different boundaries, but each account must include all terms consistently.",
+        "For a constant-mass particle, the previous lesson established ΔK=Wnet. Gravity and a spring may appear as forces doing work on that particle. Alternatively, include the associated interactions in a mechanical energy account and represent their work through potential-energy changes. Potential energy belongs to a configuration of interacting bodies, even when we abbreviate it as the particle's potential in a prescribed field.",
+        "If conservative forces are represented by U, their work is -ΔU. Substitution gives $\\Delta(K+U)=W_{\\mathrm{other}}$. The right side contains work not already represented by those potentials. Counting both gravitational work and the same gravitational potential change as independent inputs would count the interaction twice.",
+        "For a closed system with no mass transfer, choose work and heat into the system as positive. A broader account is $\\Delta K+\\Delta U+\\Delta E_{\\mathrm{internal}}=W_{\\mathrm{in}}+Q_{\\mathrm{in}}$ when these are all changing stored forms and transfer mechanisms. Other situations may require additional stores or transfers, such as electrical input. State what has been included rather than treating a shortened equation as universal.",
+        "Heat is energy transferred because of a temperature difference; internal energy is a property stored in the system. Do not add a second stored heat term after already including the internal-energy change. A negative heat input means heat leaves the chosen boundary. A negative internal-energy change means that store decreases, not that its absolute value must be negative.",
+        "For an isolated complete system, total energy stays constant. Mechanical energy K+U is only part of that total. It can decrease while thermal or other internal energy increases. Conversely, an external motor or changing physical parameter can supply mechanical energy. The conservation principle calls for a complete account, not an assumption that K+U always stays fixed."
+      ]
+    },
+    {
+      "heading": "Define potential from conservative work",
+      "paragraphs": [
+        "A conservative force has path-independent work between fixed endpoints within its stated domain. Equivalently, its work around every closed path in that domain is zero. Define $U(B)-U(A)=-\\int_A^B\\mathbf F_c\\cdot d\\mathbf r$. Because the integral does not depend on the route, this defines a consistent potential difference.",
+        "In one dimension, $F_x=-dU/dx$. Force is the negative slope of the potential graph, not its height. A graph rising with x gives negative force; a falling graph gives positive force. The derivative converts energy per distance, J/m, into newtons. Integrating force with the opposite sign recovers potential up to an additive constant.",
+        "In several dimensions, take a partial derivative with respect to each coordinate while holding the others fixed: $\\mathbf F_c=-\\nabla U=(-\\partial U/\\partial x,-\\partial U/\\partial y,-\\partial U/\\partial z)$. For U=a x²+bxy+c y², the force is (-2ax-by,-bx-2cy). The mixed term contributes to both derivative formulas and does not become a constant merely because two coordinates appear.",
+        "For a sufficiently smooth force field, matching mixed partial derivatives is a necessary local condition for a potential. On a suitable simply connected domain it also establishes path independence. A domain with an excluded point or hole needs a global check; a locally curl-free field need not have a single-valued potential over every possible loop. An explicit smooth potential defined throughout the stated domain supplies that global check directly.",
+        "Our conservation equation assumes a time-independent potential. If a physical parameter changes, such as a spring stiffness k(t), then U can depend explicitly on time. Along the trajectory, $d(K+U)/dt=P_{\\mathrm{other}}+\\partial U/\\partial t$. The device changing the parameter can transfer energy even when the instantaneous force is obtained from a spatial derivative. A change of physical stiffness is different from choosing a new constant reference."
+      ]
+    },
+    {
+      "heading": "Keep reference levels and coordinates consistent",
+      "paragraphs": [
+        "Replacing U by U+C for one constant C changes neither force nor potential differences. If E=K+U is used, shift E by the same C. Then K=E-U is unchanged. A negative potential or negative mechanical energy can be perfectly valid; kinetic energy must still be nonnegative in this Newtonian model.",
+        "For approximately uniform gravity and upward height y, $U_g=mgy+C_g$ and Fy=-mg. The approximation is appropriate when field variation over the traveled region is negligible. Use vertical height difference, not the length of a sloping path. If a straight ramp makes angle θ above horizontal, uphill distance s gives height gain s sin θ.",
+        "At distances where gravity varies substantially, use the exterior fixed-source model U=-GMm/r+C, with r measured from the source center and the source assumptions from the gravity lesson. The familiar mgy is a local approximation to its change, not a replacement at arbitrary orbital distances.",
+        "For a permanently attached ideal spring, $U_s=\\tfrac12kx^2+C_s$ where x is extension from its unstretched length and k>0. Compression has negative x but positive x². The derivative gives -kx, which points toward no extension. This spring reference is independent of the chosen gravity height zero.",
+        "Adding interactions gives Utotal=Ug+Us plus any declared constants. A vertical spring's force equilibrium is where the slope of this total potential vanishes; it is not necessarily at zero spring extension. For an attached spring on a ramp, if the initial compression is c and uphill coordinate is s, extension is s-c. The spring remains active after passing s=c unless the physical setup explicitly releases contact."
+      ]
+    },
+    {
+      "heading": "Track friction without losing or duplicating energy",
+      "paragraphs": [
+        "On a fixed surface with constant normal force N, a particle sliding a total length ℓ under kinetic friction experiences work -μkNℓ. This applies to a specified sliding path, not to an arbitrary signed displacement. On a return leg, friction reverses with sliding, so its work remains negative in this fixed-surface frame.",
+        "For a larger insulated system containing the body and the stationary contact surface, that mechanical loss can be represented as a combined thermal/internal energy increase μkNℓ under the stated idealization. Thus $K_i+U_i=K_f+U_f+\\Delta E_{\\mathrm{thermal}}$ when there is no external transfer and no other changing store. The coefficient alone does not determine how the thermal increase divides between the bodies or their temperatures.",
+        "If instead you use Δ(K+U)=Wfriction for the mechanical account, do not also subtract the same thermal increase on the right side. These are alternative consistent representations. Neither says that energy has disappeared.",
+        "A moving surface requires more care. Friction can do positive work on one body while the combined sliding contact still dissipates mechanical energy. Laboratory work on a body uses that body's displacement; contact dissipation depends on relative slip. The preceding work lesson developed this distinction, and the present ramp investigation intentionally fixes the guide.",
+        "At the first stop, the kinetic-friction direction rule cannot establish what happens next. Static friction may hold the body, or another force may restart motion and change sliding direction. A permanent rest prediction needs a static-friction bound and force balance. If no friction acts and the net force at a simple stop remains directed backward, the motion reverses."
+      ]
+    },
+    {
+      "heading": "Read possible motion from a potential-energy graph",
+      "paragraphs": [
+        "For one-dimensional conservative motion with constant E, $K(x)=E-U(x)\\ge0$. The allowed positions lie where U≤E; the vertical gap E-U gives kinetic energy, and speed magnitude is sqrt(2(E-U)/m). A velocity sign still requires the initial direction and the path history.",
+        "Where U=E, kinetic energy vanishes. A simple zero reached with nonzero force is normally a finite turning point. For example, the quadratic well U=k(x-b)²/2+C gives two turning coordinates b±sqrt(2(E-C)/k) when E>C. The trajectory stays between them, reversing at each end.",
+        "The full allowed set may have separate connected components. In a double-well potential, low energy can permit positions in both wells while forbidding the central interval. A particle starting in the right well cannot reach the left well without additional energy or a changed model. Algebraic permission at a destination does not supply a continuous route.",
+        "At energy exactly equal to a smooth potential maximum, K may have a double zero. An incoming trajectory can approach the equilibrium only asymptotically because its speed decreases in proportion to distance from that maximum. The time integral ∫dx/v diverges. Nonnegative K on both sides does not prove finite-time crossing. Slightly higher energy and slightly lower energy lead to different outcomes.",
+        "Constraints impose additional conditions. A particle may have enough energy to be at the top of a loop but require a negative normal force to remain on a one-sided inner track. Energy cannot supply a pulling normal that the track does not possess. Combine the energy equation with the force balance when contact, tension, or another constraint can fail."
+      ]
+    },
+    {
+      "heading": "Separate equilibrium, stability, and settling",
+      "paragraphs": [
+        "An equilibrium coordinate satisfies U'=0, so the conservative force there is zero. This is a statement about the force at that position, not the particle's velocity. A particle can pass through a potential minimum at its greatest speed during an oscillation.",
+        "A local potential minimum supplies restoring forces for small displacements and is stable in the usual one-dimensional conservative setting. A local maximum is unstable. If U''>0 at an equilibrium, the positive curvature establishes a nondegenerate minimum; U''<0 establishes a maximum.",
+        "When U''=0, the second-derivative test is inconclusive. A positive quartic a(x-b)^4 with a>0 has a stable minimum despite zero curvature at b. A negative quartic has an unstable maximum. A cubic stationary inflection is also unstable: at least one displacement can move farther away down the potential.",
+        "A constant potential is neutral with respect to small displacements from rest: a shifted resting particle remains at the new position. This limited statement does not claim bounded displacement after a velocity impulse. State which disturbance is being considered instead of treating the word neutral as a universal stability guarantee.",
+        "Near a nondegenerate minimum x=b, Taylor expansion gives $U(x)\\approx U(b)+\\tfrac12U''(b)(x-b)^2$. The local force is approximately -U''(b)(x-b), so $\\omega\\approx\\sqrt{U''(b)/m}$ and $T\\approx2\\pi/\\omega$. U'' has units N/m, ω has units rad/s, and T has units s.",
+        "The small-oscillation formula is local. A nonlinear potential may have an amplitude-dependent period, and crossing an energy barrier is outside the small-amplitude approximation. Stability alone also does not mean the body settles at equilibrium: without dissipation, a disturbed stable system can continue oscillating."
+      ]
+    },
+    {
+      "heading": "Calculate useful output, input requirements, and efficiency",
+      "paragraphs": [
+        "For a stated conversion task with one positive energy input, define $\\eta=E_{\\mathrm{useful}}/E_{\\mathrm{in}}$, where 0<η≤1. To obtain a required useful output, input is Euseful/η. Multiplying by η instead would make the required input smaller than the output, reversing the accounting.",
+        "The unused output is Ein-Euseful under this boundary and definition. It still exists as energy in another form or destination. Label the useful task and the boundary: motor shaft output, gravitational energy gained by a load, and electrical input are different quantities if there are mechanical losses along the path.",
+        "For two stages in series, the first stage's useful output is the second's input. Then ηtotal=η1η2, assuming no additional energy sources between stages. Recovering a final required output means dividing successively by each stage efficiency. Adding efficiencies can exceed one and does not represent the chain.",
+        "Average input power over duration Δt>0 is Ein/Δt. Instantaneous useful mechanical power is F·v, and input power is that output divided by the stated instantaneous efficiency when this model applies. A constant-speed lift still needs power because gravitational potential and dissipation change, even though the load's kinetic energy does not.",
+        "Some devices use a different performance ratio. A heat pump can deliver more heating energy than its electrical input because it also draws energy from its surroundings; that coefficient of performance is not the single-input conversion efficiency defined here. Identify every energy source before interpreting a ratio."
+      ]
+    },
+    {
+      "heading": "Audit the spring-and-ramp investigation",
+      "paragraphs": [
+        "The investigation starts with a body already moving uphill on a fixed straight rough guide. An attached ideal spring is initially compressed by c. The spring acts parallel to the guide, gravity is uniform, and the only friction is kinetic friction during the initial uphill branch. The larger insulated model includes the body, guide, spring, and gravity source, whose motion is negligible.",
+        "At position s, the normal is N=mg cos θ and friction magnitude f=μkN. The chosen stores are $U_g=mg s\\sin\\theta$, $U_s=\\tfrac12k(s-c)^2$, the constant reference C, and thermal increase fs. The candidate kinetic energy is $K(s)=\\tfrac12mv_0^2+\\tfrac12kc^2-\\tfrac12k(s-c)^2-mg s\\sin\\theta-fs$.",
+        "With nonnegative stiffness and positive initial speed, K(s) is concave and has at most one positive first stopping root. The investigation checks that root before reporting a realized endpoint. A requested position beyond it can have a formal negative candidate energy, but the actual table ends at the stop and accumulates frictional thermal energy only over traveled distance.",
+        "Changing C shifts the numerical potential and total energy together while leaving speed, force, kinetic energy, and thermal rise unchanged. Removing friction conserves mechanical energy within the fixed-source approximation. Removing the spring leaves constant-force uphill motion; removing both gravity's along-guide component and friction gives constant speed.",
+        "Use the default case, a stop exactly at the requested endpoint, and an endpoint beyond the stop. Compare friction-free motion and a reference shift. Save the system boundary, predicted values, actual ledger, and an independent force or geometry check in lesson notes. These are model investigations with no physical equipment requirement."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Change a reference without changing gravitational work",
+      "prompt": "A 2 kg particle moves from height -1 m to 2 m in uniform g=10 m/s². Compare the references U=20y and U'=20y+50 J, with y in meters.",
+      "steps": [
+        {
+          "math": "U_i=-20\\,\\mathrm J,\\quad U_f=40\\,\\mathrm J,\\quad\\Delta U=60\\,\\mathrm J",
+          "reason": "Evaluate both endpoints using the same original reference."
+        },
+        {
+          "math": "U'_i=30\\,\\mathrm J,\\quad U'_f=90\\,\\mathrm J,\\quad\\Delta U'=60\\,\\mathrm J",
+          "reason": "The same 50 J shift at both endpoints cancels in their difference."
+        },
+        {
+          "math": "W_g=\\int_{-1}^{2}(-20)\\,dy=-60\\,\\mathrm J=-\\Delta U",
+          "reason": "Direct integration of gravitational force independently checks the potential account."
+        }
+      ],
+      "conclusion": "The potentials change numerically, but the gravitational work remains -60 J. An energy equation must shift total E along with U, leaving K=E-U unchanged."
+    },
+    {
+      "title": "Distinguish spring equilibrium from a release turning point",
+      "prompt": "A 1 kg particle is released from rest with an attached ideal vertical spring initially unstrained. Use k=20 N/m, g=10 m/s², downward extension x positive, and no losses.",
+      "steps": [
+        {
+          "math": "U(x)=\\tfrac12kx^2-mgx=10x^2-10x",
+          "reason": "The numerical expression is in joules for x in meters; gravity decreases potential as the particle descends."
+        },
+        {
+          "math": "F=-U'=10-20x=0\\Rightarrow x_{\\mathrm{eq}}=0.5\\,\\mathrm m",
+          "reason": "Zero force locates equilibrium, not necessarily a point where the released particle stops."
+        },
+        {
+          "math": "E=0,\\quad K=0\\Rightarrow10x(x-1)=0",
+          "reason": "The two zero-speed coordinates are the initial release x=0 and the first lower turn x=1 m."
+        },
+        {
+          "math": "K(0.5)=2.5\\,\\mathrm J\\Rightarrow v=\\sqrt{2(2.5)/1}=\\sqrt5\\,\\mathrm{m/s}",
+          "reason": "At the minimum of total potential, the released particle is moving fastest."
+        },
+        {
+          "math": "x(t)=(0.5\\,\\mathrm m)[1-\\cos(\\omega t)],\\quad\\omega=\\sqrt{20}\\,\\mathrm{rad/s}",
+          "reason": "The force equation x''=10-20x gives an independent trajectory with the same equilibrium, turn, and maximum speed."
+        }
+      ],
+      "conclusion": "Equilibrium extension is 0.5 m, while the release trajectory first turns at 1 m. A lossless particle passes through equilibrium with speed sqrt(5) m/s."
+    },
+    {
+      "title": "Keep an attached spring in the rough-ramp account",
+      "prompt": "A 2 kg body starts uphill at 4 m/s. Its fixed ramp has sin θ=3/5, cos θ=4/5, μk=1/4, and g=10 m/s². An attached parallel spring has k=8 N/m and initial compression c=0.5 m. Find the energy account after s=0.5 m.",
+      "steps": [
+        {
+          "math": "N=mg\\cos\\theta=16\\,\\mathrm N,\\quad f=\\mu_kN=4\\,\\mathrm N",
+          "reason": "The spring is parallel to the guide and contributes no normal component."
+        },
+        {
+          "math": "K_i=16\\,\\mathrm J,\\quad U_{s,i}=\\tfrac12(8)(0.5)^2=1\\,\\mathrm J",
+          "reason": "Initial energy under the stated zero references is 17 J."
+        },
+        {
+          "math": "U_g=(2)(10)(0.5)(3/5)=6\\,\\mathrm J,\\quad U_s=\\tfrac12(8)(0.5-0.5)^2=0",
+          "reason": "Gravity uses vertical rise, and spring extension is s-c."
+        },
+        {
+          "math": "\\Delta E_{\\mathrm{thermal}}=(4)(0.5)=2\\,\\mathrm J,\\quad K_f=17-6-0-2=9\\,\\mathrm J",
+          "reason": "Include thermal increase once in the larger insulated account."
+        },
+        {
+          "math": "v_f=\\sqrt{2(9)/2}=3\\,\\mathrm{m/s},\\quad K_f+U_f=15\\,\\mathrm J",
+          "reason": "Mechanical energy falls by 2 J while the modeled total including thermal rise stays 17 J."
+        },
+        {
+          "math": "2s''=-12-8s,\\quad s(t)=-1.5+1.5\\cos(2t)+2\\sin(2t)",
+          "reason": "With numerical coordinates in SI units, this separately solved force equation gives speed 3 m/s at s=0.5 m and its first maximum position s=1 m."
+        }
+      ],
+      "conclusion": "At 0.5 m, the ledger is 9 J kinetic, 6 J gravity potential, 0 J spring potential, and 2 J thermal rise. At the later 1 m stop, the spring is stretched and still belongs in the account. Rest or return after that stop needs a new friction regime."
+    },
+    {
+      "title": "Remove a spring only when the body actually leaves it",
+      "prompt": "A 1 kg particle starts at rest against a horizontal spring with k=100 N/m compressed 0.2 m. The launch region is frictionless, and the particle loses spring contact at zero compression. It then climbs a rough ramp with sin θ=3/5, cos θ=4/5, μk=1/4, and g=10 m/s².",
+      "steps": [
+        {
+          "math": "E_{s,i}=\\tfrac12(100)(0.2)^2=2\\,\\mathrm J\\Rightarrow v_{\\mathrm{exit}}=\\sqrt{2(2)/1}=2\\,\\mathrm{m/s}",
+          "reason": "The spring's stored energy becomes kinetic energy before contact ends."
+        },
+        {
+          "math": "mg\\sin\\theta=6\\,\\mathrm N,\\quad f=\\tfrac14(10)(4/5)=2\\,\\mathrm N",
+          "reason": "The uphill branch has a constant 8 N opposing resultant after leaving the spring."
+        },
+        {
+          "math": "2=(6+2)s\\Rightarrow s_{\\mathrm{stop}}=0.25\\,\\mathrm m",
+          "reason": "At the first stop, initial ramp kinetic energy has become gravity potential and thermal energy."
+        },
+        {
+          "math": "h=0.25(3/5)=0.15\\,\\mathrm m,\\quad\\Delta U_g=1.5\\,\\mathrm J,\\quad\\Delta E_{\\mathrm{thermal}}=0.5\\,\\mathrm J",
+          "reason": "The stored changes sum to the original 2 J."
+        },
+        {
+          "math": "v^2=2^2+2(-8)s=4-16s",
+          "reason": "Constant-acceleration kinematics independently places the first stop at 0.25 m."
+        }
+      ],
+      "conclusion": "This spring is absent from the ramp equation because contact ended. The attached spring in the preceding example continues exerting force; those setups require different models."
+    },
+    {
+      "title": "Account for heat as a transfer",
+      "prompt": "A closed system receives 40 J of external work and 5 J of heat. Its kinetic energy increases by 10 J and potential energy by 20 J. No other stored forms change except internal energy. Find that internal-energy change.",
+      "steps": [
+        {
+          "math": "\\Delta K+\\Delta U+\\Delta E_{\\mathrm{internal}}=W_{\\mathrm{in}}+Q_{\\mathrm{in}}",
+          "reason": "Choose both input transfers as positive and state the included stores."
+        },
+        {
+          "math": "10+20+\\Delta E_{\\mathrm{internal}}=40+5\\Rightarrow\\Delta E_{\\mathrm{internal}}=15\\,\\mathrm J",
+          "reason": "Subtract the two known stored changes from the net input."
+        },
+        {
+          "math": "10+20+15=45=40+5\\,\\mathrm J",
+          "reason": "The complete ledger balances without an extra stored heat term."
+        }
+      ],
+      "conclusion": "Internal energy rises by 15 J. The 5 J heat input is already included on the transfer side; counting it again as a separate stored quantity would duplicate energy."
+    },
+    {
+      "title": "Audit the contact constraint after an energy calculation",
+      "prompt": "A 2 kg particle starts from rest at height 9 m above the bottom of a frictionless vertical loop of radius 4 m. It follows a one-sided inner track, with g=10 m/s². Can it maintain the whole circle?",
+      "steps": [
+        {
+          "math": "v_{\\mathrm{top}}^2=2g(H-2R)=20(9-8)=20\\,\\mathrm{m^2/s^2}",
+          "reason": "Energy supplies a positive formal speed squared at the top."
+        },
+        {
+          "math": "mg+N=m\\frac{v^2}{R}\\Rightarrow N=2(20/4-10)=-10\\,\\mathrm N",
+          "reason": "The required normal would need to pull outward, which the inner track cannot do."
+        },
+        {
+          "math": "N\\ge0\\Rightarrow v_{\\mathrm{top}}^2\\ge gR=40\\,\\mathrm{m^2/s^2}",
+          "reason": "Force feasibility adds a stronger condition than nonnegative kinetic energy."
+        },
+        {
+          "math": "2g(H-2R)\\ge gR\\Rightarrow H\\ge\\tfrac52R=10\\,\\mathrm m",
+          "reason": "Combining energy with contact gives the minimum ideal release height."
+        }
+      ],
+      "conclusion": "The 9 m release does not sustain the complete circle. A minimum 10 m release reaches the ideal zero-normal threshold at the top. The negative required normal is a failed constraint, not an actual force."
+    },
+    {
+      "title": "Take a gradient one coordinate at a time",
+      "prompt": "A two-dimensional potential is U=(2 J/m²)x²+(3 J/m²)xy+(4 J/m²)y²+C. Find the force at (1,-2) m and show why C does not matter.",
+      "steps": [
+        {
+          "math": "\\frac{\\partial U}{\\partial x}=4x+3y,\\quad\\frac{\\partial U}{\\partial y}=3x+8y",
+          "reason": "Each expression has units N when x,y are in meters; hold the other coordinate constant."
+        },
+        {
+          "math": "F_x=-(4-6)=2\\,\\mathrm N,\\quad F_y=-(3-16)=13\\,\\mathrm N",
+          "reason": "Negate each partial derivative after evaluating at the specified point."
+        },
+        {
+          "math": "\\frac{\\partial F_x}{\\partial y}=-3=\\frac{\\partial F_y}{\\partial x}",
+          "reason": "The mixed derivatives agree; the given global polynomial potential establishes path independence over the whole plane."
+        },
+        {
+          "math": "\\nabla(U+C_1)=\\nabla U",
+          "reason": "An additional constant has no derivative and therefore no effect on the force."
+        }
+      ],
+      "conclusion": "The force is (2,13) N. The xy term appears in both component formulas; potential value, force components, and reference constant are different quantities."
+    },
+    {
+      "title": "Separate the allowed set from one trajectory's well",
+      "prompt": "A 2 kg particle moves in U=(1 J/m⁴)(x²-4 m²)² with total energy E=1 J. It begins at x=2 m. Find its allowed regions, equilibria, and local small-oscillation period in the right well.",
+      "steps": [
+        {
+          "math": "(x^2-4)^2\\le1\\Rightarrow3\\le x^2\\le5",
+          "reason": "These numerical coordinates are in meters. Keeping both square-root branches produces the complete allowed set."
+        },
+        {
+          "math": "x\\in[-\\sqrt5,-\\sqrt3]\\cup[\\sqrt3,\\sqrt5]\\,\\mathrm m",
+          "reason": "The central interval is forbidden; the trajectory beginning at x=2 m stays in the right component."
+        },
+        {
+          "math": "U'=4x(x^2-4)=0\\Rightarrow x=0,\\ \\pm2\\,\\mathrm m",
+          "reason": "Equilibria occur at zero force, which need not mean the body is at rest there."
+        },
+        {
+          "math": "U''=12x^2-16,\\quad U''(0)=-16,\\quad U''(\\pm2)=32\\,\\mathrm{N/m}",
+          "reason": "The central point is unstable; each outer point is a stable minimum."
+        },
+        {
+          "math": "\\omega\\approx\\sqrt{32/2}=4\\,\\mathrm{rad/s},\\quad T\\approx\\pi/2\\,\\mathrm s",
+          "reason": "The quadratic approximation near the right minimum gives this small-amplitude period. It is not asserted exact for the finite E=1 J oscillation."
+        },
+        {
+          "math": "U(0)=16\\,\\mathrm J,\\quad E=16\\Rightarrow K=8x^2-x^4",
+          "reason": "In a separate threshold case approaching x=0, speed is proportional to |x| near the maximum, so arrival takes unbounded time."
+        }
+      ],
+      "conclusion": "The E=1 J trajectory remains between sqrt(3) and sqrt(5) m. A barrier-threshold trajectory is a different limiting case, and the local period formula does not describe crossing between wells."
+    },
+    {
+      "title": "Recover input energy through one stage and a chain",
+      "prompt": "A converter provides 120 J useful output over 3 s with efficiency 0.75. Then consider a separate two-stage arrangement with efficiencies 0.75 and 0.8 that must provide the same 120 J final useful output.",
+      "steps": [
+        {
+          "math": "E_{\\mathrm{in}}=120/0.75=160\\,\\mathrm J,\\quad E_{\\mathrm{unused}}=160-120=40\\,\\mathrm J",
+          "reason": "For the single stage, useful output is efficiency times input."
+        },
+        {
+          "math": "\\overline P_{\\mathrm{in}}=160/3\\,\\mathrm W",
+          "reason": "Average power divides input energy by the given duration; it is not another energy quantity."
+        },
+        {
+          "math": "E_{\\mathrm{middle}}=120/0.8=150\\,\\mathrm J,\\quad E_{\\mathrm{initial}}=150/0.75=200\\,\\mathrm J",
+          "reason": "For the separate series arrangement, recover the second input first and then the first input."
+        },
+        {
+          "math": "\\eta_{\\mathrm{total}}=0.75(0.8)=0.6,\\quad120/0.6=200\\,\\mathrm J",
+          "reason": "Multiplying efficiencies checks the stage-by-stage calculation."
+        },
+        {
+          "math": "E_{\\mathrm{unused},1}=50\\,\\mathrm J,\\quad E_{\\mathrm{unused},2}=30\\,\\mathrm J,\\quad50+30+120=200\\,\\mathrm J",
+          "reason": "The complete chain accounts for both unused outputs and the final useful output."
+        }
+      ],
+      "conclusion": "The single stage needs 160 J; the two-stage chain needs 200 J for the same 120 J final task. The extra energy is accounted for in unused outputs, not destroyed."
+    }
+  ],
+  "guided": {
+    "title": "Balance the attached-spring ramp account",
+    "setup": "Use a 2 kg body already moving uphill at 4 m/s, g=10 m/s², sin θ=3/5, cos θ=4/5, and μk=1/4. A parallel ideal spring remains attached, with k=8 N/m and initial compression 0.5 m. Consider the reached position s=0.5 m. Set gravity potential zero at the start and spring potential zero at no extension.",
+    "before": [
+      "Initial kinetic energy is 16 J, and the compressed spring initially stores 1 J.",
+      "Normal force is 16 N, so kinetic friction is 4 N. Compute thermal rise over the traveled 0.5 m.",
+      "The vertical rise is 0.3 m and the spring is unstrained at the endpoint. Complete the larger insulated system account."
+    ],
+    "question": {
+      "id": "phs231-guided-energy",
+      "familyId": "phs231-energy-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m05-l02",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find the combined contact thermal rise, final kinetic energy, speed, and modeled total energy including thermal rise. Select the consistent system interpretation.",
+      "fields": [
+        {
+          "id": "thermal",
+          "kind": "rational",
+          "label": "Combined thermal rise",
+          "expected": "2",
+          "unit": "J"
+        },
+        {
+          "id": "kinetic",
+          "kind": "rational",
+          "label": "Final kinetic energy",
+          "expected": "9",
+          "unit": "J"
+        },
+        {
+          "id": "speed",
+          "kind": "exact",
+          "label": "Final speed",
+          "expected": "3",
+          "unit": "m/s"
+        },
+        {
+          "id": "total",
+          "kind": "rational",
+          "label": "Modeled total including thermal rise",
+          "expected": "17",
+          "unit": "J"
+        },
+        {
+          "id": "account",
+          "kind": "choice",
+          "label": "System interpretation",
+          "correct": "thermal",
+          "options": [
+            {
+              "id": "thermal",
+              "label": "Mechanical energy decreases while the larger insulated total stays constant",
+              "feedback": "K+U falls from 17 J to 15 J, and the combined contact thermal increase is 2 J. Their total remains 17 J."
+            },
+            {
+              "id": "mechanical",
+              "label": "Mechanical energy alone stays 17 J despite friction",
+              "feedback": "The 2 J frictional loss must appear in the account. Keeping K+U at 17 J would miss the thermal rise."
+            },
+            {
+              "id": "gravity",
+              "label": "Subtract gravitational work again after adding the gravity potential gain",
+              "feedback": "Gravity is already represented by its 6 J potential increase. A second work term would count that interaction twice."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "mass": 2,
+        "speed": 4,
+        "g": 10,
+        "stiffness": 8,
+        "compression": 0.5,
+        "distance": 0.5
+      },
+      "hints": [
+        "Thermal rise is 4 N times 0.5 m, or 2 J.",
+        "Final gravity potential is 6 J and spring potential zero. Therefore K=17−6−2=9 J and speed=3 m/s.",
+        "The larger account is 9+6+0+2=17 J. Mechanical energy alone is 15 J."
+      ],
+      "explanation": [
+        "Initial kinetic energy 16 J plus spring potential 1 J gives 17 J.",
+        "At s=0.5 m, the body has gained 6 J gravitational potential, the spring has zero extension, and friction has produced 2 J combined thermal rise.",
+        "The remaining 9 J is kinetic energy, corresponding to speed sqrt(2*9/2)=3 m/s.",
+        "Mechanical energy is 15 J; the modeled insulated total including the 2 J thermal increase remains 17 J."
+      ],
+      "answerSummary": "Thermal rise 2 J; final K 9 J; speed 3 m/s; modeled total 17 J; mechanical energy decreases while the larger total stays constant."
+    },
+    "after": "A consistent answer states the boundary, includes each interaction once, and separates mechanical energy from the total account."
+  },
+  "interaction": {
+    "kind": "phs231-energy",
+    "prompt": "Predict path dissipation, candidate endpoint kinetic energy, and reachability for a body sliding uphill with an attached spring. Compare friction, potential references, and a first stop using a complete energy ledger.",
+    "initial": {
+      "mass": 2,
+      "initialSpeed": 4,
+      "gravity": 10,
+      "riseRatio": 0.6,
+      "friction": 0.25,
+      "stiffness": 8,
+      "compression": 0.5,
+      "distance": 0.5,
+      "reference": 0
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "reference"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "vertical"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "rough-ramp"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "spring-launch"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "external"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "efficiency"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "series-efficiency"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "motor"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "loop"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "force"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "gradient"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "turning"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "stability"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "wells"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "threshold"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "frequency"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "rough-ramp"
+    },
+    {
+      "familyId": "phs231-energy-account",
+      "variant": "series-efficiency"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "wells"
+    },
+    {
+      "familyId": "phs231-energy-landscape",
+      "variant": "stability"
+    }
+  ],
+  "summary": [
+    "Choose the system, energy stores, transfer signs, frame, and assumptions before writing a balance.",
+    "Represent a conservative interaction as work or potential change once: Wc=-ΔU and F=-∇U.",
+    "A constant potential reference shifts U and E together; K, forces, and motion stay unchanged.",
+    "Use vertical height for gravitational potential and extension from the unstrained position for spring potential.",
+    "Mechanical energy can decrease while thermal/internal energy increases. Heat is a boundary transfer, not an extra stored energy term.",
+    "A permanently attached spring and a spring that releases a body require different force and energy models.",
+    "K=E-U identifies allowed positions, but connectivity, initial direction, asymptotic limits, and contact constraints determine accessible motion.",
+    "Equilibrium requires zero potential slope. Stability depends on the local shape; zero second derivative is inconclusive.",
+    "Small-oscillation frequency sqrt(U''/m) applies near a nondegenerate stable minimum. Stability alone does not imply settling.",
+    "Use positive single-input conversion efficiency η=Euseful/Ein to recover input by division; multiply successive efficiencies.",
+    "Power is an energy-transfer rate. A constant-speed load can still require substantial input power.",
+    "After a kinetic-friction stop, analyze the new rest or reverse-motion regime before predicting what happens next."
+  ],
+  "retrieval": "For the default ramp at s=0.5 m, change only the potential reference from C=0 to C=-50 J. Which numbers change? Check after working: kinetic energy stays 9 J, thermal rise stays 2 J, and speed stays 3 m/s. Combined potential becomes -44 J, mechanical energy -35 J, and the modeled total -33 J. Each shifted quantity decreases by the same 50 J. Explain why these negative reference-dependent values do not make the motion impossible, and why adding gravity work again would spoil the ledger.",
+  "readings": [
+    {
+      "title": "OpenStax: Potential Energy of a System",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-1-potential-energy-of-a-system",
+      "purpose": "Optional additional instruction on the energy concepts developed in this lesson."
+    },
+    {
+      "title": "OpenStax: Conservative and Non-Conservative Forces",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-2-conservative-and-non-conservative-forces",
+      "purpose": "Optional additional instruction on the energy concepts developed in this lesson."
+    },
+    {
+      "title": "OpenStax: Conservation of Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy",
+      "purpose": "Optional additional instruction on the energy concepts developed in this lesson."
+    },
+    {
+      "title": "OpenStax: Potential Energy Diagrams and Stability",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-4-potential-energy-diagrams-and-stability",
+      "purpose": "Further instruction on potential graphs, equilibria, and allowed regions."
+    },
+    {
+      "title": "OpenStax: Sources of Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-5-sources-of-energy",
+      "purpose": "Optional additional instruction on the energy concepts developed in this lesson."
+    },
+    {
+      "title": "OpenStax: College Physics: Conservation of Energy",
+      "url": "https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy",
+      "purpose": "Additional energy-account and efficiency practice."
+    }
+  ]
+}
