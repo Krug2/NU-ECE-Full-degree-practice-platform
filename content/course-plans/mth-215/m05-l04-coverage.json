@@ -1,0 +1,368 @@
+{
+  "lessonId": "m05-l04",
+  "objective": "Fit a simple exponential model, solve for a threshold time, and interpret a logarithm of a dimensionless ratio.",
+  "status": "authored",
+  "contentStages": 1,
+  "independentSubjectReview": "not yet performed",
+  "assessmentPolicy": "Every sampled question is critical and must be correct without assistance. Each four-question form samples these families; it does not assess every variant or establish complete course mastery.",
+  "coverage": [
+    {
+      "skill": "Define the quantities and the model's operating domain",
+      "instruction": [
+        "Define the quantities and the model's operating domain"
+      ],
+      "examples": [
+        "Interpret a supplied voltage formula with seconds and volts",
+        "Reject an exponent that mixes milliseconds with a seconds-based rate"
+      ],
+      "practice": [
+        "mth-model-fit:time-units",
+        "mth-model-threshold:voltage-decay"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Name the baseline, signed deviation, reference time, rate unit and operating interval of a supplied model, then convert a millisecond input correctly."
+    },
+    {
+      "skill": "Fit a model from two positive observations",
+      "instruction": [
+        "Fit a model from two positive observations"
+      ],
+      "examples": [
+        "Derive a growing model from two observations",
+        "Fit a fractional decay factor over a nonunit interval"
+      ],
+      "practice": [
+        "mth-model-fit:two-point"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Recover a signed rate from two positive readings, verify both original observations, and explain why an exponential rate is based on a ratio."
+    },
+    {
+      "skill": "Keep the reference time separate from time zero",
+      "instruction": [
+        "Keep the reference time separate from time zero"
+      ],
+      "examples": [
+        "Construct an anchored model when the first observation is later than zero",
+        "Recover the time-zero coefficient and verify both observations"
+      ],
+      "practice": [
+        "mth-model-fit:shifted-origin"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Rewrite an anchored fit as a time-zero model and distinguish an extrapolated coefficient from an observed reading."
+    },
+    {
+      "skill": "Check constant and incompatible observations",
+      "instruction": [
+        "Check constant and incompatible observations"
+      ],
+      "examples": [
+        "Recognize equal positive outputs as a constant model",
+        "Distinguish contradictory same-time readings from insufficient data",
+        "Reject nonpositive data for a strictly positive exponential model"
+      ],
+      "practice": [
+        "mth-model-fit:constant-data",
+        "mth-model-fit:invalid-data"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Distinguish a zero-rate constant, repeated information, conflicting outputs and an impossible nonpositive observation."
+    },
+    {
+      "skill": "Fit deviations from a supplied baseline",
+      "instruction": [
+        "Fit deviations from a supplied baseline"
+      ],
+      "examples": [
+        "Fit an approach to a nonzero baseline from above",
+        "Fit an increasing approach from below",
+        "Explain why an unknown baseline needs more information"
+      ],
+      "practice": [
+        "mth-model-fit:known-baseline",
+        "mth-model-fit:constant-data",
+        "mth-model-fit:invalid-data"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Fit signed deviations from a known baseline and give two different models demonstrating why an unknown baseline changes identifiability."
+    },
+    {
+      "skill": "Convert step factors, percentages and continuous rates",
+      "instruction": [
+        "Convert step factors, percentages and continuous rates"
+      ],
+      "examples": [
+        "Convert a per-minute rate into a per-second rate",
+        "Contrast a signed continuous rate with a per-step percentage"
+      ],
+      "practice": [
+        "mth-model-fit:time-units",
+        "mth-model-timescale:observed-change"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Translate between an interval percentage, its multiplication factor and a continuous rate, then change time units without changing the physical prediction."
+    },
+    {
+      "skill": "Use additional data to challenge a fit",
+      "instruction": [
+        "Use additional data to challenge a fit"
+      ],
+      "examples": [
+        "Compute a nonzero residual at an extra observation",
+        "Distinguish interpolation from unsupported extrapolation"
+      ],
+      "practice": [
+        "mth-model-fit:extra-observation"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Calculate a residual with its sign, classify the prediction as interpolation or extrapolation, and explain the limitation of an exact two-point fit."
+    },
+    {
+      "skill": "Understand a fit to several observations",
+      "instruction": [
+        "Understand a fit to several observations"
+      ],
+      "examples": [
+        "Use the in-app logarithm-based fit and inspect its residual table",
+        "Explain which squared errors the fitted line minimizes"
+      ],
+      "practice": [
+        "mth-model-fit:log-linear-fit",
+        "mth-model-fit:residual-audit"
+      ],
+      "independentCheck": "mth-model-fit:mixed",
+      "retrieval": "Reconstruct the three-point logarithmic fit, calculate both kinds of residual, and explain why changing the error scale can change the fitted curve."
+    },
+    {
+      "skill": "Derive doubling time and half-life",
+      "instruction": [
+        "Derive doubling time and half-life"
+      ],
+      "examples": [
+        "Recover a positive doubling time from a growth rate",
+        "Recover a half-life and its signed decay rate"
+      ],
+      "practice": [
+        "mth-model-timescale:half-life",
+        "mth-model-timescale:doubling-time",
+        "mth-model-timescale:rate-to-time"
+      ],
+      "independentCheck": "mth-model-timescale:mixed",
+      "retrieval": "Derive half-life and doubling time from a dimensionless ratio and recover the signed rate from a supplied positive interval."
+    },
+    {
+      "skill": "Distinguish a time constant from a half-life",
+      "instruction": [
+        "Distinguish a time constant from a half-life"
+      ],
+      "examples": [
+        "Evaluate the fraction remaining after one time constant",
+        "Compare the half-life and time constant of the same decay"
+      ],
+      "practice": [
+        "mth-model-timescale:time-constant",
+        "mth-model-timescale:rate-comparison"
+      ],
+      "independentCheck": "mth-model-timescale:mixed",
+      "retrieval": "Explain the factor remaining after one time constant, relate it to half-life, and compare two decay rates expressed in the same units."
+    },
+    {
+      "skill": "Separate elapsed time from additional time",
+      "instruction": [
+        "Separate elapsed time from additional time"
+      ],
+      "examples": [
+        "Recover time since the reference observation",
+        "Find additional decay time from a later measurement"
+      ],
+      "practice": [
+        "mth-model-timescale:remaining-fraction",
+        "mth-model-timescale:additional-time"
+      ],
+      "independentCheck": "mth-model-timescale:mixed",
+      "retrieval": "Choose the correct starting observation for a ratio, then distinguish elapsed time, additional time and the final clock reading."
+    },
+    {
+      "skill": "Solve an equality with a target",
+      "instruction": [
+        "Solve an equality with a target"
+      ],
+      "examples": [
+        "Solve the supplied voltage threshold exactly",
+        "Keep a negative algebraic crossing separate from future operating times"
+      ],
+      "practice": [
+        "mth-model-threshold:equality",
+        "mth-model-threshold:past-crossing",
+        "mth-model-threshold:voltage-decay"
+      ],
+      "independentCheck": "mth-model-threshold:mixed",
+      "retrieval": "Derive an exact target time from a positive deviation ratio, substitute it, and check the original operating interval before reporting it."
+    },
+    {
+      "skill": "Solve the complete threshold inequality",
+      "instruction": [
+        "Solve the complete threshold inequality"
+      ],
+      "examples": [
+        "Use an increasing model to select the correct side of a crossing",
+        "Use a decreasing model with strict and inclusive boundaries",
+        "Explain why an open interval has no smallest crossing time"
+      ],
+      "practice": [
+        "mth-model-threshold:strict-inequality",
+        "mth-model-threshold:inclusive-inequality"
+      ],
+      "independentCheck": "mth-model-threshold:mixed",
+      "retrieval": "Use the output's direction to select the correct side of a crossing, preserve endpoint inclusion, and explain the absence of a minimum for a strict continuous interval."
+    },
+    {
+      "skill": "Check baselines and initial equality",
+      "instruction": [
+        "Check baselines and initial equality"
+      ],
+      "examples": [
+        "Show that a decaying deviation never reaches zero in finite time",
+        "Classify a target already met at the initial time",
+        "Check an increasing approach from below"
+      ],
+      "practice": [
+        "mth-model-threshold:unattainable-baseline",
+        "mth-model-threshold:initial-equality",
+        "mth-model-threshold:voltage-decay"
+      ],
+      "independentCheck": "mth-model-threshold:mixed",
+      "retrieval": "Classify baseline targets and initial equality without taking invalid logarithms, including an increasing approach from below."
+    },
+    {
+      "skill": "Respect finite windows and constant models",
+      "instruction": [
+        "Respect finite windows and constant models"
+      ],
+      "examples": [
+        "Clip the solution set to a closed operating interval",
+        "Handle a crossing at the last permitted time",
+        "Treat a constant model without division by zero"
+      ],
+      "practice": [
+        "mth-model-threshold:finite-window",
+        "mth-model-threshold:constant-model"
+      ],
+      "independentCheck": "mth-model-threshold:mixed",
+      "retrieval": "Intersect exact threshold sets with finite operating windows and handle constants without dividing by zero."
+    },
+    {
+      "skill": "Find the first valid sampled observation",
+      "instruction": [
+        "Find the first valid sampled observation"
+      ],
+      "examples": [
+        "Compare a fractional continuous crossing with two adjacent samples",
+        "Distinguish strict and inclusive conditions at an exact sample crossing"
+      ],
+      "practice": [
+        "mth-model-threshold:sampled-crossing"
+      ],
+      "independentCheck": "mth-model-threshold:mixed",
+      "retrieval": "Find a first sampled reading from an exact continuous set and check its predecessor, especially when equality lands on a sample."
+    },
+    {
+      "skill": "Build a dimensionless power ratio",
+      "instruction": [
+        "Build a dimensionless power ratio"
+      ],
+      "examples": [
+        "Convert milliwatts and watts before taking a logarithm",
+        "Interpret a negative level as a positive power below its reference"
+      ],
+      "practice": [
+        "mth-power-level:level-from-ratio",
+        "mth-power-level:invalid-input"
+      ],
+      "independentCheck": "mth-power-level:mixed",
+      "retrieval": "Convert compatible power units, form a dimensionless ratio and interpret a negative or zero referenced level correctly."
+    },
+    {
+      "skill": "Convert between a power level and a ratio",
+      "instruction": [
+        "Convert between a power level and a ratio"
+      ],
+      "examples": [
+        "Report exact and rounded forms of a noninteger level",
+        "Recover a power from a specified level and reference"
+      ],
+      "practice": [
+        "mth-power-level:ratio-from-level",
+        "mth-power-level:measured-power"
+      ],
+      "independentCheck": "mth-power-level:mixed",
+      "retrieval": "Invert a referenced level exactly and decide whether to multiply a known reference or divide a known measured power."
+    },
+    {
+      "skill": "Keep level differences and references consistent",
+      "instruction": [
+        "Keep level differences and references consistent"
+      ],
+      "examples": [
+        "Compare two levels with the same reference",
+        "Change the reference without changing the measured power"
+      ],
+      "practice": [
+        "mth-power-level:level-difference",
+        "mth-power-level:changed-reference"
+      ],
+      "independentCheck": "mth-power-level:mixed",
+      "retrieval": "Subtract levels with a shared reference, retain different references when necessary, and explain a reference change without claiming a physical power change."
+    },
+    {
+      "skill": "Separate multiplicative gains from added powers",
+      "instruction": [
+        "Separate multiplicative gains from added powers"
+      ],
+      "examples": [
+        "Combine two specified power gain ratios",
+        "Add supplied powers before finding their total referenced level"
+      ],
+      "practice": [
+        "mth-power-level:cascaded-gains",
+        "mth-power-level:additive-powers"
+      ],
+      "independentCheck": "mth-power-level:mixed",
+      "retrieval": "Choose the supplied power combination law first, then derive whether logarithmic level differences add."
+    },
+    {
+      "skill": "Derive the amplitude coefficient from a supplied relationship",
+      "instruction": [
+        "Derive the amplitude coefficient from a supplied relationship"
+      ],
+      "examples": [
+        "Derive 20 log10 of a positive amplitude ratio from its squared power ratio",
+        "Identify the missing information in an unsupported voltage-to-power conversion"
+      ],
+      "practice": [
+        "mth-power-level:amplitude-condition"
+      ],
+      "independentCheck": "mth-power-level:mixed",
+      "retrieval": "Derive a twenty-log amplitude expression from its stated squared power-ratio relation and identify when the required premise is missing."
+    },
+    {
+      "skill": "Audit the model and the reported result",
+      "instruction": [
+        "Audit the model and the reported result"
+      ],
+      "examples": [
+        "Reject zero and negative logarithm arguments",
+        "Check units, original substitution and a finite display near an asymptote",
+        "Explain why an exact fit alone cannot prove continued physical behavior"
+      ],
+      "practice": [
+        "mth-power-level:invalid-input",
+        "mth-model-threshold:unattainable-baseline",
+        "mth-model-fit:extra-observation"
+      ],
+      "independentCheck": "mth-power-level:mixed",
+      "retrieval": "Audit a threshold or referenced level for invalid premises and rounding errors, then explain why a finite fit does not prove a continuing physical law."
+    }
+  ]
+}
