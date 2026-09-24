@@ -40,10 +40,20 @@ export function rootCompletionQuestion(familyId:string,variant:string,seed:strin
       answerSummary:(realOnly?"Real":"Complex")+" roots with multiplicity: "+expected.join(", ")+"; total complex count "+roots.length+"; distinct real intercepts "+realRoots.length+"."});
   }
   if(familyId!=="mth-root-list-audit")throw new Error("Unknown root-audit family");
-  const variants=["graph-real-only","missing-conjugate","missing-repeat","wrong-root","complete","no-rational","complex-coefficients"];
+  const variants=["graph-real-only","missing-conjugate","missing-repeat","wrong-root","complete","no-rational","complex-coefficients","model-domain"];
   if(variant==="mixed")variant=variants[rng.integer(0,4)];
   if(!variants.includes(variant))throw new Error("Unknown root-list audit");
   const h=rng.integer(-2,2),d=[2,3,5][rng.integer(0,2)],r=h+3,m=variant==="missing-repeat"?2:1,parameters={h,d,r,m,mode:variants.indexOf(variant)};
+  if(variant==="model-domain"){
+    const positive=rng.integer(1,3),negative=-rng.integer(1,3),p=parsePolynomial("(x-"+positive+")*(x-("+negative+"))*(x^2+"+d+")");
+    const roots=[String(positive),String(negative),exact("sqrt(-"+d+")"),exact("-sqrt(-"+d+")")];
+    return questionSchema.parse({...base,category:"application",parameters:{...parameters,positive,negative},
+      prompt:"A normalized error model is $E(t)="+formatPolynomial(p,true).replaceAll("x","t")+"$, used only for real times 0 through 4. First list all complex roots of the unrestricted polynomial equation E(t) = 0. Then give the zero-error times inside the model's stated domain. Keep the algebraic solution and the domain filter separate.",
+      fields:[rootList(roots),{id:"times",kind:"roots",label:"Zero-error times in the model domain",numberSystem:"real",expected:[String(positive)],help:"List only real times between 0 and 4, including endpoints if they are roots."}],
+      hints:["The polynomial factors as (t - "+positive+")(t - ("+negative+"))(t squared + "+d+").","The full complex solution includes the negative real root and the nonreal conjugate pair.","For model times, keep only real roots in the closed interval from 0 to 4."],
+      explanation:["All algebraic roots are "+roots.join(", ")+". Their count matches degree four.","Only t = "+positive+" is both real and inside the model interval.","The negative root remains mathematically valid, but it is outside this model's stated time domain. Nonreal roots are not real times."],
+      answerSummary:"All roots: "+roots.join(", ")+"; zero-error time in the model domain: "+positive+"."});
+  }
   if(variant==="no-rational"){
     const p=parsePolynomial("(x-("+h+"))^2-"+d);
     return questionSchema.parse({...base,category:"conceptual",parameters,

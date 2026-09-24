@@ -9,7 +9,7 @@ import type { Question } from "../lib/learning/contracts";
 type Complex={real:number;imaginary:number};
 const multiply=(a:Complex,b:Complex):Complex=>({real:a.real*b.real-a.imaginary*b.imaginary,imaginary:a.real*b.imaginary+a.imaginary*b.real});
 const evaluate=(coefficients:number[],x:Complex)=>coefficients.reduceRight((sum,c)=>{const product=multiply(sum,x);return {real:product.real+c,imaginary:product.imaginary};},{real:0,imaginary:0});
-const key=(q:Question,id:string)=>{const f=q.fields.find(field=>field.id===id)!;if(f.kind==="root-list")return f.expected.join(",");if(f.kind==="choice")return f.correct;if(f.kind==="rational"||f.kind==="exact")return f.expected;throw new Error("Unexpected field");};
+const key=(q:Question,id:string)=>{const f=q.fields.find(field=>field.id===id)!;if(f.kind==="root-list"||f.kind==="roots")return f.expected.join(",");if(f.kind==="choice")return f.correct;if(f.kind==="rational"||f.kind==="exact")return f.expected;throw new Error("Unexpected field");};
 const answers=(q:Question)=>Object.fromEntries(q.fields.map(field=>[field.id,key(q,field.id)]));
 function verify(q:Question){
   expect(gradeQuestion(q,answers(q)).correct).toBe(true);expect(gradeQuestion(q,{}).correct).toBe(false);
@@ -73,6 +73,20 @@ it("requires real coefficients before imposing a conjugate root",()=>{
     expect(key(q,"required")).toBe("no");
     expect(approximateExact(parseExact(key(q,"evaluation")))).toEqual({real:0,imaginary:-2*k});
     expect(gradeQuestion(q,{...answers(q),evaluation:"0"}).correct).toBe(false);
+  }
+});
+it("preserves the full algebraic solution before filtering a model's real time domain",()=>{
+  for(let seed=0;seed<50;seed++){
+    const q=rootCompletionQuestion("mth-root-list-audit","model-domain",String(seed),"q"),{positive,negative,d}=q.parameters;verify(q);
+    const roots=q.fields[0];if(roots.kind!=="root-list")throw new Error("Missing complete list");
+    expect(roots.expected).toHaveLength(4);expect(key(q,"times")).toBe(String(positive));
+    for(const source of roots.expected){
+      const z=approximateExact(parseExact(source)),left={real:z.real-positive,imaginary:z.imaginary},right={real:z.real-negative,imaginary:z.imaginary},square=multiply(z,z);
+      const result=multiply(multiply(left,right),{real:square.real+d,imaginary:square.imaginary});
+      expect(Math.hypot(result.real,result.imaginary)).toBeCloseTo(0,9);
+    }
+    expect(gradeQuestion(q,{...answers(q),times:positive+","+negative}).correct).toBe(false);
+    expect(gradeQuestion(q,{...answers(q),roots:String(positive)}).correct).toBe(false);
   }
 });
 it("rejects unavailable completion families and variants",()=>{
