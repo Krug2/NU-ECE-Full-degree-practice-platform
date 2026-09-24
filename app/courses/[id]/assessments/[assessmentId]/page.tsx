@@ -18,7 +18,7 @@ export default async function AssessmentPage({params}:{params:Params}){
   if(!definition)notFound();
   return <><Link className="back-link" href="/courses/phs-231#assessments">Back to PHS 231 assessments</Link>
     <PageHeading eyebrow={"PHS 231 · "+definition.assessment.kind} title={definition.assessment.title}>{definition.description}</PageHeading>
-    <p className="notice">{definition.estimatedMinutes} minutes as an unpiloted planning estimate; untimed, with saved breaks. This course is being completed and audited. Assessment targets are proposed self-study defaults.</p>
+    <p className="notice">{definition.estimatedMinutes} minutes as an unpiloted planning estimate; untimed, with saved breaks. Assessment targets are proposed self-study defaults. They are not an official NU grading policy or a calibrated measure of mastery.</p>
     <section className="panel section-space" aria-labelledby="assessment-conditions"><h2 id="assessment-conditions">Before you begin</h2><ol>{definition.instructions.map(item=><li key={item}><p>{item}</p></li>)}</ol>
       <details><summary>Objectives and targets for this form</summary><ul>{definition.assessment.objectives.map(item=><li key={item.courseId+"/"+item.lessonId}><Link href={`/courses/${item.courseId}/lessons/${item.lessonId}`}>{item.title}</Link>: {item.minimumCorrect} of {item.questionIndices.length} fully correct, including every critical check.</li>)}</ul></details>
     </section>
