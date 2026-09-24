@@ -1,0 +1,475 @@
+{
+  "id": "m04-l01",
+  "courseId": "phs-231",
+  "moduleId": "m04",
+  "version": 1,
+  "title": "Uniform and nonuniform circular motion",
+  "objective": "Separate radial and tangential acceleration and use actual forces to sustain a circular path with constant or changing speed.",
+  "why": "A motor shaft, a satellite, and a point on a rotating platform can change velocity without changing speed. Circular motion connects vector differentiation to force inventories. You will separate changes in direction from changes in speed, identify which interactions supply the required acceleration, and test whether the proposed motion is physically possible.",
+  "estimatedMinutes": 115,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Vector components, dot products, and magnitudes"
+    },
+    {
+      "lessonId": "m02-l02",
+      "label": "Velocity and acceleration as vector derivatives"
+    },
+    {
+      "lessonId": "m03-l01",
+      "label": "Newton's laws and unilateral contact"
+    },
+    {
+      "lessonId": "m03-l02",
+      "label": "Static friction and feasibility"
+    },
+    {
+      "courseId": "mth-215",
+      "lessonId": "b06",
+      "label": "Angles and trigonometric preparation"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. This lesson derives the specific sine, cosine, and chain-rule relationships used below; the free calculus resource offers further preparation."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Use radians and distinguish angular variables from speed",
+      "paragraphs": [
+        "Consider a point constrained to a fixed circle of radius r>0 centered at the origin. Choose +x to the right and +y upward. The angle theta increases counterclockwise from +x. A radian measures angle as circular arc length divided by radius, so one full turn is 2π radians or 360 degrees. Convert degrees by multiplying by π/180 before using derivative formulas.",
+        "For signed angular displacement Δθ in radians, the signed arc coordinate change is rΔθ. Its absolute value is the arc distance only when motion does not reverse during that interval. The straight chord between endpoints is a different length. A full revolution has a nonzero traveled distance even though both Cartesian displacement and chord length are zero.",
+        "Signed angular velocity is ω=dθ/dt in rad/s, and angular acceleration is α=dω/dt in rad/s². For this fixed radius, nonnegative speed is v=r|ω|. A positive ω means counterclockwise velocity; a negative ω means clockwise velocity. The radian is dimensionless in SI, but retaining rad in the unit label helps distinguish angular variables.",
+        "For uniform nonzero rotation, the positive period is T=2π/|ω|=2πr/v, and frequency is f=1/T in cycles per second. These are full-revolution relationships for constant angular speed. At zero speed there is no finite constant-speed period. During nonuniform rotation, a single instantaneous value of 2π/|ω| need not equal the actual time to complete a revolution."
+      ]
+    },
+    {
+      "heading": "Differentiate the rotating directions as well as their coefficients",
+      "paragraphs": [
+        "Write the outward radial unit vector as e_r=(cos θ,sin θ), and the counterclockwise tangent as e_θ=(-sin θ,cos θ). They have length one and are perpendicular. Their directions change with θ even though the coordinate axes remain fixed. Position is the vector r e_r, with scalar radius r constant.",
+        "In radian measure, d(sin θ)/dθ=cos θ and d(cos θ)/dθ=-sin θ. The chain rule then gives de_r/dt=ω e_θ and de_θ/dt=-ω e_r. The second identity shows why a tangent direction itself turns inward during motion.",
+        "Differentiate position to obtain the velocity vector rω e_θ. Differentiate that product again: its coefficient changes at rate rα, and its direction changes at rate -ω e_r. Therefore $\\mathbf a=-r\\omega^2\\mathbf e_r+r\\alpha\\mathbf e_\\theta$. The first term is inward; the second is signed along the counterclockwise tangent.",
+        "These formulas assume a fixed radius and fixed center in the chosen inertial frame. A point moving inward along a rotating arm has a changing radius and additional derivative terms. Do not apply this fixed-circle formula to a spiral merely because an angular coordinate can be assigned."
+      ]
+    },
+    {
+      "heading": "Separate turning acceleration from changing speed",
+      "paragraphs": [
+        "Call the nonnegative inward radial magnitude a_r=v²/r=rω². It describes how rapidly velocity turns. Constant speed does not imply zero acceleration: for uniform circular motion, the tangential component vanishes while the inward radial component remains.",
+        "Call the signed counterclockwise tangential component a_θ=rα. Because radial and tangential directions are perpendicular, the total acceleration magnitude is $|\\mathbf a|=\\sqrt{(v^2/r)^2+a_\\theta^2}$. Adding the two magnitudes arithmetically would describe parallel components, which these are not.",
+        "At a nonzero speed, the rate of change of speed is the acceleration component along the actual velocity. It equals a_θ for counterclockwise motion and -a_θ for clockwise motion. Thus positive α speeds up positive ω but slows negative ω. A sign convention tied to the counterclockwise tangent must not silently become a convention tied to the direction of travel.",
+        "At an instantaneous reversal, ω=0 makes radial acceleration zero, but tangential acceleration can remain nonzero. Speed r|ω| may have a corner there, so a two-sided derivative of speed need not exist. The velocity vector and its acceleration can still be differentiable. Analyze the one-sided motion rather than dividing by zero speed."
+      ]
+    },
+    {
+      "heading": "Check a prediction with Cartesian components and scaling",
+      "paragraphs": [
+        "At the rightmost point, e_r=(1,0) and e_θ=(0,1). The components are v_x=0, v_y=rω, a_x=-rω², and a_y=rα. At the top, e_r=(0,1) and e_θ=(-1,0), so v_x=-rω, v_y=0, a_x=-rα, and a_y=-rω². Rotating the basis changes the component signs without changing the radial magnitude.",
+        "The dot product of position with velocity is zero for a fixed circle. The dot product of position with acceleration is -v². These provide independent geometric checks: velocity must be tangent, and the acceleration must have the required inward projection even when it also has a tangential component.",
+        "State what is held fixed before using a scaling rule. At fixed linear speed, increasing radius by a factor k reduces v²/r by that factor. At fixed angular speed, increasing radius by k increases rω² by k because linear speed increases too. Doubling linear speed at fixed radius multiplies radial acceleration by four.",
+        "The units also constrain a formula: v²/r has units (m²/s²)/m=m/s², while v/r has units 1/s and is an angular-speed magnitude. A dimensionally correct expression still needs a direction and a physical model, but a wrong unit rules it out immediately."
+      ]
+    },
+    {
+      "heading": "Centripetal describes a resultant, not an extra interaction",
+      "paragraphs": [
+        "Centripetal means directed toward the center. In an inertial frame, sum the inward components of actual forces to obtain $\\sum F_{\\mathrm{in}}=mv^2/r$. This is Newton's second law resolved along the radial direction. It does not authorize adding another force called centripetal to the inventory.",
+        "For a body on a frictionless horizontal surface connected to the center by a horizontal rope, the interactions are Earth on body, surface on body, and rope on body. Weight and normal balance vertically. Rope tension supplies the inward horizontal resultant. An extra inward force would count that effect twice.",
+        "A rotating observer may introduce apparent forces when rewriting the equations in a rotating coordinate frame. Our force inventories use the inertial laboratory frame. An outward sensation or a body's tendency to continue tangent does not add a new external interaction caused by its velocity.",
+        "For nonuniform circular motion, resolve both equations: the inward sum is mv²/r and the counterclockwise tangential sum is m a_θ. Gravity, friction, tension, a normal force, or an actuator can contribute differently to these projections. Draw and label the agents before deciding which component equation is needed."
+      ]
+    },
+    {
+      "heading": "Test friction capacity on a level circular path",
+      "paragraphs": [
+        "For an ideal point object co-rotating with a level turntable, static friction can supply inward acceleration while the object remains at rest relative to the surface. Static describes the absence of relative sliding, not the absence of acceleration in the laboratory. With no other vertical force, N=mg.",
+        "The required radial friction is mv²/r, while the maximum available static magnitude is μ_s N. Sticking on the prescribed circle requires $mv^2/r\\leq\\mu_smg$, or μ_s≥v²/(rg) when g>0. Mass cancels. At equality the ideal static model permits the threshold state.",
+        "If the required friction is below capacity, the actual static force is the required value, not automatically μ_sN. If the requirement exceeds capacity, the no-slip circle is infeasible. Determining the later slipping path requires a kinetic-friction direction and a new motion calculation; replacing the static coefficient while retaining the same prescribed circle is not enough.",
+        "These comparisons assume a point object, a level surface, no other horizontal force, and a specified friction model. They omit tipping, changing coefficients, compliance, and many real machine or vehicle effects. The calculation establishes feasibility within the model, not an operating limit for equipment."
+      ]
+    },
+    {
+      "heading": "Resolve the normal on a frictionless bank",
+      "paragraphs": [
+        "For a horizontal circular path on a frictionless bank that rises away from the center, let the bank angle θ satisfy 0<θ<π/2. The normal is tilted inward from vertical. Its vertical component N cos θ balances weight, while its inward horizontal component N sin θ supplies the circular acceleration.",
+        "The two equations are N cos θ=mg and N sin θ=mv²/r. Dividing eliminates both N and m and gives $v^2=rg\\tan\\theta$. The positive design speed is $v=\\sqrt{rg\\tan\\theta}$. The normal magnitude is mg/cos θ, which exceeds mg for a nonzero bank angle.",
+        "A different speed at the same radius and bank angle would require friction or a different path under these assumptions. The vertical acceleration is zero, but the total acceleration is horizontal and nonzero. In the zero-angle limit, a frictionless horizontal surface supplies no horizontal force and cannot sustain a nonzero-speed circle by itself."
+      ]
+    },
+    {
+      "heading": "Change the inward axis at the top and bottom of a loop",
+      "paragraphs": [
+        "Now consider a point body on the inside surface of a vertical circular track. The track can push the body toward the center; it cannot pull the body outward. At the top, inward is downward, so gravity and a positive normal have the same inward sign. The radial equation is N+mg=mv²/r.",
+        "Solving gives N_required=m(v²/r-g). A nonnegative value is locally feasible. At zero normal, the minimum local top speed is sqrt(gr), for g>0. Gravity still produces nonzero inward acceleration there; zero support is not zero net force. A negative required normal would be an impossible outward pull by this track.",
+        "When N_required<0, the actual normal is zero and the body leaves the track. At the exact top, with gravity as the only remaining force, its downward acceleration is g. It is incorrect to report both zero normal and a continued downward acceleration v²/r smaller than g: those statements violate the force equation.",
+        "At the bottom, inward is upward, opposite gravity. The equation becomes N-mg=mv²/r, giving N=mg+mv²/r. At equal top and bottom speeds, the bottom normal exceeds the top requirement by 2mg. Equal speeds are a comparison of specified states; a body moving passively around a real vertical loop will generally change speed."
+      ]
+    },
+    {
+      "heading": "Keep local feasibility separate from a complete trajectory",
+      "paragraphs": [
+        "The top condition v²≥gr only tests a specified instant. It does not determine the release height needed to arrive there, energy lost along the path, or whether another section loses contact first. Those questions require a full motion or energy analysis. A rope that can only pull and a track that can only push must each be checked with its own interaction directions.",
+        "The investigation samples initial states on an ideal inner vertical track. It allows an independent actuator along the counterclockwise tangent. To prescribe a_θ at angle θ, that actuator supplies F_θ=m a_θ+mg cos θ because gravity's tangent component is -mg cos θ. This force is explicit; changing speed is not silently imposed without a cause.",
+        "The inward normal requirement at any displayed angle is N_required=m(v²/r-g sin θ). If it is negative, the investigation sets actual N=0 and displays the acceleration from gravity and the independently applied actuator. It also shows the requested circular acceleration, labeled infeasible. It does not integrate a later path or model impacts.",
+        "Predict radial magnitude, total magnitude, required normal, and contact state before checking. Compare top and bottom at equal speed; reverse velocity while retaining the same signed tangential acceleration; and compare radius changes at fixed linear speed. Use the keyboard controls and component tables to reproduce the diagram's information. Save a parameter table, one force balance, and an explanation of a failed-contact case in lesson notes; exploratory controls reset on reload."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Connect arc length, angular speed, and period",
+      "prompt": "A point moves uniformly counterclockwise at 6 m/s on a circle of radius 3 m. Find the angle and arc distance for a 120-degree turn, angular-speed magnitude, and period.",
+      "steps": [
+        {
+          "math": "120^\\circ=120\\frac{\\pi}{180}=\\frac{2\\pi}{3}\\,\\mathrm{rad}",
+          "reason": "Convert to radians before using the arc relationship."
+        },
+        {
+          "math": "s=r\\Delta\\theta=3\\left(\\frac{2\\pi}{3}\\right)=2\\pi\\,\\mathrm m",
+          "reason": "This is distance along the circle, not the chord."
+        },
+        {
+          "math": "|\\omega|=6/3=2\\,\\mathrm{rad/s},\\qquad T=\\frac{2\\pi(3)}6=\\pi\\,\\mathrm s",
+          "reason": "Constant nonzero speed allows circumference divided by speed."
+        }
+      ],
+      "conclusion": "The turn covers 2π/3 rad and an arc of 2π m. Angular speed is 2 rad/s, and one full revolution takes π s. The radial acceleration is 6²/3=12 m/s² despite the constant speed."
+    },
+    {
+      "title": "Differentiate a changing angular position",
+      "prompt": "At an instant on a circle of radius 2 m, θ=0, ω=3 rad/s, and α=1 rad/s². Find velocity, acceleration, and total acceleration magnitude. Then reverse ω while retaining α.",
+      "steps": [
+        {
+          "math": "\\mathbf e_r=(1,0),\\qquad\\mathbf e_\\theta=(0,1)",
+          "reason": "At the rightmost point, outward is right and the positive tangent is up."
+        },
+        {
+          "math": "\\mathbf v=(0,6)\\,\\mathrm{m/s},\\qquad\\mathbf a=(-18,2)\\,\\mathrm{m/s^2}",
+          "reason": "The radial term is -rω² e_r; the tangential term is rα e_θ."
+        },
+        {
+          "math": "|\\mathbf a|=\\sqrt{18^2+2^2}=\\sqrt{328}=2\\sqrt{82}\\,\\mathrm{m/s^2}",
+          "reason": "Use the norm of perpendicular components, not 18+2."
+        },
+        {
+          "math": "\\omega=-3:\\quad\\mathbf v=(0,-6),\\quad\\mathbf a=(-18,2),\\quad\\frac{d|\\mathbf v|}{dt}=-2\\,\\mathrm{m/s^2}",
+          "reason": "Reversing angular velocity changes velocity direction but not the squared radial term. The upward tangent acceleration now opposes motion."
+        }
+      ],
+      "conclusion": "The acceleration vector is unchanged by reversing ω alone. Counterclockwise motion gains speed at 2 m/s²; clockwise motion loses speed at 2 m/s²."
+    },
+    {
+      "title": "Compare two radius changes and an instantaneous stop",
+      "prompt": "A point has r=2 m and speed 6 m/s. Compare radial acceleration if radius doubles at fixed speed, or doubles at fixed angular speed. Separately consider an instant at rest with aθ=3 m/s².",
+      "steps": [
+        {
+          "math": "a_{r,0}=6^2/2=18\\,\\mathrm{m/s^2},\\qquad|\\omega_0|=3\\,\\mathrm{rad/s}",
+          "reason": "Find the baseline values before changing a parameter."
+        },
+        {
+          "math": "r=4,\\ v=6:\\quad a_r=36/4=9\\,\\mathrm{m/s^2}",
+          "reason": "Holding linear speed fixed halves radial acceleration."
+        },
+        {
+          "math": "r=4,\\ |\\omega|=3:\\quad a_r=4(3^2)=36\\,\\mathrm{m/s^2}",
+          "reason": "Holding angular speed fixed doubles radial acceleration; linear speed is now 12 m/s."
+        },
+        {
+          "math": "v=0:\\quad a_r=0,\\qquad|\\mathbf a|=|a_\\theta|=3\\,\\mathrm{m/s^2}",
+          "reason": "A zero instantaneous speed removes the radial term, not the independently specified tangential acceleration."
+        }
+      ],
+      "conclusion": "The two radius experiments give opposite trends because they control different variables. At the separate stop, acceleration is tangential; a two-sided speed derivative and a finite uniform-motion period should not be assumed."
+    },
+    {
+      "title": "Compare required friction with available friction",
+      "prompt": "An ideal 2 kg point object co-rotates on a level turntable at 10 m/s on a 20 m radius. Let g=10 m/s² and μs=0.6. Find required static friction and assess sticking.",
+      "steps": [
+        {
+          "math": "N=mg=20\\,\\mathrm N,\\qquad f_{s,\\max}=0.6(20)=12\\,\\mathrm N",
+          "reason": "No other vertical force is present, so vertical equilibrium determines the normal."
+        },
+        {
+          "math": "f_{s,\\mathrm{required}}=\\frac{mv^2}{r}=\\frac{2(100)}{20}=10\\,\\mathrm N",
+          "reason": "The radial requirement determines the actual friction needed for the proposed motion."
+        },
+        {
+          "math": "\\mu_{s,\\min}=\\frac{v^2}{rg}=\\frac{100}{200}=\\frac12<0.6",
+          "reason": "The required 10 N lies within the 12 N static capacity."
+        }
+      ],
+      "conclusion": "Sticking is feasible in this model, with actual inward friction 10 N. Using 12 N as the actual force would predict the wrong circular acceleration. If μs were 0.4, the proposed no-slip circle would fail."
+    },
+    {
+      "title": "Resolve a banked surface normal",
+      "prompt": "A 2 kg point body follows a horizontal circular path of radius 10 m on a frictionless bank rising outward at 45 degrees. Use g=10 m/s². Find the design speed and normal magnitude.",
+      "steps": [
+        {
+          "math": "N\\cos45^\\circ=20\\,\\mathrm N,\\qquad N\\sin45^\\circ=\\frac{2v^2}{10}",
+          "reason": "Resolve the same normal force vertically and toward the horizontal circle's center."
+        },
+        {
+          "math": "N=\\frac{20}{\\sqrt2/2}=20\\sqrt2\\,\\mathrm N",
+          "reason": "Its vertical component, rather than its full magnitude, balances weight."
+        },
+        {
+          "math": "v^2=rg\\tan45^\\circ=100\\,\\mathrm{m^2/s^2}\\Rightarrow v=10\\,\\mathrm{m/s}",
+          "reason": "Divide the force equations and choose the positive speed."
+        }
+      ],
+      "conclusion": "The normal is 20sqrt(2) N and the design speed is 10 m/s. Gravity and the normal are the complete inventory; an additional centripetal force would double-count their inward resultant."
+    },
+    {
+      "title": "Check the top before accepting a negative normal force",
+      "prompt": "A 1 kg point body is at the top of the inside of a vertical loop of radius 2 m. Gravity and the track are the only forces, and g=10 m/s². Compare speeds 6 m/s, sqrt(20) m/s, and 4 m/s.",
+      "steps": [
+        {
+          "math": "N+mg=mv^2/r\\Rightarrow N_{\\mathrm{required}}=v^2/2-10",
+          "reason": "Inward is downward at the top, so weight contributes positively."
+        },
+        {
+          "math": "v=6:\\quad N=36/2-10=8\\,\\mathrm N",
+          "reason": "A positive inward push is available from the inner track."
+        },
+        {
+          "math": "v=\\sqrt{20}:\\quad N=20/2-10=0",
+          "reason": "This is the local equality threshold. Gravity alone supplies inward acceleration g."
+        },
+        {
+          "math": "v=4:\\quad N_{\\mathrm{required}}=16/2-10=-2\\,\\mathrm N",
+          "reason": "The negative result would require an outward pull, which this track cannot supply."
+        },
+        {
+          "math": "N_{\\mathrm{actual}}=0\\Rightarrow a_{\\mathrm{down}}=mg/m=10\\,\\mathrm{m/s^2}",
+          "reason": "After rejecting the circular constraint, compute the actual instantaneous acceleration from the remaining force."
+        }
+      ],
+      "conclusion": "The 6 m/s state is feasible, sqrt(20) m/s is the local zero-normal threshold, and 4 m/s loses contact. In the last case the requested circular acceleration 8 m/s² is not the actual acceleration 10 m/s²."
+    },
+    {
+      "title": "Reverse the inward axis at the bottom",
+      "prompt": "Compare the preceding 1 kg body at the bottom of the same 2 m loop at 6 m/s, with g=10 m/s². What is the normal force?",
+      "steps": [
+        {
+          "math": "N-mg=mv^2/r",
+          "reason": "At the bottom, inward is upward and weight is outward relative to the center."
+        },
+        {
+          "math": "N=10+36/2=28\\,\\mathrm N",
+          "reason": "Support must offset weight and supply the net upward force."
+        },
+        {
+          "math": "N-mg=28-10=18\\,\\mathrm N=m(18\\,\\mathrm{m/s^2})",
+          "reason": "Subtract weight as an independent check of the resultant."
+        },
+        {
+          "math": "N_{\\mathrm{bottom}}-N_{\\mathrm{top}}=28-8=20\\,\\mathrm N=2mg",
+          "reason": "This comparison deliberately holds speed fixed at the two locations."
+        }
+      ],
+      "conclusion": "Normal force is 28 N at the bottom, compared with 8 N at the top at the same speed. These are specified local states; an unpowered body would generally change speed between them."
+    }
+  ],
+  "guided": {
+    "title": "Reject an impossible circular-contact prediction",
+    "setup": "A 2 kg point body is at the top of the inside of a vertical circular track, radius 5 m, at speed 5 m/s. The track can only push inward. Gravity and the track are the only forces, and g=10 m/s².",
+    "before": [
+      "Choose downward as inward at the top.",
+      "First compute the circular acceleration requirement v²/r, then solve N+mg=mv²/r for the required normal.",
+      "If that requirement is negative, set actual N=0 and recompute the actual acceleration from gravity alone."
+    ],
+    "question": {
+      "id": "phs231-guided-circular",
+      "familyId": "phs231-circular-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m04-l01",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find the requested inward radial acceleration, required normal, actual normal, and actual downward acceleration. Interpret the contact result.",
+      "fields": [
+        {
+          "id": "radial",
+          "kind": "rational",
+          "label": "Requested inward radial acceleration",
+          "expected": "5",
+          "unit": "m/s²"
+        },
+        {
+          "id": "required",
+          "kind": "rational",
+          "label": "Required inward normal",
+          "expected": "-10",
+          "unit": "N"
+        },
+        {
+          "id": "actual",
+          "kind": "rational",
+          "label": "Actual normal",
+          "expected": "0",
+          "unit": "N"
+        },
+        {
+          "id": "acceleration",
+          "kind": "rational",
+          "label": "Actual downward acceleration",
+          "expected": "10",
+          "unit": "m/s²"
+        },
+        {
+          "id": "contact",
+          "kind": "choice",
+          "label": "Contact interpretation",
+          "correct": "lost",
+          "options": [
+            {
+              "id": "lost",
+              "label": "The body loses contact; the requested circle is infeasible",
+              "feedback": "A -10 N normal would require an outward pull. With actual N=0, gravity causes 10 m/s² downward acceleration, not the requested 5 m/s²."
+            },
+            {
+              "id": "negative",
+              "label": "The track supplies a negative normal and keeps the body on the circle",
+              "feedback": "This track can only push inward. A negative required force invalidates the assumed constraint; it is not an available outward pull."
+            },
+            {
+              "id": "same",
+              "label": "Set normal to zero but retain the circular acceleration of 5 m/s²",
+              "feedback": "With only the 20 N weight acting on 2 kg, Newton's law requires 10 m/s². Dropping the normal while keeping the infeasible acceleration violates force balance."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "mass": 2,
+        "radius": 5,
+        "speed": 5,
+        "g": 10
+      },
+      "hints": [
+        "The requested radial magnitude is 25/5=5 m/s².",
+        "The circular force equation would require N=(2)(5)-(2)(10)=-10 N.",
+        "The track cannot pull outward. Actual N=0; actual downward acceleration is 20/2=10 m/s², so contact is lost."
+      ],
+      "explanation": [
+        "The requested circle requires 5 m/s² inward, hence 10 N net inward force.",
+        "Gravity already supplies 20 N inward. Keeping that circle would need a -10 N normal, an outward pull unavailable from the track.",
+        "Actual normal is zero and the instantaneous downward acceleration is 10 m/s². The body leaves the track; the prescribed circle does not persist."
+      ],
+      "answerSummary": "Requested radial acceleration 5 m/s²; required normal -10 N; actual normal 0 N; actual downward acceleration 10 m/s²; contact lost."
+    },
+    "after": "A negative force requirement can diagnose a failed constraint. After rejecting the constraint, return to the actual forces before describing the motion."
+  },
+  "interaction": {
+    "kind": "phs231-circular",
+    "prompt": "Predict the inward radial acceleration, requested total magnitude, required inward normal, and contact state. Compare rotation directions and quarter-turn locations, then identify where the specified circle becomes infeasible.",
+    "initial": {
+      "radius": 2,
+      "speed": 6,
+      "tangentialAcceleration": 2,
+      "angleDegrees": 0,
+      "mass": 1,
+      "gravity": 10,
+      "clockwise": false
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "arc"
+    },
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "period"
+    },
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "cartesian"
+    },
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "nonuniform"
+    },
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "scaling"
+    },
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "zero-speed"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "flat"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "banked"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "top"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "bottom"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "threshold"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "inventory"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "cartesian"
+    },
+    {
+      "familyId": "phs231-circular-components",
+      "variant": "nonuniform"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "top"
+    },
+    {
+      "familyId": "phs231-circular-forces",
+      "variant": "banked"
+    }
+  ],
+  "summary": [
+    "For a fixed circle, use radians in derivatives: velocity is rω eθ and acceleration is -rω² er+rα eθ.",
+    "The inward radial magnitude v²/r changes velocity direction. The signed tangential component changes speed according to its projection along the actual motion.",
+    "For clockwise motion, positive counterclockwise tangential acceleration decreases speed. At a reversal, a two-sided speed derivative may not exist.",
+    "Combine perpendicular acceleration components using their squared norm. Constant speed can coexist with nonzero acceleration.",
+    "Name actual interactions before summing inward forces. Centripetal describes the resultant and is not an extra force.",
+    "Compare required friction with static capacity, and resolve a banked normal into vertical and inward components.",
+    "For the inner vertical track, the top equation is N+mg=mv²/r and the bottom equation is N-mg=mv²/r.",
+    "A negative required normal invalidates the contact constraint. Compute actual acceleration from the available forces after contact is lost.",
+    "A local top-speed threshold does not prove a complete loop is reachable. A complete trajectory or energy analysis needs additional assumptions."
+  ],
+  "retrieval": "At the rightmost point of a 2 m circle, let ω=-3 rad/s and α=1 rad/s². Find velocity, acceleration, and whether speed increases. Check after working: v=(0,-6) m/s, a=(-18,2) m/s², total magnitude 2sqrt(82) m/s², and speed decreases at 2 m/s². Separately, a 1 kg body at the top of an inner 2 m loop at 4 m/s would require N=-2 N when g=10 m/s². That force is unavailable: actual N=0, downward acceleration is 10 m/s², and contact is lost.",
+  "readings": [
+    {
+      "title": "OpenStax: Uniform and Nonuniform Circular Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-4-uniform-and-nonuniform-circular-motion",
+      "purpose": "Further explanation of changing velocity direction, radial acceleration, and tangential acceleration."
+    },
+    {
+      "title": "OpenStax: Centripetal Force",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-3-centripetal-force",
+      "purpose": "Additional force-inventory practice for horizontal circles and banked curves."
+    },
+    {
+      "title": "MIT OpenCourseWare: Single Variable Calculus",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/",
+      "purpose": "Free practice with radian trigonometry, derivatives, and the chain rule."
+    }
+  ]
+}

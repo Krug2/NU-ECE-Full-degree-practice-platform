@@ -13,6 +13,7 @@ import projectileData from "../content/lessons/phs-231/m02-l03.json";
 import forceData from "../content/lessons/phs-231/m03-l01.json";
 import frictionData from "../content/lessons/phs-231/m03-l02.json";
 import dragData from "../content/lessons/phs-231/m03-l03.json";
+import circularData from "../content/lessons/phs-231/m04-l01.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
@@ -21,7 +22,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -37,6 +38,15 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks guided contact loss against the actual force inventory",()=>{
+  const q=lessonSchema.parse(circularData).guided.question;
+  const response={radial:"25/5",required:"2*5-20",actual:"0",acceleration:"20/2",contact:"lost"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(gradeQuestion(q,{...response,actual:"-10"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,acceleration:"5"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,contact:"same"}).correct).toBe(false);
 });
 
 it("checks the guided drag transient using a convergent exponential series and the original force equation",()=>{
