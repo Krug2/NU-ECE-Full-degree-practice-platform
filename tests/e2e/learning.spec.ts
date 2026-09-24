@@ -123,3 +123,30 @@ test("lesson and practice are accessible on desktop and mobile and missing lesso
   await page.screenshot({path:testInfo.outputPath("lesson-mobile.png")});
   const response=await page.goto("/courses/mth-215/lessons/not-a-lesson");expect(response?.status()).toBe(404);
 });
+test("rapid answer entry preserves every character and resumes after the saved message",async({page})=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  const answer=page.locator("#practice").getByLabel("x",{exact:true});
+  await answer.pressSequentially("(123456789/3)",{delay:0});
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  await expect(page.getByText("This attempt changed in another tab.",{exact:true})).toHaveCount(0);
+  await page.reload();await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("(123456789/3)");
+});
+
+test("a conflicting draft exports as practice without changing the saved attempt",async({page,context},testInfo)=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  await page.locator("#practice").getByLabel("x",{exact:true}).fill("7/3");
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  const other=await context.newPage();await other.goto(route);
+  await other.locator("#practice").getByLabel("x",{exact:true}).fill("9");
+  await expect(page.getByText("This attempt changed in another tab.",{exact:true})).toBeVisible();
+  const download=page.waitForEvent("download");
+  await page.getByRole("button",{name:"Export draft",exact:true}).click();
+  const file=testInfo.outputPath("draft.json");await(await download).saveAs(file);
+  const exported=JSON.parse(await readFile(file,"utf8")),original=exported.learning.attempts[0],draft=exported.learning.attempts.at(-1);
+  expect(draft.id).not.toBe(original.id);expect(draft.mode).toBe("practice");
+  expect(draft.status).toBe("active");expect(draft.revision).toBe(0);expect(draft.questions).toEqual(original.questions);
+  const first=draft.questions[0];expect(draft.responses[first.id][first.fields[0].id]).toBe("7/3");
+  expect(original.responses[first.id][first.fields[0].id]).toBe("9");expect(exported.learning.evidence).toHaveLength(0);
+  await other.reload();await expect(other.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("9");
+  await other.close();
+});
