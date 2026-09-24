@@ -73,6 +73,11 @@ describe("PHS 231 collision model",()=>{
     }
     const equal=collisionOutcome({...base,massA:3,massB:3,velocityA:[4,0],velocityB:[-2,0],restitution:1});
     expect(equal.after.A.velocity).toEqual([-2,0]);expect(equal.after.B.velocity).toEqual([4,0]);
+    const stationary=collisionOutcome({...base,massA:3,massB:3,velocityA:[4,0],velocityB:[0,0],restitution:1});
+    expect(stationary.after.A.velocity).toEqual([0,0]);expect(stationary.after.B.velocity).toEqual([4,0]);
+    const heavy=collisionOutcome({...base,massA:.1,massB:20,velocityA:[4,0],velocityB:[0,0],restitution:1});
+    expect(heavy.after.A.velocity[0]).toBeGreaterThan(-4);expect(heavy.after.A.velocity[0]).toBeLessThan(-3.9);
+    expect(heavy.after.B.velocity[0]).toBeGreaterThan(0);expect(heavy.after.totalKinetic).toBeCloseTo(.8,12);
     const comoving=collisionOutcome({...base,velocityA:[2,-3],velocityB:[2,-3]});expect(comoving.status).toBe("no-impact");expect(comoving.before.relativeKinetic).toBe(0);
     for(const massA of [.1,20])for(const massB of [.1,20]){const r=collisionOutcome({...base,massA,massB});expect(r.energyResidual).toBeCloseTo(0,10);}
     for(const change of [{massA:0},{massB:-1},{massA:NaN},{massB:Infinity},{velocityA:[21,0]},{velocityB:[0,NaN]},{restitution:-.1},{restitution:1.01},{normal:"unknown"},{mode:"unknown"}])expect(collisionInputSchema.safeParse({...base,...change}).success).toBe(false);
