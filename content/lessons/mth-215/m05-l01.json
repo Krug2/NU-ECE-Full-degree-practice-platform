@@ -1,0 +1,1078 @@
+{
+  "id": "m05-l01",
+  "courseId": "mth-215",
+  "moduleId": "m05",
+  "version": 1,
+  "title": "Exponential functions and growth factors",
+  "objective": "Distinguish additive from multiplicative change and interpret an exponential model's initial value, base, and asymptote.",
+  "why": "Repeated proportional change appears in signal models, discrete updates, and continuous responses. This lesson develops the algebra needed to distinguish a multiplier from an amount added, interpret a baseline, and audit a prediction before trusting a graph or calculator display.",
+  "estimatedMinutes": 180,
+  "prerequisites": [
+    {
+      "label": "Powers, roots, and scientific notation",
+      "lessonId": "b02"
+    },
+    {
+      "label": "Transformations and graph features",
+      "lessonId": "m02-l02"
+    },
+    {
+      "label": "Rates of change and linear calibration",
+      "lessonId": "m02-l04"
+    },
+    {
+      "label": "Variation and rational models",
+      "lessonId": "m04-l03"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Exponents change the input's role",
+      "paragraphs": [
+        "In a power function such as $p(x)=x^4$, the input is the base and the exponent is fixed. In an exponential such as $g(x)=4^x$, the base is fixed and the input is in the exponent. They can agree at selected inputs without being the same function. Read the location of the variable before choosing a rule.",
+        "Start with $f(x)=a b^x$, where $a\\ne0$, $b>0$, and $b\\ne1$. The coefficient $a$ scales every output. The base $b$ is the output multiplier for an increase of one in the numerical input. For a time model, say what one input unit means: a factor per second is different from a factor per hour.",
+        "The defining relationship is $f(x+d)=f(x)b^d$. It follows by splitting $b^{x+d}=b^x b^d$. The multiplier depends on the input increment $d$, not on the starting input $x$. This is the reason equal input steps have equal output ratios. It also explains why changing the step changes the factor."
+      ]
+    },
+    {
+      "heading": "Recognize valid bases and constant cases",
+      "paragraphs": [
+        "A positive base allows $b^x$ to be a positive real number for every real input. Integer exponents count repeated factors, negative exponents use reciprocals, and rational exponents use positive roots. The real exponential extends those values continuously to irrational inputs. You do not need logarithms to evaluate the rational-input examples in this lesson.",
+        "A negative base can define some integer or rational powers, but not a real-valued exponential on all of $\\mathbb R$: $(-3)^{1/2}$ has no real value. A zero base fails at negative exponents. Base one gives $1^x=1$, so it produces a constant rather than the nonconstant exponential being studied. A zero outer coefficient also makes a constant. These constant functions are valid special cases to recognize, not evidence of nonconstant growth.",
+        "A geometric sequence can alternate signs with a negative ratio, but the standard real exponential $a b^x$ keeps the sign of $a$. Constant nonzero records have ratio one. All-zero records have undefined ratios because division by zero is not allowed. Identify these cases before applying a positive, nonunit ratio test."
+      ]
+    },
+    {
+      "heading": "Read equal-step tables",
+      "paragraphs": [
+        "First compute every input gap. With a common positive gap $d$, compare consecutive differences $y_{i+1}-y_i$ and, when denominators are nonzero, consecutive ratios $y_{i+1}/y_i$. A constant nonzero difference supports a nonconstant linear model. A constant positive ratio other than one supports a nonconstant unshifted exponential model. Use every record, not just the first pair.",
+        "If the gaps differ, unequal raw differences or ratios alone cannot reject either model. For a line, divide each difference by its input gap. For an exponential, account for the interval represented by each ratio. A factor $q$ over one second becomes $q^2$ over two seconds. We will use roots to convert factors between time intervals.",
+        "These tests describe consistency with an assumed exact model. They do not prove that a physical process obeys it forever. Measurement noise and rounded displays also need a stated tolerance; do not silently treat approximate readings as exact equality. The generated exact-table questions explicitly ask you to use exact records."
+      ]
+    },
+    {
+      "heading": "Recover the time origin and step factor",
+      "paragraphs": [
+        "Suppose a nonzero response is $A$ at time $x_0$, and it is multiplied by $q>0$, $q\\ne1$, every $d>0$ seconds. A model consistent with this rule is $f(x)=Aq^{(x-x_0)/d}$. The exponent counts elapsed intervals. At $x=x_0$ it is zero; after one interval it is one; before the reference time it is negative.",
+        "The first recorded response is not automatically the response at time zero. Evaluate $f(0)=Aq^{-x_0/d}$ instead of relabeling the first record. If a nonzero baseline $k$ is supplied, use the starting deviation $A=f(x_0)-k$ and the model $f(x)=k+Aq^{(x-x_0)/d}$.",
+        "Keep the exponent dimensionless: elapsed time and interval length must use compatible units. If $x$ is the numerical number of seconds, $d$ must also be expressed in seconds. A prediction between records uses a continuous extension of the assumed law. Whether that intermediate input is physically meaningful is a separate modeling decision."
+      ]
+    },
+    {
+      "heading": "Evaluate without losing exactness",
+      "paragraphs": [
+        "Substitute the input into the entire exponent, simplify that exponent, evaluate the power, apply the outer coefficient, and finally add the baseline. Parentheses matter: $3\\cdot2^x$ is not $6^x$, and $2^{x-1}$ is not $2^x-1$. Write a negative input in parentheses when substituting it.",
+        "For positive $b$, use $b^0=1$, $b^{-u}=1/b^u$, and $b^{p/q}=(\\sqrt[q]{b})^p$ with the positive root. Preserve exact fractions and radicals when an exact answer is requested. A finite decimal such as $0.25$ can be an exact input; it is not automatically a rounded measurement.",
+        "Some exact expressions need a numerical approximation for a requested decimal answer. For example, $3\\sqrt[3]{5}$ is exact even when a calculator displays only digits. This app labels computed approximations explicitly; its answer tools support particular exact forms, not every symbolic expression. In numeric fields follow the stated rounding instruction and keep intermediate values unrounded."
+      ]
+    },
+    {
+      "heading": "Separate a coefficient, an anchor, and an intercept",
+      "paragraphs": [
+        "In the unshifted form $a b^x$, $f(0)=a$ because $b^0=1$. In the more general form $f(x)=a b^{c(x-h)}+k$, the exponent is zero at $x=h$, so $f(h)=a+k$. The coefficient $a$ is the signed deviation from the baseline at this anchor. It need not equal either the anchor output or the vertical intercept.",
+        "The vertical intercept is obtained by substitution: $f(0)=a b^{-ch}+k$. A horizontal shift can make this quite different from $a+k$. A vertical shift means even $h=0$ gives initial output $a+k$, not $a$. Say which reference input an initial value belongs to.",
+        "Parameters with units describe different quantities. If the response is in volts, both $a$ and $k$ have units of volts. The exponential factor is dimensionless. A time-scale coefficient $c$ makes $c(x-h)$ dimensionless when $x$ and $h$ are physical times; when using numerical time values, keep their chosen unit explicit."
+      ]
+    },
+    {
+      "heading": "Convert percentages to multipliers",
+      "paragraphs": [
+        "A signed percentage change $p\\%$ corresponds to a fractional change $r=p/100$ and multiplier $q=1+r$. Increasing by $25\\%$ means multiplying by $5/4$, while decreasing by $20\\%$ means multiplying by $4/5$. The rate and the multiplier differ by one.",
+        "To reverse the conversion, compute $p=100(q-1)$. The remaining percentage is $100q$, which is different from the signed percentage change. A factor $3/5$ leaves $60\\%$ and represents a $40\\%$ decrease. For a nonzero real exponential, the factor must remain positive: $p>-100$. A complete loss makes the next value zero and no longer follows a nonzero positive-factor exponential.",
+        "These usual increase and decrease percentages describe a positive amount. With a shifted or signed response, specify whether the percentage applies to the raw response, a positive magnitude, or the deviation from a baseline. A growing deviation multiplier can make a negative signed response more negative."
+      ]
+    },
+    {
+      "heading": "Compose changes and reverse them",
+      "paragraphs": [
+        "Repeated proportional changes multiply. Applying factor $q$ for $n$ equal periods gives total factor $q^n$ and response $Aq^n$. The total signed percentage is $100(q^n-1)$, not $n$ times the single-period percentage. Each change acts on the new current amount.",
+        "For successive different changes, multiply the factors: $q_1q_2\\cdots q_n$. An increase followed by an equal percentage decrease generally does not return to the starting value. The two percentages are taken from different current amounts.",
+        "Undo a nonzero proportional change with the reciprocal factor $1/q$. Its signed percentage is $100(1/q-1)$. Do not merely negate the original percentage. A $25\\%$ increase is undone by a $20\\%$ decrease; a $40\\%$ decrease requires a $66\\frac23\\%$ increase to recover."
+      ]
+    },
+    {
+      "heading": "Change the length of the time step",
+      "paragraphs": [
+        "If the factor over $d$ seconds is $Q>0$, the factor over one second is the positive root $q=Q^{1/d}$, assuming the same exponential law between observations. The factor over $t$ seconds is $Q^{t/d}=q^t$. A factor over two seconds is not a factor per second.",
+        "Do not divide a multi-second percentage by $d$. Percentage changes compound multiplicatively. Obtain the shorter-period factor first and then subtract one to get the fractional change for that period. The positive root matters because the real exponential must remain positive before any outside scaling.",
+        "An exact root can be rational, radical, or another exact expression. If the problem requests a decimal, compute with the unrounded factor. Label which time interval every reported rate or factor describes."
+      ]
+    },
+    {
+      "heading": "Read a supplied compounding rule",
+      "paragraphs": [
+        "One discrete-update law is $A(t)=A_0(1+r/m)^{mt}$. Here $r$ is a nominal fractional rate per chosen time unit, $m$ is the number of equal updates per unit time, and $t$ is the numerical elapsed time in that unit. Each update uses fractional rate $r/m$, factor $1+r/m$, and the exponent $mt$ counts updates. The factor must be positive.",
+        "The effective factor over one time unit is $(1+r/m)^m$. Its signed percentage change is $100((1+r/m)^m-1)$, usually different from the nominal percentage $100r$. Interpret the supplied law before calculating; do not assume that a quoted nominal rate is the actual percentage accumulated over the full time unit.",
+        "For a process updated only at scheduled instants, completed-update counts are integers. A formula evaluated between updates describes an additional continuous extension unless the problem explicitly supplies that convention. The practice questions use whole elapsed update counts. This lesson studies the mathematical update law, not a claim about any particular device or account."
+      ]
+    },
+    {
+      "heading": "Use the natural exponential carefully",
+      "paragraphs": [
+        "The number $e\\approx2.718281828$ is a positive base used for continuous exponential models. A supplied law $A(t)=A_0e^{rt}$ has multiplier $e^{r\\Delta t}$ over an interval $\\Delta t$. The coefficient $r$ controls the exponent per unit time. The effective fractional change over that interval is $e^{r\\Delta t}-1$.",
+        "A continuous-rate coefficient $r$ is not the same as the discrete fractional change for one unit of time. For example, $e^{0.2}$ is not exactly $1.2$. The expression $1+r\\Delta t$ can be a useful approximation for a sufficiently small product, but it is not an exact replacement. A later calculus course explains the instantaneous-rate interpretation; here use the supplied exponent and distinguish exact equality from approximation.",
+        "For a shifted law $A(t)=k+ae^{rt}$, apply the multiplier to $A-k$. Use the natural exponential calculator in the investigation: choose scale 1 and baseline 0 for a factor, scale 100 and baseline -100 for an effective percentage, or the model's scale and baseline for a response. Include the full elapsed-time product in the exponent. Numeric practice fields request six decimal places; retain extra digits until the final result."
+      ]
+    },
+    {
+      "heading": "Read domain, range, and the baseline",
+      "paragraphs": [
+        "For $f(x)=a b^{c(x-h)}+k$ with $a\\ne0$, $c\\ne0$, $b>0$, and $b\\ne1$, the mathematical domain is all real numbers. The exponential power is always positive. Therefore $a>0$ puts every output above $k$, giving range $(k,\\infty)$, and $a<0$ puts every output below $k$, giving range $(-\\infty,k)$.",
+        "The line $y=k$ is a horizontal asymptote. It is an open range boundary: $a b^{c(x-h)}$ never equals zero for a finite input. The graph approaches the baseline at one end and is unbounded at the other. A horizontal shift changes where the curve sits, but not its full mathematical domain, range boundary, or asymptote.",
+        "First decide whether $b^{c(x-h)}$ grows or decays as $x$ increases. Base greater than one with positive $c$ grows; reversing either of those directions gives decay, and reversing both gives growth. Then apply the sign of $a$ to determine whether the signed output increases or decreases. Approach is from above when $a>0$ and from below when $a<0$. Describe the input end, output direction, and side separately."
+      ]
+    },
+    {
+      "heading": "Combine reflections and coordinate scales",
+      "paragraphs": [
+        "Use a parent point $(u,b^u)$ and solve $u=c(x-h)$ to locate its transformed input. The point becomes $(h+u/c,\\ k+ab^u)$. This coordinate calculation handles shifts and reflections without a memorized instruction that can reverse the wrong direction.",
+        "Horizontal lengths are multiplied by $1/|c|$, while vertical deviations from the baseline are multiplied by $|a|$. A negative $c$ reverses horizontal order; a negative $a$ reverses vertical order. Apply the scales and reflections in parent coordinates, then shift by $h$ and $k$.",
+        "Useful parent inputs include $-1$, $0$, and $1$, with outputs $1/b$, $1$, and $b$. Transform these anchors and inspect both ends of the graph. A finite plotted window is an illustration, not a proof of the full domain or asymptotic behavior. The parameter signs and positivity of the exponential establish those claims."
+      ]
+    },
+    {
+      "heading": "Test ratios relative to a nonzero baseline",
+      "paragraphs": [
+        "For $f(x)=k+ab^{c(x-h)}$, define the deviation $D(x)=f(x)-k$. It obeys $D(x+d)=D(x)b^{cd}$. Raw output ratios need not be constant because the added baseline is not multiplied. Subtract the same supplied baseline before comparing consecutive ratios.",
+        "Negative deviations still have a positive consecutive ratio: dividing one negative deviation by another gives a positive factor. If their magnitudes grow, the signed deviations become more negative. The response then decreases even though its distance from the baseline grows. State what is growing.",
+        "The supported investigation compares each exponential with a line through its first two observations. Those two anchors agree by construction. A third record or a new prediction can distinguish the supplied laws. Changing the observation interval changes the comparison line and the exponential step factor; it does not change the underlying exponential formula."
+      ]
+    },
+    {
+      "heading": "Separate a formula from an observation schedule",
+      "paragraphs": [
+        "A formula can be defined on $\\mathbb R$ while a measurement schedule only permits $n=0,1,2,\\ldots$. Computing the extension at $n=1/2$ does not create a half observation or a measured sample. State both the mathematical domain and the permitted observation indices.",
+        "A physical model may also be authorized only on a finite time window such as $0\\le t\\le4$. Find its operating range from that interval and its monotonic direction, including endpoints that are part of the window. This finite range is different from the full exponential range. An algebraically valid output outside the window is an extrapolation, not a validated physical prediction.",
+        "The controls and graph window in this investigation are limited for readable numerical exploration. Those software limits are not mathematical exclusions. A model can be defined at an input even when the interface does not offer it."
+      ]
+    },
+    {
+      "heading": "Judge finite evidence and finite displays",
+      "paragraphs": [
+        "One exact inconsistent record can reject a proposed exact model. Agreement at finitely many records cannot establish a unique law for every real input. For example, adding a nonzero multiple of $(x-x_1)(x-x_2)(x-x_3)$ to a model leaves its values unchanged at those three inputs while changing other values. Extra assumptions and validation are needed for extrapolation.",
+        "Rounding can make a value look equal to its asymptote. The exact expression, not the display, decides equality. Even when a computer rounds a tiny positive exponential term to zero, the mathematical term remains positive. At the other extreme, a numerical overflow means the display cannot represent the value; it does not mean the function is undefined at that finite input.",
+        "Before accepting a result, audit the base, time origin, interval length, coefficient meaning, baseline, units, domain, and requested precision. Explain which observations support your model and which predictions depend on assumptions. Practice exposes all named problem types; the four-item checkpoint samples the four critical skill families and requires every selected item to pass independently."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Power or exponential?",
+      "prompt": "Compare $p(x)=x^4$ and $g(x)=4^x$ at zero and a negative input.",
+      "steps": [
+        {
+          "math": "p(0)=0^4=0,\\qquad g(0)=4^0=1",
+          "reason": "Substitute the same input into the different positions occupied by the variable."
+        },
+        {
+          "math": "p(-1)=(-1)^4=1,\\qquad g(-1)=4^{-1}=\\frac14",
+          "reason": "An even power of a negative base differs from a negative exponent of a positive base."
+        },
+        {
+          "math": "p(2)=16=g(2)",
+          "reason": "Agreement at one input does not make these different functions identical."
+        }
+      ],
+      "conclusion": "The fixed-exponent function is a power function. The fixed-base function is exponential."
+    },
+    {
+      "title": "Audit four proposed bases",
+      "prompt": "Which bases among $-3,0,1,3/4$ produce a nonconstant real exponential on all real inputs?",
+      "steps": [
+        {
+          "math": "(-3)^{1/2}\\notin\\mathbb R,\\qquad 0^{-1}\\text{ is undefined}",
+          "reason": "The negative base fails a real-root input and the zero base fails a reciprocal input."
+        },
+        {
+          "math": "1^x=1,\\qquad \\left(\\frac34\\right)^0=1",
+          "reason": "Base one is constant. The positive nonunit base passes the definition."
+        }
+      ],
+      "conclusion": "Only $3/4$ qualifies here. Its reciprocal $4/3$ would also be a valid base."
+    },
+    {
+      "title": "A linear table over two-second steps",
+      "prompt": "At $x=0,2,4,6$ s, an exact response is $6,9,12,15$ V. Predict the value at 8 s if the same rule continues.",
+      "steps": [
+        {
+          "math": "d=2\\text{ s},\\qquad 9-6=12-9=15-12=3\\text{ V}",
+          "reason": "The equal input gaps and constant differences support a linear model."
+        },
+        {
+          "math": "m=\\frac32\\text{ V/s},\\qquad L(x)=6+\\frac32x",
+          "reason": "Divide the change by the actual gap to obtain a rate per second."
+        },
+        {
+          "math": "L(8)=6+12=18\\text{ V}",
+          "reason": "Continue with addition at the same rate."
+        }
+      ],
+      "conclusion": "The difference is 3 V per two-second step, not 3 V per second."
+    },
+    {
+      "title": "An exponential table over the same steps",
+      "prompt": "At $x=0,2,4,6$ s, the exact values are $6,9,27/2,81/4$ V. Predict 8 s under a continuing exponential model.",
+      "steps": [
+        {
+          "math": "\\frac96=\\frac{27/2}{9}=\\frac{81/4}{27/2}=\\frac32",
+          "reason": "Compute each ratio over the same two-second interval."
+        },
+        {
+          "math": "f(x)=6\\left(\\frac32\\right)^{x/2}",
+          "reason": "The exponent counts two-second intervals."
+        },
+        {
+          "math": "f(8)=6\\left(\\frac32\\right)^4=\\frac{243}{8}\\text{ V}",
+          "reason": "Four successive multipliers are required."
+        }
+      ],
+      "conclusion": "The factor is $3/2$ per two seconds. It is not a fixed addition of 3 V."
+    },
+    {
+      "title": "Unequal gaps need unequal factors",
+      "prompt": "An exact table has inputs $0,1,3,4$ s and outputs $5,10,40,80$ V. Do ratios $2,4,2$ reject an exponential?",
+      "steps": [
+        {
+          "math": "\\Delta x=1,2,1;\\qquad \\frac{10}{5}=2,\\quad\\frac{40}{10}=4,\\quad\\frac{80}{40}=2",
+          "reason": "The middle ratio covers twice the time."
+        },
+        {
+          "math": "4=2^2,\\qquad f(x)=5\\cdot2^x",
+          "reason": "One factor of two per second accounts for every record."
+        }
+      ],
+      "conclusion": "Unequal consecutive ratios are compatible with an exponential when the input gaps differ appropriately."
+    },
+    {
+      "title": "The first record is not time zero",
+      "prompt": "A response is 10 V at 2 s, 40 V at 4 s, and 160 V at 6 s. Use a zero-baseline exponential model.",
+      "steps": [
+        {
+          "math": "q=4\\text{ per 2 s},\\qquad f(x)=10\\cdot4^{(x-2)/2}",
+          "reason": "Use the first recorded time as the reference anchor."
+        },
+        {
+          "math": "f(0)=10\\cdot4^{-1}=\\frac52\\text{ V}",
+          "reason": "Go back one complete two-second interval by dividing by four."
+        },
+        {
+          "math": "f(8)=10\\cdot4^3=640\\text{ V}",
+          "reason": "The exponent counts intervals after the reference at 2 s."
+        }
+      ],
+      "conclusion": "The reference response is 10 V, while the response at zero is $5/2$ V."
+    },
+    {
+      "title": "Negative and rational inputs",
+      "prompt": "Evaluate $f(x)=8(9/4)^x$ at $-1,0,1/2,-1/2$.",
+      "steps": [
+        {
+          "math": "f(-1)=8\\cdot\\frac49=\\frac{32}{9},\\qquad f(0)=8",
+          "reason": "Negative exponents invert the base; a zero exponent contributes one."
+        },
+        {
+          "math": "f(1/2)=8\\sqrt{\\frac94}=12",
+          "reason": "Use the positive square root of the positive base."
+        },
+        {
+          "math": "f(-1/2)=8\\cdot\\frac23=\\frac{16}{3}",
+          "reason": "Take the reciprocal of the positive root before applying the coefficient."
+        }
+      ],
+      "conclusion": "All four inputs belong to the real domain. Their exact values do not need rounding."
+    },
+    {
+      "title": "An exact expression and a decimal request",
+      "prompt": "Find $3\\cdot5^{1/3}$, first exactly and then to six decimal places.",
+      "steps": [
+        {
+          "math": "3\\cdot5^{1/3}=3\\sqrt[3]{5}",
+          "reason": "The cube-root expression is an exact real value."
+        },
+        {
+          "math": "3\\sqrt[3]{5}\\approx5.129927840\\approx5.129928",
+          "reason": "Keep extra digits, then round the requested final value."
+        }
+      ],
+      "conclusion": "The decimal is an approximation. A calculator limitation on exact forms does not remove this input from the function's domain."
+    },
+    {
+      "title": "Coefficient, anchor, and vertical intercept",
+      "prompt": "Interpret $f(x)=3\\cdot2^{x-2}+5$.",
+      "steps": [
+        {
+          "math": "a=3,\\quad h=2,\\quad k=5,\\qquad f(2)=3+5=8",
+          "reason": "The coefficient is the deviation from the baseline at the shifted anchor."
+        },
+        {
+          "math": "f(0)=3\\cdot2^{-2}+5=\\frac{23}{4}",
+          "reason": "The vertical intercept requires substituting zero into the full formula."
+        }
+      ],
+      "conclusion": "The three values $a=3$, $f(h)=8$, and $f(0)=23/4$ have different meanings."
+    },
+    {
+      "title": "Repeated growth is a product",
+      "prompt": "A positive response starts at 40 V and grows by 25% every 2 s. Find its response and total percentage change after 6 s.",
+      "steps": [
+        {
+          "math": "r=\\frac14,\\quad q=\\frac54,\\quad n=\\frac62=3",
+          "reason": "Convert the percentage to a factor and count complete periods."
+        },
+        {
+          "math": "40\\left(\\frac54\\right)^3=\\frac{625}{8}=78.125\\text{ V}",
+          "reason": "Apply the factor to the current response each period."
+        },
+        {
+          "math": "100\\left(\\frac{125}{64}-1\\right)=\\frac{1525}{16}=95.3125\\%",
+          "reason": "Compare the total multiplier with one."
+        }
+      ],
+      "conclusion": "Three increases of 25% produce a 95.3125% total increase, not 75%."
+    },
+    {
+      "title": "Loss percentage and remaining percentage",
+      "prompt": "A positive 125 V response decreases by 20% every 3 s. Find its value after 6 s.",
+      "steps": [
+        {
+          "math": "q=1-\\frac15=\\frac45,\\qquad n=2",
+          "reason": "A 20% decrease leaves four fifths each period."
+        },
+        {
+          "math": "125\\left(\\frac45\\right)^2=80\\text{ V}",
+          "reason": "Apply the remaining factor twice."
+        },
+        {
+          "math": "100\\cdot\\frac{16}{25}=64\\%,\\qquad 100\\left(\\frac{16}{25}-1\\right)=-36\\%",
+          "reason": "The remaining percentage and the signed change answer different questions."
+        }
+      ],
+      "conclusion": "The response retains 64% and has decreased by 36% overall."
+    },
+    {
+      "title": "Read a factor as a signed rate",
+      "prompt": "A positive response is multiplied by $3/5$ each interval. Interpret the change.",
+      "steps": [
+        {
+          "math": "100q=60\\%",
+          "reason": "This is the percentage of the previous response remaining."
+        },
+        {
+          "math": "100(q-1)=100\\left(\\frac35-1\\right)=-40\\%",
+          "reason": "Subtract one before interpreting the signed percentage change."
+        }
+      ],
+      "conclusion": "The factor describes a 40% decrease, not a 60% decrease."
+    },
+    {
+      "title": "Two different percentage changes",
+      "prompt": "Start at 50 V, increase by 20%, and then decrease the new value by 10%.",
+      "steps": [
+        {
+          "math": "q_1=\\frac65,\\quad q_2=\\frac9{10},\\quad q_1q_2=\\frac{27}{25}",
+          "reason": "Each percentage acts on its own current amount."
+        },
+        {
+          "math": "50\\cdot\\frac{27}{25}=54\\text{ V},\\qquad 100\\left(\\frac{27}{25}-1\\right)=8\\%",
+          "reason": "Multiply the factors, then compare the final value to the original."
+        }
+      ],
+      "conclusion": "The net increase is 8%, not the 10% obtained by subtracting percentages."
+    },
+    {
+      "title": "Undo with a reciprocal",
+      "prompt": "An 80 V response increases by 25% to 100 V. Which percentage restores the original value?",
+      "steps": [
+        {
+          "math": "q=\\frac54,\\quad q^{-1}=\\frac45,\\quad 100\\cdot\\frac45=80",
+          "reason": "Restoration uses the reciprocal multiplier."
+        },
+        {
+          "math": "100\\left(\\frac45-1\\right)=-20\\%,\\qquad 100\\cdot\\frac34=75",
+          "reason": "A 20% decrease restores the value; a 25% decrease overshoots."
+        }
+      ],
+      "conclusion": "For comparison, undoing a $40\\%$ decrease uses factor $5/3$ and a $66\\frac23\\%$ increase."
+    },
+    {
+      "title": "Convert a three-second factor",
+      "prompt": "A response is multiplied by $27/8$ over 3 s. Find the one-second factor and predict a 16 V initial response after 4 s.",
+      "steps": [
+        {
+          "math": "q=\\sqrt[3]{\\frac{27}{8}}=\\frac32,\\qquad 100(q-1)=50\\%",
+          "reason": "Take the positive root before converting to a one-second percentage."
+        },
+        {
+          "math": "16\\left(\\frac{27}{8}\\right)^{4/3}=16\\left(\\frac32\\right)^4=81\\text{ V}",
+          "reason": "The original factor acts for four thirds of its original interval."
+        },
+        {
+          "math": "100\\left(\\frac{27}{8}-1\\right)=237.5\\%",
+          "reason": "The three-second percentage is 237.5%; dividing it by three does not give the 50% one-second change."
+        }
+      ],
+      "conclusion": "The interval attached to a factor is part of its meaning."
+    },
+    {
+      "title": "Nominal rate and effective rate",
+      "prompt": "A supplied update law has $A_0=20$ V, nominal fractional rate $r=0.08$ per second, and four equal updates per second. Find the response after 2 s and the effective one-second percentage.",
+      "steps": [
+        {
+          "math": "\\frac rm=\\frac1{50},\\quad 1+\\frac rm=\\frac{51}{50},\\quad mt=8",
+          "reason": "Each update contributes 2%, and eight updates occur."
+        },
+        {
+          "math": "A(2)=20\\left(\\frac{51}{50}\\right)^8\\approx23.433188\\text{ V}",
+          "reason": "Use all eight update factors before rounding."
+        },
+        {
+          "math": "100\\left(\\left(\\frac{51}{50}\\right)^4-1\\right)=8.243216\\%",
+          "reason": "The effective one-second change uses four factors, not the nominal percentage alone."
+        }
+      ],
+      "conclusion": "The nominal rate is 8% per second, while the effective one-second increase under this law is 8.243216%."
+    },
+    {
+      "title": "A continuous coefficient is not a discrete percentage",
+      "prompt": "For $A(t)=10e^{-t/5}$ V with numerical $t$ in seconds, find the one-second factor, its effective percentage, and the value at 5 s.",
+      "steps": [
+        {
+          "math": "q=e^{-1/5}\\approx0.818730753",
+          "reason": "Use the full continuous exponent for one second."
+        },
+        {
+          "math": "100(q-1)\\approx-18.126925\\%",
+          "reason": "A coefficient of -1/5 in the exponent is not an exact 20% loss per second."
+        },
+        {
+          "math": "A(5)=10e^{-1}\\approx3.678794\\text{ V}",
+          "reason": "Five seconds contribute exponent -1."
+        }
+      ],
+      "conclusion": "The calculator can evaluate factors, responses, and effective percentages without rounding intermediate values."
+    },
+    {
+      "title": "Audit a linearized exponential factor",
+      "prompt": "For continuous rate $r=1/4$ per second over 2 s, compare the true factor with $1+rt$.",
+      "steps": [
+        {
+          "math": "rt=\\frac12,\\qquad e^{rt}=e^{1/2}\\approx1.648721",
+          "reason": "The true factor comes from the supplied exponential law."
+        },
+        {
+          "math": "1+rt=\\frac32=1.5",
+          "reason": "This is a linear approximation, not an exact evaluation."
+        },
+        {
+          "math": "100(e^{1/2}-1)\\approx64.872127\\%",
+          "reason": "The effective change is about 64.87%, not exactly 50%."
+        }
+      ],
+      "conclusion": "A convenient approximation needs an error requirement; it cannot replace an exact equality without justification."
+    },
+    {
+      "title": "A growing positive graph",
+      "prompt": "Describe $f(x)=2\\cdot3^x$.",
+      "steps": [
+        {
+          "math": "D=\\mathbb R,\\quad R=(0,\\infty),\\quad f(0)=2",
+          "reason": "The positive power and positive coefficient keep every output above zero."
+        },
+        {
+          "math": "x\\to-\\infty:\\ f(x)\\to0^+;\\qquad x\\to\\infty:\\ f(x)\\to\\infty",
+          "reason": "Base three grows as the input increases. The baseline is approached from above at the other end."
+        }
+      ],
+      "conclusion": "The function increases, has horizontal asymptote y = 0, and never attains zero."
+    },
+    {
+      "title": "A decaying graph with a shifted baseline",
+      "prompt": "Describe $f(x)=4(1/2)^x-3$.",
+      "steps": [
+        {
+          "math": "f(0)=1,\\quad D=\\mathbb R,\\quad R=(-3,\\infty)",
+          "reason": "The coefficient is positive, so the baseline is a strict lower bound."
+        },
+        {
+          "math": "x\\to\\infty:\\ f(x)\\to-3^+;\\qquad x\\to-\\infty:\\ f(x)\\to\\infty",
+          "reason": "A base between zero and one decays with increasing input."
+        }
+      ],
+      "conclusion": "The graph decreases toward y = -3 from above. A negative baseline does not force the whole range to be negative."
+    },
+    {
+      "title": "Growing distance and decreasing output",
+      "prompt": "Describe $f(x)=5-2\\cdot2^x$.",
+      "steps": [
+        {
+          "math": "f(0)=3,\\quad f(1)=1,\\quad f(2)=-3",
+          "reason": "Evaluate signed outputs rather than assuming a base greater than one forces increasing outputs."
+        },
+        {
+          "math": "f(x)-5=-2\\cdot2^x,\\quad R=(-\\infty,5)",
+          "reason": "The negative deviation doubles in magnitude and stays below the baseline."
+        },
+        {
+          "math": "x\\to-\\infty:\\ f(x)\\to5^-;\\qquad x\\to\\infty:\\ f(x)\\to-\\infty",
+          "reason": "The output decreases as the distance below the baseline grows."
+        }
+      ],
+      "conclusion": "A growing deviation factor and a decreasing signed response are compatible."
+    },
+    {
+      "title": "A horizontal reflection and compression",
+      "prompt": "Analyze $f(x)=3\\cdot2^{-2(x-1)}-4$ and map the parent point $(1,2)$.",
+      "steps": [
+        {
+          "math": "x=1+\\frac{1}{-2}=\\frac12,\\qquad y=-4+3\\cdot2=2",
+          "reason": "Solve the exponent equation to map the parent input, then scale and shift its output."
+        },
+        {
+          "math": "\\text{horizontal factor}=\\frac12,\\quad f(1)=-1,\\quad f(0)=8",
+          "reason": "The horizontal factor is the reciprocal of the exponent coefficient magnitude."
+        },
+        {
+          "math": "D=\\mathbb R,\\quad R=(-4,\\infty),\\quad x\\to\\infty:\\ f(x)\\to-4^+",
+          "reason": "The negative exponent direction creates decay; the positive outer coefficient keeps approach above the baseline."
+        }
+      ],
+      "conclusion": "The graph decreases. The horizontal reflection, anchor output, and vertical intercept are separate features."
+    },
+    {
+      "title": "Both reflections with a horizontal stretch",
+      "prompt": "Analyze $f(x)=1-3\\cdot4^{-(x-2)/2}$ using parent inputs 0 and 1.",
+      "steps": [
+        {
+          "math": "(0,1)\\mapsto(2,-2),\\qquad(1,4)\\mapsto(0,-11)",
+          "reason": "The input mapping is x = 2 - 2u, and the output mapping is y = 1 - 3 times the parent output."
+        },
+        {
+          "math": "\\text{horizontal factor}=2,\\quad\\text{vertical factor}=3,\\quad R=(-\\infty,1)",
+          "reason": "Both signs are negative, while the length scale factors are positive magnitudes."
+        },
+        {
+          "math": "x\\to\\infty:\\ f(x)\\to1^-;\\qquad x\\to-\\infty:\\ f(x)\\to-\\infty",
+          "reason": "The positive power decays, and the negative outside factor makes the signed response increase."
+        }
+      ],
+      "conclusion": "The graph increases toward y = 1 from below. Its vertical intercept is -11, not its coefficient -3."
+    },
+    {
+      "title": "Subtract the baseline before taking ratios",
+      "prompt": "A supplied model is $f(x)=4+3\\cdot2^x$. Audit the records 7, 10, and 16 at inputs 0, 1, and 2.",
+      "steps": [
+        {
+          "math": "\\frac{10}{7}\\ne\\frac{16}{10}=\\frac85",
+          "reason": "The raw ratios differ because the baseline is added after multiplication."
+        },
+        {
+          "math": "7-4=3,\\quad10-4=6,\\quad16-4=12,\\qquad\\frac63=\\frac{12}{6}=2",
+          "reason": "The deviations, not the raw outputs, share a factor."
+        },
+        {
+          "math": "\\frac{10^2}{7}=\\frac{100}{7}\\ne16,\\qquad f(3)=4+3\\cdot8=28",
+          "reason": "A raw-ratio continuation gives the wrong next output. Retain the baseline in the full model."
+        }
+      ],
+      "conclusion": "Unequal raw ratios do not reject a shifted exponential when the deviations follow the correct rule."
+    },
+    {
+      "title": "A formula can extend beyond the sampling indices",
+      "prompt": "Records use $Y(n)=5\\cdot9^n$ only at $n=0,1,2,\\ldots$. What does the formula give at one half?",
+      "steps": [
+        {
+          "math": "Y(1/2)=5\\sqrt9=15",
+          "reason": "The continuous mathematical extension is defined at this real input."
+        },
+        {
+          "math": "D_{\\mathrm{formula}}=\\mathbb R,\\qquad D_{\\mathrm{observed}}=\\{0,1,2,\\ldots\\}",
+          "reason": "The observation schedule permits whole nonnegative indices only."
+        }
+      ],
+      "conclusion": "The value 15 belongs to the extension. It is not a measured half-index record."
+    },
+    {
+      "title": "A finite operating window has a finite range",
+      "prompt": "The model $Y(t)=6\\cdot2^{-t}+2$ V is authorized only for $0\\le t\\le4$ s.",
+      "steps": [
+        {
+          "math": "Y(0)=8,\\qquad Y(4)=\\frac6{16}+2=\\frac{19}{8}",
+          "reason": "Compute both included endpoints. The response decreases throughout the interval."
+        },
+        {
+          "math": "R_{\\mathrm{operating}}=\\left[\\frac{19}{8},8\\right],\\qquad R_{\\mathrm{full}}=(2,\\infty)",
+          "reason": "The finite operating range includes its endpoints; the full range excludes the asymptote."
+        },
+        {
+          "math": "Y(-1)=14",
+          "reason": "This value is algebraically defined but lies outside the supplied operating time window."
+        }
+      ],
+      "conclusion": "Distinguish a valid calculation from an authorized physical extrapolation."
+    },
+    {
+      "title": "A rounded display does not reach the asymptote",
+      "prompt": "For $f(x)=3+2\\cdot10^{-x}$, inspect the value at $x=8$.",
+      "steps": [
+        {
+          "math": "f(8)-3=\\frac{1}{50000000}>0",
+          "reason": "The exact deviation is positive even though it is small."
+        },
+        {
+          "math": "f(8)=3.00000002\\approx3.000\\text{ to three decimal places}",
+          "reason": "Rounding hides the deviation; it does not make it exactly zero."
+        },
+        {
+          "math": "3+2\\cdot10^{-x}>3\\quad\\text{for every finite real }x",
+          "reason": "Positivity proves that the baseline is excluded from the range."
+        }
+      ],
+      "conclusion": "Numerical underflow and overflow also describe display limits, not new mathematical domain restrictions."
+    },
+    {
+      "title": "Finite agreement cannot prove a universal law",
+      "prompt": "Compare $F(x)=2\\cdot3^x$ with $G(x)=F(x)+x(x-1)(x-2)$.",
+      "steps": [
+        {
+          "math": "G(0)-F(0)=G(1)-F(1)=G(2)-F(2)=0",
+          "reason": "At each observed input, one factor in the added term is zero."
+        },
+        {
+          "math": "F(3)=54,\\qquad G(3)=54+3\\cdot2\\cdot1=60",
+          "reason": "Outside those records the additional term can change the prediction."
+        }
+      ],
+      "conclusion": "The same finite table fits both laws. Choosing the exponential requires an assumption or additional evidence."
+    },
+    {
+      "title": "A single inconsistent record rejects an exact pattern",
+      "prompt": "At equally spaced inputs 0, 1, 2, and 3, a zero-baseline model is proposed for exact outputs 2, 6, 18, and 55.",
+      "steps": [
+        {
+          "math": "\\frac62=3,\\qquad\\frac{18}{6}=3,\\qquad\\frac{55}{18}\\ne3",
+          "reason": "Check every ratio, including the last record."
+        },
+        {
+          "math": "2\\cdot3^3=54,\\qquad55-54=1",
+          "reason": "The first three records imply a fourth value different from the supplied exact record."
+        }
+      ],
+      "conclusion": "The proposed exact zero-baseline exponential does not fit all four records. No rounding tolerance was supplied."
+    },
+    {
+      "title": "Constants, zeros, and alternating signs",
+      "prompt": "Classify three equally spaced records in each list: $(3,3,3)$, $(0,0,0)$, and $(2,-4,8)$.",
+      "steps": [
+        {
+          "math": "\\frac33=1,\\qquad0-0=0",
+          "reason": "The first two lists are constant. Zero divided by zero must not be used as a ratio."
+        },
+        {
+          "math": "\\frac{-4}{2}=-2,\\qquad\\frac8{-4}=-2",
+          "reason": "The last list is geometric with a negative ratio."
+        },
+        {
+          "math": "a b^x\\text{ keeps the sign of }a\\text{ when }b>0",
+          "reason": "A standard unshifted real exponential on all real inputs cannot alternate signs."
+        }
+      ],
+      "conclusion": "A constant table or a geometric sequence with negative ratio is different from the nonconstant positive-base exponential model."
+    }
+  ],
+  "guided": {
+    "title": "Compare a shifted exponential with a line",
+    "setup": "At times 0, 2, and 4 s, response E has exact values 7, 10, and 16 V, while response L has values 7, 10, and 13 V. The supplied baseline for E is 4 V. Assume E continues as a shifted exponential and L continues linearly. Predict at 6 s and audit what the finite records establish.",
+    "before": [
+      "Check the common two-second input gap. Compare E's differences with L's differences.",
+      "Subtract the supplied baseline from E before finding a common ratio.",
+      "Use an exponent that counts two-second intervals, then distinguish the starting deviation from the initial response."
+    ],
+    "question": {
+      "id": "guided-exponential-comparison",
+      "familyId": "mth-exponential-guided",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m05-l01",
+      "category": "application",
+      "critical": true,
+      "parameters": {},
+      "prompt": "Complete every part of the comparison. Use volts for response values. Describe the full mathematical range, allowing every real input.",
+      "fields": [
+        {
+          "id": "factor",
+          "label": "Deviation multiplier per two-second step",
+          "kind": "rational",
+          "expected": "2",
+          "unit": "",
+          "help": "Give an exact value or fraction."
+        },
+        {
+          "id": "deviation",
+          "label": "Initial deviation from the baseline",
+          "kind": "rational",
+          "expected": "3",
+          "unit": "V",
+          "help": "Give an exact value or fraction."
+        },
+        {
+          "id": "initial",
+          "label": "Initial exponential response",
+          "kind": "rational",
+          "expected": "7",
+          "unit": "V",
+          "help": "Give an exact value or fraction."
+        },
+        {
+          "id": "exponential",
+          "label": "Exponential response at 6 s",
+          "kind": "rational",
+          "expected": "28",
+          "unit": "V",
+          "help": "Give an exact value or fraction."
+        },
+        {
+          "id": "linear",
+          "label": "Linear response at 6 s",
+          "kind": "rational",
+          "expected": "16",
+          "unit": "V",
+          "help": "Give an exact value or fraction."
+        },
+        {
+          "id": "range",
+          "kind": "intervals",
+          "label": "Full exponential output range",
+          "expected": [
+            {
+              "lower": "4",
+              "upper": null,
+              "lowerClosed": false,
+              "upperClosed": false
+            }
+          ],
+          "unit": "V",
+          "help": "Use interval notation. The baseline is not attained."
+        },
+        {
+          "id": "formula",
+          "label": "Exponential model",
+          "kind": "choice",
+          "correct": "step",
+          "options": [
+            {
+              "id": "step",
+              "label": "$E(x)=4+3\\cdot2^{x/2}$",
+              "accessibleLabel": "E of x equals 4 plus 3 times 2 raised to x divided by 2.",
+              "feedback": "The coefficient is the initial deviation, and the exponent counts two-second intervals."
+            },
+            {
+              "id": "raw",
+              "label": "$E(x)=7\\cdot2^{x/2}$",
+              "accessibleLabel": "E of x equals 7 times 2 raised to x divided by 2.",
+              "feedback": "This incorrectly multiplies the entire raw response instead of the deviation."
+            },
+            {
+              "id": "seconds",
+              "label": "$E(x)=4+3\\cdot2^x$",
+              "accessibleLabel": "E of x equals 4 plus 3 times 2 raised to x.",
+              "feedback": "This incorrectly applies the two-second factor every second."
+            }
+          ],
+          "help": ""
+        },
+        {
+          "id": "evidence",
+          "label": "What do the finite records establish?",
+          "kind": "choice",
+          "correct": "consistent",
+          "options": [
+            {
+              "id": "consistent",
+              "label": "Consistency with the assumed laws at the recorded inputs",
+              "feedback": "The continuation depends on the supplied modeling assumptions."
+            },
+            {
+              "id": "proof",
+              "label": "A proof that these laws hold at every real input",
+              "feedback": "Other functions can share these finite records and differ elsewhere."
+            }
+          ],
+          "help": ""
+        }
+      ],
+      "hints": [
+        "Use deviations 3, 6, and 12 V rather than raw response ratios.",
+        "Three two-second intervals elapse by 6 s. The line adds 3 V per interval.",
+        "A positive exponential deviation stays above 4 V, and finite records cannot prove a universal law."
+      ],
+      "explanation": [
+        "The deviations are 3, 6, and 12 V, so the factor is 2 per two seconds. The initial deviation is 3 V and the initial response is 7 V.",
+        "The supplied continuation is $E(x)=4+3\\cdot2^{x/2}$, which gives 28 V at 6 s. The line gives $7+3\\cdot3=16$ V.",
+        "The full exponential range is $(4,\\infty)$ V. Agreement with the records supports the assumed law on those inputs but does not prove it everywhere."
+      ],
+      "answerSummary": "Factor 2; deviation 3 V; initial response 7 V; exponential prediction 28 V; linear prediction 16 V; range (4, infinity); model 4+3*2^(x/2); finite consistency."
+    },
+    "after": "This is supported work. Explain the baseline and interval length in your notes, then practice independently before taking the checkpoint."
+  },
+  "interaction": {
+    "kind": "exponential-lab",
+    "prompt": "Predict changes in three observations, then compare a supplied exponential model with the line through the first two points. Change the observation step and prediction input. Keep baseline-relative factors, signed responses, and exact versus approximate values distinct.",
+    "cases": [
+      {
+        "title": "Positive growth",
+        "model": {
+          "kind": "rational-base",
+          "a": "6",
+          "base": "3/2",
+          "k": "0",
+          "rate": "1",
+          "h": "0"
+        },
+        "firstInput": "0",
+        "step": "1",
+        "predictionInput": "3"
+      },
+      {
+        "title": "Positive decay",
+        "model": {
+          "kind": "rational-base",
+          "a": "48",
+          "base": "1/2",
+          "k": "0",
+          "rate": "1",
+          "h": "0"
+        },
+        "firstInput": "0",
+        "step": "1",
+        "predictionInput": "3"
+      },
+      {
+        "title": "A two-second observation step",
+        "model": {
+          "kind": "rational-base",
+          "a": "5",
+          "base": "2",
+          "k": "0",
+          "rate": "1",
+          "h": "0"
+        },
+        "firstInput": "1",
+        "step": "2",
+        "predictionInput": "7"
+      },
+      {
+        "title": "A nonzero response baseline",
+        "model": {
+          "kind": "rational-base",
+          "a": "3",
+          "base": "2",
+          "k": "4",
+          "rate": "1",
+          "h": "0"
+        },
+        "firstInput": "0",
+        "step": "1",
+        "predictionInput": "3"
+      },
+      {
+        "title": "A negative deviation that grows in magnitude",
+        "model": {
+          "kind": "rational-base",
+          "a": "-2",
+          "base": "2",
+          "k": "5",
+          "rate": "1",
+          "h": "0"
+        },
+        "firstInput": "0",
+        "step": "1",
+        "predictionInput": "3"
+      },
+      {
+        "title": "Continuous exponential decay",
+        "model": {
+          "kind": "natural-base",
+          "a": "12",
+          "rate": "-1/2",
+          "h": "0",
+          "k": "2"
+        },
+        "firstInput": "0",
+        "step": "2",
+        "predictionInput": "6"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "linear-table"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "geometric-table"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "unequal-steps"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "step-model"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "initial-value"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "shifted-table"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "constant-table"
+    },
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "contradiction"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "percent-growth"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "percent-decay"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "factor-percent"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "repeated-change"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "reverse-change"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "step-conversion"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "compound-rate"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "continuous-rate"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "positive-growth"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "positive-decay"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "negative-outer"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "horizontal-reflection"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "shifted-baseline"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "anchor-map"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "y-intercept"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "natural-form"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "base-validity"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "power-confusion"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "offset-ratio"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "coefficient-initial"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "rate-confusion"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "discrete-domain"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "asymptote"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "finite-evidence"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "operating-window"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-exponential-pattern",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-exponential-factor",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-exponential-graph",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-exponential-audit",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "An exponential has a constant positive base and a variable exponent. Nonconstant models exclude base one, zero outer scale, and zero exponent rate.",
+    "Equal-step exponential change is multiplicative. Keep the observation time origin and the interval attached to the factor. Subtract a supplied baseline before taking ratios.",
+    "Convert percentages to factors before composing or undoing changes. Continuous coefficients, nominal rates, and effective percentages have different meanings.",
+    "For $a b^{c(x-h)}+k$, the anchor output is $a+k$, the intercept requires substituting zero, and the open range boundary is $k$. Combine the signs of the base direction, exponent rate, and outside coefficient.",
+    "Finite observations, physical operating windows, rounded values, and software display limits do not by themselves determine the full mathematical domain or prove a universal model."
+  ],
+  "retrieval": "Without reopening the examples, use exact records (0 s, 7 V), (2 s, 10 V), and (4 s, 16 V), with baseline 4 V, to reconstruct the exponential model and predict 6 s. State its full domain, open range, and initial deviation. Compare it with the line through the first two records. Explain why a 25% increase needs a 20% decrease to undo it, why a factor of 4 over two seconds means a factor of 2 per second, and why a display equal to the asymptote does not prove exact equality. Return after a delay and solve again with different starting values.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 6.1: Exponential Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-1-exponential-functions",
+      "purpose": "Optional additional reading on exponential notation, model construction, and discrete and continuous update formulas. The app provides its own instruction, examples, and practice."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 6.2: Graphs of Exponential Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/6-2-graphs-of-exponential-functions",
+      "purpose": "Optional additional graph examples. When interpreting growth, track the signs of both the exponent direction and the outside coefficient, and keep shifted baseline ratios separate from raw ratios."
+    }
+  ]
+}
