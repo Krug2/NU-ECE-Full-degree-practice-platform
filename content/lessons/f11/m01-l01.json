@@ -1,0 +1,191 @@
+{
+  "kind": "practical",
+  "id": "m01-l01",
+  "courseId": "f11",
+  "version": 1,
+  "title": "Frame the problem and make a useful sketch",
+  "objective": "Create a labeled sketch or equivalent text diagram, define the system boundary and unknown, and separate supplied facts from modeling assumptions.",
+  "why": "A calculation can be flawless and still answer the wrong question. Framing makes the relationship between a situation, a model, and an answer visible. A useful sketch is a reasoning tool: it can be a few boxes and arrows or an equally clear text description.",
+  "estimatedMinutes": 35,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Before calculating, state the requested output with its unit, decide what is inside your model, and label the supplied quantities. Sketch connections, direction, and initial conditions. Put assumptions in a separate sentence so a reader can challenge them.",
+        "Use this compact frame: Find ___ for the system ___, given ___, assuming ___. The most useful missing fact is ___. If that sentence is hard to complete, pause before choosing an equation."
+      ]
+    },
+    {
+      "heading": "Start with the output and boundary",
+      "paragraphs": [
+        "A boundary says which part of the world the calculation represents. For travel time, it might include motion between two locations but exclude stops. For storage, it might include raw sample data but exclude file headers. These boundaries change the answer, so they belong in the solution.",
+        "An unknown is more specific than 'solve it.' Name elapsed time in minutes, payload storage in bytes, or added volume in litres. Then distinguish a requested estimate from a guaranteed capacity. A simple model can support an estimate without supporting a design guarantee."
+      ]
+    },
+    {
+      "heading": "Make the diagram do work",
+      "paragraphs": [
+        "Include only features that explain the model: labeled locations, inputs and outputs, a positive direction when relevant, and the quantity to find. A text diagram such as 'three sensors → sampler → raw-data buffer' is useful if each connection states what it carries.",
+        "A number without a meaning is not a quantity. Label 'distance d = 18 km' rather than '18.' Write whether a rate is per channel or for all channels. For a changing state, label both the initial and target values; their difference often matters more than either alone."
+      ]
+    },
+    {
+      "heading": "Separate given information from assumptions",
+      "paragraphs": [
+        "Given information comes from the task or an observation. An assumption is a simplification you choose, such as constant speed, identical sample widths, or no outflow. An inference follows from those facts and assumptions. Keeping these roles distinct makes revisions easier.",
+        "Do not silently invent a missing input. If a storage problem does not specify the bytes per sample, name that missing fact and express the result using a symbol. If you use a provisional value to explore the model, label it provisional and explain how the result depends on it."
+      ]
+    },
+    {
+      "heading": "Choose the next useful question",
+      "paragraphs": [
+        "A useful question can change the model or a decision: 'Does the sample rate apply to each channel?' is more useful than 'Can I make the diagram prettier?' Prefer questions about the boundary, operating conditions, units, or required output.",
+        "The practical task asks for a short work record, not an artistic drawing. Write enough that another learner can reconstruct your model. After a guided comparison, use a fresh task to practice independently; the app records your self-check, not a judgment that the model is professionally adequate."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A travel-time frame",
+      "scenario": "A vehicle travels 18 km east at a stated constant 12 km/h. Estimate travel time in minutes, excluding stops.",
+      "steps": [
+        {
+          "action": "Find t in minutes for motion from A to B. Text sketch: A, start → east-positive → B, finish; d = 18 km, v = 12 km/h, t = ?.",
+          "reason": "The arrow and labels connect the desired time to a distance along the route. East is a direction, while the positive speed is a magnitude."
+        },
+        {
+          "action": "Given: d and v. Assumed: speed stays constant and the entire 18 km is traveled without stops. Outside the boundary: waiting and acceleration.",
+          "reason": "The exclusions explain why this model might predict less than an actual door-to-door time."
+        },
+        {
+          "action": "Ask whether the stated speed is a moving average over the full route.",
+          "reason": "If it is only a maximum speed, treating it as constant would be an unsupported assumption."
+        }
+      ],
+      "conclusion": "The frame supports t = d/v under its stated conditions. It does not yet claim that the predicted time includes every part of the trip."
+    },
+    {
+      "title": "A data-buffer block diagram",
+      "scenario": "Three channels each deliver 500 samples per second for 20 seconds. Each sample uses 2 bytes. Find raw sample storage.",
+      "steps": [
+        {
+          "action": "Text diagram: 3 channels → 500 samples/(channel·s) sampler → 2 bytes/sample encoder → raw-data buffer for 20 s; B = ? bytes.",
+          "reason": "The per-channel label prevents accidentally treating 500 as the combined sample rate."
+        },
+        {
+          "action": "Inside: encoded sample payload. Outside: headers, timestamps, alignment padding, compression, and transmission overhead.",
+          "reason": "Raw payload is a precise boundary; a whole file or allocated memory region may be larger."
+        },
+        {
+          "action": "Given: channels, rate, duration, and sample width. Assumed: every channel produces samples for the full interval with no drops. Ask whether timestamps must also be stored.",
+          "reason": "A plausible omitted item is made visible without silently adding an invented size."
+        }
+      ],
+      "conclusion": "A small block diagram can reveal the factors needed in a storage calculation before any multiplication."
+    },
+    {
+      "title": "Initial state matters",
+      "scenario": "A tank starts with 20 L and should reach 65 L. Inflow is a constant 5 L/min with no outflow. Find the required filling time.",
+      "steps": [
+        {
+          "action": "Text sketch: inflow q = 5 L/min → tank; initial V₀ = 20 L, target V₁ = 65 L; elapsed t = ? min; outflow = 0.",
+          "reason": "The target volume alone would suggest filling an empty tank. Showing the initial state prevents that model error."
+        },
+        {
+          "action": "Given: initial volume, target, rate, and zero outflow. Added volume is V₁ − V₀ = 45 L.",
+          "reason": "The 45 L is inferred from the data, not a separate measured input."
+        },
+        {
+          "action": "Assume the stated rate remains constant and the volumes refer to the same tank scale. Ask whether inflow changes as the level rises.",
+          "reason": "A rate that changes with level would require more information than this constant-rate model."
+        }
+      ],
+      "conclusion": "The frame distinguishes the tank's state from the amount added. Later, dividing 45 L by 5 L/min gives 9 min."
+    },
+    {
+      "title": "Repair an unlabeled page",
+      "scenario": "A note shows '4 × 250 × 12 × 2' beside a rectangle and claims a storage estimate.",
+      "steps": [
+        {
+          "action": "Recover meanings from the task: 4 channels, 250 samples/(channel·s), 12 s, and 2 bytes/sample. Label the rectangle 'raw sample buffer B, bytes.'",
+          "reason": "The expression becomes interpretable only when its factors and output are identified. Without the original task, these meanings would be questions, not facts."
+        },
+        {
+          "action": "Draw a text chain from channels to samples to bytes, and write 'assumes continuous sampling on all four channels; excludes overhead.'",
+          "reason": "This shows both the conversion path and the model's boundary."
+        },
+        {
+          "action": "Record the unresolved question: is 250 samples/s per channel or combined?",
+          "reason": "That ambiguity changes the result by a factor of four and must be resolved before treating the estimate as final."
+        }
+      ],
+      "conclusion": "Adding labels is a substantive revision. It can expose an ambiguity that correct arithmetic would never find."
+    }
+  ],
+  "guided": {
+    "prompt": "A logger records 4 channels at 200 samples per second per channel for 15 seconds, using 2 bytes per sample. Prepare a frame for raw payload storage before calculating.",
+    "steps": [
+      "Name the requested output and draw a labeled text chain from channels to the buffer.",
+      "Separate supplied facts, one assumption, one exclusion, and one question that could change the storage requirement."
+    ],
+    "review": [
+      "Find B in bytes for the raw payload. Text diagram: 4 channels → 200 samples/(channel·s) → 2 bytes/sample → buffer over 15 s.",
+      "Given: count, per-channel rate, duration, width. Assume continuous sampling without dropped samples. Exclude headers and timestamps.",
+      "Ask whether a timestamp is attached to each sample or to each block. That changes the full storage requirement even though the raw-payload calculation is well defined."
+    ]
+  },
+  "task": {
+    "family": "engineering-work",
+    "fields": [
+      {
+        "id": "frame",
+        "label": "Problem, boundary, and requested output",
+        "help": "State what to find, its unit, and the part of the situation included."
+      },
+      {
+        "id": "sketch",
+        "label": "Labeled sketch or equivalent text diagram",
+        "help": "Use labeled boxes/arrows or a text sequence with directions or connections."
+      },
+      {
+        "id": "knowns",
+        "label": "Knowns, unknowns, symbols, and units",
+        "help": "Name the quantities and units; distinguish data from quantities you infer."
+      },
+      {
+        "id": "assumptions",
+        "label": "Assumptions and missing information",
+        "help": "State a simplification, an exclusion, and one missing-information question."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "boundary",
+        "label": "I named what is inside and outside the model and the requested output."
+      },
+      {
+        "id": "labels",
+        "label": "My sketch or text diagram labels connections or directions, symbols and units."
+      },
+      {
+        "id": "assumptions",
+        "label": "I separated stated facts from assumptions and named a useful question."
+      }
+    ]
+  },
+  "summary": [
+    "Define the requested output and model boundary before choosing an equation.",
+    "A useful sketch connects labels, units, directions, and initial conditions.",
+    "Keep supplied facts, inferences, and assumptions distinguishable.",
+    "Ask for information that could change the model or result."
+  ],
+  "retrieval": "Later, close this lesson and frame a new travel, storage, or filling situation from memory. Explain why each label belongs in your sketch.",
+  "readings": [
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.7: Solving Problems in Physics",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-7-solving-problems-in-physics",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    }
+  ]
+}
