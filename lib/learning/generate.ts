@@ -38,8 +38,15 @@ import { radicalDomainFamilyIds,radicalDomainQuestion } from "./families/mth-rad
 import { radicalTransformFamilyIds,radicalTransformQuestion } from "./families/mth-radical-transform";
 import { restrictedInverseFamilyIds,restrictedInverseQuestion } from "./families/mth-restricted-inverse";
 import { radicalAuditFamilyIds,radicalAuditQuestion } from "./families/mth-radical-audit";
+import { exponentialPatternFamilyIds,exponentialPatternQuestion } from "./families/mth-exponential-pattern";
+import { exponentialFactorFamilyIds,exponentialFactorQuestion } from "./families/mth-exponential-factor";
+import { exponentialGraphFamilyIds,exponentialGraphQuestion } from "./families/mth-exponential-graph";
+import { exponentialAuditFamilyIds,exponentialAuditQuestion } from "./families/mth-exponential-audit";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const [ids,generate] of [[exponentialPatternFamilyIds,exponentialPatternQuestion],[exponentialFactorFamilyIds,exponentialFactorQuestion],[exponentialGraphFamilyIds,exponentialGraphQuestion],[exponentialAuditFamilyIds,exponentialAuditQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
 for(const [ids,generate] of [[radicalDomainFamilyIds,radicalDomainQuestion],[radicalTransformFamilyIds,radicalTransformQuestion],[restrictedInverseFamilyIds,restrictedInverseQuestion],[radicalAuditFamilyIds,radicalAuditQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
