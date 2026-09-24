@@ -179,6 +179,16 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "a9e133d469c333fcef93885ad5779faec82819d4",
+        "mergeCommit": "52c1a25",
+        "resolvedFiles": [
+          "components/learning/lesson-reader.tsx",
+          "lib/learning/catalog.ts",
+          "lib/learning/generate.ts"
+        ],
+        "preserved": "MTH 215 roots and multiplicity lesson, investigations and question families, plus three explicit backup-restore waits. Shared registrations retain all MTH and physics content. Prerequisite lesson content, course plans, and development order match this upstream snapshot. 513 unit tests, lint, type checking, and production build passed; browser evidence is recorded below."
+      },
+      {
         "sourceCommit": "01a8a6fad0fed0e7517a4b5e225329a16bda6e65",
         "mergeCommit": "c6fdf74",
         "resolvedFiles": [
@@ -236,21 +246,26 @@
     "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the nine delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 471,
-      "files": 62,
+      "passed": 513,
+      "files": 67,
       "command": "pnpm exec vitest run --maxWorkers=2",
       "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. An unrestricted run encountered timeout failures across existing files under CPU contention; the full run with two workers passed without changing assertions or timeouts."
     },
     "browser": {
       "fullSuite": {
-        "passed": 82,
-        "scope": "Merged prerequisite integration through c6fdf74, with eight physics lessons, the MTH polynomial lesson, and expanded history handling."
+        "passed": 86,
+        "failed": 1,
+        "scope": "Merged prerequisite roots/multiplicity work through 52c1a25, with nine physics lessons. The transformation interaction test reached the unchanged 60-second test limit while filling inputs after both accessibility audits; no assertion mismatch was reported. All other 86 browser tests passed."
       },
       "focusedSuite": {
         "passed": 5,
         "scope": "Circular investigation and actual checkpoint backup workflow, plus prerequisite powers and quadratics. Both circular workflows passed again after shortening mobile contact options. The latest full 82-test run remains the earlier eight-lesson snapshot; this focused run does not relabel it as a nine-lesson full run."
       },
-      "port": 3101
+      "port": 3101,
+      "retry": {
+        "passed": 1,
+        "scope": "The single timed-out transformation interaction passed unchanged in 26.5 seconds on the same production build with the same 60-second limit. No timeout or assertion was relaxed; the original full run is not reported as an uninterrupted 87-test pass."
+      }
     },
     "staticChecks": [
       "lint passed",
