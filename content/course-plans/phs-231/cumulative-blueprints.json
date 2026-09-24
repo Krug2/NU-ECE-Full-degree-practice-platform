@@ -1,0 +1,261 @@
+{
+  "courseId": "phs-231",
+  "version": 1,
+  "status": "Proposed cumulative blueprint; not an available assessment.",
+  "policy": "One frozen original objective from each lesson in each of two parts. Fresh deterministic seeds change values without changing the form. Module and review forms use four questions per objective and at least two families; the cumulative pair complements that broader evidence rather than replacing it.",
+  "parts": {
+    "a": {
+      "title": "Cumulative A: quantitative models",
+      "count": 22
+    },
+    "b": {
+      "title": "Cumulative B: interpretation and model limits",
+      "count": 22
+    }
+  },
+  "objectives": [
+    {
+      "lessonId": "m01-l01",
+      "a": {
+        "familyId": "phs231-unit-conversion",
+        "variant": "density"
+      },
+      "b": {
+        "familyId": "phs231-dimensional-audit",
+        "variant": "sufficiency"
+      }
+    },
+    {
+      "lessonId": "m01-l02",
+      "a": {
+        "familyId": "phs231-vector-components",
+        "variant": "unit"
+      },
+      "b": {
+        "familyId": "phs231-vector-products",
+        "variant": "cross"
+      }
+    },
+    {
+      "lessonId": "m02-l01",
+      "a": {
+        "familyId": "phs231-motion-calculus",
+        "variant": "initial-values"
+      },
+      "b": {
+        "familyId": "phs231-motion-interpretation",
+        "variant": "piecewise"
+      }
+    },
+    {
+      "lessonId": "m02-l02",
+      "a": {
+        "familyId": "phs231-vector-motion",
+        "variant": "speed"
+      },
+      "b": {
+        "familyId": "phs231-relative-motion",
+        "variant": "accelerated"
+      }
+    },
+    {
+      "lessonId": "m02-l03",
+      "a": {
+        "familyId": "phs231-projectile-flight",
+        "variant": "raised"
+      },
+      "b": {
+        "familyId": "phs231-projectile-limits",
+        "variant": "contact"
+      }
+    },
+    {
+      "lessonId": "m03-l01",
+      "a": {
+        "familyId": "phs231-force-balance",
+        "variant": "net-vector"
+      },
+      "b": {
+        "familyId": "phs231-force-agents",
+        "variant": "diagram"
+      }
+    },
+    {
+      "lessonId": "m03-l02",
+      "a": {
+        "familyId": "phs231-connected-bodies",
+        "variant": "table-hanging"
+      },
+      "b": {
+        "familyId": "phs231-friction-regime",
+        "variant": "angled"
+      }
+    },
+    {
+      "lessonId": "m03-l03",
+      "a": {
+        "familyId": "phs231-linear-drag",
+        "variant": "target"
+      },
+      "b": {
+        "familyId": "phs231-drag-model",
+        "variant": "quadratic"
+      }
+    },
+    {
+      "lessonId": "m04-l01",
+      "a": {
+        "familyId": "phs231-circular-components",
+        "variant": "cartesian"
+      },
+      "b": {
+        "familyId": "phs231-circular-forces",
+        "variant": "threshold"
+      }
+    },
+    {
+      "lessonId": "m04-l02",
+      "a": {
+        "familyId": "phs231-gravity-orbit",
+        "variant": "circular"
+      },
+      "b": {
+        "familyId": "phs231-gravity-interpretation",
+        "variant": "domain"
+      }
+    },
+    {
+      "lessonId": "m05-l01",
+      "a": {
+        "familyId": "phs231-work-integral",
+        "variant": "parametric"
+      },
+      "b": {
+        "familyId": "phs231-work-direction",
+        "variant": "barrier"
+      }
+    },
+    {
+      "lessonId": "m05-l02",
+      "a": {
+        "familyId": "phs231-energy-account",
+        "variant": "rough-ramp"
+      },
+      "b": {
+        "familyId": "phs231-energy-landscape",
+        "variant": "wells"
+      }
+    },
+    {
+      "lessonId": "m06-l01",
+      "a": {
+        "familyId": "phs231-impulse-area",
+        "variant": "piecewise"
+      },
+      "b": {
+        "familyId": "phs231-center-mass",
+        "variant": "kinetic-split"
+      }
+    },
+    {
+      "lessonId": "m06-l02",
+      "a": {
+        "familyId": "phs231-collision-momentum",
+        "variant": "oblique"
+      },
+      "b": {
+        "familyId": "phs231-collision-energy",
+        "variant": "audit"
+      }
+    },
+    {
+      "lessonId": "m07-l01",
+      "a": {
+        "familyId": "phs231-inertia-model",
+        "variant": "density"
+      },
+      "b": {
+        "familyId": "phs231-inertia-model",
+        "variant": "axes"
+      }
+    },
+    {
+      "lessonId": "m07-l02",
+      "a": {
+        "familyId": "phs231-rotation-energy",
+        "variant": "work"
+      },
+      "b": {
+        "familyId": "phs231-rotation-energy",
+        "variant": "controlled"
+      }
+    },
+    {
+      "lessonId": "m07-l03",
+      "a": {
+        "familyId": "phs231-rolling-motion",
+        "variant": "transition"
+      },
+      "b": {
+        "familyId": "phs231-rolling-validity",
+        "variant": "uncertainty"
+      }
+    },
+    {
+      "lessonId": "m08-l01",
+      "a": {
+        "familyId": "phs231-static-reactions",
+        "variant": "distributed"
+      },
+      "b": {
+        "familyId": "phs231-static-validity",
+        "variant": "mechanism"
+      }
+    },
+    {
+      "lessonId": "m08-l02",
+      "a": {
+        "familyId": "phs231-elastic-deformation",
+        "variant": "series"
+      },
+      "b": {
+        "familyId": "phs231-elastic-model",
+        "variant": "validity"
+      }
+    },
+    {
+      "lessonId": "m08-l03",
+      "a": {
+        "familyId": "phs231-material-evidence",
+        "variant": "energy"
+      },
+      "b": {
+        "familyId": "phs231-fracture-audit",
+        "variant": "inspection"
+      }
+    },
+    {
+      "lessonId": "m09-l01",
+      "a": {
+        "familyId": "phs231-sampled-integration",
+        "variant": "unequal"
+      },
+      "b": {
+        "familyId": "phs231-step-audit",
+        "variant": "oscillator-stability"
+      }
+    },
+    {
+      "lessonId": "m09-l02",
+      "a": {
+        "familyId": "phs231-validation-evidence",
+        "variant": "calibration-offset"
+      },
+      "b": {
+        "familyId": "phs231-model-diagnosis",
+        "variant": "revision-plan"
+      }
+    }
+  ],
+  "auditRequired": "Before publication, verify every slot exists in its original lesson, generates that lesson's objective and current version, has independent family tests for at least 50 seeds, and preserves units and model restrictions. Test the entire forms at 50 deterministic seeds, classify critical checks and per-objective scoring, and audit coverage alongside module quizzes. These planned forms are not course completion evidence."
+}
