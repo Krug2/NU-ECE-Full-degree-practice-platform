@@ -2,8 +2,8 @@
   "courseId": "phs-231",
   "title": "Calculus-based Physics 1",
   "version": 1,
-  "status": "building",
-  "introduction": "Learn to build, calculate, and check mechanical models using vectors and calculus. All 22 lessons, readiness checks, nine module quizzes, two cumulative parts, targeted reviews, and the simulation project are available. They cover motion, forces, gravity, energy, momentum, rotation, equilibrium, materials, and numerical validation. The complete release audit is in progress. Introductory physics and calculus preparation remain necessary.",
+  "status": "preview",
+  "introduction": "Learn to build, calculate, and check mechanical models using vectors and calculus. All 22 lessons, readiness checks, nine module quizzes, two cumulative parts, targeted reviews, and the simulation project are available. They cover motion, forces, gravity, energy, momentum, rotation, equilibrium, materials, and numerical validation. Plan about 80 hours for a first pass, plus preparation, targeted review, and repeated practice; this estimate has not been piloted. Introductory physics and calculus preparation remain necessary.",
   "bridges": [],
   "modules": [
     {

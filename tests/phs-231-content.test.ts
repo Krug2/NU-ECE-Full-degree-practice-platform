@@ -28,9 +28,9 @@ import angularData from "../content/lessons/phs-231/m07-l02.json";
 import rotationData from "../content/lessons/phs-231/m07-l01.json";
 import collisionData from "../content/lessons/phs-231/m06-l02.json";
 
-it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
+it("releases the complete mechanics teaching sequence as a technical preview", () => {
   const pack=packSchema.parse(packData);
-  expect(pack.status).toBe("building");
+  expect(pack.status).toBe("preview");
   expect(pack.modules.flatMap(m=>m.lessons)).toHaveLength(22);
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
