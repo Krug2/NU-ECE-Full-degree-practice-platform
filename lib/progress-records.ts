@@ -19,18 +19,18 @@ export function historyBackupBytes(core:Progress,attempts:AttemptReference[]){
   return new TextEncoder().encode(JSON.stringify(core,null,2)).length+(attempts.length?6+2*(attempts.length-1)+attempts.reduce((sum,item)=>sum+item.bytes,0):0);
 }
 export const historyIndexSchema=z.object({
-  storageVersion:z.literal(2),revision:storedRevision,
+  storageVersion:z.literal(2),revision:storedRevision,generation:z.uuid(),
   data:progressSchema.refine(data=>data.learning.attempts.length===0,"Question histories must be stored separately"),
   attempts:z.array(attemptReferenceSchema).max(attemptLimit).refine(items=>new Set(items.map(item=>item.id)).size===items.length,"Duplicate attempt references"),
 }).strict().refine(index=>index.attempts.every(reference=>reference.revision<=index.revision),"An attempt reference cannot be newer than its history index")
   .refine(index=>historyBackupBytes(index.data,index.attempts)<=backupByteLimit,backupLimitMessage);
 export type HistoryIndex=z.infer<typeof historyIndexSchema>;
-export type StoredProgress={storageVersion:2;revision:number;data:Progress};
+export type StoredProgress={storageVersion:2;revision:number;generation:string;data:Progress};
 export function referenceFor(attempt:Attempt,revision:number):AttemptReference{
   return {id:attempt.id,revision,bytes:attemptBackupBytes(attempt)};
 }
-export function createHistoryIndex(data:Progress,revision:number,attempts:AttemptReference[]):HistoryIndex{
-  return historyIndexSchema.parse({storageVersion:2,revision,data:{...data,learning:{...data.learning,attempts:[]}},attempts});
+export function createHistoryIndex(data:Progress,revision:number,attempts:AttemptReference[],generation=crypto.randomUUID()):HistoryIndex{
+  return historyIndexSchema.parse({storageVersion:2,revision,generation,data:{...data,learning:{...data.learning,attempts:[]}},attempts});
 }
 export function prepareHistory(data:Progress,revision:number){
   const checked=progressSchema.parse(data);
@@ -55,5 +55,5 @@ export function assembleHistory(index:HistoryIndex,records:ReadonlyMap<string,St
     if(!record||record.revision!==reference.revision)throw new Error("Saved attempt details are missing or outdated.");
     return record.data;
   });
-  return {storageVersion:2,revision:index.revision,data:{...index.data,learning:{...index.data.learning,attempts}}};
+  return {storageVersion:2,revision:index.revision,generation:index.generation,data:{...index.data,learning:{...index.data.learning,attempts}}};
 }

@@ -1,5 +1,6 @@
-import { emptyProgress,progressSchema,type Progress } from "./progress";
-import { ProgressStorageError,type ProgressRepository,type ReplacementCheck,type StoredProgress } from "./progress-repository";
+import { emptyProgress,type Progress } from "./progress";
+import { ProgressStorageError,stringifyRecovery,type PreparedChange,type ProgressRepository,type ReplacementCheck,type StoredProgress } from "./progress-repository";
+import type { AttemptPatch } from "./learning/attempt-writes";
 
 export type StudySnapshot={data:Progress;ready:boolean;issue:string;locked:boolean;saving:boolean;dirty:boolean;revision:number|null};
 export const initialStudySnapshot:StudySnapshot={data:emptyProgress(),ready:false,issue:"",locked:false,saving:false,dirty:false,revision:null};
@@ -13,7 +14,7 @@ export class ProgressStore{
   private queue:Promise<unknown>=Promise.resolve();
   private pending=0;
   private closed=false;
-  private draft:{data:Progress;revision:number}|null=null;
+  private draft:{data:Progress;revision:number;generation:string}|null=null;
   private recovery:string|null=null;
   private listeners=new Set<()=>void>();
   constructor(private readonly options:Options){}
@@ -39,7 +40,7 @@ export class ProgressStore{
         if(!this.repository){try{this.recovery=this.options.legacy();}catch{}}
         try{
           const raw=await this.repository?.readRaw();
-          if(raw!==undefined)this.recovery=JSON.stringify(raw,null,2);
+          if(raw!==undefined)this.recovery=stringifyRecovery(raw);
         }catch{}
         this.publish({ready:true,locked:true,issue:errorMessage(error)});
       }
@@ -67,19 +68,22 @@ export class ProgressStore{
     });
   }
   save(change:(data:Progress)=>Progress):Promise<boolean>{
+    return this.saveWith((repository,prepared)=>repository.update(change,undefined,prepared));
+  }
+  saveAttempt(id:string,revision:number,patch:AttemptPatch):Promise<boolean>{
+    const captured=structuredClone(patch);
+    return this.saveWith((repository,prepared)=>repository.saveAttempt(id,revision,captured,prepared));
+  }
+  private saveWith(save:(repository:ProgressRepository,prepared:PreparedChange)=>Promise<StoredProgress>):Promise<boolean>{
     return this.enqueue(async()=>{
       if(this.snapshot.locked)return false;
-      let candidate:Progress|undefined,revision:number|undefined;
+      let candidate:typeof this.draft=null;
       try{
-        const saved=await this.storage().update((data,currentRevision)=>{
-          const result=progressSchema.safeParse(change(data));
-          if(!result.success)throw new ProgressStorageError("invalid",result.error.issues[0]?.message??"Check the entered values. Existing saved progress has not changed.");
-          candidate=result.data;revision=currentRevision;return candidate;
-        });
+        const saved=await save(this.storage(),(data,revision,generation)=>{candidate={data,revision,generation};});
         this.accept(saved);this.announce();return true;
       }catch(error){
-        if(candidate&&revision!==undefined&&error instanceof ProgressStorageError&&["commit","unavailable","closed"].includes(error.code)){
-          this.draft={data:candidate,revision};
+        if(candidate&&error instanceof ProgressStorageError&&["commit","unavailable","closed"].includes(error.code)){
+          this.draft=candidate;
           this.publish({dirty:true,locked:true,issue:"Browser storage could not save your changes. Your unsaved change is available to export in Settings. Retry saving or load the saved version before continuing."});
         }else{
           try{this.accept(await this.storage().read());}catch{}
@@ -93,7 +97,7 @@ export class ProgressStore{
   reviewReplacement():Promise<ReplacementCheck>{
     return this.enqueue(async()=>{
       const repository=this.storage();
-      try{return {revision:(await repository.read()).revision};}
+      try{const record=await repository.read(true);return {revision:record.revision,generation:record.generation};}
       catch(error){
         if(error instanceof ProgressStorageError&&error.code==="corrupt")return {raw:await repository.readRaw()};
         throw error;
@@ -111,7 +115,7 @@ export class ProgressStore{
     return this.enqueue(async()=>{
       if(!this.draft)return false;
       try{
-        this.accept(await this.storage().replace(this.draft.data,{revision:this.draft.revision}));
+        this.accept(await this.storage().replace(this.draft.data,{revision:this.draft.revision,generation:this.draft.generation}));
         this.announce();return true;
       }catch(error){
         this.publish({issue:errorMessage(error)+" Your unsaved change is still available to export."});return false;
@@ -120,7 +124,7 @@ export class ProgressStore{
   }
   loadSaved():Promise<boolean>{
     return this.enqueue(async()=>{
-      try{this.accept(await this.storage().read());return true;}
+      try{this.accept(await this.storage().read(true));return true;}
       catch(error){this.publish({issue:errorMessage(error),locked:true});return false;}
     });
   }
@@ -130,13 +134,13 @@ export class ProgressStore{
       if(this.snapshot.locked){
         try{
           const raw=await this.repository?.readRaw();
-          if(raw!==undefined)return JSON.stringify(raw,null,2);
+          if(raw!==undefined)return stringifyRecovery(raw);
         }catch{}
         if(this.recovery!==null)return this.recovery;
         if(this.snapshot.revision!==null)return JSON.stringify(this.snapshot.data,null,2);
         throw new Error("No readable progress is available to export. Use a compatible app version or restore browser storage access.");
       }
-      this.accept(await this.storage().read());
+      this.accept(await this.storage().read(true));
       return JSON.stringify(this.snapshot.data,null,2);
     });
   }

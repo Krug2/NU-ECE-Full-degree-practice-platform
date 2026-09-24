@@ -66,12 +66,49 @@ test("serializes two real browser tabs and rejects a stale replacement",async({p
     const repository=await window.StudyRepository.openProgressRepository({name:"concurrent-test"});
     const record=await repository.read();
     let error="";
-    try{await repository.replace({...record.data,notes:{}},{revision:1});}
+    try{await repository.replace({...record.data,notes:{}},{revision:1,generation:record.generation});}
     catch(cause){error=cause instanceof window.StudyRepository.ProgressStorageError?cause.code:"unexpected";}
     const after=await repository.read();repository.close();return {record,after,error};
   });
   expect(result.record).toMatchObject({revision:3,data:{notes:{"mth-215":"first tab","phs-104":"second tab"}}});
   expect(result.after).toEqual(result.record);expect(result.error).toBe("conflict");await second.close();
+});
+
+test("rolls back a failed v1 database migration and then preserves every saved question",async({page})=>{
+  await load(page);
+  const lesson=JSON.parse(await readFile("content/lessons/mth-215/b01.json","utf8"));
+  const data=emptyProgress();data.learning.attempts=[createAttempt(lessonSchema.parse(lesson),"practice","v1-database")];
+  const result=await page.evaluate(async data=>{
+    const legacy={storageVersion:1,revision:6,data};
+    await new Promise<void>((resolve,reject)=>{
+      const request=indexedDB.open("v1-database",1);
+      request.onupgradeneeded=()=>request.result.createObjectStore("progress");
+      request.onerror=()=>reject(request.error);
+      request.onsuccess=()=>{
+        const database=request.result,transaction=database.transaction("progress","readwrite");
+        transaction.objectStore("progress").put(legacy,"current");
+        transaction.oncomplete=()=>{database.close();resolve();};transaction.onabort=()=>{database.close();reject(transaction.error);};
+      };
+    });
+    const repository=await window.StudyRepository.openProgressRepository({name:"v1-database"}),put=IDBObjectStore.prototype.put;
+    IDBObjectStore.prototype.put=function(value,key){
+      if(this.name==="progress"&&key==="index")throw new DOMException("Full","QuotaExceededError");
+      return put.call(this,value,key);
+    };
+    let failure="";
+    try{await repository.initialize();}catch(error){failure=error instanceof window.StudyRepository.ProgressStorageError?error.code:"unexpected";}
+    finally{IDBObjectStore.prototype.put=put;}
+    const preserved=await repository.readRaw(),portable=window.StudyRepository.stringifyRecovery(preserved),migrated=await repository.initialize();
+    const saved=await repository.saveAttempt(data.learning.attempts[0].id,0,{position:1});
+    const raw=await repository.readRaw();repository.close();
+    const reopened=await window.StudyRepository.openProgressRepository({name:"v1-database"});
+    const reloaded=await reopened.read();reopened.close();
+    return {failure,preserved,portable,migrated,saved,raw,reloaded};
+  },data);
+  expect(result.failure).toBe("commit");expect(result.preserved).toEqual({storageVersion:1,revision:6,data});
+  expect(JSON.parse(result.portable)).toEqual(data);expect(result.migrated.data).toEqual(data);
+  expect(result.saved.data.learning.attempts[0]).toMatchObject({position:1,revision:1,questions:data.learning.attempts[0].questions});
+  expect(result.raw).toMatchObject({legacy:result.preserved});expect(result.reloaded).toEqual(result.saved);
 });
 
 test("does not acknowledge an aborted transaction even after its write request succeeds",async({page})=>{
@@ -122,7 +159,7 @@ test("preserves unsupported records and requires explicit matching recovery",asy
   },{original,replacement:emptyProgress()});
   expect(result.error).toBe("corrupt");expect(result.preserved).toEqual(original);
   expect(result.conflict).toBe("conflict");expect(result.afterConflict).toEqual(original);
-  expect(result.restored).toEqual({storageVersion:1,revision:8,data:emptyProgress()});
+  expect(result.restored).toMatchObject({storageVersion:2,revision:8,data:emptyProgress()});
 });
 
 test("releases an older connection during a database upgrade and preserves the newer database",async({page})=>{
@@ -133,7 +170,7 @@ test("releases an older connection during a database upgrade and preserves the n
     const repository=await openProgressRepository({name:"upgrade-test",onVersionChange:()=>{changes++;}});
     await repository.initialize();
     await new Promise<void>((resolve,reject)=>{
-      const request=indexedDB.open("upgrade-test",2);
+      const request=indexedDB.open("upgrade-test",3);
       request.onerror=()=>reject(request.error);
       request.onsuccess=()=>{request.result.close();resolve();};
     });
