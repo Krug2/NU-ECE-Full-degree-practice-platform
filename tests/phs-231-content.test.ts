@@ -10,13 +10,14 @@ import vectorData from "../content/lessons/phs-231/m01-l02.json";
 import motionData from "../content/lessons/phs-231/m02-l01.json";
 import frameData from "../content/lessons/phs-231/m02-l02.json";
 import projectileData from "../content/lessons/phs-231/m02-l03.json";
+import forceData from "../content/lessons/phs-231/m03-l01.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
   expect(pack.status).toBe("building");
   expect(pack.modules.flatMap(m=>m.lessons)).toHaveLength(22);
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
-  for(const data of [unitsData, vectorData, motionData, frameData, projectileData]) {
+  for(const data of [unitsData, vectorData, motionData, frameData, projectileData, forceData]) {
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
     const visit=(value:unknown):void=>{
@@ -32,6 +33,15 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
   }
+});
+
+it("checks the guided force inventory, constraint, and third-law recipient independently",()=>{
+  const q=lessonSchema.parse(forceData).guided.question;
+  const response={normal:"30-6",ax:"12/3",ay:"(24+6-30)/3",partner:"cart-actuator"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(gradeQuestion(q,{...response,normal:"30"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,partner:"weight"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,ax:"12"}).correct).toBe(false);
 });
 
 it("checks the future projectile event and retains signs in the guided fixture",()=>{
