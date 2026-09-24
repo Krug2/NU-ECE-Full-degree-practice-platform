@@ -1,0 +1,610 @@
+{
+  "courseId": "f08",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Limits, one-sided behavior, and continuity",
+      "objective": "Evaluate elementary limits, compare one-sided behavior, and distinguish a nearby limit from a function value and continuity.",
+      "requires": [],
+      "scope": [
+        "Polynomial substitution where continuous; removable rational and radical forms",
+        "Two-sided finite limits require agreement of both sides",
+        "Continuity requires a defined value matching the limit",
+        "Signed infinite behavior describes unboundedness, not a real function value",
+        "Standard sine limit uses radians; finite tables suggest rather than prove limits"
+      ],
+      "workedExamples": [
+        "Polynomial limit at a negative input",
+        "Cancel (x²-9)/(x-3) for x≠3; limit6 while original value undefined",
+        "Rationalize (sqrt(x+4)-2)/x to obtain1/4",
+        "Left and right affine branches disagree at a junction",
+        "Repair a single point without changing its limit",
+        "Opposite signs for 1/(x-2) and matching positive infinity for its square",
+        "sin(3x)/x tends to3 in radians"
+      ],
+      "guided": "Separate the removable limit, assigned point value, and continuity for a factored quotient.",
+      "interaction": {
+        "kind": "refresher-calculus-lab",
+        "mode": "limit",
+        "purpose": "Change a junction, left/right approach values, and the isolated point. Predict existence and continuity, then reveal exact nearby values and a plot. Changing only the point must leave the limit unchanged."
+      },
+      "practice": [
+        [
+          "limit-finite",
+          "polynomial"
+        ],
+        [
+          "limit-finite",
+          "removable"
+        ],
+        [
+          "limit-finite",
+          "rationalize"
+        ],
+        [
+          "limit-finite",
+          "sine"
+        ],
+        [
+          "limit-behavior",
+          "jump"
+        ],
+        [
+          "limit-behavior",
+          "continuous"
+        ],
+        [
+          "limit-behavior",
+          "removable-point"
+        ],
+        [
+          "limit-behavior",
+          "reciprocal"
+        ],
+        [
+          "limit-behavior",
+          "square-pole"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "limit-finite",
+          "standard-audit"
+        ],
+        [
+          "limit-finite",
+          "removable"
+        ],
+        [
+          "limit-behavior",
+          "junction"
+        ],
+        [
+          "limit-behavior",
+          "pole-audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Substitute into 0/0 and stop",
+          "Treating an indeterminate form as an answer",
+          "Compare equivalent formulas only off the excluded point, then take the limit."
+        ],
+        [
+          "Use the plotted dot as the limit",
+          "Confusing nearby behavior with point evaluation",
+          "Compare left and right approaches independently of the assigned value."
+        ],
+        [
+          "Write infinity as an ordinary number",
+          "Extending real arithmetic without justification",
+          "Classify unbounded direction; no finite two-sided limit exists."
+        ]
+      ],
+      "readings": [
+        "cv1-2.2",
+        "cv1-2.3",
+        "cv1-2.4"
+      ],
+      "supports": [
+        "csc-208",
+        "csc-209",
+        "phs-231",
+        "cee-300"
+      ],
+      "acceptance": "Four checkpoints cover canceled-domain limits, radical and radian limits, one-sided/point continuity, and signs at poles."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Derivative meaning, polynomial rules, and rates",
+      "objective": "Connect secants to instantaneous derivatives, differentiate polynomials, construct tangent lines, and interpret first and second derivatives with units and nondifferentiable corners.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "Difference quotient h≠0 and its h→0 limit",
+        "Power, constant, sum rules for polynomials",
+        "Tangent line y=f(a)+f′(a)(x-a)",
+        "Differentiability implies continuity; continuity alone is insufficient",
+        "Position, velocity, acceleration and their units; f′(a)=0 is local information"
+      ],
+      "workedExamples": [
+        "Expand the quotient for x²-3x, then let h approach0",
+        "Differentiate 2x³-5x+7",
+        "Tangent to x² at x=-1 is -2x-1",
+        "Derivative of |x-2| has left slope-1 and right slope1",
+        "Position 2t³-3t² gives velocity6t²-6t and acceleration12t-6",
+        "A horizontal tangent at one point does not make x² constant"
+      ],
+      "guided": "Compute the secant at a nonzero increment, its limit, and the resulting tangent line.",
+      "interaction": {
+        "kind": "refresher-calculus-lab",
+        "mode": "secant",
+        "purpose": "Change a quadratic, base point, and signed nonzero increment. Predict finite secant and limiting tangent slopes; reveal paired lines and a slope table. Reject h=0 in the original quotient."
+      },
+      "practice": [
+        [
+          "source-rate",
+          "formula"
+        ],
+        [
+          "source-rate",
+          "reverse"
+        ],
+        [
+          "source-quotient",
+          "quadratic"
+        ],
+        [
+          "source-quotient",
+          "reciprocal"
+        ],
+        [
+          "derivative-polynomial",
+          "linear"
+        ],
+        [
+          "derivative-polynomial",
+          "quadratic"
+        ],
+        [
+          "derivative-polynomial",
+          "cubic"
+        ],
+        [
+          "derivative-meaning",
+          "tangent"
+        ],
+        [
+          "derivative-meaning",
+          "corner"
+        ],
+        [
+          "derivative-meaning",
+          "motion"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "derivative-polynomial",
+          "cubic"
+        ],
+        [
+          "derivative-meaning",
+          "tangent"
+        ],
+        [
+          "derivative-meaning",
+          "corner"
+        ],
+        [
+          "derivative-meaning",
+          "motion"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Set h=0 before simplification",
+          "Ignoring the original division",
+          "Use nonzero h, simplify, then take a limit."
+        ],
+        [
+          "Differentiate a constant to itself",
+          "Confusing value and change",
+          "A constant contributes zero rate."
+        ],
+        [
+          "Treat every continuous point as smooth",
+          "Ignoring one-sided slopes",
+          "A corner can be continuous with unequal limiting slopes."
+        ],
+        [
+          "Confuse velocity and speed",
+          "Dropping signs or units",
+          "Velocity is signed position change per time; acceleration is velocity change per time."
+        ]
+      ],
+      "readings": [
+        "cv1-3.1",
+        "cv1-3.3",
+        "cv1-3.4"
+      ],
+      "supports": [
+        "csc-208",
+        "csc-209",
+        "phs-231",
+        "cee-310",
+        "cee-324"
+      ],
+      "acceptance": "Checkpoint includes exact derivative polynomials, secant/tangent distinction, corners, and signed velocity/acceleration with units."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Product, quotient, chain, and elementary rules",
+      "objective": "Apply product, quotient, and chain rules, including elementary trigonometric, exponential, logarithmic, reciprocal, and root derivatives on valid domains.",
+      "requires": [
+        "m01-l02"
+      ],
+      "scope": [
+        "Differentiate products by two terms and quotients with squared denominator",
+        "Chain rule multiplies by inner derivative",
+        "Radian sine/cosine, e^u, ln(u) with positive u",
+        "Negative powers and square roots; derivative interior restrictions",
+        "Use existing polynomial inputs and exact derivative values or formula choices for nonpolynomial functions"
+      ],
+      "workedExamples": [
+        "(x²+1)(3x-2) differentiated with two product terms",
+        "(2x+1)/(x-3) derivative -7/(x-3)², x≠3",
+        "(2x-1)³ derivative6(2x-1)²",
+        "sin(4x) and cos(3x) with radian arguments",
+        "e^(-2x) derivative -2e^(-2x)",
+        "ln(3x+1) derivative3/(3x+1) on x>-1/3",
+        "(x+2)^(-2) and sqrt(2x+3), including boundary restrictions"
+      ],
+      "guided": "Identify inner and outer derivatives before evaluating a composite at a specified point.",
+      "interaction": {
+        "kind": "refresher-calculus-lab",
+        "mode": "chain",
+        "purpose": "Change a signed inner slope, intercept, and outer power. Predict outer derivative, inner derivative, and their product at a point; reveal a composition table and a local change comparison."
+      },
+      "practice": [
+        [
+          "derivative-rules",
+          "product"
+        ],
+        [
+          "derivative-rules",
+          "quotient"
+        ],
+        [
+          "derivative-rules",
+          "chain-power"
+        ],
+        [
+          "derivative-elementary",
+          "sin"
+        ],
+        [
+          "derivative-elementary",
+          "cos"
+        ],
+        [
+          "derivative-elementary",
+          "exp"
+        ],
+        [
+          "derivative-elementary",
+          "log"
+        ],
+        [
+          "derivative-domain",
+          "reciprocal"
+        ],
+        [
+          "derivative-domain",
+          "root"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "derivative-rules",
+          "product-quotient"
+        ],
+        [
+          "derivative-rules",
+          "chain-power"
+        ],
+        [
+          "derivative-elementary",
+          "audit"
+        ],
+        [
+          "derivative-domain",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Multiply derivatives of factors",
+          "Overgeneralizing the sum rule",
+          "Use u′v+uv′ and retain each undifferentiated factor."
+        ],
+        [
+          "Omit the inner derivative",
+          "Recognizing only the outer pattern",
+          "Track the change of the inner input as a second factor."
+        ],
+        [
+          "Use degree-mode trig derivatives",
+          "Forgetting argument units",
+          "Standard sine/cosine derivative rules use radians."
+        ],
+        [
+          "Ignore logarithm or root domain",
+          "Formal rules without conditions",
+          "Check the original expression and derivative denominator before evaluating."
+        ]
+      ],
+      "readings": [
+        "cv1-3.3",
+        "cv1-3.5",
+        "cv1-3.6",
+        "cv1-3.9"
+      ],
+      "supports": [
+        "csc-208",
+        "csc-209",
+        "cee-300",
+        "cee-310",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Independent work covers product/quotient structure, polynomial chain rule, all four elementary functions and nonpolynomial domain boundaries."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Integrals, signed accumulation, and the fundamental theorem",
+      "objective": "Evaluate definite polynomial integrals, distinguish signed accumulation from total area or distance, and use the fundamental theorem with variable bounds and average values.",
+      "requires": [
+        "m01-l03"
+      ],
+      "scope": [
+        "Riemann sums as height times width and limiting accumulation",
+        "Polynomial antiderivative evaluation F(b)-F(a)",
+        "Reversed/equal bounds and signed area",
+        "Piecewise constant velocity: displacement versus total distance",
+        "Average value integral/(b-a), b>a",
+        "FTC with continuous integrand and a differentiable moving upper bound"
+      ],
+      "workedExamples": [
+        "Right rectangle sum for f(x)=x on[0,2] with four pieces is2.5 versus exact2",
+        "Integral of3x²-2 from0to2 is4",
+        "Integral of x from-1to1 is0 while geometric area is1",
+        "Velocity3m/s for2s then-2m/s for3s gives displacement0m and distance12m",
+        "Reverse bounds negate an integral; equal bounds give0",
+        "Average of x² on[0,3] is3",
+        "Derivative of integral from0to x² of(1+t²)dt is2x(1+x⁴)"
+      ],
+      "guided": "Evaluate a signed integral, reverse its bounds, and distinguish its average from an endpoint value.",
+      "interaction": {
+        "kind": "refresher-calculus-lab",
+        "mode": "accumulation",
+        "purpose": "Change two signed constant rates and interval widths. Predict signed accumulation, absolute accumulation, and average rate; reveal rectangles and a running-total table. Test cancellation without losing total distance."
+      },
+      "practice": [
+        [
+          "integral-polynomial",
+          "forward"
+        ],
+        [
+          "integral-polynomial",
+          "reverse"
+        ],
+        [
+          "integral-polynomial",
+          "zero"
+        ],
+        [
+          "integral-accumulation",
+          "rectangles"
+        ],
+        [
+          "integral-accumulation",
+          "signed-area"
+        ],
+        [
+          "integral-accumulation",
+          "motion"
+        ],
+        [
+          "integral-accumulation",
+          "average"
+        ],
+        [
+          "integral-ftc",
+          "upper"
+        ],
+        [
+          "integral-ftc",
+          "chain"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "integral-polynomial",
+          "bounds-audit"
+        ],
+        [
+          "integral-accumulation",
+          "motion"
+        ],
+        [
+          "integral-accumulation",
+          "area-average"
+        ],
+        [
+          "integral-ftc",
+          "chain"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Make every integral positive",
+          "Confusing signed accumulation and geometric area",
+          "Keep signs for net change; integrate absolute values for total amount."
+        ],
+        [
+          "Subtract endpoints of f",
+          "Confusing integrand with antiderivative",
+          "Differentiate your candidate F before computing F(b)-F(a)."
+        ],
+        [
+          "Forget upper-bound derivative",
+          "Treating a composite bound as x",
+          "Apply FTC first, then the chain rule."
+        ],
+        [
+          "Average endpoints automatically",
+          "Assuming a linear graph",
+          "Average value is total accumulation divided by interval length."
+        ]
+      ],
+      "readings": [
+        "cv1-5.2",
+        "cv1-5.3"
+      ],
+      "supports": [
+        "csc-208",
+        "csc-209",
+        "phs-231",
+        "phs-232",
+        "cee-310",
+        "cee-324"
+      ],
+      "acceptance": "Independent questions cover exact integration, bound orientation, signed and absolute motion/area, average value, and moving-bound chain factors."
+    },
+    {
+      "id": "m01-l05",
+      "title": "Antiderivatives, substitution, and initial conditions",
+      "objective": "Recover antiderivatives with constants, reverse simple chain rules, and use one or two initial conditions to select and verify a particular function.",
+      "requires": [
+        "m01-l04"
+      ],
+      "scope": [
+        "Indefinite integrals describe families differing by constants on an interval",
+        "Polynomial power rule except exponent-1; ln|x| on intervals avoiding0",
+        "Simple linear and quadratic inner substitutions including changed definite bounds",
+        "Elementary exponential/trig antiderivatives and inverse chain factors",
+        "One initial condition for first derivative; two for second derivative",
+        "Verify both the derivative relationship and every supplied condition; no general ODE methods"
+      ],
+      "workedExamples": [
+        "Antiderivative of6x²-4x is2x³-2x²+C",
+        "Integral1/x is ln|x|+C separately on positive/negative intervals",
+        "Integral(3x+1)² dx=(3x+1)³/9+C",
+        "Integral2x(x²+1)² dx=(x²+1)³/3+C",
+        "Integral2x(x²+1) from0to2 uses u1to5 and equals12",
+        "Integral e^(2x) is e^(2x)/2+C; integral cos(3x) is sin(3x)/3+C",
+        "y′=4x-3 and y(2)=5 gives y=2x²-3x+3",
+        "y″=6x, y′(0)=-2, y(0)=4 gives y=x³-2x+4"
+      ],
+      "guided": "Recover a polynomial from its derivative and an initial value, then verify both conditions.",
+      "interaction": {
+        "kind": "refresher-calculus-lab",
+        "mode": "initial",
+        "purpose": "Change a derivative and an initial point/value. Predict the required constant and a second function value, then reveal a family of vertically shifted curves. Explain why slopes alone cannot recover the starting value."
+      },
+      "practice": [
+        [
+          "antiderivative",
+          "polynomial"
+        ],
+        [
+          "antiderivative",
+          "log"
+        ],
+        [
+          "antiderivative",
+          "exp"
+        ],
+        [
+          "antiderivative",
+          "trig"
+        ],
+        [
+          "integral-substitution",
+          "linear"
+        ],
+        [
+          "integral-substitution",
+          "quadratic"
+        ],
+        [
+          "integral-substitution",
+          "definite"
+        ],
+        [
+          "initial-condition",
+          "first"
+        ],
+        [
+          "initial-condition",
+          "second"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "antiderivative",
+          "audit"
+        ],
+        [
+          "integral-substitution",
+          "audit"
+        ],
+        [
+          "initial-condition",
+          "first"
+        ],
+        [
+          "initial-condition",
+          "second"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Drop C",
+          "Treating a family as one curve",
+          "Differentiation loses constant offsets; initial information restores them."
+        ],
+        [
+          "Use power rule at n=-1",
+          "Dividing by a zero new exponent",
+          "Use ln|x| on a connected interval excluding zero."
+        ],
+        [
+          "Forget inverse chain factor or mix bounds",
+          "Incomplete change of variable",
+          "Transform the differential and bounds together or return fully to x before evaluation."
+        ],
+        [
+          "Use one constant after two integrations",
+          "Losing independent starting conditions",
+          "Each integration introduces a constant; verify all supplied conditions."
+        ]
+      ],
+      "readings": [
+        "cv1-4.10",
+        "cv1-5.5"
+      ],
+      "supports": [
+        "csc-208",
+        "csc-209",
+        "phs-231",
+        "cee-300",
+        "cee-310",
+        "cee-324"
+      ],
+      "acceptance": "Checkpoints cover family/elementary rules, substitutions and transformed bounds, a nonzero initial point, and two independent initial conditions."
+    }
+  ]
+}

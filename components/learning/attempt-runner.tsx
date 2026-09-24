@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect,useState } from "react";
-import type { Lesson,Response } from "@/lib/learning/contracts";
-import { attemptResult,createAttempt,type Attempt } from "@/lib/learning/attempts";
+import type { Response } from "@/lib/learning/contracts";
+import { attemptResult,createAttempt,type Attempt,type AssessmentSource } from "@/lib/learning/attempts";
 import { AttemptWriteQueue,type AttemptPatch } from "@/lib/learning/attempt-writes";
 import { getStudySnapshot,saveAttemptProgress,saveProgress,useStudy } from "@/lib/study-store";
 import { downloadProgressText } from "@/lib/download-progress";
@@ -70,10 +70,12 @@ function AttemptSession({attempt,removed,onDraftCopied,onBusy,onCloseRemoved}:{a
   </div>;
 }
 
-export function AttemptRunner({lesson}:{lesson:Lesson}){
-  const {data,ready,locked}=useStudy(),[mode,setMode]=useState<Attempt["mode"]>("practice");
+export function AttemptRunner({lesson,onlyMode}:{lesson:AssessmentSource;onlyMode?:Attempt["mode"]}){
+  const {data,ready,locked}=useStudy(),[modeChoice,setMode]=useState<Attempt["mode"]>();
   const [message,setMessage]=useState(""),[busy,setBusy]=useState(false),[starting,setStarting]=useState(false);
   const [selected,setSelected]=useState<Attempt|null>(null);
+  const activeMode=[...data.learning.attempts].reverse().find(attempt=>attempt.courseId===lesson.courseId&&attempt.lessonId===lesson.id&&attempt.status==="active")?.mode;
+  const mode=modeChoice??onlyMode??selected?.mode??activeMode??"practice";
   const attempts=data.learning.attempts.filter(attempt=>attempt.courseId===lesson.courseId&&attempt.lessonId===lesson.id&&attempt.mode===mode),latest=attempts.at(-1);
   const retained=selected?.courseId===lesson.courseId&&selected.lessonId===lesson.id&&selected.mode===mode?selected:null;
   const saved=retained?attempts.find(attempt=>attempt.id===retained.id):latest,current=saved??retained,removed=!!retained&&!saved;
@@ -89,5 +91,5 @@ export function AttemptRunner({lesson}:{lesson:Lesson}){
     }catch(error){setMessage(error instanceof Error?error.message:"Practice is unavailable.");}
     finally{setStarting(false);}
   };
-  return <div><div className="tabs" role="group" aria-label="Learning mode"><button disabled={busy||starting} aria-pressed={mode==="practice"} onClick={()=>setMode("practice")}>Practice</button><button disabled={busy||starting} aria-pressed={mode==="checkpoint"} onClick={()=>setMode("checkpoint")}>Checkpoint</button></div><p className="muted">{mode==="practice"?"Work through "+(current?.questions.length??lesson.practice.length)+" varied problems with hints and explanations. Generate a new set whenever you want more practice.":"Four new questions check this objective independently. Demonstrate at least three correctly, including every required validity check. Feedback appears after submission."}</p>{!ready?<p>Loading saved practice...</p>:current?<><AttemptSession key={current.id} attempt={current} removed={removed} onBusy={setBusy} onCloseRemoved={()=>setSelected(null)} onDraftCopied={()=>{setSelected(null);setMode("practice");setMessage("Draft kept as practice. Start a new checkpoint for independent evidence.");}}/>{latest&&latest.id!==current.id&&<div className="notice section-space"><p>A newer {mode} attempt is available. Your current draft has been kept.</p><button className="button secondary" disabled={busy||starting} onClick={()=>setSelected(latest)}>Open latest attempt</button></div>}</>:<p>No {mode} started for this lesson yet.</p>}{(!current||current.status!=="active"||removed)&&<button className="button" onClick={start} disabled={!ready||locked||starting||busy}>{current?"Start another":"Start"} {mode}</button>}<p className="form-status" role="status">{message}</p></div>;
+  return <div>{!onlyMode&&<div className="tabs" role="group" aria-label="Learning mode"><button disabled={busy||starting} aria-pressed={mode==="practice"} onClick={()=>setMode("practice")}>Practice</button><button disabled={busy||starting} aria-pressed={mode==="checkpoint"} onClick={()=>setMode("checkpoint")}>Checkpoint</button></div>}<p className="muted">{mode==="practice"?"Work through "+(current?.questions.length??lesson.practice.length)+" varied problems with hints and explanations. Generate a new set whenever you want more practice.":"Four new questions check this objective independently. Demonstrate at least three correctly, including every required validity check. Feedback appears after submission."}</p>{!ready?<p>Loading saved practice...</p>:current?<><AttemptSession key={current.id} attempt={current} removed={removed} onBusy={setBusy} onCloseRemoved={()=>setSelected(null)} onDraftCopied={()=>{setSelected(null);setMode("practice");setMessage("Draft kept as practice. Start a new checkpoint for independent evidence.");}}/>{latest&&latest.id!==current.id&&<div className="notice section-space"><p>A newer {mode} attempt is available. Your current draft has been kept.</p><button className="button secondary" disabled={busy||starting} onClick={()=>setSelected(latest)}>Open latest attempt</button></div>}</>:<p>No {mode} started for this lesson yet.</p>}{(!current||current.status!=="active"||removed)&&<button className="button" onClick={start} disabled={!ready||locked||starting||busy}>{current?"Start another":"Start"} {mode}</button>}<p className="form-status" role="status">{message}</p></div>;
 }

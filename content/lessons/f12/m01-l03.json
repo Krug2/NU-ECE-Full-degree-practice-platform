@@ -1,0 +1,207 @@
+{
+  "kind": "practical",
+  "id": "m01-l03",
+  "courseId": "f12",
+  "version": 1,
+  "title": "Check calculator settings and expression entry",
+  "objective": "Predict a benchmark result, match degree or radian mode to the input, enter grouping and scientific notation explicitly, and explain discrepancies before trusting displayed digits.",
+  "why": "A calculator evaluates an entry under its current settings. It cannot infer whether you meant degrees, whether a denominator includes a sum, or whether a displayed decimal should be treated as exact. A few known benchmarks let you check the tool before trusting a longer calculation.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Read technical text and decode notation"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Predict a simple result first. Write the intended expression with clear grouping and units. Check the angle mode when trigonometric functions are involved, enter the expression, and compare the output with your benchmark.",
+        "If the output disagrees, inspect the input, grouping, mode, and display convention before changing the mathematics. Record what you actually entered. A string of digits is not evidence that the intended problem was represented correctly."
+      ]
+    },
+    {
+      "heading": "Match angle mode to the input",
+      "paragraphs": [
+        "Degrees and radians describe the same angles with different numbers. A half-turn is $180^\\circ=\\pi$ radians, so $30^\\circ=\\pi/6$ radians. For the same angle, sine gives the same value when you use the matching number and mode.",
+        "Selecting radians and entering 30 means 30 radians. It does not convert a remembered 30-degree angle for you. A known check is $\\sin(30^\\circ)=1/2$ or $\\sin(\\pi/6)=1/2$ in radian mode. Keep the angle unit in your written work even when a tool's input field contains only a number."
+      ]
+    },
+    {
+      "heading": "Preserve the written grouping",
+      "paragraphs": [
+        "A fraction bar groups its whole numerator and denominator. To enter twelve divided by the sum of two and four on one line, write 12/(2+4). The entry 12/2+4 divides first and then adds four, which describes a different expression.",
+        "A leading negative sign and a negative base are also different: $-3^2=-(3^2)=-9$, while $(-3)^2=9$. Device conventions for keys and display can differ, so explicit parentheses and a known benchmark are more reliable than assuming that a sequence of keys always means the same thing."
+      ]
+    },
+    {
+      "heading": "Decode scientific notation and inverse functions",
+      "paragraphs": [
+        "In the scientific-notation entry convention used here, 2.5e-3 means $2.5\\times10^{-3}=0.0025$. The exponent's minus sign makes the positive value small; it does not make the whole number negative. A tool may use E, e, EXP, or a times-ten key; confirm the meaning in that tool's own documentation.",
+        "Inverse sine, written arcsin or sometimes $\\sin^{-1}$, returns an angle from a sine value. It is different from the reciprocal $1/\\sin(\\theta)$. The real inverse-sine input must lie from -1 to 1, and its principal output lies from -90 to 90 degrees, or from $-\\pi/2$ to $\\pi/2$ radians. Mode controls the output angle unit for inverse sine."
+      ]
+    },
+    {
+      "heading": "Treat the display as a representation",
+      "paragraphs": [
+        "A tool may round, use scientific notation, or display a tiny residual for an exact zero because it computes with finite precision. Check a known result and report the precision you need. Keep an exact form such as $\\pi/6$ or $1/2$ when later reasoning depends on exactness.",
+        "The activity below provides selected checks with explicit conventions. It does not validate a particular device or every possible expression. Its comparisons are practice, separate from the practical record. Use F01 for arithmetic notation and F04 for the underlying trigonometric ideas if the benchmark itself is unfamiliar."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "One angle, two valid entries",
+      "scenario": "Verify the sine of 30 degrees using both angle modes.",
+      "steps": [
+        {
+          "action": "Predict $1/2$ from the unit circle. In degree mode, enter sin(30).",
+          "reason": "The selected mode assigns degrees to the numeric input."
+        },
+        {
+          "action": "Convert the angle to $30\\pi/180=\\pi/6$ radians. In radian mode, enter sin(π/6).",
+          "reason": "Changing both the representation and the mode preserves the intended angle."
+        },
+        {
+          "action": "Compare both outputs with 0.5 and record the input and mode beside each.",
+          "reason": "Agreement with a known benchmark supports these entries; it does not certify every calculator setting."
+        }
+      ],
+      "conclusion": "Changing only the mode while keeping the number 30 would create a different angle rather than another representation of the same angle."
+    },
+    {
+      "title": "A mismatch is evidence to inspect settings",
+      "scenario": "A tool reports approximately -0.988031624 for sin(30), although the intended input is 30 degrees.",
+      "steps": [
+        {
+          "action": "Keep the expectation sin(30°) = 0.5. Do not round -0.988 to 0.5.",
+          "reason": "The difference is too large and changes sign, so it is not a small display-rounding issue."
+        },
+        {
+          "action": "Inspect angle mode. Thirty radians gives approximately -0.988031624; degree mode gives 0.5 for the numeric input 30.",
+          "reason": "The output is consistent with a different interpretation of the input."
+        },
+        {
+          "action": "Set the matching mode or convert to π/6 radians, then repeat the known-angle check.",
+          "reason": "The correction changes the cause and verifies the intended quantity."
+        }
+      ],
+      "conclusion": "A plausible-looking display can be correct for the entered problem while being wrong for the intended one."
+    },
+    {
+      "title": "Two kinds of grouping",
+      "scenario": "Compare 12/(2+4) with 12/2+4, then compare -3² with (-3)².",
+      "steps": [
+        {
+          "action": "12/(2+4) = 12/6 = 2, while 12/2+4 = 6+4 = 10.",
+          "reason": "Parentheses determine whether the sum is the denominator or an operation after division."
+        },
+        {
+          "action": "$-3^2=-(3\\times3)=-9$, while $(-3)^2=(-3)(-3)=9$.",
+          "reason": "The exponent acts on its base; grouping determines whether the negative sign is inside that base."
+        },
+        {
+          "action": "Write the intended grouped expression in the work record before entering it.",
+          "reason": "A future reader needs the expression, not only the observed display value."
+        }
+      ],
+      "conclusion": "Angle mode is irrelevant to these arithmetic examples. The relevant check is expression structure."
+    },
+    {
+      "title": "Scientific display and inverse meaning",
+      "scenario": "Interpret 2.5e-3, then distinguish inverse sine of 0.5 from the reciprocal of sine of 30 degrees.",
+      "steps": [
+        {
+          "action": "Read 2.5e-3 as $2.5\\times10^{-3}=0.0025$. Multiply the decimal by 1000 to recover 2.5.",
+          "reason": "This checks the exponent sign and scale using an inverse operation."
+        },
+        {
+          "action": "arcsin(0.5) is 30 degrees or π/6 radians on the principal branch.",
+          "reason": "Inverse sine asks which principal angle has the supplied sine value."
+        },
+        {
+          "action": "$1/\\sin(30^\\circ)=1/(1/2)=2$.",
+          "reason": "A reciprocal inverts a number; it does not undo the sine function by returning an angle."
+        }
+      ],
+      "conclusion": "Check the meaning and units of the output as well as the notation on the key or display."
+    }
+  ],
+  "guided": {
+    "prompt": "Predict sin(30°), then verify the same angle using degree mode with 30 and radian mode with π/6. Also predict 12/(2+4) and 12/2+4 before using the activity.",
+    "steps": [
+      "State the expected sine value and which number belongs in each mode.",
+      "Explain the denominator grouping in each arithmetic expression, then compare the activity's results with your predictions."
+    ],
+    "review": [
+      "Both matching angle entries represent 30 degrees and give 0.5. Entering 30 in radians changes the angle.",
+      "12/(2+4) gives 2; 12/2+4 gives 10. The latter applies division before the final addition.",
+      "Record the settings and expression that caused any discrepancy. A successful activity comparison is practice; the independent practical task asks you to document a fresh check."
+    ]
+  },
+  "activity": "calculator-check",
+  "task": {
+    "family": "study-orientation",
+    "fields": [
+      {
+        "id": "setup",
+        "label": "Intended quantity, notation, and settings",
+        "help": "State the intended expression and angle unit; identify relevant settings."
+      },
+      {
+        "id": "prediction",
+        "label": "Prediction and independent benchmark",
+        "help": "Use a known angle, simple arithmetic, or scale estimate before checking."
+      },
+      {
+        "id": "observation",
+        "label": "Tool result and expression actually entered",
+        "help": "Write the actual entry, mode when relevant, and displayed result."
+      },
+      {
+        "id": "explanation",
+        "label": "Discrepancy, correction, and recheck",
+        "help": "Explain the agreement or repair, then verify using another representation."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "settings",
+        "label": "I matched the angle unit and settings or stated why angle mode is irrelevant."
+      },
+      {
+        "id": "entry",
+        "label": "I recorded explicit grouping and notation rather than only a display value."
+      },
+      {
+        "id": "check",
+        "label": "I compared the result with a benchmark and explained any discrepancy."
+      }
+    ]
+  },
+  "summary": [
+    "Match the angle number and mode to the same intended angle.",
+    "Use explicit grouping for denominators, powers, and negative bases.",
+    "Distinguish scientific notation, inverse functions, and reciprocals.",
+    "Predict a benchmark, inspect discrepancies, and record the actual entry."
+  ],
+  "retrieval": "At a later visit, explain why sin(30) can be a negative number on one mode and 0.5 on another. Then reconstruct the grouped denominator examples without the worked solutions.",
+  "readings": [
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 7.1: Angles",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    },
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 7.3: Unit Circle",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-3-unit-circle",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    },
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 1.1: Real Numbers: Algebra Essentials",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-1-real-numbers-algebra-essentials",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F12 resource plan."
+    }
+  ]
+}

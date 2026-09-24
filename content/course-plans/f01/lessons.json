@@ -1,0 +1,86 @@
+{
+  "courseId": "f01",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Signed numbers and operation order",
+      "objective": "Compare signed values, calculate signed changes, and evaluate grouped arithmetic in the correct order while identifying undefined division.",
+      "requires": [],
+      "instruction": ["Position versus distance from zero", "Addition as signed change and subtraction as adding the opposite", "Multiplication/division signs and zero", "Grouping, exponent bases, and equal-priority operations", "Equality versus an expression"],
+      "examples": ["A temperature crosses zero", "Leading minus compared with a negative base", "Division and multiplication evaluated left to right", "A fraction bar groups the whole numerator and denominator"],
+      "guided": "Finish -8 - (-3) + 2(5 - 7), identifying the grouped change and final -9.",
+      "interaction": "ArithmeticLab: predict -4^2+6*2, change parentheses, compare 24/3*2 and 24/(3*2), and deliberately test division by zero.",
+      "families": ["signed-change: add, subtract, compare, zero", "operation-order: chain, grouped, fraction-bar", "sign-precedence: square"],
+      "checkpoint": ["Signed comparison and change", "Negative base versus leading minus", "Equal-priority chain and grouping", "Zero divided by nonzero versus division by zero"],
+      "misconceptions": [
+        {"error": "-9 is greater than -4", "cause": "Comparing magnitudes instead of positions", "feedback": "Locate both relative to zero; -9 lies farther left even though its absolute value is larger."},
+        {"error": "Two minuses always make plus", "cause": "Applying multiplication's sign rule to addition", "feedback": "Name the operation first. Adding two negative changes moves farther left."},
+        {"error": "Multiply before dividing everywhere", "cause": "Reading an acronym as six priority levels", "feedback": "Multiplication and division share a level and proceed left to right unless grouping changes the expression."}
+      ],
+      "supports": ["mth-215", "phs-104a", "phs-104", "cee-310"],
+      "resources": ["pre-2.1", "pre-3.2", "pre-3.3"],
+      "acceptance": "Four independent checkpoint items include sign, grouping, comparison, and undefined-division evidence. Tests compute results with integer arithmetic, not the production parser."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Fractions, decimals, and proportions",
+      "objective": "Calculate exact fractional quantities, convert decimals and percentages, and solve a proportion while preserving the reference whole and units.",
+      "requires": ["m01-l01"],
+      "instruction": ["Unit fractions and equivalent forms", "Common denominators", "Multiplication as scaling and division by a reciprocal", "Term versus factor cancellation", "Place value and percent per hundred", "Constant-rate proportional models and their limits"],
+      "examples": ["Subtract fractional cable lengths", "Divide a fractional quantity by a fractional piece size", "Convert 0.375 to 3/8 and 37.5 percent", "Scale quantities and distinguish a part from the remaining whole"],
+      "guided": "Find remaining cable after using 3/8 of a 12 m roll, keeping fraction and length distinct.",
+      "interaction": "ArithmeticLab: compare fraction addition, division, equivalent factors, and a percent multiplier. Learner predicts before revealing exact values.",
+      "families": ["signed-fractions: add, subtract, multiply, divide, length", "proportion: direct, percent, remaining, reverse", "fraction-reason: common, cancel, decimal"],
+      "checkpoint": ["Signed fraction addition and subtraction", "Fraction product and quotient with nonzero divisor", "Proportion and percent of a named whole", "Exact decimal conversion and invalid cancellation"],
+      "misconceptions": [
+        {"error": "Add denominators", "cause": "Treating denominators as counts", "feedback": "The denominator names each part's size. Rename both quantities using one common part size before adding counts."},
+        {"error": "Divide both fractions upside down", "cause": "Memorizing reciprocal without its role", "feedback": "Multiply the dividend by the divisor's reciprocal; verify by multiplying the answer by the original divisor."},
+        {"error": "25 percent means multiply by 25", "cause": "Omitting per hundred", "feedback": "Write 25/100 before multiplying and identify the whole to which it applies."}
+      ],
+      "supports": ["mth-215", "phs-104a", "phs-104", "cee-310", "cee-310l"],
+      "resources": ["pre-4.5", "pre-4.3", "pre-5.1", "pre-6.2", "pre-6.5"],
+      "acceptance": "Equivalent reduced/unreduced fractions and terminating decimals pass; rounded repeating decimals fail exact tasks. Units are displayed separately, and input containing incompatible unit text is invalid."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Powers and real roots",
+      "objective": "Apply integer exponent rules, evaluate real roots, and distinguish a principal square root from the solutions of a square equation.",
+      "requires": ["m01-l01", "m01-l02"],
+      "instruction": ["Repeated factors explain exponent laws", "Zero and negative powers require a nonzero base", "Even and odd roots", "Principal root versus plus/minus equation solutions", "Absolute value in sqrt(x squared)", "Simplifying exact radicals without distributing over addition"],
+      "examples": ["Cancel powers to obtain a reciprocal", "Compare sqrt(49) with x squared equals 49", "Extract a perfect-square factor from sqrt(72)", "Read (-27) to the 2/3 power using the real cube root"],
+      "guided": "Evaluate 3^-2 and sqrt((-6)^2), then classify sqrt(-9) in the real numbers.",
+      "interaction": "ArithmeticLab: negative powers, roots of squares, a radical sum counterexample, and exact versus decimal radical displays.",
+      "families": ["exponent-rules: product, quotient, nested, negative, real-power", "root-meaning: absolute", "radical-simplify: integer, fraction", "root-audit: principal, real-domain, distribution"],
+      "checkpoint": ["Product, quotient, nested, and zero powers", "Negative exponent and nonzero-base rule", "Principal square root and square equation solutions", "Exact radical simplification and real-root classification"],
+      "misconceptions": [
+        {"error": "Negative exponent produces negative value", "cause": "Confusing exponent sign with base sign", "feedback": "The negative exponent denotes a reciprocal. A positive base retains a positive value."},
+        {"error": "sqrt(49) is plus or minus 7", "cause": "Confusing an operation with solving an equation", "feedback": "The radical symbol gives the one nonnegative principal value; x squared equals 49 has two real solutions."},
+        {"error": "sqrt(a+b) = sqrt(a)+sqrt(b)", "cause": "Extending the product rule to a sum", "feedback": "Test a=9 and b=16: the left side is 5 while the proposed sum is 7."}
+      ],
+      "supports": ["mth-215", "csc-208", "phs-232", "cee-300", "cee-324"],
+      "resources": ["alg-1.2", "alg-1.3"],
+      "acceptance": "Test zero and negative exponent boundaries, negative odd radicands, nonnegative principal roots, equivalent exact radicals, and invalid inputs without changing shared graders."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Scientific notation and trustworthy answers",
+      "objective": "Translate scientific notation, retain exact values until rounding is requested, and use an estimate to detect sign or scale errors.",
+      "requires": ["m01-l02", "m01-l03"],
+      "instruction": ["Place value and powers of ten", "Normalized coefficient", "Multiply and divide scientific values", "Equal versus approximately equal", "Reasonableness by sign and scale", "Calculator entry and fraction-bar grouping"],
+      "examples": ["Normalize 0.00072 m", "Multiply and normalize two scientific values", "Compare 2/7 with a rounded display", "Estimate an answer before interpreting it"],
+      "guided": "Normalize 0.0048, compute its exact quotient by 0.002, and reject a thousandfold larger result.",
+      "interaction": "ArithmeticLab: compare exponent entry, exact fractions, late rounding, and denominator parentheses.",
+      "families": ["scientific-notation: to, from", "exact-approximate: compare", "notation-check: product, rounding, estimate"],
+      "checkpoint": ["Decimal to normalized scientific form", "Scientific multiplication and inverse conversion", "Exact fraction versus rounded decimal", "Magnitude estimate and explicitly requested rounding"],
+      "misconceptions": [
+        {"error": "Small positive number gets a positive exponent", "cause": "Counting decimal movement without preserving value", "feedback": "Multiply your proposed coefficient by its power of ten; a positive exponent makes a positive coefficient larger."},
+        {"error": "Every displayed decimal is exact", "cause": "Treating calculator display as a symbolic equality", "feedback": "A finite display of a repeating decimal is approximate. Keep the fraction until the requested final rounding."},
+        {"error": "A computed number is automatically reasonable", "cause": "No independent estimate", "feedback": "Compare the sign and power of ten with a rough calculation before trusting the digits."}
+      ],
+      "supports": ["mth-215", "phs-104a", "phs-104", "phs-232", "cee-310l", "cee-324l"],
+      "resources": ["alg-1.2", "pre-5.1"],
+      "acceptance": "Exercise positive, negative, and zero scientific exponents, normalization carry, equivalent exact inputs, rounded near misses, and notation that could hide a scale error. Measurement precision remains F06's scope."
+    }
+  ],
+  "verification": ["Schema and mapping validation for every lesson and assessment", "At least 50 seeds per structure checked by independent arithmetic fixtures", "Every objective and named subskill appears in its checkpoint", "Shared foundation regression tests pass unchanged", "Diagnostic misses and assistance lead to the correct lesson", "Independent checkpoints cannot be passed by opening a lesson or changing confidence", "Browser feedback, retries, keyboard operation, notes, reload, exact attempt resume, backup export/reset/import", "Desktop and mobile no overflow; axe WCAG A/AA checks", "Repository tests, lint, type check, and production build", "Record actual commands and outcomes separately from human review"]
+}

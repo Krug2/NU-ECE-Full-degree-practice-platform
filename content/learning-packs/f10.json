@@ -1,0 +1,37 @@
+{
+  "courseId": "f10",
+  "title": "Programming recall",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Recover state tracing, decisions, loops, indexed lists, functions, and evidence-based debugging through a clearly stated Python 3 subset. This optional refresher awards no university credit and establishes no enrollment eligibility. Familiarity and assisted work are separate from independent evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From program state to tested behavior",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Values, assignment, and decisions",
+          "objective": "Trace typed values and sequential assignments, evaluate arithmetic and Boolean conditions, and select the correct branch including equality boundaries."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Loops and indexed collections",
+          "objective": "Trace counted and condition-controlled loops, use valid zero-based list indices, and accumulate or filter values while accounting for empty inputs and termination."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Functions, contracts, and shared data",
+          "objective": "Trace parameters, local variables and return values, distinguish printing from returning, and predict list aliasing versus a shallow copy under an explicit function contract."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Debugging with evidence and boundary tests",
+          "objective": "Classify syntax, runtime and logic failures, trace the first divergent state, choose a justified repair, and design tests for normal, boundary and invalid cases without claiming that passing examples prove general correctness."
+        }
+      ]
+    }
+  ]
+}

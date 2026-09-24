@@ -1,0 +1,319 @@
+{
+  "id": "m01-l01",
+  "courseId": "f10",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Values, assignment, and decisions",
+  "objective": "Trace typed values and sequential assignments, evaluate arithmetic and Boolean conditions, and select the correct branch including equality boundaries.",
+  "why": "Programs act on current values in a specific order. A clear execution model lets you understand unfamiliar code and locate the first step where its behavior differs from your intention.",
+  "estimatedMinutes": 40,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "These lessons use Python 3. Assignment `x = expression` evaluates the right side, then binds x to that result. Comparison `x == y` asks whether two values are equal and produces True or False. Trace the current state after each statement.",
+        "An `if`/`elif`/`else` chain selects the first true condition, or else if none is true. Indentation defines the block. Activities use bounded, supplied programs; you do not need an installed interpreter."
+      ]
+    },
+    {
+      "heading": "Types distinguish values",
+      "paragraphs": [
+        "The integer `12`, float `12.0`, string `\"12\"`, and Boolean `True` have different types. Quoted digits remain text: `\"2\" + \"3\"` produces `\"23\"`, while `2 + 3` produces 5. A name can be rebound to a new value, but the current value's type determines its operations.",
+        "`input()` returns text. `int(raw)` explicitly converts valid integer text to a number without changing raw itself. Invalid text such as `\"two\"` raises ValueError. Supplied trace inputs avoid that interaction while retaining the distinction between text and numeric data."
+      ]
+    },
+    {
+      "heading": "Assignment changes state over time",
+      "paragraphs": [
+        "In `x = x + 1`, the right side uses the old x and the left side receives the new value. This is an instruction, not an algebraic equation asserting x equals x+1. Updating x later does not retroactively recalculate a value already stored in y.",
+        "A state table records each name after every line. To swap values using sequential assignments, preserve the first value in a temporary name before overwriting it. Otherwise the second assignment may copy the new value and lose the old one."
+      ]
+    },
+    {
+      "heading": "Arithmetic follows the language's rules",
+      "paragraphs": [
+        "Use parentheses to state grouping. Python uses `**` for exponentiation; `^` is a different operator. Multiplication and division precede addition and subtraction. These rules determine the evaluated value before any assignment happens.",
+        "For integer operands, `/` gives a floating-point true quotient. `//` floors toward negative infinity, so -7//2 is -4. With a positive divisor, `%` gives a nonnegative remainder satisfying dividend = divisor × floor quotient + remainder. Python's rules must not be assumed to match C++ division or binding behavior."
+      ]
+    },
+    {
+      "heading": "Decisions need boundary cases",
+      "paragraphs": [
+        "The condition `value < limit` excludes equality, while `value <= limit` includes it. Test below, at, and above a threshold. The equality case often reveals an error that ordinary inputs miss.",
+        "An if/elif chain runs at most one branch. Two separate if statements are independent, so both may run. The first can even change values used by the second. Read the indentation and statement order before deciding which comparisons use which state."
+      ]
+    },
+    {
+      "heading": "Boolean combinations and guards",
+      "paragraphs": [
+        "For Boolean conditions, `and` requires both conditions, `or` requires at least one, and `not` reverses the result. An inclusive interval needs a lower and an upper comparison joined with and. Joining those comparisons with or can accept values outside the interval.",
+        "Python short-circuits from left to right. In `d != 0 and n/d > 2`, a zero d makes the left side false, so the division is skipped. Reversing the operands would attempt the division before checking the guard. A guard is an execution-order decision, not just a mathematical statement."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Track reassignment",
+      "prompt": "```python\nx = 4\ny = x + 2\nx = y * 3\n```",
+      "steps": [
+        {
+          "math": "x=4\\ \\longrightarrow\\ y=6",
+          "reason": "The second line uses the current x."
+        },
+        {
+          "math": "x=18,\\qquad y=6",
+          "reason": "The last assignment changes x only."
+        }
+      ],
+      "conclusion": "y stores a computed value, not a formula that keeps updating."
+    },
+    {
+      "title": "Convert text",
+      "prompt": "```python\nraw = \"12\"\nvalue = int(raw) + 3\n```",
+      "steps": [
+        {
+          "math": "\\text{raw has type str}",
+          "reason": "Quotes make the value text."
+        },
+        {
+          "math": "\\text{value}=12+3=15",
+          "reason": "Explicit conversion happens before numeric addition."
+        }
+      ],
+      "conclusion": "raw remains text while value is an integer."
+    },
+    {
+      "title": "Compare division rules",
+      "prompt": "```python\na = 7 / 2\nb = 7 // 2\nc = -7 // 2\nd = -7 % 2\n```",
+      "steps": [
+        {
+          "math": "a=3.5,\\quad b=3,\\quad c=-4",
+          "reason": "Flooring moves toward negative infinity."
+        },
+        {
+          "math": "-7=2(-4)+1,\\qquad d=1",
+          "reason": "The remainder completes the quotient identity."
+        }
+      ],
+      "conclusion": "Truncation toward zero would give the wrong negative floor quotient."
+    },
+    {
+      "title": "Respect grouping",
+      "prompt": "```python\na = (2 + 3) ** 2\nb = 2 + 3 * 2\n```",
+      "steps": [
+        {
+          "math": "a=5^2=25",
+          "reason": "Parentheses are evaluated before exponentiation."
+        },
+        {
+          "math": "b=2+6=8",
+          "reason": "Multiplication is evaluated before addition."
+        }
+      ],
+      "conclusion": "Use ** for the mathematical power shown here."
+    },
+    {
+      "title": "Select the equality branch",
+      "prompt": "```python\nvalue = 10\nif value < 10:\n    result = 1\nelif value == 10:\n    result = 2\nelse:\n    result = 3\n```",
+      "steps": [
+        {
+          "math": "10<10\\ \\text{is False}",
+          "reason": "The first branch excludes equality."
+        },
+        {
+          "math": "10=10\\ \\text{is True},\\quad\\text{result}=2",
+          "reason": "The true elif is selected and the chain ends."
+        }
+      ],
+      "conclusion": "The else block does not run."
+    },
+    {
+      "title": "Run two independent decisions",
+      "prompt": "```python\nx = 2\ncount = 0\nif x >= 2:\n    count = count + 1\nif x <= 2:\n    count = count + 2\n```",
+      "steps": [
+        {
+          "math": "\\text{count}:0\\longrightarrow1",
+          "reason": "The first inclusive comparison is true."
+        },
+        {
+          "math": "\\text{count}:1\\longrightarrow3",
+          "reason": "The separate second comparison is also true."
+        }
+      ],
+      "conclusion": "Using elif for the second condition would change the result."
+    },
+    {
+      "title": "Require both bounds",
+      "prompt": "```python\nx = 4\ninside = x >= 2 and x <= 4\noutside = not inside\n```",
+      "steps": [
+        {
+          "math": "(4\\ge2)\\land(4\\le4)=\\text{True}",
+          "reason": "Both inclusive bounds hold."
+        },
+        {
+          "math": "\\text{outside}=\\text{False}",
+          "reason": "not reverses the result."
+        }
+      ],
+      "conclusion": "The upper endpoint is inside."
+    },
+    {
+      "title": "Guard a division",
+      "prompt": "```python\nd = 0\nsafe = d != 0 and 6 / d > 2\n```",
+      "steps": [
+        {
+          "math": "d\\ne0\\ \\text{is False}",
+          "reason": "The left operand is checked first."
+        },
+        {
+          "math": "\\text{safe}=\\text{False}",
+          "reason": "Short-circuiting skips the division."
+        }
+      ],
+      "conclusion": "The program does not divide by zero."
+    }
+  ],
+  "guided": {
+    "title": "Finish the trace",
+    "setup": "Trace the program using a state table.",
+    "before": [
+      "Evaluate each right side using the current bindings.",
+      "The decision uses updated x, and equality belongs to the if branch."
+    ],
+    "question": {
+      "id": "f10-l01-guided",
+      "familyId": "guided-f10-l01",
+      "familyVersion": 1,
+      "courseId": "f10",
+      "objectiveId": "m01-l01",
+      "category": "application",
+      "critical": false,
+      "prompt": "```python\nx = 3\ny = x + 2\nx = y * 2\nif x >= 10:\n    result = x - y\nelse:\n    result = 0\n```\nGive final values.",
+      "fields": [
+        {
+          "id": "x",
+          "kind": "rational",
+          "label": "Final x",
+          "expected": "10",
+          "unit": ""
+        },
+        {
+          "id": "y",
+          "kind": "rational",
+          "label": "Final y",
+          "expected": "5",
+          "unit": ""
+        },
+        {
+          "id": "result",
+          "kind": "rational",
+          "label": "Final result",
+          "expected": "5",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the current state before each statement.",
+        "The decision uses updated x, and equality belongs to the if branch.",
+        "y becomes 5, then x becomes 10."
+      ],
+      "explanation": [
+        "y becomes 5, then x becomes 10.",
+        "The comparison is true, so result is 10-5=5."
+      ],
+      "answerSummary": "y becomes 5, then x becomes 10. The comparison is true, so result is 10-5=5."
+    },
+    "after": "Explain each state change before beginning independent practice. Guided feedback is assisted work."
+  },
+  "interaction": {
+    "kind": "refresher-programming-lab",
+    "mode": "state",
+    "prompt": "Choose an input and threshold, predict assigned values and the branch, then advance a numbered state trace one step at a time. Change an equality boundary and explain the result."
+  },
+  "practice": [
+    {
+      "familyId": "f10-state",
+      "variant": "reassign"
+    },
+    {
+      "familyId": "f10-state",
+      "variant": "swap"
+    },
+    {
+      "familyId": "f10-values",
+      "variant": "division"
+    },
+    {
+      "familyId": "f10-values",
+      "variant": "types"
+    },
+    {
+      "familyId": "f10-values",
+      "variant": "precedence"
+    },
+    {
+      "familyId": "f10-branch",
+      "variant": "threshold"
+    },
+    {
+      "familyId": "f10-branch",
+      "variant": "independent"
+    },
+    {
+      "familyId": "f10-branch",
+      "variant": "boolean"
+    },
+    {
+      "familyId": "f10-branch",
+      "variant": "guard"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f10-state",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f10-values",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f10-branch",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f10-branch",
+      "variant": "guard"
+    }
+  ],
+  "summary": [
+    "Trace state changes in order.",
+    "Distinguish assignment, comparison and types.",
+    "Use Python's stated operator rules.",
+    "Check equality boundaries and short-circuit order."
+  ],
+  "retrieval": "Trace a three-line reassignment program without running it. Test below/equal/above values for a threshold and explain how two if statements differ from if/elif.",
+  "readings": [
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 3.1.1: Numbers and assignment",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#numbers",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    },
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 3.1.2: Text and conversion",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#text",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    },
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 4.1: If statements",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#if-statements",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    },
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 5.7: More on conditions",
+      "url": "https://docs.python.org/3.14/tutorial/datastructures.html#more-on-conditions",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    }
+  ]
+}

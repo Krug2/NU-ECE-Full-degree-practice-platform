@@ -1,0 +1,42 @@
+{
+  "courseId": "f07",
+  "title": "Vectors and geometry",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Recover components, magnitude and direction, vector arithmetic, dot and cross products, and coordinate geometry. This optional refresher does not award university credit or determine enrollment eligibility. Familiarity and assisted work are separate from independent checkpoint evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From directed changes to spatial geometry",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Components, displacement, and unit direction",
+          "objective": "Distinguish points from vectors, compute two- and three-dimensional displacements and magnitudes, and normalize nonzero vectors while handling zero correctly."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Vector arithmetic, resultants, and coordinate directions",
+          "objective": "Combine vectors componentwise, interpret signed scaling and equilibrants, and convert between planar magnitude-direction and Cartesian components with correct quadrants."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Dot products, angles, and projections",
+          "objective": "Calculate dot products, classify and measure angles between nonzero vectors, and distinguish scalar components, vector projections, and work along a displacement."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Cross products, orientation, and area",
+          "objective": "Compute ordered three-dimensional cross products, verify perpendicularity, and use their direction and magnitude for area and a supplied torque model."
+        },
+        {
+          "id": "m01-l05",
+          "title": "Lines, planes, and coordinate systems",
+          "objective": "Use vector equations to test points on lines and planes, calculate perpendicular point-plane distance, and convert simple Cartesian, cylindrical, and spherical coordinates under explicitly stated conventions."
+        }
+      ]
+    }
+  ]
+}

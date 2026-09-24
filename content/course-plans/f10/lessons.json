@@ -1,0 +1,461 @@
+{
+  "courseId": "f10",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Values, assignment, and decisions",
+      "objective": "Trace typed values and sequential assignments, evaluate arithmetic and Boolean conditions, and select the correct branch including equality boundaries.",
+      "requires": [],
+      "scope": [
+        "Python 3 integers, floats, strings and Boolean values; input text requires explicit conversion",
+        "Assignment evaluates the old right side before rebinding; distinguish = from ==",
+        "Arithmetic precedence, ** exponent, / true division, // floor division and % with positive divisor, including negatives",
+        "if/elif/else executes first true branch; and/or/not and boundary conditions"
+      ],
+      "workedExamples": [
+        "Trace x=4; y=x+2; x=y*3",
+        "Distinguish '12' from 12 and int('12')",
+        "Evaluate 7/2, 7//2, -7//2 and -7%2",
+        "Parenthesized arithmetic and exponent vs XOR",
+        "Trace threshold decisions below/at/above 10",
+        "Compare if/elif with two separate if statements",
+        "Combine an inclusive range with and rather than or",
+        "Short circuit prevents division by zero"
+      ],
+      "interaction": {
+        "kind": "refresher-programming-lab",
+        "mode": "state",
+        "purpose": "Choose an input and threshold, predict assigned values and the branch, then advance a numbered state trace one step at a time. Change an equality boundary and explain the result."
+      },
+      "practice": [
+        [
+          "state",
+          "reassign"
+        ],
+        [
+          "state",
+          "swap"
+        ],
+        [
+          "values",
+          "division"
+        ],
+        [
+          "values",
+          "types"
+        ],
+        [
+          "values",
+          "precedence"
+        ],
+        [
+          "branch",
+          "threshold"
+        ],
+        [
+          "branch",
+          "independent"
+        ],
+        [
+          "branch",
+          "boolean"
+        ],
+        [
+          "branch",
+          "guard"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "state",
+          "audit"
+        ],
+        [
+          "values",
+          "audit"
+        ],
+        [
+          "branch",
+          "audit"
+        ],
+        [
+          "branch",
+          "guard"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Treat assignment as an equation",
+          "Ignoring time and state",
+          "Evaluate the current right side, then replace the target binding."
+        ],
+        [
+          "Use <= instead of < without checking equality",
+          "Missing the boundary partition",
+          "Test one value below, at, and above the threshold."
+        ],
+        [
+          "Assume division semantics transfer from another language",
+          "Using a remembered rule from C++",
+          "Use the explicitly stated Python operators; // floors toward negative infinity."
+        ]
+      ],
+      "readings": [
+        "py-numbers",
+        "py-text",
+        "py-if",
+        "py-conditions"
+      ],
+      "supports": [
+        "csc-242",
+        "csc-252",
+        "cee-340"
+      ]
+    },
+    {
+      "id": "m01-l02",
+      "title": "Loops and indexed collections",
+      "objective": "Trace counted and condition-controlled loops, use valid zero-based list indices, and accumulate or filter values while accounting for empty inputs and termination.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "range stop excluded, nonzero signed step; zero iterations",
+        "while checks before body, update/termination; no execute-unbounded loop",
+        "Python lists as indexed collections, not claims of C++ array equivalence",
+        "Read/update positions, negative last index, len, out-of-range IndexError",
+        "Sum/count/filter list traversal, nested-loop counts"
+      ],
+      "workedExamples": [
+        "range(2,8,2) visits 2,4,6",
+        "A loop over range(0) leaves its initializer",
+        "Sum [3,-2,4] with a running total",
+        "Count values meeting an inclusive threshold",
+        "while doubles a value until crossing a bound",
+        "Identify a missing update that prevents termination",
+        "Read/replace first/last list positions and reject index len",
+        "Count iterations of two nested ranges"
+      ],
+      "interaction": {
+        "kind": "refresher-programming-lab",
+        "mode": "loop",
+        "purpose": "Choose a small list and threshold. Predict filtered sum and count, then step through every iteration with before/after state. Compare empty, all-rejected and boundary-equal inputs."
+      },
+      "practice": [
+        [
+          "range",
+          "positive"
+        ],
+        [
+          "range",
+          "negative"
+        ],
+        [
+          "range",
+          "empty"
+        ],
+        [
+          "loop",
+          "sum"
+        ],
+        [
+          "loop",
+          "filter"
+        ],
+        [
+          "loop",
+          "while"
+        ],
+        [
+          "loop",
+          "nested"
+        ],
+        [
+          "list",
+          "index"
+        ],
+        [
+          "list",
+          "update"
+        ],
+        [
+          "list",
+          "bounds"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "range",
+          "audit"
+        ],
+        [
+          "loop",
+          "filter"
+        ],
+        [
+          "loop",
+          "audit"
+        ],
+        [
+          "list",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Include range's stop",
+          "Confusing the boundary with a visited value",
+          "The stop is excluded even for negative steps."
+        ],
+        [
+          "Reset total inside the loop",
+          "Losing accumulated state",
+          "Initialize before traversal and update once per accepted item."
+        ],
+        [
+          "Treat len(items) as the last index",
+          "Counting positions from one",
+          "Nonnegative indices end at len(items)-1."
+        ],
+        [
+          "Assume a while loop runs once",
+          "Missing the initial condition check",
+          "The condition may be false before the first body execution."
+        ]
+      ],
+      "readings": [
+        "py-lists",
+        "py-while",
+        "py-for"
+      ],
+      "supports": [
+        "csc-242",
+        "csc-252",
+        "cee-340",
+        "cee-430"
+      ]
+    },
+    {
+      "id": "m01-l03",
+      "title": "Functions, contracts, and shared data",
+      "objective": "Trace parameters, local variables and return values, distinguish printing from returning, and predict list aliasing versus a shallow copy under an explicit function contract.",
+      "requires": [
+        "m01-l02"
+      ],
+      "scope": [
+        "Function definition does not call it; parameters receive argument values",
+        "Return ends current call; no return yields None; print produces output and returns None",
+        "Local rebinding of immutable numeric argument does not rebind caller",
+        "Lists mutable, aliases share one object; items[:] shallow copy sufficient for flat numeric lists",
+        "Pure function vs mutation, preconditions/postconditions, nonempty mean versus empty case"
+      ],
+      "workedExamples": [
+        "Define scale(x,k) and trace two calls",
+        "A local x update leaves the caller's x unchanged",
+        "Trace an early return before later statements",
+        "A print-only function returns None",
+        "Function sum handles an empty list with zero",
+        "Mean requires a nonempty list; avoid zero division",
+        "Alias mutation changes the original list",
+        "A shallow copy isolates element replacement for a flat numeric list"
+      ],
+      "interaction": {
+        "kind": "refresher-programming-lab",
+        "mode": "function",
+        "purpose": "Choose alias or shallow-copy behavior and an increment. Predict return and caller list values, then step through parameter binding, mutation and return with separate caller/callee state."
+      },
+      "practice": [
+        [
+          "function",
+          "call"
+        ],
+        [
+          "function",
+          "local"
+        ],
+        [
+          "function",
+          "early"
+        ],
+        [
+          "function",
+          "none"
+        ],
+        [
+          "function",
+          "contract"
+        ],
+        [
+          "mutation",
+          "alias"
+        ],
+        [
+          "mutation",
+          "copy"
+        ],
+        [
+          "mutation",
+          "rebind"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "function",
+          "audit"
+        ],
+        [
+          "function",
+          "none"
+        ],
+        [
+          "function",
+          "contract"
+        ],
+        [
+          "mutation",
+          "audit"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Treat printed output as the return value",
+          "Confusing a side effect with an expression value",
+          "Only return supplies the call result; falling off returns None."
+        ],
+        [
+          "Assume parameter rebinding always changes the caller",
+          "Conflating names and objects",
+          "A new local binding does not replace the caller's binding."
+        ],
+        [
+          "Assume assigning a list copies its data",
+          "Missing aliasing",
+          "Both names reference the same list until explicitly copied or rebound."
+        ]
+      ],
+      "readings": [
+        "py-functions",
+        "py-lists"
+      ],
+      "supports": [
+        "csc-242",
+        "csc-252",
+        "cee-340",
+        "csc-436"
+      ]
+    },
+    {
+      "id": "m01-l04",
+      "title": "Debugging with evidence and boundary tests",
+      "objective": "Classify syntax, runtime and logic failures, trace the first divergent state, choose a justified repair, and design tests for normal, boundary and invalid cases without claiming that passing examples prove general correctness.",
+      "requires": [
+        "m01-l03"
+      ],
+      "scope": [
+        "Specification and expected result precede implementation",
+        "SyntaxError vs exception during execution vs wrong output without exception",
+        "Off-by-one range, wrong comparison, reset accumulator, premature return, empty mean",
+        "Choose smallest counterexample, inspect first wrong state, one hypothesis/change then regression checks",
+        "Exact integer assertions and stated tolerances for floats; no general floating equality claim",
+        "Input validity, empty/singleton/negative/duplicate/equality-boundary cases"
+      ],
+      "workedExamples": [
+        "Missing colon prevents parsing",
+        "Out-of-range access raises IndexError",
+        "Wrong comparison returns a plausible but incorrect answer",
+        "Repair sum range to include final element",
+        "Move accumulator initialization outside loop",
+        "Move return after traversal",
+        "Use empty/singleton/equality/negative regression cases",
+        "Compare computed 0.1+0.2 with 0.3 using a stated tolerance"
+      ],
+      "interaction": {
+        "kind": "refresher-programming-lab",
+        "mode": "debug",
+        "purpose": "Choose a faulty list-sum program and a proposed repair. Predict its output and whether it meets the specification, then reveal a trace and a small boundary-test matrix. Use a counterexample to reject a plausible repair."
+      },
+      "practice": [
+        [
+          "debug",
+          "classify"
+        ],
+        [
+          "debug",
+          "offbyone"
+        ],
+        [
+          "debug",
+          "reset"
+        ],
+        [
+          "debug",
+          "early"
+        ],
+        [
+          "debug",
+          "boundary"
+        ],
+        [
+          "debug",
+          "empty"
+        ],
+        [
+          "testing",
+          "matrix"
+        ],
+        [
+          "testing",
+          "float"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "debug",
+          "classify-audit"
+        ],
+        [
+          "debug",
+          "repair-audit"
+        ],
+        [
+          "testing",
+          "matrix"
+        ],
+        [
+          "testing",
+          "float"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Change code before stating expected behavior",
+          "No comparison target",
+          "Write the contract and a failing example before proposing a repair."
+        ],
+        [
+          "Accept one passing case as proof",
+          "Insufficient input coverage",
+          "Keep tests across equivalence classes and boundaries; finite passing cases do not prove all inputs."
+        ],
+        [
+          "Use exact equality for approximate decimal computations",
+          "Ignoring binary representation",
+          "Compare absolute error with a justified tolerance."
+        ]
+      ],
+      "readings": [
+        "py-errors",
+        "py-floats",
+        "py-functions",
+        "py-for"
+      ],
+      "supports": [
+        "csc-242",
+        "csc-252",
+        "cee-340",
+        "csc-436",
+        "cee-430"
+      ]
+    }
+  ]
+}

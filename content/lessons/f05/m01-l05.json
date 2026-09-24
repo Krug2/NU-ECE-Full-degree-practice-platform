@@ -1,0 +1,346 @@
+{
+  "id": "m01-l05",
+  "courseId": "f05",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Decibels, ratios, and references",
+  "objective": "Convert between decibel levels and physical ratios, preserve the reference, and distinguish power addition, cascaded gains, and voltage-based power comparisons.",
+  "why": "Decibels express ratios on a logarithmic scale. To use them correctly in circuits, signals, and communication work, recover what physical quantities are compared, preserve the reference, and distinguish multiplying gains from adding powers.",
+  "estimatedMinutes": 45,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Logarithms reverse exponentials"
+    },
+    {
+      "lessonId": "m01-l03",
+      "label": "Log rules and equations with domain checks"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For positive powers in matching units, $L=10\\log_{10}(P/P_0)$ dB, so $P/P_0=10^{L/10}$. Zero dB means equal powers. A negative level means positive power below the reference; it does not mean negative power.",
+        "For a voltage amplitude ratio, use $20\\log_{10}(V/V_0)$. To treat that amplitude level as a power gain, first establish that the power ratio equals the squared amplitude ratio. With the supplied real resistive model $P=V_{\\mathrm{rms}}^2/R$, this requires equal positive resistances. Cascaded ratios multiply, but independent powers add in linear units before converting to levels."
+      ]
+    },
+    {
+      "heading": "A decibel level reports a comparison",
+      "paragraphs": [
+        "A logarithm needs a dimensionless argument. Dividing 20 mW by 5 mW gives ratio 4 because the units cancel; the corresponding level is 10 log10(4) dB relative to 5 mW. The level alone is not a power in watts. Recovering a physical power requires both the ratio and its reference.",
+        "References must describe the same kind of quantity in matching units. Convert watts and milliwatts before forming the ratio. Changing the reference changes the reported level even if the measured power stays fixed. This refresher writes references explicitly, such as 'dB relative to 1 mW', so the physical comparison stays visible."
+      ]
+    },
+    {
+      "heading": "Read zero and negative levels through the inverse",
+      "paragraphs": [
+        "Because log10(1)=0, zero decibels means P=P0 with positive powers. Because 10 raised to any finite real exponent is positive, every finite decibel level represents a strictly positive ratio. A negative level represents a ratio between zero and one. It can describe attenuation without assigning a negative sign to a power magnitude.",
+        "Exact zero power has no finite real decibel level: log10(0) is undefined, while the limit tends to negative infinity as positive power approaches zero. A negative argument is also outside the real logarithm's domain. Do not confuse a signed instantaneous voltage with a positive RMS magnitude or with a negative logarithmic level."
+      ]
+    },
+    {
+      "heading": "Why a voltage amplitude level uses twenty",
+      "paragraphs": [
+        "If a power ratio is the square of a positive amplitude ratio r, then $10\\log_{10}(r^2)=20\\log_{10}(r)$. The factor twenty follows from the power rule; it is not an arbitrary replacement for ten in every engineering problem.",
+        "For the supplied resistive relationship, $P_{out}/P_{in}=(V_{out}/V_{in})^2(R_{in}/R_{out})$. Equal resistances cancel, making power gain equal to the voltage amplitude level. With unequal resistances, the amplitude level remains a valid statement about the voltage ratio, but power gain also includes $10\\log_{10}(R_{in}/R_{out})$. Use positive RMS voltage magnitudes and real positive resistances for this model; more general impedance and power definitions belong to circuit theory."
+      ]
+    },
+    {
+      "heading": "Cascades multiply ratios and therefore add gains",
+      "paragraphs": [
+        "If one stage multiplies power by r1 and a following stage multiplies its input power by r2, the total output/input power ratio is r1*r2, assuming the stated gains apply to the connected stages. Taking ten times the logarithm turns this product into the sum of the two decibel gains.",
+        "An amplifier followed by an attenuator can have a net gain of zero dB while nonzero power passes through. Keep input/output direction consistent: reversing a ratio changes the sign of its level. Stage loading and other interactions may change real gains, so the multiplication model needs those stated assumptions."
+      ]
+    },
+    {
+      "heading": "Adding powers is a different operation",
+      "paragraphs": [
+        "If independent average power contributions add under a supplied model, first add their values in watts or milliwatts, then divide by a common reference and take ten times the base-10 logarithm. Adding their individual levels would instead multiply their dimensionless ratios, which is a different calculation.",
+        "Two independent 1 mW contributions sum to 2 mW, about 3.0103 dB relative to 1 mW. Each individual level relative to 1 mW is zero dB; adding those zeros would miss the doubled total power. Coherent signals can have interference terms, so do not assume arbitrary voltage or field contributions have independently additive powers. The exercises explicitly state the power-addition assumption."
+      ]
+    },
+    {
+      "heading": "A short check before and after the calculator",
+      "paragraphs": [
+        "Name the requested quantity: a power ratio, an amplitude ratio, a physical power, or a level relative to a reference. Write the linear ratio first and estimate whether it is above or below one. That predicts the sign of its level. Only then select the ten-log or twenty-log expression justified by the definition.",
+        "To reverse a reported power level, exponentiate L/10 and multiply by the reference if an absolute power is requested. Carry unrounded values through a multi-stage calculation, then round the final result. The linked NIST section specifies logarithmic quantity definitions and emphasizes the reference; the linked OpenStax sections support the underlying log rules."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "A power comparison with a stated reference",
+      "prompt": "Find the level of 20 mW relative to 5 mW.",
+      "steps": [
+        {
+          "math": "r=\\frac{20\\ \\mathrm{mW}}{5\\ \\mathrm{mW}}=4",
+          "reason": "Cancel matching power units before taking a logarithm."
+        },
+        {
+          "math": "L=10\\log_{10}4\\approx6.020599913\\ \\mathrm{dB}",
+          "reason": "Use the definition for a power ratio."
+        }
+      ],
+      "conclusion": "Report about 6.021 dB relative to 5 mW, retaining the reference in the statement."
+    },
+    {
+      "title": "Recover a ratio from a negative level",
+      "prompt": "A power ratio is reported as -15 dB.",
+      "steps": [
+        {
+          "math": "-15=10\\log_{10}r\\quad\\Longrightarrow\\quad\\log_{10}r=-1.5",
+          "reason": "Undo the outside factor first."
+        },
+        {
+          "math": "r=10^{-1.5}\\approx0.031622777",
+          "reason": "Use the base-10 exponential inverse."
+        },
+        {
+          "math": "0<r<1",
+          "reason": "The ratio is positive and below one, consistent with attenuation."
+        }
+      ],
+      "conclusion": "The output is about 3.1623% of the reference power, not a negative power."
+    },
+    {
+      "title": "Use a squared voltage ratio when resistance matches",
+      "prompt": "At equal positive resistance, the output RMS voltage is three times the input.",
+      "steps": [
+        {
+          "math": "\\frac{P_{out}}{P_{in}}=\\frac{(3V)^2/R}{V^2/R}=9",
+          "reason": "Use the supplied resistive power formula and cancel the common resistance."
+        },
+        {
+          "math": "L_P=10\\log_{10}9=20\\log_{10}3",
+          "reason": "Apply the logarithm power rule."
+        },
+        {
+          "math": "L_P\\approx9.542425094\\ \\mathrm{dB}",
+          "reason": "Evaluate only after establishing the squared-ratio condition."
+        }
+      ],
+      "conclusion": "Here the voltage amplitude level and the power gain agree."
+    },
+    {
+      "title": "Include unequal resistances in power gain",
+      "prompt": "Let Vout/Vin=2, Rin=50 ohms, and Rout=100 ohms.",
+      "steps": [
+        {
+          "math": "\\frac{P_{out}}{P_{in}}=2^2\\frac{50}{100}=2",
+          "reason": "The resistance ratio changes the squared-voltage ratio."
+        },
+        {
+          "math": "L_P=10\\log_{10}2\\approx3.010299957\\ \\mathrm{dB}",
+          "reason": "Take ten times the logarithm of the actual power ratio."
+        },
+        {
+          "math": "L_V=20\\log_{10}2\\approx6.020599913\\ \\mathrm{dB}",
+          "reason": "The voltage amplitude level describes the voltage ratio and differs from power gain here."
+        }
+      ],
+      "conclusion": "Using the voltage-only level as power gain would overstate it by about 3.0103 dB."
+    },
+    {
+      "title": "Combine successive gain and attenuation",
+      "prompt": "Two ideal successive stages have power factors 10 and 1/10.",
+      "steps": [
+        {
+          "math": "r_{total}=10(1/10)=1",
+          "reason": "Multiply the stage ratios under the stated cascade model."
+        },
+        {
+          "math": "L_{total}=10\\log_{10}1=0\\ \\mathrm{dB}",
+          "reason": "A net ratio of one gives zero gain in decibels."
+        },
+        {
+          "math": "10\\log_{10}10+10\\log_{10}(1/10)=10-10=0",
+          "reason": "Adding the stage gains gives the same result."
+        }
+      ],
+      "conclusion": "The final power equals the original input power; neither must be zero."
+    },
+    {
+      "title": "Add independent powers in linear units",
+      "prompt": "Two independent contributions each supply 1 mW; their powers add with no interference term.",
+      "steps": [
+        {
+          "math": "P_{total}=1\\ \\mathrm{mW}+1\\ \\mathrm{mW}=2\\ \\mathrm{mW}",
+          "reason": "Add the physical powers first."
+        },
+        {
+          "math": "L=10\\log_{10}\\left(\\frac{2\\ \\mathrm{mW}}{1\\ \\mathrm{mW}}\\right)\\approx3.010299957\\ \\mathrm{dB}",
+          "reason": "Compare the total with the stated common reference."
+        },
+        {
+          "math": "10\\log_{10}1+10\\log_{10}1=0\\neq L",
+          "reason": "Adding the individual levels would describe the wrong operation."
+        }
+      ],
+      "conclusion": "The total is about 3.0103 dB relative to 1 mW."
+    },
+    {
+      "title": "Separate zero level, zero power, and a changed reference",
+      "prompt": "Compare a fixed 2 mW power with references 2 mW and 4 mW, then consider zero power.",
+      "steps": [
+        {
+          "math": "10\\log_{10}(2/2)=0\\ \\mathrm{dB}",
+          "reason": "Equal positive power and reference give zero level."
+        },
+        {
+          "math": "10\\log_{10}(2/4)\\approx-3.010299957\\ \\mathrm{dB}",
+          "reason": "Doubling the reference lowers the level without changing the physical power."
+        },
+        {
+          "math": "\\log_{10}0\\quad\\text{has no finite real value}",
+          "reason": "Zero power lies outside the finite logarithmic formula."
+        }
+      ],
+      "conclusion": "The reference changes the comparison; zero decibels does not mean zero physical power."
+    }
+  ],
+  "guided": {
+    "title": "Compare power and voltage ratios",
+    "setup": "First compare 8 mW with 2 mW. Then use positive RMS voltages of 6 V and 3 V across equal 100-ohm resistances.",
+    "before": [
+      "Form the power ratio before applying a logarithm.",
+      "For the voltage case, compute each power from V squared over R.",
+      "Explain why the resulting power ratios agree."
+    ],
+    "question": {
+      "id": "f05-l05-guided",
+      "familyId": "guided-f05-l05",
+      "familyVersion": 1,
+      "courseId": "f05",
+      "objectiveId": "m01-l05",
+      "category": "application",
+      "critical": false,
+      "parameters": {},
+      "prompt": "Give the power ratio 8 mW / 2 mW, its decibel level, and the actual output/input power ratio for 6 V RMS and 3 V RMS across equal 100-ohm resistances.",
+      "fields": [
+        {
+          "id": "ratio",
+          "kind": "rational",
+          "label": "First power ratio",
+          "expected": "4"
+        },
+        {
+          "id": "level",
+          "kind": "numeric",
+          "label": "Level relative to 2 mW",
+          "expected": 6.020599913279624,
+          "absoluteTolerance": 0.0005000001,
+          "relativeTolerance": 0,
+          "unit": "dB",
+          "help": "Round only the final answer to at least three decimal places."
+        },
+        {
+          "id": "voltage-power",
+          "kind": "rational",
+          "label": "Power ratio from the equal-resistance voltages",
+          "expected": "4"
+        }
+      ],
+      "hints": [
+        "8/2=4, so use 10 log10(4).",
+        "The voltage ratio is 6/3=2, and equal resistances cancel.",
+        "The power ratio is 2²=4 and the level is about 6.020600 dB."
+      ],
+      "explanation": [
+        "The first ratio is 4 and the level is approximately 6.020600 dB relative to 2 mW.",
+        "For the second case, the powers are 36/100 W and 9/100 W. Their ratio is also 4."
+      ],
+      "answerSummary": "Both power ratios are 4; the first level is about 6.020600 dB relative to 2 mW."
+    },
+    "after": "Change only the output resistance to 200 ohms in your notes. Explain why the voltage ratio stays the same while the power ratio changes."
+  },
+  "interaction": {
+    "kind": "refresher-explog-lab",
+    "mode": "decibels",
+    "prompt": "Change positive input/output powers or RMS voltages and resistances. Predict the physical power ratio and dB gain, compare equal versus unequal resistance, and inspect a ratio-to-level table."
+  },
+  "practice": [
+    {
+      "familyId": "f05-db-ratio",
+      "variant": "power"
+    },
+    {
+      "familyId": "f05-db-ratio",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "f05-db-ratio",
+      "variant": "reference"
+    },
+    {
+      "familyId": "f05-db-voltage",
+      "variant": "equal"
+    },
+    {
+      "familyId": "f05-db-voltage",
+      "variant": "unequal"
+    },
+    {
+      "familyId": "f05-db-voltage",
+      "variant": "conditions"
+    },
+    {
+      "familyId": "f05-db-combine",
+      "variant": "cascade"
+    },
+    {
+      "familyId": "f05-db-combine",
+      "variant": "add-powers"
+    },
+    {
+      "familyId": "f05-db-domain",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f05-db-domain",
+      "variant": "negative"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f05-db-ratio",
+      "variant": "roundtrip"
+    },
+    {
+      "familyId": "f05-db-voltage",
+      "variant": "unequal"
+    },
+    {
+      "familyId": "f05-db-combine",
+      "variant": "compare"
+    },
+    {
+      "familyId": "f05-db-domain",
+      "variant": "reference"
+    }
+  ],
+  "summary": [
+    "Form a dimensionless ratio and keep the positive reference explicit.",
+    "Finite negative decibel levels still represent positive ratios; zero dB means equality.",
+    "Use the actual power relationship to decide whether a voltage amplitude level equals power gain.",
+    "Multiply cascaded ratios; add independently additive powers before taking logarithms."
+  ],
+  "retrieval": "A 5 mW power is compared with 10 mW. Predict the sign, calculate its level, and reverse your answer to recover the ratio. Then explain why adding two such independent powers requires linear addition and returns 0 dB relative to 10 mW.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.3: Logarithmic Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-3-logarithmic-functions",
+      "purpose": "Review the inverse and product rules underlying decibel calculations."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.5: Logarithmic Properties",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-5-logarithmic-properties",
+      "purpose": "Review the inverse and product rules underlying decibel calculations."
+    },
+    {
+      "title": "NIST SP 811 §8.7: Logarithmic quantities and units: level, neper, bel",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "purpose": "Verify logarithmic power and amplitude quantities, their references, and the squared-ratio condition in the authoritative measurement guide."
+    }
+  ]
+}

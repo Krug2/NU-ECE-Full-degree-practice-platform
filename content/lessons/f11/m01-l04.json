@@ -1,0 +1,202 @@
+{
+  "kind": "practical",
+  "id": "m01-l04",
+  "courseId": "f11",
+  "version": 1,
+  "title": "Revise and leave a reproducible work record",
+  "objective": "Preserve an initial attempt, document a specific evidence-based revision, and produce a concise final record with inputs, method, result, checks and next action.",
+  "why": "Future you is a reader of today's work. A reproducible record saves the inputs, reasoning, checks, and reasons for revision, so a corrected answer becomes a reusable lesson instead of an unexplained number.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l03",
+      "label": "Check reasonableness and model limits"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Preserve the original claim. Name the evidence that prompted review. Explain the exact change, then write the corrected inputs, method, result, units, checks, assumptions, and next action. A short clear record is more useful than a long list of unexplained arithmetic.",
+        "Use the practical editor to save a draft, self-check it, and record completion. A fresh task retains the last completed artifact. Showing that task's possible review marks it assisted; completing a fresh task without that review is recorded as independent self-checked work."
+      ]
+    },
+    {
+      "heading": "Keep a useful before-and-after history",
+      "paragraphs": [
+        "Do not erase a mistake merely to make the page look clean. Quote or summarize the earlier claim, identify its first unsupported step, and say why the new reasoning is better supported. A revision such as 'changed answer to 120' omits the evidence; 'converted 2 h to 120 min because the quotient had hour units' explains the cause.",
+        "A calculation correction and a model change are different events. Fixing a unit conversion leaves the supplied model intact. Adding previously excluded timestamps changes the storage boundary. Label which happened, since a new model can legitimately produce a different result without an earlier arithmetic error."
+      ]
+    },
+    {
+      "heading": "Make the final record reproducible",
+      "paragraphs": [
+        "Include the task or scenario identifier, input meanings and units, equation or procedure, substitution, and final quantity. Then add at least one independent check and a statement of the main limitation. The practical editor saves the scenario seed and completion time with your artifact.",
+        "Use clear names and short sentences rather than unexplained abbreviations. If another learner cannot tell whether a rate is per channel, whether time is in minutes, or whether a tank started empty, the record needs one more label. Put extended derivations in lesson notes and keep private personal information out of shared examples."
+      ]
+    },
+    {
+      "heading": "Choose a concrete next action",
+      "paragraphs": [
+        "A next action resolves a specific uncertainty or practices a specific weakness: measure the rate at two later times, confirm whether metadata is included, or solve a fresh conversion without the worked example. 'Be more careful' does not say what to do.",
+        "Decide which result is conditional and what condition matters. If a filling estimate assumes constant inflow, observing the rate during the interval is relevant. Increasing calculator precision will not resolve a changing-rate assumption. Match the next action to the source of uncertainty."
+      ]
+    },
+    {
+      "heading": "Use completion evidence honestly",
+      "paragraphs": [
+        "The app can verify that required fields and self-check acknowledgments exist. It cannot judge the correctness of every open-ended explanation. Read your artifact against the criteria before checking them; the status is a practical work record, not a numerical mastery score or engineering approval.",
+        "Save before navigating away and export progress when you need a portable backup. Ordinary notes, active drafts, and the last completed artifact use the existing progress backup. Revising the active work requires recording completion again; the prior completed artifact remains available until replaced by a newly completed task."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Preserve a unit-conversion correction",
+      "scenario": "An earlier note reports 30/15 = 2 min for a 30 km trip at 15 km/h.",
+      "steps": [
+        {
+          "action": "Original: '30/15 = 2 min.' Review trigger: in 2 min at 15 km/h, only 0.5 km would be traveled.",
+          "reason": "The old claim and a scale-based contradiction explain why a revision is necessary."
+        },
+        {
+          "action": "Revision: the quotient is 2 h, so multiply by 60 min/h to obtain 120 min. No input or constant-speed assumption changed.",
+          "reason": "This identifies the exact conversion error and separates it from a change in the model."
+        },
+        {
+          "action": "Final record: d = 30 km, v = 15 km/h; t = d/v = 2 h = 120 min. Check vt = 30 km. Assumes no stops. Next, confirm whether the requested time includes waiting.",
+          "reason": "A reader can reproduce both the calculation and the boundary of the result."
+        }
+      ],
+      "conclusion": "The revision teaches a reusable lesson: carry the quotient's units through the conversion instead of attaching the requested label afterward."
+    },
+    {
+      "title": "Repair a channel interpretation",
+      "scenario": "A first draft assumes one channel at 600 samples/s for 10 s at 2 bytes/sample. The task actually specifies three such channels.",
+      "steps": [
+        {
+          "action": "Original: B = 600 × 10 × 2 = 12,000 bytes. Review trigger: rereading shows the rate applies to each of three channels.",
+          "reason": "The arithmetic was correct for the assumed one-channel situation, but the input interpretation did not match the task."
+        },
+        {
+          "action": "Correction: include N = 3, so B = 3 × 600 × 10 × 2 = 36,000 bytes.",
+          "reason": "The revision is traceable to a supplied count, not an unexplained adjustment."
+        },
+        {
+          "action": "Check by adding three identical 12,000-byte payloads. State that headers are excluded; next confirm whether the required storage is payload or complete-file size.",
+          "reason": "An independent grouping checks the correction while leaving the boundary question visible."
+        }
+      ],
+      "conclusion": "Preserve both the original assumption and the task evidence that replaced it. A new number alone cannot communicate that distinction."
+    },
+    {
+      "title": "Revise a changing-rate model",
+      "scenario": "A tank starts at 10 L and targets 50 L. A draft assumes 5 L/min throughout. Later observations show 5 L/min for the first 4 min, then 4 L/min.",
+      "steps": [
+        {
+          "action": "Original model: added volume is 40 L, so constant 5 L/min predicts 8 min. New evidence: rate changes after 4 min.",
+          "reason": "The old calculation follows from its assumption. The observation calls for a model revision, not a claim that 40/5 was wrong."
+        },
+        {
+          "action": "First interval adds 20 L. The remaining 20 L takes 5 min at 4 L/min. Revised total time is 4 + 5 = 9 min.",
+          "reason": "Splitting the interval respects the supplied piecewise rate instead of averaging rates without considering time."
+        },
+        {
+          "action": "Check final volume: 10 + 5 × 4 + 4 × 5 = 50 L. Next, check whether 4 L/min remains steady during the second interval.",
+          "reason": "The volume balance verifies the revised result, while the next observation addresses its remaining assumption."
+        }
+      ],
+      "conclusion": "A reproducible revision records when the rate changes and which interval each rate describes."
+    },
+    {
+      "title": "A concise handoff paragraph",
+      "scenario": "Prepare a final record for four channels at 300 samples/s each, recording 25 s at 2 bytes/sample.",
+      "steps": [
+        {
+          "action": "Write: 'For raw payload only, N = 4, r = 300 samples/(channel·s), T = 25 s, w = 2 bytes/sample. B = NrTw = 60,000 bytes, or 60 decimal kB.'",
+          "reason": "Input meanings, method, result, and unit convention are present in a compact form."
+        },
+        {
+          "action": "Add: 'A channel contributes 7500 samples or 15,000 bytes; four such contributions agree. Doubling duration would double payload.'",
+          "reason": "The handoff contains checks a reader can follow without trusting the final multiplication."
+        },
+        {
+          "action": "Close: 'Assumes continuous sampling without compression; metadata is excluded. Next, confirm timestamp format before estimating whole-file size.'",
+          "reason": "The limitation and next action prevent the payload estimate from being mistaken for a complete capacity requirement."
+        }
+      ],
+      "conclusion": "A useful handoff is concise because each sentence has a purpose, not because the evidence has been removed."
+    }
+  ],
+  "guided": {
+    "prompt": "A draft for three channels at 200 samples/s each, 10 s, and 2 bytes/sample says only '4000 bytes; confident.' Turn it into a revision record.",
+    "steps": [
+      "Retain the earlier claim and identify what it counted.",
+      "Explain the correction and write a reproducible final calculation.",
+      "Add a second check, a limitation, and a next action."
+    ],
+    "review": [
+      "Original claim: 4000 bytes. It counted only one channel, so confidence did not supply the missing channel factor.",
+      "Revision: B = 3 × 200 × 10 × 2 = 12,000 bytes of raw payload.",
+      "Check three equal 4000-byte contributions. Assume continuous sampling; exclude headers. Next confirm whether the requested file size includes per-sample timestamps."
+    ]
+  },
+  "task": {
+    "family": "engineering-work",
+    "fields": [
+      {
+        "id": "original",
+        "label": "Original attempt and what prompted review",
+        "help": "Keep the original claim and name the check or new fact that prompted review."
+      },
+      {
+        "id": "revision",
+        "label": "Specific change and the evidence for it",
+        "help": "Explain the specific correction or model change and why it is justified."
+      },
+      {
+        "id": "final",
+        "label": "Reproducible final explanation",
+        "help": "Include input meanings and units, method, calculation, and final result."
+      },
+      {
+        "id": "next",
+        "label": "Independent check and next action",
+        "help": "Give an independent check, a remaining limitation, and an action that addresses it."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "history",
+        "label": "I retained the original claim and explained the revision."
+      },
+      {
+        "id": "reproduce",
+        "label": "Another learner can reconstruct my inputs, units, method and result."
+      },
+      {
+        "id": "next",
+        "label": "I recorded an independent check, a model limitation and a concrete next action."
+      }
+    ]
+  },
+  "summary": [
+    "Preserve the original claim and the evidence for a revision.",
+    "Distinguish a calculation correction from a model or boundary change.",
+    "Save enough inputs, units, method, and checks for another learner to reproduce the work.",
+    "Treat recorded completion as self-checked practical evidence; use fresh tasks for independent practice."
+  ],
+  "retrieval": "After a delay, read only one of your old final results. Try to reconstruct its inputs and assumptions, then compare with the saved record and improve any missing explanation.",
+  "readings": [
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.7: Solving Problems in Physics",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-7-solving-problems-in-physics",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    },
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.6: Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    }
+  ]
+}

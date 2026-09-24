@@ -1,0 +1,85 @@
+{
+  "courseId": "f08",
+  "title": "Calculus recall",
+  "plannedAt": "2026-09-24",
+  "status": "planned",
+  "learner": "Returning learners with prior calculus exposure who need to reconnect algebraic procedures to rates, local behavior, and accumulated change.",
+  "assumedKnowledge": [
+    "F02 algebra, factoring, rational expressions",
+    "F03 functions and graphs",
+    "F04 radian trigonometry",
+    "F05 exponential/logarithmic rules",
+    "F06 units"
+  ],
+  "scope": {
+    "include": [
+      "Limits, one-sided behavior, and continuity",
+      "Derivative meaning, polynomial rules, and rates",
+      "Product, quotient, chain, and elementary rules",
+      "Integrals, signed accumulation, and the fundamental theorem",
+      "Antiderivatives, substitution, and initial conditions"
+    ],
+    "exclude": [
+      "A full first-time calculus course or formal epsilon-delta proofs",
+      "Advanced integration techniques, improper integrals, infinite series, multivariable calculus",
+      "General differential-equation solution methods",
+      "Unspecified angle modes, domain assumptions, or calculator approximations presented as proof"
+    ]
+  },
+  "routes": {
+    "quick": "Five diagnostic probes route to individual lessons. Use Quick recall, then each independent lesson checkpoint and the mixed recall.",
+    "full": "Follow limits, derivative meaning, composite rules, accumulation, and initial conditions. Predict in each activity and save explanations in notes.",
+    "escalation": {
+      "courseId": "csc-208",
+      "text": "For first-time instruction, use the linked free Calculus Volume 1 sections and the CSC 208 course destination. CSC 209 extends beyond this refresher. Algebra, function, trig, and logarithm refreshers supply available prerequisite support."
+    }
+  },
+  "reuse": {
+    "overlap": [
+      "MTH 215 m02-l04 and F03 teach average rates and finite difference quotients, not calculus limits.",
+      "F02 factoring and canceled-domain restrictions support removable limits.",
+      "F04 radians and F05 logarithm domains supply shared conventions."
+    ],
+    "implementation": "Wrap the committed mth-average-rate formula/reverse and mth-difference-quotient quadratic/reciprocal families under F08 identities, keeping their finite-quotient explanations. Reuse exact rational/polynomial graders and existing progress/notes/backup; no parser or storage redesign."
+  },
+  "assessment": {
+    "diagnostic": [
+      {
+        "lessonId": "m01-l01",
+        "probe": "removable limit versus value"
+      },
+      {
+        "lessonId": "m01-l02",
+        "probe": "polynomial derivative and tangent slope"
+      },
+      {
+        "lessonId": "m01-l03",
+        "probe": "chain rule"
+      },
+      {
+        "lessonId": "m01-l04",
+        "probe": "signed accumulation"
+      },
+      {
+        "lessonId": "m01-l05",
+        "probe": "initial-condition constant"
+      }
+    ],
+    "checkpoints": "Four critical multipart questions per lesson cover its full stated objective; at most eight fields per question.",
+    "mixed": "Four questions: combined limits/derivative with field-specific routes, elementary/chain rules, signed accumulation, and initial conditions. Lesson checkpoints cover remaining structures.",
+    "evidence": "Visits, confidence, assisted practice, diagnostic and activities do not establish independent evidence. F08 checkpoints and mixed recall have separate versioned evidence."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Lesson.interaction adds {kind:'refresher-calculus-lab',mode:'limit'|'secant'|'chain'|'accumulation'|'initial',prompt:string}.",
+      "integration": "One strict union member and reader dispatch to a scoped keyboard-accessible component, pure models, SVGs and equivalent tables."
+    }
+  ],
+  "verification": [
+    "Check all structures over at least100seeds against independent symbolic coefficients, direct substitutions, analytic one-sided signs, and numeric finite differences where appropriate.",
+    "Independently integrate by power moments and compare derivative/antiderivative round trips; check signed versus absolute accumulation and all initial conditions.",
+    "Check equivalent polynomial and fractional answers; retain original domains, h≠0, zero-width bounds, nonzero substitution slopes and radian conventions; render all KaTeX.",
+    "Exercise every guided/activity route plus full diagnostic, checkpoint, mixed recall, notes/resume/backup; keyboard, desktop/mobile, Axe; full tests, lint, types, production build.",
+    "Release as preview only after verification; human review remains pending. Finish F08 before detailed planning of F09."
+  ]
+}

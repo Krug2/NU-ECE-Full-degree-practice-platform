@@ -1,0 +1,24 @@
+import { randomFrom } from "../random";
+import { normSquared,vectorSubtract } from "../refreshers/vectors";
+import { vc,ve,vr,vectorFields,vectorText,vq } from "./f07-fields";
+export const f07ComponentFamilyIds=["f07-displacement","f07-magnitude","f07-unit-vector","f07-vector-meaning"];
+export function f07ComponentQuestion(family:string,variant:string,seed:string,id:string){
+ const rng=randomFrom(seed),n=variant==="space"?3:2,p=Array.from({length:n},()=>rng.integer(-6,6)),q=Array.from({length:n},()=>rng.integer(-6,6));
+ let v=family==="f07-displacement"?vectorSubtract(q,p):p;
+ if(family==="f07-unit-vector"&&variant!=="zero"&&normSquared(v)===0)v=[1,...v.slice(1)];
+ if(variant==="zero")v=[0,0];
+ const square=normSquared(v),parameters=Object.fromEntries([...p.map((x,i)=>["p"+i,x]),...q.map((x,i)=>["q"+i,x]),...v.map((x,i)=>["v"+i,x])]) as Record<string,number>;
+ const hints=["Identify the ordered components and distinguish points from displacements.","For displacement subtract initial from terminal; magnitude is the square root of the sum of squared components.","Normalize only a nonzero vector by dividing every component by its magnitude."];
+ if(family==="f07-displacement"&&["plane","space"].includes(variant))return vq(family,id,"m01-l01",`Coordinates are in metres in an orthonormal Cartesian frame. Find the displacement from P=${vectorText(p)} to Q=${vectorText(q)} and the distance between these points.`,[...vectorFields(v,"m"),ve("magnitude","Distance",`sqrt(${square})`,"m")],parameters,hints,[`Terminal minus initial gives displacement ${vectorText(v)} m.`,`The distance is sqrt(${square}) m, the nonnegative length of that displacement.`]);
+ if(family==="f07-magnitude"&&["plane","space"].includes(variant))return vq(family,id,"m01-l01",`Find the magnitude and squared magnitude of v=${vectorText(v)} m in an orthonormal Cartesian frame.`,[ve("magnitude","Magnitude",`sqrt(${square})`,"m"),vr("square","Squared magnitude",String(square),"m^2")],parameters,hints,[`Add the squared components to get ${square} m²; the magnitude is sqrt(${square}) m.`,"Component signs encode direction, while the magnitude is nonnegative."]);
+ if(family==="f07-unit-vector"&&["plane","space","zero"].includes(variant)){
+  const fields=square===0?[vc("direction","Unit direction of the zero vector","undefined",[["undefined","No unique unit direction exists","Normalization would divide by zero."],["zero","The unit vector is (0,0)","The zero vector has length zero, not one."],["x","It must point along +x","No direction is selected by a zero vector."]])]:[...v.map((x,i)=>ve(["x","y","z"][i],`Unit-vector ${["x","y","z"][i]} component`,`${x}/sqrt(${square})`)),ve("magnitude","Original magnitude",`sqrt(${square})`,"m")];
+  return vq(family,id,"m01-l01",`For v=${vectorText(v)} m, find the unit vector in its direction when it exists. Unit-vector components are dimensionless.`,fields,parameters,hints,[square===0?"The magnitude is zero, so there is no unique normalized direction.":`The magnitude is sqrt(${square}) m. Divide each component by it; the resulting dimensionless vector has length one.`]);
+ }
+ if(family==="f07-vector-meaning"&&variant==="translation"){
+  const endpoint=q.map((x,i)=>x+p[i]);
+  return vq(family,id,"m01-l01",`One arrow has components ${vectorText(p)} m. Another starts at ${vectorText(q)} m and ends at ${vectorText(endpoint)} m. Find the second displacement and decide whether the arrows represent equal free vectors.`,[...vectorFields(p,"m"),vc("equal","Equal free vectors?","yes",[["yes","Yes, their ordered components agree","Translation changes position but preserves this free vector."],["no","No, their initial points differ","Free-vector equality depends on displacement, not where an arrow is drawn."]])],parameters,hints,[`The second displacement is ${vectorText(p)} m, so the free vectors are equal.`,"This does not claim that applying a force at a different point preserves torque."]);
+ }
+ if(family==="f07-vector-meaning"&&variant==="zero")return vq(family,id,"m01-l01","An object ends at exactly its starting point. Describe its net displacement and the direction of that zero vector; the path between the endpoints is not specified.",[vr("magnitude","Net displacement magnitude","0","m"),vc("direction","Unique displacement direction?","none",[["none","No unique direction","The zero vector has no unique direction."],["positive","Always +x","The endpoint data supply no preferred direction."]]),vc("distance","Does zero displacement establish zero distance traveled?","no",[["no","No, a path may return to its starting point","Displacement depends on endpoints; path length depends on the route."],["yes","Yes, they are the same quantity","A closed trip can have positive path length and zero displacement."]])],parameters,hints,["Net displacement is zero, with no unique direction. The unspecified path could have positive length."]);
+ throw Error("Unknown F07 component structure");
+}

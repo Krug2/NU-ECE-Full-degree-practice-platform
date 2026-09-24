@@ -1,0 +1,126 @@
+{
+  "courseId": "f05",
+  "version": 1,
+  "quickRoute": "Try the five diagnostic probes and follow the specific review recommendations. Read each lesson's Quick recall and use its independent checkpoint. Finish the mixed recall check after addressing all five objectives. A short diagnostic samples skills; familiarity alone does not establish independent evidence.",
+  "fullRoute": "Begin with exponential change and graph features, then recover logarithms as inverses. Continue through domain-aware rules and equations, growth and decay models, and decibel ratios. Use the reasoned examples, guided questions, prediction activities, and fresh independent practice. Save your next useful step in lesson notes.",
+  "diagnostic": [
+    {
+      "familyId": "f05-diagnostic-change",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-diagnostic-inverse",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-diagnostic-rules",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-diagnostic-models",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-diagnostic-decibels",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f05-recall-foundations",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-recall-equations",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-recall-models",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f05-recall-decibels",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f05-diagnostic-change": "m01-l01",
+    "f05-diagnostic-inverse": "m01-l02",
+    "f05-diagnostic-rules": "m01-l03",
+    "f05-diagnostic-models": "m01-l04",
+    "f05-diagnostic-decibels": "m01-l05",
+    "f05-recall-foundations": {
+      "p1": "m01-l01",
+      "p2": "m01-l02"
+    },
+    "f05-recall-equations": "m01-l03",
+    "f05-recall-models": "m01-l04",
+    "f05-recall-decibels": "m01-l05"
+  },
+  "support": [
+    {
+      "courseId": "f01",
+      "reason": "Revisit fractions, negative exponents, and scientific notation when calculation blocks the new reasoning."
+    },
+    {
+      "courseId": "f02",
+      "reason": "Recover factoring, rational equations, and original-domain checks needed for logarithmic equations."
+    },
+    {
+      "courseId": "f03",
+      "reason": "Connect exponential and logarithmic transformations to inverse functions and graph domains."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "Place exponential and logarithmic methods within the full algebra and trigonometry course."
+    },
+    {
+      "courseId": "csc-208",
+      "reason": "Prepare to interpret exponential and logarithmic functions in limits and derivatives."
+    },
+    {
+      "courseId": "csc-209",
+      "reason": "Prepare to work with exponential models and logarithmic antiderivatives."
+    },
+    {
+      "courseId": "phs-232",
+      "reason": "Read supplied decay models and logarithmic comparisons with explicit units and references."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Manipulate exponentials, logs, and characteristic times in engineering mathematics."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Solve supplied transient models and distinguish voltage ratios from power gain."
+    },
+    {
+      "courseId": "cee-310l",
+      "reason": "Check time constants, numerical predictions, and units when comparing circuit measurements."
+    },
+    {
+      "courseId": "cee-324",
+      "reason": "Interpret exponential signals, time scaling, and logarithmic gain."
+    },
+    {
+      "courseId": "cee-420",
+      "reason": "Prepare for exponential device models and gain calculations with stated assumptions."
+    },
+    {
+      "courseId": "cee-420l",
+      "reason": "Compare measured gains while preserving power and amplitude references."
+    },
+    {
+      "courseId": "csc-436",
+      "reason": "Read logarithmic signal-power comparisons used in communication contexts."
+    },
+    {
+      "courseId": "cee-430",
+      "reason": "Interpret gain ratios and logarithmic scales when studying digital signal processing."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "For first-time instruction, use the available MTH 215 foundation lessons together with the precise free OpenStax sections linked here. Its later exponential and logarithmic module is still planned in this checkout. Return to F01 for powers, F02 for equation algebra, or F03 for functions. Full circuit and signal courses provide the physical derivations beyond the supplied models in this refresher."
+  }
+}

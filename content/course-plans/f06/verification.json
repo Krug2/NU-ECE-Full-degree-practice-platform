@@ -1,0 +1,65 @@
+{
+  "courseId": "f06",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 5,
+    "workedExamples": 32,
+    "practiceStructures": 71,
+    "diagnosticProbes": 5,
+    "lessonCheckpointQuestions": 20,
+    "mixedRecallQuestions": 4,
+    "evidence": "F06 identities separate independent checkpoints from familiarity, visits, diagnostic answers, and assisted exploration."
+  },
+  "checks": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "756 tests passed in 77 files."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed the full application, library, and test check; subsequent new browser files and the dimensional prompt fix also passed targeted lint."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed, including the final preview state."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript, and 95 static pages, including the final preview build."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts --grep [fF]06 --workers=2",
+      "result": "All eight journeys passed: five guided activities, full evidence checkpoints, diagnostic routing and exact resume/notes/backup, and all-page desktop/mobile layout and accessibility."
+    },
+    {
+      "command": "pnpm exec playwright test --config=playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --grep f06.*diagnostic --workers=1 --output=tmp/f06-entry",
+      "result": "Passed the final Available preview entry and complete diagnostic/resume/notes/backup journey."
+    }
+  ],
+  "mathematics": "Independent tests cover prefix scaling and reversal, signed values, powered and inverse units, compound numerator/denominator conversion, Celsius values versus differences, mechanical/electrical dimensions, function domains, exact nearest-grid rounding with an independent tie-breaking oracle, carry cases and trailing zeros, exact counts/factors, guard digits, sample means/ranges, signed reference discrepancies, zero-relative uncertainty, inclusive endpoint compatibility, and enumeration of endpoint/interior combinations for sums, differences, signed scaling, products, and positive-denominator quotients. Generator structures use 100-seed sweeps; lessons and screens use 50 seeds.",
+  "instruction": "Five substantial original lessons include quick/full routes, 32 reasoned examples, five guided problems, five keyboard prediction activities with equivalent tables, varied practice, checkpoints, and targeted routing. MTH scientific notation and measurement-unit families retain their source semantics and progress identities. Full physics/lab packs are honestly identified as planned in this baseline.",
+  "accessibility": "All overview/lesson pages passed Axe WCAG 2 A/AA and WCAG 2.1 AA checks at desktop and 390x844 mobile size, without overflow or KaTeX errors. Activities support keyboard prediction, wrong-answer feedback, changed-control reset, and invalid-input alerts. Desktop overview and mobile prefix/bound screenshots were inspected.",
+  "sources": "Precise OpenStax University Physics Volume 1 sections 1.2, 1.3, 1.4, 1.6; College Physics 2e section 1.3; BIPM prefix table; NIST SP 811 chapters 4, 7, section 8.5; and NIST TN 1297 sections 2.1–2.4 are verified in resources.json. Instruction is original and distinguishes bounded intervals from unstated statistical confidence.",
+  "sharedInterfaces": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-measurement-lab', mode: 'prefix' | 'conversion' | 'dimensions' | 'rounding' | 'measurement', prompt: string }.",
+      "reason": "Keyboard predictions need exact unit-scale comparisons, dimensional exponent tables, precision reports, and explicit interval bounds.",
+      "integration": "One strict union member and reader dispatch. All logic and activities stay in new refresher-owned modules and reuse QuestionFields and graders. No storage, backup, app-shell, or generic answer parser changes."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f06",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "This optional refresher does not award university credit or determine enrollment eligibility.",
+    "Independent human subject and assistive-technology review remain pending.",
+    "The interval exercises use explicit conservative bound models, not full instrument-specific or statistical uncertainty budgets.",
+    "F07 through F12 remain planned at this verification milestone."
+  ]
+}

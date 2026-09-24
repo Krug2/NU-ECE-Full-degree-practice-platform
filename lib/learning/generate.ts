@@ -42,6 +42,7 @@ import { exponentialPatternFamilyIds,exponentialPatternQuestion } from "./famili
 import { exponentialFactorFamilyIds,exponentialFactorQuestion } from "./families/mth-exponential-factor";
 import { exponentialGraphFamilyIds,exponentialGraphQuestion } from "./families/mth-exponential-graph";
 import { exponentialAuditFamilyIds,exponentialAuditQuestion } from "./families/mth-exponential-audit";
+import { refresherFamilyIds, refresherQuestion } from "./families/refreshers";
 
 const generators=new Map<string,typeof linearQuestion>();
 for(const [ids,generate] of [[exponentialPatternFamilyIds,exponentialPatternQuestion],[exponentialFactorFamilyIds,exponentialFactorQuestion],[exponentialGraphFamilyIds,exponentialGraphQuestion],[exponentialAuditFamilyIds,exponentialAuditQuestion]] as const){
@@ -55,6 +56,10 @@ for(const [ids,generate] of [[basicVariationFamilyIds,basicVariationQuestion],[j
 }
 for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyIds,inequalityQuestion],[quadraticFamilyIds,quadraticQuestion],[restrictionFamilyIds,restrictionQuestion],[foundationNumberFamilyIds,foundationNumberQuestion],[foundationPowerFamilyIds,foundationPowerQuestion],[foundationFactoringFamilyIds,foundationFactoringQuestion],[foundationFractionFamilyIds,foundationFractionQuestion],[foundationCoordinateFamilyIds,foundationCoordinateQuestion],[foundationTriangleFamilyIds,foundationTriangleQuestion],[functionFamilyIds,functionQuestion],[transformationFamilyIds,transformationQuestion],[graphFeatureFamilyIds,graphFeatureQuestion],[compositionFamilyIds,compositionQuestion],[inverseFamilyIds,inverseQuestion],[calibrationFamilyIds,calibrationQuestion],[rateFamilyIds,rateQuestion],[polynomialStructureFamilyIds,polynomialStructureQuestion],[polynomialReasoningFamilyIds,polynomialReasoningQuestion],[polynomialZeroFamilyIds,polynomialZeroQuestion],[polynomialSignFamilyIds,polynomialSignQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
+}
+for (const id of refresherFamilyIds) {
+  if (generators.has(id)) throw new Error("Duplicate refresher family");
+  generators.set(id, refresherQuestion);
 }
 export const availableFamilyIds = new Set(generators.keys());
 export function generateQuestions(slots: QuestionSlot[], seed: string): Question[] {

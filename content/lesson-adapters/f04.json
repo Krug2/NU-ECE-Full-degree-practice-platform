@@ -1,0 +1,57 @@
+{
+  "courseId": "f04",
+  "moduleId": "m01",
+  "version": 1,
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "sourceId": "b06",
+      "title": "Right triangles and calculator modes",
+      "objective": "Use right-triangle geometry and side ratios, recover acute angles, and keep angle units and calculator modes consistent.",
+      "requires": [],
+      "why": "Restore the connection between a right-triangle picture, its ratios, and the calculator inputs that represent those ratios. These skills support component calculations, periodic signals, and geometry in later engineering work.",
+      "recall": [
+        "Find the right angle first: the opposite side is the hypotenuse. Opposite and adjacent legs are named relative to the selected acute angle. Sine uses opposite/hypotenuse, cosine adjacent/hypotenuse, and tangent opposite/adjacent.",
+        "Use a positive square root for a length. A half turn is 180 degrees or pi radians; convert the angle before evaluating a trigonometric function. An inverse ratio recovers an acute angle only when you interpret the calculator output in the requested unit."
+      ],
+      "estimatedMinutes": 65,
+      "retrieval": "Sketch a right triangle with legs 5 and 12. Name the hypotenuse, find the smaller acute angle, and explain how to evaluate the same angle in DEG and RAD modes.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §7.1: Angles",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+          "purpose": "Free additional explanations and examples. The instruction and exercises above are original ECE Study material."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §7.2: Right Triangle Trigonometry",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry",
+          "purpose": "Free additional explanations and examples. The instruction and exercises above are original ECE Study material."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f04-check-triangle",
+          "variant": "leg-angle"
+        },
+        {
+          "familyId": "f04-triangle-solve",
+          "variant": "sides"
+        },
+        {
+          "familyId": "f04-check-conversion",
+          "variant": "both"
+        },
+        {
+          "familyId": "f04-calculator-mode",
+          "variant": "mismatch"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "b06",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    }
+  ]
+}

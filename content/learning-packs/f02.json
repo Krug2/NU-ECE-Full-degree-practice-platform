@@ -1,0 +1,47 @@
+{
+  "courseId": "f02",
+  "title": "Algebra manipulation",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Recover reliable algebra through six connected skills. Use a short diagnostic to find gaps, take a quick recall route, or rebuild the reasoning with full explanations and practice. Optional refresher evidence remains separate from every university course.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Valid transformations and complete answers",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Expansion and factoring",
+          "objective": "Distribute with signs, collect like terms, factor common factors and simple quadratics, and check by expansion."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Linear equations and formula rearrangement",
+          "objective": "Isolate a specified variable, state any divisor restrictions, and verify a proposed solution by substitution."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Inequalities and absolute value",
+          "objective": "Express the full solution set of a linear, compound, or absolute-value inequality with correct endpoints."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Quadratics and complete root sets",
+          "objective": "Choose a quadratic solution method, return every root in the requested number system, and verify the roots."
+        },
+        {
+          "id": "m01-l05",
+          "title": "Rational expressions and original restrictions",
+          "objective": "Find common denominators, cancel factors only, state original exclusions, and divide rational expressions without dividing by zero."
+        },
+        {
+          "id": "m01-l06",
+          "title": "Restrictions and extraneous solutions",
+          "objective": "Solve rational and radical equations while preserving original restrictions and rejecting invalid candidate roots."
+        }
+      ]
+    }
+  ]
+}

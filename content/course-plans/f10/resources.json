@@ -1,0 +1,127 @@
+{
+  "courseId": "f10",
+  "verifiedAt": "2026-09-24",
+  "attribution": "Free official Python documentation verifies semantics. All lesson prose, examples and code are original.",
+  "resources": [
+    {
+      "id": "py-numbers",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "3.1.1",
+      "title": "Numbers and assignment",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#numbers",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-text",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "3.1.2",
+      "title": "Text and conversion",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#text",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-lists",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "3.1.3",
+      "title": "Lists, indexing, copying and mutation",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#lists",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-while",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "3.2",
+      "title": "First steps: while loops and indentation",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#first-steps-towards-programming",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-if",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "4.1",
+      "title": "If statements",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#if-statements",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-for",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "4.2–4.3",
+      "title": "For loops and range",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#for-statements",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-functions",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "4.8",
+      "title": "Defining functions, parameters and return",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#defining-functions",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-conditions",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "5.7",
+      "title": "More on conditions",
+      "url": "https://docs.python.org/3.14/tutorial/datastructures.html#more-on-conditions",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-errors",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "8.1–8.2",
+      "title": "Syntax errors and exceptions",
+      "url": "https://docs.python.org/3.14/tutorial/errors.html",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    },
+    {
+      "id": "py-floats",
+      "provider": "Python Software Foundation, Python 3.14 Tutorial",
+      "author": "Python Software Foundation and contributors",
+      "section": "15",
+      "title": "Floating-point limitations",
+      "url": "https://docs.python.org/3.14/tutorial/floatingpoint.html",
+      "verifiedAt": "2026-09-24",
+      "license": "Python Software Foundation License Version 2; documentation examples additionally Zero-Clause BSD",
+      "licenseUrl": "https://docs.python.org/3/license.html",
+      "use": "Verify language semantics and provide free further reading. In-app prose and programs are original."
+    }
+  ]
+}

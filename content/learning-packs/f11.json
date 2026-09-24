@@ -1,0 +1,37 @@
+{
+  "courseId": "f11",
+  "title": "Engineering work habits",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Build a repeatable process for framing, estimating, checking, and documenting engineering work. Use original worked examples and a saved portfolio of fresh practical tasks. Completion is self-checked, with assistance labeled separately. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From problem frame to reproducible record",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Frame the problem and make a useful sketch",
+          "objective": "Create a labeled sketch or equivalent text diagram, define the system boundary and unknown, and separate supplied facts from modeling assumptions."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Estimate first and carry units through the model",
+          "objective": "Record a rough prediction before detailed calculation, use a dimensionally consistent relationship, and explain how one uncertain input changes the result."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Check reasonableness and model limits",
+          "objective": "Audit a result with independent checks of dimensions, sign, scale and limiting behavior, identify the first unsupported step, and explain what remains uncertain."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Revise and leave a reproducible work record",
+          "objective": "Preserve an initial attempt, document a specific evidence-based revision, and produce a concise final record with inputs, method, result, checks and next action."
+        }
+      ]
+    }
+  ]
+}

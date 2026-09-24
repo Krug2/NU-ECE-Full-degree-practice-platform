@@ -1,0 +1,358 @@
+{
+  "id": "m01-l05",
+  "courseId": "f07",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Lines, planes, and coordinate systems",
+  "objective": "Use vector equations to test points on lines and planes, calculate perpendicular point-plane distance, and convert simple Cartesian, cylindrical, and spherical coordinates under explicitly stated conventions.",
+  "why": "Vector equations describe geometric objects without relying on one privileged axis. Coordinate conversions then describe the same point in ways suited to symmetry. Recovering both ideas helps you interpret later field and engineering-mathematics models.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Vector arithmetic, resultants, and coordinate directions"
+    },
+    {
+      "lessonId": "m01-l03",
+      "label": "Dot products, angles, and projections"
+    },
+    {
+      "lessonId": "m01-l04",
+      "label": "Cross products, orientation, and area"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A line has equation $r(t)=p+t d$ with a nonzero direction d. A plane with nonzero normal n through p satisfies $n\\cdot(r-p)=0$. A candidate line point must satisfy all coordinates at one shared t; a plane point must give zero residual.",
+        "Cylindrical coordinates use horizontal radius r, azimuth θ, and height z. Our spherical convention uses distance ρ from the origin, azimuth θ from +x toward +y, and inclination φ from +z. The introductory exercises use degrees. Read these definitions before applying a formula."
+      ]
+    },
+    {
+      "heading": "One parameter moves along a line",
+      "paragraphs": [
+        "Starting at point p, a scalar multiple t d moves along direction d. Every coordinate uses the same t. A zero direction would produce one point rather than a line, which is why d must be nonzero. A direction component may be zero, in which case that coordinate stays constant.",
+        "To test a candidate, solve for t using a nonzero direction component and substitute into every remaining coordinate. Do not choose a different t for x, y, and z. All real t traces the full line; t≥0 gives the forward ray; 0≤t≤1 gives the closed segment from p to p+d."
+      ]
+    },
+    {
+      "heading": "A normal defines a plane by perpendicular differences",
+      "paragraphs": [
+        "If r and p lie on a plane with normal n, their difference runs along the plane and is perpendicular to n. Thus n·(r-p)=0. Expanding gives n·r=n·p, often written ax+by+cz=d. The coefficients form a normal vector, while the constant sets the plane's position.",
+        "Substitute a candidate point into n·r-d. A zero residual means the point lies on the plane. The residual alone is not perpendicular distance because its size changes if you multiply the normal and plane constant by the same factor. Divide its absolute value by the normal's magnitude to obtain distance."
+      ]
+    },
+    {
+      "heading": "Cylindrical coordinates separate horizontal radius and height",
+      "paragraphs": [
+        "Project the point onto the xy plane. Its distance from the z-axis is r and its azimuth is θ. Then x=r cosθ, y=r sinθ, and the height z stays unchanged. The cylindrical radius generally differs from the point's distance to the origin when z is nonzero.",
+        "For the reverse conversion use $r=\\sqrt{x^2+y^2}$ and determine θ from both signs, as in planar vector direction. We use r≥0 and 0≤θ<360°. At r=0, every azimuth describes the same point on the z-axis. A convention may choose θ=0, but the geometry does not force a unique azimuth."
+      ]
+    },
+    {
+      "heading": "Spherical coordinates introduce an inclination",
+      "paragraphs": [
+        "First project a radius of length ρ onto the z direction and the xy plane. Because φ is measured from +z, the height is $z=\\rho\\cos\\phi$ and the horizontal radius is $r=\\rho\\sin\\phi$. Resolve that horizontal radius using the azimuth: $x=\\rho\\sin\\phi\\cos\\theta$, $y=\\rho\\sin\\phi\\sin\\theta$.",
+        "The ranges are ρ≥0, 0≤θ<360°, and 0≤φ≤180°. Some disciplines exchange angle letters or use elevation above the xy plane. Those conventions are valid but require different interpretations; the letters alone are not enough. Check a simple point such as one on +z before trusting a conversion."
+      ]
+    },
+    {
+      "heading": "Coordinates can be nonunique while the point is clear",
+      "paragraphs": [
+        "On the positive z-axis away from the origin, inclination is 0° and azimuth is arbitrary. On the negative z-axis, inclination is 180°. At the origin, ρ=0 and neither angle is uniquely determined. These are coordinate singularities, not missing Cartesian points.",
+        "The triples in this lesson are coordinates of points. A vector's Cartesian components refer to its stated basis; converting vector components to a varying cylindrical or spherical basis is a further topic. This refresher stops before those basis transformations and their calculus. Use the linked full references and CEE 300 for that continuation."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Evaluate a vector line",
+      "prompt": "Use p=(1,2,-1) and d=(2,0,1) at t=3.",
+      "steps": [
+        {
+          "math": "r(3)=(1,2,-1)+3(2,0,1)",
+          "reason": "The same parameter multiplies each direction component."
+        },
+        {
+          "math": "r(3)=(7,2,2)",
+          "reason": "The y coordinate stays fixed because the direction's y component is zero."
+        }
+      ],
+      "conclusion": "The point at t=3 is (7,2,2)."
+    },
+    {
+      "title": "Use one shared parameter",
+      "prompt": "Test (5,2,1) and (5,2,2) on r(t)=(1,2,-1)+t(2,0,1).",
+      "steps": [
+        {
+          "math": "5=1+2t\\ \\Rightarrow\\ t=2",
+          "reason": "The x coordinate determines the only candidate parameter."
+        },
+        {
+          "math": "y=2+0(2)=2,\\qquad z=-1+2=1",
+          "reason": "Use that same parameter in both remaining coordinates."
+        },
+        {
+          "math": "(5,2,1)\\text{ fits; }(5,2,2)\\text{ does not}",
+          "reason": "The second candidate cannot choose a different t for z."
+        }
+      ],
+      "conclusion": "Only the first candidate lies on this line."
+    },
+    {
+      "title": "Write a plane from a normal and point",
+      "prompt": "Use normal n=(2,-1,3) through p=(1,0,2).",
+      "steps": [
+        {
+          "math": "n\\cdot p=2(1)-1(0)+3(2)=8",
+          "reason": "The point determines the plane constant."
+        },
+        {
+          "math": "2x-y+3z=8",
+          "reason": "The normal's components become the Cartesian coefficients."
+        },
+        {
+          "math": "n\\cdot(r-p)=0",
+          "reason": "Differences between plane points are perpendicular to the normal."
+        }
+      ],
+      "conclusion": "Multiplying the entire equation by a nonzero constant describes the same plane."
+    },
+    {
+      "title": "Normalize a plane residual",
+      "prompt": "Find the distance from the origin to 2x-y+2z=6.",
+      "steps": [
+        {
+          "math": "|2(0)-0+2(0)-6|=6",
+          "reason": "Take the absolute residual at the candidate point."
+        },
+        {
+          "math": "\\|n\\|=\\sqrt{2^2+(-1)^2+2^2}=3",
+          "reason": "The normal is not a unit vector."
+        },
+        {
+          "math": "d=6/3=2",
+          "reason": "Divide by normal magnitude to obtain perpendicular distance."
+        }
+      ],
+      "conclusion": "The distance is 2 coordinate-length units."
+    },
+    {
+      "title": "Convert a cylindrical point",
+      "prompt": "Use (r,θ,z)=(4 m,150° ,2 m).",
+      "steps": [
+        {
+          "math": "x=4\\cos150^\\circ=-2\\sqrt3\\,\\mathrm m",
+          "reason": "Resolve the horizontal radius along x."
+        },
+        {
+          "math": "y=4\\sin150^\\circ=2\\,\\mathrm m,\\qquad z=2\\,\\mathrm m",
+          "reason": "Resolve along y and retain the independent height."
+        }
+      ],
+      "conclusion": "The Cartesian point is (-2√3,2,2) m."
+    },
+    {
+      "title": "Convert with a stated spherical convention",
+      "prompt": "Use (ρ,θ,φ)=(6 m,90°,60°), with φ measured from +z.",
+      "steps": [
+        {
+          "math": "r=6\\sin60^\\circ=3\\sqrt3\\,\\mathrm m,\\qquad z=6\\cos60^\\circ=3\\,\\mathrm m",
+          "reason": "Separate the horizontal projection and height first."
+        },
+        {
+          "math": "x=r\\cos90^\\circ=0,\\qquad y=r\\sin90^\\circ=3\\sqrt3\\,\\mathrm m",
+          "reason": "Use the azimuth to resolve the horizontal projection."
+        },
+        {
+          "math": "x^2+y^2+z^2=0+27+9=36=\\rho^2",
+          "reason": "Check the original distance from the origin."
+        }
+      ],
+      "conclusion": "The point is (0,3√3,3) m under the stated convention."
+    },
+    {
+      "title": "Recognize an axial coordinate singularity",
+      "prompt": "Compare point (0,0,5) m with the origin.",
+      "steps": [
+        {
+          "math": "(0,0,5):\\quad\\rho=5,\\quad\\phi=0^\\circ,\\quad r=0",
+          "reason": "The point has a definite direction along +z, but no nonzero horizontal projection."
+        },
+        {
+          "math": "\\theta\\text{ arbitrary when }r=0",
+          "reason": "Changing azimuth does not move the axial point."
+        },
+        {
+          "math": "(0,0,0):\\quad\\rho=0,\\quad\\theta,\\phi\\text{ arbitrary}",
+          "reason": "At the origin neither angular direction is determined by the coordinates."
+        }
+      ],
+      "conclusion": "A chosen zero-angle convention is one representation, not a geometric uniqueness claim."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Connect three representations: a line point, a plane constant, and a cylindrical point.",
+    "before": [
+      "Use one parameter in every line coordinate.",
+      "Find a plane constant by dotting its normal with a known point, then resolve the cylindrical horizontal radius."
+    ],
+    "question": {
+      "id": "f07-l05-guided",
+      "familyId": "guided-f07-l05",
+      "familyVersion": 1,
+      "courseId": "f07",
+      "objectiveId": "m01-l05",
+      "category": "application",
+      "critical": false,
+      "prompt": "For r(t)=(1,2,-1)+t(2,0,1) in metres, find r(2). For a plane through (1,0,2) m with normal (2,-1,3), find c in n dot r=c. Convert cylindrical (2 m,90°, -1 m) to Cartesian coordinates.",
+      "fields": [
+        {
+          "id": "line-x",
+          "kind": "rational",
+          "label": "Line point x",
+          "expected": "5",
+          "unit": "m"
+        },
+        {
+          "id": "line-y",
+          "kind": "rational",
+          "label": "Line point y",
+          "expected": "2",
+          "unit": "m"
+        },
+        {
+          "id": "line-z",
+          "kind": "rational",
+          "label": "Line point z",
+          "expected": "1",
+          "unit": "m"
+        },
+        {
+          "id": "constant",
+          "kind": "rational",
+          "label": "Plane constant",
+          "expected": "8",
+          "unit": "m"
+        },
+        {
+          "id": "x",
+          "kind": "exact",
+          "label": "Converted x",
+          "expected": "0",
+          "unit": "m"
+        },
+        {
+          "id": "y",
+          "kind": "exact",
+          "label": "Converted y",
+          "expected": "2",
+          "unit": "m"
+        },
+        {
+          "id": "z",
+          "kind": "exact",
+          "label": "Converted z",
+          "expected": "-1",
+          "unit": "m"
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Find a plane constant by dotting its normal with a known point, then resolve the cylindrical horizontal radius.",
+        "The line point is (5,2,1) m. The plane constant is 2*1-0+3*2=8 m."
+      ],
+      "explanation": [
+        "The line point is (5,2,1) m. The plane constant is 2*1-0+3*2=8 m.",
+        "The cylindrical point converts to (0,2,-1) m under the stated azimuth convention."
+      ],
+      "answerSummary": "The line point is (5,2,1) m. The plane constant is 2*1-0+3*2=8 m. The cylindrical point converts to (0,2,-1) m under the stated azimuth convention."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-vector-lab",
+    "mode": "coordinates",
+    "prompt": "Change a cylindrical radius, azimuth, and height. Predict Cartesian coordinates, inspect a top-down plot with a separate height table, and compare equivalent azimuths. Test r=0 and explain why azimuth becomes nonunique."
+  },
+  "practice": [
+    {
+      "familyId": "f07-vector-line",
+      "variant": "point"
+    },
+    {
+      "familyId": "f07-vector-line",
+      "variant": "membership"
+    },
+    {
+      "familyId": "f07-vector-line",
+      "variant": "segment"
+    },
+    {
+      "familyId": "f07-vector-plane",
+      "variant": "constant"
+    },
+    {
+      "familyId": "f07-vector-plane",
+      "variant": "membership"
+    },
+    {
+      "familyId": "f07-vector-plane",
+      "variant": "distance"
+    },
+    {
+      "familyId": "f07-cylindrical",
+      "variant": "to-cartesian"
+    },
+    {
+      "familyId": "f07-cylindrical",
+      "variant": "from-cartesian"
+    },
+    {
+      "familyId": "f07-spherical",
+      "variant": "to-cartesian"
+    },
+    {
+      "familyId": "f07-spherical",
+      "variant": "axis"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f07-vector-line",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f07-vector-plane",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f07-cylindrical",
+      "variant": "to-cartesian"
+    },
+    {
+      "familyId": "f07-spherical",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "A line uses one shared parameter; a plane uses a nonzero normal and zero residual.",
+    "Point-plane distance normalizes the absolute residual by normal magnitude.",
+    "Coordinate formulas depend on explicit angle definitions, and axial points can have nonunique coordinate angles."
+  ],
+  "retrieval": "Explain why changing the normal (2,-1,2) and constant 6 to (4,-2,4) and 12 leaves the plane and distances unchanged. Then describe all possible azimuths for a point on the z-axis.",
+  "readings": [
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.5: Equations of Lines and Planes in Space",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-5-equations-of-lines-and-planes-in-space",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    },
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.7: Cylindrical and Spherical Coordinates",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-7-cylindrical-and-spherical-coordinates",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+"use client";
+import { useState,type FormEvent } from "react";
+import { saveProgress,useStudy } from "@/lib/study-store";
+import { useStudyDraft } from "@/lib/use-study-draft";
+export function PracticalNotes({courseId,lessonId}:{courseId:string;lessonId?:string}){
+ const {data,ready,locked}=useStudy(),stored=lessonId?data.learning.notes[courseId]?.[lessonId]??"":data.notes[courseId]??"",draft=useStudyDraft(stored,courseId+"/"+(lessonId??"overview")),[message,setMessage]=useState(""),[saving,setSaving]=useState(false),label=lessonId?"Reasoning, questions, or a worked solution to revisit":"Reasoning and next steps";
+ async function save(event:FormEvent){event.preventDefault();setSaving(true);const value=draft.value,saved=await saveProgress(current=>lessonId?{...current,learning:{...current.learning,notes:{...current.learning.notes,[courseId]:{...current.learning.notes[courseId],[lessonId]:value}}}}:{...current,notes:{...current.notes,[courseId]:value}});setSaving(false);setMessage(saved?(lessonId?"Lesson notes saved.":"Refresher notes saved."):"Notes could not be saved. Your draft is kept.");}
+ return <section className="panel" id="notes"><h2>{lessonId?"Your lesson notes":"Your refresher notes"}</h2><p>Use these notes for longer reasoning. Practical records are saved separately in the same progress backup.</p><form onSubmit={save}><div className="field"><label htmlFor="practical-note">{label}</label><textarea id="practical-note" value={draft.value} onChange={e=>draft.setValue(e.target.value)} maxLength={5000} disabled={!ready||locked}/></div><button className="button secondary" disabled={!ready||locked||saving}>{lessonId?"Save lesson notes":"Save refresher notes"}</button></form><p role="status">{message}</p>{draft.changed&&<div className="notice warning"><p>Saved notes changed elsewhere. Your draft is kept.</p><button className="button secondary" onClick={draft.loadSaved}>Load saved notes</button></div>}</section>;
+}

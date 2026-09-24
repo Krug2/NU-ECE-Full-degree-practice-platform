@@ -1,0 +1,326 @@
+{
+  "id": "m01-l03",
+  "courseId": "f01",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Powers and real roots",
+  "objective": "Apply integer exponent rules, evaluate real roots, and distinguish a principal square root from the solutions of a square equation.",
+  "why": "Powers describe repeated scaling, while roots reverse it under a stated convention. These ideas appear in geometry, scientific notation, calculus, and signal models. Understanding the conventions helps you see why a reciprocal is not a negative value and why a square root is not a two-answer operation.",
+  "estimatedMinutes": 45,
+  "prerequisites": [
+    {
+      "label": "Fractions, decimals, and proportions",
+      "lessonId": "m01-l02"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For a nonzero base a and integer exponents, $a^m a^n=a^{m+n}$, $a^m/a^n=a^{m-n}$, and $(a^m)^n=a^{mn}$. Also $a^0=1$ and $a^{-n}=1/a^n$.",
+        "The symbol $\\sqrt{u}$ selects the nonnegative square root when u is nonnegative. The equation $x^2=u$ may have two solutions. For real x, $\\sqrt{x^2}=|x|$. An odd root of a negative number can be real; an even root cannot.",
+        "Try the investigation and checkpoint if these rules are familiar. If a rule feels arbitrary, count factors in the explanation that follows."
+      ]
+    },
+    {
+      "heading": "Count factors to explain the laws",
+      "paragraphs": [
+        "The exponent in $3^4$ counts four factors of 3, not four copies being added. Its expanded form is $3\\cdot3\\cdot3\\cdot3=81$. When multiplying $3^4$ by $3^2$, there are six factors altogether, so the exponents add.",
+        "For a same-base quotient, cancel matching nonzero factors. The value $3^4/3^2$ leaves two factors of 3. When the denominator has more factors, the remaining factors stay downstairs: $3^2/3^4=1/3^2$. Subtracting exponents records both cases.",
+        "A nested power repeats a whole group: $(3^2)^4$ contains four groups of two factors, so its exponent is 8. It is not $3^{2+4}$. These rules require the same base in products and quotients; $2^3\\cdot3^2$ does not simplify by adding the exponents on a single arbitrary base."
+      ]
+    },
+    {
+      "heading": "Zero and negative exponents preserve a pattern",
+      "paragraphs": [
+        "Take the sequence $2^3=8$, $2^2=4$, $2^1=2$. Decreasing the exponent by one divides the value by 2. Continuing gives $2^0=1$, $2^{-1}=1/2$, and $2^{-2}=1/4$. The exponent sign changes whether factors are upstairs or downstairs, not whether the result is positive.",
+        "The same reasoning works for any nonzero real base with integer powers. A negative base still requires parentheses: $(-2)^{-3}=1/(-2)^3=-1/8$. The reciprocal has the sign of its denominator.",
+        "Do not apply reciprocal or zero-power rules to a zero base. A negative power of zero would divide by zero. The cancellation argument for $a^0=1$ also required a nonzero a, so it cannot justify a value for $0^0$. That expression is outside this refresher's arithmetic rules."
+      ]
+    },
+    {
+      "heading": "A root operation is not an equation's full solution set",
+      "paragraphs": [
+        "The principal square root of 49 is 7: it is the nonnegative number whose square is 49. The radical notation $\\sqrt{49}$ asks for that one selected value.",
+        "The equation $x^2=49$ asks for every real number that makes the equation true. Both 7 and -7 work, so its solution set contains two numbers. At zero there is only one distinct solution. With a negative right side there is no real solution because every real square is nonnegative.",
+        "Squaring a negative input loses its sign. Taking the principal square root afterward cannot recover that lost sign: $\\sqrt{(-6)^2}=6$. This is why $\\sqrt{x^2}=|x|$ is valid for every real x. Writing x alone would fail at a negative input."
+      ]
+    },
+    {
+      "heading": "Even and odd roots have different real domains",
+      "paragraphs": [
+        "No real number squares to -9, so $\\sqrt{-9}$ has no real value. Complex numbers give another number system for that expression, but they are studied in F09. Here, identifying the real-number boundary is the intended answer.",
+        "Three negative factors have a negative product, so $\\sqrt[3]{-27}=-3$ is real. For a rational exponent p/q in lowest terms, q specifies the root and p the integer power, using the real root when it exists. Thus $(-27)^{2/3}=(-3)^2=9$.",
+        "When q is even, a negative base has no real qth root. If the rational exponent is negative, the base must also be nonzero. In the arithmetic investigation, enter integer powers and sqrt(number); the generated practice separately checks simple cube-root and rational-exponent values."
+      ]
+    },
+    {
+      "heading": "Extract factors from radicals, not added terms",
+      "paragraphs": [
+        "To simplify $\\sqrt{72}$, factor 72 as $36\\cdot2$. Both factors are nonnegative, so $\\sqrt{36\\cdot2}=6\\sqrt2$. The remaining square root is exact and should not be replaced with a rounded decimal in an exact-answer task.",
+        "For nonnegative a and b, $\\sqrt{ab}=\\sqrt a\\sqrt b$. A quotient can split similarly when its denominator is positive. A sum has no corresponding general rule: $\\sqrt{9+16}=5$, while $\\sqrt9+\\sqrt{16}=7$.",
+        "The app accepts equivalent exact radical forms, such as sqrt(72) and 6*sqrt(2). Prefer a simplified expression in your written work because it exposes the square factor. Check an exact radical by squaring it and checking that its sign matches the principal-root convention."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Cancel powers into a reciprocal",
+      "prompt": "Evaluate 5^2/5^4 and express it as one power.",
+      "steps": [
+        {
+          "math": "\\frac{5^2}{5^4}=\\frac{5\\cdot5}{5\\cdot5\\cdot5\\cdot5}=\\frac1{5^2}",
+          "reason": "Cancel two nonzero factors, leaving two denominator factors."
+        },
+        {
+          "math": "5^{2-4}=5^{-2}=\\frac1{25}",
+          "reason": "The negative exponent records the reciprocal."
+        },
+        {
+          "math": "\\frac1{25}\\cdot625=25",
+          "reason": "Multiply the quotient by the original divisor to recover the dividend."
+        }
+      ],
+      "conclusion": "The value is positive 1/25; a negative exponent does not mean a negative result."
+    },
+    {
+      "title": "Compare a principal root with an equation",
+      "prompt": "Find sqrt(49), solve x^2=49 over the reals, and evaluate sqrt((-7)^2).",
+      "steps": [
+        {
+          "math": "\\sqrt{49}=7",
+          "reason": "The radical chooses the nonnegative square root."
+        },
+        {
+          "math": "7^2=49,\\qquad(-7)^2=49",
+          "reason": "Both numbers solve the square equation."
+        },
+        {
+          "math": "\\sqrt{(-7)^2}=\\sqrt{49}=7=|-7|",
+          "reason": "The principal root of a square is the input's magnitude."
+        }
+      ],
+      "conclusion": "One root operation and a complete equation solution are different requests."
+    },
+    {
+      "title": "Extract a perfect-square factor",
+      "prompt": "Simplify sqrt(72) exactly.",
+      "steps": [
+        {
+          "math": "72=36\\cdot2",
+          "reason": "Identify a square factor rather than separating an arbitrary sum."
+        },
+        {
+          "math": "\\sqrt{72}=\\sqrt{36}\\sqrt2=6\\sqrt2",
+          "reason": "The product rule applies to these nonnegative factors."
+        },
+        {
+          "math": "(6\\sqrt2)^2=36\\cdot2=72",
+          "reason": "The square check recovers the radicand; the result is nonnegative."
+        }
+      ],
+      "conclusion": "Use 6*sqrt(2) in an exact input field. A decimal display can help estimate but is not an exact replacement."
+    },
+    {
+      "title": "Use a real odd root before an integer power",
+      "prompt": "Evaluate (-27)^(2/3) with the real cube-root convention.",
+      "steps": [
+        {
+          "math": "\\sqrt[3]{-27}=-3",
+          "reason": "Three factors of -3 multiply to -27, so the odd root is real."
+        },
+        {
+          "math": "(-27)^{2/3}=(-3)^2=9",
+          "reason": "The numerator of the rational exponent squares the selected real cube root."
+        }
+      ],
+      "conclusion": "The answer is 9. A negative base does not automatically make every rational power nonreal."
+    }
+  ],
+  "guided": {
+    "title": "Finish three different power decisions",
+    "setup": "Evaluate $3^{-2}$ and $\\sqrt{(-6)^2}$, then classify $\\sqrt{-9}$ over the real numbers.",
+    "before": [
+      "A negative exponent asks for a reciprocal.",
+      "The principal square root must be nonnegative if it exists in the real numbers."
+    ],
+    "question": {
+      "id": "f01-l03-guided",
+      "familyId": "guided-f01-powers",
+      "familyVersion": 1,
+      "courseId": "f01",
+      "objectiveId": "m01-l03",
+      "category": "conceptual",
+      "critical": true,
+      "prompt": "Keep the numerical answers exact and state the real-number boundary.",
+      "fields": [
+        {
+          "id": "reciprocal",
+          "kind": "rational",
+          "label": "Three to the negative second power",
+          "expected": "1/9"
+        },
+        {
+          "id": "root",
+          "kind": "rational",
+          "label": "Principal root of the squared input",
+          "expected": "6"
+        },
+        {
+          "id": "real",
+          "kind": "choice",
+          "label": "Square root of negative nine over the reals",
+          "correct": "not-real",
+          "options": [
+            {
+              "id": "not-real",
+              "label": "No real value",
+              "feedback": "Every real square is nonnegative, so none equals -9."
+            },
+            {
+              "id": "negative",
+              "label": "Negative three",
+              "feedback": "Negative three squared is positive nine, not negative nine."
+            },
+            {
+              "id": "both",
+              "label": "Both positive and negative three",
+              "feedback": "Both square to positive nine, and a principal radical does not ask for two values."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Use 1/(3*3).",
+        "Square -6 first, then choose the nonnegative root.",
+        "No real square equals a negative number."
+      ],
+      "explanation": [
+        "The reciprocal is 1/9.",
+        "The principal square root of 36 is 6.",
+        "The real-number system has no square root of -9; complex values belong in F09."
+      ],
+      "answerSummary": "1/9; 6; no real value."
+    },
+    "after": "In your notes, explain why the negative exponent, negative input, and negative radicand require three different decisions."
+  },
+  "interaction": {
+    "kind": "arithmetic-lab",
+    "prompt": "Predict each exact value, then compare a related expression. In the root-of-a-sum example, replace sqrt(9+16) with sqrt(9)+sqrt(16). Record the counterexample and why it matters. Keep this activity's inputs within the real-number examples.",
+    "examples": [
+      {
+        "label": "A negative integer exponent",
+        "expression": "3^(-2)",
+        "explanation": "A nonzero base to power -2 gives its squared reciprocal, 1/9."
+      },
+      {
+        "label": "A root of a square",
+        "expression": "sqrt((-6)^2)",
+        "explanation": "The principal root is 6, the absolute value of -6."
+      },
+      {
+        "label": "An exact radical",
+        "expression": "sqrt(72)",
+        "explanation": "The exact value is 6*sqrt(2), even when the decimal display is rounded."
+      },
+      {
+        "label": "A root of a sum",
+        "expression": "sqrt(9+16)",
+        "explanation": "The radicand is 25, giving 5. The sum of the separate roots would instead be 7."
+      },
+      {
+        "label": "A nonzero base to power zero",
+        "expression": "(-4)^0",
+        "explanation": "The value is 1 because the base is nonzero."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "f01-exponent-rules",
+      "variant": "product"
+    },
+    {
+      "familyId": "f01-exponent-rules",
+      "variant": "quotient"
+    },
+    {
+      "familyId": "f01-exponent-rules",
+      "variant": "nested"
+    },
+    {
+      "familyId": "f01-exponent-rules",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f01-exponent-rules",
+      "variant": "real-power"
+    },
+    {
+      "familyId": "f01-root-meaning",
+      "variant": "absolute"
+    },
+    {
+      "familyId": "f01-radical-simplify",
+      "variant": "integer"
+    },
+    {
+      "familyId": "f01-radical-simplify",
+      "variant": "fraction"
+    },
+    {
+      "familyId": "f01-root-audit",
+      "variant": "laws"
+    },
+    {
+      "familyId": "f01-root-audit",
+      "variant": "principal"
+    },
+    {
+      "familyId": "f01-root-audit",
+      "variant": "distribution"
+    },
+    {
+      "familyId": "f01-radical-check",
+      "variant": "integer"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f01-root-audit",
+      "variant": "laws"
+    },
+    {
+      "familyId": "f01-exponent-rules",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f01-root-audit",
+      "variant": "principal"
+    },
+    {
+      "familyId": "f01-radical-check",
+      "variant": "fraction"
+    }
+  ],
+  "summary": [
+    "Count factors: products add same-base exponents, quotients subtract them, and nested powers multiply them.",
+    "Zero and negative exponent rules require a nonzero base.",
+    "The principal square root is nonnegative; a square equation may have two real solutions.",
+    "For real x, sqrt(x squared) is its absolute value. Odd roots allow negative radicands.",
+    "Extract square factors from radicals, and do not distribute a square root over addition."
+  ],
+  "retrieval": "Later, explain without notes why 2^-3=1/8, sqrt((-5)^2)=5, and the real cube root of -8 is -2. Give a counterexample to distributing a square root over a sum.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §1.2: Exponents and Scientific Notation",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-2-exponents-and-scientific-notation",
+      "purpose": "Exponent laws and powers of ten"
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §1.3: Radicals and Rational Exponents",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-3-radicals-and-rational-exponents",
+      "purpose": "Principal roots, real-root restrictions, and rational powers"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "courseId": "f06",
+  "checkedAt": "2026-09-24",
+  "sources": [
+    {
+      "id": "up-1.2",
+      "section": "1.2",
+      "title": "Units and Standards",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-2-units-and-standards",
+      "provider": "OpenStax University Physics Volume 1",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "up-1.3",
+      "section": "1.3",
+      "title": "Unit Conversion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-3-unit-conversion",
+      "provider": "OpenStax University Physics Volume 1",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "up-1.4",
+      "section": "1.4",
+      "title": "Dimensional Analysis",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis",
+      "provider": "OpenStax University Physics Volume 1",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "up-1.6",
+      "section": "1.6",
+      "title": "Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "provider": "OpenStax University Physics Volume 1",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "cp-1.3",
+      "section": "1.3",
+      "title": "Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "provider": "OpenStax College Physics 2e",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "bipm-prefixes",
+      "section": "SI prefix table, including the 2022 extension",
+      "title": "The International System of Units: Prefixes",
+      "url": "https://www.bipm.org/en/measurement-units/si-prefixes",
+      "provider": "Bureau International des Poids et Mesures",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "nist-4",
+      "section": "4.1 and 4.2",
+      "title": "SI base and derived units",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+      "provider": "NIST SP 811",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "nist-7",
+      "section": "7.1, 7.2, 7.7, 7.9",
+      "title": "Expressing values, uncertainty notation, and choosing prefixes",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values",
+      "provider": "NIST SP 811",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "nist-8.5",
+      "section": "8.5",
+      "title": "Temperature interval and temperature difference",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "provider": "NIST SP 811",
+      "checkedAt": "2026-09-24"
+    },
+    {
+      "id": "nist-uncertainty",
+      "section": "2.1 through 2.4",
+      "title": "Classification of Components of Uncertainty",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-2-classification-components-uncertainty",
+      "provider": "NIST TN 1297",
+      "checkedAt": "2026-09-24"
+    }
+  ],
+  "policy": "Opened the precise free sections for factual verification and further-reading links. All instructional prose, exercises, and activity graphics will be original. No textbook figures or exercises are copied.",
+  "attribution": "OpenStax University Physics Volume 1 by Samuel J. Ling, Jeff Sanny, and William Moebs; OpenStax College Physics 2e by Paul Peter Urone and Roger Hinrichs; BIPM SI prefix table; NIST SP 811 and TN 1297.",
+  "license": "Sources are factual checks and links. Preserve existing repository attribution and consult the publishers' current terms before any future copying.",
+  "measurementPolicy": "Elementary significant-figure rules are explicitly identified as reporting conventions. Rounding exercises state nearest with ties away from zero. Stated closed bounds are propagated by interval arithmetic and are not labeled statistical confidence intervals. BIPM's current prefix table takes precedence over older tables for the full prefix range."
+}

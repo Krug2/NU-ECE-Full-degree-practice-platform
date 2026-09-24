@@ -1,0 +1,37 @@
+{
+  "courseId": "f01",
+  "title": "Arithmetic and notation",
+  "version": 1,
+  "status": "preview",
+  "introduction": "Recover the arithmetic that makes later reasoning easier. Choose a quick recall route or rebuild four connected skills with examples, guided practice, and independent checks. This is optional study, with no university credit or enrollment effect.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From signed quantities to trustworthy answers",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Signed numbers and operation order",
+          "objective": "Compare signed values, calculate signed changes, and evaluate grouped arithmetic in the correct order while identifying undefined division."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Fractions, decimals, and proportions",
+          "objective": "Calculate exact fractional quantities, convert decimals and percentages, and solve a proportion while preserving the reference whole and units."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Powers and real roots",
+          "objective": "Apply integer exponent rules, evaluate real roots, and distinguish a principal square root from the solutions of a square equation."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Scientific notation and trustworthy answers",
+          "objective": "Translate scientific notation, retain exact values until rounding is requested, and use an estimate to detect sign or scale errors."
+        }
+      ]
+    }
+  ]
+}

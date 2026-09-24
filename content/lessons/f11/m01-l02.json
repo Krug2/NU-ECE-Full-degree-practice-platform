@@ -1,0 +1,207 @@
+{
+  "kind": "practical",
+  "id": "m01-l02",
+  "courseId": "f11",
+  "version": 1,
+  "title": "Estimate first and carry units through the model",
+  "objective": "Record a rough prediction before detailed calculation, use a dimensionally consistent relationship, and explain how one uncertain input changes the result.",
+  "why": "A rough prediction gives you a check that does not depend on copying the same calculator steps. Carrying units keeps the calculation attached to the situation. Together, these habits help you catch a wrong ratio, missing factor, or implausible scale before relying on the result.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Frame the problem and make a useful sketch"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Predict the approximate size first. Write a relationship in symbols, substitute quantities with units, simplify, then compare the result with the prediction. Finally, change one input mentally and ask whether the predicted response makes sense.",
+        "For a constant rate, amount = rate × time. Rearrange to match the unknown instead of combining numbers by appearance. For several identical channels, count the contribution of one channel and then multiply by the number of channels."
+      ]
+    },
+    {
+      "heading": "Make the estimate independently",
+      "paragraphs": [
+        "An estimate is a deliberately simpler calculation. Round an awkward distance to a nearby useful value, compare with a familiar benchmark, or bracket an uncertain input. Record the estimate before computing the detailed answer so it can challenge that answer.",
+        "Do not treat disagreement as proof that the detailed result is wrong. The estimate may have been too crude. Investigate the cause: unit conversion, missing input, unsuitable model, or loose rounding. The value of estimation is the question it raises."
+      ]
+    },
+    {
+      "heading": "Write a relationship before substituting",
+      "paragraphs": [
+        "If distance d is traveled at constant speed v, then d = vt and t = d/v. The relationship states the model. Substitution is a later operation. This order makes it easier to see why doubling distance doubles time and doubling speed halves it.",
+        "A raw buffer containing N channels at r samples/(channel·s) for duration T, with w bytes/sample, requires B = NrTw. Channel and sample counts are dimensionless counts mathematically, but their labels are useful bookkeeping: they prevent confusing a rate per channel with a total rate."
+      ]
+    },
+    {
+      "heading": "Let units travel with the numbers",
+      "paragraphs": [
+        "In t = (18 km)/(12 km/h), the distance units cancel and the result is 1.5 h. Converting to minutes requires the explicit factor 60 min/h. Relabeling 1.5 as minutes would not be a conversion.",
+        "Addition and subtraction require compatible quantities expressed in matching units. For filling, first subtract initial volume from target volume, then divide by inflow rate. If conversion factors are rusty, use F06 before relying on a unit-free shortcut."
+      ]
+    },
+    {
+      "heading": "Sensitivity and honest precision",
+      "paragraphs": [
+        "Change one input while holding the others fixed. Ask for a direction first and a factor second. Doubling recording duration doubles raw storage; doubling inflow rate halves filling time. These are consequences of the supplied simple models, not universal laws for every physical system.",
+        "A range from two plausible input values is a scenario range, not automatically a statistical confidence interval. Report assumptions with it. Keep enough intermediate digits to avoid avoidable rounding error, then report a final value suited to the input quality. A calculator's many digits do not measure certainty."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Travel estimate before conversion",
+      "scenario": "Estimate the time to travel 22 km at a constant 12 km/h, then calculate it in minutes.",
+      "steps": [
+        {
+          "action": "Before calculating, predict about 2 h because 24 km at 12 km/h takes 2 h; 22 km should take slightly less.",
+          "reason": "A nearby benchmark supplies a scale check independent of a decimal division."
+        },
+        {
+          "action": "Use t = d/v = (22 km)/(12 km/h) = 11/6 h. Convert with 60 min/h to get 110 min.",
+          "reason": "The equation expresses constant speed, and the conversion makes the requested minute unit explicit."
+        },
+        {
+          "action": "Check 110 min < 120 min. If speed doubles to 24 km/h while distance stays fixed, time halves to 55 min.",
+          "reason": "The result agrees with both the initial benchmark and the model's inverse dependence on speed."
+        }
+      ],
+      "conclusion": "110 min is consistent with the supplied constant-speed model. Stops or speed changes would require a revised model."
+    },
+    {
+      "title": "Count payload contributions",
+      "scenario": "Three channels produce 500 samples/s each for 20 s, using 2 bytes/sample. Find raw bytes and decimal kilobytes; 1 kB = 1000 bytes.",
+      "steps": [
+        {
+          "action": "Estimate a few tens of thousands of bytes: each channel produces about ten thousand samples over the interval, so three channels at two bytes each need about sixty thousand bytes.",
+          "reason": "Counting samples first keeps the contribution of the channel count visible."
+        },
+        {
+          "action": "B = 3 × 500 × 20 × 2 = 60,000 bytes = 60 kB.",
+          "reason": "The factors represent channels, samples per channel per second, seconds, and bytes per sample. The decimal kB definition is stated explicitly."
+        },
+        {
+          "action": "Double duration to 40 s: B becomes 120,000 bytes. Keep width, rate, and channel count fixed.",
+          "reason": "This isolates one dependence. Changing multiple inputs at once would obscure which one caused the result."
+        }
+      ],
+      "conclusion": "This is payload storage only. A full file or allocated buffer may also include metadata, alignment, or reserved capacity."
+    },
+    {
+      "title": "Subtract before dividing",
+      "scenario": "A tank starts at 18 L and should reach 60 L. Constant inflow is 6 L/min and outflow is zero.",
+      "steps": [
+        {
+          "action": "Estimate about 7 min: roughly 42 L must be added, and each minute adds 6 L.",
+          "reason": "Thinking in added volume prevents dividing the total final volume by the rate."
+        },
+        {
+          "action": "Added volume = 60 L − 18 L = 42 L. Then t = (42 L)/(6 L/min) = 7 min.",
+          "reason": "The initial contents already contribute to the target and must not be added again."
+        },
+        {
+          "action": "Check by reconstruction: 18 L + (6 L/min)(7 min) = 60 L. If inflow doubles, the same added volume takes 3.5 min.",
+          "reason": "Substituting back into the volume model provides a check with a different operation."
+        }
+      ],
+      "conclusion": "The result fits both the initial estimate and the final-volume condition under the constant-rate assumption."
+    },
+    {
+      "title": "A scenario range instead of false precision",
+      "scenario": "A 24 km trip may average between 10 and 12 km/h while moving. Estimate a time range excluding stops.",
+      "steps": [
+        {
+          "action": "Predict roughly 2 to 2.5 h. Use the faster speed for the shorter time and the slower speed for the longer time.",
+          "reason": "Time is inversely related to speed; matching the endpoints in the wrong order reverses the range."
+        },
+        {
+          "action": "At 12 km/h: t = 2 h = 120 min. At 10 km/h: t = 2.4 h = 144 min.",
+          "reason": "Evaluating the same model at both plausible inputs makes the source of the range transparent."
+        },
+        {
+          "action": "Report 120–144 min under these moving-speed scenarios, with stops excluded.",
+          "reason": "This is a conditional range based on supplied possibilities, not a measured probability statement or a guarantee."
+        }
+      ],
+      "conclusion": "The range communicates more about the available information than a single answer with many decimal places."
+    }
+  ],
+  "guided": {
+    "prompt": "Two channels each produce 400 samples/s for 30 s at 2 bytes/sample. Record a rough storage estimate before computing raw bytes, then predict the effect of doubling duration.",
+    "steps": [
+      "Use a simple sample count to estimate the scale before multiplying all factors.",
+      "Write the relationship with the channel and sample labels. Compute bytes and state one exclusion.",
+      "Hold the other inputs fixed and predict the new storage for 60 s."
+    ],
+    "review": [
+      "Each channel contributes about 12,000 samples, so two channels at two bytes per sample suggest about 48,000 bytes.",
+      "B = 2 × 400 × 30 × 2 = 48,000 bytes = 48 decimal kB. This excludes headers and timestamps.",
+      "Doubling only duration doubles payload storage to 96,000 bytes. The comparison is about the raw-data model, not the compression or memory allocation behavior of a particular tool."
+    ]
+  },
+  "task": {
+    "family": "engineering-work",
+    "fields": [
+      {
+        "id": "estimate",
+        "label": "Rough prediction before calculation",
+        "help": "Record a benchmark, rounded calculation, or plausible range before the detailed calculation."
+      },
+      {
+        "id": "calculation",
+        "label": "Relationship, substitution, units, and result",
+        "help": "State the model, substitute labeled quantities, convert units, and report a result."
+      },
+      {
+        "id": "sensitivity",
+        "label": "One changed input and the predicted effect",
+        "help": "Change one input, hold the others fixed, and explain the direction and factor."
+      },
+      {
+        "id": "limits",
+        "label": "Precision, assumptions, and limits",
+        "help": "Explain the reporting precision, an assumption, and what the result excludes."
+      }
+    ],
+    "rubric": [
+      {
+        "id": "estimate",
+        "label": "I wrote a rough expectation before the detailed result."
+      },
+      {
+        "id": "units",
+        "label": "My relationship and conversions carry units consistently."
+      },
+      {
+        "id": "sensitivity",
+        "label": "I checked one input change and avoided unsupported precision."
+      }
+    ]
+  },
+  "summary": [
+    "Write a rough expectation before the detailed result.",
+    "Choose the relationship from the model and desired unknown.",
+    "Carry units and named count factors through the calculation.",
+    "Use a one-input change to check dependence; label scenario ranges honestly."
+  ],
+  "retrieval": "Without the worked examples, explain why doubling rate halves a filling time but doubling duration doubles stored data. Then choose new numbers and verify both claims.",
+  "readings": [
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.4: Dimensional Analysis",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    },
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.5: Estimates and Fermi Calculations",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-5-estimates-and-fermi-calculations",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    },
+    {
+      "title": "OpenStax, University Physics Volume 1 · 1.6: Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "purpose": "Free reference for the underlying reasoning. App explanations and scenarios are original; source attribution and license details are in the F11 resource plan."
+    }
+  ]
+}

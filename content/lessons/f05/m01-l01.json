@@ -1,0 +1,295 @@
+{
+  "id": "m01-l01",
+  "courseId": "f05",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Exponential change and graph features",
+  "objective": "Distinguish multiplication from addition and interpret exponential factors, percentage change, transformations, domains, ranges, and asymptotes.",
+  "why": "Repeated percentage change, signal attenuation, and growth models depend on multiplication. Recovering the factor and its time step helps you decide whether a graph or prediction makes sense before calculating.",
+  "estimatedMinutes": 35,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For $f(x)=A b^{x-h}+k$, use a positive base b different from 1 and a nonzero A. The input domain is all real numbers. The exponential factor is always positive, so outputs lie strictly above k when A>0 and strictly below k when A<0. The line y=k is a horizontal asymptote.",
+        "A percentage increase r gives factor $1+r/100$; a decrease r gives $1-r/100$. Repeated changes multiply these factors. If these statements are familiar, inspect the examples, try the prediction activity, and use the independent checkpoint. Return to the fuller explanation wherever you cannot explain a step."
+      ]
+    },
+    {
+      "heading": "Multiplication is a pattern over equal input steps",
+      "paragraphs": [
+        "An exponential model repeats a ratio over equal input intervals. The values 12,18,27 multiply by 3/2 each step, while 12,18,24 add 6 each step. A line has a constant difference; a positive unshifted exponential has a constant ratio. Unequal input steps need adjustment before comparing ratios.",
+        "Two or three matching samples suggest a model, but they do not prove a physical law. State the assumed form and the range of observations. Also watch for an output offset: for A b^x+k, the ratios of f(x)-k are constant; the ratios of f(x) need not be. The investigation compares models that agree at their first two samples but predict different later values."
+      ]
+    },
+    {
+      "heading": "Zero and negative exponents preserve the pattern",
+      "paragraphs": [
+        "For a nonzero base, $b^0=1$ and $b^{-n}=1/b^n$. Moving one integer input step to the left divides by b, so a negative exponent is a reciprocal rather than a negative output. The familiar exponent rules give $b^m b^n=b^{m+n}$ and $b^m/b^n=b^{m-n}$.",
+        "With b>0, rational and real exponents extend this multiplication pattern continuously. A positive base gives a real, strictly positive exponential for every real input. The base 1 produces a constant function and has no logarithmic inverse. Negative bases can work at selected integer or rational inputs but do not define the all-real exponential function used here. Review F01's powers and roots if these rules are new."
+      ]
+    },
+    {
+      "heading": "Percentages act on the current amount",
+      "paragraphs": [
+        "A 20% decrease keeps 80% of the current amount: new=old-0.20 old=0.80 old. After n equal changes the factor is $0.8^n$. A 20% increase followed by a 20% decrease gives $1.2(0.8)=0.96$, so the changes do not cancel. They act on different starting amounts.",
+        "Record the interval associated with a factor. A factor 2 every three seconds gives $Q(t)=Q_0 2^{t/3}$, not $Q_0 2^t$ when t is measured in seconds. In a later lesson we will connect these factors with continuous rates and solve for elapsed time."
+      ]
+    },
+    {
+      "heading": "Read each graph transformation in order",
+      "paragraphs": [
+        "In $A b^{x-h}+k$, the input shift h moves the point at exponent zero to x=h. Since $b^0=1$, its output is A+k. The outside coefficient stretches outputs and reflects them across the horizontal axis if negative; then k moves the whole graph vertically. The y-intercept is $A b^{-h}+k$, which generally differs from A+k.",
+        "If b>1, b^x increases; if 0<b<1, it decreases. A negative A reverses that direction. In either case the exponential term can get arbitrarily close to zero in one input direction but never equals zero at a finite input. Keep the asymptote out of the range. A graph window may make the curve look as though it touches the asymptote, so use the formula to decide."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Distinguish a factor from a difference",
+      "prompt": "Compare 12,18,27 with 12,18,24 over equal input steps.",
+      "steps": [
+        {
+          "math": "18/12=27/18=3/2",
+          "reason": "The first sequence repeats a ratio."
+        },
+        {
+          "math": "18-12=24-18=6",
+          "reason": "The second sequence repeats a difference."
+        },
+        {
+          "math": "27(3/2)=81/2,\\qquad24+6=30",
+          "reason": "Continue each assumed pattern using its own operation."
+        }
+      ],
+      "conclusion": "The next values are 40.5 and 30 under these respective models. A pattern assumption still needs a physical justification."
+    },
+    {
+      "title": "Apply a percentage repeatedly",
+      "prompt": "Start at 50 units and decrease by 20% at each of three steps.",
+      "steps": [
+        {
+          "math": "b=1-20/100=4/5",
+          "reason": "Keep the unchanged part as well as subtracting the change."
+        },
+        {
+          "math": "Q_3=50(4/5)^3=50(64/125)=128/5",
+          "reason": "Multiply the factor once for each step."
+        },
+        {
+          "math": "Q_3=25.6",
+          "reason": "Convert at the end if a decimal is useful."
+        }
+      ],
+      "conclusion": "The final amount is 25.6 units. Subtracting 20% of the original amount three times would model a different process."
+    },
+    {
+      "title": "A negative exponent is a reciprocal",
+      "prompt": "Evaluate $3^{-2}$.",
+      "steps": [
+        {
+          "math": "3^{-2}=1/3^2",
+          "reason": "Moving two exponent steps left divides by 3 twice."
+        },
+        {
+          "math": "3^{-2}=1/9>0",
+          "reason": "The reciprocal of a positive power stays positive."
+        }
+      ],
+      "conclusion": "The answer is 1/9, not -9 and not -1/9."
+    },
+    {
+      "title": "An exponential with two shifts",
+      "prompt": "Describe $f(x)=2^{x-1}-3$.",
+      "steps": [
+        {
+          "math": "f(1)=2^0-3=-2",
+          "reason": "Use exponent zero to locate the shifted anchor."
+        },
+        {
+          "math": "2^{x-1}>0\\quad\\Longrightarrow\\quad f(x)>-3",
+          "reason": "The positive exponential term fixes the range boundary."
+        },
+        {
+          "math": "D=(-\\infty,\\infty),\\quad R=(-3,\\infty),\\quad y=-3",
+          "reason": "Every real input is valid; the lower range endpoint is approached but not attained."
+        },
+        {
+          "math": "f(0)=2^{-1}-3=-5/2",
+          "reason": "The y-intercept uses x=0, not the shift input."
+        }
+      ],
+      "conclusion": "The anchor is (1,-2), the graph increases, and its horizontal asymptote is y=-3."
+    },
+    {
+      "title": "Reflection reverses decay's direction",
+      "prompt": "Describe $g(x)=-2(1/2)^x+5$.",
+      "steps": [
+        {
+          "math": "(1/2)^{x+1}=\\tfrac12(1/2)^x",
+          "reason": "The positive exponential part decreases as x increases."
+        },
+        {
+          "math": "-2(1/2)^x<0\\quad\\Longrightarrow\\quad g(x)<5",
+          "reason": "Multiplying by a negative coefficient reflects the output."
+        },
+        {
+          "math": "g(0)=3,\\quad g(1)=4,\\quad g(2)=9/2",
+          "reason": "The reflected outputs increase toward 5."
+        },
+        {
+          "math": "D=\\mathbb R,\\quad R=(-\\infty,5)",
+          "reason": "No finite input makes the exponential term zero."
+        }
+      ],
+      "conclusion": "The graph increases even though its base is less than one. The asymptote y=5 is excluded from the range."
+    }
+  ],
+  "guided": {
+    "title": "Continue a multiplicative table",
+    "setup": "At inputs 0,1,2, a positive unshifted model has outputs 8,12,18.",
+    "before": [
+      "Compare both successive ratios.",
+      "Check whether the differences are also constant.",
+      "Predict the output at input 3 using the stated exponential assumption."
+    ],
+    "question": {
+      "id": "f05-l01-guided",
+      "familyId": "guided-f05-l01",
+      "familyVersion": 1,
+      "courseId": "f05",
+      "objectiveId": "m01-l01",
+      "category": "procedural",
+      "critical": false,
+      "parameters": {},
+      "prompt": "Find the common factor and the next output. Then select the pattern supported by the equal-step table.",
+      "fields": [
+        {
+          "id": "factor",
+          "kind": "rational",
+          "label": "Common factor",
+          "expected": "3/2"
+        },
+        {
+          "id": "next",
+          "kind": "rational",
+          "label": "Output at input 3",
+          "expected": "27"
+        },
+        {
+          "id": "pattern",
+          "kind": "choice",
+          "label": "Model pattern",
+          "correct": "exponential",
+          "options": [
+            {
+              "id": "exponential",
+              "label": "Exponential: constant ratio",
+              "feedback": "Both successive ratios are 3/2."
+            },
+            {
+              "id": "linear",
+              "label": "Linear: constant difference",
+              "feedback": "The differences are 4 and 6, which are not equal."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Divide 12 by 8 and 18 by 12.",
+        "Both ratios are 3/2.",
+        "Multiply 18 by 3/2 to get 27."
+      ],
+      "explanation": [
+        "The factor is 3/2, so the next assumed exponential output is 27.",
+        "The changing differences rule out one line through all three samples."
+      ],
+      "answerSummary": "Factor 3/2; next output 27; exponential pattern."
+    },
+    "after": "In your notes, explain why adding the most recent difference would give a different next output. Then generate a fresh independent problem."
+  },
+  "interaction": {
+    "kind": "refresher-explog-lab",
+    "mode": "growth",
+    "prompt": "Change initial value, factor, and offset; predict a second-step value and asymptote; compare an exponential curve with a linear model matching the first step and an exact labeled table."
+  },
+  "practice": [
+    {
+      "familyId": "f05-exponent-rules",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f05-exponent-rules",
+      "variant": "quotient"
+    },
+    {
+      "familyId": "f05-exp-pattern",
+      "variant": "growth"
+    },
+    {
+      "familyId": "f05-exp-pattern",
+      "variant": "decay"
+    },
+    {
+      "familyId": "f05-exp-pattern",
+      "variant": "linear"
+    },
+    {
+      "familyId": "f05-exp-factor",
+      "variant": "increase"
+    },
+    {
+      "familyId": "f05-exp-factor",
+      "variant": "decrease"
+    },
+    {
+      "familyId": "f05-exp-factor",
+      "variant": "multiple-step"
+    },
+    {
+      "familyId": "f05-exp-graph",
+      "variant": "shifted"
+    },
+    {
+      "familyId": "f05-exp-graph",
+      "variant": "reflected"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f05-exp-pattern",
+      "variant": "growth"
+    },
+    {
+      "familyId": "f05-exp-factor",
+      "variant": "multiple-step"
+    },
+    {
+      "familyId": "f05-exp-graph",
+      "variant": "shifted"
+    },
+    {
+      "familyId": "f05-exp-graph",
+      "variant": "reflected"
+    }
+  ],
+  "summary": [
+    "Exponential factors apply over a stated input interval.",
+    "A signed outside coefficient can reverse growth or decay direction.",
+    "Offsets determine horizontal asymptotes; finite exponential values never attain those boundaries."
+  ],
+  "retrieval": "Without looking back, explain why two successive 10% decreases leave 81% of the initial amount. Then state the domain, range, and direction of -3(2^x)+4.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.1: Exponential Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-1-exponential-functions",
+      "purpose": "Use this free section for additional explanations and practice when the refresher is not enough."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §6.2: Graphs of Exponential Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/6-2-graphs-of-exponential-functions",
+      "purpose": "Use this free section for additional explanations and practice when the refresher is not enough."
+    }
+  ]
+}

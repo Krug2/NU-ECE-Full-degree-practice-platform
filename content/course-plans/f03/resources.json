@@ -1,0 +1,65 @@
+{
+  "courseId": "f03",
+  "checkedAt": "2026-09-23",
+  "provider": "OpenStax, Rice University",
+  "book": "Algebra and Trigonometry 2e",
+  "author": "Jay Abramson and contributing authors",
+  "policy": "Precise free web sections checked directly. Original ECE Study explanations and exercises remain inside the app. Sources are linked for verification and additional reading; no external prose or illustrations are imported.",
+  "sources": [
+    {
+      "section": "2.1",
+      "title": "The Rectangular Coordinate Systems and Graphs",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-1-the-rectangular-coordinate-systems-and-graphs",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "3.1",
+      "title": "Functions and Function Notation",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-1-functions-and-function-notation",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "3.2",
+      "title": "Domain and Range",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-2-domain-and-range",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "3.3",
+      "title": "Rates of Change and Behavior of Graphs",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-3-rates-of-change-and-behavior-of-graphs",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "3.4",
+      "title": "Composition of Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-4-composition-of-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "3.5",
+      "title": "Transformation of Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-5-transformation-of-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "3.7",
+      "title": "Inverse Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/3-7-inverse-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "4.1",
+      "title": "Linear Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-1-linear-functions",
+      "checkedAt": "2026-09-23"
+    },
+    {
+      "section": "4.2",
+      "title": "Modeling with Linear Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/4-2-modeling-with-linear-functions",
+      "checkedAt": "2026-09-23"
+    }
+  ],
+  "license": "Preserve original ECE Study attribution. Consult the publisher's current terms before any future copying of external material."
+}

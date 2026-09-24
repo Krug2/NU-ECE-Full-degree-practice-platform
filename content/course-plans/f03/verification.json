@@ -1,0 +1,65 @@
+{
+  "courseId": "f03",
+  "verifiedAt": "2026-09-23",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 5,
+    "diagnosticProbes": 5,
+    "lessonCheckpointQuestions": 20,
+    "mixedRecallQuestions": 4,
+    "evidence": "Five independent lesson checkpoints and a four-question mixed check are separate from MTH 215 completion. The mixed foundations question preserves field-level targets for coordinates versus domains."
+  },
+  "checks": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "410 passed in 51 files. Aggregate content sweeps originally exceeded the default five-second limit. The same 50-seed sweeps are now reported per lesson; no assertions or seeds were removed."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed; targeted ESLint of the final changed tests also passed."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript, and generation of 81 pages."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --grep [fF]03 --output tmp/f03-browser",
+      "result": "6 passed on this worktree's production build at port 3102. Verified curriculum entry, diagnostic targeting, independent evidence separation, every checkpoint, mixed review, retries, exact resume, notes, backup export/reset/import, every guided example, all five activities, keyboard use, mobile layouts, and Axe."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --grep f03.*diagnostic --output tmp/f03-entry",
+      "result": "Passed curriculum preview entry and the complete diagnostic, resume, notes, and backup journey against the final preview build."
+    }
+  ],
+  "mathematics": "All source practice structures, new checkpoint combinations, and screens were tested over 50 seeds with exact accepted answers. Source suites independently check coordinate scales, domains and ranges, point mappings, extrema, composition domains, inverse identities, weighted interval averages, calibration units and residuals. The new zero-versus-undefined comparison was independently checked on 100 signed coordinate sets, including equivalent zero and invalid 0/0.",
+  "instruction": "Five source lessons supply complete built-in original explanations, 38 worked examples, guided work, and meaningful investigations. F03 adds its own recall framing and sequences, including fuller checkpoint coverage for line kinds, extrema, inverse verification, and unequal-interval rates. The version guard is tested against a changed source version.",
+  "accessibility": "No Axe WCAG 2 A/AA or WCAG 2.1 AA violations, horizontal overflow, or KaTeX errors on all six pages at 1440x1000 and 390x844. Every lesson's guided feedback works by keyboard. All five investigations were exercised with predictions and relevant invalid or boundary cases; graph descriptions remain available. Desktop overview and mobile transformed-graph screenshots inspected.",
+  "sources": "Nine precise OpenStax sections are recorded in resources.json. Original ECE Study text and illustrations are retained, with external links for verification and further reading.",
+  "sharedInterfaces": [
+    {
+      "interface": "Lesson adapter descriptors may supply objective?: string.",
+      "purpose": "State the refresher's observable objective consistently in its pack and lesson while preserving complete source instruction."
+    },
+    {
+      "interface": "The shared lesson-content verification reports one test per lesson.",
+      "purpose": "Keep the full 50-seed coverage while avoiding a growing whole-catalog test timeout and improving failure location."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f03",
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "No university credit or enrollment eligibility is awarded.",
+    "Independent human subject and assistive-technology review remain pending.",
+    "Difference quotients are optional preparation here; instantaneous-rate instruction belongs to F08 and the calculus courses.",
+    "F04 through F12 remain planned at this verification milestone."
+  ]
+}

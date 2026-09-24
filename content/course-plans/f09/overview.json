@@ -1,0 +1,85 @@
+{
+  "courseId": "f09",
+  "title": "Complex numbers",
+  "plannedAt": "2026-09-24",
+  "status": "planned",
+  "learner": "Returning learners who remember algebra and trigonometry but need a coherent picture of complex values, their arithmetic and geometric representations.",
+  "assumedKnowledge": [
+    "F01 signed arithmetic/fractions/radicals",
+    "F02 algebra and squared equations",
+    "F04 standard angles, radians, and trig signs",
+    "F07 coordinate vectors and magnitude"
+  ],
+  "scope": {
+    "include": [
+      "Rectangular numbers and arithmetic",
+      "Conjugates, magnitude, division, and equations",
+      "Polar coordinates, arguments, and Euler form",
+      "Polar operations, powers, and all roots"
+    ],
+    "exclude": [
+      "Complex analysis, analytic functions, contour integration or branch-cut theory",
+      "General polynomial root algorithms and arbitrary symbolic complex logarithms",
+      "AC circuit laws, phasor amplitude/RMS conventions, Fourier/Laplace transforms",
+      "Changing shared parsers to accept j, symbolic exponentials or general functions"
+    ]
+  },
+  "conventions": [
+    "Use i in answer fields; j in electrical writing names the same unit.",
+    "Use radians in Euler exponentials. Degree quantities are explicitly labeled.",
+    "Principal argument interval(-π,π]; zero argument undefined.",
+    "A principal square-root value and a complete root set are distinct requests."
+  ],
+  "routes": {
+    "quick": "Four diagnostic probes route to individual lessons. Use Quick recall, complete each independent checkpoint, then the four-part mixed recall.",
+    "full": "Recover rectangular arithmetic, then conjugation and division, then polar/Euler representations, and finally powers and roots. Predict before revealing each geometric activity; record reasoning in notes.",
+    "escalation": {
+      "courseId": "mth-215",
+      "text": "MTH215/F02 provide full algebra and quadratic support; the linked OpenStax and MIT sections provide deeper complex-number instruction. CEE300, CEE310 and CEE324 are course destinations for advanced applications beyond this refresher."
+    }
+  },
+  "reuse": {
+    "overlap": [
+      "MTH215 m01-l03 and its F02 adapter already teach complex roots and exact multiplication/division.",
+      "F04 supplies exact standard-angle trig utilities and pi-multiple answers.",
+      "F07 supplies nonzero direction and magnitude conventions in the plane."
+    ],
+    "implementation": "Wrap the committed mth-complex-arithmetic multiply/divide families under F09 identities with a version guard. Reuse parseExact, exact arithmetic, complex root-set grading, pi-multiple fields, and trigValue. Source lessons, saved attempts, storage and grading remain unchanged."
+  },
+  "assessment": {
+    "diagnostic": [
+      {
+        "lessonId": "m01-l01",
+        "probe": "rectangular multiplication"
+      },
+      {
+        "lessonId": "m01-l02",
+        "probe": "conjugate division"
+      },
+      {
+        "lessonId": "m01-l03",
+        "probe": "principal polar argument"
+      },
+      {
+        "lessonId": "m01-l04",
+        "probe": "complete complex roots"
+      }
+    ],
+    "checkpoints": "Four critical questions per lesson with multipart fields covering the entire objective and at most eight fields per question.",
+    "mixed": "One multipart critical question per lesson objective; lesson checkpoints provide broader structural coverage.",
+    "evidence": "Familiarity, visits, diagnostic, guided practice and interactive explorations remain separate from independent F09 lesson/mixed checkpoint evidence."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Lesson.interaction adds {kind:'refresher-complex-lab',mode:'arithmetic'|'conjugate'|'polar'|'roots',prompt:string}.",
+      "integration": "One strict union member and reader dispatch to scoped pure models and a keyboard-accessible component with equal-scale complex-plane diagrams and equivalent tables. No app-shell, parser or persistence redesign."
+    }
+  ],
+  "verification": [
+    "Use100seeds per structure; independent Cartesian multiplication/division formulas, conjugate/norm identities, trigonometric reconstruction, repeated multiplication for powers and root verification.",
+    "Test exact equivalent complex/radical forms, complete unordered root sets, invalid i/j input guidance, zero divisor/base/argument cases and signed/axis quadrants.",
+    "Check every diagram's axis scales, zero points and root count; all lesson/example math and50seed practice/checkpoint generation.",
+    "Exercise all guided and activity modes, diagnostic routing, every independent checkpoint, mixed review, notes, resume and backup in desktop/mobile browsers; keyboard and Axe; run full tests/lint/type/build.",
+    "Label preview only after all verification; human review remains pending. Finish F09 before detailed F10 planning."
+  ]
+}

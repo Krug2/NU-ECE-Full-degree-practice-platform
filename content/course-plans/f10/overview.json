@@ -1,0 +1,79 @@
+{
+  "courseId": "f10",
+  "title": "Programming recall",
+  "plannedAt": "2026-09-24",
+  "status": "planned",
+  "learner": "Returning learners who have seen programming but need to recover stepwise execution and debugging habits.",
+  "assumedKnowledge": [
+    "Signed arithmetic and comparisons",
+    "Basic function notation; no installed programming environment required"
+  ],
+  "scope": {
+    "include": [
+      "Values, assignment, and decisions",
+      "Loops and indexed collections",
+      "Functions, contracts, and shared data",
+      "Debugging with evidence and boundary tests"
+    ],
+    "exclude": [
+      "A full Python or C++ course, environment installation, arbitrary code execution, recursion, object-oriented design, file/network access, concurrent programs, pointer or memory management"
+    ]
+  },
+  "conventions": [
+    "Original snippets use Python 3, integer arithmetic unless otherwise labeled, four-space indentation and explicit inputs.",
+    "Lists supply indexed collection practice; they are not presented as C++ arrays. Python division, dynamic binding and list behavior must not be transferred blindly to C++.",
+    "Answer fields ask for values and reasoned choices, not arbitrary source-code evaluation. Activities trace bounded built-in programs."
+  ],
+  "routes": {
+    "quick": "Use four diagnostic probes, then Quick recall and every independent checkpoint. Finish the four-part mixed check.",
+    "full": "Study values and decisions, loops and indexing, functions and shared data, then debugging and tests. Predict before stepping through programs."
+  },
+  "reuse": {
+    "overlap": [
+      "F01 arithmetic and precedence support expression evaluation.",
+      "F03 mathematical functions support input/output language but program state and side effects need explicit distinctions.",
+      "The baseline has no committed CSC 242/252 lesson pack or reusable programming family."
+    ],
+    "implementation": "Reuse rational/choice fields, deterministic generator and independent checkpoint APIs, lesson reader, notes, resume and backup. Add only scoped families and a bounded trace activity."
+  },
+  "assessment": {
+    "diagnostic": [
+      {
+        "lessonId": "m01-l01",
+        "probe": "state and branch trace"
+      },
+      {
+        "lessonId": "m01-l02",
+        "probe": "filtered list accumulation"
+      },
+      {
+        "lessonId": "m01-l03",
+        "probe": "function return and caller state"
+      },
+      {
+        "lessonId": "m01-l04",
+        "probe": "boundary bug and repair"
+      }
+    ],
+    "checkpoints": "Four critical multipart questions per lesson cover all listed subskills, with no more than eight fields per question.",
+    "mixed": "One multipart question per lesson. Lesson checkpoints retain complete structural coverage.",
+    "evidence": "Familiarity, visits, guided traces and assisted practice remain separate from independent F10 objective evidence."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "MathText recognizes fenced Python code and inline backtick code inside existing string fields, renders escaped semantic code with preserved whitespace and keyboard-scrollable blocks.",
+      "integration": "No saved-attempt or question schema change. Existing math outside code is unchanged; fenced strings retain indentation. Add focused rendering/escaping checks."
+    },
+    {
+      "interface": "Lesson.interaction adds {kind:'refresher-programming-lab',mode:'state'|'loop'|'function'|'debug',prompt:string}.",
+      "integration": "One union member and reader dispatch. Scoped component predicts before stepping through pure bounded trace models; no eval, new storage or full interpreter."
+    }
+  ],
+  "verification": [
+    "Independently execute generated Python snippets with an available Python runtime and compare expected fields; also use separate arithmetic/loop/list oracles for 100 seeds per structure.",
+    "Test empty/singleton lists, both step directions, excluded endpoints, equality thresholds, negative floor division, alias/copy behavior, missing returns, invalid indices and numerical tolerances.",
+    "Check code indentation and escaping in prompts, examples and feedback, complete objective coverage and deterministic seeds.",
+    "Exercise all four guided traces/activities, diagnostic routing, independent checkpoints, resume, notes, backup, keyboard, desktop/mobile Axe and screenshots; full test/lint/type/build.",
+    "Only then mark preview, record human review pending, push and begin F11 detailed planning."
+  ]
+}

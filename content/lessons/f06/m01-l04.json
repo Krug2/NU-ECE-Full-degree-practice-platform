@@ -1,0 +1,363 @@
+{
+  "id": "m01-l04",
+  "courseId": "f06",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Significant figures and deliberate rounding",
+  "objective": "Interpret stated measurement precision, round using an explicit convention, and apply addition and multiplication reporting rules without allowing exact counts or conversions to limit precision.",
+  "why": "A calculator can display more digits than the measurements support. Deliberate reporting keeps useful precision without implying unsupported certainty, and guard digits prevent avoidable errors from repeated rounding.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "SI quantities, prefixes, and engineering notation"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Conversions with powers, rates, and offsets"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Leading zeros position the decimal; internal zeros and explicitly reported trailing decimal zeros can carry precision. A bare integer ending in zeros, such as 1200, does not unambiguously state its significant-figure count. Exact counts and defined conversion factors do not impose a finite precision limit.",
+        "For these exercises use nearest rounding, with exact halfway cases rounded away from zero. Addition and subtraction are reported to the least precise decimal place; multiplication and division to the least significant-figure count of the measured inputs. Keep unrounded intermediate values and round the final report."
+      ]
+    },
+    {
+      "heading": "Read the notation before counting",
+      "paragraphs": [
+        "In 0.004050, the zeros before 4 only locate its place. The zero between 4 and 5 and the final reported decimal zero are meaningful, giving four significant figures. A report 2.0 communicates a different precision from 2 even though the numerical values are equal.",
+        "Scientific notation makes intended precision clearer: 1.20×10³ has three significant figures, whereas 1200 without further context is ambiguous. A counted collection of exactly 12 resistors is an exact integer, not a measurement constrained to two significant figures. An exact factor such as 100 cm per m also does not limit the report."
+      ]
+    },
+    {
+      "heading": "Choose the rounding place and a tie rule",
+      "paragraphs": [
+        "Rounding to two decimal places means selecting the nearest multiple of 0.01. Rounding to three significant figures requires locating the first nonzero digit and retaining two more positions after it. These are different instructions. For zero, specify a decimal place or absolute uncertainty instead of claiming a unique significant-figure count.",
+        "Compare the discarded portion with half of one final-place increment. Less than half stays at the nearer lower magnitude; more than half moves to the nearer higher magnitude. At an exact tie this refresher chooses the value farther from zero, so -1.235 becomes -1.24 to hundredths. Other contexts may specify ties to even or another convention; follow the stated rule."
+      ]
+    },
+    {
+      "heading": "Carries can change the written form",
+      "paragraphs": [
+        "If rounding carries across a power of ten, count the significant figures again in the final report. Rounding 9.9995 to four significant figures gives 10.00, not 10.0. The numerical value alone does not communicate the requested four digits.",
+        "The exercises therefore ask for both the rounded value and the written report. Equivalent fractions and decimals are accepted for the value, while the separate report choice assesses meaningful trailing zeros. This avoids treating a numerically correct answer as proof of correct precision."
+      ]
+    },
+    {
+      "heading": "Addition and multiplication use different constraints",
+      "paragraphs": [
+        "In a sum or difference, align decimal places. If one length is reported to tenths, a sum with a length reported to hundredths cannot generally justify a hundredths-place report under this classroom rule. The number of significant figures in the answer can increase or decrease because place value controls this operation.",
+        "For multiplication and division, relative precision is the rough idea behind the significant-figure rule. A factor with two significant figures usually limits a product with a three-figure measured factor to two figures. These conventional rules are reporting approximations, not a complete propagation of uncertainty. The next lesson uses explicitly stated bounds instead."
+      ]
+    },
+    {
+      "heading": "Carry guard digits through a mixed calculation",
+      "paragraphs": [
+        "In (1.26+2.1)×2.45, the sum is 3.36 but its reporting constraint is tenths. Track that constraint while retaining 3.36 in the next multiplication. The sum would report as 3.4, which has two significant figures, so report the final product to two figures.",
+        "Rounding 3.36 to 3.4 too early changes the later product from 8.232 to 8.33 and can change the final answer from 8.2 to 8.3. Preserve intermediate digits and record the final precision rule separately. The numerical result and the precision justification are both part of a complete answer."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Identify meaningful digits",
+      "prompt": "Count significant figures in 0.004050; interpret 1200 and an exact count of 12.",
+      "steps": [
+        {
+          "math": "0.004050=4.050\\times10^{-3}",
+          "reason": "The four digits of the coefficient reveal the meaningful zeros."
+        },
+        {
+          "math": "1200=1.2\\times10^3=1.20\\times10^3\\quad\\text{numerically}",
+          "reason": "Different precision reports can represent the same bare integer."
+        },
+        {
+          "math": "N=12\\quad\\text{exact count}",
+          "reason": "A genuinely exact count is not constrained by a measured significant-figure count."
+        }
+      ],
+      "conclusion": "There are four figures in 0.004050. The precision of bare 1200 needs context; the exact count does not limit it."
+    },
+    {
+      "title": "Apply an explicit halfway rule",
+      "prompt": "Round 6.275 to hundredths using ties away from zero.",
+      "steps": [
+        {
+          "math": "6.275-6.27=6.28-6.275=0.005",
+          "reason": "The original is exactly halfway between adjacent hundredths."
+        },
+        {
+          "math": "6.275\\longrightarrow6.28",
+          "reason": "Choose the tied value farther from zero under the stated convention."
+        }
+      ],
+      "conclusion": "Report 6.28. This tie rule is stated for the exercise, not assumed universal."
+    },
+    {
+      "title": "Handle a carry into a new decade",
+      "prompt": "Round 9.9995 to four significant figures.",
+      "steps": [
+        {
+          "math": "9.9995\\longrightarrow10.000",
+          "reason": "The initial thousandths grid has an exact tie and carries upward."
+        },
+        {
+          "math": "10.000\\longrightarrow10.00\\quad(4\\text{ significant figures})",
+          "reason": "Express the resulting value using four significant figures after the carry changes its order of magnitude."
+        }
+      ],
+      "conclusion": "The report is 10.00; its numerical value is 10."
+    },
+    {
+      "title": "Report a sum by decimal place",
+      "prompt": "Add measured values 12.11 and 0.3.",
+      "steps": [
+        {
+          "math": "12.11+0.3=12.41",
+          "reason": "Compute the unrounded sum."
+        },
+        {
+          "math": "12.41\\longrightarrow12.4",
+          "reason": "The least precise input place is tenths."
+        }
+      ],
+      "conclusion": "The classroom reporting rule gives 12.4."
+    },
+    {
+      "title": "Report a product by significant figures",
+      "prompt": "Multiply measured values 2.34 and 1.2.",
+      "steps": [
+        {
+          "math": "2.34(1.2)=2.808",
+          "reason": "Retain the unrounded product first."
+        },
+        {
+          "math": "2.808\\longrightarrow2.8\\quad(2\\text{ significant figures})",
+          "reason": "The second measured factor has the smaller significant-figure count."
+        }
+      ],
+      "conclusion": "Report 2.8; matching decimal places would apply the wrong operation rule."
+    },
+    {
+      "title": "Use an exact conversion factor",
+      "prompt": "Convert a reported length of 4.56 m to cm.",
+      "steps": [
+        {
+          "math": "4.56\\,\\mathrm m\\frac{100\\,\\mathrm{cm}}{1\\,\\mathrm m}=456\\,\\mathrm{cm}",
+          "reason": "The conversion factor is defined exactly."
+        },
+        {
+          "math": "4.56\\text{ has 3 figures; }456\\text{ has 3 figures}",
+          "reason": "Preserve the measurement's precision rather than treating the exact factor 100 as a one-figure measurement."
+        }
+      ],
+      "conclusion": "The report is 456 cm."
+    },
+    {
+      "title": "Avoid premature rounding",
+      "prompt": "Evaluate (1.26+2.1)×2.45 with measured inputs.",
+      "steps": [
+        {
+          "math": "s=3.36,\\qquad s\\text{ would report to tenths as }3.4",
+          "reason": "Record the sum's precision constraint but retain guard digits."
+        },
+        {
+          "math": "3.36(2.45)=8.232\\longrightarrow8.2",
+          "reason": "The sum's effective two-figure constraint limits the final product."
+        },
+        {
+          "math": "3.4(2.45)=8.33\\longrightarrow8.3",
+          "reason": "This alternative shows the consequence of rounding the intermediate sum too soon."
+        }
+      ],
+      "conclusion": "Report 8.2 after one final rounding."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "A measured report 0.00320 is multiplied by the measured value 2.0. Keep calculation and reporting precision separate.",
+    "before": [
+      "Locate the first nonzero digit and retain the stated final decimal zero.",
+      "The measured factor 2.0 has two significant figures."
+    ],
+    "question": {
+      "id": "f06-l04-guided",
+      "familyId": "guided-f06-l04",
+      "familyVersion": 1,
+      "courseId": "f06",
+      "objectiveId": "m01-l04",
+      "category": "application",
+      "critical": false,
+      "prompt": "How many significant figures are in 0.00320? Give the product with 2.0 and choose its final report under the multiplication rule.",
+      "fields": [
+        {
+          "id": "count",
+          "kind": "rational",
+          "label": "Significant figures in the first report",
+          "expected": "3",
+          "unit": ""
+        },
+        {
+          "id": "value",
+          "kind": "rational",
+          "label": "Rounded numerical product",
+          "expected": "64/10000",
+          "unit": ""
+        },
+        {
+          "id": "report",
+          "kind": "choice",
+          "label": "Written product report",
+          "correct": "right",
+          "options": [
+            {
+              "id": "right",
+              "label": "0.0064",
+              "feedback": "The limiting measured input has two significant figures."
+            },
+            {
+              "id": "extra",
+              "label": "0.00640",
+              "feedback": "The extra final zero would claim three significant figures."
+            },
+            {
+              "id": "few",
+              "label": "0.006",
+              "feedback": "This discards a figure supported by the inputs."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "The measured factor 2.0 has two significant figures.",
+        "0.00320 has three significant figures."
+      ],
+      "explanation": [
+        "0.00320 has three significant figures.",
+        "The product is numerically 0.00640 but reports as 0.0064 to two significant figures."
+      ],
+      "answerSummary": "0.00320 has three significant figures. The product is numerically 0.00640 but reports as 0.0064 to two significant figures."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-measurement-lab",
+    "mode": "rounding",
+    "prompt": "Enter a finite decimal and choose significant figures or decimal places. Predict the rounded numerical value and written report, then inspect the rounding place. Try a halfway case, a negative input, and a carry across a power of ten."
+  },
+  "practice": [
+    {
+      "familyId": "f06-sig-count",
+      "variant": "leading"
+    },
+    {
+      "familyId": "f06-sig-count",
+      "variant": "internal"
+    },
+    {
+      "familyId": "f06-sig-count",
+      "variant": "trailing"
+    },
+    {
+      "familyId": "f06-sig-count",
+      "variant": "scientific"
+    },
+    {
+      "familyId": "f06-sig-count",
+      "variant": "ambiguous"
+    },
+    {
+      "familyId": "f06-sig-count",
+      "variant": "exact"
+    },
+    {
+      "familyId": "f06-measurement-round",
+      "variant": "places"
+    },
+    {
+      "familyId": "f06-measurement-round",
+      "variant": "figures"
+    },
+    {
+      "familyId": "f06-measurement-round",
+      "variant": "tie"
+    },
+    {
+      "familyId": "f06-measurement-round",
+      "variant": "carry"
+    },
+    {
+      "familyId": "f06-measurement-round",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "addition"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "subtraction"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "multiplication"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "division"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "exact-factor"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "mixed"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f06-sig-count",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f06-measurement-round",
+      "variant": "carry"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "sum-difference"
+    },
+    {
+      "familyId": "f06-precision-operation",
+      "variant": "product-quotient"
+    }
+  ],
+  "summary": [
+    "Separate numerical equality from reported precision.",
+    "State the rounding convention and recheck significant figures after a carry.",
+    "Track the operation's reporting constraint while keeping guard digits; exact counts and conversions do not limit precision."
+  ],
+  "retrieval": "Explain why -2.345 rounds to -2.35 under this lesson's hundredths tie rule. Then contrast the reporting rules for 2.30+0.4 and 2.30×0.4.",
+  "readings": [
+    {
+      "title": "OpenStax University Physics Volume 1 · 1.6: Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "OpenStax College Physics 2e · 1.3: Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 7.1, 7.2, 7.7, 7.9: Expressing values, uncertainty notation, and choosing prefixes",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    }
+  ]
+}

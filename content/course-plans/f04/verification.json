@@ -1,0 +1,72 @@
+{
+  "courseId": "f04",
+  "verifiedAt": "2026-09-23",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 4,
+    "workedExamples": 24,
+    "practiceStructures": 38,
+    "diagnosticProbes": 4,
+    "lessonCheckpointQuestions": 16,
+    "mixedRecallQuestions": 4,
+    "evidence": "All four lesson checkpoints and the mixed recall check use separate F04 identities. Diagnostic, confidence, lesson visits, and guided investigations do not award independent evidence."
+  },
+  "checks": [
+    {
+      "command": "pnpm test --maxWorkers=2",
+      "result": "558 passed across 57 files. One F03 sweep initially exceeded its five-second limit under machine load; it now reports each question structure separately, retaining all 50 seeds and assertions."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed. Targeted ESLint checks also passed for the final activity, feedback, and browser-test changes."
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "Passed. Production builds also completed TypeScript checks after the final UI changes."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript, and static generation of 85 pages, including the final preview build."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts tests/e2e/f04.spec.ts --grep [fF]04 --output tmp/f04-browser",
+      "result": "The first run passed six journeys and found one unit-circle display mismatch: a zero reciprocal quotient was not simplified in the table. Fixed the exact-value display and improved table spacing."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/f04.spec.ts --output tmp/f04-activities",
+      "result": "All four activity journeys passed on the corrected production build. Together with the three generic F04 journeys, all seven distinct scenarios passed."
+    },
+    {
+      "command": "pnpm exec vitest run tests/f04-circle.test.ts tests/f04-content.test.ts --maxWorkers=2",
+      "result": "Ten checks passed after the final display and context-specific hint changes. The final pack/path check passed again after preview metadata changed."
+    },
+    {
+      "command": "pnpm exec playwright test --config playwright.refreshers.config.ts tests/e2e/refresher-packs.spec.ts --grep f04.*diagnostic --output tmp/f04-entry",
+      "result": "Passed final preview curriculum entry, diagnostic targeting, exact reload/resume, notes, and export/reset/import recovery."
+    }
+  ],
+  "mathematics": "Independent numerical and inverse-branch oracles check unit-circle values, reciprocal zero denominators, principal inverse ranges, exact arc/area/speed quantities, signed wave periods and samples, quadrant identities, addition and double-angle values, and complete periodic roots. Generator structures are checked across 100 seeds, including zero/full-turn boundaries, closed endpoints, impossible targets, equivalent exact forms, invalid division, angle versus time units, and discarded zero-factor roots. Lesson and screen combinations retain 50-seed checks and original source diagrams.",
+  "instruction": "The first lesson preserves the complete reviewed MTH 215 b06 source through a version-checked adapter. Three new lessons add original explanations and examples for signed circle coordinates, all six ratios, circular quantities, sinusoidal and time models, inverse values, identities, and full equation solutions. Four independent checkpoint questions per lesson cover each stated objective; the circular-quantity checkpoint explicitly combines arc, area, angular speed, and tangential speed.",
+  "accessibility": "No Axe WCAG 2 A/AA or WCAG 2.1 AA violations, horizontal overflow, or KaTeX errors on the overview and all four lessons at desktop and 390x844 mobile sizes. All guided questions and four investigations work by keyboard. New diagrams have descriptive accessible names and equivalent text or exact tables. Tested wrong predictions, empty input, undefined ratios, signed multipliers, endpoint changes, empty solution sets, and invalid expressions. Desktop overview and mobile circle/wave screenshots inspected.",
+  "sources": "Ten precise free OpenStax Algebra and Trigonometry 2e sections are recorded in resources.json, with the full verified 9.1 URL. Explanations and exercises are original. Later MTH 215 trigonometry modules are correctly described as planned.",
+  "sharedInterfaces": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-trig-lab', mode: 'circle' | 'wave' | 'equations', prompt: string }.",
+      "purpose": "Render scoped prediction activities while reusing the existing question fields and graders. No storage or backup formats changed."
+    }
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f04",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "This optional refresher does not award university credit or determine enrollment eligibility.",
+    "Independent human subject and assistive-technology review remain pending.",
+    "Oblique-triangle laws, half-angle techniques, proofs beyond the foundational identities, and full signal analysis are outside this refresher.",
+    "F05 through F12 remain planned at this verification milestone."
+  ]
+}

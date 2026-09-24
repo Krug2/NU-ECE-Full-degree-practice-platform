@@ -1,0 +1,108 @@
+{
+  "courseId": "f09",
+  "resources": [
+    {
+      "id": "at2-2.4",
+      "provider": "OpenStax, Algebra and Trigonometry 2e",
+      "authors": [
+        "Jay Abramson"
+      ],
+      "section": "2.4",
+      "title": "Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-4-complex-numbers",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    },
+    {
+      "id": "at2-10.5",
+      "provider": "OpenStax, Algebra and Trigonometry 2e",
+      "authors": [
+        "Jay Abramson"
+      ],
+      "section": "10.5",
+      "title": "Polar Form of Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/10-5-polar-form-of-complex-numbers",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    },
+    {
+      "id": "mit-4.3",
+      "provider": "MIT OpenCourseWare, ES.1803 Topic4",
+      "authors": [
+        "Jeremy Orloff"
+      ],
+      "section": "4.3 (PDF pages 2–3)",
+      "title": "Terminology and basic arithmetic",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=2",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    },
+    {
+      "id": "mit-4.4",
+      "provider": "MIT OpenCourseWare, ES.1803 Topic4",
+      "authors": [
+        "Jeremy Orloff"
+      ],
+      "section": "4.4 (PDF pages 4)",
+      "title": "The complex plane and geometry",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=4",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    },
+    {
+      "id": "mit-4.5",
+      "provider": "MIT OpenCourseWare, ES.1803 Topic4",
+      "authors": [
+        "Jeremy Orloff"
+      ],
+      "section": "4.5 (PDF pages 4)",
+      "title": "Polar coordinates",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=4",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    },
+    {
+      "id": "mit-4.6",
+      "provider": "MIT OpenCourseWare, ES.1803 Topic4",
+      "authors": [
+        "Jeremy Orloff"
+      ],
+      "section": "4.6 (PDF pages 5–9)",
+      "title": "Euler's formula, polar arithmetic, and nth roots",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=5",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    },
+    {
+      "id": "mit-4.7",
+      "provider": "MIT OpenCourseWare, ES.1803 Topic4",
+      "authors": [
+        "Jeremy Orloff"
+      ],
+      "section": "4.7 (PDF pages 10)",
+      "title": "Inverse Euler formula",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=10",
+      "verifiedAt": "2026-09-24",
+      "access": "Free public HTML or PDF without account.",
+      "license": "Current provider licensing identifies CC BY-NC-SA4.0. Referenced for standard mathematical facts and further reading; no source prose, exercises, or figures copied.",
+      "verification": "Checked the precise section and identities independently. Use nonnegative magnitude, a nonzero complex divisor, and distinguish principal square roots from all equation roots."
+    }
+  ],
+  "authorship": "All in-app prose, examples, questions and diagrams are original; linked sources verify mathematical facts and provide optional reading.",
+  "licenseLinks": [
+    "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "https://ocw.mit.edu/pages/privacy-and-terms-of-use/"
+  ]
+}

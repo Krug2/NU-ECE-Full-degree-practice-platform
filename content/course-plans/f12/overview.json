@@ -1,0 +1,71 @@
+{
+  "courseId": "f12",
+  "title": "Study and tool orientation",
+  "plannedAt": "2026-09-24",
+  "status": "planned",
+  "learner": "Returning learners who need a manageable study routine and reliable use of notation, calculator settings and saved files.",
+  "assumedKnowledge": [
+    "Basic reading and arithmetic; use F01/F04 for underlying numeric or trigonometric gaps."
+  ],
+  "scope": {
+    "include": [
+      "Retrieve, check, and plan the next session",
+      "Read technical text and decode notation",
+      "Check calculator settings and expression entry",
+      "Organize files and verify a recoverable copy"
+    ],
+    "exclude": [
+      "University enrollment or credit decisions, numerical study-habit mastery, mental-health treatment, a universal ideal review interval, paid tools, account setup, arbitrary expression execution, device-specific calculator certification and automatic backup scheduling."
+    ]
+  },
+  "routes": {
+    "quick": "Use four scenario judgments, read Quick recall, then produce a fresh self-checked record for each objective. Use the calculator and file checks to verify tool behavior.",
+    "full": "Perform retrieval and plan a return; read and paraphrase technical conditions; predict and check calculator behavior; save/reopen a practice file and plan progress recovery."
+  },
+  "overlap": [
+    {
+      "existing": "mth-215/b01 and b02; F01",
+      "reuse": "Keep exact/approximate, grouping and scientific-notation conventions consistent. F12 focuses on reading and entering them, not duplicate numerical mastery."
+    },
+    {
+      "existing": "mth-215/b06; F04",
+      "reuse": "Use existing degree/radian and unit-circle conventions; link full explanations for first-time trigonometry."
+    },
+    {
+      "existing": "F06 and F11",
+      "reuse": "Carry units and model limits into tool checks; reuse practical record schemas and components."
+    }
+  ],
+  "assessment": {
+    "diagnostic": "Four unscored choice judgments, one per objective, with misconception feedback and direct lesson targets.",
+    "independent": "Four substantive written fields and three self-check criteria per objective. Generated tasks have at least three distinct structures per lesson. File objective requires actually saving/reopening the harmless exercise and reporting the observed comparison.",
+    "assistance": "Guided comparisons and labs are practice. Revealing the active task review persists its assisted label; a fresh task preserves the last completed record. Confidence, visits and tool interactions never create completion.",
+    "evidence": "Versioned practical artifacts and completion timestamps, self-checked. No numerical evidence or course completion changes. No automated semantic judgment."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Reuse PracticalLesson, PracticalPath, PracticalTask, PracticalWorkspace, ordinary notes and existing backup APIs.",
+      "change": "Add F12 entries to the scoped practical catalog and availability; existing route dispatch already supports them."
+    },
+    {
+      "interface": "PracticalLesson.activity?: 'calculator-check' | 'file-round-trip'; optional internal PracticalCase.model.",
+      "change": "Scoped practical reader chooses local unscored activity. F11 keeps its required internal engineering model type; nonnumeric study/file tasks do not invent numeric model results. No persisted envelope or progress schema changes."
+    },
+    {
+      "interface": "Bounded calculatorCheck(function, mode, inputPreset) and groupingCheck(case), with prediction feedback; no eval or arbitrary user code.",
+      "change": "Pure utility plus client view, numbers checked against independent analytic benchmarks and Taylor-series oracle."
+    },
+    {
+      "interface": "Synthetic practice file {format:'ece-study-file-practice-v1',revision,marker,note}; generate local download and validate selected file under 20 KB.",
+      "change": "No network upload or progress import. Reject wrong format, malformed JSON and marker/content mismatch; link existing Settings to actual progress backup."
+    }
+  ],
+  "verification": [
+    "Strict plans/content/links/complete objective coverage; all inline math renders.",
+    "100 seeds per lesson cover all three scenario structures, deterministic outputs and sensible constraints; independent oracles check passage arithmetic, unit-circle values, grouping and notation.",
+    "Actual file download/read/compare, invalid JSON, wrong format, mismatch and size limits; no numerical evidence from tools.",
+    "Every practical objective: draft save/reload, assisted label, fresh independent record, retained completion, notes, export/reset/import, two-tab conflict and corrupt-record recovery.",
+    "Desktop/mobile all pages plus active tool states, keyboard, Axe, overflow, console errors and visual review.",
+    "Run full tests including CPython, lint, types and production build on owned worktree; isolated 3102 browser tests, 3002 preview. Label preview only afterward; human review pending."
+  ]
+}

@@ -1,0 +1,9 @@
+.refresher-layout { display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:24px;align-items:start; }
+.refresher-layout > * { min-width:0; }
+.refresher-layout .panel { min-width:0;scroll-margin-top:24px; }
+.refresher-layout .field { min-width:0;grid-template-columns:minmax(0,1fr); }
+.refresher-layout textarea { width:100%; }
+.refresher-layout p { line-height:1.8; }
+.refresher-layout .form-actions { flex-wrap:wrap;gap:12px; }
+.refresher-layout .button { white-space:normal; }
+@media(max-width:1100px){.refresher-layout{grid-template-columns:minmax(0,1fr)}}

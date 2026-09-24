@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Course } from "@/lib/catalog";
 import { groupLabels } from "@/lib/catalog";
+import { refresherAvailable } from "@/lib/learning/refreshers/availability";
 
 const paths = {
   grid: "M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z",
@@ -34,7 +35,7 @@ export function PageHeading({ eyebrow, title, children, action }: { eyebrow: str
 
 export function CourseCard({ course, selected, onToggle, disabled = false }: { course: Course; selected: boolean; onToggle: () => void; disabled?: boolean }) {
   return <article className={`course-card subject-${course.subject.toLowerCase().split(" ")[0]}`}>
-    <div className="course-card-meta"><span className="course-code">{course.code}</span><span className="status-dot">Planning ahead</span></div>
+    <div className="course-card-meta"><span className="course-code">{course.code}</span><span className="status-dot">{refresherAvailable(course.id)?"Available preview":"Planning ahead"}</span></div>
     <Link href={`/courses/${course.id}`} className="course-title"><h3>{course.title}</h3></Link>
     <p>{course.summary}</p>
     <div className="course-card-bottom"><span>{groupLabels[course.group]}{course.credits !== null && ` · ${course.credits} cr.`}</span><button className={`icon-button ${selected ? "selected" : ""}`} onClick={onToggle} disabled={disabled} aria-label={`${selected ? "Remove" : "Add"} ${course.code} ${selected ? "from" : "to"} my plan`} aria-pressed={selected}><Icon name={selected ? "check" : "plus"} size={18} /></button></div>

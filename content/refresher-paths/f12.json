@@ -1,0 +1,167 @@
+{
+  "courseId": "f12",
+  "version": 1,
+  "quickRoute": "Use four scenario judgments, read Quick recall, then produce a fresh self-checked record for each objective. Use the calculator and file checks to verify tool behavior.",
+  "fullRoute": "Perform retrieval and plan a return; read and paraphrase technical conditions; predict and check calculator behavior; save/reopen a practice file and plan progress recovery.",
+  "diagnostic": {
+    "id": "f12-diagnostic",
+    "familyId": "practical-diagnostic-f12",
+    "familyVersion": 1,
+    "courseId": "f12",
+    "objectiveId": "diagnostic",
+    "category": "conceptual",
+    "critical": false,
+    "prompt": "Choose the useful next action in each study or tool situation. Each judgment links to a practical lesson; it is not a numerical mastery assessment.",
+    "fields": [
+      {
+        "id": "retrieve",
+        "kind": "choice",
+        "label": "A worked example feels familiar, but you cannot explain its first step with the page closed. What should you do next?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "retrieve",
+            "label": "Attempt a small recall prompt, check it, and target the gap",
+            "feedback": "An unaided attempt makes the missing step visible and gives feedback a purpose."
+          },
+          {
+            "id": "familiar",
+            "label": "Count the familiar feeling as independent evidence",
+            "feedback": "Recognition while reading does not show that you can retrieve or apply the reasoning."
+          },
+          {
+            "id": "repeat",
+            "label": "Only reread until every sentence looks familiar",
+            "feedback": "Rereading can clarify content, but it does not replace trying to produce the reasoning."
+          }
+        ],
+        "correct": "retrieve"
+      },
+      {
+        "id": "read",
+        "kind": "choice",
+        "label": "A passage says d = vt for constant speed v. Your notes keep the equation but omit 'constant speed.' What is missing?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "condition",
+            "label": "A condition that limits when the model applies",
+            "feedback": "The equation's meaning depends on its stated model conditions."
+          },
+          {
+            "id": "nothing",
+            "label": "Nothing; the equation applies to every motion",
+            "feedback": "A formula without its conditions can be used outside its scope."
+          },
+          {
+            "id": "font",
+            "label": "Only a formatting detail",
+            "feedback": "The phrase constrains the model rather than its appearance."
+          }
+        ],
+        "correct": "condition"
+      },
+      {
+        "id": "calculate",
+        "kind": "choice",
+        "label": "A calculator gives about -0.988 for sin(30), while you expected 0.5 for 30°. What is the first useful check?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "mode",
+            "label": "Check whether the input was interpreted in radians",
+            "feedback": "Thirty radians and thirty degrees are different angles."
+          },
+          {
+            "id": "round",
+            "label": "Round the displayed value to 0.5",
+            "feedback": "Rounding cannot explain this discrepancy."
+          },
+          {
+            "id": "trust",
+            "label": "Accept the display because it has many digits",
+            "feedback": "Digits do not establish that the intended quantity was entered."
+          }
+        ],
+        "correct": "mode"
+      },
+      {
+        "id": "files",
+        "kind": "choice",
+        "label": "You downloaded a progress backup last month, then added newer notes. What should happen before importing the old file as a replacement?",
+        "help": "Choose one response.",
+        "options": [
+          {
+            "id": "review",
+            "label": "Export current work, inspect the chosen backup, and review what replacement means",
+            "feedback": "A readable older backup can still omit newer work; replacement is not a merge."
+          },
+          {
+            "id": "replace",
+            "label": "Replace immediately because any backup is current",
+            "feedback": "The file's date and contents matter."
+          },
+          {
+            "id": "rename",
+            "label": "Rename the old file with today's date and import it",
+            "feedback": "Renaming does not update the file's contents."
+          }
+        ],
+        "correct": "review"
+      }
+    ],
+    "parameters": {},
+    "hints": [
+      "Distinguish familiarity from producing reasoning.",
+      "Check conditions, settings and exact input meanings.",
+      "Verify the contents and consequences of a file operation."
+    ],
+    "explanation": [
+      "An unaided attempt makes the missing step visible and gives feedback a purpose.",
+      "The equation's meaning depends on its stated model conditions.",
+      "Thirty radians and thirty degrees are different angles.",
+      "A readable older backup can still omit newer work; replacement is not a merge."
+    ],
+    "answerSummary": "Attempt and check recall, retain model conditions, inspect angle mode, and review an older backup before replacing newer work."
+  },
+  "targets": {
+    "retrieve": "m01-l01",
+    "read": "m01-l02",
+    "calculate": "m01-l03",
+    "files": "m01-l04"
+  },
+  "support": [
+    {
+      "courseId": "f01",
+      "reason": "Rebuild arithmetic, exact versus approximate statements, grouping and scientific notation."
+    },
+    {
+      "courseId": "f04",
+      "reason": "Learn or revisit degree/radian meanings and trigonometric benchmarks."
+    },
+    {
+      "courseId": "f11",
+      "reason": "Use framing, estimates, checks and revision logs within each study session."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "Carry notation and independent recall into full algebra and trigonometry."
+    },
+    {
+      "courseId": "csc-242",
+      "reason": "Read technical definitions and keep reproducible program work."
+    },
+    {
+      "courseId": "cee-310l",
+      "reason": "Verify saved observations and preserve lab revisions."
+    },
+    {
+      "courseId": "cee-340",
+      "reason": "Check tools and maintain usable project records."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "If symbols, grouping, functions or trigonometric benchmarks need first-time instruction, use the full MTH 215 course and its foundation bridges. F01 and F04 offer focused review; F10 supports programming notation and traces."
+  }
+}

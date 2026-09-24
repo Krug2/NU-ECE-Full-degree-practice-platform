@@ -1,0 +1,318 @@
+{
+  "id": "m01-l01",
+  "courseId": "f09",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Rectangular numbers and arithmetic",
+  "objective": "Interpret real and imaginary components, use powers of i and principal negative square roots, and add, subtract, scale, and multiply complex numbers.",
+  "why": "Complex numbers give two linked coordinates a consistent arithmetic. They let algebra describe oscillation, phase, and equations that have no real roots. Recovering their basic operations makes later engineering notation much less mysterious.",
+  "estimatedMinutes": 40,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "The imaginary unit satisfies $i^2=-1$. A complex number has the rectangular form z=a+bi, where a and b are real. Its real part is a and its imaginary part is b, without the factor i. Real numbers occur when b=0.",
+        "Add or subtract matching components. Multiply by distributing all four terms and replacing i² with -1. The powers of i repeat every four steps. The app's exact answer fields use i; many electrical texts instead use j for the same imaginary unit."
+      ]
+    },
+    {
+      "heading": "Two real coordinates make one complex value",
+      "paragraphs": [
+        "A complex number can be plotted at(a,b), with real coordinate horizontally and imaginary coefficient vertically. These coordinates describe one value, not two independent answers. Equality requires equality of both coordinates: a+bi=c+di exactly when a=c and b=d.",
+        "The word imaginary is a historical name, not a claim that the number is invalid. A nonzero pure imaginary number has a=0 and b≠0. A real number has b=0 and is still complex. Zero has both coordinates zero, so it lies on both axes and is included among the real numbers."
+      ]
+    },
+    {
+      "heading": "Separate notation from the imaginary unit",
+      "paragraphs": [
+        "In many electrical formulas, j is used because i may already denote current. When a source declares j²=-1, its a+bj is the same mathematical form as a+bi. Translate consistently rather than treating i and j as independent units.",
+        "For these existing answer fields, type i. For example, 2-3j in a circuit note becomes 2-3i here. The coefficient -3 is the imaginary part, while -3i is the imaginary term. Keeping this distinction helps when a problem asks for a coordinate instead of the whole complex value."
+      ]
+    },
+    {
+      "heading": "Addition and scaling retain component meanings",
+      "paragraphs": [
+        "Adding z and w adds the real coordinates and separately adds the imaginary coordinates. Subtraction distributes the minus sign across the entire second value. On the plane, addition can be drawn by placing the second displacement at the first tip.",
+        "A real scale factor multiplies both coordinates. A negative factor reverses direction as well as changing size; zero collapses the value to the origin. These operations have the same component logic as planar vectors, but complex multiplication is an additional operation with its own rule."
+      ]
+    },
+    {
+      "heading": "Multiplication uses the defining relation",
+      "paragraphs": [
+        "Distribute $(a+bi)(c+di)=ac+adi+bci+bd i^2$. The last term is real because i²=-1, so the product is $(ac-bd)+(ad+bc)i$. Multiplying corresponding coordinates only would miss both cross terms and the sign of the last term.",
+        "The powers begin i, -1, -i, 1 and then repeat. Reduce an integer exponent modulo4 before selecting the cycle value. Negative exponents use reciprocals, which are valid for i because it is nonzero. For instance, i^(-1)=-i since i(-i)=1."
+      ]
+    },
+    {
+      "heading": "A principal square root and an equation are different requests",
+      "paragraphs": [
+        "For a positive real r, the principal square root of -r is i√r, with positive imaginary coefficient. But solving z²=-r requires both i√r and its negative. A root-set question asks you to include every distinct solution; a principal-value question asks for one specified choice.",
+        "Do not extend the real nonnegative square-root product rule blindly to negative inputs. The principal values √(-1)·√(-1)=i·i=-1 differ from √[(-1)(-1)]=1. Keep the domain and the requested meaning of a root explicit."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Read the two parts",
+      "prompt": "Interpret z=-3+4i on the complex plane.",
+      "steps": [
+        {
+          "math": "\\operatorname{Re}z=-3,\\qquad\\operatorname{Im}z=4",
+          "reason": "The imaginary part is the real coefficient, not the full term 4i."
+        },
+        {
+          "math": "z\\longleftrightarrow(-3,4)",
+          "reason": "Move left along the real direction and up along the imaginary direction."
+        }
+      ],
+      "conclusion": "The value has both parts nonzero."
+    },
+    {
+      "title": "Translate electrical notation",
+      "prompt": "A note defines j²=-1 and writes z=2-3j. Enter it using this app's notation.",
+      "steps": [
+        {
+          "math": "j^2=i^2=-1\\quad\\text{with j and i naming the same unit}",
+          "reason": "The note explicitly identifies the engineering symbol's meaning."
+        },
+        {
+          "math": "z=2-3i,\\qquad\\operatorname{Im}z=-3",
+          "reason": "Replace the symbol consistently while retaining the coefficient sign."
+        }
+      ],
+      "conclusion": "Use i in the exact answer field."
+    },
+    {
+      "title": "Add matching coordinates",
+      "prompt": "Calculate (2-3i)+(-5+i).",
+      "steps": [
+        {
+          "math": "(2-5)+(-3+1)i",
+          "reason": "Group the real parts and imaginary coefficients separately."
+        },
+        {
+          "math": "-3-2i",
+          "reason": "Simplify both coordinate sums."
+        }
+      ],
+      "conclusion": "The sum lies left and below the origin."
+    },
+    {
+      "title": "Subtract the whole number",
+      "prompt": "Calculate (1+4i)-(-2+3i).",
+      "steps": [
+        {
+          "math": "1+4i+2-3i",
+          "reason": "The outer minus reverses both terms of the second value."
+        },
+        {
+          "math": "3+i",
+          "reason": "Combine the resulting matching components."
+        }
+      ],
+      "conclusion": "Changing only the real sign would give the wrong imaginary part."
+    },
+    {
+      "title": "Scale both components",
+      "prompt": "Calculate-2(3-i).",
+      "steps": [
+        {
+          "math": "(-2)(3)+(-2)(-i)",
+          "reason": "Distribute the real factor to every term."
+        },
+        {
+          "math": "-6+2i",
+          "reason": "The imaginary coefficient becomes positive."
+        }
+      ],
+      "conclusion": "A negative real scale reverses both coordinates."
+    },
+    {
+      "title": "Distribute a complex product",
+      "prompt": "Multiply (2+i)(1-3i).",
+      "steps": [
+        {
+          "math": "(2+i)(1-3i)=2-6i+i-3i^2",
+          "reason": "Retain all four products before simplifying."
+        },
+        {
+          "math": "2-5i+3=5-5i",
+          "reason": "The defining relation turns -3i² into+3."
+        }
+      ],
+      "conclusion": "The product is 5-5i; it is not the componentwise product 2-3i."
+    },
+    {
+      "title": "Reduce positive and negative powers",
+      "prompt": "Evaluate i^27 and i^(-3).",
+      "steps": [
+        {
+          "math": "27=4(6)+3,\\qquad i^{27}=i^3=-i",
+          "reason": "Whole cycles contribute1."
+        },
+        {
+          "math": "i^{-3}=\\frac1{i^3}=\\frac1{-i}=i",
+          "reason": "Multiplying -i by i gives 1, confirming the reciprocal."
+        }
+      ],
+      "conclusion": "Negative exponents follow the same four-step cycle when their remainder is normalized."
+    },
+    {
+      "title": "Keep both equation roots",
+      "prompt": "Find the principal square root of -12 and solve z²=-12.",
+      "steps": [
+        {
+          "math": "\\sqrt{-12}=i\\sqrt{12}=2\\sqrt3\\,i",
+          "reason": "The principal square root of a negative real has positive imaginary coefficient."
+        },
+        {
+          "math": "z\\in\\{2\\sqrt3\\,i,-2\\sqrt3\\,i\\}",
+          "reason": "Both signs are needed to solve the squared equation."
+        },
+        {
+          "math": "(\\pm2\\sqrt3\\,i)^2=12i^2=-12",
+          "reason": "Squaring each candidate verifies the complete pair."
+        }
+      ],
+      "conclusion": "The principal square root is one member of the two-element root set."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Compute (1+2i)(3-i), keeping all four products.",
+    "before": [
+      "The expansion is 3-i+6i-2i².",
+      "Replace i² by -1, then collect the real and imaginary terms."
+    ],
+    "question": {
+      "id": "f09-l01-guided",
+      "familyId": "guided-f09-l01",
+      "familyVersion": 1,
+      "courseId": "f09",
+      "objectiveId": "m01-l01",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the exact product, its real part, and its imaginary part.",
+      "fields": [
+        {
+          "id": "value",
+          "kind": "exact",
+          "label": "Exact product",
+          "expected": "5+5i",
+          "unit": "",
+          "help": "Use i and exact values. Equivalent forms are accepted."
+        },
+        {
+          "id": "real",
+          "kind": "rational",
+          "label": "Real part",
+          "expected": "5",
+          "unit": ""
+        },
+        {
+          "id": "imaginary",
+          "kind": "rational",
+          "label": "Imaginary part",
+          "expected": "5",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Replace i² by -1, then collect the real and imaginary terms.",
+        "The real terms are 3+2=5 and the imaginary terms are -i+6i=5i."
+      ],
+      "explanation": [
+        "The real terms are 3+2=5 and the imaginary terms are -i+6i=5i.",
+        "The product is 5+5i; both real-valued parts are 5."
+      ],
+      "answerSummary": "The real terms are 3+2=5 and the imaginary terms are -i+6i=5i. The product is 5+5i; both real-valued parts are 5."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-complex-lab",
+    "mode": "arithmetic",
+    "prompt": "Change two rectangular numbers and choose addition, subtraction, or multiplication. Predict the exact result, then reveal component arithmetic and a complex-plane comparison. Explain why multiplication cannot use componentwise multiplication."
+  },
+  "practice": [
+    {
+      "familyId": "f09-complex-components",
+      "variant": "read"
+    },
+    {
+      "familyId": "f09-complex-components",
+      "variant": "electrical"
+    },
+    {
+      "familyId": "f09-complex-components",
+      "variant": "classification"
+    },
+    {
+      "familyId": "f09-complex-arithmetic",
+      "variant": "add"
+    },
+    {
+      "familyId": "f09-complex-arithmetic",
+      "variant": "subtract"
+    },
+    {
+      "familyId": "f09-complex-arithmetic",
+      "variant": "scale"
+    },
+    {
+      "familyId": "f09-source-complex",
+      "variant": "multiply"
+    },
+    {
+      "familyId": "f09-complex-unit",
+      "variant": "positive-power"
+    },
+    {
+      "familyId": "f09-complex-unit",
+      "variant": "negative-power"
+    },
+    {
+      "familyId": "f09-complex-unit",
+      "variant": "negative-root"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f09-complex-components",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f09-complex-arithmetic",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f09-source-complex",
+      "variant": "multiply"
+    },
+    {
+      "familyId": "f09-complex-unit",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "A complex value a+bi has real part a and imaginary part b.",
+    "The imaginary unit obeys i²=-1; electrical j can name the same unit.",
+    "Add and subtract components; distribute all terms when multiplying.",
+    "Distinguish one principal square root from all solutions of a squared equation."
+  ],
+  "retrieval": "Multiply (1+i)² from memory and explain why the answer is not1+i. Then give both roots of z²=-4 and identify which is the principal square root of -4.",
+  "readings": [
+    {
+      "title": "OpenStax, Algebra and Trigonometry 2e · 2.4: Complex Numbers",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-4-complex-numbers",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    },
+    {
+      "title": "MIT OpenCourseWare, ES.1803 Topic4 · 4.3 (PDF pages 2–3): Terminology and basic arithmetic",
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_topic4.pdf#page=2",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F09 resource plan."
+    }
+  ]
+}

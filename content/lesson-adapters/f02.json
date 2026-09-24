@@ -1,0 +1,204 @@
+{
+  "courseId": "f02",
+  "moduleId": "m01",
+  "version": 1,
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "sourceId": "b03",
+      "title": "Expansion and factoring",
+      "requires": [],
+      "why": "Expansion and factoring are two views of the same expression. Rebuild the ability to choose a useful view and verify it, rather than relying on a remembered pattern that misses a sign or middle term. These skills support later equations, derivatives, and circuit models.",
+      "recall": [
+        "Factor an entire expression, not selected added terms. Start with the greatest common factor; then match a quadratic's leading, middle, and constant coefficients.",
+        "Expansion is the reverse check for factorization. A matching single input is evidence at that input only; it does not prove a polynomial identity."
+      ],
+      "estimatedMinutes": 55,
+      "retrieval": "Without notes, expand (2x-3)^2 and factor 6x^2-15x. Explain which terms could have been lost and verify your factorization by expansion.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §1.4: Polynomials",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-4-polynomials",
+          "purpose": "Review polynomials. The complete original ECE Study explanation and exercises are included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §1.5: Factoring Polynomials",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-5-factoring-polynomials",
+          "purpose": "Review factoring polynomials. The complete original ECE Study explanation and exercises are included above."
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "b03",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    },
+    {
+      "id": "m01-l02",
+      "sourceId": "m01-l01",
+      "title": "Linear equations and formula rearrangement",
+      "requires": [
+        "m01-l01"
+      ],
+      "why": "Formula rearrangement lets you use a relationship for the quantity you actually need. Recover the reversible steps, classify degenerate cases, and attach the condition that permits division. The reasoning is the same in a simple equation and in a supplied engineering formula.",
+      "recall": [
+        "An equation asserts equality. Apply the same reversible operation to both sides and check whether a divisor could be zero.",
+        "After collecting terms, a nonzero coefficient gives one solution; a true constant statement gives all real solutions; a false statement gives none. Verify candidates in the original relationship."
+      ],
+      "estimatedMinutes": 60,
+      "retrieval": "Rearrange v=u+at for t and explain what happens when a=0. Then create one linear equation with every real solution and one with no solution.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §2.2: Linear Equations in One Variable",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-2-linear-equations-in-one-variable",
+          "purpose": "Review linear equations in one variable. The complete original ECE Study explanation and exercises are included above."
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m01-l01",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    },
+    {
+      "id": "m01-l03",
+      "sourceId": "m01-l02",
+      "title": "Inequalities and absolute value",
+      "requires": [
+        "m01-l02"
+      ],
+      "why": "Engineering limits often describe a permitted range instead of one exact value. Rebuild the connection between a verbal condition, an inequality, and its entire solution set, including boundary cases and impossible tolerances.",
+      "recall": [
+        "An inequality's answer is a set, not one convenient value. Dividing by a negative reverses order; adding the same number does not.",
+        "AND means overlap and OR means union. Absolute value measures distance, so compare the threshold with zero before drawing an inside interval or two outside regions. Infinity is never an included endpoint."
+      ],
+      "estimatedMinutes": 65,
+      "retrieval": "Recall the solution of -2x<6, then write the set within distance 3 of 1. Change one strict boundary to inclusive and explain exactly which point changes membership.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §2.7: Linear Inequalities and Absolute Value Inequalities",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-7-linear-inequalities-and-absolute-value-inequalities",
+          "purpose": "Review linear inequalities and absolute value inequalities. The complete original ECE Study explanation and exercises are included above."
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m01-l02",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    },
+    {
+      "id": "m01-l04",
+      "sourceId": "m01-l03",
+      "title": "Quadratics and complete root sets",
+      "requires": [
+        "m01-l01",
+        "m01-l02"
+      ],
+      "why": "A quadratic can encode more than one candidate answer. This refresher reconnects factoring, completing the square, discriminant reasoning, and root verification. Treat a requested number system and any physical restrictions as part of the question.",
+      "recall": [
+        "Set the equation equal to zero before using the zero-product property. A ready-made square may make the square-root method shorter than factoring.",
+        "The discriminant predicts the real-root count. Keep both branches when solving a nonzero square and distinguish a repeated root from two distinct values. Use i squared equals -1 only when complex roots are requested."
+      ],
+      "estimatedMinutes": 65,
+      "retrieval": "Compare x^2=9, (x-2)^2=0, and x^2=-9. Give complete solution sets in the requested real or complex number system and explain why the counts differ.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §2.5: Quadratic Equations",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-5-quadratic-equations",
+          "purpose": "Review quadratic equations. The complete original ECE Study explanation and exercises are included above."
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m01-l03",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    },
+    {
+      "id": "m01-l05",
+      "sourceId": "b04",
+      "title": "Rational expressions and original restrictions",
+      "requires": [
+        "m01-l01"
+      ],
+      "why": "Algebraic fractions keep the rules of numerical fractions, but a variable denominator can fail at particular inputs. Recover the habit of recording those restrictions before reducing, adding, or inverting expressions. This prevents a simplified formula from hiding an invalid case.",
+      "recall": [
+        "Record every original denominator zero before simplifying. Canceled factors still leave excluded inputs.",
+        "For division, the divisor must be defined and nonzero. For addition, use a common denominator and multiply the entire numerator by each missing factor. Retain any physical-domain restrictions separately."
+      ],
+      "estimatedMinutes": 60,
+      "retrieval": "Simplify (x^2-9)/(x-3) and preserve its original excluded input. Then explain why dividing by (x-2)/(x+1) adds a different restriction.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §1.6: Rational Expressions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-6-rational-expressions",
+          "purpose": "Review rational expressions. The complete original ECE Study explanation and exercises are included above."
+        }
+      ],
+      "checkpoint": [
+        {
+          "familyId": "f02-rational-simplify",
+          "variant": "factors"
+        },
+        {
+          "familyId": "f02-rational-operations",
+          "variant": "add"
+        },
+        {
+          "familyId": "f02-rational-operations",
+          "variant": "divide"
+        },
+        {
+          "familyId": "f02-cancel-audit",
+          "variant": "sum"
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "b04",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    },
+    {
+      "id": "m01-l06",
+      "sourceId": "m01-l04",
+      "title": "Restrictions and extraneous solutions",
+      "requires": [
+        "m01-l03",
+        "m01-l04",
+        "m01-l05"
+      ],
+      "why": "An algebraic transformation can produce useful candidates without proving that every candidate solves the original problem. Practice preserving the original domain and testing both truth and definedness after clearing denominators or squaring.",
+      "recall": [
+        "Record the original domain first. Multiplying by an excluded denominator or squaring a relation may admit candidates that were not original solutions.",
+        "After transforming, check every candidate in the original equation. Distinguish an undefined expression from a defined but false equality; both reject the candidate for different reasons."
+      ],
+      "estimatedMinutes": 70,
+      "retrieval": "Use sqrt(x)=x-2 to explain why squaring may introduce a candidate. Check any candidates in the original equation and distinguish a false equality from an undefined one.",
+      "readings": [
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §1.6: Rational Expressions",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-6-rational-expressions",
+          "purpose": "Review rational expressions. The complete original ECE Study explanation and exercises are included above."
+        },
+        {
+          "title": "OpenStax Algebra and Trigonometry 2e §2.6: Other Types of Equations",
+          "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/2-6-other-types-of-equations",
+          "purpose": "Review other types of equations. The complete original ECE Study explanation and exercises are included above."
+        }
+      ],
+      "sourceReview": {
+        "courseId": "mth-215",
+        "lessonId": "m01-l04",
+        "version": 1,
+        "checkedAt": "2026-09-23"
+      }
+    }
+  ]
+}

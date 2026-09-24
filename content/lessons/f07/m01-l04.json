@@ -1,0 +1,282 @@
+{
+  "id": "m01-l04",
+  "courseId": "f07",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Cross products, orientation, and area",
+  "objective": "Compute ordered three-dimensional cross products, verify perpendicularity, and use their direction and magnitude for area and a supplied torque model.",
+  "why": "An ordered pair of directions determines an oriented normal. The cross product packages that direction with an area magnitude, which makes it useful for geometry and supplied torque models. Its order and result type differ from the dot product.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l03",
+      "label": "Dot products, angles, and projections"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "In a right-handed orthonormal three-dimensional frame, $u\\times v=(u_yv_z-u_zv_y,\\ u_zv_x-u_xv_z,\\ u_xv_y-u_yv_x)$. The result is a vector perpendicular to both inputs.",
+        "Its magnitude is $\\|u\\|\\|v\\|\\sin\\theta$, the parallelogram area for edge vectors u and v. Reverse the order to negate the vector. A triangle uses half the area. Parallel vectors, including opposite directions, have zero cross product."
+      ]
+    },
+    {
+      "heading": "Handedness fixes the sign",
+      "paragraphs": [
+        "The standard right-handed basis cycles i×j=k, j×k=i, and k×i=j. Reversing any of those ordered pairs changes the sign. A right-hand construction curls from the first nonparallel vector toward the second through the angle between them; the thumb gives the normal direction.",
+        "You can verify the sign algebraically without performing a hand gesture. In the xy plane, positive z corresponds to the orientation from +x toward +y. Two vectors with zero z components have cross vector (0,0,ux vy-uy vx). Keep this signed normal separate from the nonnegative area."
+      ]
+    },
+    {
+      "heading": "Compute all three components carefully",
+      "paragraphs": [
+        "Each component subtracts a pair of products in a cyclic order. The middle component is uz vx-ux vz. If you expand a determinant by its first row, that same component comes from a negative cofactor; forgetting it is a common sign error.",
+        "A useful check is that the result dotted with u and with v is zero. This detects many arithmetic mistakes, although the zero vector also passes those checks. When the inputs are not parallel, an accidentally zero answer still needs inspection. Check the magnitude or compute one component independently."
+      ]
+    },
+    {
+      "heading": "Order changes orientation, not area",
+      "paragraphs": [
+        "The equation v×u=-(u×v) is called anticommutativity. Unlike the dot product, the cross product cannot be freely reordered. Scaling an input scales the cross product, and a negative scale can reverse its direction.",
+        "The area of the parallelogram is the cross-product magnitude, so it is unaffected by reversing the edge order. The triangle determined by the same two edges has half that area. When the edges are parallel, the shape is degenerate and its area is zero; no unique normal direction is defined by the zero result."
+      ]
+    },
+    {
+      "heading": "Use the supplied torque model with a stated origin",
+      "paragraphs": [
+        "For a force applied at position r measured from a specified origin, the supplied model is $\\tau=r\\times F$. Position goes first, force second. The vector records a rotational tendency about that origin; this refresher does not derive full rigid-body dynamics.",
+        "Torque has units N m and is a vector. Work from the previous lesson also has dimensions of force times length, but it is a scalar dot product and is conventionally reported in joules. Matching dimensions alone does not make these quantities interchangeable. Moving the reference origin generally changes r and can change the torque."
+      ]
+    },
+    {
+      "heading": "Use a picture and an algebraic check together",
+      "paragraphs": [
+        "For a planar example, draw the two ordered edges, compute the signed z component, and state whether the normal points in +z or -z. Then take its absolute value for parallelogram area. The activity lets you swap order and observe both changes separately.",
+        "For spatial vectors, the component formula remains reliable when a flat sketch is hard to interpret. Keep the frame right-handed, show the operation order, carry units, and check perpendicularity. Use the full physics course for assumptions about forces and motion beyond the supplied model."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Use the ordered basis cycle",
+      "prompt": "Compare i×j with j×i.",
+      "steps": [
+        {
+          "math": "\\mathbf i\\times\\mathbf j=\\mathbf k",
+          "reason": "The frame is explicitly right-handed."
+        },
+        {
+          "math": "\\mathbf j\\times\\mathbf i=-\\mathbf k",
+          "reason": "Reversing the ordered inputs reverses the normal."
+        }
+      ],
+      "conclusion": "Both normals have length one, but they point oppositely."
+    },
+    {
+      "title": "Calculate and check a spatial normal",
+      "prompt": "Compute u=(1,2,0) crossed with v=(0,1,3).",
+      "steps": [
+        {
+          "math": "u\\times v=\\langle2(3)-0(1),\\ 0(0)-1(3),\\ 1(1)-2(0)\\rangle=\\langle6,-3,1\\rangle",
+          "reason": "Apply the cyclic component formula, including the middle sign."
+        },
+        {
+          "math": "\\langle6,-3,1\\rangle\\cdot\\langle1,2,0\\rangle=6-6=0",
+          "reason": "Check perpendicularity to the first input."
+        },
+        {
+          "math": "\\langle6,-3,1\\rangle\\cdot\\langle0,1,3\\rangle=-3+3=0",
+          "reason": "Check perpendicularity to the second input."
+        }
+      ],
+      "conclusion": "The result is the ordered normal (6,-3,1)."
+    },
+    {
+      "title": "Recognize parallel inputs",
+      "prompt": "Cross (1,2,3) with (2,4,6).",
+      "steps": [
+        {
+          "math": "v=2u",
+          "reason": "The second vector is a scalar multiple of the first."
+        },
+        {
+          "math": "u\\times v=\\langle12-12,6-6,4-4\\rangle=0",
+          "reason": "Every component cancels, agreeing with zero enclosed area."
+        }
+      ],
+      "conclusion": "The cross vector is zero and supplies no unique normal."
+    },
+    {
+      "title": "Distinguish parallelogram and triangle area",
+      "prompt": "Edges from a shared vertex are (3,0,0) m and (0,4,0) m.",
+      "steps": [
+        {
+          "math": "u\\times v=\\langle0,0,12\\rangle\\,\\mathrm{m^2}",
+          "reason": "Perpendicular edges give a positive z normal in this order."
+        },
+        {
+          "math": "A_{\\rm para}=12\\,\\mathrm{m^2},\\qquad A_{\\rm tri}=6\\,\\mathrm{m^2}",
+          "reason": "Take the magnitude, then halve it for the triangle."
+        }
+      ],
+      "conclusion": "The cross vector carries orientation; area is a scalar."
+    },
+    {
+      "title": "Reverse planar orientation",
+      "prompt": "Use edges u=(2,1,0) and v=(1,3,0).",
+      "steps": [
+        {
+          "math": "(u\\times v)_z=2(3)-1(1)=5",
+          "reason": "Compute the signed planar determinant."
+        },
+        {
+          "math": "(v\\times u)_z=1(1)-3(2)=-5",
+          "reason": "Reverse the ordered inputs."
+        },
+        {
+          "math": "\\|u\\times v\\|=\\|v\\times u\\|=5",
+          "reason": "The orientation reverses but area stays nonnegative."
+        }
+      ],
+      "conclusion": "Both orders describe parallelogram area 5."
+    },
+    {
+      "title": "Preserve torque order",
+      "prompt": "A position r=(0,2,0) m and force F=(3,0,0) N are specified.",
+      "steps": [
+        {
+          "math": "\\tau=r\\times F=\\langle0,0,0(0)-2(3)\\rangle",
+          "reason": "Use position first and force second."
+        },
+        {
+          "math": "\\tau=\\langle0,0,-6\\rangle\\,\\mathrm{N\\,m},\\qquad\\|\\tau\\|=6\\,\\mathrm{N\\,m}",
+          "reason": "Keep the signed vector and positive magnitude distinct."
+        }
+      ],
+      "conclusion": "The torque points along -z about the stated origin."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Two planar edges from the same vertex are u=(2,1,0) m and v=(1,3,0) m.",
+    "before": [
+      "The only potentially nonzero cross component is z.",
+      "Reversing order changes its sign; the triangle area uses half its absolute value."
+    ],
+    "question": {
+      "id": "f07-l04-guided",
+      "familyId": "guided-f07-l04",
+      "familyVersion": 1,
+      "courseId": "f07",
+      "objectiveId": "m01-l04",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the z component of u cross v, the z component of v cross u, and the triangle area.",
+      "fields": [
+        {
+          "id": "forward",
+          "kind": "rational",
+          "label": "Forward normal z",
+          "expected": "5",
+          "unit": "m^2"
+        },
+        {
+          "id": "reverse",
+          "kind": "rational",
+          "label": "Reversed normal z",
+          "expected": "-5",
+          "unit": "m^2"
+        },
+        {
+          "id": "area",
+          "kind": "rational",
+          "label": "Triangle area",
+          "expected": "5/2",
+          "unit": "m^2"
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Reversing order changes its sign; the triangle area uses half its absolute value.",
+        "The ordered determinant is 2*3-1*1=5, and reversing order gives -5."
+      ],
+      "explanation": [
+        "The ordered determinant is 2*3-1*1=5, and reversing order gives -5.",
+        "The triangle area is |5|/2=5/2 m²."
+      ],
+      "answerSummary": "The ordered determinant is 2*3-1*1=5, and reversing order gives -5. The triangle area is |5|/2=5/2 m²."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-vector-lab",
+    "mode": "cross",
+    "prompt": "Change planar vectors embedded in 3D and swap their order. Predict signed normal and triangle area, then reveal the parallelogram with a signed normal label and numeric table. Test parallel vectors."
+  },
+  "practice": [
+    {
+      "familyId": "f07-cross-product",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-cross-product",
+      "variant": "plane"
+    },
+    {
+      "familyId": "f07-cross-product",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "f07-cross-product",
+      "variant": "parallel"
+    },
+    {
+      "familyId": "f07-vector-area",
+      "variant": "parallelogram"
+    },
+    {
+      "familyId": "f07-vector-area",
+      "variant": "triangle"
+    },
+    {
+      "familyId": "f07-vector-torque",
+      "variant": "axis"
+    },
+    {
+      "familyId": "f07-vector-torque",
+      "variant": "space"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f07-cross-product",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-cross-product",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "f07-vector-area",
+      "variant": "triangle"
+    },
+    {
+      "familyId": "f07-vector-torque",
+      "variant": "space"
+    }
+  ],
+  "summary": [
+    "The cross product returns an ordered normal vector in a stated right-handed frame.",
+    "Check component signs through perpendicularity and order reversal.",
+    "Area uses a nonnegative magnitude; torque uses r cross F about a specified origin."
+  ],
+  "retrieval": "Predict the sign of j×i and calculate the area for edges (1,2,0) and (2,4,0). Explain why a zero cross product does not select a normal direction.",
+  "readings": [
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.4: The Cross Product",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-4-the-cross-product",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    }
+  ]
+}

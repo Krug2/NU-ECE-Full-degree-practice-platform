@@ -1,0 +1,54 @@
+{
+  "courseId": "f11",
+  "resources": [
+    {
+      "id": "up1-1.4",
+      "provider": "OpenStax, University Physics Volume 1",
+      "authors": "William Moebs, Samuel J. Ling and Jeff Sanny",
+      "section": "1.4",
+      "title": "Dimensional Analysis",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis",
+      "verifiedAt": "2026-09-24",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/university-physics-volume-1/pages/preface",
+      "use": "Verify general problem-solving and measurement concepts; provide free further reading. All app explanations, scenarios and examples are original."
+    },
+    {
+      "id": "up1-1.5",
+      "provider": "OpenStax, University Physics Volume 1",
+      "authors": "William Moebs, Samuel J. Ling and Jeff Sanny",
+      "section": "1.5",
+      "title": "Estimates and Fermi Calculations",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-5-estimates-and-fermi-calculations",
+      "verifiedAt": "2026-09-24",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/university-physics-volume-1/pages/preface",
+      "use": "Verify general problem-solving and measurement concepts; provide free further reading. All app explanations, scenarios and examples are original."
+    },
+    {
+      "id": "up1-1.6",
+      "provider": "OpenStax, University Physics Volume 1",
+      "authors": "William Moebs, Samuel J. Ling and Jeff Sanny",
+      "section": "1.6",
+      "title": "Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "verifiedAt": "2026-09-24",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/university-physics-volume-1/pages/preface",
+      "use": "Verify general problem-solving and measurement concepts; provide free further reading. All app explanations, scenarios and examples are original."
+    },
+    {
+      "id": "up1-1.7",
+      "provider": "OpenStax, University Physics Volume 1",
+      "authors": "William Moebs, Samuel J. Ling and Jeff Sanny",
+      "section": "1.7",
+      "title": "Solving Problems in Physics",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-7-solving-problems-in-physics",
+      "verifiedAt": "2026-09-24",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://openstax.org/books/university-physics-volume-1/pages/preface",
+      "use": "Verify general problem-solving and measurement concepts; provide free further reading. All app explanations, scenarios and examples are original."
+    }
+  ],
+  "attribution": "Original content with linked source verification; no copied exercises or figures."
+}
