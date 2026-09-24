@@ -26,7 +26,7 @@ export function PracticalTask({lesson}:{lesson:PracticalLesson}){
  }
  async function start(){const fresh=freshPractical(lesson.version,crypto.randomUUID(),record?.completed??null);await persist(fresh,"New task saved. The last completed artifact is retained.",!!stored&&!record);}
  async function finish(){if(!record)return;try{await persist(completePractical(lesson,record),"Practical task recorded. This is learner self-check evidence, not an automatic correctness judgment.");}catch(error){setMessage(error instanceof Error?error.message:"Complete the required work first.");}}
- async function reveal(){if(record&&await persist(editPractical(record,{assisted:true}),"Review access saved. This task is labeled assisted."))setReviewSeed(record.active.seed);}
+ async function reveal(){if(!record)return;if(!Object.values(record.active.fields).some(value=>value.trim().length>=20)){setMessage("Write a specific attempt before comparing with a review.");return;}if(await persist(editPractical(record,{assisted:true}),"Review access saved. This task is labeled assisted."))setReviewSeed(record.active.seed);}
  const scenario=record?practicalCase(lesson.courseId,lesson.id,record.active.seed):null;
  return <section className="panel" id="practical-task"><span className="eyebrow">Produce and check your own work</span><h2>Practical task</h2><p>Write a fresh response, check it against the criteria, then record completion. The app checks required entries; you judge their quality. This is practical completion evidence, with no numerical mastery score.</p><p>Save your draft before leaving. <Link className="text-link" href="/settings">Export or restore progress</Link> includes these records and your notes.</p>
  {stored&&!record&&<p role="alert" className="notice warning">The saved record has an unsupported version or unreadable content. It has been preserved. Starting fresh keeps the original in recovery notes included in your backup.</p>}
@@ -40,4 +40,3 @@ export function PracticalTask({lesson}:{lesson:PracticalLesson}){
  </>}
  <p role="status" className="form-status">{message}</p>{draft.changed&&<div className="notice warning"><p>The saved record changed elsewhere. Your draft is kept. Load the saved record before saving another change.</p><button className="button secondary" onClick={draft.loadSaved}>Load saved practical record</button></div>}</section>;
 }
-
