@@ -42,7 +42,7 @@ it.each(["upper-bound","counterexample","minimum","graph"])("checks %s without r
     }
   }
 });
-it.each(["local-window","relative","absolute-gap","model-domain"])("checks %s comparisons with independently derived arithmetic",variant=>{
+it.each(["local-window","relative","absolute-gap","model-domain","symmetry"])("checks %s comparisons with independently derived arithmetic",variant=>{
   for(let seed=0;seed<50;seed++){
     const question=polynomialReasoningQuestion("mth-leading-comparison",variant,String(seed),"q1"),{a,b,k,r,limit}=question.parameters;
     verify(question);expect(question).toEqual(polynomialReasoningQuestion("mth-leading-comparison",variant,String(seed),"q1"));
@@ -53,6 +53,12 @@ it.each(["local-window","relative","absolute-gap","model-domain"])("checks %s co
       fraction(key(question,"ratio"),a*r*r+b,a*r*r);expect(key(question,"comparison")).toBe("ratio");expect(b).not.toBe(0);
     }else if(variant==="absolute-gap"){
       fraction(key(question,"difference"),-k*r*r,1);fraction(key(question,"relative"),-k,r*r);expect(key(question,"trend")).toBe("relative");
+    }else if(variant==="symmetry"){
+      const n=question.parameters.n;
+      fraction(key(question,"positive"),a+b,1);fraction(key(question,"negative"),n%2?-a+b:a-b,1);
+      expect(key(question,"positive")).not.toBe(key(question,"negative"));
+      expect(Number(key(question,"positive"))+Number(key(question,"negative"))).not.toBe(0);
+      expect(key(question,"symmetry")).toBe("neither");
     }else{
       expect(key(question,"right")).toBe(a>0?"up":"down");expect(key(question,"scope")).toBe("validate");
       expect(question.prompt).toContain("t = "+2*limit);expect(question.critical).toBe(true);

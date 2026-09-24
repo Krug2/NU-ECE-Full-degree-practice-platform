@@ -73,6 +73,17 @@ export function polynomialReasoningQuestion(familyId:string,variant:string,seed:
       ])],hints:["Subtract the leading term to leave -k*x^2.","Divide the difference by x^4, with x != 0.","The relative difference is -k/x^2, whereas the absolute difference has magnitude k*x^2."],
       explanation:["The signed difference at this input is "+gap+" and the signed relative difference is "+relative+".","Leading-term dominance does not mean that the vertical distance between the curves approaches zero."],answerSummary:"Difference "+gap+"; relative difference "+relative+"; absolute gap grows while relative gap shrinks."});
   }
+  if(variant==="symmetry"){
+    const n=rng.integer(2,7),odd=n%2===1,positive=a+b,negative=odd?-a+b:a-b;
+    return questionSchema.parse({...base,critical:false,category:"conceptual",parameters:{a,b,n},
+      prompt:`For $p(x)=${a}x^{${n}}+(${b})${odd?"":"x"}$, calculate p(1) and p(-1). Is this an even function, an odd function, or neither? Degree parity describes the far-end pattern but does not by itself establish a symmetry identity.`,
+      fields:[numeric("positive","p(1)",positive),numeric("negative","p(-1)",negative),choice("symmetry","Function symmetry","neither",[
+        {id:"even",label:"Even function: p(-x) = p(x) for every x",feedback:"The two calculated values disagree, so this identity fails already at x = 1."},
+        {id:"odd",label:"Odd function: p(-x) = -p(x) for every x",feedback:"The two calculated values are not opposites, so this identity also fails."},
+        {id:"neither",label:"Neither an even nor an odd function",feedback:"A single counterexample disproves a proposed identity that must hold at every input."},
+      ])],hints:["An even power keeps its sign at -1; an odd power reverses it.","Check equality for even symmetry and opposite values for odd symmetry.","Degree parity alone cannot remove the lower term that breaks the symmetry."],
+      explanation:["p(1) = "+positive+" and p(-1) = "+negative+".","They are neither equal nor opposites, so the function is neither even nor odd.","The far ends still follow the leading term, despite this lack of whole-graph symmetry."],answerSummary:"p(1) = "+positive+"; p(-1) = "+negative+"; neither symmetry."});
+  }
   if(variant!=="model-domain")throw new Error("Unknown leading-term comparison");
   const limit=rng.integer(2,9);
   return questionSchema.parse({...base,critical:true,category:"application",parameters:{a,b,limit},
