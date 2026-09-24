@@ -55,8 +55,15 @@ import { powerLevelFamilyIds,powerLevelQuestion } from "./families/mth-power-lev
 import { modelTimescaleFamilyIds,modelTimescaleQuestion } from "./families/mth-model-timescale";
 import { modelThresholdFamilyIds,modelThresholdQuestion } from "./families/mth-model-threshold";
 import { modelFitFamilyIds,modelFitQuestion } from "./families/mth-model-fit";
+import { angleMeasureFamilyIds,angleMeasureQuestion } from "./families/mth-angle-measure";
+import { angleLocationFamilyIds,angleLocationQuestion } from "./families/mth-angle-location";
+import { circularMeasureFamilyIds,circularMeasureQuestion } from "./families/mth-circular-measure";
+import { circularMotionFamilyIds,circularMotionQuestion } from "./families/mth-circular-motion";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const [ids,generate] of [[angleMeasureFamilyIds,angleMeasureQuestion],[angleLocationFamilyIds,angleLocationQuestion],[circularMeasureFamilyIds,circularMeasureQuestion],[circularMotionFamilyIds,circularMotionQuestion]] as const){
+  for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
+}
 for(const id of powerLevelFamilyIds)generators.set(id,powerLevelQuestion);
 for(const id of modelTimescaleFamilyIds)generators.set(id,modelTimescaleQuestion);
 for(const id of modelThresholdFamilyIds)generators.set(id,modelThresholdQuestion);
