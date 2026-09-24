@@ -1,0 +1,63 @@
+{
+  "courseId":"phs-232",
+  "version":1,
+  "status":"Proposed design; no PHS 232 forms are implemented yet.",
+  "officialDistinction":"Counts, thresholds, permitted aids, time estimates and completion recommendations are platform self-study choices. They are not NU examination or grading requirements and have not been pilot calibrated.",
+  "counts":{"lessonCheckpoints":31,"readinessForms":1,"moduleForms":10,"cumulativeForms":2,"targetedReviewForms":31,"courseForms":44},
+  "conditions":{
+    "access":"All lessons and forms remain directly accessible. Preparation recommendations do not impose enrollment or access restrictions.",
+    "practice":"Offer fresh deterministic forms with optional hints, misconception-specific feedback and complete reasoning. Label assisted work and preserve its real source objective identities.",
+    "independent":"Use blank paper, a calculator and the constants/formulas supplied in the question. Do not use lesson notes, worked solutions, hints or outside help. All forms are untimed with saved breaks. The software records in-app assistance but cannot verify outside assistance.",
+    "saving":"Freeze questions, constants, blueprint version and original course/lesson/version identities at attempt creation. Resume the same instance after reload. Make pending saves, failed writes, conflicting drafts and recoverable copies visible.",
+    "feedback":"Independent feedback follows submission; blank or invalid answers are incorrect. Show each field's expected units and domain, useful intermediate reasoning, critical failures and a targeted lesson link. Display both overall results and every objective result."
+  },
+  "readiness":{
+    "questions":10,
+    "purpose":"Locate specific preparation gaps without awarding lesson, prerequisite or course completion.",
+    "sampledSkills":[
+      {"skill":"Units and uncertainty","source":"phs-231/m01-l01"},
+      {"skill":"Radians and angular frequency","source":"f04/m01-l02"},
+      {"skill":"Sinusoidal phase and inverse values","source":"f04/m01-l03"},
+      {"skill":"Dot products and oriented flux","source":"f07/m01-l03"},
+      {"skill":"Cross-product direction","source":"f07/m01-l04"},
+      {"skill":"Elementary differentiation","source":"f08/m01-l03"},
+      {"skill":"Signed definite integration","source":"f08/m01-l04"},
+      {"skill":"Complex arithmetic","source":"f09/m01-l02"},
+      {"skill":"Force model and signs","source":"phs-231/m03-l01"},
+      {"skill":"Work and energy account","source":"phs-231/m05-l02"}
+    ],
+    "repair":"Report each sampled gap separately. Link to the exact available source lesson. Explicitly identify PHS 104, CSC 208 and CSC 209 as under construction until their actual lessons arrive from the prerequisite branch; refreshers do not complete them."
+  },
+  "lessonCheckpoints":{
+    "items":4,
+    "coverage":"Each lesson's four independently answered questions sample both of its planned families and require interpretation as well as calculation. The precise critical variants are chosen in a lesson-specific assessment blueprint before registration.",
+    "threshold":"At least three of four fully correct and every critical item correct, consistent with the shared lesson-evidence contract. Critical checks target such failures as inconsistent signs, forbidden domains, missing source work, impossible topology or false physical interpretation.",
+    "breadth":"Four items are a sampled check, not exhaustive mastery. Practice must expose all planned variants, meaningful edge cases and alternative representations; checkpoint generation must not merely repeat a single worked example with changed numbers."
+  },
+  "moduleForms":{
+    "definition":"One independent form per module, four questions for each original lesson objective. The four-lesson modules have 16 items, three-lesson modules 12, and the two-lesson final module eight.",
+    "threshold":"Every objective meets its own three-of-four threshold and critical checks. A high aggregate score cannot hide an unmet objective. Completion requires all ten current-version module passes.",
+    "composition":"Mix parameter inference, a forward calculation, a conservation or boundary check, and a model interpretation where the subject supports them. Preserve original objective identities in summaries and backups."
+  },
+  "cumulative":{
+    "parts":2,
+    "itemsPerPart":31,
+    "coverage":"Both parts sample all 31 objectives. Part A emphasizes model construction and quantitative prediction; Part B emphasizes a complementary representation, domain, evidence or interpretation from the other family. Publish a 31-row blueprint with exact family/variant selections before implementation, and test it independently.",
+    "threshold":"Each original objective's single item in each part must be fully correct for that part to pass. This demanding, transparent self-study default permits unlimited fresh retakes and focused repair. It is not a calibrated estimate of course mastery or an official pass standard.",
+    "critical":"All sampled objective items are required. Fields involving signs, domains, admissibility or energy accounting must not be bypassed by partial numeric credit.",
+    "practicality":"Save every answer and position. Allow untimed breaks, an explicit submission review and separate assisted practice copies. Estimate study time from the actual form only when implemented."
+  },
+  "targetedReview":{
+    "forms":31,
+    "itemsPerForm":4,
+    "trigger":"Offer a current objective review after a miss and a seven-day retrieval cue after an independent success. A cue is a study suggestion, not an expiration of previously recorded work.",
+    "threshold":"Use the lesson's three-of-four plus critical-item rule. A failed current optional review calls for a fresh successful review before a course-completion recommendation.",
+    "limits":"Passing a targeted review does not silently repair a failed required module or cumulative form. The required form must be retaken. Assisted copies create practice only."
+  },
+  "completion":{
+    "requires":["Current independent evidence for all 31 lesson objectives","Ten passed current module forms","Both passed current cumulative parts","A valid submitted project with complete evidence, self-assessment and provenance declaration","No unresolved failed current targeted review"],
+    "retention":"Preserve the latest independent pass or failure for every assessment version even when a learner explicitly removes detailed question history. A newer failure must not be hidden by an older pass or by deleting its answers.",
+    "statement":"A self-study recommendation based on sampled automated checks and a self-assessed investigation. No official NU credit, independent subject review, verified outside testing or pilot validation is claimed."
+  },
+  "verification":"Test every generated family and every course-form blueprint at 50 or more deterministic seeds, with meaningful edge cases and independent reference answers. Cover actual browser answering, missed-objective repair, reload, immutable resumption, real backup export/reset/restore, conflict recovery and retained failures."
+}

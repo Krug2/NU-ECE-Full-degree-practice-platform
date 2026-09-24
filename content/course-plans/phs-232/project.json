@@ -1,0 +1,51 @@
+{
+  "courseId":"phs-232",
+  "version":1,
+  "lessonId":"m10-l02",
+  "title":"A resonant circuit under competing explanations",
+  "status":"Proposed simulation investigation; not implemented.",
+  "question":"Which of the supplied circuit models is consistent with calibrated amplitude, phase and energy evidence, and what remains unidentified by those observations?",
+  "mode":"Simulation only. All observations are synthetic. No physical experiment, NU laboratory credit, equipment requirement or pilot validation is implied.",
+  "apparatus":{
+    "required":"The free browser activity, a calculator and a place for derivations. The notebook and evidence export are built into the platform.",
+    "model":"A sinusoidal source with known source resistance drives a series inductor, capacitor and resistive load. A selectable finite probe impedance loads the measurement node. The reference output is the load voltage relative to the stated source phase.",
+    "baseline":{"sourceRmsVoltage":1,"sourceResistanceOhm":20,"loadResistanceOhm":100,"inductanceHenry":0.1,"capacitanceFarad":0.000001},
+    "candidateScenarios":["Baseline linear components with the disclosed source resistance","An additional specified series loss","A changed capacitor value within a supplied range","A finite probe input resistance that changes the observed transfer function"],
+    "limits":"The model is lumped, linear, sinusoidal and at steady state. It does not model saturation, dielectric breakdown, stray distributed elements, electromagnetic interference or real instrument protection. Numerical ideal-circuit values are not physical construction instructions."
+  },
+  "syntheticMeasurements":{
+    "provenance":"Show a persistent synthetic-data label, dataset identifier, version, seed, units, source/probe settings and observation-generation model. Freeze the observations used in a submitted record.",
+    "calibration":"Supply independent known RMS amplitudes and known phase references with bounded readout error. A detector gain/offset and phase offset must be accounted for before interpreting the circuit sweep. Show that a fitted central calibration is not an exact correction when references have uncertainty.",
+    "initialPlanningBounds":"Amplitude readout bound 0.003 V and phase readout bound 0.5 degrees, subject to independent feasibility checks before implementation. They are synthetic closed bounds, not standard deviations or physical instrument specifications.",
+    "sampling":"Offer a documented finite frequency grid spanning below, near and above the nominal resonance. Learners select a calibration/model-selection subset before revealing held-out frequencies. The final evidence must contain informative observations on both sides of resonance, not only its peak.",
+    "phase":"Use a declared source reference and principal phase interval, compare wrapped differences correctly and distinguish phase uncertainty from amplitude uncertainty. A near-zero output cannot support an arbitrarily precise phase claim.",
+    "expectedPattern":"Extra series resistance broadens/damps the response; changed capacitance moves the reactive balance; probe loading changes the observed load and amplitude as well as damping. Actual distinguishability must be established by independent fixtures, not assumed from these qualitative descriptions."
+  },
+  "procedure":[
+    {"step":1,"action":"State a falsifiable prediction and at least two candidate models before revealing the sweep.","evidence":"A saved prediction with the chosen output, controlled variables and discriminating observation."},
+    {"step":2,"action":"Write the circuit equations and sign/amplitude conventions. Derive the transfer function or equivalent real sine/cosine equations.","evidence":"A labeled connection description, component units, current/voltage references and independently checked limiting cases."},
+    {"step":3,"action":"Use the independent reference signals to estimate calibration and its admissible uncertainty.","evidence":"Raw calibration records, correction rule, residual bounds and an explanation of what the calibration cannot identify."},
+    {"step":4,"action":"Choose informative model-selection frequencies and reserve held-out frequencies.","evidence":"A recorded selection made before held-out reveal, with a reason for samples below, near and above resonance."},
+    {"step":5,"action":"Generate each candidate's amplitude and phase predictions and compare them with corrected observations.","evidence":"An exportable table of raw/corrected values, candidate predictions and residual/uncertainty intervals. Rejected candidates need a specific failed observation."},
+    {"step":6,"action":"Audit energy using source power, each resistive loss and reactive exchange. Cross-check at least one state in the time domain.","evidence":"A power ledger with consistent peak/RMS conventions and a separate time-averaged or analytic check; refinement evidence for numerical integration."},
+    {"step":7,"action":"Reveal and evaluate held-out data without silently refitting the selection model.","evidence":"A preserved original prediction and held-out comparisons. If revision is needed, identify it as a new version and explain the changed assumption."},
+    {"step":8,"action":"Write a supported conclusion, competing explanations and limitations, then self-assess and submit the report.","evidence":"A reproducible saved report with dataset/version, settings, exported observations, calculations and rubric evidence. A new revision preserves the prior submitted record."}
+  ],
+  "notebookSections":["Question and controlled variables","Prediction before reveal","Model and assumptions","Calibration and uncertainty","Sampling and held-out design","Observations and exported evidence","Candidate comparisons","Energy and independent checks","Conclusion and limitations","Reproduction and revision notes"],
+  "rubric":{
+    "scale":"Each criterion is scored 0-3 by the learner. Zero means missing evidence; one means an assertion or incomplete account; two means complete, technically consistent evidence; three additionally explains an independent check, alternative or meaningful limitation.",
+    "criteria":[
+      {"id":"design","title":"Prediction and controlled comparison","minimumForSubmission":1,"adequate":"Defines an observable prediction and a sample design that could distinguish at least two models."},
+      {"id":"provenance","title":"Synthetic provenance and calibration","minimumForSubmission":2,"adequate":"Preserves raw references and observations, states synthetic provenance and carries calibration uncertainty into comparisons."},
+      {"id":"model","title":"Circuit derivation and conventions","minimumForSubmission":2,"adequate":"Uses a coherent topology, units, source/load assumptions and phase/RMS convention with checked limiting behavior."},
+      {"id":"validation","title":"Held-out evidence and competing models","minimumForSubmission":1,"adequate":"Preserves selection choices and evaluates held-out observations, with specific evidence for each rejected or surviving model."},
+      {"id":"energy","title":"Energy and independent verification","minimumForSubmission":2,"adequate":"Balances real power and provides a separately derived time-domain, analytic or numerical check with its error limits."},
+      {"id":"conclusion","title":"Reproducible bounded conclusion","minimumForSubmission":1,"adequate":"Reports supported claims, non-uniqueness and model limits, with enough settings and evidence to reproduce the investigation."}
+    ],
+    "proposedThreshold":"At least 14 of 18, no zero, and at least two on provenance, model and energy. This is a self-study default, not an independent evaluation or NU grading standard.",
+    "declaration":"The learner acknowledges that the observations are synthetic, that the rubric is self-assessed, and that report submission does not establish a physical laboratory result."
+  },
+  "persistence":"Versioned course-specific records use the existing shared progress repository and backup envelope. Explicit draft saves, conflicting edits, quota failures, unsupported record versions, immutable submitted records and user-requested revisions must remain recoverable. Do not overwrite PHS 231 notebooks or encode project completion as ordinary lesson evidence.",
+  "safety":"The assigned procedure uses simulations only. Do not direct learners to household mains, exposed powered circuits, improvised high-voltage supplies, charged high-energy capacitors, hot coils or unknown laboratory equipment. Real equipment substitutions belong to a separately specified supervised experiment with its own ratings, isolation, discharge, thermal and measurement procedures.",
+  "independentVerification":"Before release, derive each synthetic scenario with separate real sine/cosine equations; compare every exported row, uncertainty endpoint and power account; establish which candidate pairs are distinguishable on the chosen grid; include counterexamples to uniqueness. Exercise actual notebook submission, revision, reload and backup restoration in the browser."
+}
