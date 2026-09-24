@@ -1,0 +1,91 @@
+{
+  "courseId": "f05",
+  "title": "Exponentials and logarithms",
+  "status": "planned",
+  "plannedAt": "2026-09-23",
+  "learner": "Returning learners who recall powers or log buttons but need to recover multiplicative models, inverse meaning, domain reasoning, and engineering ratio interpretation.",
+  "assumedKnowledge": [
+    "F01 fractions, powers, exact arithmetic, and scientific notation",
+    "F02 equations, factoring, and interval domains",
+    "F03 function transformations and inverse reasoning"
+  ],
+  "scope": {
+    "include": [
+      "Exponential and logarithmic meaning and graphs",
+      "Domain-aware logarithm rules and equations",
+      "Discrete and continuous growth/decay, fitting, threshold times",
+      "Decibel intuition with explicit references and power relationships"
+    ],
+    "exclude": [
+      "A complete first algebra course",
+      "Exponential regression algorithms or statistical model selection",
+      "Logistic models and general differential-equation solving",
+      "Complex logarithms and branch cuts",
+      "Acoustic exposure guidance, RF system design, or unsupplied circuit relationships"
+    ]
+  },
+  "routes": {
+    "quick": "Use five diagnostic probes, follow the specific lesson recommendation, read Quick recall, and attempt each independent checkpoint. Finish the four-question mixed recall after all five objectives.",
+    "full": "Study the five lessons in sequence. Work reasoned examples, guided tasks, prediction activities, and varied practice before independent checkpoints. Use notes to split longer lessons across sessions.",
+    "escalation": {
+      "courseId": "mth-215",
+      "text": "MTH 215 is the full-course destination. Its m05 module is planned in this baseline, so the verified free OpenStax sections supply fuller first-time instruction in the meantime."
+    }
+  },
+  "reuse": {
+    "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+    "overlap": [
+      "MTH 215 b02 and F01 cover integer exponent rules and exact notation.",
+      "MTH 215 m05-l01 through m05-l04 are planned; no authored lessons or exponential/logarithmic generators were found.",
+      "F03 supplies general domain, transformation, and inverse reasoning but its graph-parent union does not include exponential or logarithmic parents."
+    ],
+    "implementation": "Wrap only mth-exponent-rules as f05-exponent-rules for the first lesson. Retain source IDs and saved attempts. Use rational/interval/root graders and choice-plus-numeric answers for nonrational logarithmic results; do not add a new general expression parser or change persistence."
+  },
+  "assessment": {
+    "diagnostic": {
+      "length": 5,
+      "coverage": [
+        {
+          "lessonId": "m01-l01",
+          "probe": "percentage factor"
+        },
+        {
+          "lessonId": "m01-l02",
+          "probe": "logarithmic inverse and domain"
+        },
+        {
+          "lessonId": "m01-l03",
+          "probe": "invalid log rule or discarded root"
+        },
+        {
+          "lessonId": "m01-l04",
+          "probe": "decay threshold and time units"
+        },
+        {
+          "lessonId": "m01-l05",
+          "probe": "power ratio and decibels"
+        }
+      ]
+    },
+    "checkpoints": "Four required independent questions per lesson, with multiple related fields where necessary. All objective questions are critical.",
+    "mixed": "Four required questions: foundations combines a targeted exponential part and logarithm part; the other questions target rules/equations, models, and decibels. Keep each multipart question at eight fields or fewer and preserve p1/p2 field-level lesson targets.",
+    "evidence": "Familiarity, visits, diagnostic work, and guided predictions never count as mastery. Reuse existing independent evidence, versioned attempts, notes, resume, and backup APIs. Retain misses until a successful independent lesson check."
+  },
+  "sharedCapabilities": [
+    {
+      "interface": "Lesson.interaction adds { kind: 'refresher-explog-lab', mode: 'growth' | 'inverse' | 'rules' | 'decay' | 'decibels', prompt: string }.",
+      "reason": "These models need logarithm-domain checks, inverse-point comparisons, and threshold/ratio predictions beyond the existing graph parents.",
+      "integration": "One strict union member and one reader dispatch. Keep pure bounded model utilities and the activity implementation in refresher-owned files. Reuse QuestionFields and existing graders. No app-shell, storage, or backup changes."
+    }
+  ],
+  "verification": [
+    "Independently verify exact powers and ratios, exp/log inverse identities, domains and graph asymptotes for both signs and bases above/below one.",
+    "Sweep meaningful variants with deterministic 100-seed checks, strict notation rendering, equivalent exact responses, domain-invalid input, and correct finite numeric tolerances.",
+    "Check equation completeness using an independent polynomial or inverse formulation and substitution in every original log argument.",
+    "Verify growth/decay fits and threshold times through independent ratios and exponentiation; include zero rate, zero target, initial target, past-only target, and dimensional consistency.",
+    "Verify decibel ratios by inverse exponentiation and supplied power laws, including negative levels, zero/negative quantities, resistance mismatch, cascades versus linear power sums, and reference changes.",
+    "Browser-test every checkpoint and mixed review, diagnostic routing, assisted versus independent evidence, all five guided activities, invalid/retry paths, reload/resume, notes, backups, keyboard use, mobile layouts, and Axe.",
+    "Run unit tests, lint, typecheck, and production build before preview availability. Independent human review remains pending.",
+    "Finish and verify F05 before planning F06."
+  ]
+}

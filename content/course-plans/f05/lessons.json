@@ -1,0 +1,686 @@
+{
+  "courseId": "f05",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "title": "Exponential change and graph features",
+      "objective": "Distinguish multiplication from addition and interpret exponential factors, percentage change, transformations, domains, ranges, and asymptotes.",
+      "requires": [],
+      "scope": [
+        "Positive bases distinct from one for nonconstant real exponential functions",
+        "Integer powers and negative exponents as prerequisites",
+        "Equal-step ratios versus differences",
+        "Percentage factors and repeated change",
+        "Horizontal shifts, signed output scaling, offsets, monotonicity, and asymptotes"
+      ],
+      "workedExamples": [
+        "Compare 12,18,27 with 12,18,24 on equal input steps",
+        "A 20 percent decrease gives factor 4/5; after three steps 50 becomes 128/5",
+        "Evaluate 3^-2 exactly and distinguish negative exponents from negative results",
+        "For 2^(x-1)-3 find anchor (1,-2), domain R, range (-3,infinity), and horizontal asymptote -3",
+        "For -2(1/2)^x+5 explain increasing output, range below 5, and an unattained asymptote"
+      ],
+      "guided": "Given an equal-step table with initial value 8 and factor 3/2, recover the ratio, classify multiplicative change, and predict the next exact output.",
+      "interaction": {
+        "kind": "refresher-explog-lab",
+        "mode": "growth",
+        "purpose": "Change initial value, factor, and offset; predict a second-step value and asymptote; compare an exponential curve with a linear model matching the first step and an exact labeled table."
+      },
+      "practice": [
+        [
+          "exponent-rules",
+          "negative"
+        ],
+        [
+          "exponent-rules",
+          "quotient"
+        ],
+        [
+          "exp-pattern",
+          "growth"
+        ],
+        [
+          "exp-pattern",
+          "decay"
+        ],
+        [
+          "exp-pattern",
+          "linear"
+        ],
+        [
+          "exp-factor",
+          "increase"
+        ],
+        [
+          "exp-factor",
+          "decrease"
+        ],
+        [
+          "exp-factor",
+          "multiple-step"
+        ],
+        [
+          "exp-graph",
+          "shifted"
+        ],
+        [
+          "exp-graph",
+          "reflected"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "exp-pattern",
+          "growth"
+        ],
+        [
+          "exp-factor",
+          "multiple-step"
+        ],
+        [
+          "exp-graph",
+          "shifted"
+        ],
+        [
+          "exp-graph",
+          "reflected"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Treat percentage as the whole multiplier",
+          "Forget the unchanged portion",
+          "Write new=old+change before simplifying the factor."
+        ],
+        [
+          "Use the same additive increment every step",
+          "Confuse linear and multiplicative change",
+          "Compare ratios and differences over equal input intervals."
+        ],
+        [
+          "Include an asymptote in the output range",
+          "Confuse approaching with attaining",
+          "A positive exponential never equals zero at finite input."
+        ],
+        [
+          "Infer monotonicity only from the base",
+          "Ignore a negative outside coefficient",
+          "Track the output reflection separately from base growth or decay."
+        ]
+      ],
+      "readings": [
+        "os-6.1",
+        "os-6.2"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "cee-300",
+        "cee-310",
+        "cee-324"
+      ],
+      "acceptance": "Four required questions cover model classification, exact factor/prediction, and shifted/reflected domains, ranges, asymptotes, and direction. Existing exponent rules are reused under separate F05 IDs."
+    },
+    {
+      "id": "m01-l02",
+      "title": "Logarithms reverse exponentials",
+      "objective": "Use exponential and logarithmic inverse relationships to evaluate exact values, enforce valid bases and positive arguments, and interpret logarithmic graph features.",
+      "requires": [
+        "m01-l01"
+      ],
+      "scope": [
+        "b^y=x if and only if log_b(x)=y",
+        "Bases b>0 and b!=1, arguments x>0",
+        "Common and natural logarithms with explicitly named bases",
+        "Negative and fractional logarithmic outputs",
+        "Original argument inequalities including products",
+        "Reflected inverse points, shifted logarithm domains/ranges/asymptotes"
+      ],
+      "workedExamples": [
+        "Convert 2^(-3)=1/8 to log_2(1/8)=-3",
+        "Evaluate log_4(1/8)=-3/2 by an exact power relation",
+        "Distinguish an invalid logarithm of zero from a valid logarithm equal to zero",
+        "For ln(7-2x), solve x<7/2 with the boundary excluded",
+        "For log((x-1)(x+3)), keep both intervals (-infinity,-3) and (1,infinity)",
+        "Reflect the exponential point (3,8) to the logarithmic point (8,3)",
+        "For log_2(x+2)-1 identify asymptote -2, domain (-2,infinity), range R, and zero at x=0"
+      ],
+      "guided": "Recover the exponent in log_3(1/27), check two proposed bases, and state the domain of ln(5-x).",
+      "interaction": {
+        "kind": "refresher-explog-lab",
+        "mode": "inverse",
+        "purpose": "Select a valid base, enter a positive argument, and predict its logarithm. Compare inverse point pairs and a labeled graph/table; reject zero, negative arguments, base one, and invalid typed input clearly."
+      },
+      "practice": [
+        [
+          "log-meaning",
+          "forward"
+        ],
+        [
+          "log-meaning",
+          "inverse"
+        ],
+        [
+          "log-meaning",
+          "negative"
+        ],
+        [
+          "log-meaning",
+          "fractional"
+        ],
+        [
+          "log-domain",
+          "affine"
+        ],
+        [
+          "log-domain",
+          "negative"
+        ],
+        [
+          "log-domain",
+          "squared"
+        ],
+        [
+          "log-domain",
+          "product"
+        ],
+        [
+          "log-graph",
+          "shifted"
+        ],
+        [
+          "log-graph",
+          "reflected"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "log-meaning",
+          "fractional"
+        ],
+        [
+          "log-domain",
+          "negative"
+        ],
+        [
+          "log-domain",
+          "product"
+        ],
+        [
+          "log-graph",
+          "reflected"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Divide the argument by the base",
+          "Misread logarithm as a quotient",
+          "Rewrite the statement as base raised to exponent equals argument."
+        ],
+        [
+          "Reject a negative output",
+          "Confuse output sign with input positivity",
+          "A positive argument below one can have a negative logarithm."
+        ],
+        [
+          "Include the zero-argument boundary",
+          "Reuse square-root rather than logarithm domain rules",
+          "Require strict positivity before evaluating."
+        ],
+        [
+          "Assume every product factor is positive",
+          "Replace a positive product with individual log domains",
+          "Use a sign chart for the original product."
+        ]
+      ],
+      "readings": [
+        "os-6.3",
+        "os-6.4"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "csc-209",
+        "cee-300",
+        "cee-420"
+      ],
+      "acceptance": "Checkpoint questions include exact fractional inverse meaning with base validity, a negative affine argument, a product domain, and reflected logarithmic graph features."
+    },
+    {
+      "id": "m01-l03",
+      "title": "Log rules and equations with domain checks",
+      "objective": "Apply logarithm rules on their original domains and solve like-base, general exponential, and logarithmic equations while checking every candidate.",
+      "requires": [
+        "m01-l01",
+        "m01-l02"
+      ],
+      "scope": [
+        "Product, quotient, and power rules with positivity assumptions",
+        "Condensing and expanding exact coefficients",
+        "ln(x²)=2ln|x| on x!=0 versus 2ln(x) on x>0",
+        "Counterexamples to an invented sum rule",
+        "Change of base in the correct order",
+        "Like-base and general exponential equations",
+        "Original log domains, extraneous roots, and no-solution equations"
+      ],
+      "workedExamples": [
+        "Expand log_2(x^3 sqrt(y)/z^2) for positive x,y,z into coefficients 3,1/2,-2",
+        "At x=-3 compare ln(x²), 2ln|x|, and undefined 2ln(x)",
+        "Use ln(2+3)=ln5 versus ln2+ln3=ln6 as a counterexample",
+        "Solve 5^(2x-1)=125 to get x=2",
+        "Solve 3^(2x+1)=7 as (ln7/ln3-1)/2 before rounding",
+        "For ln(x-1)+ln(x-4)=ln18, generate -2 and 7 and retain only 7 on x>4",
+        "For ln(x+3)-ln(x-1)=ln2 retain x=5 and the original domain x>1",
+        "Recognize ln(x-1)=ln(x-3) has no solution on x>3",
+        "Evaluate log_5(12) using ln12/ln5 and verify with a power"
+      ],
+      "guided": "Expand a product/quotient with given positive variables, then audit a candidate that violates one original logarithm argument.",
+      "interaction": {
+        "kind": "refresher-explog-lab",
+        "mode": "rules",
+        "purpose": "Choose a proposed identity, predict whether it preserves the full stated domain, and test inputs. Contrast a true quotient rule with a sum-rule counterexample and the negative-input failure of 2ln(x)."
+      },
+      "practice": [
+        [
+          "log-rule",
+          "coefficients"
+        ],
+        [
+          "log-rule",
+          "condense"
+        ],
+        [
+          "log-rule",
+          "square-domain"
+        ],
+        [
+          "log-rule",
+          "sum-error"
+        ],
+        [
+          "log-rule",
+          "change-base"
+        ],
+        [
+          "exp-equation",
+          "like-base"
+        ],
+        [
+          "exp-equation",
+          "natural"
+        ],
+        [
+          "exp-equation",
+          "general"
+        ],
+        [
+          "exp-equation",
+          "impossible"
+        ],
+        [
+          "log-equation",
+          "single"
+        ],
+        [
+          "log-equation",
+          "sum"
+        ],
+        [
+          "log-equation",
+          "quotient"
+        ],
+        [
+          "log-equation",
+          "extraneous"
+        ],
+        [
+          "log-equation",
+          "empty"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "log-rule",
+          "mixed"
+        ],
+        [
+          "exp-equation",
+          "general"
+        ],
+        [
+          "log-equation",
+          "extraneous"
+        ],
+        [
+          "log-rule",
+          "change-base"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Split a sum inside a logarithm",
+          "Apply a product law to addition",
+          "Substitute a simple positive counterexample and compare the arguments."
+        ],
+        [
+          "Lose negative inputs in an even-power rule",
+          "Forget the absolute value",
+          "Compare the original and rewritten domains explicitly."
+        ],
+        [
+          "Invert the change-of-base quotient",
+          "Confuse base and argument",
+          "Use ln(argument)/ln(base) and raise the base to the resulting exponent."
+        ],
+        [
+          "Accept every quadratic candidate",
+          "Forget the original logs",
+          "Check every original argument is strictly positive before retaining a root."
+        ],
+        [
+          "Round intermediate logarithms",
+          "Lose accuracy during inversion",
+          "Keep the exact logarithmic form until the requested final rounding."
+        ]
+      ],
+      "readings": [
+        "os-6.5",
+        "os-6.6"
+      ],
+      "supports": [
+        "mth-215",
+        "csc-208",
+        "csc-209",
+        "cee-300",
+        "cee-310",
+        "cee-420"
+      ],
+      "acceptance": "Independent questions combine rule coefficients and domain/invalid-rule judgments, an exact-expression choice with a numerical general-exponential root, a complete domain-filtered log root set, and change-of-base verification. No general expression-evaluation or grading redesign is needed."
+    },
+    {
+      "id": "m01-l04",
+      "title": "Growth, decay, and threshold times",
+      "objective": "Fit exponential models, relate discrete factors to continuous rates, and determine doubling, half-life, and threshold times with correct units and model limits.",
+      "requires": [
+        "m01-l01",
+        "m01-l02",
+        "m01-l03"
+      ],
+      "scope": [
+        "Two-point fitting with positive data and known model form",
+        "Time-step factors versus per-unit rates",
+        "A*b^(t/Delta) and A*exp(k*t), with k=ln(b)/Delta",
+        "Doubling time, half-life, and time constant distinctions",
+        "Supplied voltage-decay models without assuming circuit theory",
+        "Nonnegative time domains and reachable thresholds",
+        "Zero, initial-value, past-only, and constant-model cases"
+      ],
+      "workedExamples": [
+        "Fit (1 s,15) and (3 s,60) to A*2^t with A=15/2",
+        "A quantity halves every 4 s: use (1/2)^(t/4) and k=-ln2/4 per second",
+        "In V(t)=12exp(-t/3), reach 3 V at 3ln4 seconds and verify substitution",
+        "Compare tau=3 s with half-life 3ln2 s; one time constant leaves 1/e of the initial value",
+        "A continuous growth rate 0.08 per second gives doubling time ln2/0.08",
+        "Convert a 5 percent step increase to continuous rate ln(1.05) per step",
+        "Explain why a decaying positive model reaches its initial value at t=0, never reaches exact zero at finite t, and cannot reach a larger target for t>=0",
+        "Handle a constant model separately: an equal target is attained at every time, another target never"
+      ],
+      "guided": "Recover a decay rate and find a threshold time from a supplied model, keeping the ratio and exponent dimensionless.",
+      "interaction": {
+        "kind": "refresher-explog-lab",
+        "mode": "decay",
+        "purpose": "Choose a time constant, initial value, and target fraction. Predict finite/immediate/unreachable behavior and any finite threshold time, then compare the curve, positive samples, and threshold line."
+      },
+      "practice": [
+        [
+          "model-fit",
+          "growth"
+        ],
+        [
+          "model-fit",
+          "decay"
+        ],
+        [
+          "model-fit",
+          "step"
+        ],
+        [
+          "growth-time",
+          "half"
+        ],
+        [
+          "growth-time",
+          "double"
+        ],
+        [
+          "growth-time",
+          "tau"
+        ],
+        [
+          "threshold",
+          "finite"
+        ],
+        [
+          "threshold",
+          "initial"
+        ],
+        [
+          "threshold",
+          "past"
+        ],
+        [
+          "threshold",
+          "zero"
+        ],
+        [
+          "threshold",
+          "constant"
+        ],
+        [
+          "rate-conversion",
+          "discrete"
+        ],
+        [
+          "rate-conversion",
+          "continuous"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "model-fit",
+          "decay"
+        ],
+        [
+          "growth-time",
+          "both"
+        ],
+        [
+          "threshold",
+          "audit"
+        ],
+        [
+          "rate-conversion",
+          "continuous"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Treat a two-second factor as a one-second factor",
+          "Ignore the sampling interval",
+          "Write t/Delta explicitly or solve the root for a per-unit factor."
+        ],
+        [
+          "Use the percentage as the continuous rate",
+          "Confuse b with ln(b)",
+          "Check that exp(k*Delta)=b."
+        ],
+        [
+          "Drop the negative decay sign",
+          "Divide logs without a magnitude estimate",
+          "A smaller positive threshold after t=0 requires positive elapsed time."
+        ],
+        [
+          "Report a finite zero or negative context time",
+          "Ignore the time domain and asymptote",
+          "Classify reachability before solving and substitute into the original model."
+        ],
+        [
+          "Call the time constant the half-life",
+          "Confuse 1/e with 1/2",
+          "At tau the remaining fraction is 1/e; at tau ln2 it is 1/2."
+        ]
+      ],
+      "readings": [
+        "os-6.1",
+        "os-6.6",
+        "os-6.7",
+        "os-6.8"
+      ],
+      "supports": [
+        "phs-232",
+        "cee-300",
+        "cee-310",
+        "cee-310l",
+        "cee-324",
+        "cee-420"
+      ],
+      "acceptance": "Checkpoint coverage includes fitting, both doubling and half-life, a finite threshold plus immediate/unreachable classifications, and discrete/continuous conversion with units. Tests independently substitute every computed time and handle k=0 explicitly."
+    },
+    {
+      "id": "m01-l05",
+      "title": "Decibels, ratios, and references",
+      "objective": "Convert between decibel levels and physical ratios, preserve the reference, and distinguish power addition, cascaded gains, and voltage-based power comparisons.",
+      "requires": [
+        "m01-l02",
+        "m01-l03"
+      ],
+      "scope": [
+        "10 log10(P/P0) and its inverse",
+        "Zero dB and negative levels with positive ratios",
+        "Explicit same-unit positive reference quantities",
+        "20 log10 amplitude ratio and the squared-power condition",
+        "Power gain from RMS voltage using supplied P=V²/R and equal or unequal positive resistance",
+        "Cascaded ratios multiply while dB gains add",
+        "Independent powers add in linear units, not by adding their individual levels",
+        "Zero or negative log arguments have no finite real level"
+      ],
+      "workedExamples": [
+        "20 mW relative to 5 mW gives ratio 4 and about 6.0206 dB",
+        "A level of -15 dB gives power ratio 10^(-1.5), a positive ratio below one",
+        "At equal resistance, voltage ratio 3 gives power ratio 9 and about 9.5424 dB",
+        "For output/input voltage ratio 2 with input resistance 50 ohms and output resistance 100 ohms, power ratio is 2 and power gain about 3.0103 dB",
+        "Cascaded power factors 10 and 1/10 give net factor 1 and 0 dB",
+        "Two independent 1 mW powers sum to 2 mW, about 3.0103 dB relative to 1 mW",
+        "Distinguish zero dB from zero power and explain why a reference must be stated"
+      ],
+      "guided": "Convert a power ratio to dB, then compare a voltage-based power calculation with explicitly supplied equal resistances.",
+      "interaction": {
+        "kind": "refresher-explog-lab",
+        "mode": "decibels",
+        "purpose": "Change positive input/output powers or RMS voltages and resistances. Predict the physical power ratio and dB gain, compare equal versus unequal resistance, and inspect a ratio-to-level table."
+      },
+      "practice": [
+        [
+          "db-ratio",
+          "power"
+        ],
+        [
+          "db-ratio",
+          "reverse"
+        ],
+        [
+          "db-ratio",
+          "reference"
+        ],
+        [
+          "db-voltage",
+          "equal"
+        ],
+        [
+          "db-voltage",
+          "unequal"
+        ],
+        [
+          "db-voltage",
+          "conditions"
+        ],
+        [
+          "db-combine",
+          "cascade"
+        ],
+        [
+          "db-combine",
+          "add-powers"
+        ],
+        [
+          "db-domain",
+          "zero"
+        ],
+        [
+          "db-domain",
+          "negative"
+        ]
+      ],
+      "checkpoint": [
+        [
+          "db-ratio",
+          "roundtrip"
+        ],
+        [
+          "db-voltage",
+          "unequal"
+        ],
+        [
+          "db-combine",
+          "compare"
+        ],
+        [
+          "db-domain",
+          "reference"
+        ]
+      ],
+      "mistakes": [
+        [
+          "Interpret negative dB as negative power",
+          "Confuse a logarithm's sign with its input",
+          "A positive ratio below one produces a negative logarithm."
+        ],
+        [
+          "Use 20 for every power comparison",
+          "Confuse amplitude and power",
+          "Start from the requested power ratio; use the square relationship only when established."
+        ],
+        [
+          "Ignore different resistances in a power-gain calculation",
+          "Assume equal proportionality constants",
+          "Use (Vout/Vin)^2*(Rin/Rout) for the supplied resistive model."
+        ],
+        [
+          "Add independent power levels in dB",
+          "Confuse a cascade with a sum",
+          "Convert to linear powers, add, then take the logarithm."
+        ],
+        [
+          "Drop units or reference values inside a logarithm",
+          "Treat a dimensional value as a ratio",
+          "Divide comparable quantities in matching units first."
+        ]
+      ],
+      "readings": [
+        "os-6.3",
+        "os-6.5",
+        "nist-8.7"
+      ],
+      "supports": [
+        "phs-232",
+        "cee-310",
+        "cee-420",
+        "cee-420l",
+        "csc-436",
+        "cee-324",
+        "cee-430"
+      ],
+      "acceptance": "Required questions cover forward/inverse power ratios with references, unequal-resistance voltage-based power gain, cascade versus power addition, and finite-log domain and zero-level interpretation. Every physics relationship is supplied."
+    }
+  ]
+}
