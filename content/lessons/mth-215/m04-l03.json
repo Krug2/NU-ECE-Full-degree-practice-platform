@@ -1,0 +1,1054 @@
+{
+  "id": "m04-l03",
+  "courseId": "mth-215",
+  "moduleId": "m04",
+  "version": 1,
+  "title": "Variation and rational models",
+  "objective": "Build a direct, inverse, or joint variation model and use units and restrictions to interpret a result.",
+  "why": "Engineering models often describe how a response changes when one or more inputs are scaled. A useful prediction requires the right relationship, a correctly calibrated constant, consistent units, and a valid input range. This lesson connects proportional reasoning with rational functions so you can explain both a numerical result and the conditions that support it.",
+  "estimatedMinutes": 240,
+  "prerequisites": [
+    {
+      "label": "Powers and roots",
+      "lessonId": "b02"
+    },
+    {
+      "label": "Calibration and model interpretation",
+      "lessonId": "m02-l04"
+    },
+    {
+      "label": "Original rational-function domains",
+      "lessonId": "m04-l01"
+    },
+    {
+      "label": "Inequalities and allowed input sets",
+      "lessonId": "m04-l02"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Translate a relationship before substituting numbers",
+      "paragraphs": [
+        "Direct proportionality to x means $y=kx$, where k is one fixed nonzero constant. The ratio $y/x$ is k whenever x is nonzero, and the rule gives y=0 at x=0. Saying that y varies directly with the square of x instead means $y=kx^2$. The specified power matters: doubling x doubles y in the first model but multiplies y by four in the second.",
+        "Inverse proportionality to x means $y=k/x$, or equivalently $xy=k$ on its domain. Inverse proportionality to the square of x means $y=k/x^2$. A phrase naming an inverse power belongs in the denominator; it does not mean subtracting x or attaching a minus sign to a linear slope.",
+        "Write a quantity dictionary before computing: which symbol is the output, which inputs can change, what each unit means, and what must remain fixed. In the form $y=kx^p z^q$, positive exponents express direct powers and negative exponents express inverse powers. One coefficient multiplies the entire product. The models in this lesson use nonzero k; an identically zero rule is a separate degenerate case."
+      ]
+    },
+    {
+      "heading": "Do not confuse a line, a trend, and a proportional law",
+      "paragraphs": [
+        "A line $y=mx+b$ is directly proportional to x only when b=0. A nonzero intercept adds a fixed amount rather than scaling every output by the input ratio. For $y=3x+4$, the ratios at x=2 and x=4 are 5 and 4, respectively. They cannot both equal one proportionality constant.",
+        "A negative coefficient can still define direct proportionality. In $y=-2x$, doubling a positive input doubles the signed output from -2x to -4x. The graph decreases, but the rule is still $y=kx$, not $y=k/x$. A decreasing trend by itself is not evidence of inverse variation.",
+        "Finite records can contradict a proposed exact law or be consistent with it at the recorded inputs. They do not establish the law at every unobserved input. Keep a supplied modeling assumption separate from what the data alone demonstrate. For simple inverse variation, compare products xy rather than only noticing that y decreases."
+      ]
+    },
+    {
+      "heading": "Recover a coefficient from a complete calibration record",
+      "paragraphs": [
+        "Once the structure is chosen, substitute an observation and solve for k. For $y=kx^p z^q$, a record with a nonzero input factor gives $k=y/(x^p z^q)$. In $y=kx^2/z$, the same step is $k=yz/x^2$. Use both inputs, their complete powers, and their stated units.",
+        "Keep exact fractions through calibration and prediction. Rounding k before substituting another input can introduce a discrepancy that was not in the original data. Check your coefficient by putting the full observation back into the proposed rule. That checks the arithmetic for the chosen model; it does not prove that the chosen structure is physically correct.",
+        "An observation with a zero input factor may fail to identify k. For $y=kx$, the record (0,0) is satisfied by every nonzero k, so dividing 0 by 0 cannot produce a unique coefficient. A record with x=0 and nonzero y contradicts that proposed law. For $y=kxz$, the same issue occurs when either factor is zero. A reciprocal model is undefined at a zero denominator rather than merely unidentified there."
+      ]
+    },
+    {
+      "heading": "Predict changes with ratios and invariants",
+      "paragraphs": [
+        "For a fixed nonzero coefficient and nonzero baseline output, divide the changed response by the baseline: $y_2/y_1=(x_2/x_1)^p(z_2/z_1)^q$. The coefficient cancels. This formula lets you predict the output multiplier before doing the full substitution. Keep the same quantity units on both sides of each input ratio.",
+        "For $y=kx$, the invariant is y/x. For $y=k/x$, the invariant is xy. For $y=k/x^2$, it is $x^2y$. If x doubles in these three models, the output factors are 2, 1/2, and 1/4. The same numerical input change therefore has different effects under different model structures.",
+        "A zero baseline output has no defined output ratio, even when a later output can be computed. Use direct substitution for that comparison instead of dividing by zero. Negative inputs and signed outputs also require care: preserve their signs in the algebra, then state clearly what an increase or decrease means for the modeled quantity."
+      ]
+    },
+    {
+      "heading": "Distinguish an output multiplier from a percentage change",
+      "paragraphs": [
+        "For a positive baseline response and output multiplier f, the signed percentage change is $100(f-1)\\%$. A factor of 1/4 is a 75% decrease, not a 25% decrease. A factor of 3/2 is a 50% increase. A factor of 1 means no change.",
+        "If x increases by 10% in a simple inverse law, the input factor is 11/10 and the output factor is 10/11. The signed percentage change is $-100/11\\%$, about -9.09%. It is not exactly a 10% decrease. Compute the ratio before interpreting a percentage.",
+        "With several changing inputs, first multiply their contributions into one output factor and then convert that factor to a percentage. Adding separate percentage changes generally gives the wrong answer. For signed or zero baseline quantities, explain the actual signed values and whether a percentage comparison is meaningful."
+      ]
+    },
+    {
+      "heading": "Combine direct and inverse effects multiplicatively",
+      "paragraphs": [
+        "Joint variation with x and z has the form $y=kxz$. Combined variation can mix directions, such as $y=kx/z$. If x doubles and z triples in the product model, y gains a factor of 6. In the quotient model, the same changes give a factor of 2/3. The separate effects multiply; they are not added.",
+        "For $y=kx^2/z^3$, multiplying x by a and z by b multiplies y by $a^2/b^3$. An input may change substantially while the response stays fixed: in $y=kx/z$, multiplying both x and z by the same nonzero factor leaves their quotient unchanged. Explain that cancellation using ratios rather than calling the unchanged output a failed model.",
+        "A statement about one changing input must identify what happens to the others. In $y=kx/z$, doubling x alone does not determine a unique output change if z is also free to change. If z stays fixed, y doubles; if z also doubles, y stays fixed. Holding a quantity fixed is part of the problem, not an assumption to insert silently."
+      ]
+    },
+    {
+      "heading": "Translate root powers and respect their real domains",
+      "paragraphs": [
+        "Varying inversely with the cube root of z contributes the factor $z^{-1/3}=1/\\sqrt[3]{z}$. For example, $y=kx^2/\\sqrt[3]{z}$ combines a direct square and an inverse cube root. If z increases from 8 to 64, its cube root increases from 2 to 4, so that change alone halves the response.",
+        "A real cube root exists for negative inputs too, but a cube root in a denominator still excludes zero. An even root requires a nonnegative radicand, and an even root in a denominator requires a positive radicand. Reduce a rational exponent before applying its real-domain conditions. Application requirements can be stricter than these mathematical conditions.",
+        "Use exact roots when they simplify, such as the cube root of 8. For a cube root that does not simplify to a supported exact answer, label a decimal as approximate and retain sufficient precision. A need for approximation does not make a real model value undefined. The investigation explicitly distinguishes exact checks from approximate checks."
+      ]
+    },
+    {
+      "heading": "Solve for another input without losing a branch",
+      "paragraphs": [
+        "To recover an input, isolate its power before taking a root or reciprocal. From $y=kx^2/z$ with fixed nonzero z, obtain $x^2=yz/k$. A positive right side has two real algebraic square-root candidates. List both before using a physical condition such as x>0 to select one. A negative right side has no real square-root candidate.",
+        "For $y=k/x^2$ and nonzero y, the equation becomes $x^2=k/y$, while the original rule still excludes x=0. For $y=k/x$, a nonzero target gives x=k/y. A nonzero numerator divided by a finite nonzero input cannot produce an output of zero, so zero is not an attainable finite target in these inverse models. Infinity is not a candidate input.",
+        "Solving for another parameter follows the same algebra. From $y=kx^2/z$ with nonzero y, obtain $z=kx^2/y$. Check the computed value in the original rule and apply its restrictions. A manipulation that divides by a possibly zero target needs a separate zero case rather than a canceled warning sign."
+      ]
+    },
+    {
+      "heading": "Separate the formula domain from the application window",
+      "paragraphs": [
+        "The mathematical domain of $y=k/x$ includes every nonzero real x. An application may allow only positive inputs, or only a validated interval such as $2\\le x\\le6$. Those are additional restrictions, not changes to the algebraic denominator. A negative candidate can be mathematically valid while physically excluded.",
+        "First solve the equation in its stated number system, then intersect the candidates with the supplied application domain. Retain closed operating endpoints when they satisfy the original equation. Do not round an out-of-range candidate onto a boundary and then call it allowed.",
+        "A formula can produce a defined number outside its validated window. Label that result as an extrapolation beyond the supplied validation, rather than as an established operating prediction. Conversely, do not claim the formula is undefined merely because an application rejects the input. A zero input in a direct polynomial model is often mathematically defined even when a strictly positive physical requirement excludes it."
+      ]
+    },
+    {
+      "heading": "Derive the units of the coefficient",
+      "paragraphs": [
+        "Use the coefficient equation to derive its units. If y is in meters and x in seconds, $y=kx$ requires k in meters per second. In $y=kx^2$, k has units meters per second squared. For $y=k/x^2$, k has units meters times second squared. The denominator power and its position both matter.",
+        "If $y=kx^2/z$ has y in meters, x in seconds, and z in kilograms, then $k=yz/x^2$ has units $\\mathrm{kg}\\,\\mathrm{m}/\\mathrm{s}^2$. This equals the unit newton. That dimensional equivalence does not by itself establish the physical meaning or validity of the supplied model.",
+        "A coefficient is dimensionless only when all input and output dimensions cancel. Treat its numerical value and its unit as a pair. A numerically correct coefficient with the wrong units does not express the intended relationship."
+      ]
+    },
+    {
+      "heading": "Convert units before comparing coefficients",
+      "paragraphs": [
+        "A coefficient's numerical value depends on the units used to describe the inputs and output. Suppose $y=kx^p$ uses x in meters, and u denotes the numerical value of that same length in centimeters. Since x=u/100, the new form is $y=(k/100^p)u^p$. The exponent applies to the conversion factor as well as the input.",
+        "For $y=2x^2$, the centimeter-input coefficient is 1/5000, because the squared conversion contributes 10000. For the inverse law $y=12/x$, the centimeter-input form is y=1200/u. The change goes in the opposite numerical direction because p is negative. In both cases, evaluating the same physical input gives the same physical output.",
+        "Do not compare two bare coefficient numbers until you know their input and output units. Use one coherent set of units during a calculation, then convert the reported result if requested. A changed unit convention is different from a changed physical model parameter."
+      ]
+    },
+    {
+      "heading": "Check exact records and measured observations differently",
+      "paragraphs": [
+        "For a proposed exact law, compute the implied coefficient independently from each record. If the constants disagree, no single constant satisfies all those exact records. If they agree, the records are compatible with that model at those inputs; other laws may also pass through the same finite records.",
+        "Measured observations can include stated uncertainty or rounding. Use a supplied tolerance when testing agreement. A signed residual is observed minus predicted; compare its magnitude with an absolute tolerance. A negative residual is not automatically acceptable just because it is less than a positive threshold. If the rule says at most a tolerance, equality is included.",
+        "Keep arithmetic exact where possible before applying the measurement rule. Meeting a tolerance supplies local evidence of consistency, not a proof for all inputs or an explanation of the physical mechanism. Failing a tolerance identifies a discrepancy to investigate without telling you, by itself, whether the cause is measurement error, a changed parameter, or the model structure."
+      ]
+    },
+    {
+      "heading": "Audit a prediction before trusting it",
+      "paragraphs": [
+        "Check the translation, calibration, units, and domain as separate steps. A wrong reciprocal formula can be made to fit one observation by choosing a different coefficient. Test a second input change that distinguishes the two structures, such as doubling the numerator input while holding the denominator input fixed.",
+        "Predict an output ratio before computing the full value. Check whether the result has the expected sign and rough size. Substitute recovered inputs into the original formula, retaining all original exclusions. State which assumptions and operating limits support the interpretation.",
+        "A graph helps compare shapes, but a finite graph does not prove proportionality or validate a physical law. The investigation combines prediction, exact tables, sampled curves, and domain decisions. Explain the reason for a multiplier or rejected candidate in your notes, then use a fresh independent checkpoint to demonstrate the objective."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Calibrate a direct proportionality",
+      "prompt": "y varies directly with x. When x=8, y=12. Find the rule and y when x=14.",
+      "steps": [
+        {
+          "math": "y=kx,\\qquad k=12/8=3/2",
+          "reason": "Translate the relationship, then divide the output by its nonzero input."
+        },
+        {
+          "math": "y=(3/2)(14)=21",
+          "reason": "Use the same coefficient at the new input."
+        },
+        {
+          "math": "\\frac{21}{12}=\\frac{14}{8}=\\frac74",
+          "reason": "The output multiplier matches the input multiplier."
+        }
+      ],
+      "conclusion": "The rule is $y=(3/2)x$, and the new response is 21."
+    },
+    {
+      "title": "A negative direct coefficient is still direct variation",
+      "prompt": "A signed response is directly proportional to x and equals -10 at x=4. Predict it at x=8.",
+      "steps": [
+        {
+          "math": "k=-10/4=-5/2",
+          "reason": "A direct-variation coefficient need not be positive for signed quantities."
+        },
+        {
+          "math": "y=(-5/2)(8)=-20,\\qquad\\frac{-20}{-10}=2",
+          "reason": "Doubling the input doubles the signed output."
+        }
+      ],
+      "conclusion": "The decreasing line is a direct law with negative coefficient. It is not an inverse law."
+    },
+    {
+      "title": "Reject a nonzero offset",
+      "prompt": "Decide whether $y=3x+4$ is directly proportional to x.",
+      "steps": [
+        {
+          "math": "x=2:\\quad y/x=10/2=5",
+          "reason": "Compute a ratio at one nonzero input."
+        },
+        {
+          "math": "x=4:\\quad y/x=16/4=4",
+          "reason": "A second ratio differs from the first."
+        },
+        {
+          "math": "y(0)=4\\ne0",
+          "reason": "The nonzero intercept also contradicts the form y=kx."
+        }
+      ],
+      "conclusion": "The rule is affine with an offset, so no constant y/x describes it for all nonzero inputs."
+    },
+    {
+      "title": "Apply the specified direct square",
+      "prompt": "y varies directly with the square of x. At x=3, y=18. Find y at x=6.",
+      "steps": [
+        {
+          "math": "y=kx^2,\\qquad k=18/3^2=2",
+          "reason": "The input power belongs in the calibration denominator."
+        },
+        {
+          "math": "y=2(6^2)=72,\\qquad\\frac{72}{18}=4",
+          "reason": "Doubling x multiplies the response by the square of 2."
+        }
+      ],
+      "conclusion": "The response becomes 72, not 36."
+    },
+    {
+      "title": "Apply a direct cube rather than a linear factor",
+      "prompt": "y varies directly with the cube of x. At x=2, y=12. Predict y at x=6.",
+      "steps": [
+        {
+          "math": "k=12/2^3=3/2",
+          "reason": "Use the cube in the calibration."
+        },
+        {
+          "math": "y=(3/2)(6^3)=324,\\qquad(6/2)^3=27",
+          "reason": "Tripling the input multiplies the output by 27."
+        }
+      ],
+      "conclusion": "The new output is 324. The coefficient stays 3/2."
+    },
+    {
+      "title": "Identify what a zero observation can establish",
+      "prompt": "For $y=kx$ with nonzero k, compare the records (0,0), (4,10), and a claimed record (0,5).",
+      "steps": [
+        {
+          "math": "0=k(0)\\quad\\text{for every nonzero }k",
+          "reason": "The first record is compatible but does not identify a unique coefficient."
+        },
+        {
+          "math": "10=4k\\Rightarrow k=5/2",
+          "reason": "The nonzero-input record identifies k."
+        },
+        {
+          "math": "5\\ne(5/2)(0)=0",
+          "reason": "The claimed nonzero output at zero contradicts the proposed direct law."
+        }
+      ],
+      "conclusion": "Do not obtain k by dividing 0 by 0, and do not erase a contradictory record by fitting another one."
+    },
+    {
+      "title": "Use the invariant product in inverse variation",
+      "prompt": "y varies inversely with x. At x=4, y=9. Find y at x=12.",
+      "steps": [
+        {
+          "math": "y=k/x,\\qquad k=xy=4(9)=36",
+          "reason": "Inverse first-power variation has a constant product."
+        },
+        {
+          "math": "y=36/12=3,\\qquad xy=12(3)=36",
+          "reason": "The new record preserves the same product."
+        }
+      ],
+      "conclusion": "Tripling the input divides the output by 3. The rule excludes x=0."
+    },
+    {
+      "title": "An inverse square quarters the response when the input doubles",
+      "prompt": "For inverse-square variation, y=8 at x=3. Predict y at x=6 and interpret the change.",
+      "steps": [
+        {
+          "math": "y=k/x^2,\\qquad k=8(3^2)=72",
+          "reason": "Multiply by the full squared input to recover k."
+        },
+        {
+          "math": "y=72/6^2=2,\\qquad y_2/y_1=1/4",
+          "reason": "The denominator increases by a factor of four."
+        },
+        {
+          "math": "100(1/4-1)\\%=-75\\%",
+          "reason": "Convert the output multiplier into a signed percentage change."
+        }
+      ],
+      "conclusion": "The response becomes 2, a 75% decrease."
+    },
+    {
+      "title": "Keep the full inverse cube",
+      "prompt": "For $y=k/x^3$, y=15 at x=2. Find y at x=6.",
+      "steps": [
+        {
+          "math": "k=15(2^3)=120",
+          "reason": "The coefficient is the product x cubed times y."
+        },
+        {
+          "math": "y=120/6^3=5/9,\\qquad(2/6)^3=1/27",
+          "reason": "A threefold input change gives an output factor of one twenty-seventh."
+        }
+      ],
+      "conclusion": "Keep the exact output 5/9 rather than rounding the coefficient or the intermediate cube."
+    },
+    {
+      "title": "A ten-percent input increase is not a ten-percent inverse decrease",
+      "prompt": "A positive response follows y=k/x. Its baseline is 22. Find the response when x increases by 10%.",
+      "steps": [
+        {
+          "math": "x_2/x_1=11/10,\\qquad y_2/y_1=10/11",
+          "reason": "Use a reciprocal ratio for the inverse law."
+        },
+        {
+          "math": "y_2=22(10/11)=20",
+          "reason": "Multiply the baseline response by the output factor."
+        },
+        {
+          "math": "100(10/11-1)\\%=-100/11\\%\\approx-9.09\\%",
+          "reason": "The percentage is measured relative to the original output."
+        }
+      ],
+      "conclusion": "The output decreases from 22 to 20, about 9.09%."
+    },
+    {
+      "title": "Joint variation multiplies both input effects",
+      "prompt": "y varies jointly with x and z. A record is x=2, z=3, y=15. Predict y at x=4, z=9.",
+      "steps": [
+        {
+          "math": "y=kxz,\\qquad k=15/(2\\cdot3)=5/2",
+          "reason": "Use both inputs when calibrating the one coefficient."
+        },
+        {
+          "math": "y=(5/2)(4)(9)=90",
+          "reason": "Substitute both new inputs."
+        },
+        {
+          "math": "(4/2)(9/3)=6,\\qquad15(6)=90",
+          "reason": "The separate factors 2 and 3 multiply to 6."
+        }
+      ],
+      "conclusion": "Adding the input factors would produce the wrong output multiplier."
+    },
+    {
+      "title": "Combine a direct change and an inverse change",
+      "prompt": "For y=kx/z, the record x=4, z=2, y=6 determines k. Predict y at x=8, z=8.",
+      "steps": [
+        {
+          "math": "k=yz/x=6(2)/4=3",
+          "reason": "Rearrange the calibration equation before substituting."
+        },
+        {
+          "math": "y=3(8)/8=3",
+          "reason": "The numerator input doubles while the denominator input quadruples."
+        },
+        {
+          "math": "\\frac{8/4}{8/2}=1/2",
+          "reason": "The combined output factor is one half."
+        }
+      ],
+      "conclusion": "The response decreases even though the direct input increases, because the inverse input changes more strongly."
+    },
+    {
+      "title": "Power both scale factors in a combined model",
+      "prompt": "For $y=kx^2/z^3$, y=18 at x=3, z=2. Find y at x=6, z=4.",
+      "steps": [
+        {
+          "math": "k=yz^3/x^2=18(2^3)/3^2=16",
+          "reason": "Both specified powers belong in the coefficient equation."
+        },
+        {
+          "math": "y=16(6^2)/(4^3)=9",
+          "reason": "Substitute the new inputs without dropping a power."
+        },
+        {
+          "math": "(6/3)^2/(4/2)^3=4/8=1/2",
+          "reason": "The direct-square gain and inverse-cube reduction combine to one half."
+        }
+      ],
+      "conclusion": "Doubling both inputs does not cancel when their powers differ."
+    },
+    {
+      "title": "Calibrate an inverse cube-root relationship",
+      "prompt": "For $y=kx^2/\\sqrt[3]{z}$ on positive inputs, y=12 at x=2, z=8. Find y at x=4, z=64.",
+      "steps": [
+        {
+          "math": "k=y\\sqrt[3]{z}/x^2=12(2)/4=6",
+          "reason": "The original cube root is 2, so calibration remains exact."
+        },
+        {
+          "math": "y=6(4^2)/\\sqrt[3]{64}=96/4=24",
+          "reason": "The new cube root is 4."
+        },
+        {
+          "math": "(4/2)^2\\,(64/8)^{-1/3}=4/2=2",
+          "reason": "The direct square contributes 4 and the inverse root contributes one half."
+        }
+      ],
+      "conclusion": "The output doubles. Zero is excluded by the root denominator, and the supplied positive-input condition is an additional application restriction."
+    },
+    {
+      "title": "Recover the denominator input from a target response",
+      "prompt": "The supplied positive-input model is y=kx^2/z. A calibration record has x=3, z=2, y=18. Find z when x=5 and the required response is y=20.",
+      "steps": [
+        {
+          "math": "k=yz/x^2=18(2)/3^2=4",
+          "reason": "Determine the fixed coefficient from the complete original observation."
+        },
+        {
+          "math": "y=kx^2/z\\Rightarrow yz=kx^2\\Rightarrow z=kx^2/y\\quad(y\\ne0)",
+          "reason": "Isolate z algebraically. Dividing by the target requires a nonzero target, and the original model still excludes z=0."
+        },
+        {
+          "math": "z=4(5^2)/20=5",
+          "reason": "Use the new x input and requested response while retaining the calibrated coefficient."
+        },
+        {
+          "math": "4(5^2)/5=20,\\qquad z=5>0",
+          "reason": "Substitute the recovered input into the original formula and check the positive physical requirement."
+        }
+      ],
+      "conclusion": "The required denominator input is 5. With k=4 and x=5 fixed, no finite nonzero z could produce a zero response."
+    },
+    {
+      "title": "Keep both square-root candidates before choosing a physical input",
+      "prompt": "Solve $y=(3/2)x^2$ for y=24, then impose the operating interval [1,6].",
+      "steps": [
+        {
+          "math": "24=(3/2)x^2\\Rightarrow x^2=16",
+          "reason": "Isolate the square without taking a root prematurely."
+        },
+        {
+          "math": "x=-4\\quad\\text{or}\\quad x=4",
+          "reason": "Both real candidates satisfy the original equation."
+        },
+        {
+          "math": "\\{-4,4\\}\\cap[1,6]=\\{4\\}",
+          "reason": "The operating interval selects the positive candidate."
+        }
+      ],
+      "conclusion": "The negative root is an algebraic solution that the application excludes."
+    },
+    {
+      "title": "Recover a reciprocal-square input while retaining its original domain",
+      "prompt": "Solve $72/x^2=2$ for real x, then keep positive physical inputs.",
+      "steps": [
+        {
+          "math": "x\\ne0,\\qquad72=2x^2\\Rightarrow x^2=36",
+          "reason": "The original denominator exclusion remains attached to the equation."
+        },
+        {
+          "math": "x=\\pm6,\\qquad72/(\\pm6)^2=2",
+          "reason": "Both signs satisfy the original reciprocal equation."
+        },
+        {
+          "math": "x>0\\Rightarrow x=6",
+          "reason": "The positive physical requirement makes the final selection."
+        }
+      ],
+      "conclusion": "Report both candidates when asked for algebraic solutions and only 6 when asked for the physical input."
+    },
+    {
+      "title": "Identify unattainable or physically invalid targets",
+      "prompt": "For $y=12/x$ with physical inputs x>0, consider targets y=0 and y=-3.",
+      "steps": [
+        {
+          "math": "12/x=0\\Rightarrow12=0\\quad(x\\ne0)",
+          "reason": "No finite allowed real input makes a nonzero reciprocal numerator produce zero."
+        },
+        {
+          "math": "12/x=-3\\Rightarrow x=-4",
+          "reason": "The negative target has a real algebraic candidate."
+        },
+        {
+          "math": "-4\\notin(0,\\infty)",
+          "reason": "That candidate fails the stated positive physical-input requirement."
+        }
+      ],
+      "conclusion": "Both targets have no physically allowed input, but for different reasons. Infinity is not a finite solution for the zero target."
+    },
+    {
+      "title": "Check a closed operating endpoint and an extrapolation",
+      "prompt": "The rule y=24/x is validated only on [2,6]. Find inputs for targets y=3 and y=4.",
+      "steps": [
+        {
+          "math": "y=3\\Rightarrow x=24/3=8\\notin[2,6]",
+          "reason": "This algebraic input is nonzero, but lies outside the supplied window."
+        },
+        {
+          "math": "y=4\\Rightarrow x=24/4=6\\in[2,6]",
+          "reason": "The upper endpoint is included by the closed interval."
+        }
+      ],
+      "conclusion": "The first prediction is outside the supplied validation; the second lies at an allowed boundary. Both formulas are mathematically defined."
+    },
+    {
+      "title": "Derive and check the coefficient units",
+      "prompt": "In y=kx^2/z, y is in meters, x in seconds, and z in kilograms. A record is x=2, z=3, y=6. Find k and its unit.",
+      "steps": [
+        {
+          "math": "k=yz/x^2=6(3)/2^2=9/2",
+          "reason": "Use the same rearrangement for the numerical coefficient and its dimensions."
+        },
+        {
+          "math": "[k]=\\frac{\\mathrm{m}\\,\\mathrm{kg}}{\\mathrm{s}^2}=\\mathrm{N}",
+          "reason": "A newton is defined as a kilogram meter per second squared."
+        },
+        {
+          "math": "\\frac{(\\mathrm{kg}\\,\\mathrm{m}/\\mathrm{s}^2)\\,\\mathrm{s}^2}{\\mathrm{kg}}=\\mathrm{m}",
+          "reason": "Substitute the units back into the complete model to recover the required output unit."
+        }
+      ],
+      "conclusion": "The coefficient is 9/2 N. Dimensional consistency alone does not establish a physical mechanism."
+    },
+    {
+      "title": "Changing length units changes the numerical coefficient",
+      "prompt": "The rule y=2x^2 uses x in meters and y in volts. Rewrite it with u in centimeters and check a length of 3 m.",
+      "steps": [
+        {
+          "math": "x=u/100\\Rightarrow y=2(u/100)^2=\\frac1{5000}u^2",
+          "reason": "Square the entire conversion factor."
+        },
+        {
+          "math": "u=300\\Rightarrow y=300^2/5000=18",
+          "reason": "The response agrees with 2 times 3 squared in the original units."
+        },
+        {
+          "math": "[k_{\\mathrm{m}}]=\\mathrm{V}/\\mathrm{m}^2,\\qquad[k_{\\mathrm{cm}}]=\\mathrm{V}/\\mathrm{cm}^2",
+          "reason": "Each coefficient has units corresponding to its own input convention."
+        }
+      ],
+      "conclusion": "The numbers 2 and 1/5000 describe the same relationship when paired with their respective units."
+    },
+    {
+      "title": "Test records without claiming a universal law",
+      "prompt": "Test y=kx/z against exact records (x,z,y) = (2,1,6), (4,2,6), and (3,2,5).",
+      "steps": [
+        {
+          "math": "k_1=6(1)/2=3,\\qquad k_2=6(2)/4=3",
+          "reason": "The first two records imply the same constant."
+        },
+        {
+          "math": "k_3=5(2)/3=10/3\\ne3",
+          "reason": "The third record contradicts a single exact coefficient."
+        }
+      ],
+      "conclusion": "The exact records do not all fit this proposed law. Even complete agreement would show compatibility at those records, not a proof at every input."
+    },
+    {
+      "title": "Apply a measurement tolerance inclusively",
+      "prompt": "The calibrated model is $y=(3/2)x/z$. At x=4 and z=3, the measured response is 21/10 V. The permitted absolute residual is at most 1/10 V.",
+      "steps": [
+        {
+          "math": "y_{\\mathrm{predicted}}=(3/2)(4)/3=2",
+          "reason": "Evaluate the supplied model at the measurement inputs."
+        },
+        {
+          "math": "e=y_{\\mathrm{observed}}-y_{\\mathrm{predicted}}=21/10-2=1/10",
+          "reason": "Retain the sign in the residual."
+        },
+        {
+          "math": "|e|=1/10\\le1/10",
+          "reason": "The measurement meets an inclusive tolerance exactly at its limit."
+        }
+      ],
+      "conclusion": "A residual of -1/10 V would also meet this absolute tolerance. A residual magnitude of 1/4 V would fail it."
+    },
+    {
+      "title": "State which inputs are held fixed",
+      "prompt": "In y=kx/z with positive inputs and fixed k, x doubles. Determine what else must be known to predict y.",
+      "steps": [
+        {
+          "math": "\\frac{y_2}{y_1}=\\frac{2}{z_2/z_1}",
+          "reason": "The unknown change in z remains in the output ratio."
+        },
+        {
+          "math": "z_2=z_1\\Rightarrow y_2/y_1=2,\\qquad z_2=2z_1\\Rightarrow y_2/y_1=1",
+          "reason": "Two possible z changes produce different valid output factors."
+        }
+      ],
+      "conclusion": "The x change alone does not determine one output factor."
+    }
+  ],
+  "guided": {
+    "title": "Calibrate a combined model and apply its restrictions",
+    "setup": "A supplied response model has y varying directly with the square of x and inversely with z. Both inputs are positive. A calibration record gives x=2, z=3, y=8. Predict y at x=4, z=6, and recover x when y=18 with z held at 3.",
+    "before": [
+      "Write $y=kx^2/z$. The calibration gives $k=yz/x^2=8(3)/4=6$.",
+      "Changing x from 2 to 4 contributes a factor of 4; changing z from 3 to 6 contributes a factor of 1/2. Multiply these contributions.",
+      "For the separate target calculation, hold z at 3. Then $18=6x^2/3$ gives $x^2=9$. Keep both real candidates before applying x>0."
+    ],
+    "question": {
+      "id": "guided-variation",
+      "familyId": "mth-guided-variation",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m04-l03",
+      "category": "application",
+      "critical": false,
+      "prompt": "Complete the combined prediction and distinguish real algebraic candidates from physically allowed inputs.",
+      "fields": [
+        {
+          "id": "constant",
+          "label": "Variation constant k",
+          "kind": "rational",
+          "expected": "6"
+        },
+        {
+          "id": "factor",
+          "label": "Combined output multiplier",
+          "kind": "rational",
+          "expected": "2"
+        },
+        {
+          "id": "output",
+          "label": "Response at x = 4 and z = 6",
+          "kind": "rational",
+          "expected": "16"
+        },
+        {
+          "id": "algebraic",
+          "label": "All real x candidates for y = 18 with z = 3",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "-3",
+            "3"
+          ]
+        },
+        {
+          "id": "allowed",
+          "label": "Physically allowed x candidates",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "3"
+          ]
+        },
+        {
+          "id": "excluded",
+          "label": "Original excluded z inputs",
+          "kind": "roots",
+          "numberSystem": "real",
+          "expected": [
+            "0"
+          ]
+        }
+      ],
+      "parameters": {},
+      "hints": [
+        "The coefficient is 6. Multiply the direct-square scale by the inverse scale for the changed response.",
+        "The combined multiplier is 4 times 1/2, so the new response is twice the original 8.",
+        "For the target equation, x squared is 9. List both roots, then retain the positive one and keep z different from zero."
+      ],
+      "explanation": [
+        "The combined factor is 2 and the changed response is 16.",
+        "The real target candidates are -3 and 3; only 3 satisfies the positive physical requirement.",
+        "The original formula excludes z=0 even after an equation is rearranged."
+      ],
+      "answerSummary": "k=6; factor 2; response 16; algebraic x=-3,3; physical x=3; exclude z=0."
+    },
+    "after": "This guided problem supports learning. A fresh independent checkpoint checks direct, inverse, joint and model-audit reasoning separately."
+  },
+  "interaction": {
+    "kind": "variation-lab",
+    "prompt": "Recover a coefficient from the baseline, predict the effect of changing inputs, and distinguish mathematical values from allowed operating predictions. Then solve for all real target inputs and apply the operating window. Explain every multiplier and rejected candidate.",
+    "cases": [
+      {
+        "title": "Direct proportionality",
+        "rule": {
+          "xPower": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "zPower": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "observation": {
+          "x": "4",
+          "z": "1",
+          "y": "6"
+        },
+        "changed": {
+          "x": "8",
+          "z": "1"
+        },
+        "operating": {
+          "x": {
+            "lower": "1",
+            "upper": "12"
+          },
+          "z": {
+            "lower": "1",
+            "upper": "12"
+          }
+        },
+        "xName": "input length",
+        "zName": "unused input",
+        "yName": "response",
+        "xUnit": "m",
+        "zUnit": "1",
+        "yUnit": "V",
+        "constantUnit": "V/m"
+      },
+      {
+        "title": "Inverse proportionality",
+        "rule": {
+          "xPower": {
+            "numerator": -1,
+            "denominator": 1
+          },
+          "zPower": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "observation": {
+          "x": "3",
+          "z": "1",
+          "y": "8"
+        },
+        "changed": {
+          "x": "6",
+          "z": "1"
+        },
+        "operating": {
+          "x": {
+            "lower": "1",
+            "upper": "12"
+          },
+          "z": {
+            "lower": "1",
+            "upper": "12"
+          }
+        },
+        "xName": "input length",
+        "zName": "unused input",
+        "yName": "response",
+        "xUnit": "m",
+        "zUnit": "1",
+        "yUnit": "V",
+        "constantUnit": "V*m"
+      },
+      {
+        "title": "Inverse-square response",
+        "rule": {
+          "xPower": {
+            "numerator": -2,
+            "denominator": 1
+          },
+          "zPower": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "observation": {
+          "x": "3",
+          "z": "1",
+          "y": "8"
+        },
+        "changed": {
+          "x": "6",
+          "z": "1"
+        },
+        "operating": {
+          "x": {
+            "lower": "1",
+            "upper": "12"
+          },
+          "z": {
+            "lower": "1",
+            "upper": "12"
+          }
+        },
+        "xName": "input length",
+        "zName": "unused input",
+        "yName": "response",
+        "xUnit": "m",
+        "zUnit": "1",
+        "yUnit": "V",
+        "constantUnit": "V*m^2"
+      },
+      {
+        "title": "Joint product",
+        "rule": {
+          "xPower": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "zPower": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "observation": {
+          "x": "2",
+          "z": "3",
+          "y": "15"
+        },
+        "changed": {
+          "x": "4",
+          "z": "9"
+        },
+        "operating": {
+          "x": {
+            "lower": "1",
+            "upper": "12"
+          },
+          "z": {
+            "lower": "1",
+            "upper": "12"
+          }
+        },
+        "xName": "input length",
+        "zName": "input duration",
+        "yName": "response",
+        "xUnit": "m",
+        "zUnit": "s",
+        "yUnit": "V",
+        "constantUnit": "V/(m*s)"
+      },
+      {
+        "title": "Combined direct and inverse response",
+        "rule": {
+          "xPower": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "zPower": {
+            "numerator": -1,
+            "denominator": 1
+          }
+        },
+        "observation": {
+          "x": "4",
+          "z": "2",
+          "y": "6"
+        },
+        "changed": {
+          "x": "8",
+          "z": "8"
+        },
+        "operating": {
+          "x": {
+            "lower": "1",
+            "upper": "12"
+          },
+          "z": {
+            "lower": "1",
+            "upper": "12"
+          }
+        },
+        "xName": "input length",
+        "zName": "input duration",
+        "yName": "response",
+        "xUnit": "m",
+        "zUnit": "s",
+        "yUnit": "V",
+        "constantUnit": "V*s/m"
+      },
+      {
+        "title": "Direct square and inverse cube root",
+        "rule": {
+          "xPower": {
+            "numerator": 2,
+            "denominator": 1
+          },
+          "zPower": {
+            "numerator": -1,
+            "denominator": 3
+          }
+        },
+        "observation": {
+          "x": "2",
+          "z": "8",
+          "y": "12"
+        },
+        "changed": {
+          "x": "4",
+          "z": "64"
+        },
+        "operating": {
+          "x": {
+            "lower": "1",
+            "upper": "12"
+          },
+          "z": {
+            "lower": "1",
+            "upper": "216"
+          }
+        },
+        "xName": "input length",
+        "zName": "input duration",
+        "yName": "response",
+        "xUnit": "m",
+        "zUnit": "s",
+        "yUnit": "V",
+        "constantUnit": "V*s^(1/3)/m^2"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "linear-calibration"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "signed-constant"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "square"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "cube"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "target-input"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "affine-rejection"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "zero-calibration"
+    },
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "unit-change"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "inverse-square"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "inverse-cube"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "scale-ratio"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "target-input"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "impossible-target"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "zero-exclusion"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "inverse-not-linear"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "product"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "combined"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "powered-combination"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "simultaneous-scales"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "canceling-scales"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "solve-parameter"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "root-power"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "units"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "table-consistency"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "unknown-held-variable"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "wrong-inverse"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "wrong-power"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "nonidentifying-observation"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "model-window"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "physical-branch"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "measured-tolerance"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-direct-variation",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-inverse-variation",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-joint-variation",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-variation-audit",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "Translate the specified direct, inverse, joint or combined relationship before fitting a coefficient.",
+    "Use a complete nonzero-factor calibration record; zero data may be non-identifying or inconsistent.",
+    "For fixed coefficients and consistent units, multiply the input-ratio contributions to predict the output factor.",
+    "Apply powers to scale factors and unit conversions, and distinguish a multiplier from a percentage change.",
+    "Keep every real algebraic candidate before applying original exclusions and physical operating limits.",
+    "Derive the coefficient units from its equation and check them in the complete model.",
+    "Separate exact-record consistency, measured-data tolerances, and claims about unobserved inputs."
+  ],
+  "retrieval": "Without notes, compare what doubling x does in y=kx, y=k/x and y=k/x^2. Then explain the combined effect of doubling both inputs in y=kx^2/z. Recover a coefficient from one nonzero record, derive its units, and give an example where an algebraic candidate is outside a supplied operating window.",
+  "readings": [
+    {
+      "title": "OpenStax College Algebra 2e, 5.8: Modeling Using Variation",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-8-modeling-using-variation",
+      "purpose": "Supplement the original lesson with direct, inverse, joint and combined variation, including specified input powers."
+    },
+    {
+      "title": "OpenStax College Algebra 2e, 5.6: Rational Functions",
+      "url": "https://openstax.org/books/college-algebra-2e/pages/5-6-rational-functions",
+      "purpose": "Review original denominator exclusions before interpreting rational-model predictions."
+    }
+  ]
+}

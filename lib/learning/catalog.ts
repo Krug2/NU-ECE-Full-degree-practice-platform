@@ -19,11 +19,12 @@ import divisionLesson from "@/content/lessons/mth-215/m03-l03.json";
 import completeRootsLesson from "@/content/lessons/mth-215/m03-l04.json";
 import rationalFunctionLesson from "@/content/lessons/mth-215/m04-l01.json";
 import signChartLesson from "@/content/lessons/mth-215/m04-l02.json";
+import variationLesson from "@/content/lessons/mth-215/m04-l03.json";
 import { lessonSchema, packSchema } from "./contracts";
 import { availableFamilyIds } from "./generate";
 
 export const learningPacks = [packSchema.parse(packData)];
-export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson),lessonSchema.parse(polynomialLesson),lessonSchema.parse(rootsLesson),lessonSchema.parse(divisionLesson),lessonSchema.parse(completeRootsLesson),lessonSchema.parse(rationalFunctionLesson),lessonSchema.parse(signChartLesson)];
+export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powerBridge),lessonSchema.parse(factoringBridge),lessonSchema.parse(fractionBridge),lessonSchema.parse(coordinateBridge),lessonSchema.parse(triangleBridge),lessonSchema.parse(linearLesson),lessonSchema.parse(inequalityLesson),lessonSchema.parse(quadraticLesson),lessonSchema.parse(restrictionLesson),lessonSchema.parse(functionLesson),lessonSchema.parse(transformationLesson),lessonSchema.parse(compositionLesson),lessonSchema.parse(calibrationLesson),lessonSchema.parse(polynomialLesson),lessonSchema.parse(rootsLesson),lessonSchema.parse(divisionLesson),lessonSchema.parse(completeRootsLesson),lessonSchema.parse(rationalFunctionLesson),lessonSchema.parse(signChartLesson),lessonSchema.parse(variationLesson)];
 export const learningPack = (courseId: string) => learningPacks.find(pack => pack.courseId === courseId);
 export const lessonById = (courseId: string, lessonId: string) => lessons.find(lesson => lesson.courseId === courseId && lesson.id === lessonId);
 
