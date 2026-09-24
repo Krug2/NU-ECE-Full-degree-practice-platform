@@ -1,0 +1,42 @@
+{
+  "courseId": "f06",
+  "title": "Units and measurement",
+  "version": 1,
+  "status": "building",
+  "introduction": "Recover SI prefixes, compound conversions, dimensional analysis, reporting precision, and the interpretation of measurement bounds. This optional refresher does not award university credit or determine enrollment eligibility. Familiarity and assisted exploration are separate from independent checkpoint evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From unit meaning to defensible measurement reports",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "SI quantities, prefixes, and engineering notation",
+          "objective": "Identify quantity and unit roles, interpret case-sensitive SI prefixes, and convert exact values between scientific, engineering, and prefixed notation."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Conversions with powers, rates, and offsets",
+          "objective": "Convert signed quantities, areas, volumes, inverse units, and compound rates with explicit unit cancellation, and distinguish temperature values from temperature differences."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Dimensional checks and model parameters",
+          "objective": "Determine mechanical and electrical dimensions, check every term and function argument in an equation, and infer parameter units while recognizing what dimensional analysis cannot prove."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Significant figures and deliberate rounding",
+          "objective": "Interpret stated measurement precision, round using an explicit convention, and apply addition and multiplication reporting rules without allowing exact counts or conversions to limit precision."
+        },
+        {
+          "id": "m01-l05",
+          "title": "Measurement resolution, uncertainty, and bounds",
+          "objective": "Distinguish resolution, repeatability, discrepancy, and uncertainty; interpret stated bounds and relative uncertainty; and propagate simple bounds without inventing a confidence level."
+        }
+      ]
+    }
+  ]
+}
