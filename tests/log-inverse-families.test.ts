@@ -6,15 +6,18 @@ import { parseRational } from "../lib/learning/rational";
 
 const variants=["identify-parts","exponential-to-log","log-to-exponential","exact-integer","exact-reciprocal","fractional-exponent","fractional-base","common-natural","mixed"];
 const rationalPower=(n:number,d:number,p:number)=>p<0?{numerator:BigInt(d)**BigInt(-p),denominator:BigInt(n)**BigInt(-p)}:{numerator:BigInt(n)**BigInt(p),denominator:BigInt(d)**BigInt(p)};
+const logSeries=(value:number)=>{const z=(value-1)/(value+1);let sum=0,term=z;for(let i=0;i<150;i++){sum+=term/(2*i+1);term*=z*z;}return 2*sum;};
 it.each(variants)("independently verifies %s conversions, exact powers and feedback",variant=>{
   const modes=new Set<number>();
   for(let seed=0;seed<(variant==="mixed"?200:50);seed++){
     const q=logInverseQuestion("mth-log-inverse",variant,"log-inverse-"+seed,"q-1"),p=q.parameters,value=p.p+"/"+p.degree,argument=p.mode===5?rationalPower(p.root,1,p.p):rationalPower(p.bn,p.bd,p.p),arg=argument.numerator+"/"+argument.denominator;
     const expected:Record<string,string>=p.mode<=1?{base:p.bn+"/"+p.bd,argument:arg,value,meaning:"exponent","argument-rule":"positive"}:p.mode===2?{base:p.bn+"/"+p.bd,exponent:value,result:arg,meaning:"exponent","argument-rule":"positive"}:p.mode===3?{value,"at-one":"0","at-base":"1",sign:p.p===0?"zero":"positive"}:p.mode===4?{value,"opposite-power":argument.denominator+"/"+argument.numerator,valid:"yes"}:p.mode===5?{value,scaled:String(p.p),"power-check":arg+""}:p.mode===6?{value,direction:"decreasing","argument-position":p.p>0?"below":"above"}:{common:String(p.common),natural:String(p.natural),"common-base":"10","natural-base":"e"};
     if(p.mode===5){const power=rationalPower(p.root,1,p.p*p.degree);expected["power-check"]=power.numerator+"/"+power.denominator;}
+    if(p.mode===7){expected["natural-approximation"]=logSeries(p.root+1).toFixed(6);expected["specified-approximation"]=(logSeries(p.root+1)/logSeries(p.root)).toFixed(6);}
     modes.add(p.mode);expect(q).toEqual(logInverseQuestion("mth-log-inverse",variant,"log-inverse-"+seed,"q-1"));expect(q).toMatchObject({objectiveId:"m05-l02",critical:true,familyVersion:1});
     for(const field of q.fields){
       if(field.kind==="rational")expect(parseRational(field.expected)).toEqual(parseRational(expected[field.id]));
+      else if(field.kind==="numeric"){const target=field.id==="natural-approximation"?logSeries(p.root+1):logSeries(p.root+1)/logSeries(p.root);expect(field.expected).toBeCloseTo(target,12);expect(field).toMatchObject({absoluteTolerance:.00000051,relativeTolerance:0});}
       else if(field.kind==="choice")expect(field.correct).toBe(expected[field.id]);else throw new Error("Unexpected logarithm inverse field");
     }
     const exp=parseRational(value),power=rationalPower(p.bn,p.bd,Number(exp.numerator));
