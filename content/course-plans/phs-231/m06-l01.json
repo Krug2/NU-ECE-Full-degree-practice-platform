@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m06-l01",
   "checkedAt": "2026-09-24",
-  "status": "proposed teaching and verification plan; not a delivered lesson",
+  "status": "Implemented and technically verified; independent subject review and pilot validation have not been performed.",
   "title": "Impulse and center-of-mass motion",
   "objective": "Integrate force to obtain impulse and use a system's external impulse to predict total momentum and center-of-mass motion.",
   "alignment": "Develops the official PHS 231 momentum topic in the researched course scope. Teaching sequence, examples, investigation, generators, and assessment defaults are proposed for this platform and are not an official NU syllabus or grading policy.",
@@ -313,5 +313,13 @@
       "checkedAt": "2026-09-24",
       "verification": "Free primary-provider section accessed. Optional further reading; author original teaching, examples, and questions and verify their calculations independently."
     }
-  ]
+  ],
+  "implementation": {
+    "engine": "aad622d",
+    "families": "ae0b7ec",
+    "sharedRegistration": "a5a24a0",
+    "lesson": "37b993a",
+    "browser": "4be4838",
+    "seededVariantCases": 800
+  }
 }
