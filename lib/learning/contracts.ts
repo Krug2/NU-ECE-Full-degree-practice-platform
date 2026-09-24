@@ -14,6 +14,7 @@ import { factoredPolynomialSchema } from "./factored-polynomial";
 import { divisionCaseSchema } from "./polynomial-division";
 import { rootSearchCaseSchema } from "./polynomial-roots";
 import { rationalFunctionCaseSchema } from "./rational-function";
+import { signChartCaseSchema } from "./sign-chart";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -98,6 +99,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("sign-chart-lab"),prompt:text,cases:z.array(signChartCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("rational-function-lab"),prompt:text,cases:z.array(rationalFunctionCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("root-search-lab"),prompt:text,cases:z.array(rootSearchCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("division-lab"),prompt:text,cases:z.array(divisionCaseSchema).min(3).max(6)}).strict(),
