@@ -98,5 +98,5 @@ test("physics checkpoint answers and notes survive real backup export, reset, an
   await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();
   await expect(practice.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();
   await expect(page.getByLabel("Reasoning, questions, or a worked solution to revisit",{exact:true})).toHaveValue(exported.learning.notes["phs-231"]["m01-l01"]);
-  const response=await page.goto("/courses/phs-231/lessons/m02-l01");expect(response?.status()).toBe(404);
+  const response=await page.goto("/courses/phs-231/lessons/m09-l02");expect(response?.status()).toBe(404);
 });
