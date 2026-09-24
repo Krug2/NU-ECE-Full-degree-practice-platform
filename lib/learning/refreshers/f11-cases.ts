@@ -9,7 +9,7 @@ export function engineeringModel(kind:"travel"|"buffer"|"fill",values:Record<str
  return (values.target-values.initial)/values.rate;
 }
 const fmt=(n:number)=>Number(n.toPrecision(5)).toString();
-export function f11Case(lessonId:string,seed:string):PracticalCase{
+export function f11Case(lessonId:string,seed:string):PracticalCase&{model:NonNullable<PracticalCase["model"]>}{
  if(!["m01-l01","m01-l02","m01-l03","m01-l04"].includes(lessonId))throw Error("Unknown work-habits lesson");
  const r=randomFrom(seed),kind=(["travel","buffer","fill"] as const)[r.integer(0,2)];
  let values:Record<string,number>,scenario:string,relationship:string,unit:string,flaw:string,assumption:string,sensitivity:string,sketch:string;
