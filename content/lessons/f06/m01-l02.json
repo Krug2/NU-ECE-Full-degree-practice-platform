@@ -1,0 +1,290 @@
+{
+  "id": "m01-l02",
+  "courseId": "f06",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Conversions with powers, rates, and offsets",
+  "objective": "Convert signed quantities, areas, volumes, inverse units, and compound rates with explicit unit cancellation, and distinguish temperature values from temperature differences.",
+  "why": "Areas, rates, densities, and temperature changes occur throughout physics and circuit measurements. Writing cancellation explicitly prevents a familiar linear conversion from being applied incorrectly to a square, cube, denominator, or offset scale.",
+  "estimatedMinutes": 35,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "SI quantities, prefixes, and engineering notation"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A conversion factor is a ratio equal to one, arranged to cancel the old unit. Raise the whole factor to the unit's power. Convert numerator and denominator separately in a rate.",
+        "Absolute Celsius and kelvin values satisfy $T/\\mathrm K=t/{}^\\circ\\mathrm C+273.15$. Temperature differences have equal numerical values in kelvins and Celsius degrees: an offset cancels on subtraction. Read the worked examples, then use the checkpoint to check this distinction independently."
+      ]
+    },
+    {
+      "heading": "Cancellation explains the direction",
+      "paragraphs": [
+        "The equality 1 s=1000 ms gives both 1 s/(1000 ms) and 1000 ms/(1 s), each equal to one. Multiply by the one whose denominator cancels the source unit. A signed interval or coordinate remains signed because the conversion factor is positive.",
+        "Do not replace units only after finishing numerical arithmetic. Carry them through multiplication and division. If the intended target is m/s but your expression leaves ms²/m, the algebra of the units has already identified a setup error."
+      ]
+    },
+    {
+      "heading": "A square unit contains two length factors",
+      "paragraphs": [
+        "An area of 1 cm² means (1 cm)(1 cm), not one hundredth of a square metre. Both length factors convert, so $1\\,\\mathrm{cm^2}=10^{-4}\\,\\mathrm{m^2}$. A cubic unit contains three length factors and an inverse unit reverses the exponent.",
+        "The same rule applies to a prefixed unit in parentheses: $(10^{-3}\\,\\mathrm m)^3=10^{-9}\\,\\mathrm{m^3}$. For inverse centimetres, $(10^{-2}\\,\\mathrm m)^{-1}=10^2\\,\\mathrm{m^{-1}}$. Writing parentheses around the whole conversion protects the exponent."
+      ]
+    },
+    {
+      "heading": "A rate combines independent conversions",
+      "paragraphs": [
+        "For a speed, convert distance and elapsed time. Since 1 km=1000 m and 1 h=3600 s, multiplying km/h by 1000/3600 gives m/s. The inverse conversion multiplies by 3.6. That factor is not a new physical law; it comes from unit equalities.",
+        "Two prefixes can cancel numerically while the units still require care. One mV per ms equals one V per s because both numerator and denominator scale by 10^-3. In density, one gram per cubic centimetre becomes 1000 kilograms per cubic metre: the mass factor is 10^-3 but the volume factor is 10^-6."
+      ]
+    },
+    {
+      "heading": "An offset scale needs addition as well as scaling",
+      "paragraphs": [
+        "The Celsius and kelvin scales have equal-size increments but different zero locations. A Celsius temperature of 25 corresponds to 298.15 K. A rise of 25 Celsius degrees corresponds to a rise of 25 K; adding 273.15 to a difference would count the offset incorrectly.",
+        "For two readings, $(t_2+273.15)-(t_1+273.15)=t_2-t_1$. State whether your number is a value on a temperature scale or a change. This refresher uses ordinary thermodynamic temperatures and excludes values below zero kelvin; it does not teach thermodynamics or sensor calibration."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Convert a signed time difference",
+      "prompt": "Express -750 ms in seconds.",
+      "steps": [
+        {
+          "math": "-750\\,\\mathrm{ms}\\left(\\frac{1\\,\\mathrm s}{1000\\,\\mathrm{ms}}\\right)=-\\frac{750}{1000}\\,\\mathrm s",
+          "reason": "Cancel milliseconds with a positive conversion ratio."
+        },
+        {
+          "math": "-\\frac{750}{1000}=-\\frac34=-0.75",
+          "reason": "Simplify without removing the original sign."
+        }
+      ],
+      "conclusion": "The signed difference is -0.75 s."
+    },
+    {
+      "title": "Convert an area",
+      "prompt": "Express 2.5 cm² in m².",
+      "steps": [
+        {
+          "math": "1\\,\\mathrm{cm}=10^{-2}\\,\\mathrm m",
+          "reason": "Start from the length conversion."
+        },
+        {
+          "math": "2.5\\,\\mathrm{cm^2}\\left(\\frac{10^{-2}\\,\\mathrm m}{1\\,\\mathrm{cm}}\\right)^2=2.5\\times10^{-4}\\,\\mathrm{m^2}",
+          "reason": "Square the complete ratio because the old unit occurs twice."
+        }
+      ],
+      "conclusion": "The area is 0.00025 m², not 0.025 m²."
+    },
+    {
+      "title": "Convert a volume",
+      "prompt": "Express 4 mm³ in m³.",
+      "steps": [
+        {
+          "math": "1\\,\\mathrm{mm^3}=(10^{-3}\\,\\mathrm m)^3=10^{-9}\\,\\mathrm{m^3}",
+          "reason": "Apply the cube to both the factor and metre unit."
+        },
+        {
+          "math": "4\\,\\mathrm{mm^3}=4\\times10^{-9}\\,\\mathrm{m^3}",
+          "reason": "Multiply the original number by the cubic conversion."
+        }
+      ],
+      "conclusion": "A small length conversion becomes much smaller when cubed."
+    },
+    {
+      "title": "Convert distance per time",
+      "prompt": "Express 72 km/h in m/s.",
+      "steps": [
+        {
+          "math": "72\\frac{\\mathrm{km}}{\\mathrm h}\\frac{1000\\,\\mathrm m}{1\\,\\mathrm{km}}\\frac{1\\,\\mathrm h}{3600\\,\\mathrm s}",
+          "reason": "Arrange both ratios so km and h cancel."
+        },
+        {
+          "math": "72\\frac{1000}{3600}=20",
+          "reason": "Evaluate only after checking the surviving units."
+        }
+      ],
+      "conclusion": "The speed is 20 m/s."
+    },
+    {
+      "title": "Convert a density",
+      "prompt": "Express 1.2 g/cm³ in kg/m³.",
+      "steps": [
+        {
+          "math": "1\\,\\mathrm g=10^{-3}\\,\\mathrm{kg},\\qquad1\\,\\mathrm{cm^3}=10^{-6}\\,\\mathrm{m^3}",
+          "reason": "Mass and volume have different conversion exponents."
+        },
+        {
+          "math": "1.2\\frac{10^{-3}\\,\\mathrm{kg}}{10^{-6}\\,\\mathrm{m^3}}=1.2\\times10^3\\,\\mathrm{kg/m^3}",
+          "reason": "Subtract the denominator exponent when dividing."
+        }
+      ],
+      "conclusion": "The density is 1200 kg/m³; the exact conversion does not add precision."
+    },
+    {
+      "title": "Distinguish a temperature from a change",
+      "prompt": "Convert 25 °C and a rise of 25 °C to kelvins.",
+      "steps": [
+        {
+          "math": "T=(25+273.15)\\,\\mathrm K=298.15\\,\\mathrm K",
+          "reason": "The temperature value needs the zero-location offset."
+        },
+        {
+          "math": "\\Delta T=(t_2+273.15)-(t_1+273.15)=\\Delta t=25\\,\\mathrm K",
+          "reason": "Subtracting two values cancels the same offset."
+        }
+      ],
+      "conclusion": "The temperature is 298.15 K; the change is 25 K."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "A surface has area 3 cm². A voltage rises by 6 mV over 2 ms. Set up each conversion before simplifying.",
+    "before": [
+      "Area needs two factors of the length conversion.",
+      "The voltage rate has a numerator conversion and a denominator conversion."
+    ],
+    "question": {
+      "id": "f06-l02-guided",
+      "familyId": "guided-f06-l02",
+      "familyVersion": 1,
+      "courseId": "f06",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": false,
+      "prompt": "Convert 3 cm² to m² and calculate the rate for a +6 mV change in 2 ms in V/s.",
+      "fields": [
+        {
+          "id": "area",
+          "kind": "rational",
+          "label": "Converted area",
+          "expected": "3/10000",
+          "unit": "m^2"
+        },
+        {
+          "id": "rate",
+          "kind": "rational",
+          "label": "Voltage change per second",
+          "expected": "3",
+          "unit": "V/s"
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "The voltage rate has a numerator conversion and a denominator conversion.",
+        "Three square centimetres is 3*(0.01 m)^2=0.0003 m²."
+      ],
+      "explanation": [
+        "Three square centimetres is 3*(0.01 m)^2=0.0003 m².",
+        "The rate is 0.006 V / 0.002 s=3 V/s; the milli factors cancel."
+      ],
+      "answerSummary": "Three square centimetres is 3*(0.01 m)^2=0.0003 m². The rate is 0.006 V / 0.002 s=3 V/s; the milli factors cancel."
+    },
+    "after": "Explain each conversion before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-measurement-lab",
+    "mode": "conversion",
+    "prompt": "Change a length-unit power among 1,2,3,-1 and predict the full scale factor. Show factor cancellation and a labeled table; compare area conversion with conversion of a side length."
+  },
+  "practice": [
+    {
+      "familyId": "f06-measurement-units",
+      "variant": "ms-to-s"
+    },
+    {
+      "familyId": "f06-measurement-units",
+      "variant": "s-to-ms"
+    },
+    {
+      "familyId": "f06-measurement-units",
+      "variant": "mm-to-m"
+    },
+    {
+      "familyId": "f06-measurement-units",
+      "variant": "rate"
+    },
+    {
+      "familyId": "f06-unit-power",
+      "variant": "area"
+    },
+    {
+      "familyId": "f06-unit-power",
+      "variant": "volume"
+    },
+    {
+      "familyId": "f06-unit-power",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "f06-unit-rate",
+      "variant": "speed"
+    },
+    {
+      "familyId": "f06-unit-rate",
+      "variant": "km-hour"
+    },
+    {
+      "familyId": "f06-unit-rate",
+      "variant": "slope"
+    },
+    {
+      "familyId": "f06-unit-rate",
+      "variant": "density"
+    },
+    {
+      "familyId": "f06-temperature",
+      "variant": "value"
+    },
+    {
+      "familyId": "f06-temperature",
+      "variant": "difference"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f06-unit-power",
+      "variant": "all"
+    },
+    {
+      "familyId": "f06-unit-rate",
+      "variant": "compound"
+    },
+    {
+      "familyId": "f06-temperature",
+      "variant": "both"
+    },
+    {
+      "familyId": "f06-conversion-audit",
+      "variant": "cancel"
+    }
+  ],
+  "summary": [
+    "Use ratios equal to one and cancel the old units visibly.",
+    "Apply powers to entire conversion factors; convert rate numerators and denominators separately.",
+    "An absolute temperature uses an offset; a temperature difference does not."
+  ],
+  "retrieval": "Convert 5 cm^-1 to m^-1 without a calculator. Then explain why a cooling of 8 °C is a change of -8 K rather than 265.15 K.",
+  "readings": [
+    {
+      "title": "OpenStax University Physics Volume 1 · 1.3: Unit Conversion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-3-unit-conversion",
+      "purpose": "Use this free reference to extend the lesson's explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 4.1 and 4.2: SI base and derived units",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+      "purpose": "Use this free reference to extend the lesson's explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 8.5: Temperature interval and temperature difference",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "purpose": "Use this free reference to extend the lesson's explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    }
+  ]
+}

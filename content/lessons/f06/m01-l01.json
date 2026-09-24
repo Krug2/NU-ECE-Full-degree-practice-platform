@@ -1,0 +1,280 @@
+{
+  "id": "m01-l01",
+  "courseId": "f06",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "SI quantities, prefixes, and engineering notation",
+  "objective": "Identify quantity and unit roles, interpret case-sensitive SI prefixes, and convert exact values between scientific, engineering, and prefixed notation.",
+  "why": "A prefix or unit error can change a circuit quantity by a million while leaving the arithmetic looking reasonable. Keep the numerical value, unit size, and physical quantity separate so that a calculator result has a clear meaning.",
+  "estimatedMinutes": 35,
+  "prerequisites": [],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A quantity value is a number multiplied by a unit. Prefixes change unit size by exact powers of ten. To convert between prefixes, multiply the numerical value by $10^{e_{source}-e_{target}}$. The physical quantity stays the same.",
+        "Scientific notation uses $1\\leq |a|<10$ in $a\\times10^n$ for a nonzero value. Our engineering convention uses an exponent divisible by three and $1\\leq |a|<1000$. If these rules are familiar, try the examples and checkpoint; use the remaining explanations when a step feels uncertain."
+      ]
+    },
+    {
+      "heading": "A number needs a quantity and a unit",
+      "paragraphs": [
+        "In 2.4 kΩ, 2.4 is the numerical value, k is the prefix kilo, and Ω is the unit ohm. The quantity is resistance. The same resistance is 2400 Ω; its numerical value changed because the chosen unit became smaller. A unit tells you how a number is measured, while a quantity name tells you what is being measured.",
+        "The seven SI base units are metre m for length, kilogram kg for mass, second s for time, ampere A for electric current, kelvin K for thermodynamic temperature, mole mol for amount of substance, and candela cd for luminous intensity. Derived units combine base units. Charge is measured in coulombs, $1\\,\\mathrm C=1\\,\\mathrm{A\\,s}$; current is measured in amperes. A current and a charge are different quantities even though both occur in circuits."
+      ]
+    },
+    {
+      "heading": "Prefixes are exact and case-sensitive",
+      "paragraphs": [
+        "Common small prefixes are pico p ($10^{-12}$), nano n ($10^{-9}$), micro μ ($10^{-6}$), milli m ($10^{-3}$), centi c ($10^{-2}$), and deci d ($10^{-1}$). Common large prefixes are kilo k ($10^3$), mega M ($10^6$), giga G ($10^9$), and tera T ($10^{12}$). The BIPM link supplies the full current table, including prefixes outside this refresher.",
+        "Case is part of the symbol: mV means millivolt, while MV means megavolt. Prefix symbols join unit symbols without a space; put a space between the number and unit, as in 5 mV. Unit symbols are not pluralized. Kilogram is the SI base unit of mass, but decimal mass prefixes attach to gram: milligram is mg, not mkg. Do not stack prefixes."
+      ]
+    },
+    {
+      "heading": "Convert by preserving the same quantity",
+      "paragraphs": [
+        "Write the equality between units first. Since one nanofarad is one thousand picofarads, 3300 pF is 3.3 nF. A larger target unit requires a smaller number of those units. For a signed voltage or current, a positive conversion factor preserves the sign.",
+        "You can always pass through the unprefixed unit: replace the source prefix with its power of ten, then divide by the target prefix's power. Subtracting exponents is a compact form of this two-step process. Reverse the conversion as a check. If the magnitude changes in both directions, inspect the factor."
+      ]
+    },
+    {
+      "heading": "Notation communicates scale and precision",
+      "paragraphs": [
+        "Scientific notation makes order of magnitude explicit; engineering notation often lines up with prefixes in steps of three. The number 0.000082 can be written as $8.2\\times10^{-5}$ or $82\\times10^{-6}$. Both represent the same value. Zero has no unique normalized scientific exponent; write its reported precision explicitly instead.",
+        "An exact unit conversion does not create or erase measurement information. A stated 0.0200 A has three significant figures under conventional decimal reporting and becomes 20.0 mA. Writing 20 mA alone can obscure that intent. Lesson four explains precision in detail; here, retain the supplied meaningful digits rather than treating a change of units as a new measurement."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Read a resistance report",
+      "prompt": "Interpret 2.4 kΩ and distinguish current from charge.",
+      "steps": [
+        {
+          "math": "2.4\\,\\mathrm{k\\Omega}=2.4(10^3)\\,\\Omega",
+          "reason": "Replace the exact prefix while keeping the resistance quantity."
+        },
+        {
+          "math": "Q=I\\Delta t,\\qquad [Q]=\\mathrm{A\\,s}=\\mathrm C",
+          "reason": "Current multiplied by elapsed time gives charge; their units are not interchangeable."
+        }
+      ],
+      "conclusion": "The resistance is 2400 Ω. An ampere measures current, while a coulomb measures charge."
+    },
+    {
+      "title": "Respect the case of a prefix",
+      "prompt": "Compare 1 MV with 1 mV.",
+      "steps": [
+        {
+          "math": "1\\,\\mathrm{MV}=10^6\\,\\mathrm V,\\qquad1\\,\\mathrm{mV}=10^{-3}\\,\\mathrm V",
+          "reason": "Translate both prefixes before dividing."
+        },
+        {
+          "math": "\\frac{1\\,\\mathrm{MV}}{1\\,\\mathrm{mV}}=\\frac{10^6}{10^{-3}}=10^9",
+          "reason": "The common volt unit cancels and exponents subtract."
+        }
+      ],
+      "conclusion": "One megavolt is one billion millivolts. Capitalization cannot be discarded."
+    },
+    {
+      "title": "Remove a micro prefix",
+      "prompt": "Express 4.7 μF in farads.",
+      "steps": [
+        {
+          "math": "\\mu=10^{-6}",
+          "reason": "Use the exact SI prefix factor."
+        },
+        {
+          "math": "4.7\\,\\mu\\mathrm F=4.7\\times10^{-6}\\,\\mathrm F=0.0000047\\,\\mathrm F",
+          "reason": "The target unit is larger, so the numerical value becomes smaller."
+        }
+      ],
+      "conclusion": "The capacitance remains the same physical quantity."
+    },
+    {
+      "title": "Convert between two small prefixes",
+      "prompt": "Express 3300 pF in nF.",
+      "steps": [
+        {
+          "math": "1\\,\\mathrm{nF}=10^{-9}\\,\\mathrm F=1000\\,\\mathrm{pF}",
+          "reason": "Relate the two unit sizes."
+        },
+        {
+          "math": "3300\\,\\mathrm{pF}\\left(\\frac{1\\,\\mathrm{nF}}{1000\\,\\mathrm{pF}}\\right)=3.3\\,\\mathrm{nF}",
+          "reason": "Choose the ratio that cancels the source unit."
+        }
+      ],
+      "conclusion": "The factor is 10^-3 on the numerical value. Conversion alone does not settle how many digits in an ambiguous integer report were measured."
+    },
+    {
+      "title": "Choose scientific or engineering notation",
+      "prompt": "Write 0.000082 V using both conventions.",
+      "steps": [
+        {
+          "math": "0.000082\\,\\mathrm V=8.2\\times10^{-5}\\,\\mathrm V",
+          "reason": "Move the decimal to make the coefficient at least 1 and less than 10."
+        },
+        {
+          "math": "8.2\\times10^{-5}\\,\\mathrm V=82\\times10^{-6}\\,\\mathrm V=82\\,\\mu\\mathrm V",
+          "reason": "For engineering notation move the exponent to a multiple of three and compensate in the coefficient."
+        }
+      ],
+      "conclusion": "Scientific and engineering forms encode the same voltage with different normalization rules."
+    },
+    {
+      "title": "Preserve meaningful trailing zeros",
+      "prompt": "Convert a reported 0.0200 A to mA.",
+      "steps": [
+        {
+          "math": "0.0200\\,\\mathrm A\\left(\\frac{1000\\,\\mathrm{mA}}{1\\,\\mathrm A}\\right)=20.0\\,\\mathrm{mA}",
+          "reason": "The factor 1000 is exact, so it does not limit measurement precision."
+        },
+        {
+          "math": "0.0200\\,\\mathrm A=2.00\\times10^{-2}\\,\\mathrm A",
+          "reason": "The coefficient shows the three meaningful digits clearly."
+        }
+      ],
+      "conclusion": "Report 20.0 mA to preserve the supplied precision."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "A capacitor is labeled 6.8 nF. Convert it to F and pF, then compare mega with milli.",
+    "before": [
+      "Write nano as 10^-9 and pico as 10^-12.",
+      "Use source exponent minus target exponent for the numerical factor."
+    ],
+    "question": {
+      "id": "f06-l01-guided",
+      "familyId": "guided-f06-l01",
+      "familyVersion": 1,
+      "courseId": "f06",
+      "objectiveId": "m01-l01",
+      "category": "application",
+      "critical": false,
+      "prompt": "Convert 6.8 nF to F and pF. Also give the ratio (1 MV)/(1 mV).",
+      "fields": [
+        {
+          "id": "farads",
+          "kind": "rational",
+          "label": "Value in farads",
+          "expected": "68/10000000000",
+          "unit": "F"
+        },
+        {
+          "id": "pico",
+          "kind": "rational",
+          "label": "Value in picofarads",
+          "expected": "6800",
+          "unit": "pF"
+        },
+        {
+          "id": "ratio",
+          "kind": "rational",
+          "label": "Mega-to-milli ratio",
+          "expected": "1000000000",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Use source exponent minus target exponent for the numerical factor.",
+        "6.8 nF is 6.8 times 10^-9 F, or 6800 pF."
+      ],
+      "explanation": [
+        "6.8 nF is 6.8 times 10^-9 F, or 6800 pF.",
+        "Mega divided by milli is 10^6/10^-3=10^9."
+      ],
+      "answerSummary": "6.8 nF is 6.8 times 10^-9 F, or 6800 pF. Mega divided by milli is 10^6/10^-3=10^9."
+    },
+    "after": "Explain each conversion before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-measurement-lab",
+    "mode": "prefix",
+    "prompt": "Choose a base quantity and two prefixes. Predict the converted value and direction of numerical change, then inspect an exact scale table and reverse conversion."
+  },
+  "practice": [
+    {
+      "familyId": "f06-scientific-notation",
+      "variant": "to"
+    },
+    {
+      "familyId": "f06-scientific-notation",
+      "variant": "from"
+    },
+    {
+      "familyId": "f06-prefix-convert",
+      "variant": "to-base"
+    },
+    {
+      "familyId": "f06-prefix-convert",
+      "variant": "from-base"
+    },
+    {
+      "familyId": "f06-prefix-convert",
+      "variant": "between"
+    },
+    {
+      "familyId": "f06-prefix-convert",
+      "variant": "case"
+    },
+    {
+      "familyId": "f06-engineering-notation",
+      "variant": "small"
+    },
+    {
+      "familyId": "f06-engineering-notation",
+      "variant": "large"
+    },
+    {
+      "familyId": "f06-unit-kind",
+      "variant": "base-derived"
+    },
+    {
+      "familyId": "f06-unit-kind",
+      "variant": "symbols"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f06-prefix-convert",
+      "variant": "case"
+    },
+    {
+      "familyId": "f06-prefix-convert",
+      "variant": "between"
+    },
+    {
+      "familyId": "f06-engineering-notation",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "f06-unit-kind",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "A quantity equals a numerical value times a unit; changing units preserves the quantity.",
+    "Prefixes are exact and case-sensitive. Compare source and target exponents.",
+    "Scientific and engineering notation have different normalization rules; retain stated measurement precision."
+  ],
+  "retrieval": "From memory convert 47 μA to A and mA. Explain why the numerical value grows when the unit becomes smaller, and why 47 MA would describe a different current.",
+  "readings": [
+    {
+      "title": "OpenStax University Physics Volume 1 · 1.2: Units and Standards",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-2-units-and-standards",
+      "purpose": "Use this free reference to extend the lesson's explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "Bureau International des Poids et Mesures · SI prefix table, including the 2022 extension: The International System of Units: Prefixes",
+      "url": "https://www.bipm.org/en/measurement-units/si-prefixes",
+      "purpose": "Use this free reference to extend the lesson's explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 7.1, 7.2, 7.7, 7.9: Expressing values, uncertainty notation, and choosing prefixes",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values",
+      "purpose": "Use this free reference to extend the lesson's explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    }
+  ]
+}
