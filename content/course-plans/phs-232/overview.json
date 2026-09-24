@@ -1,0 +1,58 @@
+{
+  "courseId": "phs-232",
+  "planVersion": 1,
+  "title": "Calculus-based Physics 2",
+  "status": "Planning; no PHS 232 lesson, assessment, or project is implemented yet.",
+  "alignment": {
+    "checkedAt": "2026-09-24",
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "publishedCredits": 3,
+    "creditUnit": "semester",
+    "publishedPrerequisiteText": "PHS 104 PHS 231, MTH 220 or CSC 208, and MTH 221 or CSC 209",
+    "clarifyingSource": "https://www.nu.edu/degrees/mathematics-and-natural-sciences/programs/associate-of-science-in-general-education/",
+    "clarifyingPrerequisiteText": "PHS 104 and PHS 231; MTH 220 or CSC 208; MTH 221 or CSC 209",
+    "interpretation": "The two current NU pages agree on the course list; the general-education listing supplies explicit punctuation. Prepare with introductory physics, calculus-based mechanics, calculus I and calculus II, retaining the published cross-listed mathematics alternatives. Development order does not waive these prerequisites. NU determines enrollment eligibility and the catalog applicable to a student.",
+    "scopeSummary": "Oscillatory systems and wave propagation; electric charge, continuous-source fields, flux, potential and stored energy; current and resistance; steady and alternating circuits; magnetic fields and forces; induction and power transfer; Maxwell's field equations and electromagnetic radiation.",
+    "catalogCheck": "NU's catalog landing page currently links Catalog 89, volume 1, June 2026. Its CurriQunet destination supplied no readable catalog text through the web reader and returned HTTP 403 through a browser. The current program pages above are verified; the interactive catalog and addendum have not been independently reconciled. Historical quarter-unit catalogs are not used as the current credit basis.",
+    "boundary": "NU's public description establishes subject coverage and prerequisites, not our lesson order, assessment thresholds, study estimates, instrument models, projects, textbook assignments, or grading rules. No separate PHS 232 laboratory or mandatory equipment list is inferred. All activities in this course will be simulations; physical laboratory work belongs to separately planned lab courses."
+  },
+  "intent": "Construct a field, oscillator or circuit model with a stated system boundary; predict its spatial or temporal behavior; connect the prediction to energy and charge conservation; and test the model against independently computed or explicitly synthetic evidence.",
+  "courseObjectives": [
+    "Reconstruct oscillatory motion from initial conditions, distinguish free and driven responses, and assess damping and resonance within a stated model.",
+    "Relate wave functions, boundary conditions, energy transport and measurements while distinguishing a moving pattern from motion of the medium.",
+    "Calculate electric and magnetic fields from specified sources and identify when symmetry makes an integral law a usable solution method.",
+    "Relate electric potential, work, capacitance, polarization and stored energy with consistent reference choices and source conditions.",
+    "Predict DC transients and AC response, including real instrument loading, using signed conservation equations and dimensionally valid component laws.",
+    "Connect induction and electromagnetic waves to Maxwell's equations, charge continuity, field energy and power flow.",
+    "Evaluate uncertainty, numerical convergence and competing models; preserve reproducible evidence and explain limitations without claiming a physical experiment occurred."
+  ],
+  "sequence": ["m01", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10"],
+  "plannedLessons": 31,
+  "sequenceRationale": "Begin with the time-domain oscillator that students can connect to mechanics. Use waves to establish phase, superposition and boundary conditions. Develop sources, fields and energy before circuit approximations, then magnetic interactions and induction before AC power and Maxwell's synthesis. A final numerical check and sustained investigation require evidence across these representations. This is our proposed self-study sequence.",
+  "preparation": [
+    {"courseId":"phs-231","lessonIds":["m01-l01","m01-l02","m02-l01","m03-l01","m03-l03","m05-l01","m05-l02","m07-l01","m09-l01","m09-l02"],"availability":"Complete technical preview on this branch.","skills":"Units and uncertainty, vector products, derivatives and integrals, signed force laws, dissipation, work and energy, rotational inertia, numerical convergence and documented model validation."},
+    {"courseId":"phs-104","lessonIds":[],"availability":"Under construction; no authored lessons at planning.","skills":"Introductory physical quantities and qualitative electricity, magnetism and wave concepts.","repair":"Point to its current availability and free primary-source teaching. Contextual refreshers here do not constitute that prerequisite course."},
+    {"courseId":"csc-208","lessonIds":[],"availability":"Under construction; no authored lessons at planning.","skills":"Differentiate sinusoidal and exponential functions; integrate polynomial and trigonometric expressions; use initial conditions and definite integrals."},
+    {"courseId":"csc-209","lessonIds":[],"availability":"Under construction; no authored lessons at planning.","skills":"Further integration techniques, functions of several variables, series approximations and convergence. Introduce line/surface integrals and vector-calculus notation locally before physics use, without claiming completion of the calculus course."},
+    {"courseId":"mth-215","lessonIds":["b02","b06","m01-l01","m01-l03","m02-l01","m05-l01","m05-l02","m05-l03","m05-l04"],"availability":"These lessons are authored in the incoming main snapshot; the wider course is still building.","skills":"Scientific notation, triangles, rearrangement, roots, functions, exponential/logarithmic models and domain-aware interpretation."},
+    {"courseId":"f04","lessonIds":["m01-l02","m01-l03","m01-l04"],"availability":"Available optional refresher.","skills":"Radians, phase, sinusoidal graphs, identities and complete trigonometric solutions."},
+    {"courseId":"f07","lessonIds":["m01-l03","m01-l04","m01-l05"],"availability":"Available optional refresher.","skills":"Projection, oriented area, cross products and coordinates."},
+    {"courseId":"f08","lessonIds":["m01-l03","m01-l04","m01-l05"],"availability":"Available optional refresher.","skills":"Elementary derivatives, signed accumulation, substitution and initial conditions."},
+    {"courseId":"f09","lessonIds":["m01-l01","m01-l02","m01-l03","m01-l04"],"availability":"Available optional refresher.","skills":"Rectangular/polar complex arithmetic and Euler form before phasors. These refreshers are not added academic prerequisites."}
+  ],
+  "conventions": {
+    "units": "Use SI and supply requested units on inputs, axes, coefficients, solutions and interpretations. Angular arguments are radians; distinguish angular frequency in rad/s from cyclic frequency in Hz. C, F, H, T, Wb, V and ohm are introduced with mechanical dimensions.",
+    "signs": "Define coordinate axes, normals, loop orientation, charge sign and current reference before calculating. Use outward normals for closed surfaces and a right-hand relation between a chosen loop and its area vector. State passive sign convention for absorbed circuit power. Electron drift and conventional current may oppose each other.",
+    "phase": "Use x(t)=A cos(omega t+phi) and real-part phasors with exp(j omega t) unless explicitly stated otherwise. A is nonnegative. Distinguish equivalent phases modulo 2 pi from a requested principal interval, and state whether phasors are peak or RMS. Define the zero-amplitude phase as indeterminate rather than silently choosing a physical phase.",
+    "fields": "Separate source and observation coordinates. State integration measure and density units, excluded singular points, material region and boundary assumptions. Zero enclosed charge establishes zero net flux, not necessarily zero field. Electrostatic potential cannot globally describe an induced electric field with nonzero circulation.",
+    "constants": "Use stated rounded constants consistently and test derived relations. The NIST 2022 CODATA table supplies references: c=299792458 m/s and elementary charge=1.602176634e-19 C are exact definitions; vacuum permittivity and permeability are measured constants, not exact 4 pi conventions. Each generated form prints the constants used; learners need not memorize them.",
+    "approximation": "Make linearity, small amplitude, lumped-element, quasi-static, ideal conductor, uniform medium, nonrelativistic motion and lossless assumptions explicit where used. Check operating domains and limiting cases instead of treating every formula as universal.",
+    "precision": "Preserve internal precision. Exact rational, radical or pi fields accept supported equivalents; approximate fields state tolerance and units. Include numerical methods and domain restrictions in solutions. Display rounding must not change a critical boundary decision."
+  },
+  "routes": [
+    {"id":"full","description":"Check preparation, study all 31 planned lessons in dependency order, complete lesson checkpoints and ten module forms, carry out the saved investigation, then complete both cumulative parts and delayed targeted review.","effort":"Study-time estimates will be summed from the actual authored lessons and forms before release. No estimate is an official NU contact-hour requirement or a piloted completion time."},
+    {"id":"refresh","description":"Use independent module forms to locate gaps, repair the specific representation or assumption, and return for a fresh form. The readiness screen and assisted practice do not award course completion."},
+    {"id":"reference","description":"Keep lessons directly accessible. Preparation guidance does not lock browsing, and reading or changing sliders does not establish demonstrated-objective evidence."}
+  ],
+  "releasePolicy": "Plan artifacts and unavailable routes are not authored lessons. Keep the pack building until all coverage, deterministic families, investigations, assessment and project workflows, persistence and accessibility checks pass a documented audit. Technical completion permits preview. Independent subject review and learner pilot validation remain separate, unperformed claims."
+}
