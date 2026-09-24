@@ -1,8 +1,8 @@
 {
   "courseId": "phs-231",
   "version": 1,
-  "status": "proposed coverage; availability comes from authored lesson files",
-  "lessonStandard": "Each lesson needs original explanatory sections, defined quantities and restrictions, at least two reasoned worked examples, a guided multi-part task, misconception feedback, a prediction-led investigation with keyboard inputs and an equivalent table, at least eight practice slots across distinct families, four checkpoint slots, a recall task, and verified reading links. The examples below are authoring specifications, not completed lessons.",
+  "status": "All 22 lessons are authored. This map records the proposed teaching sequence and coverage; authored lesson files and assessment definitions determine availability.",
+  "lessonStandard": "Each lesson contains original explanatory sections, defined quantities and restrictions, reasoned worked examples, a guided multi-part task, misconception feedback, a prediction-led investigation with keyboard inputs and an equivalent table, at least eight practice slots across distinct families, four checkpoint slots, a recall task, and verified reading links. The example descriptions below are planning specifications; the lesson files contain the complete worked teaching. The implemented project follows project.json version 2, which supersedes the initial undamped-period proposal.",
   "modules": [
     {
       "id": "m01", "title": "Quantities, measurement, and vectors", "requires": [],
