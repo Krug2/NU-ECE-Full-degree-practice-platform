@@ -1,0 +1,118 @@
+{
+  "courseId": "phs-232",
+  "version": 1,
+  "status": "Complete proposed plan verified; implementation starts with m01-l01.",
+  "branch": "major-courses",
+  "pushTarget": "origin/major-courses",
+  "workspace": "C:/School/Dev/NU-ECE-major-courses",
+  "previewPort": 3001,
+  "browserTestPort": 3101,
+  "ownership": "Own this major course and its proposed simulation project. Do not author, reorder or modify prerequisite-course lessons or their primary checkout. Link to their available material; preserve academic dependencies when implementation proceeds in a different order.",
+  "artifacts": [
+    {
+      "path": "overview.json",
+      "purpose": "Current official alignment, preparation, conventions, sequence and scope boundaries."
+    },
+    {
+      "path": "source-audit.json",
+      "purpose": "What was read and what could not be verified, including current catalog access limitations."
+    },
+    {
+      "path": "modules.json",
+      "purpose": "All 31 lesson objectives, coverage, examples, misconceptions, investigations, family plans, independent checks and readings."
+    },
+    {
+      "path": "resources.json",
+      "purpose": "92 verified public primary-source reading pages, their provider titles and lesson mappings."
+    },
+    {
+      "path": "assessments.json",
+      "purpose": "Readiness, lesson/module/cumulative/review coverage and transparent completion defaults."
+    },
+    {
+      "path": "project.json",
+      "purpose": "Sustained simulation procedure, expected evidence, measurement model, rubric and saved-record requirements."
+    },
+    {
+      "path": "verification.json",
+      "purpose": "Official coverage crosswalk, independent fixtures, accessibility, storage and release gates."
+    },
+    {
+      "path": "integration.json",
+      "purpose": "Actual implementation status, checks, small commits, shared extensions and incoming prerequisite merges."
+    },
+    {
+      "path": "cumulative-blueprints.json",
+      "purpose": "Explicit complementary family/variant selections for every original objective in both cumulative parts."
+    }
+  ],
+  "slices": [
+    {
+      "id": "d01",
+      "work": "Complete and check this entire course plan before registering lesson content.",
+      "verification": "All source and reading records are accurate; every objective has prerequisite, teaching, investigation, practice and independent-check plans. All source topics map to planned evidence."
+    },
+    {
+      "id": "d02",
+      "work": "Build harmonic motion, physical oscillator, free-decay and driven-response lessons in order.",
+      "verification": "Independent initial-state/phase and event enumeration, potential/energy fixtures, damping limits and distinct resonance criteria; actual desktop/mobile learning and recovery."
+    },
+    {
+      "id": "d03",
+      "work": "Build traveling-wave, superposition/mode and sound lessons.",
+      "verification": "Derivative and flux identities, boundary substitution, arrival-time Doppler derivations and sampling/interpretation cases."
+    },
+    {
+      "id": "d04",
+      "work": "Build discrete and distributed electric fields, flux and conductor boundaries.",
+      "verification": "Independent vector and quadrature fixtures, density normalization, limiting geometry, charge conservation and explicit singular-domain handling."
+    },
+    {
+      "id": "d05",
+      "work": "Build potential, capacitance and dielectric/source energy lessons.",
+      "verification": "Gradient/integral cross-checks, source-reference restrictions, separate field/circuit energy accounts and fixed-Q/fixed-V comparisons."
+    },
+    {
+      "id": "d06",
+      "work": "Build current/resistance, DC networks and RC switching.",
+      "verification": "Independent density integration, nodal equations, power ledgers, finite meter loading and analytic transient/threshold checks."
+    },
+    {
+      "id": "d07",
+      "work": "Build magnetic trajectories, current forces/materials and magnetic source integrals.",
+      "verification": "Analytic rotations, cross products, torque/energy and independent Biot-Savart/circulation checks."
+    },
+    {
+      "id": "d08",
+      "work": "Build induction, self/mutual inductance, RL response and generator/transformer power transfer.",
+      "verification": "Flux derivatives, force/work accounts, admissible coupled energy matrices and source/load loss balances."
+    },
+    {
+      "id": "d09",
+      "work": "Build phasors, electrical resonance and RMS/power lessons.",
+      "verification": "Real sine/cosine equations, output-specific peak derivations, time-integrated power and non-sinusoidal counterexamples."
+    },
+    {
+      "id": "d10",
+      "work": "Build Maxwell, electromagnetic wave and field energy/momentum lessons.",
+      "verification": "Separate divergence/curl calculations, capacitor spanning surfaces, consistent plane-wave orientation and independent period-averaged energy/momentum."
+    },
+    {
+      "id": "d11",
+      "work": "Build the numerical benchmark and complete saved simulation investigation.",
+      "verification": "Independent discretizations, exported-row audits, model distinguishability, calibration/uncertainty endpoints and actual notebook submission/revision/recovery."
+    },
+    {
+      "id": "d12",
+      "work": "Implement the 44 course forms, evidence panel and targeted review using shared assessment infrastructure.",
+      "verification": "Every blueprint at 50 seeds, actual independent answering and per-objective failures, immutable snapshots, retained results and a two-course repeated-study capacity audit."
+    },
+    {
+      "id": "d13",
+      "work": "Audit the complete course, run release checks, inspect the production preview and publish an honest technical-preview status.",
+      "verification": "Every coverage row and source link checked; full appropriate unit/static/build/browser checks; desktop/mobile, keyboard, reflow, zoom, reduced motion and real backup restoration. Independent subject review and pilot validation stay unperformed until actual evidence exists."
+    }
+  ],
+  "commitPolicy": "Make a few small related changes per commit, verify the slice, stage only its files, use a short lowercase summary without body or attribution, and immediately push to origin/major-courses. Shared infrastructure extensions must be compatible and committed separately from course content. Record their hashes and integration requirements. Never push or merge into main from this task.",
+  "nextCourse": "After PHS 232 is completely implemented and technically audited, begin with CSC 310 in catalog order and recheck official dependencies. All remaining majors, laboratory courses and capstone stages remain in scope."
+}

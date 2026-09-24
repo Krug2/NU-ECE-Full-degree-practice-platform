@@ -1,0 +1,44 @@
+{
+  "courseId": "phs-232",
+  "updatedAt": "2026-09-24",
+  "branch": "major-courses",
+  "pushTarget": "origin/major-courses",
+  "status": "The complete proposed course plan is verified. Implementation starts with m01-l01; no PHS 232 teaching feature is available yet.",
+  "planned": {
+    "modules": 10,
+    "lessons": 31,
+    "initialFamilies": 62,
+    "initialVariants": 372,
+    "courseAssessmentForms": 44
+  },
+  "delivered": {
+    "lessons": 0,
+    "families": 0,
+    "investigations": 0,
+    "courseAssessmentForms": 0,
+    "project": false
+  },
+  "upstreamIntegration": {
+    "sourceCommit": "ab290107e1decd829ac636d844c73b57b76c3ffd",
+    "mergeCommit": "d956279",
+    "resolvedFiles": [
+      "components/learning/lesson-reader.tsx",
+      "lib/learning/catalog.ts"
+    ],
+    "preserved": "Adds the incoming MTH 215 modeling lesson and its tools, plus the new pi grading and angle families. Additive resolutions retain every PHS 231 lesson and its release-status/preparation behavior. Prerequisite content, course plans, learning pack and catalog match this exact source snapshot; the primary checkout was not changed.",
+    "checks": "2297 unit tests in 263 files passed in 337.88 seconds with F10_PYTHON configured. Full lint, type checking and a 189-page production build passed. All 23 selected shared learning, modeling, PHS 231 assessment/recovery and release browser regressions passed in one 5.8-minute run on 3101."
+  },
+  "sharedChanges": [],
+  "planningVerification": {
+    "status": "passed",
+    "counts": "10 modules, 31 lessons, 62 initially planned families with 372 variants, 44 course forms and 31 complementary cumulative-blueprint rows.",
+    "coverage": "Every published subject area maps to explicit lesson evidence, and every planned lesson appears in the coverage crosswalk. Module and lesson dependencies have no forward or missing internal references.",
+    "links": "Every linked preparation lesson exists. All 92 reading IDs resolve to HTTP-200 provider pages and their expected titles; the MIT reading index title differs only in word order. Every referenced planning artifact exists.",
+    "assessment": "Each cumulative selection belongs to its original planned lesson and named family/variant; A and B use different families for every objective. Proposed thresholds, critical checks, six project criteria and ten notebook sections are explicit.",
+    "scope": "Planning is complete, not course implementation. No independent subject review or pilot validation has occurred."
+  },
+  "independentSubjectReview": "not performed",
+  "pilotValidation": "not performed",
+  "remaining": "Implement and verify m01-l01 before progressing through the 31-lesson course. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
+  "previousCourseIntegration": "../phs-231/integration.json"
+}
