@@ -1,0 +1,300 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m07-l02",
+  "checkedAt": "2026-09-24",
+  "status": "Detailed implementation plan; not yet delivered.",
+  "title": "Angular momentum and rotational work",
+  "objective": "Use external torque and angular impulse to track angular momentum and distinguish its conservation from energy conservation.",
+  "alignment": "Continues the rotational-motion content of the verified official PHS 231 scope. The chosen sequence, changing-radius simulation, original examples, and assessment policies are proposed platform teaching choices, not an official NU syllabus or physical laboratory requirement.",
+  "prerequisites": [
+    {
+      "lessonId": "m07-l01",
+      "purpose": "Axis-specific inertia, cross-product torque, fixed-axis kinematics, and torque inventories"
+    },
+    {
+      "lessonId": "m06-l01",
+      "purpose": "Impulse integrals, system boundaries, center of mass, and sums over particles"
+    },
+    {
+      "lessonId": "m06-l02",
+      "purpose": "Capture, contact impulse, and independent momentum/kinetic-energy audits"
+    },
+    {
+      "lessonId": "m05-l01",
+      "purpose": "Signed work integrals and instantaneous power"
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "Mechanical energy, conservative potentials, and internal energy conversion"
+    },
+    {
+      "courseId": "csc-208",
+      "purpose": "Differentiate products and integrate torque and power; preparation remains under construction"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Particle and system angular momentum",
+      "teaching": "Define L_O=r cross p, give kg m²/s units and direction, calculate components and sums, and show that a straight-line trajectory can have nonzero angular momentum about an offset origin. Distinguish orbital angular momentum of particles from any separately retained spin. Use one origin and one frame for a system sum.",
+      "critical": [
+        "Angular momentum does not require a circular path.",
+        "Do not add magnitudes in place of vectors."
+      ]
+    },
+    {
+      "topic": "Origins, torque, and angular impulse",
+      "teaching": "Derive dL/dt=r cross F about a fixed inertial origin using v cross mv=0. Show origin shift L_O'=L_O−a cross P and illustrate the zero-P special case. Derive the external torque balance for a closed mechanical collection with internal moments accounted for; integrate to vector angular impulse. Briefly state the extra −v_O cross P term for a moving origin with absolute particle momenta, and the CM exception; use fixed origins in solved problems.",
+      "critical": [
+        "Use torque and angular momentum about the same reference.",
+        "Zero net angular impulse over an interval is weaker than zero torque at every instant."
+      ]
+    },
+    {
+      "topic": "Rigid fixed-axis angular momentum",
+      "teaching": "Derive L_axis=I_axis omega as an axial component. Explain that the entire L vector need not be parallel to omega for an arbitrary 3D mass distribution. Compare zero-torque steady rotation, changing-axis torque, and changes in L magnitude versus direction. Fixed-axis supports may exert impulse or nonaxial moments even when axial torque is negligible.",
+      "critical": [
+        "A scalar axial formula is not a universal vector identity.",
+        "One instant of perpendicular torque does not establish a finite-time constant magnitude."
+      ]
+    },
+    {
+      "topic": "Central force and areal motion",
+      "teaching": "A force along r has zero torque about that force center and conserves L there despite nonzero force and changing linear momentum. Relate Lz=m r vt to signed areal rate Lz/(2m). Link equal-area motion to the gravity lesson and distinguish unknown radial velocity from tangential speed.",
+      "critical": [
+        "Conserved angular momentum does not mean constant angular speed as radius changes.",
+        "Conservation about one center does not automatically hold about another."
+      ]
+    },
+    {
+      "topic": "Changing inertia and energy source",
+      "teaching": "For a common fixed axis with I(t), differentiate L=I omega to obtain tau=I alpha+Idot omega. Under zero external axial torque, omega=L/I and rotational K=L²/(2I). Inward motion can increase K through radial work or internal energy conversion. State the material-system boundary and avoid assuming a changing configuration stays rigid.",
+      "critical": [
+        "Do not use tau=I alpha while ignoring Idot.",
+        "No external axial torque does not imply no work or conserved mechanical kinetic energy."
+      ]
+    },
+    {
+      "topic": "Capture and frictional coupling",
+      "teaching": "Apply angular momentum about a fixed ideal axle during a short sticking capture, including preexisting rotor spin and radial/tangential incident components. Calculate new inertia, final omega, kinetic conversion, and possible support impulse. Treat two coaxial rotors coupling through friction as one angular-momentum system; derive common omega and nonnegative relative-rotation energy loss.",
+      "critical": [
+        "Linear momentum can change through the axle while axial angular momentum is conserved.",
+        "Kinetic energy is not conserved through an inelastic capture or clutch."
+      ]
+    },
+    {
+      "topic": "Rotational work and power",
+      "teaching": "Derive dW=F dot dr=tau_axis dtheta for fixed-axis motion, integrate signed torque over angle, and derive instantaneous P=tau dot omega or tau_axis omega without requiring torque to be constant. Contrast torque-time area with torque-angle area, their units, and their different balances. Preserve sign and verify energy accessibility before selecting a square-root velocity.",
+      "critical": [
+        "Torque-time area changes L; torque-angle area transfers energy.",
+        "A square root of energy gives speed; direction requires motion information."
+      ]
+    },
+    {
+      "topic": "Elastic torsion, braking, and drive losses",
+      "teaching": "Introduce ideal torsion tau=−kappa theta and U=kappa theta²/2 as a conservative rotation example. Distinguish zero torque at spring equilibrium from zero angular velocity. Solve a constant opposing brake only until first rest, tracking heat and angular impulse. Compare motor mechanical power, load power, acceleration power, and electrical input for a stated positive motoring efficiency.",
+      "critical": [
+        "A braking formula cannot be extrapolated into negative K.",
+        "Efficiency accounting needs a declared flow direction; do not apply motoring efficiency blindly to regeneration."
+      ]
+    },
+    {
+      "topic": "Controlled angular speed versus conserved L",
+      "teaching": "For a prescribed radius path and constant omega, a motor supplies tau=Idot omega and changes L. Show that motor work and radial actuator work both enter the mechanical-energy ledger. Include radial kinetic energy during the path, which vanishes at the chosen smooth endpoints. Changing trial duration changes radial transient demands without changing these endpoint states.",
+      "critical": [
+        "Holding omega fixed while changing I is not torque-free.",
+        "Ignoring radial kinetic energy would spoil the intermediate-time work balance."
+      ]
+    },
+    {
+      "topic": "Evidence, measurement, and limits",
+      "teaching": "Use signed impulse, energy, and system-boundary checks as independent audits. Identify torque calibration, bearing loss, radius measurement, angular-rate resolution, and time-sampling limits. The investigation uses supplied ideal parameters and does not prescribe physical spinning hardware, impact apparatus, or operator safety certification.",
+      "critical": [
+        "A small measured residual relative to uncertainty does not prove exact isolation.",
+        "A simulated work ledger is not an equipment rating or a pilot validation."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "particle-origin",
+      "input": "m2kg,r=(2,−1,3)m,v=(1,4,−2)m/s; new origin shifted by(1,0,0)m",
+      "expected": "p=(2,8,−4); L=(-20,14,18)kgm²/s; L'=(-20,10,10). With F=(3,0,2)N, instantaneous torque=(-2,5,3)Nm."
+    },
+    {
+      "id": "system-cancellation",
+      "input": "Two1kg particles at(1,0,0),(-1,0,0)m with v=(0,2,0),(0,-2,0)m/s",
+      "expected": "P=0,L=(0,0,4),K4J; origin shifts leave L unchanged because totalP0, although each individual contribution changes."
+    },
+    {
+      "id": "angular-impulse",
+      "input": "L0=(1,2,-1)kgm²/s; externaltau(t)=(2t,-1,3-t)Nm over0..2s",
+      "expected": "Angular impulse(4,-2,4)Nms; Lfinal(5,0,3)kgm²/s; magnitude sqrt34. Integrate components, not torque magnitude."
+    },
+    {
+      "id": "central-force",
+      "input": "2kg particle at(3,0,0)m with v=(-1,4,0)m/s under a force always toward the origin",
+      "expected": "Lz24kgm²/s; signed areal rate6m²/s. At radius6m, tangential speed2m/s, angular rate1/3rad/s; radial speed needs more information."
+    },
+    {
+      "id": "inward-free",
+      "input": "Disk baseI1kgm² plus two1kg symmetric sliding masses; r0=1m,r1=.5m; omega0=2rad/s; zero external axial torque; endpoints radialrest",
+      "expected": "I0=3,If=3/2; L6; finalomega4; Krot6→12J; radial actuator work on mechanical bodies+6J; motorwork0."
+    },
+    {
+      "id": "inward-controlled",
+      "input": "Same endpoint geometry, an ideal motor maintainsomega2rad/s",
+      "expected": "L6→3; angular motor impulse−3Nms; Krot6→3J; motorworkomega²(If−I0)=−6J; radialactuatorwork+3J; totalwork−3J. Do not label the negative mechanical motor work as electrical output without a regeneration model."
+    },
+    {
+      "id": "smooth-midpoint",
+      "input": "Same inward path, duration2s, r=r0+(r1-r0)(10u³−15u⁴+6u⁵),u=t/T; inspectt1s",
+      "expected": "r3/4m,rdot−15/32m/s,rddot0; I17/8; radialK225/1024J. ConservedL mode: omega48/17,Krot144/17,alpha540/289,radialforceeach−1728/289N,radialpower1620/289W. Fixedomega mode: tau_motor−45/16Nm,Pmotor−45/8W,Pradial45/16W."
+    },
+    {
+      "id": "capture",
+      "input": "RotorI2kgm²,omega−1rad/s; particle1kg sticks at r=(2,0)m with incidentv=(-3,4)m/s; negligible external axial angular impulse,ideal fixed axle",
+      "expected": "InitialLz−2+8=6; finalI6,omega1; Ki27/2,Kf3,converted21/2J. Total linear impulse from axle=(3,−2)Ns in the instantaneous planar model."
+    },
+    {
+      "id": "clutch",
+      "input": "Coaxial rigid rotorsI1=2,I2=3kgm²,omega1=4,omega2=−1rad/s,frictioncouplingwithzeroexternalaxialimpulse",
+      "expected": "L5,commonomega1; Ki35/2,Kf5/2,converted15J; angular impulses−6,+6Nms."
+    },
+    {
+      "id": "angle-work",
+      "input": "FixedI2kgm²,initialomega+1rad/s; nettorque6−2thetaNm ontheta0..2rad",
+      "expected": "Signed work8J,Kfinal9J,omega+3rad/s; finaltorque2Nm and netpower6W. Positive kineticenergy throughout and positive initial direction select the positive branch."
+    },
+    {
+      "id": "torsion-brake",
+      "input": "Ideal torsional springkappa8Nm/rad,rotorI2,theta0=.5rad,omega0=0; separatelyI2,omega0+3,opposingtorque−3untilfirstrest",
+      "expected": "TorsionUinitial1J,first equilibrium crossingomega−1rad/s; springtorque0 there despite nonzero velocity. Brake: stoppingtime2s,angle3rad,heat9J,angularimpulse−6Nms."
+    },
+    {
+      "id": "pulse-cycle",
+      "input": "FixedI2,omega0+1; torque+2Nm for1s then−2Nm for1s",
+      "expected": "omega1→2→1; angularimpulses+2,−2; work+3,−3J; network0; totalangle3rad, greater than2rad for steady initialrate. Zero interval angular impulse does not mean torque vanished throughout."
+    },
+    {
+      "id": "motor-power",
+      "input": "Steadyomega−120rpm=−4pi rad/s; drivecouple−3Nm,opposingload+3Nm; motoringefficiency4/5",
+      "expected": "Motor mechanical power12piW,load absorption12piW,netrotationalpower0; electricalinput15piW,conversionloss3piW. Opposing torque directions produce positive motor output and negative load work on the rotor."
+    }
+  ],
+  "families": [
+    {
+      "id": "phs231-angular-momentum",
+      "variants": [
+        "particle",
+        "system",
+        "origin",
+        "impulse",
+        "central",
+        "conserve",
+        "capture",
+        "coupling"
+      ],
+      "coverage": "Vector and axial quantities, reference changes, torque integrals, central forces, variable inertia, capture and internal coupling."
+    },
+    {
+      "id": "phs231-rotation-energy",
+      "variants": [
+        "work",
+        "vector-power",
+        "power",
+        "torsion",
+        "braking",
+        "controlled",
+        "pulse-cycle",
+        "efficiency"
+      ],
+      "coverage": "Torque-angle versus torque-time balances, signed power and rpm, conservative torsion, stopping domains, motor and radial work, zero net angular impulse, and declared motoring efficiency."
+    }
+  ],
+  "guided": {
+    "fixture": "Compare the two inward endpoint cases above.",
+    "fields": [
+      "freeOmega",
+      "freeActuatorWork",
+      "controlledMotorWork",
+      "controlledActuatorWork",
+      "interpretation"
+    ],
+    "misconceptions": [
+      "Conserve K because L is conserved.",
+      "Hold omega fixed without a motor torque.",
+      "Attribute every change in rotational K to motor work alone.",
+      "Count only rotational K while the masses have radial velocity."
+    ]
+  },
+  "investigation": {
+    "kind": "phs231-angular",
+    "model": "A disk of fixed base inertia plus two equal point masses on opposite massless radial tracks, with common angular velocity about a fixed z axle. A smooth prescribed radius path moves the masses between positive radii with zero radial speed and acceleration at both endpoints. Compare zero external axial torque (L fixed) with an ideal motor maintaining omega. The mechanical system is disk plus moving masses; radial actuators and motor are external work sources. Radial actuators have zero axial moment, but can do work when radius changes. No unmodeled friction or impact loss.",
+    "inputs": "BaseI0.1..20kgm²; each added mass0.1..5kg; r0,r1 each0.1..3m; omega0−10..10rad/s; duration0.2..10s; conserved-L or fixed-omega mode. DefaultbaseI1,m1,r0=1,r1=.5,omega0=2,T2.",
+    "path": "u=t/T,S=10u³−15u⁴+6u⁵;r=r0+(r1−r0)S;rdot=(r1−r0)S'/T;rddot=(r1−r0)S''/T²;I=Ib+2mr²,Idot=4mrrdot.",
+    "outputs": "81 time samples; r,rdot,rddot,I,omega,alpha,L,rotationalK,radialK,totalK; motor torque/power/work; radial actuator force per mass/power/work; both work-ledger and angular-impulse residuals; endpoint comparison for both modes. A body-frame distribution diagram and labeled plots have complete equivalent tables; no absolute orientation is claimed without integration.",
+    "equations": "Conserved L: omega=L0/I,alpha=−Idot*omega/I,tauMotor=0,workMotor=0. Fixedomega:alpha0,tauMotor=Idot*omega,workMotor=omega0²(I−I0). Both:Krad=m*rdot²;Frad_each=m(rddot−r*omega²);Prad=2Frad_each*rdot;Pmotor=tauMotor*omega;Wrad=Ktotal−Kinitial−Wmotor. Verify integrated powers independently, not by merely repeating this ledger identity.",
+    "predictions": "Finalomega,finalL,motorwork,radialactuatorwork. Tolerances documented; state whether fixed-L or fixed-omega governs the trial.",
+    "limitations": "Prescribed bidirectional radial actuation and ideal angular control do not establish motor limits, bearing loads, material stresses, safe speeds, or build instructions. This changing configuration is not a rigid body with constant I. Exploration resets on reload; notes and assessment evidence persist."
+  },
+  "verification": {
+    "seedMinimumPerVariant": 50,
+    "independentChecks": [
+      "Compute r cross p directly and check origin shifts using total linear momentum.",
+      "Numerically integrate vector torques and compare with angular impulse.",
+      "Derive capture from angular momentum and independently sum initial/final individual kinetic energies and support impulse.",
+      "Check coupling conversion using separate rotor energies and equal/opposite angular impulses.",
+      "Integrate torque over angle and integrate power over time as distinct operations.",
+      "Numerically integrate motor/radial powers on changing-radius paths and compare with total including radial kinetic energy.",
+      "Differentiate I*omega and individual angular momenta, and check time derivatives of K with power sums.",
+      "Verify all sign/zero/endpoint choices, exact radicals and pi, invalid syntax, units, and every interpretation branch.",
+      "Complete actual checkpoint, reload after confirmed save, export/reset/restore snapshots/evidence/notes."
+    ],
+    "edges": [
+      "Zero initialomega",
+      "Equal initial/finalradii",
+      "Inward and outward motion",
+      "Negative spin",
+      "Long versus short duration with identical endpoints",
+      "Zero or cancelling total angular momentum",
+      "Pure radial incident velocity and incident moment opposing rotor spin",
+      "Equal initial rotor rates",
+      "Torque perpendicular to initial L versus continuously perpendicular torque",
+      "Zero torque or power at an instant",
+      "Insufficient energy to reach a requested angle",
+      "Endpoint braking without extrapolating the brake law",
+      "Motor regeneration left as mechanical work unless a separate efficiency law is supplied"
+    ],
+    "review": "Independent subject review and pilot validation have not been performed."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Angular Momentum",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-2-angular-momentum",
+      "checkedAt": "2026-09-24",
+      "use": "Particle and system angular momentum, fixed-reference torque balance, and angular impulse background."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Conservation of Angular Momentum",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-3-conservation-of-angular-momentum",
+      "checkedAt": "2026-09-24",
+      "use": "Changing inertia and angular-momentum conservation; the lesson explicitly accounts for work and the selected system boundary."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Work and Power for Rotational Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-8-work-and-power-for-rotational-motion",
+      "checkedAt": "2026-09-24",
+      "use": "Rotational work and power. The lesson derives instantaneous tau dot omega without imposing unnecessary constant-torque restrictions."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "Week 11: Angular Momentum",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-11-angular-momentum/",
+      "checkedAt": "2026-09-24",
+      "use": "Free lessons on particle angular momentum, fixed-axis rigid bodies, torque, and angular impulse, with worked material and practice."
+    }
+  ]
+}
