@@ -1,0 +1,204 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m04-l02",
+  "status": "Implementation plan; this file is not an available lesson",
+  "objective": "Relate inverse-square gravity to near-surface weight, circular orbital motion, escape energy, and Kepler's scaling laws.",
+  "preparation": [
+    "m01-l02 vector addition and dot products",
+    "m02-l01 derivatives and definite integrals",
+    "m03-l01 inertial force inventories and apparent weight",
+    "m04-l01 radial acceleration and circular constraints"
+  ],
+  "sequenceNote": "The later m05 energy module is not assumed completed. Derive the narrowly needed kinetic-energy and potential-energy identity here from m a dot v, explain joules and the zero at infinity, and link forward as a later generalization without a prerequisite cycle.",
+  "assumptions": [
+    "Newtonian point sources or exterior spherically symmetric sources",
+    "Fixed dominant source with parameter mu=GM; negligible test mass compared with source mass",
+    "No atmosphere, thrust, collisions, or perturbations during ideal motion",
+    "Center distance r>0 and r at least source radius R for exterior formulas; altitude h=r-R",
+    "For circular formulas, velocity is tangential with the derived circular magnitude; energy sign alone does not establish a safe orbit"
+  ],
+  "teachingSequence": [
+    "Distinguish universal constant G, source parameter mu, position-dependent field g, weight, and scale reading.",
+    "Derive the attractive vector field and use vector superposition with explicit exclusions at point sources.",
+    "Relate near-surface g to radius and altitude; identify the small-height constant-g approximation.",
+    "Derive v_c=sqrt(mu/r) and T=2pi sqrt(r³/mu) from actual gravitational force and circular acceleration.",
+    "Explain all three Kepler laws with a circular derivation of the period law, an ellipse's focus and semimajor axis, and equal-area reasoning from central force.",
+    "Derive K=m|v|²/2 and U=-mu*m/r as an energy bridge; check -dU/dr against radial force.",
+    "Find circular binding energy, radial escape threshold, and finite outward turning radius; retain collision caveats for general initial directions.",
+    "Explain local free fall and apparent weightlessness despite nonzero gravity; distinguish the fixed-source approximation from comparable-mass two-body motion."
+  ],
+  "workedFixtures": [
+    {
+      "case": "altitude versus center distance",
+      "inputs": {
+        "mu": 800,
+        "R": 4,
+        "h": 4
+      },
+      "expected": "r=8 m; g=12.5 m/s²; surface g=50 m/s²; field ratio=1/4."
+    },
+    {
+      "case": "circular orbit",
+      "inputs": {
+        "mu": 128,
+        "r": 8,
+        "mass": 3
+      },
+      "expected": "v=4 m/s; T=4pi s; g=2 m/s²; F=6 N; K=24 J; U=-48 J; E=-24 J; escape speed=4sqrt(2) m/s."
+    },
+    {
+      "case": "radius scaling",
+      "inputs": {
+        "radiusRatio": 4
+      },
+      "expected": "g ratio=1/16; circular-speed ratio=1/2; period ratio=8; circular-energy ratio=1/4 at unchanged mass and source."
+    },
+    {
+      "case": "vector superposition",
+      "inputs": {
+        "testPoint": [
+          0,
+          0
+        ],
+        "sourceA": [
+          3,
+          0
+        ],
+        "muA": 18,
+        "sourceB": [
+          0,
+          -4
+        ],
+        "muB": 48
+      },
+      "expected": "g=(2,-3) m/s²; magnitude=sqrt(13) m/s²; force for 2 kg=(4,-6) N."
+    },
+    {
+      "case": "zero field between two sources",
+      "inputs": {
+        "separation": 12,
+        "leftMu": 4,
+        "rightMu": 16
+      },
+      "expected": "Between-source cancellation is at x=4 m from the left source; exterior rays cannot cancel two attractions in the same direction."
+    },
+    {
+      "case": "radial outward turning point",
+      "inputs": {
+        "mu": 128,
+        "r0": 8,
+        "v0": 4
+      },
+      "expected": "specific energy=-8 m²/s²; radial outward maximum radius=16 m. Same speed with tangential velocity instead yields the circular orbit; speed alone does not select the path."
+    },
+    {
+      "case": "elliptical period",
+      "inputs": {
+        "periapsis": 4,
+        "apoapsis": 12,
+        "mu": 128
+      },
+      "expected": "a=8 m, e=1/2, T=4pi s; apsidal speed ratio v_peri/v_apo=3. Circular speed formula is not an instantaneous ellipse formula."
+    }
+  ],
+  "generatorBlueprint": {
+    "phs231-gravity-orbit": [
+      "height",
+      "circular",
+      "scaling",
+      "source-mass",
+      "escape",
+      "energy",
+      "turning",
+      "kepler"
+    ],
+    "phs231-gravity-interpretation": [
+      "vector",
+      "superposition",
+      "zero-field",
+      "weightless",
+      "domain",
+      "ellipse",
+      "units"
+    ],
+    "minimumSeedsPerVariant": 50,
+    "oracles": [
+      "Independent component summation from source-to-test geometry",
+      "Check force and acceleration mass scaling separately",
+      "Check circular force balance, circumference/period, and energy residuals",
+      "Numerical force-work quadrature and independent orbit integration where practical",
+      "Equal-radius and positive-radius edges, zero altitude, point-source singularities, escape equality, and collision limitations"
+    ]
+  },
+  "investigation": {
+    "type": "Analytic comparison of separate ideal circular orbits, not a simulated transfer or measured system",
+    "inputs": [
+      "source parameter mu in m³/s²",
+      "source radius R in m",
+      "reference center distance r0 in m",
+      "comparison radius ratio k",
+      "test mass in kg"
+    ],
+    "domain": "Require both r0 and k*r0 to be exterior. Positive source parameter, radius, ratio, and test mass. An r=R circle is an ideal no-atmosphere geometric boundary, not an engineering orbit claim.",
+    "predictions": [
+      "field-strength ratio",
+      "circular-speed ratio",
+      "period ratio",
+      "circular-energy ratio"
+    ],
+    "output": [
+      "Two concentric circles drawn to a common length scale",
+      "Numerical table with r, altitude, g, force, speed, period, K, U, E, and escape speed",
+      "Radius-ratio comparison table with explicit mass and source controls held fixed"
+    ],
+    "persistence": "Controls reset; save parameter comparisons and explanations in lesson notes. Existing practice/checkpoint snapshots and backup behavior remain unchanged.",
+    "procedure": "Predict four ratios; compare k=1,2,4 and a feasible k<1. Change test mass and identify what changes. Change mu and distinguish source changes from radius changes. Attempt an interior radius and explain rejection.",
+    "evidence": "At least three predicted-and-checked radius comparisons, one dimensional force/energy check, and an explanation of why the view is not a transfer trajectory.",
+    "rubric": "Correct controlled variables and ratios; center distance and exterior domain; force versus acceleration mass dependence; energy reference and transfer limitation."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Newton's Law of Universal Gravitation",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-1-newtons-law-of-universal-gravitation",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original examples and explanations will be authored; no provider problems, figures, or solutions will be copied."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Gravitation Near Earth's Surface",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-2-gravitation-near-earths-surface",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original examples and explanations will be authored; no provider problems, figures, or solutions will be copied."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Gravitational Potential Energy and Total Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-3-gravitational-potential-energy-and-total-energy",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original examples and explanations will be authored; no provider problems, figures, or solutions will be copied."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Satellite Orbits and Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original examples and explanations will be authored; no provider problems, figures, or solutions will be copied."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Kepler's Laws of Planetary Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-5-keplers-laws-of-planetary-motion",
+      "checkedAt": "2026-09-23",
+      "verified": "Primary-provider free section accessed. Original examples and explanations will be authored; no provider problems, figures, or solutions will be copied."
+    }
+  ],
+  "releaseChecks": [
+    "All teaching and energy preparation explicit",
+    "All 15 variants over at least 50 deterministic seeds plus boundaries",
+    "Independent invariants and worked fixtures",
+    "Accessible equivalent tables, keyboard controls, desktop/mobile visuals",
+    "Actual checkpoint reload and backup restoration",
+    "No claim of independent subject review or pilot validation"
+  ]
+}
