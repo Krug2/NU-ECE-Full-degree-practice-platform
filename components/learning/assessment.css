@@ -1,0 +1,10 @@
+.assessment-table { max-width:100%;max-height:30rem;overflow:auto;margin:20px 0;border:1px solid var(--line);border-radius:8px; }
+.assessment-table table { border-collapse:collapse;width:100%;min-width:680px;font-size:14px; }
+.assessment-table caption { text-align:left;padding:12px;font-weight:600; }
+.assessment-table th,.assessment-table td { text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid var(--line); }
+.assessment-table thead th { position:sticky;top:0;background:var(--surface,white);z-index:1; }
+.assessment-table tbody th { max-width:280px;font-weight:500; }
+.assessment-table small,.assessment-table td a { display:block;margin-top:5px; }
+.assessment-table small { color:var(--muted);font-size:12px; }
+.assessment-history .form-actions { margin:0; }
+.assessment-history small { overflow-wrap:anywhere; }
