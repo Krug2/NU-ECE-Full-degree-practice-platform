@@ -25,9 +25,9 @@ export function checkPrediction(text:string,expected:number){
  if(!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(text.trim())||!Number.isFinite(Number(text)))return "Enter a finite decimal or scientific-notation prediction first.";
  return Math.abs(Number(text)-expected)<=Math.max(1e-6,Math.abs(expected)*1e-5)?"Your prediction agrees within the displayed precision. Explain which setting or grouping makes it agree.":"Your prediction differs. Compare the input unit, grouping, and notation with the explanation, then try again.";
 }
-export const practiceFileSchema=z.object({format:z.literal("ece-study-file-practice-v1"),revision:z.number().int().min(1).max(99),marker:z.string().regex(/^orientation-[a-z0-9-]+$/).max(80),note:z.string().trim().min(10).max(200)}).strict();
+export const practiceFileSchema=z.object({format:z.literal("ece-study-file-practice-v1"),revision:z.number().int().min(1).max(99),marker:z.string().regex(/^orientation-[a-z0-9-]+$/).max(80),note:z.string().min(10).max(200).refine(value=>value.trim().length>=10)}).strict();
 export type PracticeFile=z.infer<typeof practiceFileSchema>;
-export const createPracticeFile=(note:string,revision:number,marker:string):PracticeFile=>practiceFileSchema.parse({format:"ece-study-file-practice-v1",revision,marker,note});
+export const createPracticeFile=(note:string,revision:number,marker:string):PracticeFile=>practiceFileSchema.parse({format:"ece-study-file-practice-v1",revision,marker,note:note.trim()});
 export function comparePracticeFile(text:string,expected:PracticeFile){
  if(new TextEncoder().encode(text).byteLength>20_000)throw Error("Choose the small practice JSON file (20 KB maximum).");
  let value:unknown;try{value=JSON.parse(text);}catch{throw Error("The selected file is not readable JSON. Keep the original and select the downloaded practice file.");}

@@ -15,6 +15,7 @@ it("keeps explicit entry conventions and rejects invalid prediction strings",()=
 it("verifies file content independent of JSON formatting and rejects wrong or unsafe inputs",()=>{
  const expected=createPracticeFile("A marker note to reopen.",2,"orientation-example-7");
  expect(comparePracticeFile(JSON.stringify({note:expected.note,marker:expected.marker,revision:2,format:expected.format},null,4),expected)).toEqual(expected);
+ expect(()=>comparePracticeFile(JSON.stringify({...expected,note:expected.note+" "}),expected)).toThrow("note content differs");
  for(const [change,message] of[[{marker:"orientation-older"},"different practice round"],[{revision:1},"revision differs"],[{note:"A different saved note."},"note content differs"]] as const)expect(()=>comparePracticeFile(JSON.stringify({...expected,...change}),expected)).toThrow(message);
  expect(()=>comparePracticeFile("{broken",expected)).toThrow("not readable JSON");expect(()=>comparePracticeFile(JSON.stringify({schemaVersion:2}),expected)).toThrow("practice-file format");
  expect(()=>comparePracticeFile(" ".repeat(20001),expected)).toThrow("20 KB");expect(()=>createPracticeFile("short",1,"orientation-a")).toThrow();
