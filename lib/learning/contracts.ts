@@ -19,12 +19,14 @@ import { variationLabCaseSchema } from "./variation-investigation";
 import { radicalLabCaseSchema } from "./radical-investigation";
 import { exponentialLabCaseSchema } from "./exponential-investigation";
 import { logarithmLabCaseSchema } from "./logarithm-investigation";
+import { equalLogarithmic, parseLogarithmic } from "./logarithmic-number";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
 const unique = (items: string[]) => new Set(items).size === items.length;
 const rational = z.string().max(200).refine(value => { try { parseRational(value); return true; } catch { return false; } }, "Invalid exact number");
 const exact = z.string().max(200).refine(value => { try { parseExact(value); return true; } catch { return false; } }, "Invalid radical or complex number");
+const logarithmic = z.string().min(1).max(200).refine(value => { try { parseLogarithmic(value); return true; } catch { return false; } }, "Invalid exact logarithmic expression");
 const endpoint = z.string().max(200).refine(value => { try { parseRealEndpoint(value); return true; } catch { return false; } }, "Invalid real interval endpoint");
 const polynomial = z.string().max(200).refine(value => { try { parsePolynomial(value); return true; } catch { return false; } }, "Invalid polynomial");
 const fieldBase = { id, label: text, help: z.string().max(500).default("") };
@@ -42,6 +44,19 @@ const numericField = z.object({
 const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:endpoint.nullable(),upper:endpoint.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
   .refine(field=>{try{normalizeIntervals(field.expected);return true;}catch{return false;}},"Invalid interval key");
 const exactField = z.object({ ...fieldBase, kind: z.literal("exact"), expected: exact, unit: z.string().max(60).default("") }).strict();
+const logarithmicField = z.object({
+  ...fieldBase, kind: z.literal("logarithmic"), expected: logarithmic, unit: z.string().max(60).default(""),
+  help: z.string().min(1).max(500).default("Keep the answer exact. Use ln(3), log(3) for base 10, log(2, 3) for base 2, e or exp(2), sqrt(), and arithmetic. Equivalent supported forms are accepted; do not replace a logarithm with a rounded decimal."),
+}).strict();
+const logarithmicRootsField = z.object({
+  ...fieldBase, kind: z.literal("logarithmic-roots"), expected: z.array(logarithmic).max(8), unit: z.string().max(60).default(""),
+  help: z.string().min(1).max(500).default("List every distinct exact real solution, separated by commas or semicolons; write none if there are no solutions. Use ln(), log() for base 10, log(base, argument), e, exp() or sqrt(). Keep logarithms exact and check the original domain."),
+}).strict().refine(field => {
+  try {
+    const values=field.expected.map(parseLogarithmic);
+    return field.expected.join(", ").length<=500 && values.every((value,index)=>!values.slice(0,index).some(other=>equalLogarithmic(value,other)));
+  } catch { return false; }
+}, "Exact real solution keys must be distinct and fit the answer field");
 const piField = z.object({ ...fieldBase, kind: z.literal("pi-multiple"), expected: rational, unit: z.string().max(60).default("") }).strict();
 const rootsField = z.object({ ...fieldBase, kind: z.literal("roots"), expected: z.array(exact).max(8), numberSystem: z.enum(["real", "complex"]), unit: z.string().max(60).default("") }).strict()
   .refine(field => {
@@ -67,7 +82,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, logarithmicField, logarithmicRootsField, rootsField, rootListField, polynomialField, rationalExpressionField, piField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({
