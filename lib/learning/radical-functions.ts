@@ -38,7 +38,7 @@ function approximate(value:ExactNumber):number{
   const norm=addRational(multiplyRational(a,a),negateRational(multiplyRational(multiplyRational(b,b),{numerator:d,denominator:1n})));
   return realNumber(norm)/(left-right);
 }
-function defined(value:ExactNumber|null,estimate:number):RootValue{
+function defined(value:ExactNumber|null,estimate:number):Extract<RootValue,{status:"defined"}>{
   const result=value===null?estimate:approximate(value);
   if(!Number.isFinite(result))throw new Error("This result is outside the supported numerical range.");
   return {status:"defined",exact:value===null?null:formatExact(value),approximate:result};
@@ -66,6 +66,7 @@ function root(value:ExactNumber,degree:RootDegree):RootValue{
   return defined(null,estimate);
 }
 export const principalRoot=(source:string,degree:RootDegree):RootValue=>root(parseRealEndpoint(source),rootDegreeSchema.parse(degree));
+export const readRadicalInput=(source:string)=>defined(inputValue(source),0);
 function affine(value:RootValue,factor:string,offset:string):RootValue{
   if(value.status!=="defined")return value;
   const a=parseExact(factor),k=parseExact(offset),exact=value.exact===null?null:addExact(multiplyExact(a,parseExact(value.exact)),k);
