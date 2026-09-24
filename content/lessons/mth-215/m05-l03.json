@@ -97,6 +97,22 @@
         "An exact logarithm such as $\\ln7/\\ln2$ specifies a real number without rounding. A finite calculator report is a numerical approximation unless the exact value actually simplifies to that terminating number. Keep intermediate logarithms exact or retain extra numerical digits, and round only the final field that explicitly requests an approximation.",
         "For a reciprocal base, $\\ln(1/b)=-\\ln b$, so $\\log_{1/b} A=-\\log_b A$. Bases between zero and one are valid. Their logarithms are decreasing, giving negative outputs for arguments above one and positive outputs for arguments between zero and one. The preceding lesson contains an in-app calculator for natural, common and specified-base logarithms."
       ]
+    },
+    {
+      "heading": "Solve common and related-base exponentials",
+      "paragraphs": [
+        "A positive-base exponential with base different from one is one-to-one: $b^u=b^v$ if and only if u=v. A base above one is strictly increasing and a base between zero and one is strictly decreasing, but either direction preserves this equality property. An equation with one common valid base can therefore be solved by equating the complete exponents.",
+        "When bases are related, rewrite each as a power of a common base before equating exponents. The rule $(b^m)^u=b^{mu}$ multiplies the entire exponent u by m. Distribute that multiplier through every variable and constant term. A missed constant multiplier changes the resulting affine equation.",
+        "Solve the resulting equation and classify its outcome before dividing. A nonzero coefficient of x gives one solution; equal x coefficients can instead leave an identity or contradiction. Ordinary positive-base exponential expressions accept every real exponent, so a negative x value is not automatically invalid. Substitute it into both original sides to verify the equality."
+      ]
+    },
+    {
+      "heading": "Isolate a shifted exponential before taking logarithms",
+      "paragraphs": [
+        "For an equation $s b^{ax+c}+k=T$ with nonzero s, subtract the outside offset and divide by the outside coefficient first: $b^{ax+c}=(T-k)/s$. The sign of the original right-hand side alone does not decide whether a solution exists. What matters is the isolated exponential value.",
+        "Every finite real power of a positive base is strictly positive. If the isolated target is zero or negative, there is no real solution and no valid logarithm to take. Approaching zero as an exponent grows without bound does not mean the exponential attains zero at a finite real input.",
+        "If the isolated target is positive, take a logarithm in the appropriate base or use change of base, then undo the affine exponent. Keep a negative outside coefficient and a negative exponent coefficient separate; each participates in a different algebraic step. If a coefficient you intend to divide by is zero, first decide whether the remaining equation is an identity or contradiction instead of dividing by zero."
+      ]
     }
   ],
   "examples": [
@@ -473,6 +489,109 @@
         }
       ],
       "conclusion": "The negative result is consistent with an argument above one and a base between zero and one."
+    },
+    {
+      "title": "Use a common reciprocal base",
+      "prompt": "Solve $(1/3)^{2x-1}=(1/3)^{x+2}$ over the real numbers.",
+      "steps": [
+        {
+          "math": "2x-1=x+2",
+          "reason": "The common base is positive and different from one. Its decreasing direction does not remove the one-to-one equality property."
+        },
+        {
+          "math": "x=3",
+          "reason": "Subtract x and add 1 to isolate the unique input."
+        },
+        {
+          "math": "2(3)-1=5,\\qquad3+2=5",
+          "reason": "Both original exponents equal 5."
+        },
+        {
+          "math": "(1/3)^5=(1/3)^5",
+          "reason": "The original equation is satisfied, and the affine equation produced no other candidate."
+        }
+      ],
+      "conclusion": "The complete real solution set is {3}."
+    },
+    {
+      "title": "Rewrite related bases before equating exponents",
+      "prompt": "Solve $8^{x-1}=4^{2x+1}$ exactly.",
+      "steps": [
+        {
+          "math": "8=2^3,\\qquad4=2^2\\quad\\Longrightarrow\\quad2^{3(x-1)}=2^{2(2x+1)}",
+          "reason": "Express both bases as powers of two, retaining parentheses around each original exponent."
+        },
+        {
+          "math": "3x-3=4x+2",
+          "reason": "Equate complete exponents and distribute both multipliers."
+        },
+        {
+          "math": "x=-5",
+          "reason": "The affine equation has a nonzero coefficient and one solution."
+        },
+        {
+          "math": "8^{-6}=2^{-18},\\qquad4^{-9}=2^{-18}",
+          "reason": "The negative input is allowed, and both original sides have the same positive value."
+        }
+      ],
+      "conclusion": "The complete solution set is {-5}. A negative exponent or input is allowed in a positive-base exponential."
+    },
+    {
+      "title": "Isolate a shifted exponential with a negative coefficient",
+      "prompt": "Solve $7-3\\cdot2^{2x-1}=1$ over the real numbers.",
+      "steps": [
+        {
+          "math": "-3\\cdot2^{2x-1}=-6\\quad\\Longrightarrow\\quad2^{2x-1}=2",
+          "reason": "Subtract the offset first, then divide both sides by the negative outside coefficient."
+        },
+        {
+          "math": "2x-1=1\\quad\\Longrightarrow\\quad x=1",
+          "reason": "The isolated target is positive and equals the first power of the common base."
+        },
+        {
+          "math": "7-3\\cdot2^{2(1)-1}=7-6=1",
+          "reason": "Substitution into the full original expression checks both the exponent and outside transformations."
+        }
+      ],
+      "conclusion": "The unique solution is x=1. Isolating the exponential before taking logarithms keeps all signs in their proper steps."
+    },
+    {
+      "title": "A zero exponential target has no solution",
+      "prompt": "Solve $5e^{x+2}+4=4$ over the real numbers.",
+      "steps": [
+        {
+          "math": "5e^{x+2}=0\\quad\\Longrightarrow\\quad e^{x+2}=0",
+          "reason": "Subtract the offset and divide by the nonzero scale."
+        },
+        {
+          "math": "e^{x+2}>0\\qquad\\text{for every real }x",
+          "reason": "A positive-base exponential does not attain zero at a finite real input."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "The isolated equation is impossible, so the original equation has no real solution."
+        }
+      ],
+      "conclusion": "The original output can approach 4 but never equals 4. Taking ln(0) would be an invalid next step."
+    },
+    {
+      "title": "A negative exponential target has no solution",
+      "prompt": "Solve $2\\cdot3^{x-1}+5=1$ over the real numbers.",
+      "steps": [
+        {
+          "math": "2\\cdot3^{x-1}=-4\\quad\\Longrightarrow\\quad3^{x-1}=-2",
+          "reason": "The positive original right-hand side becomes a negative isolated exponential target after removing the offset."
+        },
+        {
+          "math": "3^{x-1}>0\\qquad\\text{for every real }x",
+          "reason": "The required negative target is outside the range of the exponential."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "No real exponent satisfies the isolated equation."
+        }
+      ],
+      "conclusion": "There are no real solutions. Check the isolated target rather than the sign of the original right-hand side."
     }
   ],
   "guided": {

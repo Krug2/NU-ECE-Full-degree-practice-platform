@@ -2,7 +2,7 @@
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
   "status": "draft",
-  "contentStages": 3,
+  "contentStages": 4,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -140,6 +140,39 @@
       ],
       "independentCheck": "mth-log-rules:mixed",
       "retrieval": "Derive the change-of-base quotient, compute a reciprocal-base sign, and separate an exact expression from its rounded report."
+    },
+    {
+      "skill": "Solve common and related-base exponentials",
+      "instruction": [
+        "Solve common and related-base exponentials"
+      ],
+      "examples": [
+        "Use a common reciprocal base",
+        "Rewrite related bases before equating exponents"
+      ],
+      "practice": [
+        "mth-exp-equation:common-base",
+        "mth-exp-equation:related-bases"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Solve a reciprocal-base equality and a related-base equality, checking the complete original exponents."
+    },
+    {
+      "skill": "Isolate a shifted exponential before taking logarithms",
+      "instruction": [
+        "Isolate a shifted exponential before taking logarithms"
+      ],
+      "examples": [
+        "Isolate a shifted exponential with a negative coefficient",
+        "A zero exponential target has no solution",
+        "A negative exponential target has no solution"
+      ],
+      "practice": [
+        "mth-exp-equation:shifted-factor",
+        "mth-exp-equation:nonpositive-target"
+      ],
+      "independentCheck": "mth-exp-equation:mixed",
+      "retrieval": "Isolate a shifted exponential with a negative scale, then explain separate zero-target and negative-target failures."
     }
   ]
 }
