@@ -1,0 +1,12 @@
+{
+  "courseId": "f09",
+  "status": "planned",
+  "humanReview": "pending",
+  "checks": [
+    "Use100seeds per structure; independent Cartesian multiplication/division formulas, conjugate/norm identities, trigonometric reconstruction, repeated multiplication for powers and root verification.",
+    "Test exact equivalent complex/radical forms, complete unordered root sets, invalid i/j input guidance, zero divisor/base/argument cases and signed/axis quadrants.",
+    "Check every diagram's axis scales, zero points and root count; all lesson/example math and50seed practice/checkpoint generation.",
+    "Exercise all guided and activity modes, diagnostic routing, every independent checkpoint, mixed review, notes, resume and backup in desktop/mobile browsers; keyboard and Axe; run full tests/lint/type/build.",
+    "Label preview only after all verification; human review remains pending. Finish F09 before detailed F10 planning."
+  ]
+}
