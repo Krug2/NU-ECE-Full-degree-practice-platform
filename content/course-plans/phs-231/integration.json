@@ -1,0 +1,192 @@
+{
+  "courseId": "phs-231",
+  "updatedAt": "2026-09-23",
+  "branch": "major-courses",
+  "pushTarget": "origin/major-courses",
+  "status": "PHS 231 is under construction: five of 22 lessons are available. No major course is complete.",
+  "delivered": {
+    "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
+    "lessons": [
+      "m01-l01",
+      "m01-l02",
+      "m02-l01",
+      "m02-l02",
+      "m02-l03"
+    ],
+    "questionFamilies": 11,
+    "questionVariants": 51,
+    "deterministicSeedsPerVariant": 50,
+    "guidedExamples": 5,
+    "workedExamples": 25,
+    "investigations": [
+      "Bounded measurement and average speed",
+      "Three-dimensional vectors, projections, and products",
+      "One-dimensional motion, reversals, and signed graph areas",
+      "Three-dimensional trajectories and moving observers",
+      "Projectile flights, apex states, and admissible contact times"
+    ]
+  },
+  "remaining": {
+    "phs231Lessons": 17,
+    "phs231Features": [
+      "Readiness screening and prerequisite repair routing",
+      "Force, friction, drag, circular-motion, gravity, energy, momentum, rotation, equilibrium, material, and numerical investigations",
+      "Module quizzes and multi-objective assessment support",
+      "Two-part cumulative assessment and targeted review",
+      "Persistent project notebook and rubric",
+      "Full-course progress capacity audit",
+      "Complete coverage and release audit"
+    ],
+    "otherMajorCourses": 23,
+    "nextLesson": "m03-l01",
+    "nextCourseAfterPhs231Completion": "phs-232"
+  },
+  "sharedCommits": [
+    {
+      "commit": "006b18f",
+      "summary": "linked preparation",
+      "files": [
+        "lib/learning/contracts.ts",
+        "components/learning/lesson-reader.tsx",
+        "components/learning/lesson-preparation.tsx"
+      ],
+      "integration": "Existing same-course prerequisite entries remain valid. New entries may name another course or point to a course whose preparation is under construction. Preserve the other branch's lesson-note draft changes when combining the reader."
+    },
+    {
+      "commit": "7d9d9d1",
+      "summary": "enabled measurement",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds the phs231-measurement activity and three registered families. Requires the course-specific files from 949898e and its measurement component/CSS. Existing answer and backup schemas are unchanged."
+    },
+    {
+      "commit": "9ea641b",
+      "summary": "registered physics",
+      "files": [
+        "lib/learning/catalog.ts"
+      ],
+      "integration": "Adds the PHS 231 pack and appends its authored lessons through lib/learning/courses/phs-231.ts. Preserve all MTH 215 registrations, including m02-l04 from main. Planned lessons remain unavailable."
+    },
+    {
+      "commit": "b540322",
+      "summary": "enabled vectors",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-vectors and two families; depends on 27e4af5 and its vector component. Retain every existing activity branch, including calibration-lab."
+    },
+    {
+      "commit": "bd7c931",
+      "summary": "enabled motion",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-motion and two registered families, using the engine and fixtures from d4751f6. Existing answer and backup schemas are unchanged."
+    },
+    {
+      "commit": "2f268d9",
+      "summary": "enabled frames",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-frames and two families. Requires 8acd620 and the typing correction 9f8df18. Preserve other activity branches and the shared note-draft behavior."
+    },
+    {
+      "commit": "39718ae",
+      "summary": "enabled projectiles",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "integration": "Adds phs231-projectiles and two families; the course-specific engine and 50-seed checks are in 79483bc. Authored lesson registration is in d28eef0."
+    },
+    {
+      "commit": "a0f0f20",
+      "summary": "split checks",
+      "files": [
+        "tests/lesson-content.test.ts"
+      ],
+      "integration": "Runs the existing 50-seed and formula-rendering checks separately for each lesson, with course and lesson IDs in test names. This avoids a single five-second timeout as the catalog grows; no coverage or seed count was removed."
+    }
+  ],
+  "upstreamIntegration": {
+    "merges": [
+      {
+        "sourceCommit": "074461882d72ae4da1f48ad2e64589d18d8370c8",
+        "mergeCommit": "15a769e",
+        "resolvedFiles": [
+          "components/learning/lesson-reader.tsx",
+          "lib/learning/catalog.ts",
+          "lib/learning/contracts.ts"
+        ],
+        "preserved": "Calibration lesson and activity, draft-preserving notes, initial repository/store additions, and tests."
+      },
+      {
+        "sourceCommit": "efdbec3927ea5de899a06820a9cea446771c35c2",
+        "mergeCommit": "022793c",
+        "resolvedFiles": [],
+        "adaptedPhysicsTests": [
+          "tests/e2e/phs-231-measurement.spec.ts",
+          "tests/e2e/phs-231-motion.spec.ts"
+        ],
+        "preserved": "Database-backed progress, recoverable attempt drafts, backup and concurrency checks, and history record modeling. Physics fixtures now use the shared public backup-restoration helper."
+      }
+    ],
+    "prerequisiteBoundary": "No prerequisite lesson content, course plan, or development order was rewritten. Main was incorporated only in the major-courses worktree."
+  },
+  "commands": {
+    "preview": "pnpm dev --port 3001",
+    "browserTests": "pnpm exec playwright test --config playwright.major.config.ts",
+    "checks": [
+      "pnpm test --maxWorkers=4",
+      "pnpm lint",
+      "pnpm typecheck",
+      "pnpm build"
+    ]
+  },
+  "verification": {
+    "status": "The five delivered lessons are technically checked; the course release gates remain open.",
+    "independentSubjectReview": "Not performed",
+    "pilotValidation": "Not performed",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the five delivered lessons round-trips within the current 1 MB policy. This does not establish full-course or repeated-study capacity.",
+    "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
+    "unit": {
+      "passed": 384,
+      "files": 51,
+      "command": "pnpm test --maxWorkers=4",
+      "note": "All variants run at least 50 deterministic seeds plus domain and invariant fixtures. The expanded five-lesson backup test also passed after the full run."
+    },
+    "browser": {
+      "fullSuite": {
+        "passed": 69,
+        "scope": "Merged storage integration through 022793c, with the first four physics lessons."
+      },
+      "focusedSuite": {
+        "passed": 2,
+        "scope": "Projectile lesson on the later production build, including real checkpoint backup export, reset, and restoration."
+      },
+      "port": 3101
+    },
+    "staticChecks": [
+      "lint passed",
+      "type checking passed",
+      "production build passed"
+    ],
+    "visual": "Desktop and 390-pixel mobile activity screenshots inspected for the five delivered lessons. Keyboard inputs, automated accessibility, reduced motion, overflow, direct-load hydration, and reload behavior were checked.",
+    "regressions": [
+      "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
+      "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses."
+    ]
+  },
+  "scopeReference": "../major-courses.json"
+}

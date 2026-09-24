@@ -21,6 +21,7 @@
   "deliveryPolicy": "Use course-specific files. Keep necessary shared extensions backward compatible and in focused commits; record their hashes in integration.json. Verify each small slice, stage only its files, commit with a short lowercase summary and no body, and immediately push origin/major-courses. Never push or merge into main from this task. Preserve Markdown ignore rules and exclude personal data.",
   "status": {
     "currentCourse": "phs-231",
+    "currentCourseProgress": {"plannedLessons":22,"availableLessons":5,"nextLesson":"m03-l01","integrationRecord":"phs-231/integration.json"},
     "completedCourses": [],
     "remainingCourses": ["phs-231", "phs-232", "csc-310", "csc-331", "cee-300", "csc-300", "cee-310", "cee-310l", "csc-340", "csc-340l", "csc-350", "csc-342", "cee-420", "cee-420l", "csc-436", "cee-324", "cee-324l", "cee-340", "cee-340l", "cee-430", "cee-440", "cee-498a", "cee-498b", "cee-498c"],
     "independentSubjectReview": "Not performed",
