@@ -1,0 +1,148 @@
+{
+  "deliveredAt": "2026-09-24",
+  "branch": "refreshers",
+  "remote": "origin/refreshers",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "finalRefresherRelease": "c4c7a3c",
+  "status": "all-twelve-verified-previews",
+  "independentHumanReview": "pending",
+  "lessonCount": 55,
+  "refreshers": [
+    {
+      "id": "f01",
+      "title": "Arithmetic and notation",
+      "status": "preview",
+      "lessons": 4,
+      "preview": "http://127.0.0.1:3002/courses/f01",
+      "verification": "content/course-plans/f01/verification.json"
+    },
+    {
+      "id": "f02",
+      "title": "Algebra manipulation",
+      "status": "preview",
+      "lessons": 6,
+      "preview": "http://127.0.0.1:3002/courses/f02",
+      "verification": "content/course-plans/f02/verification.json"
+    },
+    {
+      "id": "f03",
+      "title": "Functions and graphs",
+      "status": "preview",
+      "lessons": 5,
+      "preview": "http://127.0.0.1:3002/courses/f03",
+      "verification": "content/course-plans/f03/verification.json"
+    },
+    {
+      "id": "f04",
+      "title": "Trigonometry",
+      "status": "preview",
+      "lessons": 4,
+      "preview": "http://127.0.0.1:3002/courses/f04",
+      "verification": "content/course-plans/f04/verification.json"
+    },
+    {
+      "id": "f05",
+      "title": "Exponentials and logarithms",
+      "status": "preview",
+      "lessons": 5,
+      "preview": "http://127.0.0.1:3002/courses/f05",
+      "verification": "content/course-plans/f05/verification.json"
+    },
+    {
+      "id": "f06",
+      "title": "Units and measurement",
+      "status": "preview",
+      "lessons": 5,
+      "preview": "http://127.0.0.1:3002/courses/f06",
+      "verification": "content/course-plans/f06/verification.json"
+    },
+    {
+      "id": "f07",
+      "title": "Vectors and geometry",
+      "status": "preview",
+      "lessons": 5,
+      "preview": "http://127.0.0.1:3002/courses/f07",
+      "verification": "content/course-plans/f07/verification.json"
+    },
+    {
+      "id": "f08",
+      "title": "Calculus recall",
+      "status": "preview",
+      "lessons": 5,
+      "preview": "http://127.0.0.1:3002/courses/f08",
+      "verification": "content/course-plans/f08/verification.json"
+    },
+    {
+      "id": "f09",
+      "title": "Complex numbers",
+      "status": "preview",
+      "lessons": 4,
+      "preview": "http://127.0.0.1:3002/courses/f09",
+      "verification": "content/course-plans/f09/verification.json"
+    },
+    {
+      "id": "f10",
+      "title": "Programming recall",
+      "status": "preview",
+      "lessons": 4,
+      "preview": "http://127.0.0.1:3002/courses/f10",
+      "verification": "content/course-plans/f10/verification.json"
+    },
+    {
+      "id": "f11",
+      "title": "Engineering work habits",
+      "status": "preview",
+      "lessons": 4,
+      "preview": "http://127.0.0.1:3002/courses/f11",
+      "verification": "content/course-plans/f11/verification.json"
+    },
+    {
+      "id": "f12",
+      "title": "Study and tool orientation",
+      "status": "preview",
+      "lessons": 4,
+      "preview": "http://127.0.0.1:3002/courses/f12",
+      "verification": "content/course-plans/f12/verification.json"
+    }
+  ],
+  "verification": {
+    "unitTests": "907 passed across 121 files. Command: F10_PYTHON=tmp/python314/python.exe pnpm exec vitest run --maxWorkers=1 --testTimeout=30000. Includes independent mathematical checks and 4,700 generated programs executed in CPython.",
+    "lint": "Repository lint passed; touched-file lint repeated after final tool changes.",
+    "types": "Type checks passed, including the final production build.",
+    "build": "121 static pages generated successfully; this includes existing app pages and all refresher routes.",
+    "browser": "Each refresher's complete journeys were checked before its preview release. F11/F12 final regression covered eleven journeys; a file-helper contrast issue was fixed and its full journey rerun. Final F12 available-preview portfolio/notes/backup journey passed. See each linked verification record for exact scope and earlier corrections.",
+    "limits": "Five older tests exceeded the default five-second timeout during a concurrent run. The final complete run passed separately with a thirty-second timeout. Human subject and assistive-technology reviews remain pending."
+  },
+  "evidence": {
+    "f01ThroughF10": "Objective checkpoints and mixed recall use separate refresher identities. Diagnostics, visits, confidence and assisted practice do not award independent evidence.",
+    "f11AndF12": "Saved practical artifacts with rubric acknowledgments, assistance labels and timestamps. Completeness is checked; open-ended quality is self-checked. No numerical mastery scores or numerical evidence records.",
+    "university": "Optional app content awards no university credit and establishes no enrollment eligibility."
+  },
+  "integration": {
+    "sharedFiles": [
+      "app/courses/[id]/page.tsx",
+      "app/courses/[id]/lessons/[lessonId]/page.tsx",
+      "components/curriculum-browser.tsx",
+      "components/ui.tsx",
+      "components/learning/attempt-runner.tsx",
+      "components/learning/lesson-reader.tsx",
+      "components/learning/math-text.tsx",
+      "components/learning/learning.css",
+      "lib/learning/attempts.ts",
+      "lib/learning/catalog.ts",
+      "lib/learning/contracts.ts",
+      "lib/learning/generate.ts"
+    ],
+    "scope": "Small route/catalog/availability dispatches, existing assessment-source reuse, scoped refresher interactions, and original lesson content. Numerical F02/F03 adapters reuse committed MTH 215 foundation content and families without changing their saved identities.",
+    "storage": "Existing progress and backup schemas, repositories, and store APIs are unchanged. Practical artifacts occupy versioned, bounded JSON strings in existing learning.notes and preserve unsupported records before replacement.",
+    "sources": "Precise free readings, original content policy and source/license attribution are recorded per refresher in resources.json.",
+    "ownership": "Implemented in the refreshers worktree and pushed in small related commits. Primary and major-course checkouts were not modified. No main merge or force-push was performed."
+  },
+  "preview": {
+    "curriculum": "http://127.0.0.1:3002/curriculum?group=refresher",
+    "developmentPort": 3002,
+    "browserTestPort": 3102,
+    "reuseTestServer": false
+  },
+  "files": "No Markdown files were added; Markdown ignore rules were preserved. Verification runtimes, screenshots and browser artifacts remain under ignored tmp."
+}
