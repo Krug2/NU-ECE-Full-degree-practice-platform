@@ -9,6 +9,7 @@ import { transformedFunctionSchema } from "./transformations";
 import { machineSchema } from "./function-machines";
 import { calibrationCaseSchema } from "./calibration";
 import { polynomialCaseSchema } from "./polynomial-exploration";
+import { factoredPolynomialSchema } from "./factored-polynomial";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -88,6 +89,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("root-multiplicity-lab"),prompt:text,cases:z.array(z.object({title:text,model:factoredPolynomialSchema}).strict()).min(3).max(6)}).strict(),
     z.object({kind:z.literal("polynomial-ends-lab"),prompt:text,cases:z.array(polynomialCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
