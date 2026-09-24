@@ -21,5 +21,6 @@ it("gives mathematical choices distinct readable labels while preserving the dis
     {familyId:"mth-inverse-rule",variant:"quadratic"},
   ];
   for(let seed=0;seed<50;seed++)generateQuestions(slots,String(seed)).forEach(check);
+  for(let seed=0;seed<50;seed++)generateQuestions(["right-branch","left-branch","downward","scaled-shifted","root-to-power","cubic","fourth-branch","physical-window"].map(variant=>({familyId:"mth-restricted-inverse",variant})),String(seed)).forEach(check);
   lessons.forEach(lesson=>check(lesson.guided.question));
 });

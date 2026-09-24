@@ -1,0 +1,116 @@
+{
+  "lessonId": "m04-l04",
+  "objective": "Analyze a radical function's domain and range and verify an inverse on the correct restricted domain.",
+  "independentSubjectReview": "not yet performed",
+  "assessmentPolicy": "Four critical checkpoint items sample domain analysis, transformations, restricted inverses, and reasoning audits. Every item must pass without assistance. The 32 named practice variants expose the full item-family coverage; one checkpoint does not claim to test every variant.",
+  "coverage": [
+    {
+      "skill": "Distinguish principal even roots, all equation solutions, signed odd roots, and zero.",
+      "instruction": ["A root symbol assigns one value", "Read exponents in the real-number setting"],
+      "examples": ["Principal value and all equation solutions", "A signed fifth-root anchor"],
+      "practice": ["mth-radical-transform:principal-value", "mth-radical-transform:fourth-power", "mth-radical-transform:signed-odd"],
+      "independentCheck": "mth-radical-transform:mixed",
+      "retrieval": "Explain the absolute value in an even root of an even power."
+    },
+    {
+      "skill": "Find transformed root domains and ranges with independent inside and outside reflections.",
+      "instruction": ["Separate the inside restriction from the outside range"],
+      "examples": ["Negative inside scale", "Negative outside scale", "A signed fifth-root anchor"],
+      "practice": ["mth-radical-domain:linear-even", "mth-radical-domain:negative-inner", "mth-radical-domain:negative-outer", "mth-radical-domain:odd-root", "mth-radical-domain:fourth-root"],
+      "independentCheck": "mth-radical-domain:mixed",
+      "retrieval": "Separate which coefficient controls each interval direction."
+    },
+    {
+      "skill": "Map anchors, lengths, reflections, and included endpoints for even and odd roots.",
+      "instruction": ["Map anchor points before sketching"],
+      "examples": ["Negative inside scale", "Negative outside scale", "Fourth-root scaling"],
+      "practice": ["mth-radical-transform:anchors", "mth-radical-transform:reflections", "mth-radical-transform:scale", "mth-radical-transform:endpoint"],
+      "independentCheck": "mth-radical-transform:mixed",
+      "retrieval": "Reconstruct the transformed anchor map without a memorized direction rule."
+    },
+    {
+      "skill": "Combine rational sign conditions with original exclusions and numerator versus denominator root rules.",
+      "instruction": ["Use the sign of a rational radicand", "A root in a denominator changes the endpoint rule"],
+      "examples": ["A rational radicand with two allowed pieces", "Move the even root into a denominator", "A canceled factor leaves a hole", "Odd roots retain division restrictions", "A singleton and an empty radical domain", "When quotient splitting fails"],
+      "practice": ["mth-radical-domain:rational-radicand", "mth-radical-domain:denominator-root", "mth-radical-domain:canceled-hole"],
+      "independentCheck": "mth-radical-domain:mixed",
+      "retrieval": "Find the domain of the reciprocal root in the lesson's recall prompt and explain both exclusions."
+    },
+    {
+      "skill": "Distinguish inverse relations and functions, and select a valid even-power branch.",
+      "instruction": ["An inverse function needs a one-to-one original", "Derive the inverse and select its sign from the branch"],
+      "examples": ["Right-branch inverse of a shifted quadratic", "The same formula on the left branch", "A downward parabola still needs the right sign", "A restricted fourth power"],
+      "practice": ["mth-restricted-inverse:right-branch", "mth-restricted-inverse:left-branch", "mth-restricted-inverse:downward", "mth-restricted-inverse:scaled-shifted", "mth-restricted-inverse:fourth-branch"],
+      "independentCheck": "mth-restricted-inverse:mixed",
+      "retrieval": "Invert the left quadratic in the recall prompt, including both inverse sets and an interior value."
+    },
+    {
+      "skill": "Retain the inverse domain even when its formula is a polynomial extension.",
+      "instruction": ["A root can invert to a restricted polynomial"],
+      "examples": ["A root inverse must keep its restricted input set"],
+      "practice": ["mth-restricted-inverse:root-to-power", "mth-radical-transform:input-recovery", "mth-radical-audit:inverse-domain"],
+      "independentCheck": ["mth-restricted-inverse:mixed", "mth-radical-audit:mixed"],
+      "retrieval": "Test a target outside the original range and explain why a real polynomial result is insufficient."
+    },
+    {
+      "skill": "Verify both compositions on their own domains, preserving absolute values and intermediate restrictions.",
+      "instruction": ["Check both composition orders on their own starting domains", "Use absolute value to verify a left branch"],
+      "examples": ["Prove both identities on the left branch", "One composition hides a folded input", "An inverse domain that is too small"],
+      "practice": ["mth-radical-audit:wrong-branch", "mth-radical-audit:unrestricted-power", "mth-radical-audit:one-composition", "mth-radical-audit:principal-sign", "mth-radical-audit:absolute-value"],
+      "independentCheck": "mth-radical-audit:mixed",
+      "retrieval": "Prove both recall compositions, check an endpoint, and supply a counterexample to a wrong branch."
+    },
+    {
+      "skill": "Invert transformed odd powers with signed roots and distinguish exact identities from rounded displays.",
+      "instruction": ["Odd powers reverse without a branch choice"],
+      "examples": ["A decreasing cubic and an approximate intermediate"],
+      "practice": ["mth-restricted-inverse:cubic", "mth-radical-transform:signed-odd"],
+      "independentCheck": "mth-restricted-inverse:mixed",
+      "retrieval": "Explain why a transformed odd power is invertible and why that does not hold for every odd-degree polynomial."
+    },
+    {
+      "skill": "Interpret reflected coordinate pairs and finite graph windows.",
+      "instruction": ["Reflect ordered pairs across the diagonal"],
+      "examples": ["Reflect exact coordinate pairs"],
+      "practice": ["Six-case radical investigation", "mth-restricted-inverse:right-branch", "mth-restricted-inverse:left-branch"],
+      "independentCheck": "mth-restricted-inverse:mixed requires inverse evaluations consistent with exchanged pairs",
+      "retrieval": "Exchange one interior point and one endpoint without using a plotted window as a domain."
+    },
+    {
+      "skill": "Distinguish inverse and reciprocal values, domains, and operations.",
+      "instruction": ["Inverse notation is different from a reciprocal"],
+      "examples": ["Recover an input or take a reciprocal"],
+      "practice": ["mth-radical-audit:reciprocal-confusion"],
+      "independentCheck": "mth-radical-audit:mixed",
+      "retrieval": "Contrast the multiplication check for a reciprocal with the composition check for an inverse."
+    },
+    {
+      "skill": "Reject extraneous even-power candidates and explain whether failure is a domain or sign issue.",
+      "instruction": ["Reject candidates that only satisfy a powered equation"],
+      "examples": ["An extraneous root that is still in the radical domain"],
+      "practice": ["mth-radical-transform:input-recovery", "mth-radical-audit:extraneous-candidate"],
+      "independentCheck": "mth-radical-audit:mixed",
+      "retrieval": "Record both the radical domain and the required sign before squaring."
+    },
+    {
+      "skill": "Map a finite physical domain to the inverse input window and reject out-of-window extrapolations.",
+      "instruction": ["Carry units and operating limits through an inverse"],
+      "examples": ["An inverse with a finite operating window"],
+      "practice": ["mth-restricted-inverse:physical-window"],
+      "independentCheck": "mth-restricted-inverse:mixed",
+      "retrieval": "State both quantity units and both interval restrictions before interpreting an algebraic inverse value."
+    }
+  ],
+  "verificationSources": [
+    "tests/radical-functions.test.ts",
+    "tests/radical-investigation.test.ts",
+    "tests/radical-domain-families.test.ts",
+    "tests/radical-transform-families.test.ts",
+    "tests/restricted-inverse-families.test.ts",
+    "tests/radical-audit-families.test.ts",
+    "tests/radical-lesson.test.ts",
+    "tests/lesson-content.test.ts",
+    "tests/choice-labels.test.ts",
+    "tests/e2e/radicals.spec.ts"
+  ]
+}
