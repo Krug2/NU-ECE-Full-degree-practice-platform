@@ -7,6 +7,7 @@ import { readStoredProgress } from "./progress";
 import type { Question, LearningPack } from "../../lib/learning/contracts";
 
 const algebra: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f02.json", import.meta.url), "utf8"));
+const functions: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f03.json", import.meta.url), "utf8"));
 
 async function fillAnswer(area: Locator, question: Question, wrong = false) {
   const answers = refresherAnswers(question);
@@ -20,7 +21,7 @@ async function fillAnswer(area: Locator, question: Question, wrong = false) {
   }
 }
 
-for (const pack of [algebra]) {
+for (const pack of [algebra, functions]) {
   const course = pack.courseId, lessons = pack.modules.flatMap(module => module.lessons);
   test(`${course}: diagnostic gaps, exact resume, notes, and backup round trip`, async ({ page }, testInfo) => {
     const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
@@ -159,4 +160,102 @@ test("F02 guided algebra and keyboard coefficient investigation", async ({ page 
   await expect(activity.getByText("This input is a counterexample", { exact: false })).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   await activity.screenshot({ path: testInfo.outputPath("f02-polynomial-mobile.png") });
+});
+
+test("F03 scaled coordinates and keyboard line investigation distinguish zero and undefined", async ({ page }) => {
+  await page.goto("/courses/f03/lessons/m01-l01");
+  const guided = page.locator("#guided"), activity = page.locator("#investigate");
+  await guided.getByLabel("Point A voltage (V)", { exact: true }).fill("-4");
+  await guided.getByLabel("Point A current (mA)", { exact: true }).fill("15");
+  await guided.getByRole("button", { name: "Check guided work", exact: true }).click();
+  await expect(guided.locator(".answer-feedback")).toContainText("Correct.");
+  await activity.getByLabel("Predicted slope", { exact: true }).fill("1");
+  await activity.getByLabel("Predicted slope", { exact: true }).press("Tab");
+  await expect(activity.getByRole("button", { name: "Check slope prediction", exact: true })).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(activity.getByRole("status")).toContainText("correct");
+  await activity.getByLabel("Point B: y", { exact: true }).fill("-1");
+  await activity.getByLabel("Predicted slope", { exact: true }).fill("0");
+  await activity.getByRole("button", { name: "Check slope prediction", exact: true }).click();
+  await expect(activity.getByRole("status")).toContainText("correct");
+  await activity.getByLabel("Point B: x", { exact: true }).fill("-2");
+  await activity.getByLabel("Point B: y", { exact: true }).fill("3");
+  await activity.getByLabel("Predicted slope", { exact: true }).fill("undefined");
+  await activity.getByRole("button", { name: "Check slope prediction", exact: true }).click();
+  await expect(activity.getByRole("status")).toContainText("correct");
+  await activity.getByLabel("Point B: y", { exact: true }).fill("-1");
+  await activity.getByRole("button", { name: "Check slope prediction", exact: true }).click();
+  await expect(activity.getByRole("status")).toContainText("two distinct points");
+});
+
+test("F03 piecewise boundaries and transformed points preserve domains and graph descriptions", async ({ page }, testInfo) => {
+  await page.goto("/courses/f03/lessons/m01-l02");
+  let guided = page.locator("#guided"), activity = page.locator("#investigate");
+  await guided.getByRole("group", { name: "Branch at x = 0", exact: true }).getByLabel("Higher-input branch", { exact: true }).check();
+  for (const [label, value] of [["Sensor output f(0) (V)", "1"], ["Sensor domain", "[-4,4]"], ["Sensor range", "[-2,3]"]]) await guided.getByLabel(label, { exact: true }).fill(value);
+  await guided.getByRole("button", { name: "Check guided work", exact: true }).click();
+  await expect(guided.locator(".answer-feedback")).toContainText("Correct.");
+  await activity.getByLabel("Predicted branch", { exact: true }).selectOption("right");
+  await activity.getByLabel("Predicted output", { exact: true }).fill("1");
+  const trace = activity.getByRole("button", { name: "Trace the input", exact: true });
+  await trace.focus(); await trace.press("Enter");
+  await expect(activity.getByRole("status")).toContainText("Both predictions are correct");
+  await activity.getByLabel("Sensor rule", { exact: true }).selectOption("1");
+  await activity.getByRole("button", { name: "At the boundary", exact: true }).click();
+  await activity.getByLabel("Predicted branch", { exact: true }).selectOption("missing");
+  await activity.getByLabel("Predicted output", { exact: true }).fill("0");
+  await trace.click(); await expect(activity.getByRole("status")).toContainText("difference between undefined and zero");
+  await activity.getByLabel("Predicted output", { exact: true }).fill("undefined");
+  await trace.click(); await expect(activity.getByRole("status")).toContainText("Both predictions are correct");
+  await page.goto("/courses/f03/lessons/m01-l03");
+  guided = page.locator("#guided"); activity = page.locator("#investigate");
+  for (const [label, value] of [["Mapped input", "-5"], ["Mapped output", "3"], ["Complete domain", "(-inf,3]"], ["Complete range", "[-1,inf)"]]) await guided.getByLabel(label, { exact: true }).fill(value);
+  await guided.getByRole("button", { name: "Check guided work", exact: true }).click();
+  await expect(guided.locator(".answer-feedback")).toContainText("Correct.");
+  for (const [index, point] of [["3","-1"],["1","1"],["-5","3"]].entries()) {
+    await activity.getByLabel("Anchor "+"ABC"[index]+" new input", { exact: true }).fill(point[0]);
+    await activity.getByLabel("Anchor "+"ABC"[index]+" new output", { exact: true }).fill(point[1]);
+  }
+  const check = activity.getByRole("button", { name: "Check transformed points", exact: true });
+  await check.focus(); await check.press("Enter");
+  await expect(activity.getByRole("status")).toContainText("All three anchors are mapped correctly");
+  await activity.getByLabel("Graph window", { exact: true }).selectOption("6");
+  await expect(activity.locator(".notice")).toContainText("Domain of g: (-inf, 3]");
+  await activity.getByText("Read the transformed graph as text", { exact: true }).click();
+  await expect(activity.locator("details")).toContainText("included endpoint is (3, -1)");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await activity.locator(".transformed-figure > svg").screenshot({ path: testInfo.outputPath("f03-transformed-mobile.png") });
+});
+
+test("F03 composition order and calibration keep intermediate values and model limits visible", async ({ page }) => {
+  await page.goto("/courses/f03/lessons/m01-l04");
+  let guided = page.locator("#guided"), activity = page.locator("#investigate");
+  await guided.getByRole("group", { name: "Inverse rule", exact: true }).getByRole("radio", { name: "One minus the square root of (x minus two)", exact: true }).check();
+  for (const [label, value] of [["Inverse domain", "[2,inf)"], ["Inverse range", "(-inf,1]"], ["Inverse at 11", "-2"]]) await guided.getByLabel(label, { exact: true }).fill(value);
+  await guided.getByRole("button", { name: "Check guided work", exact: true }).click();
+  await expect(guided.locator(".answer-feedback")).toContainText("Correct.");
+  for (const [order, first, last] of [["fg", "4", "11"], ["gf", "7", "49"]]) {
+    await activity.getByLabel("Composition order", { exact: true }).selectOption(order);
+    await activity.getByLabel("Predicted first-stage output", { exact: true }).fill(first);
+    await activity.getByLabel("Predicted final output", { exact: true }).fill(last);
+    const trace = activity.getByRole("button", { name: "Trace function machines", exact: true });
+    await trace.focus(); await trace.press("Enter");
+    await expect(activity.getByRole("status")).toContainText("Both stage predictions are correct");
+  }
+  await page.goto("/courses/f03/lessons/m01-l05");
+  guided = page.locator("#guided"); activity = page.locator("#investigate");
+  for (const [label, value] of [["Slope (V per degree C)", "-3/100"], ["Voltage rule (V)", "4-3*x/100"], ["Predicted voltage at 50 (V)", "2.5"], ["Observed minus predicted (V)", ".1"]]) await guided.getByLabel(label, { exact: true }).fill(value);
+  await guided.getByRole("radio", { name: "It meets the inclusive tolerance at this input; further observations are needed to assess the model", exact: true }).check();
+  await guided.getByRole("button", { name: "Check guided work", exact: true }).click();
+  await expect(guided.locator(".answer-feedback")).toContainText("Correct.");
+  for (const [id, value] of [["slope", "1/50"], ["intercept", "1/2"], ["value", "17/10"], ["residual", "0"]]) await activity.locator("#calibration-answer-"+id).fill(value);
+  const check = activity.getByRole("button", { name: "Check calibration", exact: true });
+  await check.focus(); await check.press("Enter");
+  await expect(activity.getByRole("status")).toContainText("All predictions are correct");
+  const rate = await activity.locator(".calibration-rate").textContent();
+  await activity.getByLabel("Horizontal span", { exact: true }).selectOption("4");
+  await expect(activity.locator(".calibration-rate")).toHaveText(rate!);
+  await activity.getByLabel("Calibration B input (degrees C)", { exact: true }).fill("0");
+  await check.click();
+  await expect(activity.getByRole("status")).toContainText("Calibration inputs must be distinct");
 });
