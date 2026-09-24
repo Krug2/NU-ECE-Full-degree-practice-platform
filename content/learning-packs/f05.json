@@ -1,0 +1,42 @@
+{
+  "courseId": "f05",
+  "title": "Exponentials and logarithms",
+  "version": 1,
+  "status": "building",
+  "introduction": "Recover multiplicative change, logarithmic inverses, domain-aware equations, exponential models, and decibel comparisons. Start with the diagnostic for targeted review, or work through the full explanations and investigations. This optional refresher does not award university credit or determine enrollment eligibility. Familiarity and assisted practice are separate from independent checkpoint evidence. Independent human review is pending.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "From repeated factors to logarithmic measurements",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Exponential change and graph features",
+          "objective": "Distinguish multiplication from addition and interpret exponential factors, percentage change, transformations, domains, ranges, and asymptotes."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Logarithms reverse exponentials",
+          "objective": "Use exponential and logarithmic inverse relationships to evaluate exact values, enforce valid bases and positive arguments, and interpret logarithmic graph features."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Log rules and equations with domain checks",
+          "objective": "Apply logarithm rules on their original domains and solve like-base, general exponential, and logarithmic equations while checking every candidate."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Growth, decay, and threshold times",
+          "objective": "Fit exponential models, relate discrete factors to continuous rates, and determine doubling, half-life, and threshold times with correct units and model limits."
+        },
+        {
+          "id": "m01-l05",
+          "title": "Decibels, ratios, and references",
+          "objective": "Convert between decibel levels and physical ratios, preserve the reference, and distinguish power addition, cascaded gains, and voltage-based power comparisons."
+        }
+      ]
+    }
+  ]
+}
