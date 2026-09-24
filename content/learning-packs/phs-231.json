@@ -1,0 +1,208 @@
+{
+  "courseId": "phs-231",
+  "title": "Calculus-based Physics 1",
+  "version": 1,
+  "status": "building",
+  "introduction": "Learn to build, calculate, and check mechanical models using vectors and calculus. The full sequence covers motion, forces, gravity, energy, momentum, rotation, equilibrium, materials, and numerical validation. Available lessons have original teaching and saved practice; the remaining lessons and assessments are under construction. Introductory physics and calculus preparation remain necessary.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Quantities, measurement, and vectors",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Units, dimensions, and measurement evidence",
+          "objective": "Convert mechanical quantities consistently, test dimensional homogeneity, and interpret a measurement with a stated uncertainty model."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Vectors in a right-handed coordinate system",
+          "objective": "Resolve and combine three-dimensional vectors and distinguish projections, dot products, and cross products with their directions and units."
+        }
+      ]
+    },
+    {
+      "id": "m02",
+      "title": "Motion as differentiation and accumulation",
+      "requires": [
+        "m01"
+      ],
+      "lessons": [
+        {
+          "id": "m02-l01",
+          "title": "Position, velocity, acceleration, and graphs",
+          "objective": "Connect one-dimensional motion functions and graphs using derivatives and definite integrals, including reversals and initial conditions."
+        },
+        {
+          "id": "m02-l02",
+          "title": "Motion and relative velocity in three dimensions",
+          "objective": "Differentiate vector trajectories and transform relative positions and velocities between stated inertial frames."
+        },
+        {
+          "id": "m02-l03",
+          "title": "Projectile motion and admissible flight times",
+          "objective": "Model a projectile with vector initial conditions, select physically admissible roots, and explain the limits of the constant-gravity approximation."
+        }
+      ]
+    },
+    {
+      "id": "m03",
+      "title": "Forces, constraints, and resistance",
+      "requires": [
+        "m01",
+        "m02"
+      ],
+      "lessons": [
+        {
+          "id": "m03-l01",
+          "title": "Free-body diagrams and Newton's laws",
+          "objective": "Choose a system, identify external interactions, and solve signed component equations for its acceleration or support forces."
+        },
+        {
+          "id": "m03-l02",
+          "title": "Static friction and connected bodies",
+          "objective": "Determine whether sticking is possible, choose the appropriate friction model, and solve coupled equations with consistent constraints."
+        },
+        {
+          "id": "m03-l03",
+          "title": "Velocity-dependent drag and terminal motion",
+          "objective": "Form and check a linear-drag differential equation, interpret its time constant, and distinguish terminal motion from free fall."
+        }
+      ]
+    },
+    {
+      "id": "m04",
+      "title": "Circular motion and Newtonian gravitation",
+      "requires": [
+        "m03"
+      ],
+      "lessons": [
+        {
+          "id": "m04-l01",
+          "title": "Uniform and nonuniform circular motion",
+          "objective": "Separate radial and tangential acceleration and use actual forces to sustain a circular path with constant or changing speed."
+        },
+        {
+          "id": "m04-l02",
+          "title": "Gravity, orbits, and Newton's synthesis",
+          "objective": "Relate inverse-square gravity to near-surface weight, circular orbital motion, escape energy, and Kepler's scaling laws."
+        }
+      ]
+    },
+    {
+      "id": "m05",
+      "title": "Work, energy, and power",
+      "requires": [
+        "m03",
+        "m04"
+      ],
+      "lessons": [
+        {
+          "id": "m05-l01",
+          "title": "Work as a vector line integral",
+          "objective": "Calculate signed work for constant and position-dependent forces and verify it against kinetic-energy change."
+        },
+        {
+          "id": "m05-l02",
+          "title": "Energy systems, potential, and efficiency",
+          "objective": "Choose a system boundary, account for potential and dissipated energy, and determine reachable states and power requirements."
+        }
+      ]
+    },
+    {
+      "id": "m06",
+      "title": "Impulse, momentum, and collisions",
+      "requires": [
+        "m05"
+      ],
+      "lessons": [
+        {
+          "id": "m06-l01",
+          "title": "Impulse and center-of-mass motion",
+          "objective": "Integrate force to obtain impulse and use a system's external impulse to predict total momentum and center-of-mass motion."
+        },
+        {
+          "id": "m06-l02",
+          "title": "Collisions and explosions in multiple dimensions",
+          "objective": "Apply vector momentum conservation to collisions or separation events and audit kinetic energy before selecting an elastic model."
+        }
+      ]
+    },
+    {
+      "id": "m07",
+      "title": "Rigid-body rotation and rolling",
+      "requires": [
+        "m04",
+        "m05",
+        "m06"
+      ],
+      "lessons": [
+        {
+          "id": "m07-l01",
+          "title": "Angular motion, torque, and rotational inertia",
+          "objective": "Relate angular and tangential variables, calculate torque about a stated axis, and derive or combine moments of inertia."
+        },
+        {
+          "id": "m07-l02",
+          "title": "Angular momentum and rotational work",
+          "objective": "Use external torque and angular impulse to track angular momentum and distinguish its conservation from energy conservation."
+        },
+        {
+          "id": "m07-l03",
+          "title": "Rolling constraints and coupled translation",
+          "objective": "Solve rolling motion using translation, rotation, and a verified no-slip constraint, including the required static friction."
+        }
+      ]
+    },
+    {
+      "id": "m08",
+      "title": "Equilibrium, deformation, and failure",
+      "requires": [
+        "m07"
+      ],
+      "lessons": [
+        {
+          "id": "m08-l01",
+          "title": "Static equilibrium and support reactions",
+          "objective": "Solve force and torque equilibrium for a rigid body and assess support, contact, and tipping constraints."
+        },
+        {
+          "id": "m08-l02",
+          "title": "Stress, strain, and elastic response",
+          "objective": "Relate tensile, shear, and bulk stress to deformation within a stated linear elastic regime and propagate measurement limits."
+        },
+        {
+          "id": "m08-l03",
+          "title": "Plasticity, fracture, and evidence limits",
+          "objective": "Interpret a stress-strain record and distinguish stiffness, yielding, strength, toughness, and the limitations of a simple failure estimate."
+        }
+      ]
+    },
+    {
+      "id": "m09",
+      "title": "Numerical prediction and mechanical-system investigation",
+      "requires": [
+        "m02",
+        "m03",
+        "m05",
+        "m06",
+        "m07",
+        "m08"
+      ],
+      "lessons": [
+        {
+          "id": "m09-l01",
+          "title": "Numerical integration and convergence evidence",
+          "objective": "Implement bounded time steps, compare numerical methods with an analytic case, and distinguish discretization error from model and measurement error."
+        },
+        {
+          "id": "m09-l02",
+          "title": "Validate a mechanical subsystem",
+          "objective": "Combine force, energy, numerical, and measurement evidence into a reproducible investigation with a transparent self-assessment rubric."
+        }
+      ]
+    }
+  ]
+}

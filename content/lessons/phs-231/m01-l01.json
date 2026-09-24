@@ -1,0 +1,120 @@
+{
+  "id":"m01-l01","courseId":"phs-231","moduleId":"m01","version":1,
+  "title":"Units, dimensions, and measurement evidence",
+  "objective":"Convert mechanical quantities consistently, test dimensional homogeneity, and interpret a measurement with a stated uncertainty model.",
+  "why":"A motion or force model can produce a convincing number while using the wrong unit or claiming more precision than the measurements support. Engineers need to distinguish a unit conversion, a physical assumption, and a claim about evidence. This lesson establishes those habits before calculus-based mechanics begins.",
+  "estimatedMinutes":65,
+  "prerequisites":[
+    {"courseId":"mth-215","lessonId":"b02","label":"Powers, roots, and scientific notation"},
+    {"courseId":"mth-215","lessonId":"b05","label":"Coordinates and measurement labels"},
+    {"courseId":"phs-104","label":"Introductory physics preparation","note":"This prerequisite course is under construction. Review distance, elapsed time, mass, and force with the free mechanics reading below. Developing this course first does not remove its academic prerequisites."},
+    {"courseId":"csc-208","label":"Calculus preparation","note":"This course is under construction. Later PHS 231 lessons require differentiation and definite integration; the free calculus course below provides a preparation route."}
+  ],
+  "sections":[
+    {"heading":"A quantity combines a number, a unit, and a meaning","paragraphs":[
+      "A length reported as 2.4 m contains a numerical value, a unit, and a physical interpretation. The same length can be written 240 cm. The number changes because the unit changes; the object did not grow. Before calculating, name what was measured and define the origin or reference when that quantity needs one.",
+      "Mechanics commonly uses mass in kilograms (kg), length in meters (m), and time in seconds (s). Speed has units m/s and acceleration has units m/s². A newton is the derived force unit $1\\,\\mathrm{N}=1\\,\\mathrm{kg}\\,\\mathrm{m}/\\mathrm{s}^2$. Later, a joule of work is a newton meter. Unit symbols are case-sensitive: m is meter, while M as a prefix means mega.",
+      "Mass and weight are different quantities. Mass measures inertia and is expressed in kilograms. Near Earth's surface, the gravitational force magnitude called weight is modeled as $W=mg$ and is expressed in newtons. A 2 kg mass has approximate weight 19.62 N if the stated gravitational acceleration is 9.81 m/s². A scale may display kilograms by assuming a gravitational field; the force it senses is not a mass unit.",
+      "In this course, a numerical answer field labels the requested unit. Enter the number or fraction without appending that unit. Separate questions check whether you chose and converted the unit correctly. A value that is correct in centimeters is not correct in a field requesting meters until you convert it."
+    ]},
+    {"heading":"Convert by multiplying by one","paragraphs":[
+      "The relationships 1 km = 1000 m and 1 h = 3600 s are exact unit definitions. Form a ratio of equal quantities, place it so the old unit cancels, and keep the remaining unit visible. For example, $54\\,\\mathrm{km/h}=54(1000/3600)\\,\\mathrm{m/s}=15\\,\\mathrm{m/s}$. Converting both numerator and denominator matters for a rate.",
+      "Powers apply to the entire unit conversion. Since 1 mm = 0.001 m, one square millimeter is $(0.001\\,\\mathrm m)^2=10^{-6}\\,\\mathrm{m}^2$. An area of 8 mm² is therefore 0.000008 m², not 0.008 m². For volumes, cube the length conversion: one cubic centimeter is $(0.01\\,\\mathrm m)^3=10^{-6}\\,\\mathrm{m}^3$.",
+      "A denominator conversion can increase the final numerical value. A density of 1 g/cm³ equals $(10^{-3}\\,\\mathrm{kg})/(10^{-6}\\,\\mathrm{m}^3)=1000\\,\\mathrm{kg/m}^3$. The small mass factor is divided by an even smaller volume factor. Guessing that every conversion to a larger named unit makes the answer smaller fails for composite units.",
+      "Check by reversing the conversion and by estimating size. A few square millimeters must be much less than one square meter. Keep exact conversion factors separate from measured values: an exact factor of 1000 does not add uncertainty or justify extra significant digits in the measurement."
+    ]},
+    {"heading":"Dimensions describe physical roles","paragraphs":[
+      "A dimension records a quantity's physical type independently of its chosen unit. Use M for mass dimension, L for length, and T for time. Then $[v]=LT^{-1}$ and $[a]=LT^{-2}$. A dimensionless ratio such as strain has dimension 1, even if its interpretation remains physically important.",
+      "Terms joined by addition must have the same dimensions. In $x(t)=x_0+v_0t+Ct^3$, each term is a position. Therefore $[C]=LT^{-3}$. Giving C the units m/s² would make its term have units m s, which cannot be added to a length. A coefficient's written number does not tell you its unit; the equation and definitions do.",
+      "Products multiply dimensions and quotients divide them. If a hypothetical speed-dependent force is $F=Cv^2$, then $[C]=MLT^{-2}/(L^2T^{-2})=ML^{-1}$. The coefficient has SI units kg/m. This dimensional result does not establish that the force law fits a particular object or range of speeds.",
+      "Arguments of ordinary exponential, logarithmic, and trigonometric functions must be dimensionless combinations. In $\\exp(-t/\\tau)$, the parameter tau has time units, so the ratio is dimensionless. In circular motion, angle is expressed in radians before differentiation. Treating a numerical degree value as a radian value changes the prediction."
+    ]},
+    {"heading":"A dimensional check is necessary, not a proof","paragraphs":[
+      "Both $at^2$ and $17at^2$ have length dimensions. For motion from rest with constant acceleration, however, integrating velocity gives displacement $at^2/2$. Dimensions cannot determine the missing dimensionless factor of one half. An equation with matching units may still have an incorrect sign, numerical coefficient, geometry, or physical assumption.",
+      "Use several different checks. A dimensional check asks whether the quantities can combine. A limiting check asks whether behavior makes sense when an input approaches a simple value, such as zero elapsed time. Substitution into the governing law asks whether the proposed solution actually follows that law. Comparing with observation asks whether the model describes the measured situation within its uncertainty.",
+      "For a supplied force model, write the system and assumptions before choosing a formula. Here the measurement investigation calculates average speed as distance divided by elapsed time. It does not determine instantaneous speed, prove constant velocity, or identify which forces acted. Those additional claims need more information."
+    ]},
+    {"heading":"Resolution, repeatability, and accuracy answer different questions","paragraphs":[
+      "Resolution is the smallest change a device can distinguish or display. A ruler marked every millimeter may invite a simple classroom reading bound of half a division if rounding to the nearest mark is appropriate. That half-division assumption is not a universal instrument specification. Alignment, parallax, zero offsets, and the reading method may produce larger effects.",
+      "Repeatability concerns agreement among repeated measurements under similar conditions. Accuracy concerns closeness to a reference or accepted value. A device that always reads 5 mm too high can be very repeatable while biased. Averaging repeated readings can reduce some random variation but does not remove a constant common offset.",
+      "Suppose an idealized instrument reads 85 mm for an exact 80 mm reference and its offset is known to remain constant. Adding -5 mm corrects that offset. Real calibration references and corrections have their own uncertainties, and a correction established at one point need not remain valid across an entire range. The simplified exercise states its assumptions so its exact arithmetic is not mistaken for a real calibration certificate.",
+      "Record the instrument, its units and display step, the procedure, raw readings, and any correction. Preserve unexpected readings instead of deleting them because they disagree with a desired answer. Data provenance tells a later reader what was actually observed, what was simulated, and what was calculated."
+    ]},
+    {"heading":"A bounded measurement gives an interval of possibilities","paragraphs":[
+      "If a distance is stated as $s=s_0\\pm b_s$ with an absolute bound, it means the allowed distance interval is $[s_0-b_s,s_0+b_s]$. This is not automatically a probability statement. Similarly, let elapsed time lie in $[t_0-b_t,t_0+b_t]$. For a traveled distance require a nonnegative lower distance and a strictly positive lower time.",
+      "Assume every combination inside those two intervals is possible. Because $v=s/t$ increases with s and decreases with positive t, its minimum is $(s_0-b_s)/(t_0+b_t)$ and its maximum is $(s_0+b_s)/(t_0-b_t)$. The central estimate is $s_0/t_0$. The allowed speed interval is generally asymmetric around this central quotient.",
+      "If the time interval reaches zero, there is no finite upper speed bound from this model. Dividing by a central time and ignoring its interval would conceal that failure. If the distance and time bounds are linked by an additional constraint, the independent-endpoint calculation may be too conservative; specify that constraint before claiming sharper limits.",
+      "If the inputs are exact, both bounds are zero and the interval collapses to one value. If uncertainty grows while the central measurements stay fixed, the allowed interval widens. These limiting cases provide quick checks on the interactive calculation."
+    ]},
+    {"heading":"Random standard uncertainty uses a different model","paragraphs":[
+      "A standard uncertainty characterizes a spread, commonly expressed on a standard-deviation scale. It is not a guaranteed maximum error. For independent small random uncertainties in s and t, first-order propagation gives $u(v)\\approx\\sqrt{(u(s)/t)^2+(s\\,u(t)/t^2)^2}$. For positive s this can also be written $u(v)\\approx v\\sqrt{(u(s)/s)^2+(u(t)/t)^2}$.",
+      "The two terms arise from the sensitivity derivatives $\\partial v/\\partial s=1/t$ and $\\partial v/\\partial t=-s/t^2$. Independent variance contributions add; take the square root only after adding them. The negative time sensitivity does not subtract its variance contribution because that sensitivity is squared.",
+      "This approximation needs small uncertainties and the stated independence assumption. Correlated inputs introduce a covariance term. Large relative time uncertainty can make a first-order ratio approximation misleading. Shared bias must be investigated explicitly. Do not use quadrature merely because it produces a narrower interval than a worst-case calculation.",
+      "State which meaning of uncertainty a question uses before choosing a method. The investigation in this lesson uses allowed bounds; the separate standard-uncertainty practice supplies its own statistical assumptions. Neither calculation, by itself, verifies the physical model."
+    ]},
+    {"heading":"Report only the precision the evidence supports","paragraphs":[
+      "Significant digits communicate reporting precision; they are not a complete uncertainty analysis. Carry extra digits through intermediate calculations, then round a final result in a way consistent with its stated uncertainty and requested format. A long calculator display does not establish a highly accurate measurement.",
+      "The uncertainty-bound problems request exact fractions so premature rounding cannot shrink an interval accidentally. When an approximate answer is appropriate, the field states its numerical tolerance. Extra correct digits are accepted. Do not round an intermediate input simply to match the number of digits in another input.",
+      "End a calculation with an interpretation: the physical quantity, its value and unit, the uncertainty model, and its limits. A complete statement might say that average traveled speed lies in an allowed interval under independent distance and time bounds. It should not silently turn that statement into a claim about constant speed, a confidence level, or a completed physical experiment."
+    ]}
+  ],
+  "examples":[
+    {"title":"Convert an area before finding a stress","prompt":"A supplied model defines average axial stress as force divided by area. A support carries 24 N over 8 mm². Find the stress in Pa, treating these inputs as exact for this arithmetic example.","steps":[
+      {"math":"A=8(10^{-3}\\,\\mathrm m)^2=8\\times10^{-6}\\,\\mathrm{m}^2","reason":"Square the length conversion factor because both length dimensions in the area change."},
+      {"math":"\\sigma=F/A=24/(8\\times10^{-6})=3\\times10^6\\,\\mathrm{Pa}","reason":"A pascal is a newton per square meter. The small area makes the stress much larger numerically than the force."},
+      {"math":"(3\\times10^6\\,\\mathrm{N/m}^2)(8\\times10^{-6}\\,\\mathrm{m}^2)=24\\,\\mathrm N","reason":"Multiply back to recover the applied force and verify the unit cancellation."}
+    ],"conclusion":"The average stress is 3 MPa. This supplied model says nothing yet about nonuniform stress near holes, material strength, or whether the support is safe; those require additional evidence."},
+    {"title":"Recover a coefficient's dimensions","prompt":"A position model is $x(t)=2\\,\\mathrm m+(3\\,\\mathrm{m/s})t+Ct^3$. Determine the dimensions and SI unit of C.","steps":[
+      {"math":"[Ct^3]=[x]=L","reason":"Every added term must describe a length."},
+      {"math":"[C]=LT^{-3}","reason":"Divide the required length dimension by three powers of time."},
+      {"math":"(\\mathrm{m/s}^3)\\,\\mathrm{s}^3=\\mathrm m","reason":"Multiplication restores the position unit. The coefficient's numerical value would require additional information."}
+    ],"conclusion":"C has dimensions M^0 L^1 T^-3 and SI unit m/s³. Dimensional consistency alone does not establish that this trajectory fits an actual motion."},
+    {"title":"Find a worst-case interval without assuming symmetry","prompt":"Traveled distance lies between 1.98 and 2.02 m; elapsed time lies between 0.95 and 1.05 s. Every pairing is permitted. Find the central quotient and extreme average speeds.","steps":[
+      {"math":"v_0=2.00/1.00=2.00\\,\\mathrm{m/s}","reason":"Use the central estimates for the central quotient."},
+      {"math":"v_{\\min}=1.98/1.05=66/35\\approx1.885714\\,\\mathrm{m/s}","reason":"Combine the smallest distance with the largest positive elapsed time."},
+      {"math":"v_{\\max}=2.02/0.95=202/95\\approx2.126316\\,\\mathrm{m/s}","reason":"Combine the largest distance with the smallest positive time."},
+      {"math":"2-66/35=4/35,\\qquad202/95-2=12/95","reason":"The lower and upper departures differ, so a symmetric interval centered at 2 would need careful justification."}
+    ],"conclusion":"The exact allowed speed interval is [66/35, 202/95] m/s. Its endpoints arise from monotonicity of a positive-time quotient, not from a probability distribution."},
+    {"title":"Propagate independent standard uncertainties","prompt":"Distance and time estimates are 3.00 m and 2.00 s, with small independent standard uncertainties 0.03 m and 0.04 s. Estimate the standard uncertainty of average speed using first-order propagation.","steps":[
+      {"math":"v=3/2=1.5\\,\\mathrm{m/s}","reason":"First calculate the central quotient without prematurely rounding the inputs."},
+      {"math":"u(s)/s=0.01,\\qquad u(t)/t=0.02","reason":"Each relative standard uncertainty is dimensionless."},
+      {"math":"u(v)\\approx1.5\\sqrt{0.01^2+0.02^2}=0.015\\sqrt5\\approx0.03354\\,\\mathrm{m/s}","reason":"Under the stated independent, small-uncertainty assumptions, add variance contributions and take the square root."}
+    ],"conclusion":"Report approximately 1.50 m/s with standard uncertainty 0.034 m/s under this propagation model. This does not guarantee that every possible true value is within that amount, and it does not include an unexamined systematic bias."}
+  ],
+  "guided":{
+    "title":"Finish a speed interval calculation",
+    "setup":"A traveled distance is 3.0 ± 0.1 m and elapsed time is 2.0 ± 0.1 s. Treat the ± values as independent allowed bounds.",
+    "before":["The central speed is 3/2 m/s.","The lowest possible distance is 2.9 m and the highest possible time is 2.1 s.","For the upper speed, use the other pair of endpoints. Both possible times remain positive."],
+    "question":{"id":"phs231-guided-bounds","familyId":"phs231-measurement-guided","familyVersion":1,"courseId":"phs-231","objectiveId":"m01-l01","category":"application","critical":true,
+      "prompt":"Enter the exact lower and upper average-speed bounds and identify their meaning.",
+      "fields":[
+        {"id":"lower","kind":"rational","label":"Lower speed bound","expected":"29/21","unit":"m/s"},
+        {"id":"upper","kind":"rational","label":"Upper speed bound","expected":"31/19","unit":"m/s"},
+        {"id":"meaning","kind":"choice","label":"What do the bounds establish?","correct":"allowed","options":[
+          {"id":"standard","label":"One standard deviation around the mean","feedback":"No probability distribution or random standard uncertainty was supplied. These are allowed endpoints."},
+          {"id":"allowed","label":"All possible average speeds under the stated independent bounds","feedback":"Monotonicity of distance divided by positive time supplies both extrema under these assumptions."},
+          {"id":"constant","label":"The object traveled at a constant speed","feedback":"Total distance and elapsed time determine average speed. They do not establish the time history of the motion."}
+        ]}
+      ],"parameters":{},"hints":["Minimum speed uses 2.9 m divided by 2.1 s.","Maximum speed uses 3.1 m divided by 1.9 s.","Multiply both numerator and denominator by ten: the bounds are 29/21 and 31/19 m/s."],
+      "explanation":["The lower bound is $2.9/2.1=29/21$ m/s; the upper bound is $3.1/1.9=31/19$ m/s.","These values delimit all allowed average speeds for the stated rectangle of distance-time possibilities. They do not establish constant speed or a confidence level."],
+      "answerSummary":"Lower 29/21 m/s; upper 31/19 m/s; allowed average-speed interval."
+    },
+    "after":"The central quotient is 1.5 m/s, but neither endpoint calculation uses only central inputs. Explain why reversing both endpoint pairings would reverse the interval's meaning."
+  },
+  "interaction":{"kind":"phs231-measurement","prompt":"Predict central, minimum, and maximum average speeds before revealing the table. Then vary only the time uncertainty and explain the asymmetric change. Finally test zero uncertainty and a time interval that reaches zero.","distance":2,"distanceUncertainty":0.02,"time":1,"timeUncertainty":0.05},
+  "practice":[
+    {"familyId":"phs231-unit-conversion","variant":"area"},{"familyId":"phs231-unit-conversion","variant":"volume"},{"familyId":"phs231-unit-conversion","variant":"speed"},{"familyId":"phs231-unit-conversion","variant":"density"},{"familyId":"phs231-unit-conversion","variant":"force"},
+    {"familyId":"phs231-dimensional-audit","variant":"position"},{"familyId":"phs231-dimensional-audit","variant":"drag"},{"familyId":"phs231-dimensional-audit","variant":"sufficiency"},
+    {"familyId":"phs231-measurement-bounds","variant":"speed"},{"familyId":"phs231-measurement-bounds","variant":"standard"},{"familyId":"phs231-measurement-bounds","variant":"instrument"}
+  ],
+  "checkpoint":[{"familyId":"phs231-unit-conversion","variant":"area"},{"familyId":"phs231-dimensional-audit","variant":"position"},{"familyId":"phs231-measurement-bounds","variant":"speed"},{"familyId":"phs231-measurement-bounds","variant":"instrument"}],
+  "summary":["Attach meaning and units to quantities; use exact conversion factors and apply every power to the whole factor.","Dimensions must match across an equality and among added terms. They cannot prove a numerical coefficient or physical assumption.","Resolution, repeatability, and accuracy are distinct. A constant bias survives averaging.","Allowed bounds and random standard uncertainty are different models; select the one actually stated.","For nonnegative distance and strictly positive time intervals, opposite endpoint pairings give the extreme speeds.","Keep intermediate precision and report only claims supported by the measurements and model."],
+  "retrieval":"Without reopening the examples, convert 12 mm² to m², find the units of C in x=Ct⁴, and explain why a perfectly repeatable instrument can be biased. For s=4±0.1 m and t=2±0.1 s, write the two exact extreme-speed quotients and state the uncertainty assumption.",
+  "readings":[
+    {"title":"NIST: Combined Standard Uncertainty","url":"https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-5-combined-standard-uncertainty","purpose":"Primary reference for combining standard uncertainties and distinguishing corrections, uncertainty, and coverage claims."},
+    {"title":"OpenStax: Units and Measurement","url":"https://openstax.org/books/university-physics-volume-1/pages/1-introduction","purpose":"Free additional instruction on SI units, conversion, dimensional analysis, and reporting precision. Follow the chapter's section links."},
+    {"title":"NIST: SI units","url":"https://www.nist.gov/pml/special-publication-330/sp-330-section-2","purpose":"Primary reference for SI base and derived units and their symbols."},
+    {"title":"MIT OpenCourseWare: Classical Mechanics","url":"https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/","purpose":"Free physics instruction for preparation and a second explanation of mechanical quantities."},
+    {"title":"MIT OpenCourseWare: Single Variable Calculus","url":"https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/","purpose":"Free prerequisite preparation in differentiation and integration while the calculus course packs are being built."}
+  ]
+}
