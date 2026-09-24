@@ -51,8 +51,10 @@ import { logRuleFamilyIds,logRuleQuestion } from "./families/mth-log-rules";
 import { logRewriteFamilyIds,logRewriteQuestion } from "./families/mth-log-rewrite";
 import { expEquationFamilyIds,expEquationQuestion } from "./families/mth-exp-equation";
 import { logEquationFamilyIds,logEquationQuestion } from "./families/mth-log-equation";
+import { powerLevelFamilyIds,powerLevelQuestion } from "./families/mth-power-level";
 
 const generators=new Map<string,typeof linearQuestion>();
+for(const id of powerLevelFamilyIds)generators.set(id,powerLevelQuestion);
 for(const id of logRuleFamilyIds)generators.set(id,logRuleQuestion);
 for(const id of logRewriteFamilyIds)generators.set(id,logRewriteQuestion);
 for(const id of expEquationFamilyIds)generators.set(id,expEquationQuestion);
