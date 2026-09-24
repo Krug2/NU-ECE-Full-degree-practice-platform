@@ -1,0 +1,669 @@
+{
+  "id": "m08-l01",
+  "courseId": "phs-231",
+  "moduleId": "m08",
+  "version": 1,
+  "title": "Static equilibrium and support reactions",
+  "objective": "Solve force and torque equilibrium for a rigid body and assess support, contact, and tipping constraints.",
+  "why": "Support design begins with a precise question: what forces and moments would keep this body at rest, and can the assumed supports supply them? The same reasoning appears in circuit-board fixtures, cable-supported assemblies, robot links, and instrument mounts. A correct equation solution can still demand an impossible downward contact force or excessive friction. This lesson develops both the equilibrium calculation and its physical audit.",
+  "estimatedMinutes": 220,
+  "prerequisites": [
+    {
+      "lessonId": "m07-l01",
+      "label": "Torque, signed lever arms, and rigid-body rotation"
+    },
+    {
+      "lessonId": "m03-l01",
+      "label": "System boundaries, external forces, and action-reaction recipients"
+    },
+    {
+      "lessonId": "m03-l02",
+      "label": "Static-friction inequalities and unilateral contact"
+    },
+    {
+      "lessonId": "m06-l01",
+      "label": "Centers of mass and continuous distributions"
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Potential energy and local equilibrium"
+    },
+    {
+      "lessonId": "m01-l01",
+      "label": "Units, measurement bounds, and uncertainty interpretation"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. The required load integrals and potential derivatives are developed locally here. Review linear functions, definite integrals as signed accumulation, and derivatives before proceeding."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "1. Equilibrium includes rotation and an initial-rest condition",
+      "paragraphs": [
+        "A body in static equilibrium remains at rest in the chosen inertial frame. It needs both zero resultant external force and zero resultant external torque. In this lesson forces lie in the x–y plane, so the independent rigid-body balance equations are $\\sum F_x=0$, $\\sum F_y=0$, and $\\sum M_O=0$. In a general three-dimensional problem there are three force and three moment components; do not discard out-of-plane effects without a planar model.",
+        "Zero net force alone permits rotation under a couple. Zero net force and torque alone do not say that a moving body has stopped: constant translation is possible, and a freely rotating body can retain angular momentum. State initial rest and the constraints as well as the balance equations. Here we seek static candidates at a specified geometry under unchanging loads, not the subsequent motion if that geometry fails.",
+        "Use +x right, +y up, and positive z-moment counterclockwise when looking at the page. These moment signs differ from the clockwise scalar spin convention in the rolling investigation. Write the convention before calculation. A force in newtons and a moment in newton meters cannot be added to each other; each equation must have one consistent unit.",
+        "Begin by drawing only the selected body and listing forces acting on it. Replace each removed support by its allowed reactions. The equal and opposite force that the body exerts on a support belongs on the support's diagram, not on this body's diagram. A label such as “support force” is incomplete until its direction and available components are specified."
+      ]
+    },
+    {
+      "heading": "2. Support laws constrain the answer",
+      "paragraphs": [
+        "An ideal smooth contact pushes along its surface normal. For an upward-facing horizontal support, $N\\ge0$; a negative calculated N means the assumed contact would have to pull. A rough stationary contact also permits a tangential force f with $|f|\\le\\mu_sN$. Solve the demand f first. Equality describes a limiting state, not every sticking state. The N in that bound belongs to that particular contact, not to the sum of all supports.",
+        "A taut ideal cable pulls along its stated direction: $\\mathbf T=T\\hat{\\mathbf t}$ with $T\\ge0$. A negative algebraic T cannot be repaired by taking an absolute value; that reverses the required vector. T=0 is a slack or just-unloaded boundary at which the cable provides no force. A pin can provide two in-plane force components of either sign in the ideal model, but no independent reaction couple. A clamp can also provide a reaction couple. These are different support models.",
+        "State the force application coordinates and geometry. A force applied through a massless rigid bracket at height h above a beam can create a moment even if the bracket's weight is neglected. A pure couple consists of equal opposite parallel forces separated by a perpendicular distance; its net force is zero and its moment is independent of origin. Represent it as a separate signed moment, not as a force at an invented point.",
+        "A real support has stiffness, finite dimensions, strength, and possible preload. The ideal reactions here do not certify a real fixture or prescribe usable loads. Once a unilateral or friction condition fails, remove or change the assumed constraint in a new physical model; this lesson does not solve a fall, slide, impact, or buckling event."
+      ]
+    },
+    {
+      "heading": "3. Choose moment origins deliberately and check another one",
+      "paragraphs": [
+        "For a force $(F_x,F_y)$ applied at $(x,y)$, the moment about $O=(x_O,y_O)$ is $M_O=(x-x_O)F_y-(y-y_O)F_x$. This is the z-component of $\\mathbf r\\times\\mathbf F$. A downward load at positive x makes a negative moment about the left end. A rightward force H at height h contributes $-hH$. The sign comes from the cross product, not from the size of a labeled distance.",
+        "Taking moments at a pin eliminates both of its force components. Taking moments at one beam support eliminates that support's normal and tangential forces if they act at that same point. This simplifies algebra; it does not make the eliminated forces absent. Recover them from force balance and audit their support laws.",
+        "If a new origin is displaced from the old one by $\\mathbf d=(d_x,d_y)$, then $M_{\\rm new}=M_{\\rm old}-(d_x\\sum F_y-d_y\\sum F_x)$. Thus once the resultant force is zero, the total moment is the same about every origin. Two nonparallel force balances plus one moment balance already supply the planar equilibrium conditions. Writing moments about several origins is a useful independent check, not extra independent information that can determine arbitrary additional reactions.",
+        "Keep signed moment arms until the end. A support outside the interval between the loads can have a large demand, and an overhanging load can unload another support. Rounding a small negative reaction to a positive value hides a model failure. Near a measured boundary, report uncertainty or a limiting conclusion instead of inventing margin."
+      ]
+    },
+    {
+      "heading": "4. Replace distributed loads using force and first moment",
+      "paragraphs": [
+        "Let w(x) be a nonnegative downward force per unit length on $0\\le x\\le L$. Its total magnitude is $Q=\\int_0^L w(x)\\,dx$ in N, and its first moment magnitude about x=0 is $J=\\int_0^L xw(x)\\,dx$ in N m. When Q>0 the equivalent downward resultant acts at $\\bar x=J/Q$. This replacement preserves rigid-body force and moment balance; it need not preserve internal stress or deformation.",
+        "For a linear load with endpoint intensities $w_0,w_1$, write $w(x)=w_0+(w_1-w_0)x/L$. Integrating the constant and linear terms gives $Q=L(w_0+w_1)/2$ and $J=L^2(w_0+2w_1)/6$. A rising triangle has $\\bar x=2L/3$ and a falling triangle has $\\bar x=L/3$. A uniform load has $\\bar x=L/2$. When both endpoint intensities vanish, Q=J=0 and no distributed centroid is defined; do not evaluate 0/0.",
+        "A uniform beam's own weight W acts at L/2 in a uniform gravitational field. In this investigation the additional line load is external to that beam weight; include each once. More generally the downward-load centroid combines their first moments: $\\bar x_D=(WL/2+J+Px)/D$, where $D=W+Q+P>0$. A center of gravity agrees with a center of mass under uniform gravity; a general nonuniform field requires the actual force distribution.",
+        "Do not call every equivalent load position a center of mass. The position of the resultant vertical reactions also incorporates independent applied moments: $x_R=(WL/2+J+Px+hH-M)/D$. It equals the downward-load centroid only when $hH-M=0$. A couple can move the effective reaction line without moving any mass."
+      ]
+    },
+    {
+      "heading": "5. Solve the beam and then intersect its allowed conditions",
+      "paragraphs": [
+        "The investigation has a rigid beam of length L with a rough upward contact at a and a smooth upward contact at b, where $0\\le a<b\\le L$. The external loads are the uniform beam weight W, downward point load P at x, downward line-load resultant Q, horizontal force H at height h, and counterclockwise couple M. Define $D=W+Q+P$ and the moment numerator $K=WL/2+J+Px+hH-M$.",
+        "The three equations are $f_A+H=0$, $N_A+N_B=D$, and $aN_A+bN_B-K=0$. Solving gives $N_B=(K-aD)/(b-a)$, $N_A=(bD-K)/(b-a)$, and $f_A=-H$. Division requires b−a>0. These are candidate forces whether or not a real contact can supply them.",
+        "Admissibility requires all three inequalities: $N_A\\ge0$, $N_B\\ge0$, and $\\mu_sN_A-|H|\\ge0$. The last quantity is a usable friction margin only when normal contacts are admitted. Do not insert a negative candidate N into a claimed physical friction capacity. For the algebraic sweep, the same inequality remains a convenient necessary condition, but failed contact takes precedence in the interpretation.",
+        "With all other inputs fixed, the normals are affine functions of the moving position x: $dN_A/dx=-P/(b-a)$ and $dN_B/dx=P/(b-a)$. Intersect each allowed half-interval with the actual beam domain [0,L]. The result can be a closed interval, a single position, no positions, or the entire beam when P=0. A zero normal or zero remaining friction margin is a limiting state. It is not evidence that an arbitrarily small load change is harmless."
+      ]
+    },
+    {
+      "heading": "6. Cables, ladders, clamps, and tipping use the same method",
+      "paragraphs": [
+        "For a horizontal beam pinned at the left end and held by an angled cable at the right, take moments at the pin to obtain the cable's vertical component. Then use its known unit direction to recover the tension magnitude and horizontal component. For an inclined beam, do not substitute the full beam length as every lever arm: a horizontal cable uses the tip's vertical coordinate, whereas gravity uses horizontal coordinates.",
+        "A paper ladder model illustrates two contacts: a smooth vertical wall supplies a horizontal normal, and the rough floor supplies an upward normal and horizontal friction. Moments about the floor determine the wall force; force balance then determines floor friction. Check the wall normal and the floor's own friction bound. This is an idealized calculation only. Do not perform an occupied-ladder, elevated-load, or leaning-object experiment from these examples.",
+        "For a rectangular rigid block with centered weight W and base width b, a rightward horizontal force F at fixed height h>0 requires the upward ground resultant at $x_R=b/2+Fh/W$, measured from the left edge. The resultant must stay within the base. The right-edge tipping threshold is $F_{\\rm tip}=Wb/(2h)$; the sliding threshold is $F_{\\rm slide}=\\mu_sW$ under this particular full-base contact model. Compare them before choosing a limiting event.",
+        "These thresholds assume quasi-static loading, a rigid body, a horizontal floor, no vertical component of the applied force, and no additional couple or anchor. Equality marks onset within the model. If sliding starts first, a subsequent tipping analysis needs a dynamic model and possibly a changed force location. A clamp's reaction couple can hold a load that a pin cannot; never silently replace one by the other."
+      ]
+    },
+    {
+      "heading": "7. Unknown counts do not establish determinacy or stability",
+      "paragraphs": [
+        "Three upward supports under one beam introduce three vertical reactions but only vertical force balance and one independent moment balance. The rigid-body solution can be a whole family. To choose a member, add a stated deformation and compatibility model, such as springs with known stiffness, initial contact, and common support level. Equal stiffness does not mean equal force for arbitrary geometry; the symmetric example below explains when equal deflections follow.",
+        "Conversely, three named unknowns and three balance equations need not produce a unique solution. If two horizontal reactions act on the same horizontal line, neither provides a moment about a point on that line. The coefficient matrix can be singular. An applied moment can make the equations inconsistent; zero applied resultant moment can leave undetermined reactions. Check force directions and geometric restraint, not just a count.",
+        "Equilibrium and stability answer different questions. For a single allowed coordinate q with a smooth conservative potential U(q), equilibrium requires $F(q)=-dU/dq=0$. A strict local minimum gives restoring behavior for sufficiently small disturbances; a local maximum gives departure. The second-derivative test is sufficient when $U''$ is nonzero, but $U''=0$ leaves the test inconclusive. A positive quartic term can still create a strict minimum.",
+        "A constant potential along an allowed coordinate has no restoring force and is called neutral in the positional sense: nearby stationary positions are also equilibria. A small velocity can still cause drift. Stable conservative motion need not settle without damping. These one-coordinate potential tests do not establish the stability of an arbitrary frictional, flexible, or multi-coordinate structure, and no static reaction calculation alone establishes material strength."
+      ]
+    },
+    {
+      "heading": "8. Uncertainty can cross a contact boundary",
+      "paragraphs": [
+        "Treat supplied intervals as allowed values, not automatically as standard deviations or probabilities. In the baseline geometry with W=P=60 N, a=1 m, b=4 m, h=1 m, and M=0, $N_A=100-20x-H/3$ and $N_B=120-N_A$. Larger x and larger positive H reduce the left normal. For positive admitted N_A, increasing μ increases the friction margin $m_f=\\mu N_A-H$.",
+        "When the allowed x, H, and μ intervals are independent, the worst and best margins occur at the appropriate endpoint combinations. First verify that the normal contacts remain admitted throughout; otherwise friction is not the only problem. All values admitted, none admitted, and mixed admissibility are different conclusions. A midpoint result cannot settle an interval that crosses zero margin.",
+        "If variables are correlated, such as force and position derived from the same calibrated measurement, not every rectangular corner need be physically allowed. State the joint constraint and optimize within it. Do not attach a percentage confidence or failure probability to bounds without a statistical model. A boundary exactly at zero calls for a limiting statement rather than a positive robustness margin."
+      ]
+    },
+    {
+      "heading": "9. Investigation procedure and evidence standard",
+      "paragraphs": [
+        "Use the simulation only. Start with the default beam, draw the beam-plus-attachment system, list coordinates and force directions, and predict both normals, signed friction, and support admissibility. Check the candidate and inspect moment residuals about the left end and both supports. Move the load through x=3, 3.3, 4, and 5 m; explain the first failed inequality. The slider varies position between static candidates, not time along an actual moving experiment.",
+        "Next set P=H=M=0 and compare rising and falling triangular line loads with the same total force. Predict which support demand increases. Restore the baseline and compare a raised H with a compensating couple M=hH. Finally inspect a single-position window and an empty window. Keep one prediction that was wrong and explain the corrected force inventory or inequality.",
+        "Save a compact evidence record in lesson notes: system boundary and support laws; predicted and checked values with units; one complete alternative-origin moment sum; exact load-position boundaries; a controlled comparison; and model limitations. The complete sweep table provides an equivalent to the plotted curves, and the slider and limit buttons support keyboard use. Investigation controls reset on reload; saved notes and assessment work use normal progress backup.",
+        "For self-review, award 0, 1, or 2 in each of four areas: complete system/force inventory; quantitative equilibrium with an independent origin check; correct contact and finite-domain decisions; and reproducible comparison with honest limitations. Use 0 for missing, 1 for partly correct or insufficiently evidenced, and 2 for complete and justified. Rework any zero before the checkpoint. This eight-point rubric and the checkpoint threshold are teaching defaults, not NU grading policy or independent review."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "1. A raised horizontal load redistributes the normals",
+      "prompt": "A 6 m beam weighs 60 N uniformly. Supports are at a=1 m and b=4 m. A 60 N point load is at x=3 m. A rightward 12 N force acts at height 1 m; there is no line load or applied couple. Only the left support is rough, with μs=0.4. Find the reactions and check contact.",
+      "steps": [
+        {
+          "math": "3N_B-60(3-1)-60(3-1)-12(1)=0",
+          "reason": "Take moments about the left support. Both downward loads and the raised rightward force act clockwise about it."
+        },
+        {
+          "math": "N_B=84\\ \\mathrm N,\\qquad N_A=120-84=36\\ \\mathrm N,\\qquad f_A=-12\\ \\mathrm N",
+          "reason": "Use vertical and horizontal force balance after the moment equation. The negative friction sign means leftward."
+        },
+        {
+          "math": "|f_A|=12\\ \\mathrm N\\le0.4(36)=14.4\\ \\mathrm N,\\qquad m_f=2.4\\ \\mathrm N",
+          "reason": "Both normals are positive and the required left friction is within that support's own capacity."
+        },
+        {
+          "math": "\\bar x_D=\\frac{60(3)+60(3)}{120}=3\\ \\mathrm m,\\qquad x_R=\\frac{360+12}{120}=3.1\\ \\mathrm m",
+          "reason": "The raised horizontal load shifts the effective vertical reaction line without changing the downward-load centroid."
+        }
+      ],
+      "conclusion": "The candidate is admitted. Using μs times the combined 120 N normal would assign friction capacity to the wrong contact."
+    },
+    {
+      "title": "2. Verify the same candidate about a different origin",
+      "prompt": "Check Example 1 about both supports. Explain why this does not add another independent constraint.",
+      "steps": [
+        {
+          "math": "M_A=84(4-1)-60(3-1)-60(3-1)-12=0\\ \\mathrm{N\\,m}",
+          "reason": "The left reaction has zero lever arm. This reproduces the first moment calculation."
+        },
+        {
+          "math": "M_B=36(1-4)-60(3-4)-60(3-4)-12=0\\ \\mathrm{N\\,m}",
+          "reason": "Relative to B the downward loads lie to the left, so their moments are positive. The left upward normal has a negative lever arm."
+        },
+        {
+          "math": "M_B-M_A=-(4-1)\\sum F_y=0",
+          "reason": "The origins are separated horizontally and the net vertical force is zero. The two moment equations are linked through force balance."
+        }
+      ],
+      "conclusion": "Origin choice changes individual moments, not the equilibrium conclusion. This check can catch signs without pretending that redundant equations determine extra unknowns."
+    },
+    {
+      "title": "3. Equal distributed forces, different support demands",
+      "prompt": "Keep L=6 m, a=1 m, b=4 m, and uniform beam weight 60 N. Remove P, H, and M. Compare a line load rising from 0 to 20 N/m with one falling from 20 to 0 N/m.",
+      "steps": [
+        {
+          "math": "Q=\\int_0^6\\frac{20x}{6}\\,dx=60\\ \\mathrm N,\\qquad J=\\int_0^6 x\\frac{20x}{6}\\,dx=240\\ \\mathrm{N\\,m}",
+          "reason": "For the rising triangle, integrate intensity for force and x times intensity for the first moment."
+        },
+        {
+          "math": "\\bar x=240/60=4\\ \\mathrm m,\\qquad 3N_B=60(3-1)+60(4-1)",
+          "reason": "The equivalent downward force acts at 4 m, not at the 3 m midpoint."
+        },
+        {
+          "math": "N_B=100\\ \\mathrm N,\\qquad N_A=120-100=20\\ \\mathrm N",
+          "reason": "These positive normals pass the unilateral checks; horizontal demand is zero."
+        },
+        {
+          "math": "Q_{\\rm reversed}=60\\ \\mathrm N,\\quad J_{\\rm reversed}=120\\ \\mathrm{N\\,m},\\quad \\bar x_{\\rm reversed}=2\\ \\mathrm m,\\quad N_B=N_A=60\\ \\mathrm N",
+          "reason": "Reversing the triangle preserves total force but moves its centroid left. Recompute the moment instead of reusing the old reactions."
+        }
+      ],
+      "conclusion": "A resultant force magnitude alone is insufficient. Its line of action carries essential equilibrium information."
+    },
+    {
+      "title": "4. A cable pulls along its direction",
+      "prompt": "A horizontal 4 m beam is pinned at its left end. It weighs 40 N at its midpoint and carries a 60 N load at x=3 m. A cable at the right tip points along (−3/5, 4/5). Find the cable tension and pin reactions. Then add a 300 N m counterclockwise couple.",
+      "steps": [
+        {
+          "math": "4T_y-40(2)-60(3)=0,\\qquad T_y=65\\ \\mathrm N",
+          "reason": "Moments at the pin remove its unknown reactions. The horizontal cable component has zero lever arm about the pin."
+        },
+        {
+          "math": "T=\\frac{65}{4/5}=\\frac{325}{4}\\ \\mathrm N,\\qquad T_x=-\\frac35T=-\\frac{195}{4}\\ \\mathrm N",
+          "reason": "The stated direction is a unit vector. T is a nonnegative magnitude for a realizable cable."
+        },
+        {
+          "math": "R_x=\\frac{195}{4}\\ \\mathrm N,\\qquad R_y=100-65=35\\ \\mathrm N",
+          "reason": "Pin reactions cancel the other horizontal and vertical forces."
+        },
+        {
+          "math": "4T_y-260+300=0\\ \\Longrightarrow\\ T_y=-10\\ \\mathrm N,\\quad T=-\\frac{25}{2}\\ \\mathrm N",
+          "reason": "The added couple reverses the cable force demanded by the equations."
+        }
+      ],
+      "conclusion": "The original cable is admitted. With the added couple, this cable cannot push in the demanded opposite direction. Taking |T| would not solve the stated equilibrium."
+    },
+    {
+      "title": "5. Inclined geometry changes the lever arm",
+      "prompt": "A beam is pinned at (0,0) m and ends at (3,4) m. Its 100 N weight acts at its midpoint; a 40 N load acts at its tip. A horizontal cable pulls left at the tip.",
+      "steps": [
+        {
+          "math": "M_{\\rm cable}=3(0)-4(-T)=4T,\\quad M_W=-100(1.5),\\quad M_P=-40(3)",
+          "reason": "Use force components and coordinates. The horizontal cable has a 4 m perpendicular lever arm; the gravitational loads use horizontal distances."
+        },
+        {
+          "math": "4T-150-120=0\\ \\Longrightarrow\\ T=\\frac{135}{2}\\ \\mathrm N",
+          "reason": "The required tension is positive, so the cable direction is consistent."
+        },
+        {
+          "math": "R_x=T=\\frac{135}{2}\\ \\mathrm N,\\qquad R_y=100+40=140\\ \\mathrm N",
+          "reason": "Horizontal and vertical force balance finish the pin reaction."
+        }
+      ],
+      "conclusion": "Using the full 5 m beam length as the cable lever arm would be incorrect. Different forces have different perpendicular distances."
+    },
+    {
+      "title": "6. A paper ladder model can fail through friction",
+      "prompt": "A ladder's lower end is at (0,0) m and upper end at (3,4) m. It weighs 80 N at its midpoint and has a hypothetical downward 120 N load at three quarters of its length. The wall is smooth, the floor rough, and μs=0.4. This is a paper model only.",
+      "steps": [
+        {
+          "math": "4N_w-80(1.5)-120(2.25)=0\\ \\Longrightarrow\\ N_w=\\frac{195}{2}\\ \\mathrm N",
+          "reason": "The wall pushes left at height 4 m. Both weights act clockwise about the floor contact."
+        },
+        {
+          "math": "N_f=200\\ \\mathrm N,\\qquad f_f=N_w=\\frac{195}{2}\\ \\mathrm N",
+          "reason": "The floor normal balances both weights; its friction must balance the wall's leftward force."
+        },
+        {
+          "math": "\\mu_{\\min}=\\frac{195/2}{200}=\\frac{39}{80},\\qquad \\mu_sN_f=80\\ \\mathrm N<97.5\\ \\mathrm N",
+          "reason": "Positive normals do not guarantee sufficient tangential capacity."
+        }
+      ],
+      "conclusion": "This assumed static state fails. The calculation does not predict the later motion or establish safe ladder use; no physical ladder test is assigned."
+    },
+    {
+      "title": "7. Find the whole allowed load-position interval",
+      "prompt": "Use the baseline beam with W=P=60 N, L=6 m, a=1 m, b=4 m, and no line load. First let H=M=0. Then restore H=12 N at h=1 m with μs=0.4.",
+      "steps": [
+        {
+          "math": "N_A=100-20x,\\qquad N_B=20+20x",
+          "reason": "Solve the moments with x variable. Normals vary linearly; moving the load right transfers support demand rightward."
+        },
+        {
+          "math": "N_A\\ge0\\Rightarrow x\\le5,\\quad N_B\\ge0\\Rightarrow x\\ge-1,\\quad x\\in[0,6]\\Rightarrow x\\in[0,5]",
+          "reason": "Intersect contact inequalities with the finite beam. The left support is just unloaded at x=5 m."
+        },
+        {
+          "math": "H=12:\\quad N_A=96-20x,\\quad N_B=24+20x,\\quad N_A\\ge0\\Rightarrow x\\le4.8",
+          "reason": "The raised horizontal force further unloads the left support."
+        },
+        {
+          "math": "0.4(96-20x)\\ge12\\ \\Longrightarrow\\ x\\le3.3,\\qquad x_{\\rm admitted}\\in[0,3.3]\\ \\mathrm m",
+          "reason": "Friction fails before the left normal reaches zero. Both ends belong to the ideal inequality's allowed set."
+        }
+      ],
+      "conclusion": "At x=4 m both normals are positive but friction is insufficient. Checking only tipping would miss the earlier limit."
+    },
+    {
+      "title": "8. A clamp supplies an independent moment",
+      "prompt": "An ideal 3 m cantilever carries a uniform downward line load of 10 N/m and a tip force (6,−20) N at (3,0) m. Neglect beam weight and other loads in this particular example.",
+      "steps": [
+        {
+          "math": "Q=30\\ \\mathrm N,\\qquad \\bar x=1.5\\ \\mathrm m,\\qquad R_x=-6\\ \\mathrm N,\\quad R_y=30+20=50\\ \\mathrm N",
+          "reason": "Replace the uniform line load by its resultant and use force balance."
+        },
+        {
+          "math": "M_{\\rm clamp}-30(1.5)-20(3)=0\\ \\Longrightarrow\\ M_{\\rm clamp}=105\\ \\mathrm{N\\,m}",
+          "reason": "The independent clamp couple balances both clockwise load moments. The horizontal tip force acts on the beam axis and contributes no moment."
+        },
+        {
+          "math": "M_{\\rm pin}=0\\ne105\\ \\mathrm{N\\,m}",
+          "reason": "A pin at the same location lacks the reaction couple required by this loading."
+        }
+      ],
+      "conclusion": "A clamp and pin are not interchangeable names. Their allowed reactions determine whether the static model can work."
+    },
+    {
+      "title": "9. Sliding and tipping compete",
+      "prompt": "A rigid block has centered weight W=100 N and base width b=2 m. A rightward force F is applied at fixed height h=3 m. Compare μs=0.2, 0.5, and 1/3.",
+      "steps": [
+        {
+          "math": "x_R=\\frac b2+\\frac{Fh}{W}=1+\\frac{3F}{100}\\ \\mathrm m",
+          "reason": "The normal resultant shifts toward the right edge as the applied force increases; N=W in this particular model."
+        },
+        {
+          "math": "x_R=b\\ \\Longrightarrow\\ F_{\\rm tip}=\\frac{Wb}{2h}=\\frac{100}{3}\\ \\mathrm N",
+          "reason": "Tipping onset corresponds to the resultant reaching the edge, not an arbitrary friction choice."
+        },
+        {
+          "math": "F_{\\rm slide}=\\mu_sW=20,\\ 50,\\ \\frac{100}{3}\\ \\mathrm N",
+          "reason": "Compare each friction threshold with the same tipping threshold. The lower force is the first limit under slow loading."
+        },
+        {
+          "math": "F=10\\ \\mathrm N\\ \\Longrightarrow\\ x_R=1.3\\ \\mathrm m",
+          "reason": "At this smaller force the required vertical resultant lies inside the base."
+        }
+      ],
+      "conclusion": "The μs=0.2 case slides first, 0.5 tips first, and 1/3 reaches both limits together. These are onset predictions under stated assumptions, not post-failure dynamics."
+    },
+    {
+      "title": "10. A redundant support needs compatibility",
+      "prompt": "A rigid beam has upward supports at x=0, 2, and 4 m and a centered 120 N load. Find what statics determines. Then model the supports as initially contacting vertical springs at a common level, with identical outer stiffness k and middle stiffness rk.",
+      "steps": [
+        {
+          "math": "N_A+N_B+N_C=120,\\qquad 2N_B+4N_C=240",
+          "reason": "There are only two independent equations involving the three vertical reactions."
+        },
+        {
+          "math": "N_A=N_C=\\frac{120-N_B}{2},\\qquad 0\\le N_B\\le120\\ \\mathrm N",
+          "reason": "Every member of this family balances the rigid body and has nonnegative reactions."
+        },
+        {
+          "math": "N_A=N_C,\\quad k_A=k_C\\Rightarrow\\delta_A=\\delta_C=\\delta,\\quad \\delta_B=\\delta",
+          "reason": "In this symmetric spring model, equal outer forces and stiffnesses imply equal outer deflections. A rigid straight beam then has the same middle deflection."
+        },
+        {
+          "math": "(2+r)k\\delta=120,\\qquad (N_A,N_B,N_C)=\\frac{120}{2+r}(1,r,1)\\ \\mathrm N",
+          "reason": "Spring force laws and geometric compatibility select one member. r=1 gives (40,40,40) N; r=2 gives (30,60,30) N."
+        }
+      ],
+      "conclusion": "Equal sharing came from stated stiffness and compatible deformation, not from rigid-body statics alone. Uneven support heights or preload would change the extra model."
+    },
+    {
+      "title": "11. Three unknowns can still leave an inconsistent system",
+      "prompt": "A pin is at (0,0) m. Another support at (4,0) m supplies only a horizontal reaction Bx. A downward 40 N force acts at (2,0) m. There is no reaction couple.",
+      "steps": [
+        {
+          "math": "A_x+B_x=0,\\qquad A_y-40=0",
+          "reason": "The pin contributes two unknown components, and the second support contributes one."
+        },
+        {
+          "math": "\\sum M_O=0A_x+0A_y+0B_x-40(2)=-80\\ \\mathrm{N\\,m}",
+          "reason": "All reaction lines pass through the origin or lie on its horizontal line. None can oppose the load moment at this geometry."
+        },
+        {
+          "math": "-80=0\\quad\\text{is inconsistent}",
+          "reason": "Counting three unknowns did not establish three effective independent constraints."
+        }
+      ],
+      "conclusion": "No reaction values can balance this load at the stated geometry. With an added +80 N m couple, moments would balance but Ax and Bx would remain an undetermined force family; statics alone would still not give unique reactions."
+    },
+    {
+      "title": "12. Infer a load from measured reactions",
+      "prompt": "A uniform 4 m beam weighs 40 N. Its endpoint supports measure upward reactions of 50 N and 90 N. Assume exactly one additional downward point load P acts on the beam and no other forces or couples are present.",
+      "steps": [
+        {
+          "math": "P=50+90-40=100\\ \\mathrm N",
+          "reason": "The sum of measured normals determines the added downward force."
+        },
+        {
+          "math": "90(4)-40(2)-Px=0\\ \\Longrightarrow\\ x=\\frac{280}{100}=\\frac{14}{5}\\ \\mathrm m",
+          "reason": "Moments about the left endpoint locate the assumed single point load."
+        },
+        {
+          "math": "\\bar x_D=\\frac{90(4)}{140}=\\frac{18}{7}\\ \\mathrm m",
+          "reason": "The combined downward-load centroid differs from the added load's own position."
+        },
+        {
+          "math": "50(0-4)-40(2-4)-100(14/5-4)=0",
+          "reason": "An independent moment check about the right support reproduces the measured reaction pair."
+        }
+      ],
+      "conclusion": "The single-point-load assumption makes P and x identifiable. Many distributed loads can produce the same total force and moment, so the measurements do not establish an arbitrary load distribution."
+    },
+    {
+      "title": "13. Zero curvature does not imply neutral stability",
+      "prompt": "For one local displacement coordinate q in meters, let $U(q)=10+Aq^2+5q^4$ J on $|q|\\le0.2$ m. The coefficients carry the required J/m² and J/m⁴ units. Classify q=0 for A=2, −2, and 0; compare constant U.",
+      "steps": [
+        {
+          "math": "F=-\\frac{dU}{dq}=-2Aq-20q^3,\\qquad F(0)=0,\\qquad U''(0)=2A",
+          "reason": "All three potentials have equilibrium at q=0. Force alone at that point does not decide the response to displacement."
+        },
+        {
+          "math": "\\Delta U(0.1)=0.01A+0.0005=0.0205,\\ -0.0195,\\ 0.0005\\ \\mathrm J",
+          "reason": "Nearby energy values rise for A=2 and A=0 and fall for A=−2. The sign persists sufficiently near zero."
+        },
+        {
+          "math": "A=0:\\quad \\Delta U=5q^4>0\\quad(q\\ne0)",
+          "reason": "Even with zero quadratic curvature, this is a strict local minimum. Positive finite effective mass gives local conservative stability."
+        },
+        {
+          "math": "U=\\text{constant}\\Rightarrow F=0\\quad\\text{throughout the coordinate interval}",
+          "reason": "Only the constant-potential case is positionally neutral here; neighboring rest positions have no restoring force."
+        }
+      ],
+      "conclusion": "The three classifications are stable, unstable, and stable. Stability does not imply decay to rest without damping, and the one-coordinate conclusion is not a complete structural safety analysis."
+    },
+    {
+      "title": "14. Interval evidence can be mixed",
+      "prompt": "For the baseline geometry W=P=60 N, L=6 m, a=1 m, b=4 m, h=1 m, M=0, let independent allowed bounds be x∈[3,3.2] m, H∈[10,14] N, and μs∈[0.35,0.45].",
+      "steps": [
+        {
+          "math": "N_A=100-20x-H/3\\in\\left[\\frac{94}{3},\\frac{110}{3}\\right]\\ \\mathrm N",
+          "reason": "The minimum is at the largest x and H; the maximum is at the smallest. NB=120−NA is also positive throughout."
+        },
+        {
+          "math": "m_{f,\\min}=\\frac7{20}\\frac{94}{3}-14=-\\frac{91}{30}\\ \\mathrm N",
+          "reason": "Use the smallest μ with the smallest left normal and largest horizontal demand. Independent bounds allow this corner."
+        },
+        {
+          "math": "m_{f,\\max}=\\frac9{20}\\frac{110}{3}-10=\\frac{13}{2}\\ \\mathrm N",
+          "reason": "The opposite corner has positive margin. Therefore the allowed set contains admitted and failed candidates."
+        },
+        {
+          "math": "\\mu_{\\min}=0.5\\Rightarrow m_{f,\\min}=\\frac12\\frac{94}{3}-14=\\frac53\\ \\mathrm N",
+          "reason": "If a revised coefficient interval has lower bound 0.5 and a consistent upper bound at least 0.5, every corner and intermediate point is admitted under this model."
+        }
+      ],
+      "conclusion": "The original result is mixed admissibility, not a failure probability. A revised lower bound must be supported by evidence, not chosen merely to make a calculation pass."
+    }
+  ],
+  "guided": {
+    "title": "Positive normals are not enough",
+    "setup": "Move the baseline 60 N point load to x=4 m on a 6 m uniform beam weighing 60 N. Supports remain at a=1 m and b=4 m. A rightward 12 N force acts at height 1 m. There is no line load or applied couple. The left contact has μs=2/5; the right is smooth. Both contacts push upward only.",
+    "before": [
+      "Draw the beam plus its massless load attachment. Take counterclockwise moments as positive. The 12 N horizontal load has a clockwise moment even though it contributes no vertical force.",
+      "Use moments about B to find the left normal, then use both force balances. Compare the required friction with μs times the left normal only."
+    ],
+    "question": {
+      "id": "phs231-statics-guided",
+      "familyId": "phs231-statics-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m08-l01",
+      "category": "application",
+      "critical": true,
+      "prompt": "Find the left and right candidate normals, signed required left friction, available left friction magnitude, and remaining friction margin. Decide whether the stated static model is admitted.",
+      "parameters": {
+        "length": 6,
+        "a": 1,
+        "b": 4,
+        "W": 60,
+        "P": 60,
+        "x": 4,
+        "H": 12,
+        "h": 1,
+        "mu": 0.4
+      },
+      "fields": [
+        {
+          "id": "a",
+          "kind": "rational",
+          "label": "Left candidate normal",
+          "expected": "16",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "b",
+          "kind": "rational",
+          "label": "Right candidate normal",
+          "expected": "104",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "friction",
+          "kind": "rational",
+          "label": "Required signed left friction",
+          "expected": "-12",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "capacity",
+          "kind": "rational",
+          "label": "Available left friction magnitude",
+          "expected": "32/5",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "margin",
+          "kind": "rational",
+          "label": "Remaining friction margin",
+          "expected": "-28/5",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "model",
+          "kind": "choice",
+          "label": "Support-model decision",
+          "correct": "friction",
+          "options": [
+            {
+              "id": "friction",
+              "label": "Normals are admitted, but left friction cannot sustain the candidate",
+              "feedback": "Both normals are positive. The required 12 N exceeds (2/5)(16)=32/5 N at the left contact, so this static state fails through friction."
+            },
+            {
+              "id": "total",
+              "label": "It holds because the total 120 N normal gives 48 N of friction capacity",
+              "feedback": "Only the left support is rough. The right normal does not contribute to its friction capacity. Use 16 N, not the total 120 N."
+            },
+            {
+              "id": "balance",
+              "label": "It holds because force and moment residuals are zero",
+              "feedback": "Balanced equations produce a candidate. Their solution still has to satisfy the force directions and friction bounds of the actual supports."
+            },
+            {
+              "id": "clip",
+              "label": "Replace required friction by its maximum and keep the same static equilibrium",
+              "feedback": "Replacing −12 N by −32/5 N leaves an unbalanced horizontal force. A new motion or constraint model is required; clipping the force does not preserve equilibrium."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "About B, the equation is −3NA+60(1)−12(1)=0. The point load at B contributes zero moment about B.",
+        "Recover NB from NA+NB=120 and fA from fA+12=0. The candidate has two positive normals.",
+        "Capacity is (2/5)NA, and the margin is that capacity minus |fA|. A negative margin means insufficient friction even with normal contact admitted."
+      ],
+      "explanation": [
+        "$-3N_A+60-12=0\\Rightarrow N_A=16\\ \\mathrm N$ — The raised horizontal load supplies a clockwise moment. Moments about B eliminate NB and the point load.",
+        "$N_B=120-16=104\\ \\mathrm N,\\quad f_A=-12\\ \\mathrm N$ — Complete vertical and horizontal force balance.",
+        "$f_{\\max}=\\frac25(16)=\\frac{32}{5}\\ \\mathrm N,\\quad m_f=\\frac{32}{5}-12=-\\frac{28}{5}\\ \\mathrm N$ — Use the rough support's own normal. The friction margin is negative.",
+        "$3(104)-60(2)-60(3)-12=0$ — The candidate also balances moments about A. That independent equation check does not repair the failed contact inequality.",
+        "Both upward normals are realizable, but the required left friction is not. The given static contact model therefore fails. Do not replace the required force with its cap while still claiming static balance."
+      ],
+      "answerSummary": "NA=16 N, NB=104 N, fA=−12 N, capacity=32/5 N, margin=−28/5 N. The normal contacts are admitted but the left friction bound fails."
+    },
+    "after": "Use the investigation's friction-boundary button to find the last admitted position before this load reaches x=4 m. Explain why that boundary occurs before the left normal becomes zero. Save the failed prediction and corrected local friction calculation in your notes."
+  },
+  "interaction": {
+    "kind": "phs231-statics",
+    "prompt": "Predict the forces required to hold the loaded beam, then test whether its rough left support and smooth right support can supply them. Sweep the point-load position, inspect exact contact boundaries, and explain why balanced equations can still give an inadmissible support model.",
+    "initial": {
+      "length": 6,
+      "supportA": 1,
+      "supportB": 4,
+      "beamWeight": 60,
+      "pointLoad": 60,
+      "pointX": 3,
+      "loadLeft": 0,
+      "loadRight": 0,
+      "horizontal": 12,
+      "height": 1,
+      "couple": 0,
+      "muStatic": 0.4
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "beam"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "distributed"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "cable"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "inclined"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "ladder"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "origin"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "inverse"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "clamp"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "liftoff"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "window"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "rough"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "slide-tip"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "redundant"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "mechanism"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "stability"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "uncertainty"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "beam"
+    },
+    {
+      "familyId": "phs231-static-reactions",
+      "variant": "distributed"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "rough"
+    },
+    {
+      "familyId": "phs231-static-validity",
+      "variant": "mechanism"
+    }
+  ],
+  "summary": [
+    "Draw one body and replace supports with the force components and couples they can actually supply.",
+    "Planar equilibrium needs $\\sum F_x=\\sum F_y=\\sum M_O=0$, along with initial rest and an admissible geometry.",
+    "Check another moment origin, but do not count that as an extra independent equation.",
+    "A distributed resultant needs both $Q=\\int w\\,dx$ and $J=\\int xw\\,dx$. Its centroid is undefined when Q=0.",
+    "Keep candidate reactions separate from support validity: contacts push, cables pull, and friction has a local bound.",
+    "Intersect moving-load inequalities with the physical beam interval; equality is admitted but limiting.",
+    "Reaction count, stability, stiffness, strength, and uncertainty margin are separate questions."
+  ],
+  "retrieval": "Without the formulas, sketch a beam with an overhanging load and a raised horizontal force. Explain each signed moment, derive the two normal reactions, and identify which contact condition can fail first. Revisit the load diagram tomorrow, then solve a fresh practice form a week later. If you confuse a local normal with total weight, review Static friction and connected bodies; if moment signs fail, review Angular motion, torque, and rotational inertia.",
+  "readings": [
+    {
+      "title": "OpenStax: Conditions for Static Equilibrium",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-1-conditions-for-static-equilibrium",
+      "purpose": "Free companion reading on translational and rotational equilibrium, torque origins, centers of gravity, and tipping. Compare its diagrams with your own force inventory."
+    },
+    {
+      "title": "OpenStax: Examples of Static Equilibrium",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/12-2-examples-of-static-equilibrium",
+      "purpose": "Additional free beam, cable, and ladder reasoning. Identify each support's allowed force directions before following a solution."
+    },
+    {
+      "title": "MIT OpenCourseWare: Solid Mechanics, Class Exercise 4",
+      "url": "https://ocw.mit.edu/courses/1-050-solid-mechanics-fall-2004/resources/class04_4/",
+      "purpose": "Optional free exercise for practicing body isolation and equilibrium equations. State any needed support assumptions; it is enrichment rather than a platform checkpoint."
+    }
+  ]
+}

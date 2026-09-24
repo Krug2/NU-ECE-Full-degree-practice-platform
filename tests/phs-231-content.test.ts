@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import staticsData from "../content/lessons/phs-231/m08-l01.json";
 import rollingData from "../content/lessons/phs-231/m07-l03.json";
 import angularData from "../content/lessons/phs-231/m07-l02.json";
 import rotationData from "../content/lessons/phs-231/m07-l01.json";
@@ -30,7 +31,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData, staticsData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -46,6 +47,17 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("rejects a balanced statics candidate when the local friction capacity fails",()=>{
+  const q=lessonSchema.parse(staticsData).guided.question;
+  const a=(60-12)/3,b=120-a,f=-12,capacity=2*a/5;
+  expect(a*(1-4)-60*(3-4)-12).toBe(0);
+  expect(b*(4-1)-60*(3-1)-60*(4-1)-12).toBe(0);
+  expect(a).toBeGreaterThan(0);expect(b).toBeGreaterThan(0);expect(capacity).toBeLessThan(Math.abs(f));
+  const response={a:"(60-12)/3",b:"120-(60-12)/3",friction:"-12",capacity:"(2/5)*16",margin:"(2/5)*16-12",model:"friction"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  for(const wrong of [{a:"20"},{capacity:"48"},{margin:"28/5"},{friction:"-32/5"},{model:"total"},{model:"balance"},{model:"clip"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks the rolling contact demand against capacity before solving actual sliding accelerations",()=>{
