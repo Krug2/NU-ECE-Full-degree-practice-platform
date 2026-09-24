@@ -1,0 +1,37 @@
+{
+  "courseId": "phs-231",
+  "planVersion": 1,
+  "title": "Calculus-based Physics 1",
+  "status": "proposed",
+  "alignment": {
+    "checkedAt": "2026-09-23",
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "publishedCredits": 3,
+    "creditUnit": "semester",
+    "publishedPrerequisiteText": "PHS 104 and MTH 220, or CSC 208 and MTH 221, or CSC 209",
+    "prerequisiteInterpretation": "NU's public wording is unparenthesized. Preserve its alternatives without asserting formal grouping. Our recommended readiness is introductory physics plus differentiation, definite integration, trigonometric functions, and vector components; calculus II skills support later integration and numerical work. NU determines enrollment eligibility.",
+    "publishedScopeSummary": "Calculus-based mechanics in one, two, and three dimensions; graphical and numerical motion analysis; forces; circular motion with constant and changing speed; gravity; vector work and energy; momentum; rotation; equilibrium, elasticity, and fracture.",
+    "boundary": "The module sequence, examples, assessments, thresholds, study estimates, and projects below are independently proposed teaching choices. The public description does not establish NU's detailed syllabus, grading rules, required equipment, textbook, or exam policy. No separate PHS 231 laboratory is inferred.",
+    "sourceConflict": "Older catalogs use quarter units. Use the current program page's semester credits for this plan, without inferring applicability to a particular student's academic record."
+  },
+  "intent": "Build and check a mechanical model from a physical situation, choose coordinates and system boundaries deliberately, use calculus and vectors to obtain predictions, and evaluate those predictions using dimensions, limiting cases, uncertainty, and independent conservation checks.",
+  "routes": [
+    {"id":"full","title":"Learn thoroughly","description":"Complete the readiness screen, repair prerequisite gaps, study the 22 lessons in dependency order, take each module assessment, complete the mechanical-system investigation, and take cumulative and delayed retrieval assessments.","effort":"Proposed 60 to 90 focused hours, plus prerequisite study. This estimate has not been pilot validated and imposes no deadline."},
+    {"id":"refresh","title":"Refresh selectively","description":"Use the readiness screen and module assessments to locate gaps. Revisit missed objectives and attempt a different form later. Prior course credit, reading time, and one high aggregate score do not replace objective evidence or project evidence."},
+    {"id":"reference","title":"Look up a topic","description":"Open any lesson directly. Prerequisite advice is visible but does not lock self-study access. Browsing does not mark an objective demonstrated."}
+  ],
+  "preparation": [
+    {"courseId":"mth-215","lessonIds":["b01","b02","b05","b06","m01-l01","m01-l03","m02-l01"],"availabilityAtPlan":"These lessons are available on the branch base.","skills":"Signed arithmetic, scientific notation, coordinate scales, right-triangle trigonometry, formula rearrangement, quadratic roots, and functions.","repair":"Link to these existing lessons instead of duplicating their instruction."},
+    {"courseId":"phs-104","availabilityAtPlan":"Course under construction; no authored lessons at the branch base.","skills":"Position, speed, acceleration, mass and weight, forces, energy, and physical units.","repair":"Identify the gap and offer the verified free mechanics references. Physics-specific refreshers in this pack connect concepts to calculus; they do not claim completion of PHS 104."},
+    {"courseId":"csc-208","availabilityAtPlan":"Course under construction; no authored lessons at the branch base.","skills":"Derivatives as local rates, definite integrals as accumulation, power and chain rules, fundamental theorem, and initial conditions.","repair":"Provide a short contextual readiness check and links to free calculus teaching; do not author the CSC 208 course here."},
+    {"courseId":"csc-209","availabilityAtPlan":"Course under construction; no authored lessons at the branch base.","skills":"Trigonometric integration, multivariable notation, series approximation, and numerical integration readiness.","repair":"Make each required mathematical operation explicit at first physics use and link out for deeper prerequisite instruction."}
+  ],
+  "conventions": {
+    "units": "Use SI unless an item explicitly requests conversion. Keep units on every model coefficient, measured input, and final interpretation. Radians are used in angular derivatives; degrees are converted before calculation. g = 9.81 m/s^2 is a stated classroom approximation, not a local measurement.",
+    "notation": "Bold or arrowed quantities are vectors. Components refer to stated right-handed axes. Define the system, positive direction, time origin, coordinate origin, and reference level of potential energy. Mass is positive; lengths, moments of inertia, and elapsed intervals must satisfy their model domains.",
+    "precision": "Retain intermediate precision. Each approximate item states its tolerance; exact fields accept equivalent rational or radical forms. Input fields give the requested unit and require its numerical value. Separately assess dimensions and conversions so supplying a bare number cannot establish unit reasoning.",
+    "modelLimits": "Classical, nonrelativistic mechanics with explicitly stated idealizations. Point-particle, rigid-body, massless-rope, frictionless-pulley, constant-field, small-deformation, and linear-drag assumptions appear only where used. Explain where each approximation fails."
+  },
+  "sequence": ["m01","m02","m03","m04","m05","m06","m07","m08","m09"],
+  "releaseStatusPolicy": "Keep building while any lesson, mapped question family, assessment, project workflow, or verification gate is missing. Technical completion can earn preview after a documented audit. Reviewed additionally requires actual independent subject review; pilot validation is a separate claim and has not occurred."
+}

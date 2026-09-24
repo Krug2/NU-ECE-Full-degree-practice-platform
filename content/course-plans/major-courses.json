@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "scope": "Every catalog course with group major, including five laboratories and the three-course capstone sequence.",
+  "branch": "major-courses",
+  "pushTarget": "origin/major-courses",
+  "previewPort": 3001,
+  "browserTestPort": 3101,
+  "baseCommit": "a21121b04fc2069be00419e4bcd8c3a5d001dae9",
+  "ownership": {
+    "major": ["phs-231", "phs-232", "csc-310", "csc-331", "cee-300", "csc-300", "cee-310", "cee-310l", "csc-340", "csc-340l", "csc-350", "csc-342", "cee-420", "cee-420l", "csc-436", "cee-324", "cee-324l", "cee-340", "cee-340l", "cee-430", "cee-440", "cee-498a", "cee-498b", "cee-498c"],
+    "prerequisiteDevelopmentElsewhere": ["mth-215", "phs-104a", "csc-242", "csc-252", "phs-104", "csc-208", "csc-209", "csc-220"],
+    "boundary": "Do not change prerequisite development order or author their courses here. Link to available lessons and label unavailable preparation explicitly. Course development order does not waive academic prerequisites."
+  },
+  "sequencePolicy": "Finish planning, implementation, technical verification, and an honest release audit for PHS 231 before starting PHS 232. Thereafter begin from the catalog order above and recheck current official dependencies before selecting each course. Plan lecture/lab corequisite bundles together; preserve their distinct course evidence. Do not represent ambiguous official alternatives as resolved enrollment rules.",
+  "dependencyNotes": [
+    "PHS 231 requires physics and calculus readiness even while those prerequisite packs are under construction.",
+    "CEE 300 follows CSC 209 and CSC 310. Circuit, digital logic, signals, and embedded lecture/lab pairs have published corequisite relationships that a flat preparation list cannot fully express.",
+    "CEE 420L prerequisite/corequisite timing and CEE 498C's printed predecessor need explicit source reconciliation when those courses are planned.",
+    "Capstone readiness must cover all non-capstone major requirements or the published program permission route, not just the four suggested preparation edges currently in the app."
+  ],
+  "deliveryPolicy": "Use course-specific files. Keep necessary shared extensions backward compatible and in focused commits; record their hashes in integration.json. Verify each small slice, stage only its files, commit with a short lowercase summary and no body, and immediately push origin/major-courses. Never push or merge into main from this task. Preserve Markdown ignore rules and exclude personal data.",
+  "status": {
+    "currentCourse": "phs-231",
+    "completedCourses": [],
+    "remainingCourses": ["phs-231", "phs-232", "csc-310", "csc-331", "cee-300", "csc-300", "cee-310", "cee-310l", "csc-340", "csc-340l", "csc-350", "csc-342", "cee-420", "cee-420l", "csc-436", "cee-324", "cee-324l", "cee-340", "cee-340l", "cee-430", "cee-440", "cee-498a", "cee-498b", "cee-498c"],
+    "independentSubjectReview": "Not performed",
+    "pilotValidation": "Not performed"
+  }
+}
