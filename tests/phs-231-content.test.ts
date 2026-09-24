@@ -7,13 +7,14 @@ import plan from "../content/course-plans/phs-231/modules.json";
 import packData from "../content/learning-packs/phs-231.json";
 import unitsData from "../content/lessons/phs-231/m01-l01.json";
 import vectorData from "../content/lessons/phs-231/m01-l02.json";
+import motionData from "../content/lessons/phs-231/m02-l01.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
   expect(pack.status).toBe("building");
   expect(pack.modules.flatMap(m=>m.lessons)).toHaveLength(22);
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
-  for(const data of [unitsData, vectorData]) {
+  for(const data of [unitsData, vectorData, motionData]) {
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
     const visit=(value:unknown):void=>{
@@ -29,6 +30,15 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
   }
+});
+
+it("checks signed motion areas in the guided fixture and rejects a sign-only speed rule",()=>{
+  const q=lessonSchema.parse(motionData).guided.question;
+  const positiveArea=4*2/2,negativeArea=-2*1/2;
+  const response={displacement:String(positiveArea+negativeArea),distance:String(positiveArea-negativeArea),position:String(-2+positiveArea+negativeArea),speed:"growing"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(gradeQuestion(q,{...response,distance:response.displacement}).correct).toBe(false);
+  expect(gradeQuestion(q,{...response,speed:"shrinking"}).correct).toBe(false);
 });
 
 it("checks the guided vector products independently and rejects reversed order", () => {
