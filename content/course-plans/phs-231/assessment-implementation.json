@@ -1,7 +1,7 @@
 {
   "courseId": "phs-231",
   "version": 1,
-  "status": "All 34 forms and the course evidence panel are implemented and individually verified. Complete course release audit in progress.",
+  "status": "All 34 forms and the course evidence panel are implemented and verified in the completed technical-preview release audit. Independent subject review and learner pilot validation have not occurred.",
   "purpose": "Complete the planned readiness, module, cumulative and targeted-review experience after all 22 lessons, preserving the existing single-lesson checkpoint and backup behavior.",
   "officialDistinction": "All assessment lengths, thresholds, permitted aids and review delays are proposed self-study defaults. They are not official NU examination rules, credit, or psychometric validation.",
   "design": {

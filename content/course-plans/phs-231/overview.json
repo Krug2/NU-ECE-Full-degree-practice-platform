@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "planVersion": 2,
   "title": "Calculus-based Physics 1",
-  "status": "Implemented teaching sequence; complete technical release audit in progress. Teaching choices remain proposed platform defaults, not an official NU syllabus.",
+  "status": "Complete technical preview; release checks and limits are recorded in release-audit.json. Teaching choices remain proposed platform defaults, not an official NU syllabus.",
   "alignment": {
     "checkedAt": "2026-09-24",
     "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",

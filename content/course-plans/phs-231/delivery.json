@@ -21,5 +21,5 @@
     "All relevant automated checks pass and published availability matches the delivered content.",
     "Independent subject review and pilot validation remain explicitly unperformed until evidence exists. A technical preview is not relabeled reviewed."
   ],
-  "remainingWork":"All lessons, interactions, generators, course assessments, targeted review, project notebook and repeated-study capacity checks are implemented. Finish the fresh integrated unit/lint/type/build/browser run, coverage audit, release copy and final visual checks. Record actual evidence before technical-preview release. Begin PHS 232 only after that audit; independent subject review and pilot validation have not occurred."
+  "remainingWork":"Technical implementation and release audit are complete; see release-audit.json and integration.json for actual checks, corrections and compatibility requirements. Continue with PHS 232. Independent subject review and pilot validation have not occurred. Whole-major-curriculum history capacity remains to be audited as the platform grows."
 }
