@@ -17,7 +17,7 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
   try {
     if (field.kind === "pi-multiple") {
       const correct = equalRational(parsePiMultiple(input), parseRational(field.expected));
-      return { correct, valid: true, message: correct ? "This is the correct exact multiple of pi." : "Use 180 degrees = pi radians and keep the coefficient of pi exact." };
+      return { correct, valid: true, message: correct ? "This is the correct exact multiple of pi." : "Keep pi exact, check its coefficient, and use the labeled unit." };
     }
     if (field.kind === "rational-expression") return { ...checkRationalExpression(input, field.expected), valid: true };
     if (field.kind === "polynomial") return { ...checkPolynomialForm(input, parsePolynomial(field.expected), field), valid: true };
