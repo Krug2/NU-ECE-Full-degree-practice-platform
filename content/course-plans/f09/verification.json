@@ -1,12 +1,60 @@
 {
   "courseId": "f09",
-  "status": "planned",
-  "humanReview": "pending",
+  "verifiedAt": "2026-09-24",
+  "status": "verified-preview",
+  "independentHumanReview": "pending",
+  "baseline": "efdbec3927ea5de899a06820a9cea446771c35c2",
+  "scope": {
+    "lessons": 4,
+    "workedExamples": 33,
+    "practiceStructures": 41,
+    "diagnosticProbes": 4,
+    "lessonCheckpointQuestions": 16,
+    "mixedRecallQuestions": 4
+  },
   "checks": [
-    "Use100seeds per structure; independent Cartesian multiplication/division formulas, conjugate/norm identities, trigonometric reconstruction, repeated multiplication for powers and root verification.",
-    "Test exact equivalent complex/radical forms, complete unordered root sets, invalid i/j input guidance, zero divisor/base/argument cases and signed/axis quadrants.",
-    "Check every diagram's axis scales, zero points and root count; all lesson/example math and50seed practice/checkpoint generation.",
-    "Exercise all guided and activity modes, diagnostic routing, every independent checkpoint, mixed review, notes, resume and backup in desktop/mobile browsers; keyboard and Axe; run full tests/lint/type/build.",
-    "Label preview only after all verification; human review remains pending. Finish F09 before detailed F10 planning."
+    {
+      "command": "pnpm test -- --maxWorkers=2",
+      "result": "866 tests passed across 105 files."
+    },
+    {
+      "command": "pnpm lint",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm exec tsc --noEmit",
+      "result": "Passed."
+    },
+    {
+      "command": "pnpm build",
+      "result": "Passed compilation, TypeScript and 109 static pages, repeated for preview."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep [fF]09",
+      "result": "All seven journeys passed overall. Six passed initially; one polar test used an incorrect option label. Corrected the locator and its complete journey passed in tmp/f09-polar."
+    },
+    {
+      "command": "playwright.refreshers.config.ts --grep 'f09: diagnostic gaps'",
+      "result": "Final available-preview diagnostic, resume, notes and export/reset/import journey passed."
+    }
+  ],
+  "mathematics": "100 seeds per structure independently checked by Cartesian formulas, conjugate/norm identities, trigonometric reconstruction and repeated multiplication for powers and roots. Lesson and screen coverage uses 50 seeds. Boundary checks include exact/radical equivalence, i notation, invalid j, axis/zero divisors, signed powers, complete unordered root sets, missing roots, principal versus all roots, atan2 quadrants, included +pi, radian Euler form, zero argument and zero-root multiplicity.",
+  "instruction": "Four original lessons include quick recall, full explanations, 33 reasoned examples, guided practice, four prediction activities and complete objective checkpoints. MTH 215 m01-l03 multiply/divide families retain original identities through version-guarded wrappers. Shared graders and persistence are reused; familiarity and assistance never award independent evidence.",
+  "accessibility": "All pages passed desktop/mobile Axe WCAG2 A/AA and WCAG2.1 AA with no overflow or KaTeX errors. All revealed activities passed mobile Axe, keyboard control/feedback and retry checks. Equal-scale line-style plots show zero as a point and include equivalent exact tables. Desktop overview and mobile arithmetic, roots and zero-polar screenshots visually inspected.",
+  "sources": "Two precise OpenStax sections and five MIT ES.1803 Topic 4 sections verified and attributed with current CC BY-NC-SA 4.0 terms. App prose, exercises and graphics are original.",
+  "sharedInterfaces": [
+    "Lesson.interaction: {kind:'refresher-complex-lab',mode:'arithmetic'|'conjugate'|'polar'|'roots',prompt:string}. One strict union member and reader dispatch; no persistence or grading redesign."
+  ],
+  "preview": {
+    "url": "http://127.0.0.1:3002/courses/f09",
+    "status": 200,
+    "browserTestPort": 3102,
+    "serverReuse": false
+  },
+  "limitations": [
+    "Optional content does not award credit or establish enrollment eligibility.",
+    "Independent human subject and assistive-technology reviews remain pending.",
+    "General complex analysis, branch cuts, phasor/circuit physical models and transforms are outside scope.",
+    "F10 through F12 remain planned at this milestone."
   ]
 }
