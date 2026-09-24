@@ -23,7 +23,7 @@ const legacyProgressSchema = z.object({
   }).strict()).max(5000).refine(items => unique(items.map(item => item.id)), "Duplicate sessions"),
 }).strict();
 export const progressSchema = legacyProgressSchema.extend({schemaVersion:z.literal(2),learning:learningSchema}).strict()
-  .refine(data=>data.learning.attempts.every(attempt=>courseIds.has(attempt.courseId))&&data.learning.evidence.every(item=>courseIds.has(item.courseId))&&Object.keys(data.learning.notes).every(id=>courseIds.has(id)),"Unknown learning course")
+  .refine(data=>data.learning.attempts.every(attempt=>courseIds.has(attempt.courseId)&&(attempt.assessment?.objectives.every(item=>courseIds.has(item.courseId))??true))&&data.learning.evidence.every(item=>courseIds.has(item.courseId))&&Object.keys(data.learning.notes).every(id=>courseIds.has(id))&&(data.learning.assessmentResults?.every(item=>courseIds.has(item.courseId)&&item.objectives.every(objective=>courseIds.has(objective.courseId)))??true),"Unknown learning course")
   .refine(data => new TextEncoder().encode(JSON.stringify(data, null, 2)).length <= backupByteLimit, backupLimitMessage);
 
 export type Progress = z.infer<typeof progressSchema>;

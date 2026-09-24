@@ -164,7 +164,7 @@ export class ProgressRepository{
       const learning=changeAttempt({...current.data.learning,attempts:entry?[entry.record.data]:[]},id,revision,attempt=>({...attempt,...patch}));
       const attempt=learning.attempts[0],next=nextRevision(current),reference=referenceFor(attempt,next),record=readStoredAttempt({revision:next,data:attempt},reference);
       cache.set(id,{reference,record});
-      const core={...current.data,learning:{...current.data.learning,evidence:learning.evidence}};
+      const core={...current.data,learning:{...learning,attempts:[]}};
       let index:HistoryIndex;
       try{index=createHistoryIndex(core,next,current.attempts.map(item=>item.id===id?reference:item),current.generation);}
       catch(error){throw new ProgressStorageError("invalid",error instanceof z.ZodError?error.issues[0]?.message??"This attempt could not be saved.":"This attempt could not be saved.",{cause:error});}

@@ -9,7 +9,7 @@ export const storedRevision=z.number().int().min(1).max(Number.MAX_SAFE_INTEGER)
 const knownCourses=new Set(courses.map(course=>course.id));
 export const attemptReferenceSchema=z.object({id:z.uuid(),revision:storedRevision,bytes:z.number().int().positive().max(backupByteLimit)}).strict();
 export type AttemptReference=z.infer<typeof attemptReferenceSchema>;
-export const storedAttemptSchema=z.object({revision:storedRevision,data:attemptSchema.refine(attempt=>knownCourses.has(attempt.courseId),"Unknown learning course")}).strict();
+export const storedAttemptSchema=z.object({revision:storedRevision,data:attemptSchema.refine(attempt=>knownCourses.has(attempt.courseId)&&(attempt.assessment?.objectives.every(item=>knownCourses.has(item.courseId))??true),"Unknown learning course")}).strict();
 export type StoredAttempt=z.infer<typeof storedAttemptSchema>;
 export function attemptBackupBytes(attempt:Attempt){
   const text=JSON.stringify(attempt,null,2);
