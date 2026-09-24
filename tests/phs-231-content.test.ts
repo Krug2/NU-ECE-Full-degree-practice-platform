@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import rollingData from "../content/lessons/phs-231/m07-l03.json";
 import angularData from "../content/lessons/phs-231/m07-l02.json";
 import rotationData from "../content/lessons/phs-231/m07-l01.json";
 import collisionData from "../content/lessons/phs-231/m06-l02.json";
@@ -29,7 +30,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData, rotationData, angularData, rollingData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -45,6 +46,17 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks the rolling contact demand against capacity before solving actual sliding accelerations",()=>{
+  const q=lessonSchema.parse(rollingData).guided.question;
+  const I=.5*2*.5*.5,G=12,N=16,candidateA=G*.5*.5/(I+2*.5*.5),required=2*candidateA-G,capacity=N/5;
+  const actualF=-N/10,a=(G+actualF)/2,alpha=-actualF*.5/I;
+  expect(Math.abs(required)).toBeGreaterThan(capacity);
+  const response={required:String(required),capacity:String(capacity),acceleration:"(12-16/10)/2",alpha:"(16/10)*(1/2)/(1/4)",regime:"sliding"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(a-.5*alpha).toBeCloseTo(18/5,12);expect(actualF*(a-.5*alpha)).toBeLessThan(0);
+  for(const wrong of [{required:"-16/5"},{capacity:"4"},{acceleration:"4"},{alpha:"8"},{regime:"rolling"},{regime:"maximum"},{regime:"rest"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks the guided changing-radius accounts using separate tangential energies and radial work integrals",()=>{

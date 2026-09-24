@@ -1,0 +1,697 @@
+{
+  "id": "m07-l03",
+  "courseId": "phs-231",
+  "moduleId": "m07",
+  "version": 1,
+  "title": "Rolling constraints and coupled translation",
+  "objective": "Solve rolling motion using translation, rotation, and a verified no-slip constraint, including the required static friction.",
+  "why": "A wheel can move forward while its contact slides backward, and friction can accelerate its center while removing total mechanical energy. Rolling is a relation between translation, rotation, and the surface; it is not a property guaranteed by a round shape. You will derive the required contact force, test whether it is available, and follow what happens when slip ends or changes direction.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {
+      "lessonId": "m07-l01",
+      "label": "Rigid point kinematics, inertia, and torque about the center of mass"
+    },
+    {
+      "lessonId": "m07-l02",
+      "label": "Angular momentum, applied couples, work, and power"
+    },
+    {
+      "lessonId": "m03-l02",
+      "label": "Static-friction demand, kinetic friction, and relative slip"
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "Mechanical energy, thermal conversion, and validity checks"
+    },
+    {
+      "lessonId": "m02-l02",
+      "label": "Velocity relative to a translating surface"
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus preparation",
+      "note": "The calculus course is under construction. Review derivatives, signed velocity integrals, and the chain rule. Their required uses are developed locally below."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define the surface, coordinates, and rolling sign",
+      "paragraphs": [
+        "Use a symmetric rigid circular body of mass m and constant contact radius R on a straight plane. Choose +x along the plane, downhill when it is inclined, and +y outward normal. Define positive scalar ω as clockwise in this view, the sense that would roll the center toward +x. Its vector is $-\\omega\\widehat{\\mathbf z}$. The same convention applies to angular acceleration α and applied clockwise couple M.",
+        "The center velocity is v along x. It can be negative even when +x is defined downhill. At the instantaneously lowest material point, rotational velocity relative to the center is −Rω along x, so its ground-frame contact velocity is $u=v-R\\omega$ for a stationary plane. No slip requires u=0, giving v=Rω with these signed definitions. A negative v then pairs with a negative ω.",
+        "Differentiate the no-slip relation only while it is sustained: a=Rα for a constant radius on a stationary straight surface. A single instant of v=Rω does not establish this acceleration relation for the following motion. If the contact force cannot sustain it, slip starts immediately after that instant. Both a velocity condition and a feasible force model are needed.",
+        "Write the central inertia as $I_{\\rm cm}=\\beta mR^2$, with dimensionless inertia ratio β. A uniform solid sphere has β=2/5, a uniform disk or solid cylinder rotating about its symmetry axis has β=1/2, and a thin hoop has β=1. These values describe mass distribution, not a friction coefficient. For the simulation, 0.1≤β≤1 represents positive inertia with mass within the circular contact radius.",
+        "Specify which surface frame is used. If a belt moves at ground speed U, relative contact slip is v−Rω−U. A no-slip belt state obeys v−Rω=U and, if U changes, a−Rα=dU/dt. The investigation uses a stationary plane. A moving-belt example later shows why its zero-contact-work rule cannot be applied universally."
+      ]
+    },
+    {
+      "heading": "A point on the rim is different from the current contact location",
+      "paragraphs": [
+        "Let a material point have CM-relative coordinates (xq,yq). The clockwise angular-velocity vector gives $\\mathbf v_q=(v+\\omega y_q,-\\omega x_q)$. The full acceleration is $\\mathbf a_q=(a+\\alpha y_q-\\omega^2x_q,-\\alpha x_q-\\omega^2y_q)$. These expressions combine translation of the center, angular acceleration, and centripetal acceleration. They remain valid during sliding because they describe rigid-body kinematics rather than a ground constraint.",
+        "At the bottom, $(x_q,y_q)=(0,-R)$, so $\\mathbf v_{\\rm bottom}=(v-R\\omega,0)$ and $\\mathbf a_{\\rm bottom}=(a-R\\alpha,R\\omega^2)$. During no slip the parallel acceleration component vanishes, but the outward normal component is positive whenever ω is nonzero. Zero instantaneous velocity therefore does not imply zero acceleration.",
+        "At the top, velocity is v+Rω along x, equal to 2v only when the stationary-plane no-slip relation holds. At the right rim, velocity is (v,−Rω). The wheel's material points do not all have the same ground speed. A large top speed is not an extra center velocity; it comes from adding center and rotational contributions.",
+        "For constant-speed no-slip rolling, mark the material point initially at the bottom and set its initial position to (0,0). With θ=ωt and v=Rω, its path is $x_q(t)=vt-R\\sin(\\omega t)$ and $y_q(t)=R[1-\\cos(\\omega t)]$. This is a cycloid. At the contact instants its velocity is zero, but it then rises away from the surface. For accelerated motion, use the integrated center position and angular position instead of substituting one constant v or ω.",
+        "The current bottom location is a geometric location on the moving circle; it is occupied by different material points over time. The investigation distinguishes that location from one marked material point. Its view follows the center in ramp-aligned coordinates, while its table gives the marked point's actual position, velocity, and acceleration in the fixed ramp frame."
+      ]
+    },
+    {
+      "heading": "Solve a candidate rolling state before checking its contact force",
+      "paragraphs": [
+        "Let F be a signed external force applied at the center parallel to the plane, and M a separate signed clockwise applied couple. Let f be the unknown contact friction, positive downhill. In the ideal straight-plane model, $ma=mg\\sin\\theta+F+f$, $I_{\\rm cm}\\alpha=M-fR$, and $N=mg\\cos\\theta$. The normal force balances the normal component of weight; the hub force has no normal component.",
+        "A positive contact force gives a counterclockwise torque about the center, hence the minus sign in M−fR. Weight acts at the center and has no CM torque. Contact normal passes through the center in the ideal circular point-contact model. The applied couple must not be replaced by an extra force unless that force's point of application and moment are also specified.",
+        "For a candidate no-slip state, combine a=Rα with the two dynamical equations. With $G=mg\\sin\\theta+F$, obtain $a_{\\rm roll}=(G+M/R)/[m(1+\\beta)]$ and $f_{\\rm req}=(M/R-\\beta G)/(1+\\beta)$. Both quantities are signed. Then evaluate the independent capacity condition $|f_{\\rm req}|\\le\\mu_sN$. Equality is admitted as the limiting static state in this ideal model.",
+        "If the inequality passes and the initial velocities already obey v=Rω, the candidate can describe sustained rolling. If the initial contact is sliding, passing the static test only says a no-slip state could be maintained once reached; kinetic friction acts before that event. If the inequality fails, do not keep the rolling acceleration and simply label the friction insufficient. Solve translation and rotation under the appropriate sliding force.",
+        "Static friction is a required constraint force, not automatically its maximum. Increasing μs above an already sufficient value does not change this ideal rolling acceleration. Friction can be uphill, downhill, or zero because it opposes the relative slip tendency that translation and rotation would produce together. Its direction cannot be chosen solely from the center velocity."
+      ]
+    },
+    {
+      "heading": "Passive inclines reveal the role of inertia and traction",
+      "paragraphs": [
+        "With no hub force or applied couple, the candidate solution reduces to $a=g\\sin\\theta/(1+\\beta)$, $\\alpha=a/R$, and $f=-\\beta mg\\sin\\theta/(1+\\beta)$. Friction points uphill and supplies the clockwise spin-up torque, while the net force still accelerates the center downhill. The required coefficient is $\\mu_{\\rm min}=\\beta\\tan\\theta/(1+\\beta)$.",
+        "For the same slope and sufficient traction, smaller β gives larger center acceleration. Among the ideal models here, a solid sphere accelerates faster than a disk, which accelerates faster than a thin hoop. But the hoop also demands more static friction relative to its normal force. Check each body's threshold before using a pure-rolling comparison.",
+        "Mass and radius cancel from passive center acceleration when the shape ratio β stays fixed. Radius remains in angular acceleration, α=a/R. Changing radius while also changing the shape or attached masses can change β, so the cancellation must not be generalized to unrelated bodies. A measured acceleration can suggest an effective inertia ratio only within the assumed load, loss, and contact model.",
+        "A wheel initially rolling uphill has v<0 and ω<0 but still has the same positive downhill a and α under passive loading. It slows to rest and then rolls downhill if contact remains valid. The required static friction stays uphill through that reversal; it does not automatically reverse with v. During uphill motion, friction's CM power contribution is positive and its rotational contribution is equally negative. Gravity makes the total kinetic energy decrease.",
+        "An unforced body on a level plane with compatible initial rolling needs no friction in the lossless idealization: a=α=f=0. Thus nonzero friction is not required for every rolling state. On a frictionless incline, however, gravity accelerates the center without a CM torque, so an initially resting body slides without acquiring spin. These are different initial and loading conditions."
+      ]
+    },
+    {
+      "heading": "Add translation and rotation, and use the actual contact power",
+      "paragraphs": [
+        "For each material element, write velocity as CM velocity plus its velocity relative to CM. Expanding the sum of kinetic energies produces a cross term proportional to the mass-weighted sum of CM-relative velocities, which is zero. Thus planar rigid-body kinetic energy is $K=mv_{\\rm cm}^2/2+I_{\\rm cm}\\omega^2/2$. Translation and rotation are distinct contributions; neither disappears because the motion is called rolling.",
+        "Under no slip on a stationary plane, substitute ω=v/R to obtain $K=m(1+\\beta)v^2/2$. For release from rest through vertical height h with no losses or applied work, $mgh=K$ gives $v=\\sqrt{2gh/(1+\\beta)}$. Rotational energy takes fraction β/(1+β) of the total, while translational energy takes 1/(1+β). Energy calculates a speed only after the no-slip assumption has been justified.",
+        "The contact force contributes f v to the rate of translational kinetic energy and −fRω to the rate of CM rotational kinetic energy. Its total power on the body is therefore $P_f=f(v-R\\omega)=fu$. At ideal no-slip contact on a stationary surface, u=0 and these two contributions cancel. It is generally incorrect to identify the body's total friction work with f times center displacement.",
+        "During sliding, $f=-\\mu_kN\\operatorname{sgn}(u)$ and $P_f=-\\mu_kN|u|\\le0$. Thermal production at the stationary interface is $\\dot E_{\\rm th}=\\mu_kN|u|$. Integrate relative sliding speed to obtain relative slip distance, then multiply by the constant friction magnitude when appropriate. The body can gain center kinetic energy while losing more rotational kinetic energy, so a friction force in the center's direction of motion is consistent with positive heat production.",
+        "The complete body-energy ledger in the simulation is $K-K_0=W_g+W_F+W_M+W_f$, with $W_g=mg\\sin\\theta\\,\\Delta x$, $W_F=F\\Delta x$, and $W_M=M\\Delta\\theta_{\\rm roll}$ for its constant loads. Thermal conversion is −Wf for this stationary plane. Gravity can instead be accounted for by potential energy, but it must not be counted in both places.",
+        "An instantaneous contact-axis inertia is $I_P=I_{\\rm cm}+mR^2$. When v=Rω, the energy identity $K=I_P\\omega^2/2$ follows. It does not prove every fixed-pivot dynamical formula about any moving material point. For this special straight-plane geometry, one can derive a contact-origin torque method because the geometric contact origin moves parallel to total linear momentum, making its origin-motion cross term vanish. The CM force-and-torque method used here keeps the assumptions explicit and still supplies the friction demand."
+      ]
+    },
+    {
+      "heading": "A hub pull and an axle drive need different friction directions",
+      "paragraphs": [
+        "On a level plane with a hub force F and no applied couple, $a=F/[m(1+\\beta)]$ and $f=-\\beta F/(1+\\beta)$. For a positive pull, backward static friction supplies the clockwise torque needed to spin the body as its center accelerates. Its magnitude stays below capacity only when the corresponding bound passes.",
+        "With a positive applied clockwise couple M and no hub force, $a=M/[mR(1+\\beta)]$ and $f=M/[R(1+\\beta)]$ are positive. The drive tends to move the bottom surface backward, so forward friction supplies center acceleration. This forward friction is fully consistent with opposing the contact slip tendency. It does not oppose every material point's ground velocity.",
+        "A force parallel to the plane applied at signed height h relative to CM has clockwise moment M=Fh. The equivalent force-and-couple system gives $a=F(1+h/R)/[m(1+\\beta)]$ and $f=F(h/R-\\beta)/(1+\\beta)$ on a level plane. At h=βR, the applied force and moment produce compatible accelerations with zero required friction. A top pull h=R can require forward friction; a hub pull h=0 requires backward friction for positive F.",
+        "Power follows the actual application point. Its x velocity is v+ωh, so the applied-force power is F(v+ωh). Equivalently it is the sum of hub-force power Fv and couple power Fhω. Using only Fv would discard rotational power from the offset. For an ideal force at the instantaneous bottom in no-slip rolling, the application-point velocity is zero even if the force itself is nonzero.",
+        "These equations refer to specified external loads and ideal rigid geometry. A real tire, belt, bearing, or wheel drive also has compliance, distributed contact, losses, and actuator limits. A solved force or torque here is a model demand, not a safe motor selection or a hardware construction instruction."
+      ]
+    },
+    {
+      "heading": "Follow sliding until its contact event, then test again",
+      "paragraphs": [
+        "Define slip $u=v-R\\omega$ relative to the stationary plane. When u is nonzero, choose kinetic friction from its sign, not the sign of v. With constant loads and constant kinetic coefficient, f is constant until the next slip-sign event. The force equations then give constant a and α, and $u(t)=u_0+(a-R\\alpha)t$ within that phase.",
+        "A future zero occurs at $t_*=-u_0/(a-R\\alpha)$ only when the denominator is nonzero and the result is positive. If the relative acceleration has the same sign as the initial slip, the mismatch grows and no catch occurs under that unchanged loading. If it is zero, the mismatch stays constant. Do not divide by a zero friction coefficient or relative acceleration without checking these cases.",
+        "At a zero-slip event, positions and velocities remain continuous in this finite-force model. Recompute the static demand for the unchanged loads. If it lies within μsN, use that static force and maintain a=Rα from then on. If it exceeds capacity, equality of v and Rω lasts only an instant; relative slip changes sign and kinetic friction changes direction. There is no impulsive jump in v or ω at this switch.",
+        "The free contact-acceleration tendency, before adding friction, is $c=(mg\\sin\\theta+F)/m-RM/I$. Contact friction adds $f(1/m+R^2/I)$ to it. The static force is exactly the value that cancels c. When its required magnitude is unavailable and μk≤μs, kinetic friction in the emerging slip direction cannot cancel c either; the slip grows away from zero. This explains the model's reverse-slip branch without an arbitrary sticking rule.",
+        "For a level unforced body initially translating without spin, friction reduces v and increases clockwise ω until they satisfy v=Rω. For an initially spinning body with a stationary center, friction can accelerate v from zero while reducing excessive spin. Both histories lose mechanical energy during relative sliding, then require zero friction for steady ideal rolling afterward.",
+        "The investigation integrates each constant-force phase analytically and inserts the exact transition time into its sampled table. If a transition falls at the trial endpoint, the new force law is identified there but has zero elapsed duration in that record. Sliders show analytic samples, not a movie or a numerical time-step approximation to the force law."
+      ]
+    },
+    {
+      "heading": "A moving belt separates work transfer from sliding heat",
+      "paragraphs": [
+        "For a belt moving at ground velocity U along x, relative slip is $u_{\\rm rel}=v-R\\omega-U$. At no slip the contact material moves at U in the ground frame. Static-friction power on the body is then fU, which can be positive, negative, or zero. Relative slip is still zero, so the ideal interface produces no sliding heat.",
+        "The two bodies at an ideal no-slip interface exchange equal and opposite contact powers in the same frame. A moving belt can gain energy from the rolling body or supply energy to it. Its drive may have to supply or absorb power to maintain U; that external drive belongs to a larger energy account. Calling the contact static describes relative motion, not universal zero work.",
+        "If U is constant, differentiating v−Rω=U gives a=Rα, so the same force/torque elimination applies for a level belt with the stated loads. If the belt accelerates, the constraint instead reads a−Rα=Udot and must be included in the elimination. Reusing the constant-U or stationary-plane acceleration relation in that case changes the problem.",
+        "During belt slip, the body's contact power is f(v−Rω), while the interface thermal-production rate is $-f(v-R\\omega-U)$. Their difference is the power transfer involving the belt. The simulation's heat=−Wf rule is therefore specific to its stationary plane; it is not silently extended to a moving surface."
+      ]
+    },
+    {
+      "heading": "Check measurements, uncertainty, and model limits",
+      "paragraphs": [
+        "An observed comparison between v and Rω needs a radius calibration, a spatial scale, a timing reference, and a declared positive direction. If v is inferred from frame-to-frame center positions and ω from a marker angle, finite sampling and angle unwrapping can affect both estimates. Their shared timebase can create correlated errors. A displayed small mismatch does not establish exact no slip without considering those errors.",
+        "For passive rolling with a known β, the required coefficient $\\mu_{\\rm req}=\\beta\\tan\\theta/(1+\\beta)$ increases with the nonnegative slope. Given independent allowed intervals, the worst margin pairs the smallest available μs with the largest required coefficient. The best margin pairs the largest available μs with the smallest required coefficient. All combinations pass when the worst margin is nonnegative; all fail when the best margin is negative; otherwise the bounds leave both regimes possible.",
+        "Those intervals are not confidence probabilities. If slope and coefficient estimates are correlated, use their allowed joint set rather than independently combining every endpoint. A measured acceleration consistent with a no-slip model within uncertainty supports that model at the measured resolution; it does not establish ideal rigidity or zero rolling resistance.",
+        "Real rolling resistance can dissipate energy through deformation and displaced contact forces even when gross sliding is absent. It is different from the simple static-friction constraint and from Coulomb sliding. A tire's contact patch, a deformable ball, or a curved track may require additional force, torque, normal-acceleration, and energy terms. The investigation intentionally supplies none of those hardware-specific parameters.",
+        "Build an evidence record by stating the frame, material body, contact radius, β, surface motion, loads, and friction law. Predict the contact demand before revealing results, check the inequality, and explain actual force directions. Include both energy contributions and distinguish friction's total work from its separate translation and rotation contributions. Save selected table values and reasoning in lesson notes; the later numerical project develops a fuller notebook and rubric."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Zero contact velocity with nonzero acceleration",
+      "prompt": "A wheel rolls without slip on a stationary straight surface. At an instant R=1/2 m, v=2 m/s, ω=4 rad/s clockwise, a=1 m/s², and α=2 rad/s² clockwise. Find ground-frame velocity and acceleration at the bottom, top, and right rim.",
+      "steps": [
+        {
+          "math": "\\mathbf v_q=(v+\\omega y_q,-\\omega x_q),\\qquad \\mathbf a_q=(a+\\alpha y_q-\\omega^2x_q,-\\alpha x_q-\\omega^2y_q)",
+          "reason": "Use the full rigid-body formulas with the declared clockwise scalar convention. Check v=Rω and a=Rα first."
+        },
+        {
+          "math": "\\mathbf v_{\\rm bottom}=(0,0),\\quad \\mathbf a_{\\rm bottom}=(0,8)\\ {\\rm m/s^2}",
+          "reason": "At (0,−1/2) m the parallel terms cancel. The inward acceleration toward CM points outward from the ground."
+        },
+        {
+          "math": "\\mathbf v_{\\rm top}=(4,0)\\ {\\rm m/s},\\quad \\mathbf a_{\\rm top}=(2,-8)\\ {\\rm m/s^2}",
+          "reason": "At (0,1/2) m center and tangential velocities add; centripetal acceleration points downward toward CM."
+        },
+        {
+          "math": "\\mathbf v_{\\rm right}=(2,-2)\\ {\\rm m/s},\\quad \\mathbf a_{\\rm right}=(-7,-1)\\ {\\rm m/s^2}",
+          "reason": "At (1/2,0) m the rotational velocity is downward, with inward x acceleration −8 added to the center's +1."
+        }
+      ],
+      "conclusion": "The bottom material point is instantaneously at rest but accelerates upward. Following that same material point is different from following the wheel's current bottom location."
+    },
+    {
+      "title": "A disk rolls only if its required force is available",
+      "prompt": "A 2 kg disk with R=1/2 m and β=1/2 starts from rest on a stationary ramp of rise/run=3/4. Use g=10 m/s², μs=0.3, μk=0.2, and no drive. Predict the motion for 2 s.",
+      "steps": [
+        {
+          "math": "\\sin\\theta=\\frac35,\\quad\\cos\\theta=\\frac45,\\quad I=\\frac12(2)(1/2)^2=\\frac14,\\quad N=(2)(10)\\frac45=16\\ {\\rm N}",
+          "reason": "Use the 3–4–5 slope geometry. Inertia is in kg m²."
+        },
+        {
+          "math": "2a=12+f,\\qquad \\frac14\\alpha=-\\frac12f,\\qquad a=\\frac12\\alpha",
+          "reason": "Write force, CM torque, and candidate no-slip equations with f signed downhill."
+        },
+        {
+          "math": "a=4\\ {\\rm m/s^2},\\quad \\alpha=8\\ {\\rm rad/s^2},\\quad f=-4\\ {\\rm N},\\quad |f|=4<0.3(16)=4.8",
+          "reason": "The candidate demand fits the static bound and the initial rest state is compatible. Therefore the rolling solution is valid."
+        },
+        {
+          "math": "v(2)=8,\\quad x(2)=8,\\quad \\omega(2)=16,\\quad\\theta_{\\rm roll}(2)=16",
+          "reason": "Integrate the constant accelerations from rest. Units are m/s, m, rad/s, and rad."
+        },
+        {
+          "math": "K=\\frac12(2)(8^2)+\\frac12\\left(\\frac14\\right)(16^2)=96\\ {\\rm J}=12(8)",
+          "reason": "Translation contributes 64 J and rotation 32 J. Gravity work is 96 J; ideal static contact does zero total work."
+        }
+      ],
+      "conclusion": "The required coefficient is only 4/16=1/4. The actual force is −4 N, not the available maximum −4.8 N."
+    },
+    {
+      "title": "Compare shapes after checking every threshold",
+      "prompt": "A hoop, disk, and solid sphere roll from rest down the same ramp with rise/run=3/4 through a vertical drop of 0.6 m. Use g=10 m/s² and μs=0.4. Compare acceleration, speed, and static-friction demand.",
+      "steps": [
+        {
+          "math": "\\beta_{\\rm hoop}=1,\\quad\\beta_{\\rm disk}=\\frac12,\\quad\\beta_{\\rm sphere}=\\frac25,\\qquad \\mu_{\\rm req}=\\frac{\\beta}{1+\\beta}\\frac34",
+          "reason": "The shape ratio controls both acceleration and the minimum friction coefficient."
+        },
+        {
+          "math": "\\mu_{\\rm req}:\\quad \\frac38,\\quad\\frac14,\\quad\\frac{3}{14}",
+          "reason": "All three demands lie below the supplied 0.4, so a pure-rolling comparison is admissible."
+        },
+        {
+          "math": "a=\\frac6{1+\\beta}:\\quad 3,\\quad4,\\quad\\frac{30}{7}\\ {\\rm m/s^2}",
+          "reason": "The sphere accelerates fastest, followed by the disk and then the hoop."
+        },
+        {
+          "math": "v=\\sqrt{\\frac{2(10)(0.6)}{1+\\beta}}:\\quad \\sqrt6,\\quad\\sqrt8,\\quad\\sqrt{\\frac{60}{7}}\\ {\\rm m/s}",
+          "reason": "Use total translational plus rotational energy. With sufficient traction and fixed β, mass and radius cancel from these speeds."
+        }
+      ],
+      "conclusion": "If μs were reduced to 0.3, the hoop would fail its no-slip test while the others still pass. A slipping body cannot be ranked using the same pure-rolling formula."
+    },
+    {
+      "title": "An uphill stop does not require friction reversal",
+      "prompt": "The same 2 kg disk begins on the 3/4 ramp with v0=−3 m/s and ω0=−6 rad/s. Static capacity remains sufficient. Find first rest, height gained, and friction direction through the reversal.",
+      "steps": [
+        {
+          "math": "a=4,\\quad\\alpha=8,\\quad f=-4",
+          "reason": "The passive load and no-slip constraint are unchanged. The accelerations are downhill/clockwise even though the initial motion is uphill/counterclockwise."
+        },
+        {
+          "math": "0=-3+4t_*,\\quad t_*=\\frac34\\ {\\rm s},\\quad \\Delta x=-3\\left(\\frac34\\right)+\\frac12(4)\\left(\\frac34\\right)^2=-\\frac98\\ {\\rm m}",
+          "reason": "The center and rotation stop together because the velocity constraint remains valid."
+        },
+        {
+          "math": "\\Delta h=-\\Delta x\\sin\\theta=\\frac98\\frac35=\\frac{27}{40}\\ {\\rm m},\\quad mg\\Delta h=\\frac{27}{2}\\ {\\rm J}",
+          "reason": "The negative downhill displacement is an uphill height gain."
+        },
+        {
+          "math": "K_0=\\frac12(2)(3^2)+\\frac12\\left(\\frac14\\right)(6^2)=\\frac{27}{2}\\ {\\rm J},\\quad f=-4\\ {\\rm N}",
+          "reason": "Energy independently checks the height. The same uphill friction supplies the clockwise angular acceleration before and after the stop."
+        }
+      ],
+      "conclusion": "Without another holding load, the disk next rolls downhill. Static friction follows the coupled acceleration requirement, not a rule that it must reverse with center velocity."
+    },
+    {
+      "title": "The same acceleration can require opposite friction directions",
+      "prompt": "On a stationary level plane, m=2 kg, R=1/2 m, β=1/2, g=10, and μs=0.3. Compare an initially compatible wheel pulled by hub force F=6 N with a second wheel driven only by clockwise couple M=3 N m.",
+      "steps": [
+        {
+          "math": "N=20\\ {\\rm N},\\qquad \\mu_sN=6\\ {\\rm N},\\qquad m(1+\\beta)=3\\ {\\rm kg}",
+          "reason": "Both trials have the same normal load and static capacity."
+        },
+        {
+          "math": "F=6,\\ M=0:\\quad a=\\frac63=2,\\quad \\alpha=4,\\quad f=ma-F=4-6=-2\\ {\\rm N}",
+          "reason": "The hub pull alone tends to translate the body without spinning it. Backward friction supplies the necessary clockwise torque."
+        },
+        {
+          "math": "F=0,\\ M=3:\\quad a=\\frac{3/(1/2)}3=2,\\quad \\alpha=4,\\quad f=ma=+4\\ {\\rm N}",
+          "reason": "The drive couple alone tends to move the bottom surface backward. Forward friction accelerates the center."
+        },
+        {
+          "math": "|-2|\\le6,\\qquad |4|\\le6",
+          "reason": "Both candidates fit the friction bound. The equal center acceleration does not imply equal contact force or energy source."
+        }
+      ],
+      "conclusion": "Friction direction depends on both translational and rotational loading. It cannot be assigned by looking only at the direction of center motion."
+    },
+    {
+      "title": "Move the pull point and account for its power",
+      "prompt": "On the same level body, apply F=6 N parallel to the plane at signed CM-relative height h. Static capacity is sufficient. Compare h=1/4 m with a top pull h=1/2 m. At the instant of the top pull, v=2 m/s and ω=4 rad/s.",
+      "steps": [
+        {
+          "math": "M=Fh,\\qquad f=\\frac{F(h/R-\\beta)}{1+\\beta}",
+          "reason": "The offset force is equivalent to the same hub force plus its signed clockwise couple. Its geometric moment changes contact demand."
+        },
+        {
+          "math": "h=\\frac14=\\beta R:\\quad M=\\frac32,\\quad f=0,\\quad a=3,\\quad\\alpha=6",
+          "reason": "Here the applied force and couple already produce compatible accelerations without contact friction. Moment is in N m and accelerations in m/s² and rad/s²."
+        },
+        {
+          "math": "h=R=\\frac12:\\quad M=3,\\quad f=2,\\quad a=4,\\quad\\alpha=8",
+          "reason": "At the top, the larger clockwise moment requires forward friction for compatibility."
+        },
+        {
+          "math": "P_F=F(v+\\omega h)=6[2+4(1/2)]=24\\ {\\rm W}",
+          "reason": "Use the velocity of the actual application point, which is 4 m/s at the top."
+        },
+        {
+          "math": "\\dot K_{\\rm trans}=mva=16,\\qquad \\dot K_{\\rm rot}=I\\omega\\alpha=8,\\qquad \\dot K=24\\ {\\rm W}",
+          "reason": "The separate energy rates check the input power. Ideal static contact contributes zero net power, though its two parts need not vanish."
+        }
+      ],
+      "conclusion": "Treating the top pull as only Fv would miss half the supplied power at this instant."
+    },
+    {
+      "title": "Insufficient traction changes both acceleration and energy",
+      "prompt": "Return to the passive 2 kg disk, R=1/2 m, β=1/2, rise/run=3/4, and g=10. Reduce μs to 0.2 and μk to 0.1. It starts from rest; calculate the motion and heat after 2 s.",
+      "steps": [
+        {
+          "math": "f_{\\rm req}=-4\\ {\\rm N},\\quad \\mu_sN=0.2(16)=3.2\\ {\\rm N}<4",
+          "reason": "The previous rolling solution is not feasible. Initial equality v=Rω=0 cannot be sustained."
+        },
+        {
+          "math": "f=-\\mu_kN=-1.6\\ {\\rm N},\\quad a=\\frac{12-1.6}{2}=5.2,\\quad\\alpha=\\frac{1.6(1/2)}{1/4}=3.2",
+          "reason": "The free tendency is downhill slip, so kinetic friction is uphill. Solve the two accelerations independently."
+        },
+        {
+          "math": "\\dot u=a-R\\alpha=5.2-\\frac12(3.2)=3.6,\\quad v(2)=10.4,\\quad\\omega(2)=6.4,\\quad u(2)=7.2",
+          "reason": "Slip grows throughout the interval; a catch event is not possible under these unchanged loads."
+        },
+        {
+          "math": "\\Delta x=10.4\\ {\\rm m},\\quad\\Delta\\theta=6.4\\ {\\rm rad},\\quad E_{\\rm th}=1.6\\left(10.4-\\frac12(6.4)\\right)=11.52\\ {\\rm J}",
+          "reason": "The relative sliding distance is x−Rθ=7.2 m. Center travel alone would overestimate heat."
+        },
+        {
+          "math": "K=\\frac12(2)(10.4^2)+\\frac12\\left(\\frac14\\right)(6.4^2)=113.28\\ {\\rm J}=12(10.4)-11.52",
+          "reason": "Separate translational and rotational energies agree with gravity work minus thermal conversion."
+        }
+      ],
+      "conclusion": "The actual center acceleration is larger than the pure-rolling value, but less spin develops and mechanical energy is dissipated. Keeping a=Rα after the bound fails would describe a different motion."
+    },
+    {
+      "title": "Translation without initial spin catches rolling",
+      "prompt": "On a level plane, a 2 kg disk with R=1/2 m and β=1/2 starts at v0=3 m/s and ω0=0. Use g=10, μs=0.3, μk=0.2, no other loads, and a 2 s trial.",
+      "steps": [
+        {
+          "math": "u_0=3,\\quad N=20,\\quad f=-4,\\quad a=-2,\\quad\\alpha=8",
+          "reason": "The initial contact slides forward, so friction points backward and simultaneously spins the body clockwise."
+        },
+        {
+          "math": "u(t)=(3-2t)-\\frac12(8t)=3-6t,\\quad t_*=\\frac12\\ {\\rm s}",
+          "reason": "Solve relative slip, not center velocity, for the transition."
+        },
+        {
+          "math": "v_*=2,\\quad\\omega_*=4,\\quad x_*=\\frac54,\\quad\\theta_* =1",
+          "reason": "At the event, velocities match the rolling constraint. Units are m/s, rad/s, m, and rad."
+        },
+        {
+          "math": "K_i=9,\\quad K_*=\\frac12(2)(2^2)+\\frac12\\left(\\frac14\\right)(4^2)=6,\\quad E_{\\rm th}=3\\ {\\rm J}",
+          "reason": "The slip-distance triangle has area (1/2)(3)(1/2)=3/4 m. Multiplying by 4 N independently gives 3 J of heat."
+        },
+        {
+          "math": "f_{\\rm after}=0,\\quad x(2)=\\frac54+2\\left(\\frac32\\right)=\\frac{17}{4},\\quad \\theta(2)=1+4\\left(\\frac32\\right)=7",
+          "reason": "The new static demand is zero, so compatible rolling continues at constant speed. The kinetic-friction rule ends at the event."
+        }
+      ],
+      "conclusion": "The center is still moving at the transition. Rolling starts when relative contact velocity vanishes and the needed static force is available."
+    },
+    {
+      "title": "Initial spin can accelerate a stationary center",
+      "prompt": "Use the same level disk and friction coefficients, but start with v0=0 and ω0=12 rad/s clockwise. Find the transition and state after 2 s.",
+      "steps": [
+        {
+          "math": "u_0=0-\\frac12(12)=-6,\\quad f=+4,\\quad a=+2,\\quad\\alpha=-8",
+          "reason": "The bottom material initially slides backward. Forward friction accelerates the center and reduces spin."
+        },
+        {
+          "math": "u(t)=2t-\\frac12(12-8t)=-6+6t,\\quad t_*=1\\ {\\rm s}",
+          "reason": "The relative acceleration opposes the initial slip, so a future catch occurs."
+        },
+        {
+          "math": "v_*=2,\\quad\\omega_*=4,\\quad x_*=1,\\quad\\theta_*=8",
+          "reason": "Translation and spin reach a compatible state while position and angle remain continuous."
+        },
+        {
+          "math": "K_i=\\frac12\\left(\\frac14\\right)(12^2)=18,\\quad K_*=6,\\quad E_{\\rm th}=12\\ {\\rm J}",
+          "reason": "The center gains 4 J, but rotational kinetic energy drops by 16 J. Net mechanical energy decreases by 12 J."
+        },
+        {
+          "math": "x(2)=1+2(1)=3\\ {\\rm m},\\qquad\\theta(2)=8+4(1)=12\\ {\\rm rad}",
+          "reason": "After catching, no tangential friction is required for ideal steady level rolling."
+        }
+      ],
+      "conclusion": "Kinetic friction can increase center kinetic energy while producing heat. Its dissipative property concerns total contact power and relative slip."
+    },
+    {
+      "title": "A frictionless plane does not give one universal rolling answer",
+      "prompt": "Compare two ideal bodies with m=2 kg, R=1/2 m, and β=1/2. Both surfaces have μs=μk=0 and g=10. A starts from complete rest on a ramp with rise/run=3/4. B starts on a level plane with v0=2 m/s and ω0=4 rad/s. No other load acts.",
+      "steps": [
+        {
+          "math": "A:\\quad a=10\\frac35=6,\\quad\\alpha=0,\\quad v(1)=6,\\quad\\omega(1)=0",
+          "reason": "On the incline, gravity acts at CM. With no contact friction there is no spin-up torque."
+        },
+        {
+          "math": "A:\\quad x(1)=3\\ {\\rm m},\\quad u(1)=6\\ {\\rm m/s},\\quad K(1)=36\\ {\\rm J}=mg\\sin\\theta\\,x",
+          "reason": "The body slides without rotational gain. There is no frictional heat because the contact force is zero, despite nonzero slip."
+        },
+        {
+          "math": "B:\\quad a=\\alpha=f=0,\\qquad v-R\\omega=2-\\frac12(4)=0",
+          "reason": "On the level plane, the initial compatible motion persists without needing any contact tangential force."
+        }
+      ],
+      "conclusion": "The correct distinction is whether the given forces and initial velocities sustain the no-slip relation, not whether friction is nonzero in every rolling problem."
+    },
+    {
+      "title": "Zero slip can be followed by slipping in the other direction",
+      "prompt": "On a level plane, m=2 kg, R=1/2 m, β=1/2, g=10, μs=0.1, and μk=0.05. A constant hub force F=−9 N acts with no couple. Initially v=1 m/s and ω=0. Follow the 1 s trial.",
+      "steps": [
+        {
+          "math": "f_{\\rm req}=-\\frac{\\beta F}{1+\\beta}=+3\\ {\\rm N},\\qquad \\mu_sN=2\\ {\\rm N}",
+          "reason": "Sustained rolling would need more static friction than the surface can supply."
+        },
+        {
+          "math": "u>0:\\quad f=-1,\\quad a=-5,\\quad\\alpha=2,\\quad u(t)=1-6t",
+          "reason": "While the initial contact slides forward, kinetic friction points backward. The first zero-slip time is 1/6 s."
+        },
+        {
+          "math": "t_*=\\frac16,\\quad v_*=\\frac16,\\quad\\omega_*=\\frac13,\\quad x_*=\\frac7{72},\\quad\\theta_*=\\frac1{36}",
+          "reason": "These velocities match instantaneously, but the static demand is still +3 N, beyond the 2 N bound."
+        },
+        {
+          "math": "t>t_*:\\quad f=+1,\\quad a=-4,\\quad\\alpha=-2,\\quad \\dot u=-3",
+          "reason": "The contact begins slipping backward. Friction reverses, but the force remains finite and velocities do not jump."
+        },
+        {
+          "math": "v(1)=-\\frac{19}{6},\\quad\\omega(1)=-\\frac43,\\quad x(1)=-\\frac{83}{72},\\quad\\theta(1)=-\\frac7{18}",
+          "reason": "Integrate the second phase for 5/6 s from the transition state, preserving signed position and angle."
+        },
+        {
+          "math": "K_f=\\frac{41}{4},\\quad W_F=\\frac{83}{8},\\quad E_{\\rm th}=\\frac98,\\quad 1+\\frac{83}{8}-\\frac98=\\frac{41}{4}\\ {\\rm J}",
+          "reason": "The initial K is 1 J. Frictional heat follows the two slip-distance triangles, 1/12+25/24=9/8 m times 1 N."
+        }
+      ],
+      "conclusion": "An instant of v=Rω is not enough to declare rolling. The post-event force bound determines whether that equality can persist."
+    },
+    {
+      "title": "A moving belt can receive power through static contact",
+      "prompt": "A 2 kg disk with R=1/2 m and β=1/2 touches a horizontal belt moving at U=1 m/s. At an instant v=2 m/s and ω=2 rad/s clockwise. A hub force F=6 N acts; no couple or loss acts and static capacity suffices.",
+      "steps": [
+        {
+          "math": "v-R\\omega-U=2-\\frac12(2)-1=0",
+          "reason": "The contact is static relative to the belt, although its ground velocity is 1 m/s."
+        },
+        {
+          "math": "a=\\frac6{2(1+1/2)}=2,\\quad\\alpha=4,\\quad f=ma-F=-2\\ {\\rm N}",
+          "reason": "The belt speed is constant, so a=Rα still supplies the acceleration constraint."
+        },
+        {
+          "math": "P_f=fU=-2\\ {\\rm W},\\qquad \\dot E_{\\rm th}=-f(v-R\\omega-U)=0",
+          "reason": "Static contact removes mechanical energy from the body and transfers it to the belt without ideal sliding heat."
+        },
+        {
+          "math": "P_F=Fv=12,\\quad \\dot K=mv a+I\\omega\\alpha=8+2=10=12-2\\ {\\rm W}",
+          "reason": "The body's energy-rate balance includes hub input and contact transfer. Setting static-friction power to zero would fail this check."
+        }
+      ],
+      "conclusion": "The familiar zero-work statement requires a stationary ideal contact surface in the chosen frame. It is not a universal property of static friction."
+    },
+    {
+      "title": "Measurement bounds can leave the contact regime undecided",
+      "prompt": "For a passive disk with exactly β=1/2, slope tanθ is allowed to lie from 0.7 to 0.8 and μs from 0.23 to 0.28. Treat the intervals as independent allowed bounds. Determine whether they establish no slip.",
+      "steps": [
+        {
+          "math": "\\mu_{\\rm req}=\\frac{1/2}{1+1/2}\\tan\\theta=\\frac13\\tan\\theta\\in\\left[\\frac7{30},\\frac4{15}\\right]",
+          "reason": "Required traction increases with slope, so the interval endpoints give exact demand extrema."
+        },
+        {
+          "math": "{\\rm worst\\ margin}=\\frac{23}{100}-\\frac4{15}=-\\frac{11}{300},\\quad {\\rm best\\ margin}=\\frac7{25}-\\frac7{30}=\\frac7{150}",
+          "reason": "Pair the lowest capacity with highest demand for the worst case, and the highest capacity with lowest demand for the best."
+        },
+        {
+          "math": "-\\frac{11}{300}<0<\\frac7{150}",
+          "reason": "Some allowed combinations pass and others fail. The bounds do not decide whether this body can maintain rolling."
+        },
+        {
+          "math": "\\mu_{s,\\min}=\\frac{27}{100}\\quad\\Longrightarrow\\quad {\\rm worst\\ margin}=\\frac{27}{100}-\\frac4{15}=\\frac1{300}>0",
+          "reason": "If a better measurement raised the lower available-coefficient bound to 0.27 while leaving other bounds unchanged, every allowed combination would pass."
+        }
+      ],
+      "conclusion": "These conclusions are deterministic interval statements, not probabilities or confidence levels. Correlation between the measurements would require a different allowed set."
+    }
+  ],
+  "guided": {
+    "title": "Reject an unsupported rolling constraint",
+    "setup": "A uniform disk of mass 2 kg and radius 1/2 m starts from rest on a stationary straight ramp with rise/run=3/4. Use g=10 m/s², μs=1/5, μk=1/10, and no applied drive. Take +x downhill and positive scalar spin clockwise. Decide whether rolling can begin before calculating the actual accelerations.",
+    "before": [
+      "Find I, the downhill gravitational force G, and the normal force N. Keep the static-friction demand separate from its available magnitude.",
+      "First solve the candidate equations 2a=12+f, Iα=−fR, and a=Rα. Then test the static bound. If it fails, use kinetic friction and solve translation and rotation separately."
+    ],
+    "question": {
+      "id": "phs231-rolling-guided",
+      "familyId": "phs231-rolling-guided",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m07-l03",
+      "category": "application",
+      "critical": true,
+      "prompt": "Determine the required signed static friction, the available static-friction magnitude, and the actual initial center and angular accelerations. Select the supported contact regime.",
+      "parameters": {
+        "mass": 2,
+        "radius": 0.5,
+        "beta": 0.5,
+        "sine": 0.6,
+        "cosine": 0.8,
+        "gravity": 10,
+        "muStatic": 0.2,
+        "muKinetic": 0.1
+      },
+      "fields": [
+        {
+          "id": "required",
+          "kind": "rational",
+          "label": "Required signed static friction",
+          "expected": "-4",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "capacity",
+          "kind": "rational",
+          "label": "Available static-friction magnitude",
+          "expected": "16/5",
+          "unit": "N",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "acceleration",
+          "kind": "rational",
+          "label": "Actual initial center acceleration",
+          "expected": "26/5",
+          "unit": "m/s²",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "alpha",
+          "kind": "rational",
+          "label": "Actual initial angular acceleration",
+          "expected": "16/5",
+          "unit": "rad/s²",
+          "help": "Enter a signed exact fraction or an equivalent arithmetic expression."
+        },
+        {
+          "id": "regime",
+          "kind": "choice",
+          "label": "Actual contact regime",
+          "correct": "sliding",
+          "options": [
+            {
+              "id": "sliding",
+              "label": "Static demand fails; use kinetic friction and allow a different value of R alpha",
+              "feedback": "The required 4 N exceeds the 16/5 N static limit. Kinetic friction is −8/5 N, giving a=26/5 and Rα=8/5 m/s². Contact slip therefore grows downhill."
+            },
+            {
+              "id": "rolling",
+              "label": "It rolls with a=4 because a round disk must satisfy a=R alpha",
+              "feedback": "Round geometry does not supply the contact force. The candidate rolling state requires more static friction than is available."
+            },
+            {
+              "id": "maximum",
+              "label": "Use the maximum static force throughout the resulting sliding motion",
+              "feedback": "After the static bound fails, this Coulomb model uses μkN during sliding. μsN is a capacity, not the prescribed sliding force."
+            },
+            {
+              "id": "rest",
+              "label": "Initial v=omega=0 means the disk stays stuck at rest",
+              "feedback": "Initial rest is a velocity condition, not force and torque equilibrium. Gravity creates a tendency to move immediately."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "With I=1/4 kg m², the candidate rolling equations give a=4 m/s², α=8 rad/s², and f=−4 N.",
+        "N=16 N, so the static limit is 16/5 N. Its failure gives downhill slip and kinetic friction f=−8/5 N.",
+        "Use a=(12−8/5)/2 and α=(8/5)(1/2)/(1/4). Check a−Rα rather than forcing it to zero."
+      ],
+      "explanation": [
+        "$I=\\tfrac12mR^2=\\tfrac14,\\quad 2a=12+f,\\quad \\tfrac14\\alpha=-\\tfrac12f,\\quad a=\\tfrac12\\alpha\\ \\Longrightarrow\\ f_{\\rm req}=-4$ — These equations describe a candidate rolling state. The friction force is solved from coupled dynamics.",
+        "$|f_{\\rm req}|=4>\\mu_sN=\\tfrac15(16)=\\tfrac{16}{5}$ — Static friction cannot sustain this candidate.",
+        "$f=-\\mu_kN=-\\tfrac1{10}(16)=-\\tfrac85$ — The free contact tendency is downhill; kinetic friction acts uphill when sliding begins.",
+        "$a=\\frac{12-8/5}{2}=\\tfrac{26}{5},\\qquad \\alpha=\\frac{(8/5)(1/2)}{1/4}=\\tfrac{16}{5}$ — Solve the actual translation and rotation equations without the unsupported no-slip constraint.",
+        "$\\dot u=a-R\\alpha=\\tfrac{26}{5}-\\tfrac12\\tfrac{16}{5}=\\tfrac{18}{5}>0$ — The contact develops downhill relative slip, confirming the kinetic-friction direction. Required force, capacity, and actual force have different roles."
+      ],
+      "answerSummary": "Required static friction −4 N; available magnitude 16/5 N; actual a=26/5 m/s² and α=16/5 rad/s². The contact slides downhill."
+    },
+    "after": "Explain why the actual kinetic friction differs from both the required static force and the maximum available static force. Use the investigation to raise μs through 1/4 while keeping μk≤μs. Predict when a−Rα becomes zero and whether further increases change ideal rolling acceleration."
+  },
+  "interaction": {
+    "kind": "phs231-rolling",
+    "prompt": "Predict the required static friction, available static capacity, and actual initial accelerations. Check the contact regime before using a=Rα. Compare a passive ramp, an initially sliding disk, an overspinning disk, and a driven wheel. Inspect exact transitions and explain friction work using relative contact motion.",
+    "initial": {
+      "mass": 2,
+      "radius": 0.5,
+      "beta": 0.5,
+      "slope": 0.75,
+      "gravity": 10,
+      "muStatic": 0.3,
+      "muKinetic": 0.2,
+      "force": 0,
+      "couple": 0,
+      "v0": 0,
+      "omega0": 0,
+      "duration": 2
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "point"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "incline"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "energy"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "compare"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "driven"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "offset"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "uphill"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "transition"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "threshold"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "slipping"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "overspin"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "frictionless"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "contact"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "power"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "belt"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "uncertainty"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "point"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "threshold"
+    },
+    {
+      "familyId": "phs231-rolling-motion",
+      "variant": "transition"
+    },
+    {
+      "familyId": "phs231-rolling-validity",
+      "variant": "power"
+    }
+  ],
+  "summary": [
+    "State the observer, surface motion, and signs. On a stationary plane with clockwise-positive scalar spin, contact slip is u=v−Rω.",
+    "A material contact point can have zero instantaneous velocity and nonzero acceleration. It does not remain the contacting material point.",
+    "Solve ma=mg sinθ+F+f and Iα=M−fR. Impose a=Rα only as a candidate and test |f|≤μsN.",
+    "For compatible passive rolling, a=g sinθ/(1+β) and μs must reach β tanθ/(1+β). More capacity above this threshold does not change ideal acceleration.",
+    "Total kinetic energy includes both CM translation and rotation about CM. Compatible rolling gives K=m(1+β)v²/2.",
+    "Friction direction follows relative contact tendency, not a rule that it always opposes CM velocity. A hub pull and an axle drive can require opposite directions.",
+    "On an ideal stationary plane, rolling contact has zero total friction power. During sliding, f(v−Rω)≤0 and its negative is the heat rate in this model.",
+    "At a future zero-slip event, retest static feasibility. The body may enter rolling or reverse slip; an isolated equality v=Rω is insufficient.",
+    "Zero friction permits persistent compatible rolling on an unloaded level plane. It cannot generally establish rolling from arbitrary initial translation and spin.",
+    "On a belt, relative slip is v−Rω−U. Static contact may transfer power fU with no ideal sliding heat.",
+    "Uncertainty bounds limit what measurements establish. The rigid, constant-load, point-contact model does not determine equipment ratings, rolling resistance, deformation, or safe physical procedures."
+  ],
+  "retrieval": "A 1 kg thin hoop of radius 1/2 m starts on a stationary level plane with v0=4 m/s and ω0=0. Use g=10, μk=0.2, μs=0.3, no drive, and no rolling resistance. Find its catch time, rolling speed and spin, heat, and position/angle after 2 s. Check after working: I=1/4 kg m², initial f=−2 N, a=−2 m/s², α=4 rad/s²; catch at 1 s with v=2 m/s, ω=4 rad/s, x=3 m, angle=2 rad. K falls from 8 to 4 J, producing 4 J of heat. Afterward friction is zero; at 2 s, x=5 m and angle=6 rad.",
+  "readings": [
+    {
+      "title": "OpenStax: Rolling Motion",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/11-1-rolling-motion",
+      "purpose": "Free companion covering rolling constraints, friction, and translational plus rotational energy."
+    },
+    {
+      "title": "MIT OpenCourseWare: Contact Point of a Wheel Rolling Without Slipping",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/35-5-contact-point-of-a-wheel-rolling-without-slipping/",
+      "purpose": "Inspect the difference between instantaneous contact velocity and the motion of a material point on the rim."
+    },
+    {
+      "title": "MIT OpenCourseWare: Friction on a Rolling Wheel",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/36-1-friction-on-a-rolling-wheel/",
+      "purpose": "Review conditional static friction and the zero-friction steady ideal limit."
+    },
+    {
+      "title": "MIT OpenCourseWare: Kinetic Energy of Translation and Rotation",
+      "url": "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/week-12-rotations-and-translation-rolling/37-1-kinetic-energy-of-translation-and-rotation/",
+      "purpose": "Follow the decomposition of body kinetic energy into CM translation and rotation."
+    }
+  ]
+}
