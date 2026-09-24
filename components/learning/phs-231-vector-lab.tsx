@@ -23,7 +23,9 @@ export function Phs231VectorLab({ activity }: { activity: VectorActivity }) {
       setResult(next);setMessage(missed.length?`Revisit ${missed.join(", ")}. The dot product adds matching-component products; A cross B uses signed differences in cyclic x, y, z order.`:"Your scalar product and all cross-product components are correct.");
     }catch(error){setResult(null);setMessage(error instanceof Error?error.message:"Check the entries.");}
   };
-  const point=(v:number[])=>`${200+v[0]*8},${200-v[1]*8}`;
+  const extent=Math.max(4,Math.ceil(1.2*Math.max(...a.slice(0,2).map(Math.abs),...b.slice(0,2).map(Math.abs),...a.slice(0,2).map((n,i)=>Math.abs(n+b[i])))));
+  const scale=160/extent;
+  const point=(v:number[])=>`${200+v[0]*scale},${200-v[1]*scale}`;
   return <div className="phs231-investigation">
     <p><MathText>{activity.prompt}</MathText></p><p className="muted">Here A and B are dimensionless vectors in right-handed orthonormal axes. The plot is their xy projection; all three coordinates are shown in the table. Controls reset on reload. Save your comparison in lesson notes.</p>
     <div className="phs231-controls">{["A x","A y","A z","B x","B y","B z"].map((label,i)=><div className="field" key={label}><label htmlFor={`phs231-vector-${i}`}>{label}</label><input id={`phs231-vector-${i}`} type="number" min={-10} max={10} step={1} value={values[i]} onChange={event=>{setValues(current=>current.map((v,j)=>j===i?event.target.value:v));clear();}}/></div>)}</div>
@@ -31,11 +33,11 @@ export function Phs231VectorLab({ activity }: { activity: VectorActivity }) {
       <title id={titleId}>XY projection of A ({a.join(", ")}) and B ({b.join(", ")}). Positive x is right, positive y is up. The z components are omitted from this projection.</title>
       <defs><marker id={markerId} markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6" fill="none" stroke="context-stroke"/></marker></defs>
       <line x1="25" x2="375" y1="200" y2="200" stroke="#82928f"/><line x1="200" x2="200" y1="25" y2="375" stroke="#82928f"/>
-      {[-20,-10,0,10,20].map(n=><g key={n}><text x={200+8*n} y="218" textAnchor="middle" fontSize="12" fill="#243b38">{n}</text>{n!==0&&<text x="185" y={204-8*n} textAnchor="end" fontSize="12" fill="#243b38">{n}</text>}</g>)}
+      {[-extent,-extent/2,0,extent/2,extent].map(n=><g key={n}><text x={200+scale*n} y="218" textAnchor="middle" fontSize="16" fill="#243b38">{n}</text>{n!==0&&<text x="185" y={204-scale*n} textAnchor="end" fontSize="16" fill="#243b38">{n}</text>}</g>)}
       <text x="375" y="190" textAnchor="end" fill="#243b38">+x</text><text x="210" y="28" fill="#243b38">+y</text>
       <polyline points={`200,200 ${point(a)}`} fill="none" stroke="#145f84" strokeWidth="3" markerEnd={`url(#${markerId})`}/>
       <polyline points={`200,200 ${point(b)}`} fill="none" stroke="#933d20" strokeWidth="3" strokeDasharray="6 3" markerEnd={`url(#${markerId})`}/>
-      <text x={210+a[0]*8} y={190-a[1]*8} fill="#145f84" fontWeight="700">A</text><text x={210+b[0]*8} y={220-b[1]*8} fill="#933d20" fontWeight="700">B</text>
+      <text x={210+a[0]*scale} y={190-a[1]*scale} fill="#145f84" fontWeight="700">A</text><text x={210+b[0]*scale} y={220-b[1]*scale} fill="#933d20" fontWeight="700">B</text>
       {result&&<polyline points={`200,200 ${point(result.sum)}`} fill="none" stroke="#356b33" strokeWidth="2" strokeDasharray="2 4" markerEnd={`url(#${markerId})`}/>}
     </svg><figcaption>A: solid blue; B: dashed brown; revealed A + B: dotted green. An arrow may project to a point even when its full 3D vector is nonzero.</figcaption></figure>}
     <fieldset className="phs231-predictions"><legend>Predict before calculating</legend><div className="phs231-controls">{["Predicted A dot B","Predicted cross x","Predicted cross y","Predicted cross z"].map((label,i)=><div className="field" key={label}><label htmlFor={`phs231-vector-prediction-${i}`}>{label}</label><input id={`phs231-vector-prediction-${i}`} maxLength={200} value={predictions[i]} onChange={event=>{setPredictions(current=>current.map((v,j)=>j===i?event.target.value:v));clear();}}/></div>)}</div></fieldset>
