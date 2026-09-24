@@ -2,7 +2,7 @@ import { randomFrom } from "../random";
 import { choice,num,truth,programQuestion,type ProgramCase } from "../refreshers/programming";
 export const f10DebugFamilyIds=["f10-debug","f10-testing"];
 export function f10DebugCase(family:string,variant:string,seed:string):ProgramCase{
- const r=randomFrom(seed),a=r.integer(1,6),b=r.integer(-4,5),c=r.integer(1,6),t=r.integer(-3,7),kind=r.integer(0,2),p={a,b,c,t,kind},items=[a,b,c],sum=a+b+c;
+ const r=randomFrom(seed),a=r.integer(1,6),b=r.integer(-4,5),c=r.integer(1,6),t=r.integer(-3,7),kind=variant==="classify-syntax"?0:variant==="classify-runtime"?1:variant==="classify-logic"?2:r.integer(0,2),p={a,b,c,t,kind},items=[a,b,c],sum=a+b+c;
  const make=(intro:string,code:string,fields:ProgramCase["fields"],checks:Record<string,string>,explanation:string[]):ProgramCase=>({intro,code,fields,checks,explanation,parameters:p});
  if(family==="f10-testing"){
   if(variant==="float"){
@@ -13,7 +13,7 @@ export function f10DebugCase(family:string,variant:string,seed:string):ProgramCa
   return make("The specification accepts values at or above the threshold. Find the boundary that exposes the wrong comparison, then choose a sum-function regression strategy.",`threshold = ${t}\ndef accepts(value):\n    return value > threshold`,[num("boundary","Equality-boundary counterexample",t),num("empty","Expected sum of an empty list",0),choice("suite","Useful tests for a repaired integer-list sum","broad",[["broad","Empty, singleton, mixed signs, repeated values and ordinary lists","These probe distinct behaviors and likely failure boundaries."],["positive","One list with several positive values","It does not exercise empty input or cancellation."],["large","Only one very long list","Size alone does not cover the boundary classes."]]),choice("proof","Do finite passing examples prove correctness for every possible input?","no",[["no","No","They provide evidence and catch regressions; broader reasoning is still needed."],["yes","Yes","Untested inputs may reveal additional failures."]])],{boundary:"threshold",empty:"sum([])"},[`At value=${t}, the specification says True but the program returns False.`,"Keep the failing boundary as a regression test and add representative cases, including the empty list."]);
  }
  if(family!=="f10-debug")throw Error("Unknown debug family");
- if(variant==="classify"){
+ if(["classify","classify-syntax","classify-runtime","classify-logic"].includes(variant)){
   const codes=[`if ${a} > 0\n    value = 1`,`items = [${a}, ${b}]\nvalue = items[2]`,`items = [${a}, ${b}, ${c}]\ntotal = 0\nfor value in items:\n    total = value`],correct=["syntax","runtime","logic"][kind];
   const out=make("The intended task is a valid program that sums every list item. Classify the shown failure.",codes[kind],[choice("kind","Failure category",correct,[["syntax","Syntax failure","Missing required punctuation prevents parsing."],["runtime","Runtime exception","Valid syntax can still request an invalid operation during execution."],["logic","Logic failure without an exception","Overwriting a total produces the wrong algorithm even when execution finishes."]])],{},["A syntax failure prevents parsing; a runtime exception occurs during execution; a logic failure can finish with the wrong behavior.","Identify the first divergence from the specification before choosing a repair."]);
   if(kind<2)out.error=kind===0?"SyntaxError":"IndexError";return out;
