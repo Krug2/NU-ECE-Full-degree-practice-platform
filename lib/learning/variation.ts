@@ -15,7 +15,7 @@ const asNumber=(r:Rational)=>Number(r.numerator)/Number(r.denominator);
 export const variationNumberSchema=z.string().min(1).max(100).refine(value=>{
   try{const n=parseRational(value);return n.numerator<=1_000_000n*n.denominator&&n.numerator>=-1_000_000n*n.denominator&&n.denominator<=1_000_000n;}catch{return false;}
 },"Use an exact rational number within +/-1,000,000, with denominator at most 1,000,000.");
-const number=(source:string)=>parseRational(variationNumberSchema.parse(source));
+const number=(source:string)=>{const checked=variationNumberSchema.safeParse(source);if(!checked.success)throw new Error(checked.error.issues[0].message);return parseRational(checked.data);};
 function integerRoot(n:bigint,degree:number):bigint|null{
   let low=0n,high=n+1n;while(high-low>1n){const middle=(low+high)/2n;if(middle**BigInt(degree)<=n)low=middle;else high=middle;}
   return low**BigInt(degree)===n?low:null;

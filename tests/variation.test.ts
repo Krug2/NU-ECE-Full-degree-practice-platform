@@ -37,6 +37,7 @@ it("separates exact quadratic radicals and cube-root approximations from undefin
   expect(()=>variationPowerValue("0",{numerator:-1,denominator:3})).toThrow("Zero is excluded");
   expect(variationBasis(rule(0,1),inputs("0","3")).exact).toBe("3");
   expect(()=>variationOutput(rule(1),"0",inputs("3"))).toThrow("nonzero constant");
+  expect(()=>variationOutput(rule(1),"2",inputs("i"))).toThrow(/^Use an exact rational number/);
 });
 it("does not identify a constant from zero data or invent a ratio from a zero baseline",()=>{
   expect(calibrateVariation(rule(2),{x:"0",z:"1",y:"0"})).toEqual({kind:"underdetermined"});
