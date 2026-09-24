@@ -6,6 +6,7 @@ export const lessonAdaptersSchema = z.object({
   courseId: key, moduleId: key, version: z.number().int().positive(),
   lessons: z.array(z.object({
     id: key, sourceId: key, title: z.string().min(1), requires: z.array(key),
+    objective: z.string().min(1).optional(),
     why: z.string().min(1), recall: z.array(z.string().min(1)).min(2),
     estimatedMinutes: z.number().int().positive(), retrieval: z.string().min(1),
     readings: lessonSchema.shape.readings, checkpoint: z.array(slotSchema).length(4).optional(),
@@ -27,6 +28,7 @@ export function adaptRefresherLessons(data: unknown, sources: Record<string, unk
     return lessonSchema.parse({
       ...source, id: descriptor.id, courseId: adapters.courseId, moduleId: adapters.moduleId, version: adapters.version,
       title: descriptor.title, why: descriptor.why, estimatedMinutes: descriptor.estimatedMinutes, prerequisites,
+      objective: descriptor.objective ?? source.objective,
       sections: [{ heading: "Quick recall", paragraphs: descriptor.recall }, ...source.sections],
       guided: { ...source.guided, question: { ...source.guided.question, id: adapters.courseId+"-"+descriptor.id+"-guided", familyId: "guided-"+adapters.courseId+"-"+descriptor.id, courseId: adapters.courseId, objectiveId: descriptor.id } },
       practice: source.practice.map(slot => ({ ...slot, familyId: family(slot.familyId) })),
