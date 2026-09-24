@@ -12,10 +12,12 @@ export function refresherStatus(pack: LearningPack, path: RefresherPath, version
     const evidence = progress.evidence.find(item => item.courseId === pack.courseId && item.lessonId === lesson.id && item.lessonVersion === versions[lesson.id]);
     const probes = progress.attempts
       .filter(attempt => attempt.courseId === pack.courseId && attempt.status === "submitted" && attempt.lessonVersion === (attempt.lessonId === lesson.id ? versions[lesson.id] : path.version))
-      .flatMap(attempt => attempt.questions.filter(question => attempt.lessonId === lesson.id || path.targets[question.familyId] === lesson.id).map(question => ({
-        at: attempt.submittedAt!, missed: !gradeQuestion(question, attempt.responses[question.id] ?? {}).correct,
-        assisted: attempt.mode === "practice" || (attempt.hints[question.id] ?? 0) > 0,
-      })));
+      .flatMap(attempt => attempt.questions.flatMap(question => {
+        const target = path.targets[question.familyId];
+        const fields = attempt.lessonId === lesson.id || target === lesson.id ? question.fields
+          : target && typeof target === "object" ? question.fields.filter(field => Object.entries(target).some(([prefix, id]) => id === lesson.id && field.id.startsWith(prefix+"-"))) : [];
+        return fields.length ? [{ at: attempt.submittedAt!, missed: !gradeQuestion({ ...question, fields }, attempt.responses[question.id] ?? {}).correct }] : [];
+      }));
     const latest = probes.reduce<string | undefined>((date, probe) => !date || probe.at > date ? probe.at : date, undefined);
     const current = probes.filter(probe => probe.at === latest);
     const recentMiss = probes.some(probe => probe.missed && (!evidence || probe.at > evidence.demonstratedAt));

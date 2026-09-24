@@ -7,7 +7,7 @@ export const refresherPathSchema = z.object({
   quickRoute: z.string().min(1), fullRoute: z.string().min(1),
   diagnostic: z.array(slotSchema).min(4).max(16),
   recall: z.array(slotSchema).length(4),
-  targets: z.record(key, key),
+  targets: z.record(key, z.union([key, z.record(key, key)])),
   support: z.array(z.object({ courseId: key, reason: z.string().min(1) }).strict()).min(1),
   escalation: z.object({ courseId: key, text: z.string().min(1) }).strict(),
 }).strict();
