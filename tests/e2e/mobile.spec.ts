@@ -13,8 +13,10 @@ test("mobile navigation, course filters, and layouts remain usable", async ({ pa
   await expect(page.getByRole("article")).toHaveCount(1);
   await page.getByRole("link", { name: "Calculus recall", exact: true }).click();
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Added to my plan", exact: true })).toBeVisible();
   await page.goto("/courses/cee-324l");
   await page.getByRole("button", { name: "Add to my plan", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Added to my plan", exact: true })).toBeVisible();
   await page.goto("/plan");
   await expect(page.locator(".plan-list > li")).toHaveCount(2);
   await page.getByLabel("Minutes studied", { exact: true }).fill("15");
