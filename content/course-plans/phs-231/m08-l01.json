@@ -197,7 +197,11 @@
         "inverse",
         "clamp"
       ],
-      "coverage": "Force and moment balances for varied supports and geometry, load integrals, origin changes, and inverse measured reactions."
+      "coverage": "Force and moment balances for varied supports and geometry, load integrals, origin changes, and inverse measured reactions.",
+      "criticalVariants": [
+        "cable",
+        "ladder"
+      ]
     },
     {
       "id": "phs231-static-validity",
@@ -211,7 +215,17 @@
         "stability",
         "uncertainty"
       ],
-      "coverage": "Unilateral signs, finite load-position domains, local friction, competing limits, additional compatibility, singular restraint, stability, and allowed measurement bounds."
+      "coverage": "Unilateral signs, finite load-position domains, local friction, competing limits, additional compatibility, singular restraint, stability, and allowed measurement bounds.",
+      "criticalVariants": [
+        "liftoff",
+        "window",
+        "rough",
+        "slide-tip",
+        "redundant",
+        "mechanism",
+        "stability",
+        "uncertainty"
+      ]
     }
   ],
   "guided": {
@@ -292,5 +306,15 @@
       "checkedAt": "2026-09-24",
       "use": "Optional free primary-source exercise in isolating a body and writing equilibrium equations. Its PDF was opened and checked; no copied problem is used as platform assessment."
     }
-  ]
+  ],
+  "assessmentDefaults": {
+    "checkpointVariants": [
+      "beam",
+      "distributed",
+      "rough",
+      "mechanism"
+    ],
+    "meaning": "Four questions use the existing proposed 75% checkpoint threshold while requiring both critical support-validity questions. Procedural beam and distributed-load questions remain noncritical. This is a platform teaching choice, not an official NU grading policy.",
+    "verification": "The 16 variants each pass 50 deterministic independent fixtures. Window variants deliberately include empty, nonempty, and singleton domains; cable signs, unilateral contacts, competing limits, singular restraint, zero-curvature stability, and interval classifications are covered."
+  }
 }
