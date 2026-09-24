@@ -1,0 +1,248 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m09-l02",
+  "version": 1,
+  "status": "detailed plan; implementation and verification pending",
+  "title": "Validate a mechanical subsystem",
+  "objective": "Combine force, energy, numerical, and measurement evidence into a reproducible investigation with a transparent self-assessment rubric.",
+  "officialScope": {
+    "checkedAt": "2026-09-24",
+    "source": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+    "requirement": "The official course includes calculus-based mechanics, numerical integration, force and energy analysis, and material behavior. Its published prerequisite alternatives remain as documented in the course overview.",
+    "distinction": "This integrative project, synthetic records, investigation controls, notebook, and self-assessment thresholds are proposed teaching choices. PHS 231 is a lecture course; the page does not prescribe an equipment kit for this proposed project. Do not import the separately listed introductory lab's equipment requirement. No independent subject review or learner pilot is claimed."
+  },
+  "prerequisites": [
+    "m09-l01",
+    "m08-l03",
+    "m01-l01",
+    "m03-l01",
+    "m05-l01",
+    "m05-l02"
+  ],
+  "studyRoute": {
+    "required": "Complete the project entirely with supplied simulations, original calculations, and a saved reproducible evidence record. No physical equipment or purchase is required.",
+    "optionalPhysical": "An optional future experiment is a separately scoped extension, not required evidence. Before proposing it, specify instrument range, resolution, calibration and sampling limits, secure low-energy apparatus, keep body parts out of pinch and recoil paths, respect manufacturer load limits, and avoid overhead loads, fracture tests, improvised powered systems, and unsupported equipment claims. Do not label synthetic values as physical measurements."
+  },
+  "coverage": [
+    {
+      "topic": "A claim, system boundary, and acceptance rule",
+      "teaching": "Define a signed horizontal coordinate and distinguish the moving body, spring/support, dissipative element, and sensor. State a finite test range and a prediction tolerance before seeing validation data. Weight and normal force balance in the stipulated horizontal idealization; a spring-force sensor is not automatically a net-force or acceleration measurement.",
+      "evidence": "Written question with quantity, units, interval, scope, boundary, and a falsifiable acceptance rule."
+    },
+    {
+      "topic": "Verification, calibration, and validation",
+      "teaching": "Verification checks calculations against equations and independent fixtures. Calibration estimates a sensor correction or parameter from specified data. Validation compares predictions with observations not used to choose those parameters. Separate this synthetic rehearsal from independent physical validation. Do not turn a good fit into proof of every assumption.",
+      "evidence": "Provenance and training/validation labels for every table; one held-out check and a clear limitation."
+    },
+    {
+      "topic": "Force sensor offset and stiffness calibration",
+      "teaching": "Use the signed observation law y=-kx-bv+z+e with k>0, b>=0, sensor zero z, and a stated bounded error e. Identify z using x=v=0 and k using paired static states. A common fixed zero offset cancels in a force difference; drift or scale error need not. Distinguish spring force, drag force, sensor output, and net modeled force.",
+      "evidence": "Independent offset and slope arithmetic, sign and units, and a sensitivity or worst-case bound."
+    },
+    {
+      "topic": "Parameter identifiability and controlled comparisons",
+      "teaching": "Static v=0 records cannot identify viscous b. Same x with opposite v separates damping from the spring term and a fixed sensor zero. Data with v=c*x determine k+b*c, not k and b separately. Include genuinely different conditions and held-out states; do not count interpolated records as independent evidence.",
+      "evidence": "One paired-state calculation and one explicit example of what the data cannot identify."
+    },
+    {
+      "topic": "Residuals with a declared uncertainty model",
+      "teaching": "Use observed minus predicted sensor output, or equivalently zero-corrected force minus modeled force, with consistent signs. Compare residual magnitude with a justified combined worst-case bound. State whether input quantities are exact synthetic values or uncertain measurements. A bound is not a standard uncertainty, confidence interval, or root-sum-square without additional assumptions.",
+      "evidence": "A residual table and at least one boundary, compatible, and incompatible interpretation."
+    },
+    {
+      "topic": "Patterns that motivate model revision",
+      "teaching": "Compare a linear spring-drag candidate with synthetic baseline, omitted drag, nonlinear spring, and drifting sensor-zero cases. A velocity-dependent pattern, cubic displacement pattern, or time/group offset motivates a specific test, not automatic unique causation. Matching all finite validation rows does not establish behavior outside their range.",
+      "evidence": "A controlled model comparison and a proposed discriminating observation."
+    },
+    {
+      "topic": "A numerical prediction and independent mechanics accounts",
+      "teaching": "Reuse the numerical investigation at fixed m=0.5 kg, k=8 N/m and selected b. Derive initial force, acceleration, spring energy and an analytic undamped check. Compare explicit, velocity-first, and midpoint updates at common endpoints, inspect incomplete runs, and audit E plus integrated dissipative power. A force-versus-state calibration table has no implied time order and must not be integrated as a motion path.",
+      "evidence": "At least six same-endpoint refinement rows, one independently checked state, and a signed energy residual with units."
+    },
+    {
+      "topic": "Error budget, acceptance, and limited conclusions",
+      "teaching": "Keep discretization, input measurement, sensor calibration, and model discrepancy separate. A numerical refinement cannot cure a missing force or bias. Apply the predeclared tolerance and range; if a necessary contribution is unbounded, qualify the conclusion. Distinguish observed agreement, interval compatibility, and a rigorous bound.",
+      "evidence": "An acceptance decision tied to the original rule, uncertainty assumptions, and an explicit untested condition."
+    },
+    {
+      "topic": "Reproducible reporting and revision history",
+      "teaching": "Save the question, model, provenance, calibration, validation, numerical evidence, limitations, and revision. Include sufficient numeric tables and arithmetic to reproduce claims. Retain a submitted self-assessed artifact when beginning a revision. Do not overwrite drafts from another tab or silently discard an unsupported saved record.",
+      "evidence": "A locally saved structured notebook, preserved submitted artifact, and actual backup roundtrip."
+    }
+  ],
+  "investigation": {
+    "kind": "phs231-validation",
+    "syntheticForceLaw": "sensor output = -k*x - b*v - c*x^3 + z + group drift; synthetic displayed readings carry declared bounds",
+    "datasets": [
+      {
+        "id": "baseline",
+        "law": "k=8 N/m, b=0.2 kg/s, c=0, z=0.04 N, no drift",
+        "purpose": "Identify offset and stiffness from calibration rows, then use independent velocity conditions and held-out force states."
+      },
+      {
+        "id": "no-drag",
+        "law": "Same k and zero, b=0",
+        "purpose": "Show that a static-only fit cannot distinguish this case from baseline."
+      },
+      {
+        "id": "nonlinear",
+        "law": "k=8 N/m, b=0.2 kg/s, c=500 N/m^3, z=0.04 N",
+        "purpose": "A linear candidate can fit a limited calibration pair while leaving displacement-dependent validation residuals."
+      },
+      {
+        "id": "drift",
+        "law": "Baseline force law; validation sensor zero shifts by 0.03 N",
+        "purpose": "Separate calibration validity over time/groups from physical force-law claims."
+      }
+    ],
+    "controls": "Dataset selection, candidate spring constant, viscous coefficient, sensor zero and declared comparison bound; predictions before revealing residuals; keyboard-selected sample and full equivalent table. No silently fitted parameters or inflated confidence levels.",
+    "dataMeaning": "Each row is a distinct imposed (x,v) state. Row index is not time, and rows are not a trajectory. All records are explicitly synthetic. Calibration and validation labels are preserved.",
+    "requiredComparisons": [
+      "Static calibration versus held-out dynamic states",
+      "With and without viscous term at the same x and v",
+      "Linear candidate versus nonlinear or drift record",
+      "One numerical endpoint check and six controlled refinement records in the preceding investigation"
+    ],
+    "representation": "Signed predicted and observed sensor output, zero-corrected physical candidate force, residual and allowed bound, compatibility per row, calibration versus validation status, keyboard controls, text/table equivalents, CSV with provenance."
+  },
+  "notebook": {
+    "storage": "Reuse the existing versioned study store and learning.notes backing records. Use course-specific reserved project keys, with a versioned manifest and separate section entries, each within the existing 5000-character note limit. Keep ordinary lesson notes separate. No backup schema migration is needed.",
+    "sections": [
+      "question",
+      "model",
+      "provenance",
+      "calibration",
+      "validation",
+      "numerics",
+      "limitations",
+      "revision"
+    ],
+    "contentLimit": "Each section allows up to 3000 characters; enforce schema and size limits without deleting the draft. A meaningful submission needs every required section, quantitative evidence, a completed rubric, and an explicit learner self-check declaration; content presence does not certify correctness.",
+    "revisions": "Preserve completed snapshots when editing or starting a fresh record. Snapshot identifiers and a manifest index keep revision data separate. Unsupported or corrupted records remain exportable; recovery must preserve originals. Use compare-and-save to detect concurrent changes and provide draft export or explicit load-saved recovery.",
+    "completion": "Record self-assessed project evidence distinctly from automatically checked question evidence. A project alone never grants course completion or claims independent subject review."
+  },
+  "rubric": {
+    "status": "proposed self-study defaults, not official NU assessment rules",
+    "criteria": [
+      {
+        "id": "scope",
+        "label": "Claim, system boundary, units and provenance"
+      },
+      {
+        "id": "calibration",
+        "label": "Calibration arithmetic, uncertainty model and identifiability"
+      },
+      {
+        "id": "validation",
+        "label": "Held-out residuals and controlled model comparison"
+      },
+      {
+        "id": "numerics",
+        "label": "Independent mechanics, refinement and energy checks"
+      },
+      {
+        "id": "revision",
+        "label": "Reproducibility, limitations and justified revision"
+      }
+    ],
+    "levels": {
+      "0": "Missing or unsupported.",
+      "1": "Partial evidence with a material error or missing assumption.",
+      "2": "Substantially justified; a specific smaller gap remains.",
+      "3": "Complete, reproducible reasoning with checks and clear limitations."
+    },
+    "target": "At least 12 of 15 with no zero, all required notebook sections, and quantitative evidence. The learner judges quality; the application only validates record structure and explicit numeric practice answers."
+  },
+  "examples": [
+    "Signed offset correction using y(0,0)=0.04 N.",
+    "Static pair x=±0.04 m gives sensor outputs 0.36 and -0.28 N: k=8 N/m; the common offset cancels.",
+    "Same x=0.02 m at v=±0.1 m/s gives readings -0.14 and -0.10 N: b=0.2 kg/s under a common zero.",
+    "Paired static readings each bounded by ±0.005 N with exact 0.08 m separation give k within [7.875,8.125] N/m.",
+    "A residual at the stated closed allowed bound is compatible, not proof of exact agreement.",
+    "Static-only data cannot identify b; v=c*x data identify only k+b*c.",
+    "A nonlinear spring adds -500*x^3 N, whose residual scales cubically with displacement under fixed candidate k.",
+    "A sensor drift of 0.03 N shifts validation residuals without being a new physical force.",
+    "An offset contributes z*displacement to an uncorrected force-work integral; it must not be invented as stored spring energy.",
+    "Common-endpoint refinement and energy ledger from m09-l01 with independent first-step arithmetic.",
+    "A partial error budget cannot certify total physical error with unbounded model discrepancy.",
+    "A defensible project conclusion with a specific next discriminating observation."
+  ],
+  "families": {
+    "phs231-validation-evidence": [
+      "units",
+      "provenance",
+      "calibration-offset",
+      "stiffness-interval",
+      "residual-bound",
+      "covariance",
+      "work-check",
+      "sensor-scale",
+      "validation-split",
+      "acceptance"
+    ],
+    "phs231-model-diagnosis": [
+      "damping-pair",
+      "nonlinear-pair",
+      "identifiability",
+      "energy-source",
+      "coarse-step",
+      "clipped-run",
+      "parameter-change",
+      "offset-drift",
+      "relative-error",
+      "revision-plan"
+    ]
+  },
+  "checkpoint": [
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "calibration-offset"
+    },
+    {
+      "familyId": "phs231-validation-evidence",
+      "variant": "residual-bound"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "identifiability"
+    },
+    {
+      "familyId": "phs231-model-diagnosis",
+      "variant": "revision-plan"
+    }
+  ],
+  "verification": {
+    "families": "At least 50 deterministic seeds for every variant plus exact-zero, signed, equality-boundary and unavailable-inference cases. Derive answers independently from paired differences, interval corners, dimensions and energy accounts.",
+    "investigation": "Independently calculate every synthetic observation and residual; test all datasets, bounds, labels, zero and signed controls, keyboard use, plots and equivalent tables, invalid input and CSV.",
+    "notebook": "Test empty/partial/completed/revised records, no false auto-grading, all rubric thresholds, stale concurrent saves, reload, unsupported records without loss, quota errors, immutable completed snapshots, real export/reset/import, and schema-1/2 compatibility.",
+    "release": "Lint, types, production build, appropriate complete unit suite, focused and shared browser regressions, desktop/mobile visual inspection. Full PHS 231 release still needs readiness, module/cumulative assessment, targeted review and capacity/coverage audit."
+  },
+  "sources": [
+    {
+      "title": "National University ECE degree requirements",
+      "url": "https://www.nu.edu/degrees/engineering-data-and-computer-sciences/programs/bachelor-of-science-electrical-computer-engineering/",
+      "checkedAt": "2026-09-24",
+      "use": "Rechecked official PHS 231 scope and distinguished it from separate laboratory descriptions and the proposed project."
+    },
+    {
+      "title": "NIST: Basic definitions of measurement uncertainty",
+      "url": "https://physics.nist.gov/cuu/Uncertainty/basic.html",
+      "checkedAt": "2026-09-24",
+      "use": "Measurement equations include relevant correction and variability sources. Standard uncertainty has a standard-deviation meaning; an arbitrary allowed bound must not be relabeled."
+    },
+    {
+      "title": "NIST: Combining uncertainty components",
+      "url": "https://physics.nist.gov/cuu/Uncertainty/combination.html",
+      "checkedAt": "2026-09-24",
+      "use": "First-order propagation includes sensitivities and covariance. Uncorrelated-input simplifications require their assumptions; distinguish them from the proposed worst-case interval calculations."
+    },
+    {
+      "title": "OpenStax University Physics Volume 1: Drag Force and Terminal Speed",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed",
+      "checkedAt": "2026-09-24",
+      "use": "Drag models depend on physical regime. The project's linear dashpot is stipulated; it is not a universal aerodynamic law."
+    }
+  ],
+  "independentSubjectReview": "not performed",
+  "pilotValidation": "not performed"
+}
