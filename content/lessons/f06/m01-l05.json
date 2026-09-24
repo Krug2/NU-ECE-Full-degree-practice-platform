@@ -1,0 +1,355 @@
+{
+  "id": "m01-l05",
+  "courseId": "f06",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Measurement resolution, uncertainty, and bounds",
+  "objective": "Distinguish resolution, repeatability, discrepancy, and uncertainty; interpret stated bounds and relative uncertainty; and propagate simple bounds without inventing a confidence level.",
+  "why": "A display reading is a report produced by a measurement process. Recovering resolution, repeated-reading comparisons, and explicitly stated bounds helps you describe the result honestly and compare it with a reference without claiming more than the evidence supports.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Conversions with powers, rates, and offsets"
+    },
+    {
+      "lessonId": "m01-l04",
+      "label": "Significant figures and deliberate rounding"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "Resolution is the smallest indicated step of a display or scale. Repeatability describes agreement among repeated observations under the same stated conditions. A discrepancy from a reference is different from that spread. Neither display resolution nor three repeated readings alone establishes a complete uncertainty budget.",
+        "In this lesson, a stated value $x\\pm u$ means the closed interval $[x-u,x+u]$ when the question explicitly defines it that way. For nonzero x, its relative percent bound is $100u/|x|$. This interval model supplies no unstated probability or confidence level."
+      ]
+    },
+    {
+      "heading": "Read a scale under an explicit convention",
+      "paragraphs": [
+        "On a simulated linear scale, count intervals from the labeled origin and use the value per small division. A pointer halfway between two ticks contributes half a division to its nominal reading. The exercises state a conservative half-division bound for that idealized reading; real instruments require their own specifications.",
+        "A digital display that changes by 0.01 V has resolution 0.01 V. Under an ideal nearest-step model, its rounding contribution is bounded conservatively by half that step. This closed interval is a convenient enclosing bound, not a claim about which exact endpoints map to a particular display under a particular tie rule. Calibration, drift, loading, noise, and other effects may matter in a real measurement."
+      ]
+    },
+    {
+      "heading": "Keep spread and reference discrepancy separate",
+      "paragraphs": [
+        "For a small sample, calculate the mean and the observed range separately. The range is maximum minus minimum and describes these observations; it is not automatically the total uncertainty. Two samples can have the same range while one mean is displaced from a reference.",
+        "A consistent offset can suggest a systematic effect, but the actual error relative to an unknowable exact true value is not generally known just from the display. The exercises use a supplied reference to make a concrete comparison. Uncertainty can draw on repeated observations and other information, including specifications and calibration. The NIST reading explains this distinction."
+      ]
+    },
+    {
+      "heading": "Interpret and convert stated bounds",
+      "paragraphs": [
+        "For an explicitly bounded interval, subtract and add a nonnegative half-width. Convert the nominal value and absolute bound using the same exact factor; otherwise you change the physical interval. Relative percent bounds are unchanged by a consistent positive unit conversion.",
+        "Use the magnitude of a signed nominal value in the relative denominator so the percent bound is nonnegative. At a zero nominal value, the absolute interval remains meaningful while this relative percentage is undefined. A reference exactly on an endpoint is compatible with a closed interval, but compatibility does not prove that the nominal value is exact or that the model assumptions are correct."
+      ]
+    },
+    {
+      "heading": "Propagate interval endpoints deliberately",
+      "paragraphs": [
+        "If each input may independently occupy its whole stated interval, a sum's minimum uses both lower endpoints and its maximum uses both upper endpoints. A difference's minimum uses the first lower endpoint minus the second upper endpoint. Uncertainty half-widths therefore add for these worst-case sums and differences; they do not cancel merely because nominal values subtract.",
+        "For products, evaluate the endpoint combinations and take the smallest and largest. With positive inputs, this reduces to multiplying both lower endpoints and both upper endpoints. For a quotient with a strictly positive denominator interval, the minimum divides the lower numerator by the upper denominator. If denominator bounds include zero, a finite single quotient interval generally cannot be reported by this method."
+      ]
+    },
+    {
+      "heading": "Know the scope of this model",
+      "paragraphs": [
+        "An exact negative scale factor reverses endpoint order; it does not make an uncertainty negative. Nonlinear operations such as products and quotients can produce bounds that are asymmetric around the nominal result. Keep exact endpoints in these model exercises rather than silently replacing the result with a symmetric estimate.",
+        "Worst-case bounds are different from standard uncertainties or statistical confidence intervals. Combining standard uncertainties may require a probability model, sensitivity coefficients, and correlations. This refresher does not invent those inputs. Use the full laboratory course and instrument documentation for a real uncertainty analysis, while retaining the habits of stating units, assumptions, and evidence."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Separate display resolution from total uncertainty",
+      "prompt": "A simulated display reads 1.20 V in steps of 0.01 V. Use an ideal nearest-step model.",
+      "steps": [
+        {
+          "math": "r=0.01\\,\\mathrm V,\\qquad r/2=0.005\\,\\mathrm V",
+          "reason": "The smallest displayed change is resolution; half of it is a rounding-only bound under this model."
+        },
+        {
+          "math": "[1.20-0.005,1.20+0.005]=[1.195,1.205]\\,\\mathrm V",
+          "reason": "Use a conservative closed interval enclosing the possible rounding contribution."
+        }
+      ],
+      "conclusion": "This is not a total instrument uncertainty or an automatically defined confidence interval."
+    },
+    {
+      "title": "Interpret absolute and relative bounds",
+      "prompt": "Interpret 2.50±0.05 V as a stated closed interval.",
+      "steps": [
+        {
+          "math": "[2.50-0.05,2.50+0.05]=[2.45,2.55]\\,\\mathrm V",
+          "reason": "Subtract and add the nonnegative bound."
+        },
+        {
+          "math": "100\\frac{0.05}{|2.50|}=2\\%",
+          "reason": "Normalize by the magnitude of the nominal value."
+        }
+      ],
+      "conclusion": "The supplied interval is [2.45,2.55] V and the relative bound is 2%."
+    },
+    {
+      "title": "Compare repeatability and an offset",
+      "prompt": "A: 9.99,10.00,10.01 V. B: 10.49,10.50,10.51 V. The reference is 10.00 V.",
+      "steps": [
+        {
+          "math": "\\overline A=10.00,\\quad\\overline B=10.50\\quad(\\mathrm V)",
+          "reason": "The evenly spaced triples have means at their centers."
+        },
+        {
+          "math": "\\operatorname{range}(A)=\\operatorname{range}(B)=0.02\\,\\mathrm V",
+          "reason": "The observed spreads are equal."
+        },
+        {
+          "math": "\\overline A-10.00=0,\\quad\\overline B-10.00=0.50\\,\\mathrm V",
+          "reason": "Reference agreement is a separate comparison from clustering."
+        }
+      ],
+      "conclusion": "Both samples are equally tight by observed range; sample B has a 0.50 V mean discrepancy."
+    },
+    {
+      "title": "Subtract two bounded measurements",
+      "prompt": "Find bounds for (12±0.2) V minus (5±0.1) V, with independent allowed input intervals.",
+      "steps": [
+        {
+          "math": "x\\in[11.8,12.2],\\qquad y\\in[4.9,5.1]",
+          "reason": "Write both input intervals first."
+        },
+        {
+          "math": "x-y\\in[11.8-5.1,12.2-4.9]=[6.7,7.3]\\,\\mathrm V",
+          "reason": "The smallest difference subtracts the largest second input."
+        }
+      ],
+      "conclusion": "The nominal difference is 7 V with worst-case half-width 0.3 V, not 0.1 V."
+    },
+    {
+      "title": "Preserve asymmetric product bounds",
+      "prompt": "Multiply lengths (3±0.1) m and (2±0.1) m with independent bounds.",
+      "steps": [
+        {
+          "math": "a\\in[2.9,3.1],\\qquad b\\in[1.9,2.1]",
+          "reason": "Both inputs remain positive."
+        },
+        {
+          "math": "ab\\in[2.9(1.9),3.1(2.1)]=[5.51,6.51]\\,\\mathrm{m^2}",
+          "reason": "The product is increasing in each positive input."
+        },
+        {
+          "math": "6-5.51=0.49,\\qquad6.51-6=0.51",
+          "reason": "Compare both endpoint deviations with the nominal area 6."
+        }
+      ],
+      "conclusion": "The exact interval is asymmetric around the nominal product."
+    },
+    {
+      "title": "Include a boundary without overclaiming",
+      "prompt": "Is a reference 10.2 V compatible with stated bounds [9.8,10.2] V?",
+      "steps": [
+        {
+          "math": "9.8\\leq10.2\\leq10.2",
+          "reason": "A closed interval includes its upper endpoint."
+        },
+        {
+          "math": "10.2\\in[9.8,10.2]",
+          "reason": "The reference is allowed under the supplied interval model."
+        }
+      ],
+      "conclusion": "Compatibility follows, but exactness of the central value and a confidence level do not."
+    },
+    {
+      "title": "Handle a zero nominal value",
+      "prompt": "Interpret 0.0±0.1 V using closed bounds.",
+      "steps": [
+        {
+          "math": "[0-0.1,0+0.1]=[-0.1,0.1]\\,\\mathrm V",
+          "reason": "The absolute interval is well-defined."
+        },
+        {
+          "math": "100\\frac{0.1}{|0|}\\quad\\text{is undefined}",
+          "reason": "This relative measure divides by zero."
+        }
+      ],
+      "conclusion": "Keep the absolute bound. Do not substitute 0% or 100% for an undefined relative percentage."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "A voltage is reported as 2.50±0.05 V under a stated closed-bound model. Convert and interpret the whole report.",
+    "before": [
+      "Multiply both the nominal value and the bound by 1000 to express them in mV.",
+      "Use 100 times bound divided by nominal magnitude for the relative percentage."
+    ],
+    "question": {
+      "id": "f06-l05-guided",
+      "familyId": "guided-f06-l05",
+      "familyVersion": 1,
+      "courseId": "f06",
+      "objectiveId": "m01-l05",
+      "category": "application",
+      "critical": false,
+      "prompt": "Convert the nominal value and bound to mV, give the relative percent bound, and state the original interval in V.",
+      "fields": [
+        {
+          "id": "value",
+          "kind": "rational",
+          "label": "Nominal value",
+          "expected": "2500",
+          "unit": "mV"
+        },
+        {
+          "id": "bound",
+          "kind": "rational",
+          "label": "Absolute bound",
+          "expected": "50",
+          "unit": "mV"
+        },
+        {
+          "id": "percent",
+          "kind": "rational",
+          "label": "Relative bound",
+          "expected": "2",
+          "unit": "%"
+        },
+        {
+          "id": "interval",
+          "kind": "intervals",
+          "label": "Original closed interval",
+          "unit": "V",
+          "expected": [
+            {
+              "lower": "49/20",
+              "upper": "51/20",
+              "lowerClosed": true,
+              "upperClosed": true
+            }
+          ],
+          "help": "Include both endpoints."
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Use 100 times bound divided by nominal magnitude for the relative percentage.",
+        "The converted report is 2500±50 mV."
+      ],
+      "explanation": [
+        "The converted report is 2500±50 mV.",
+        "The relative bound is 2%; the original closed interval is [2.45,2.55] V. No confidence level has been supplied."
+      ],
+      "answerSummary": "The converted report is 2500±50 mV. The relative bound is 2%; the original closed interval is [2.45,2.55] V. No confidence level has been supplied."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-measurement-lab",
+    "mode": "measurement",
+    "prompt": "Change a displayed scale reading, resolution, and stated additional bound. Predict the conservative interval and compare a reference using keyboard controls. Show a labeled scale and equivalent numeric table; distinguish a tighter resolution from evidence of accuracy."
+  },
+  "practice": [
+    {
+      "familyId": "f06-measurement-read",
+      "variant": "analog"
+    },
+    {
+      "familyId": "f06-measurement-read",
+      "variant": "digital"
+    },
+    {
+      "familyId": "f06-measurement-quality",
+      "variant": "repeatability"
+    },
+    {
+      "familyId": "f06-measurement-quality",
+      "variant": "bias"
+    },
+    {
+      "familyId": "f06-measurement-uncertainty",
+      "variant": "interval"
+    },
+    {
+      "familyId": "f06-measurement-uncertainty",
+      "variant": "relative"
+    },
+    {
+      "familyId": "f06-measurement-uncertainty",
+      "variant": "convert"
+    },
+    {
+      "familyId": "f06-measurement-uncertainty",
+      "variant": "compatible"
+    },
+    {
+      "familyId": "f06-measurement-uncertainty",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f06-measurement-propagation",
+      "variant": "sum"
+    },
+    {
+      "familyId": "f06-measurement-propagation",
+      "variant": "difference"
+    },
+    {
+      "familyId": "f06-measurement-propagation",
+      "variant": "scale"
+    },
+    {
+      "familyId": "f06-measurement-propagation",
+      "variant": "product"
+    },
+    {
+      "familyId": "f06-measurement-propagation",
+      "variant": "quotient"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f06-measurement-read",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f06-measurement-quality",
+      "variant": "compare"
+    },
+    {
+      "familyId": "f06-measurement-uncertainty",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f06-measurement-propagation",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "Resolution, repeatability, reference discrepancy, and uncertainty answer different questions.",
+    "Convert nominal values and absolute bounds consistently; a zero nominal value has no finite bound-to-value percentage.",
+    "Propagate stated bounds from allowed inputs, preserve endpoint inclusion and nonlinear asymmetry, and state the model's limits."
+  ],
+  "retrieval": "Without notes, bound (4±0.1)/(2±0.1) m/s using endpoints. Explain why dividing the two nominal values gives only the nominal result and why the resulting bounds need not be symmetric.",
+  "readings": [
+    {
+      "title": "OpenStax University Physics Volume 1 · 1.6: Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "OpenStax College Physics 2e · 1.3: Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST TN 1297 · 2.1 through 2.4: Classification of Components of Uncertainty",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-2-classification-components-uncertainty",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    },
+    {
+      "title": "NIST SP 811 · 7.1, 7.2, 7.7, 7.9: Expressing values, uncertainty notation, and choosing prefixes",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F06 resource plan."
+    }
+  ]
+}
