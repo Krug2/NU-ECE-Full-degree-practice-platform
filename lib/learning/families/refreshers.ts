@@ -1,9 +1,11 @@
 import { f01FamilyIds, f01Question } from "./f01";
 import { f02FamilyIds, f02Question } from "./f02";
 import { f03FamilyIds, f03Question } from "./f03";
+import { f04FamilyIds, f04Question } from "./f04";
 
-export const refresherFamilyIds = [...f01FamilyIds, ...f02FamilyIds, ...f03FamilyIds];
+export const refresherFamilyIds = [...f01FamilyIds, ...f02FamilyIds, ...f03FamilyIds, ...f04FamilyIds];
 export function refresherQuestion(familyId: string, variant: string, seed: string, id: string) {
+  if (familyId.startsWith("f04-")) return f04Question(familyId, variant, seed, id);
   if (familyId.startsWith("f03-")) return f03Question(familyId, variant, seed, id);
   return familyId.startsWith("f02-") ? f02Question(familyId, variant, seed, id) : f01Question(familyId, variant, seed, id);
 }
