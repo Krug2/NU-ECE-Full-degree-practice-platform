@@ -242,6 +242,13 @@ export function equalLogarithmic(a: LogarithmicNumber, b: LogarithmicNumber): bo
   const left=multiplyPolynomials(a.numerator,b.denominator),right=multiplyPolynomials(b.numerator,a.denominator);
   return left.size===right.size&&[...left].every(([id,t])=>right.has(id)&&equalRational(t.coefficient,right.get(id)!.coefficient));
 }
+export function compareLogarithmic(a: LogarithmicNumber, b: LogarithmicNumber): -1|0|1 {
+  if(equalLogarithmic(a,b))return 0;
+  const difference=add(a,negate(b)),bounds=divideBounds(polynomialBounds(difference.numerator),polynomialBounds(difference.denominator));
+  if(bounds.lower>0n)return 1;
+  if(bounds.upper<0n)return -1;
+  throw new Error("These values are too close to order reliably. Simplify the exact expressions.");
+}
 export const approximateLogarithmic = (x: LogarithmicNumber) => boundsNumber(divideBounds(polynomialBounds(x.numerator),polynomialBounds(x.denominator)));
 export function parseLogarithmicSet(input: string): LogarithmicNumber[] {
   const source=input.trim().replace(/^\{(.*)\}$/,"$1").trim();
