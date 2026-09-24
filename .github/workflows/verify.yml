@@ -12,6 +12,10 @@ jobs:
   app:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
     env:
       NEXT_TELEMETRY_DISABLED: "1"
     steps:
@@ -29,4 +33,4 @@ jobs:
           F10_PYTHON: python3
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm test:e2e
+      - run: pnpm test:e2e --shard=${{ matrix.shard }}/2

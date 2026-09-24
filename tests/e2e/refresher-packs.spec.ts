@@ -80,8 +80,10 @@ for (const pack of [algebra, functions, trigonometry, exponentials, measurement,
     expect(backup.learning.attempts.at(-1).questions).toEqual(snapshot.questions);
     await page.getByRole("button", { name: "Reset local progress", exact: true }).click();
     await page.getByRole("button", { name: "Confirm reset", exact: true }).click();
+    await expect(page.getByText("Local progress has been reset.", { exact: true })).toBeVisible();
     await page.getByLabel("Import a progress backup", { exact: true }).setInputFiles(file);
     await page.getByRole("button", { name: "Replace with this backup", exact: true }).click();
+    await expect(page.getByText(/^Backup restored\./)).toBeVisible();
     await page.goto(`/courses/${course}`);
     await expect(page.getByLabel("Reasoning and next steps", { exact: true })).toHaveValue("Return for an independent check tomorrow.");
     await page.getByRole("link", { name: "Resume "+lessons[0].title, exact: true }).click();
