@@ -401,7 +401,7 @@
       "fields": [
         {
           "id": "stress",
-          "label": "Demanded tensile stress (MPa)",
+          "label": "Demanded tensile stress",
           "kind": "rational",
           "expected": "150",
           "unit": "MPa",
@@ -409,7 +409,7 @@
         },
         {
           "id": "limit",
-          "label": "Effective admitted stress cap (MPa)",
+          "label": "Effective admitted stress cap",
           "kind": "rational",
           "expected": "100",
           "unit": "MPa",
@@ -417,7 +417,7 @@
         },
         {
           "id": "force",
-          "label": "Largest admitted tensile force (N)",
+          "label": "Largest admitted tensile force",
           "kind": "rational",
           "expected": "200",
           "unit": "N",
@@ -425,7 +425,7 @@
         },
         {
           "id": "extension",
-          "label": "Extension at the admitted force limit (mm)",
+          "label": "Extension at the admitted force limit",
           "kind": "rational",
           "expected": "1",
           "unit": "mm",

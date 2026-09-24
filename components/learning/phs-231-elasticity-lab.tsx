@@ -6,7 +6,7 @@ import { approximateExact, parseExact, realExact } from "@/lib/learning/exact-nu
 import { MathText } from "./math-text";
 import "./phs-231.css";
 
-const display=(n:number)=>n===0?"0":Math.abs(n)>=100000||Math.abs(n)<.00001?n.toExponential(4):String(Number(n.toFixed(6)));
+const display=(n:number)=>n===0?"0":Math.abs(n)>=100000||Math.abs(n)<.00001?n.toExponential(8).replace(/\.?0+e/,"e"):String(Number(n.toPrecision(9)));
 const tick=(n:number)=>n!==0&&(Math.abs(n)>=10000||Math.abs(n)<.01)?n.toExponential(1):String(Number(n.toPrecision(3)));
 const defaults={
   axial:{mode:"axial",lengthM:2,areaMm2:4,modulusGPa:100,loadN:200,stressLimitMPa:100,strainLimit:.002},
