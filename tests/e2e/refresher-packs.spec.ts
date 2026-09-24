@@ -13,6 +13,8 @@ const exponentials: LearningPack = JSON.parse(readFileSync(new URL("../../conten
 const measurement: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f06.json", import.meta.url), "utf8"));
 const vectors: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f07.json", import.meta.url), "utf8"));
 
+const calculus: LearningPack = JSON.parse(readFileSync(new URL("../../content/learning-packs/f08.json", import.meta.url), "utf8"));
+
 async function fillAnswer(area: Locator, question: Question, wrong = false) {
   const answers = refresherAnswers(question);
   for (const [index, field] of question.fields.entries()) {
@@ -25,7 +27,7 @@ async function fillAnswer(area: Locator, question: Question, wrong = false) {
   }
 }
 
-for (const pack of [algebra, functions, trigonometry, exponentials, measurement, vectors]) {
+for (const pack of [algebra, functions, trigonometry, exponentials, measurement, vectors, calculus]) {
   const course = pack.courseId, lessons = pack.modules.flatMap(module => module.lessons);
   test(`${course}: diagnostic gaps, exact resume, notes, and backup round trip`, async ({ page }, testInfo) => {
     const errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
