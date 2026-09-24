@@ -177,6 +177,23 @@
         "Taking the square root yields $|x-h|=\\sqrt{b^c}$, so the two shifted roots are $x=h-\\sqrt{b^c}$ and $x=h+\\sqrt{b^c}$. The positive distance makes the roots distinct, and neither equals the excluded point h. Substitute both into the original square rather than keeping only the positive shifted branch.",
         "An expansion using $2\\log_b(x-h)$ would silently discard x<h. The full-domain expansion uses $2\\log_b|x-h|$. This is an example where a domain-preserving identity directly controls whether an equation solution set is complete."
       ]
+    },
+    {
+      "heading": "Reject original zero arguments and canceled holes",
+      "paragraphs": [
+        "An algebraic candidate is only a possible solution until every original expression is defined. A logarithm argument must be strictly positive: zero is just as disallowed as a negative argument. An original denominator must also be nonzero, even when its factor disappears during simplification.",
+        "Write the common original domain before equating arguments. Factor the resulting equation without dividing by an expression that could equal zero, so every algebraic candidate remains visible. Then explain which original condition rejects each discarded candidate.",
+        "Cancellation can leave a formula that looks valid at a hole. The simplified formula describes the original expression only on its original domain. If the only candidate is that excluded point, the original equation has no solution; filling the hole would change the question."
+      ]
+    },
+    {
+      "heading": "Distinguish empty domains, unattainable targets and domain-restricted identities",
+      "paragraphs": [
+        "There are different reasons an equation can have no real solutions. Its original common domain may be empty, so no input even defines the question. Or the original expression may be defined for many inputs, yet never attain the required output. State the domain and the solution set separately.",
+        "A squared term is nonnegative. Use this fact to determine whether a complete argument can ever be positive and whether it can reach an exponential target. An expression that is undefined everywhere cannot become valid through formal algebra. An everywhere-defined expression can still produce an impossible target equation.",
+        "An identity is true for every input in its common original domain. That domain may be a restricted interval rather than all real numbers. Compare both original sides, intersect their domains, and justify the identity on that intersection. A graph or a finite list of matching probes can illustrate the result, but cannot replace its proof.",
+        "Choose an answer form that represents the complete set: a list for finitely many distinct solutions, an interval or interval union for a domain-restricted identity, all real numbers for an unrestricted identity, or the empty set when no solution exists. Recheck the original expressions before reporting the final set."
+      ]
     }
   ],
   "examples": [
@@ -1073,6 +1090,117 @@
         }
       ],
       "conclusion": "The complete set is {-2,0}. Replacing the original logarithm with 2 ln(x+1) would incorrectly remove the solution -2."
+    },
+    {
+      "title": "Reject the zero-argument candidate",
+      "prompt": "Solve $\\ln((x-2)^2)=\\ln(3(x-2))$ over the real numbers.",
+      "steps": [
+        {
+          "math": "(x-2)^2>0,\\quad3(x-2)>0\\quad\\Longrightarrow\\quad x>2",
+          "reason": "Intersect both original positivity conditions."
+        },
+        {
+          "math": "(x-2)^2=3(x-2)\\quad\\Longrightarrow\\quad(x-2)(x-5)=0",
+          "reason": "On the common domain, equal logarithms have equal arguments. Factor without dividing by x-2."
+        },
+        {
+          "math": "x=2\\text{ or }x=5",
+          "reason": "Keep both algebraic candidates long enough to inspect their original arguments."
+        },
+        {
+          "math": "x=2:\\ (0,0)\\text{ are invalid};\\qquad x=5:\\ (9,9)\\text{ are positive}",
+          "reason": "The logarithm of zero is undefined. Only 5 belongs to the original common domain."
+        },
+        {
+          "math": "\\ln((5-2)^2)=\\ln9=\\ln(3(5-2))",
+          "reason": "Substitute the retained candidate into both original sides."
+        }
+      ],
+      "conclusion": "The complete solution set is {5}. Equality of two zero arguments does not make either original logarithm defined."
+    },
+    {
+      "title": "A canceled hole removes the only candidate",
+      "prompt": "Solve $\\ln\\left(\\frac{(x-1)(x-3)}{x-3}\\right)=\\ln2$ over the real numbers.",
+      "steps": [
+        {
+          "math": "x\\ne3,\\qquad x-1>0\\quad\\Longrightarrow\\quad D=(1,3)\\cup(3,\\infty)",
+          "reason": "The original denominator excludes 3, and the simplified argument must be positive wherever the original fraction exists."
+        },
+        {
+          "math": "\\ln(x-1)=\\ln2\\quad\\Longrightarrow\\quad x-1=2\\quad\\Longrightarrow\\quad x=3",
+          "reason": "The simplified equation gives one algebraic candidate, still subject to the recorded domain."
+        },
+        {
+          "math": "x=3:\\quad\\frac{(3-1)(3-3)}{3-3}=\\frac00\\text{ is undefined}",
+          "reason": "The original fraction cannot be evaluated at its canceled hole."
+        },
+        {
+          "math": "3\\notin D,\\qquad S=\\varnothing",
+          "reason": "Reject the only candidate, leaving no solutions."
+        }
+      ],
+      "conclusion": "The original equation has no real solution. The value 3 solves a different equation in which the hole has been filled."
+    },
+    {
+      "title": "An empty original domain rules out every input",
+      "prompt": "Solve $\\ln(-((x-1)^2+2))=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "(x-1)^2\\ge0\\quad\\Longrightarrow\\quad-((x-1)^2+2)\\le-2<0",
+          "reason": "The complete logarithm argument is strictly negative for every real x."
+        },
+        {
+          "math": "D=\\varnothing",
+          "reason": "No real input defines the original logarithm."
+        },
+        {
+          "math": "S=\\varnothing",
+          "reason": "An equation with no permitted inputs has no real solutions."
+        }
+      ],
+      "conclusion": "The original domain is empty. There is no need to apply a logarithm identity to an expression that never exists over the reals."
+    },
+    {
+      "title": "An everywhere-defined logarithm can miss the target",
+      "prompt": "Solve $\\ln((x-1)^2+2)=0$ over the real numbers.",
+      "steps": [
+        {
+          "math": "(x-1)^2+2\\ge2>0,\\qquad D=\\mathbb R",
+          "reason": "The complete argument is positive for every real input, so the original logarithm is always defined."
+        },
+        {
+          "math": "(x-1)^2+2=e^0=1\\quad\\Longrightarrow\\quad(x-1)^2=-1",
+          "reason": "Convert the required logarithm output to its positive exponential target."
+        },
+        {
+          "math": "(x-1)^2\\ge0\\quad\\Longrightarrow\\quad S=\\varnothing",
+          "reason": "A real square cannot equal the required negative value."
+        }
+      ],
+      "conclusion": "The domain is all real numbers, but the solution set is empty. The logarithm output is at least ln(2), so it never reaches zero."
+    },
+    {
+      "title": "An identity keeps its common original domain",
+      "prompt": "Solve $\\ln((x-1)(x+2))=\\ln(x-1)+\\ln(x+2)$ over the real numbers.",
+      "steps": [
+        {
+          "math": "D_L=(-\\infty,-2)\\cup(1,\\infty)",
+          "reason": "The combined product is positive when both factors have the same nonzero sign."
+        },
+        {
+          "math": "D_R=(1,\\infty),\\qquad D_L\\cap D_R=(1,\\infty)",
+          "reason": "Both separate logarithms require positive arguments, so only the right-hand interval is common."
+        },
+        {
+          "math": "x>1\\quad\\Longrightarrow\\quad\\ln((x-1)(x+2))=\\ln(x-1)+\\ln(x+2)",
+          "reason": "The product identity holds at every input in the common domain because both factors are positive there."
+        },
+        {
+          "math": "S=(1,\\infty)",
+          "reason": "Every common-domain input solves the equation, and no input outside it can satisfy both original sides."
+        }
+      ],
+      "conclusion": "The solution is an entire open interval. The combined logarithm also exists below -2, but the separate logarithms do not, so those inputs are excluded."
     }
   ],
   "guided": {

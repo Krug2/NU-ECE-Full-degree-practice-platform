@@ -1,8 +1,8 @@
 {
   "lessonId": "m05-l03",
   "objective": "Apply logarithm rules with valid domains and solve exponential or logarithmic equations with complete solution checks.",
-  "status": "draft",
-  "contentStages": 7,
+  "status": "authored",
+  "contentStages": 8,
   "independentSubjectReview": "not yet performed",
   "assessmentPolicy": "Thirty-four named variants supply independent practice. Four mixed critical checkpoint items sample one question per family. All four selected items must pass without assistance. A passed sample does not claim that every named variant was checked.",
   "coverage": [
@@ -301,6 +301,39 @@
       ],
       "independentCheck": "mth-log-equation:mixed",
       "retrieval": "Solve a squared logarithm argument with both branches and explain how an absolute value preserves the complete solution set."
+    },
+    {
+      "skill": "Reject original zero arguments and canceled holes",
+      "instruction": [
+        "Reject original zero arguments and canceled holes"
+      ],
+      "examples": [
+        "Reject the zero-argument candidate",
+        "A canceled hole removes the only candidate"
+      ],
+      "practice": [
+        "mth-log-equation:excluded-root",
+        "mth-log-equation:original-hole"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Find every algebraic candidate, then distinguish a zero logarithm argument from an excluded denominator. Explain why neither can be restored by simplification."
+    },
+    {
+      "skill": "Distinguish empty domains, unattainable targets and domain-restricted identities",
+      "instruction": [
+        "Distinguish empty domains, unattainable targets and domain-restricted identities"
+      ],
+      "examples": [
+        "An empty original domain rules out every input",
+        "An everywhere-defined logarithm can miss the target",
+        "An identity keeps its common original domain"
+      ],
+      "practice": [
+        "mth-log-equation:empty",
+        "mth-log-equation:identity-domain"
+      ],
+      "independentCheck": "mth-log-equation:mixed",
+      "retrieval": "Give one equation with an empty original domain, one with a nonempty domain but no solution, and one identity whose complete solution is a restricted interval. Justify each complete set."
     }
   ]
 }
