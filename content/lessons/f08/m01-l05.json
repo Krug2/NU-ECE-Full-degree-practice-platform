@@ -1,0 +1,331 @@
+{
+  "id": "m01-l05",
+  "courseId": "f08",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Antiderivatives, substitution, and initial conditions",
+  "objective": "Recover antiderivatives with constants, reverse simple chain rules, and use one or two initial conditions to select and verify a particular function.",
+  "why": "Rates omit starting values. To recover a voltage, position, or other changing quantity from a rate model, you must integrate and restore the missing constants using data. Checking both the rate and the supplied values makes the recovered function trustworthy.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l04",
+      "label": "Integrals, signed accumulation, and the fundamental theorem"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "An indefinite integral describes antiderivatives: $\\int f(x)\\,dx=F(x)+C$ on an interval where F′=f. For a power x^n, increase the exponent and divide by n+1 when n≠-1. The exception is $\\int x^{-1}\\,dx=\\ln|x|+C$ on a connected interval excluding zero.",
+        "A substitution reverses the chain rule. If u=g(x), use du=g′(x)dx and change the entire expression consistently. An initial condition then fixes a constant. Integrating a second derivative twice introduces two constants, so use two independent conditions."
+      ]
+    },
+    {
+      "heading": "Why an arbitrary constant appears",
+      "paragraphs": [
+        "Differentiating F(x)+C produces the same derivative as F(x), because a constant contributes zero change. A rate therefore identifies a family of vertically shifted functions. On an interval, antiderivatives of the same continuous function differ by a constant.",
+        "Do not replace the constant by an arbitrary function of x; that would generally change the derivative. In practice, a question may request a particular representative, such as the one with constant term zero. That convention selects a format for an answer without denying the larger family. A definite integral cancels an added constant when evaluating the two bounds."
+      ]
+    },
+    {
+      "heading": "Reverse a power carefully",
+      "paragraphs": [
+        "For n≠-1, differentiating x^(n+1)/(n+1) returns x^n wherever the powers and derivative are valid. At n=-1, the denominator n+1 would be zero, so the formula cannot be used. The logarithm supplies the antiderivative instead.",
+        "For 1/(x-a), the expression ln|x-a| works on either connected interval avoiding a. The absolute value does not remove the pole or permit integration across it using this ordinary antiderivative formula. Constants on disconnected intervals need not be the same. Improper integrals and their convergence are beyond this refresher."
+      ]
+    },
+    {
+      "heading": "Undo the inner derivative",
+      "paragraphs": [
+        "The chain rule says that differentiating F(g(x)) produces F′(g(x))g′(x). Substitution recognizes that pattern in reverse. Name u=g(x), compute du, and check that the remaining factor matches the needed differential, possibly after extracting a constant multiplier.",
+        "For a linear inner expression ax+b with a≠0, du=a dx, so integrating a function of ax+b often requires dividing by a. For an inner x²+b, the factor 2x dx becomes du. Do not simply substitute the inner expression while leaving unmatched x factors behind; that would mix variables rather than complete the transformation."
+      ]
+    },
+    {
+      "heading": "Keep bounds in the same variable",
+      "paragraphs": [
+        "In a definite integral, an x endpoint must be converted through u=g(x) before it is attached to a u antiderivative. Alternatively, you may return completely to x before evaluating the original x bounds. Both methods are valid when carried through consistently.",
+        "The substitution relationship is justified by the chain rule and FTC under the stated differentiability and continuity conditions. The examples here use polynomial expressions on finite intervals with valid transformations. No claim is made that every integral can be solved by a simple substitution."
+      ]
+    },
+    {
+      "heading": "Use data to recover one function",
+      "paragraphs": [
+        "After integrating y′, substitute the supplied input and function value into the entire expression. If the condition is given at a nonzero input, the polynomial terms may contribute, so C is not automatically equal to the given value. Solve for C, then substitute it back.",
+        "After two integrations, the first constant affects the first derivative and also contributes a linear term to the function. The second constant shifts the function without changing its first derivative. Determine them from the appropriate conditions. Finish by differentiating your result and checking every initial value, not just one."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Describe the whole family",
+      "prompt": "Find antiderivatives of 6x²-4x.",
+      "steps": [
+        {
+          "math": "\\int(6x^2-4x)\\,dx=2x^3-2x^2+C",
+          "reason": "Increase each power and divide by its new exponent; retain an arbitrary constant."
+        },
+        {
+          "math": "\\frac d{dx}(2x^3-2x^2+C)=6x^2-4x",
+          "reason": "Differentiation checks both polynomial terms and eliminates the constant."
+        }
+      ],
+      "conclusion": "Every real constant gives an antiderivative on R."
+    },
+    {
+      "title": "Recognize the logarithmic exception",
+      "prompt": "Find an antiderivative of 1/x on the negative real interval.",
+      "steps": [
+        {
+          "math": "\\frac d{dx}\\ln|x|=\\frac1x\\quad(x\\ne0)",
+          "reason": "On a negative interval, |x|=-x and the chain rule produces the same reciprocal derivative."
+        },
+        {
+          "math": "F(x)=\\ln|x|+C\\quad(x<0)",
+          "reason": "Use the real logarithm of the positive absolute value."
+        }
+      ],
+      "conclusion": "The interval cannot include zero; the ordinary power formula would divide by zero."
+    },
+    {
+      "title": "Undo a linear chain factor",
+      "prompt": "Integrate (3x+1)².",
+      "steps": [
+        {
+          "math": "u=3x+1,\\qquad du=3\\,dx",
+          "reason": "Compute the inner derivative before rewriting the integral."
+        },
+        {
+          "math": "\\int(3x+1)^2\\,dx=\\frac13\\int u^2\\,du=\\frac{u^3}{9}+C",
+          "reason": "The differential introduces1/3 and the power integral introduces another1/3."
+        },
+        {
+          "math": "F(x)=\\frac{(3x+1)^3}{9}+C",
+          "reason": "Return to the original variable."
+        }
+      ],
+      "conclusion": "Differentiating cancels the total denominator9 through factors3 and3."
+    },
+    {
+      "title": "Match a quadratic inner differential",
+      "prompt": "Integrate2x(x²+1)².",
+      "steps": [
+        {
+          "math": "u=x^2+1,\\qquad du=2x\\,dx",
+          "reason": "The derivative of the inner expression appears as a complete factor."
+        },
+        {
+          "math": "\\int2x(x^2+1)^2\\,dx=\\int u^2\\,du=\\frac{(x^2+1)^3}{3}+C",
+          "reason": "Replace both the inner expression and its differential, then integrate."
+        }
+      ],
+      "conclusion": "No additional division by2 is needed because2x dx is already du."
+    },
+    {
+      "title": "Transform definite bounds",
+      "prompt": "Evaluate the integral of 2x(x²+1) from 0 to 2.",
+      "steps": [
+        {
+          "math": "u=x^2+1:\\qquad x=0\\Rightarrow u=1,\\quad x=2\\Rightarrow u=5",
+          "reason": "Translate each bound using the same substitution."
+        },
+        {
+          "math": "\\int_0^2 2x(x^2+1)\\,dx=\\int_1^5u\\,du=\\frac{25-1}{2}=12",
+          "reason": "The u antiderivative is evaluated at u bounds."
+        }
+      ],
+      "conclusion": "Keeping bounds 0 and2 after switching to u would produce the wrong number."
+    },
+    {
+      "title": "Reverse elementary chain rules",
+      "prompt": "Find antiderivatives of e^(2x) and cos(3x). Trig arguments are radians.",
+      "steps": [
+        {
+          "math": "\\int e^{2x}\\,dx=\\frac12e^{2x}+C",
+          "reason": "Differentiation supplies an inner factor 2, so divide by2 when integrating."
+        },
+        {
+          "math": "\\int\\cos(3x)\\,dx=\\frac13\\sin(3x)+C",
+          "reason": "The sine derivative returns cosine and supplies the inner factor 3."
+        },
+        {
+          "math": "\\int\\sin(3x)\\,dx=-\\frac13\\cos(3x)+C",
+          "reason": "The negative sign compensates for the derivative of cosine."
+        }
+      ],
+      "conclusion": "Differentiate each candidate to verify both its sign and coefficient."
+    },
+    {
+      "title": "Use an initial condition away from zero",
+      "prompt": "Find y with y′=4x-3 and y(2)=5.",
+      "steps": [
+        {
+          "math": "y(x)=2x^2-3x+C",
+          "reason": "Integrate the supplied derivative before using the point value."
+        },
+        {
+          "math": "5=2(2)^2-3(2)+C=2+C\\quad\\Rightarrow\\quad C=3",
+          "reason": "The nonconstant terms contribute at x=2."
+        },
+        {
+          "math": "y(x)=2x^2-3x+3,\\quad y'(x)=4x-3,\\quad y(2)=5",
+          "reason": "Check the derivative and the value separately."
+        }
+      ],
+      "conclusion": "The constant is 3, even though the specified function value is 5."
+    },
+    {
+      "title": "Restore two lost constants",
+      "prompt": "Find y with y″=6x, y′(0)=-2, and y(0)=4.",
+      "steps": [
+        {
+          "math": "y'(x)=3x^2+C_1,\\qquad C_1=-2",
+          "reason": "The first integration's constant is fixed by the initial derivative."
+        },
+        {
+          "math": "y(x)=x^3-2x+C_2,\\qquad C_2=4",
+          "reason": "Integrate the first derivative, including its constant term, and apply the initial function value."
+        },
+        {
+          "math": "y(x)=x^3-2x+4,\\qquad y''(x)=6x",
+          "reason": "A second derivative check recovers the supplied rate-of-rate model."
+        }
+      ],
+      "conclusion": "Both conditions are required to select this function."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "Recover y(x) from y′(x)=6x-2 and y(1)=5.",
+    "before": [
+      "Integrating gives y(x)=3x²-2x+C.",
+      "At x=1, the nonconstant part is 1. Use the given value 5 to determine C."
+    ],
+    "question": {
+      "id": "f08-l05-guided",
+      "familyId": "guided-f08-l05",
+      "familyVersion": 1,
+      "courseId": "f08",
+      "objectiveId": "m01-l05",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give C, the particular polynomial y(x), and y(2).",
+      "fields": [
+        {
+          "id": "constant",
+          "kind": "rational",
+          "label": "Constant C",
+          "expected": "4",
+          "unit": ""
+        },
+        {
+          "id": "solution",
+          "kind": "polynomial",
+          "label": "Particular function",
+          "expected": "3x^2-2x+4",
+          "unit": "",
+          "form": "equivalent"
+        },
+        {
+          "id": "at",
+          "kind": "rational",
+          "label": "Value y(2)",
+          "expected": "12",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "At x=1, the nonconstant part is 1. Use the given value 5 to determine C.",
+        "The condition gives 1+C=5, so C=4."
+      ],
+      "explanation": [
+        "The condition gives 1+C=5, so C=4.",
+        "The function is 3x²-2x+4; at 2 it equals 12. Differentiating returns 6x-2."
+      ],
+      "answerSummary": "The condition gives 1+C=5, so C=4. The function is 3x²-2x+4; at 2 it equals 12. Differentiating returns 6x-2."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-calculus-lab",
+    "mode": "initial",
+    "prompt": "Change a derivative and an initial point/value. Predict the required constant and a second function value, then reveal a family of vertically shifted curves. Explain why slopes alone cannot recover the starting value."
+  },
+  "practice": [
+    {
+      "familyId": "f08-antiderivative",
+      "variant": "polynomial"
+    },
+    {
+      "familyId": "f08-antiderivative",
+      "variant": "log"
+    },
+    {
+      "familyId": "f08-antiderivative",
+      "variant": "exp"
+    },
+    {
+      "familyId": "f08-antiderivative",
+      "variant": "trig"
+    },
+    {
+      "familyId": "f08-integral-substitution",
+      "variant": "linear"
+    },
+    {
+      "familyId": "f08-integral-substitution",
+      "variant": "quadratic"
+    },
+    {
+      "familyId": "f08-integral-substitution",
+      "variant": "definite"
+    },
+    {
+      "familyId": "f08-initial-condition",
+      "variant": "first"
+    },
+    {
+      "familyId": "f08-initial-condition",
+      "variant": "second"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f08-antiderivative",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f08-integral-substitution",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f08-initial-condition",
+      "variant": "first"
+    },
+    {
+      "familyId": "f08-initial-condition",
+      "variant": "second"
+    }
+  ],
+  "summary": [
+    "An indefinite integral describes a family differing by a constant on an interval.",
+    "The power rule excludes exponent-1; use ln|x| on a valid interval.",
+    "Substitution must transform the differential and, for a definite integral, the bounds consistently.",
+    "Use every initial condition and verify both recovered derivatives and supplied values."
+  ],
+  "retrieval": "Recover a quadratic from its linear derivative and one nonzero-input value. Explain why the constant need not equal that given value. Then identify the two constants lost when a cubic is differentiated twice.",
+  "readings": [
+    {
+      "title": "OpenStax, Calculus Volume 1 · 4.10: Antiderivatives",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/4-10-antiderivatives",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 5.5: Substitution",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-5-substitution",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    }
+  ]
+}

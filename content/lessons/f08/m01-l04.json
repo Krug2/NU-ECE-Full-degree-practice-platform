@@ -1,0 +1,323 @@
+{
+  "id": "m01-l04",
+  "courseId": "f08",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Integrals, signed accumulation, and the fundamental theorem",
+  "objective": "Evaluate definite polynomial integrals, distinguish signed accumulation from total area or distance, and use the fundamental theorem with variable bounds and average values.",
+  "why": "Integrals turn a changing rate into an accumulated amount. In a circuit, a motion model, or a signal calculation, the sign and the interval determine what that amount means. Recovering this interpretation prevents a net change from being mistaken for a total amount.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l03",
+      "label": "Product, quotient, chain, and elementary rules"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For a continuous integrand f and an antiderivative F, $\\int_a^b f(x)\\,dx=F(b)-F(a)$. Reversing bounds negates the result; equal bounds give zero. This is signed accumulation, so regions below the axis contribute negatively.",
+        "If $A(x)=\\int_a^x f(t)\\,dt$ and f is continuous, then A′(x)=f(x) in the interval's interior. A differentiable upper bound g(x) gives $A'(x)=f(g(x))g'(x)$ where the stated conditions hold. Average value over a<b is the signed integral divided by b-a."
+      ]
+    },
+    {
+      "heading": "Build accumulation from small pieces",
+      "paragraphs": [
+        "For a constant rate, accumulated change is rate times elapsed input. A variable rate suggests splitting the interval into short pieces and using one rate value on each piece. The sum of height times width is a Riemann sum. Refining a suitable partition leads to the definite integral for integrable functions.",
+        "A finite rectangle sum is usually an approximation, and its value depends on the sample positions. Right endpoints, left endpoints, and midpoints can produce different sums for the same interval. For a piecewise constant rate with each interval stated exactly, the corresponding rectangles are exact. An instantaneous jump contributes no duration by itself."
+      ]
+    },
+    {
+      "heading": "Use an antiderivative as a calculation tool",
+      "paragraphs": [
+        "An antiderivative F is a function whose derivative is f. For a polynomial term x^n, n a nonnegative integer, increasing the exponent and dividing by the new exponent reverses differentiation. Check by differentiating before evaluating the bounds.",
+        "The fundamental theorem links that reverse operation to accumulated change. Evaluate F at the upper bound and subtract F at the lower bound. Do not subtract values of the original integrand. Any additive constant in F cancels, which is why a definite integral produces a number rather than an arbitrary constant family."
+      ]
+    },
+    {
+      "heading": "Separate signed change from total amount",
+      "paragraphs": [
+        "For a<b, a region above the axis adds to the integral and a region below subtracts. The geometric area between the graph and axis instead adds nonnegative pieces. If the function crosses zero, split the interval at those crossings before adding absolute areas.",
+        "For one-dimensional velocity, integrating velocity gives displacement. Integrating speed, the absolute value of velocity, gives total distance traveled. Final position is starting position plus displacement. A round trip can have zero displacement and positive distance; the units alone cannot distinguish those meanings."
+      ]
+    },
+    {
+      "heading": "Bound order and averages are part of the question",
+      "paragraphs": [
+        "The oriented integral from b to a is defined as the negative of the integral from a to b. This convention keeps accumulated differences consistent with F(a)-F(b). A zero-width interval contains no accumulated change.",
+        "Average function value is the constant height that would produce the same signed integral across the same positive width. Use $f_{\\mathrm{avg}}=(b-a)^{-1}\\int_a^b f(x)\\,dx$. Averaging just the two endpoint values works for affine functions, but does not hold in general. Average velocity similarly divides net displacement by total elapsed time, not total distance."
+      ]
+    },
+    {
+      "heading": "Differentiate a moving accumulation boundary",
+      "paragraphs": [
+        "In $A(x)=\\int_a^x f(t)\\,dt$, t is a dummy integration variable and x chooses where accumulation stops. Increasing the stopping point adds a thin slice, so the local accumulation rate is the current integrand value. The continuous-integrand version of FTC makes this reasoning precise.",
+        "If the stopping point is x² or another differentiable function, the boundary itself moves at a rate. Evaluate the integrand at that boundary and multiply by the boundary derivative. Do not differentiate the integrand instead, and do not confuse a fixed numerical integral with an accumulation function."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Compare a finite sum with the integral",
+      "prompt": "Use four equal right-endpoint rectangles for f(x)=x on [0,2].",
+      "steps": [
+        {
+          "math": "\\Delta x=\\frac{2-0}{4}=\\frac12,\\qquad x_j=\\frac12,1,\\frac32,2",
+          "reason": "The four samples lie at the right ends of the equal subintervals."
+        },
+        {
+          "math": "R_4=\\frac12\\left(\\frac12+1+\\frac32+2\\right)=\\frac52",
+          "reason": "Multiply each sampled height by the common width."
+        },
+        {
+          "math": "\\int_0^2x\\,dx=\\left[\\frac{x^2}{2}\\right]_0^2=2",
+          "reason": "The exact triangular accumulation differs from the finite rectangle approximation."
+        }
+      ],
+      "conclusion": "For this increasing line, the right rectangles overestimate the integral."
+    },
+    {
+      "title": "Evaluate an antiderivative difference",
+      "prompt": "Calculate the integral of 3x²-2 from 0 to 2.",
+      "steps": [
+        {
+          "math": "F(x)=x^3-2x,\\qquad F'(x)=3x^2-2",
+          "reason": "Reverse the polynomial derivative and check the candidate."
+        },
+        {
+          "math": "\\int_0^2(3x^2-2)\\,dx=F(2)-F(0)=(8-4)-0=4",
+          "reason": "Subtract antiderivative values, not integrand values."
+        }
+      ],
+      "conclusion": "The signed integral is 4."
+    },
+    {
+      "title": "Allow cancellation without losing area",
+      "prompt": "Compare the signed integral of x on [-1,1] with geometric area.",
+      "steps": [
+        {
+          "math": "\\int_{-1}^{1}x\\,dx=\\frac{1^2}{2}-\\frac{(-1)^2}{2}=0",
+          "reason": "The negative and positive contributions cancel."
+        },
+        {
+          "math": "\\text{Area}=\\frac12(1)(1)+\\frac12(1)(1)=1",
+          "reason": "The two geometric triangles both contribute positive area."
+        }
+      ],
+      "conclusion": "Zero signed accumulation does not imply that the graph encloses no area."
+    },
+    {
+      "title": "Distinguish motion quantities",
+      "prompt": "Velocity is 3m/s for2s, then-2m/s for3s. The initial position is 5m.",
+      "steps": [
+        {
+          "math": "\\Delta s=(3)(2)+(-2)(3)=0\\,\\mathrm m",
+          "reason": "Signed velocity rectangles give net displacement."
+        },
+        {
+          "math": "D=|3|(2)+|-2|(3)=12\\,\\mathrm m",
+          "reason": "Speed rectangles add total traveled distance."
+        },
+        {
+          "math": "s_{\\mathrm{final}}=5+0=5\\,\\mathrm m,\\qquad v_{\\mathrm{avg}}=0/5=0\\,\\mathrm{m/s}",
+          "reason": "Use the initial position and the total elapsed time for their respective quantities."
+        }
+      ],
+      "conclusion": "The object returns to its initial position after traveling 12m."
+    },
+    {
+      "title": "Reverse or collapse the bounds",
+      "prompt": "Given the integral of f from 1 to 4 is 7, determine the reversed and equal-bound integrals.",
+      "steps": [
+        {
+          "math": "\\int_4^1f(x)\\,dx=-\\int_1^4f(x)\\,dx=-7",
+          "reason": "Reversing orientation negates the accumulated difference."
+        },
+        {
+          "math": "\\int_1^1f(x)\\,dx=0",
+          "reason": "Equal bounds represent no interval width."
+        }
+      ],
+      "conclusion": "These identities do not require f to be positive."
+    },
+    {
+      "title": "Find a true average value",
+      "prompt": "Find the average of x² over [0,3].",
+      "steps": [
+        {
+          "math": "\\int_0^3x^2\\,dx=\\left[\\frac{x^3}{3}\\right]_0^3=9",
+          "reason": "First calculate the total signed accumulation."
+        },
+        {
+          "math": "f_{\\mathrm{avg}}=\\frac{9}{3-0}=3",
+          "reason": "Divide by the interval length."
+        },
+        {
+          "math": "\\frac{f(0)+f(3)}2=\\frac92\\ne3",
+          "reason": "A simple endpoint mean gives a different result for this curved function."
+        }
+      ],
+      "conclusion": "The average height is 3."
+    },
+    {
+      "title": "Include a moving boundary's rate",
+      "prompt": "Differentiate A(x)=the integral of1+t² from 0 to x².",
+      "steps": [
+        {
+          "math": "A'(x)=(1+(x^2)^2)\\frac d{dx}(x^2)",
+          "reason": "FTC evaluates the continuous integrand at the upper bound, then the chain rule accounts for boundary motion."
+        },
+        {
+          "math": "A'(x)=2x(1+x^4)",
+          "reason": "Simplify only after preserving the factor 2x."
+        },
+        {
+          "math": "A(x)=x^2+\\frac{x^6}{3}",
+          "reason": "Explicit integration provides an independent check of the derivative."
+        }
+      ],
+      "conclusion": "The derivative can be negative when x is negative because the upper bound then decreases as x increases."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "For f(x)=x²+1 on [0,2], calculate its signed integral and average value.",
+    "before": [
+      "An antiderivative with zero constant term is x³/3+x.",
+      "Evaluate upper minus lower, then divide the signed result by width 2 for the average."
+    ],
+    "question": {
+      "id": "f08-l04-guided",
+      "familyId": "guided-f08-l04",
+      "familyVersion": 1,
+      "courseId": "f08",
+      "objectiveId": "m01-l04",
+      "category": "application",
+      "critical": false,
+      "prompt": "Give the antiderivative, the integral from 0 to 2, the reversed integral, and the average value.",
+      "fields": [
+        {
+          "id": "primitive",
+          "kind": "polynomial",
+          "label": "Zero-constant antiderivative",
+          "expected": "x^3/3+x",
+          "unit": "",
+          "form": "equivalent"
+        },
+        {
+          "id": "integral",
+          "kind": "rational",
+          "label": "Integral from 0 to 2",
+          "expected": "14/3",
+          "unit": ""
+        },
+        {
+          "id": "reversed",
+          "kind": "rational",
+          "label": "Integral from 2 to 0",
+          "expected": "-14/3",
+          "unit": ""
+        },
+        {
+          "id": "average",
+          "kind": "rational",
+          "label": "Average value",
+          "expected": "7/3",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Evaluate upper minus lower, then divide the signed result by width 2 for the average.",
+        "F(2)-F(0)=8/3+2=14/3; reversing bounds gives-14/3."
+      ],
+      "explanation": [
+        "F(2)-F(0)=8/3+2=14/3; reversing bounds gives-14/3.",
+        "The average value is(14/3)/2=7/3, which differs from the endpoint mean 3."
+      ],
+      "answerSummary": "F(2)-F(0)=8/3+2=14/3; reversing bounds gives-14/3. The average value is(14/3)/2=7/3, which differs from the endpoint mean 3."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-calculus-lab",
+    "mode": "accumulation",
+    "prompt": "Change two signed constant rates and interval widths. Predict signed accumulation, absolute accumulation, and average rate; reveal rectangles and a running-total table. Test cancellation without losing total distance."
+  },
+  "practice": [
+    {
+      "familyId": "f08-integral-polynomial",
+      "variant": "forward"
+    },
+    {
+      "familyId": "f08-integral-polynomial",
+      "variant": "reverse"
+    },
+    {
+      "familyId": "f08-integral-polynomial",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f08-integral-accumulation",
+      "variant": "rectangles"
+    },
+    {
+      "familyId": "f08-integral-accumulation",
+      "variant": "signed-area"
+    },
+    {
+      "familyId": "f08-integral-accumulation",
+      "variant": "motion"
+    },
+    {
+      "familyId": "f08-integral-accumulation",
+      "variant": "average"
+    },
+    {
+      "familyId": "f08-integral-ftc",
+      "variant": "upper"
+    },
+    {
+      "familyId": "f08-integral-ftc",
+      "variant": "chain"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f08-integral-polynomial",
+      "variant": "bounds-audit"
+    },
+    {
+      "familyId": "f08-integral-accumulation",
+      "variant": "motion"
+    },
+    {
+      "familyId": "f08-integral-accumulation",
+      "variant": "area-average"
+    },
+    {
+      "familyId": "f08-integral-ftc",
+      "variant": "chain"
+    }
+  ],
+  "summary": [
+    "A definite integral is signed accumulation built from rate times width.",
+    "Evaluate F(upper)-F(lower), and check that F′ equals the integrand.",
+    "Displacement and total distance differ when velocity changes sign.",
+    "Average value divides by interval length; a moving upper bound adds a chain-rule factor."
+  ],
+  "retrieval": "Sketch one positive and one negative velocity interval. Recover displacement, distance, and average velocity without looking up a formula. Then differentiate an accumulation with upper bound3x and identify where its factor 3 enters.",
+  "readings": [
+    {
+      "title": "OpenStax, Calculus Volume 1 · 5.2: The Definite Integral",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    },
+    {
+      "title": "OpenStax, Calculus Volume 1 · 5.3: The Fundamental Theorem of Calculus",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F08 resource plan."
+    }
+  ]
+}
