@@ -282,5 +282,13 @@
       "checkedAt": "2026-09-24",
       "use": "Opened the four-page primary exercise guide; its ODE exercise checks a computed step against hand work and an exact solution before examining poor coarse-step behavior. No problem statement or solution is copied."
     }
-  ]
+  ],
+  "implementation": {
+    "engine": "6310a5c",
+    "tests": 12,
+    "independentParameterPaths": 210,
+    "extremeParameterMethodTrials": 15,
+    "status": "engine checked; families, UI, teaching, registration, and browser verification pending",
+    "note": "Independent matrix exponentials, discrete matrix powers, analytic under/critical/overdamped fixtures, endpoint clipping, sampled error metrics, exact-rest and instability edges, and exported CSV checks passed. An extreme-case JSON roundtrip exposed signed zero in initial acceleration; zero normalization corrected it. Nonrepresentable relative errors remain explicit and all stored numerical rows remain finite. Lint and type checking passed. The engine is not registered as an available lesson."
+  }
 }

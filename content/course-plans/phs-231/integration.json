@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "PHS 231 is under construction: nineteen of 22 lessons are available. No major course is complete.",
+  "status": "PHS 231 is under construction: twenty of 22 lessons are available. No major course is complete.",
   "delivered": {
     "plan": "Full proposed coverage plan for 22 lessons across nine modules, assessments, project, resources, dependencies, and release gates.",
     "lessons": [
@@ -25,13 +25,14 @@
       "m07-l02",
       "m07-l03",
       "m08-l01",
-      "m08-l02"
+      "m08-l02",
+      "m08-l03"
     ],
-    "questionFamilies": 39,
-    "questionVariants": 256,
+    "questionFamilies": 41,
+    "questionVariants": 276,
     "deterministicSeedsPerVariant": 50,
-    "guidedExamples": 19,
-    "workedExamples": 161,
+    "guidedExamples": 20,
+    "workedExamples": 175,
     "investigations": [
       "Bounded measurement and average speed",
       "Three-dimensional vectors, projections, and products",
@@ -51,14 +52,15 @@
       "Changing-radius disk and masses with conserved angular momentum or motor-controlled speed, separate motor/radial work, transient radial kinetic energy, body-frame geometry, and complete keyboard-accessible time tables",
       "Coupled rolling and sliding with required versus available static friction, exact catch and reverse-slip events, independent translation/spin, marked material-point motion, signed power and heat, and complete keyboard-accessible histories",
       "Static beam reactions with unilateral contacts, local friction, distributed loads, raised forces and couples, exact moving-load windows, independent-origin residuals, and complete keyboard-accessible force and sweep tables",
-      "Axial, shear, and bulk loading with signed deformation, geometry-dependent compliance, independent work and energy, both supplied validity bounds, exact range events, and explicitly unestablished unloading after an exceeded limit"
+      "Axial, shear, and bulk loading with signed deformation, geometry-dependent compliance, independent work and energy, both supplied validity bounds, exact range events, and explicitly unestablished unloading after an exceeded limit",
+      "Synthetic engineering material records with explicit unloading, permanent extension, independent input/returned work, equal-modulus brittle and ductile comparisons, nonunique inverse branches, and a terminal fracture state with unknown later response"
     ]
   },
   "remaining": {
-    "phs231Lessons": 3,
+    "phs231Lessons": 2,
     "phs231Features": [
       "Readiness screening and prerequisite repair routing",
-      "Material and numerical investigations",
+      "Numerical investigation and validation project",
       "Module quizzes and multi-objective assessment support",
       "Two-part cumulative assessment and targeted review",
       "Persistent project notebook and rubric",
@@ -66,11 +68,22 @@
       "Complete coverage and release audit"
     ],
     "otherMajorCourses": 23,
-    "nextLesson": "m08-l03",
+    "nextLesson": "m09-l01",
     "nextCourseAfterPhs231Completion": "phs-232",
-    "inProgress": "Plasticity, fracture, and evidence limits has a primary-source coverage plan (d031a53) and an independently checked piecewise material-response engine (4a916e3). The 20 planned variants, investigation UI, teaching, content registration, and browser checks remain to be built. It is not counted as an available lesson."
+    "inProgress": "Numerical integration has a detailed primary-source plan (a2d4910) and an independently checked engine (6310a5c). Its 20 planned variants, investigation UI, teaching, registration, and browser checks remain pending. The engine alone is not an available lesson."
   },
   "sharedCommits": [
+    {
+      "commit": "de1be3c",
+      "summary": "connected materials",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx",
+        "components/learning/phs-231-materials-lab.tsx"
+      ],
+      "integration": "Adds phs231-materials and two question families through additive schema, dispatch, and reader branches. Requires engine 4a916e3 and generators fafca0e/b7c60d2. Teaching and course-specific registration are b73e267; eleven browser workflows are b7d2d0b. Existing answer formats, note drafts, prerequisite registrations, and backup schemas remain compatible. Keep every upstream activity branch when resolving the shared reader."
+    },
     {
       "commit": "d01e549",
       "summary": "connected elasticity",
@@ -398,21 +411,27 @@
     ]
   },
   "verification": {
-    "status": "The nineteen delivered lessons are technically checked; course release gates remain open. The complete 1115-test run passed with an explicit 60-second per-test allowance for the shared machine. New lesson browser and visual checks passed after two local presentation corrections.",
+    "status": "The twenty delivered lessons are technically checked; course release gates remain open. The full 1149-test run passed with the documented 60-second per-test allowance. All eleven fracture browser workflows passed across a ten-pass run and a separate unchanged accessibility retry.",
     "independentSubjectReview": "Not performed",
     "pilotValidation": "Not performed",
-    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the nineteen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser check retains its recorded integration scope. These checks do not establish realistic full-course or repeated-study capacity across the complete major curriculum.",
+    "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the twenty delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser check retains its recorded integration scope. These checks do not establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 1115,
-      "files": 120,
+      "passed": 1149,
+      "files": 123,
       "command": "pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
-      "note": "All tests passed in one 407.52-second run for the nineteen-lesson application. This run used unchanged assertions and a CLI 60-second per-test allowance because earlier default-timeout content tests had exceeded five seconds under shared-machine load. The elasticity families cover all 18 variants over 50 seeds each (900 independent cases); the engine adds 180 independently integrated paths and eight tests. After correcting duplicate displayed units and small-strain formatting, the 39 PHS content tests passed again, scoped lint and type checking passed, the 93-page production build passed, and all eight elasticity browser workflows passed. The subsequent unregistered fracture engine passed eight additional tests with 180 independent paths, lint, and type checking; those eight are not included in 1115.",
+      "note": "All 1149 tests passed in one 308.19-second run of the twenty-lesson application; full lint, type checking, and the 94-page production build passed. Material/fracture families cover all 20 variants over 50 seeds each (1000 independent cases), and the material engine covers 180 independently integrated paths. The subsequent unregistered numerical engine passed 12 tests with 210 independent matrix-reference paths and 15 extreme parameter/method trials; those 12 tests are not included in 1149. No numerical lesson is published by that engine alone.",
       "previousRun": {
-        "passed": 1085,
-        "files": 118,
-        "command": "pnpm exec vitest run --maxWorkers=1; content-file retry used --testTimeout=60000",
-        "note": "Coverage passed across runs, not an uninterrupted default-timeout full-suite pass. First complete run: 1084 passed, one unchanged MTH 215 content test exceeded 5 seconds. Second: 1081 passed, four MTH content tests exceeded 5 seconds under slower shared-machine execution. All 41 tests in lesson-content.test.ts then passed with unchanged assertions and a CLI 60-second per-test allowance (29.86 seconds total). The other 117 files had passed. Focused PHS content and progress run passed all 80 tests. The subsequent unpublished elasticity engine passed eight additional tests including 180 independent paths; those eight are not included in 1085."
+        "passed": 1115,
+        "files": 120,
+        "command": "pnpm exec vitest run --maxWorkers=1 --testTimeout=60000",
+        "note": "All tests passed in one 407.52-second run for the nineteen-lesson application. This run used unchanged assertions and a CLI 60-second per-test allowance because earlier default-timeout content tests had exceeded five seconds under shared-machine load. The elasticity families cover all 18 variants over 50 seeds each (900 independent cases); the engine adds 180 independently integrated paths and eight tests. After correcting duplicate displayed units and small-strain formatting, the 39 PHS content tests passed again, scoped lint and type checking passed, the 93-page production build passed, and all eight elasticity browser workflows passed. The subsequent unregistered fracture engine passed eight additional tests with 180 independent paths, lint, and type checking; those eight are not included in 1115.",
+        "previousRun": {
+          "passed": 1085,
+          "files": 118,
+          "command": "pnpm exec vitest run --maxWorkers=1; content-file retry used --testTimeout=60000",
+          "note": "Coverage passed across runs, not an uninterrupted default-timeout full-suite pass. First complete run: 1084 passed, one unchanged MTH 215 content test exceeded 5 seconds. Second: 1081 passed, four MTH content tests exceeded 5 seconds under slower shared-machine execution. All 41 tests in lesson-content.test.ts then passed with unchanged assertions and a CLI 60-second per-test allowance (29.86 seconds total). The other 117 files had passed. Focused PHS content and progress run passed all 80 tests. The subsequent unpublished elasticity engine passed eight additional tests including 180 independent paths; those eight are not included in 1085."
+        }
       }
     },
     "browser": {
@@ -427,10 +446,14 @@
         }
       },
       "focusedSuite": {
-        "passed": 8,
-        "failed": 0,
-        "commit": "709f671",
-        "scope": "Elasticity: all eight workflows passed on the corrected production build in 5.1 minutes. Tests establish misconception-specific guided feedback, signed axial/shear/bulk states, geometry comparisons under fixed force and fixed extension, exact stress and strain boundaries, unknown unloading after an exceeded range, zero trials, invalid/complex/nonfinite predictions, keyboard controls and scrolling tables, desktop/mobile accessibility, reload, independently answered checkpoint, and real question/evidence/notes export/reset/restore. The initial run had seven passes and one timeout caused by duplicated units in guided input labels; the labels were corrected in the lesson. Visual review also exposed excess rounding of small strain values; nine-significant-digit display and a numerical browser regression check now preserve them. No assertion or browser timeout was weakened."
+        "passed": 10,
+        "failed": 1,
+        "commit": "b7d2d0b",
+        "scope": "Fracture/materials: the final eleven-workflow production run passed ten tests in 7.6 minutes. Desktop accessibility exceeded the unchanged 60-second limit; its separate retry passed unchanged in 24.3 seconds. An earlier combined accessibility/visual run was interrupted after its two viewport workflows timed out. Those workflows were separated by behavior without dropping assertions or changing timeouts. Checks establish guided misconception feedback, geometry controls, subyield and permanent extension, zero and plateau records, descending branches, exact/beyond-fracture unknowns, invalid/complex/nonfinite inputs, keyboard controls and tables, desktop/mobile rendering, reload, independently solved checkpoint, and real question/evidence/notes export/reset/restore.",
+        "retry": {
+          "passed": 1,
+          "scope": "The desktop whole-lesson accessibility audit with its complete open path table passed on the same production build with unchanged assertions and the 60-second limit. This is not reported as an uninterrupted eleven-test pass."
+        }
       },
       "port": 3101,
       "previousFocusedSuites": [
@@ -469,6 +492,12 @@
         {
           "passed": 7,
           "scope": "Statics: all seven workflows passed on the production build in 2.9 minutes. Tests establish guided local-friction feedback, independent reactions and alternate-origin moments, exact friction and lift-off boundaries, empty/singleton/full load windows, distributed-load reversal and applied-couple comparisons, invalid/complex/nonfinite predictions, keyboard controls, desktop/mobile accessibility, direct reload, and a genuinely answered checkpoint with question/evidence/notes export/reset/restore. Visual review then bounded the long sweep table and added a sticky header. After rebuilding, both complete desktop/mobile workflows passed again in 45.6 seconds, including horizontal and vertical keyboard scrolling. All five final screenshots were inspected."
+        },
+        {
+          "passed": 8,
+          "failed": 0,
+          "commit": "709f671",
+          "scope": "Elasticity: all eight workflows passed on the corrected production build in 5.1 minutes. Tests establish misconception-specific guided feedback, signed axial/shear/bulk states, geometry comparisons under fixed force and fixed extension, exact stress and strain boundaries, unknown unloading after an exceeded range, zero trials, invalid/complex/nonfinite predictions, keyboard controls and scrolling tables, desktop/mobile accessibility, reload, independently answered checkpoint, and real question/evidence/notes export/reset/restore. The initial run had seven passes and one timeout caused by duplicated units in guided input labels; the labels were corrected in the lesson. Visual review also exposed excess rounding of small strain values; nine-significant-digit display and a numerical browser regression check now preserve them. No assertion or browser timeout was weakened."
         }
       ],
       "previousFullSuites": [
@@ -499,7 +528,7 @@
       "type checking passed",
       "production build passed"
     ],
-    "visual": "Desktop and 390-pixel mobile screenshots were reviewed across all nineteen delivered lessons. Elasticity's axial, shear, and bulk diagrams identify reference geometry and magnification; separate load and deformation plots preserve signed bulk volume change. The bounded path table is keyboard-scrollable with sticky headings and retains 0.0000125 strain rather than rounding it to 0.000013. The complete eight-workflow browser run passed after the final changes. Preview port 3001 was restarted and the elasticity route returned HTTP 200 with the correct lesson title.",
+    "visual": "Desktop and 390-pixel mobile screenshots were inspected for all twenty delivered lessons. The materials lesson has readable shape, engineering-curve, and work diagrams with distinct line styles, equivalent tables, explicit percent/dimensionless axes, permanent extension, and gray unknown postfracture work. Keyboard horizontal/vertical table scrolling and sticky headings passed. All eleven browser workflows passed across the final run and a separate desktop accessibility retry. Preview 3001 was paused to reduce shared-machine memory pressure during browser checks.",
     "regressions": [
       "d22be38 fixes direct-load SVG title hydration and adds a direct-load/reload test.",
       "a6acef3 normalizes signed-zero snapshot parameters and verifies separation of identical lesson IDs across courses.",

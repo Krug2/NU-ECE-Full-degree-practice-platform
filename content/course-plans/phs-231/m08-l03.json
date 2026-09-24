@@ -2,7 +2,7 @@
   "courseId": "phs-231",
   "lessonId": "m08-l03",
   "version": 1,
-  "status": "detailed plan; implementation and verification pending",
+  "status": "implemented and technically verified; independent subject review and pilot validation not performed",
   "title": "Plasticity, fracture, and evidence limits",
   "objective": "Interpret a stress-strain record and distinguish stiffness, yielding, strength, toughness, and the limitations of a simple failure estimate.",
   "officialScope": {
@@ -267,9 +267,22 @@
   ],
   "implementation": {
     "engine": "4a916e3",
+    "families": [
+      "fafca0e",
+      "b7c60d2"
+    ],
+    "sharedRegistration": "de1be3c",
+    "teaching": "b73e267",
+    "browser": "b7d2d0b",
     "engineTests": 8,
     "independentEnginePaths": 180,
-    "status": "engine technically checked; generators, UI, teaching, registration, and browser verification pending",
-    "note": "Independent piecewise quadrature and force-displacement integration check loading, recovered and nonrecoverable work; tests cover exact fracture, lost postfracture knowledge, original geometry, brittle versus ductile records, zero and subyield cycles, plateau maxima, very close events, and invalid domains. A test fixture initially violated the declared fracture-versus-maximum condition and was corrected; the schema was retained. No lesson is published from this engine alone."
+    "familyTests": 23,
+    "deterministicVariantCases": 1000,
+    "workedExamples": 14,
+    "originalSections": 10,
+    "practiceVariants": 20,
+    "checkpointQuestions": 4,
+    "status": "lesson available and technically checked",
+    "note": "31 engine/family tests, 86 focused content/progress checks, the full 1149-test suite, lint, type checking, and 94-page build passed. Eleven browser workflows passed across a ten-pass run and an unchanged desktop accessibility retry; desktop/mobile visual inspection and actual saved checkpoint/notes/evidence restoration completed. Initial combined browser workflows timed out and were split without reducing assertions or extending timeouts."
   }
 }
