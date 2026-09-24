@@ -6,8 +6,8 @@ import { approximateExact,parseExact } from "../lib/learning/exact-number";
 import { gradeQuestion } from "../lib/learning/grading";
 import { parsePolynomial } from "../lib/learning/polynomial";
 
-const key=(q:Question,id:string)=>{const f=q.fields.find(field=>field.id===id)!;if(f.kind==="roots")return f.expected.join(",")||"empty";if(f.kind==="choice")return f.correct;if(f.kind==="rational-expression"||f.kind==="rational"||f.kind==="exact")return f.expected;throw new Error("Unexpected field");};
-const answers=(q:Question)=>Object.fromEntries(q.fields.map(f=>[f.id,key(q,f.id)]));
+const key=(q:Question,id:string)=>{const f=q.fields.find(field=>field.id===id)!;if(f.kind==="roots")return f.expected.join(",")||"empty";if(f.kind==="choice")return f.correct;if(f.kind==="polynomial"||f.kind==="rational-expression"||f.kind==="rational"||f.kind==="exact")return f.expected;throw new Error("Unexpected field");};
+const answers=(q:Question)=>Object.fromEntries(q.fields.map(f=>[f.id,f.kind==="polynomial"&&q.parameters.mode===8?(f.id==="numerator"?q.parameters.k+"*":"")+"(x-("+q.parameters.a+"))*(x-("+(f.id==="numerator"?q.parameters.z:q.parameters.p)+"))":key(q,f.id)]));
 const numeric=(input:string)=>approximateExact(parseExact(input)).real;
 const rootValues=(q:Question,id:string)=>{const f=q.fields.find(field=>field.id===id)!;if(f.kind!=="roots")throw new Error("Missing set");return f.expected.map(numeric).sort((a,b)=>a-b);};
 function verify(q:Question){
@@ -24,6 +24,7 @@ const at=(coefficients:number[],x:number)=>coefficients.reduce((sum,c,i)=>sum+c*
 it.each(["hole-pole","partial-cancel","hole-zero","fractional-hole","no-real-exclusions","irrational-holes","multiple-holes","zero-numerator","mixed"])("checks %s domains and hole coordinates against constructed factors",variant=>{
   for(let seed=0;seed<50;seed++){
     const q=rationalGraphQuestion("mth-rational-features",variant,String(seed),"q"),{k,a,p,z,d,u,mode}=q.parameters;verify(q);expect(q).toEqual(rationalGraphQuestion(q.familyId,variant,String(seed),"q"));
+    if(mode===8){verifyConstruction(q);continue;}
     const h=mode===3?u/2:a,excluded=mode===4?[]:mode===5?[-Math.sqrt(d),Math.sqrt(d)]:mode===1||mode===2?[a]:[h,p].sort((a,b)=>a-b);
     expect(rootValues(q,"excluded")).toEqual(excluded);expect(rootValues(q,"holes")).toEqual(mode===1||mode===4?[]:mode===0||mode===3?[h]:excluded);
     expect(rootValues(q,"poles")).toEqual(mode===0||mode===3?[p]:mode===1?[a]:[]);
@@ -42,6 +43,17 @@ it.each(["hole-pole","partial-cancel","hole-zero","fractional-hole","no-real-exc
     if(excluded.length)expect(gradeQuestion(q,{...answers(q),excluded:excluded.slice(1).join(",")||"empty"}).correct).toBe(false);
     expect(gradeQuestion(q,{...answers(q),poles:"999"}).correct).toBe(false);
   }
+});
+function verifyConstruction(q:Question){
+  const {k,a,p,z}=q.parameters,n=parsePolynomial(key(q,"numerator")).map(c=>Number(c.numerator)/Number(c.denominator)),d=parsePolynomial(key(q,"denominator")).map(c=>Number(c.numerator)/Number(c.denominator));
+  expect(n).toEqual([k*a*z,-k*(a+z),k].map(value=>value||0));expect(d).toEqual([a*p,-a-p,1].map(value=>value||0));expect(rootValues(q,"excluded")).toEqual([a,p]);
+  expect(numeric(key(q,"height"))).toBeCloseTo(k*(a-z)/(a-p),12);
+  expect(gradeQuestion(q,{...answers(q),numerator:key(q,"numerator")}).correct).toBe(false);
+  expect(gradeQuestion(q,{...answers(q),denominator:"x-("+p+")"}).correct).toBe(false);
+  expect(gradeQuestion(q,{...answers(q),excluded:String(p)}).correct).toBe(false);
+}
+it("constructs the required original factors, scale, exclusions, and missing height",()=>{
+  for(let seed=0;seed<50;seed++){const q=rationalGraphQuestion("mth-rational-features","construction",String(seed),"q");verify(q);verifyConstruction(q);}
 });
 it.each(["hole-zero","y-excluded","repeated-zero","no-real-zero","irrational-zero","no-intercepts","zero-numerator","mixed"])("checks %s intercepts against the original domain",variant=>{
   for(let seed=0;seed<50;seed++){
