@@ -7,7 +7,7 @@ import { MathText } from "./math-text";
 import "./phs-231.css";
 
 const display=(n:number)=>n===0?"0":Math.abs(n)>=100000||Math.abs(n)<.00001?n.toExponential(4):String(Number(n.toFixed(6)));
-const tick=(n:number)=>String(Number(n.toPrecision(3)));
+const tick=(n:number)=>n!==0&&(Math.abs(n)>=10000||Math.abs(n)<.01)?n.toExponential(1):String(Number(n.toPrecision(3)));
 const vector=(v:number[])=>`(${v.map(display).join(", ")})`;
 const baseline:RollingInput={mass:2,radius:.5,beta:.5,slope:.75,gravity:10,muStatic:.3,muKinetic:.2,force:0,couple:0,v0:0,omega0:0,duration:2};
 const controls:[keyof RollingInput,string,number,number,number][]=[
@@ -26,27 +26,27 @@ const energyColumns:[NumericKey,string,string][]=[["translationKinetic","Transla
 function WheelView({result,index}:{result:Result;index:number}){
   const id=useId(),s=result.state.samples[index],R=result.input.radius,scale=100/R,px=180+(s.pointPosition[0]-s.x)*scale,py=145-(s.pointPosition[1]-R)*scale;
   return <figure><svg viewBox="0 0 360 325" role="img" aria-labelledby={id}><title id={id}>{`Ramp-aligned snapshot centered on the moving body at t=${display(s.time)} s. The marked material point is an orange circle; the current bottom location is a blue square. The point began at the bottom but need not remain there. Equivalent position, velocity, and acceleration are in the marked-point table.`}</title>
-    <text x="180" y="23" textAnchor="middle" fontSize="16" fill="#243b38">Wheel in ramp-aligned coordinates</text>
+    <text x="180" y="23" textAnchor="middle" fontSize="18" fill="#243b38">Wheel in ramp-aligned coordinates</text>
     <circle cx="180" cy="145" r="100" fill="#e4efee" stroke="#526a63" strokeWidth="2"/>
-    <line x1="25" x2="335" y1="245" y2="245" stroke="#526a63" strokeWidth="3"/><text x="285" y="270" fontSize="14" fill="#243b38">+x downhill</text>
-    <line x1="180" x2="180" y1="145" y2="58" stroke="#718f87" strokeDasharray="4 3"/><text x="187" y="65" fontSize="14" fill="#243b38">+y</text>
+    <line x1="25" x2="335" y1="245" y2="245" stroke="#526a63" strokeWidth="3"/><text x="335" y="270" textAnchor="end" fontSize="18" fill="#243b38">+x downhill</text>
+    <line x1="180" x2="180" y1="145" y2="58" stroke="#718f87" strokeDasharray="4 3"/><text x="187" y="65" fontSize="18" fill="#243b38">+y</text>
     <line x1="180" y1="145" x2={px} y2={py} stroke="#933d20" strokeDasharray="6 3"/>
     <rect x="171" y="236" width="18" height="18" fill="#fff" stroke="#145f84" strokeWidth="3"/>
     <circle cx={px} cy={py} r="6" fill="#933d20"/><circle cx="180" cy="145" r="4" fill="#243b38"/>
-    <text x="180" y="297" textAnchor="middle" fontSize="15" fill="#243b38">{`Center x = ${display(s.x)} m`}</text>
-    <text x="180" y="319" textAnchor="middle" fontSize="14" fill="#243b38">{`Current contact slip = ${display(s.slip)} m/s`}</text>
+    <text x="180" y="297" textAnchor="middle" fontSize="18" fill="#243b38">{`Center x = ${display(s.x)} m`}</text>
+    <text x="180" y="319" textAnchor="middle" fontSize="18" fill="#243b38">{`Current contact slip = ${display(s.slip)} m/s`}</text>
   </svg><figcaption>The view follows the center; its displacement is stated below the drawing. The plane is horizontal in these ramp-aligned axes, not necessarily in the laboratory. Orange follows one material point from its initial bottom location. Blue marks the current bottom location, usually a different material point. The outline shows radius; it does not encode the mass distribution or β.</figcaption></figure>;
 }
 function VelocityPlot({result,index}:{result:Result;index:number}){
   const id=useId(),R=result.input.radius,rows=result.state.samples,all=rows.flatMap(s=>[s.v,R*s.omega,s.slip]),rawLow=Math.min(0,...all),rawHigh=Math.max(0,...all),low=rawLow===rawHigh?-1:rawLow,high=rawLow===rawHigh?1:rawHigh,span=Math.max(1,high-low),bottom=low-.05*span,top=high+.05*span;
-  const x=(t:number)=>65+270*t/result.input.duration,y=(v:number)=>210-158*(v-bottom)/(top-bottom);
+  const x=(t:number)=>85+250*t/result.input.duration,y=(v:number)=>210-158*(v-bottom)/(top-bottom);
   const series:[string,(s:Sample)=>number,string,string|undefined][]=[["center",s=>s.v,"#145f84",undefined],["rim",s=>R*s.omega,"#933d20","7 3"],["slip",s=>s.slip,"#243b38","2 3"]];
   return <figure><svg viewBox="0 0 360 260" role="img" aria-labelledby={id}><title id={id}>Signed velocities versus time. Center velocity is solid blue, R omega is long brown dashes, and contact slip is short dark dots. Rolling requires equality of the first two and zero slip. All values and exact transition times are in the tables.</title>
-    <text x="180" y="23" textAnchor="middle" fontSize="16" fill="#243b38">Signed velocity (m/s)</text>
-    {[0,.5,1].map(f=><g key={f}><line x1="65" x2="335" y1={y(low+f*(high-low))} y2={y(low+f*(high-low))} stroke="#c7d3ce"/><text x="58" y={y(low+f*(high-low))+5} textAnchor="end" fontSize="14" fill="#243b38">{tick(low+f*(high-low))}</text><text x={x(f*result.input.duration)} y="233" textAnchor="middle" fontSize="14" fill="#243b38">{tick(f*result.input.duration)}</text></g>)}
+    <text x="180" y="23" textAnchor="middle" fontSize="20" fill="#243b38">Signed velocity (m/s)</text>
+    {[0,.5,1].map(f=><g key={f}><line x1="85" x2="335" y1={y(low+f*(high-low))} y2={y(low+f*(high-low))} stroke="#c7d3ce"/><text x="78" y={y(low+f*(high-low))+5} textAnchor="end" fontSize="18" fill="#243b38">{tick(low+f*(high-low))}</text><text x={x(f*result.input.duration)} y="233" textAnchor="middle" fontSize="18" fill="#243b38">{tick(f*result.input.duration)}</text></g>)}
     {series.map(([name,get,color,dash])=><polyline key={name} points={rows.map(s=>`${x(s.time)},${y(get(s))}`).join(" ")} fill="none" stroke={color} strokeWidth="2.5" strokeDasharray={dash}/>)}
     <line x1={x(rows[index].time)} x2={x(rows[index].time)} y1="45" y2="213" stroke="#71613d" strokeDasharray="4 4"/>
-    <text x="200" y="256" textAnchor="middle" fontSize="14" fill="#243b38">Time (s)</text>
+    <text x="210" y="256" textAnchor="middle" fontSize="18" fill="#243b38">Time (s)</text>
   </svg><figcaption>Center velocity v: solid blue. Signed rim rate Rω: long brown dashes. Contact slip v−Rω: short dark dots. Lines connect analytic samples, including any exact contact transition. Matching center and rim rates mark no slip; a zero center velocity alone does not. Use the snapshot slider or transition button to inspect the table.</figcaption></figure>;
 }
 export function Phs231RollingLab({activity}:{activity:RollingActivity}){
