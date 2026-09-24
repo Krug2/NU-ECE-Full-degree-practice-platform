@@ -1,0 +1,203 @@
+{
+  "id": "m01-l01",
+  "courseId": "phs-232",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Harmonic motion, phase and initial conditions",
+  "objective": "Reconstruct and check a harmonic trajectory from physical parameters or initial conditions, including phase, direction and admissible event times.",
+  "why": "Oscillators connect mechanics to waves, circuits and electromagnetic radiation. A useful prediction must give the motion's scale, phase, direction and timing, then distinguish that continuous model from what a recorder actually observes. This lesson builds those habits before adding damping, driving or circuit components.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {"courseId":"phs-231","lessonId":"m01-l01","label":"Units and measurement evidence","note":"Review dimensions and the difference between a model prediction and a measurement."},
+    {"courseId":"phs-231","lessonId":"m02-l01","label":"Position, velocity and acceleration","note":"Differentiate a position function and distinguish signed velocity from speed."},
+    {"courseId":"phs-231","lessonId":"m03-l01","label":"Signed force equations","note":"Choose a coordinate and write Newton's second law for the selected system."},
+    {"courseId":"f04","lessonId":"m01-l02","label":"Optional radians and unit-circle refresher"},
+    {"courseId":"f04","lessonId":"m01-l03","label":"Optional sinusoidal-graph refresher"},
+    {"courseId":"f04","lessonId":"m01-l04","label":"Optional trigonometric-equation refresher"},
+    {"courseId":"f08","lessonId":"m01-l03","label":"Optional derivative refresher"},
+    {"courseId":"phs-104","label":"Introductory physics","note":"This academic prerequisite remains under construction here; the linked course page reports availability."},
+    {"courseId":"csc-208","label":"Calculus I preparation","note":"The full prerequisite course remains under construction. Differentiate sine and cosine in radians, including the chain rule."},
+    {"courseId":"csc-209","label":"Calculus II preparation","note":"The full prerequisite course remains under construction. NU also lists its MTH 220 and MTH 221 alternatives. Optional refreshers do not waive the academic prerequisites."}
+  ],
+  "sections": [
+    {"heading":"Start with a system, a coordinate and a force law","paragraphs":[
+      "Consider a point mass m attached to an ideal horizontal spring. Let x measure signed displacement from the equilibrium position, with positive x to the right. Assume a positive constant mass, a positive constant stiffness k, and a net restoring force $F_x=-kx$ over the displacement range used. The minus sign means that positive displacement produces a force to the left and negative displacement produces a force to the right. Gravity and the support cancel vertically; neither supplies an extra horizontal term in this model.",
+      "Newton's second law gives $m\\ddot{x}=-kx$, or $\\ddot{x}+\\omega^2x=0$ with $\\omega=\\sqrt{k/m}>0$. A dot denotes a derivative with respect to time. The stiffness unit N/m is kg/s², so k/m has units s⁻². The angular frequency has units rad/s; radians express a dimensionless angle while keeping its angular role visible. Positive k and m are essential: negative stiffness would not produce this stable harmonic model.",
+      "An equation of motion and two initial conditions determine the trajectory. Write those conditions as $x(0)=x_0$ and $v(0)=v_0$. Specifying initial position alone is insufficient: the mass can pass the same position in either direction. The origin of position, the positive direction and the time called zero must stay fixed while comparing two descriptions.",
+      "This is an ideal linear model, not a universal law for every spring-like object. It excludes damping, driving, changing stiffness, nonlinear force terms and travel stops. Later lessons assess those extensions. A simulation following this equation illustrates its consequences; agreement between its own graph and its formula does not independently validate the model for a physical apparatus."
+    ]},
+    {"heading":"Separate cycles, radians and elapsed time","paragraphs":[
+      "A nonzero-amplitude solution can be written $x(t)=A\\cos(\\omega t+\\phi)$, where A is nonnegative amplitude in meters and phi is a phase in radians. The complete angle is the phase at time t. It advances at omega radians per second. One complete cycle advances the phase by $2\\pi$, giving $T=2\\pi/\\omega$ and $f=1/T=\\omega/(2\\pi)$. T is a period in seconds; f is cyclic frequency in Hz, or cycles per second.",
+      "Do not insert a numerical frequency f where the formula requires omega. The equivalent form using cyclic frequency is $x(t)=A\\cos(2\\pi f t+\\phi)$. A 2 Hz oscillation has angular frequency $4\\pi$ rad/s, not 2 rad/s. Check $fT=1$ and $\\omega T=2\\pi$ as separate relationships.",
+      "Use radians before differentiating. The familiar derivative of sin(theta) with respect to theta equals cos(theta) when theta is a radian argument. If a time-dependent numerical angle is supplied in degrees, first convert it using pi/180. The chain rule must still include the rate of change of the complete angle.",
+      "Within the ideal linear spring model, frequency depends on k/m, not amplitude. Doubling a nonzero amplitude doubles the displacement and speed scales while preserving T. This conclusion is conditional on an unchanged linear force law. It does not establish amplitude independence for a large-angle pendulum or a spring that becomes stiffer as it stretches."
+    ]},
+    {"heading":"Differentiate the trajectory and interpret every sign","paragraphs":[
+      "The first derivative is $v(t)=-A\\omega\\sin(\\omega t+\\phi)$. The second is $a(t)=-A\\omega^2\\cos(\\omega t+\\phi)=-\\omega^2x(t)$. The extra omega in each differentiation comes from the chain rule. Displacement, velocity and acceleration have different units and different amplitude scales: A, A omega and A omega².",
+      "Positive velocity means motion in the positive coordinate direction, regardless of which side of equilibrium the mass occupies. Acceleration always points toward equilibrium in this model. At $x=+A$ or $x=-A$, velocity is zero while acceleration has its largest magnitude. At x=0, acceleration is zero while speed reaches A omega. Zero acceleration at that instant does not mean the speed stays constant on an interval.",
+      "When v is nonzero, the rate of change of speed is $d|v|/dt=\\operatorname{sgn}(v)a$. Equal signs of v and a make speed increase; opposite signs make it decrease. The sign of acceleration alone cannot answer whether speed increases. A left-moving mass with leftward acceleration is speeding up.",
+      "At a turning point of a nonzero-amplitude trajectory, velocity changes sign with a nonzero acceleration. The absolute value |v| then has a corner: its two-sided derivative does not exist at that instant. Position and velocity themselves remain smooth. This distinction prevents assigning the signed acceleration directly to the derivative of speed at a reversal."
+    ]},
+    {"heading":"Recover amplitude and phase from both initial conditions","paragraphs":[
+      "At t=0, the initial conditions give $x_0=A\\cos\\phi$ and $v_0=-A\\omega\\sin\\phi$. Squaring the first equation and the second divided by omega, then adding, gives $A=\\sqrt{x_0^2+(v_0/\\omega)^2}$. Both squared terms have length-squared units. The amplitude is nonnegative and must be at least the magnitude of the initial displacement.",
+      "For A>0, use $\\cos\\phi=x_0/A$ together with $\\sin\\phi=-v_0/(A\\omega)$. The signs of these two ratios determine the quadrant. An arccos calculation alone supplies an angle in [0,pi] and loses the sign of the sine. It can reconstruct the correct initial position while predicting the wrong initial velocity.",
+      "A quadrant-aware calculation is $\\phi=\\operatorname{atan2}(-v_0/\\omega,x_0)$. Here atan2(y,x) means the angle whose sine and cosine have the directions of y and x. Some calculators order its inputs differently; check the definition before entering values. In this course the canonical phase interval is $[-\\pi,\\pi)$. Convert a returned +pi to -pi to follow that convention.",
+      "The initial-condition form avoids an explicit phase: $x(t)=x_0\\cos(\\omega t)+(v_0/\\omega)\\sin(\\omega t)$ and $v(t)=v_0\\cos(\\omega t)-\\omega x_0\\sin(\\omega t)$. It directly returns x0 and v0 at zero, and differentiating it checks the equation of motion. Use this form to verify a phase calculation by a second route.",
+      "If x0 and v0 are both zero, A=0 and the trajectory stays at equilibrium. No unique phase can be recovered: every phi gives the same zero function. The system still has a natural frequency and period that describe nonzero perturbations. The stationary trajectory has no least positive repeating period, because every positive time shift leaves it unchanged."
+    ]},
+    {"heading":"Distinguish equivalent formulas from a changed time origin","paragraphs":[
+      "Adding any integer multiple of $2\\pi$ to phi leaves the entire trajectory unchanged at the same time origin. A principal phase is a convention selecting one representative from those equivalent values. If an answer requests that representative, a phase outside its interval does not satisfy the requested form even if it describes the same motion.",
+      "A negative written amplitude can be made positive by shifting the phase by pi, because $-A\\cos\\theta=A\\cos(\\theta+\\pi)$. A negative angular coefficient can be made positive by negating the complete argument, using cosine's evenness. These transformations must include every part of the expression. Changing only one sign can preserve x(0) while reversing v(0).",
+      "Changing the clock is a different operation. If a new time coordinate is $\\tau=t-t_r$, then $x(\\tau+t_r)=A\\cos(\\omega\\tau+\\phi+\\omega t_r)$. The new phase is the old phase plus omega tr, reduced to the chosen interval if desired. This is the same physical history with a relabeled time origin. Adding that phase while retaining the original t would usually describe a different history.",
+      "To test two candidate descriptions at the same time origin, compare the governing omega and both initial state coordinates. For this fixed linear equation, equal x0 and v0 determine the same trajectory. Checking one matching point or one matching plot value is insufficient."
+    ]},
+    {"heading":"Read the state in a position–velocity plane","paragraphs":[
+      "Eliminating the phase gives $x^2+(v/\\omega)^2=A^2$. For A>0 this is an ellipse in physical (x,v) coordinates, with horizontal extent ±A and vertical extent ±A omega. The axes have different units. A graph may scale them differently for readability, so its apparent geometric aspect ratio is not a new physical quantity.",
+      "Each interior position appears twice on the ellipse, once with positive velocity and once with negative velocity. The state traverses clockwise when x increases to the right and v increases upward. At the rightmost point x=+A, acceleration makes v become negative; the state therefore moves down the right side. At the leftmost point the acceleration is positive.",
+      "The ellipse supplies a consistency check: $v^2=\\omega^2(A^2-x^2)$. A requested position with |x|>A gives no real velocity and is unreachable in this model. At an interior position the ± square roots describe the two possible directions. Do not erase one sign until the initial conditions or event question select a direction.",
+      "A complete-state recurrence requires both x and v to repeat. For nonzero amplitude the smallest positive recurrence time is T. A repeated position can occur earlier, with the opposite velocity. At a displacement extreme there is only one state with that position, so its first positive position return already takes a full period."
+    ]},
+    {"heading":"Solve for events with both branches and the requested window","paragraphs":[
+      "For a target position xs and A>0, first test $|x_s|\\leq A$. If it passes, define $\\alpha=\\arccos(x_s/A)$ in [0,pi]. All candidate phases are $\\omega t+\\phi=\\alpha+2\\pi n$ or $\\omega t+\\phi=-\\alpha+2\\pi n$, where n is any integer. Thus $t=(\\pm\\alpha-\\phi+2\\pi n)/\\omega$. A principal inverse-trigonometric output is only the start of an event calculation.",
+      "For an interior target, the +alpha branch has negative velocity and the -alpha branch has positive velocity, because the velocity contains minus sine. Filter by direction if the question asks for it. At xs=±A the two branches coincide modulo 2pi, velocity is zero, and each instant counts once. Such an event is a touch at an extreme, not a passage through the target with positive or negative velocity.",
+      "Apply the exact time interval before selecting or counting events. First strictly positive means t>0 and excludes an initial root. An interval [0,b] includes both ends, (0,b] excludes only zero, and (0,b) excludes both. An event at an open endpoint does not count. Use enough integers n to cover the whole interval and remove duplicate times from coincident branches.",
+      "There may be no qualifying event because the target is outside the amplitude, because the requested direction is impossible at a turning point, or because all appropriate occurrences lie outside the window. These explanations differ. A stationary zero-amplitude trajectory is separate again: the target zero holds at every time, while a nonzero target is never reached. A strict positive- or negative-velocity filter excludes every stationary instant.",
+      "Keep exact pi multiples when the problem supports them. Rounding a boundary time before checking an open or closed interval can change an event count. Numerical answers need enough guard digits and a tolerance appropriate to the stated task; a displayed rounded equality is not a proof that two events coincide."
+    ]},
+    {"heading":"Separate the model from its sampled record","paragraphs":[
+      "A position recorder supplies values at discrete times; it does not automatically supply the full trajectory or its derivatives. With sampling rate fs, uniformly spaced sample times are $t_n=n/f_s$. A known continuous oscillator can move substantially between samples. Joining sparse samples with straight segments may suggest a motion that the model never follows.",
+      "For a zero-phase cosine, frequencies $f+jf_s$ give the same sample sequence as f for every integer j that produces an admissible frequency, because each sample's extra phase is $2\\pi jn$. Cosine's evenness also gives reflected aliases. Reducing f modulo fs and reflecting the remainder into [0,fs/2] produces the lowest nonnegative representative for this restricted zero-phase cosine family. It does not prove that this representative is the true physical frequency.",
+      "One sample per natural period records the same position on every cycle. Constant recorded positions then coexist with a moving oscillator. At two samples per period, an oscillator sampled at its equilibrium crossings can even give an all-zero position record. A claim of unique reconstruction needs extra assumptions, such as a suitable known bandwidth and sufficient sampling. A finite noisy record also raises uncertainty and model-selection questions beyond this ideal comparison.",
+      "The investigation draws the analytic model and marks its recorded positions separately. Changing the recording density changes the evidence, while the model's mass, stiffness, initial conditions and true frequency stay fixed. Its calculated velocity and acceleration are model outputs, not additional measurements from the position recorder."
+    ]},
+    {"heading":"Check a solution before treating it as evidence","paragraphs":[
+      "Use independent checks with different failure modes. Check dimensions; substitute t=0 to recover both initial conditions; differentiate twice to verify a=-omega²x; evaluate a turning point and an equilibrium crossing; and test the phase-plane identity. A long decimal result is less convincing than several consistent checks.",
+      "For an event, substitute its time into both position and velocity. Confirm that it lies inside the requested window, has the requested direction and is the earliest admissible occurrence when required. Then explain whether it is a crossing, a touch, a full state recurrence or merely a repeated position. These are different statements about the same trajectory.",
+      "In your investigation record the inputs and units, the origin conventions, your prediction, the selected event interval and filter, and the evidence that changed or supported your prediction. Preserve a mistaken prediction and explain the correction. A useful comparison changes one condition deliberately and states which conclusions depend on the ideal linear model.",
+      "Practice and the four-question checkpoint assess this lesson's objective under the stated assumptions. They do not establish completion of PHS 232, fulfillment of an NU course, or independent validation of a physical experiment. The wider course remains in development."
+    ]}
+  ],
+  "examples": [
+    {"title":"Derive the natural scales with units","prompt":"An ideal horizontal oscillator has m=0.5 kg and k=8 N/m. Find its angular frequency, period and cyclic frequency. Predict the effect of doubling amplitude while the force law remains linear.","steps":[
+      {"math":"\\omega^2=k/m=8/0.5=16\\,\\mathrm{s}^{-2}","reason":"Divide the stiffness by mass and check that the result has inverse-time-squared units."},
+      {"math":"\\omega=4\\,\\mathrm{rad/s},\\qquad T=\\frac{\\pi}{2}\\,\\mathrm s,\\qquad f=\\frac{2}{\\pi}\\,\\mathrm{Hz}","reason":"Take the positive square root, then use a full phase turn to obtain the period and its reciprocal."},
+      {"math":"\\omega T=2\\pi,\\qquad fT=1","reason":"These independent relationships distinguish angular frequency from cyclic frequency."}
+    ],"conclusion":"The natural period is about 1.570796 s and the cyclic frequency is about 0.636620 Hz. Amplitude does not enter k/m, so doubling amplitude leaves this ideal frequency unchanged."},
+    {"title":"Recover a phase without losing the direction","prompt":"For the same oscillator, x(0)=0.03 m and v(0)=-0.16 m/s. Find a nonnegative amplitude and the principal phase in [-pi,pi).","steps":[
+      {"math":"A=\\sqrt{0.03^2+(-0.16/4)^2}=0.05\\,\\mathrm m","reason":"Normalize velocity by omega to obtain a length before combining it with displacement."},
+      {"math":"\\cos\\phi=3/5,\\qquad\\sin\\phi=4/5","reason":"The minus sign in the initial-velocity relation makes the sine positive. Both signs put phi in the first quadrant."},
+      {"math":"\\phi=\\operatorname{atan2}(4,3)\\approx0.927295218\\,\\mathrm{rad}","reason":"Choose the angle using both state coordinates."},
+      {"math":"0.05\\cos\\phi=0.03,\\qquad-0.05(4)\\sin\\phi=-0.16","reason":"Substitution verifies position and velocity separately, including the negative motion direction."}
+    ],"conclusion":"The motion is x(t)=0.05 cos(4t+phi) m with phi≈0.927295218 rad. A phase with the opposite sign would give the same initial position but the wrong initial velocity."},
+    {"title":"Advance a quarter period by a second representation","prompt":"For x0=0.03 m, v0=-0.16 m/s and omega=4 rad/s, find x, v and a at t=pi/8 s.","steps":[
+      {"math":"\\omega t=4(\\pi/8)=\\pi/2","reason":"This is a quarter-period advance from the initial state, not necessarily a displacement extreme."},
+      {"math":"x=x_0\\cos(\\pi/2)+(v_0/4)\\sin(\\pi/2)=-0.04\\,\\mathrm m","reason":"The initial-condition form evaluates the state without rounding the recovered phase."},
+      {"math":"v=v_0\\cos(\\pi/2)-4x_0\\sin(\\pi/2)=-0.12\\,\\mathrm{m/s}","reason":"Propagate velocity consistently with position."},
+      {"math":"a=-16x=0.64\\,\\mathrm{m/s}^2","reason":"Acceleration points right while the mass moves left, so its speed is decreasing."}
+    ],"conclusion":"The state is (-0.04 m, -0.12 m/s) with acceleration +0.64 m/s². Checking x²+(v/4)²=0.0025 m² recovers the squared amplitude."},
+    {"title":"Compare a position return with a full-state return","prompt":"The preceding oscillator starts at x0=0.03 m with v0=-0.16 m/s and phi=atan2(4,3). Find its first positive return to x0 and its first positive return to both x0 and v0.","steps":[
+      {"math":"4t+\\phi=\\pm\\phi+2\\pi n","reason":"Equal initial and later positions require equal cosines, which have two phase branches."},
+      {"math":"t_{\\text{position}}=\\frac{2\\pi-2\\phi}{4}\\approx1.107148718\\,\\mathrm s","reason":"The negative-phase branch gives the earlier positive return; the initial root t=0 is excluded."},
+      {"math":"v(t_{\\text{position}})=+0.16\\,\\mathrm{m/s},\\qquad t_{\\text{state}}=\\frac{2\\pi}{4}=\\frac{\\pi}{2}\\,\\mathrm s","reason":"The earlier return reverses velocity. A full phase turn is required to restore the complete state."}
+    ],"conclusion":"Returning to the starting location is not enough to restart the same motion. At the first position return this oscillator is moving in the opposite direction."},
+    {"title":"Select a direction after solving both branches","prompt":"An oscillator has x(t)=0.08 cos(2t) m. Find the first t>0 at x=0.04 m for negative motion and for positive motion.","steps":[
+      {"math":"\\cos(2t)=1/2,\\qquad2t=\\pm\\pi/3+2\\pi n","reason":"The target is inside the amplitude bounds and gives two distinct phase branches."},
+      {"math":"t_-=\\pi/6\\,\\mathrm s,\\qquad v(t_-)=-0.16\\sin(\\pi/3)=-0.08\\sqrt{3}\\,\\mathrm{m/s}","reason":"The first positive principal-branch time has negative velocity."},
+      {"math":"t_+=5\\pi/6\\,\\mathrm s,\\qquad v(t_+)=+0.08\\sqrt{3}\\,\\mathrm{m/s}","reason":"The other branch first enters the positive-time domain after adding a full phase turn."}
+    ],"conclusion":"The first negative-direction crossing is at pi/6 s; the first positive-direction crossing is at 5pi/6 s. A single arccos result would omit the second direction."},
+    {"title":"Keep a turning point and its immediate future distinct","prompt":"For x(t)=0.06 cos(3t+pi/2) m, find the next turning point after t=0 and describe the motion immediately after it.","steps":[
+      {"math":"v=-0.18\\sin(3t+\\pi/2)=0,\\qquad3t+\\pi/2=\\pi","reason":"Starting at phase pi/2, the next zero of sine occurs at phase pi."},
+      {"math":"t=\\pi/6\\,\\mathrm s,\\qquad x=-0.06\\,\\mathrm m,\\qquad a=-9x=0.54\\,\\mathrm{m/s}^2","reason":"Velocity is zero at the negative displacement extreme, but restoring acceleration is positive."},
+      {"math":"v(t+\\Delta t)\\approx0+0.54\\Delta t>0\\quad(\\Delta t>0\\text{ small})","reason":"The local acceleration determines the direction immediately after the event."}
+    ],"conclusion":"The mass is momentarily at rest, then moves in +x. Its speed has a corner at this instant, so a two-sided speed derivative should not be assigned there."},
+    {"title":"Count touches once and respect open endpoints","prompt":"For x(t)=0.08 cos(2t) m, count instants at x=+0.08 m in [0,2pi], (0,2pi] and (0,2pi), with times in seconds. Then apply a strictly positive-velocity filter.","steps":[
+      {"math":"2t=2\\pi n,\\qquad t=\\pi n","reason":"At the positive amplitude, the two cosine branches coincide and must not be counted twice."},
+      {"math":"[0,2\\pi]:\\{0,\\pi,2\\pi\\},\\quad(0,2\\pi]:\\{\\pi,2\\pi\\},\\quad(0,2\\pi):\\{\\pi\\}","reason":"Apply each interval's endpoint rules to the same candidate list."},
+      {"math":"v(\\pi n)=-0.16\\sin(2\\pi n)=0","reason":"Every listed event is a zero-velocity touch, so none qualifies as strictly positive motion."}
+    ],"conclusion":"The unfiltered counts are 3, 2 and 1. Every strict positive-direction count is zero. An event can be reachable yet fail the requested direction criterion."},
+    {"title":"Use the phase plane to distinguish speed changes","prompt":"For A=0.05 m and omega=4 rad/s, what velocities are possible at x=0.04 m? Describe the instantaneous speed change in each case.","steps":[
+      {"math":"v^2=16(0.05^2-0.04^2)=0.0144\\,\\mathrm{m}^2/\\mathrm{s}^2","reason":"The phase-plane identity gives the velocity magnitude at the specified position."},
+      {"math":"v=\\pm0.12\\,\\mathrm{m/s},\\qquad a=-16(0.04)=-0.64\\,\\mathrm{m/s}^2","reason":"Both directions are possible, but the acceleration is fixed by position."},
+      {"math":"\\left.\\frac{d|v|}{dt}\\right|_{v>0}=-0.64,\\qquad\\left.\\frac{d|v|}{dt}\\right|_{v<0}=+0.64","reason":"Multiply acceleration by the sign of velocity; both rates have units m/s²."}
+    ],"conclusion":"At the same location the mass can be slowing while moving right or speeding up while moving left. Position and acceleration alone do not distinguish those states."},
+    {"title":"Relabel the clock without changing the history","prompt":"The initial-condition example has x(t)=0.05 cos(4t+phi) m with phi=atan2(4,3). Put the new time zero at old time tr=pi/8 s. Find the new phase and check the new initial state.","steps":[
+      {"math":"\\tau=t-\\pi/8,\\qquad x(\\tau+\\pi/8)=0.05\\cos(4\\tau+\\phi+\\pi/2)","reason":"Substitute the old time in terms of the new coordinate, including the complete phase shift."},
+      {"math":"\\phi_{\\text{new}}=\\phi+\\pi/2\\approx2.498091545\\,\\mathrm{rad}","reason":"This phase already lies inside the chosen principal interval."},
+      {"math":"x(\\tau=0)=-0.04\\,\\mathrm m,\\qquad v(\\tau=0)=-0.12\\,\\mathrm{m/s}","reason":"The new initial state is the old quarter-period state, which independently checks the clock change."}
+    ],"conclusion":"The history is unchanged because the time label changes with the phase. At a fixed unchanged time origin, only full 2pi phase shifts leave this canonical positive-amplitude expression unchanged."},
+    {"title":"Identify an alias without replacing the real motion","prompt":"The true model is x(t)=0.02 cos(2pi·6t) m. A noiseless recorder samples at 4 Hz starting at t=0. Compare its samples with 2 Hz and 10 Hz zero-phase cosines of the same amplitude.","steps":[
+      {"math":"x_n=0.02\\cos(3\\pi n)=0.02(-1)^n\\,\\mathrm m","reason":"Insert the actual sample times n/4 s into the 6 Hz trajectory."},
+      {"math":"0.02\\cos(\\pi n)=0.02(-1)^n,\\qquad0.02\\cos(5\\pi n)=0.02(-1)^n","reason":"The 2 Hz and 10 Hz candidates produce the identical sequence at every integer sample index."},
+      {"math":"f_{\\text{folded}}=2\\,\\mathrm{Hz},\\qquad f_{\\text{true}}=6\\,\\mathrm{Hz}","reason":"The lowest nonnegative alias is a representation of the sample sequence, not proof of the physical frequency."}
+    ],"conclusion":"The recorded positions alternate +0.02, -0.02, +0.02 m. All three models match them. Extra information is needed to choose among their different continuous trajectories."},
+    {"title":"Handle equilibrium without inventing phase information","prompt":"A mass of 0.5 kg on an 8 N/m spring starts at x0=0 and v0=0. Find its amplitude, phase information, natural period and least positive trajectory period.","steps":[
+      {"math":"A=\\sqrt{0^2+(0/4)^2}=0,\\qquad x(t)=v(t)=0","reason":"Both initial-condition terms vanish for all time."},
+      {"math":"\\omega=4\\,\\mathrm{rad/s},\\qquad T_{\\text{natural}}=\\pi/2\\,\\mathrm s","reason":"The model parameters still define the response frequency to a nonzero perturbation."},
+      {"math":"x(t+r)=x(t),\\qquad v(t+r)=v(t)\\quad\\text{for every }r>0","reason":"Any proposed smallest positive recurrence can be halved, so no least positive trajectory period exists."}
+    ],"conclusion":"Phase is unidentifiable because multiplying any cosine by zero erases it. Assigning phase zero would be a representation convention, not a measured physical property."}
+  ],
+  "guided": {
+    "title":"Reconstruct, advance and check the state",
+    "setup":"Work from both initial conditions before using a calculator. Keep a phase diagram or the initial-condition form beside your calculation.",
+    "before":["Mark positive x and identify the initial velocity direction.","Find omega and amplitude, then determine both sine and cosine of the initial phase.","At the requested time, evaluate position and velocity separately and check acceleration against the force law."],
+    "question": {
+      "id":"phs232-harmonic-guided","familyId":"phs232-harmonic-guided","familyVersion":1,"courseId":"phs-232","objectiveId":"m01-l01","category":"application","critical":true,
+      "parameters":{"mass":0.5,"stiffness":8,"x0":0.03,"v0":-0.16},
+      "prompt":"An ideal horizontal oscillator has m=0.5 kg, k=8 N/m, x(0)=0.03 m and v(0)=-0.16 m/s. Use x=A cos(omega*t+phi), A≥0, omega>0 and -pi≤phi<pi. Find A, select the principal phase quadrant, and find signed x, v and a at t=pi/8 s.",
+      "fields":[
+        {"id":"amplitude","kind":"rational","label":"Amplitude","expected":"1/20","unit":"m"},
+        {"id":"phase","kind":"choice","label":"Principal initial phase","correct":"first","options":[
+          {"id":"fourth","label":"Fourth quadrant: cosine positive, sine negative","feedback":"A negative sine would give positive initial velocity because v0=-A*omega*sin(phi). Use the given negative velocity."},
+          {"id":"first","label":"First quadrant: cosine positive, sine positive","feedback":"Positive x0 gives positive cosine, and negative v0 gives positive sine. Both initial conditions select the first quadrant."},
+          {"id":"third","label":"Third quadrant: cosine negative, sine negative","feedback":"A negative cosine would contradict the positive initial position; a negative sine would also reverse the velocity."}
+        ]},
+        {"id":"position","kind":"rational","label":"Position at pi/8 seconds","expected":"-1/25","unit":"m"},
+        {"id":"velocity","kind":"rational","label":"Velocity at pi/8 seconds","expected":"-3/25","unit":"m/s"},
+        {"id":"acceleration","kind":"rational","label":"Acceleration at pi/8 seconds","expected":"16/25","unit":"m/s²"}
+      ],
+      "hints":["omega=sqrt(8/0.5)=4 rad/s. Combine x0 with v0/omega to find the amplitude.","cos(phi)=3/5 and sin(phi)=4/5. At the requested time the phase advances by pi/2.","Use x=x0*cos(omega*t)+(v0/omega)*sin(omega*t) and v=v0*cos(omega*t)-omega*x0*sin(omega*t). Then a=-16*x."],
+      "explanation":["The angular frequency is 4 rad/s. A=sqrt(0.03²+(-0.16/4)²)=0.05 m=1/20 m.","The initial cosine and sine are 3/5 and 4/5, so the principal phase is in the first quadrant. A fourth-quadrant phase would reverse the given initial velocity.","At t=pi/8 s, omega*t=pi/2. The initial-condition formulas give x=-0.04 m=-1/25 m and v=-0.12 m/s=-3/25 m/s.","a=-16*x=0.64 m/s²=16/25 m/s². The positive acceleration opposes the negative velocity, so speed is decreasing.","Finally x²+(v/4)²=0.0016+0.0009=0.0025 m²=A², checking the propagated state independently."],
+      "answerSummary":"A=1/20 m; initial phase in the first quadrant; x=-1/25 m, v=-3/25 m/s and a=16/25 m/s² at pi/8 s."
+    },
+    "after":"Explain why positive acceleration here does not mean motion to the right. Then locate the same state in the investigation's position–velocity plane."
+  },
+  "interaction": {
+    "kind":"phs232-harmonic",
+    "prompt":"Predict a state and a count of position events before revealing the model. Compare direction, endpoint choices and sampling density, then use both the plots and tables to explain what each observation establishes.",
+    "initial":{"mass":0.5,"stiffness":8,"position":0.03,"velocity":-0.16,"cycles":2,"samplesPerPeriod":8,"probeCycles":0.25,"targetFraction":0.6}
+  },
+  "practice": [
+    {"familyId":"phs232-harmonic-state","variant":"parameter-frequency"},
+    {"familyId":"phs232-harmonic-state","variant":"state-from-phase"},
+    {"familyId":"phs232-harmonic-state","variant":"initial-state-inverse"},
+    {"familyId":"phs232-harmonic-state","variant":"derivative-sign"},
+    {"familyId":"phs232-harmonic-state","variant":"phase-equivalence"},
+    {"familyId":"phs232-harmonic-state","variant":"zero-state"},
+    {"familyId":"phs232-harmonic-events","variant":"first-crossing"},
+    {"familyId":"phs232-harmonic-events","variant":"directed-crossing"},
+    {"familyId":"phs232-harmonic-events","variant":"turning-point"},
+    {"familyId":"phs232-harmonic-events","variant":"window-count"},
+    {"familyId":"phs232-harmonic-events","variant":"state-recurrence"},
+    {"familyId":"phs232-harmonic-events","variant":"sample-alias"}
+  ],
+  "checkpoint": [
+    {"familyId":"phs232-harmonic-state","variant":"initial-state-inverse"},
+    {"familyId":"phs232-harmonic-state","variant":"state-from-phase"},
+    {"familyId":"phs232-harmonic-events","variant":"directed-crossing"},
+    {"familyId":"phs232-harmonic-events","variant":"sample-alias"}
+  ],
+  "summary": [
+    "For the ideal positive-stiffness spring model, omega=sqrt(k/m), T=2*pi/omega and f=omega/(2*pi). State the linear, undamped, unforced assumptions.",
+    "Use both initial conditions: A²=x0²+(v0/omega)² and phase=atan2(-v0/omega,x0), with a stated principal interval and a separate zero-amplitude case.",
+    "Differentiate with the complete radian phase. The sign of velocity identifies motion; the pair of velocity and acceleration signs identifies speed change away from a reversal.",
+    "Enumerate both event branches, apply direction and time-window restrictions, and count coincident turning-point roots only once. A position return need not be a complete-state return.",
+    "The phase-plane identity checks admissible states. Discrete recorded positions can have aliases and do not by themselves identify a unique continuous trajectory.",
+    "Check units, both initial conditions, the force law, limiting states and event interpretation. Save evidence and corrected reasoning, not just a plotted curve."
+  ],
+  "retrieval":"Without notes, derive x(t) directly from x0 and v0, then recover its amplitude and phase. Explain why the same position can have two velocities, why a turning point is not an equilibrium state, and how one recorded position per period can conceal motion. Rework a directed event problem with the opposite endpoint convention.",
+  "readings": [
+    {"title":"OpenStax University Physics, 15.1: Simple Harmonic Motion","url":"https://openstax.org/books/university-physics-volume-1/pages/15-1-simple-harmonic-motion","purpose":"Free primary textbook treatment of the linear oscillator, period and sinusoidal state. Compare its notation with the initial-condition checks in this lesson."},
+    {"title":"OpenStax University Physics, 15.3: Comparing Simple Harmonic Motion and Circular Motion","url":"https://openstax.org/books/university-physics-volume-1/pages/15-3-comparing-simple-harmonic-motion-and-circular-motion","purpose":"Use the circular projection to connect phase, displacement and velocity without confusing the projected oscillator with physical circular motion."},
+    {"title":"MIT OpenCourseWare 8.03SC, Lecture 1: Periodic Oscillations, Harmonic Oscillators","url":"https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-1/","purpose":"Free introductory oscillation lecture and materials. Compare its physical models with this lesson's initial-state, phase and event checks; its assessments are independent of this platform."}
+  ]
+}

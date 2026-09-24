@@ -1,0 +1,252 @@
+{
+  "courseId": "phs-232",
+  "title": "Calculus-based Physics 2",
+  "version": 1,
+  "status": "building",
+  "introduction": "Study oscillations, waves, fields, circuits and electromagnetic radiation through models, calculations and checked evidence. The first of 31 planned lessons is available: harmonic motion, phase and initial conditions. The remaining lessons, module and cumulative assessments, and sustained simulation project are under construction. This proposed self-study sequence preserves the academic physics and calculus prerequisites; it is not an NU course or credit award.",
+  "bridges": [],
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Oscillation, damping and driving",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m01-l01",
+          "title": "Harmonic motion, phase and initial conditions",
+          "objective": "Reconstruct and check a harmonic trajectory from physical parameters or initial conditions, including phase, direction and admissible event times."
+        },
+        {
+          "id": "m01-l02",
+          "title": "Energy, physical oscillators and stable equilibrium",
+          "objective": "Derive a local oscillation model from force, torque or potential energy and assess its frequency and small-amplitude limits."
+        },
+        {
+          "id": "m01-l03",
+          "title": "Free decay and damping regimes",
+          "objective": "Classify and solve a damped oscillator's initial-value response and distinguish amplitude, energy and settling measures."
+        },
+        {
+          "id": "m01-l04",
+          "title": "Driven response, resonance and power transfer",
+          "objective": "Predict a driven oscillator's steady amplitude, phase and average power while separating transient behavior and distinct resonance criteria."
+        }
+      ]
+    },
+    {
+      "id": "m02",
+      "title": "Traveling waves, superposition and sound",
+      "requires": [
+        "m01"
+      ],
+      "lessons": [
+        {
+          "id": "m02-l01",
+          "title": "Wave functions and transport of energy",
+          "objective": "Interpret a traveling wave's direction, local motion and energy transport using its derivatives and medium parameters."
+        },
+        {
+          "id": "m02-l02",
+          "title": "Superposition, reflection and normal modes",
+          "objective": "Construct superposed waves that satisfy boundary conditions and identify their nodes, allowed modes and energy behavior."
+        },
+        {
+          "id": "m02-l03",
+          "title": "Sound, intensity and moving sources",
+          "objective": "Relate pressure waves and sound measurements to intensity, interference and relative source-observer motion within a stated medium."
+        }
+      ]
+    },
+    {
+      "id": "m03",
+      "title": "Electric sources, flux and conductors",
+      "requires": [],
+      "lessons": [
+        {
+          "id": "m03-l01",
+          "title": "Charge, force and the electric field",
+          "objective": "Calculate signed vector electric forces and fields from discrete sources and distinguish source properties from the response of a test charge."
+        },
+        {
+          "id": "m03-l02",
+          "title": "Fields of continuous charge distributions",
+          "objective": "Set up and evaluate electric-field integrals with correct density, geometry, vector direction and admissible observation points."
+        },
+        {
+          "id": "m03-l03",
+          "title": "Electric flux and the proper use of Gauss's law",
+          "objective": "Calculate oriented flux and use Gauss's law to determine a field only when the source symmetry supports the required reduction."
+        },
+        {
+          "id": "m03-l04",
+          "title": "Conductors, cavities and electrostatic boundaries",
+          "objective": "Determine charge allocation and field constraints in electrostatic conductors while distinguishing metal, cavities and surrounding space."
+        }
+      ]
+    },
+    {
+      "id": "m04",
+      "title": "Potential, capacitance and electric energy",
+      "requires": [
+        "m03"
+      ],
+      "lessons": [
+        {
+          "id": "m04-l01",
+          "title": "Potential, work and field reconstruction",
+          "objective": "Connect electrostatic field and potential through line integrals and gradients, retaining reference choices and source-domain restrictions."
+        },
+        {
+          "id": "m04-l02",
+          "title": "Capacitance, networks and stored energy",
+          "objective": "Determine capacitance, charge, voltage and energy for specified geometries and connected capacitors, with topology and source conditions explicit."
+        },
+        {
+          "id": "m04-l03",
+          "title": "Dielectrics and electromechanical energy accounting",
+          "objective": "Predict a capacitor's response to dielectric or geometry changes by distinguishing fixed charge, fixed voltage and the work of external sources."
+        }
+      ]
+    },
+    {
+      "id": "m05",
+      "title": "Current, DC networks and switching",
+      "requires": [
+        "m04"
+      ],
+      "lessons": [
+        {
+          "id": "m05-l01",
+          "title": "Current density, resistance and material response",
+          "objective": "Relate charge transport to current, local fields, resistance and heating while identifying the limits of an ohmic material model."
+        },
+        {
+          "id": "m05-l02",
+          "title": "DC circuit constraints and instrument loading",
+          "objective": "Solve a DC network with signed current and voltage references, verify power balance, and predict how a real meter changes the circuit."
+        },
+        {
+          "id": "m05-l03",
+          "title": "RC switching, initial conditions and time scales",
+          "objective": "Derive and check a first-order circuit transient with a specified pre-switch state, final value and admissible switching model."
+        }
+      ]
+    },
+    {
+      "id": "m06",
+      "title": "Magnetic forces and their sources",
+      "requires": [
+        "m02",
+        "m05"
+      ],
+      "lessons": [
+        {
+          "id": "m06-l01",
+          "title": "Lorentz force and charged-particle motion",
+          "objective": "Predict charged-particle force and trajectory in specified uniform fields with consistent vector signs and energy reasoning."
+        },
+        {
+          "id": "m06-l02",
+          "title": "Currents, magnetic dipoles and material models",
+          "objective": "Calculate force, torque and energy for current-carrying conductors and magnetic dipoles while identifying the assumptions of simple material models."
+        },
+        {
+          "id": "m06-l03",
+          "title": "Biot-Savart, Ampere's law and magnetic geometry",
+          "objective": "Compute magnetostatic fields from currents and justify when a circulation law can determine their spatial dependence."
+        }
+      ]
+    },
+    {
+      "id": "m07",
+      "title": "Induction, inductance and power transfer",
+      "requires": [
+        "m06"
+      ],
+      "lessons": [
+        {
+          "id": "m07-l01",
+          "title": "Changing flux and induced electric fields",
+          "objective": "Calculate signed induced emf for a specified circuit and distinguish transformer induction, motional emf and electrostatic potential difference."
+        },
+        {
+          "id": "m07-l02",
+          "title": "Inductance, coupled coils and RL transients",
+          "objective": "Relate current to flux linkage, stored magnetic energy and inductive voltage, including mutual coupling and initial-value circuit behavior."
+        },
+        {
+          "id": "m07-l03",
+          "title": "Generators, transformers and transmission losses",
+          "objective": "Build a power account for idealized generators and transformers and evaluate the assumptions behind voltage conversion and reduced line losses."
+        }
+      ]
+    },
+    {
+      "id": "m08",
+      "title": "Alternating circuits and resonance",
+      "requires": [
+        "m07"
+      ],
+      "lessons": [
+        {
+          "id": "m08-l01",
+          "title": "Sinusoids, phasors and impedance",
+          "objective": "Translate between time-domain sinusoids and complex phasors to solve a linear sinusoidal circuit with consistent amplitude and phase conventions."
+        },
+        {
+          "id": "m08-l02",
+          "title": "Electrical oscillation and resonance evidence",
+          "objective": "Relate free LC/RLC transients to driven resonance and interpret the measured response, damping and bandwidth for a specified output."
+        },
+        {
+          "id": "m08-l03",
+          "title": "Average power, RMS and power factor",
+          "objective": "Compute real energy transfer and distinguish it from reactive exchange and apparent power under stated waveform and reference conditions."
+        }
+      ]
+    },
+    {
+      "id": "m09",
+      "title": "Maxwell's synthesis and electromagnetic waves",
+      "requires": [
+        "m08"
+      ],
+      "lessons": [
+        {
+          "id": "m09-l01",
+          "title": "Maxwell's equations and charge continuity",
+          "objective": "Use integral field laws to check charge continuity and displacement current, and interpret their local differential forms with stated material assumptions."
+        },
+        {
+          "id": "m09-l02",
+          "title": "Electromagnetic wave solutions and polarization",
+          "objective": "Construct a plane electromagnetic wave consistent with Maxwell's equations and interpret its direction, polarization and medium-dependent speed."
+        },
+        {
+          "id": "m09-l03",
+          "title": "Field energy, intensity and radiation pressure",
+          "objective": "Account for energy and momentum carried by electromagnetic waves and distinguish local fields, average intensity and material interaction models."
+        }
+      ]
+    },
+    {
+      "id": "m10",
+      "title": "Numerical evidence and a sustained investigation",
+      "requires": [
+        "m09"
+      ],
+      "lessons": [
+        {
+          "id": "m10-l01",
+          "title": "Numerical field and circuit checks",
+          "objective": "Evaluate a numerical physical prediction using independent representations, refinement and explicit numerical-versus-measurement uncertainty."
+        },
+        {
+          "id": "m10-l02",
+          "title": "Investigate a resonant circuit model",
+          "objective": "Design, analyze and report a reproducible simulation investigation that distinguishes competing resonant-circuit models using calibrated observations and independent energy checks."
+        }
+      ]
+    }
+  ]
+}
