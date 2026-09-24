@@ -1,0 +1,270 @@
+{
+  "courseId": "phs-231",
+  "lessonId": "m06-l02",
+  "checkedAt": "2026-09-24",
+  "status": "proposed teaching and verification plan; not a delivered lesson",
+  "title": "Collisions and explosions in multiple dimensions",
+  "objective": "Apply vector momentum conservation to collisions or separation events and audit kinetic energy before selecting an elastic model.",
+  "alignment": "Develops the collision and momentum portion of the researched official PHS 231 scope. Restitution, selected teaching sequence, original examples, simulations, and assessment defaults are proposed platform choices, not an official NU syllabus, lab equipment list, or grading policy.",
+  "prerequisites": [
+    {
+      "lessonId": "m06-l01",
+      "purpose": "External impulse, system boundaries, CM motion, reduced mass, and kinetic-energy decomposition"
+    },
+    {
+      "lessonId": "m05-l02",
+      "purpose": "Internal energy conversion and mechanical energy between interactions"
+    },
+    {
+      "lessonId": "m01-l02",
+      "purpose": "Signed Cartesian components, dot products, vector norms, and normal/tangent projections"
+    },
+    {
+      "lessonId": "m02-l02",
+      "purpose": "Galilean frame transformations"
+    },
+    {
+      "courseId": "mth-215",
+      "lessonId": "m01-l01",
+      "purpose": "Optional equation-solving refresher"
+    }
+  ],
+  "coverage": [
+    {
+      "topic": "Define the event and conserve the right momentum",
+      "teaching": "Choose a closed set of constituents and endpoints immediately before/after the short interaction. Require negligible or specified external impulse componentwise. Distinguish system closure from isolation. A wall can supply impulse; an isolated pair and a body alone need different equations.",
+      "critical": [
+        "Closed alone does not imply zero external impulse.",
+        "Momentum and kinetic energy need separate audits."
+      ]
+    },
+    {
+      "topic": "Sticking and minimum translational kinetic energy",
+      "teaching": "Derive common velocity P/M in 1D, 2D, and 3D and loss μ|uA−uB|²/2. A nonzero CM velocity leaves residual translational energy. The translational point-body model assumes spin is absent or separately accounted; a rotating extended composite need not have zero relative kinetic energy.",
+      "critical": [
+        "Use vectors, not speed sums.",
+        "Perfectly inelastic translation does not imply all initial K disappears."
+      ]
+    },
+    {
+      "topic": "Elastic equations and physical branches",
+      "teaching": "Factor momentum and energy equations to obtain reversal of relative velocity for the nontrivial collisional branch. Derive both signed 1D velocities. Check equal masses, heavy target, comoving inputs, and unchanged-through-going algebraic roots. Geometry and approach are needed to select an actual impact.",
+      "critical": [
+        "An approaching impenetrable contact cannot keep the same closing velocities afterward.",
+        "Conservation equations alone do not establish contact occurred."
+      ]
+    },
+    {
+      "topic": "Restitution and energy loss",
+      "teaching": "Define passive normal restitution e=normal separation speed/positive normal approach speed, 0≤e≤1. Derive j=(1+e)μg and energy loss μ(1−e²)g²/2 for smooth fixed-normal impact. State e is an empirical event/model parameter; superelastic release lies outside the passive range and needs an internal energy account.",
+      "critical": [
+        "Restitution is a relative normal-velocity ratio, not a ratio of arbitrary lab speeds.",
+        "Do not divide by zero approach speed or apply an attractive impulse to separating bodies."
+      ]
+    },
+    {
+      "topic": "Oblique smooth contact versus full sticking",
+      "teaching": "Resolve both velocities in common normal/tangent axes. Only the normal components receive the smooth contact impulse; each tangential component stays unchanged. An e=0 oblique smooth impact equalizes normal speeds but can retain tangential relative motion. Full sticking needs additional tangential impulse and a separate model.",
+      "critical": [
+        "Do not equate e=0 with full vector sticking in every geometry.",
+        "Unknown impact geometry leaves generic multidimensional elastic outcomes underdetermined."
+      ]
+    },
+    {
+      "topic": "Multidimensional momentum and scattering",
+      "teaching": "Solve missing fragment or outgoing velocity components, then audit K. Derive perpendicular outgoing nonzero velocities for an equal-mass elastic event with one initially at rest. State degeneracy when one outgoing velocity is zero and the assumption limits of this special theorem.",
+      "critical": [
+        "Perpendicular scattering is not universal for unequal masses or inelastic events.",
+        "Direction constraints supplement conservation equations."
+      ]
+    },
+    {
+      "topic": "Separation events and energy sources",
+      "teaching": "Use total momentum to recover one fragment velocity from the others for moving and stationary parents. Calculate ΔK and source-store change. Use a gentle modeled spring release as an example; no physical explosive or launcher experiment is assigned.",
+      "critical": [
+        "Kinetic energy can increase with conserved momentum by internal conversion.",
+        "Opposite momenta are not equal speeds when masses differ."
+      ]
+    },
+    {
+      "topic": "Two-stage motion and measured restitution",
+      "teaching": "Separate a short sticking capture from a later ideal swing or frictional stop. Use momentum during the specified short interval and mechanical energy or work during the later interval. Derive rebound e=√(h_after/h_before) only under same-height contact, still massive surface, uniform gravity, and negligible air/swing losses; discuss uncertainty and why height ratio is e².",
+      "critical": [
+        "Do not conserve kinetic energy through the capture.",
+        "Do not conserve particle momentum through an externally forced swing or stop."
+      ]
+    },
+    {
+      "topic": "Independent checks and model adequacy",
+      "teaching": "Check summed impulses, P in each axis, nonnegative loss for passive events, preserved CM velocity, reversed/scaled normal relative speed, unchanged smooth tangential components, and frame-invariant K loss when total P is conserved. Compare momentum/energy residuals with stated measurement bounds before classifying noisy data as exactly elastic.",
+      "critical": [
+        "Approximate data do not justify an exact material coefficient or certainty about classification.",
+        "The simulation is an instantaneous before/after model and provides no contact duration, peak force, deformation history, or experiment safety certification."
+      ]
+    }
+  ],
+  "workedFixtures": [
+    {
+      "id": "stick-2d",
+      "input": "mA=2,mB=3 kg; uA=(4,0),uB=(0,2) m/s; translation-only sticking; zero external impulse",
+      "expected": "P=(8,6), V=(8/5,6/5), speed=2; Ki=22,Kf=10,loss=12 J; impulses A=(-24/5,12/5), B=(24/5,-12/5) N s."
+    },
+    {
+      "id": "elastic-1d",
+      "input": "mA=2,mB=3 kg; uA=4,uB=-1 m/s; approaching along +x; e=1",
+      "expected": "P=5,Vcm=1; vA=-2,vB=3; Ki=Kf=35/2 J; impulses -12,+12 N s."
+    },
+    {
+      "id": "partial",
+      "input": "Same 1D masses and velocities; e=1/2",
+      "expected": "vA=-1/2,vB=2; Kf=25/4,loss=45/4 J; impulse magnitude9 N s; separation speed5/2."
+    },
+    {
+      "id": "oblique-normal",
+      "input": "mA=2,mB=3; uA=(4,1),uB=(-1,-1); n=(1,0); e=1/2",
+      "expected": "vA=(-1/2,1),vB=(2,-1); P=(5,-1); Ki20,Kf35/4,loss45/4; J_A=(-9,0),J_B=(9,0)."
+    },
+    {
+      "id": "smooth-zero-versus-stick",
+      "input": "Same oblique initial data with e=0 versus full sticking",
+      "expected": "Smooth e0: vA=(1,1),vB=(1,-1),Kf5,loss15. Sticking: V=(1,-1/5),Kf13/5,loss87/5. Extra tangential impulse on A=-12/5 N s; e0 normal equality alone leaves tangential motion."
+    },
+    {
+      "id": "rotated-normal",
+      "input": "Same oblique data, n=(3/5,4/5), e=1/2",
+      "expected": "g=23/5,j=207/25; vA=(379/250,-289/125),vB=(82/125,151/125); loss4761/500,Kf5239/500 J. Relative tangential speed remains -14/5."
+    },
+    {
+      "id": "equal-mass-scatter",
+      "input": "Equal2kg masses; uA=(5,0),uB=(0,0); measured vA=(9/5,12/5)",
+      "expected": "vB=(16/5,-12/5); speeds3 and4 m/s; outgoing dot0; totalK25J initially and finally. Directions orthogonal only because both outgoing velocities are nonzero and hypotheses hold."
+    },
+    {
+      "id": "three-fragments",
+      "input": "Parent6kg with U=(1,-1,2) m/s separates into masses1,2,3kg; v1=(4,0,2),v2=(-2,1,1)",
+      "expected": "v3=(2,-8/3,8/3); P=(6,-6,12); Ki18,Kf130/3,ΔK76/3 J supplied by an internal store if no other energy transfer."
+    },
+    {
+      "id": "capture-swing",
+      "input": "Small modeled payload m=1kg captured by resting4kg translating pendulum bob at its lowest point; later rise h=1/5m; g10; short horizontal capture impulse external negligible; subsequent lossless swing; no launch procedure",
+      "expected": "Immediately after V=2m/s; incomingu=10m/s; initialK50,capture-finalK10,converted40J; later gravity gain10J. Use different equations for the two intervals."
+    },
+    {
+      "id": "rebound-height",
+      "input": "Body drops from h=4/5m and rebounds to1/5m over the same fixed surface under g10, negligible air losses",
+      "expected": "Speeds4 and2m/s; normal e1/2; retained vertical kinetic fraction1/4, not1/2; uncertainty endpoints require monotonic square-root ratio."
+    }
+  ],
+  "families": [
+    {
+      "id": "phs231-collision-momentum",
+      "variants": [
+        "stick-3d",
+        "elastic",
+        "restitution",
+        "oblique",
+        "scatter",
+        "fragments",
+        "external",
+        "approach"
+      ],
+      "coverage": "Whole-vector balances, physical branch selection, specified contact geometry, missing information, and external-impulse residuals."
+    },
+    {
+      "id": "phs231-collision-energy",
+      "variants": [
+        "loss",
+        "smooth-zero",
+        "frame",
+        "pendulum",
+        "rebound",
+        "audit"
+      ],
+      "coverage": "Relative energy, e0 versus sticking, frame invariance, sequential conservation laws, height inference with bounds, and classification from independent momentum/energy residuals."
+    }
+  ],
+  "guided": {
+    "fixture": "Oblique initial data above with horizontal normal and e=1/2.",
+    "fields": [
+      "vAx",
+      "vAy",
+      "vBx",
+      "vBy",
+      "loss",
+      "interpretation"
+    ],
+    "misconceptions": [
+      "Apply restitution to both vector components.",
+      "Conserve total K despite e<1.",
+      "Treat individual momentum as conserved.",
+      "Infer contact peak from impulse alone."
+    ]
+  },
+  "investigation": {
+    "kind": "phs231-collision",
+    "model": "Two positive finite masses at a specified planar contact; initial 2D velocities; normal selected from (1,0),(0,1),(3/5,4/5),(-3/5,4/5), oriented from A to B. Smooth normal impulse with passive e, or separately labeled translation-only sticking. Only approaching normal contact triggers an impulsive update. Zero or negative closing speed yields no-impact with unchanged inputs; future contact geometry is not predicted.",
+    "inputs": "mA,mB 0.1–20 kg; each initial velocity component -20–20 m/s; e 0–1; prescribed normal; smooth/stick model. Default 2kg,3kg,(4,1),(-1,-1),horizontal,e=.5.",
+    "outputs": "Individual before/after velocities, momenta, impulses, kinetic energies; system P and CM velocity; normal approach and separation speeds; kinetic loss and conservation residuals; e comparison table and separate sticking row. Before/after velocity diagrams with keyboard CM-frame toggle and complete equivalent tables.",
+    "predictions": "Both final velocity vectors, kinetic-energy loss, and whether the stated contact is approaching. Use exact expressions or documented decimal tolerance.",
+    "limitations": "No physical experiment, collision-time model, peak force, spin, contact friction coefficient, or deformation law. Exploratory controls reset; save reasoning in persistent lesson notes."
+  },
+  "verification": {
+    "seedMinimumPerVariant": 50,
+    "independentChecks": [
+      "Solve the two 1D linear momentum/restitution equations directly, independently of impulse implementation.",
+      "Recover each normal outcome in CM coordinates, retain tangential velocities, rotate back, and compare.",
+      "Verify momenta and individual impulse pairs for each Cartesian component.",
+      "Compute K from all individual speeds rather than substituting the loss formula.",
+      "Reconstruct 3D fragment momentum and energy.",
+      "Use quadrature of gravity or friction after capture as a second-stage energy check.",
+      "Check exact-equivalent rational/radical answers, all units, wrong branches, incomplete components, and invalid input.",
+      "Round-trip actual generated question snapshots and answers through backup export/reset/restore."
+    ],
+    "edges": [
+      "e0,e1,intermediate e",
+      "equal and unequal masses",
+      "oppositely signed and comoving velocities",
+      "zero and separating normal approach",
+      "zero tangential relative motion versus nonzero tangential slip",
+      "rotated and negative normal components",
+      "moving inertial frames",
+      "zero and nonzero total momentum",
+      "zero energy loss and equal-mass outgoing-zero degeneracy",
+      "known nonzero external impulse",
+      "positive lower rebound-height bounds and near-zero endpoint",
+      "negative/zero/missing mass and out-of-domain restitution rejection"
+    ],
+    "browser": "Desktop/mobile and keyboard investigation, alternative models and no-impact gate, accessible velocity diagrams with equivalent tables, invalid inputs, reload, checkpoint and notes backup restoration.",
+    "review": "Independent subject review and pilot validation have not occurred. No lesson is delivered until teaching, practice, accessible interaction, and checks are complete."
+  },
+  "resources": [
+    {
+      "provider": "OpenStax",
+      "title": "Types of Collisions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider material accessed. Use as optional further reading, with original explanations, fixtures, and questions. Retain explicit zero-external-impulse and passive-impact assumptions rather than extending abbreviated source statements beyond their domain."
+    },
+    {
+      "provider": "OpenStax",
+      "title": "Collisions in Multiple Dimensions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-5-collisions-in-multiple-dimensions",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider material accessed. Use as optional further reading, with original explanations, fixtures, and questions. Retain explicit zero-external-impulse and passive-impact assumptions rather than extending abbreviated source statements beyond their domain."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "16.07 Dynamics, Lecture 9: Linear Impulse and Momentum; Collisions",
+      "url": "https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/a867999737497c79fd8ffe97641c503f_MIT16_07F09_Lec09.pdf",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider material accessed. Use as optional further reading, with original explanations, fixtures, and questions. Retain explicit zero-external-impulse and passive-impact assumptions rather than extending abbreviated source statements beyond their domain."
+    },
+    {
+      "provider": "MIT OpenCourseWare",
+      "title": "2.003J Dynamics and Control I: Lecture 6",
+      "url": "https://ocw.mit.edu/courses/2-003j-dynamics-and-control-i-spring-2007/resources/lec06/",
+      "checkedAt": "2026-09-24",
+      "verification": "Free primary-provider material accessed. Use as optional further reading, with original explanations, fixtures, and questions. Retain explicit zero-external-impulse and passive-impact assumptions rather than extending abbreviated source statements beyond their domain."
+    }
+  ]
+}
