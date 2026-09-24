@@ -12,13 +12,13 @@ const baseline:EnergyInput={mass:2,initialSpeed:4,gravity:10,riseRatio:.6,fricti
 const presets:[string,Partial<EnergyInput>][]=[["Default ramp",{}],["First stop",{distance:1}],["Beyond the stop",{distance:2}],["No friction",{friction:0}],["Shift reference",{reference:-50}],["No spring",{stiffness:0}],["Free guide",{stiffness:0,friction:0,riseRatio:0,distance:2}]];
 
 function EnergyPlot({result}:{result:Result}){
-  const id=useId(),{state}=result,curves=[["kinetic","Kinetic","#145f84"],["potential","Potential","#933d20"],["thermal","Thermal rise","#356b33"],["total","Modeled total","#243b38"]] as const;
+  const id=useId(),{state}=result,curves=[["kinetic","#145f84"],["potential","#933d20"],["thermal","#356b33"],["total","#243b38"]] as const;
   const values=state.rows.flatMap(row=>curves.map(([key])=>row[key])),min=Math.min(0,...values),max=Math.max(0,...values),span=Math.max(1,max-min),low=min-.1*span,high=max+.1*span;
   const x=(s:number)=>70+345*s/state.end.position,y=(value:number)=>235-180*(value-low)/(high-low);
   return <figure><svg viewBox="0 0 440 285" role="img" aria-labelledby={id}><title id={id}>{`Energies along the reached uphill path from zero to ${display(state.end.position)} m. Blue kinetic, brown potential, green thermal rise, and dashed total energy. Potential and total include the chosen reference. All values are available in the energy tables.`}</title>
     <text x="70" y="26" fontSize="16" fill="#243b38">Energy (J)</text>
     <line x1="70" x2="415" y1={y(0)} y2={y(0)} stroke="#879b94"/><line x1="70" x2="70" y1="55" y2="235" stroke="#879b94"/>
-    {curves.map(([key,label,color])=><polyline key={key} aria-label={label} points={state.rows.map(row=>`${x(row.position)},${y(row[key])}`).join(" ")} fill="none" stroke={color} strokeWidth="2.5" strokeDasharray={key==="total"?"6 4":undefined}/>)}
+    {curves.map(([key,color])=><polyline key={key} points={state.rows.map(row=>`${x(row.position)},${y(row[key])}`).join(" ")} fill="none" stroke={color} strokeWidth="2.5" strokeDasharray={key==="total"?"6 4":undefined}/>)}
     <text x="62" y={y(max)+5} textAnchor="end" fontSize="15" fill="#243b38">{Number(max.toPrecision(3))}</text><text x="62" y={y(min)+5} textAnchor="end" fontSize="15" fill="#243b38">{Number(min.toPrecision(3))}</text>
     <text x="70" y="258" fontSize="16" fill="#243b38">0</text><text x="415" y="258" textAnchor="end" fontSize="16" fill="#243b38">{display(state.end.position)}</text>
     <text x="235" y="279" textAnchor="middle" fontSize="16" fill="#243b38">Reached uphill position s (m)</text>
@@ -65,4 +65,3 @@ export function Phs231EnergyLab({activity}:{activity:EnergyActivity}){
     </div>}
   </div>;
 }
-
