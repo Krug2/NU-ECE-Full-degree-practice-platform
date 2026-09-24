@@ -87,6 +87,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("refresher-trig-lab"),mode:z.enum(["circle","wave","equations"]),prompt:text}).strict(),
     z.object({kind:z.literal("calibration-lab"),prompt:text,cases:z.array(calibrationCaseSchema).min(3).max(6)}).strict(),
     z.object({ kind: z.literal("equation-balance"), prompt: text, coefficient: rational, constant: rational, right: rational }).strict(),
     z.object({ kind:z.literal("interval-builder"),prompt:text,center:z.number().int().min(-10).max(10),radius:z.number().int().min(-3).max(8),relation:z.enum(["lt","le","gt","ge"]) }).strict(),
