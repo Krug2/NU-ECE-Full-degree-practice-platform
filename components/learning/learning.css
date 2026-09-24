@@ -72,3 +72,8 @@
 
 .learning-code-block { display:block; max-width:100%; overflow-x:auto; white-space:pre; background:#f2f5f3; color:#183d35; border:1px solid var(--line); border-radius:8px; padding:14px; margin:12px 0; font-size:14px; line-height:1.65; }
 .learning-code-block code { font-family:Consolas,monospace; }
+.log-rewrite-lab .activity-controls { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.log-rewrite-lab code { white-space:normal;overflow-wrap:anywhere; }
+.log-rewrite-lab .calibration-table-wrap { margin:16px 0; }
+.log-rewrite-lab .coefficient-table { width:100%;min-width:26rem; }
+@media(max-width:620px){.log-rewrite-lab .activity-controls{grid-template-columns:1fr}}
