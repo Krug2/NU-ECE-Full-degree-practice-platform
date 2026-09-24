@@ -1,0 +1,303 @@
+{
+  "id": "m01-l03",
+  "courseId": "f10",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Functions, contracts, and shared data",
+  "objective": "Trace parameters, local variables and return values, distinguish printing from returning, and predict list aliasing versus a shallow copy under an explicit function contract.",
+  "why": "Functions turn a sequence of steps into a reusable operation. Clear inputs, outputs and mutation rules let a caller use that operation without guessing what happens to its own variables or data.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l02",
+      "label": "Loops and indexed collections"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "A `def` statement creates a function; a call executes its body with parameter bindings for that call. `return value` ends the current call and supplies a result. Reaching the end without return supplies `None`.",
+        "A local assignment rebinds a local name. Mutating an object can still affect the caller when both names refer to it. `work = items` aliases the same list; `work = items[:]` creates a shallow copy. State the contract before using a function."
+      ]
+    },
+    {
+      "heading": "Separate the definition from each call",
+      "paragraphs": [
+        "The function definition names its parameters and groups its body by indentation. The body does not run merely because the definition is encountered. In `scale(3,2)`, the caller evaluates the arguments, then the new call binds them to the parameters in order.",
+        "Each call has its own local bindings. A later call can use different arguments without retaining ordinary local variables from an earlier call. These examples avoid globals, closures, default mutable arguments and recursion so that the basic call model remains explicit."
+      ]
+    },
+    {
+      "heading": "Returning is different from producing output",
+      "paragraphs": [
+        "A return transfers a value to the caller and ends that call immediately. Statements later in the same call do not execute. To return a full accumulated result, place return after the loop rather than inside its first iteration.",
+        "`print()` writes visible output but does not return the printed number. Its own return value is None, and a function that only prints also returns None when it reaches its end. A caller needing a computed value should receive it through return, even if separate output is also useful."
+      ]
+    },
+    {
+      "heading": "Local rebinding and shared objects",
+      "paragraphs": [
+        "When a numeric argument is bound to a parameter, assigning a new number to that parameter changes the local binding. It does not replace the caller's binding. Tracking caller and callee columns separately helps distinguish their same-spelled names.",
+        "A list is mutable. The parameter can name the same list object as the caller, so `items[0] = ...` changes an element visible through both names. This is different from `items = [...]`, which makes the local name refer to a new list. Think about which object changes, not just which variable name appears on the left."
+      ]
+    },
+    {
+      "heading": "Copy only when the contract calls for independence",
+      "paragraphs": [
+        "For a flat list of numbers, `items[:]` creates a new list with the same element values. Replacing an element in that new list leaves the original list's element unchanged. Plain assignment does not create that copy.",
+        "The copy is shallow: nested mutable objects would still be shared. This refresher limits copy exercises to flat numeric lists. In later courses, specify whether a function mutates its input, returns new data, or does both, and check the language's parameter and collection rules."
+      ]
+    },
+    {
+      "heading": "Contracts make empty and invalid cases visible",
+      "paragraphs": [
+        "A contract names the accepted inputs, the promised result, and permitted side effects. A sum function can reasonably accept an empty list and return zero. A mean function based on sum divided by length needs a nonempty input or a separately defined empty-input policy.",
+        "A precondition is something the caller must satisfy; a postcondition describes what the function guarantees when used correctly. A pure function computes its result without changing outside state. A mutating function can also be useful, but its side effect should be explicit. Tests should check both the return value and any data the function may change."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Call a reusable function",
+      "prompt": "```python\ndef scale(value, factor):\n    return value * factor\nfirst = scale(3, 2)\nsecond = scale(-1, 2)\n```",
+      "steps": [
+        {
+          "math": "\\text{first}=3\\cdot2=6",
+          "reason": "The first call binds value to 3 and factor to 2."
+        },
+        {
+          "math": "\\text{second}=(-1)\\cdot2=-2",
+          "reason": "The next call has its own argument values."
+        }
+      ],
+      "conclusion": "The definition is reused, but each call is a separate execution."
+    },
+    {
+      "title": "Keep caller and local names separate",
+      "prompt": "```python\ndef adjust(x):\n    x = x + 4\n    return x * 2\nx = 3\nresult = adjust(x)\n```",
+      "steps": [
+        {
+          "math": "\\text{local }x:3\\to7,\\quad\\text{return}=14",
+          "reason": "The parameter is rebound inside the call."
+        },
+        {
+          "math": "\\text{caller }x=3,\\quad\\text{result}=14",
+          "reason": "The return result does not rebind the caller's x."
+        }
+      ],
+      "conclusion": "Local numeric rebinding is not an update to the caller's variable."
+    },
+    {
+      "title": "Exit at an early return",
+      "prompt": "```python\ndef classify(value):\n    if value < 0:\n        return -1\n    return value + 2\nresult = classify(-3)\n```",
+      "steps": [
+        {
+          "math": "-3<0\\ \\text{is True}",
+          "reason": "The branch condition selects the first return."
+        },
+        {
+          "math": "\\text{result}=-1",
+          "reason": "The later return is never reached in this call."
+        }
+      ],
+      "conclusion": "A return ends the whole call, not only its current if block."
+    },
+    {
+      "title": "Distinguish print and return",
+      "prompt": "```python\ndef show(value):\n    print(value * 2)\nresult = show(4)\n```",
+      "steps": [
+        {
+          "math": "\\text{printed output}=8",
+          "reason": "print writes the calculated number."
+        },
+        {
+          "math": "\\text{result}=\\text{None}",
+          "reason": "The function has no return statement that supplies a number."
+        }
+      ],
+      "conclusion": "Seeing 8 on screen does not mean result contains 8."
+    },
+    {
+      "title": "A sum has a natural empty result",
+      "prompt": "```python\ndef total(items):\n    result = 0\n    for value in items:\n        result = result + value\n    return result\nanswer = total([])\n```",
+      "steps": [
+        {
+          "math": "\\text{iterations}=0,\\quad\\text{result}=0",
+          "reason": "The empty list skips the loop."
+        },
+        {
+          "math": "\\text{answer}=0",
+          "reason": "The return after traversal still executes."
+        }
+      ],
+      "conclusion": "The empty-sum identity gives a useful total-function contract."
+    },
+    {
+      "title": "A mean needs a nonempty input",
+      "prompt": "```python\ndef mean(items):\n    return sum(items) / len(items)\nanswer = mean([2, 4, 9])\n```",
+      "steps": [
+        {
+          "math": "\\text{sum}=15,\\quad\\text{count}=3",
+          "reason": "The supplied input meets the nonempty precondition."
+        },
+        {
+          "math": "\\text{answer}=15/3=5",
+          "reason": "Divide only after establishing a nonzero count."
+        }
+      ],
+      "conclusion": "mean([]) would attempt 0/0 and raise ZeroDivisionError; it is not automatically zero."
+    },
+    {
+      "title": "Observe an alias mutation",
+      "prompt": "```python\ndef change(items):\n    work = items\n    work[0] = 9\n    return work[0]\noriginal = [2, 5]\nresult = change(original)\n```",
+      "steps": [
+        {
+          "math": "\\text{work, items, original name one list}",
+          "reason": "Assignment copies the reference, not the collection."
+        },
+        {
+          "math": "\\text{original}=[9,5],\\quad\\text{result}=9",
+          "reason": "The element replacement is visible through every alias."
+        }
+      ],
+      "conclusion": "The return and the caller's changed data are separate effects to verify."
+    },
+    {
+      "title": "Isolate replacement with a shallow copy",
+      "prompt": "```python\ndef change(items):\n    work = items[:]\n    work[0] = 9\n    return work[0]\noriginal = [2, 5]\nresult = change(original)\n```",
+      "steps": [
+        {
+          "math": "\\text{work names a new flat list}",
+          "reason": "The slice creates separate element positions."
+        },
+        {
+          "math": "\\text{original}=[2,5],\\quad\\text{result}=9",
+          "reason": "Changing the copy does not replace the original element."
+        }
+      ],
+      "conclusion": "This reasoning relies on the exercise's flat numeric elements; nested mutable objects need further analysis."
+    }
+  ],
+  "guided": {
+    "title": "Finish the trace",
+    "setup": "Track the return and caller state separately.",
+    "before": [
+      "work receives a shallow copy of a flat numeric list.",
+      "The update changes the copy, and return reads that updated copy."
+    ],
+    "question": {
+      "id": "f10-l03-guided",
+      "familyId": "guided-f10-l03",
+      "familyVersion": 1,
+      "courseId": "f10",
+      "objectiveId": "m01-l03",
+      "category": "application",
+      "critical": false,
+      "prompt": "```python\ndef change(items):\n    work = items[:]\n    work[0] = work[0] + 3\n    return work[0]\noriginal = [4, 2]\nresult = change(original)\n```\nGive the return value and caller's first element.",
+      "fields": [
+        {
+          "id": "result",
+          "kind": "rational",
+          "label": "Return value",
+          "expected": "7",
+          "unit": ""
+        },
+        {
+          "id": "caller",
+          "kind": "rational",
+          "label": "original[0] after the call",
+          "expected": "4",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the current state before each statement.",
+        "The update changes the copy, and return reads that updated copy.",
+        "The copy's first element becomes 7 and is returned."
+      ],
+      "explanation": [
+        "The copy's first element becomes 7 and is returned.",
+        "original still contains [4,2], so its first element remains 4."
+      ],
+      "answerSummary": "The copy's first element becomes 7 and is returned. original still contains [4,2], so its first element remains 4."
+    },
+    "after": "Explain each state change before beginning independent practice. Guided feedback is assisted work."
+  },
+  "interaction": {
+    "kind": "refresher-programming-lab",
+    "mode": "function",
+    "prompt": "Choose alias or shallow-copy behavior and an increment. Predict return and caller list values, then step through parameter binding, mutation and return with separate caller/callee state."
+  },
+  "practice": [
+    {
+      "familyId": "f10-function",
+      "variant": "call"
+    },
+    {
+      "familyId": "f10-function",
+      "variant": "local"
+    },
+    {
+      "familyId": "f10-function",
+      "variant": "early"
+    },
+    {
+      "familyId": "f10-function",
+      "variant": "none"
+    },
+    {
+      "familyId": "f10-function",
+      "variant": "contract"
+    },
+    {
+      "familyId": "f10-mutation",
+      "variant": "alias"
+    },
+    {
+      "familyId": "f10-mutation",
+      "variant": "copy"
+    },
+    {
+      "familyId": "f10-mutation",
+      "variant": "rebind"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f10-function",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f10-function",
+      "variant": "none"
+    },
+    {
+      "familyId": "f10-function",
+      "variant": "contract"
+    },
+    {
+      "familyId": "f10-mutation",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "A definition creates a function; a call runs it.",
+    "return supplies the call result and ends the call.",
+    "Printing, rebinding and mutation have different effects.",
+    "State preconditions, output promises and mutation behavior."
+  ],
+  "retrieval": "Write a short function that returns a doubled number without printing. Then compare aliasing, shallow copying and rebinding a list, predicting both the return and original data.",
+  "readings": [
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 4.8: Defining functions, parameters and return",
+      "url": "https://docs.python.org/3.14/tutorial/controlflow.html#defining-functions",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    },
+    {
+      "title": "Python Software Foundation, Python 3.14 Tutorial · 3.1.3: Lists, indexing, copying and mutation",
+      "url": "https://docs.python.org/3.14/tutorial/introduction.html#lists",
+      "purpose": "Free language reference. App explanations and programs are original; attribution and license details are recorded in the F10 resource plan."
+    }
+  ]
+}
