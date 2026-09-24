@@ -18,6 +18,7 @@ import gravityData from "../content/lessons/phs-231/m04-l02.json";
 import workData from "../content/lessons/phs-231/m05-l01.json";
 import energyData from "../content/lessons/phs-231/m05-l02.json";
 import impulseData from "../content/lessons/phs-231/m06-l01.json";
+import collisionData from "../content/lessons/phs-231/m06-l02.json";
 
 it("keeps the complete mechanics plan distinct from actual lesson availability", () => {
   const pack=packSchema.parse(packData);
@@ -26,7 +27,7 @@ it("keeps the complete mechanics plan distinct from actual lesson availability",
   expect(pack.modules.map(m=>m.id)).toEqual(plan.modules.map(m=>m.id));
 });
 
-it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData])("verifies the objective, notation, and deterministic forms for $id",data=>{
+it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData, frictionData, dragData, circularData, gravityData, workData, energyData, impulseData, collisionData])("verifies the objective, notation, and deterministic forms for $id",data=>{
     const pack=packSchema.parse(packData);
     const lesson=lessonSchema.parse(data);
     expect(pack.modules.flatMap(m=>m.lessons).find(l=>l.id===lesson.id)?.objective).toBe(lesson.objective);
@@ -42,6 +43,16 @@ it.each([unitsData, vectorData, motionData, frameData, projectileData, forceData
       expect(new Set(qs.map(q=>q.prompt)).size).toBe(qs.length);
       expect(qs.every(q=>q.courseId===lesson.courseId&&q.objectiveId===lesson.id)).toBe(true);
     }
+});
+
+it("checks the guided oblique collision using momentum and separation equations, then a direct energy sum",()=>{
+  const q=lessonSchema.parse(collisionData).guided.question;
+  const separation=(4+1)/2,ax=(5-3*separation)/5,bx=ax+separation;
+  const loss=20-(ax*ax+1)-3*(bx*bx+1)/2;
+  const response={ax:String(ax),ay:"1",bx:String(bx),by:"-1",loss:String(loss),meaning:"normal"};
+  expect(gradeQuestion(q,response).correct).toBe(true);
+  expect(2*ax+3*bx).toBe(5);expect(2*1+3*(-1)).toBe(-1);
+  for(const wrong of [{ay:"-1/2"},{by:"1/2"},{loss:"0"},{meaning:"both"},{meaning:"elastic"},{meaning:"individual"}])expect(gradeQuestion(q,{...response,...wrong}).correct).toBe(false);
 });
 
 it("checks guided contact impulse from mean acceleration and distinguishes histories with the same area",()=>{

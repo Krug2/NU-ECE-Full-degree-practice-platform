@@ -1,0 +1,595 @@
+{
+  "id": "m06-l02",
+  "courseId": "phs-231",
+  "moduleId": "m06",
+  "version": 1,
+  "title": "Collisions and explosions in multiple dimensions",
+  "objective": "Apply vector momentum conservation to collisions or separation events and audit kinetic energy before selecting an elastic model.",
+  "why": "During a short interaction, forces may be hard to measure while the incoming and outgoing motions are accessible. Momentum gives a reliable system balance, but another physical condition is needed to select the outcome. You will distinguish elastic rebound, partial energy conversion, full sticking, and internal separation; resolve oblique contact; and test whether a proposed answer satisfies both conservation laws and the actual contact geometry.",
+  "estimatedMinutes": 180,
+  "prerequisites": [
+    {
+      "lessonId": "m06-l01",
+      "label": "External impulse, center of mass, and kinetic-energy decomposition"
+    },
+    {
+      "lessonId": "m05-l02",
+      "label": "System energy accounts and motion between interactions"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Vector components, dot products, and normal/tangent projections"
+    },
+    {
+      "lessonId": "m02-l02",
+      "label": "Galilean inertial frames"
+    },
+    {
+      "courseId": "mth-215",
+      "lessonId": "m01-l01",
+      "label": "Optional refresher: solving linear equations"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define a short event before choosing a conservation law",
+      "paragraphs": [
+        "Use an inertial frame and label velocities just before and just after the event. Here uA and uB mean incoming velocities, and vA and vB mean outgoing velocities. Masses are positive and constant, and the same complete set of material is included on both sides. A system is closed when mass does not cross its boundary; that fact alone does not eliminate external forces.",
+        "For the chosen collection, $\\mathbf P_f-\\mathbf P_i=\\mathbf J_{\\mathrm{ext}}$. Momentum is conserved only in directions with zero net external impulse over the chosen interval. Equal and opposite contact impulses between A and B cancel in the pair's total, but they change each body's own momentum. A wall's impulse is external to a ball alone; it cannot be omitted by calling the event a collision.",
+        "A short interval often makes some external impulses small, but state the approximation and estimate its scale. Compare a neglected gravity or friction impulse with relevant momentum transfers or the required measurement accuracy. Comparing only with total initial momentum can fail when large opposite momenta cancel to zero. If a nonzero external impulse is specified, add it explicitly rather than imposing conservation.",
+        "The incoming and outgoing velocities refer to endpoints near the interaction. A later slide, swing, or free fall may have substantial external impulse. Do not combine that later motion into a single momentum-conservation interval without checking its forces. Separating the timeline is often the decisive step in a multi-stage problem.",
+        "The examples use classical translating particles or explicitly simplified bodies. Rotation, deformation details, sound, and thermal energy may require a larger energy account. A before-and-after momentum model does not predict a contact duration or a peak force. The investigations are simulations and supplied-data analyses; no impact apparatus or physical explosive demonstration is required."
+      ]
+    },
+    {
+      "heading": "Classify kinetic energy and understand full sticking",
+      "paragraphs": [
+        "An elastic collision preserves the modeled system's total kinetic energy between the chosen endpoints. An inelastic collision has less of that kinetic energy afterward; energy is converted to other forms rather than destroyed. The bodies may still rebound in an inelastic collision. A separation with greater final kinetic energy requires a corresponding decrease in a store or an accounted external transfer.",
+        "If two translating masses join with one common velocity and net external impulse is zero, $(m_A+m_B)\\mathbf V=m_A\\mathbf u_A+m_B\\mathbf u_B$. Thus $\\mathbf V=\\mathbf P/M$. Solve each Cartesian component before finding the speed. Adding speed magnitudes instead of vectors would lose the direction information.",
+        "The decomposition $K=|\\mathbf P|^2/(2M)+K_{\\mathrm{rel}}$ shows the smallest possible translational K at fixed P and M. Since $K_{\\mathrm{rel}}\\ge0$, its minimum occurs when the constituents have one common velocity. For this full-sticking translational model, $K_i-K_f=\\mu|\\mathbf u_A-\\mathbf u_B|^2/2$, where $\\mu=m_A m_B/M$.",
+        "Perfectly inelastic translation therefore does not generally remove all initial kinetic energy. The CM term remains when total momentum is nonzero. If the incoming velocities already agree, the relative term is zero and joining them need not change translational K. Neither statement requires a negative mass or a lost conservation law.",
+        "An extended composite may retain rotation after its parts stick. Its constituents then have different local velocities, and rotational energy can remain. The common-velocity point-body model excludes that retained rotation; it must not be advertised as the complete energy model for an arbitrary off-center rigid-body impact. Angular momentum and rotation will be developed next."
+      ]
+    },
+    {
+      "heading": "Derive the nontrivial one-dimensional elastic outcome",
+      "paragraphs": [
+        "With zero external impulse, $m_Au_A+m_Bu_B=m_Av_A+m_Bv_B$. Elasticity adds $m_Au_A^2+m_Bu_B^2=m_Av_A^2+m_Bv_B^2$. Factoring differences of squares and using the momentum equation gives $u_A+v_A=u_B+v_B$ for a nonzero momentum exchange. Therefore $v_B-v_A=u_A-u_B$: relative velocity reverses.",
+        "Let $M=m_A+m_B$ and $V_{\\mathrm{cm}}=(m_Au_A+m_Bu_B)/M$. For the collisional branch, $v_A=V_{\\mathrm{cm}}-(m_B/M)(u_A-u_B)$ and $v_B=V_{\\mathrm{cm}}+(m_A/M)(u_A-u_B)$. Expanding gives $v_A=[(m_A-m_B)u_A+2m_Bu_B]/M$ and $v_B=[2m_Au_A+(m_B-m_A)u_B]/M$.",
+        "The quadratic energy equation also admits unchanged incoming velocities. That branch describes no momentum exchange; it is not the outgoing state of an approaching impenetrable contact. If A is left of B and uA>uB, contact is closing. The actual post-impact solution must stop that continued approach, rather than letting the bodies pass through one another.",
+        "For equal masses, the nontrivial one-dimensional elastic result exchanges velocities. If B is initially at rest, A stops and B departs with A's incoming velocity. A zero outgoing velocity has no direction, so do not infer an angle for that vector. For a very heavy initially stationary target, the light body's result approaches reversal, but a finite target still receives momentum and motion.",
+        "Conservation equations do not establish that the trajectories meet. The formulas above assume the stated contact occurs. If the bodies are moving apart, applying a collision update invents an interaction. If they have equal normal velocity at the contact instant, a restitution ratio would divide by zero; a sustained-force or future-geometry problem needs separate analysis."
+      ]
+    },
+    {
+      "heading": "Use restitution as a relative normal-velocity condition",
+      "paragraphs": [
+        "At a one-dimensional contact with the normal from A to B, define positive approach speed $g=u_A-u_B>0$. The normal restitution coefficient is $e=(v_B-v_A)/g$. It compares relative separation and approach speeds. It is not generally $|v_A|/|u_A|$, and changing inertial observers does not change it.",
+        "For passive impact with $0\\le e\\le1$, combine $v_B-v_A=eg$ with momentum to obtain $v_A=V_{\\mathrm{cm}}-(m_B/M)eg$ and $v_B=V_{\\mathrm{cm}}+(m_A/M)eg$. If the normal contact impulse magnitude is j, A receives −j and B receives +j. Substituting into relative velocity gives $j=(1+e)g/(1/m_A+1/m_B)=(1+e)\\mu g$.",
+        "e=1 is the elastic endpoint of this model. Values between zero and one convert some relative kinetic energy while allowing rebound. At e=0, the final normal velocities agree. That instantaneous equality does not by itself prove an adhesive connection will keep the bodies joined under future forces.",
+        "Restitution is an empirical description of an event or an idealized model; material, impact speed, geometry, temperature, and deformation can affect it. Treat the specified value as an assumption over the modeled range. A superelastic event can have a relative separation speed larger than approach speed if an internal store is released; that requires an explicit energy source and lies outside this passive e≤1 investigation.",
+        "Only use this repulsive impact update when the given contact is approaching. Blindly inserting g<0 makes j negative and therefore attractive, contradicting the nonadhesive model. The investigation leaves non-approaching states unchanged. It makes no claim about later externally forced motion or whether currently separated objects will meet."
+      ]
+    },
+    {
+      "heading": "Resolve an oblique collision along its contact normal",
+      "paragraphs": [
+        "For a specified planar smooth contact, let unit vector $\\mathbf n$ point from A toward B and let perpendicular unit vector $\\mathbf t$ define the tangent. Project each incoming velocity: $u_{A,n}=\\mathbf u_A\\cdot\\mathbf n$ and $u_{A,t}=\\mathbf u_A\\cdot\\mathbf t$, with corresponding components for B. Approach is $g=(\\mathbf u_A-\\mathbf u_B)\\cdot\\mathbf n$.",
+        "The smooth model has no tangential contact impulse and negligible external impulse. Each body's tangential velocity therefore stays unchanged. Solve the one-dimensional momentum/restitution equations only for the normal components, then reconstruct v=vn n+vt t. When n is rotated from the x-axis, both Cartesian components can change even though the tangent component is fixed.",
+        "The vector impulse form is $\\mathbf v_A=\\mathbf u_A-(j/m_A)\\mathbf n$ and $\\mathbf v_B=\\mathbf u_B+(j/m_B)\\mathbf n$, with $j=(1+e)\\mu g$ for $g>0$. For $\\mathbf n=(3/5,4/5)$, a convenient tangent is $\\mathbf t=(-4/5,3/5)$. Check their unit norms and zero dot product before projecting.",
+        "Smooth oblique e=0 removes relative normal motion while retaining tangential relative motion. It is therefore generally different from full vector sticking. To impose one common velocity, an additional tangential impulse is needed when the incoming tangential velocities differ. The investigation offers these as separately labeled models and compares their kinetic-energy conversion.",
+        "Conservation of two momentum components plus kinetic energy gives three scalar conditions for four unknown outgoing velocity components in a generic planar two-body elastic problem. More information is needed, such as a contact normal, a scattering direction, or a geometric constraint. Do not invent a unique scattering angle from momentum conservation alone. Rough surfaces, spin, or substantial changes of contact normal require a more detailed impact model."
+      ]
+    },
+    {
+      "heading": "Audit energy in the center-of-mass frame",
+      "paragraphs": [
+        "For two masses, $K_{\\mathrm{rel}}=\\mu|\\mathbf u_A-\\mathbf u_B|^2/2$. In a smooth contact, split the relative velocity into normal g and tangential h. The outgoing normal magnitude becomes eg, while h stays unchanged, so $K_i-K_f=\\mu(1-e^2)g^2/2$. Full sticking instead removes both components and converts $\\mu(g^2+h^2)/2$.",
+        "The fraction of initial normal relative kinetic energy converted is 1−e², not 1−e. The fraction of total lab kinetic energy converted can be smaller because the unchanged CM translational energy and any unchanged tangential relative energy remain. At e=1 the loss is zero, and at smooth e=0 the normal relative term is fully removed.",
+        "A constant Galilean boost by velocity $\\mathbf w$ changes total kinetic energy to $K'=K-\\mathbf w\\cdot\\mathbf P+M|\\mathbf w|^2/2$. For the same constant-mass collection, $\\Delta K'=\\Delta K-\\mathbf w\\cdot\\Delta\\mathbf P$. If total momentum is conserved, the kinetic-energy change is the same in every such frame even though Ki and Kf separately differ.",
+        "In the CM frame, total momentum is zero and only relative kinetic energy remains. For an elastic one-dimensional impact, the relative velocities reverse; for a passive restitution e they reverse and shrink in magnitude by e. In smooth oblique impact, only the normal parts follow that reversal/scaling rule. A visual comparison must retain those distinctions.",
+        "An observed kinetic-energy decrease is a change in the modeled kinetic store. It may become deformation energy, thermal energy, sound, or other accounted forms. The endpoint equations alone cannot assign its partition, temperature increase, peak contact stress, or force history. Name the assumptions that justify interpreting the decrease as internal conversion."
+      ]
+    },
+    {
+      "heading": "Use every momentum component in scattering and separation",
+      "paragraphs": [
+        "Planar momentum conservation supplies independent x and y equations; three-dimensional events add z. If one outgoing velocity is known, subtract its momentum from the incoming total to recover the remaining momentum, then divide by that body's mass. Compute speed only after the signed components are correct. This procedure does not assume elasticity.",
+        "For equal masses with B initially at rest, conservation gives $\\mathbf u_A=\\mathbf v_A+\\mathbf v_B$. If the event is also elastic, $|\\mathbf u_A|^2=|\\mathbf v_A|^2+|\\mathbf v_B|^2$. Squaring the vector momentum relation and comparing shows $\\mathbf v_A\\cdot\\mathbf v_B=0$. The nonzero outgoing velocities are therefore perpendicular.",
+        "That right-angle result is conditional. Unequal masses, another initial target velocity, an inelastic event, or unaccounted rotation can change the conclusion. If either outgoing vector is zero, its direction and the angle between the two outgoing motions are undefined; a zero dot product alone does not fix a meaningful angle in that degenerate case.",
+        "A moving parent that separates into fragments begins with momentum M U, not necessarily zero. Include every fragment and any ejected material. With negligible external impulse, the unknown fragment momentum is the original total minus all known outgoing fragment momenta. Opposite momenta for two fragments in the CM frame do not imply equal speeds unless the masses agree.",
+        "Audit the energy separately. A parent modeled as initially translating without internal motion has only CM translational kinetic energy in that simplified kinetic account. Separation produces relative kinetic energy, supplied by an internal store if no external energy enters. If the parent already rotates or contains other organized motion, include those initial stores before claiming how much new energy was released."
+      ]
+    },
+    {
+      "heading": "Separate capture from a later swing or stop",
+      "paragraphs": [
+        "An interaction can be inelastic even when the subsequent motion is well described by mechanical-energy conservation. First draw a timeline with an incoming state, an immediate post-capture state, and a later turning or stopping state. Label the forces and assumptions for each interval; use the post-capture speed to connect them.",
+        "In an idealized capture at the lowest point of a point-bob pendulum, suppose a payload m arrives horizontally and joins a resting bob M. If external horizontal impulse is negligible during capture, $mu=(M+m)V$. The capture converts relative kinetic energy, so do not also impose $mu^2/2=(M+m)V^2/2$.",
+        "During a later lossless swing in uniform gravity, the joined mass's mechanical energy is conserved: $(M+m)V^2/2=(M+m)gh$. Thus $V=\\sqrt{2gh}$ and $u=[(M+m)/m]\\sqrt{2gh}$. For a point bob on a taut ideal string, $h=L(1-\\cos\\theta)$ connects the rise to angle, subject to the actual swing and contact constraints.",
+        "Tension and gravity act externally on the swinging joined body, so its linear momentum is not conserved during the swing. Ideal tension does no work because it is perpendicular to the instantaneous motion; gravity exchanges kinetic and potential energy. If a support moves, a string goes slack, or losses matter, revise the later-stage model rather than extending the ideal formula automatically.",
+        "For a later horizontal frictional stop, use the appropriate work equation instead: the post-collision kinetic energy is converted over the measured stopping distance. That external friction changes momentum after the interaction. A formula derived from a finite stop is not valid after setting friction to zero while keeping the same finite stopping distance. The supplied-data exercises here do not ask you to build a launcher or impact apparatus."
+      ]
+    },
+    {
+      "heading": "Infer restitution from measurements and audit proposed outcomes",
+      "paragraphs": [
+        "A purely normal rebound from a still effectively massive surface can be inferred from flight heights if air losses are negligible and the contact level is the same. A drop height H gives incoming speed $\\sqrt{2gH}$; rebound height h gives outgoing speed $\\sqrt{2gh}$. Therefore $e=\\sqrt{h/H}$, whereas the retained vertical kinetic-energy fraction is $h/H=e^2$.",
+        "For independent bounds $0<H_{\\min}\\le H\\le H_{\\max}$ and $0\\le h_{\\min}\\le h\\le h_{\\max}$, monotonicity gives $\\sqrt{h_{\\min}/H_{\\max}}\\le e\\le\\sqrt{h_{\\max}/H_{\\min}}$. These are allowed bounds, not standard deviations or confidence intervals unless a statistical measurement model is supplied. A zero lower H bound would prevent this finite upper estimate.",
+        "Moving surfaces, appreciable air resistance, different height reference levels, tangential motion, or untracked spin can invalidate the simple height inference. Calibration and timing uncertainty in measured velocities likewise affect momentum and kinetic-energy residuals. A small nonzero residual should be compared with the measurement bounds before declaring a conservation law violated or an event exactly elastic.",
+        "Audit a proposed outgoing record in three steps. First calculate ΔP in every relevant direction and compare with the stated external impulse. Then calculate ΔK from the sum of each body's squared speed, not from total momentum alone. Finally check whether the outgoing velocities satisfy contact separation and any stated geometry. An answer can pass the first two checks and still be the unchanged-through-going branch.",
+        "If ΔP conflicts with an assumed isolated event, investigate omitted material, external impulse, or incorrect data. If momentum balances but ΔK is positive, look for the required energy source instead of calling the event passive. If ΔK is negative, name the converted kinetic store and avoid inferring a particular thermal partition. If uncertainty prevents a classification, report that limit.",
+        "The practice set includes vector sticking, partial and elastic rebound, contact approach, oblique smooth impact, three-fragment separation, known external impulse, frame changes, two-stage motion, and measured bounds. The checkpoint samples complementary parts of this range. Repair a missed concept by writing the boundary, equations, and a second check before generating a new attempt; the later module assessment will revisit momentum together with impulse."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Two incoming directions, one outgoing velocity",
+      "prompt": "In a common-velocity point-mass model, 2 kg moving at (4,0) m/s joins 3 kg moving at (0,2) m/s. Net external impulse is zero and retained rotation is outside this specified approximation. Find final velocity and kinetic-energy conversion.",
+      "steps": [
+        {
+          "math": "\\mathbf P_i=2(4,0)+3(0,2)=(8,6)\\ \\mathrm{kg\\,m/s},\\quad \\mathbf V=(8/5,6/5)\\ \\mathrm{m/s}",
+          "reason": "Add momentum components, then divide by the combined 5 kg. This is not an unweighted velocity average."
+        },
+        {
+          "math": "|\\mathbf V|=\\sqrt{(8/5)^2+(6/5)^2}=2\\ \\mathrm{m/s}",
+          "reason": "The common speed follows from the vector components. Adding the two incoming speeds would give a different, incorrect quantity."
+        },
+        {
+          "math": "K_i=\\tfrac12(2)(4^2)+\\tfrac12(3)(2^2)=22\\ \\mathrm J,\\quad K_f=\\tfrac12(5)(2^2)=10\\ \\mathrm J",
+          "reason": "Compute kinetic energy from each incoming body and from the specified common-velocity composite."
+        },
+        {
+          "math": "K_i-K_f=12\\ \\mathrm J,\\quad \\mathbf J_A=(-24/5,12/5),\\quad\\mathbf J_B=(24/5,-12/5)\\ \\mathrm{N\\,s}",
+          "reason": "The 12 J relative kinetic energy is converted. The individual impulse vectors are nonzero and opposite."
+        }
+      ],
+      "conclusion": "The model retains 10 J of CM translational kinetic energy. For a finite off-center rotating composite, angular momentum and retained rotation would need a separate analysis; the common-velocity limit is not that general rigid-body solution."
+    },
+    {
+      "title": "Choose the outgoing elastic branch",
+      "prompt": "A 2 kg body on the left approaches a 3 kg body with velocities +4 and −1 m/s along x. The 1D collision is elastic and external impulse is zero.",
+      "steps": [
+        {
+          "math": "P=2(4)+3(-1)=5\\ \\mathrm{kg\\,m/s},\\quad V_{\\mathrm{cm}}=1\\ \\mathrm{m/s},\\quad g=4-(-1)=5\\ \\mathrm{m/s}",
+          "reason": "The bodies approach despite one negative velocity. Compute the signed relative speed before applying the collision relation."
+        },
+        {
+          "math": "v_A=1-\\tfrac35(5)=-2\\ \\mathrm{m/s},\\quad v_B=1+\\tfrac25(5)=3\\ \\mathrm{m/s}",
+          "reason": "The nontrivial elastic branch reverses relative velocity in the CM frame."
+        },
+        {
+          "math": "P_f=2(-2)+3(3)=5,\\quad K_f=\\tfrac12(2)(4)+\\tfrac12(3)(9)=35/2\\ \\mathrm J=K_i",
+          "reason": "Both total momentum and kinetic energy match. A rebounds left and B moves right, so the contact is separating."
+        },
+        {
+          "math": "J_A=2(-2-4)=-12\\ \\mathrm{N\\,s},\\quad J_B=3(3-(-1))=12\\ \\mathrm{N\\,s}",
+          "reason": "Opposite contact impulses change the individual momenta while keeping the total fixed."
+        }
+      ],
+      "conclusion": "The unchanged pair (4,−1) also satisfies the two conserved totals, but it remains approaching at this impenetrable contact. The outgoing condition selects (−2,3) m/s."
+    },
+    {
+      "title": "Partial rebound converts relative kinetic energy",
+      "prompt": "Use the same 2 kg and 3 kg bodies and initial velocities, but set e=1/2. Find final velocities, contact impulse, and kinetic-energy loss.",
+      "steps": [
+        {
+          "math": "v_B-v_A=eg=5/2,\\quad 2v_A+3v_B=5\\quad\\Longrightarrow\\quad v_A=-1/2,\\ v_B=2\\ \\mathrm{m/s}",
+          "reason": "Solve momentum and the relative separation condition together; the individual lab-speed ratios are not the restitution definition."
+        },
+        {
+          "math": "j=(1+e)\\mu g=\\tfrac32\\left(\\tfrac65\\right)(5)=9\\ \\mathrm{N\\,s}",
+          "reason": "The contact impulse is −9 N s on A and +9 N s on B."
+        },
+        {
+          "math": "K_f=\\tfrac12(2)(1/4)+\\tfrac12(3)(4)=25/4\\ \\mathrm J,\\quad K_i-K_f=35/2-25/4=45/4\\ \\mathrm J",
+          "reason": "A direct squared-speed calculation independently checks the energy conversion."
+        },
+        {
+          "math": "\\tfrac12\\mu(1-e^2)g^2=\\tfrac12(\\tfrac65)(\\tfrac34)(25)=45/4\\ \\mathrm J",
+          "reason": "The relative-energy formula agrees. Three quarters of the initial relative kinetic energy is converted, not one half."
+        }
+      ],
+      "conclusion": "Momentum is conserved while kinetic energy decreases by 45/4 J. The remaining CM translation is unchanged; no peak contact force follows from the 9 N s impulse without timing and shape data."
+    },
+    {
+      "title": "An oblique impact leaves tangent velocities alone",
+      "prompt": "Masses are 2 and 3 kg, with incoming velocities (4,1) and (−1,−1) m/s. The smooth contact normal is +x, e=1/2, and external impulse is zero.",
+      "steps": [
+        {
+          "math": "g=4-(-1)=5,\\quad j=9\\ \\mathrm{N\\,s},\\quad v_{A,x}=4-9/2=-1/2,\\quad v_{B,x}=-1+9/3=2",
+          "reason": "Only the x-components participate in this normal collision calculation."
+        },
+        {
+          "math": "v_{A,y}=1,\\quad v_{B,y}=-1,\\quad \\mathbf v_A=(-1/2,1),\\quad\\mathbf v_B=(2,-1)\\ \\mathrm{m/s}",
+          "reason": "The smooth contact supplies no y-impulse. Applying minus e to the y-components would invent a tangential interaction."
+        },
+        {
+          "math": "\\mathbf P_i=\\mathbf P_f=(5,-1)\\ \\mathrm{kg\\,m/s},\\quad K_i=20\\ \\mathrm J,\\quad K_f=35/4\\ \\mathrm J",
+          "reason": "The additional y-motion contributes unchanged kinetic energy. Its presence does not alter the normal loss 45/4 J."
+        }
+      ],
+      "conclusion": "The final y-components differ, and they remain part of the complete velocity vectors. The CM velocity stays (1,−1/5) m/s while the normal relative motion changes."
+    },
+    {
+      "title": "Smooth e=0 and full sticking are different models",
+      "prompt": "Keep the preceding oblique initial state: masses 2 and 3 kg, velocities (4,1) and (−1,−1) m/s. Compare smooth e=0 with the common-velocity point-mass sticking limit.",
+      "steps": [
+        {
+          "math": "v_{A,x}=v_{B,x}=P_x/5=1,\\quad\\mathbf v_A=(1,1),\\quad\\mathbf v_B=(1,-1)\\ \\mathrm{m/s}",
+          "reason": "Zero normal restitution equalizes the x-components. Smooth contact leaves the distinct y-components unchanged."
+        },
+        {
+          "math": "K_{f,\\mathrm{smooth}}=\\tfrac12(2)(2)+\\tfrac12(3)(2)=5\\ \\mathrm J,\\quad L_{\\mathrm{smooth}}=20-5=15\\ \\mathrm J",
+          "reason": "Calculate total K using the full vectors; tangential relative kinetic energy remains."
+        },
+        {
+          "math": "\\mathbf V_{\\mathrm{stick}}=\\tfrac15(5,-1)=(1,-1/5),\\quad K_{f,\\mathrm{stick}}=\\tfrac12(5)(1+1/25)=13/5\\ \\mathrm J",
+          "reason": "Full sticking imposes a common vector rather than only a common normal component."
+        },
+        {
+          "math": "L_{\\mathrm{stick}}=20-13/5=87/5\\ \\mathrm J,\\quad L_{\\mathrm{stick}}-L_{\\mathrm{smooth}}=12/5\\ \\mathrm J",
+          "reason": "The extra conversion is the tangential relative kinetic energy μ(1−(−1))²/2. It requires an additional tangential impulse."
+        }
+      ],
+      "conclusion": "Smooth e=0 converts 15 J, while the specified common-velocity limit converts 87/5 J. Calling both results the same perfectly sticking event would hide the missing tangential interaction and any rigid-body rotational requirements."
+    },
+    {
+      "title": "Rotate the contact normal before solving",
+      "prompt": "For masses 2 and 3 kg and velocities (4,1), (−1,−1) m/s, use a smooth contact with n=(3/5,4/5), tangent t=(−4/5,3/5), and e=1/2.",
+      "steps": [
+        {
+          "math": "u_{A,n}=16/5,\\quad u_{B,n}=-7/5,\\quad u_{A,t}=-13/5,\\quad u_{B,t}=1/5",
+          "reason": "Dot each velocity with both unit basis vectors. Projection signs carry the direction information."
+        },
+        {
+          "math": "g=23/5,\\quad j=\\tfrac32(\\tfrac65)(\\tfrac{23}5)=207/25\\ \\mathrm{N\\,s}",
+          "reason": "The new normal changes the approach speed and therefore the impulse magnitude."
+        },
+        {
+          "math": "\\mathbf v_A=(4,1)-\\tfrac{207}{50}(3/5,4/5)=(379/250,-289/125)\\ \\mathrm{m/s}",
+          "reason": "Subtract the normal impulse divided by A's mass. Both Cartesian components change."
+        },
+        {
+          "math": "\\mathbf v_B=(-1,-1)+\\tfrac{69}{25}(3/5,4/5)=(82/125,151/125)\\ \\mathrm{m/s}",
+          "reason": "B receives the opposite impulse; its own larger mass gives a smaller velocity change."
+        },
+        {
+          "math": "L=\\tfrac12(\\tfrac65)(\\tfrac34)(\\tfrac{23}5)^2=4761/500\\ \\mathrm J,\\quad K_f=20-L=5239/500\\ \\mathrm J",
+          "reason": "A direct sum of the two final squared-speed energies gives the same Kf. The tangential components remain −13/5 and 1/5."
+        }
+      ],
+      "conclusion": "The outgoing normal separation speed is 23/10 m/s, while relative tangential velocity remains −14/5 m/s. Rotating the contact normal is a physical change of impact geometry, not a rotation of every velocity together."
+    },
+    {
+      "title": "Check an equal-mass planar scattering result",
+      "prompt": "Two 2 kg particles begin with velocities (5,0) and (0,0) m/s. External impulse is zero. The measured outgoing velocity of A is (9/5,12/5) m/s. Find B's velocity and audit elasticity.",
+      "steps": [
+        {
+          "math": "\\mathbf v_B=(5,0)-(9/5,12/5)=(16/5,-12/5)\\ \\mathrm{m/s}",
+          "reason": "The equal masses cancel from the momentum equation, but the signed vector subtraction remains."
+        },
+        {
+          "math": "|\\mathbf v_A|=3,\\quad|\\mathbf v_B|=4\\ \\mathrm{m/s},\\quad K_i=25\\ \\mathrm J,\\quad K_f=9+16=25\\ \\mathrm J",
+          "reason": "The kinetic-energy audit establishes elastic consistency; momentum alone would not establish it."
+        },
+        {
+          "math": "\\mathbf v_A\\cdot\\mathbf v_B=(9/5)(16/5)+(12/5)(-12/5)=0",
+          "reason": "Both vectors are nonzero, so their zero dot product gives a right angle. This matches the conditional equal-mass theorem."
+        }
+      ],
+      "conclusion": "The result passes both momentum and energy checks. The perpendicular directions follow from the particular equal-mass, initially stationary-target, elastic conditions; they are not a general collision rule."
+    },
+    {
+      "title": "Recover a third fragment from a moving parent",
+      "prompt": "A 6 kg parent translating at (1,−1,2) m/s separates into 1, 2, and 3 kg fragments. The first two velocities are (4,0,2) and (−2,1,1) m/s. External impulse is zero; no initial spin or other organized kinetic motion is modeled.",
+      "steps": [
+        {
+          "math": "\\mathbf P_i=6(1,-1,2)=(6,-6,12),\\quad\\mathbf p_1+\\mathbf p_2=(4,0,2)+(-4,2,2)=(0,2,4)",
+          "reason": "The parent has nonzero initial momentum. Summing only the known fragments does not exhaust the system."
+        },
+        {
+          "math": "\\mathbf v_3=\\frac{(6,-6,12)-(0,2,4)}3=(2,-8/3,8/3)\\ \\mathrm{m/s}",
+          "reason": "The third mass divides every residual momentum component."
+        },
+        {
+          "math": "K_i=\\tfrac12(6)(1+1+4)=18\\ \\mathrm J,\\quad K_f=10+6+\\tfrac32(4+64/9+64/9)=130/3\\ \\mathrm J",
+          "reason": "Sum each fragment's kinetic energy separately. Total momentum cannot replace that sum."
+        },
+        {
+          "math": "\\Delta K=130/3-18=76/3\\ \\mathrm J",
+          "reason": "If there are no other changing stores or external transfers, an internal store must decrease by this amount."
+        }
+      ],
+      "conclusion": "The weighted outgoing momentum is still (6,−6,12) kg m/s. The 76/3 J kinetic-energy increase is relative motion energy supplied internally, not energy created by momentum conservation."
+    },
+    {
+      "title": "Use different equations on two adjacent intervals",
+      "prompt": "A theoretical 1 kg payload is captured by a resting 4 kg point-bob pendulum at its lowest point. External horizontal impulse during the short capture is negligible. The joined mass then swings without losses, rising 1/5 m in g=10 m/s² on an ideal 2 m string.",
+      "steps": [
+        {
+          "math": "\\tfrac12(5)V^2=5(10)(1/5)=10\\ \\mathrm J\\quad\\Longrightarrow\\quad V=2\\ \\mathrm{m/s}",
+          "reason": "Start with the later lossless swing to find the speed just after capture."
+        },
+        {
+          "math": "1u=5(2)\\quad\\Longrightarrow\\quad u=10\\ \\mathrm{m/s}",
+          "reason": "Use horizontal momentum for the short capture interval only."
+        },
+        {
+          "math": "K_{\\mathrm{incoming}}=\\tfrac12(1)(10^2)=50\\ \\mathrm J,\\quad K_{\\mathrm{postcapture}}=10\\ \\mathrm J,\\quad L_{\\mathrm{capture}}=40\\ \\mathrm J",
+          "reason": "The capture is inelastic. Conserving K through it would miss the 40 J conversion."
+        },
+        {
+          "math": "h=L(1-\\cos\\theta)\\quad\\Longrightarrow\\quad\\cos\\theta=1-\\frac{1/5}{2}=9/10",
+          "reason": "The ideal turning point is below the horizontal string position, consistent with positive supporting tension. The height is not the path length."
+        }
+      ],
+      "conclusion": "The three states have distinct energy and momentum accounts. Gravity and tension change the joined body's momentum during the swing; mechanical energy is conserved only in that later ideal interval."
+    },
+    {
+      "title": "A height ratio measures energy, not restitution directly",
+      "prompt": "A body falls from rest through H=4/5 m and rebounds to h=1/5 m above the same stationary massive surface. Take g=10 m/s², purely normal motion, and negligible air losses. Then allow independent bounds H∈[3/4,17/20] m and h∈[3/20,1/4] m.",
+      "steps": [
+        {
+          "math": "u=\\sqrt{2gH}=4,\\quad v=\\sqrt{2gh}=2\\ \\mathrm{m/s},\\quad e=v/u=1/2",
+          "reason": "The coefficient compares speeds. Both heights use the contact surface as the same reference."
+        },
+        {
+          "math": "\\frac{K_{\\mathrm{after}}}{K_{\\mathrm{before}}}=\\frac{h}{H}=\\frac14=e^2",
+          "reason": "Kinetic energy depends on squared speed, so the height ratio is not e itself."
+        },
+        {
+          "math": "e_{\\min}=\\sqrt{\\frac{3/20}{17/20}}=\\sqrt{3/17},\\quad e_{\\max}=\\sqrt{\\frac{1/4}{3/4}}=\\sqrt{1/3}",
+          "reason": "Monotonicity pairs smallest rebound height with largest drop height for the lower bound, and opposite endpoints for the upper bound."
+        }
+      ],
+      "conclusion": "The inferred restitution lies between √(3/17) and √(1/3) under the stated bounds and model. This is not a confidence interval, and it does not establish a universal material coefficient for other impact speeds or conditions."
+    }
+  ],
+  "guided": {
+    "title": "Finish a smooth oblique collision",
+    "setup": "A has mass 2 kg and initial velocity (4,1) m/s; B has mass 3 kg and initial velocity (−1,−1) m/s. They are at approaching smooth contact with normal +x from A to B. Restitution is e=1/2 and external impulse is zero. Find the full outgoing vectors and kinetic-energy loss.",
+    "before": [
+      "Normal approach speed is 4−(−1)=5 m/s.",
+      "Reduced mass is (2·3)/(2+3)=6/5 kg, so normal impulse magnitude is (1+1/2)(6/5)(5)=9 N s.",
+      "The contact impulse is (−9,0) N s on A and (+9,0) N s on B. Initial total kinetic energy is 20 J."
+    ],
+    "question": {
+      "id": "phs231-guided-collision",
+      "familyId": "phs231-guided-collision",
+      "familyVersion": 1,
+      "courseId": "phs-231",
+      "objectiveId": "m06-l02",
+      "category": "application",
+      "critical": true,
+      "prompt": "Complete both outgoing velocity vectors and the kinetic-energy loss, then choose the correct interpretation of smooth contact.",
+      "fields": [
+        {
+          "id": "ax",
+          "label": "Final A velocity x",
+          "kind": "rational",
+          "expected": "-1/2",
+          "unit": "m/s",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "ay",
+          "label": "Final A velocity y",
+          "kind": "rational",
+          "expected": "1",
+          "unit": "m/s",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "bx",
+          "label": "Final B velocity x",
+          "kind": "rational",
+          "expected": "2",
+          "unit": "m/s",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "by",
+          "label": "Final B velocity y",
+          "kind": "rational",
+          "expected": "-1",
+          "unit": "m/s",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "loss",
+          "label": "Kinetic-energy loss",
+          "kind": "rational",
+          "expected": "45/4",
+          "unit": "J",
+          "help": "Use an exact signed value or fraction in the labeled unit."
+        },
+        {
+          "id": "meaning",
+          "label": "What changes in the smooth contact?",
+          "kind": "choice",
+          "correct": "normal",
+          "options": [
+            {
+              "id": "normal",
+              "label": "Only normal components change; tangential components stay fixed",
+              "feedback": "There is no tangential impulse. The different y-components remain 1 and −1 m/s, while normal relative speed reverses and scales by e."
+            },
+            {
+              "id": "both",
+              "label": "Multiply both velocity vectors by minus e",
+              "feedback": "Restitution acts on relative normal speed here. Scaling both vectors would invent tangential impulse and generally spoil total momentum."
+            },
+            {
+              "id": "elastic",
+              "label": "Total kinetic energy must stay 20 J because momentum is conserved",
+              "feedback": "For e=1/2 and nonzero normal approach, normal relative kinetic energy decreases. The final sum is 35/4 J, not 20 J."
+            },
+            {
+              "id": "individual",
+              "label": "Each body's momentum stays unchanged",
+              "feedback": "The contact gives opposite nonzero impulses to the two bodies. Only their total momentum stays unchanged."
+            }
+          ]
+        }
+      ],
+      "parameters": {
+        "mA": 2,
+        "mB": 3,
+        "ax": 4,
+        "ay": 1,
+        "bx": -1,
+        "by": -1,
+        "e": 0.5
+      },
+      "hints": [
+        "Apply velocity change J/m separately to the two masses, keeping the impulse signs.",
+        "A changes by (−9/2,0) m/s and B by (3,0) m/s. Their y-components stay unchanged.",
+        "Final K is (2/2)[(−1/2)²+1²]+(3/2)[2²+(−1)²]=35/4 J, so loss is 20−35/4=45/4 J."
+      ],
+      "explanation": [
+        "The outgoing velocities are (−1/2,1) and (2,−1) m/s.",
+        "Their total momentum is 2(−1/2,1)+3(2,−1)=(5,−1) kg m/s, equal to the incoming total.",
+        "Final normal separation speed is 2−(−1/2)=5/2 m/s, exactly half the incoming approach speed.",
+        "The final individual kinetic energies are 5/4 and 15/2 J, summing to 35/4 J. The 45/4 J conversion is consistent with passive e=1/2.",
+        "The contact model supplies no tangential impulse and does not give a contact time or a peak force."
+      ],
+      "answerSummary": "vA=(−1/2,1), vB=(2,−1) m/s; kinetic-energy loss 45/4 J; tangential components remain unchanged."
+    },
+    "after": "Check both momentum components and the relative normal speed before checking the energy loss. This separates sign errors from choosing the wrong contact model."
+  },
+  "interaction": {
+    "kind": "phs231-collision",
+    "prompt": "Predict outgoing velocities and energy conversion for smooth contact or full translational sticking. Compare restitution, contact normal, and lab versus CM views, then test when an impact update should not occur.",
+    "initial": {
+      "massA": 2,
+      "massB": 3,
+      "velocityA": [
+        4,
+        1
+      ],
+      "velocityB": [
+        -1,
+        -1
+      ],
+      "normal": "horizontal",
+      "restitution": 0.5,
+      "mode": "smooth"
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "stick-3d"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "elastic"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "restitution"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "oblique"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "scatter"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "fragments"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "external"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "approach"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "loss"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "smooth-zero"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "frame"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "pendulum"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "rebound"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "audit"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "oblique"
+    },
+    {
+      "familyId": "phs231-collision-momentum",
+      "variant": "fragments"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "pendulum"
+    },
+    {
+      "familyId": "phs231-collision-energy",
+      "variant": "audit"
+    }
+  ],
+  "summary": [
+    "Choose the complete system, frame, directions, and before/after interval. A closed system still needs zero external impulse to conserve momentum.",
+    "Conserve each momentum component when justified; audit the sum of individual kinetic energies separately.",
+    "Full common-velocity translation gives V=P/M and removes relative translational K, leaving the CM term.",
+    "An elastic 1D collision reverses relative velocity on the physical outgoing branch; unchanged-through-going algebraic roots need a geometry check.",
+    "Restitution compares positive normal separation and approach speeds. It is not an arbitrary ratio of individual lab speeds.",
+    "Smooth oblique contact changes normal components and preserves each tangential component. Smooth e=0 need not give full sticking.",
+    "Do not apply a repulsive collision formula to separating or zero-approach contact, or invent impact geometry from conservation alone.",
+    "Passive smooth impact converts μ(1−e²)g²/2; relative-energy retention is e². Total lab-energy fractions also depend on unchanged terms.",
+    "An inertial boost changes total P and K, but kinetic-energy loss is invariant for a constant-mass event with conserved P.",
+    "Fragmentation can increase K by converting an internal store; include the moving parent's initial momentum and every fragment.",
+    "Use distinct equations and system conditions for capture and later swing or stopping motion.",
+    "Under the specified rebound-flight assumptions, e=√(h/H). Measurement bounds and model limits matter to the inference.",
+    "Finite off-center rotating bodies, rough contact, and peak forces require information beyond this translational endpoint model."
+  ],
+  "retrieval": "For the default oblique data, change only smooth restitution from e=1/2 to e=0. Predict both full outgoing velocities and K loss. Check after working: vA=(1,1), vB=(1,−1) m/s, loss=15 J. Then compare the common-velocity sticking limit: V=(1,−1/5) m/s and loss=87/5 J. Explain the additional 12/5 J conversion using relative tangential motion, and identify the tangential impulse needed. Finally, explain why neither result by itself determines a peak force or solves a general rotating rigid-body impact.",
+  "readings": [
+    {
+      "title": "OpenStax: Types of Collisions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions",
+      "purpose": "Optional primary-provider instruction on collision models, momentum, restitution, and kinetic-energy audits. The worked examples and investigations in this lesson are original."
+    },
+    {
+      "title": "OpenStax: Collisions in Multiple Dimensions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-5-collisions-in-multiple-dimensions",
+      "purpose": "Optional primary-provider instruction on collision models, momentum, restitution, and kinetic-energy audits. The worked examples and investigations in this lesson are original."
+    },
+    {
+      "title": "MIT OpenCourseWare: 16.07 Dynamics, Lecture 9: Linear Impulse and Momentum; Collisions",
+      "url": "https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/a867999737497c79fd8ffe97641c503f_MIT16_07F09_Lec09.pdf",
+      "purpose": "Optional primary-provider instruction on collision models, momentum, restitution, and kinetic-energy audits. The worked examples and investigations in this lesson are original."
+    },
+    {
+      "title": "MIT OpenCourseWare: 2.003J Dynamics and Control I: Lecture 6",
+      "url": "https://ocw.mit.edu/courses/2-003j-dynamics-and-control-i-spring-2007/resources/lec06/",
+      "purpose": "Optional primary-provider instruction on collision models, momentum, restitution, and kinetic-energy audits. The worked examples and investigations in this lesson are original."
+    }
+  ]
+}
