@@ -1,0 +1,308 @@
+{
+  "id": "m01-l02",
+  "courseId": "f04",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Radians, the unit circle, and exact values",
+  "objective": "Locate directed angles, evaluate all six trigonometric ratios with correct signs and domains, and use radians in circular measurements.",
+  "why": "A right triangle only describes an acute angle. Rotations, waves, and electrical phase require signed angles, several turns, negative coordinates, and honest treatment of undefined ratios. The unit circle extends the same triangle ideas without discarding their geometry.",
+  "estimatedMinutes": 75,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Right triangles and calculator modes"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "On the unit circle, an angle $\\theta$ ends at $(\\cos\\theta,\\sin\\theta)$. Measure positive rotation counterclockwise from the positive horizontal axis. A full turn is $360^\\circ=2\\pi$ radians. Whole turns preserve the point, but not the signed amount of rotation.",
+        "Use the coordinate signs and a reference angle for exact values. Tangent is sine/cosine, cosecant is 1/sine, secant is 1/cosine, and cotangent is cosine/sine. Check each denominator before dividing. For circular lengths and areas, convert to radians first."
+      ]
+    },
+    {
+      "heading": "Radians measure an arc relative to its radius",
+      "paragraphs": [
+        "One radian is the angle that cuts off an arc whose length equals the circle's radius. More generally, $\\theta=s/r$ in radians, so $s=r\\theta$. The full circumference $2\\pi r$ corresponds to $2\\pi$ radians regardless of radius. Radians are a ratio of lengths; the label rad still communicates that a quantity is an angle.",
+        "To convert degrees to radians, multiply by $\\pi/180$. To convert radians to degrees, multiply by $180/\\pi$. The conversion acts on the angle, not on a sine or cosine result. For an ordinary sector, its area is the fraction $\\theta/(2\\pi)$ of the whole disk: $A=r^2\\theta/2$, with $0\\leq\\theta\\leq2\\pi$."
+      ]
+    },
+    {
+      "heading": "Directed angles and a useful representative",
+      "paragraphs": [
+        "A negative angle turns clockwise. Angles differing by $360k$ degrees, or $2k\\pi$ radians, for an integer k are coterminal: they end at the same point. To select a representative in $[0,360)$, add or subtract whole turns until the result is at least 0 and less than 360. Exactly 360 reduces to 0.",
+        "The reference angle is the nonnegative angle to the nearest horizontal axis. For a non-axis representative d, use d in quadrant I, 180-d in II, d-180 in III, and 360-d in IV. Its acute triangle supplies magnitudes; the quadrant supplies signs. Axis angles are easier to evaluate directly from their coordinates."
+      ]
+    },
+    {
+      "heading": "Derive the standard exact values",
+      "paragraphs": [
+        "Cut an equilateral triangle of side 2 into two right triangles. The hypotenuse is 2, the short leg is 1, and the other leg is $\\sqrt{2^2-1^2}=\\sqrt3$. Thus sine 30 degrees is 1/2 and cosine 30 degrees is $\\sqrt3/2$; the 60-degree ratios swap these roles.",
+        "An isosceles right triangle with legs 1 and 1 has hypotenuse $\\sqrt2$. Each acute angle is 45 degrees, so sine and cosine both equal $1/\\sqrt2=\\sqrt2/2$. These exact values are related expressions, not measurements that need decimal rounding."
+      ]
+    },
+    {
+      "heading": "Extend coordinates through all quadrants",
+      "paragraphs": [
+        "On the unit circle, cosine is the signed horizontal coordinate x and sine is the signed vertical coordinate y. Their signs are (+,+), (-,+), (-,-), and (+,-) in quadrants I through IV, written as (cosine,sine). Tangent y/x is positive when the coordinates have the same sign and negative when they differ.",
+        "The axis points are (1,0), (0,1), (-1,0), and (0,-1) at 0, 90, 180, and 270 degrees. Read them directly rather than trying to draw a triangle with an acute angle. The identity $x^2+y^2=1$ checks the coordinate magnitudes, but the equation alone cannot choose their signs."
+      ]
+    },
+    {
+      "heading": "Reciprocals have domains",
+      "paragraphs": [
+        "The definitions are $\\tan\\theta=\\sin\\theta/\\cos\\theta$, $\\csc\\theta=1/\\sin\\theta$, $\\sec\\theta=1/\\cos\\theta$, and $\\cot\\theta=\\cos\\theta/\\sin\\theta$. Tangent and secant are undefined when cosine is zero; cosecant and cotangent are undefined when sine is zero. A zero numerator with a nonzero denominator gives zero.",
+        "Cotangent is sometimes written 1/tangent, but that form hides some of cotangent's valid inputs. At 90 degrees, tangent is undefined while cotangent equals 0/1=0. Use cosine/sine to determine cotangent's full domain. Undefined is not zero and is not a real numerical value called infinity."
+      ]
+    },
+    {
+      "heading": "Circular motion and units",
+      "paragraphs": [
+        "For a point moving uniformly around a circle, angular speed is $\\omega=\\Delta\\theta/\\Delta t$ in rad/s and linear speed is $v=r\\omega$ in length/s. Convert revolutions to radians before using these formulas: one revolution is $2\\pi$ radians. A speed is a nonnegative magnitude; signed angular velocity can also encode direction.",
+        "Check the units as well as the arithmetic. A radius in meters times a radian angle gives an arc length in meters; radius squared times an angle gives square meters. A degree number used directly in $s=r\\theta$ makes a numerical error even though the written units may look plausible. These exercises distinguish sector area within one turn from distance traveled over several turns."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Reduce a negative rotation",
+      "prompt": "Locate -495 degrees, then give its acute reference angle.",
+      "steps": [
+        {
+          "math": "-495+2(360)=225",
+          "reason": "Add two complete turns to select the representative between 0 and 360."
+        },
+        {
+          "math": "225-180=45",
+          "reason": "The terminal point lies in quadrant III, so measure the reference angle from the negative horizontal axis."
+        },
+        {
+          "math": "45^\\circ\\frac{\\pi}{180^\\circ}=\\frac{\\pi}{4}",
+          "reason": "Convert the reference angle, rather than the original directed rotation, when the question asks for a radian reference."
+        }
+      ],
+      "conclusion": "The representative is 225 degrees and the reference is 45 degrees or pi/4. Both sine and cosine are negative."
+    },
+    {
+      "title": "Coordinates first, then the quotient",
+      "prompt": "Evaluate sine, cosine, and tangent at 210 degrees.",
+      "steps": [
+        {
+          "math": "210=180+30",
+          "reason": "The reference is 30 degrees and the point lies in quadrant III."
+        },
+        {
+          "math": "(\\cos210^\\circ,\\sin210^\\circ)=\\left(-\\frac{\\sqrt3}{2},-\\frac12\\right)",
+          "reason": "Apply the quadrant signs to the standard 30-degree magnitudes."
+        },
+        {
+          "math": "\\tan210^\\circ=\\frac{-1/2}{-\\sqrt3/2}=\\frac{1}{\\sqrt3}=\\frac{\\sqrt3}{3}",
+          "reason": "A quotient of two negative coordinates is positive; the equivalent radical forms have the same exact value."
+        }
+      ],
+      "conclusion": "Sine is $-1/2$, cosine is $-\\sqrt3/2$, and tangent is $\\sqrt3/3$."
+    },
+    {
+      "title": "An axis can make a reciprocal undefined",
+      "prompt": "Evaluate cosecant, secant, and cotangent at $-\\pi/2$.",
+      "steps": [
+        {
+          "math": "-\\pi/2=-90^\\circ,\\quad(\\cos\\theta,\\sin\\theta)=(0,-1)",
+          "reason": "A quarter-turn clockwise ends at the bottom of the circle."
+        },
+        {
+          "math": "\\csc\\theta=\\frac1{-1}=-1,\\quad \\sec\\theta=\\frac10\\ \\text{undefined}",
+          "reason": "Decide whether each denominator is zero before attempting division."
+        },
+        {
+          "math": "\\cot\\theta=\\frac0{-1}=0",
+          "reason": "Cotangent is defined here because its sine denominator is nonzero."
+        }
+      ],
+      "conclusion": "Cosecant is -1, secant is undefined, and cotangent is 0. Do not infer cotangent's domain from the undefined tangent value."
+    },
+    {
+      "title": "Arc length and sector area",
+      "prompt": "A circle has radius 3 m and a sector angle $5\\pi/6$. Find its arc length and area.",
+      "steps": [
+        {
+          "math": "s=r\\theta=3\\left(\\frac{5\\pi}{6}\\right)=\\frac{5\\pi}{2}\\ \\mathrm m",
+          "reason": "The angle is already in radians, so the arc formula applies directly."
+        },
+        {
+          "math": "A=\\frac12r^2\\theta=\\frac12(9)\\frac{5\\pi}{6}=\\frac{15\\pi}{4}\\ \\mathrm{m}^2",
+          "reason": "Sector area uses the radius squared and the factor one half."
+        },
+        {
+          "math": "\\frac{\\theta}{2\\pi}=\\frac5{12}",
+          "reason": "Both answers represent five twelfths of the circle's circumference or disk area."
+        }
+      ],
+      "conclusion": "The arc is 5pi/2 m and the sector area is 15pi/4 m². Keeping pi exact avoids unnecessary rounding."
+    },
+    {
+      "title": "From revolutions to a point's speed",
+      "prompt": "A point at radius 3 m makes two revolutions in 5 s at constant speed.",
+      "steps": [
+        {
+          "math": "\\Delta\\theta=2(2\\pi)=4\\pi\\ \\mathrm{rad}",
+          "reason": "Count each full turn as 2pi radians."
+        },
+        {
+          "math": "\\omega=\\frac{4\\pi}{5}\\ \\mathrm{rad/s}",
+          "reason": "Divide the angular travel by elapsed time."
+        },
+        {
+          "math": "v=3\\left(\\frac{4\\pi}{5}\\right)=\\frac{12\\pi}{5}\\ \\mathrm{m/s}",
+          "reason": "Multiply angular speed by radius. A point at twice the radius would travel twice as fast for the same angular speed."
+        }
+      ],
+      "conclusion": "Angular speed is 4pi/5 rad/s and linear speed is 12pi/5 m/s. They describe different quantities."
+    }
+  ],
+  "guided": {
+    "title": "Connect a point to a physical arc",
+    "setup": "Use the exact coordinate picture at 150 degrees, then consider a radius of 6 m.",
+    "before": [
+      "Locate the angle in quadrant II and find its 30-degree reference.",
+      "Assign coordinate signs before forming tangent.",
+      "Convert the angle to radians before multiplying by radius."
+    ],
+    "question": {
+      "id": "f04-l02-guided",
+      "familyId": "guided-f04-l02",
+      "familyVersion": 1,
+      "courseId": "f04",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": false,
+      "parameters": {
+        "degrees": 150,
+        "radius": 6
+      },
+      "prompt": "Find sin(150 degrees), cos(150 degrees), tan(150 degrees), and the arc length for radius 6 m.",
+      "fields": [
+        {
+          "id": "sin",
+          "kind": "exact",
+          "label": "Sine",
+          "expected": "1/2"
+        },
+        {
+          "id": "cos",
+          "kind": "exact",
+          "label": "Cosine",
+          "expected": "-sqrt(3)/2"
+        },
+        {
+          "id": "tan",
+          "kind": "exact",
+          "label": "Tangent",
+          "expected": "-sqrt(3)/3"
+        },
+        {
+          "id": "arc",
+          "kind": "pi-multiple",
+          "label": "Arc length",
+          "expected": "5",
+          "unit": "m",
+          "help": "Use pi for an exact multiple."
+        }
+      ],
+      "hints": [
+        "The reference is 30 degrees; horizontal coordinates are negative in quadrant II.",
+        "Sine is 1/2 and cosine is -sqrt(3)/2. Divide to find tangent.",
+        "150 degrees is 5pi/6 radians, so radius 6 gives arc length 5pi."
+      ],
+      "explanation": [
+        "Quadrant II has positive sine and negative cosine.",
+        "Their quotient gives tangent -sqrt(3)/3.",
+        "Multiplying radius 6 m by angle 5pi/6 radians gives arc length 5pi m."
+      ],
+      "answerSummary": "Sine 1/2; cosine -sqrt(3)/2; tangent -sqrt(3)/3; arc 5pi m."
+    },
+    "after": "Explain which signs would change at 210 degrees before trying a fresh independent problem."
+  },
+  "interaction": {
+    "kind": "refresher-trig-lab",
+    "mode": "circle",
+    "prompt": "Predict exact coordinates, then change the angle and signed whole turns. Use axis cases to explain undefined ratios."
+  },
+  "practice": [
+    {
+      "familyId": "f04-directed-angle",
+      "variant": "coterminal"
+    },
+    {
+      "familyId": "f04-directed-angle",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f04-circle-values",
+      "variant": "direct"
+    },
+    {
+      "familyId": "f04-circle-values",
+      "variant": "axes"
+    },
+    {
+      "familyId": "f04-circle-values",
+      "variant": "reciprocal"
+    },
+    {
+      "familyId": "f04-circle-values",
+      "variant": "reciprocal-axes"
+    },
+    {
+      "familyId": "f04-circular-measure",
+      "variant": "arc-sector"
+    },
+    {
+      "familyId": "f04-circular-measure",
+      "variant": "speed"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f04-directed-angle",
+      "variant": "negative"
+    },
+    {
+      "familyId": "f04-circle-values",
+      "variant": "direct"
+    },
+    {
+      "familyId": "f04-circle-values",
+      "variant": "reciprocal-axes"
+    },
+    {
+      "familyId": "f04-circular-measure",
+      "variant": "all"
+    }
+  ],
+  "summary": [
+    "Radian measure compares arc length with radius; a whole turn is 2pi radians.",
+    "Coordinates determine signs. A reference triangle supplies exact magnitudes.",
+    "Check reciprocal denominators, including at axis angles.",
+    "Use radians in arc, sector, and speed formulas, and keep the physical units."
+  ],
+  "retrieval": "Without a calculator, find all six trigonometric values at 270 degrees. Then find the arc length for radius 2 m and angle 120 degrees, explaining the conversion.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §7.1: Angles",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-1-angles",
+      "purpose": "Free additional explanations and examples. The instruction and exercises above are original ECE Study material."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §7.3: Unit Circle",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-3-unit-circle",
+      "purpose": "Free additional explanations and examples. The instruction and exercises above are original ECE Study material."
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §7.4: The Other Trigonometric Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-4-the-other-trigonometric-functions",
+      "purpose": "Free additional explanations and examples. The instruction and exercises above are original ECE Study material."
+    }
+  ]
+}
