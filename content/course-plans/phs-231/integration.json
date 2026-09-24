@@ -275,6 +275,15 @@
   "upstreamIntegration": {
     "merges": [
       {
+        "sourceCommit": "de03daad2d9fba1dcab2954eae85f47b388e56ed",
+        "mergeCommit": "18d1579",
+        "resolvedFiles": [
+          "components/learning/lesson-reader.tsx",
+          "lib/learning/catalog.ts"
+        ],
+        "preserved": "All upstream variation and radical lessons, investigations, families, exact domains, restricted inverses, and tests are retained alongside seventeen physics lessons. The new exponential engine and pattern-family work is retained at its upstream availability state. Prerequisite lesson files, course plans, and development order match this main snapshot. Contracts and generator dispatch merged additively. All 1060 unit tests across 116 files, lint, type checking, production build, and 23 selected integration browser tests passed."
+      },
+      {
         "sourceCommit": "f28070dc4edd25c5884cb8eca78937919f424c10",
         "mergeCommit": "41ba887",
         "resolvedFiles": [
@@ -361,10 +370,10 @@
     "capacity": "A representative history containing one practice form, one checkpoint form, and notes for each of the seventeen delivered lessons round-trips within the current 50 MB policy. The upstream large-history browser test also passes. These checks do not yet establish realistic full-course or repeated-study capacity across the complete major curriculum.",
     "interactionPersistence": "Saved practice, checkpoint evidence, and lesson notes resume and restore through the shared store. Exploratory controls reset on reload, as explicitly stated in each activity; learner findings can be saved in lesson notes.",
     "unit": {
-      "passed": 861,
-      "files": 101,
+      "passed": 1060,
+      "files": 116,
       "command": "pnpm exec vitest run --maxWorkers=1",
-      "note": "All variants receive at least 50 deterministic seeds plus independent fixtures. Rolling adds 800 cases across 16 variants and 200 contact-engine trials. The first full run with two workers, concurrent with lint/type checks, passed 860 tests and timed out in one unchanged MTH 215 content test. The full suite then passed all 861 with one worker; no timeout or assertion was relaxed."
+      "note": "Complete combined unit suite after merging 21 prerequisite commits through de03daa. Physics deterministic-variant, independent engine, guided-answer, content, and backup checks passed with the new upstream variation, radical, inverse, and exponential checks. The new statics files remain unpublished work and are not counted in this merge snapshot."
     },
     "browser": {
       "fullSuite": {
@@ -427,7 +436,13 @@
           "failed": 0,
           "scope": "All browser tests passed in 12.0 minutes on the merged production build, including MTH 215 division, all eleven available physics lessons, large history, schema migrations, multi-tab conflicts, recovery, real backup restoration, desktop and mobile accessibility, and sticky navigation."
         }
-      ]
+      ],
+      "integrationSuite": {
+        "passed": 23,
+        "failed": 0,
+        "commit": "18d1579",
+        "scope": "Selected integration regression suite passed on the merged production build in 9.4 minutes: variation (3), radicals (3), rolling (7), shared learning/resume/checkpoint/conflict and backup workflows (7), large-history capacity (1), and mobile navigation/sticky lesson links (2). This is a selected 23-test run, not a relabeled full-suite run. Earlier full-suite records retain their original scope."
+      }
     },
     "staticChecks": [
       "lint passed",
