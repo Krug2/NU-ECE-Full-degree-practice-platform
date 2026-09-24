@@ -1,0 +1,313 @@
+{
+  "id": "m01-l03",
+  "courseId": "f07",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Dot products, angles, and projections",
+  "objective": "Calculate dot products, classify and measure angles between nonzero vectors, and distinguish scalar components, vector projections, and work along a displacement.",
+  "why": "The dot product measures alignment and connects geometry to useful calculations such as projection and work. Recovering its scalar meaning helps you distinguish a component along a direction from the vector that carries that component.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "lessonId": "m01-l01",
+      "label": "Components, displacement, and unit direction"
+    },
+    {
+      "lessonId": "m01-l02",
+      "label": "Vector arithmetic, resultants, and coordinate directions"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For matching Cartesian components, $u\\cdot v=u_xv_x+u_yv_y+u_zv_z$. The result is one scalar. For nonzero vectors it also equals $\\|u\\|\\|v\\|\\cos\\theta$, where 0≤θ≤180° is the angle between them.",
+        "Projection of u onto nonzero v is $\\operatorname{proj}_v u=(u\\cdot v)/(v\\cdot v)\\,v$. The signed scalar component along v is $(u\\cdot v)/\\|v\\|$. Keep these scalar and vector answers distinct."
+      ]
+    },
+    {
+      "heading": "Multiply matching components, then sum",
+      "paragraphs": [
+        "The dot symbol represents a specific operation. Multiplying two component lists coordinate by coordinate gives intermediate products, but those products must then be added. In an orthonormal frame, the basis dot products are i·i=1 and i·j=0, explaining why matching coordinates survive and mixed directions disappear.",
+        "The dot product is symmetric: u·v=v·u. It distributes across addition, so u·(v+w)=u·v+u·w. These properties support projection checks, but they do not carry over unchanged to the cross product in the next lesson. Identify the operation before applying a familiar rule."
+      ]
+    },
+    {
+      "heading": "The sign tells you about alignment",
+      "paragraphs": [
+        "For two nonzero vectors, the magnitudes in the angle formula are positive. The dot-product sign therefore follows the cosine sign: positive for an acute angle, zero for a right angle, and negative for an obtuse angle. The angle between opposite nonzero vectors is 180°, not a negative angle.",
+        "Divide the dot product by the product of magnitudes before taking inverse cosine. The exact ratio lies between -1 and 1. A calculator may create a tiny rounding excursion at an endpoint; keep enough precision and check the exact geometry. If either vector is zero, the angle formula divides by zero. A zero dot product alone does not establish a geometric right angle in that case."
+      ]
+    },
+    {
+      "heading": "A projection separates along from perpendicular",
+      "paragraphs": [
+        "The vector projection lies on the line through v. Write it as c v, then require the remainder u-cv to have zero dot product with v. Solving $u\\cdot v-c(v\\cdot v)=0$ gives the coefficient c. This derivation explains why the denominator uses the target's squared magnitude.",
+        "The target v must be nonzero. The source u may be zero, in which case its projection onto a nonzero target is zero. A negative coefficient produces a projection opposite the target's direction. That is a valid projection; it is not a negative vector length."
+      ]
+    },
+    {
+      "heading": "Scalar component and vector projection answer different questions",
+      "paragraphs": [
+        "The signed scalar component is u dotted with the unit vector along v. It tells how much of u points along that direction, retaining a sign. Multiply that scalar by the unit vector to obtain the vector projection. The projection's magnitude is the absolute value of the scalar component.",
+        "After calculating, check that the projection is parallel to v and the remainder is perpendicular to v. You can also check that the squared magnitude of u equals the sum of the squared magnitudes of the perpendicular pieces. These checks expose a swapped target or an incorrect denominator."
+      ]
+    },
+    {
+      "heading": "Use units and the supplied physical model",
+      "paragraphs": [
+        "For a constant force F acting through displacement d, the supplied model W=F·d gives work by that force. Only the force component along the displacement contributes. A force opposing the displacement gives negative work; a perpendicular force gives zero work in this constant-force calculation.",
+        "Work has units N m, conventionally written joules J. The scalar result does not describe all other forces or an entire energy budget. For varying forces, the complete course develops a work integral. Here, keep the model, signs, and units explicit rather than extending the formula beyond its assumptions."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Compute a spatial dot product",
+      "prompt": "Find (2,-1,3)·(4,2,-1).",
+      "steps": [
+        {
+          "math": "u\\cdot v=2(4)+(-1)(2)+3(-1)",
+          "reason": "Multiply matching components with their signs."
+        },
+        {
+          "math": "u\\cdot v=8-2-3=3",
+          "reason": "Sum to obtain one scalar."
+        }
+      ],
+      "conclusion": "The answer is 3, not the vector (8,-2,-3)."
+    },
+    {
+      "title": "Classify the angle from a sign",
+      "prompt": "Compare u=(1,1) and v=(-1,2).",
+      "steps": [
+        {
+          "math": "u\\cdot v=-1+2=1>0",
+          "reason": "One negative component product does not decide the sum's sign."
+        },
+        {
+          "math": "\\cos\\theta=\\frac1{\\sqrt2\\sqrt5}=\\frac1{\\sqrt{10}}>0",
+          "reason": "Both nonzero magnitudes preserve the positive sign."
+        }
+      ],
+      "conclusion": "The angle is acute even though one component points oppositely."
+    },
+    {
+      "title": "Find an obtuse angle",
+      "prompt": "Find the angle between (1,0) and (-1,1).",
+      "steps": [
+        {
+          "math": "u\\cdot v=-1,\\qquad\\|u\\|\\|v\\|=\\sqrt2",
+          "reason": "Compute the numerator and denominator separately."
+        },
+        {
+          "math": "\\theta=\\cos^{-1}(-1/\\sqrt2)=135^\\circ",
+          "reason": "Choose the angle in the specified interval from 0° to 180°."
+        }
+      ],
+      "conclusion": "The negative dot product agrees with an obtuse angle."
+    },
+    {
+      "title": "Project onto a coordinate direction",
+      "prompt": "Project u=(3,4) onto v=(1,0).",
+      "steps": [
+        {
+          "math": "c=\\frac{u\\cdot v}{v\\cdot v}=\\frac31=3",
+          "reason": "Use the target's squared magnitude."
+        },
+        {
+          "math": "p=3(1,0)=(3,0),\\qquad u-p=(0,4)",
+          "reason": "The projection retains the along-x part."
+        },
+        {
+          "math": "(u-p)\\cdot v=0",
+          "reason": "The remainder is perpendicular to the target."
+        }
+      ],
+      "conclusion": "Projection produces a vector; its along-direction scalar component is 3."
+    },
+    {
+      "title": "Project onto a nonunit target",
+      "prompt": "Project u=(2,3) onto v=(1,1).",
+      "steps": [
+        {
+          "math": "u\\cdot v=5,\\quad v\\cdot v=2,\\quad c=5/2",
+          "reason": "The target is not a unit vector, so its squared length cannot be omitted."
+        },
+        {
+          "math": "p=\\langle5/2,5/2\\rangle,\\quad u-p=\\langle-1/2,1/2\\rangle",
+          "reason": "Scale v and subtract to find the remainder."
+        },
+        {
+          "math": "\\operatorname{comp}_v u=5/\\sqrt2,\\quad(u-p)\\cdot v=0",
+          "reason": "The signed scalar component differs from the coefficient 5/2."
+        }
+      ],
+      "conclusion": "The projection is (5/2,5/2), while the signed scalar component is 5/√2."
+    },
+    {
+      "title": "Interpret negative work",
+      "prompt": "A constant force (-2,1) N acts through displacement (3,0) m.",
+      "steps": [
+        {
+          "math": "W=F\\cdot d=(-2)(3)+1(0)=-6",
+          "reason": "Only the component along the displacement contributes."
+        },
+        {
+          "math": "W=-6\\,\\mathrm{N\\,m}=-6\\,\\mathrm J",
+          "reason": "Attach the product units to the scalar result."
+        }
+      ],
+      "conclusion": "This force does negative work because its horizontal component opposes the displacement."
+    },
+    {
+      "title": "Separate a defined dot from an undefined angle",
+      "prompt": "Let u=0 and v=(1,2).",
+      "steps": [
+        {
+          "math": "u\\cdot v=0",
+          "reason": "The component sum is perfectly well-defined."
+        },
+        {
+          "math": "\\cos\\theta=\\frac0{0\\sqrt5}\\quad\\text{is undefined}",
+          "reason": "The angle relationship requires both vectors to be nonzero."
+        },
+        {
+          "math": "\\operatorname{proj}_v0=0,\\qquad\\operatorname{proj}_0v\\text{ is undefined}",
+          "reason": "A nonzero target permits a zero source, but a zero target cannot define a projection direction."
+        }
+      ],
+      "conclusion": "The direction and target conditions matter separately from the scalar arithmetic."
+    }
+  ],
+  "guided": {
+    "title": "Finish the reasoning",
+    "setup": "For u=(4,1) and v=(1,2), derive the projection coefficient rather than memorizing it.",
+    "before": [
+      "Compute u dot v and v dot v.",
+      "Use the coefficient to make u-cv perpendicular to v."
+    ],
+    "question": {
+      "id": "f07-l03-guided",
+      "familyId": "guided-f07-l03",
+      "familyVersion": 1,
+      "courseId": "f07",
+      "objectiveId": "m01-l03",
+      "category": "application",
+      "critical": false,
+      "prompt": "Find u dot v, the coefficient c in the projection c v, and the dot product (u-cv) dot v.",
+      "fields": [
+        {
+          "id": "dot",
+          "kind": "rational",
+          "label": "Dot product",
+          "expected": "6",
+          "unit": ""
+        },
+        {
+          "id": "coefficient",
+          "kind": "rational",
+          "label": "Projection coefficient",
+          "expected": "6/5",
+          "unit": ""
+        },
+        {
+          "id": "check",
+          "kind": "rational",
+          "label": "Residual dot target",
+          "expected": "0",
+          "unit": ""
+        }
+      ],
+      "hints": [
+        "Write the supplied quantities and their units first.",
+        "Use the coefficient to make u-cv perpendicular to v.",
+        "The dot product is 6 and the target squared magnitude is 5, so c=6/5."
+      ],
+      "explanation": [
+        "The dot product is 6 and the target squared magnitude is 5, so c=6/5.",
+        "The remainder is (14/5,-7/5), whose dot product with (1,2) is zero."
+      ],
+      "answerSummary": "The dot product is 6 and the target squared magnitude is 5, so c=6/5. The remainder is (14/5,-7/5), whose dot product with (1,2) is zero."
+    },
+    "after": "Explain the reasoning before starting independent practice. Guided feedback is assisted work, not checkpoint evidence."
+  },
+  "interaction": {
+    "kind": "refresher-vector-lab",
+    "mode": "dot",
+    "prompt": "Change planar vectors and predict the dot product and projection. Reveal the projected arrow and perpendicular remainder. Test a negative projection, orthogonality, and a zero target with an explicit invalid-state message."
+  },
+  "practice": [
+    {
+      "familyId": "f07-dot-product",
+      "variant": "plane"
+    },
+    {
+      "familyId": "f07-dot-product",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-dot-product",
+      "variant": "sign"
+    },
+    {
+      "familyId": "f07-vector-angle",
+      "variant": "general"
+    },
+    {
+      "familyId": "f07-vector-angle",
+      "variant": "perpendicular"
+    },
+    {
+      "familyId": "f07-vector-angle",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f07-projection",
+      "variant": "vector"
+    },
+    {
+      "familyId": "f07-projection",
+      "variant": "scalar"
+    },
+    {
+      "familyId": "f07-projection",
+      "variant": "zero"
+    },
+    {
+      "familyId": "f07-vector-work",
+      "variant": "signed"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f07-dot-product",
+      "variant": "space"
+    },
+    {
+      "familyId": "f07-vector-angle",
+      "variant": "general"
+    },
+    {
+      "familyId": "f07-projection",
+      "variant": "audit"
+    },
+    {
+      "familyId": "f07-vector-work",
+      "variant": "signed"
+    }
+  ],
+  "summary": [
+    "The dot product is a scalar and its sign describes alignment when both vectors are nonzero.",
+    "Projection onto v divides by v dot v; distinguish its coefficient, signed scalar component, and vector result.",
+    "Check perpendicular residuals, zero-vector conditions, and physical units."
+  ],
+  "retrieval": "Project (-3,2) onto (1,0). Explain why the scalar component is negative but the projection's magnitude is positive. Then state what fails if the target becomes zero.",
+  "readings": [
+    {
+      "title": "OpenStax Calculus Volume 3 · 2.3: The Dot Product",
+      "url": "https://openstax.org/books/calculus-volume-3/pages/2-3-the-dot-product",
+      "purpose": "Use this free reference to extend the explanation. The instruction and exercises here are original; source and license details are recorded in the F07 resource plan."
+    }
+  ]
+}
