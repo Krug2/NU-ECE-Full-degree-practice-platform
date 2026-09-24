@@ -17,6 +17,7 @@ import { rationalFunctionCaseSchema } from "./rational-function";
 import { signChartCaseSchema } from "./sign-chart";
 import { variationLabCaseSchema } from "./variation-investigation";
 import { radicalLabCaseSchema } from "./radical-investigation";
+import { exponentialLabCaseSchema } from "./exponential-investigation";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -101,6 +102,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("exponential-lab"),prompt:text,cases:z.array(exponentialLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("radical-lab"),prompt:text,cases:z.array(radicalLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("variation-lab"),prompt:text,cases:z.array(variationLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("sign-chart-lab"),prompt:text,cases:z.array(signChartCaseSchema).min(3).max(6)}).strict(),
