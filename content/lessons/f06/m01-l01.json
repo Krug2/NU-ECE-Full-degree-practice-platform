@@ -192,7 +192,7 @@
   "interaction": {
     "kind": "refresher-measurement-lab",
     "mode": "prefix",
-    "prompt": "Choose a base quantity and two prefixes. Predict the converted value and direction of numerical change, then inspect an exact scale table and reverse conversion."
+    "prompt": "Choose a numerical value and two prefixes. Predict the converted value and factor exponent, then inspect the scale table and reverse conversion. Explain why changing the unit size preserves the physical quantity."
   },
   "practice": [
     {

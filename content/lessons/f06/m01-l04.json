@@ -247,7 +247,7 @@
   "interaction": {
     "kind": "refresher-measurement-lab",
     "mode": "rounding",
-    "prompt": "Enter an exact finite decimal and choose significant digits or decimal places. Predict the rounded numerical value and a precision-preserving report, then compare the rounding step and nearby values. Include ties, negative inputs, and carry across a power of ten."
+    "prompt": "Enter a finite decimal and choose significant figures or decimal places. Predict the rounded numerical value and written report, then inspect the rounding place. Try a halfway case, a negative input, and a carry across a power of ten."
   },
   "practice": [
     {

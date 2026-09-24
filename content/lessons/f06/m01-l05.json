@@ -246,7 +246,7 @@
   "interaction": {
     "kind": "refresher-measurement-lab",
     "mode": "measurement",
-    "prompt": "Change a displayed scale reading, resolution, and stated additional bound. Predict the conservative interval and compare a reference using keyboard controls. Show a labeled scale and equivalent numeric table; distinguish a tighter resolution from evidence of accuracy."
+    "prompt": "Change the displayed reading, resolution, and additional stated bound. Predict the conservative interval and reference compatibility before revealing the scale and table. Explain why finer resolution alone does not establish accuracy."
   },
   "practice": [
     {
