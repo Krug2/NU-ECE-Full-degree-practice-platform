@@ -54,17 +54,18 @@
   ],
   "deliveryPolicy": "Use course-specific files. Keep necessary shared extensions backward compatible and in focused commits; record their hashes in integration.json. Verify each small slice, stage only its files, commit with a short lowercase summary and no body, and immediately push origin/major-courses. Never push or merge into main from this task. Preserve Markdown ignore rules and exclude personal data.",
   "status": {
-    "currentCourse": "phs-231",
+    "currentCourse": "phs-232",
     "currentCourseProgress": {
-      "plannedLessons": 22,
-      "availableLessons": 22,
-      "nextLesson": null,
-      "integrationRecord": "phs-231/integration.json",
-      "nextWork": "Complete coverage, fresh integrated checks and the technical release audit. All 22 lessons, 34 assessments, targeted review, project notebook and repeated-study capacity checks are implemented."
+      "phase": "official-source research and complete course planning",
+      "plannedLessons": null,
+      "availableLessons": 0,
+      "nextWork": "Verify current NU description and academic dependencies, map complete subject coverage and assessment evidence, then implement each verified slice.",
+      "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },
-    "completedCourses": [],
+    "completedCourses": [
+      "phs-231"
+    ],
     "remainingCourses": [
-      "phs-231",
       "phs-232",
       "csc-310",
       "csc-331",
@@ -90,6 +91,7 @@
       "cee-498c"
     ],
     "independentSubjectReview": "Not performed",
-    "pilotValidation": "Not performed"
+    "pilotValidation": "Not performed",
+    "completionMeaning": "Technical implementation and release audit are complete. This does not claim independent subject review, learner pilot validation, official NU credit, or waiver of academic prerequisites."
   }
 }
