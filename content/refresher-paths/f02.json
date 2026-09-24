@@ -1,0 +1,98 @@
+{
+  "courseId": "f02",
+  "version": 1,
+  "quickRoute": "Try six diagnostic probes, then open the Quick recall section of any recommended lesson. Use each lesson's independent checkpoint to show what you can do without hints. Finish the mixed recall check after the six objectives are covered.",
+  "fullRoute": "Begin with expansion and factoring, then equations, inequalities, quadratics, rational expressions, and candidate checking. Each lesson includes complete explanations, worked examples, guided work, an investigation, and a varied practice set. Return to F01 if signed numbers or fractions are the main obstacle.",
+  "diagnostic": [
+    {
+      "familyId": "f02-diagnostic-factors",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-diagnostic-linear",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-diagnostic-inequality",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-diagnostic-quadratic",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-diagnostic-rational",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-diagnostic-candidates",
+      "variant": "screen"
+    }
+  ],
+  "recall": [
+    {
+      "familyId": "f02-recall-expressions",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-recall-inequalities",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-recall-quadratics",
+      "variant": "screen"
+    },
+    {
+      "familyId": "f02-recall-restrictions",
+      "variant": "screen"
+    }
+  ],
+  "targets": {
+    "f02-diagnostic-factors": "m01-l01",
+    "f02-diagnostic-linear": "m01-l02",
+    "f02-diagnostic-inequality": "m01-l03",
+    "f02-diagnostic-quadratic": "m01-l04",
+    "f02-diagnostic-rational": "m01-l05",
+    "f02-diagnostic-candidates": "m01-l06",
+    "f02-recall-expressions": {
+      "p1": "m01-l01",
+      "p2": "m01-l02"
+    },
+    "f02-recall-inequalities": "m01-l03",
+    "f02-recall-quadratics": "m01-l04",
+    "f02-recall-restrictions": {
+      "p1": "m01-l05",
+      "p2": "m01-l06"
+    }
+  },
+  "support": [
+    {
+      "courseId": "f01",
+      "reason": "Return to arithmetic when signs, fractions, powers, or notation are blocking the algebra."
+    },
+    {
+      "courseId": "mth-215",
+      "reason": "These manipulation skills support the full algebra and trigonometry course."
+    },
+    {
+      "courseId": "csc-208",
+      "reason": "Derivative and limit calculations rely on valid expression transformations."
+    },
+    {
+      "courseId": "csc-209",
+      "reason": "Integration and later algebraic methods use factoring and rational expressions."
+    },
+    {
+      "courseId": "cee-300",
+      "reason": "Engineering mathematics needs complete solution sets and valid restrictions."
+    },
+    {
+      "courseId": "cee-310",
+      "reason": "Circuit equations and tolerances use formulas, signed algebra, and admissible solutions."
+    }
+  ],
+  "escalation": {
+    "courseId": "mth-215",
+    "text": "For first-time instruction or topics beyond these six skills, follow the complete MTH 215 learning path and its available lessons. The exact OpenStax sections linked inside each lesson give further explanations. F03 addresses functions and graphs; F09 develops complex-number representations."
+  }
+}
