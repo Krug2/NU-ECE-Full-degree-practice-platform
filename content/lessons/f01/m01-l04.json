@@ -1,0 +1,302 @@
+{
+  "id": "m01-l04",
+  "courseId": "f01",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Scientific notation and trustworthy answers",
+  "objective": "Translate scientific notation, retain exact values until rounding is requested, and use an estimate to detect sign or scale errors.",
+  "why": "A misplaced power of ten can make a plausible calculation a thousand times too large. Exact notation and a rough estimate offer two useful checks on the same answer. This lesson prepares you for small currents, long time scales, calculator displays, and the unit and measurement work in F06.",
+  "estimatedMinutes": 40,
+  "prerequisites": [
+    {
+      "label": "Fractions, decimals, and proportions",
+      "lessonId": "m01-l02"
+    },
+    {
+      "label": "Powers and real roots",
+      "lessonId": "m01-l03"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Quick recall",
+      "paragraphs": [
+        "For a positive nonzero value, normalized scientific notation is $a\\times10^n$ with $1\\le a<10$ and integer n. A negative value keeps its sign in front. Zero can be written as $0\\times10^0$, but it has no nonzero normalized coefficient.",
+        "Multiply coefficients and add exponents, then normalize again if needed. Keep an exact fraction until the problem requests rounding. Use = for equal values and approximately equal for a rounded replacement. Estimate the sign and scale before trusting the final digits."
+      ]
+    },
+    {
+      "heading": "Powers of ten make place value explicit",
+      "paragraphs": [
+        "The value $10^3$ is 1000 and $10^{-3}$ is 1/1000. Multiplying a positive coefficient by a positive power makes it larger; multiplying by a negative power makes it smaller. A negative exponent does not make a positive coefficient negative.",
+        "To rewrite 0.00072, first choose 7.2 as the coefficient because it has one nonzero digit to the left of the decimal. Then choose the power that restores the original size: $7.2\\times10^{-4}=0.00072$. Always multiply back to check the direction of the exponent.",
+        "More than one coefficient-power pair can describe a number: $72\\times10^{-5}=7.2\\times10^{-4}$. Normalization picks a common convention so the exponent and leading digits are easy to compare. In scientific-notation questions, an equivalent but unnormalized coefficient does not satisfy the requested form."
+      ]
+    },
+    {
+      "heading": "Compute first, then normalize",
+      "paragraphs": [
+        "For a product, multiply the coefficients and add the powers-of-ten exponents. The result may need normalization: $(6\\times10^3)(4\\times10^{-2})=24\\times10^1=2.4\\times10^2$. Dividing the coefficient by ten requires increasing the exponent by one to preserve the value.",
+        "For a quotient with nonzero denominator, divide coefficients and subtract exponents. The expression $(6\\times10^{-3})/(2\\times10^2)$ equals $3\\times10^{-5}$. Group the entire denominator when typing it.",
+        "These are arithmetic statements about stated values. Rewriting a measured value does not improve its measurement precision. Significant figures, SI prefixes, and uncertainty are studied in F06; this lesson only checks that the represented number has not changed."
+      ]
+    },
+    {
+      "heading": "Separate exact values from a display",
+      "paragraphs": [
+        "The fraction 2/7 is exact. Its decimal expansion repeats. A display rounded to 0.286 is useful, but $2/7\\ne0.286$: multiplying the displayed decimal by 7 gives 2.002 rather than 2. Write $2/7\\approx0.286$ when describing that approximation.",
+        "A terminating decimal can be exact: 0.125=1/8. The appearance of a decimal point alone does not tell you whether rounding occurred. Read the wording: 'the exact decimal 0.125' and 'a measurement rounded to 0.125' make different claims.",
+        "Keep exact values through intermediate steps when possible. For example, $7(2/7)=2$ exactly, while $7(0.286)=2.002$. Rounding each step may accumulate differences. A requested final decimal should come from the unrounded calculation."
+      ]
+    },
+    {
+      "heading": "Round at the requested place",
+      "paragraphs": [
+        "To round a positive value to one decimal place, keep the tenths digit and inspect the hundredths digit. If that next digit is at least five, increase the retained digit by one. For 200/3=66.666..., the nearest tenth is 66.7. If the next digit is below five, keep the retained digit.",
+        "Rounding can carry into an earlier place: 9.96 to one decimal place becomes 10.0. Writing the trailing zero communicates the requested decimal place, although 10 and 10.0 represent the same number. The app accepts mathematically equivalent inputs for the requested rounded value.",
+        "The practice here uses positive values and avoids ambiguous halfway conventions. In later measurement work, use the rounding convention the task specifies. A tolerance-based measurement comparison is a different task from producing the nearest requested decimal."
+      ]
+    },
+    {
+      "heading": "Estimate before accepting the answer",
+      "paragraphs": [
+        "Use simple bounds to check size. Since 3 times 60 is 180 and 3 times 70 is 210, the quotient 200/3 lies between 60 and 70. A displayed answer near 667 is therefore a scale error regardless of how many decimal digits follow it.",
+        "Sign checks are equally useful: a product of a negative and positive number must be negative; a positive proper fraction of a positive whole must be smaller than that whole. Those checks can reject an answer without repeating the detailed calculation.",
+        "An estimate is a check, not a substitute for a requested exact value. When a result fails the check, inspect the original expression, parentheses, exponent signs, and units. Correct the model or entry before rounding more carefully. Save the reason for the error in your notes so your next practice targets the cause."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Normalize a small value",
+      "prompt": "Write 0.00072 m in normalized scientific notation.",
+      "steps": [
+        {
+          "math": "0.00072=7.2\\cdot0.0001=7.2\\times10^{-4}",
+          "reason": "The chosen coefficient lies from one inclusive to ten exclusive. The negative exponent restores the small original value."
+        },
+        {
+          "math": "7.2\\times10^{-4}=\\frac{7.2}{10000}=0.00072",
+          "reason": "Multiplying back checks the exponent's direction."
+        }
+      ],
+      "conclusion": "The stated value is 7.2 times 10^-4 m. Reformatting it adds no measurement accuracy."
+    },
+    {
+      "title": "A product needs a second normalization",
+      "prompt": "Compute (6*10^3)(4*10^-2).",
+      "steps": [
+        {
+          "math": "(6\\times10^3)(4\\times10^{-2})=24\\times10^{3-2}=24\\times10^1",
+          "reason": "Multiply coefficients and add exponents with their signs."
+        },
+        {
+          "math": "24\\times10^1=2.4\\times10^2=240",
+          "reason": "A coefficient of 24 is too large for normalized form. Move one factor of ten into the exponent."
+        }
+      ],
+      "conclusion": "The normalized coefficient is 2.4 and the exponent is 2."
+    },
+    {
+      "title": "A display is not an exact fraction",
+      "prompt": "Compare 2/7 with a display rounded to 0.286.",
+      "steps": [
+        {
+          "math": "\\frac27\\approx0.286",
+          "reason": "The displayed decimal stops after three places; the fraction's decimal does not terminate."
+        },
+        {
+          "math": "7\\left(\\frac27\\right)=2,\\qquad7(0.286)=2.002",
+          "reason": "Multiplying both representations by 7 exposes the rounding difference."
+        },
+        {
+          "math": "2.002-2=0.002",
+          "reason": "The discrepancy is small but nonzero. Exact tasks cannot silently replace one value with the other."
+        }
+      ],
+      "conclusion": "Retain 2/7 in exact work. A rounded decimal answers a different request."
+    },
+    {
+      "title": "Bound first and round last",
+      "prompt": "Give 200/3 to the nearest tenth and assess a proposed answer of 666.7.",
+      "steps": [
+        {
+          "math": "60<\\frac{200}{3}<70",
+          "reason": "Multiplying the bounds by positive 3 gives 180<200<210."
+        },
+        {
+          "math": "\\frac{200}{3}=66.666\\ldots\\approx66.7",
+          "reason": "The hundredths digit is 6, so the tenths digit rounds upward."
+        },
+        {
+          "math": "666.7>70",
+          "reason": "The proposal fails the independent size check before any detailed rounding debate."
+        }
+      ],
+      "conclusion": "The nearest tenth is 66.7. A rough interval is enough to reject a tenfold error."
+    }
+  ],
+  "guided": {
+    "title": "Finish a scale and notation check",
+    "setup": "Use the exact stated values 0.0048 and 0.002. Normalize the first and divide it by the second.",
+    "before": [
+      "A normalized coefficient has one nonzero digit to the left of its decimal point.",
+      "The quotient should be only a few units because the numerator is a little more than twice the denominator."
+    ],
+    "question": {
+      "id": "f01-l04-guided",
+      "familyId": "guided-f01-notation",
+      "familyVersion": 1,
+      "courseId": "f01",
+      "objectiveId": "m01-l04",
+      "category": "application",
+      "critical": true,
+      "prompt": "Supply the scientific-notation parts, exact quotient, and decision about a proposed result of 2400.",
+      "fields": [
+        {
+          "id": "coefficient",
+          "kind": "rational",
+          "label": "Normalized coefficient",
+          "expected": "4.8"
+        },
+        {
+          "id": "exponent",
+          "kind": "rational",
+          "label": "Integer exponent",
+          "expected": "-3"
+        },
+        {
+          "id": "quotient",
+          "kind": "rational",
+          "label": "Exact quotient",
+          "expected": "12/5"
+        },
+        {
+          "id": "scale",
+          "kind": "choice",
+          "label": "Is 2400 a reasonable quotient?",
+          "correct": "no",
+          "options": [
+            {
+              "id": "no",
+              "label": "No; the ratio should be between two and three",
+              "feedback": "The numerator lies between two and three times the denominator, so 2400 has the wrong scale."
+            },
+            {
+              "id": "yes",
+              "label": "Yes; small decimals always make large quotients",
+              "feedback": "Both numbers are on the same decimal scale. Their ratio is only 2.4."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "The coefficient is 4.8. Choose the exponent that makes it smaller by a factor of one thousand.",
+        "Multiply numerator and denominator by 10000 to obtain 48/20.",
+        "The exact quotient is 12/5=2.4."
+      ],
+      "explanation": [
+        "The first value is 4.8 times 10^-3.",
+        "The quotient is 0.0048/0.002=48/20=12/5.",
+        "The proposed 2400 is a thousand times the correct result and fails the size check."
+      ],
+      "answerSummary": "4.8; -3; 12/5; no, 2400 has the wrong scale."
+    },
+    "after": "Explain how the size check would have helped even if you had forgotten the exact power-of-ten rule."
+  },
+  "interaction": {
+    "kind": "arithmetic-lab",
+    "prompt": "Predict each value before checking. Compare the exact value with the displayed decimal and explain whether the display is rounded. Then change denominator parentheses or an exponent sign and use an estimate to predict the effect.",
+    "examples": [
+      {
+        "label": "A small value",
+        "expression": "7.2*10^(-4)",
+        "explanation": "The exact value is 0.00072."
+      },
+      {
+        "label": "An unnormalized product",
+        "expression": "(6*10^3)*(4*10^(-2))",
+        "explanation": "The exact value is 240, normalized as 2.4 times 10^2."
+      },
+      {
+        "label": "Keep an exact fraction",
+        "expression": "7*(2/7)",
+        "explanation": "The exact cancellation gives 2."
+      },
+      {
+        "label": "Round before multiplying",
+        "expression": "7*0.286",
+        "explanation": "The value is 2.002. Replacing 2/7 by 0.286 before multiplication introduced a difference."
+      },
+      {
+        "label": "Group a scientific denominator",
+        "expression": "(6*10^(-3))/(2*10^2)",
+        "explanation": "The entire denominator is 200; the quotient is 0.00003."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "f01-scientific-notation",
+      "variant": "to"
+    },
+    {
+      "familyId": "f01-scientific-notation",
+      "variant": "from"
+    },
+    {
+      "familyId": "f01-notation-check",
+      "variant": "product"
+    },
+    {
+      "familyId": "f01-exact-approximate",
+      "variant": "compare"
+    },
+    {
+      "familyId": "f01-notation-check",
+      "variant": "rounding"
+    },
+    {
+      "familyId": "f01-notation-check",
+      "variant": "estimate"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "f01-scientific-notation",
+      "variant": "to"
+    },
+    {
+      "familyId": "f01-notation-check",
+      "variant": "product"
+    },
+    {
+      "familyId": "f01-exact-approximate",
+      "variant": "compare"
+    },
+    {
+      "familyId": "f01-notation-check",
+      "variant": "estimate"
+    }
+  ],
+  "summary": [
+    "Normalized positive scientific coefficients lie in [1,10); the power of ten preserves the number's scale.",
+    "Multiply coefficients and add exponents, then normalize the result.",
+    "A terminating stated decimal may be exact; a finite display of a repeating decimal is approximate.",
+    "Round only at the requested final place and use approximately equal when values differ.",
+    "Check sign, scale, grouping, and the requested units before accepting an answer."
+  ],
+  "retrieval": "In a few days, convert 0.00036 to scientific notation, compute (3*10^2)(4*10^-4), and explain why 1/3 is not exactly 0.333. For each calculation, predict its size before doing it.",
+  "readings": [
+    {
+      "title": "OpenStax Prealgebra 2e §5.1: Decimals",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/5-1-decimals",
+      "purpose": "Place value and rounding"
+    },
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e §1.2: Exponents and Scientific Notation",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/1-2-exponents-and-scientific-notation",
+      "purpose": "Exponent laws and powers of ten"
+    }
+  ]
+}
