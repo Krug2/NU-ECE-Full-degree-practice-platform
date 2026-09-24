@@ -18,7 +18,7 @@ export function phs231VectorQuestion(familyId: string, variant: string, seed: st
   if(variant==="unit"&&a.reduce((s,n)=>s+n*n,0)===0)a[0]=1;
   if(variant==="projection"&&b.reduce((s,n)=>s+n*n,0)===0)b[1]=1;
   if(variant==="planar"){a[2]=0;if(a[0]===0&&a[1]===0)a[1]=1;}
-  if(variant==="zero")for(let i=0;i<3;i++)b[i]=-a[i];
+  if(variant==="zero")for(let i=0;i<3;i++)b[i]=a[i]===0?0:-a[i];
   const parameters={ax:a[0],ay:a[1],az:a[2],bx:b[0],by:b[1],bz:b[2]};
   const base={id,familyId,familyVersion:1,courseId:"phs-231",objectiveId:"m01-l02",category:"procedural",critical:true,parameters};
   const magnitudeSquared=a.reduce((n,v)=>n+v*v,0),bSquared=b.reduce((n,v)=>n+v*v,0);
@@ -74,6 +74,6 @@ export function phs231VectorQuestion(familyId: string, variant: string, seed: st
       {id:"same",label:"The result always stays the same",feedback:"Exchanging operands reverses the right-hand-rule direction. Only a zero cross product equals its own negative."},
       {id:"reciprocal",label:"The result becomes a reciprocal",feedback:"Vectors have no ordinary scalar-like division operation that gives this change."},
     ])]:[])],
-    hints:["For U×V the x component is Uy Vz - Uz Vy; cycle x, y, z for the next components.",`A×B has components ${display(cross)}.`,reverse?`Reverse all signs to get B×A = ${display(result)}.`:"Keep the force and position in their stated order. Torque is r cross F."],
-    explanation:[`A×B = (${a[1]}·${b[2]} - ${a[2]}·${b[1]}, ${a[2]}·${b[0]} - ${a[0]}·${b[2]}, ${a[0]}·${b[1]} - ${a[1]}·${b[0]}) = ${display(cross)}.`,reverse?`Antisymmetry gives B×A = ${display(result)}.`:`Therefore the torque vector is ${display(result)} N m.`,"Dot the result with each input: both checks give zero. This independently verifies perpendicularity, although it alone does not determine the correct sign or magnitude.","Torque and work share base dimensions but are different physical quantities. Label torque N m and work J to retain that distinction."],answerSummary:`${display(result)}${reverse?"; reverse sign relative to A cross B.":" N m."}`});
+    hints:["For U×V the x component is Uy Vz - Uz Vy; cycle x, y, z for the next components.",`${reverse?"A×B":"r×F"} has components ${display(cross)}.`,reverse?`Reverse all signs to get B×A = ${display(result)}.`:"Keep the force and position in their stated order. Torque is r cross F."],
+    explanation:[`${reverse?"A×B":"r×F"} = (${a[1]}·${b[2]} - ${a[2]}·${b[1]}, ${a[2]}·${b[0]} - ${a[0]}·${b[2]}, ${a[0]}·${b[1]} - ${a[1]}·${b[0]}) = ${display(cross)}.`,reverse?`Antisymmetry gives B×A = ${display(result)}.`:`Therefore the torque vector is ${display(result)} N m.`,"Dot the result with each input: both checks give zero. This independently verifies perpendicularity, although it alone does not determine the correct sign or magnitude.","Torque and work share base dimensions but are different physical quantities. Label torque N m and work J to retain that distinction."],answerSummary:`${display(result)}${reverse?"; reverse sign relative to A cross B.":" N m."}`});
 }
