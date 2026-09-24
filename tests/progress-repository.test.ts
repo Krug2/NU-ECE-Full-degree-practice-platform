@@ -13,7 +13,7 @@ async function open(factory=new IDBFactory(),name=crypto.randomUUID(),onVersionC
 }
 async function rawWrite(factory:IDBFactory,name:string,value:unknown){
   await new Promise<void>((resolve,reject)=>{
-    const request=factory.open(name,1);request.onerror=()=>reject(request.error);
+    const request=factory.open(name);request.onerror=()=>reject(request.error);
     request.onsuccess=()=>{
       const database=request.result,transaction=database.transaction(progressStoreName,"readwrite");
       transaction.objectStore(progressStoreName).put(value,progressRecordKey);
@@ -25,7 +25,7 @@ it("migrates valid v1 browser data once and leaves its original text untouched",
   const {repository,factory,name}=await open();
   const legacy={schemaVersion:1,profile:{displayName:"Learner",weeklyHours:7},plan:["mth-215"],bookmarks:["R01"],notes:{"mth-215":"Keep my note"},confidence:{"mth-215":"refresh"},sessions:[]};
   const text=JSON.stringify(legacy),readLegacy=vi.fn(()=>text),saved=await repository.initialize(readLegacy);
-  expect(saved).toEqual({storageVersion:1,revision:1,data:{...legacy,schemaVersion:2,learning:{attempts:[],evidence:[],notes:{}}}});
+  expect(saved).toMatchObject({storageVersion:2,revision:1,data:{...legacy,schemaVersion:2,learning:{attempts:[],evidence:[],notes:{}}}});
   expect(text).toBe(JSON.stringify(legacy));expect(readLegacy).toHaveBeenCalledTimes(1);
   const second=(await open(factory,name)).repository,unused=vi.fn(()=>"{broken");
   expect(await second.initialize(unused)).toEqual(saved);expect(unused).not.toHaveBeenCalled();
@@ -102,9 +102,9 @@ it("preserves corrupt legacy text and newer stored records for recovery",async()
 it("checks the reviewed revision before replacing valid progress",async()=>{
   const {repository}=await open(),original=await repository.initialize();
   const current=await repository.update(data=>({...data,notes:{"mth-215":"newer note"}}));
-  await expect(repository.replace(emptyProgress(),{revision:original.revision})).rejects.toMatchObject({code:"conflict"});
+  await expect(repository.replace(emptyProgress(),{revision:original.revision,generation:original.generation})).rejects.toMatchObject({code:"conflict"});
   expect(await repository.read()).toEqual(current);
-  const replaced=await repository.replace({...emptyProgress(),plan:["phs-104"]},{revision:current.revision});
+  const replaced=await repository.replace({...emptyProgress(),plan:["phs-104"]},{revision:current.revision,generation:current.generation});
   expect(replaced).toMatchObject({revision:3,data:{plan:["phs-104"],notes:{}}});
 });
 it("requires an exact recovery-record match before replacing corrupt data",async()=>{
@@ -118,7 +118,7 @@ it("requires an exact recovery-record match before replacing corrupt data",async
 it("closes on a database upgrade and rejects use from an older app version",async()=>{
   const changed=vi.fn(),{repository,factory,name}=await open(new IDBFactory(),crypto.randomUUID(),changed);
   await repository.initialize();
-  await new Promise<void>((resolve,reject)=>{const request=factory.open(name,2);request.onsuccess=()=>{request.result.close();resolve();};request.onerror=()=>reject(request.error);});
+  await new Promise<void>((resolve,reject)=>{const request=factory.open(name,3);request.onsuccess=()=>{request.result.close();resolve();};request.onerror=()=>reject(request.error);});
   expect(changed).toHaveBeenCalledTimes(1);
   await expect(repository.read()).rejects.toMatchObject({code:"closed"});
   await expect(openProgressRepository({factory,name})).rejects.toMatchObject({code:"version"});

@@ -3,7 +3,7 @@ import { IDBFactory,IDBObjectStore } from "fake-indexeddb";
 import { emptyProgress } from "../lib/progress";
 import { ProgressStore } from "../lib/progress-store";
 import { openProgressRepository,type ProgressRepository } from "../lib/progress-repository";
-import { createAttempt,updateAttempt } from "../lib/learning/attempts";
+import { createAttempt } from "../lib/learning/attempts";
 import { lessonSchema } from "../lib/learning/contracts";
 import linearLesson from "../content/lessons/mth-215/m01-l01.json";
 
@@ -131,11 +131,23 @@ it("does not show checkpoint evidence before a submission commits",async()=>{
   for(const question of attempt.questions)attempt.responses[question.id]=Object.fromEntries(question.fields.map(field=>[field.id,field.kind==="choice"?field.correct:String("expected" in field?field.expected:"")]));
   data.learning.attempts=[attempt];
   const {store,repository}=await setup({legacy:JSON.stringify(data)});await store.load();failNextWrite();
-  expect(await store.save(current=>({...current,learning:updateAttempt(current.learning,attempt.id,0,value=>({...value,status:"submitted",submittedAt:new Date().toISOString()}))}))).toBe(false);
+  expect(await store.saveAttempt(attempt.id,0,{status:"submitted",submittedAt:new Date().toISOString()})).toBe(false);
   expect(store.getSnapshot().data.learning.evidence).toHaveLength(0);
   expect((await repository.read()).data.learning.attempts[0].status).toBe("active");
   expect(await store.retry()).toBe(true);
   expect(store.getSnapshot().data.learning.evidence).toHaveLength(1);
+});
+it("exports the complete unsaved answer while keeping committed history unchanged",async()=>{
+  const data=emptyProgress(),attempt=createAttempt(lessonSchema.parse(linearLesson),"practice","draft-answer");
+  data.learning.attempts=[attempt];
+  const {store,repository}=await setup({legacy:JSON.stringify(data)});await store.load();
+  const patch={responses:{[attempt.questions[0].id]:{[attempt.questions[0].fields[0].id]:"-7/3"}}};
+  failNextWrite();expect(await store.saveAttempt(attempt.id,0,patch)).toBe(false);
+  expect(store.getSnapshot()).toMatchObject({locked:true,dirty:true});
+  expect((await repository.read()).data).toEqual(data);
+  expect(JSON.parse(await store.exportText()).learning.attempts[0].responses).toEqual(patch.responses);
+  expect(await store.retry()).toBe(true);
+  expect(store.getSnapshot().data.learning.attempts[0].responses).toEqual(patch.responses);
 });
 it("never turns a notification failure into a failed committed save",async()=>{
   const {store,repository}=await setup({committed:()=>{throw new Error("No channel");}});await store.load();
