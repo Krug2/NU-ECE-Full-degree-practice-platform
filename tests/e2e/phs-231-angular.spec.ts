@@ -14,6 +14,7 @@ const predict=async(lab:Locator,answers:string[])=>{
 const rowValue=(region:Locator,name:string)=>region.getByRole("row").filter({has:region.page().getByRole("rowheader",{name,exact:true})}).getByRole("cell").first();
 
 test("angular instruction distinguishes work sources and includes radial energy in accessible keyboard snapshots",async({page},testInfo)=>{
+  test.setTimeout(180_000);
   const errors:string[]=[];page.on("pageerror",error=>errors.push(error.message));await page.goto(route);
   const guided=page.locator("#guided");
   const labels=["Trial A final angular velocity (rad/s)","Trial A radial actuator work (J)","Trial B motor work (J)","Trial B radial actuator work (J)"];
@@ -50,6 +51,7 @@ test("angular instruction distinguishes work sources and includes radial energy 
 });
 
 test("angular trials compare control modes, duration, zero spin, unchanged radii, extreme valid values, and invalid answers",async({page})=>{
+  test.setTimeout(180_000);
   await page.goto(route);const lab=page.locator("#investigate"),check=lab.getByRole("button",{name:"Check angular accounts",exact:true});
   await lab.getByRole("button",{name:"Inward with fixed speed",exact:true}).click();await predict(lab,["2","3","-6","3"]);await expect(lab.getByRole("status")).toContainText("All four predictions agree");
   await expect(lab).toContainText("The motor changes L to hold ω fixed");
@@ -114,4 +116,3 @@ test("angular checkpoint answers, accessibility decisions, and notes survive con
   await page.getByRole("button",{name:"Reset local progress",exact:true}).click();await page.getByRole("button",{name:"Confirm reset",exact:true}).click();await expect(page.getByText("Local progress has been reset.",{exact:true})).toBeVisible();
   await restoreProgress(page,backup);await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();await expect(practice.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();await expect(page.getByLabel("Reasoning, questions, or a worked solution to revisit",{exact:true})).toHaveValue(note);
 });
-

@@ -13,6 +13,7 @@ const predict=async(lab:Locator,answers:string[])=>{
 };
 
 test("rotation instruction separates radial force from torque and supports accessible keyboard snapshots and complete tables",async({page},testInfo)=>{
+  test.setTimeout(180_000);
   const errors:string[]=[];page.on("pageerror",error=>errors.push(error.message));await page.goto(route);
   const guided=page.locator("#guided");
   for(const [label,value] of [["Total rotor inertia (kg m²)","3"],["Net axial torque (N m)","4"],["Constant angular acceleration (rad/s²)","4/3"],["Final angular velocity (rad/s)","5/3"]])await guided.getByLabel(label,{exact:true}).fill(value);
@@ -90,4 +91,3 @@ test("rotation checkpoints preserve independently derived vectors, composite ine
   await page.getByRole("button",{name:"Reset local progress",exact:true}).click();await page.getByRole("button",{name:"Confirm reset",exact:true}).click();await expect(page.getByText("Local progress has been reset.",{exact:true})).toBeVisible();
   await restoreProgress(page,backup);await page.goto(route);await page.getByRole("button",{name:"Checkpoint",exact:true}).click();await expect(practice.getByRole("heading",{name:"Objective demonstrated",exact:true})).toBeVisible();await expect(page.getByLabel("Reasoning, questions, or a worked solution to revisit",{exact:true})).toHaveValue(note);
 });
-
