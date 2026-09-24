@@ -1,0 +1,74 @@
+import { expect,test } from "@playwright/test";
+import { readFile } from "node:fs/promises";
+import { createAttempt } from "../../lib/learning/attempts";
+import { lessonSchema } from "../../lib/learning/contracts";
+import { readStoredProgress,restoreProgress } from "./progress";
+
+const route="/courses/mth-215/lessons/m01-l01";
+test("removing an open attempt elsewhere retains its draft for export or a new practice attempt",async({page,context},testInfo)=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  await page.locator("#practice").getByLabel("x",{exact:true}).fill("7/3");
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  const original=(await readStoredProgress(page)).learning.attempts[0];
+  const other=await context.newPage();await other.goto(route);
+  await other.getByText("Saved attempt history (1)",{exact:true}).click();
+  await other.getByRole("button",{name:"Remove attempt details",exact:true}).click();
+  await other.getByRole("button",{name:"Confirm removal",exact:true}).click();
+  await expect(page.getByText("This attempt was removed from saved progress.",{exact:true})).toBeVisible();
+  await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("7/3");
+  await expect(page.locator("#practice").getByLabel("x",{exact:true})).toBeDisabled();
+  expect((await readStoredProgress(page)).learning.attempts).toHaveLength(0);
+  const download=page.waitForEvent("download");await page.getByRole("button",{name:"Export draft",exact:true}).click();
+  const file=testInfo.outputPath("removed-draft.json");await(await download).saveAs(file);
+  const exported=JSON.parse(await readFile(file,"utf8"));
+  expect(exported.learning.attempts).toHaveLength(1);
+  expect(exported.learning.attempts[0]).toMatchObject({mode:"practice",questions:original.questions,responses:original.responses});
+  await page.getByRole("button",{name:"Keep draft as practice",exact:true}).click();
+  await expect(page.getByText("Draft kept as practice. Start a new checkpoint for independent evidence.",{exact:true})).toBeVisible();
+  const restored=(await readStoredProgress(page)).learning;
+  expect(restored.attempts).toHaveLength(1);expect(restored.attempts[0].id).not.toBe(original.id);
+  expect(restored.evidence).toHaveLength(0);
+  await page.reload();await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("7/3");
+  await other.close();
+});
+
+test("starting another attempt elsewhere does not replace the currently open draft",async({page,context})=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  await page.locator("#practice").getByLabel("x",{exact:true}).fill("7/3");
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  const other=await context.newPage();await other.goto(route);
+  for(let index=0;index<5;index++)await other.getByRole("button",{name:"Next question",exact:true}).click();
+  await other.getByRole("button",{name:"Submit practice",exact:true}).click();
+  await other.getByRole("button",{name:"Start another practice",exact:true}).click();
+  await expect(page.getByText("A newer practice attempt is available. Your current draft has been kept.",{exact:true})).toBeVisible();
+  await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("7/3");
+  await page.getByRole("button",{name:"Open latest attempt",exact:true}).click();
+  await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("");
+  await page.locator("#practice").getByLabel("x",{exact:true}).fill("5");
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  const attempts=(await readStoredProgress(page)).learning.attempts;
+  expect(attempts).toHaveLength(2);expect(attempts[0].status).toBe("submitted");expect(attempts[1].status).toBe("active");
+  expect(attempts[1].responses[attempts[1].questions[0].id].x).toBe("5");
+  await other.close();
+});
+
+test("restoring changed question snapshots requires an explicit choice and preserves the original draft",async({page,context},testInfo)=>{
+  await page.goto(route);await page.getByRole("button",{name:"Start practice",exact:true}).click();
+  await page.locator("#practice").getByLabel("x",{exact:true}).fill("7/3");
+  await expect(page.locator(".attempt-session .form-status")).toHaveText("Saved in this browser.");
+  const original=await readStoredProgress(page),attempt=original.learning.attempts[0];
+  const lesson=lessonSchema.parse(JSON.parse(await readFile("content/lessons/mth-215/m01-l01.json","utf8")));
+  const replacement={...createAttempt(lesson,"practice","restored-snapshots"),id:attempt.id,revision:attempt.revision};
+  const other=await context.newPage();
+  await restoreProgress(other,{...original,learning:{...original.learning,attempts:[replacement]}});
+  await expect(page.getByText("This attempt's saved questions changed.",{exact:true})).toBeVisible();
+  await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("7/3");
+  const download=page.waitForEvent("download");await page.getByRole("button",{name:"Export draft",exact:true}).click();
+  const file=testInfo.outputPath("original-questions.json");await(await download).saveAs(file);
+  const exported=JSON.parse(await readFile(file,"utf8"));
+  expect(exported.learning.attempts.at(-1)).toMatchObject({mode:"practice",questions:attempt.questions,responses:attempt.responses,seed:attempt.seed});
+  await page.getByRole("button",{name:"Load saved attempt",exact:true}).click();
+  await expect(page.locator("#practice").getByLabel("x",{exact:true})).toHaveValue("");
+  await expect(page.getByText("This attempt's saved questions changed.",{exact:true})).toHaveCount(0);
+  await other.close();
+});
