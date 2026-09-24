@@ -48,9 +48,11 @@ import { logDomainFamilyIds,logDomainQuestion } from "./families/mth-log-domain"
 import { logGraphFamilyIds,logGraphQuestion } from "./families/mth-log-graph";
 import { logAuditFamilyIds,logAuditQuestion } from "./families/mth-log-audit";
 import { logRuleFamilyIds,logRuleQuestion } from "./families/mth-log-rules";
+import { logRewriteFamilyIds,logRewriteQuestion } from "./families/mth-log-rewrite";
 
 const generators=new Map<string,typeof linearQuestion>();
 for(const id of logRuleFamilyIds)generators.set(id,logRuleQuestion);
+for(const id of logRewriteFamilyIds)generators.set(id,logRewriteQuestion);
 for(const [ids,generate] of [[logInverseFamilyIds,logInverseQuestion],[logDomainFamilyIds,logDomainQuestion],[logGraphFamilyIds,logGraphQuestion],[logAuditFamilyIds,logAuditQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
