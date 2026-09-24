@@ -1,92 +1,52 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { backupLimitMessage, emptyProgress, parseBackup, progressSchema, type Progress } from "./progress";
+import type { Progress } from "./progress";
+import { downloadProgressText } from "./download-progress";
+import { openProgressRepository,type ReplacementCheck } from "./progress-repository";
+import { initialStudySnapshot,ProgressStore } from "./progress-store";
 
-const key = "ece-study:progress:v1";
-type Snapshot = { data: Progress; ready: boolean; issue: string; locked: boolean };
-const initial: Snapshot = { data: emptyProgress(), ready: false, issue: "", locked: false };
-let snapshot: Snapshot = initial;
-let storedText: string | null = null;
-const listeners = new Set<() => void>();
-
-function load(): Snapshot {
-  if (snapshot.ready || typeof window === "undefined") return snapshot;
-  try {
-    const text = window.localStorage.getItem(key);
-    storedText = text;
-    snapshot = { data: text ? parseBackup(text) : emptyProgress(), ready: true, issue: "", locked: false };
-  } catch (error) {
-    snapshot = { data: emptyProgress(), ready: true, issue: error instanceof Error ? error.message : "Browser storage is unavailable.", locked: true };
-  }
-  return snapshot;
-}
-
-const notify = () => listeners.forEach(listener => listener());
-const onStorage = (event: StorageEvent) => {
-  if (event.key === key || event.key === null) { snapshot = initial; load(); notify(); }
+const legacyKey="ece-study:progress:v1",signalKey="ece-study:changed";
+let channel:BroadcastChannel|null=null,subscribers=0;
+const store=new ProgressStore({
+  open:()=>openProgressRepository({onVersionChange:()=>store.storageClosed()}),
+  legacy:()=>window.localStorage.getItem(legacyKey),
+  committed:()=>{
+    try{if(channel){channel.postMessage("progress");return;}}catch{}
+    try{window.localStorage.setItem(signalKey,crypto.randomUUID());}catch{}
+  },
+});
+const refresh=()=>{void store.refresh();};
+const onStorage=(event:StorageEvent)=>{if(event.key===signalKey||event.key===null)refresh();};
+const onVisibility=()=>{if(document.visibilityState==="visible")refresh();};
+const onBeforeUnload=(event:BeforeUnloadEvent)=>{
+  const {saving,dirty}=store.getSnapshot();
+  if(saving||dirty){event.preventDefault();event.returnValue="";}
 };
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  if (listeners.size === 1) window.addEventListener("storage", onStorage);
-  return () => { listeners.delete(listener); if (!listeners.size) window.removeEventListener("storage", onStorage); };
-}
-
-export function useStudy() {
-  return useSyncExternalStore(subscribe, load, () => initial);
-}
-export const getStudySnapshot = () => load();
-
-export function saveProgress(update: (data: Progress) => Progress, replace = false): boolean {
-  let current = load();
-  if (!replace && !current.locked) {
-    try {
-      const latest = window.localStorage.getItem(key);
-      if (latest !== storedText) {
-        snapshot = { data: latest ? parseBackup(latest) : emptyProgress(), ready: true, issue: "", locked: false };
-        storedText = latest;
-        current = snapshot;
-        notify();
-      }
-    } catch {
-      snapshot = { ...current, issue: "Stored progress changed or could not be read. Export your current work before reloading.", locked: true };
-      notify();
-      return false;
+function subscribe(listener:()=>void){
+  const unsubscribe=store.subscribe(listener);
+  if(subscribers++===0){
+    try{channel=new BroadcastChannel("ece-study:progress");channel.onmessage=event=>{if(event.data==="progress")refresh();};}catch{}
+    window.addEventListener("storage",onStorage);window.addEventListener("focus",refresh);
+    window.addEventListener("beforeunload",onBeforeUnload);document.addEventListener("visibilitychange",onVisibility);
+  }
+  void store.load();
+  return ()=>{
+    unsubscribe();
+    if(--subscribers===0){
+      channel?.close();channel=null;
+      window.removeEventListener("storage",onStorage);window.removeEventListener("focus",refresh);
+      window.removeEventListener("beforeunload",onBeforeUnload);document.removeEventListener("visibilitychange",onVisibility);
     }
-  }
-  if (current.locked && !replace) return false;
-  const result = progressSchema.safeParse(update(current.data));
-  if (!result.success) {
-    snapshot = { ...current, issue: result.error.issues.some(issue => issue.message === backupLimitMessage) ? backupLimitMessage : "This change could not be saved. Check the entered values; your existing progress has been preserved." };
-    notify();
-    return false;
-  }
-  try {
-    window.localStorage.setItem(key, JSON.stringify(result.data));
-    storedText = JSON.stringify(result.data);
-    snapshot = { data: result.data, ready: true, issue: "", locked: false };
-  } catch {
-    snapshot = { data: result.data, ready: true, issue: "Browser storage could not save your changes. Export a backup from Settings before closing this page.", locked: false };
-  }
-  notify();
-  return !snapshot.issue;
+  };
 }
-
-export function toggleCourse(id: string) {
-  return saveProgress(data => ({ ...data, plan: data.plan.includes(id) ? data.plan.filter(item => item !== id) : [...data.plan, id] }));
-}
-
-export function toggleBookmark(id: string) {
-  return saveProgress(data => ({ ...data, bookmarks: data.bookmarks.includes(id) ? data.bookmarks.filter(item => item !== id) : [...data.bookmarks, id] }));
-}
-
-export function downloadBackup() {
-  const current = load();
-  const text = current.locked ? window.localStorage.getItem(key) : JSON.stringify(current.data, null, 2);
-  if (!text) throw new Error("There is no stored progress to export.");
-  const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
-  const link = document.createElement("a");
-  link.href = url; link.download = `ece-study-${new Date().toISOString().slice(0,10)}.json`;
-  document.body.appendChild(link); link.click(); link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
+export function useStudy(){return useSyncExternalStore(subscribe,store.getSnapshot,()=>initialStudySnapshot);}
+export const getStudySnapshot=store.getSnapshot;
+export const saveProgress=(update:(data:Progress)=>Progress)=>store.save(update);
+export const reviewProgressReplacement=()=>store.reviewReplacement();
+export const replaceProgress=(data:Progress,expected:ReplacementCheck)=>store.replace(data,expected);
+export const retryProgressSave=()=>store.retry();
+export const loadSavedProgress=()=>store.loadSaved();
+export const toggleCourse=(id:string)=>saveProgress(data=>({...data,plan:data.plan.includes(id)?data.plan.filter(item=>item!==id):[...data.plan,id]}));
+export const toggleBookmark=(id:string)=>saveProgress(data=>({...data,bookmarks:data.bookmarks.includes(id)?data.bookmarks.filter(item=>item!==id):[...data.bookmarks,id]}));
+export async function downloadBackup(){downloadProgressText(await store.exportText());}
