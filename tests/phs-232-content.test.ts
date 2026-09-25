@@ -12,8 +12,8 @@ it("publishes only authored PHS 232 lessons while preserving the full planned se
   expect(phs232Pack.status).toBe("building");
   expect(phs232Pack.modules.flatMap(module => module.lessons)).toHaveLength(31);
   expect(phs232Pack.modules.map(({ id, requires }) => ({ id, requires }))).toEqual(plan.modules.map(({ id, requires }) => ({ id, requires })));
-  expect(phs232Lessons.map(lesson => lesson.id)).toEqual(["m01-l01", "m01-l02", "m01-l03", "m01-l04"]);
-  expect(lessonById("phs-232", "m02-l01")).toBeUndefined();
+  expect(phs232Lessons.map(lesson => lesson.id)).toEqual(["m01-l01", "m01-l02", "m01-l03", "m01-l04", "m02-l01"]);
+  expect(lessonById("phs-232", "m02-l02")).toBeUndefined();
   for (const lesson of phs232Lessons) {
     expect(phs232Pack.modules.flatMap(module => module.lessons).find(item => item.id === lesson.id)?.objective).toBe(lesson.objective);
     for (const preparation of lesson.prerequisites) if (preparation.lessonId) expect(lessonById(preparation.courseId ?? lesson.courseId, preparation.lessonId), preparation.label).toBeDefined();
