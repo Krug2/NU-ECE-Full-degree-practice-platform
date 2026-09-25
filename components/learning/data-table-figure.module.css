@@ -1,8 +1,9 @@
 .figure { min-width: 0; max-width: 100%; margin-block: 1rem; }
 .scroll { max-width: 100%; overflow-x: auto; border: 1px solid #708880; border-radius: .4rem; }
 .scroll:focus-visible { outline: 3px solid #23574d; outline-offset: 3px; }
-.scroll table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.scroll table { width: max-content; min-width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .scroll caption { padding: .75rem; text-align: left; font-weight: 700; }
 .scroll th, .scroll td { min-width: 9ch; max-width: 36ch; padding: .6rem .75rem; border-top: 1px solid #cad7d0; text-align: left; overflow-wrap: anywhere; }
 .scroll thead, .scroll tbody th { background: #edf3ef; }
+.scroll td, .scroll tbody th { max-width: none; white-space: nowrap; overflow-wrap: normal; }
 .figure p { margin-block: .5rem 0; }
