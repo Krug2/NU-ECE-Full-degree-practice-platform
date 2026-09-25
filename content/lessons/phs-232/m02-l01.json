@@ -1,0 +1,343 @@
+{
+  "id": "m02-l01",
+  "courseId": "phs-232",
+  "moduleId": "m02",
+  "version": 1,
+  "title": "Wave functions and transport of energy",
+  "objective": "Interpret a traveling wave's direction, local motion and energy transport using its derivatives and medium parameters.",
+  "why": "An oscillator describes motion at one place. A wave connects motion at different places through a medium and carries energy between them. A moving crest, a vibrating material point and energy crossing a boundary are three distinct observations. Learning to calculate and compare them prepares you for standing waves, sound, transmission lines and electromagnetic waves without mistaking a picture for a complete physical model.",
+  "estimatedMinutes": 250,
+  "prerequisites": [
+    { "courseId": "phs-232", "lessonId": "m01-l01", "label": "Harmonic motion, phase and initial conditions", "note": "Recover signed velocity and acceleration from a sinusoidal displacement." },
+    { "courseId": "phs-232", "lessonId": "m01-l02", "label": "Energy and physical oscillators", "note": "Distinguish stored energy, work and the assumptions behind a restoring model." },
+    { "courseId": "mth-215", "lessonId": "m06-l01", "label": "Radians, rotations, and arc length", "note": "Convert phase cycles to radians and distinguish angular frequency from frequency." },
+    { "courseId": "mth-215", "lessonId": "m06-l02", "label": "Right-triangle trigonometry", "note": "Review exact trigonometric values and ratios before differentiating the wave profile." },
+    { "courseId": "f08", "lessonId": "m01-l03", "label": "Optional derivative refresher", "note": "The lesson introduces partial derivatives by holding one coordinate fixed." },
+    { "courseId": "f08", "lessonId": "m01-l04", "label": "Optional accumulation refresher", "note": "Integrate energy per length in space and power in time; their units distinguish the two operations." },
+    { "courseId": "phs-104", "label": "Introductory physics preparation", "note": "This full academic prerequisite remains under construction here." },
+    { "courseId": "csc-208", "label": "Calculus I preparation", "note": "This full prerequisite remains under construction. Differentiate the supplied models explicitly; an optional refresher does not complete the prerequisite." },
+    { "courseId": "csc-209", "label": "Calculus II preparation", "note": "This full prerequisite remains under construction. NU's published MTH 220 and MTH 221 alternatives remain academic alternatives." }
+  ],
+  "sections": [
+    {
+      "heading": "Separate the disturbance, the material and the transport",
+      "paragraphs": [
+        "Imagine marking one small piece of a stretched string with ink. A raised part of the string can pass this marker while the marked material moves mainly up and down. Let x label its equilibrium position along the string and y(x,t) its transverse displacement. In this ideal first-order model, x is a material label, not the horizontal position of a particle traveling with a crest. Positive x is right and positive y is up.",
+        "A transverse disturbance displaces material perpendicular to the propagation direction. A longitudinal disturbance displaces material parallel to it: a compression moving through air and the small back-and-forth motion of an air parcel are different motions. The string model developed here is transverse. The classification concerns directions of motion, not a claim that all surface-water waves are purely transverse or have exactly zero mass transport.",
+        "A pulse is a localized disturbance that passes through a region; a harmonic wavetrain repeats in space and time. Either can transfer energy even when the material's net displacement after the disturbance is small or zero. A sinusoidal wave gives each fixed point harmonic motion, but neighboring pieces exert forces and exchange energy. A string element is not an isolated mass attached to its own independent spring.",
+        "By the end, derive a propagation direction, calculate local motion, check the string wave equation, distinguish energy density from signed power and test what a finite recording actually establishes. Refresh radians, sine/cosine derivatives, mass per length and signed work before using a graph as evidence."
+      ]
+    },
+    {
+      "heading": "Translate a profile before memorizing a sign rule",
+      "paragraphs": [
+        "Start with a shape g(x). The function $y(x,t)=g(x-ct)$ reproduces the same shape after a rightward shift ct, since a feature originally at x0 is found at x=x0+ct. The function g(x+ct) translates left. Write both as $g(x-\\sigma ct)$, where c>0 is a speed and sigma is +1 for rightward or −1 for leftward. This translation argument works for pulses as well as periodic waves.",
+        "For a harmonic profile use $y=A\\cos\\theta$, $\\theta=kx-\\sigma\\omega t+\\phi$, with A≥0, k>0, omega>0 and a specified phase reference phi. One spatial cycle satisfies $k\\lambda=2\\pi$; one temporal cycle satisfies $\\omega\\tau=2\\pi$. Thus $f=1/\\tau=\\omega/(2\\pi)$ and $c=\\omega/k=f\\lambda$. Here tau denotes period so that it cannot be confused with string tension F_T.",
+        "Units matter: A, y, x and lambda are in m; k is in rad/m; omega is in rad/s; f is in Hz; phi and theta are in radians; c is in m/s. The phase is dimensionless. A coefficient multiplying t inside a cosine is angular frequency, not cycles per second. A negative travel direction does not make wavelength, period or positive speed negative.",
+        "A particular positive crest satisfies theta=2*pi*n for a fixed integer n. Holding that phase constant gives $dx/dt=\\sigma\\omega/k$. Do not change n when tracking one crest after it leaves a plotting window. At A=0 the displacement vanishes everywhere: the medium still has a wave speed, but this zero signal has no identifiable crest, phase or observed direction."
+      ]
+    },
+    {
+      "heading": "Differentiate along the right path",
+      "paragraphs": [
+        "A partial derivative answers a question with one variable held fixed. The local transverse velocity is $y_t=\\partial y/\\partial t$ at fixed material coordinate x. The spatial slope is $y_x=\\partial y/\\partial x$ at fixed time. For the chosen cosine convention, $y_t=\\sigma A\\omega\\sin\\theta$ and $y_x=-Ak\\sin\\theta$. Their relation $y_t=-\\sigma c y_x$ follows from translation. At a zero slope, forming the ratio y_t/y_x would give 0/0; use the identity instead.",
+        "The second derivatives are $y_{tt}=-\\omega^2y$ and $y_{xx}=-k^2y$. Local acceleration has units m/s²; curvature y_xx has units 1/m. The first spatial derivative is a ratio of lengths. At a positive crest the tagged point has zero instantaneous transverse velocity and downward acceleration, while the crest continues translating. At a zero-displacement crossing the local speed is largest, even though the displacement is zero.",
+        "The maximum transverse particle speed is A*omega, whereas phase speed is omega/k. Their ratio is Ak, the maximum absolute slope of the harmonic profile. Small-slope string motion can therefore have a rapidly propagating pattern and much slower transverse material motion. These are not contradictory measurements.",
+        "For a general translated profile, differentiating g(x−sigma*c*t) gives $y_t=-\\sigma c g'$ and $y_{tt}=c^2g''$, while $y_x=g'$ and $y_{xx}=g''$. Therefore $y_{tt}=c^2y_{xx}$. Recognizing a translated shape shows its mathematical propagation speed; whether a real medium supports that speed is a separate physical question."
+      ]
+    },
+    {
+      "heading": "Derive the ideal string equation and check its domain",
+      "paragraphs": [
+        "Let the uniform linear mass density be mu>0 in kg per meter of equilibrium length, and let the tension magnitude F_T>0 remain approximately constant. For a short segment dx, the difference of the vertical tension components is approximately $F_T[y_x(x+dx,t)-y_x(x,t)]$. Newton's law gives $\\mu\\,dx\\,y_{tt}=F_T\\,dx\\,y_{xx}$ in the limit. Hence $y_{tt}=(F_T/\\mu)y_{xx}$ and $c=\\sqrt{F_T/\\mu}$.",
+        "The approximation requires the string to stay nearly parallel to its equilibrium axis: |y_x|≪1. Small amplitude alone is insufficient if wavelength is even smaller. The ideal model also neglects bending stiffness, damping, large longitudinal motion and changes in tension. A single traveling profile describes an infinite string or a region before reflected waves contribute; it generally does not satisfy two fixed finite endpoints by itself.",
+        "Check dimensions: N divided by kg/m is m²/s². A string's mass divided by its equilibrium length is linear density, not volume density. Convert g/m to kg/m by dividing by 1000 before taking the square root. At fixed density, quadrupling tension doubles c. At a fixed externally imposed source frequency, this changes wavelength, not the source frequency.",
+        "Test a candidate function by substituting its derivatives throughout the domain. A harmonic candidate with nonzero amplitude needs omega²=(F_T/mu)k². A Gaussian translated at speed v needs v²=F_T/mu. The residual can vanish at selected zero-curvature points even when the function fails elsewhere; one successful point or a familiar shape is not a global check."
+      ]
+    },
+    {
+      "heading": "Find local energy from velocity and string stretch",
+      "paragraphs": [
+        "The mass of a short equilibrium segment is mu*dx, so its kinetic energy per length is $u_K=\\tfrac12\\mu y_t^2$. Its extra length is $[\\sqrt{1+y_x^2}-1]dx$. At small slope, expanding the square root gives extra length approximately y_x²*dx/2. Working against approximately constant tension therefore gives stretch energy per length $u_U=\\tfrac12 F_T y_x^2$. We measure this extra energy relative to the straight, already tensioned string.",
+        "Both contributions have units J/m and are nonnegative. Local stretch energy depends on slope, not on displacement squared. Borrowing an isolated oscillator's potential formula for every string element would give the wrong spatial distribution, even if an integral over a whole wavelength happened to agree.",
+        "For one pure traveling profile, y_t=−sigma*c*y_x and F_T=mu*c². Consequently u_K=u_U at every point. For the cosine wave, $u=u_K+u_U=\\mu A^2\\omega^2\\sin^2\\theta$. At a crest both local velocity and slope vanish, so the local energy density is zero there. At a zero crossing both are largest. A finite segment around a crest can still store energy, and a point's energy density can change as energy enters and leaves its neighborhood.",
+        "This pointwise equality is specific to a single traveling profile in the ideal nondispersive string. Do not impose it on an arbitrary superposition or standing wave. The general formulas involving y_t and y_x remain useful; the next lesson derives how superposition changes their relationship."
+      ]
+    },
+    {
+      "heading": "Keep the sign of energy crossing a cut",
+      "paragraphs": [
+        "At a cut through the string, the power transmitted toward positive x is $P=-F_T y_x y_t$. This is a signed rate in W, not energy per area. The minus sign follows from the transverse component of the force exerted across the cut and the local transverse velocity. For one traveling profile, $P=\\sigma c u$: rightward transport is positive and leftward transport is negative.",
+        "Nonnegative stored energy and negative signed transport are compatible. A leftward wave does not carry negative energy; positive energy crosses the cut toward negative x. At an isolated zero-slope point P can vanish even though a nonzero wave transports energy elsewhere.",
+        "Differentiate $u=\\tfrac12\\mu y_t^2+\\tfrac12F_T y_x^2$ and use the wave equation to obtain $u_t+P_x=0$. Integrate over a fixed region [a,b]: $dE/dt=P(a,t)-P(b,t)$, where $E=\\int_a^b u\\,dx$. Over a time interval, $E(t)-E(0)=W_a-W_b$ and each boundary work is its own signed time integral.",
+        "Keep the same positive-x convention at both boundaries. For a leftward wave, P(a) and P(b) can both be negative: energy enters from the right and leaves to the left. Automatically treating both printed powers as positive outward losses breaks the account. Numerical checks should integrate stored energy in space and boundary power in time independently, then inspect the residual and how it changes under refinement."
+      ]
+    },
+    {
+      "heading": "Average a period and state what stays fixed",
+      "paragraphs": [
+        "For a harmonic wave, the average of sin² over one complete period or wavelength is one half. Thus $\\overline u=\\tfrac12\\mu A^2\\omega^2$ and $\\overline P=\\sigma\\tfrac12\\mu c A^2\\omega^2$. Energy stored in any full wavelength is $E_\\lambda=\\overline u\\lambda$. Signed energy crossing a fixed cut in one period is $\\overline P\\tau=\\sigma E_\\lambda$. These finite measures do not make the total energy of an infinite harmonic train finite.",
+        "At fixed medium and frequency, doubling displacement amplitude multiplies mean power by four. At fixed medium and amplitude, doubling frequency also multiplies mean power by four while halving wavelength. Maximum transverse speed scales with A*omega; the medium speed does not change in this ideal linear model.",
+        "When medium properties change, substitute c=sqrt(F_T/mu) before comparing power. At fixed tension, A and omega, mean power magnitude is proportional to sqrt(mu), not mu, because the speed also changes. At fixed density, A and omega, quadrupling tension doubles both c and mean power. State the fixed quantities every time.",
+        "These comparisons describe separate uniform-string runs with prescribed source displacement amplitude. A wave encountering an actual interface can reflect, and its transmitted amplitude follows boundary conditions. Assuming the same amplitude across that interface would add an unjustified constraint. Likewise, string power is not a universal formula for acoustic intensity or electromagnetic energy flux."
+      ]
+    },
+    {
+      "heading": "Follow a finite-energy pulse",
+      "paragraphs": [
+        "A useful nonperiodic profile is $y=Ae^{-q^2/2}$ with $q=(x-\\sigma ct-x_0)/w$ and width w>0. Its center moves at sigma*c. It has no wavelength or oscillation period, so a harmonic mean-power formula based on an invented frequency is inappropriate.",
+        "Differentiate the translated Gaussian: $y_x=-qy/w$, $y_{xx}=(q^2-1)y/w^2$, $y_t=-\\sigma c y_x$ and $y_{tt}=c^2y_{xx}$. It satisfies the same ideal string equation. The largest absolute slope is $Ae^{-1/2}/w$, reached one width from the center; it is this slope that must stay small.",
+        "Its full-line energy is finite. Using u=F_T*y_x² and substituting z=(x−sigma*c*t−x0)/w gives $E_{\\rm pulse}=F_T A^2\\sqrt{\\pi}/(2w)$. This uses the convergent Gaussian moment integral; the investigation also checks it through separate numerical quadrature. The pulse's center has zero instantaneous local energy density, while its two sloping sides carry the energy.",
+        "A fixed finite region initially contains little energy when the pulse is far upstream, gains energy as the pulse enters, and loses it as the pulse leaves. The total full-line energy can remain constant throughout. This is a concrete distinction between global conservation and time-varying energy stored in a selected subsystem."
+      ]
+    },
+    {
+      "heading": "Identify what a recording cannot determine",
+      "paragraphs": [
+        "A displacement snapshot is a function of x at one time. Two opposite-traveling waves can have exactly that same snapshot and different initial velocities. Even two periodic snapshots separated by a known time may determine a shift only modulo a wavelength: adding any integer wavelength reproduces the same pattern.",
+        "A principal signed shift is conventionally chosen in an interval of width one wavelength around zero. It represents the actual shift only with a justified bound such as |shift|<lambda/2. A weaker claim |shift|<lambda is insufficient: both a rightward shift of three quarters of a wavelength and a leftward shift of one quarter fit that bound and produce the same periodic snapshot. At exactly half a wavelength the two signs tie.",
+        "Sampling a tagged point once each period produces the same recorded displacement even while the point moves between samples. Half-period samples alternate, and a three-quarter-period record can support an apparent reversal under principal phase unwrapping. Coarse spatial sampling creates additional ambiguity. A sparse data table must not be treated as proof of a unique continuous history.",
+        "Use the investigation's equation as a known model, then compare what its sparse recording would reveal without that knowledge. Keep the true tracked crest separate from a nearest or wrapped crest. At zero amplitude every shift is indistinguishable. More samples, a justified speed bound, a nonperiodic marker or independently known direction can supply missing information."
+      ]
+    },
+    {
+      "heading": "Build evidence and distinguish two kinds of approximation",
+      "paragraphs": [
+        "Predict speed, signed local velocity and transport direction before revealing a run. Then move the material-coordinate and time probes independently, compare a crest with a steep slope, and read the complete derivative table. Reverse propagation while preserving the initial harmonic shape. Record what changes sign and what remains nonnegative.",
+        "Use the energy ledger to compare independently calculated stored-energy change and net boundary work. Refine both spatial and temporal quadrature. Their coarse/fine difference measures disagreement between numerical approximations; it is not an instrument uncertainty or proof that every model assumption holds. An exactly conserved but physically inappropriate model can still give a small residual.",
+        "The simulation rejects maximum slopes above 0.2 as a disclosed teaching guard. At that slope, the quadratic stretch term differs from the exact fixed-tension geometric expression by about 0.9902% relative to the latter. This is a specific local approximation check, not a universal accuracy bound for real string motion or for tension changes.",
+        "The investigation is a simulation with a self-check rubric. Save inputs, representative rows, predictions, revisions and limitations in lesson notes so that the record survives a reload and can be backed up. Practice provides hints and complete solutions; the independent lesson checkpoint supplies separate objective evidence. No physical experiment or external subject review is implied."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Read a wave and differentiate at a fixed material point",
+      "prompt": "Use y=0.01 cos(2x−10t+pi/3) m, with x in m and t in s. Find its wave parameters and initial state at x=0.",
+      "steps": [
+        { "math": "\\lambda=\\frac{2\\pi}{2}=\\pi\\,\\mathrm m,\\quad \\tau=\\frac{2\\pi}{10}=\\frac\\pi5\\,\\mathrm s,\\quad f=\\frac5\\pi\\,\\mathrm{Hz},\\quad c=5\\,\\mathrm{m/s}", "reason": "Each full phase cycle is 2*pi; divide omega by k for the positive pattern speed." },
+        { "math": "y_t=0.1\\sin(2x-10t+\\pi/3),\\quad y_x=-0.02\\sin(2x-10t+\\pi/3)", "reason": "Differentiate at fixed x or fixed t respectively; the time derivative gains two minus signs." },
+        { "math": "y(0,0)=\\frac1{200}\\,\\mathrm m,\\quad y_t(0,0)=\\frac{\\sqrt3}{20}\\,\\mathrm{m/s},\\quad y_x(0,0)=-\\frac{\\sqrt3}{100}", "reason": "At the specified point the phase is pi/3. Keep the direction of local motion." },
+        { "math": "y_{tt}(0,0)=-100y(0,0)=-\\frac12\\,\\mathrm{m/s^2},\\quad \\max|y_t|=0.1\\,\\mathrm{m/s}", "reason": "Local acceleration points back toward zero displacement; the particle-speed amplitude differs from the 5 m/s pattern speed." }
+      ],
+      "conclusion": "The wave travels right while this material point initially moves upward and accelerates downward. Those statements refer to different quantities."
+    },
+    {
+      "title": "Reverse propagation without changing the initial picture",
+      "prompt": "Replace the time term in the preceding wave by +10t. Compare the same initial coordinate.",
+      "steps": [
+        { "math": "y=0.01\\cos(2x+10t+\\pi/3),\\quad \\frac{dx_{\\rm crest}}{dt}=-5\\,\\mathrm{m/s}", "reason": "Constant phase now requires x to decrease as time increases." },
+        { "math": "y(0,0)=\\frac1{200}\\,\\mathrm m,\\quad y_t(0,0)=-\\frac{\\sqrt3}{20}\\,\\mathrm{m/s},\\quad y_{tt}(0,0)=-\\frac12\\,\\mathrm{m/s^2}", "reason": "The first time derivative reverses; the initial displacement and second time derivative do not." },
+        { "math": "y_t=+5y_x\\quad\\text{for the leftward profile}", "reason": "The translated-profile identity uses the signed propagation direction." }
+      ],
+      "conclusion": "The two t=0 displacement snapshots are identical. A snapshot alone cannot supply the missing time derivative."
+    },
+    {
+      "title": "Track one crest and then ask a different arrival question",
+      "prompt": "For y=0.01 cos(2x−10t), track the crest initially at x=0 to x=9*pi/4 m. Separately find the first strictly positive crest time at that destination.",
+      "steps": [
+        { "math": "x_n(t)=5t+n\\pi,\\quad \\lambda=\\pi\\,\\mathrm m,\\quad x_{n=0}(0)=0", "reason": "Positive cosine crests differ by 2*pi in phase, giving integer wavelength spacing." },
+        { "math": "t_{\\rm tracked}=\\frac{9\\pi/4}{5}=\\frac{9\\pi}{20}\\,\\mathrm s", "reason": "The identified crest travels the full distance; its travel time is not reduced modulo a period." },
+        { "math": "x=2\\lambda+\\frac\\lambda4,\\quad t_{\\rm first}=\\frac\\tau4=\\frac\\pi{20}\\,\\mathrm s", "reason": "Other crests already lie ahead of the tracked one. The nearest upstream crest arrives after one quarter of a period." },
+        { "math": "\\Delta\\theta=k\\Delta x=\\frac{9\\pi}{2}\\,\\mathrm{rad}", "reason": "An unwrapped spatial phase retains the two whole wavelengths that a principal phase discards." }
+      ],
+      "conclusion": "An identified feature's full travel time and the first periodic event at a point are different questions. Always state the event and endpoint rule."
+    },
+    {
+      "title": "Convert string density before taking a square root",
+      "prompt": "A 3 m string segment has mass 18 g and tension 1.5 N. A source imposes 5 Hz. Find the ideal speed and wavelength.",
+      "steps": [
+        { "math": "\\mu=\\frac{0.018}{3}=0.006\\,\\mathrm{kg/m}", "reason": "Convert mass to kilograms, then divide by equilibrium length." },
+        { "math": "c=\\sqrt{\\frac{1.5}{0.006}}=5\\sqrt{10}\\,\\mathrm{m/s}\\approx15.8113883\\,\\mathrm{m/s}", "reason": "Tension divided by linear density has units m²/s²." },
+        { "math": "\\lambda=\\frac cf=\\sqrt{10}\\,\\mathrm m,\\quad \\omega=10\\pi\\,\\mathrm{rad/s}", "reason": "The externally imposed frequency stays 5 Hz. It is not the angular frequency." },
+        { "math": "\\frac{c_{\\rm wrong}}{c}=\\frac1{\\sqrt{1000}}", "reason": "Using the numerical value 6 g/m as 6 kg/m overstates density by 1000 and understates speed by its square root." }
+      ],
+      "conclusion": "A square root does not repair an input-unit mistake. Linear density is distinct from a material's volume density."
+    },
+    {
+      "title": "Reject a globally incorrect wave equation",
+      "prompt": "A string has mu=0.04 kg/m and F_T=1 N. Test y=0.01 cos(2x−12t) m.",
+      "steps": [
+        { "math": "c^2=\\frac{F_T}{\\mu}=25\\,\\mathrm{m^2/s^2},\\quad v_{\\rm candidate}=\\frac{12}{2}=6\\,\\mathrm{m/s}", "reason": "The profile's translation speed differs from the medium speed 5 m/s." },
+        { "math": "y_{tt}-25y_{xx}=(-1.44+1)\\cos(2x-12t)=-0.44\\cos(2x-12t)", "reason": "Compute both partial second derivatives; the residual has units m/s² and is not identically zero." },
+        { "math": "y_{tt}-25y_{xx}=11y_{xx},\\quad F_{T,\\rm needed}=0.04(6)^2=1.44\\,\\mathrm N", "reason": "A medium with the same density would need a different tension to support this speed." }
+      ],
+      "conclusion": "The residual vanishes at some zero-displacement points, but that does not make the proposed function a solution everywhere."
+    },
+    {
+      "title": "Calculate local stretch energy and signed power",
+      "prompt": "Return to y=0.01 cos(2x−10t+pi/3), mu=0.04 kg/m and F_T=1 N. Evaluate the energy densities and power at x=t=0.",
+      "steps": [
+        { "math": "u_K=\\frac12(0.04)\\left(\\frac{\\sqrt3}{20}\\right)^2=\\frac3{20000}\\,\\mathrm{J/m}", "reason": "Use the local transverse velocity to calculate kinetic energy per length." },
+        { "math": "u_U=\\frac12(1)\\left(-\\frac{\\sqrt3}{100}\\right)^2=\\frac3{20000}\\,\\mathrm{J/m}", "reason": "The local stretch energy depends on slope squared, not displacement squared." },
+        { "math": "u=\\frac3{10000}\\,\\mathrm{J/m},\\quad P=-(1)\\left(-\\frac{\\sqrt3}{100}\\right)\\left(\\frac{\\sqrt3}{20}\\right)=\\frac3{2000}\\,\\mathrm W", "reason": "Add the two stored densities, then compute signed boundary power independently from force and velocity." },
+        { "math": "P=cu=5\\left(\\frac3{10000}\\right)=\\frac3{2000}\\,\\mathrm W", "reason": "The pure traveling-wave relation provides a second check." }
+      ],
+      "conclusion": "Reversing only the initial propagation direction reverses P but leaves both local energy densities unchanged."
+    },
+    {
+      "title": "Compare a crest with a zero crossing",
+      "prompt": "Keep the same string, amplitude and frequency. Compare local energy at theta=0 and theta=pi/2.",
+      "steps": [
+        { "math": "\\theta=0:\\quad y=0.01\\,\\mathrm m,\\ y_t=y_x=0,\\ y_{tt}=-1\\,\\mathrm{m/s^2},\\ u_K=u_U=P=0", "reason": "At a crest, zero velocity and zero slope make both local densities vanish; nonzero acceleration remains." },
+        { "math": "\\theta=\\frac\\pi2:\\quad y=0,\\ y_t=0.1\\,\\mathrm{m/s},\\ y_x=-0.02", "reason": "At a zero crossing the velocity and slope magnitudes are largest." },
+        { "math": "u_K=u_U=0.0002\\,\\mathrm{J/m},\\quad u=0.0004\\,\\mathrm{J/m},\\quad P=0.002\\,\\mathrm W", "reason": "The two local energies peak together for a single traveling profile." }
+      ],
+      "conclusion": "A point with maximum displacement need not have maximum local wave energy. A string element exchanges work with its neighbors."
+    },
+    {
+      "title": "Reconcile a wavelength integral with a period integral",
+      "prompt": "For the same rightward wave, compute mean energy density, mean power and the two finite energy measures.",
+      "steps": [
+        { "math": "\\overline u=\\frac12(0.04)(0.01)^2(10)^2=\\frac1{5000}\\,\\mathrm{J/m},\\quad \\overline P=5\\overline u=\\frac1{1000}\\,\\mathrm W", "reason": "The average of the squared sine over a full cycle is one half." },
+        { "math": "E_\\lambda=\\int_{x_0}^{x_0+\\pi}u\\,dx=\\frac\\pi{5000}\\,\\mathrm J", "reason": "A full wavelength contains the same energy regardless of its starting phase." },
+        { "math": "W_{\\rm cut}=\\int_{t_0}^{t_0+\\pi/5}P\\,dt=\\frac1{1000}\\frac\\pi5=\\frac\\pi{5000}\\,\\mathrm J", "reason": "In one period a wavelength's worth of the profile passes the cut." }
+      ],
+      "conclusion": "For a leftward wave, the stored energy remains positive while the signed crossing energy is negative. Their magnitudes agree."
+    },
+    {
+      "title": "Keep both boundaries in a non-integer-wavelength account",
+      "prompt": "For y=0.01 cos(2x−10t+pi/3), mu=0.04 and F_T=1 in SI units, use the region [0,pi/8] m and time interval [0,pi/40] s.",
+      "steps": [
+        { "math": "E(t)=\\frac1{2500}\\left[\\frac{b-a}{2}-\\frac{\\sin(4b-20t+2\\pi/3)-\\sin(4a-20t+2\\pi/3)}8\\right]", "reason": "Integrate u=0.0004 sin²(theta) over position; do not infer stored energy from boundary work." },
+        { "math": "E(0)=\\frac{\\pi+1+\\sqrt3}{40000}\\,\\mathrm J,\\quad E(t_1)=\\frac{\\pi+1-\\sqrt3}{40000}\\,\\mathrm J", "reason": "Substitute each endpoint phase into the spatial integral." },
+        { "math": "W(x)=\\frac1{500}\\left[\\frac{t_1}{2}+\\frac{\\sin(4x-20t_1+2\\pi/3)-\\sin(4x+2\\pi/3)}{40}\\right]", "reason": "Independently integrate P=0.002 sin²(theta) in time at each fixed cut." },
+        { "math": "W_a=\\frac{\\pi+1-\\sqrt3}{40000}\\,\\mathrm J,\\quad W_b=\\frac{\\pi+1+\\sqrt3}{40000}\\,\\mathrm J", "reason": "Both powers point right; more energy leaves at the right boundary than enters from the left." },
+        { "math": "\\Delta E=W_a-W_b=-\\frac{\\sqrt3}{20000}\\,\\mathrm J", "reason": "The signed decrease follows from the difference of two positive boundary works." }
+      ],
+      "conclusion": "Local stored energy changes during a fraction of a period even though the ideal infinite traveling wave conserves energy globally."
+    },
+    {
+      "title": "Change one control at a time",
+      "prompt": "Begin with mu=0.04 kg/m, F_T=1 N, A=0.01 m and omega=10 rad/s. Compare three separate rightward runs.",
+      "steps": [
+        { "math": "c=5,\\quad\\lambda=\\pi,\\quad\\overline u=0.0002,\\quad\\overline P=0.001", "reason": "The baseline units are m/s, m, J/m and W respectively." },
+        { "math": "A\\to0.02:\\quad\\overline P\\to0.004\\,\\mathrm W", "reason": "At fixed medium and frequency, amplitude doubles and power quadruples." },
+        { "math": "F_T\\to4:\\quad c\\to10,\\quad\\lambda\\to2\\pi,\\quad\\overline u\\to0.0002,\\quad\\overline P\\to0.002", "reason": "Return to the original amplitude; quadruple tension at fixed density and frequency. Speed doubles while mean energy per length stays fixed." },
+        { "math": "\\mu\\to0.16:\\quad c\\to2.5,\\quad\\lambda\\to\\frac\\pi2,\\quad\\overline u\\to0.0008,\\quad\\overline P\\to0.002", "reason": "Return to original tension and amplitude; quadruple density. Mean energy density quadruples but speed halves, so mean power only doubles." }
+      ],
+      "conclusion": "Equal power changes can arise from very different speed and energy-density changes. These are separate uniform media with the same imposed source frequency."
+    },
+    {
+      "title": "Compute a finite pulse without inventing a frequency",
+      "prompt": "Let y=0.02 exp[−(x−5t)²/(2*0.5²)] m on the same F_T=1 N, mu=0.04 kg/m string. Evaluate x=0.5 m,t=0 and the full-line energy.",
+      "steps": [
+        { "math": "q=1,\\quad y=0.02e^{-1/2},\\quad y_x=-0.04e^{-1/2},\\quad y_t=0.2e^{-1/2}", "reason": "Differentiate the translated Gaussian; velocity is −c times slope for rightward travel." },
+        { "math": "u=F_Ty_x^2=\\frac{0.0016}{e}\\,\\mathrm{J/m},\\quad P=cu=\\frac{0.008}{e}\\,\\mathrm W", "reason": "The sloping flank carries local energy and transports it rightward." },
+        { "math": "E=\\frac{F_TA^2}{w}\\int_{-\\infty}^{\\infty}z^2e^{-z^2}\\,dz=\\frac{\\sqrt\\pi}{2500}\\,\\mathrm J", "reason": "The Gaussian moment is sqrt(pi)/2. Integrating the full line gives finite energy that is independent of pulse position." }
+      ],
+      "conclusion": "The pulse center at x=5t has zero slope and local energy density, yet the pulse has positive total energy. It has no oscillation period."
+    },
+    {
+      "title": "Expose an apparent reversal in periodic snapshots",
+      "prompt": "For a rightward wave with lambda=pi m and c=5 m/s, take snapshots separated by three quarters of a period.",
+      "steps": [
+        { "math": "\\tau=\\frac\\pi5\\,\\mathrm s,\\quad\\Delta t=\\frac{3\\pi}{20}\\,\\mathrm s,\\quad\\Delta x_{\\rm true}=c\\Delta t=\\frac{3\\pi}{4}\\,\\mathrm m", "reason": "The tracked crest travels right by three quarters of a wavelength." },
+        { "math": "\\Delta x_{\\rm principal}=\\frac{3\\pi}{4}-\\pi=-\\frac\\pi4\\,\\mathrm m", "reason": "A periodic snapshot is identical after adding or subtracting a wavelength." },
+        { "math": "v_{\\rm apparent}=\\frac{-\\pi/4}{3\\pi/20}=-\\frac53\\,\\mathrm{m/s}", "reason": "Choosing the nearest signed shift gives an apparent leftward motion." }
+      ],
+      "conclusion": "Both candidate shifts have magnitude less than one wavelength. A stricter justified bound or independent direction information is needed to recover the actual translation."
+    },
+    {
+      "title": "Audit the local small-slope approximation",
+      "prompt": "Compare quadratic and exact fixed-tension geometric stretch energy at slope magnitude s=0.2.",
+      "steps": [
+        { "math": "u_{U,\\rm quad}=F_T\\frac{s^2}{2},\\quad u_{U,\\rm geom}=F_T(\\sqrt{1+s^2}-1)", "reason": "Both formulas use the same constant tension and equilibrium-length reference." },
+        { "math": "\\frac{u_{U,\\rm quad}}{u_{U,\\rm geom}}=\\frac{\\sqrt{1+s^2}+1}{2}", "reason": "Rationalize the geometric expression to avoid subtracting nearly equal numbers at small slope." },
+        { "math": "\\frac{u_{U,\\rm quad}-u_{U,\\rm geom}}{u_{U,\\rm geom}}=\\frac{\\sqrt{1.04}-1}{2}\\approx0.00990195136", "reason": "The quadratic term overestimates this particular geometric quantity by about 0.990195%." }
+      ],
+      "conclusion": "This comparison explains the simulation's chosen slope guard. It does not bound all physical-model errors, numerical integration errors or measurement uncertainty."
+    }
+  ],
+  "guided": {
+    "title": "Separate leftward transport from upward local motion",
+    "setup": "A string has mu=0.05 kg/m and F_T=0.8 N. It carries y=0.006 cos(3x+12t−pi/2) m. Analyze x=0,t=0, then distinguish the instantaneous state from a cycle average.",
+    "before": [
+      "The medium gives c=sqrt(0.8/0.05)=4 m/s, consistent with omega/k=12/3.",
+      "The positive time term means leftward propagation. At the specified point the phase is −pi/2.",
+      "Differentiate before substituting that phase. Use slope, not displacement, for stretch energy."
+    ],
+    "question": {
+      "id": "phs232-wave-guided",
+      "familyId": "phs232-traveling-wave",
+      "familyVersion": 1,
+      "courseId": "phs-232",
+      "objectiveId": "m02-l01",
+      "category": "application",
+      "critical": true,
+      "parameters": { "amplitude": 0.006, "waveNumber": 3, "omega": 12, "density": 0.05, "tension": 0.8 },
+      "prompt": "Give the signed crest velocity, initial transverse velocity, initial slope, local stretch energy per length, signed cycle-mean power toward +x and wavelength. Interpret the zero displacement at this instant.",
+      "fields": [
+        { "id": "crest", "kind": "rational", "label": "Signed crest velocity", "expected": "-4", "unit": "m/s" },
+        { "id": "velocity", "kind": "rational", "label": "Transverse velocity at zero", "expected": "9/125", "unit": "m/s" },
+        { "id": "slope", "kind": "rational", "label": "Spatial slope at zero", "expected": "9/500", "unit": "" },
+        { "id": "stretch", "kind": "rational", "label": "Local stretch energy per length", "expected": "81/625000", "unit": "J/m" },
+        { "id": "power", "kind": "rational", "label": "Signed cycle-mean power toward +x", "expected": "-81/156250", "unit": "W" },
+        { "id": "wavelength", "kind": "pi-expression", "label": "Wavelength", "expected": "2*pi/3", "unit": "m", "help": "Keep pi exact; wavelength is positive." },
+        { "id": "interpretation", "kind": "choice", "label": "Meaning of the initial zero displacement", "correct": "crossing", "options": [
+          { "id": "node", "label": "A permanently stationary point with zero local energy", "feedback": "The positive transverse velocity shows this point is moving through zero. Its slope and local stretch energy are nonzero." },
+          { "id": "crossing", "label": "An upward crossing with nonzero local energy and leftward transport", "feedback": "y_t is positive, so the point moves upward. Its positive slope makes P=−F_T*y_x*y_t negative; local stored energy remains positive." },
+          { "id": "right", "label": "A point carrying energy rightward because its velocity is positive", "feedback": "The transverse velocity points along y, while transport direction is along x. Use both slope and transverse velocity in the signed power." }
+        ] }
+      ],
+      "hints": [
+        "Constant phase gives crest velocity −12/3. At fixed x, y_t=−0.072 sin(theta); at theta=−pi/2 this is positive.",
+        "The slope is −0.018 sin(theta). Stretch energy per length is 0.8*y_x²/2, not an expression in y².",
+        "Mean power is −mu*c*A²*omega²/2. The instantaneous power at this zero crossing has twice the mean magnitude."
+      ],
+      "explanation": [
+        "The crest velocity is −4 m/s. The positive time sign specifies leftward phase propagation.",
+        "At zero, sin(−pi/2)=−1. Hence y_t=0.072=9/125 m/s and y_x=0.018=9/500.",
+        "The stretch energy per length is 0.8*(0.018)²/2=0.0001296=81/625000 J/m. The local kinetic energy per length is equal to it.",
+        "Signed mean power is −0.05*4*(0.006)²*(12)²/2=−0.0005184=−81/156250 W. Instantaneous power here is −0.0010368 W; a zero crossing gives maximum magnitude, not the cycle average.",
+        "The wavelength is 2*pi/3 m. The tagged point is crossing zero upward; it is not permanently stationary and has nonzero local energy."
+      ],
+      "answerSummary": "Crest velocity=−4 m/s; y_t=9/125 m/s; slope=9/500; local stretch density=81/625000 J/m; mean P=−81/156250 W; lambda=2*pi/3 m; upward crossing with leftward transport."
+    },
+    "after": "Find the local kinetic and total energy densities and the instantaneous power independently. Then reverse the time sign while keeping the initial snapshot and explain which results change."
+  },
+  "interaction": {
+    "kind": "phs232-traveling-wave",
+    "prompt": "Follow a tagged material point and a translated pattern separately. Predict the initial state, check a signed energy ledger, then compare a finite pulse with a harmonic recording that can alias.",
+    "initial": { "profile": "harmonic", "direction": 1, "tension": 8, "density": 0.02, "amplitude": 0.02, "frequency": 5, "phase": 0.5235987755982988, "width": 0.5, "regionWidth": 0.7, "duration": 4, "intervals": 128 }
+  },
+  "practice": [
+    { "familyId": "phs232-traveling-wave", "variant": "direction" },
+    { "familyId": "phs232-traveling-wave", "variant": "phase-speed" },
+    { "familyId": "phs232-traveling-wave", "variant": "local-velocity" },
+    { "familyId": "phs232-traveling-wave", "variant": "local-acceleration" },
+    { "familyId": "phs232-traveling-wave", "variant": "phase-delay" },
+    { "familyId": "phs232-traveling-wave", "variant": "wave-equation" },
+    { "familyId": "phs232-wave-transport", "variant": "string-speed" },
+    { "familyId": "phs232-wave-transport", "variant": "density-unit" },
+    { "familyId": "phs232-wave-transport", "variant": "average-power" },
+    { "familyId": "phs232-wave-transport", "variant": "energy-density" },
+    { "familyId": "phs232-wave-transport", "variant": "amplitude-scaling" },
+    { "familyId": "phs232-wave-transport", "variant": "medium-change" }
+  ],
+  "checkpoint": [
+    { "familyId": "phs232-traveling-wave", "variant": "local-velocity" },
+    { "familyId": "phs232-traveling-wave", "variant": "wave-equation" },
+    { "familyId": "phs232-wave-transport", "variant": "average-power" },
+    { "familyId": "phs232-wave-transport", "variant": "medium-change" }
+  ],
+  "summary": [
+    "A traveling profile translates along x while a tagged string point moves transversely. Derive direction from constant phase; a snapshot alone does not identify it.",
+    "Use k*lambda=2*pi, omega*tau=2*pi and c=omega/k. Partial derivatives hold the other coordinate fixed. Particle speed and phase speed answer different questions.",
+    "The ideal string requires c=sqrt(F_T/mu), uniform equilibrium linear density, approximately constant tension and small slope. Check a proposed function throughout its domain.",
+    "Local energy density is mu*y_t²/2+F_T*y_x²/2. For one traveling profile its kinetic and stretch parts are equal, including zero at a crest; a local element is not isolated.",
+    "Signed power toward +x is −F_T*y_x*y_t. The region account is ΔE=W_left−W_right, with the same sign convention at both cuts.",
+    "Harmonic mean energy and power scale with amplitude squared. When changing medium properties, include the change in speed and state which source quantities stay fixed.",
+    "A Gaussian pulse has finite total energy without a harmonic period. Periodic snapshots and sparse recordings can have multiple compatible directions or speeds.",
+    "Use independent energy and boundary-work calculations, refinement, complete tables and saved evidence. Distinguish numerical agreement, model assumptions and physical validation."
+  ],
+  "retrieval": "From a translated profile, derive y_t, y_x and the wave equation. Explain why a crest and the material at that crest have different velocities. Derive stretch energy from geometry and signed power across a cut, then recover the finite-region balance. Compare a change of amplitude with a change of density at fixed source frequency. Finally construct two different signed shifts that produce the same periodic snapshots.",
+  "readings": [
+    { "title": "OpenStax University Physics, 16.1: Traveling Waves", "url": "https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves", "purpose": "Free primary introduction to wave disturbances and profile motion. Use the explicit periodic-snapshot ambiguity developed in this lesson when interpreting a measured shift." },
+    { "title": "OpenStax University Physics, 16.2: Mathematics of Waves", "url": "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves", "purpose": "Compare spatial and temporal wave descriptions and partial derivatives; retain the chosen cosine phase convention and correct crest indexing." },
+    { "title": "OpenStax University Physics, 16.3: Wave Speed on a Stretched String", "url": "https://openstax.org/books/university-physics-volume-1/pages/16-3-wave-speed-on-a-stretched-string", "purpose": "Reconstruct the small-slope force balance and check the density units and physical assumptions." },
+    { "title": "OpenStax University Physics, 16.4: Energy and Power of a Wave", "url": "https://openstax.org/books/university-physics-volume-1/pages/16-4-energy-and-power-of-a-wave", "purpose": "Compare wavelength-integrated energy and mean power. For local potential energy, use the slope-based geometric derivation here and the university sources below." },
+    { "title": "University of Texas: Energy Conservation", "url": "https://farside.ph.utexas.edu/teaching/315/Waveshtml/node43.html", "purpose": "Free primary lecture derivation of string stretch energy, signed power and the boundary conservation equation. The later acoustic formulas belong to different media." },
+    { "title": "Yale Open Courses: Correction on the energy in a vibrating string", "url": "https://oyc.yale.edu/sites/default/files/Erratum-Wave%20energy_0.pdf", "purpose": "A two-page primary correction explaining why a string element's local potential energy is tied to slope and why it exchanges energy with neighboring elements." }
+  ]
+}
