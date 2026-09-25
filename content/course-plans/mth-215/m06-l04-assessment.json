@@ -1,0 +1,111 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l04",
+  "status": "planned",
+  "lessonAvailable": false,
+  "objective": "Calculate the six trigonometric ratios where defined and explain each undefined value using a zero denominator.",
+  "sources": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.4 The Other Trigonometric Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-4-the-other-trigonometric-functions",
+      "checkedAt": "2026-09-24",
+      "use": "Scope and optional reading. Instruction, examples, questions and diagrams are original; every domain and sign is checked from the coordinate definitions."
+    }
+  ],
+  "instructionOutline": [
+    "Define the six functions from a terminal point",
+    "Distinguish tangent from cotangent",
+    "Pair each function with its reciprocal",
+    "Normalize a non-unit point",
+    "Choose signs before calculating",
+    "Evaluate exact special and coterminal angles",
+    "Separate a zero numerator from a zero denominator",
+    "Build the four axis rows",
+    "State domains with all excluded angles",
+    "Check the ranges of the six functions",
+    "Distinguish reciprocals from inverse functions",
+    "Read negative powers and calculator labels",
+    "Recover all ratios from sine or cosine",
+    "Recover a point from secant or cosecant",
+    "Recover a direction from tangent or cotangent",
+    "Check whether the given information is sufficient",
+    "Derive the two additional squared identities",
+    "Preserve domain restrictions when simplifying",
+    "Explain even and odd behavior",
+    "Explain why the periods differ",
+    "Test a claimed period with more than one point",
+    "Audit calculator output near an excluded angle"
+  ],
+  "families": {
+    "mth-six-ratios": [
+      "coordinates", "normalize", "sine-given", "cosine-given", "tangent-given", "cotangent-given",
+      "secant-given", "cosecant-given", "special-angle", "signed-turns", "inconsistent"
+    ],
+    "mth-six-domain": [
+      "positive-x", "positive-y", "negative-x", "negative-y", "tangent-domain", "cotangent-domain",
+      "secant-domain", "cosecant-domain", "range", "reciprocal-trap"
+    ],
+    "mth-six-notation": [
+      "sine-inverse", "cosine-inverse", "tangent-inverse", "negative-power", "quotient-identity",
+      "pythagorean-cosine", "pythagorean-sine", "cancel-restrictions"
+    ],
+    "mth-six-symmetry": [
+      "parity", "period", "negative-value", "half-turn", "full-turn", "period-evidence", "odd-zero"
+    ]
+  },
+  "checkpoint": [
+    { "familyId": "mth-six-ratios", "variant": "checkpoint" },
+    { "familyId": "mth-six-domain", "variant": "checkpoint" },
+    { "familyId": "mth-six-notation", "variant": "checkpoint" },
+    { "familyId": "mth-six-symmetry", "variant": "checkpoint" }
+  ],
+  "checkpointPolicy": {
+    "criticalQuestions": 4,
+    "pass": "Every part of all four questions must be correct without hints.",
+    "sampling": "Every form requires all six ratios reconstructed from one given ratio and a quadrant, all six values at an axis with a zero-denominator explanation, a reciprocal compared with a principal inverse, and both parity and period reasoning. The four questions sample the broader practice coverage rather than certify every variant separately.",
+    "assistedWork": "Guided work, investigation and practice do not award independent evidence."
+  },
+  "generatorRules": [
+    "Accept exact rational and radical equivalence. Use a distinct undefined answer state, never infinity, a sentinel number or a tolerance around zero.",
+    "Use the coordinate definitions sin=y/r, cos=x/r, tan=y/x, cot=x/y, sec=r/x and csc=r/y, with r positive. Reject the origin.",
+    "Normalize exactly and preserve every signed coordinate. A denominator is zero only when it equals zero exactly.",
+    "Include all four quadrants, all four axes, negative and coterminal angles, irrational values and large finite ratios.",
+    "For reconstruction in an open quadrant, validate range, sign and nonzero coordinates before selecting a root. A lone ratio without a sign condition may be ambiguous.",
+    "Treat cot=x/y as the definition. The expression 1/tan has a smaller domain and does not supply cotangent at a vertical-axis point.",
+    "State the principal inverse range in notation questions and keep angle outputs separate from dimensionless reciprocals.",
+    "Require original-domain conditions in quotient simplifications and the two derived Pythagorean identities.",
+    "Use fundamental periods pi for tangent/cotangent and 2pi for sine/cosine/secant/cosecant, on their domains. Equal values at one pair of inputs do not establish a period.",
+    "Cosine and secant are even; sine, tangent, cosecant and cotangent are odd. An odd function need not have zero in its domain.",
+    "Shuffle choice options deterministically, retain immutable question snapshots and reject unknown families or variants."
+  ],
+  "investigation": {
+    "workflow": [
+      "Choose one of six terminal points or type real exact coordinates whose squared radius is rational.",
+      "Predict which of tangent, cotangent, secant and cosecant are defined by inspecting the appropriate coordinate denominator.",
+      "Calculate all six values, typing undefined where needed.",
+      "Compare the normalized point, labeled diagram and accessible table of each formula, exact denominator and value.",
+      "Compare reflection, a half-turn and a full turn using a second exact table; justify both a zero-denominator decision and the shorter tangent/cotangent period.",
+      "Clear dependent answers and feedback whenever the inputs, case or predictions change."
+    ],
+    "cases": [
+      { "title": "Quadrant II", "x": "-8", "y": "15" },
+      { "title": "Radical quadrant IV", "x": "1", "y": "-sqrt(3)" },
+      { "title": "Positive vertical axis", "x": "0", "y": "5" },
+      { "title": "Negative horizontal axis", "x": "-7", "y": "0" },
+      { "title": "Large but finite tangent", "x": "1", "y": "100" },
+      { "title": "Quadrant III", "x": "-5", "y": "-12" }
+    ],
+    "scope": "Coordinates are bounded in magnitude by 100 and must yield a nonzero radius supported by the exact radical parser. These are tool limits, not restrictions on trigonometric functions.",
+    "accessibility": "Labeled native inputs, keyboard controls, explicit undefined text, exact table alternatives, live feedback, a focusable scroll region and mobile layout checks."
+  },
+  "verificationPlan": [
+    "Exact values from independent signed Pythagorean triples and special-angle tables; all axes and equivalent radicals.",
+    "Reconstruction from each of the six functions in every quadrant, with impossible signs, ranges, zeros and ambiguous data examined.",
+    "New exact-or-undefined grading, strict answer keys, old-field compatibility, and null answer keys through saved-attempt backup restoration.",
+    "All 36 practice variants across varied deterministic seeds; checkpoint composition, critical failures and hint independence.",
+    "Every instruction topic and worked example mapped to practice and recall; formula rendering and guided-answer checks.",
+    "Four browser journeys for incorrect and equivalent answers, six cases, editable points, stale-state clearing, all transformations, keyboard, desktop/mobile accessibility, notes, practice, checkpoints, reload and export/restore.",
+    "Full unit suite, lint, TypeScript and production build before activation. Independent subject review remains a separate unfinished gate."
+  ],
+  "independentSubjectReview": "not yet performed"
+}
