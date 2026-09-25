@@ -1,8 +1,8 @@
 {
   "courseId": "mth-215",
   "lessonId": "m06-l04",
-  "status": "planned",
-  "lessonAvailable": false,
+  "status": "implemented and verified",
+  "lessonAvailable": true,
   "objective": "Calculate the six trigonometric ratios where defined and explain each undefined value using a zero denominator.",
   "sources": [
     {
@@ -38,26 +38,67 @@
   ],
   "families": {
     "mth-six-ratios": [
-      "coordinates", "normalize", "sine-given", "cosine-given", "tangent-given", "cotangent-given",
-      "secant-given", "cosecant-given", "special-angle", "signed-turns", "inconsistent"
+      "coordinates",
+      "normalize",
+      "sine-given",
+      "cosine-given",
+      "tangent-given",
+      "cotangent-given",
+      "secant-given",
+      "cosecant-given",
+      "special-angle",
+      "signed-turns",
+      "inconsistent"
     ],
     "mth-six-domain": [
-      "positive-x", "positive-y", "negative-x", "negative-y", "tangent-domain", "cotangent-domain",
-      "secant-domain", "cosecant-domain", "range", "reciprocal-trap"
+      "positive-x",
+      "positive-y",
+      "negative-x",
+      "negative-y",
+      "tangent-domain",
+      "cotangent-domain",
+      "secant-domain",
+      "cosecant-domain",
+      "range",
+      "reciprocal-trap"
     ],
     "mth-six-notation": [
-      "sine-inverse", "cosine-inverse", "tangent-inverse", "negative-power", "quotient-identity",
-      "pythagorean-cosine", "pythagorean-sine", "cancel-restrictions"
+      "sine-inverse",
+      "cosine-inverse",
+      "tangent-inverse",
+      "negative-power",
+      "quotient-identity",
+      "pythagorean-cosine",
+      "pythagorean-sine",
+      "cancel-restrictions"
     ],
     "mth-six-symmetry": [
-      "parity", "period", "negative-value", "half-turn", "full-turn", "period-evidence", "odd-zero"
+      "parity",
+      "period",
+      "negative-value",
+      "half-turn",
+      "full-turn",
+      "period-evidence",
+      "odd-zero"
     ]
   },
   "checkpoint": [
-    { "familyId": "mth-six-ratios", "variant": "checkpoint" },
-    { "familyId": "mth-six-domain", "variant": "checkpoint" },
-    { "familyId": "mth-six-notation", "variant": "checkpoint" },
-    { "familyId": "mth-six-symmetry", "variant": "checkpoint" }
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "checkpoint"
+    }
   ],
   "checkpointPolicy": {
     "criticalQuestions": 4,
@@ -88,12 +129,36 @@
       "Clear dependent answers and feedback whenever the inputs, case or predictions change."
     ],
     "cases": [
-      { "title": "Quadrant II", "x": "-8", "y": "15" },
-      { "title": "Radical quadrant IV", "x": "1", "y": "-sqrt(3)" },
-      { "title": "Positive vertical axis", "x": "0", "y": "5" },
-      { "title": "Negative horizontal axis", "x": "-7", "y": "0" },
-      { "title": "Large but finite tangent", "x": "1", "y": "100" },
-      { "title": "Quadrant III", "x": "-5", "y": "-12" }
+      {
+        "title": "Quadrant II",
+        "x": "-8",
+        "y": "15"
+      },
+      {
+        "title": "Radical quadrant IV",
+        "x": "1",
+        "y": "-sqrt(3)"
+      },
+      {
+        "title": "Positive vertical axis",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "title": "Negative horizontal axis",
+        "x": "-7",
+        "y": "0"
+      },
+      {
+        "title": "Large but finite tangent",
+        "x": "1",
+        "y": "100"
+      },
+      {
+        "title": "Quadrant III",
+        "x": "-5",
+        "y": "-12"
+      }
     ],
     "scope": "Coordinates are bounded in magnitude by 100 and must yield a nonzero radius supported by the exact radical parser. These are tool limits, not restrictions on trigonometric functions.",
     "accessibility": "Labeled native inputs, keyboard controls, explicit undefined text, exact table alternatives, live feedback, a focusable scroll region and mobile layout checks."
@@ -107,5 +172,27 @@
     "Four browser journeys for incorrect and equivalent answers, six cases, editable points, stale-state clearing, all transformations, keyboard, desktop/mobile accessibility, notes, practice, checkpoints, reload and export/restore.",
     "Full unit suite, lint, TypeScript and production build before activation. Independent subject review remains a separate unfinished gate."
   ],
-  "independentSubjectReview": "not yet performed"
+  "independentSubjectReview": "not yet performed",
+  "delivery": {
+    "checkedAt": "2026-09-25T04:44:33.824Z",
+    "instructionSections": 22,
+    "workedExamples": 37,
+    "guidedFields": 8,
+    "investigationCases": 6,
+    "practiceVariants": 36,
+    "checkpointFamilies": 4,
+    "verification": [
+      "Exact coordinate ratios checked across quadrants, all four axes, positive scaling, radicals and large finite outputs.",
+      "Reconstruction checked from every function in every quadrant, including sign, range, zero and ambiguity failures.",
+      "Exact-or-undefined answers distinguish null from zero, preserve equivalent real radicals and survive immutable saved-question snapshots.",
+      "All 36 practice variants checked across varied deterministic forms, with every critical checkpoint failure and hint independence verified.",
+      "Every instruction topic and worked example maps to practice, checkpoint sampling and recall; all authored formulas render.",
+      "2564 tests passed across 301 files in the full repository suite.",
+      "Full lint, TypeScript and the 196-page production build passed.",
+      "Four browser journeys passed for guided work, six editable-point cases, reflection, half-turn and full-turn comparisons, wrong answers, invalid points and stale-result clearing.",
+      "Keyboard and desktop/mobile accessibility checks passed. Mobile denominator-table, axis and near-axis diagrams were visually inspected.",
+      "Notes and hinted practice survived reload without independent evidence. Critical 3/4 failed and independent 4/4 passed; exact, zero and null answer keys and responses survived export and restore."
+    ],
+    "courseStatus": "building"
+  }
 }

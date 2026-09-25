@@ -30,6 +30,7 @@ import modelingLesson from "@/content/lessons/mth-215/m05-l04.json";
 import anglesLesson from "@/content/lessons/mth-215/m06-l01.json";
 import rightTriangleLesson from "@/content/lessons/mth-215/m06-l02.json";
 import unitCircleLesson from "@/content/lessons/mth-215/m06-l03.json";
+import sixFunctionsLesson from "@/content/lessons/mth-215/m06-l04.json";
 import { lessonSchema, packSchema } from "./contracts";
 import { availableFamilyIds } from "./generate";
 import { refresherPacks, refresherLessons } from "./refreshers/catalog";
@@ -39,6 +40,7 @@ export const lessons = [lessonSchema.parse(numberBridge),lessonSchema.parse(powe
 lessons.push(lessonSchema.parse(logRulesLesson),lessonSchema.parse(modelingLesson),lessonSchema.parse(anglesLesson),lessonSchema.parse(rightTriangleLesson),...refresherLessons);
 lessons.push(...phs232Lessons);
 lessons.push(lessonSchema.parse(unitCircleLesson));
+lessons.push(lessonSchema.parse(sixFunctionsLesson));
 export const learningPack = (courseId: string) => learningPacks.find(pack => pack.courseId === courseId);
 export const lessonById = (courseId: string, lessonId: string) => lessons.find(lesson => lesson.courseId === courseId && lesson.id === lessonId);
 
