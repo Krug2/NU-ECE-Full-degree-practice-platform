@@ -1,7 +1,7 @@
 {
   "courseId": "phs-232",
   "lessonId": "m02-l01",
-  "status": "Detailed implementation design; this lesson remains unavailable until instruction, practice, investigation and verification are delivered.",
+  "status": "Implemented and technically verified in the building course. Actual checks, limitations and commit references are recorded in lesson-audits.json; this does not establish independent subject review or course completion.",
   "basis": "The full course coverage map remains authoritative. This is a proposed teaching sequence and numerical design, not an official NU lesson sequence, assessment policy or physical equipment requirement.",
   "preparation": {
     "requiredLessons": ["m01-l01", "m01-l02"],

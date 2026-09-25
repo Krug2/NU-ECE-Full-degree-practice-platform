@@ -149,6 +149,42 @@
       },
       "limits": "This investigation is a simulation, not a physical experiment or official equipment specification. Its finite-time state is evaluated stably even where a bounded sinusoidal particular response does not exist. Controls reset on reload as disclosed; saved notes preserve the learner record. The rubric is self-assessment. No independent subject review or learner pilot has occurred.",
       "next": "m02-l01"
+    },
+    {
+      "id": "m02-l01",
+      "status": "available in the building course",
+      "contentCommit": "c3ecaff",
+      "browserCommit": "aadcd7d",
+      "teaching": {
+        "sections": 10,
+        "workedExamples": 13,
+        "guidedTasks": 1,
+        "guidedFields": 7,
+        "practiceFamilies": 2,
+        "practiceVariants": 12,
+        "checkpointItems": 4,
+        "investigation": "Compare translated harmonic and finite Gaussian profiles, material-point derivatives, signed power and a finite-region energy account. Two keyboard probes, complete spatial/time/work tables, independent quadrature refinement and deliberately aliased recordings support a five-criterion self-check rubric."
+      },
+      "independentChecks": {
+        "generatedCases": "Each of twelve variants passed at least fifty deterministic seeds, totaling 600 minimum variant-seed cases. Extra checks cover both directions, all selected phases, crest and crossing states, first strictly positive versus tracked-crest arrival, wrong PDE candidates, mass-density conversion, amplitude/frequency scaling and separately controlled media.",
+        "stateReference": "Fifty cases for each profile compare analytic states against translated shapes and independent finite first/second derivatives at off-grid points. Local stretch energy is compared with finite-segment geometry. Pointwise wave-equation and continuity identities, zero amplitude, guards and scale extremes have explicit fixtures.",
+        "energyReference": "Separate high-resolution midpoint quadrature verifies harmonic spatial energy, cycle power and finite Gaussian full-line energy. Fifty finite-region cases compare independently integrated spatial energy and both signed boundary works, local conservation and coarse/fine behavior. Stored energy is never defined from boundary work.",
+        "samplingReference": "Fifty cases enumerate candidate profile shifts independently of the implementation wrap formula. Tests cover apparent reversal, full-period frozen records, half-wavelength ambiguity, spatial degeneracy, phase-shifted samples and zero-amplitude records.",
+        "answers": "Equivalent exact fractions, radicals and pi expressions, wrong signs/units/interpretations and invalid input are tested. The generated wave-equation tasks require a global statement and distinguish isolated zero residuals from a valid solution.",
+        "authored": "Four content fixtures independently verify the printed derivative, finite-region energy/work, finite-pulse and small-slope examples and all seven guided answers. The pulse check uses an independent five-point finite derivative and high-resolution integral."
+      },
+      "verification": {
+        "unit": "2501 tests in 294 files passed with no skips in 250.03 seconds, with F10_PYTHON configured. This includes the prerequisite/mechanics suite and new model, family and authored-content checks.",
+        "static": "Full lint and type checking passed. The final browser file also passed scoped lint and full type checking.",
+        "build": "The production build passed with 196 generated pages.",
+        "browsers": "All seven wave scenarios passed together in 1.3 minutes on port 3101 with one desktop-project worker. They cover guided learning and predictions, controlled media and zero/invalid inputs, signed pulse boundary work and refinement, periodic aliasing, saved learning and backup restoration, 320px reflow and a 720px CSS viewport at device scale 2.",
+        "learning": "Tests exercise wrong and corrected reasoning, both keyboard probes, all spatial/time/account table pages, independent pulse-energy quadrature and all recording ambiguities. Four checkpoint answers are calculated from the generated parameters independently of stored answers; exact question records, evidence, hints and notes survive reload and export/reset/import alongside earlier driven and PHS 231 attempts.",
+        "visual": "All three desktop/mobile plots, the mobile convergence ledger and 320px/720px probe and table captures were inspected. Numeric table cells retain complete values within keyboard scroll regions, focus is visible and pages have no horizontal overflow. Axe reports no tested WCAG A/AA violations; this is not complete accessibility certification.",
+        "preview": "The production route on port 3001 returned HTTP 200. Desktop 1440px and mobile 390px reading and four worked examples were inspected: local derivatives, non-integer-region energy/work, finite pulse and approximation error. Long equations remain keyboard-scrollable, with no page errors, KaTeX errors or page overflow.",
+        "corrections": "An initial authored pulse fixture exposed cancellation error in its two-point reference derivative. Replacing that independent reference with a five-point derivative retained the twelve-digit assertion and passed; no product calculation changed. A browser-file JavaScript exponentiation syntax error was caught and corrected before the browser run."
+      },
+      "limits": "This is an ideal small-slope string simulation, not a physical experiment or official equipment specification. Numerical refinement does not quantify physical measurement uncertainty. Controls reset on reload as disclosed; saved notes retain the record. The rubric is self-assessment. No independent subject review or learner pilot has occurred.",
+      "next": "m02-l02"
     }
   ]
 }
