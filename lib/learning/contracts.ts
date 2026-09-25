@@ -224,7 +224,7 @@ export const lessonSchema = z.object({
     z.object({kind:z.literal("transformation-lab"),prompt:text,model:transformedFunctionSchema,extent:z.number().int().min(2).max(24)}).strict(),
     z.object({kind:z.literal("composition-lab"),prompt:text,cases:z.array(z.object({title:text,f:machineSchema,g:machineSchema,input:rational,order:z.enum(["fg","gf"])}).strict()).min(3).max(6)}).strict(),
   ]),
-  practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).length(4),
+  practice: z.array(slotSchema).min(6), checkpoint: z.array(slotSchema).min(4).max(12),
   summary: z.array(text).min(2), retrieval: text,
   readings: z.array(z.object({ title: text, url: z.url().refine(value => new URL(value).protocol === "https:"), purpose: text }).strict()).min(1),
 }).strict().superRefine((lesson, ctx) => {

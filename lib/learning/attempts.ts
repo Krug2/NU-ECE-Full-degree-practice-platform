@@ -13,6 +13,7 @@ export const attemptSchema = z.object({
   position: z.number().int().min(0), questions: z.array(questionSchema).min(1).max(80),
   responses: z.record(key, responseSchema), hints: z.record(key, z.number().int().min(0).max(3)),
   assessment:assessmentMetadataSchema.optional(),
+  checkpointSize: z.number().int().min(4).max(12).optional(),
 }).strict().superRefine((attempt, ctx) => {
   const ids = new Set(attempt.questions.map(question => question.id));
   if (ids.size !== attempt.questions.length || attempt.position >= attempt.questions.length) ctx.addIssue({ code:"custom",message:"Invalid question order" });
@@ -33,12 +34,13 @@ export const attemptSchema = z.object({
   if(Object.keys(attempt.hints).some(id=>!ids.has(id)))ctx.addIssue({code:"custom",message:"Unknown hint question"});
   if(attempt.status==="submitted" && !attempt.submittedAt)ctx.addIssue({code:"custom",message:"Missing submission date"});
   if(attempt.status!=="submitted" && attempt.submittedAt)ctx.addIssue({code:"custom",message:"Unexpected submission date"});
-  if(!attempt.assessment&&attempt.mode==="checkpoint" && attempt.questions.length!==4)ctx.addIssue({code:"custom",message:"Incomplete checkpoint blueprint"});
+  if(attempt.checkpointSize!==undefined&&(attempt.assessment||attempt.mode!=="checkpoint"))ctx.addIssue({code:"custom",message:"Checkpoint size belongs to a lesson checkpoint"});
+  if(!attempt.assessment&&attempt.mode==="checkpoint"&&attempt.questions.length!==(attempt.checkpointSize??4))ctx.addIssue({code:"custom",message:"Incomplete checkpoint blueprint"});
 });
 export type Attempt = z.infer<typeof attemptSchema>;
 export const attemptLimit=5000;
 export const attemptLimitMessage="Your history has reached 5,000 saved attempts. Export a copy, then remove older attempt details from a lesson before starting another set.";
-export const evidenceSchema=z.object({courseId:key,lessonId:key,lessonVersion:z.number().int().positive(),attemptId:z.uuid(),demonstratedAt:z.iso.datetime(),nextReviewAt:z.iso.datetime(),correct:z.number().int().min(3).max(4),total:z.literal(4)}).strict();
+export const evidenceSchema=z.object({courseId:key,lessonId:key,lessonVersion:z.number().int().positive(),attemptId:z.uuid(),demonstratedAt:z.iso.datetime(),nextReviewAt:z.iso.datetime(),correct:z.number().int().min(3).max(12),total:z.number().int().min(4).max(12)}).strict().refine(item=>item.correct<=item.total&&item.correct>=Math.ceil(.75*item.total),"Insufficient checkpoint evidence");
 export const learningSchema=z.object({
   attempts:z.array(attemptSchema).max(attemptLimit,attemptLimitMessage).refine(items=>new Set(items.map(item=>item.id)).size===items.length,"Duplicate attempts"),
   evidence:z.array(evidenceSchema).max(2000).refine(items=>new Set(items.map(item=>`${item.courseId}/${item.lessonId}/${item.lessonVersion}`)).size===items.length,"Duplicate evidence"),
@@ -50,14 +52,14 @@ export const emptyLearning=():LearningProgress=>({attempts:[],evidence:[],notes:
 
 export type AssessmentSource = Pick<Lesson, "id" | "courseId" | "version" | "practice" | "checkpoint"> & {assessment?:AssessmentMetadata};
 export function createAttempt(lesson:AssessmentSource, mode:Attempt["mode"], seed=crypto.randomUUID(), now=new Date()):Attempt {
-  return attemptSchema.parse({id:crypto.randomUUID(),courseId:lesson.courseId,lessonId:lesson.id,lessonVersion:lesson.version,mode,status:"active",revision:0,seed,startedAt:now.toISOString(),submittedAt:null,position:0,questions:generateQuestions(mode==="practice"?lesson.practice:lesson.checkpoint,seed),responses:{},hints:{},...(lesson.assessment?{assessment:lesson.assessment}:{})});
+  return attemptSchema.parse({id:crypto.randomUUID(),courseId:lesson.courseId,lessonId:lesson.id,lessonVersion:lesson.version,mode,status:"active",revision:0,seed,startedAt:now.toISOString(),submittedAt:null,position:0,questions:generateQuestions(mode==="practice"?lesson.practice:lesson.checkpoint,seed),responses:{},hints:{},...(lesson.assessment?{assessment:lesson.assessment}:mode==="checkpoint"&&lesson.checkpoint.length!==4?{checkpointSize:lesson.checkpoint.length}:{})});
 }
 export function attemptResult(attempt:Attempt) {
   const results=attempt.questions.map(question=>gradeQuestion(question,attempt.responses[question.id]??{}));
   const correct=results.filter(result=>result.correct).length;
   const independent=Object.values(attempt.hints).every(level=>level===0);
   const criticalPassed=attempt.questions.every((question,index)=>!question.critical||results[index].correct);
-  return {results,correct,total:results.length,independent,criticalPassed,passed:!attempt.assessment&&attempt.status==="submitted"&&attempt.mode==="checkpoint"&&results.length===4&&correct>=3&&criticalPassed&&independent};
+  return {results,correct,total:results.length,independent,criticalPassed,passed:!attempt.assessment&&attempt.status==="submitted"&&attempt.mode==="checkpoint"&&results.length===(attempt.checkpointSize??4)&&correct>=Math.ceil(.75*results.length)&&criticalPassed&&independent};
 }
 export function assessmentOutcome(attempt:Attempt){
   if(!attempt.assessment)return null;
@@ -74,13 +76,13 @@ export function updateAttempt(learning:LearningProgress,id:string,revision:numbe
   if(!current||current.revision!==revision)throw new Error("This attempt changed in another tab. Your draft is still here. Reload the saved attempt before continuing.");
   if(current.status!=="active")throw new Error("This attempt has already ended. Start a new attempt to practice again.");
   const next=attemptSchema.parse({...change(structuredClone(current)),revision:current.revision+1});
-  if(next.id!==current.id||next.seed!==current.seed||next.courseId!==current.courseId||next.lessonId!==current.lessonId||next.lessonVersion!==current.lessonVersion||next.mode!==current.mode||next.startedAt!==current.startedAt||JSON.stringify(next.questions)!==JSON.stringify(current.questions)||JSON.stringify(next.assessment)!==JSON.stringify(current.assessment))throw new Error("An active attempt's questions cannot change.");
+  if(next.id!==current.id||next.seed!==current.seed||next.courseId!==current.courseId||next.lessonId!==current.lessonId||next.lessonVersion!==current.lessonVersion||next.mode!==current.mode||next.checkpointSize!==current.checkpointSize||next.startedAt!==current.startedAt||JSON.stringify(next.questions)!==JSON.stringify(current.questions)||JSON.stringify(next.assessment)!==JSON.stringify(current.assessment))throw new Error("An active attempt's questions cannot change.");
   const result=attemptResult(next);
   let evidence=learning.evidence;
   if(result.passed) {
     const demonstratedAt=next.submittedAt!;
     const nextReviewAt=new Date(new Date(demonstratedAt).getTime()+3*24*60*60*1000).toISOString();
-    evidence=[...evidence.filter(item=>item.courseId!==next.courseId||item.lessonId!==next.lessonId||item.lessonVersion!==next.lessonVersion),{courseId:next.courseId,lessonId:next.lessonId,lessonVersion:next.lessonVersion,attemptId:next.id,demonstratedAt,nextReviewAt,correct:result.correct,total:4 as const}];
+    evidence=[...evidence.filter(item=>item.courseId!==next.courseId||item.lessonId!==next.lessonId||item.lessonVersion!==next.lessonVersion),{courseId:next.courseId,lessonId:next.lessonId,lessonVersion:next.lessonVersion,attemptId:next.id,demonstratedAt,nextReviewAt,correct:result.correct,total:result.total}];
   }
   const outcome=assessmentOutcome(next),metadata=next.assessment;
   let assessmentResults=learning.assessmentResults;

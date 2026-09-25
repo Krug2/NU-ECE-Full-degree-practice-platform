@@ -17,6 +17,6 @@ it.each(lessons)("$courseId/$id renders authored formulas and supplies complete 
     for(const example of lesson.examples)for(const step of example.steps)expect(()=>katex.renderToString(step.math,{strict:"error",trust:false})).not.toThrow();
     for(let seed=0;seed<50;seed++){
       expect(generateQuestions(lesson.practice,`practice-${seed}`)).toHaveLength(lesson.practice.length);
-      expect(generateQuestions(lesson.checkpoint,`checkpoint-${seed}`)).toHaveLength(4);
+      expect(generateQuestions(lesson.checkpoint,`checkpoint-${seed}`)).toHaveLength(lesson.checkpoint.length);
     }
 });
