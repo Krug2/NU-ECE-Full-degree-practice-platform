@@ -1,0 +1,321 @@
+{
+  "id": "m01-l03",
+  "courseId": "phs-232",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Free decay and damping regimes",
+  "objective": "Classify and solve a damped oscillator's initial-value response and distinguish amplitude, energy and settling measures.",
+  "why": "A decaying vibration carries information about energy loss, initial conditions and the assumptions behind a model. Its peaks, instantaneous energy and time to enter a tolerance band are different quantities. Deriving the complete response lets you interpret those quantities without confusing a fitted curve with a physical explanation. The same second-order structure will return in driven mechanical systems and electrical circuits.",
+  "estimatedMinutes": 240,
+  "prerequisites": [
+    { "courseId": "phs-232", "lessonId": "m01-l01", "label": "Harmonic state and phase", "note": "Use both initial conditions, signed velocity and radian phase." },
+    { "courseId": "phs-232", "lessonId": "m01-l02", "label": "Oscillator energy and stable equilibrium", "note": "Use the energy above the quadratic potential minimum and the actual restoring coefficient." },
+    { "courseId": "mth-215", "lessonId": "m01-l03", "label": "Quadratics and complex roots", "note": "Review the discriminant and complex conjugate roots." },
+    { "courseId": "mth-215", "lessonId": "m05-l03", "label": "Log rules and exponential equations", "note": "Use natural logarithms of positive dimensionless ratios." },
+    { "courseId": "phs-231", "lessonId": "m01-l01", "label": "Measurement and uncertainty", "note": "Separate absolute bounds, rounded values and a justified measurement model." },
+    { "courseId": "f08", "lessonId": "m01-l03", "label": "Optional derivative refresher", "note": "Differentiate products and exponential or trigonometric compositions." },
+    { "courseId": "phs-104", "label": "Introductory physics preparation", "note": "This full academic prerequisite remains under construction here." },
+    { "courseId": "csc-208", "label": "Calculus I preparation", "note": "The full prerequisite remains under construction. This lesson derives the needed constant-coefficient differential-equation solutions rather than assuming a completed differential-equations course." },
+    { "courseId": "csc-209", "label": "Calculus II preparation", "note": "The full prerequisite remains under construction. Use definite integration for accumulated power; NU's MTH 220 and MTH 221 calculus alternatives remain valid academic alternatives." }
+  ],
+  "sections": [
+    {
+      "heading": "Specify the damping force and its domain",
+      "paragraphs": [
+        "Measure x from a fixed stable equilibrium of a mass m>0 and linear spring k>0. Assume the only additional force is viscous drag $F_d=-bv$, with constant b≥0. Newton's law becomes $m\\ddot x+b\\dot x+kx=0$. Free response means that no external driving force supplies work after the initial state is prepared. If uniform gravity shifts a vertical spring's equilibrium, first shift the coordinate as in the preceding lesson.",
+        "Because bv is a force, b has units N·s/m=kg/s. Define $\\omega_0=\\sqrt{k/m}$, $\\beta=b/(2m)$ and $\\zeta=\\beta/\\omega_0$. The natural parameter omega0 has units rad/s, beta has units 1/s and zeta is dimensionless. Dividing by mass gives $\\ddot x+2\\beta\\dot x+\\omega_0^2x=0$. The factor of two is part of this definition of beta; check it when comparing another source's notation.",
+        "The force opposes velocity, not displacement. It reverses sign when the motion reverses and vanishes instantaneously at v=0. This is a model for a stated regime of motion, not a universal friction law. Sliding dry friction, quadratic fluid drag, changing stiffness, active feedback and external forcing require different equations. Positive b removes mechanical energy; this lesson excludes negative damping and unstable negative stiffness.",
+        "An initial-value problem supplies x0=x(0) and v0=v(0), with t≥0. One position alone cannot fix a trajectory. A negative initial velocity is meaningful, and a nonzero initial velocity can make a nonoscillatory response cross equilibrium. By the end of the lesson, derive all response forms, recover their constants, check power and interpret evidence with an explicit time domain."
+      ]
+    },
+    {
+      "heading": "Let the characteristic roots choose the response form",
+      "paragraphs": [
+        "Try x=e^(rt). Every derivative brings down a factor r, and the nonzero exponential cancels to give $r^2+2\\beta r+\\omega_0^2=0$. Therefore $r=-\\beta\\pm\\sqrt{\\beta^2-\\omega_0^2}$. Each rate r has units 1/s so that rt is dimensionless. Two independent solutions are needed to represent the two independent initial coordinates.",
+        "For 0<zeta<1, the roots are complex conjugates $-\\beta\\pm i\\omega_d$, where $\\omega_d=\\sqrt{\\omega_0^2-\\beta^2}>0$. Their real combinations are a decaying cosine and sine. At zeta=1 the root is repeated and the second independent solution includes t. For zeta>1 there are two distinct negative real exponential rates. At b=0 the roots are purely imaginary and the nonzero motion is undamped harmonic motion.",
+        "The critical dimensional coefficient is $b_c=2\\sqrt{mk}=2m\\omega_0$. Compare b with zero and bc before inserting numbers into an oscillatory formula. Taking an absolute value inside a negative radicand to manufacture a real frequency changes the equation. The natural parameter omega0 remains defined in the critical and overdamped regimes, but it is not an actual sinusoidal frequency there.",
+        "These regimes classify the equation. The special initial state x0=v0=0 stays at equilibrium in every regime. A stationary trajectory has no least positive period and no isolated sequence of peaks, even if the equation admits oscillatory solutions for other initial states. For positive damping, a nonzero free trajectory approaches equilibrium asymptotically; exact simultaneous arrival at x=v=0 in finite time would contradict uniqueness of the initial-value solution."
+      ]
+    },
+    {
+      "heading": "Recover both underdamped constants and the correct velocity",
+      "paragraphs": [
+        "For 0≤zeta<1 write $x(t)=e^{-\\beta t}[C\\cos(\\omega_dt)+D\\sin(\\omega_dt)]$. Evaluating at zero gives C=x0. Differentiating the entire product gives $v=e^{-\\beta t}[(-\\beta C+\\omega_dD)\\cos(\\omega_dt)+(-\\beta D-\\omega_dC)\\sin(\\omega_dt)]$. Thus $D=(v_0+\\beta x_0)/\\omega_d$. A release from rest generally does not make D zero.",
+        "Acceleration may be found by differentiating again or, more simply, from $a=-2\\beta v-\\omega_0^2x$. Use the other route as an independent check. The damped force balance is not a=−omega0²x alone. At a displacement extremum, v=0 instantaneously and the damping force vanishes, but a=−omega0²x is nonzero unless the state is equilibrium.",
+        "For a nonzero state, combine the sine and cosine into $x=R e^{-\\beta t}\\cos(\\omega_dt+\\phi)$, where $R=\\sqrt{C^2+D^2}$, C=R cos(phi), D=−R sin(phi), and phi=atan2(−D,C). If a principal phase is requested, use −pi≤phi<pi. An arccos value alone loses the sine sign. For the stationary state R=0 and phase is not determined.",
+        "The phase interval is $T_d=2\\pi/\\omega_d$. After one such interval, both x and v are multiplied by exp(−beta Td). Therefore a positively damped nonzero state is not periodic even though its phase and same-sign peak spacing repeat. R exp(−beta t) bounds |x|, but R is neither necessarily |x0| nor a true displacement peak. Differentiation, not the envelope alone, locates extrema."
+      ]
+    },
+    {
+      "heading": "Handle critical damping and continuity at the repeated root",
+      "paragraphs": [
+        "At beta=omega0, put x=e^(−beta t)y(t) in the differential equation. The y and y-prime terms cancel, leaving y-double-prime=0. Hence $x(t)=(C+Dt)e^{-\\beta t}$, with C=x0 and $D=v_0+\\beta x_0$. C has units m and D has units m/s. Dropping Dt omits one independent solution and usually prevents fitting the given initial velocity.",
+        "Differentiate to obtain $v=e^{-\\beta t}[D-\\beta(C+Dt)]$. A positive-time equilibrium crossing requires C+Dt=0, so t=−C/D must be positive when D≠0. This can happen with a sufficiently directed initial velocity. One crossing followed by decay on the other side is not repeated oscillation. With D=0, a nonzero C gives one signed exponential and no finite crossing.",
+        "For a positive displaced release from rest, D=beta C and x=C(1+beta t)e^(−beta t) stays positive while decreasing for t>0. This commonly illustrated case supports a no-crossing statement for those initial conditions. It does not support a no-crossing claim for every critical initial state or a claim that critical damping optimizes every tolerance-based settling criterion.",
+        "The physical solution is continuous as zeta approaches one from either side. For example, $\\sin(\\omega_dt)/\\omega_d\\to t$ as omega_d approaches zero. Individual coefficients can become large while their combined response remains finite, so direct subtraction can lose numerical precision. The investigation uses limiting expressions near the repeated root and checks the result against independently integrated states. The regime change is not a jump in displacement at fixed finite time."
+      ]
+    },
+    {
+      "heading": "Keep both overdamped modes and their initial-state weights",
+      "paragraphs": [
+        "For beta>omega0, define $r_s=-\\beta+\\sqrt{\\beta^2-\\omega_0^2}$ and $r_f=-\\beta-\\sqrt{\\beta^2-\\omega_0^2}$, with rs closer to zero. The response is $x=C_s e^{r_st}+C_f e^{r_ft}$. Solve $C_s+C_f=x_0$ and $r_sC_s+r_fC_f=v_0$ to obtain $C_s=(v_0-r_fx_0)/(r_s-r_f)$ and $C_f=(r_sx_0-v_0)/(r_s-r_f)$.",
+        "Either coefficient may be negative. A zero coefficient means that this initial state does not excite that mode; the corresponding system root still exists. Usually the slower mode dominates late time, but a pure fast-mode initial state is an important exception. Preserve sufficient numerical precision when that remaining fast response becomes small.",
+        "A possible zero satisfies $e^{(r_s-r_f)t}=-C_f/C_s$ when Cs is nonzero. The right side must be strictly positive, and the resulting log time must lie in the requested t≥0 domain. Because the left side is strictly increasing, there is at most one finite crossing for a nonzero response. Treat a zero coefficient separately instead of dividing by it.",
+        "For large damping, evaluate the slow root as $r_s=-\\omega_0^2/(\\beta+\\sqrt{\\beta^2-\\omega_0^2})$ to avoid subtracting nearly equal numbers. Increasing b makes the fast rate more negative but the slow rate closer to zero. Consequently, more damping need not make the entire response settle sooner. Two distinct decay times can also make a coarse time record miss the fast initial transient."
+      ]
+    },
+    {
+      "heading": "Infer decay from the right peaks and admissible event times",
+      "paragraphs": [
+        "For underdamped motion, true displacement extrema solve v=0. In the amplitude-phase form they satisfy $\\tan(\\omega_dt+\\phi)=-\\beta/\\omega_d$, with the correct quadrant and integer branches. Adjacent opposite-sign extrema are half a damped phase period apart. Consecutive positive maxima, or consecutive negative minima compared by magnitude, are one full Td apart.",
+        "At an extremum, the magnitude of the phase cosine is omega_d/omega0. Thus the magnitude of a true peak is R exp(−beta t) times omega_d/omega0, not generally the envelope value itself. Same-sign peaks share this phase factor, which cancels in their ratio. If A1 and A2 are positive peak magnitudes j whole cycles apart, $\\beta=\\ln(A_1/A_2)/(t_2-t_1)$ and the per-cycle logarithmic decrement is $\\delta=\\ln(A_1/A_2)/j=\\beta T_d$.",
+        "The logarithm requires a positive dimensionless ratio. Taking a log of a signed negative displacement or a dimensional value in isolation is not this calculation. Retain the number of intervening cycles, compute Td=(t2−t1)/j, then recover omega_d=2pi/Td, $\\omega_0=\\sqrt{\\omega_d^2+\\beta^2}$ and b=2m beta. A peak ratio identifies beta under the model; identifying b additionally requires mass.",
+        "Displacement zeros solve x=0 and are not extrema. Reduce a phase equation to every admissible time in the stated window, including or excluding the endpoints as specified. An inverse tangent returns one principal angle, not all event times. Critical, overdamped or too-short records may supply no repeated same-sign peaks; do not invent a logarithmic decrement when its required evidence is absent."
+      ]
+    },
+    {
+      "heading": "Use exact instantaneous power before an energy approximation",
+      "paragraphs": [
+        "With zero spring potential at equilibrium, $E=mv^2/2+kx^2/2$. Multiply the equation of motion by v to obtain $dE/dt=-bv^2$. This exact identity is nonpositive for b≥0 regardless of velocity sign. The positive transfer rate into the viscous environment is b v² in watts. Its integral $D(t)=\\int_0^t bv(s)^2\\,ds$ is transferred energy in joules, with $E(t)+D(t)=E(0)$ in the stated model.",
+        "At a displaced turning point v=0, instantaneous power loss is zero even though energy is positive and the motion will continue. Therefore the proposed function E(0) exp(−2 beta t) cannot generally be the exact instantaneous energy: its initial derivative at that turning point would be −2 beta E(0)<0. Calculate energy from both x(t) and v(t), including the derivative of the displacement's decay factor.",
+        "For weak damping over a cycle, beta Td is small and one may approximate a slowly changing cycle-averaged energy by an exponential with rate 2 beta. Label the averaging and weak-damping assumptions. The amplitude-envelope e-folding time is 1/beta, whereas the corresponding approximate energy e-folding time is 1/(2 beta). Neither equals Td in general. A half-life uses ln(2) divided by the appropriate decay rate.",
+        "At b=0, the exact loss rate is zero and a nonzero harmonic state conserves energy; there is no positive exponential decay rate. For a stationary initial state, E and D remain zero. In a computed dissipative trajectory, falling E can be physically correct, while a nonzero residual E+D−E0 tests numerical consistency. Defining D as E0−E would force that residual to zero and would not independently verify the power integral."
+      ]
+    },
+    {
+      "heading": "Define settling before comparing which response is faster",
+      "paragraphs": [
+        "A settling question needs a declared criterion. For example, choose position tolerance epsilon_x>0 and velocity tolerance epsilon_v>0 and require both $|x|\\le\\epsilon_x$ and $|v|\\le\\epsilon_v$. The first entry is the first time both hold. Permanent containment requires that both hold at every later time. A trajectory can enter, leave and re-enter, so these are different questions.",
+        "A finite table can identify its first passing sample and the start of a final sequence of passing samples. It does not locate every crossing between samples or determine all future states. Refine the sampling and extend the window to test sensitivity, but recognize that additional finite samples alone are not a proof of permanent continuous containment. Report an unreached condition as unreached within the window, not as impossible for all time.",
+        "Energy supplies a sufficient future bound under this autonomous passive model. Since both contributions are nonnegative, $|x|\\le\\sqrt{2E/k}$ and $|v|\\le\\sqrt{2E/m}$. If $E\\le\\min(k\\epsilon_x^2/2,m\\epsilon_v^2/2)$, both bands hold. Because E cannot increase, they remain satisfied thereafter. This certificate can be conservative: actual permanent containment can occur earlier. The computed time meeting it also has numerical precision limits.",
+        "The investigation defines A*=sqrt(x0²+(v0/omega0)²), epsilon_x=q A* and epsilon_v=omega0 epsilon_x for a chosen band fraction q. Compare damping ratios with the same m, k, initial state and q to preserve the same dimensional bands. Changing the initial state changes these relative bands. A claim that critical damping is universally fastest is incomplete without initial conditions, allowed parameter changes and a precisely stated metric."
+      ]
+    },
+    {
+      "heading": "Test a viscous fit against measurement limitations",
+      "paragraphs": [
+        "A physical peak record needs units, timing resolution, amplitude uncertainty, an equilibrium reference and an account of missing or misidentified peaks. Distant peaks make decay easier to resolve, but very small late peaks can approach the instrument's noise or resolution floor. Coarse sampling tends to miss true extrema; fitting recorded sample maxima as exact physical peaks can bias both amplitude and timing.",
+        "For positive measured peak magnitudes A and B with guaranteed absolute bounds dA and dB, and B>dB, a ratio bound is $[(A-d_A)/(B+d_B),(A+d_A)/(B-d_B)]$, provided A>dA. The natural logarithm preserves this order. A difference of two timestamps with separate absolute bounds has a worst-case bound equal to their sum. These are interval bounds, not standard deviations or a confidence percentage.",
+        "One fixed underdamped viscous model predicts constant same-sign peak spacing and constant per-cycle logarithmic decrement. Disjoint allowed intervals for either quantity reject that joint hypothesis within the stated measurement assumptions. Agreement is compatibility, not proof of a unique mechanism. Changing ratios may arise from another force law, forcing, changing parameters or a flawed measurement model; a short peak table alone does not uniquely select among them.",
+        "The lesson's generated records explicitly distinguish ideal exact model data, rounded simulation values and synthetic instrument reports with bounds. No physical apparatus or official equipment list is implied. If you later collect physical data, choose an experiment with its own documented safe range and procedure; the numerical parameter limits in this simulation are not apparatus ratings."
+      ]
+    },
+    {
+      "heading": "Build a reproducible comparison and preserve your reasoning",
+      "paragraphs": [
+        "Before revealing a run, predict beta, initial energy and the equation's regime. Inspect signed displacement and velocity, then use the event table to compare true extrema with sampled plot points. Vary one condition at a time and record enough inputs to reproduce the response. The all-zero state and a directed critical initial velocity are useful checks of claims that might look convincing on a single ordinary release.",
+        "The state is evaluated analytically, with separate limiting forms near critical damping. Accumulated transfer is computed independently by Simpson quadrature of b v² at two resolutions. Compare the residual, the change on refinement and the digits needed for your conclusion. A coarse or long window can underresolve a short fast transient; one coarse/refined difference is not a guaranteed error bound.",
+        "Complete the investigation's five-criterion rubric using at least four contrasting runs and a refinement comparison. Save a concise record in lesson notes: inputs and units, an initial prediction, evidence, a revised or supported conclusion and a limitation. Practice saves answers and hints; an independent checkpoint saves evidence separately. Reload to resume a saved attempt and export a progress backup from Settings when needed. Investigation controls themselves reset on reload, so retain the reproducible inputs in your saved notes."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Classify four equations before choosing a formula",
+      "prompt": "Keep m=1 kg and k=25 N/m fixed. Compare b=0, 6, 10 and 12 kg/s for a nonzero initial state.",
+      "steps": [
+        { "math": "\\omega_0=\\sqrt{25/1}=5\\,\\mathrm{rad/s},\\qquad b_c=2(1)(5)=10\\,\\mathrm{kg/s}", "reason": "These reference quantities do not depend on the chosen b." },
+        { "math": "b=0:\\ r=\\pm5i;\\qquad b=6:\\ r=-3\\pm4i", "reason": "The first equation is undamped. The second is underdamped with beta=3 1/s and omega_d=4 rad/s." },
+        { "math": "b=10:\\ r=-5\\ \\text{repeated};\\qquad b=12:\\ r=-6\\pm\\sqrt{11}", "reason": "The critical repeated root and overdamped real roots require different solution forms. Both overdamped rates are negative." }
+      ],
+      "conclusion": "The natural parameter is 5 rad/s in all four cases, but only the first two have an oscillatory phase frequency. None of these classifications alone specifies the two initial-condition constants."
+    },
+    {
+      "title": "Differentiate the entire decaying response",
+      "prompt": "Let m=1 kg, k=25 N/m and b=6 kg/s. Release from x0=0.08 m with v0=0. Find x, v and acceleration at t=pi/8 s.",
+      "steps": [
+        { "math": "C=0.08,\\qquad D=\\frac{0+3(0.08)}4=0.06\\,\\mathrm m", "reason": "The sine coefficient is nonzero even though the mass is released from rest." },
+        { "math": "x=e^{-3t}(0.08\\cos4t+0.06\\sin4t),\\qquad v=-0.5e^{-3t}\\sin4t", "reason": "Differentiate the exponential and the trigonometric bracket. Their cosine contributions cancel for this initial state." },
+        { "math": "x(\\pi/8)=0.06e^{-3\\pi/8}\\approx0.018471838\\,\\mathrm m,\\quad v(\\pi/8)=-0.5e^{-3\\pi/8}\\approx-0.153931986\\,\\mathrm{m/s}", "reason": "The phase is pi/2, so the cosine is zero and sine is one." },
+        { "math": "a=-25x-6v=1.5e^{-3\\pi/8}\\approx0.461795957\\,\\mathrm{m/s^2}", "reason": "Use the force equation independently. Here drag overcomes the negative restoring-force contribution, so acceleration is positive while velocity is negative." }
+      ],
+      "conclusion": "Positive displacement does not force acceleration to be negative when a separate velocity-dependent force is present. The complete force balance determines the sign."
+    },
+    {
+      "title": "Recover phase from both initial coordinates",
+      "prompt": "For beta=3 1/s and omega_d=4 rad/s, use x0=0.03 m and v0=−0.21 m/s. Find C, D, R and the phase in x=R*exp(−3t)*cos(4t+phi), with −pi≤phi<pi.",
+      "steps": [
+        { "math": "C=0.03,\\qquad D=\\frac{-0.21+3(0.03)}4=-0.03\\,\\mathrm m", "reason": "Keep the signed initial velocity and the decay contribution in the initial derivative." },
+        { "math": "R=0.03\\sqrt2\\,\\mathrm m,\\qquad (\\cos\\phi,\\sin\\phi)=(1/\\sqrt2,1/\\sqrt2)", "reason": "The sine of phi is −D/R, so this phase is in the first quadrant." },
+        { "math": "\\phi=\\pi/4,\\qquad v_0=-3C+4D=-0.21\\,\\mathrm{m/s}", "reason": "Substitute both constants back into the initial derivative as a separate check." }
+      ],
+      "conclusion": "Using D=v0/omega_d would produce the wrong initial velocity. The envelope coefficient exceeds the initial displacement magnitude and is not itself a true peak."
+    },
+    {
+      "title": "Retain the repeated-root term",
+      "prompt": "Set m=1 kg, k=25 N/m and b=10 kg/s. Release from x0=0.08 m with v0=0. Find the critical response and its state at t=0.2 s.",
+      "steps": [
+        { "math": "x=(C+Dt)e^{-5t},\\qquad C=0.08\\,\\mathrm m,\\quad D=0+5(0.08)=0.4\\,\\mathrm{m/s}", "reason": "A single exponential would not have the required zero initial velocity." },
+        { "math": "x=(0.08+0.4t)e^{-5t},\\qquad v=-2t e^{-5t}", "reason": "The constant derivative terms cancel, leaving v=0 at t=0 and negative v afterward." },
+        { "math": "x(0.2)=0.16/e\\approx0.058860711\\,\\mathrm m,\\qquad v(0.2)=-0.4/e\\approx-0.147151776\\,\\mathrm{m/s}", "reason": "The exponent is −1 at this time. Both terms in the position bracket contribute equally." }
+      ],
+      "conclusion": "This displaced release approaches equilibrium from the positive side. That conclusion follows from C>0 and D>0 for this state, not from the regime label alone."
+    },
+    {
+      "title": "Produce a critical crossing without an oscillation",
+      "prompt": "Keep the preceding critical system but change the initial velocity to −0.8 m/s. Find the crossing and the later displacement minimum.",
+      "steps": [
+        { "math": "D=-0.8+5(0.08)=-0.4\\,\\mathrm{m/s},\\qquad x=(0.08-0.4t)e^{-5t}", "reason": "The changed initial velocity reverses the sign of the repeated-root coefficient." },
+        { "math": "x=0\\Longrightarrow t=0.2\\,\\mathrm s,\\qquad v=e^{-5t}(-0.8+2t)", "reason": "The exponential never vanishes at finite time. The crossing is determined by the linear factor." },
+        { "math": "v=0\\Longrightarrow t=0.4\\,\\mathrm s,\\qquad x(0.4)=-0.08e^{-2}\\approx-0.010826823\\,\\mathrm m", "reason": "After crossing, the mass reaches one negative minimum and then returns toward zero from below." }
+      ],
+      "conclusion": "There is one finite equilibrium crossing, not a repeating sequence. Critical damping permits this overshoot when the initial velocity is sufficiently directed toward the other side."
+    },
+    {
+      "title": "Separate system roots from excited overdamped modes",
+      "prompt": "Use m=1 kg, k=4 N/m and b=5 kg/s. First release from x0=0.08 m with v0=0. Then compare the initial velocity v0=−0.32 m/s.",
+      "steps": [
+        { "math": "r^2+5r+4=(r+1)(r+4)=0,\\qquad r_s=-1,\\ r_f=-4\\,\\mathrm{s^{-1}}", "reason": "The roots belong to the equation and remain the same for both initial states." },
+        { "math": "C_s+C_f=0.08,\\quad -C_s-4C_f=0\\quad\\Longrightarrow\\quad C_s=8/75,\\ C_f=-2/75\\,\\mathrm m", "reason": "The displaced release excites both modes, including a negative fast-mode coefficient." },
+        { "math": "v=\\frac8{75}(e^{-4t}-e^{-t})<0\\quad(t>0)", "reason": "The positive displacement decreases monotonically for this release even though one modal coefficient is negative." },
+        { "math": "v_0=-0.32:\\quad C_s=0,\\quad C_f=0.08,\\quad x=0.08e^{-4t}", "reason": "The second initial state is a pure fast mode. It has no late slow tail, though the slow system root still exists." }
+      ],
+      "conclusion": "A claim that the slow exponential always dominates must allow the exception of a zero slow-mode coefficient. A zero coefficient does not remove a characteristic root."
+    },
+    {
+      "title": "Distinguish zeros, opposite extrema and same-sign peaks",
+      "prompt": "Return to x=0.08*exp(−3t)[cos(4t)+(3/4)sin(4t)]. Find the first zero, the next negative minimum and the next positive maximum.",
+      "steps": [
+        { "math": "\\cos4t+\\tfrac34\\sin4t=\\tfrac54\\cos(4t-\\arctan(3/4))", "reason": "This form locates the first zero in the second quadrant of 4t." },
+        { "math": "t_{x=0}=\\frac{\\pi/2+\\arctan(3/4)}4\\approx0.553574359\\,\\mathrm s", "reason": "The first crossing is later than a quarter of the damped phase period." },
+        { "math": "v=-0.5e^{-3t}\\sin4t=0:\\quad t_{\\min}=\\pi/4,\\quad t_{\\text{next max}}=\\pi/2", "reason": "Opposite extrema are half a damped period apart; positive maxima are a full period apart." },
+        { "math": "x(\\pi/2)=0.08e^{-3\\pi/2}\\approx0.000718663282\\,\\mathrm m,\\qquad R=0.10\\,\\mathrm m", "reason": "At the initial true maximum the displacement is 0.08 m while the upper envelope is 0.10 m. The same four-fifths relation holds at later positive maxima." }
+      ],
+      "conclusion": "Neither a zero nor an adjacent negative minimum defines a positive-to-positive peak interval. The exponential envelope bounds the response without passing through its true extrema."
+    },
+    {
+      "title": "Fit a decay rate across several complete cycles",
+      "prompt": "An ideal 0.5 kg oscillator has positive maxima 0.08 m and 0.02 m separated by exactly three cycles and 6 s. Infer beta, the per-cycle decrement, omega_d, omega0 and b.",
+      "steps": [
+        { "math": "\\beta=\\frac{\\ln(0.08/0.02)}6=\\frac{\\ln2}3\\,\\mathrm{s^{-1}},\\qquad \\delta=\\frac{\\ln4}3=\\frac{2\\ln2}3", "reason": "Divide the same log ratio by time for beta and by cycle count for the dimensionless decrement." },
+        { "math": "T_d=6/3=2\\,\\mathrm s,\\qquad \\omega_d=\\pi\\,\\mathrm{rad/s}", "reason": "The entire 6-second gap contains three phase periods." },
+        { "math": "\\omega_0=\\sqrt{\\pi^2+(\\ln2/3)^2}\\approx3.150077470\\,\\mathrm{rad/s},\\qquad b=2(0.5)\\frac{\\ln2}3\\,\\mathrm{kg/s}", "reason": "Recover the natural parameter from the damping and observed phase frequency, then use the mass to obtain b." }
+      ],
+      "conclusion": "The amplitude-envelope half-life is ln(2)/beta=3 s, which is different from the 2 s phase period. No statement about an instrument's uncertainty is being inferred from these ideal exact data."
+    },
+    {
+      "title": "Keep energy, power and direction distinct",
+      "prompt": "For m=1 kg, k=25 N/m and b=6 kg/s, a state has x=0.04 m and v=−0.30 m/s. Find E, signed mechanical power and the energy transferred before E reaches 0.02 J.",
+      "steps": [
+        { "math": "E=\\tfrac12(1)(-0.30)^2+\\tfrac12(25)(0.04)^2=0.045+0.020=0.065\\,\\mathrm J", "reason": "Squaring velocity removes its sign from kinetic energy, not from the state description." },
+        { "math": "F_d=-6(-0.30)=1.8\\,\\mathrm N,\\qquad F_dv=-0.54\\,\\mathrm W", "reason": "The positive damper force acts against negative motion and removes mechanical energy." },
+        { "math": "D_{\\text{interval}}=0.065-0.020=0.045\\,\\mathrm J", "reason": "Integrate the power balance through the energy difference. The instantaneous power is not assumed constant during the interval." }
+      ],
+      "conclusion": "The transfer rate to the environment is +0.54 W at this instant. Its integral over an interval is in joules; multiplying this one instantaneous rate by an unknown interval would not compute that integral."
+    },
+    {
+      "title": "Disprove an exact exponential energy law",
+      "prompt": "For the 1 kg, 25 N/m, 6 kg/s release from x0=0.08 m and v0=0, compare exact energy with E_guess=E0*exp(−6t), both initially and at t=pi/8 s.",
+      "steps": [
+        { "math": "E_0=0.08\\,\\mathrm J,\\qquad E'(0)=-6v_0^2=0,\\qquad E'_{\\text{guess}}(0)=-0.48\\,\\mathrm W", "reason": "Different initial derivatives already rule out equality of these functions at every time." },
+        { "math": "E(\\pi/8)=\\left[\\tfrac12(0.5)^2+\\tfrac{25}2(0.06)^2\\right]e^{-3\\pi/4}=0.17e^{-3\\pi/4}\\approx0.0161126382\\,\\mathrm J", "reason": "Use both exact state coordinates from the earlier example; their common exponential factor is squared in energy." },
+        { "math": "E_{\\text{guess}}(\\pi/8)=0.08e^{-3\\pi/4}\\approx0.0075824180\\,\\mathrm J,\\qquad E/E_{\\text{guess}}=17/8", "reason": "The differing phase factors survive even though both expressions contain an exponential decay factor." }
+      ],
+      "conclusion": "A slowly varying cycle-average approximation must be labeled and justified. This substantially damped instantaneous calculation does not satisfy that approximation exactly."
+    },
+    {
+      "title": "Separate finite sampled containment from an energy certificate",
+      "prompt": "Let m=1 kg, k=25 N/m, epsilon_x=0.004 m and epsilon_v=0.02 m/s. First consider a sample with x=0.003 m and v=0.03 m/s. Then decide what E≤0.00015 J guarantees for all future time in the passive model.",
+      "steps": [
+        { "math": "|0.003|<0.004,\\qquad |0.03|>0.02", "reason": "The sample passes the position test but fails the joint band because its speed is too large." },
+        { "math": "E_{\\mathrm{bound}}=\\min\\left(\\tfrac{25}2(0.004)^2,\\tfrac12(0.02)^2\\right)=0.0002\\,\\mathrm J", "reason": "Both nonnegative terms of the energy account must be bounded separately." },
+        { "math": "|x|\\le\\sqrt{0.0003/25}\\approx0.003464102\\,\\mathrm m,\\qquad |v|\\le\\sqrt{0.0003}\\approx0.017320508\\,\\mathrm{m/s}", "reason": "The supplied energy is below the sufficient threshold. Nonincreasing future energy keeps both coordinates inside their bands." }
+      ],
+      "conclusion": "A finite record whose first passing row is followed by a failing row shows a temporary entry. A final passing sequence describes that record; the additional energy argument supplies a future guarantee under the model. It need not give the earliest actual permanent-entry time."
+    },
+    {
+      "title": "Reject a fixed model without naming an unproved cause",
+      "prompt": "Three consecutive positive maxima are reported as 80±1, 40±1 and 30±1 mm at 0±0.01, 2±0.01 and 4±0.01 s. Treat each ± value as a guaranteed absolute bound and assume no missing peak. Test a single fixed free underdamped viscous model.",
+      "steps": [
+        { "math": "\\frac{A_1}{A_2}\\in[79/41,81/39]\\approx[1.926829,2.076923]", "reason": "The smallest ratio uses the smallest numerator and largest denominator; the largest uses the reverse." },
+        { "math": "\\frac{A_2}{A_3}\\in[39/31,41/29]\\approx[1.258065,1.413793]", "reason": "These allowed ratios are disjoint, so their natural-log intervals are disjoint too." },
+        { "math": "\\Delta t_{12},\\Delta t_{23}\\in[1.98,2.02]\\,\\mathrm s", "reason": "The same-sign peak spacing remains compatible with one period. The per-cycle decrement does not remain compatible with one fixed value." }
+      ],
+      "conclusion": "The record rejects the stated fixed viscous hypothesis within these bounds. It does not uniquely establish dry friction, quadratic drag or another mechanism. Additional measurements must distinguish those explanations."
+    }
+  ],
+  "guided": {
+    "title": "Resolve a critical initial state and its crossing",
+    "setup": "Use the repeated-root solution and the exact energy account. Preserve the initial velocity sign and the positive-time restriction.",
+    "before": [
+      "Divide the force equation by mass and verify the repeated root r=−2 1/s.",
+      "Write x=(C+D*t)*exp(−2t). Use x(0)=C and v(0)=D−2C to fit the state.",
+      "Set the linear factor to zero for a possible crossing, then differentiate to find its signed crossing velocity."
+    ],
+    "question": {
+      "id": "phs232-damping-guided",
+      "familyId": "phs232-damping-guided",
+      "familyVersion": 1,
+      "courseId": "phs-232",
+      "objectiveId": "m01-l03",
+      "category": "application",
+      "critical": true,
+      "parameters": { "mass": 1, "stiffness": 4, "dampingCoefficient": 4, "position": 0.12, "velocity": -0.48 },
+      "prompt": "A free oscillator has m=1 kg, k=4 N/m, b=4 kg/s, x0=0.12 m and v0=−0.48 m/s. Find C and D in x=(C+D*t)*exp(−2t), its positive-time equilibrium crossing, signed velocity at that crossing, and initial mechanical energy above the spring minimum. Classify the particular crossing behavior.",
+      "fields": [
+        { "id": "c", "kind": "rational", "label": "Constant C", "expected": "3/25", "unit": "m" },
+        { "id": "d", "kind": "rational", "label": "Constant D", "expected": "-6/25", "unit": "m/s" },
+        { "id": "crossing", "kind": "rational", "label": "Positive-time equilibrium crossing", "expected": "1/2", "unit": "s" },
+        { "id": "velocity", "kind": "numeric", "label": "Signed crossing velocity", "expected": -0.08829106588114616, "absoluteTolerance": 0.000001, "relativeTolerance": 0, "unit": "m/s", "help": "Enter a decimal within 0.000001 m/s. Keep the velocity sign." },
+        { "id": "energy", "kind": "rational", "label": "Initial mechanical energy", "expected": "18/125", "unit": "J" },
+        { "id": "behavior", "kind": "choice", "label": "Behavior of this initial state", "correct": "single", "options": [
+          { "id": "single", "label": "One crossing, then decay on the other side without repeated oscillation", "feedback": "The exponential is positive and the linear factor has one positive root. The state then approaches equilibrium from the negative side." },
+          { "id": "none", "label": "No crossing because critical damping always forbids overshoot", "feedback": "Critical damping alone does not prohibit a crossing for every initial velocity. This state's linear factor changes sign at t=0.5 s." },
+          { "id": "periodic", "label": "Repeated crossings every half period", "feedback": "The repeated real root gives a linear factor times an exponential, not a sinusoid. Its single linear zero is not a half-period event sequence." }
+        ] }
+      ],
+      "hints": [
+        "C=x0 and D=v0+beta*x0. Here beta=2 1/s, so D includes both supplied initial coordinates.",
+        "The exponential is never zero at finite time. Solve C+D*t=0 and retain only t>0. At that root, v=D*exp(−2t).",
+        "Initial energy is (1/2)*(−0.48)²+(4/2)*(0.12)². It is not just the spring term because the initial velocity is nonzero."
+      ],
+      "explanation": [
+        "C=0.12=3/25 m and D=−0.48+2(0.12)=−0.24=−6/25 m/s.",
+        "The only possible zero is t=−C/D=0.5 s, which is positive and within the requested domain.",
+        "At the crossing the position bracket vanishes, leaving v=D*exp(−1)=−0.24/e≈−0.088291066 m/s. The mass crosses in the negative direction rather than stopping at equilibrium.",
+        "E0=0.1152+0.0288=0.144=18/125 J. Both kinetic and potential contributions are required.",
+        "After the single root, the position remains negative and decays toward zero. Critical damping and this initial velocity produce one overshoot, not a periodic oscillation."
+      ],
+      "answerSummary": "C=3/25 m; D=−6/25 m/s; crossing t=1/2 s; crossing v≈−0.088291066 m/s; E0=18/125 J; one crossing without repeated oscillation."
+    },
+    "after": "Change only the initial velocity to zero on paper. Explain which constant changes, why the crossing disappears, and why a claim about settling must also specify its band and comparison conditions."
+  },
+  "interaction": {
+    "kind": "phs232-damping",
+    "prompt": "Compare free decay with common initial conditions. Predict the regime and energy, inspect true events and sampled band entries, and test an independently integrated energy account before drawing a settling conclusion.",
+    "initial": { "mass": 1, "stiffness": 25, "dampingRatio": 0.2, "position": 0.08, "velocity": 0, "cycles": 4, "intervals": 128, "bandFraction": 0.1 }
+  },
+  "practice": [
+    { "familyId": "phs232-free-decay", "variant": "regime" },
+    { "familyId": "phs232-free-decay", "variant": "underdamped-state" },
+    { "familyId": "phs232-free-decay", "variant": "critical-state" },
+    { "familyId": "phs232-free-decay", "variant": "overdamped-state" },
+    { "familyId": "phs232-free-decay", "variant": "initial-constants" },
+    { "familyId": "phs232-free-decay", "variant": "zero-damping" },
+    { "familyId": "phs232-damping-evidence", "variant": "decrement" },
+    { "familyId": "phs232-damping-evidence", "variant": "peak-spacing" },
+    { "familyId": "phs232-damping-evidence", "variant": "energy-balance" },
+    { "familyId": "phs232-damping-evidence", "variant": "envelope-limit" },
+    { "familyId": "phs232-damping-evidence", "variant": "settling-definition" },
+    { "familyId": "phs232-damping-evidence", "variant": "model-rejection" }
+  ],
+  "checkpoint": [
+    { "familyId": "phs232-free-decay", "variant": "critical-state" },
+    { "familyId": "phs232-free-decay", "variant": "overdamped-state" },
+    { "familyId": "phs232-damping-evidence", "variant": "decrement" },
+    { "familyId": "phs232-damping-evidence", "variant": "settling-definition" }
+  ],
+  "summary": [
+    "Derive the characteristic roots from m*x''+b*x'+k*x=0, with m,k>0 and b≥0. Keep b, beta, zeta, omega0 and omega_d distinct, including their units and domains.",
+    "Fit both initial conditions. The underdamped sine coefficient includes beta*x0; critical damping requires the time-times-exponential term; overdamped systems retain both roots even if one mode is unexcited.",
+    "A phase period does not make a damped trajectory periodic. True extrema solve v=0, the envelope generally does not pass through them, and logarithmic decrement requires same-sign peaks and the correct cycle count.",
+    "The exact power identity is E'=-b*v². Mechanical energy, transfer rate, accumulated transferred energy and a weak-damping energy approximation are different quantities.",
+    "Declare both settling bands and common comparison conditions. Separate a first entry, a final sequence of passing samples and a sufficient future energy bound.",
+    "Use uncertainty bounds to test a peak-based fit. Rejection does not uniquely diagnose another force law; compatibility does not prove the hypothesis. Preserve numerical and measurement limitations in the conclusion."
+  ],
+  "retrieval": "Without notes, derive the critical response and its two constants, then give initial conditions that produce a positive-time crossing. Derive the exact energy derivative and explain why a displaced release disproves an exact E0*exp(-2*beta*t) law. Finally explain how two positive peaks can identify beta but a finite sequence of in-band samples cannot by itself prove permanent settling.",
+  "readings": [
+    { "title": "OpenStax University Physics, 15.5: Damped Oscillations", "url": "https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations", "purpose": "Free primary textbook introduction to viscous oscillators and damping regimes. Keep both initial conditions and the lesson's explicit peak and settling definitions when interpreting qualitative descriptions." },
+    { "title": "MIT OpenCourseWare, Lecture 2: Damped Free Oscillators", "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-2/", "purpose": "Free primary university lecture on damped free response. Reconstruct the derivation in this lesson's notation and check its initial conditions and power account." }
+  ]
+}
