@@ -1,0 +1,8 @@
+.table { max-width:100%; overflow-x:auto; margin:1rem 0; }
+.table:focus-visible { outline:3px solid #23574d; outline-offset:3px; }
+.table table { width:max-content; min-width:100%; border-collapse:collapse; font-size:.9rem; font-variant-numeric:tabular-nums; }
+.table th,.table td { padding:.6rem; border-bottom:1px solid #cad7d0; text-align:left; }
+.table td,.table tbody th { white-space:nowrap; }
+.table thead th { max-width:24ch; }
+.table caption { text-align:left; font-weight:650; padding:.5rem 0; }
+.results { min-width:0; }
