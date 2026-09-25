@@ -77,6 +77,43 @@
       },
       "limits": "The investigation is a rigid-rod simulation, not a physical experiment or an equipment specification. Its controls reset on reload as disclosed; lesson notes retain the learner's record. The rubric is self-assessment. No independent subject review or learner pilot has occurred.",
       "next": "m01-l03"
+    },
+    {
+      "id": "m01-l03",
+      "status": "available in the building course",
+      "contentCommit": "9b132b9",
+      "browserCommit": "7d22fd8",
+      "tableFixCommit": "fd0c3f2",
+      "teaching": {
+        "sections": 10,
+        "workedExamples": 12,
+        "guidedTasks": 1,
+        "guidedFields": 6,
+        "practiceFamilies": 2,
+        "practiceVariants": 12,
+        "checkpointItems": 4,
+        "investigation": "Predict damping rate, initial energy and regime; compare displacement, phase plane and energy-transfer plots, analytic events and every sampled state at two resolutions. A keyboard probe and five-criterion rubric support common-state comparisons, a critical-crossing counterexample, band-entry analysis and quadrature refinement."
+      },
+      "independentChecks": {
+        "generatedCases": "Each of 12 variants passed at least 50 deterministic seeds: 600 minimum variant-seed cases. Checks include both initial conditions, phase quadrants, pure overdamped modes, zero damping, peak spacing and cycle counts, instantaneous power, non-exponential exact energy, finite-record settling and uncertainty-bounded model rejection.",
+        "stateReference": "Fifty varied trajectories are checked against an independent 2-by-2 matrix exponential. Fifty near-critical cases check continuity from both sides. Fifty parameter sets with both pure overdamped modes check relative accuracy and absence of spurious late events. Separate 16384-step Runge-Kutta trajectories and power integrals cover fifty cases.",
+        "eventReference": "Fifty initial-value problems compare analytic zero and extremum times with independent matrix-state bracketing and bisection. Further fixtures cover included endpoints, all-zero states, signed extrema, same-sign peak decrements, and critical/overdamped single crossings.",
+        "answerReference": "Generated state and energy answers use separate numerical ODE fixtures; printed sampled records are checked against independently integrated normalized states. Peak-report diagnoses use independently constructed worst-case ratio and timing intervals. Tests cover exact equivalents, invalid/nonfinite or unit-bearing input, logarithm domains, wrong signs, missing roots, incorrect interpretations and explicit small-value tolerances.",
+        "guidedAndExamples": "The guided critical crossing and authored underdamped, critical and overdamped numerical examples are checked against a separate 16384-step integration. Independent work/energy calculations verify the phase-dependent energy example, the peak fit, uncertainty contradiction and sufficient future containment.",
+        "numericalCorrections": "Pure fast-mode reference checks exposed cancellation in a naive combined state expression and a spurious late extremum from rounded initial-acceleration coefficients. The delivered evaluator uses modal terms where appropriate and original modal coefficients for event equations."
+      },
+      "verification": {
+        "unit": "2387 tests in 278 files passed with no skips in 530.86 seconds, with F10_PYTHON configured. This includes the full prerequisite/mechanics suite, new damping model and families, authored examples and question-table backup validation.",
+        "static": "Full lint and type checking passed. The final browser file passed scoped lint, and the final production rebuild repeated type checking after the table-layout correction.",
+        "build": "Both production builds passed with 193 generated pages; the second includes the corrected question-table layout.",
+        "browsers": "The initial 28-check run on 3101 with one worker passed 27 checks in 11.3 minutes and found one real question-table layout failure. All 23 existing prerequisite, shared progress, PHS 231 release, harmonic and energy checks passed. After correction and rebuild, all five damping scenarios passed together in 4.8 minutes.",
+        "correctedFailure": "At 320px, decimal question-table values wrapped within numbers, eliminating the horizontal scroll range. The shared table now preserves cell values on one line and scrolls inside its labeled keyboard region. The final test verifies one rendered line per data cell, horizontal keyboard movement, no page overflow, and the entire interrupted checkpoint/backup workflow.",
+        "learning": "Browser checks exercise wrong and corrected guided initial constants/crossing interpretation, predictions and stale-output reset, analytic peak times, independent power refinement, critical crossing, near-critical continuity, temporary band entries, zero damping, stationary response and invalid inputs. Checkpoints use independently calculated answers, resume after reload and restore exact saved tables, hints, notes and prior physics attempts through export/reset/import.",
+        "visual": "Desktop 1440px and mobile 390px displacement, phase-plane and energy plots and the evidence table were visually inspected. The corrected 320px question table, 320px focus/reflow and 720x500 CSS viewport at device scale 2 (200-percent zoom equivalent on a 1440x1000 display) were inspected. Axe reports no tested WCAG A/AA violations; this is not complete accessibility certification.",
+        "preview": "The final production lesson on 3001 returns HTTP 200. Desktop/mobile reading and two worked examples were inspected, including horizontal keyboard access to long equations, with no page errors, KaTeX errors or page overflow."
+      },
+      "limits": "This investigation is a simulation, not a physical experiment or an official equipment specification. Controls reset on reload as disclosed; saved notes preserve the reproducible record. Self-scoring does not award objective evidence. No independent subject review or learner pilot has occurred.",
+      "next": "m01-l04"
     }
   ]
 }

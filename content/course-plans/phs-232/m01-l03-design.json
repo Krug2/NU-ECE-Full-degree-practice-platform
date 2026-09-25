@@ -1,7 +1,7 @@
 {
   "courseId": "phs-232",
   "lessonId": "m01-l03",
-  "status": "Implementation design only; this is not an available or completed lesson.",
+  "status": "Implemented and technically checked as m01-l03 in the building course. See lesson-audits.json for actual evidence; independent subject review and pilot validation remain unperformed.",
   "basis": "The complete course plan in modules.json remains the coverage authority. These decisions resolve numerical and instructional details before implementation.",
   "sources": [
     {
