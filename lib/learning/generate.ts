@@ -98,8 +98,15 @@ import { circlePairFamilyIds, circlePairQuestion } from "./families/mth-circle-p
 import { circleRotationFamilyIds, circleRotationQuestion } from "./families/mth-circle-rotations";
 import { circleAxisFamilyIds, circleAxisQuestion } from "./families/mth-circle-axes";
 import { circleRecoverFamilyIds, circleRecoverQuestion } from "./families/mth-circle-recover";
+import { sixRatioFamilyIds, sixRatioQuestion } from "./families/mth-six-ratios";
+import { sixDomainFamilyIds, sixDomainQuestion } from "./families/mth-six-domain";
+import { sixNotationFamilyIds, sixNotationQuestion } from "./families/mth-six-notation";
+import { sixSymmetryFamilyIds, sixSymmetryQuestion } from "./families/mth-six-symmetry";
 
 const generators=new Map<string,typeof linearQuestion>();
+for (const [ids, generate] of [[sixRatioFamilyIds, sixRatioQuestion], [sixDomainFamilyIds, sixDomainQuestion], [sixNotationFamilyIds, sixNotationQuestion], [sixSymmetryFamilyIds, sixSymmetryQuestion]] as const) {
+  for (const id of ids) { if (generators.has(id)) throw new Error("Duplicate family: " + id); generators.set(id, generate); }
+}
 for (const [ids, generate] of [[circlePairFamilyIds, circlePairQuestion], [circleRotationFamilyIds, circleRotationQuestion], [circleAxisFamilyIds, circleAxisQuestion], [circleRecoverFamilyIds, circleRecoverQuestion]] as const) {
   for (const id of ids) { if (generators.has(id)) throw new Error("Duplicate family: " + id); generators.set(id, generate); }
 }
