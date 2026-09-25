@@ -1,0 +1,351 @@
+{
+  "id": "m01-l04",
+  "courseId": "phs-232",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Driven response, resonance and power transfer",
+  "objective": "Predict a driven oscillator's steady amplitude, phase and average power while separating transient behavior and distinct resonance criteria.",
+  "why": "A periodic force can sustain motion by supplying energy that damping removes. Predicting that motion requires more than recognizing a natural frequency: the chosen output, forcing convention, initial state and time window all matter. The same response ideas will later organize wave excitation, AC circuits, filters and resonance measurements. This lesson derives the response, tests its limits and asks what evidence justifies calling a measured motion steady.",
+  "estimatedMinutes": 270,
+  "prerequisites": [
+    { "courseId": "phs-232", "lessonId": "m01-l01", "label": "Harmonic state and phase", "note": "Differentiate sinusoidal motion and recover a phase quadrant." },
+    { "courseId": "phs-232", "lessonId": "m01-l02", "label": "Oscillator energy and stable equilibrium", "note": "Use both kinetic and potential energy about the chosen equilibrium." },
+    { "courseId": "phs-232", "lessonId": "m01-l03", "label": "Free decay and damping regimes", "note": "Fit the homogeneous correction to both initial coordinates and retain critical and zero-damping exceptions." },
+    { "courseId": "mth-215", "lessonId": "m01-l03", "label": "Quadratics and complex roots", "note": "Review radicals and complex conjugates. The response is derived here with real sine and cosine coefficients before complex notation is introduced." },
+    { "courseId": "mth-215", "lessonId": "m06-l01", "label": "Radians, rotations, and arc length", "note": "Use radian phase, angular frequency and cycle duration." },
+    { "courseId": "f08", "lessonId": "m01-l03", "label": "Optional derivative refresher", "note": "Differentiate products and use derivative signs to locate extrema." },
+    { "courseId": "phs-104", "label": "Introductory physics preparation", "note": "The full academic prerequisite remains under construction here." },
+    { "courseId": "csc-208", "label": "Calculus I preparation", "note": "The full prerequisite remains under construction. Needed derivative and initial-value reasoning is developed explicitly in this lesson." },
+    { "courseId": "csc-209", "label": "Calculus II preparation", "note": "The full prerequisite remains under construction. Integrate power over stated intervals; NU's MTH 220 and MTH 221 alternatives remain valid academic alternatives." }
+  ],
+  "sections": [
+    {
+      "heading": "Specify what drives the system",
+      "paragraphs": [
+        "Use a fixed equilibrium coordinate x, mass m>0, spring coefficient k>0 and viscous coefficient b≥0. Prescribe the external force $F(t)=F_0\\cos(\\Omega t)$ with F0≥0 and Ω≥0. Newton's law is $m\\ddot x+b\\dot x+kx=F_0\\cos(\\Omega t)$. All three terms on the left have units N. F0 is in N, b in kg/s, k in N/m, Ω in rad/s and the phase Ωt is dimensionless. A negative initial position or velocity is allowed.",
+        "The input is a force of fixed amplitude during a frequency sweep. Moving a spring support with fixed displacement, prescribing an acceleration, or allowing an actuator's force amplitude to vary with frequency changes the experiment. Response-peak formulas must be tied to the actual input. The model assumes a linear spring, viscous loss, constant parameters and no mechanical stops or nonlinear effects.",
+        "Retain $\\omega_0=\\sqrt{k/m}$, $\\beta=b/(2m)$ and $\\zeta=\\beta/\\omega_0$. The natural frequency omega0 is a property of the undamped system. Ω is chosen by the driver. The free damped frequency omega_d, when defined, describes a homogeneous correction. These frequencies have different roles and need not be equal.",
+        "By the end, derive the periodic response and its phase, fit a startup state, distinguish output-specific resonance, calculate signed work and average power, and test static and resonant limits. Refresh derivatives of sine and cosine, the product rule, definite integration and the preceding lesson's free-response solutions before using the formulas as a calculation shortcut."
+      ]
+    },
+    {
+      "heading": "Derive the particular response with real coefficients",
+      "paragraphs": [
+        "For a nonsingular sinusoidal response, try $x_p=C\\cos(\\Omega t)+D\\sin(\\Omega t)$. Differentiating gives $v_p=\\Omega[-C\\sin(\\Omega t)+D\\cos(\\Omega t)]$ and $a_p=-\\Omega^2x_p$. Substitute all three into the force equation and equate independent cosine and sine coefficients.",
+        "Define the signed real component R=k−mΩ² and the nonnegative imaginary component I=bΩ, both in N/m. The two equations are $RC+ID=F_0$ and $RD-IC=0$. Their determinant is R²+I². When it is nonzero, $C=F_0R/(R^2+I^2)$ and $D=F_0I/(R^2+I^2)$. Substituting both coefficients back checks the force balance independently of a phase formula.",
+        "Write the same response as $x_p=A\\cos(\\Omega t-\\delta)$, with A≥0 and 0≤δ≤pi. Expansion gives C=A cos δ and D=A sin δ. Thus $A=F_0/\\sqrt{(k-m\\Omega^2)^2+(b\\Omega)^2}$. A force divided by dynamic stiffness has units m. Velocity amplitude is ΩA and acceleration amplitude is Ω²A; neither is the instantaneous state at an arbitrary time.",
+        "A compact equivalent uses the complex dynamic stiffness $Z=k-m\\Omega^2+i b\\Omega$. With the convention $F=\\operatorname{Re}(F_0e^{i\\Omega t})$, the complex displacement coefficient is F0/Z=C−iD. Its negative phase is the displacement lag. This notation summarizes the real equations; it does not change the forcing reference or make physical displacement complex."
+      ]
+    },
+    {
+      "heading": "Keep the phase quadrant and reference",
+      "paragraphs": [
+        "For positive force and positive damping, $\\delta=\\operatorname{atan2}(b\\Omega,k-m\\Omega^2)$. Below omega0 the lag is between zero and pi/2; at omega0 it is pi/2; above omega0 it lies between pi/2 and pi. The static limit has zero lag. An ordinary arctan of I/R loses the quadrant when R is negative.",
+        "A lag δ means the displacement maximum occurs δ/Ω after a corresponding force maximum for Ω>0. This is a phase comparison of the periodic signals, not a general time for a transient to respond. Velocity leads displacement by pi/2, so at Ω=omega0 velocity is in phase with force even though displacement is a quarter-cycle behind.",
+        "The sine coefficient is positive in C cos(Ωt)+D sin(Ωt) because the displacement convention is cos(Ωt−δ). A convention cos(Ωt+phi) instead uses phi=−δ modulo a full turn. Switching the force from cosine to sine also shifts the reference; a phase number without its reference is incomplete.",
+        "When F0=0 the particular signal is zero and its phase is undefined. At b=0 away from resonance, a nonzero particular displacement is in phase below omega0 and opposite in phase above it. At exact undamped resonance no bounded sinusoidal particular response exists, so assigning it a lag or finite amplitude would be misleading."
+      ]
+    },
+    {
+      "heading": "Fit the full initial-value response",
+      "paragraphs": [
+        "Linearity gives $x=x_p+x_h$, where x_h solves the free equation. For x(0)=x0 and v(0)=v0, the correction starts at $x_h(0)=x_0-C$ and $v_h(0)=v_0-\\Omega D$. Match both coordinates. A mass released from rest generally is not already moving in its periodic particular response.",
+        "For 0≤zeta<1, let H=x0−C and J=[v0−ΩD+beta H]/omega_d. Then $x_h=e^{-\\beta t}[H\\cos(\\omega_dt)+J\\sin(\\omega_dt)]$. Critical and overdamped corrections use the repeated-root or two-real-root forms from the previous lesson. The particular response still exists for positive damping in those regimes; forced sinusoidal motion does not require oscillatory free decay.",
+        "For b>0, every homogeneous correction decays in this stable model. The particular response is therefore the asymptotic periodic response when Ω>0. A finite recording does not guarantee that the transient has become negligible. Specify a tolerance, inspect both coordinates or an appropriate output, and use a longer window before claiming practical steady behavior.",
+        "For b=0 and Ω different from omega0, the bounded particular response exists but a nonzero homogeneous correction persists. Near equal frequencies, the two sinusoidal contributions can produce slowly changing visible amplitude. Calling the particular solution the selected late-time motion would be wrong. If both correction coordinates are exactly zero, the full response equals the particular response from the start, even without waiting."
+      ]
+    },
+    {
+      "heading": "Derive resonance for the output you measure",
+      "paragraphs": [
+        "For fixed F0>0, displacement amplitude is largest where $G(\\Omega)=(\\omega_0^2-\\Omega^2)^2+4\\beta^2\\Omega^2$ is smallest. Its derivative is $G'=4\\Omega(\\Omega^2-\\omega_0^2+2\\beta^2)$. A positive interior displacement maximum exists only when beta<omega0/sqrt(2), at $\\Omega_x=\\sqrt{\\omega_0^2-2\\beta^2}$. This differs from the free damped frequency sqrt(omega0²−beta²).",
+        "If beta≥omega0/sqrt(2), G increases for every Ω>0 and the displacement maximum on Ω≥0 is the static endpoint, A(0)=F0/k. At equality the candidate frequency is zero, not a positive interior peak. The coefficient at this threshold is sqrt(2mk), smaller than the critical free-damping coefficient 2 sqrt(mk). An underdamped free system can therefore lack a positive displacement-response peak.",
+        "Velocity amplitude is V=ΩA. The derivative of V² has the sign of k²−m²Ω⁴ for Ω>0. With F0>0 and b>0, its maximum occurs at $\\Omega_v=\\omega_0$, where $V_{\\max}=F_0/b$. Mean viscous power is bV²/2, so it peaks at the same frequency with $\\overline P_{\\max}=F_0^2/(2b)$. Differentiating A alone would miss the numerator's Ω dependence.",
+        "These statements use a positive fixed force and positive damping. A zero-force curve has no unique response maximum. In the undamped driven model the displacement and velocity responses have a singularity at omega0; a finite sampled sweep must not replace it with a finite 'peak'. State the input, output, damping and domain whenever using the word resonance."
+      ]
+    },
+    {
+      "heading": "Derive the energy and work account",
+      "paragraphs": [
+        "Use mechanical energy $E=mv^2/2+kx^2/2$ measured above the spring potential minimum. Differentiating gives $E'=v(m\\ddot x+kx)=F(t)v-bv^2$. Driver power Fv is signed; it is negative when force opposes velocity. Viscous transfer power bv² is always nonnegative for b≥0.",
+        "Integrating from t_a to t_b gives $E(t_b)-E(t_a)=W_{\\mathrm{in}}-D$, where $W_{\\mathrm{in}}=\\int_{t_a}^{t_b}Fv\\,dt$ and $D=\\int_{t_a}^{t_b}bv^2\\,dt$. All three integrated quantities have units J. Neither a single instantaneous power nor its value at a plotted peak determines the entire integral.",
+        "For a periodic particular state and a complete drive cycle with Ω>0, E returns to its initial value. Mean input therefore equals mean loss. Since the mean of sin² over a full cycle is one-half, $\\overline P=b\\Omega^2A^2/2=F_0\\Omega A\\sin\\delta/2$. The phase expression follows by averaging the product of the force and the differentiated displacement.",
+        "Positive mean power can coexist with negative instantaneous input intervals. At Ω=omega0 the periodic velocity is (F0/b) cos(Ωt), so Fv=(F0²/b) cos²(Ωt) is never negative. That special alignment must not be generalized to all frequencies or to arbitrary startup states.",
+        "The forcing period is 2pi/Ω and periodic input work is that period times mean power. Net mechanical-energy change can be zero while both input work and dissipated energy are positive. In a startup cycle, mean input minus mean loss equals Delta E divided by the actual cycle duration. A repeating force does not imply a repeating total state."
+      ]
+    },
+    {
+      "heading": "Define bandwidth and quality factor precisely",
+      "paragraphs": [
+        "Define the dimensionless viscous-model parameter $Q=m\\omega_0/b=\\omega_0/(2\\beta)$ for b>0. To locate half of the maximum mean power at fixed F0, compare the exact power expression with F0²/(4b). Rearrangement gives $(\\omega_0^2-\\Omega^2)^2=4\\beta^2\\Omega^2$.",
+        "The two positive roots are $\\Omega_-=\\sqrt{\\omega_0^2+\\beta^2}-\\beta$ and $\\Omega_+=\\sqrt{\\omega_0^2+\\beta^2}+\\beta$. Their separation is exactly $\\Delta\\Omega=2\\beta=b/m$, so Q=omega0/DeltaOmega for this mean-power response. Their product is omega0²; their arithmetic midpoint is generally not omega0.",
+        "At these frequencies the velocity amplitude is its maximum divided by sqrt(2), because power is proportional to V². Half displacement amplitude is a different criterion. A bandwidth statement must specify the output, fraction, fixed input and whether frequency is in rad/s or Hz. In Hz, divide every angular frequency and the bandwidth by 2pi.",
+        "The often-used expression 2pi times stored energy divided by free energy lost in one cycle needs a weak-damping interpretation when the denominator is a finite cycle difference. Replacing exponential loss by its first-order small-loss term and replacing the damped period by the natural period are approximations. Do not confuse them with the exact parameter definition or the exact fixed-force half-power identity.",
+        "For very small positive damping the peak can be much narrower than a uniform frequency grid. A maximum sampled value is not an independent proof of the true peak or bandwidth. The investigation lists analytic special frequencies separately; it also reports a half-power point outside the displayed sweep rather than hiding that point."
+      ]
+    },
+    {
+      "heading": "Handle constant forcing and high-frequency limits",
+      "paragraphs": [
+        "At Ω=0, the force is constant and the particular displacement is F0/k. The particular velocity is zero and there is no least positive forcing period. A mass starting away from this static state can still move. With positive damping it approaches the shifted equilibrium; without damping it continues oscillating about it.",
+        "At low positive frequency the displacement approaches F0/k, velocity amplitude approaches zero and mean viscous power approaches zero. A formula containing 2pi/Ω is a period formula for Ω>0, not a finite number to assign at Ω=0.",
+        "When Ω is much larger than both omega0 and b/m, inertia dominates the dynamic stiffness. The leading limits are $A\\sim F_0/(m\\Omega^2)$, $V\\sim F_0/(m\\Omega)$ and acceleration amplitude approaching F0/m. The displacement lag approaches pi. Thus small displacement does not mean small acceleration at high frequency.",
+        "Doubling an already asymptotically large frequency makes displacement amplitude approximately one-quarter and velocity amplitude approximately one-half, with fixed F0. These are leading ratios, not exact identities at every finite frequency. A real actuator, spring or measurement system can leave this ideal model's domain before those limits are reached."
+      ]
+    },
+    {
+      "heading": "Resolve undamped resonance without a false steady amplitude",
+      "paragraphs": [
+        "At b=0, Ω=omega0 and F0>0, the sinusoidal coefficient equations have zero dynamic stiffness and cannot produce the applied force. A bounded constant-amplitude sinusoid is not a particular solution. Try $x_p=B t\\sin(\\omega_0t)$ instead. Substitution gives 2B omega0=F0/m.",
+        "For zero initial state, $x=F_0t\\sin(\\omega_0t)/(2m\\omega_0)$ and $v=F_0[\\sin(\\omega_0t)+\\omega_0t\\cos(\\omega_0t)]/(2m\\omega_0)$. The derivative of t supplies the first sine term. The state remains finite at every finite time but grows without a bounded periodic amplitude in this ideal linear model.",
+        "For arbitrary initial coordinates add x0 cos(omega0 t)+(v0/omega0) sin(omega0 t). The growing forced term remains. Zero damping does not mean zero forcing or zero motion, and a finite recorded resonant amplitude does not establish a bounded steady state.",
+        "For a zero initial state away from resonance, $x=(F_0/m)[\\cos(\\Omega t)-\\cos(\\omega_0t)]/(\\omega_0^2-\\Omega^2)$. Near resonance both numerator and denominator approach zero. A stable equivalent uses $x=(F_0/m)\\,t\\sin((\\Omega+\\omega_0)t/2)\\operatorname{sinc}((\\Omega-\\omega_0)t/2)/(\\Omega+\\omega_0)$, with sinc(u)=sin(u)/u and sinc(0)=1. This is an unnormalized radian sinc.",
+        "Taking Ω to omega0 at fixed finite t recovers the resonant solution. Taking long time first asks a different question. Small positive damping can produce a huge bounded particular response whose startup correction nearly cancels it. The investigation evaluates the full initial-value system stably rather than subtracting those huge terms or clamping a singular denominator."
+      ]
+    },
+    {
+      "heading": "Build evidence that supports the conclusion",
+      "paragraphs": [
+        "Before revealing a run, predict the particular amplitude, phase interval and peak behavior of a named output. Hold force amplitude and other parameters fixed when comparing frequencies. Record both initial coordinates, the window in seconds, the interval count and the chosen output. A plot without these conditions is not a reproducible investigation.",
+        "Use the full and particular traces to separate startup from periodic behavior. Compare the last complete force cycle only when the window actually contains one. At constant or zero force no unique forcing period exists. The investigation's natural-period window setting is a reference scale, not evidence that the driven trajectory has that period.",
+        "Check E−E0−W_in+D using independently integrated power terms at two resolutions. A smaller quadrature residual supports the numerical account; it does not validate the linear physical model or establish an instrument's uncertainty. Inspect the digits used in an argument and refine the intervals if they change materially.",
+        "Use the event table to locate peaks and bandwidth, then explain the limitations of a finite frequency sweep. A physical investigation would additionally require a calibrated force, sensor phase and bandwidth, parameter stability, uncertainty estimates and apparatus-specific safe limits. This lesson assigns a simulation and does not assert official laboratory equipment requirements.",
+        "Complete the investigation record and its five-criterion rubric, then attempt the checkpoint without hints. If a field fails, return to its derivation and regenerate practice in that family. After a delay, reconstruct the real coefficient equations, the power identity and both kinds of peak before consulting the summary."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Solve the two coefficient equations and check force balance",
+      "prompt": "Let m=1 kg, k=4 N/m, b=1 kg/s, F0=0.2 N and Omega=1 rad/s. Find the periodic response and its state at t=0.",
+      "steps": [
+        { "math": "R=4-1=3,\\quad I=1,\\qquad 3C+D=0.2,\\quad 3D-C=0", "reason": "Separate cosine and sine terms in the force equation; R and I are in N/m." },
+        { "math": "C=0.06\\,\\mathrm m,\\quad D=0.02\\,\\mathrm m,\\quad A=\\sqrt{0.06^2+0.02^2}=\\frac1{5\\sqrt{10}}\\,\\mathrm m", "reason": "The two signed coefficients combine into a nonnegative displacement amplitude." },
+        { "math": "\\delta=\\arctan(1/3)\\approx0.321750554\\,\\mathrm{rad},\\quad (x_p,v_p,a_p)_{t=0}=(0.06,0.02,-0.06)", "reason": "This first-quadrant arctan is justified by both positive components. The state units are m, m/s and m/s²." },
+        { "math": "ma_p+bv_p+kx_p=-0.06+0.02+0.24=0.20\\,\\mathrm N", "reason": "Substitute the state directly into Newton's law as an independent check." }
+      ],
+      "conclusion": "The initial particular velocity is nonzero. A release from rest would need a homogeneous correction even if its position happened to be 0.06 m."
+    },
+    {
+      "title": "Recover the above-natural-frequency quadrant",
+      "prompt": "Keep the preceding system and force amplitude, but use Omega=3 rad/s.",
+      "steps": [
+        { "math": "R=4-9=-5,\\quad I=3,\\quad C=-1/34,\\quad D=3/170\\,\\mathrm m", "reason": "The real component becomes negative while the sine coefficient stays positive." },
+        { "math": "A=\\frac1{5\\sqrt{34}}\\approx0.034299717\\,\\mathrm m,\\qquad \\delta=\\operatorname{atan2}(3,-5)\\approx2.601173153\\,\\mathrm{rad}", "reason": "The phase is in the second quadrant, between pi/2 and pi." },
+        { "math": "v_p(0)=3D=9/170\\,\\mathrm{m/s},\\qquad A\\cos\\delta=C<0,\\quad A\\sin\\delta=D>0", "reason": "Reconstruct both coefficients to detect a lost quadrant." }
+      ],
+      "conclusion": "Using arctan(3/−5) alone returns a negative angle with the wrong coefficient signs. Above-natural-frequency motion has a positive lag greater than a quarter-cycle in this convention."
+    },
+    {
+      "title": "Add the startup correction to a resonant periodic response",
+      "prompt": "Use m=1 kg, k=4 N/m, b=1 kg/s, F0=0.2 N and Omega=2 rad/s. Start at x0=v0=0.",
+      "steps": [
+        { "math": "x_p=0.1\\sin2t,\\qquad x_p(0)=0,\\quad v_p(0)=0.2\\,\\mathrm{m/s}", "reason": "At the natural frequency the displacement lags by pi/2. The particular state is not a release from rest." },
+        { "math": "\\beta=1/2,\\quad \\omega_d=\\sqrt{15}/2,\\qquad x_h(0)=0,\\quad v_h(0)=-0.2", "reason": "Subtract the particular initial coordinates from the requested total coordinates." },
+        { "math": "x=0.1\\sin2t-\\frac{0.4}{\\sqrt{15}}e^{-t/2}\\sin\\left(\\frac{\\sqrt{15}}2t\\right)", "reason": "The correction's sine coefficient is its initial velocity divided by omega_d because its initial position is zero." },
+        { "math": "v(0)=0.2-\\frac{0.4}{\\sqrt{15}}\\frac{\\sqrt{15}}2=0", "reason": "Check the velocity condition separately from position." }
+      ],
+      "conclusion": "The transient decays, but the full startup response is not simply 0.1 sin(2t). Matching only x(0) would have missed the incorrect initial velocity."
+    },
+    {
+      "title": "Choose initial conditions with no transient",
+      "prompt": "For the preceding driven system, choose x0=0 and v0=0.2 m/s instead.",
+      "steps": [
+        { "math": "x_h(0)=0-0=0,\\qquad v_h(0)=0.2-0.2=0", "reason": "Both correction coordinates vanish, so uniqueness leaves no homogeneous contribution." },
+        { "math": "x=0.1\\sin2t,\\quad v=0.2\\cos2t,\\quad E=0.02(\\sin^22t+\\cos^22t)=0.02\\,\\mathrm J", "reason": "At this natural forcing frequency the particular kinetic and potential coefficients match." },
+        { "math": "Fv=0.04\\cos^22t=bv^2\\,\\mathrm W", "reason": "Input and loss are equal at every instant in this special periodic state, so mechanical energy is constant." }
+      ],
+      "conclusion": "There is ongoing energy transfer despite constant stored energy. This instantaneous equality is special to the stated natural-frequency periodic response."
+    },
+    {
+      "title": "Compare three frequencies in one damped system",
+      "prompt": "Use m=1 kg, k=25 N/m, b=6 kg/s and fixed F0=1 N. Find the free damped frequency and the displacement and velocity peak frequencies.",
+      "steps": [
+        { "math": "\\omega_0=5,\\quad \\beta=3,\\quad \\omega_d=\\sqrt{25-9}=4\\,\\mathrm{rad/s}", "reason": "The free-response frequency subtracts beta squared once." },
+        { "math": "\\Omega_x=\\sqrt{25-18}=\\sqrt7\\,\\mathrm{rad/s},\\qquad A_{\\max}=\\frac1{6\\cdot4}=\\frac1{24}\\,\\mathrm m", "reason": "The displacement maximum comes from minimizing its dynamic-stiffness denominator." },
+        { "math": "\\Omega_v=5\\,\\mathrm{rad/s},\\quad V_{\\max}=1/6\\,\\mathrm{m/s},\\quad A(5)=1/30\\,\\mathrm m", "reason": "Velocity includes an extra frequency factor. Its maximum does not maximize displacement." }
+      ],
+      "conclusion": "The displacement-peak frequency sqrt(7), free damped frequency 4 and velocity/power peak frequency 5 rad/s answer three different questions."
+    },
+    {
+      "title": "Find no interior displacement peak in an underdamped system",
+      "prompt": "Change that system to b=8 kg/s while keeping m=1 kg, k=25 N/m and F0=1 N.",
+      "steps": [
+        { "math": "b_{\\text{peak threshold}}=\\sqrt{50}\\approx7.0711\\,\\mathrm{kg/s},\\qquad b_c=10\\,\\mathrm{kg/s}", "reason": "The loss of a positive displacement peak occurs before critical free damping." },
+        { "math": "\\beta=4,\\quad \\omega_d=3\\,\\mathrm{rad/s},\\qquad \\omega_0^2-2\\beta^2=25-32<0", "reason": "Free decay is still oscillatory, but the positive displacement-peak formula has no real solution." },
+        { "math": "\\Omega_x=0,\\quad A_{\\max}=1/25\\,\\mathrm m,\\qquad \\Omega_v=5,\\quad V_{\\max}=1/8\\,\\mathrm{m/s}", "reason": "Compare the static endpoint while retaining the velocity-response maximum." }
+      ],
+      "conclusion": "No positive displacement peak does not mean no forced response. At b=sqrt(50), equality also puts the displacement maximum at the endpoint."
+    },
+    {
+      "title": "Return energy to the driver during a positive-average cycle",
+      "prompt": "Return to x_p=0.06 cos(t)+0.02 sin(t), with m=1 kg, k=4 N/m, b=1 kg/s and F=0.2 cos(t). Compare average power with the instant t=pi/4 s.",
+      "steps": [
+        { "math": "\\overline P=\\tfrac12 b\\Omega^2A^2=\\tfrac12(0.004)=0.002\\,\\mathrm W", "reason": "Average the squared sinusoidal velocity over a complete cycle." },
+        { "math": "F=0.2/\\sqrt2,\\quad v=-0.04/\\sqrt2,\\qquad Fv=-0.004\\,\\mathrm W", "reason": "At this instant the force is positive and velocity is negative, so energy returns to the driver." },
+        { "math": "bv^2=0.0008\\,\\mathrm W,\\qquad E'=Fv-bv^2=-0.0048\\,\\mathrm W", "reason": "The viscous environment still receives energy. Both transfers reduce mechanical energy at this instant." }
+      ],
+      "conclusion": "A positive cycle-average input is compatible with negative instantaneous input. The sign of driver power cannot be inferred from the sign of b."
+    },
+    {
+      "title": "Convert periodic mean power into work",
+      "prompt": "For m=1 kg, k=25 N/m, b=6 kg/s and F0=1 N, use the periodic state at Omega=5 rad/s.",
+      "steps": [
+        { "math": "\\overline P=\\frac{F_0^2}{2b}=\\frac1{12}\\,\\mathrm W,\\qquad T_{\\text{drive}}=\\frac{2\\pi}{5}\\,\\mathrm s", "reason": "The output is mean power, and the interval is one positive-frequency force cycle." },
+        { "math": "W_{\\text{cycle}}=\\overline P T_{\\text{drive}}=\\frac{\\pi}{30}\\approx0.104719755\\,\\mathrm J", "reason": "Multiply power by time; the result is energy." },
+        { "math": "D_{\\text{cycle}}=\\pi/30\\,\\mathrm J,\\qquad \\Delta E=0", "reason": "The periodic state returns to its starting energy while equal positive energy enters and leaves." }
+      ],
+      "conclusion": "Zero net stored-energy change is not zero work. These values apply to the periodic state, not automatically to a first cycle after release."
+    },
+    {
+      "title": "Check a first startup cycle with independent integrals",
+      "prompt": "Use the zero-state startup response in the third example. Its first forcing cycle runs from t=0 to pi s. Compare its input and loss with the periodic prediction.",
+      "steps": [
+        { "math": "x(\\pi)\\approx0.004255215493\\,\\mathrm m,\\qquad v(\\pi)\\approx0.157121244911\\,\\mathrm{m/s}", "reason": "Evaluate the complete response, including the decaying correction, at the end of the first force cycle." },
+        { "math": "\\Delta E=\\tfrac12v(\\pi)^2+2x(\\pi)^2\\approx0.012379756519\\,\\mathrm J", "reason": "The initial mechanical energy is zero. The final state is not the initial state." },
+        { "math": "W_{\\mathrm{in}}\\approx0.031407604090\\,\\mathrm J,\\qquad D\\approx0.019027847571\\,\\mathrm J", "reason": "Separately integrate 0.2 cos(2t) times the full velocity and the square of that velocity. Refined quadrature supports these digits." },
+        { "math": "W_{\\mathrm{in}}-D\\approx0.012379756519\\,\\mathrm J,\\qquad \\overline P_{\\mathrm{in}}\\approx0.009997350883\\,\\mathrm W", "reason": "The work difference agrees with the independently calculated energy change. Divide input work by pi seconds for its finite-cycle mean." }
+      ],
+      "conclusion": "The periodic mean is 0.02 W and its cycle input is 0.02*pi J. This first-cycle input is smaller, and input and loss means differ because energy is still being stored."
+    },
+    {
+      "title": "Locate exact half-power points",
+      "prompt": "Use m=1 kg, k=25 N/m, b=6 kg/s and a positive fixed force amplitude. Find Q and the half-power frequencies.",
+      "steps": [
+        { "math": "Q=\\frac{m\\omega_0}{b}=\\frac56,\\qquad (25-\\Omega^2)^2=36\\Omega^2", "reason": "Half of the mean-power maximum produces this equation; it is not a half-displacement condition." },
+        { "math": "\\Omega_-=\\sqrt{34}-3,\\qquad \\Omega_+=\\sqrt{34}+3\\quad\\mathrm{rad/s}", "reason": "Solve both signs and retain the positive root from each quadratic." },
+        { "math": "\\Delta\\Omega=6\\,\\mathrm{rad/s},\\quad \\Omega_-\\Omega_+=25,\\qquad \\omega_0/\\Delta\\Omega=5/6", "reason": "The width is b/m and the natural frequency is the geometric, not arithmetic, center of the roots." },
+        { "math": "\\frac{2\\pi E}{\\Delta E_{\\text{free cycle}}}=\\frac{2\\pi}{1-e^{-3\\pi}}\\ne\\frac56", "reason": "For the free underdamped state, corresponding phases one damped cycle apart have energy ratio exp(−3pi). Its finite loss is not its small-loss approximation." }
+      ],
+      "conclusion": "Q and the exact fixed-force power bandwidth remain well defined here. The finite free-cycle energy-loss interpretation is not exact at this substantial damping."
+    },
+    {
+      "title": "Separate constant forcing from zero forcing",
+      "prompt": "Let m=1 kg, k=4 N/m, b=4 kg/s and F=0.8 N constant. Start from x0=v0=0.",
+      "steps": [
+        { "math": "x_p=F_0/k=0.2\\,\\mathrm m,\\qquad x_h(0)=-0.2,\\quad v_h(0)=0", "reason": "Subtract the shifted static state before fitting the critical homogeneous correction." },
+        { "math": "x=0.2-(0.2+0.4t)e^{-2t},\\qquad v=0.8t e^{-2t}", "reason": "The critical correction includes both an exponential and time times exponential." },
+        { "math": "x(0.5)=0.2-0.4/e\\approx0.052848224\\,\\mathrm m,\\quad v(0.5)=0.4/e\\approx0.147151776\\,\\mathrm{m/s}", "reason": "The mass moves even though the force frequency is zero." }
+      ],
+      "conclusion": "There is no finite force cycle. The long-time state is x=0.2 m with zero velocity and zero viscous power; startup transfer is not zero."
+    },
+    {
+      "title": "Differentiate the resonant growing response",
+      "prompt": "Use m=1 kg, k=4 N/m, b=0, F=0.2 cos(2t) N and zero initial state.",
+      "steps": [
+        { "math": "B=\\frac{0.2}{2(1)(2)}=0.05\\,\\mathrm{m/s},\\qquad x=0.05t\\sin2t", "reason": "A time times sine particular solution is needed because the drive repeats a homogeneous frequency." },
+        { "math": "v=0.05\\sin2t+0.1t\\cos2t", "reason": "Differentiate both t and the sine. The first term must remain." },
+        { "math": "t=\\pi/4:\\quad x=\\pi/80\\,\\mathrm m,\\quad v=0.05\\,\\mathrm{m/s}", "reason": "At a quarter force cycle, the sine is one. This is not a displacement maximum of the growing full response because velocity is nonzero." },
+        { "math": "t=\\pi/2:\\quad x=0,\\quad v=-\\pi/20\\,\\mathrm{m/s}", "reason": "The position crosses zero with a nonzero velocity. A vanishing displacement is not a stopped state." }
+      ],
+      "conclusion": "The ideal response grows without a bounded sinusoidal steady amplitude, but every requested finite-time state is finite."
+    },
+    {
+      "title": "Take a stable finite-time near-resonant limit",
+      "prompt": "Keep the preceding undamped zero-state system and evaluate near Omega=2 rad/s at t=1 s.",
+      "steps": [
+        { "math": "x=0.2\\,\\frac{\\cos(\\Omega t)-\\cos(2t)}{4-\\Omega^2}", "reason": "Away from resonance the particular and homogeneous responses cancel the zero initial displacement." },
+        { "math": "x=0.2\\,\\frac{t}{\\Omega+2}\\sin\\left(\\frac{\\Omega+2}{2}t\\right)\\operatorname{sinc}\\left(\\frac{\\Omega-2}{2}t\\right)", "reason": "A difference-of-cosines identity cancels the small frequency difference analytically, avoiding subtraction of nearly equal cosines." },
+        { "math": "\\lim_{\\Omega\\to2}x(1)=0.05\\sin2\\approx0.045464871341\\,\\mathrm m", "reason": "Use sinc(0)=1 at fixed finite time." },
+        { "math": "\\Omega=2.0000002:\\quad x(1)\\approx0.045464866987\\,\\mathrm m", "reason": "The nearby finite-time state approaches the resonant result smoothly even though the bounded particular amplitude becomes large." }
+      ],
+      "conclusion": "A singular steady-response formula does not imply an infinite finite-time startup state. The order and meaning of the limits matter."
+    },
+    {
+      "title": "Interpret the high-frequency scaling",
+      "prompt": "For m=1 kg, k=4 N/m, b=1 kg/s and fixed F0=0.2 N, compare Omega=20 rad/s with the leading high-frequency estimate.",
+      "steps": [
+        { "math": "A(20)=\\frac{0.2}{\\sqrt{(4-400)^2+20^2}}\\approx0.000504407603\\,\\mathrm m", "reason": "The exact expression retains spring and damping effects." },
+        { "math": "A_{\\mathrm{leading}}=\\frac{0.2}{20^2}=0.0005\\,\\mathrm m,\\qquad V_{\\mathrm{leading}}=0.01\\,\\mathrm{m/s}", "reason": "Inertia gives the leading displacement and velocity scales." },
+        { "math": "\\Omega^2A\\to0.2\\,\\mathrm{m/s^2},\\qquad \\delta\\to\\pi", "reason": "Acceleration amplitude stays finite while displacement shrinks and becomes opposite in phase to the force." }
+      ],
+      "conclusion": "The asymptotic result is close but not identical at 20 rad/s. Doubling frequency gives leading ratios of one-quarter for displacement and one-half for velocity, with fixed force amplitude."
+    }
+  ],
+  "guided": {
+    "title": "Connect coefficients, phase, power and startup",
+    "setup": "Use one driven system to check the real coefficient equations, the phase quadrant, the power account and the correct displacement peak.",
+    "before": [
+      "For m=1 kg, k=25 N/m, b=6 kg/s and Omega=4 rad/s, calculate R=k−m*Omega² and I=b*Omega.",
+      "Solve R*C+I*D=F0 and R*D−I*C=0. Use the explicit cosine force and displacement-lag convention.",
+      "Use A²=C²+D² for the amplitude, b*Omega²*A²/2 for periodic mean power, and a separate derivative condition for the displacement peak."
+    ],
+    "question": {
+      "id": "phs232-driven-guided",
+      "familyId": "phs232-driven-guided",
+      "familyVersion": 1,
+      "courseId": "phs-232",
+      "objectiveId": "m01-l04",
+      "category": "application",
+      "critical": true,
+      "parameters": { "mass": 1, "stiffness": 25, "dampingCoefficient": 6, "force": 1, "omega": 4 },
+      "prompt": "For m=1 kg, k=25 N/m, b=6 kg/s and F(t)=cos(4t) N, write the periodic response as C*cos(4t)+D*sin(4t)=A*cos(4t−delta). Find C, D, A, delta, its mean input power, and the forcing frequency that would maximize displacement amplitude if F0 stays 1 N. Finally decide whether release from x0=v0=0 is already this periodic response.",
+      "fields": [
+        { "id": "cosine", "kind": "rational", "label": "Cosine coefficient C", "expected": "1/73", "unit": "m" },
+        { "id": "sine", "kind": "rational", "label": "Sine coefficient D", "expected": "8/219", "unit": "m" },
+        { "id": "amplitude", "kind": "exact", "label": "Periodic displacement amplitude", "expected": "1/(3*sqrt(73))", "unit": "m", "help": "Keep the radical exact. Equivalent supported radical expressions are accepted." },
+        { "id": "lag", "kind": "numeric", "label": "Displacement phase lag", "expected": 1.2120256565243244, "absoluteTolerance": 0.000001, "relativeTolerance": 0, "unit": "rad", "help": "Enter a decimal within 0.000001 rad using the cosine forcing reference." },
+        { "id": "power", "kind": "rational", "label": "Periodic mean input power", "expected": "16/219", "unit": "W" },
+        { "id": "peak", "kind": "exact", "label": "Forcing frequency for maximum displacement amplitude", "expected": "sqrt(7)", "unit": "rad/s", "help": "Keep the radical exact; distinguish the selected forcing frequency from the frequency of a response maximum." },
+        { "id": "startup", "kind": "choice", "label": "Release from the zero initial state", "correct": "correction", "options": [
+          { "id": "correction", "label": "Requires a decaying correction to both particular initial coordinates", "feedback": "The particular state starts at x=1/73 m and v=32/219 m/s. Subtracting both from zero produces a nonzero homogeneous correction." },
+          { "id": "already", "label": "Already equals the periodic response because the force is sinusoidal", "feedback": "A sinusoidal force does not automatically select periodic initial conditions. The given zero state differs in both position and velocity." },
+          { "id": "resonant", "label": "Has no bounded particular response because Omega is near omega0", "feedback": "The positive damping makes the harmonic denominator nonzero. Nearness to the natural frequency does not create an undamped singularity." }
+        ] }
+      ],
+      "hints": [
+        "The dynamic stiffness components are R=9 N/m and I=24 N/m. Their squared magnitude is 657 (N/m)².",
+        "C=R/657, D=I/657 and A=1/sqrt(657). Use atan2(24,9) for the positive first-quadrant lag.",
+        "Mean power is 6*16*A²/2. The displacement peak uses omega0²−2*beta², while the particular initial velocity is 4D."
+      ],
+      "explanation": [
+        "R=25−16=9 N/m and I=6*4=24 N/m. Therefore C=9/657=1/73 m and D=24/657=8/219 m.",
+        "A=1/sqrt(657)=1/(3*sqrt(73)) m. The phase lag is atan2(24,9)≈1.212025657 rad, between zero and pi/2.",
+        "Mean input equals mean loss for this periodic response: P=6*16/(2*657)=16/219 W. Equality of cycle means does not assert equality of instantaneous powers.",
+        "omega0=5 rad/s and beta=3 1/s. The displacement-amplitude maximum occurs at sqrt(25−18)=sqrt(7) rad/s, not at the selected 4 rad/s or the natural 5 rad/s.",
+        "The particular initial state is x=1/73 m and v=4D=32/219 m/s. A zero-state release requires corrections −1/73 m and −32/219 m/s, which decay because b>0."
+      ],
+      "answerSummary": "C=1/73 m; D=8/219 m; A=1/(3*sqrt(73)) m; lag≈1.212025657 rad; mean power=16/219 W; displacement peak at sqrt(7) rad/s; zero-state release requires a transient."
+    },
+    "after": "On paper, find the velocity/power peak frequency and the two half-power frequencies for this same system. Then explain why the first startup cycle can have a nonzero stored-energy change."
+  },
+  "interaction": {
+    "kind": "phs232-driven",
+    "prompt": "Predict an output-specific response, compare the full and particular motion, and test independent work and loss integrals. Use exact peak events, complete records and a refinement before calling a response resonant or steady.",
+    "initial": { "mass": 1, "stiffness": 25, "dampingRatio": 0.2, "force": 1, "frequencyRatio": 0.8, "position": 0, "velocity": 0, "cycles": 4, "intervals": 128 }
+  },
+  "practice": [
+    { "familyId": "phs232-driven-response", "variant": "amplitude" },
+    { "familyId": "phs232-driven-response", "variant": "phase" },
+    { "familyId": "phs232-driven-response", "variant": "static-limit" },
+    { "familyId": "phs232-driven-response", "variant": "high-frequency-limit" },
+    { "familyId": "phs232-driven-response", "variant": "transient-condition" },
+    { "familyId": "phs232-driven-response", "variant": "undamped-resonance" },
+    { "familyId": "phs232-resonance-power", "variant": "displacement-peak" },
+    { "familyId": "phs232-resonance-power", "variant": "velocity-peak" },
+    { "familyId": "phs232-resonance-power", "variant": "average-power" },
+    { "familyId": "phs232-resonance-power", "variant": "cycle-work" },
+    { "familyId": "phs232-resonance-power", "variant": "quality-factor" },
+    { "familyId": "phs232-resonance-power", "variant": "no-interior-peak" }
+  ],
+  "checkpoint": [
+    { "familyId": "phs232-driven-response", "variant": "phase" },
+    { "familyId": "phs232-driven-response", "variant": "transient-condition" },
+    { "familyId": "phs232-resonance-power", "variant": "average-power" },
+    { "familyId": "phs232-resonance-power", "variant": "quality-factor" }
+  ],
+  "summary": [
+    "State the fixed input and cosine/lag convention. Derive the real coefficient equations, then recover nonnegative amplitude and the correct phase quadrant.",
+    "The full initial-value response adds a homogeneous correction. Positive damping removes it asymptotically; zero damping can leave it permanently. Match both initial coordinates.",
+    "Displacement peaks at sqrt(omega0²−2*beta²) only when that positive interior frequency exists. Otherwise its maximum is the static endpoint. Velocity and mean power peak at omega0 for fixed positive force and positive damping.",
+    "The exact account is E'=Fv−bv². Driver power is signed, viscous transfer is nonnegative, and a startup-cycle energy change need not vanish.",
+    "Mean periodic power equals b*Omega²*A²/2. Its exact half-power width is b/m, and Q=m*omega0/b. A half-displacement criterion or a finite free-cycle energy-loss approximation is different.",
+    "Constant forcing has no finite forcing period. Undamped exact resonance has no bounded sinusoidal particular response, but its finite-time state is well defined. High-frequency small displacement does not imply small acceleration.",
+    "Use independent state and power checks, full tables and refinement. A finite sweep or recording supports only conclusions justified by its model, resolution, domain and evidence."
+  ],
+  "retrieval": "Without notes, derive both real coefficient equations and use their signs to recover the phase above omega0. Derive the displacement and velocity peak conditions separately, then explain the displacement threshold. Write the exact work–energy account for a startup cycle and derive the half-power roots. Finally recover the undamped resonant solution by a finite-time limit and differentiate its entire product.",
+  "readings": [
+    { "title": "OpenStax University Physics, 15.6: Forced Oscillations", "url": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations", "purpose": "Free primary textbook introduction to forcing and amplitude response. Use the exact derivatives and output definitions developed here: a qualitative natural-frequency peak or half-amplitude width description is not a general displacement-peak or half-power identity." },
+    { "title": "MIT OpenCourseWare, Lecture 3: Driven Oscillators and Transient Phenomena", "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-3/", "purpose": "Free primary university lecture and note links for driven motion and transients. Reconstruct the force convention, initial-state correction and power account in this lesson's notation." }
+  ]
+}
