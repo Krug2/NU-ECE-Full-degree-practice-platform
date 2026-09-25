@@ -1,0 +1,1141 @@
+{
+  "id": "m06-l04",
+  "courseId": "mth-215",
+  "moduleId": "m06",
+  "version": 1,
+  "title": "All six trigonometric functions",
+  "objective": "Calculate the six trigonometric ratios where defined and explain each undefined value using a zero denominator.",
+  "why": "The six functions let you describe directions, slopes and reciprocal relationships without losing signs or dividing by zero. These distinctions will matter in trigonometric graphs, identities and engineering models. Study in several sittings: define the ratios, investigate domains and notation, reconstruct missing values, then explain symmetry and periods.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {
+      "lessonId": "b02",
+      "label": "Exact fractions, radicals and negative powers"
+    },
+    {
+      "lessonId": "m01-l04",
+      "label": "Original domains and zero denominators"
+    },
+    {
+      "lessonId": "m06-l02",
+      "label": "Right-triangle ratios"
+    },
+    {
+      "lessonId": "m06-l03",
+      "label": "Unit-circle coordinates and exact values"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Define the six functions from a terminal point",
+      "paragraphs": [
+        "Choose a nonzero point (x, y) on the terminal ray of an angle in standard position. Let $r=\\sqrt{x^2+y^2}>0$. The six coordinate definitions are $\\sin\\theta=y/r$, $\\cos\\theta=x/r$, $\\tan\\theta=y/x$, $\\sec\\theta=r/x$, $\\csc\\theta=r/y$, and $\\cot\\theta=x/y$. Each quotient exists only when its denominator is nonzero. The point may be anywhere on the ray; it need not have radius 1.",
+        "The names are sine, cosine, tangent, secant, cosecant and cotangent. On the unit circle, r = 1 and the ordered point is (cosine, sine). All six outputs are dimensionless ratios when the coordinates use the same units. An angle is the input, so sin(theta) is a function value, not multiplication by a variable named sin. The origin is excluded because it supplies neither a direction nor a positive radius."
+      ]
+    },
+    {
+      "heading": "Distinguish tangent from cotangent",
+      "paragraphs": [
+        "Tangent divides vertical displacement by horizontal displacement: $\\tan\\theta=\\sin\\theta/\\cos\\theta=y/x$. It is the slope of a nonvertical terminal line. Cotangent reverses that quotient: $\\cot\\theta=\\cos\\theta/\\sin\\theta=x/y$. It measures horizontal displacement per vertical displacement. Keep this order even when the problem asks for cotangent first.",
+        "A vertical ray has x = 0 and y nonzero. Its tangent is undefined, but its cotangent is 0. A horizontal ray has y = 0 and x nonzero. Its tangent is 0, but its cotangent is undefined. These distinctions follow from the original coordinate quotients; they are not exceptions to memorize separately."
+      ]
+    },
+    {
+      "heading": "Pair each function with its reciprocal",
+      "paragraphs": [
+        "Sine and cosecant form a reciprocal pair, as do cosine and secant. Thus $\\csc\\theta=1/\\sin\\theta$ when sine is nonzero, and $\\sec\\theta=1/\\cos\\theta$ when cosine is nonzero. The reciprocal of a negative value is negative. The reciprocal of a fraction a/b is b/a, provided a is nonzero.",
+        "Tangent and cotangent multiply to 1 when both exist and neither is zero. However, the expression $1/\\tan\\theta$ is defined only when tangent exists and is nonzero. At a vertical ray cotangent equals 0 even though tangent does not exist. Therefore $\\cot\\theta=1/\\tan\\theta$ holds on their common domain; it does not describe every input of cotangent. Use x/y when an axis is involved."
+      ]
+    },
+    {
+      "heading": "Normalize a non-unit point",
+      "paragraphs": [
+        "Dividing (x, y) by its positive radius produces the unit point $(x/r,y/r)$. This changes length without changing the terminal direction or coordinate signs. If a point is multiplied by a positive scale factor, that factor cancels in every ratio. Multiplication by a negative factor reaches the opposite ray and needs a separate sign analysis.",
+        "Compute the radius exactly before making any quotients. For (1, -sqrt(3)), the radius is 2, not 4 and not 1. Expressions such as $-2/\\sqrt{3}$ and $-2\\sqrt{3}/3$ are equal. Keep exact radicals through intermediate steps so that reciprocal pairs and squared identities can be checked without rounding errors."
+      ]
+    },
+    {
+      "heading": "Choose signs before calculating",
+      "paragraphs": [
+        "Because r is positive, sine and cosecant have the sign of y; cosine and secant have the sign of x. Tangent and cotangent are positive when x and y have the same sign and negative when their signs differ. In quadrant I all six are positive. In quadrant II only sine and cosecant are positive. In quadrant III only tangent and cotangent are positive. In quadrant IV only cosine and secant are positive.",
+        "Determine these signs before calculating magnitudes. Positive triangle lengths establish the magnitudes, while signed coordinates establish the signs. Squaring a coordinate removes its sign, so a radius or Pythagorean check cannot by itself confirm the quadrant. Axes do not belong to an open quadrant; examine their zeros directly."
+      ]
+    },
+    {
+      "heading": "Evaluate exact special and coterminal angles",
+      "paragraphs": [
+        "Reduce the angle by whole turns, identify its quadrant or axis, and use the unit-circle pair from the previous lesson. Form tangent and cotangent by dividing the signed coordinates, then take the appropriate nonzero reciprocals for secant and cosecant. For a 30-degree reference angle the magnitudes of cosine and sine are sqrt(3)/2 and 1/2; for 60 degrees they exchange places.",
+        "The input must carry a consistent unit. One turn is 360 degrees or $2\\pi$ radians. Negative inputs describe clockwise rotation, not automatically negative outputs. Coterminal inputs have the same terminal point and hence the same six values and undefined statuses. Do not round a special-angle radical to evaluate its reciprocal."
+      ]
+    },
+    {
+      "heading": "Separate a zero numerator from a zero denominator",
+      "paragraphs": [
+        "Zero divided by a nonzero number equals zero. A nonzero number divided by zero is undefined. At an axis, inspect each individual denominator rather than labeling the entire angle undefined. Sine and cosine exist at every real angle because their radius denominator is positive.",
+        "Infinity is not the value of a quotient with a zero denominator. Large outputs near an excluded angle describe nearby inputs, not the function at the excluded input. In this lesson, enter the word undefined when division is not allowed. The origin would create 0/0 and is not an admissible terminal point at all."
+      ]
+    },
+    {
+      "heading": "Build the four axis rows",
+      "paragraphs": [
+        "At 0 radians the unit point is (1, 0): sine 0, cosine 1, tangent 0, secant 1, cosecant undefined, cotangent undefined. At pi/2 the point is (0, 1): sine 1, cosine 0, tangent undefined, secant undefined, cosecant 1, cotangent 0.",
+        "At pi the point is (-1, 0): sine 0, cosine -1, tangent 0, secant -1, cosecant undefined, cotangent undefined. At 3pi/2 the point is (0, -1): sine -1, cosine 0, tangent undefined, secant undefined, cosecant -1, cotangent 0. Rebuild these four rows from the coordinates until each zero and exclusion has a denominator explanation."
+      ]
+    },
+    {
+      "heading": "State domains with all excluded angles",
+      "paragraphs": [
+        "Sine and cosine have domain all real angles. Tangent and secant exclude the vertical rays, so their radian domains omit $\\theta=\\pi/2+k\\pi$, with k any integer. In degrees those exclusions are 90 + 180k. Cotangent and cosecant exclude the horizontal rays, so their domains omit $\\theta=k\\pi$, or 180k degrees.",
+        "A complete domain statement includes every integer k, including negative values. When asked for excluded inputs in a finite interval, generate the members of the appropriate family and check both endpoints. In [0, 2pi), cotangent excludes 0 and pi but not the omitted endpoint 2pi. Tangent is zero at horizontal rays where it is defined; cotangent is zero at vertical rays. Secant and cosecant never equal zero."
+      ]
+    },
+    {
+      "heading": "Check the ranges of the six functions",
+      "paragraphs": [
+        "Sine and cosine have range [-1, 1]. Wherever their reciprocals exist, reciprocating a magnitude no greater than 1 gives a magnitude at least 1. Thus secant and cosecant have range $(-\\infty,-1]\\cup[1,\\infty)$. Their endpoints -1 and 1 occur at axes; values between -1 and 1, including zero, do not occur.",
+        "Tangent and cotangent each have range all real numbers. Ratios can have any magnitude, either sign, or zero even though the underlying unit-circle coordinates stay between -1 and 1. The domain describes allowed angle inputs; the range describes possible function outputs. A value such as secant = 1/2 is impossible for a real angle, while tangent = 100 is possible."
+      ]
+    },
+    {
+      "heading": "Distinguish reciprocals from inverse functions",
+      "paragraphs": [
+        "An inverse function answers an angle question. In principal-inverse notation, $\\sin^{-1}(u)=\\arcsin(u)$ is the angle in [-pi/2, pi/2] whose sine is u. Similarly, arccos returns an angle in [0, pi], and arctan returns an angle in (-pi/2, pi/2). These range choices make the inverse single-valued. Arcsin and arccos require u in [-1, 1]; arctan accepts any real u.",
+        "A reciprocal instead answers a ratio question: 1/u is a number, and $\\csc\\theta=1/\\sin\\theta$. For example, arcsin(1/2) is pi/6 radians, while 1/(1/2) is 2. The inverse receives a function value and returns an angle; the reciprocal divides 1 by a value. This lesson distinguishes the notation; solving all possible angles from a trigonometric equation comes later."
+      ]
+    },
+    {
+      "heading": "Read negative powers and calculator labels",
+      "paragraphs": [
+        "Parentheses can remove a notation trap. The negative power $(\\sin\\theta)^{-1}$ means the reciprocal of the evaluated sine, whereas the inverse-function label $\\sin^{-1}(u)$ conventionally means arcsin(u). Likewise $(\\cos\\theta)^{-1}$ is secant, and $(\\tan\\theta)^{-1}$ is 1/tangent on the domain where that expression exists.",
+        "Calculator keys labeled sin^-1, cos^-1 and tan^-1 normally invoke inverse functions, not reciprocal functions. To calculate secant, first evaluate cosine in the intended angle mode, then divide 1 by that result. To calculate an inverse, enter the ratio and interpret the returned angle in the selected degree or radian mode. Check the mathematical denominator before relying on the display."
+      ]
+    },
+    {
+      "heading": "Recover all ratios from sine or cosine",
+      "paragraphs": [
+        "If sine or cosine is given with a quadrant, use $\\sin^2\\theta+\\cos^2\\theta=1$ to find the square of the other coordinate. Take both square-root candidates conceptually, then select the sign required by the quadrant. Only after both signed unit coordinates are known should you divide and reciprocate to obtain the remaining four functions.",
+        "For a rational given, you can also draw a signed reference point using the numerator as one coordinate and the positive denominator as the radius. Recover the other coordinate from r² minus the known coordinate squared. A radical answer is normal. Confirm that the given value fits the function's range and the stated quadrant before doing any reconstruction."
+      ]
+    },
+    {
+      "heading": "Recover a point from secant or cosecant",
+      "paragraphs": [
+        "If secant is given, invert it to obtain cosine; if cosecant is given, invert it to obtain sine. Their magnitudes must be at least 1. In an open quadrant the magnitudes must be strictly greater than 1, since magnitude 1 would put the other coordinate at zero on an axis.",
+        "For secant -13/5 in quadrant III, cosine is -5/13. The identity gives sine squared 144/169, and quadrant III selects sine -12/13. With both signed coordinates established, all remaining quotients follow. Check the original reciprocal after reconstruction; its sign and magnitude must match the supplied value."
+      ]
+    },
+    {
+      "heading": "Recover a direction from tangent or cotangent",
+      "paragraphs": [
+        "A tangent or cotangent value fixes a ratio of coordinates rather than either unit coordinate directly. If tangent is t, write y = tx. Substituting into x² + y² = 1 gives $x^2(1+t^2)=1$. Select $x=\\pm1/\\sqrt{1+t^2}$ using the quadrant, then calculate y = tx.",
+        "If cotangent is c, write x = cy and obtain $y=\\pm1/\\sqrt{1+c^2}$. Choose the sign of y from the quadrant and calculate x = cy. Alternatively, use convenient signed coordinates in the required ratio and normalize them. A positive tangent or cotangent permits quadrants I or III, while a negative one permits II or IV. The quadrant must agree with that sign."
+      ]
+    },
+    {
+      "heading": "Check whether the given information is sufficient",
+      "paragraphs": [
+        "A single ratio may leave multiple directions possible. If sine = 3/5 with no quadrant, cosine can be 4/5 or -4/5, so the remaining ratios also branch. Both possibilities satisfy the circle identity. An additional sign condition, a quadrant, or a suitable angle interval can choose between them. A positive tangent alone does not distinguish quadrant I from III.",
+        "Some information is contradictory rather than ambiguous. Sine = -3/5 in quadrant II violates the sign of y. Secant = 2/3 violates its range. Tangent = 0 cannot describe an open-quadrant point because y would be zero. Reject impossible data explicitly rather than taking a root that makes an intermediate calculation look plausible."
+      ]
+    },
+    {
+      "heading": "Derive the two additional squared identities",
+      "paragraphs": [
+        "Start with the unit-circle identity and divide every term by cosine squared, requiring cosine nonzero. The result is $\\tan^2\\theta+1=\\sec^2\\theta$. Dividing instead by sine squared, requiring sine nonzero, yields $1+\\cot^2\\theta=\\csc^2\\theta$. These are identities on their stated domains, not new assumptions.",
+        "A squared identity relates magnitudes. If tangent is -5/12, it determines secant squared 169/144, but secant could have either sign until an angle location selects one. Never replace secant by 1 + tangent, or take only a positive square root because the right side is positive. Preserve the domain condition inherited from the division."
+      ]
+    },
+    {
+      "heading": "Preserve domain restrictions when simplifying",
+      "paragraphs": [
+        "An algebraic rewrite agrees with its source wherever the source is defined. It need not inherit a larger expression's domain in reverse. For $\\sec\\theta/\\tan\\theta$, the original requires cosine nonzero so both functions exist, and sine nonzero so tangent is not zero. Rewriting gives $(1/\\cos\\theta)/(\\sin\\theta/\\cos\\theta)=1/\\sin\\theta=\\csc\\theta$ on that original domain.",
+        "Cosecant alone exists at pi/2, but the original secant/tangent quotient does not. Cancellation cannot restore an excluded angle. Similarly, cotangent's coordinate definition allows vertical rays that 1/tangent does not. State the original restrictions before canceling and carry them through the final answer."
+      ]
+    },
+    {
+      "heading": "Explain even and odd behavior",
+      "paragraphs": [
+        "Negating the angle reflects the terminal point across the horizontal axis: (x, y) becomes (x, -y), while r stays positive. Cosine and secant are unchanged and are even functions. Sine, tangent, cosecant and cotangent change sign where defined and are odd functions. In symbols, even means f(-theta) = f(theta), and odd means f(-theta) = -f(theta).",
+        "The domain must support the compared inputs. Reflection preserves the excluded-angle families, so an undefined value remains undefined. For an odd function, f(0) = -f(0) implies f(0) = 0 only if 0 is in its domain. Sine and tangent satisfy that condition; cosecant and cotangent do not. Oddness does not assign them values at zero."
+      ]
+    },
+    {
+      "heading": "Explain why the periods differ",
+      "paragraphs": [
+        "A half-turn takes (x, y) to (-x, -y). Tangent and cotangent repeat because both numerator and denominator change sign. Their fundamental period, the smallest positive period, is pi radians or 180 degrees. Sine, cosine, secant and cosecant reverse their defined values under a half-turn and have fundamental period 2pi radians or 360 degrees.",
+        "A full turn restores the point, so it is a period of all six functions, though not the smallest one for tangent or cotangent. To see why no smaller positive period works for tangent, use its zeros at k*pi: a period must carry zero at 0 to another zero, so the smallest candidate is pi, which the quotient rule verifies. Cotangent has the same spacing between its zeros at pi/2 + k*pi. For the other four functions, the relevant maxima or reciprocal extrema recur once per full turn."
+      ]
+    },
+    {
+      "heading": "Test a claimed period with more than one point",
+      "paragraphs": [
+        "A period is a shift that preserves every defined value and the pattern of allowed inputs. A single repeated output proves neither a period nor coterminality. Sine is zero at both 0 and pi, but it equals 1 at pi/2 and -1 at 3pi/2, so pi is not a period of sine.",
+        "Use a nonzero test value to disprove a proposed half-period for sine or cosine. A counterexample is enough to refute the claim. To establish a true period, use the coordinate transformation for arbitrary points, including the denominator restrictions. The same reasoning explains why two angles can share tangent even though their terminal points are opposite."
+      ]
+    },
+    {
+      "heading": "Audit calculator output near an excluded angle",
+      "paragraphs": [
+        "A calculator stores approximations. At an input intended to be pi/2, a tiny displayed cosine such as 6 times 10^-17 can lead to a huge tangent value. The exact coordinate x = 0 makes tangent and secant undefined at that angle. Replacing pi by a finite decimal changes the input to a nearby angle; the computed finite value describes that approximation.",
+        "Do not declare a value undefined merely because it is large. At the point (1, 100), tangent is exactly 100 because its denominator is 1. Use exact axis or coordinate information to decide existence, and use a calculator for a numerical approximation only after checking the domain and angle mode. Nearby behavior and a value at the excluded input are different questions."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Read six functions from one point",
+      "prompt": "The terminal ray passes through (-8, 15). Find all six functions.",
+      "steps": [
+        {
+          "math": "r=\\sqrt{(-8)^2+15^2}=17",
+          "reason": "Use the positive distance, even though one coordinate is negative."
+        },
+        {
+          "math": "\\sin\\theta=\\frac{15}{17},\\quad\\cos\\theta=-\\frac8{17},\\quad\\tan\\theta=-\\frac{15}8",
+          "reason": "Divide the signed coordinates by the appropriate denominators."
+        },
+        {
+          "math": "\\sec\\theta=-\\frac{17}8,\\quad\\csc\\theta=\\frac{17}{15},\\quad\\cot\\theta=-\\frac8{15}",
+          "reason": "None of the denominators is zero; the reciprocals preserve the original signs."
+        }
+      ],
+      "conclusion": "Only sine and cosecant are positive, as quadrant II requires."
+    },
+    {
+      "title": "Keep tangent and cotangent in order",
+      "prompt": "Use the unit point (3/5, -4/5) to find tangent and cotangent.",
+      "steps": [
+        {
+          "math": "\\tan\\theta=\\frac{-4/5}{3/5}=-\\frac43",
+          "reason": "Tangent is vertical divided by horizontal."
+        },
+        {
+          "math": "\\cot\\theta=\\frac{3/5}{-4/5}=-\\frac34",
+          "reason": "Cotangent reverses the ratio; its magnitude is different."
+        }
+      ],
+      "conclusion": "Their product is 1. Equal denominators in the coordinate fractions cancel without removing the signs."
+    },
+    {
+      "title": "Invert a signed radical",
+      "prompt": "Given cosine -sqrt(3)/2, compute secant.",
+      "steps": [
+        {
+          "math": "\\sec\\theta=\\frac1{-\\sqrt3/2}=-\\frac2{\\sqrt3}",
+          "reason": "Take the reciprocal of the whole signed value."
+        },
+        {
+          "math": "-\\frac2{\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=-\\frac{2\\sqrt3}3",
+          "reason": "Rationalizing gives an equivalent exact form."
+        }
+      ],
+      "conclusion": "Secant is negative and has magnitude greater than 1. It is not an inverse cosine angle."
+    },
+    {
+      "title": "Use cotangent when tangent is undefined",
+      "prompt": "At pi/2, explain why cotangent can be zero even though 1/tangent cannot be evaluated.",
+      "steps": [
+        {
+          "math": "(x,y)=(0,1),\\qquad \\tan(\\pi/2)=\\frac10\\text{ is undefined}",
+          "reason": "The vertical ray has a zero horizontal coordinate."
+        },
+        {
+          "math": "\\cot(\\pi/2)=\\frac01=0",
+          "reason": "The direct cotangent definition has a nonzero denominator."
+        }
+      ],
+      "conclusion": "The expression 1/tan(pi/2) is undefined. Reciprocal identities apply only where all participating expressions exist."
+    },
+    {
+      "title": "Normalize a scaled ray",
+      "prompt": "Compute all six functions at (-6, 8), then compare the point (-3, 4).",
+      "steps": [
+        {
+          "math": "r=10,\\qquad (x/r,y/r)=(-3/5,4/5)",
+          "reason": "The positive scale factor 2 changes the radius but not the normalized point."
+        },
+        {
+          "math": "(\\sin\\theta,\\cos\\theta,\\tan\\theta)=(4/5,-3/5,-4/3)",
+          "reason": "Calculate using either point."
+        },
+        {
+          "math": "(\\sec\\theta,\\csc\\theta,\\cot\\theta)=(-5/3,5/4,-3/4)",
+          "reason": "All six ratios are unchanged by positive scaling."
+        }
+      ],
+      "conclusion": "A raw coordinate is not automatically a sine or cosine; divide by the radius first."
+    },
+    {
+      "title": "Normalize a point with a radical",
+      "prompt": "Compute all six functions at (1, -sqrt(3)).",
+      "steps": [
+        {
+          "math": "r=\\sqrt{1+3}=2",
+          "reason": "Square the radical before summing."
+        },
+        {
+          "math": "(\\sin\\theta,\\cos\\theta,\\tan\\theta)=(-\\sqrt3/2,1/2,-\\sqrt3)",
+          "reason": "Use the fourth-quadrant signs."
+        },
+        {
+          "math": "(\\sec\\theta,\\csc\\theta,\\cot\\theta)=(2,-2/\\sqrt3,-1/\\sqrt3)",
+          "reason": "Keep exact reciprocals; rationalized forms are equivalent."
+        }
+      ],
+      "conclusion": "Cosine and secant are positive; the other four outputs are negative."
+    },
+    {
+      "title": "Audit signs before magnitudes",
+      "prompt": "The point is (-5, -12). Predict signs and then calculate.",
+      "steps": [
+        {
+          "math": "x<0,\\ y<0,\\ r=13",
+          "reason": "This is quadrant III, so sine and cosine are negative."
+        },
+        {
+          "math": "(\\sin\\theta,\\cos\\theta,\\tan\\theta)=(-12/13,-5/13,12/5)",
+          "reason": "Two negatives cancel in tangent."
+        },
+        {
+          "math": "(\\sec\\theta,\\csc\\theta,\\cot\\theta)=(-13/5,-13/12,5/12)",
+          "reason": "Reciprocals preserve signs; cotangent is positive."
+        }
+      ],
+      "conclusion": "A list of six positive magnitudes would pass some squared checks but fail the quadrant condition."
+    },
+    {
+      "title": "Evaluate a third-quadrant special angle",
+      "prompt": "Find all six values at 210 degrees.",
+      "steps": [
+        {
+          "math": "210^\\circ=180^\\circ+30^\\circ,\\qquad (x,y)=(-\\sqrt3/2,-1/2)",
+          "reason": "Use the 30-degree reference triangle and two negative coordinates."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(-1/2,-\\sqrt3/2,1/\\sqrt3)",
+          "reason": "Each function in this tuple is evaluated at 210 degrees."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-2/\\sqrt3,-2,\\sqrt3)",
+          "reason": "Take the appropriate reciprocals of nonzero values."
+        }
+      ],
+      "conclusion": "Tangent and cotangent are positive, although the rotation terminates where both coordinates are negative."
+    },
+    {
+      "title": "Remove clockwise full turns",
+      "prompt": "Find the six values at -11pi/4 radians.",
+      "steps": [
+        {
+          "math": "-11\\pi/4+4\\pi=5\\pi/4,\\qquad (x,y)=(-\\sqrt2/2,-\\sqrt2/2)",
+          "reason": "Adding two full turns locates the ray in quadrant III."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(-\\sqrt2/2,-\\sqrt2/2,1)",
+          "reason": "The equal nonzero coordinates make tangent 1."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-\\sqrt2,-\\sqrt2,1)",
+          "reason": "All functions share the coterminal angle's values."
+        }
+      ],
+      "conclusion": "A negative input specifies the direction of travel; it does not make every output negative."
+    },
+    {
+      "title": "Separate a zero from an excluded value",
+      "prompt": "Compare tangent and cotangent at the point (-7, 0).",
+      "steps": [
+        {
+          "math": "\\tan\\theta=0/(-7)=0",
+          "reason": "A zero numerator is allowed when the denominator is nonzero."
+        },
+        {
+          "math": "\\cot\\theta=(-7)/0\\text{ is undefined}",
+          "reason": "A zero denominator prevents division."
+        }
+      ],
+      "conclusion": "Neither infinity nor zero is a valid replacement for the undefined cotangent."
+    },
+    {
+      "title": "Reject the origin",
+      "prompt": "Can (0, 0) determine an angle's six functions?",
+      "steps": [
+        {
+          "math": "r=\\sqrt{0^2+0^2}=0",
+          "reason": "The required positive radius condition fails."
+        },
+        {
+          "math": "\\sin\\theta=0/0,\\qquad \\cos\\theta=0/0",
+          "reason": "These undefined expressions do not define a terminal direction."
+        }
+      ],
+      "conclusion": "Choose a nonzero point on a ray. Do not assign an angle or six zeros to the origin."
+    },
+    {
+      "title": "Rebuild all four axis rows",
+      "prompt": "List sine, cosine, tangent, secant, cosecant and cotangent in that order at the axis angles. Here U means undefined.",
+      "steps": [
+        {
+          "math": "\\begin{array}{c|rrrrrr}\\theta&\\sin&\\cos&\\tan&\\sec&\\csc&\\cot\\\\0&0&1&0&1&\\mathrm U&\\mathrm U\\\\\\pi/2&1&0&\\mathrm U&\\mathrm U&1&0\\end{array}",
+          "reason": "On the positive horizontal axis y is zero; on the positive vertical axis x is zero."
+        },
+        {
+          "math": "\\begin{array}{c|rrrrrr}\\theta&\\sin&\\cos&\\tan&\\sec&\\csc&\\cot\\\\\\pi&0&-1&0&-1&\\mathrm U&\\mathrm U\\\\3\\pi/2&-1&0&\\mathrm U&\\mathrm U&-1&0\\end{array}",
+          "reason": "Opposite rays reverse the nonzero coordinates but keep the same zero-denominator locations."
+        }
+      ],
+      "conclusion": "All rows use r = 1. There are exactly two undefined functions at each axis point."
+    },
+    {
+      "title": "List tangent and secant exclusions",
+      "prompt": "Find all excluded inputs for tangent and secant in [0, 360 degrees), then find their zeros there.",
+      "steps": [
+        {
+          "math": "\\cos\\theta=0\\iff \\theta=90^\\circ+180^\\circ k,\\quad k\\in\\mathbb Z",
+          "reason": "Both denominators contain cosine."
+        },
+        {
+          "math": "\\text{Excluded: }90^\\circ,270^\\circ;\\qquad \\tan\\theta=0\\text{ at }0^\\circ,180^\\circ",
+          "reason": "Tangent has zero numerator at horizontal rays."
+        },
+        {
+          "math": "\\sec\\theta=1/\\cos\\theta\\ne0",
+          "reason": "A reciprocal of a nonzero cosine cannot be zero."
+        }
+      ],
+      "conclusion": "Use the complete integer family for a global domain and filter it only when an interval is specified."
+    },
+    {
+      "title": "List cotangent and cosecant exclusions",
+      "prompt": "Find their excluded inputs and zeros in [0, 2pi).",
+      "steps": [
+        {
+          "math": "\\sin\\theta=0\\iff\\theta=k\\pi,\\quad k\\in\\mathbb Z",
+          "reason": "Sine is the denominator of both functions."
+        },
+        {
+          "math": "\\text{Excluded: }0,\\pi;\\qquad \\cot\\theta=0\\text{ at }\\pi/2,3\\pi/2",
+          "reason": "Exclude 2pi from the requested half-open interval."
+        },
+        {
+          "math": "\\csc\\theta=1/\\sin\\theta\\ne0",
+          "reason": "Cosecant has no zeros."
+        }
+      ],
+      "conclusion": "Cotangent is zero precisely where tangent is undefined, because its own denominator is nonzero there."
+    },
+    {
+      "title": "Check possible outputs",
+      "prompt": "Decide whether secant 2/3, sine -6/5 and tangent -25 are possible.",
+      "steps": [
+        {
+          "math": "|\\sec\\theta|\\ge1,\\qquad |\\sin\\theta|\\le1",
+          "reason": "The first two proposed outputs violate their ranges."
+        },
+        {
+          "math": "(x,y)=(1,-25)\\implies\\tan\\theta=-25",
+          "reason": "This nonzero point supplies a valid ratio with no range conflict."
+        }
+      ],
+      "conclusion": "A large tangent is allowed. Secant and cosecant have a gap around zero in their ranges."
+    },
+    {
+      "title": "Compare arcsine with a reciprocal",
+      "prompt": "For u = 1/2, compute 1/u and arcsin(u), using the principal range [-pi/2, pi/2].",
+      "steps": [
+        {
+          "math": "1/u=1/(1/2)=2",
+          "reason": "The reciprocal is a dimensionless number."
+        },
+        {
+          "math": "\\arcsin(1/2)=\\pi/6",
+          "reason": "The angle pi/6 is in the required range and has sine 1/2."
+        }
+      ],
+      "conclusion": "Two is a ratio, while pi/6 is a radian angle. They answer different questions."
+    },
+    {
+      "title": "Select the principal inverse cosine",
+      "prompt": "For u = -sqrt(2)/2, compute 1/u and arccos(u) in [0, pi].",
+      "steps": [
+        {
+          "math": "1/u=-2/\\sqrt2=-\\sqrt2",
+          "reason": "Reciprocation preserves the negative sign."
+        },
+        {
+          "math": "\\arccos(-\\sqrt2/2)=3\\pi/4",
+          "reason": "Quadrant II supplies the matching cosine within the principal range."
+        }
+      ],
+      "conclusion": "The coterminal or reflected angle 5pi/4 has the same cosine but is outside the inverse's required range."
+    },
+    {
+      "title": "Select the principal inverse tangent",
+      "prompt": "For u = -sqrt(3), compute 1/u and arctan(u) in (-pi/2, pi/2).",
+      "steps": [
+        {
+          "math": "1/u=-1/\\sqrt3",
+          "reason": "This is a reciprocal value, not an angle."
+        },
+        {
+          "math": "\\arctan(-\\sqrt3)=-\\pi/3",
+          "reason": "The negative acute angle is in the principal range."
+        }
+      ],
+      "conclusion": "Although 2pi/3 has the same tangent, it is not the principal arctangent."
+    },
+    {
+      "title": "Read the parentheses",
+      "prompt": "Evaluate (sin(pi/6))^-1 and sin^-1(1/2) with the second expression using inverse-function notation.",
+      "steps": [
+        {
+          "math": "(\\sin(\\pi/6))^{-1}=(1/2)^{-1}=2",
+          "reason": "The parentheses make the evaluated sine the base of a negative power."
+        },
+        {
+          "math": "\\sin^{-1}(1/2)=\\arcsin(1/2)=\\pi/6",
+          "reason": "The inverse-function label asks for the principal angle."
+        }
+      ],
+      "conclusion": "Use the reciprocal operation for cosecant and the inverse key for an angle."
+    },
+    {
+      "title": "Recover six values from sine",
+      "prompt": "Given sine 5/13 in quadrant II, find all six functions.",
+      "steps": [
+        {
+          "math": "\\cos^2\\theta=1-25/169=144/169,\\qquad \\cos\\theta=-12/13",
+          "reason": "Quadrant II selects the negative root."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(5/13,-12/13,-5/12)",
+          "reason": "Divide the signed unit coordinates."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-13/12,13/5,-12/5)",
+          "reason": "Take the three reciprocal values on this non-axis ray."
+        }
+      ],
+      "conclusion": "The positive sine alone would leave two possibilities; the quadrant selects this one."
+    },
+    {
+      "title": "Recover from a radical cosine",
+      "prompt": "Given cosine sqrt(5)/3 in quadrant IV, find all six functions.",
+      "steps": [
+        {
+          "math": "\\sin^2\\theta=1-5/9=4/9,\\qquad \\sin\\theta=-2/3",
+          "reason": "The quadrant chooses negative sine."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(-2/3,\\sqrt5/3,-2/\\sqrt5)",
+          "reason": "Cancel the common denominator 3 in tangent."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(3/\\sqrt5,-3/2,-\\sqrt5/2)",
+          "reason": "No rounding is necessary."
+        }
+      ],
+      "conclusion": "The squared identity and the original quadrant both check the result."
+    },
+    {
+      "title": "Recover from secant",
+      "prompt": "Given secant -13/5 in quadrant III, find all six functions.",
+      "steps": [
+        {
+          "math": "\\cos\\theta=-5/13,\\qquad \\sin\\theta=-\\sqrt{1-25/169}=-12/13",
+          "reason": "Invert secant and choose negative sine."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(-12/13,-5/13,12/5)",
+          "reason": "The quotient of two negatives is positive."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-13/5,-13/12,5/12)",
+          "reason": "Recover the supplied secant as a consistency check."
+        }
+      ],
+      "conclusion": "A reciprocal given still requires a quadrant to determine the other coordinate's sign."
+    },
+    {
+      "title": "Recover from cosecant",
+      "prompt": "Given cosecant 5/3 in quadrant II, find all six functions.",
+      "steps": [
+        {
+          "math": "\\sin\\theta=3/5,\\qquad \\cos\\theta=-\\sqrt{1-9/25}=-4/5",
+          "reason": "Invert cosecant and choose negative cosine."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(3/5,-4/5,-3/4)",
+          "reason": "The unit point lies left and above the origin."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-5/4,5/3,-4/3)",
+          "reason": "Each reciprocal retains the sign of its partner."
+        }
+      ],
+      "conclusion": "The magnitude of cosecant exceeds 1, as an open-quadrant point requires."
+    },
+    {
+      "title": "Recover from tangent",
+      "prompt": "Given tangent -3/4 in quadrant II, recover all six functions.",
+      "steps": [
+        {
+          "math": "(x,y)=(-4,3),\\qquad r=5",
+          "reason": "Choose signed coordinates whose ratio y/x is -3/4 in quadrant II."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(3/5,-4/5,-3/4)",
+          "reason": "Normalize the chosen point."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-5/4,5/3,-4/3)",
+          "reason": "Use reciprocal ratios only after the signs are fixed."
+        }
+      ],
+      "conclusion": "The point (4, -3) has the same tangent but belongs to the wrong quadrant."
+    },
+    {
+      "title": "Recover from cotangent",
+      "prompt": "Given cotangent 5/12 in quadrant III, recover all six functions.",
+      "steps": [
+        {
+          "math": "(x,y)=(-5,-12),\\qquad r=13",
+          "reason": "Cotangent gives x/y, so the coordinate magnitudes are 5 and 12 in this order."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan)=(-12/13,-5/13,12/5)",
+          "reason": "Use both negative signs before taking quotients."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot)=(-13/5,-13/12,5/12)",
+          "reason": "Verify that the final cotangent matches the supplied ratio."
+        }
+      ],
+      "conclusion": "A reciprocal mix-up would exchange the coordinate magnitudes and produce tangent 5/12 instead."
+    },
+    {
+      "title": "Keep both directions when needed",
+      "prompt": "Given sine 3/5 with no quadrant, determine the possible cosine and tangent values.",
+      "steps": [
+        {
+          "math": "\\cos^2\\theta=16/25\\implies\\cos\\theta=\\pm4/5",
+          "reason": "The identity alone preserves two signs."
+        },
+        {
+          "math": "(\\cos\\theta,\\tan\\theta)=(4/5,3/4)\\quad\\text{or}\\quad(-4/5,-3/4)",
+          "reason": "Keep paired choices together rather than mixing signs independently."
+        }
+      ],
+      "conclusion": "Quadrants I and II are both possible. A sign or interval restriction is needed for a single direction."
+    },
+    {
+      "title": "Reject inconsistent information",
+      "prompt": "Audit sine -3/5 in quadrant II, secant 2/3, and tangent 0 in an open quadrant.",
+      "steps": [
+        {
+          "math": "\\text{Quadrant II: }y>0\\implies\\sin\\theta>0",
+          "reason": "The negative sine conflicts with the required sign."
+        },
+        {
+          "math": "|\\sec\\theta|\\ge1>2/3",
+          "reason": "The proposed secant lies outside the range."
+        },
+        {
+          "math": "\\tan\\theta=0\\implies y=0\\quad(x\\ne0)",
+          "reason": "A horizontal axis is not an open quadrant."
+        }
+      ],
+      "conclusion": "Each claim is impossible for a different reason: sign, range, or axis location."
+    },
+    {
+      "title": "Derive the identity using cosine",
+      "prompt": "Derive the secant identity and use tangent -5/12 to find secant squared.",
+      "steps": [
+        {
+          "math": "\\frac{\\sin^2\\theta}{\\cos^2\\theta}+\\frac{\\cos^2\\theta}{\\cos^2\\theta}=\\frac1{\\cos^2\\theta},\\quad\\cos\\theta\\ne0",
+          "reason": "Divide every term of the unit-circle identity by cosine squared."
+        },
+        {
+          "math": "\\tan^2\\theta+1=\\sec^2\\theta=25/144+1=169/144",
+          "reason": "Identify the ratios and substitute the supplied tangent."
+        }
+      ],
+      "conclusion": "Secant is either 13/12 or -13/12 until a sign condition selects one."
+    },
+    {
+      "title": "Derive the identity using sine",
+      "prompt": "Derive the cosecant identity and use cotangent -3/4 to find cosecant squared.",
+      "steps": [
+        {
+          "math": "\\frac{\\sin^2\\theta}{\\sin^2\\theta}+\\frac{\\cos^2\\theta}{\\sin^2\\theta}=\\frac1{\\sin^2\\theta},\\quad\\sin\\theta\\ne0",
+          "reason": "This division excludes the horizontal axes."
+        },
+        {
+          "math": "1+\\cot^2\\theta=\\csc^2\\theta=1+9/16=25/16",
+          "reason": "The squared cotangent contributes a positive term."
+        }
+      ],
+      "conclusion": "The identity establishes magnitude, not the sign of cosecant."
+    },
+    {
+      "title": "Keep restrictions after cancellation",
+      "prompt": "Simplify sec(theta)/tan(theta) and test theta = pi/2.",
+      "steps": [
+        {
+          "math": "\\frac{\\sec\\theta}{\\tan\\theta}=\\frac{1/\\cos\\theta}{\\sin\\theta/\\cos\\theta}=\\frac1{\\sin\\theta},\\quad\\sin\\theta\\ne0,\\ \\cos\\theta\\ne0",
+          "reason": "The original quotient requires both nonzero coordinates."
+        },
+        {
+          "math": "\\csc(\\pi/2)=1,\\qquad\\frac{\\sec(\\pi/2)}{\\tan(\\pi/2)}\\text{ is undefined}",
+          "reason": "The simplified formula has an extra allowed angle that the original does not."
+        }
+      ],
+      "conclusion": "The correct simplification is cosecant with both original restrictions retained."
+    },
+    {
+      "title": "Reflect six signed values",
+      "prompt": "A point (-8, 15) represents theta. Find the values at -theta.",
+      "steps": [
+        {
+          "math": "(x,y)=(-8,15)\\longmapsto(-8,-15),\\qquad r=17",
+          "reason": "Reflection preserves the horizontal coordinate and reverses the vertical one."
+        },
+        {
+          "math": "(\\sin(-\\theta),\\cos(-\\theta),\\tan(-\\theta))=(-15/17,-8/17,15/8)",
+          "reason": "Sine and tangent change sign; cosine does not."
+        },
+        {
+          "math": "(\\sec(-\\theta),\\csc(-\\theta),\\cot(-\\theta))=(-17/8,-17/15,8/15)",
+          "reason": "Secant is even; cosecant and cotangent are odd."
+        }
+      ],
+      "conclusion": "Changing the input's sign does not simply negate all six outputs."
+    },
+    {
+      "title": "Check an odd function at zero",
+      "prompt": "Does oddness force cot(0) to equal 0?",
+      "steps": [
+        {
+          "math": "\\cot(-\\theta)=-\\cot\\theta\\quad\\text{where }\\sin\\theta\\ne0",
+          "reason": "The odd identity applies only on cotangent's domain."
+        },
+        {
+          "math": "\\cot(0)=\\cos(0)/\\sin(0)=1/0\\text{ is undefined}",
+          "reason": "Zero is excluded, so the usual odd-function argument at zero cannot start."
+        }
+      ],
+      "conclusion": "Sine and tangent do equal zero at zero; cosecant and cotangent are undefined there."
+    },
+    {
+      "title": "Compare a half-turn",
+      "prompt": "Starting from (3, 4), compare all six values at theta + pi.",
+      "steps": [
+        {
+          "math": "(3,4)\\longmapsto(-3,-4),\\qquad r=5",
+          "reason": "The opposite point has both coordinate signs reversed."
+        },
+        {
+          "math": "(\\sin,\\cos,\\tan): (4/5,3/5,4/3)\\longmapsto(-4/5,-3/5,4/3)",
+          "reason": "Both quotient signs cancel in tangent."
+        },
+        {
+          "math": "(\\sec,\\csc,\\cot): (5/3,5/4,3/4)\\longmapsto(-5/3,-5/4,3/4)",
+          "reason": "Cotangent also repeats, while the reciprocals of the coordinates reverse sign."
+        }
+      ],
+      "conclusion": "The fundamental periods are pi for tangent and cotangent, and 2pi for the other four."
+    },
+    {
+      "title": "Distinguish a period from the fundamental period",
+      "prompt": "Compare shifts of pi and 2pi for tangent and secant.",
+      "steps": [
+        {
+          "math": "\\tan(\\theta+\\pi)=\\tan\\theta,\\qquad\\tan(\\theta+2\\pi)=\\tan\\theta",
+          "reason": "Both shifts are periods of tangent, but pi is the smallest positive one."
+        },
+        {
+          "math": "\\sec(\\theta+\\pi)=-\\sec\\theta,\\qquad\\sec(\\theta+2\\pi)=\\sec\\theta",
+          "reason": "Secant cannot equal its own negative because its defined values are never zero."
+        }
+      ],
+      "conclusion": "Every full turn is a shared repeat, but a shared repeat need not be each function's fundamental period."
+    },
+    {
+      "title": "Disprove a period inferred from zeros",
+      "prompt": "A learner notices sin(0) = sin(pi) and claims sine has period pi.",
+      "steps": [
+        {
+          "math": "\\sin0=\\sin\\pi=0",
+          "reason": "One equal pair is consistent with the claim but does not prove it."
+        },
+        {
+          "math": "\\sin(\\pi/2)=1\\ne-1=\\sin(\\pi/2+\\pi)",
+          "reason": "A second input provides a counterexample."
+        }
+      ],
+      "conclusion": "A period must work for every allowed input, not only for a selected pair of zeros."
+    },
+    {
+      "title": "Keep a large finite ratio",
+      "prompt": "At (1, 100), is tangent undefined because the ray is nearly vertical?",
+      "steps": [
+        {
+          "math": "r=\\sqrt{10001},\\qquad\\tan\\theta=100/1=100",
+          "reason": "The exact horizontal coordinate is small relative to y, but it is not zero."
+        },
+        {
+          "math": "\\cot\\theta=1/100,\\qquad\\sec\\theta=\\sqrt{10001}",
+          "reason": "The other denominators are also nonzero."
+        }
+      ],
+      "conclusion": "All six functions are defined. Magnitude alone cannot determine whether a value exists."
+    },
+    {
+      "title": "Audit a calculator's axis result",
+      "prompt": "A calculator reports a huge finite tangent at an input intended to mean 90 degrees. Check the exact value.",
+      "steps": [
+        {
+          "math": "90^\\circ=\\pi/2,\\qquad(\\cos\\theta,\\sin\\theta)=(0,1)",
+          "reason": "The exact unit-circle point fixes the denominator."
+        },
+        {
+          "math": "\\tan(\\pi/2)=1/0\\text{ is undefined}",
+          "reason": "An approximate stored input or cosine can create a finite numerical artifact."
+        }
+      ],
+      "conclusion": "Check angle mode and exact axis information. The nearby numerical value does not replace the undefined value at the exact angle."
+    }
+  ],
+  "guided": {
+    "title": "Reconstruct the ratios and audit an axis",
+    "setup": "For one angle, secant is -13/5 and the terminal ray lies in quadrant III. Reconstruct all six functions. Then consider a separate angle of pi/2 and decide whether tangent exists.",
+    "before": [
+      "Invert the given secant to obtain cosine. Check its sign against quadrant III.",
+      "Use sine squared plus cosine squared equals 1, then choose the negative sine required by the quadrant.",
+      "Use the coordinate quotients for the remaining values. For the separate axis angle, inspect the exact denominator."
+    ],
+    "question": {
+      "id": "guided-six",
+      "familyId": "guided-six",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m06-l04",
+      "category": "conceptual",
+      "critical": false,
+      "prompt": "For sec(theta) = -13/5 in quadrant III, give all six exact values. Separately evaluate tan(pi/2) and explain its status.",
+      "fields": [
+        {
+          "id": "sin",
+          "label": "Exact sine of theta",
+          "kind": "exact-or-undefined",
+          "expected": "-12/13",
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "cos",
+          "label": "Exact cosine of theta",
+          "kind": "exact-or-undefined",
+          "expected": "-5/13",
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "tan",
+          "label": "Exact tangent of theta",
+          "kind": "exact-or-undefined",
+          "expected": "12/5",
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "sec",
+          "label": "Exact secant of theta",
+          "kind": "exact-or-undefined",
+          "expected": "-13/5",
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "csc",
+          "label": "Exact cosecant of theta",
+          "kind": "exact-or-undefined",
+          "expected": "-13/12",
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "cot",
+          "label": "Exact cotangent of theta",
+          "kind": "exact-or-undefined",
+          "expected": "5/12",
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "axis",
+          "label": "Tangent at pi/2",
+          "kind": "exact-or-undefined",
+          "expected": null,
+          "unit": "",
+          "help": "Use an exact fraction or radical, or type undefined when the denominator is zero."
+        },
+        {
+          "id": "reason",
+          "label": "Why does the separate tangent have this status?",
+          "kind": "choice",
+          "correct": "denominator",
+          "options": [
+            {
+              "id": "large",
+              "label": "Its magnitude is too large",
+              "feedback": "Large finite quotients are allowed when the denominator is nonzero."
+            },
+            {
+              "id": "denominator",
+              "label": "Cosine is exactly zero at pi/2",
+              "feedback": "Tangent is sine divided by cosine, so its denominator is zero."
+            },
+            {
+              "id": "numerator",
+              "label": "Sine is zero at pi/2",
+              "feedback": "The vertical unit-circle point has sine 1, not zero."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "The two angles are separate. For the first, cosine is the reciprocal of the supplied secant.",
+        "Cosine squared is 25/169; subtract it from 1 to recover sine squared.",
+        "Choose sine -12/13 in quadrant III. At pi/2 the unit point is (0, 1), so tangent has denominator zero."
+      ],
+      "explanation": [
+        "Cosine is -5/13. Sine squared is 144/169, and quadrant III selects sine -12/13.",
+        "Tangent is 12/5, secant -13/5, cosecant -13/12 and cotangent 5/12.",
+        "The separate tangent at pi/2 is undefined because its cosine denominator is exactly zero."
+      ],
+      "answerSummary": "sin -12/13; cos -5/13; tan 12/5; sec -13/5; csc -13/12; cot 5/12. tan(pi/2) is undefined because cosine is zero."
+    },
+    "after": "Hide the feedback and reconstruct a new point from cosecant -13/12 in quadrant IV. Then explain why cotangent at pi/2 is zero even though tangent is undefined. Guided work is practice; the independent checkpoint is a separate check."
+  },
+  "interaction": {
+    "kind": "six-functions-lab",
+    "prompt": "Predict which coordinate denominators allow each quotient. Calculate all six values before revealing the normalized point and exact tables. Compare reflection, a half-turn and a full turn, then explain the domain and period rules.",
+    "cases": [
+      {
+        "title": "Quadrant II",
+        "x": "-8",
+        "y": "15"
+      },
+      {
+        "title": "Radical quadrant IV",
+        "x": "1",
+        "y": "-sqrt(3)"
+      },
+      {
+        "title": "Positive vertical axis",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "title": "Negative horizontal axis",
+        "x": "-7",
+        "y": "0"
+      },
+      {
+        "title": "Large but finite tangent",
+        "x": "1",
+        "y": "100"
+      },
+      {
+        "title": "Quadrant III",
+        "x": "-5",
+        "y": "-12"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "coordinates"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "normalize"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "sine-given"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "cosine-given"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "tangent-given"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "cotangent-given"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "secant-given"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "cosecant-given"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "special-angle"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "signed-turns"
+    },
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "inconsistent"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "positive-x"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "positive-y"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "negative-x"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "negative-y"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "tangent-domain"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "cotangent-domain"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "secant-domain"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "cosecant-domain"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "range"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "reciprocal-trap"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "sine-inverse"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "cosine-inverse"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "tangent-inverse"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "negative-power"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "quotient-identity"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "pythagorean-cosine"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "pythagorean-sine"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "cancel-restrictions"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "parity"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "period"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "negative-value"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "half-turn"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "full-turn"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "period-evidence"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "odd-zero"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-six-ratios",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-six-domain",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-six-notation",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-six-symmetry",
+      "variant": "checkpoint"
+    }
+  ],
+  "summary": [
+    "For a nonzero point with r = sqrt(x² + y²), use sin = y/r, cos = x/r, tan = y/x, sec = r/x, csc = r/y and cot = x/y.",
+    "Zero numerator over a nonzero denominator gives zero. A zero denominator makes that particular quotient undefined, not infinite.",
+    "Tangent and secant exclude pi/2 + k*pi; cotangent and cosecant exclude k*pi, for every integer k.",
+    "Sine and cosine stay in [-1, 1]; secant and cosecant have magnitude at least 1; tangent and cotangent can be any real number.",
+    "A reciprocal returns a ratio. A principal inverse returns an angle in its stated range. Parentheses and calculator mode matter.",
+    "Reconstruct a signed point before finding the other ratios. Check range and quadrant consistency, and keep multiple possibilities when information is insufficient.",
+    "The squared identities 1 + tan² = sec² and 1 + cot² = csc² require nonzero cosine and nonzero sine respectively. Squaring does not choose signs.",
+    "Preserve the original domain after cancellation. Cotangent can exist where the expression 1/tangent does not.",
+    "Cosine and secant are even. The other four functions are odd on their domains. Oddness cannot supply a value at an excluded input.",
+    "Tangent and cotangent have fundamental period pi; the other four have fundamental period 2pi. One repeated value is not proof of a period."
+  ],
+  "retrieval": "Without notes, derive the six definitions and all four axis rows, explaining each undefined entry. Reconstruct all six values from tangent -8/15 in quadrant II, then from secant -sqrt(2) without a quadrant and explain the ambiguity. Compare arcsin(1/2) with 1/(1/2), derive the two additional squared identities with restrictions, and use coordinates to prove the parity and half-turn rules. On later days change the signs, given ratio and angles. Include a counterexample to a false period claim and a large finite tangent.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.4 The Other Trigonometric Functions",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-4-the-other-trigonometric-functions",
+      "purpose": "Optional free reading on the remaining trigonometric functions, domains, reciprocal identities, parity and periods. This lesson and its assessments are self-contained."
+    }
+  ]
+}

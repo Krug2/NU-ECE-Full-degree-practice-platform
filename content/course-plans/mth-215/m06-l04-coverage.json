@@ -1,0 +1,352 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l04",
+  "status": "authored",
+  "objective": "Calculate the six trigonometric ratios where defined and explain each undefined value using a zero denominator.",
+  "independentSubjectReview": "not yet performed",
+  "coverage": [
+    {
+      "topic": "Define the six functions from a terminal point",
+      "instruction": [
+        "Define the six functions from a terminal point"
+      ],
+      "examples": [
+        "Read six functions from one point"
+      ],
+      "practice": [
+        "mth-six-ratios:coordinates"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Write all six ratios from a fresh nonzero signed point and state the condition needed for each denominator."
+    },
+    {
+      "topic": "Distinguish tangent from cotangent",
+      "instruction": [
+        "Distinguish tangent from cotangent"
+      ],
+      "examples": [
+        "Keep tangent and cotangent in order"
+      ],
+      "practice": [
+        "mth-six-notation:quotient-identity"
+      ],
+      "independentCheck": "mth-six-notation:checkpoint",
+      "retrieval": "Explain tangent as vertical per horizontal and cotangent as horizontal per vertical, then test both on an axis."
+    },
+    {
+      "topic": "Pair each function with its reciprocal",
+      "instruction": [
+        "Pair each function with its reciprocal"
+      ],
+      "examples": [
+        "Invert a signed radical",
+        "Use cotangent when tangent is undefined"
+      ],
+      "practice": [
+        "mth-six-domain:reciprocal-trap"
+      ],
+      "independentCheck": "mth-six-domain:checkpoint",
+      "retrieval": "Pair each reciprocal and explain why cotangent is zero on a vertical ray even though 1/tangent is undefined there."
+    },
+    {
+      "topic": "Normalize a non-unit point",
+      "instruction": [
+        "Normalize a non-unit point"
+      ],
+      "examples": [
+        "Normalize a scaled ray",
+        "Normalize a point with a radical"
+      ],
+      "practice": [
+        "mth-six-ratios:normalize"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Normalize a non-unit point with a radical coordinate and explain why positive scaling preserves all six ratios."
+    },
+    {
+      "topic": "Choose signs before calculating",
+      "instruction": [
+        "Choose signs before calculating"
+      ],
+      "examples": [
+        "Audit signs before magnitudes"
+      ],
+      "practice": [
+        "mth-six-ratios:coordinates"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Predict every function's sign in each open quadrant before calculating any magnitude, and identify which signs pair together."
+    },
+    {
+      "topic": "Evaluate exact special and coterminal angles",
+      "instruction": [
+        "Evaluate exact special and coterminal angles"
+      ],
+      "examples": [
+        "Evaluate a third-quadrant special angle",
+        "Remove clockwise full turns"
+      ],
+      "practice": [
+        "mth-six-ratios:special-angle",
+        "mth-six-ratios:signed-turns"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Reduce a new negative radian angle and a multiple-turn input, then compute all six exact values from a special point."
+    },
+    {
+      "topic": "Separate a zero numerator from a zero denominator",
+      "instruction": [
+        "Separate a zero numerator from a zero denominator"
+      ],
+      "examples": [
+        "Separate a zero from an excluded value",
+        "Reject the origin"
+      ],
+      "practice": [
+        "mth-six-domain:positive-x",
+        "mth-six-domain:positive-y"
+      ],
+      "independentCheck": "mth-six-domain:checkpoint",
+      "retrieval": "Give one zero quotient and one undefined quotient at the same angle, naming the numerator and denominator in each."
+    },
+    {
+      "topic": "Build the four axis rows",
+      "instruction": [
+        "Build the four axis rows"
+      ],
+      "examples": [
+        "Rebuild all four axis rows"
+      ],
+      "practice": [
+        "mth-six-domain:positive-x",
+        "mth-six-domain:positive-y",
+        "mth-six-domain:negative-x",
+        "mth-six-domain:negative-y"
+      ],
+      "independentCheck": "mth-six-domain:checkpoint",
+      "retrieval": "Rebuild all four axis rows from the ordered points and positive radius rather than reading a memorized output table."
+    },
+    {
+      "topic": "State domains with all excluded angles",
+      "instruction": [
+        "State domains with all excluded angles"
+      ],
+      "examples": [
+        "List tangent and secant exclusions",
+        "List cotangent and cosecant exclusions"
+      ],
+      "practice": [
+        "mth-six-domain:tangent-domain",
+        "mth-six-domain:cotangent-domain",
+        "mth-six-domain:secant-domain",
+        "mth-six-domain:cosecant-domain"
+      ],
+      "independentCheck": "mth-six-domain:checkpoint",
+      "retrieval": "Give the full excluded-angle families for four functions and filter them into a new interval with explicit endpoints."
+    },
+    {
+      "topic": "Check the ranges of the six functions",
+      "instruction": [
+        "Check the ranges of the six functions"
+      ],
+      "examples": [
+        "Check possible outputs"
+      ],
+      "practice": [
+        "mth-six-domain:range"
+      ],
+      "independentCheck": "mth-six-domain:checkpoint",
+      "retrieval": "State each function's range, justify the reciprocal gaps around zero, and construct a point with a large finite tangent."
+    },
+    {
+      "topic": "Distinguish reciprocals from inverse functions",
+      "instruction": [
+        "Distinguish reciprocals from inverse functions"
+      ],
+      "examples": [
+        "Compare arcsine with a reciprocal",
+        "Select the principal inverse cosine",
+        "Select the principal inverse tangent"
+      ],
+      "practice": [
+        "mth-six-notation:sine-inverse",
+        "mth-six-notation:cosine-inverse",
+        "mth-six-notation:tangent-inverse"
+      ],
+      "independentCheck": "mth-six-notation:checkpoint",
+      "retrieval": "Compare the reciprocal of a signed special value with its arcsine, arccosine or arctangent in a stated principal range."
+    },
+    {
+      "topic": "Read negative powers and calculator labels",
+      "instruction": [
+        "Read negative powers and calculator labels"
+      ],
+      "examples": [
+        "Read the parentheses"
+      ],
+      "practice": [
+        "mth-six-notation:negative-power"
+      ],
+      "independentCheck": "mth-six-notation:checkpoint",
+      "retrieval": "Explain the difference between a negative power of an evaluated sine and an inverse-function key, including angle units."
+    },
+    {
+      "topic": "Recover all ratios from sine or cosine",
+      "instruction": [
+        "Recover all ratios from sine or cosine"
+      ],
+      "examples": [
+        "Recover six values from sine",
+        "Recover from a radical cosine"
+      ],
+      "practice": [
+        "mth-six-ratios:sine-given",
+        "mth-six-ratios:cosine-given"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Reconstruct all six ratios from a rational sine and then a radical cosine, choosing signs only after applying the quadrant."
+    },
+    {
+      "topic": "Recover a point from secant or cosecant",
+      "instruction": [
+        "Recover a point from secant or cosecant"
+      ],
+      "examples": [
+        "Recover from secant",
+        "Recover from cosecant"
+      ],
+      "practice": [
+        "mth-six-ratios:secant-given",
+        "mth-six-ratios:cosecant-given"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Invert a supplied secant or cosecant, check its range and quadrant, and reconstruct every remaining exact function."
+    },
+    {
+      "topic": "Recover a direction from tangent or cotangent",
+      "instruction": [
+        "Recover a direction from tangent or cotangent"
+      ],
+      "examples": [
+        "Recover from tangent",
+        "Recover from cotangent"
+      ],
+      "practice": [
+        "mth-six-ratios:tangent-given",
+        "mth-six-ratios:cotangent-given"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Choose a signed point from tangent or cotangent and normalize it; explain why the opposite point may have the same quotient."
+    },
+    {
+      "topic": "Check whether the given information is sufficient",
+      "instruction": [
+        "Check whether the given information is sufficient"
+      ],
+      "examples": [
+        "Keep both directions when needed",
+        "Reject inconsistent information"
+      ],
+      "practice": [
+        "mth-six-ratios:inconsistent"
+      ],
+      "independentCheck": "mth-six-ratios:checkpoint",
+      "retrieval": "Provide an ambiguous ratio and two contradictory givens, keeping valid alternatives and distinguishing sign from range failures."
+    },
+    {
+      "topic": "Derive the two additional squared identities",
+      "instruction": [
+        "Derive the two additional squared identities"
+      ],
+      "examples": [
+        "Derive the identity using cosine",
+        "Derive the identity using sine"
+      ],
+      "practice": [
+        "mth-six-notation:pythagorean-cosine",
+        "mth-six-notation:pythagorean-sine"
+      ],
+      "independentCheck": "mth-six-notation:checkpoint",
+      "retrieval": "Derive each additional squared identity by dividing the circle identity, and state the nonzero denominator it requires."
+    },
+    {
+      "topic": "Preserve domain restrictions when simplifying",
+      "instruction": [
+        "Preserve domain restrictions when simplifying"
+      ],
+      "examples": [
+        "Keep restrictions after cancellation"
+      ],
+      "practice": [
+        "mth-six-notation:cancel-restrictions"
+      ],
+      "independentCheck": "mth-six-notation:checkpoint",
+      "retrieval": "Simplify secant divided by tangent while retaining both original restrictions, then test the lost vertical-axis input."
+    },
+    {
+      "topic": "Explain even and odd behavior",
+      "instruction": [
+        "Explain even and odd behavior"
+      ],
+      "examples": [
+        "Reflect six signed values",
+        "Check an odd function at zero"
+      ],
+      "practice": [
+        "mth-six-symmetry:parity",
+        "mth-six-symmetry:negative-value",
+        "mth-six-symmetry:odd-zero"
+      ],
+      "independentCheck": "mth-six-symmetry:checkpoint",
+      "retrieval": "Use a reflected signed point to classify all six functions as even or odd, and explain why odd cotangent need not exist at zero."
+    },
+    {
+      "topic": "Explain why the periods differ",
+      "instruction": [
+        "Explain why the periods differ"
+      ],
+      "examples": [
+        "Compare a half-turn",
+        "Distinguish a period from the fundamental period"
+      ],
+      "practice": [
+        "mth-six-symmetry:period",
+        "mth-six-symmetry:half-turn",
+        "mth-six-symmetry:full-turn"
+      ],
+      "independentCheck": "mth-six-symmetry:checkpoint",
+      "retrieval": "Compare all six functions under half-turn and full-turn shifts, distinguishing a period from the smallest positive period."
+    },
+    {
+      "topic": "Test a claimed period with more than one point",
+      "instruction": [
+        "Test a claimed period with more than one point"
+      ],
+      "examples": [
+        "Disprove a period inferred from zeros"
+      ],
+      "practice": [
+        "mth-six-symmetry:period-evidence"
+      ],
+      "independentCheck": "mth-six-symmetry:checkpoint",
+      "retrieval": "Disprove a period claim based on two equal zeros, then use an arbitrary point transformation to establish a valid period."
+    },
+    {
+      "topic": "Audit calculator output near an excluded angle",
+      "instruction": [
+        "Audit calculator output near an excluded angle"
+      ],
+      "examples": [
+        "Keep a large finite ratio",
+        "Audit a calculator's axis result"
+      ],
+      "practice": [
+        "mth-six-ratios:normalize",
+        "mth-six-domain:positive-y"
+      ],
+      "independentCheck": "mth-six-domain:checkpoint",
+      "retrieval": "Contrast an exact vertical ray with a point whose horizontal coordinate is small but nonzero, and audit a rounded calculator result."
+    }
+  ],
+  "assessmentLimits": "Every form requires all six ratios reconstructed from one given ratio and a quadrant, all six values at an axis with a zero-denominator explanation, a reciprocal compared with a principal inverse, and both parity and period reasoning. The four questions sample the broader practice coverage rather than certify every variant separately."
+}
