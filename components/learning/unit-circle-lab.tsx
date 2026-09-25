@@ -17,7 +17,7 @@ function CircleDiagram({ point }: { point: ReturnType<typeof unitCirclePoint> })
     <path d={"M190 160L" + x + " " + y} stroke="var(--accent, #23574d)" strokeWidth="3" />
     <path d={"M" + x + " 160V" + y + "H190"} fill="none" stroke="currentColor" strokeDasharray="5 4" />
     <circle cx={x} cy={y} r="5" fill="var(--accent, #23574d)" />
-    <text x={x + (x > 290 ? -12 : 12)} y={y - 12} textAnchor={x > 290 ? "end" : "start"}>P</text>
+    <text x={x + (x > 290 || y < 65 ? -12 : 12)} y={y < 65 ? y + 20 : y - 12} textAnchor={x > 290 || y < 65 ? "end" : "start"}>P</text>
     <text x="343" y="183">x</text><text x="202" y="22">y</text>
     <text x="318" y="181">1</text><text x="48" y="181">−1</text>
     <text x="204" y="48">1</text><text x="204" y="288">−1</text><text x="172" y="181">0</text>
@@ -83,7 +83,7 @@ export function UnitCircleLab({ activity }: { activity: { prompt: string; cases:
       <p>The terminal point is in {circleLocations[point.location]}. The representative angle in [0, 2π) is {angle(point.representative)} rad. {point.referenceAngle ? <>Its acute reference angle is {angle(point.referenceAngle)} rad.</> : "It is an axis point, so there is no acute reference angle."}</p>
       <p>Horizontal coordinate: {exact(point.x)}. Vertical coordinate: {exact(point.y)}. The identity checks the radius: <MathText>{"$(" + formatExact(parseExact(point.x), true) + ")^2+(" + formatExact(parseExact(point.y), true) + ")^2=1$"}</MathText>.</p>
       <div className="circle-table-wrap" role="region" aria-label="Exact unit-circle comparison" tabIndex={0}>
-        <table className="coefficient-table"><caption>Exact coordinates under rotation and reflection</caption><thead><tr><th scope="col">Position</th><th scope="col">Angle (rad)</th><th scope="col">x = cosine</th><th scope="col">y = sine</th></tr></thead><tbody>{rows.map(row => <tr key={row.label}><th scope="row">{row.label}</th><td>{angle(row.radians)}</td><td>{exact(row.x)}</td><td>{exact(row.y)}</td></tr>)}</tbody></table>
+        <table className="coefficient-table"><caption>Exact coordinates under rotation and reflection</caption><thead><tr><th scope="col">Position and angle</th><th scope="col">x = cosine</th><th scope="col">y = sine</th></tr></thead><tbody>{rows.map(row => <tr key={row.label}><th scope="row">{row.label}<span className="circle-table-angle">{angle(row.radians)} rad</span></th><td>{exact(row.x)}</td><td>{exact(row.y)}</td></tr>)}</tbody></table>
       </div>
       <div className="field"><label htmlFor={id + "-reflection"}>Which coordinate is negated by the x-axis reflection rule?</label><select id={id + "-reflection"} value={reflection} onChange={event => { setReflection(event.target.value); setExplanation(""); }}><option value="">Choose a coordinate rule</option><option value="x">x only</option><option value="y">y only</option><option value="both">Both x and y</option></select></div>
       <div className="field"><label htmlFor={id + "-identity"}>Why does x² + y² = 1 fail to choose the signs?</label><select id={id + "-identity"} value={identity} onChange={event => { setIdentity(event.target.value); setExplanation(""); }}><option value="">Choose a reason</option><option value="positive">Both coordinates must be positive</option><option value="squares">Squaring removes each sign</option><option value="order">The identity fixes coordinate order</option></select></div>
