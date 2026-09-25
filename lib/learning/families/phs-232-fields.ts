@@ -16,7 +16,7 @@ export const phs232Pi = (id: string, label: string, expected: string, unit = "")
 });
 export const phs232Approximate = (id: string, label: string, expected: number, unit = "", absoluteTolerance = .000001) => ({
   id, label, kind: "numeric" as const, expected, unit, absoluteTolerance, relativeTolerance: 0,
-  help: `Give a numerical value in the labeled unit. The accepted absolute error is ${absoluteTolerance}; keep at least six digits after the decimal when needed.`,
+  help: `Give a numerical value in the labeled unit. The accepted absolute error is ${absoluteTolerance}; keep at least ${absoluteTolerance >= .000001 ? "six" : Math.ceil(-Math.log10(absoluteTolerance))} digits after the decimal when needed.`,
 });
 export const phs232Choice = (id: string, label: string, correct: string, options: [string, string, string][]) => ({
   id, label, kind: "choice" as const, correct, help: "Choose one answer.", options: options.map(([id, label, feedback]) => ({ id, label, feedback })),
