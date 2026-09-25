@@ -5,4 +5,5 @@
 .right-table-wrap:focus-visible { outline: 2px solid var(--accent, #23574d); outline-offset: 2px; }
 .right-table-wrap table { min-width: 18rem; }
 .right-results h3 { margin-top: 1.5rem; }
+.right-results, .right-table-wrap { scroll-margin-top: 7rem; }
 @media (max-width: 600px) { .right-triangle-controls { grid-template-columns: minmax(0, 1fr); } }
