@@ -18,6 +18,7 @@ const answer=(field:AnswerField):string=>{
   if(field.kind==="intervals")return formatIntervals(field.expected);
   if(field.kind==="logarithmic-intervals")return formatLogarithmicIntervals(field.expected);
   if(field.kind==="numeric")return field.expected.toFixed(6);
+  if(field.kind==="exact-or-undefined")return field.expected??"undefined";
   if(field.kind==="roots"||field.kind==="root-list"||field.kind==="logarithmic-roots")return field.expected.join(";")||"none";
   return field.expected;
 };

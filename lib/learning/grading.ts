@@ -18,6 +18,15 @@ export function gradeField(field: AnswerField, input: string): FieldResult {
     return choice ? { correct: choice.id === field.correct, valid: true, message: choice.feedback } : { correct: false, valid: false, message: "Choose one of the available answers." };
   }
   try {
+    if (field.kind === "exact-or-undefined") {
+      const word = input.trim().toLowerCase();
+      if (word === "undefined") return { correct: field.expected === null, valid: true, message: field.expected === null ? "Correct. A zero denominator leaves this function undefined." : "The denominator is nonzero, so calculate the exact real value." };
+      if (/^[+-]?(inf(?:inity)?|∞)$/.test(word)) return { correct: false, valid: false, message: "Infinity is not a value of this function. Inspect the denominator and enter an exact real value or undefined." };
+      const value = parseExact(input);
+      if (!realExact(value)) return { correct: false, valid: true, message: "These trigonometric ratios require real values or undefined." };
+      const correct = field.expected !== null && equalExact(value, parseExact(field.expected));
+      return { correct, valid: true, message: correct ? "This is an equivalent exact real value." : field.expected === null ? "The denominator is exactly zero. Enter undefined, not zero or a large number." : "Check the coordinate ratio and signs. Keep radicals exact; a rounded irrational value is different." };
+    }
     if(field.kind==="pi-expression"){
       const correct=equalPiNumbers(parsePiNumber(input),parsePiNumber(field.expected));
       return {correct,valid:true,message:correct?"This is an equivalent exact value.":"Keep pi exact, retain the whole expression, and check the requested quantity and units. A rounded decimal is a different exact value."};

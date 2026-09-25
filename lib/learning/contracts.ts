@@ -76,6 +76,10 @@ const numericField = z.object({
 const intervalField = z.object({...fieldBase,kind:z.literal("intervals"),unit:z.string().max(60).default(""),expected:z.array(z.object({lower:endpoint.nullable(),upper:endpoint.nullable(),lowerClosed:z.boolean(),upperClosed:z.boolean()}).strict()).max(8)}).strict()
   .refine(field=>{try{normalizeIntervals(field.expected);return true;}catch{return false;}},"Invalid interval key");
 const exactField = z.object({ ...fieldBase, kind: z.literal("exact"), expected: exact, unit: z.string().max(60).default("") }).strict();
+const exactOrUndefinedField = z.object({
+  ...fieldBase, kind: z.literal("exact-or-undefined"), expected: exact.nullable(), unit: z.string().max(60).default(""),
+  help: z.string().min(1).max(500).default("Enter an exact real value using fractions and sqrt(), or type undefined when the denominator is zero. Infinity is not a function value here."),
+}).strict().refine(field => { try { return field.expected === null || realExact(parseExact(field.expected)); } catch { return false; } }, "Use a real exact answer or null for undefined");
 const logarithmicField = z.object({
   ...fieldBase, kind: z.literal("logarithmic"), expected: logarithmic, unit: z.string().max(60).default(""),
   help: z.string().min(1).max(500).default("Keep the answer exact. Use ln(3), log(3) for base 10, log(2, 3) for base 2, e or exp(2), sqrt(), and arithmetic. Equivalent supported forms are accepted; do not replace a logarithm with a rounded decimal."),
@@ -123,7 +127,7 @@ const polynomialField = z.object({
 const rationalExpressionField = z.object({
   ...fieldBase, kind: z.literal("rational-expression"), expected: z.string().max(200), domainFieldId: id, unit: z.string().max(60).default(""),
 }).strict().refine(field => { try { return commonFactorDegree(parseRationalExpression(field.expected)) === 0; } catch { return false; } }, "The rational-expression key must be a simplified fraction");
-export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, logarithmicField, logarithmicRootsField, logarithmicIntervalField, rootsField, rootListField, polynomialField, rationalExpressionField, piField,piExpressionField]);
+export const answerFieldSchema = z.discriminatedUnion("kind", [choiceField, rationalField, numericField, intervalField, exactField, exactOrUndefinedField, logarithmicField, logarithmicRootsField, logarithmicIntervalField, rootsField, rootListField, polynomialField, rationalExpressionField, piField,piExpressionField]);
 export type AnswerField = z.infer<typeof answerFieldSchema>;
 
 export const questionSchema = z.object({
