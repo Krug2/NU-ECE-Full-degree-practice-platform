@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "The complete proposed course plan is verified. Lessons m01-l01 through m01-l03 are available and technically checked; the other 28 lessons and course-level assessment/project workflows remain under construction.",
+  "status": "The complete proposed course plan is verified. All four oscillation-module lessons m01-l01 through m01-l04 are available and technically checked; the other 27 lessons and course-level assessment/project workflows remain under construction.",
   "planned": {
     "modules": 10,
     "lessons": 31,
@@ -12,10 +12,10 @@
     "courseAssessmentForms": 44
   },
   "delivered": {
-    "lessons": 3,
-    "families": 6,
-    "variants": 36,
-    "investigations": 3,
+    "lessons": 4,
+    "families": 8,
+    "variants": 48,
+    "investigations": 4,
     "courseAssessmentForms": 0,
     "project": false
   },
@@ -121,6 +121,22 @@
         "ab9c70e"
       ],
       "integration": "Include this focused table-layout correction with the data-table extension. It is scoped to the new CSS module and does not reformat or restyle existing figures."
+    },
+    {
+      "commit": "88f093c",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "change": "Registers the driven investigation and two course-owned driven-response/resonance families with additive schema, dispatch and generator entries.",
+      "requires": [
+        "586ddfe",
+        "c50174f",
+        "c236d66",
+        "0df17bf"
+      ],
+      "integration": "Retain incoming prerequisite imports and interaction branches alongside these additions. Existing graders, saved question snapshots and backup schema version 2 remain unchanged; the receiving branch needs these family and component dependencies to present the new lesson."
     }
   ],
   "implementationCommits": [
@@ -239,14 +255,49 @@
     {
       "commit": "7d22fd8",
       "change": "Five damping learning, recovery, accessibility and reflow browser checks."
+    },
+    {
+      "commit": "586ddfe",
+      "change": "Stable driven initial-value model, output-specific peaks and independent ODE, integral and limit fixtures."
+    },
+    {
+      "commit": "c50174f",
+      "change": "Six forced-response variants with at least fifty independently checked seeds each."
+    },
+    {
+      "commit": "4cead22",
+      "change": "Explicit numerical design, bounded input ranges and singular-limit verification decisions."
+    },
+    {
+      "commit": "c236d66",
+      "change": "Six resonance/power variants with independent maxima, half-power roots and period integrals."
+    },
+    {
+      "commit": "0df17bf",
+      "change": "Three-plot driven investigation, complete frequency/state/work evidence, two keyboard probes and rubric."
+    },
+    {
+      "commit": "88f093c",
+      "change": "Focused compatible shared registration for the driven interaction and both families."
+    },
+    {
+      "commit": "0e9d11e",
+      "change": "Complete driven lesson with fourteen worked examples, seven guided fields and independent authored fixtures."
+    },
+    {
+      "commit": "1e0c916",
+      "change": "Course-owned availability and pack registration for the fourth lesson."
+    },
+    {
+      "commit": "2de8767",
+      "change": "Six driven learning, singular-limit, recovery, accessibility and reflow browser checks."
     }
   ],
-  "lessonVerification": "See lesson-audits.json for actual delivery evidence. Third-lesson integration passed 2387 unit tests, full static checks and a 193-page build. The combined browser run passed all 23 existing regressions and four new damping checks; its question-table layout issue was corrected. The final rebuild and all five damping scenarios then passed. These are technical checks, not independent subject review.",
+  "lessonVerification": "See lesson-audits.json for actual delivery evidence. Fourth-lesson integration passed 2414 unit tests, full lint/type checks, a 194-page production build and all six new browser scenarios. Production reading and investigation captures were inspected at desktop/mobile sizes, 320px reflow and a 200-percent zoom equivalent. These are technical checks, not independent subject review.",
   "nextImplementation": {
-    "lessonId": "m01-l04",
-    "designCommit": "9aea78f",
-    "status": "The detailed design is recorded in m01-l04-design.json. The driven model, authored instruction, generated families and interactive lesson are not delivered yet.",
-    "focus": "Fixed-force response with an explicit cosine/lag convention, startup versus periodic response, output-specific resonance, exact half-power bandwidth and the undamped resonant limit."
+    "lessonId": "m02-l01",
+    "status": "The complete course coverage map specifies wave functions and energy transport. Detailed numerical/interaction design and implementation are next, after integrating the latest prerequisite work at this module boundary.",
+    "focus": "Traveling-wave direction and local derivatives, string speed, signed energy flux, finite control-volume balance, sampling ambiguity and the limits of the small-slope ideal string model."
   },
   "planningVerification": {
     "status": "passed",
@@ -258,6 +309,6 @@
   },
   "independentSubjectReview": "not performed",
   "pilotValidation": "not performed",
-  "remaining": "Continue with m01-l04. Complete the remaining 28 lessons, all 44 course forms, the sustained project and full release audit before calling PHS 232 complete. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
+  "remaining": "Continue with m02-l01. Complete the remaining 27 lessons, all 44 course forms, the sustained project and full release audit before calling PHS 232 complete. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
   "previousCourseIntegration": "../phs-231/integration.json"
 }

@@ -1,7 +1,7 @@
 {
   "courseId":"phs-232",
   "version":1,
-  "status":"Complete proposed coverage map; m01-l01 is implemented and technically verified. The remaining 30 lessons are still planned.",
+  "status":"Complete proposed coverage map. Actual lesson availability and technical verification are recorded in integration.json and lesson-audits.json; planned coverage alone is not completed instruction.",
   "use":"Every lesson requires original instruction, stated notation and domains, worked reasoning, guided feedback, an accessible investigation, deterministic practice and a checkpoint. The entries below specify subject-specific coverage and evidence; assessments.json and verification.json add the shared release conditions. Family names describe intended coverage; integration.json and lesson-audits.json record actual availability and checks.",
   "modules":[
     {

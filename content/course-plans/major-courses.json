@@ -58,9 +58,9 @@
     "currentCourseProgress": {
       "phase": "implementation",
       "plannedLessons": 31,
-      "availableLessons": 3,
-      "nextLesson": "m01-l04",
-      "nextWork": "Build and independently verify driven response, resonance and power transfer, including initial transients, output-specific peaks, phase quadrants, half-power bandwidth and the undamped resonant limit.",
+      "availableLessons": 4,
+      "nextLesson": "m02-l01",
+      "nextWork": "Integrate the latest prerequisite work at the oscillation-module boundary, then build and independently verify traveling waves, local motion, string speed and signed energy transport.",
       "integrationRecord": "phs-232/integration.json",
       "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },
