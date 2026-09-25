@@ -1,0 +1,1124 @@
+{
+  "id": "m06-l02",
+  "courseId": "mth-215",
+  "moduleId": "m06",
+  "version": 1,
+  "title": "Right-triangle ratios",
+  "objective": "Choose a trigonometric ratio to solve a right triangle and interpret the solution with the correct reference angle and units.",
+  "why": "Engineering measurements often reveal an angle and only part of a distance. Right-triangle ratios connect that information to a missing height, horizontal separation or sloping length. Work through this lesson in several sittings: label and derive first, solve second, then model and check. The aim is to explain a calculation as well as carry it out.",
+  "estimatedMinutes": 210,
+  "prerequisites": [
+    {
+      "lessonId": "b06",
+      "label": "Triangle and calculator refresher"
+    },
+    {
+      "lessonId": "m01-l01",
+      "label": "Rearranging equations"
+    },
+    {
+      "lessonId": "m06-l01",
+      "label": "Radians and angle units"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Identify the right angle before naming sides",
+      "paragraphs": [
+        "A right triangle has one 90-degree angle and two strictly acute angles. In triangle ABC throughout this lesson, the right angle is at A. The hypotenuse BC is opposite A and is the longest side. The two sides meeting at A, AB and AC, are the legs. A rotated or reflected drawing does not change these relationships.",
+        "Confirm the geometry before calculating. For positive exact lengths, a right angle at A requires $AB^2+AC^2=BC^2$. The converse lets you check a claimed right angle from side lengths. A sketch is evidence about labels, not proof that lengths are drawn to scale. Zero-length sides would give a degenerate figure, outside this lesson."
+      ]
+    },
+    {
+      "heading": "Change the reference angle without changing the triangle",
+      "paragraphs": [
+        "Opposite and adjacent are relative to a chosen acute angle. At B, AC is opposite because it does not meet B; AB is the adjacent leg because it meets B but is not the hypotenuse. At C, those roles reverse: AB is opposite and AC is adjacent. BC remains the hypotenuse in both descriptions.",
+        "Mark the reference angle first, then find the hypotenuse, and only then name the legs. Although the hypotenuse touches the acute angle, the word adjacent in these ratios means the adjacent leg. Avoid memorizing that a horizontal side is always adjacent: choose a different angle and that shortcut fails."
+      ]
+    },
+    {
+      "heading": "Use similarity to explain invariant ratios",
+      "paragraphs": [
+        "Two right triangles with the same acute angle have the same third angle, so they are similar. Corresponding sides differ by one common positive scale factor c. If one opposite leg and hypotenuse are o and h, the larger triangle has co and ch; their quotient is $co/(ch)=o/h$.",
+        "This cancellation explains why a side ratio can be a function of an angle even when the triangle's size changes. Scale every corresponding side, not just one. Similar triangles have equal angles and proportional lengths; congruent triangles also have the same size. A negative or zero scale is not a positive length scale here."
+      ]
+    },
+    {
+      "heading": "Define sine, cosine and tangent",
+      "paragraphs": [
+        "Let o be the opposite leg, a the adjacent leg, and h the hypotenuse for the marked acute angle theta. Define $\\sin\\theta=o/h$, $\\cos\\theta=a/h$, and $\\tan\\theta=o/a$. SOH, CAH and TOA summarize these definitions, but the definitions become useful only after the sides are identified.",
+        "The notation sin(theta) names a function evaluated at an angle; it does not mean sin multiplied by theta. Since $(o/h)/(a/h)=o/a$, tangent is sine divided by cosine for these acute angles. A reciprocal reverses numerator and denominator and is generally a different function."
+      ]
+    },
+    {
+      "heading": "Check the range and units of a ratio",
+      "paragraphs": [
+        "Both legs are positive and shorter than h, so a strictly acute angle has $0<\\sin\\theta<1$ and $0<\\cos\\theta<1$. Tangent is positive but can be less than, equal to, or greater than 1 because either leg may be longer. If the legs are equal, tangent is 1 and the angle is 45 degrees.",
+        "A ratio of two lengths in the same unit is dimensionless: centimeters divided by centimeters cancel. A ratio written with mixed units must first be converted. These range checks can expose a reciprocal or labeling mistake. The strict bounds here exclude the degenerate endpoints 0 and 90 degrees; the unit circle will later extend the functions beyond acute triangles."
+      ]
+    },
+    {
+      "heading": "Relate complementary acute angles",
+      "paragraphs": [
+        "The acute angles theta and phi in a right triangle satisfy $\\theta+\\phi=90^\\circ=\\pi/2$ radians. The opposite side for theta is the adjacent side for phi, using the same hypotenuse. Therefore $\\sin\\theta=\\cos\\phi$ and $\\cos\\theta=\\sin\\phi$.",
+        "In degree notation, $\\sin\\theta=\\cos(90^\\circ-\\theta)$. In radian notation, $\\sin\\theta=\\cos(\\pi/2-\\theta)$. Keep every term in the same angular unit. Also $\\tan\\phi=1/\\tan\\theta$ because the two positive legs swap. Complementary does not usually mean equal; equality happens at 45 degrees."
+      ]
+    },
+    {
+      "heading": "Derive the 45-45-90 triangle",
+      "paragraphs": [
+        "Cut a square of side s along its diagonal. Each half has perpendicular equal legs s and s, so its two acute angles are equal and add to 90 degrees. Each is 45 degrees. The Pythagorean theorem gives $h^2=s^2+s^2=2s^2$, and positive length gives $h=s\\sqrt{2}$.",
+        "The side pattern is $s:s:s\\sqrt{2}$. Starting with a leg, multiply by square root of two to find the hypotenuse. Starting with the hypotenuse, divide by square root of two to find a leg. Both $h/\\sqrt{2}$ and $h\\sqrt{2}/2$ represent the same exact value."
+      ]
+    },
+    {
+      "heading": "Derive the 30-60-90 triangle",
+      "paragraphs": [
+        "Draw an altitude in an equilateral triangle of side 2s. Symmetry bisects both its base and its 60-degree apex angle. Each resulting right triangle has hypotenuse 2s, short leg s opposite 30 degrees, and the remaining leg opposite 60 degrees.",
+        "The long leg satisfies $a^2=(2s)^2-s^2=3s^2$, so $a=s\\sqrt{3}$. The side pattern opposite 30, 60 and 90 degrees is $s:s\\sqrt{3}:2s$. Match sides to their opposite angles instead of matching their appearance on the page. If the long leg is known, divide it by square root of three to recover s."
+      ]
+    },
+    {
+      "heading": "Build exact special-angle values",
+      "paragraphs": [
+        "Apply the definitions to the special-triangle patterns. At 30 degrees (pi/6), sine is 1/2, cosine is square root of three divided by two, and tangent is one over square root of three. At 45 degrees (pi/4), sine and cosine are one over square root of two and tangent is 1. At 60 degrees (pi/3), sine is square root of three divided by two, cosine is 1/2, and tangent is square root of three.",
+        "These are exact results. Write sqrt(3)/3 or 1/sqrt(3) for the exact tangent of 30 degrees, rather than a rounded decimal such as 0.577. A rational exact result, such as 1/2, can also be written as its terminating decimal 0.5. The app accepts equivalent supported radical expressions; enter explicit multiplication, for example 5*sqrt(2)."
+      ]
+    },
+    {
+      "heading": "Choose a ratio from the known and unknown sides",
+      "paragraphs": [
+        "When an acute angle and one side are known, choose the ratio containing that side and the requested side. Opposite with hypotenuse suggests sine; adjacent with hypotenuse suggests cosine; opposite with adjacent suggests tangent. This avoids introducing an extra unknown.",
+        "Write an equation before pressing calculator keys. For example, if the adjacent leg a is known and the opposite leg x is requested, $\\tan\\theta=x/a$. If the opposite leg o is known and the adjacent leg x is requested, $\\tan\\theta=o/x$. The same function can require a different algebraic operation."
+      ]
+    },
+    {
+      "heading": "Solve for a numerator or a denominator",
+      "paragraphs": [
+        "If the unknown is a numerator, multiplying by the known denominator isolates it: $\\sin\\theta=x/h$ gives $x=h\\sin\\theta$. If the unknown is a denominator, multiply by that unknown first, then divide by the function value: $\\sin\\theta=o/x$ gives $x=o/\\sin\\theta$. Acute sine, cosine and tangent are positive, so these divisions are defined.",
+        "The six useful rearrangements are $o=h\\sin\\theta$, $a=h\\cos\\theta$, $h=o/\\sin\\theta$, $h=a/\\cos\\theta$, $o=a\\tan\\theta$, and $a=o/\\tan\\theta$. Do not decide to multiply or divide from a mnemonic alone. Check that the resulting hypotenuse exceeds either leg."
+      ]
+    },
+    {
+      "heading": "Recover an acute angle with an inverse function",
+      "paragraphs": [
+        "Two known sides determine an acute angle once the right triangle and reference angle are established. Use $\\theta=\\arcsin(o/h)$, $\\theta=\\arccos(a/h)$, or $\\theta=\\arctan(o/a)$. The calculator's inverse-function key may be labeled sin^-1, cos^-1, or tan^-1; here it returns an angle.",
+        "Inverse sine is not the reciprocal $1/\\sin\\theta$. Before applying an inverse function, check a dimensionless ratio and a valid domain: o/h and a/h must lie strictly between 0 and 1 for these nondegenerate acute triangles, while o/a is positive. Ask for the output in degrees or radians as required. Then obtain the other acute angle by complementing in the same unit."
+      ]
+    },
+    {
+      "heading": "Keep calculator mode and output units consistent",
+      "paragraphs": [
+        "DEG interprets an entered number as degrees; RAD interprets it as radians. For 42 degrees, enter 42 in DEG or the equivalent $7\\pi/30$ in RAD. The numerical sine agrees when the angle and mode agree. Entering 42 unchanged in RAD is a different input angle.",
+        "An inverse-function output also depends on the selected angular unit. A result near 0.524 in RAD is about 30 degrees, not 0.524 degree. Ordinary multiplication and division do not select the right mode for you. Use a familiar check, such as sin(30 degrees) = 1/2, then confirm the actual problem's units."
+      ]
+    },
+    {
+      "heading": "Solve a complete triangle and retain precision",
+      "paragraphs": [
+        "Solving a triangle means finding all sides and all angles consistent with the given data. One angle is already 90 degrees; the other two sum to 90 degrees. Use a direct ratio for each missing side when possible, and verify the result with the Pythagorean theorem using unrounded values.",
+        "Retain full calculator precision between steps. Only the requested final result is rounded. In this lesson, measured side fields accept answers within 0.005 of the stated unit, suitable for rounding to 0.01; measured angle fields accept within 0.05 degree, suitable for rounding to 0.1 degree. Those grading tolerances are not estimates of a real instrument's measurement uncertainty. Exact questions retain radicals."
+      ]
+    },
+    {
+      "heading": "Model elevation from a horizontal baseline",
+      "paragraphs": [
+        "An angle of elevation is measured upward from the observer's horizontal to the line of sight. On level ground, a vertical object and a horizontal baseline form perpendicular legs. If d is horizontal separation and y the rise above the sighting point, $\\tan\\theta=y/d$, giving $y=d\\tan\\theta$.",
+        "The line of sight is the hypotenuse, not the horizontal baseline. Use sine only when that sloping distance is actually given. State assumptions such as a vertical object, level baseline and straight sight line. Draw even a simple labeled sketch or write an equivalent text description before choosing a ratio."
+      ]
+    },
+    {
+      "heading": "Include observer height",
+      "paragraphs": [
+        "A sighting instrument or observer's eye is usually above ground. The opposite leg of the sight triangle measures only the top's height above the eye. When the eye and object's base share a level ground datum, total height is $H=e+d\\tan\\theta$, where e is eye height.",
+        "When H is given and the elevation angle is requested, first subtract e: $\\theta=\\arctan((H-e)/d)$. The acute elevation model requires H greater than e and positive d. An uphill observer may have an additional elevation offset; use actual vertical separation instead of silently assuming level ground."
+      ]
+    },
+    {
+      "heading": "Interpret depression using parallel horizontals",
+      "paragraphs": [
+        "An angle of depression is measured downward from horizontal, not from vertical. The horizontal through an observer and the horizontal through a target are parallel. The line of sight is a transversal, so its depression angle equals the elevation angle measured at the target.",
+        "For height difference y above a level target, $\\tan\\theta=y/d$ gives horizontal distance $d=y/\\tan\\theta$. The angle between the sight line and downward vertical is $90^\\circ-\\theta$. Confusing that complement with the depression angle swaps the two leg roles."
+      ]
+    },
+    {
+      "heading": "Separate horizontal run, vertical rise and sloping length",
+      "paragraphs": [
+        "For a slope of length L at angle theta above horizontal, vertical rise is $L\\sin\\theta$ and horizontal run is $L\\cos\\theta$. These are geometric components. Both must be positive and shorter than L for a strictly acute angle.",
+        "If a vertical height H and a cable's angle with the ground are given, the cable is the hypotenuse: $L=H/\\sin\\theta$. Its ground anchor distance is $H/\\tan\\theta$. Distinguish the angle with horizontal from its complement with vertical. Real ramps, cables and structures have additional design constraints; these exercises model ideal geometry only."
+      ]
+    },
+    {
+      "heading": "Normalize length units before forming ratios",
+      "paragraphs": [
+        "Convert lengths before forming a trigonometric ratio. A rise of 2.4 m over a run of 360 cm means $\\tan\\theta=2.4/3.6=2/3$, not 2.4/360. A dimensional check should leave a dimensionless number as the inverse function's input.",
+        "For shadows on level ground, the vertical object's height is the opposite leg and its horizontal shadow is the adjacent leg for the sun's elevation. Use inverse tangent of height divided by shadow length. A reciprocal quotient corresponds to the complementary acute angle, which is a different requested direction."
+      ]
+    },
+    {
+      "heading": "Audit assumptions and communicate a defensible result",
+      "paragraphs": [
+        "A formula cannot supply missing geometry. A distance measured along unknown sloping ground is not established as a horizontal adjacent leg. The slope also changes the observer's elevation. You need the slope and direction, or separately measured horizontal and vertical separations, before constructing the appropriate right triangle.",
+        "Report the requested quantity, unit and rounding, together with the geometric assumptions that made the calculation valid. Check positive lengths, the longest-side rule, the sum of acute angles, and a Pythagorean or ratio substitution. Practice includes every named variant; the four-question checkpoint samples one critical question from each family and requires all four independently. One form does not examine every example or establish complete course mastery."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Locate the sides from vertex names",
+      "prompt": "ABC is right at A, with AB = 8 cm, AC = 15 cm and BC = 17 cm. Use angle B as the reference.",
+      "steps": [
+        {
+          "math": "8^2+15^2=64+225=289=17^2",
+          "reason": "The lengths are consistent with the marked right angle."
+        },
+        {
+          "math": "h=BC=17,\\qquad o=AC=15,\\qquad a=AB=8",
+          "reason": "BC lies across from A; AC does not touch B; AB is the leg that touches B."
+        }
+      ],
+      "conclusion": "The labels depend on the angle, not on whether a side looks horizontal or vertical."
+    },
+    {
+      "title": "Reject a falsely labeled right triangle",
+      "prompt": "A sketch claims that legs of 6 cm and 8 cm meet at 90 degrees and the opposite side is 11 cm. Can all three exact lengths be correct?",
+      "steps": [
+        {
+          "math": "6^2+8^2=100\\ne121=11^2",
+          "reason": "The squared-length relation required by a right angle fails."
+        },
+        {
+          "math": "h=\\sqrt{6^2+8^2}=10",
+          "reason": "If those two perpendicular legs really are 6 and 8 cm, their hypotenuse must be 10 cm."
+        }
+      ],
+      "conclusion": "At least one length or the right-angle claim is wrong. Do not use the inconsistent diagram as a right-triangle model."
+    },
+    {
+      "title": "Relabel a fixed triangle",
+      "prompt": "ABC is right at A with AB = 5, AC = 12 and BC = 13. Compare angles B and C.",
+      "steps": [
+        {
+          "math": "\\sin B=\\frac{12}{13},\\quad\\cos B=\\frac{5}{13}",
+          "reason": "At B, AC is opposite and AB is adjacent."
+        },
+        {
+          "math": "\\sin C=\\frac{5}{13},\\quad\\cos C=\\frac{12}{13}",
+          "reason": "At C, the two leg roles exchange. BC remains the denominator for both sine and cosine."
+        }
+      ],
+      "conclusion": "Switching the reference angle changes the descriptions, even though no side moved."
+    },
+    {
+      "title": "Shrink a triangle without changing its ratios",
+      "prompt": "A triangle has opposite 15 cm, adjacent 8 cm and hypotenuse 17 cm. Scale it by 1/2.",
+      "steps": [
+        {
+          "math": "o'=\\frac{15}{2},\\quad a'=4,\\quad h'=\\frac{17}{2}",
+          "reason": "Every length receives the same positive factor."
+        },
+        {
+          "math": "\\frac{o'}{h'}=\\frac{15/2}{17/2}=\\frac{15}{17},\\qquad\\frac{o'}{a'}=\\frac{15/2}{4}=\\frac{15}{8}",
+          "reason": "The common factor cancels from each ratio."
+        }
+      ],
+      "conclusion": "The triangle is smaller but its acute angles, sine, cosine and tangent remain unchanged."
+    },
+    {
+      "title": "Evaluate all three ratios",
+      "prompt": "Relative to the reference angle, a right triangle has opposite 7, adjacent 24 and hypotenuse 25 in a common length unit.",
+      "steps": [
+        {
+          "math": "\\sin\\theta=\\frac7{25},\\qquad\\cos\\theta=\\frac{24}{25}",
+          "reason": "Sine uses the opposite leg; cosine uses the adjacent leg."
+        },
+        {
+          "math": "\\tan\\theta=\\frac7{24}=\\frac{7/25}{24/25}",
+          "reason": "Tangent compares the legs and also equals sine divided by cosine."
+        }
+      ],
+      "conclusion": "The three ratios are dimensionless. Reversing a fraction changes the quantity."
+    },
+    {
+      "title": "A tangent greater than one",
+      "prompt": "Use opposite 15, adjacent 8 and hypotenuse 17 to test the claim that every acute trigonometric ratio is less than one.",
+      "steps": [
+        {
+          "math": "\\sin\\theta=\\frac{15}{17}<1,\\qquad\\cos\\theta=\\frac8{17}<1",
+          "reason": "Both legs are shorter than the hypotenuse."
+        },
+        {
+          "math": "\\tan\\theta=\\frac{15}{8}>1",
+          "reason": "The opposite leg is longer than the adjacent leg."
+        }
+      ],
+      "conclusion": "The claim fails for tangent. This acute angle is greater than 45 degrees, consistent with the leg comparison."
+    },
+    {
+      "title": "Use a complementary angle without a calculator",
+      "prompt": "Theta and phi are complementary acute angles. If sin(theta) = 8/17, find cos(phi).",
+      "steps": [
+        {
+          "math": "\\phi=90^\\circ-\\theta",
+          "reason": "The two angles fill the part of the triangle not occupied by its right angle."
+        },
+        {
+          "math": "\\cos\\phi=\\cos(90^\\circ-\\theta)=\\sin\\theta=\\frac8{17}",
+          "reason": "Both expressions name the same leg divided by the same hypotenuse."
+        }
+      ],
+      "conclusion": "No numerical angle is needed. The complementary relationship is sufficient."
+    },
+    {
+      "title": "Complement an angle in radians",
+      "prompt": "Find the complement of pi/9 radians and rewrite its sine as a cosine.",
+      "steps": [
+        {
+          "math": "\\phi=\\frac\\pi2-\\frac\\pi9=\\frac{7\\pi}{18}",
+          "reason": "Use a half-pi right angle and a common denominator."
+        },
+        {
+          "math": "\\sin\\left(\\frac\\pi9\\right)=\\cos\\left(\\frac{7\\pi}{18}\\right)",
+          "reason": "The sine of one acute angle equals the cosine of its complement."
+        }
+      ],
+      "conclusion": "Subtracting pi/9 from the bare degree number 90 would mix units."
+    },
+    {
+      "title": "Derive a square diagonal",
+      "prompt": "A square has side 6 cm. Find its diagonal and the angles it makes with the sides.",
+      "steps": [
+        {
+          "math": "h^2=6^2+6^2=72,\\qquad h=6\\sqrt2",
+          "reason": "The diagonal is the hypotenuse of an isosceles right triangle; length takes the positive root."
+        },
+        {
+          "math": "\\theta=\\phi,\\qquad\\theta+\\phi=90^\\circ\\implies\\theta=\\phi=45^\\circ",
+          "reason": "Equal legs have equal opposite angles."
+        }
+      ],
+      "conclusion": "The diagonal is exactly 6*sqrt(2) cm, with two 45-degree acute angles."
+    },
+    {
+      "title": "Recover equal legs from a hypotenuse",
+      "prompt": "A 45-45-90 triangle has hypotenuse 10 cm. Find each leg exactly.",
+      "steps": [
+        {
+          "math": "s\\sqrt2=10\\implies s=\\frac{10}{\\sqrt2}=5\\sqrt2",
+          "reason": "Divide by the hypotenuse-to-leg factor."
+        },
+        {
+          "math": "(5\\sqrt2)^2+(5\\sqrt2)^2=50+50=100=10^2",
+          "reason": "The two recovered legs satisfy the Pythagorean theorem."
+        }
+      ],
+      "conclusion": "Each leg is 5*sqrt(2) cm. Multiplying 10 by sqrt(2) would wrongly make a leg longer than the hypotenuse."
+    },
+    {
+      "title": "Derive the altitude of an equilateral triangle",
+      "prompt": "An equilateral triangle has side 14 cm. Draw its altitude.",
+      "steps": [
+        {
+          "math": "a^2=14^2-7^2=147\\implies a=7\\sqrt3",
+          "reason": "The altitude bisects the base, leaving a short leg of 7 cm and hypotenuse of 14 cm."
+        },
+        {
+          "math": "30^\\circ+60^\\circ+90^\\circ=180^\\circ",
+          "reason": "The altitude bisects the apex angle, while each base angle remains 60 degrees."
+        }
+      ],
+      "conclusion": "Each half has sides 7, 7*sqrt(3), 14 cm opposite 30, 60, 90 degrees."
+    },
+    {
+      "title": "Start with the long special-triangle leg",
+      "prompt": "The long leg of a 30-60-90 triangle is 9 cm. Find its short leg and hypotenuse exactly.",
+      "steps": [
+        {
+          "math": "s\\sqrt3=9\\implies s=\\frac9{\\sqrt3}=3\\sqrt3",
+          "reason": "The given side is opposite 60 degrees, not the hypotenuse."
+        },
+        {
+          "math": "h=2s=6\\sqrt3,\\qquad(3\\sqrt3)^2+9^2=108=(6\\sqrt3)^2",
+          "reason": "Recover the hypotenuse using the same scale and verify the lengths."
+        }
+      ],
+      "conclusion": "The short leg is 3*sqrt(3) cm and hypotenuse is 6*sqrt(3) cm."
+    },
+    {
+      "title": "Evaluate special values in radians",
+      "prompt": "Find sin(pi/6), cos(pi/3) and tan(pi/4) exactly.",
+      "steps": [
+        {
+          "math": "\\sin\\frac\\pi6=\\frac12,\\qquad\\cos\\frac\\pi3=\\frac12",
+          "reason": "At 30 degrees sine uses the short leg; at 60 degrees cosine uses that same short leg."
+        },
+        {
+          "math": "\\tan\\frac\\pi4=\\frac11=1",
+          "reason": "At 45 degrees the two legs are equal."
+        }
+      ],
+      "conclusion": "Radian labels name the same special angles as 30, 60 and 45 degrees."
+    },
+    {
+      "title": "Compare exact tangents at thirty and sixty degrees",
+      "prompt": "Use a 1, sqrt(3), 2 triangle to evaluate tan(30 degrees) and tan(60 degrees).",
+      "steps": [
+        {
+          "math": "\\tan30^\\circ=\\frac1{\\sqrt3}=\\frac{\\sqrt3}{3}",
+          "reason": "The short leg is opposite the 30-degree angle. Rationalizing does not change the value."
+        },
+        {
+          "math": "\\tan60^\\circ=\\frac{\\sqrt3}{1}=\\sqrt3",
+          "reason": "Switching to the complementary angle reverses the two leg roles."
+        }
+      ],
+      "conclusion": "The two positive tangent values are reciprocals. Rounded values do not replace these exact answers."
+    },
+    {
+      "title": "Choose the direct ratio before computing",
+      "prompt": "An acute angle is 28 degrees and the adjacent leg is 11 cm. Which equation finds the opposite leg x directly?",
+      "steps": [
+        {
+          "math": "\\tan28^\\circ=\\frac{x}{11}",
+          "reason": "Tangent contains exactly the requested opposite leg and the known adjacent leg."
+        },
+        {
+          "math": "x=11\\tan28^\\circ",
+          "reason": "Multiply by the known denominator to isolate x."
+        }
+      ],
+      "conclusion": "A sine equation would introduce an unknown hypotenuse and require an extra step."
+    },
+    {
+      "title": "Find opposite from hypotenuse",
+      "prompt": "A right triangle has reference angle 35 degrees and hypotenuse 18 cm. Find its opposite to the nearest 0.01 cm.",
+      "steps": [
+        {
+          "math": "\\sin35^\\circ=\\frac{o}{18}",
+          "reason": "Use the ratio containing the known and unknown sides relative to the stated angle."
+        },
+        {
+          "math": "o=18\\sin35^\\circ\\approx10.3244",
+          "reason": "Multiply the ratio equation by the known denominator."
+        },
+        {
+          "math": "o\\approx10.32\\text{ cm}",
+          "reason": "Round only the final length; the calculator must interpret 35 in degree mode."
+        }
+      ],
+      "conclusion": "The requested opposite is approximately 10.32 cm. Check its role against the longest-side rule."
+    },
+    {
+      "title": "Find adjacent from hypotenuse",
+      "prompt": "A right triangle has reference angle 35 degrees and hypotenuse 18 cm. Find its adjacent to the nearest 0.01 cm.",
+      "steps": [
+        {
+          "math": "\\cos35^\\circ=\\frac{a}{18}",
+          "reason": "Use the ratio containing the known and unknown sides relative to the stated angle."
+        },
+        {
+          "math": "a=18\\cos35^\\circ\\approx14.7447",
+          "reason": "Multiply the ratio equation by the known denominator."
+        },
+        {
+          "math": "a\\approx14.74\\text{ cm}",
+          "reason": "Round only the final length; the calculator must interpret 35 in degree mode."
+        }
+      ],
+      "conclusion": "The requested adjacent is approximately 14.74 cm. Check its role against the longest-side rule."
+    },
+    {
+      "title": "Find hypotenuse from opposite",
+      "prompt": "A right triangle has reference angle 35 degrees and opposite 9 cm. Find its hypotenuse to the nearest 0.01 cm.",
+      "steps": [
+        {
+          "math": "\\sin35^\\circ=\\frac{9}{h}",
+          "reason": "Use the ratio containing the known and unknown sides relative to the stated angle."
+        },
+        {
+          "math": "h=\\frac{9}{\\sin35^\\circ}\\approx15.6910",
+          "reason": "Multiply by the unknown first, then divide by the positive function value."
+        },
+        {
+          "math": "h\\approx15.69\\text{ cm}",
+          "reason": "Round only the final length; the calculator must interpret 35 in degree mode."
+        }
+      ],
+      "conclusion": "The requested hypotenuse is approximately 15.69 cm. Check its role against the longest-side rule."
+    },
+    {
+      "title": "Find hypotenuse from adjacent",
+      "prompt": "A right triangle has reference angle 35 degrees and adjacent 12 cm. Find its hypotenuse to the nearest 0.01 cm.",
+      "steps": [
+        {
+          "math": "\\cos35^\\circ=\\frac{12}{h}",
+          "reason": "Use the ratio containing the known and unknown sides relative to the stated angle."
+        },
+        {
+          "math": "h=\\frac{12}{\\cos35^\\circ}\\approx14.6493",
+          "reason": "Multiply by the unknown first, then divide by the positive function value."
+        },
+        {
+          "math": "h\\approx14.65\\text{ cm}",
+          "reason": "Round only the final length; the calculator must interpret 35 in degree mode."
+        }
+      ],
+      "conclusion": "The requested hypotenuse is approximately 14.65 cm. Check its role against the longest-side rule."
+    },
+    {
+      "title": "Find opposite from adjacent",
+      "prompt": "A right triangle has reference angle 35 degrees and adjacent 16 cm. Find its opposite to the nearest 0.01 cm.",
+      "steps": [
+        {
+          "math": "\\tan35^\\circ=\\frac{o}{16}",
+          "reason": "Use the ratio containing the known and unknown sides relative to the stated angle."
+        },
+        {
+          "math": "o=16\\tan35^\\circ\\approx11.2033",
+          "reason": "Multiply the ratio equation by the known denominator."
+        },
+        {
+          "math": "o\\approx11.20\\text{ cm}",
+          "reason": "Round only the final length; the calculator must interpret 35 in degree mode."
+        }
+      ],
+      "conclusion": "The requested opposite is approximately 11.20 cm. Check its role against the longest-side rule."
+    },
+    {
+      "title": "Find adjacent from opposite",
+      "prompt": "A right triangle has reference angle 35 degrees and opposite 13 cm. Find its adjacent to the nearest 0.01 cm.",
+      "steps": [
+        {
+          "math": "\\tan35^\\circ=\\frac{13}{a}",
+          "reason": "Use the ratio containing the known and unknown sides relative to the stated angle."
+        },
+        {
+          "math": "a=\\frac{13}{\\tan35^\\circ}\\approx18.5659",
+          "reason": "Multiply by the unknown first, then divide by the positive function value."
+        },
+        {
+          "math": "a\\approx18.57\\text{ cm}",
+          "reason": "Round only the final length; the calculator must interpret 35 in degree mode."
+        }
+      ],
+      "conclusion": "The requested adjacent is approximately 18.57 cm. Check its role against the longest-side rule."
+    },
+    {
+      "title": "Recover an angle with inverse sine",
+      "prompt": "A chosen acute angle has opposite 7 cm and hypotenuse 14 cm. Find it and its complement.",
+      "steps": [
+        {
+          "math": "\\sin\\theta=\\frac7{14}=\\frac12\\implies\\theta=\\arcsin\\frac12=30^\\circ",
+          "reason": "The angle is strictly acute; inverse sine in degree-output mode gives 30 degrees."
+        },
+        {
+          "math": "\\phi=90^\\circ-30^\\circ=60^\\circ",
+          "reason": "Subtract in the same angular unit."
+        }
+      ],
+      "conclusion": "The inverse function returns an angle; the reciprocal of 1/2 would be 2, which is not that angle."
+    },
+    {
+      "title": "Recover an angle with inverse cosine",
+      "prompt": "The adjacent leg is 5 cm and hypotenuse 13 cm. Find the reference angle to 0.1 degree.",
+      "steps": [
+        {
+          "math": "\\cos\\theta=\\frac5{13}",
+          "reason": "Cosine matches the given adjacent leg and hypotenuse."
+        },
+        {
+          "math": "\\theta=\\arccos\\left(\\frac5{13}\\right)\\approx67.3801^\\circ\\approx67.4^\\circ",
+          "reason": "The ratio is between zero and one and the inverse cosine output is requested in degrees."
+        }
+      ],
+      "conclusion": "The relatively short adjacent leg is consistent with a reference angle greater than 45 degrees."
+    },
+    {
+      "title": "Recover an angle with inverse tangent",
+      "prompt": "The opposite and adjacent legs are 3 m and 8 m. Find both acute angles.",
+      "steps": [
+        {
+          "math": "\\theta=\\arctan\\left(\\frac38\\right)\\approx20.5560^\\circ",
+          "reason": "The two legs provide a tangent ratio without first finding the hypotenuse."
+        },
+        {
+          "math": "\\phi=90^\\circ-\\theta\\approx69.4440^\\circ",
+          "reason": "Use the unrounded reference angle before rounding both final results to 0.1 degree."
+        }
+      ],
+      "conclusion": "The angles are approximately 20.6 and 69.4 degrees. They are not equal merely because both belong to a right triangle."
+    },
+    {
+      "title": "Enter one angle in two calculator modes",
+      "prompt": "Evaluate sine of 42 degrees, using both DEG and RAD correctly.",
+      "steps": [
+        {
+          "math": "42^\\circ\\cdot\\frac\\pi{180^\\circ}=\\frac{7\\pi}{30}\\text{ rad}",
+          "reason": "Convert the input when changing from degrees to radians."
+        },
+        {
+          "math": "\\sin(42^\\circ)=\\sin\\left(\\frac{7\\pi}{30}\\right)\\approx0.669131",
+          "reason": "Enter 42 in DEG or 7*pi/30 in RAD. The output ratio is dimensionless."
+        }
+      ],
+      "conclusion": "Keeping the unchanged number 42 while selecting RAD supplies a different angle."
+    },
+    {
+      "title": "Solve a complete measured triangle",
+      "prompt": "The hypotenuse is 23 cm and reference angle 38 degrees. Find both legs and the other acute angle.",
+      "steps": [
+        {
+          "math": "o=23\\sin38^\\circ\\approx14.1602,\\quad a=23\\cos38^\\circ\\approx18.1242",
+          "reason": "Use the given hypotenuse directly in each calculation."
+        },
+        {
+          "math": "\\phi=90^\\circ-38^\\circ=52^\\circ",
+          "reason": "The third angle is already the right angle."
+        },
+        {
+          "math": "o^2+a^2=23^2(\\sin^2 38^\\circ+\\cos^2 38^\\circ)=529",
+          "reason": "The identity follows from the Pythagorean theorem after division by the hypotenuse squared. Use unrounded values for a numerical check."
+        }
+      ],
+      "conclusion": "Opposite ≈ 14.16 cm, adjacent ≈ 18.12 cm, and the other acute angle is 52 degrees."
+    },
+    {
+      "title": "Keep an intermediate hypotenuse unrounded",
+      "prompt": "The reference angle is 37 degrees and its opposite leg is 11 cm. Find the adjacent leg by a two-step method and check it directly.",
+      "steps": [
+        {
+          "math": "h=\\frac{11}{\\sin37^\\circ}\\approx18.2780",
+          "reason": "Store the full calculator result, not the displayed four-decimal illustration."
+        },
+        {
+          "math": "a=h\\cos37^\\circ=\\frac{11\\cos37^\\circ}{\\sin37^\\circ}=\\frac{11}{\\tan37^\\circ}\\approx14.5975",
+          "reason": "The two-step and direct tangent expressions agree algebraically."
+        },
+        {
+          "math": "a\\approx14.60\\text{ cm}",
+          "reason": "Only now round the requested final side."
+        }
+      ],
+      "conclusion": "Rounding h to a whole centimeter would unnecessarily change the next computation. The direct tangent route avoids that intermediate side entirely."
+    },
+    {
+      "title": "Measure a vertical rise from ground level",
+      "prompt": "An instrument at base level is 19 m horizontally from a vertical marker. Its elevation angle to the top is 41 degrees.",
+      "steps": [
+        {
+          "math": "\\tan41^\\circ=\\frac{H}{19}",
+          "reason": "The baseline is adjacent and the vertical height is opposite."
+        },
+        {
+          "math": "H=19\\tan41^\\circ\\approx16.5164\\text{ m}",
+          "reason": "The sighting point and marker base are at the same elevation."
+        }
+      ],
+      "conclusion": "The ideal height is approximately 16.52 m, assuming a level baseline and vertical marker."
+    },
+    {
+      "title": "Add eye height to the observed rise",
+      "prompt": "An eye is 1.65 m above level ground, 24 m horizontally from a vertical pole. The pole top has elevation 32 degrees.",
+      "steps": [
+        {
+          "math": "y=24\\tan32^\\circ\\approx14.9969",
+          "reason": "The triangle gives rise above the eye, not total pole height."
+        },
+        {
+          "math": "H=1.65+y\\approx16.6469\\text{ m}",
+          "reason": "Add the eye height because its ground datum matches the pole base."
+        }
+      ],
+      "conclusion": "Total pole height is approximately 16.65 m. Omitting 1.65 m gives the wrong requested quantity."
+    },
+    {
+      "title": "Find elevation when total height is known",
+      "prompt": "An 18 m pole stands 30 m horizontally from an eye at height 1.5 m on the same level ground. Find the elevation angle.",
+      "steps": [
+        {
+          "math": "y=18-1.5=16.5\\text{ m}",
+          "reason": "Subtract the eye height to obtain the actual opposite leg."
+        },
+        {
+          "math": "\\theta=\\arctan\\left(\\frac{16.5}{30}\\right)\\approx28.8108^\\circ",
+          "reason": "The tangent ratio uses vertical separation over horizontal separation."
+        }
+      ],
+      "conclusion": "The elevation is approximately 28.8 degrees."
+    },
+    {
+      "title": "Use a depression angle with the correct horizontal",
+      "prompt": "An observer is 26 m above a level target. The target is sighted at 38 degrees below horizontal. Find horizontal range and the angle from downward vertical.",
+      "steps": [
+        {
+          "math": "\\tan38^\\circ=\\frac{26}{d}\\implies d=\\frac{26}{\\tan38^\\circ}\\approx33.2785",
+          "reason": "Parallel horizontals make the target's elevation angle equal to the observer's depression angle."
+        },
+        {
+          "math": "\\beta=90^\\circ-38^\\circ=52^\\circ",
+          "reason": "The vertical direction is perpendicular to the observer's horizontal."
+        }
+      ],
+      "conclusion": "Horizontal range is approximately 33.28 m. The depression angle is 38 degrees; 52 degrees is the separate angle from vertical."
+    },
+    {
+      "title": "Resolve a ramp into rise and run",
+      "prompt": "An ideal ramp is 6 m along its slope, at 8 degrees above horizontal. Find rise and horizontal run.",
+      "steps": [
+        {
+          "math": "y=6\\sin8^\\circ\\approx0.8350\\text{ m}",
+          "reason": "Rise is opposite the horizontal reference angle."
+        },
+        {
+          "math": "d=6\\cos8^\\circ\\approx5.9416\\text{ m}",
+          "reason": "Run is adjacent and is slightly shorter than the sloping ramp."
+        }
+      ],
+      "conclusion": "Rise ≈ 0.84 m; run ≈ 5.94 m. These values describe geometry only."
+    },
+    {
+      "title": "Separate cable length from anchor distance",
+      "prompt": "An ideal straight cable reaches the top of a 12 m vertical mast at 55 degrees to level ground. Find its length and horizontal anchor distance.",
+      "steps": [
+        {
+          "math": "L=\\frac{12}{\\sin55^\\circ}\\approx14.6493\\text{ m}",
+          "reason": "The cable is the hypotenuse and the mast is opposite the ground angle."
+        },
+        {
+          "math": "d=\\frac{12}{\\tan55^\\circ}\\approx8.4025\\text{ m}",
+          "reason": "The ground distance is the adjacent leg, a different segment from the cable."
+        }
+      ],
+      "conclusion": "Cable ≈ 14.65 m and horizontal distance ≈ 8.40 m, before any physical allowances."
+    },
+    {
+      "title": "Cancel units before recovering an angle",
+      "prompt": "A right triangle has rise 2.4 m and horizontal run 360 cm. Find the elevation angle.",
+      "steps": [
+        {
+          "math": "360\\text{ cm}=3.6\\text{ m},\\qquad\\tan\\theta=\\frac{2.4\\text{ m}}{3.6\\text{ m}}=\\frac23",
+          "reason": "Use equal units so the ratio is dimensionless."
+        },
+        {
+          "math": "\\theta=\\arctan\\frac23\\approx33.6901^\\circ\\approx33.7^\\circ",
+          "reason": "Ask for an inverse-tangent output in degrees."
+        }
+      ],
+      "conclusion": "The unmatched-number quotient 2.4/360 would be one hundredth of the correct tangent."
+    },
+    {
+      "title": "Read the sun angle from a shadow",
+      "prompt": "A 4 m vertical pole casts a 7 m horizontal shadow on level ground. Find the sun's elevation.",
+      "steps": [
+        {
+          "math": "\\tan\\theta=\\frac47",
+          "reason": "The pole is opposite the sun angle at the shadow tip; the shadow is adjacent."
+        },
+        {
+          "math": "\\theta=\\arctan\\frac47\\approx29.7449^\\circ",
+          "reason": "The shadow is not the hypotenuse, so inverse sine is inappropriate for this ratio."
+        }
+      ],
+      "conclusion": "The elevation is approximately 29.7 degrees. Using 7/4 with inverse tangent would return its complement."
+    },
+    {
+      "title": "Detect an underdetermined survey",
+      "prompt": "A pole is 10 m high. An observer is 20 m from its base measured along a slope of unknown inclination. Explain why arctan(10/20) does not yet give a justified elevation angle.",
+      "steps": [
+        {
+          "math": "d=20\\cos\\alpha,\\qquad e=20\\sin\\alpha",
+          "reason": "If alpha is the signed ground angle from the pole base toward the observer, these are horizontal and vertical separations. The slope angle is missing."
+        },
+        {
+          "math": "\\tan\\theta=\\frac{10-e}{d}",
+          "reason": "When the top is above the observer and d is positive, elevation depends on both separations, not merely the sloping distance."
+        }
+      ],
+      "conclusion": "Determine the slope and its direction, or directly measure the horizontal and vertical separations. More decimal places in 10 and 20 cannot repair missing geometry."
+    }
+  ],
+  "guided": {
+    "title": "Measure above eye level with exact ratios",
+    "setup": "An observer at B sights the top C of a vertical mast at an elevation of 30 degrees. A is on the mast at the observer's eye level, 3/2 m above its base. The horizontal separation AB is 6*sqrt(3) m. ABC is right at A, with AC the rise above the eye and BC the sight line. Find the rise, total mast height, sight-line length and angle at C.",
+    "before": [
+      "Mark the 30-degree angle at B and keep the right angle at A.",
+      "The horizontal separation is an adjacent leg. The special-triangle pattern opposite 30, 60 and 90 degrees is s, s*sqrt(3), 2s.",
+      "The total mast height includes the 3/2 m below point A. That part is outside triangle ABC."
+    ],
+    "question": {
+      "id": "guided-right-triangle",
+      "familyId": "mth-right-model",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m06-l02",
+      "category": "application",
+      "critical": false,
+      "prompt": "Complete the exact calculation. Keep the rise above the eye separate from the total height, and use angle B as the reference.",
+      "figure": {
+        "kind": "right-triangle",
+        "title": "Sight triangle above eye level",
+        "angleAt": "B",
+        "AB": "$6\\sqrt{3}$ m, horizontal",
+        "AC": "Unknown rise above the eye",
+        "BC": "Unknown line of sight"
+      },
+      "parameters": {
+        "angle": 30,
+        "eye": 1.5,
+        "adjacentCoefficient": 6
+      },
+      "fields": [
+        {
+          "id": "opposite",
+          "kind": "choice",
+          "label": "Opposite side at B",
+          "correct": "ac",
+          "options": [
+            {
+              "id": "ab",
+              "label": "AB",
+              "feedback": "AB touches B and is the adjacent leg."
+            },
+            {
+              "id": "ac",
+              "label": "AC",
+              "feedback": "AC is across from B and measures rise above the eye."
+            },
+            {
+              "id": "bc",
+              "label": "BC",
+              "feedback": "BC is the hypotenuse."
+            }
+          ]
+        },
+        {
+          "id": "function",
+          "kind": "choice",
+          "label": "Function relating rise and horizontal separation",
+          "correct": "tan",
+          "options": [
+            {
+              "id": "sin",
+              "label": "sine",
+              "feedback": "Sine would require the hypotenuse."
+            },
+            {
+              "id": "cos",
+              "label": "cosine",
+              "feedback": "Cosine relates horizontal separation to the hypotenuse."
+            },
+            {
+              "id": "tan",
+              "label": "tangent",
+              "feedback": "Tangent relates the opposite rise to the adjacent horizontal separation."
+            }
+          ]
+        },
+        {
+          "id": "tangent",
+          "kind": "exact",
+          "label": "Exact tangent of 30 degrees",
+          "expected": "sqrt(3)/3",
+          "unit": "",
+          "help": "Keep the result exact. Use fractions and sqrt(number); equivalent expressions are accepted."
+        },
+        {
+          "id": "rise",
+          "kind": "exact",
+          "label": "Rise AC above the eye",
+          "expected": "6",
+          "unit": "m",
+          "help": "Keep the result exact. Use fractions and sqrt(number); equivalent expressions are accepted."
+        },
+        {
+          "id": "height",
+          "kind": "exact",
+          "label": "Total mast height",
+          "expected": "15/2",
+          "unit": "m",
+          "help": "Keep the result exact. Use fractions and sqrt(number); equivalent expressions are accepted."
+        },
+        {
+          "id": "sight",
+          "kind": "exact",
+          "label": "Sight-line length BC",
+          "expected": "12",
+          "unit": "m",
+          "help": "Keep the result exact. Use fractions and sqrt(number); equivalent expressions are accepted."
+        },
+        {
+          "id": "other",
+          "kind": "exact",
+          "label": "Angle at C",
+          "expected": "60",
+          "unit": "degrees",
+          "help": "Keep the result exact. Use fractions and sqrt(number); equivalent expressions are accepted."
+        },
+        {
+          "id": "premise",
+          "kind": "choice",
+          "label": "Premise supporting this height model",
+          "correct": "level",
+          "options": [
+            {
+              "id": "level",
+              "label": "The mast is vertical and the eye's ground datum matches the mast base",
+              "feedback": "This makes AB horizontal and permits adding the stated eye height."
+            },
+            {
+              "id": "slope",
+              "label": "The baseline may have any unknown slope",
+              "feedback": "An unknown slope changes both horizontal separation and relative elevation."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "AC is opposite B. Use tangent with AB, then add the eye height.",
+        "tan(30 degrees) = 1/sqrt(3), so AC = 6*sqrt(3)/sqrt(3).",
+        "AC = 6 m, total height = 15/2 m, BC = 12 m, and angle C = 60 degrees."
+      ],
+      "explanation": [
+        "The reference angle at B makes AC opposite and AB adjacent.",
+        "$AC=6\\sqrt3\\tan30^\\circ=6$ m and $H=6+3/2=15/2$ m.",
+        "$BC=AC/\\sin30^\\circ=12$ m and $C=90^\\circ-30^\\circ=60^\\circ$.",
+        "The baseline and the mast must be perpendicular, with the eye height measured from the same level datum as the base."
+      ],
+      "answerSummary": "AC; tangent; sqrt(3)/3; rise 6 m; total height 15/2 m; sight line 12 m; angle C 60 degrees; level-ground and vertical-mast premise."
+    },
+    "after": "Explain why 6 m and 15/2 m answer different questions. This guided example supports learning; independent objective evidence comes from the checkpoint."
+  },
+  "interaction": {
+    "kind": "right-triangle-lab",
+    "prompt": "Predict side roles before calculating. Compare both acute angles in a fixed triangle, then scale every side and explain why the ratios stay unchanged. A text description and tables carry the same geometry as the schematic.",
+    "cases": [
+      {
+        "title": "A longer opposite leg",
+        "AB": "8",
+        "AC": "15",
+        "BC": "17",
+        "angleAt": "B",
+        "scale": "2"
+      },
+      {
+        "title": "Switch to angle C and shrink",
+        "AB": "5",
+        "AC": "12",
+        "BC": "13",
+        "angleAt": "C",
+        "scale": "1/2"
+      },
+      {
+        "title": "Equal legs and a radical hypotenuse",
+        "AB": "4",
+        "AC": "4",
+        "BC": "4*sqrt(2)",
+        "angleAt": "B",
+        "scale": "3"
+      },
+      {
+        "title": "Thirty degrees at B",
+        "AB": "6*sqrt(3)",
+        "AC": "6",
+        "BC": "12",
+        "angleAt": "B",
+        "scale": "3/2"
+      },
+      {
+        "title": "Thirty degrees at C",
+        "AB": "6",
+        "AC": "6*sqrt(3)",
+        "BC": "12",
+        "angleAt": "C",
+        "scale": "2/3"
+      },
+      {
+        "title": "Fractional lengths and a small scale",
+        "AB": "3/2",
+        "AC": "2",
+        "BC": "5/2",
+        "angleAt": "C",
+        "scale": "1/10"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "labels"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "sine"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "cosine"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "tangent"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "complement"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "scale"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "validity"
+    },
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "range"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "derive-45"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "derive-30"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "exact-sin"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "exact-cos"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "exact-tan"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "missing-45"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "missing-30"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "opposite-hyp"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "adjacent-hyp"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "hyp-opposite"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "hyp-adjacent"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "opposite-adjacent"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "adjacent-opposite"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "angle-sine"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "angle-cosine"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "angle-tangent"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "complete"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "mode"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "rounding"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "elevation"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "eye-height"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "depression"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "ramp"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "cable"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "shadow"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "mixed-units"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "assumptions"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "mixed"
+    }
+  ],
+  "summary": [
+    "Identify the right angle and reference acute angle before labeling sides. The hypotenuse is fixed; opposite and adjacent exchange when the acute reference angle changes.",
+    "Sine is opposite/hypotenuse, cosine adjacent/hypotenuse, and tangent opposite/adjacent. Equal length units cancel, and similarity preserves these ratios.",
+    "Complementary acute angles sum to 90 degrees or pi/2 radians. Their sine and cosine exchange. Acute sine and cosine lie between zero and one; tangent is positive and can exceed one.",
+    "Derive 45-45-90 sides from a square and 30-60-90 sides from a bisected equilateral triangle. Keep special-angle radical values exact.",
+    "Choose a ratio containing the known and unknown side, write the equation, and rearrange it. Unknown denominators generally require division by the function value.",
+    "Inverse sine, cosine and tangent recover acute angles from valid dimensionless ratios. They are not reciprocals. Match calculator input and output modes to the stated angular unit.",
+    "Retain intermediate precision, round only the requested final measurement, and check positive lengths, angle sums and the Pythagorean relation.",
+    "Elevation and depression are measured from horizontal. Use actual horizontal and vertical separations; include observer height and distinguish sloping distance from run.",
+    "Each checkpoint samples four critical families and requires all four questions independently. Practice covers 35 named variants; one checkpoint does not test every variant."
+  ],
+  "retrieval": "After a delay, relabel a fixed triangle from both acute angles and derive all three ratios. Explain similarity and complementary angles. Rebuild both special-triangle patterns and all nine special values without a table. Solve all six missing-side arrangements and one angle with each inverse function. Repeat one calculation in both calculator modes, then solve a complete triangle without early rounding. Model an elevation with eye height, a depression from horizontal, a slope and a shadow. Convert mixed units before taking a ratio. Finally identify the missing geometry in an unknown-slope survey. Use fresh values and explain each unit and assumption.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.2: Right Triangle Trigonometry",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry",
+      "purpose": "Optional reading on right-triangle ratios, special angles, complementary angles and applications. This lesson develops sine, cosine and tangent; the remaining reciprocal functions are covered later in this module."
+    }
+  ]
+}
