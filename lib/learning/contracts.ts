@@ -50,6 +50,7 @@ import { rotationLabCaseSchema } from "./rotation-investigation";
 import { phs232HarmonicActivitySchema } from "./phs-232-harmonic";
 import { phs232OscillatorEnergyActivitySchema } from "./phs-232-oscillator-energy";
 import { phs232DampingActivitySchema } from "./phs-232-damping";
+import { phs232DrivenActivitySchema } from "./phs-232-driven";
 
 const id = z.string().regex(/^[a-z0-9][a-z0-9-]*$/).max(100);
 const text = z.string().min(1).max(6000);
@@ -161,6 +162,7 @@ export const lessonSchema = z.object({
     phs232HarmonicActivitySchema,
     phs232OscillatorEnergyActivitySchema,
     phs232DampingActivitySchema,
+    phs232DrivenActivitySchema,
     z.object({kind:z.literal("model-lab"),prompt:text,cases:z.array(modelLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("log-rewrite-lab"),prompt:text,cases:z.array(logRewriteLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("logarithm-lab"),prompt:text,cases:z.array(logarithmLabCaseSchema).min(3).max(6)}).strict(),
