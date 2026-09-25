@@ -1,0 +1,325 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l02",
+  "status": "authored",
+  "objective": "Choose a trigonometric ratio to solve a right triangle and interpret the solution with the correct reference angle and units.",
+  "independentSubjectReview": "not yet performed",
+  "coverage": [
+    {
+      "topic": "Identify the right angle before naming sides",
+      "instruction": [
+        "Identify the right angle before naming sides"
+      ],
+      "examples": [
+        "Locate the sides from vertex names",
+        "Reject a falsely labeled right triangle"
+      ],
+      "practice": [
+        "mth-right-ratios:labels",
+        "mth-right-ratios:validity"
+      ],
+      "independentCheck": "mth-right-ratios:mixed",
+      "retrieval": "Without a diagram, identify the hypotenuse from a named right angle and test a new set of exact lengths with the Pythagorean converse."
+    },
+    {
+      "topic": "Change the reference angle without changing the triangle",
+      "instruction": [
+        "Change the reference angle without changing the triangle"
+      ],
+      "examples": [
+        "Relabel a fixed triangle"
+      ],
+      "practice": [
+        "mth-right-ratios:labels"
+      ],
+      "independentCheck": "mth-right-ratios:mixed",
+      "retrieval": "Relabel one fixed triangle from each acute angle, explaining why both leg roles swap while the hypotenuse stays fixed."
+    },
+    {
+      "topic": "Use similarity to explain invariant ratios",
+      "instruction": [
+        "Use similarity to explain invariant ratios"
+      ],
+      "examples": [
+        "Shrink a triangle without changing its ratios"
+      ],
+      "practice": [
+        "mth-right-ratios:scale"
+      ],
+      "independentCheck": "mth-right-ratios:mixed",
+      "retrieval": "Draw similar right triangles at two different scales. Prove one ratio is unchanged by cancelling the common positive factor."
+    },
+    {
+      "topic": "Define sine, cosine and tangent",
+      "instruction": [
+        "Define sine, cosine and tangent"
+      ],
+      "examples": [
+        "Evaluate all three ratios"
+      ],
+      "practice": [
+        "mth-right-ratios:sine",
+        "mth-right-ratios:cosine",
+        "mth-right-ratios:tangent"
+      ],
+      "independentCheck": "mth-right-ratios:mixed",
+      "retrieval": "Reconstruct sine, cosine and tangent from opposite, adjacent and hypotenuse, then evaluate all three from a fresh integer triple."
+    },
+    {
+      "topic": "Check the range and units of a ratio",
+      "instruction": [
+        "Check the range and units of a ratio"
+      ],
+      "examples": [
+        "A tangent greater than one"
+      ],
+      "practice": [
+        "mth-right-ratios:range"
+      ],
+      "independentCheck": "mth-right-ratios:mixed",
+      "retrieval": "Explain why tangent may exceed one while acute sine and cosine cannot, and show why a side ratio has no length unit."
+    },
+    {
+      "topic": "Relate complementary acute angles",
+      "instruction": [
+        "Relate complementary acute angles"
+      ],
+      "examples": [
+        "Use a complementary angle without a calculator",
+        "Complement an angle in radians"
+      ],
+      "practice": [
+        "mth-right-ratios:complement"
+      ],
+      "independentCheck": "mth-right-ratios:mixed",
+      "retrieval": "Give complementary angles in degrees and radians, and explain the sine/cosine relationship by naming the same two sides in both ratios."
+    },
+    {
+      "topic": "Derive the 45-45-90 triangle",
+      "instruction": [
+        "Derive the 45-45-90 triangle"
+      ],
+      "examples": [
+        "Derive a square diagonal",
+        "Recover equal legs from a hypotenuse"
+      ],
+      "practice": [
+        "mth-right-special:derive-45",
+        "mth-right-special:missing-45"
+      ],
+      "independentCheck": "mth-right-special:mixed",
+      "retrieval": "Derive the 45-45-90 side pattern from a square and solve once from a known leg and once from a known hypotenuse."
+    },
+    {
+      "topic": "Derive the 30-60-90 triangle",
+      "instruction": [
+        "Derive the 30-60-90 triangle"
+      ],
+      "examples": [
+        "Derive the altitude of an equilateral triangle",
+        "Start with the long special-triangle leg"
+      ],
+      "practice": [
+        "mth-right-special:derive-30",
+        "mth-right-special:missing-30"
+      ],
+      "independentCheck": "mth-right-special:mixed",
+      "retrieval": "Bisect an equilateral triangle and derive all three side lengths. Recover its scale when the long leg, rather than the short leg, is given."
+    },
+    {
+      "topic": "Build exact special-angle values",
+      "instruction": [
+        "Build exact special-angle values"
+      ],
+      "examples": [
+        "Evaluate special values in radians",
+        "Compare exact tangents at thirty and sixty degrees"
+      ],
+      "practice": [
+        "mth-right-special:exact-sin",
+        "mth-right-special:exact-cos",
+        "mth-right-special:exact-tan"
+      ],
+      "independentCheck": "mth-right-special:mixed",
+      "retrieval": "Rebuild all nine sine/cosine/tangent values at 30, 45 and 60 degrees from side patterns, using both degree and radian names."
+    },
+    {
+      "topic": "Choose a ratio from the known and unknown sides",
+      "instruction": [
+        "Choose a ratio from the known and unknown sides"
+      ],
+      "examples": [
+        "Choose the direct ratio before computing"
+      ],
+      "practice": [
+        "mth-right-solve:opposite-hyp",
+        "mth-right-solve:adjacent-hyp",
+        "mth-right-solve:opposite-adjacent",
+        "mth-right-solve:adjacent-opposite"
+      ],
+      "independentCheck": "mth-right-solve:mixed",
+      "retrieval": "Given only a reference angle, one named known side and one unknown side, choose a direct ratio and write its equation before solving."
+    },
+    {
+      "topic": "Solve for a numerator or a denominator",
+      "instruction": [
+        "Solve for a numerator or a denominator"
+      ],
+      "examples": [
+        "Find opposite from hypotenuse",
+        "Find adjacent from hypotenuse",
+        "Find hypotenuse from opposite",
+        "Find hypotenuse from adjacent",
+        "Find opposite from adjacent",
+        "Find adjacent from opposite"
+      ],
+      "practice": [
+        "mth-right-solve:opposite-hyp",
+        "mth-right-solve:adjacent-hyp",
+        "mth-right-solve:hyp-opposite",
+        "mth-right-solve:hyp-adjacent",
+        "mth-right-solve:opposite-adjacent",
+        "mth-right-solve:adjacent-opposite"
+      ],
+      "independentCheck": "mth-right-solve:mixed",
+      "retrieval": "Solve all six known-side/unknown-side combinations, explaining why an unknown denominator requires division by the function value."
+    },
+    {
+      "topic": "Recover an acute angle with an inverse function",
+      "instruction": [
+        "Recover an acute angle with an inverse function"
+      ],
+      "examples": [
+        "Recover an angle with inverse sine",
+        "Recover an angle with inverse cosine",
+        "Recover an angle with inverse tangent"
+      ],
+      "practice": [
+        "mth-right-solve:angle-sine",
+        "mth-right-solve:angle-cosine",
+        "mth-right-solve:angle-tangent"
+      ],
+      "independentCheck": "mth-right-solve:mixed",
+      "retrieval": "Use each inverse function on an appropriate pair of sides, reject an impossible hypotenuse ratio, and distinguish inverse from reciprocal."
+    },
+    {
+      "topic": "Keep calculator mode and output units consistent",
+      "instruction": [
+        "Keep calculator mode and output units consistent"
+      ],
+      "examples": [
+        "Enter one angle in two calculator modes"
+      ],
+      "practice": [
+        "mth-right-solve:mode"
+      ],
+      "independentCheck": "mth-right-solve:mixed",
+      "retrieval": "Enter the same acute angle correctly in both calculator modes and describe the units of an inverse-function output."
+    },
+    {
+      "topic": "Solve a complete triangle and retain precision",
+      "instruction": [
+        "Solve a complete triangle and retain precision"
+      ],
+      "examples": [
+        "Solve a complete measured triangle",
+        "Keep an intermediate hypotenuse unrounded"
+      ],
+      "practice": [
+        "mth-right-solve:complete",
+        "mth-right-solve:rounding"
+      ],
+      "independentCheck": "mth-right-solve:mixed",
+      "retrieval": "Solve a complete triangle, compare a direct ratio with a two-step route, and identify where premature rounding changes the second computation."
+    },
+    {
+      "topic": "Model elevation from a horizontal baseline",
+      "instruction": [
+        "Model elevation from a horizontal baseline"
+      ],
+      "examples": [
+        "Measure a vertical rise from ground level"
+      ],
+      "practice": [
+        "mth-right-model:elevation"
+      ],
+      "independentCheck": "mth-right-model:mixed",
+      "retrieval": "Build an elevation model from a text description and explain why a horizontal baseline calls for tangent rather than sine."
+    },
+    {
+      "topic": "Include observer height",
+      "instruction": [
+        "Include observer height"
+      ],
+      "examples": [
+        "Add eye height to the observed rise",
+        "Find elevation when total height is known"
+      ],
+      "practice": [
+        "mth-right-model:eye-height"
+      ],
+      "independentCheck": "mth-right-model:mixed",
+      "retrieval": "Solve both a total-height problem and its inverse with nonzero observer height, explaining exactly which vertical segment enters the ratio."
+    },
+    {
+      "topic": "Interpret depression using parallel horizontals",
+      "instruction": [
+        "Interpret depression using parallel horizontals"
+      ],
+      "examples": [
+        "Use a depression angle with the correct horizontal"
+      ],
+      "practice": [
+        "mth-right-model:depression"
+      ],
+      "independentCheck": "mth-right-model:mixed",
+      "retrieval": "Use parallel horizontals to transfer a depression angle, solve horizontal range, and find the separate angle from vertical."
+    },
+    {
+      "topic": "Separate horizontal run, vertical rise and sloping length",
+      "instruction": [
+        "Separate horizontal run, vertical rise and sloping length"
+      ],
+      "examples": [
+        "Resolve a ramp into rise and run",
+        "Separate cable length from anchor distance"
+      ],
+      "practice": [
+        "mth-right-model:ramp",
+        "mth-right-model:cable"
+      ],
+      "independentCheck": "mth-right-model:mixed",
+      "retrieval": "Translate a sloping length into horizontal and vertical components, then recover a hypotenuse from a height without confusing it with horizontal run."
+    },
+    {
+      "topic": "Normalize length units before forming ratios",
+      "instruction": [
+        "Normalize length units before forming ratios"
+      ],
+      "examples": [
+        "Cancel units before recovering an angle",
+        "Read the sun angle from a shadow"
+      ],
+      "practice": [
+        "mth-right-model:mixed-units",
+        "mth-right-model:shadow"
+      ],
+      "independentCheck": "mth-right-model:mixed",
+      "retrieval": "Solve one problem with mixed length units and one shadow problem, checking both the dimensionless ratio and the meaning of the angle returned."
+    },
+    {
+      "topic": "Audit assumptions and communicate a defensible result",
+      "instruction": [
+        "Audit assumptions and communicate a defensible result"
+      ],
+      "examples": [
+        "Detect an underdetermined survey"
+      ],
+      "practice": [
+        "mth-right-model:assumptions"
+      ],
+      "independentCheck": "mth-right-model:mixed",
+      "retrieval": "Audit a tempting calculation with incomplete geometry, state the missing measurement, and communicate a solved case with units and reasonableness checks."
+    }
+  ]
+}

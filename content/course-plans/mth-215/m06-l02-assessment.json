@@ -1,0 +1,90 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l02",
+  "status": "planned",
+  "lessonAvailable": false,
+  "objective": "Choose a trigonometric ratio to solve a right triangle and interpret the solution with the correct reference angle and units.",
+  "sources": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.2 Right Triangle Trigonometry",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-2-right-triangle-trigonometry",
+      "checkedAt": "2026-09-24",
+      "use": "Scope and optional reading. Instruction, examples, questions and diagrams are original."
+    }
+  ],
+  "instructionOutline": [
+    "Identify the right angle before naming sides",
+    "Change the reference angle without changing the triangle",
+    "Use similarity to explain invariant ratios",
+    "Define sine, cosine and tangent",
+    "Check the range and units of a ratio",
+    "Relate complementary acute angles",
+    "Derive the 45-45-90 triangle",
+    "Derive the 30-60-90 triangle",
+    "Build exact special-angle values",
+    "Choose a ratio from the known and unknown sides",
+    "Solve for a numerator or a denominator",
+    "Recover an acute angle with an inverse function",
+    "Keep calculator mode and output units consistent",
+    "Solve a complete triangle and retain precision",
+    "Model elevation from a horizontal baseline",
+    "Include observer height",
+    "Interpret depression using parallel horizontals",
+    "Separate horizontal run, vertical rise and sloping length",
+    "Normalize length units before forming ratios",
+    "Audit assumptions and communicate a defensible result"
+  ],
+  "families": {
+    "mth-right-ratios": ["labels", "sine", "cosine", "tangent", "complement", "scale", "validity", "range"],
+    "mth-right-special": ["derive-45", "derive-30", "exact-sin", "exact-cos", "exact-tan", "missing-45", "missing-30"],
+    "mth-right-solve": ["opposite-hyp", "adjacent-hyp", "hyp-opposite", "hyp-adjacent", "opposite-adjacent", "adjacent-opposite", "angle-sine", "angle-cosine", "angle-tangent", "complete", "mode", "rounding"],
+    "mth-right-model": ["elevation", "eye-height", "depression", "ramp", "cable", "shadow", "mixed-units", "assumptions"]
+  },
+  "checkpoint": [
+    {"familyId": "mth-right-ratios", "variant": "mixed"},
+    {"familyId": "mth-right-special", "variant": "mixed"},
+    {"familyId": "mth-right-solve", "variant": "mixed"},
+    {"familyId": "mth-right-model", "variant": "mixed"}
+  ],
+  "checkpointRule": "All four questions are critical and must be correct independently. A four-question form samples four families, not every one of the 35 named practice variants.",
+  "conventions": {
+    "geometry": "ABC has its right angle at A. BC is always the hypotenuse. The chosen acute reference angle is at B or C.",
+    "domain": "Positive nondegenerate right triangles only; the reference angle is strictly between 0 and 90 degrees.",
+    "exact": "Special-angle values and exact lengths accept equivalent rational and radical expressions. Rounded decimals do not replace irrational exact answers.",
+    "approximate": "Measured side answers are accepted within 0.005 of the displayed unit and measured angle answers within 0.05 degree, with zero relative tolerance. Retain intermediate precision.",
+    "units": "Convert lengths to a common unit before taking a ratio. Ratios are dimensionless; sides and inverse-function angles carry explicitly stated units.",
+    "inverse": "Inverse sine, cosine and tangent return acute angles here. They are not reciprocals.",
+    "scope": "Full unit-circle coordinates, all six functions, general inverse-function domains and non-right-triangle laws belong to later lessons."
+  },
+  "investigation": {
+    "cases": 6,
+    "workflow": "Predict opposite and adjacent labels, solve exact ratios and a scaled side, then compare a diagram and accessible table for both acute angles and explain similarity.",
+    "inputs": "Exact positive AB, AC and BC with a verified Pythagorean relation; reference angle B or C; positive rational scale.",
+    "validation": "Reject nonreal, zero, negative, non-right and out-of-range inputs. Clear predictions, calculations and explanations after any input changes. Reset the selected case.",
+    "evidence": "Guided work awards no independent objective evidence."
+  },
+  "misconceptions": [
+    "Calling a leg opposite without specifying an angle",
+    "Treating the hypotenuse as the adjacent leg",
+    "Swapping a ratio with its reciprocal",
+    "Assuming similar triangles have equal side lengths",
+    "Adding a degree number to a radian number",
+    "Multiplying instead of dividing when the unknown is in the denominator",
+    "Treating inverse sine as reciprocal sine",
+    "Using a sloping distance as horizontal run",
+    "Omitting eye height or measuring depression from vertical",
+    "Rounding an intermediate side before the final computation",
+    "Using right-triangle ratios without establishing perpendicular legs"
+  ],
+  "activationRequirements": [
+    "Original instruction, derivations, worked examples and gradual guided practice",
+    "Every planned family and variant with deterministic independent answer checks",
+    "Six exact investigation cases and input validation with no stale results",
+    "Coverage links from every instruction topic and worked example to practice and checkpoint sampling",
+    "Valid math rendering, critical-failure checks and equivalent exact answers",
+    "Keyboard and mobile browser checks, accessibility scan and visual inspection",
+    "Practice and note persistence, independent checkpoint, export and restore",
+    "Lint, types, unit suite and production build"
+  ],
+  "independentSubjectReview": "not yet performed"
+}

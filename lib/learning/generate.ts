@@ -90,8 +90,15 @@ import { angleMeasureFamilyIds,angleMeasureQuestion } from "./families/mth-angle
 import { angleLocationFamilyIds,angleLocationQuestion } from "./families/mth-angle-location";
 import { circularMeasureFamilyIds,circularMeasureQuestion } from "./families/mth-circular-measure";
 import { circularMotionFamilyIds,circularMotionQuestion } from "./families/mth-circular-motion";
+import { rightRatioFamilyIds, rightRatioQuestion } from "./families/mth-right-ratios";
+import { rightSpecialFamilyIds, rightSpecialQuestion } from "./families/mth-right-special";
+import { rightSolveFamilyIds, rightSolveQuestion } from "./families/mth-right-solve";
+import { rightModelFamilyIds, rightModelQuestion } from "./families/mth-right-model";
 
 const generators=new Map<string,typeof linearQuestion>();
+for (const [ids, generate] of [[rightRatioFamilyIds, rightRatioQuestion], [rightSpecialFamilyIds, rightSpecialQuestion], [rightSolveFamilyIds, rightSolveQuestion], [rightModelFamilyIds, rightModelQuestion]] as const) {
+  for (const id of ids) { if (generators.has(id)) throw new Error("Duplicate family: " + id); generators.set(id, generate); }
+}
 for(const [ids,generate] of [[angleMeasureFamilyIds,angleMeasureQuestion],[angleLocationFamilyIds,angleLocationQuestion],[circularMeasureFamilyIds,circularMeasureQuestion],[circularMotionFamilyIds,circularMotionQuestion]] as const){
   for(const id of ids){if(generators.has(id))throw new Error("Duplicate family: "+id);generators.set(id,generate);}
 }
