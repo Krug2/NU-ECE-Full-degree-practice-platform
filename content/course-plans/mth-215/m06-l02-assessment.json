@@ -1,8 +1,8 @@
 {
   "courseId": "mth-215",
   "lessonId": "m06-l02",
-  "status": "planned",
-  "lessonAvailable": false,
+  "status": "implemented and verified",
+  "lessonAvailable": true,
   "objective": "Choose a trigonometric ratio to solve a right triangle and interpret the solution with the correct reference angle and units.",
   "sources": [
     {
@@ -35,16 +35,67 @@
     "Audit assumptions and communicate a defensible result"
   ],
   "families": {
-    "mth-right-ratios": ["labels", "sine", "cosine", "tangent", "complement", "scale", "validity", "range"],
-    "mth-right-special": ["derive-45", "derive-30", "exact-sin", "exact-cos", "exact-tan", "missing-45", "missing-30"],
-    "mth-right-solve": ["opposite-hyp", "adjacent-hyp", "hyp-opposite", "hyp-adjacent", "opposite-adjacent", "adjacent-opposite", "angle-sine", "angle-cosine", "angle-tangent", "complete", "mode", "rounding"],
-    "mth-right-model": ["elevation", "eye-height", "depression", "ramp", "cable", "shadow", "mixed-units", "assumptions"]
+    "mth-right-ratios": [
+      "labels",
+      "sine",
+      "cosine",
+      "tangent",
+      "complement",
+      "scale",
+      "validity",
+      "range"
+    ],
+    "mth-right-special": [
+      "derive-45",
+      "derive-30",
+      "exact-sin",
+      "exact-cos",
+      "exact-tan",
+      "missing-45",
+      "missing-30"
+    ],
+    "mth-right-solve": [
+      "opposite-hyp",
+      "adjacent-hyp",
+      "hyp-opposite",
+      "hyp-adjacent",
+      "opposite-adjacent",
+      "adjacent-opposite",
+      "angle-sine",
+      "angle-cosine",
+      "angle-tangent",
+      "complete",
+      "mode",
+      "rounding"
+    ],
+    "mth-right-model": [
+      "elevation",
+      "eye-height",
+      "depression",
+      "ramp",
+      "cable",
+      "shadow",
+      "mixed-units",
+      "assumptions"
+    ]
   },
   "checkpoint": [
-    {"familyId": "mth-right-ratios", "variant": "mixed"},
-    {"familyId": "mth-right-special", "variant": "mixed"},
-    {"familyId": "mth-right-solve", "variant": "mixed"},
-    {"familyId": "mth-right-model", "variant": "mixed"}
+    {
+      "familyId": "mth-right-ratios",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-right-special",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-right-solve",
+      "variant": "mixed"
+    },
+    {
+      "familyId": "mth-right-model",
+      "variant": "mixed"
+    }
   ],
   "checkpointRule": "All four questions are critical and must be correct independently. A four-question form samples four families, not every one of the 35 named practice variants.",
   "conventions": {
@@ -86,5 +137,26 @@
     "Practice and note persistence, independent checkpoint, export and restore",
     "Lint, types, unit suite and production build"
   ],
-  "independentSubjectReview": "not yet performed"
+  "independentSubjectReview": "not yet performed",
+  "delivery": {
+    "checkedAt": "2026-09-25T02:54:03.994Z",
+    "instructionSections": 20,
+    "workedExamples": 36,
+    "guidedFields": 8,
+    "investigationCases": 6,
+    "practiceVariants": 35,
+    "checkpointFamilies": 4,
+    "verification": [
+      "Exact rational and radical triangle geometry, similarity, special values, measured sides and inverse angles checked",
+      "All 35 planned practice variants checked across varied seeds with independent answer reconstructions",
+      "All instruction topics and worked examples mapped to practice, checkpoint sampling and retrieval",
+      "The full regression baseline passed with 1995 tests across 224 files; 41 affected family and assessment tests repeated after answer-choice shuffling",
+      "216 tests across 25 files passed after integrating the main-course merge, covering this lesson, exact mathematics, attempts, progress, registration and preparation",
+      "Full lint, TypeScript and the final combined 194-page production build passed",
+      "All four browser journeys passed on the final build, including six investigation cases, incorrect answers, invalid geometry, stale-result clearing, keyboard use and mobile accessibility",
+      "Mobile comparison and diagram screenshots inspected after shortening dropdown labels and checking focus below the mobile header",
+      "Notes, hinted practice, critical 3/4 failure, independent 4/4 success and exact saved question/response snapshots verified through reload, export and restore"
+    ],
+    "courseStatus": "building"
+  }
 }
