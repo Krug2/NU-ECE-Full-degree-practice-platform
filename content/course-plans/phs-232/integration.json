@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "The complete proposed course plan is verified. Implementation starts with m01-l01; no PHS 232 teaching feature is available yet.",
+  "status": "The complete proposed course plan is verified. Harmonic motion, m01-l01, is available and technically checked; the other 30 lessons and course-level assessment/project workflows remain under construction.",
   "planned": {
     "modules": 10,
     "lessons": 31,
@@ -12,33 +12,73 @@
     "courseAssessmentForms": 44
   },
   "delivered": {
-    "lessons": 0,
-    "families": 0,
-    "investigations": 0,
+    "lessons": 1,
+    "families": 2,
+    "variants": 12,
+    "investigations": 1,
     "courseAssessmentForms": 0,
     "project": false
   },
   "upstreamIntegration": {
-    "sourceCommit": "ab290107e1decd829ac636d844c73b57b76c3ffd",
-    "mergeCommit": "d956279",
+    "sourceCommit": "a790ebf5abded7d8cd0bfcfc45108511bc91ce27",
+    "mergeCommit": "073b528",
+    "previousSourceCommit": "ab290107e1decd829ac636d844c73b57b76c3ffd",
+    "previousMergeCommit": "d956279",
     "resolvedFiles": [
       "components/learning/lesson-reader.tsx",
-      "lib/learning/catalog.ts"
+      "lib/learning/catalog.ts",
+      "lib/learning/contracts.ts"
     ],
-    "preserved": "Adds the incoming MTH 215 modeling lesson and its tools, plus the new pi grading and angle families. Additive resolutions retain every PHS 231 lesson and its release-status/preparation behavior. Prerequisite content, course plans, learning pack and catalog match this exact source snapshot; the primary checkout was not changed.",
-    "checks": "2297 unit tests in 263 files passed in 337.88 seconds with F10_PYTHON configured. Full lint, type checking and a 189-page production build passed. All 23 selected shared learning, modeling, PHS 231 assessment/recovery and release browser regressions passed in one 5.8-minute run on 3101."
+    "preserved": "Adds the incoming MTH 215 radians lesson and rotation investigation. Additive conflict resolutions retain every PHS 231 lesson, the PHS 232 harmonic lesson, all interaction dispatches and release-status/preparation behavior. Prerequisite lessons, course plans, learning pack and catalog match this exact source snapshot; the primary checkout was not changed.",
+    "checks": "2330 unit tests in 269 files passed with no skips in 249.30 seconds, with F10_PYTHON configured. Full lint, type checking and a 191-page production build passed. All 18 selected radians, shared learning, PHS 231 release and PHS 232 harmonic browser checks passed together in 3.8 minutes on 3101."
   },
-  "sharedChanges": [],
+  "sharedChanges": [
+    {
+      "commit": "ec06485",
+      "files": ["lib/learning/contracts.ts", "lib/learning/generate.ts", "components/learning/lesson-reader.tsx"],
+      "change": "Adds one harmonic investigation kind and renderer plus two course-owned generated families. Existing field graders, interaction kinds and saved-attempt schemas are retained.",
+      "requires": ["cd6b50a", "9badd26", "2615879", "86bac9e"],
+      "integration": "Retain both the prerequisite task's interaction imports/dispatch branches and this additive harmonic branch. The pi-expression grader comes from the already merged prerequisite work; no parallel grader was introduced. Course backups remain schema version 2."
+    },
+    {
+      "commit": "6254f57",
+      "files": ["lib/learning/catalog.ts", "lib/learning/availability.ts", "tests/learning-availability.test.ts", "tests/e2e/phs-231-release.spec.ts"],
+      "change": "Registers the PHS 232 pack and first authored lesson and reports its actual building status in the lightweight availability registry. CSC 310 remains the explicitly unbuilt comparison in availability checks.",
+      "requires": ["ec06485", "bc4e355"],
+      "integration": "Preserve the incoming MTH 215 lesson registrations when merging. PHS 232 is not counted among released preview packs. The PHS 231 release test continues to check all release states."
+    }
+  ],
+  "implementationCommits": [
+    {"commit":"cd6b50a","change":"Harmonic state/event model and independent numerical fixtures."},
+    {"commit":"9badd26","change":"Six state/phase variants and 50-seed independent answer checks per variant."},
+    {"commit":"2615879","change":"Six event/recording variants and independent event enumeration and alias checks."},
+    {"commit":"86bac9e","change":"Keyboard investigation, accessible graphs and complete tables, model restrictions and a self-check rubric."},
+    {"commit":"ec06485","change":"Focused shared contract, generator and renderer registration."},
+    {"commit":"bc4e355","change":"Complete first lesson, building course map and content verification."},
+    {"commit":"6254f57","change":"Focused shared catalog and availability registration."},
+    {"commit":"9f8555c","change":"Five actual learning, recovery, accessibility and reflow browser checks."},
+    {"commit":"073b528","change":"Verified additive integration of the incoming prerequisite radians lesson."},
+    {"commit":"8ff4199","change":"Unregistered m01-l02 pendulum comparison model; five tests include 50 energy-quadrature and 50 independently integrated trajectory cases. This does not deliver the next lesson."},
+    {"commit":"911281f","change":"Explicit zoom-equivalent and rubric checks, separate phase-plane captures and labels clear of the curve; all three affected browser checks passed after a fresh production build."}
+  ],
+  "lessonVerification": "See lesson-audits.json for seed coverage, independent state/event references and the first lesson's verification baseline. The later radians merge additionally passed 2330 unit checks, a 191-page build and 18 browser regressions including all five harmonic checks. This is technical verification, not independent subject review.",
+  "nextImplementation": {
+    "lessonId": "m01-l02",
+    "modelCommit": "8ff4199",
+    "status": "A pendulum comparison model is verified but not registered as a teaching feature. Original instruction, generated families, guided work and the interactive lesson remain to be implemented.",
+    "modelBoundary": "The large-angle comparison will describe a point mass on a massless rigid rod, which can maintain the constraint above 90 degrees; it must not silently assume a taut flexible string. Initial release is from rest, with no damping or drive. Linear and nonlinear models use the same physical interval and integration resolution, with a second finer run.",
+    "verification": "Reference periods use an arithmetic-geometric mean and are checked against independent energy-integral quadrature for 50 amplitudes. Fifty trajectories use an independent velocity-Verlet reference, energy balances, analytic linear limits and crossing-time/refinement checks. Force-law discrepancy, physical period increase and numerical drift remain separate. Equilibrium and insufficient observation windows do not receive invented measured periods. Scoped lint and full type checking passed."
+  },
   "planningVerification": {
     "status": "passed",
     "counts": "10 modules, 31 lessons, 62 initially planned families with 372 variants, 44 course forms and 31 complementary cumulative-blueprint rows.",
     "coverage": "Every published subject area maps to explicit lesson evidence, and every planned lesson appears in the coverage crosswalk. Module and lesson dependencies have no forward or missing internal references.",
     "links": "Every linked preparation lesson exists. All 92 reading IDs resolve to HTTP-200 provider pages and their expected titles; the MIT reading index title differs only in word order. Every referenced planning artifact exists.",
     "assessment": "Each cumulative selection belongs to its original planned lesson and named family/variant; A and B use different families for every objective. Proposed thresholds, critical checks, six project criteria and ten notebook sections are explicit.",
-    "scope": "Planning is complete, not course implementation. No independent subject review or pilot validation has occurred."
+    "scope": "The complete course plan was verified before implementation. Actual delivered features are listed separately. No independent subject review or pilot validation has occurred."
   },
   "independentSubjectReview": "not performed",
   "pilotValidation": "not performed",
-  "remaining": "Implement and verify m01-l01 before progressing through the 31-lesson course. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
+  "remaining": "Continue with m01-l02, energy and physical oscillators. Complete the remaining 30 lessons, all 44 course forms, the sustained project and full release audit before calling PHS 232 complete. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
   "previousCourseIntegration": "../phs-231/integration.json"
 }

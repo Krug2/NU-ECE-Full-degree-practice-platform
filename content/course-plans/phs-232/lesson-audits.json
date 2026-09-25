@@ -1,0 +1,48 @@
+{
+  "courseId": "phs-232",
+  "version": 1,
+  "updatedAt": "2026-09-24",
+  "scope": "Technical implementation evidence for individual lessons. This ledger does not establish course completion, independent subject review or learner pilot validation.",
+  "lessons": [
+    {
+      "id": "m01-l01",
+      "status": "available in the building course",
+      "contentCommit": "bc4e355",
+      "browserCommit": "9f8555c",
+      "reflowCommit": "911281f",
+      "teaching": {
+        "sections": 9,
+        "workedExamples": 11,
+        "guidedTasks": 1,
+        "guidedFields": 5,
+        "practiceFamilies": 2,
+        "practiceVariants": 12,
+        "checkpointItems": 4,
+        "investigation": "Predict signed state and qualifying event counts, reveal synchronized displacement/velocity/acceleration and phase-plane plots, move a keyboard time probe, compare full model and recorded-sample tables, and write two contrasting runs using a four-criterion self-check rubric."
+      },
+      "independentChecks": {
+        "generatedCases": "Each of 12 variants was checked over at least 50 deterministic seeds, totaling 600 minimum variant-seed cases. Additional coverage checks include all phase representations, sign quadrants, endpoint combinations, directed touches, excluded initial roots, stationary recurrence and constant/Nyquist/interior aliases.",
+        "stateReference": "Fifty varied initial states are compared with an independent 1800-step Runge-Kutta integration at twelve times per period, plus force and energy/phase-plane identities. Phase reconstruction checks both initial conditions and its principal interval.",
+        "eventReference": "Fifty trajectories at five interior target positions use an independent 2000-bracket root search with 45 bisection steps per root. Exact-grid generated problems are checked through separately enumerated sine/cosine states. Tests include open/closed boundaries, unique turning points, unreachable targets and late windows near 1000 periods.",
+        "answerBehavior": "Equivalent exact fractions, radicals and pi expressions, approximate-phase tolerance, invalid/nonfinite input, wrong signs, wrong direction, an extra full period when the first event is requested, and alternate principal intervals are checked. Zero amplitude is separate from nonzero motion."
+      },
+      "verification": {
+        "baseline": "Includes prerequisite main through ab290107e1decd829ac636d844c73b57b76c3ffd, before the subsequent radians integration.",
+        "unit": "2321 tests in 267 files passed with no skips in 238.46 seconds, with F10_PYTHON configured. Nine focused content/model checks passed after final reading and presentation edits.",
+        "static": "Full lint and type checking passed; final changed component and browser-test lint passed.",
+        "build": "The final 190-page production build passed.",
+        "browsers": "Thirteen shared learning, MTH 215 modeling and PHS 231 release regressions passed. All five current harmonic browser checks then passed together in 1.4 minutes on port 3101 with one worker. They exercise misconception feedback, exact answers, hints versus independent checkpoints, endpoint/direction filters, arbitrary probe times, aliasing, equilibrium, invalid inputs, reload, notes and exported-backup restoration while preserving an existing PHS 231 attempt.",
+        "correctedChecks": "The initial combined browser run passed 16 of 18 tests. Its new backup test used an ambiguous selector for two Yes radio options; its 320px focus assertion used a nearest-edge scroll that left a 0.40625px rounding overhang. The selector now scopes to its labeled question, and the focus inspection centers the control before checking full visibility and hit testing. Both pass in the final run.",
+        "visual": "Desktop 1440px and mobile 390px rendering, plus 320px and 720px focus/reflow captures, were visually inspected. Mobile plot labels were enlarged after the first inspection. Axe checks report no tested WCAG A/AA violations; keyboard probe controls, visible focus, reduced motion and absence of page overflow are checked. These automated checks do not constitute a complete accessibility certification."
+      },
+      "limits": "Investigation controls reset on reload as disclosed; saved lesson notes preserve the learner's comparisons. The rubric is self-assessment, and only an independent checkpoint records objective evidence. No physical experiment, independent subject review or learner pilot has been performed.",
+      "subsequentIntegration": {
+        "mergeCommit": "073b528",
+        "sourceCommit": "a790ebf5abded7d8cd0bfcfc45108511bc91ce27",
+        "checks": "2330 tests in 269 files passed with no skips, plus full lint, type checking, a 191-page build and all 18 selected browser regressions in 3.8 minutes. These include all five harmonic checks and the newly integrated MTH 215 radians behavior.",
+        "finalPresentation": "A further 191-page build and all three targeted harmonic rendering/reflow checks passed in 46.9 seconds after moving phase-plane tick labels outside the curve. Desktop/mobile phase-plane captures and the 200-percent-zoom equivalent (720 by 500 CSS pixels at device scale 2, corresponding to a 1440 by 1000 display) were visually inspected. The rubric, 320px focus and reduced-motion behavior are also checked."
+      },
+      "next": "m01-l02"
+    }
+  ]
+}
