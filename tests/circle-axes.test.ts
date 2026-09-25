@@ -8,7 +8,7 @@ it.each(circleAxisVariants)("checks %s with exact zeros and interval boundaries"
     const q = circleAxisQuestion("mth-circle-axes", variant, "axis-" + seed, "q");
     directions.add(Math.sign(q.parameters.degrees));
     const index = q.parameters.axis;
-    const response = variant.startsWith("zero-")
+    const response: Record<string, string> = variant.startsWith("zero-")
       ? { angles: variant === "zero-sine" ? "180, 0" : "270, 90", endpoint: "exclude" }
       : { x: ["1", "0", "-1", "0"][index], y: ["0", "1", "0", "-1"][index], location: circleAxisVariants[index], reference: "none" };
     expect(gradeQuestion(q, response).correct).toBe(true);
