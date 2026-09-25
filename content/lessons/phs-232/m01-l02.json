@@ -568,7 +568,7 @@
   "retrieval": "Without notes, derive the energy conservation equation from the force law. Then derive the local frequency for a vertical spring, a torsion rotor and an extended-body pendulum, naming each inertia and restoring coefficient. Explain how a stable quartic minimum can have zero quadratic curvature, and design a comparison that distinguishes physical model error from numerical error.",
   "readings": [
     {
-      "title": "OpenStax University Physics, 15.2: Simple Harmonic Motion and Energy",
+      "title": "OpenStax University Physics, 15.2: Energy in Simple Harmonic Motion",
       "url": "https://openstax.org/books/university-physics-volume-1/pages/15-2-energy-in-simple-harmonic-motion",
       "purpose": "Free primary textbook treatment of oscillator energy and kinetic–potential exchange. Re-derive the formulas using the potential reference and admissibility checks in this lesson."
     },
