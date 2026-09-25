@@ -1,0 +1,61 @@
+{
+  "courseId": "phs-232",
+  "lessonId": "m01-l04",
+  "status": "Implementation design only; the driven-response lesson is not available or complete.",
+  "basis": "The full course plan in modules.json remains the coverage authority. These are proposed teaching and numerical decisions, not official NU assessment or equipment requirements.",
+  "sources": [
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations",
+      "checkedAt": "2026-09-24",
+      "use": "Primary introductory reading for sinusoidal forcing and the response amplitude. Independently differentiate the exact response and define the measured output: the page's qualitative natural-frequency peak and half-amplitude width descriptions must not be treated as general exact displacement-peak or half-power formulas."
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-3/",
+      "checkedAt": "2026-09-24",
+      "use": "Primary university lecture page and free resources for driven response, transients and resonance. The page and available note links were verified; no claim of viewing the entire lecture is made."
+    }
+  ],
+  "model": {
+    "equation": "m*x''+b*x'+k*x=F0*cos(Omega*t), m>0, k>0, b>=0, F0>=0, Omega>=0. Fixed-force-amplitude excitation, fixed equilibrium coordinate and constant parameters; this is not base-displacement excitation or a nonlinear oscillator.",
+    "convention": "Use x_particular=A*cos(Omega*t-delta), so positive delta is displacement lag relative to the explicitly chosen cosine force. beta=b/(2m), omega0=sqrt(k/m). Do not interchange sine and cosine conventions without their phase shift.",
+    "steadyResponse": [
+      "For a nonsingular harmonic response, Zreal=k-m*Omega^2, Zimag=b*Omega, A=F0/hypot(Zreal,Zimag), delta=atan2(Zimag,Zreal) in [0,pi].",
+      "Real coefficients x_particular=C*cos(Omega*t)+D*sin(Omega*t) are C=F0*Zreal/(Zreal^2+Zimag^2), D=F0*Zimag/(Zreal^2+Zimag^2). Check by substituting both cosine and sine coefficients into the equation.",
+      "For b>0, the homogeneous correction fits x0-C and v0-Omega*D and decays. The initial state generally is not the steady response. Show the full and particular states separately.",
+      "For b=0 away from resonance, a bounded particular solution exists but an arbitrary homogeneous response does not decay. Calling the particular solution an asymptotically selected steady state would be wrong.",
+      "At Omega=0 the drive is constant: x_particular=F0/k, velocity zero, with no finite forcing cycle or cycle-work period. A zero-force response has undefined lag and no unique response-amplitude peak; avoid assigning a physical phase to a zero signal."
+    ],
+    "singularLimits": [
+      "For b=0 and Omega=omega0 with F0>0, no bounded sinusoidal particular response exists. For zero initial state, x=F0*t*sin(omega0*t)/(2*m*omega0); retain the derivative's sine term when computing v.",
+      "For b=0, the zero-initial-state response away from resonance is (F0/m)*(cos(Omega*t)-cos(omega0*t))/(omega0^2-Omega^2). Evaluate near resonance through a product of sine and sinc terms to avoid subtractive cancellation; its resonant limit is finite for each finite time.",
+      "For very small positive damping near resonance, particular and homogeneous terms can be large while their sum is small at startup. Use a validated stable evaluation or constrain the proposed interactive range transparently. Do not clamp a singular denominator and silently report a finite steady amplitude.",
+      "Choose and record numerical parameter and time-window limits after reference checks. Those software ranges are not laboratory apparatus ratings."
+    ],
+    "energy": "E=mv^2/2+kx^2/2; E'=F(t)*v-b*v^2. Independently integrate signed input work and nonnegative viscous transfer at two resolutions; check E(t)-E(0)-W_in(t)+D(t). Negative instantaneous input power is allowed. Do not derive both integrals from the energy difference.",
+    "cycleMeasures": "For the periodic particular solution with Omega>0, mean input power equals mean loss=b*Omega^2*A^2/2=F0*Omega*A*sin(delta)/2 and work per cycle is 2*pi*meanPower/Omega. A finite cycle of the full startup response can have different input and loss averages because stored energy changes. Explicitly handle a recording window without a complete forcing cycle."
+  },
+  "responsePeaks": [
+    "For fixed F0>0 and b>0, displacement amplitude has an interior positive-frequency maximum at sqrt(omega0^2-2*beta^2) only when beta<omega0/sqrt(2). Otherwise its maximum on Omega>=0 is the static endpoint Omega=0, and there is no positive interior displacement peak.",
+    "Velocity amplitude Omega*A and mean dissipated power attain their maxima at omega0 for fixed F0 and positive damping. Their peak values are F0/b and F0^2/(2b). State the fixed input and selected output before calling a frequency resonant.",
+    "At positive damping, phase lag is zero in the static limit, pi/2 at omega0 and approaches pi at high frequency. Above omega0 the real denominator is negative, so ordinary arctan of a ratio loses the quadrant.",
+    "As Omega approaches infinity, A is asymptotic to F0/(m*Omega^2), velocity amplitude to F0/(m*Omega), and acceleration amplitude to F0/m. Low-frequency displacement approaches F0/k; low-frequency velocity and mean power approach zero.",
+    "Define Q=m*omega0/b=omega0/(2*beta) for this viscous model. For the mean-power response at fixed force amplitude, the half-power roots are sqrt(omega0^2+beta^2) minus/plus beta, giving exact width 2*beta=b/m. Do not confuse half power with half displacement amplitude.",
+    "The statement Q approximately equals 2*pi times energy divided by its free loss in one cycle requires weak damping when the energy changes appreciably during the cycle. Clearly distinguish that approximation from the model parameter and the exact fixed-force half-power bandwidth identity."
+  ],
+  "investigation": {
+    "predictions": "Select displacement, velocity or mean-power output, then predict its peak behavior and a phase quadrant before revealing a sweep. Require a numerical prediction for a selected nonsingular frequency.",
+    "sweep": "Use an explicit fixed-force frequency range with both uniformly sampled data and exact analytically located peak/half-power events. Do not infer absence of a narrow peak solely from a sparse sweep. Keyboard controls and complete tabulated alternatives must expose every sampled value and special event.",
+    "timeTrace": "At a selected forcing frequency and specified initial state, compare total and periodic particular responses, inspect a keyboard state probe, and show force, velocity, input power, mechanical energy and independently integrated work/loss.",
+    "evidence": "Require below/near/above-natural-frequency cases, damping on both sides of the displacement-peak threshold, a startup-versus-periodic comparison, a numerical refinement and an undamped resonant case. Separate a finite-window mean from a steady-cycle prediction.",
+    "rubric": "Assess reproducible conditions and excitation convention, output-specific resonance, phase and transient reasoning, independent energy/work checks, and justified limitations/revision. Save the record in notes with disclosed control-reset behavior; do not claim objective evidence from self-scoring."
+  },
+  "verification": [
+    "At least 50 deterministic seeds for each of the 12 planned family variants plus meaningful zero-force, zero-frequency, zero-damping, no-interior-peak and near-resonance cases.",
+    "Independent real coefficient substitution, phase-quadrant reconstruction and direct numerical ODE integration across damping regimes and initial states; use a reference distinct from the production state evaluator.",
+    "Independently differentiate squared response amplitudes, bracket maxima and check both sides of the displacement threshold, including equality. Verify that velocity and power peaks remain at omega0.",
+    "Integrate force times velocity and b*v^2 over a full periodic cycle independently; compare startup energy change with work minus loss. Validate units, signs, equivalent forms, invalid/nonfinite input, and precision restrictions.",
+    "Test high/low-frequency limits, static forcing, missing full-cycle windows, b=0 resonance, near-resonance finite-time continuity and the nondecaying homogeneous response when b=0.",
+    "Check all sweep and time tables, reset of stale output, desktop/mobile/reflow/zoom-equivalent layouts, keyboard access, actual misconception feedback, reload, checkpoint persistence and backup restoration with previous-course attempts retained."
+  ],
+  "delivery": "Implement only after finishing m01-l03 verification. Keep model, families, authored content and browser checks course-specific; register the new activity and families in a separate compatible shared commit. Keep the course status building until all 31 lessons, 44 course forms, the project and release checks are delivered."
+}
