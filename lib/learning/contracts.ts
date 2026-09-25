@@ -3,6 +3,7 @@ import { phs231NumericalActivitySchema } from "./phs-231-numerical";
 import { z } from "zod";
 import { rightTriangleCaseSchema } from "./right-triangle-investigation";
 import { unitCircleCaseSchema } from "./unit-circle";
+import { sixCaseSchema } from "./six-trig";
 import { parseRational } from "./rational";
 import { normalizeIntervals } from "./intervals";
 import { parseRealEndpoint } from "./exact-order";
@@ -163,6 +164,7 @@ export const lessonSchema = z.object({
   examples: z.array(workedExample).min(2),
   guided: z.object({ title: text, setup: text, before: z.array(text), question: questionSchema, after: text }).strict(),
   interaction: z.discriminatedUnion("kind",[
+    z.object({kind:z.literal("six-functions-lab"),prompt:text,cases:z.array(sixCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("unit-circle-lab"),prompt:text,cases:z.array(unitCircleCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("right-triangle-lab"),prompt:text,cases:z.array(rightTriangleCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("rotation-lab"),prompt:text,cases:z.array(rotationLabCaseSchema).min(3).max(6)}).strict(),
