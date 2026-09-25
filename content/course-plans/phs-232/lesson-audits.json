@@ -43,6 +43,40 @@
         "finalPresentation": "A further 191-page build and all three targeted harmonic rendering/reflow checks passed in 46.9 seconds after moving phase-plane tick labels outside the curve. Desktop/mobile phase-plane captures and the 200-percent-zoom equivalent (720 by 500 CSS pixels at device scale 2, corresponding to a 1440 by 1000 display) were visually inspected. The rubric, 320px focus and reduced-motion behavior are also checked."
       },
       "next": "m01-l02"
+    },
+    {
+      "id": "m01-l02",
+      "status": "available in the building course",
+      "contentCommit": "5e30417",
+      "browserCommit": "00f7f0a",
+      "teaching": {
+        "sections": 9,
+        "workedExamples": 12,
+        "guidedTasks": 1,
+        "guidedFields": 5,
+        "practiceFamilies": 2,
+        "practiceVariants": 12,
+        "checkpointItems": 4,
+        "investigation": "Predict the small-angle period, nonlinear release energy and period comparison; compare a rigid-rod pendulum's sine and linear models, both energy accounts and two integration steps. Keyboard probes, all-state paginated tables, crossing evidence and a five-criterion self-check rubric support three contrasting runs plus step refinement."
+      },
+      "independentChecks": {
+        "generatedCases": "Each of 12 variants passed at least 50 deterministic seeds: 600 minimum variant-seed cases. Additional coverage checks include positive/zero/negative energy under a specified reference, series/parallel constraints, all turning bounds, parameter scaling, rod/disk pivot inertias, torsion, positive/negative/zero curvature, both stable and unstable quartic equilibria, and force-versus-period tolerance outcomes.",
+        "stateReference": "Fifty amplitudes are checked against independent 4000-panel energy-integral quadrature; fifty trajectories are compared with a separate velocity-Verlet integration at 16384 steps per small-angle period. Tests also check the analytic linear solution, crossing times, refinement and energy accounts.",
+        "answerReference": "Linear-force work integration, separate series-spring energies, vertical combined-potential differences, numerical extended-body inertia integrals, force/curvature finite differences and independent sine-series/period quadrature verify answers. Tests reject missing roots, wrong directions, inappropriate local-force substitution, negative formal kinetic requirements presented as states, invalid units/nonfinite input and incorrect interpretation.",
+        "smallAngle": "At 15 degrees the release-force discrepancy relative to the linear force is 1.138407053463076%, while the period increase is 0.4300579173465158%. Tests keep these distinct from numerical period error and energy drift.",
+        "guided": "Independent Simpson integration of the restoring force confirms the guided potential difference and kinetic energy, including both velocity roots and the excluded half-meter position."
+      },
+      "verification": {
+        "unit": "2354 tests in 273 files passed with no skips in 245.84 seconds, with F10_PYTHON configured. This includes both newly registered generator families, the pendulum model and the full prerequisite/mechanics suite.",
+        "static": "Full lint and type checking passed. Scoped lint and full type checking also passed after the final display and browser-capture changes.",
+        "build": "A 192-page production build passed. A further 192-page build passed after changing tiny numerical differences to scientific notation and correcting the reading title.",
+        "browsers": "All 23 selected browser checks passed together in 5.8 minutes on 3101 with one worker: four MTH 215 radians checks, seven shared learning/recovery checks, two PHS 231 release checks, five harmonic checks and five energy-lesson checks. All three affected energy rendering/reflow checks then passed on the final build in 1.5 minutes.",
+        "learning": "Browser checks exercise wrong and corrected guided answers, a mistaken period prediction, two distinct approximation percentages, refinement and mass scaling, same-direction crossings, every paginated table state, large-angle short-window behavior, zero amplitude and invalid inputs. Checkpoints use independently calculated answers, resume after reload, keep practice hints separate from independent evidence, and survive export/reset/import with earlier PHS 231 and PHS 232 attempts unchanged.",
+        "visual": "Desktop 1440px and mobile 390px angle/energy plots and convergence tables were visually inspected. Small numerical errors now use scientific notation to fit the mobile comparison. Visible keyboard focus, no page overflow, horizontal table scrolling, reduced motion, 320px reflow and a 720x500 CSS viewport at device scale 2 (200-percent zoom equivalent on a 1440x1000 display) were checked. Axe reports no tested WCAG A/AA violations; this is not a complete accessibility certification.",
+        "preview": "The final production lesson on port 3001 returns HTTP 200. Desktop/mobile reading and worked examples were inspected, with no page or KaTeX errors; long displayed equations retain the shared keyboard-scroll behavior."
+      },
+      "limits": "The investigation is a rigid-rod simulation, not a physical experiment or an equipment specification. Its controls reset on reload as disclosed; lesson notes retain the learner's record. The rubric is self-assessment. No independent subject review or learner pilot has occurred.",
+      "next": "m01-l03"
     }
   ]
 }
