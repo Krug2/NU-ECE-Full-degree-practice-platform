@@ -114,6 +114,41 @@
       },
       "limits": "This investigation is a simulation, not a physical experiment or an official equipment specification. Controls reset on reload as disclosed; saved notes preserve the reproducible record. Self-scoring does not award objective evidence. No independent subject review or learner pilot has occurred.",
       "next": "m01-l04"
+    },
+    {
+      "id": "m01-l04",
+      "status": "available in the building course",
+      "contentCommit": "0e9d11e",
+      "browserCommit": "2de8767",
+      "teaching": {
+        "sections": 10,
+        "workedExamples": 14,
+        "guidedTasks": 1,
+        "guidedFields": 7,
+        "practiceFamilies": 2,
+        "practiceVariants": 12,
+        "checkpointItems": 4,
+        "investigation": "Predict amplitude, phase and the selected output peak; compare a complete frequency sweep with exact characteristic events, startup and particular states, and independent energy-transfer integrals. Two keyboard probes, complete sweep/state/cycle tables and a five-criterion self-check rubric support transient, damping and singular-limit comparisons."
+      },
+      "independentChecks": {
+        "generatedCases": "Each of 12 variants passed at least 50 deterministic seeds, totaling 600 minimum variant-seed cases. Extra coverage includes phase quadrants, both initial conditions, static and zero-force states, persistent undamped motion, secular resonance, separate displacement/velocity/power peaks, the no-interior-peak threshold, half-power points and startup versus periodic cycle work.",
+        "stateReference": "Fifty varied states are compared with an independent 16384-step Runge-Kutta solution at multiple times across every damping regime. Fifty exact-resonance fixtures check the analytic secular solution and nearby frequencies. Tiny positive damping, near-critical continuity, constant forcing and zero forcing are included; an extreme 12-period case uses 65536 reference steps.",
+        "energyReference": "Fifty cases compare independent four-state ODE integrations of displacement, velocity, input work and viscous loss with the delivered matrix-exponential state and separate power quadrature. Refinement, endpoint balances, startup-cycle means, negative instantaneous input power and periodic mean power are checked independently.",
+        "resonanceReference": "Separate derivative signs and bounded maximum searches verify output-specific peaks. Independent bisection verifies both half-power frequencies; numerical period integrals verify mean power and cycle work. Boundary damping, very narrow peaks, outside-sweep half-power points and finite free-cycle energy loss are explicit fixtures.",
+        "answers": "Tests check equivalent exact fractions, radicals and pi expressions, numeric tolerance boundaries, invalid and nonfinite input, wrong phase quadrants/signs, missing initial corrections, false steady-state claims and incorrect peak interpretations. A complex exact input is valid syntax but incorrect for a real expected answer.",
+        "authored": "Four content tests independently verify all printed state/work examples and guided answers, including the first startup cycle, near-resonant finite-time limit and static critical response. These tests use separate ODE and integral references rather than reading expected answers from the generated solution."
+      },
+      "verification": {
+        "unit": "2414 tests in 282 files passed with no skips in 254.21 seconds, with F10_PYTHON configured. The full prerequisite/mechanics suite and all new driven model, family and authored-content checks are included.",
+        "static": "Full lint and type checking passed; the final browser file also passed scoped lint and full type checking.",
+        "build": "The production build passed with 194 generated pages.",
+        "browsers": "All six driven-lesson scenarios passed together in 1.4 minutes on port 3101 with one desktop-project worker. They cover teaching, distinct output peaks and singular limits, startup/refinement/invalid inputs, checkpoint and backup recovery, 320px reflow, and a 720x500 CSS viewport at device scale 2 (200-percent zoom equivalent on a 1440x1000 display).",
+        "learning": "Wrong and corrected guided answers and predictions are exercised. Tests inspect all 129 sweep samples and exact event rows, both keyboard probes, all state/work resolutions and cycle evidence. Four checkpoint answers are independently calculated, survive reload and exact export/reset/import, and retain prior damping and PHS 231 attempts, notes and practice hints.",
+        "visual": "Desktop 1440px and mobile 390px sweep, state and energy plots and work tables were visually inspected. The 320px table and probe-focus captures and 720px zoom-equivalent focus capture were inspected. Numeric table cells retain intact values in keyboard scroll regions, controls show focus and pages have no horizontal overflow. Axe reports no tested WCAG A/AA violations; this is not complete accessibility certification.",
+        "preview": "The final production lesson on port 3001 returned HTTP 200. Desktop/mobile reading and worked examples for coefficient balance, first-cycle startup work and the near-resonant limit were inspected. Long equations remain keyboard-scrollable, with no page errors, KaTeX errors or page overflow."
+      },
+      "limits": "This investigation is a simulation, not a physical experiment or official equipment specification. Its finite-time state is evaluated stably even where a bounded sinusoidal particular response does not exist. Controls reset on reload as disclosed; saved notes preserve the learner record. The rubric is self-assessment. No independent subject review or learner pilot has occurred.",
+      "next": "m02-l01"
     }
   ]
 }

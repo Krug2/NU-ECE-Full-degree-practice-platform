@@ -1,7 +1,7 @@
 {
   "courseId": "phs-232",
   "lessonId": "m01-l04",
-  "status": "Implementation design only; the driven-response lesson is not available or complete.",
+  "status": "Implemented and technically verified in the building course. Actual checks, limitations and commit references are recorded in lesson-audits.json; this does not establish independent subject review or course completion.",
   "basis": "The full course plan in modules.json remains the coverage authority. These are proposed teaching and numerical decisions, not official NU assessment or equipment requirements.",
   "sources": [
     {
