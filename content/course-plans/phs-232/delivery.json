@@ -23,7 +23,7 @@
     },
     {
       "path": "resources.json",
-      "purpose": "94 verified public primary-source readings, their page titles or PDF heading, and lesson mappings."
+      "purpose": "97 verified public primary-source readings, their page titles or PDF headings, and lesson mappings."
     },
     {
       "path": "assessments.json",
@@ -60,6 +60,10 @@
     {
       "path": "m02-l01-design.json",
       "purpose": "Numerical and instructional design for the implemented traveling-wave lesson; actual verification is recorded separately in lesson-audits.json."
+    },
+    {
+      "path": "m02-l02-design.json",
+      "purpose": "Detailed superposition, reflection, finite-string and coupled-mode design. The lesson remains unavailable until teaching, investigations and integrated verification are delivered."
     }
   ],
   "slices": [

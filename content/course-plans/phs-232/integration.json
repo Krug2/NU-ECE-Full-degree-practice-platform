@@ -350,19 +350,43 @@
     {
       "commit": "aadcd7d",
       "change": "Seven wave learning, pulse conservation, aliasing, recovery and accessibility browser checks."
+    },
+    {
+      "commit": "af2f766",
+      "change": "Detailed superposition/reflection/mode design, fourteen proposed variants and four investigation panels."
+    },
+    {
+      "commit": "54a09d8",
+      "change": "Superposition and boundary models with fifty-case derivative, junction, node and power fixtures."
+    },
+    {
+      "commit": "677f624",
+      "change": "Finite-string mode model with both endpoint spectra, complete energy records and independent boundary/quadrature fixtures."
+    },
+    {
+      "commit": "cd7c245",
+      "change": "Coupled-mode initial states, explicit physical and modal energy, spring-work refinement and independent force-equation integration."
+    },
+    {
+      "commit": "ef38a0d",
+      "change": "Eight superposition and interface variants, each verified across at least fifty deterministic seeds."
+    },
+    {
+      "commit": "3f9d72a",
+      "change": "Six spectrum, coupled-coordinate and beat variants, each verified across at least fifty deterministic seeds."
     }
   ],
   "lessonVerification": "See lesson-audits.json for actual delivery evidence. Fifth-lesson integration passed 2501 unit tests, full lint/type checks, a 196-page production build and all seven new browser scenarios. Desktop/mobile production reading, worked examples, plots and tables were inspected, including 320px reflow and a 200-percent zoom equivalent. These are technical checks, not independent subject review.",
   "nextImplementation": {
     "lessonId": "m02-l02",
-    "status": "The complete coverage map specifies superposition, reflection and normal modes. Detailed numerical/interaction design and implementation are next.",
+    "status": "Detailed design and three course-owned models are implemented with independent checks. Both generated families are implemented with at least fifty seeds for each of fourteen variants. Investigations, instruction, shared registration and integrated verification remain pending; m02-l02 is unavailable.",
     "focus": "Coherent phase and resultant amplitude, fixed/free and finite-interface reflection, standing-wave boundary conditions, signed power, coupled-oscillator modes and the distinction between signed modulation and beat magnitude."
   },
   "planningVerification": {
     "status": "passed",
-    "counts": "10 modules, 31 lessons, 62 initially planned families with 372 variants, 44 course forms and 31 complementary cumulative-blueprint rows.",
+    "counts": "10 modules, 31 lessons, 62 initially planned families with 372 variants, 44 course forms and 31 complementary cumulative-blueprint rows. Detailed m02-l02 design adds two explicit finite-interface variants, bringing the current planned variant map to 374.",
     "coverage": "Every published subject area maps to explicit lesson evidence, and every planned lesson appears in the coverage crosswalk. Module and lesson dependencies have no forward or missing internal references.",
-    "links": "Every linked preparation lesson exists. The initial 92 reading IDs were checked for HTTP-200 provider pages and expected titles; the MIT index title differs only in word order. Two additional university string-energy readings were read and verified for m02-l01, bringing the resource map to 94. Every referenced planning artifact exists.",
+    "links": "Every linked preparation lesson exists. The initial 92 reading IDs were checked for HTTP-200 provider pages and expected titles; the MIT index title differs only in word order. Two additional university string-energy readings were read and verified for m02-l01, bringing the resource map to 94. Every referenced planning artifact exists. Three interface and coupled-mode primary readings were subsequently read and independently checked for HTTP 200 for m02-l02; the current resource map contains 97 entries.",
     "assessment": "Each cumulative selection belongs to its original planned lesson and named family/variant; A and B use different families for every objective. Proposed thresholds, critical checks, six project criteria and ten notebook sections are explicit.",
     "scope": "The complete course plan was verified before implementation. Actual delivered features are listed separately. No independent subject review or pilot validation has occurred."
   },
