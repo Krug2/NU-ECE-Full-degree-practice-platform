@@ -3,6 +3,7 @@ import { CoordinatePlot } from "./coordinate-plot";
 import { PiecewisePlot } from "./piecewise-plot";
 import { TransformedPlot } from "./transformed-plot";
 import { MathText } from "./math-text";
+import { DataTableFigure } from "./data-table-figure";
 
 export function TrianglePlot({ figure }: { figure: TriangleFigure }) {
   return <figure className="function-figure triangle-figure" style={{ maxWidth: 560 }}>
@@ -20,5 +21,5 @@ export function TrianglePlot({ figure }: { figure: TriangleFigure }) {
   </figure>;
 }
 export function QuestionFigure({ figure }: { figure: QuestionFigureData }) {
-  return figure.kind === "coordinates" ? <CoordinatePlot figure={figure} /> : figure.kind === "piecewise" ? <PiecewisePlot figure={figure} /> : figure.kind === "transformed-function" ? <TransformedPlot figure={figure} /> : <TrianglePlot figure={figure} />;
+  return figure.kind === "coordinates" ? <CoordinatePlot figure={figure} /> : figure.kind === "piecewise" ? <PiecewisePlot figure={figure} /> : figure.kind === "transformed-function" ? <TransformedPlot figure={figure} /> : figure.kind === "data-table" ? <DataTableFigure figure={figure} /> : <TrianglePlot figure={figure} />;
 }

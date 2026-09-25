@@ -23,7 +23,15 @@ export const transformedFigureSchema = z.object({
   kind:z.literal("transformed-function"),title:z.string().min(1).max(100),model:transformedFunctionSchema,
   extent:z.number().int().min(2).max(24).default(12),showParent:z.boolean().default(false),
 }).strict();
-export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema, piecewiseFigureSchema, transformedFigureSchema]);
+export const dataTableFigureSchema = z.object({
+  kind: z.literal("data-table"), title: z.string().min(1).max(100),
+  columns: z.array(z.string().min(1).max(100).regex(/\S/)).min(2).max(6),
+  rows: z.array(z.array(z.string().min(1).max(160).regex(/\S/)).min(2).max(6)).min(1).max(24),
+  note: z.string().max(1000).default(""),
+}).strict().refine(figure => new Set(figure.columns).size === figure.columns.length, "Column labels must be unique")
+  .refine(figure => figure.rows.every(row => row.length === figure.columns.length), "Each row must match the column labels");
+export const questionFigureSchema = z.discriminatedUnion("kind", [coordinateFigureSchema, triangleFigureSchema, piecewiseFigureSchema, transformedFigureSchema, dataTableFigureSchema]);
+export type DataTableFigureData = z.infer<typeof dataTableFigureSchema>;
 export type TransformedFigure = z.infer<typeof transformedFigureSchema>;
 export type PiecewiseFigure = z.infer<typeof piecewiseFigureSchema>;
 export type TriangleFigure = z.infer<typeof triangleFigureSchema>;
