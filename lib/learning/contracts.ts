@@ -1,3 +1,4 @@
+import { phs232ModesActivitySchema } from "./phs-232-modes";
 import { phs232TravelingWaveActivitySchema } from "./phs-232-traveling-wave";
 import { phs231ValidationActivitySchema } from "./phs-231-validation";
 import { phs231NumericalActivitySchema } from "./phs-231-numerical";
@@ -166,6 +167,7 @@ export const lessonSchema = z.object({
     phs232OscillatorEnergyActivitySchema,
     phs232DampingActivitySchema,
     phs232DrivenActivitySchema,
+    phs232ModesActivitySchema,
     phs232TravelingWaveActivitySchema,
     z.object({kind:z.literal("model-lab"),prompt:text,cases:z.array(modelLabCaseSchema).min(3).max(6)}).strict(),
     z.object({kind:z.literal("log-rewrite-lab"),prompt:text,cases:z.array(logRewriteLabCaseSchema).min(3).max(6)}).strict(),

@@ -99,9 +99,11 @@ import { rightModelFamilyIds, rightModelQuestion } from "./families/mth-right-mo
 
 import { phs232TravelingWaveFamilyIds, phs232TravelingWaveQuestion } from "./families/phs-232-traveling-wave";
 import { phs232WaveTransportFamilyIds, phs232WaveTransportQuestion } from "./families/phs-232-wave-transport";
+import { phs232WaveSuperpositionFamilyIds, phs232WaveSuperpositionQuestion } from "./families/phs-232-wave-superposition";
+import { phs232WaveModesFamilyIds, phs232WaveModesQuestion } from "./families/phs-232-wave-modes";
 
 const generators=new Map<string,typeof linearQuestion>();
-for (const [ids, generate] of [[phs232TravelingWaveFamilyIds, phs232TravelingWaveQuestion], [phs232WaveTransportFamilyIds, phs232WaveTransportQuestion]] as const) {
+for (const [ids, generate] of [[phs232TravelingWaveFamilyIds, phs232TravelingWaveQuestion], [phs232WaveTransportFamilyIds, phs232WaveTransportQuestion], [phs232WaveSuperpositionFamilyIds, phs232WaveSuperpositionQuestion], [phs232WaveModesFamilyIds, phs232WaveModesQuestion]] as const) {
   for (const id of ids) { if (generators.has(id)) throw new Error("Duplicate family: " + id); generators.set(id, generate); }
 }
 for (const [ids, generate] of [[rightRatioFamilyIds, rightRatioQuestion], [rightSpecialFamilyIds, rightSpecialQuestion], [rightSolveFamilyIds, rightSolveQuestion], [rightModelFamilyIds, rightModelQuestion]] as const) {
