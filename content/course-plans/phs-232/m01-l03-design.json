@@ -1,0 +1,56 @@
+{
+  "courseId": "phs-232",
+  "lessonId": "m01-l03",
+  "status": "Implementation design only; this is not an available or completed lesson.",
+  "basis": "The complete course plan in modules.json remains the coverage authority. These decisions resolve numerical and instructional details before implementation.",
+  "sources": [
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-5-damped-oscillations",
+      "checkedAt": "2026-09-24",
+      "use": "Viscous force, characteristic roots and regime terminology; original explanations and independent derivations will distinguish conditional statements about settling and envelopes."
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-2/",
+      "checkedAt": "2026-09-24",
+      "use": "Free primary lecture material on damped free oscillators, offered as a supplemental reading."
+    }
+  ],
+  "model": {
+    "system": "One mass and linear spring measured from fixed equilibrium; force -kx-bv, m>0, k>0, b>=0; no drive, nonlinear friction or parameter changes.",
+    "definitions": [
+      "omega0=sqrt(k/m); beta=b/(2m); zeta=beta/omega0; b has units kg/s=N*s/m.",
+      "Use damping ratio as an activity control, with the resulting dimensional b displayed; exact zeta=1 explicitly selects the repeated-root case. Generated problems also require classification from m, k and b.",
+      "Regimes: zeta=0 undamped; 0<zeta<1 underdamped; zeta=1 critical; zeta>1 overdamped. Zero initial state is stationary in every regime."
+    ],
+    "stableStateEvaluation": [
+      "Let C and S be the damped cosine and sine kernels. Then x=x0*C+(v0+beta*x0)*S and v=v0*C-(beta*v0+omega0^2*x0)*S.",
+      "Underdamped: C=exp(-beta*t)*cos(wd*t), S=exp(-beta*t)*t*sinc(wd*t), wd=omega0*sqrt((1-zeta)*(1+zeta)). Evaluate sinc by its limit/series near zero.",
+      "Critical: C=exp(-beta*t), S=t*exp(-beta*t), retaining the repeated-root term.",
+      "Overdamped: delta=omega0*sqrt((zeta-1)*(zeta+1)), rslow=-omega0^2/(beta+delta), rfast=-(beta+delta). Use decaying exponentials rather than exp(-beta*t)*cosh(delta*t) where that would overflow. S=exp(rslow*t)*[-expm1(-2*delta*t)]/(2*delta); the small-delta limit must be continuous.",
+      "Evaluate acceleration from the force balance and check it with independent differentiation. Keep large-time underflow as a numerical limit, not finite-time physical arrival at equilibrium."
+    ],
+    "energy": "K=mv²/2, U=kx²/2, E=K+U; E'=-bv². Integrate the dissipative power independently with positive-weight quadrature over the sampled window. Report residual E(t)+D(t)-E(0) and compare refined quadrature; do not define D as E(0)-E(t) and then call the zero residual an independent check.",
+    "events": "Enumerate analytic displacement zeros and velocity zeros where practical, include initial/end time policy, classify signed extrema and distinguish adjacent opposite-sign peaks from same-sign peak spacing. Handle all-zero state separately. Critical and overdamped responses can cross equilibrium for suitable initial velocity without being oscillatory."
+  },
+  "teachingDecisions": [
+    "Derive every response from characteristic roots and both initial conditions; do not apply the underdamped cosine expression in the critical or overdamped regimes.",
+    "In x=exp(-beta*t)(C0*cos(wd*t)+D0*sin(wd*t)), D0=(v0+beta*x0)/wd. A release from rest generally has a nonzero sine coefficient.",
+    "The sinusoidal amplitude envelope bounds displacement but does not generally pass through the true displacement extrema; use v=0 to locate them.",
+    "Logarithmic decrement uses same-sign peaks separated by an integer number of damped periods. Retain the number of intervening cycles and distinguish beta, b, omega0 and wd.",
+    "Instantaneous energy is not generally E(0)*exp(-2*beta*t). Derive the exact energy from the state; weak-damping cycle averages and phase-dependent envelopes must be labeled.",
+    "State an absolute or normalized position band and an optional velocity band before discussing settling. A first band entry, the last exit in a finite record and a guaranteed future bound are different statements.",
+    "Energy gives a sufficient future bound: if E<=min(k*xBand²/2,m*vBand²/2), both state bands hold thereafter in this autonomous model because E is nonincreasing. This may certify later than the actual last exit and is not an optimality claim.",
+    "Finite-record in-band behavior does not prove permanent settling. Compare common initial states across damping regimes and do not claim critical damping minimizes every chosen settling metric.",
+    "Use a nonzero initial velocity counterexample to show that critical or overdamped does not universally mean no equilibrium crossing. Explicitly distinguish a single crossing from repeated oscillation.",
+    "Compare measured or synthetic peak evidence with a fixed viscous model. Departures do not identify a unique alternate force law without further evidence."
+  ],
+  "verificationPlan": [
+    "At least 50 deterministic seeds per each of the 12 planned variants, with independent answer derivations, supported equivalents, invalid inputs, units, sign errors and interpretation checks.",
+    "Analytic trajectories versus an independently integrated ODE or matrix exponential for at least 50 varied parameter/initial-state cases across all regimes.",
+    "Near-critical zeta=1 plus/minus small offsets; b=0; both signs of x0/v0; zero state; pure slow/fast exponential states; large damping and long times without spurious overflow.",
+    "Independent power integration and energy derivative; exact initial conditions and force balance; same-sign peak ratios and event times.",
+    "Settling examples that enter and later leave a band, stationary initial state, insufficient window, and the conservative energy certificate.",
+    "Browser checks for actual predictions and interpretation, visible reset of stale results, keyboard probes, complete table alternatives, mobile/reflow/zoom-equivalent rendering, saved answers/notes and exported-backup restoration."
+  ],
+  "delivery": "Keep the model, families, investigation and tests course-specific. Register any new interaction kind in a focused compatible shared commit. Publish the authored lesson only after its coverage and behavior have been checked; update actual-delivery ledgers separately."
+}
