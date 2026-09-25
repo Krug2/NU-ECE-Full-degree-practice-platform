@@ -58,9 +58,9 @@
     "currentCourseProgress": {
       "phase": "implementation",
       "plannedLessons": 31,
-      "availableLessons": 1,
-      "nextLesson": "m01-l02",
-      "nextWork": "Build and independently verify energy, physical oscillators and stable equilibrium, including a controlled comparison of linearized and nonlinear pendulum motion.",
+      "availableLessons": 2,
+      "nextLesson": "m01-l03",
+      "nextWork": "Build and independently verify free decay and damping regimes, including near-critical continuity, separate power integration, true peak timing and explicit settling criteria.",
       "integrationRecord": "phs-232/integration.json",
       "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },
