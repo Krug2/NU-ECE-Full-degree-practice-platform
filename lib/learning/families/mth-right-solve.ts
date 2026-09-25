@@ -59,7 +59,7 @@ export function rightSolveQuestion(familyId: string, variant: string, seed: stri
       "Opposite ≈ " + solution.opposite.toFixed(4) + " cm; adjacent ≈ " + solution.adjacent.toFixed(4) + " cm; hypotenuse ≈ " + solution.hypotenuse.toFixed(4) + " cm.",
       "The complementary angle is " + (90 - degrees) + " degrees. Use unrounded sides in the Pythagorean check."];
   }
-  return questionSchema.parse({ ...rightBase(familyId, id), category: "procedural", parameters: { degrees, length, atB, o, a, h }, prompt, fields,
+  return questionSchema.parse({ ...rightBase(familyId, id), category: "procedural", parameters: { degrees, length, atB, o, a, h }, prompt, fields: fields.map(field => field.kind === "choice" ? { ...field, options: rng.shuffle(field.options) } : field),
     hints: ["Choose the reference angle and label opposite, adjacent and hypotenuse.", explanation[0], explanation.slice(1).join(" ")],
     explanation, answerSummary: fields.map(field => field.label + ": " + (field.kind === "choice" ? field.options.find(option => option.id === field.correct)!.label : field.kind === "numeric" ? field.expected.toFixed(field.unit === "degrees" ? 1 : field.unit === "" ? 3 : 2) + " " + field.unit : "expected" in field ? field.expected : "")).join("; "),
   });

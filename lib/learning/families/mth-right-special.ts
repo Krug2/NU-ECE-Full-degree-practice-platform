@@ -40,7 +40,7 @@ export function rightSpecialQuestion(familyId: string, variant: string, seed: st
     fields = [exactLength("short", "Short leg", String(size), "cm"), exactLength("other", knownHypotenuse ? "Long leg" : "Hypotenuse", knownHypotenuse ? size + "*sqrt(3)" : String(2 * size), "cm")];
     explanation = ["The side lengths are s, s√3, 2s, opposite 30, 60 and 90 degrees respectively.", knownHypotenuse ? "The hypotenuse is twice the short leg, so first divide by 2." : "The long leg is √3 times the short leg, so divide by √3.", "Recover the remaining side from the same scale s = " + size + " cm."];
   }
-  return questionSchema.parse({ ...rightBase(familyId, id), category: "procedural", parameters: { size, angle, radians, knownHypotenuse }, prompt, fields,
+  return questionSchema.parse({ ...rightBase(familyId, id), category: "procedural", parameters: { size, angle, radians, knownHypotenuse }, prompt, fields: fields.map(field => field.kind === "choice" ? { ...field, options: rng.shuffle(field.options) } : field),
     hints: ["Identify the angle opposite each side before using a special-triangle pattern.", explanation[0], explanation.slice(1).join(" ")],
     explanation, answerSummary: fields.map(field => field.label + ": " + (field.kind === "choice" ? field.options.find(option => option.id === field.correct)!.label : "expected" in field ? field.expected : "")).join("; "),
   });

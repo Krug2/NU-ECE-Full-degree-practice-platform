@@ -59,7 +59,7 @@ export function rightRatioQuestion(familyId: string, variant: string, seed: stri
     explanation = ["The hypotenuse is longer than each positive leg, so sine and cosine lie strictly between 0 and 1.", "Tangent is a positive leg ratio with no universal upper bound.", "For this reference angle, tangent = " + triangle.tan + "."];
   }
   return questionSchema.parse({
-    ...rightBase(familyId, id), category: "conceptual", parameters, prompt, ...(variant === "validity" ? {} : { figure }), fields,
+    ...rightBase(familyId, id), category: "conceptual", parameters, prompt, ...(variant === "validity" ? {} : { figure }), fields: fields.map(field => field.kind === "choice" ? { ...field, options: rng.shuffle(field.options) } : field),
     hints: ["Identify the right angle, then the chosen acute angle.", explanation[0], explanation.slice(1).join(" ")],
     explanation, answerSummary: fields.map(field => field.label + ": " + (field.kind === "choice" ? field.options.find(option => option.id === field.correct)!.label : "expected" in field ? field.expected : "")).join("; "),
   });

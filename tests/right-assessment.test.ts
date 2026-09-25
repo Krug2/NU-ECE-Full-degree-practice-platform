@@ -9,16 +9,21 @@ const source = { id: plan.lessonId, courseId: plan.courseId, version: 1, practic
 const answer = (field: AnswerField) => field.kind === "choice" ? field.correct : "expected" in field ? String(field.expected) : "";
 
 it("generates every planned variant deterministically with unique prompts and valid mathematics", () => {
+  const firstOptions = new Set<string>();
   for (let seed = 0; seed < 15; seed++) {
     const questions = generateQuestions(slots, "right-form-" + seed);
     expect(questions).toHaveLength(35);
     expect(questions).toEqual(generateQuestions(slots, "right-form-" + seed));
     expect(new Set(questions.map(q => JSON.stringify({ prompt: q.prompt, figure: q.figure }))).size).toBe(35);
+    const claim = questions.find(q => q.fields.some(field => field.id === "claim"))!.fields[0];
+    if (claim.kind !== "choice") throw new Error("Missing survey claim.");
+    firstOptions.add(claim.options[0].id);
     for (const q of questions) {
       expect(q.objectiveId).toBe("m06-l02");
       for (const value of [q.prompt, ...q.explanation, ...q.hints]) for (const match of value.matchAll(/\$([^$]+)\$/g)) expect(() => katex.renderToString(match[1], { strict: "error", trust: false }), match[1]).not.toThrow();
     }
   }
+  expect(firstOptions).toEqual(new Set(["yes", "no"]));
 });
 it("requires every critical checkpoint question to be correct and independent", () => {
   const attempt = createAttempt(source, "checkpoint", "77174bca-b6c5-4167-8af4-f5827e43c5e8");
