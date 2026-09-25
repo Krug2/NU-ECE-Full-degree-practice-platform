@@ -1,0 +1,291 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l03",
+  "status": "authored",
+  "objective": "Determine exact sine and cosine values using coordinates, symmetry, reference angles, and quadrant signs.",
+  "independentSubjectReview": "not yet performed",
+  "coverage": [
+    {
+      "topic": "Turn a right triangle into a coordinate definition",
+      "instruction": [
+        "Turn a right triangle into a coordinate definition"
+      ],
+      "examples": [
+        "Normalize a first-quadrant ray"
+      ],
+      "practice": [
+        "mth-circle-pairs:radius"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Normalize a fresh first-quadrant point and explain why dividing by a positive radius leaves its direction unchanged."
+    },
+    {
+      "topic": "Read cosine first and sine second",
+      "instruction": [
+        "Read cosine first and sine second"
+      ],
+      "examples": [
+        "Repair reversed coordinates"
+      ],
+      "practice": [
+        "mth-circle-pairs:coordinate-order"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Explain the ordered pair from adjacent and opposite legs, then repair a non-diagonal example whose coordinates were swapped."
+    },
+    {
+      "topic": "Derive the diagonal point",
+      "instruction": [
+        "Derive the diagonal point"
+      ],
+      "examples": [
+        "Derive the diagonal coordinates"
+      ],
+      "practice": [
+        "mth-circle-pairs:derive-diagonal"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Derive both 45-degree coordinates from x = y and x² + y² = 1, without referring to a memorized table."
+    },
+    {
+      "topic": "Derive the thirty-degree and sixty-degree points",
+      "instruction": [
+        "Derive the thirty-degree and sixty-degree points"
+      ],
+      "examples": [
+        "Derive the thirty-degree point",
+        "Exchange complementary projections"
+      ],
+      "practice": [
+        "mth-circle-pairs:derive-thirty",
+        "mth-circle-pairs:first-quadrant"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Bisect an equilateral triangle, normalize the hypotenuse, and explain why the thirty- and sixty-degree coordinates exchange roles."
+    },
+    {
+      "topic": "Use the axes as exact anchors",
+      "instruction": [
+        "Use the axes as exact anchors"
+      ],
+      "examples": [
+        "Read all four axis anchors",
+        "Respect the requested angle interval"
+      ],
+      "practice": [
+        "mth-circle-axes:positive-x",
+        "mth-circle-axes:positive-y",
+        "mth-circle-axes:negative-x",
+        "mth-circle-axes:negative-y",
+        "mth-circle-axes:zero-sine",
+        "mth-circle-axes:zero-cosine"
+      ],
+      "independentCheck": "mth-circle-axes:checkpoint",
+      "retrieval": "List the four axis points and the zeros of each function in a stated half-open interval, explaining each endpoint."
+    },
+    {
+      "topic": "Choose signs from the terminal location",
+      "instruction": [
+        "Choose signs from the terminal location"
+      ],
+      "examples": [
+        "Place a sixty-degree triangle in quadrant II",
+        "Place a thirty-degree triangle in quadrant III",
+        "Place a diagonal in quadrant IV"
+      ],
+      "practice": [
+        "mth-circle-pairs:second-quadrant",
+        "mth-circle-pairs:third-quadrant",
+        "mth-circle-pairs:fourth-quadrant"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Take one special triangle into each quadrant and name the signs before attaching any exact magnitudes."
+    },
+    {
+      "topic": "Find the reference angle before the magnitudes",
+      "instruction": [
+        "Find the reference angle before the magnitudes"
+      ],
+      "examples": [
+        "Measure the reference angle from the horizontal",
+        "Reduce to a sixty-degree reference"
+      ],
+      "practice": [
+        "mth-circle-pairs:reference"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Find a reference angle in each quadrant by measuring to the horizontal axis, then explain a complementary-angle mistake."
+    },
+    {
+      "topic": "Separate a negative rotation from a negative coordinate",
+      "instruction": [
+        "Separate a negative rotation from a negative coordinate"
+      ],
+      "examples": [
+        "End a clockwise rotation in quadrant I",
+        "Reduce a negative diagonal angle"
+      ],
+      "practice": [
+        "mth-circle-rotations:negative"
+      ],
+      "independentCheck": "mth-circle-rotations:checkpoint",
+      "retrieval": "Choose a clockwise input ending in quadrant I and another in quadrant III, explaining why the negative input alone fixes no output sign."
+    },
+    {
+      "topic": "Remove whole turns without changing the point",
+      "instruction": [
+        "Remove whole turns without changing the point"
+      ],
+      "examples": [
+        "Remove three full turns",
+        "Reduce several clockwise turns"
+      ],
+      "practice": [
+        "mth-circle-rotations:positive-turns",
+        "mth-circle-rotations:negative-turns",
+        "mth-circle-rotations:coterminal"
+      ],
+      "independentCheck": "mth-circle-rotations:checkpoint",
+      "retrieval": "Add and remove several signed full turns in exact radian form, distinguishing total travel from final position."
+    },
+    {
+      "topic": "Reflect a point across the horizontal axis",
+      "instruction": [
+        "Reflect a point across the horizontal axis"
+      ],
+      "examples": [
+        "Reflect an already signed point"
+      ],
+      "practice": [
+        "mth-circle-rotations:reflection"
+      ],
+      "independentCheck": "mth-circle-rotations:checkpoint",
+      "retrieval": "Reflect a point with a negative coordinate across the x-axis and justify each sign, including the zero-coordinate exception."
+    },
+    {
+      "topic": "Reflect across the vertical axis or through the origin",
+      "instruction": [
+        "Reflect across the vertical axis or through the origin"
+      ],
+      "examples": [
+        "Reflect across the vertical axis",
+        "Add a half-turn"
+      ],
+      "practice": [
+        "mth-circle-rotations:half-turn"
+      ],
+      "independentCheck": "mth-circle-rotations:checkpoint",
+      "retrieval": "Compare horizontal reflection, vertical reflection and a half-turn using the same signed starting point."
+    },
+    {
+      "topic": "Distinguish a shared coordinate from a shared terminal point",
+      "instruction": [
+        "Distinguish a shared coordinate from a shared terminal point"
+      ],
+      "examples": [
+        "Equal sine does not prove coterminality",
+        "Equal cosine does not prove coterminality"
+      ],
+      "practice": [
+        "mth-circle-rotations:same-sine",
+        "mth-circle-rotations:same-cosine"
+      ],
+      "independentCheck": "mth-circle-rotations:checkpoint",
+      "retrieval": "Give two angles with equal sine but different cosine and two with equal cosine but different sine; test coterminality."
+    },
+    {
+      "topic": "Use the circle equation as an identity",
+      "instruction": [
+        "Use the circle equation as an identity"
+      ],
+      "examples": [
+        "Check a signed point with the identity",
+        "Reject a false linear identity"
+      ],
+      "practice": [
+        "mth-circle-recover:identity"
+      ],
+      "independentCheck": "mth-circle-recover:checkpoint",
+      "retrieval": "Derive the squared identity from the circle equation and produce a counterexample to the corresponding unsquared claim."
+    },
+    {
+      "topic": "Recover a coordinate and justify its sign",
+      "instruction": [
+        "Recover a coordinate and justify its sign"
+      ],
+      "examples": [
+        "Recover a negative cosine",
+        "Recover an irrational sine",
+        "Recover from a radical coordinate"
+      ],
+      "practice": [
+        "mth-circle-recover:from-sine",
+        "mth-circle-recover:from-cosine",
+        "mth-circle-recover:radical-given"
+      ],
+      "independentCheck": "mth-circle-recover:checkpoint",
+      "retrieval": "Recover a missing coordinate from a fresh rational or radical given, keeping both candidates until the quadrant selects one."
+    },
+    {
+      "topic": "Keep both possibilities when a quadrant is missing",
+      "instruction": [
+        "Keep both possibilities when a quadrant is missing"
+      ],
+      "examples": [
+        "Retain two possible points",
+        "Collapse duplicate square-root branches"
+      ],
+      "practice": [
+        "mth-circle-recover:two-points"
+      ],
+      "independentCheck": "mth-circle-recover:checkpoint",
+      "retrieval": "Solve a reconstruction with no quadrant, then compare a strictly interior given coordinate with an axis extreme."
+    },
+    {
+      "topic": "Reject impossible or contradictory data",
+      "instruction": [
+        "Reject impossible or contradictory data"
+      ],
+      "examples": [
+        "Reject an out-of-range sine",
+        "Reject a conflicting quadrant"
+      ],
+      "practice": [
+        "mth-circle-recover:impossible",
+        "mth-circle-recover:sign-conflict"
+      ],
+      "independentCheck": "mth-circle-recover:checkpoint",
+      "retrieval": "Create one impossible range claim and a separate conflicting quadrant claim; explain why each has no valid point."
+    },
+    {
+      "topic": "Normalize a point on a larger circle",
+      "instruction": [
+        "Normalize a point on a larger circle"
+      ],
+      "examples": [
+        "Normalize a signed physical point"
+      ],
+      "practice": [
+        "mth-circle-recover:normalize"
+      ],
+      "independentCheck": "mth-circle-recover:checkpoint",
+      "retrieval": "Normalize a non-unit point in a different quadrant and explain why the origin cannot determine a direction."
+    },
+    {
+      "topic": "Distinguish exact values from numerical checks",
+      "instruction": [
+        "Distinguish exact values from numerical checks"
+      ],
+      "examples": [
+        "Keep a mode check separate from an exact answer",
+        "A radius check cannot detect swapped projections"
+      ],
+      "practice": [
+        "mth-circle-pairs:range"
+      ],
+      "independentCheck": "mth-circle-pairs:checkpoint",
+      "retrieval": "Compare a correct exact radical with a decimal and audit a point that has radius 1 but belongs to the wrong angle."
+    }
+  ],
+  "assessmentLimits": "Every form includes a non-axis exact pair with reference angle, a negative directed angle, an axis point, and a signed coordinate reconstruction. Other practice variants support these objectives but are not separately certified by a four-question form."
+}

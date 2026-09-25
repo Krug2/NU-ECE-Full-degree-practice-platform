@@ -1,0 +1,1015 @@
+{
+  "id": "m06-l03",
+  "courseId": "mth-215",
+  "moduleId": "m06",
+  "version": 1,
+  "title": "The unit circle and exact values",
+  "objective": "Determine exact sine and cosine values using coordinates, symmetry, reference angles, and quadrant signs.",
+  "why": "Coordinate definitions extend the right-triangle ratios to every direction. They prepare you to model rotating components, oscillations and periodic signals while keeping exact signs and values. Work in several sittings: derive the anchors, reason about rotations, then reconstruct missing coordinates. An exact answer should come with a geometric explanation.",
+  "estimatedMinutes": 180,
+  "prerequisites": [
+    {
+      "lessonId": "b02",
+      "label": "Exact fractions and radicals"
+    },
+    {
+      "lessonId": "b05",
+      "label": "Coordinates and quadrant signs"
+    },
+    {
+      "lessonId": "m06-l01",
+      "label": "Radians, reference angles and coterminal rotations"
+    },
+    {
+      "lessonId": "m06-l02",
+      "label": "Right-triangle ratios and special triangles"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Turn a right triangle into a coordinate definition",
+      "paragraphs": [
+        "Place an angle in standard position: its vertex is at the origin and its initial ray points along the positive x-axis. A counterclockwise rotation is positive. On the terminal ray, choose a point (X, Y) at distance r > 0 from the origin. In the first quadrant, the right-triangle definitions give cosine X/r and sine Y/r.",
+        "Divide both coordinates by r to obtain (x, y) = (X/r, Y/r). Since X² + Y² = r², the normalized point satisfies $x^2+y^2=1$. This circle is centered at the origin and has radius 1. Defining cosine as x and sine as y extends the acute-angle definitions to every direction, including axes, negative rotations and multiple turns. Coordinates may be signed even though triangle side lengths are positive."
+      ]
+    },
+    {
+      "heading": "Read cosine first and sine second",
+      "paragraphs": [
+        "An ordered pair always lists horizontal displacement first and vertical displacement second: $(x,y)=(\\cos\\theta,\\sin\\theta)$. To remember the order, return to the first-quadrant triangle. Its horizontal leg is adjacent to the angle, so its normalized length is cosine. Its vertical leg is opposite, so its normalized length is sine.",
+        "The function input is the angle, while the outputs are dimensionless numbers. The notation sin(theta) is a function value, not a product. A location such as (1/2, sqrt(3)/2) gives cosine 1/2 and sine sqrt(3)/2. Do not reverse these because the question happens to mention sine first. At 45 degrees the coordinates are equal, so that single example cannot expose an ordering mistake."
+      ]
+    },
+    {
+      "heading": "Derive the diagonal point",
+      "paragraphs": [
+        "At a first-quadrant angle of 45 degrees, symmetry across y = x makes the two coordinates equal and positive. Write y = x in the circle equation to get 2x² = 1. Then x² = 1/2, and the quadrant selects the positive square root.",
+        "Thus $x=y=1/\\sqrt{2}=\\sqrt{2}/2$. Multiplying numerator and denominator by sqrt(2) changes the written form, not the value. This derivation connects the diagonal of a square, the 45-45-90 triangle, and a radius of 1. It is more useful than memorizing a decimal such as 0.7071."
+      ]
+    },
+    {
+      "heading": "Derive the thirty-degree and sixty-degree points",
+      "paragraphs": [
+        "Bisect an equilateral triangle with side 2. In either resulting right triangle, the hypotenuse is 2, the short leg is 1, and the long leg is sqrt(3). Divide by 2 to make the hypotenuse 1. At 30 degrees, the horizontal long leg gives cosine sqrt(3)/2 and the vertical short leg gives sine 1/2.",
+        "At 60 degrees, the short and long legs exchange roles: cosine is 1/2 and sine is sqrt(3)/2. In radians, these inputs are pi/6 and pi/3. The first-quadrant anchors are therefore 30 degrees: (sqrt(3)/2, 1/2), 45 degrees: (sqrt(2)/2, sqrt(2)/2), and 60 degrees: (1/2, sqrt(3)/2). Keep the larger coordinate attached to the longer projection."
+      ]
+    },
+    {
+      "heading": "Use the axes as exact anchors",
+      "paragraphs": [
+        "Read axis points directly from a radius of 1. The points at 0, pi/2, pi and 3pi/2 radians are respectively (1, 0), (0, 1), (-1, 0) and (0, -1). One full turn, 2pi, returns to (1, 0). These zeros are exact; a calculator may display a tiny residue because it stores approximations.",
+        "An axis is not part of an open quadrant. In this course an acute reference angle is strictly between 0 and pi/2, so an axis point has no acute reference angle. Sine is zero on the horizontal axis; cosine is zero on the vertical axis. When listing angle labels in [0, 2pi), include 0 and exclude 2pi even though those labels represent the same terminal point."
+      ]
+    },
+    {
+      "heading": "Choose signs from the terminal location",
+      "paragraphs": [
+        "Use ordinary coordinate signs. In quadrant I both x and y are positive. In quadrant II x is negative and y is positive. In quadrant III both are negative. In quadrant IV x is positive and y is negative. Because x is cosine and y is sine, these are also the function signs.",
+        "A reference triangle has positive leg lengths. Those lengths provide magnitudes, not signed coordinates. Attach signs only after locating the terminal ray. For example, a 30-degree reference triangle in quadrant III has x = -sqrt(3)/2 and y = -1/2. Squaring the coordinates would remove the signs, so the radius check alone cannot choose a quadrant."
+      ]
+    },
+    {
+      "heading": "Find the reference angle before the magnitudes",
+      "paragraphs": [
+        "First reduce the angle to a representative theta0 in [0, 2pi). For a non-axis ray, the reference angle alpha is the acute angle between that ray and the horizontal axis. In quadrants I through IV the formulas are alpha = theta0, pi - theta0, theta0 - pi, and 2pi - theta0, respectively.",
+        "Once alpha is 30, 45 or 60 degrees, choose its first-quadrant coordinate magnitudes and attach the terminal quadrant's signs. Measuring from the vertical axis gives a complementary angle and can swap the magnitudes. Use the horizontal axis consistently. A ray at 120 degrees has reference angle 60 degrees, not 30 degrees."
+      ]
+    },
+    {
+      "heading": "Separate a negative rotation from a negative coordinate",
+      "paragraphs": [
+        "A negative angle means a clockwise rotation from the positive x-axis. It does not mean that both function values are negative. Add a full turn as needed to find an angle with the same terminal side, then choose the signs from that side.",
+        "For example, -300 degrees ends at the same point as 60 degrees, so both coordinates are positive. By contrast, -120 degrees ends in quadrant III, where both are negative. Do not convert a negative input to its absolute value without accounting for reflection; that would generally change the point."
+      ]
+    },
+    {
+      "heading": "Remove whole turns without changing the point",
+      "paragraphs": [
+        "A full turn changes the directed angle but leaves its terminal point fixed. For any integer k, $\\cos(\\theta+2k\\pi)=\\cos\\theta$ and $\\sin(\\theta+2k\\pi)=\\sin\\theta$. In degrees the increment is 360k. Remove signed whole turns while keeping the remainder in the stated interval.",
+        "Reduce exact multiples of pi using fractions before evaluating. For instance, subtracting three full turns from 19pi/3 leaves pi/3. Adding turns to a negative angle is equally valid. The amount traveled and direction can change while the final coordinates stay the same. A half-turn generally changes both signs, so it is not a period of either individual function."
+      ]
+    },
+    {
+      "heading": "Reflect a point across the horizontal axis",
+      "paragraphs": [
+        "The rays at theta and -theta are mirror images across the horizontal axis. A horizontal reflection preserves x and negates y: $(x,y)\\mapsto(x,-y)$. Consequently $\\cos(-\\theta)=\\cos\\theta$ and $\\sin(-\\theta)=-\\sin\\theta$.",
+        "Apply negation to the signed coordinate. If y was negative, -y is positive. If y is zero, reflection leaves the point unchanged. Cosine is called even and sine odd because of these input-sign rules. Here the geometry explains the vocabulary; later work will use the rules to simplify expressions and graphs."
+      ]
+    },
+    {
+      "heading": "Reflect across the vertical axis or through the origin",
+      "paragraphs": [
+        "The point at pi - theta is the reflection of the point at theta across the vertical axis. It has coordinates (-x, y), so sine is preserved and cosine changes sign. This rule holds for any real theta, not just a first-quadrant starting angle.",
+        "Adding pi gives a half-turn through the origin and sends (x, y) to (-x, -y). Both coordinates reverse. Keep the transformations distinct: reflection across the horizontal axis changes y; reflection across the vertical axis changes x; a half-turn changes both. These comparisons can produce new exact values from a known point without a new triangle."
+      ]
+    },
+    {
+      "heading": "Distinguish a shared coordinate from a shared terminal point",
+      "paragraphs": [
+        "Two different points can have the same vertical coordinate. For example, a horizontal line through the circle usually meets it twice; both intersections have the same sine but opposite cosines. A vertical line usually gives two points with the same cosine and opposite sines.",
+        "Equal sine alone or equal cosine alone does not establish coterminality. To have the same terminal point, both ordered coordinates must match. For angles in standard position, a full integer number of turns separates coterminal angles. At an extreme coordinate of 1 or -1 the line touches the circle at only one point, an exception to the usual two-point picture."
+      ]
+    },
+    {
+      "heading": "Use the circle equation as an identity",
+      "paragraphs": [
+        "Substitute x = cos(theta) and y = sin(theta) into x² + y² = 1 to obtain $\\cos^2\\theta+\\sin^2\\theta=1$. The notation sin²(theta) means [sin(theta)]², not sin(theta²). This identity holds for every real angle because every terminal point lies on the unit circle.",
+        "Use the identity to verify a pair or calculate a missing square. It does not say sin(theta) + cos(theta) = 1. It also cannot confirm that a pair belongs to a particular angle: a pair with swapped coordinates or changed signs can still lie on the circle. Check radius, quadrant and coordinate order together."
+      ]
+    },
+    {
+      "heading": "Recover a coordinate and justify its sign",
+      "paragraphs": [
+        "If y is known, isolate x² = 1 - y², then take both candidates $x=\\pm\\sqrt{1-y^2}$. If x is known, similarly use $y=\\pm\\sqrt{1-x^2}$. Square the entire fraction or radical, including its numerator and denominator. The given coordinate itself keeps its original sign.",
+        "The quadrant selects the sign of the missing coordinate. Do not automatically take the positive root. A positive sine is consistent with either quadrant I or II; those possibilities have opposite cosines. You can recover an exact coordinate even when the angle is not one of the special angles, and you need not calculate the angle to do so."
+      ]
+    },
+    {
+      "heading": "Keep both possibilities when a quadrant is missing",
+      "paragraphs": [
+        "When no quadrant or equivalent sign condition is supplied, retain every geometrically possible point. For a known coordinate strictly between -1 and 1, the missing square is positive, and both positive and negative roots are possible. A single output value usually does not identify a unique direction.",
+        "At a known coordinate of 1 or -1, the missing coordinate is zero, so the two square-root branches coincide. At a known coordinate of zero, the missing coordinate is either 1 or -1. Distinguish ambiguity from impossibility: two possible points means there is insufficient information for a unique point, not that the problem has no solutions."
+      ]
+    },
+    {
+      "heading": "Reject impossible or contradictory data",
+      "paragraphs": [
+        "Both coordinates lie in the closed interval [-1, 1]. A claimed sine of 6/5 is impossible for any real angle; 1 - (6/5)² is negative, which confirms that no real missing coordinate exists. Sine and cosine have every real number as an angle input, but their outputs stay within these bounds.",
+        "Check the quadrant as well as the range. A cosine of -3/5 is in range, but it cannot occur in quadrant I because x must be positive there. Axis values also conflict with an open-quadrant claim. Do not repair inconsistent givens silently; identify the contradiction and request corrected data."
+      ]
+    },
+    {
+      "heading": "Normalize a point on a larger circle",
+      "paragraphs": [
+        "For a nonzero point (X, Y), its positive distance from the origin is $r=\\sqrt{X^2+Y^2}$. The point on the unit circle in the same direction is (X/r, Y/r). Thus cosine is X/r and sine Y/r, even outside the first quadrant.",
+        "Divide by a positive radius so coordinate signs are preserved. The origin has r = 0 and does not determine a direction, so this normalization is undefined there. If the coordinates represent physical distances, use common length units before forming the ratios. A point such as (-6, 8) has radius 10, not 1; reading its raw coordinates as sine and cosine would violate the range."
+      ]
+    },
+    {
+      "heading": "Distinguish exact values from numerical checks",
+      "paragraphs": [
+        "Exact values come from definitions and algebra: fractions, square roots, signs and exact angle conversions. The inputs pi/3 radians and 60 degrees describe the same direction; pi/3 degrees does not. Label the angle unit before using a calculator. A bare real input to a mathematical sine or cosine function conventionally uses radians.",
+        "A calculator is useful for checking a magnitude or locating a non-special angle approximately, but an approximation is not a replacement for an exact radical. Enter sqrt(3)/2 rather than 0.866025 in an exact field. The investigation handles the common special angles; other real angles still have sine and cosine values. End each solution by checking signs, the squared sum, the requested angle and coordinate order."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Normalize a first-quadrant ray",
+      "prompt": "A ray passes through (10, 24). Find the point in the same direction on the unit circle.",
+      "steps": [
+        {
+          "math": "r=\\sqrt{10^2+24^2}=26",
+          "reason": "Use the positive distance from the origin."
+        },
+        {
+          "math": "(x,y)=\\left(\\frac{10}{26},\\frac{24}{26}\\right)=\\left(\\frac5{13},\\frac{12}{13}\\right)",
+          "reason": "Divide both physical coordinates by the same radius."
+        },
+        {
+          "math": "(5/13)^2+(12/13)^2=169/169=1",
+          "reason": "Verify the normalized radius."
+        }
+      ],
+      "conclusion": "Cosine is 5/13 and sine is 12/13. The ray need not have a familiar angle."
+    },
+    {
+      "title": "Repair reversed coordinates",
+      "prompt": "A learner writes the point at 5pi/3 as (-sqrt(3)/2, 1/2). Repair it.",
+      "steps": [
+        {
+          "math": "5\\pi/3=300^\\circ",
+          "reason": "The point lies right of the vertical axis and below the horizontal axis."
+        },
+        {
+          "math": "(\\cos(5\\pi/3),\\sin(5\\pi/3))=(1/2,-\\sqrt3/2)",
+          "reason": "Use a 60-degree reference triangle and attach quadrant IV signs."
+        }
+      ],
+      "conclusion": "The supplied values were listed as sine then cosine. Ordered coordinates require cosine first."
+    },
+    {
+      "title": "Derive the diagonal coordinates",
+      "prompt": "Find the unit-circle point at pi/4 without decimal approximations.",
+      "steps": [
+        {
+          "math": "y=x,\\quad x^2+y^2=1",
+          "reason": "The first-quadrant diagonal has equal positive coordinates."
+        },
+        {
+          "math": "2x^2=1\\quad\\Rightarrow\\quad x=1/\\sqrt2=\\sqrt2/2",
+          "reason": "Select the positive root because x lies in quadrant I."
+        },
+        {
+          "math": "(x,y)=(\\sqrt2/2,\\sqrt2/2)",
+          "reason": "Both projections have the same length."
+        }
+      ],
+      "conclusion": "Equivalent rationalized and unrationalized forms name the same exact point."
+    },
+    {
+      "title": "Derive the thirty-degree point",
+      "prompt": "Use a bisected equilateral triangle of side 10 to obtain the point at pi/6.",
+      "steps": [
+        {
+          "math": "h=10,\\quad o=5,\\quad a=\\sqrt{100-25}=5\\sqrt3",
+          "reason": "The altitude forms a 30-60-90 triangle."
+        },
+        {
+          "math": "(x,y)=(a/h,o/h)=(\\sqrt3/2,1/2)",
+          "reason": "Normalize the horizontal and vertical legs by the hypotenuse."
+        }
+      ],
+      "conclusion": "The original triangle size cancels; the angle determines the ratios."
+    },
+    {
+      "title": "Exchange complementary projections",
+      "prompt": "Find the point at pi/3 from the point at pi/6.",
+      "steps": [
+        {
+          "math": "\\pi/3=\\pi/2-\\pi/6",
+          "reason": "The two first-quadrant angles are complementary."
+        },
+        {
+          "math": "(x,y)=(1/2,\\sqrt3/2)",
+          "reason": "Exchange the short and long projections of the 30-60-90 triangle."
+        }
+      ],
+      "conclusion": "At 60 degrees the vertical projection exceeds the horizontal one."
+    },
+    {
+      "title": "Read all four axis anchors",
+      "prompt": "List the unit-circle points encountered in one counterclockwise turn.",
+      "steps": [
+        {
+          "math": "0\\longmapsto(1,0),\\quad \\pi/2\\longmapsto(0,1)",
+          "reason": "Start right and turn to the top."
+        },
+        {
+          "math": "\\pi\\longmapsto(-1,0),\\quad 3\\pi/2\\longmapsto(0,-1)",
+          "reason": "Continue left and then down."
+        },
+        {
+          "math": "2\\pi\\longmapsto(1,0)",
+          "reason": "The full-turn endpoint shares the initial point."
+        }
+      ],
+      "conclusion": "Axes belong to no quadrant. Read their coordinates directly."
+    },
+    {
+      "title": "Respect the requested angle interval",
+      "prompt": "Find all angles in degrees in [0, 360) whose sine is zero.",
+      "steps": [
+        {
+          "math": "\\sin\\theta=0\\quad\\Rightarrow\\quad y=0",
+          "reason": "The terminal point must be on the horizontal axis."
+        },
+        {
+          "math": "\\theta\\in\\{0^\\circ,180^\\circ\\}",
+          "reason": "These are the two permitted angle labels."
+        },
+        {
+          "math": "360^\\circ\\notin[0^\\circ,360^\\circ)",
+          "reason": "The upper endpoint is excluded."
+        }
+      ],
+      "conclusion": "Coterminal points do not erase interval restrictions."
+    },
+    {
+      "title": "Place a sixty-degree triangle in quadrant II",
+      "prompt": "Find the exact sine and cosine at the stated radian angle.",
+      "steps": [
+        {
+          "math": "\\theta=2\\pi/3,\\quad\\alpha=\\pi/3",
+          "reason": "Find the acute angle to the horizontal axis."
+        },
+        {
+          "math": "(\\cos\\theta,\\sin\\theta)=(-1/2,\\sqrt3/2)",
+          "reason": "Horizontal negative, vertical positive."
+        }
+      ],
+      "conclusion": "The reference triangle supplies magnitudes; the quadrant supplies signs."
+    },
+    {
+      "title": "Place a thirty-degree triangle in quadrant III",
+      "prompt": "Find the exact sine and cosine at the stated radian angle.",
+      "steps": [
+        {
+          "math": "\\theta=7\\pi/6,\\quad\\alpha=\\pi/6",
+          "reason": "Find the acute angle to the horizontal axis."
+        },
+        {
+          "math": "(\\cos\\theta,\\sin\\theta)=(-\\sqrt3/2,-1/2)",
+          "reason": "Both coordinates negative."
+        }
+      ],
+      "conclusion": "The reference triangle supplies magnitudes; the quadrant supplies signs."
+    },
+    {
+      "title": "Place a diagonal in quadrant IV",
+      "prompt": "Find the exact sine and cosine at the stated radian angle.",
+      "steps": [
+        {
+          "math": "\\theta=7\\pi/4,\\quad\\alpha=\\pi/4",
+          "reason": "Find the acute angle to the horizontal axis."
+        },
+        {
+          "math": "(\\cos\\theta,\\sin\\theta)=(\\sqrt2/2,-\\sqrt2/2)",
+          "reason": "Horizontal positive, vertical negative."
+        }
+      ],
+      "conclusion": "The reference triangle supplies magnitudes; the quadrant supplies signs."
+    },
+    {
+      "title": "Measure the reference angle from the horizontal",
+      "prompt": "Find the point at 5pi/6.",
+      "steps": [
+        {
+          "math": "\\alpha=\\pi-5\\pi/6=\\pi/6",
+          "reason": "In quadrant II, measure back to the negative x-axis."
+        },
+        {
+          "math": "(x,y)=(-\\sqrt3/2,1/2)",
+          "reason": "Use 30-degree magnitudes with quadrant II signs."
+        }
+      ],
+      "conclusion": "Measuring from the vertical axis would swap the two magnitudes."
+    },
+    {
+      "title": "Reduce to a sixty-degree reference",
+      "prompt": "Find the point at 4pi/3.",
+      "steps": [
+        {
+          "math": "\\alpha=4\\pi/3-\\pi=\\pi/3",
+          "reason": "In quadrant III, subtract the straight angle."
+        },
+        {
+          "math": "(x,y)=(-1/2,-\\sqrt3/2)",
+          "reason": "Use 60-degree magnitudes with both signs negative."
+        }
+      ],
+      "conclusion": "Cosine is the smaller magnitude here, even though both coordinates are negative."
+    },
+    {
+      "title": "End a clockwise rotation in quadrant I",
+      "prompt": "Evaluate cosine and sine at -5pi/3.",
+      "steps": [
+        {
+          "math": "-5\\pi/3+2\\pi=\\pi/3",
+          "reason": "One positive full turn gives the representative angle."
+        },
+        {
+          "math": "(x,y)=(1/2,\\sqrt3/2)",
+          "reason": "The terminal point is in quadrant I."
+        }
+      ],
+      "conclusion": "A negative input does not force either coordinate to be negative."
+    },
+    {
+      "title": "Reduce a negative diagonal angle",
+      "prompt": "Find the terminal point at -7pi/4.",
+      "steps": [
+        {
+          "math": "-7\\pi/4+2\\pi=\\pi/4",
+          "reason": "Add one full turn."
+        },
+        {
+          "math": "(x,y)=(\\sqrt2/2,\\sqrt2/2)",
+          "reason": "Use the positive diagonal point."
+        }
+      ],
+      "conclusion": "The clockwise path and counterclockwise path end at the same point."
+    },
+    {
+      "title": "Remove three full turns",
+      "prompt": "Evaluate the exact pair at 19pi/3.",
+      "steps": [
+        {
+          "math": "19\\pi/3-3(2\\pi)=\\pi/3",
+          "reason": "Convert the full turns to the same denominator."
+        },
+        {
+          "math": "(x,y)=(1/2,\\sqrt3/2)",
+          "reason": "Evaluate only after reducing the angle."
+        }
+      ],
+      "conclusion": "Three extra turns change travel, not position."
+    },
+    {
+      "title": "Reduce several clockwise turns",
+      "prompt": "Evaluate the exact pair at -17pi/6.",
+      "steps": [
+        {
+          "math": "-17\\pi/6+2(2\\pi)=7\\pi/6",
+          "reason": "Add enough full turns to enter [0, 2pi)."
+        },
+        {
+          "math": "\\alpha=7\\pi/6-\\pi=\\pi/6",
+          "reason": "The representative is in quadrant III."
+        },
+        {
+          "math": "(x,y)=(-\\sqrt3/2,-1/2)",
+          "reason": "Attach both negative signs."
+        }
+      ],
+      "conclusion": "A positive representative is a convenient label for the same terminal point."
+    },
+    {
+      "title": "Reflect an already signed point",
+      "prompt": "The point at 2pi/3 is (-1/2, sqrt(3)/2). Find the point at -2pi/3.",
+      "steps": [
+        {
+          "math": "(x,y)\\mapsto(x,-y)",
+          "reason": "Negating the angle reflects across the horizontal axis."
+        },
+        {
+          "math": "(-1/2,\\sqrt3/2)\\mapsto(-1/2,-\\sqrt3/2)",
+          "reason": "Preserve the negative horizontal coordinate."
+        }
+      ],
+      "conclusion": "Only the vertical coordinate is negated by this rule."
+    },
+    {
+      "title": "Reflect across the vertical axis",
+      "prompt": "Find the point at pi - pi/6 from the known point at pi/6.",
+      "steps": [
+        {
+          "math": "\\pi-\\pi/6=5\\pi/6",
+          "reason": "The target angle reflects the starting ray across the vertical axis."
+        },
+        {
+          "math": "(\\sqrt3/2,1/2)\\mapsto(-\\sqrt3/2,1/2)",
+          "reason": "Negate x and preserve y."
+        }
+      ],
+      "conclusion": "The two angles have the same sine but opposite cosines."
+    },
+    {
+      "title": "Add a half-turn",
+      "prompt": "Find the point at pi/4 + pi.",
+      "steps": [
+        {
+          "math": "\\pi/4+\\pi=5\\pi/4",
+          "reason": "A half-turn takes the point through the origin."
+        },
+        {
+          "math": "(\\sqrt2/2,\\sqrt2/2)\\mapsto(-\\sqrt2/2,-\\sqrt2/2)",
+          "reason": "Both coordinates reverse."
+        }
+      ],
+      "conclusion": "A half-turn is not a full period of sine or cosine."
+    },
+    {
+      "title": "Equal sine does not prove coterminality",
+      "prompt": "Compare pi/6 and 5pi/6.",
+      "steps": [
+        {
+          "math": "P_1=(\\sqrt3/2,1/2),\\quad P_2=(-\\sqrt3/2,1/2)",
+          "reason": "The vertical coordinates match, but the horizontal coordinates differ."
+        },
+        {
+          "math": "5\\pi/6-\\pi/6=2\\pi/3",
+          "reason": "The angle difference is not a full integer number of turns."
+        }
+      ],
+      "conclusion": "These points have equal sine and different cosine."
+    },
+    {
+      "title": "Equal cosine does not prove coterminality",
+      "prompt": "Compare pi/3 and 5pi/3.",
+      "steps": [
+        {
+          "math": "P_1=(1/2,\\sqrt3/2),\\quad P_2=(1/2,-\\sqrt3/2)",
+          "reason": "The horizontal coordinates match, but the vertical coordinates differ."
+        },
+        {
+          "math": "5\\pi/3-\\pi/3=4\\pi/3",
+          "reason": "The angle difference is not an integer multiple of 2pi."
+        }
+      ],
+      "conclusion": "Both coordinates must match for the terminal points to coincide."
+    },
+    {
+      "title": "Check a signed point with the identity",
+      "prompt": "Verify that (-sqrt(3)/2, -1/2) lies on the unit circle.",
+      "steps": [
+        {
+          "math": "(-\\sqrt3/2)^2+(-1/2)^2=3/4+1/4",
+          "reason": "Square each entire signed coordinate."
+        },
+        {
+          "math": "3/4+1/4=1",
+          "reason": "The squared distance from the origin is 1."
+        }
+      ],
+      "conclusion": "This verifies the radius, but signs and angle still require a location check."
+    },
+    {
+      "title": "Reject a false linear identity",
+      "prompt": "A learner concludes sine plus cosine always equals 1. Test pi/4.",
+      "steps": [
+        {
+          "math": "\\sin(\\pi/4)+\\cos(\\pi/4)=\\sqrt2/2+\\sqrt2/2=\\sqrt2",
+          "reason": "Adding the function values does not give 1."
+        },
+        {
+          "math": "\\sin^2(\\pi/4)+\\cos^2(\\pi/4)=1/2+1/2=1",
+          "reason": "The valid identity adds their squares."
+        }
+      ],
+      "conclusion": "The exponents are essential, and sin²(theta) means [sin(theta)]²."
+    },
+    {
+      "title": "Recover a negative cosine",
+      "prompt": "Given sine -5/13 in quadrant III, find cosine.",
+      "steps": [
+        {
+          "math": "x^2=1-(-5/13)^2=144/169",
+          "reason": "Isolate the missing square."
+        },
+        {
+          "math": "x=\\pm12/13",
+          "reason": "Retain both square-root candidates temporarily."
+        },
+        {
+          "math": "x=-12/13",
+          "reason": "Quadrant III requires negative x."
+        }
+      ],
+      "conclusion": "The exact point is (-12/13, -5/13). No angle calculation is needed."
+    },
+    {
+      "title": "Recover an irrational sine",
+      "prompt": "Given cosine 2/9 in quadrant IV, find sine.",
+      "steps": [
+        {
+          "math": "y^2=1-(2/9)^2=77/81",
+          "reason": "Subtract the known square from 1."
+        },
+        {
+          "math": "y=\\pm\\sqrt{77}/9",
+          "reason": "Take both real roots."
+        },
+        {
+          "math": "y=-\\sqrt{77}/9",
+          "reason": "Quadrant IV requires a negative vertical coordinate."
+        }
+      ],
+      "conclusion": "An exact coordinate need not correspond to a familiar special angle."
+    },
+    {
+      "title": "Recover from a radical coordinate",
+      "prompt": "Given sine sqrt(7)/4 in quadrant II, find cosine.",
+      "steps": [
+        {
+          "math": "x^2=1-(\\sqrt7/4)^2=1-7/16=9/16",
+          "reason": "Square both the radical numerator and the denominator."
+        },
+        {
+          "math": "x=\\pm3/4\\quad\\Rightarrow\\quad x=-3/4",
+          "reason": "Quadrant II selects negative x."
+        }
+      ],
+      "conclusion": "The point is (-3/4, sqrt(7)/4); the given sine remains positive."
+    },
+    {
+      "title": "Retain two possible points",
+      "prompt": "Given cosine -2/5 with no quadrant, find every possible sine.",
+      "steps": [
+        {
+          "math": "y^2=1-(-2/5)^2=21/25",
+          "reason": "The known horizontal coordinate allows a vertical projection above or below the axis."
+        },
+        {
+          "math": "y\\in\\{-\\sqrt{21}/5,\\sqrt{21}/5\\}",
+          "reason": "Both square-root signs remain possible."
+        }
+      ],
+      "conclusion": "The possible points lie in quadrants III and II, respectively. More information is needed to select one."
+    },
+    {
+      "title": "Collapse duplicate square-root branches",
+      "prompt": "Given cosine 1, find sine.",
+      "steps": [
+        {
+          "math": "y^2=1-1^2=0",
+          "reason": "The rightmost circle point has no vertical displacement."
+        },
+        {
+          "math": "y=0,\\quad (x,y)=(1,0)",
+          "reason": "Positive zero and negative zero are the same value."
+        }
+      ],
+      "conclusion": "There is only one point, and it lies on an axis rather than in a quadrant."
+    },
+    {
+      "title": "Reject an out-of-range sine",
+      "prompt": "Can a real angle have sine 6/5?",
+      "steps": [
+        {
+          "math": "x^2=1-(6/5)^2=-11/25",
+          "reason": "The proposed coordinate would require a negative square."
+        },
+        {
+          "math": "x^2\\ge0\\quad\\text{for real }x",
+          "reason": "No real horizontal coordinate can satisfy that requirement."
+        }
+      ],
+      "conclusion": "The given sine is impossible because its magnitude exceeds 1."
+    },
+    {
+      "title": "Reject a conflicting quadrant",
+      "prompt": "Can cosine be -3/5 in quadrant I?",
+      "steps": [
+        {
+          "math": "\\cos\\theta=x=-3/5<0",
+          "reason": "The claimed coordinate lies left of the vertical axis."
+        },
+        {
+          "math": "\\theta\\text{ in quadrant I}\\quad\\Rightarrow\\quad x>0",
+          "reason": "The quadrant requires the opposite sign."
+        }
+      ],
+      "conclusion": "The coordinate is in range, but the two givens are contradictory."
+    },
+    {
+      "title": "Normalize a signed physical point",
+      "prompt": "A ray passes through (-6, 8), measured in common length units. Find cosine and sine.",
+      "steps": [
+        {
+          "math": "r=\\sqrt{(-6)^2+8^2}=10",
+          "reason": "Use a positive distance."
+        },
+        {
+          "math": "(\\cos\\theta,\\sin\\theta)=(-6/10,8/10)=(-3/5,4/5)",
+          "reason": "Normalize both coordinates and preserve their signs."
+        }
+      ],
+      "conclusion": "The point is in quadrant II. The raw physical coordinates are not the trigonometric ratios."
+    },
+    {
+      "title": "Keep a mode check separate from an exact answer",
+      "prompt": "Find sine and cosine at 300 degrees and check the radian input.",
+      "steps": [
+        {
+          "math": "300^\\circ\\cdot\\frac{\\pi}{180^\\circ}=5\\pi/3",
+          "reason": "Convert the angle exactly before using a radian-mode calculator."
+        },
+        {
+          "math": "(\\cos300^\\circ,\\sin300^\\circ)=(1/2,-\\sqrt3/2)",
+          "reason": "The 60-degree reference triangle and quadrant IV fix the pair."
+        },
+        {
+          "math": "-\\sqrt3/2\\approx-0.8660254",
+          "reason": "This is a numerical check, not the exact sine value."
+        }
+      ],
+      "conclusion": "Keep sqrt(3)/2 in an exact answer; never substitute 300 radians for 300 degrees."
+    },
+    {
+      "title": "A radius check cannot detect swapped projections",
+      "prompt": "The pair (1/2, sqrt(3)/2) has radius 1. Does that make it the point at 30 degrees?",
+      "steps": [
+        {
+          "math": "(1/2)^2+(\\sqrt3/2)^2=1",
+          "reason": "The pair is on the unit circle."
+        },
+        {
+          "math": "30^\\circ\\longmapsto(\\sqrt3/2,1/2)",
+          "reason": "At 30 degrees the horizontal projection is the longer one."
+        },
+        {
+          "math": "60^\\circ\\longmapsto(1/2,\\sqrt3/2)",
+          "reason": "The supplied pair belongs to the complementary angle."
+        }
+      ],
+      "conclusion": "Use the requested angle as well as the circle equation."
+    }
+  ],
+  "guided": {
+    "title": "A clockwise rotation and a missing coordinate",
+    "setup": "A radius begins on the positive x-axis and turns through -13pi/6 radians. Recover its terminal point. Then solve a separate reconstruction: sine is -sqrt(7)/4 in quadrant III.",
+    "before": [
+      "For the rotation, add enough full turns to place the representative in [0, 2pi).",
+      "Name the location before choosing signs and use the acute angle to the horizontal axis.",
+      "For the separate reconstruction, isolate cosine squared and select its sign from quadrant III."
+    ],
+    "question": {
+      "id": "guided-circle",
+      "familyId": "guided-circle",
+      "familyVersion": 1,
+      "courseId": "mth-215",
+      "objectiveId": "m06-l03",
+      "category": "conceptual",
+      "critical": false,
+      "prompt": "For theta = -13pi/6, give the representative angle, location, reference angle and exact ordered pair. For the separate quadrant III point with sine -sqrt(7)/4, find cosine and explain the sign step.",
+      "fields": [
+        {
+          "id": "representative",
+          "label": "Representative angle in [0, 2pi)",
+          "kind": "pi-expression",
+          "expected": "11*pi/6",
+          "unit": "rad",
+          "help": "Keep pi exact; use fractions and pi."
+        },
+        {
+          "id": "location",
+          "label": "Terminal location",
+          "kind": "choice",
+          "correct": "iv",
+          "options": [
+            {
+              "id": "ii",
+              "label": "Quadrant II",
+              "feedback": "Check the representative after removing whole turns."
+            },
+            {
+              "id": "iv",
+              "label": "Quadrant IV",
+              "feedback": "The terminal ray lies below the positive horizontal axis."
+            },
+            {
+              "id": "iii",
+              "label": "Quadrant III",
+              "feedback": "A negative input need not end in quadrant III."
+            },
+            {
+              "id": "axis",
+              "label": "An axis",
+              "feedback": "The terminal ray is not a multiple of pi/2."
+            }
+          ]
+        },
+        {
+          "id": "reference",
+          "label": "Acute reference angle",
+          "kind": "pi-expression",
+          "expected": "pi/6",
+          "unit": "rad",
+          "help": "Keep pi exact; use fractions and pi."
+        },
+        {
+          "id": "x",
+          "label": "Exact cosine of the rotation",
+          "kind": "exact",
+          "expected": "sqrt(3)/2",
+          "unit": "",
+          "help": "Use exact fractions and sqrt(number)."
+        },
+        {
+          "id": "y",
+          "label": "Exact sine of the rotation",
+          "kind": "exact",
+          "expected": "-1/2",
+          "unit": "",
+          "help": "Use exact fractions and sqrt(number)."
+        },
+        {
+          "id": "reconstructed",
+          "label": "Cosine of the separate quadrant III point",
+          "kind": "exact",
+          "expected": "-3/4",
+          "unit": "",
+          "help": "Use exact fractions and sqrt(number)."
+        },
+        {
+          "id": "reason",
+          "label": "Why choose the negative root in the separate problem?",
+          "kind": "choice",
+          "correct": "quadrant",
+          "options": [
+            {
+              "id": "given",
+              "label": "The given sine is negative",
+              "feedback": "A negative sine allows quadrant III or IV, which have opposite cosine signs."
+            },
+            {
+              "id": "quadrant",
+              "label": "Quadrant III requires negative x",
+              "feedback": "The identity gives two candidates; the quadrant selects negative cosine."
+            },
+            {
+              "id": "square",
+              "label": "Taking a square root always gives a negative value",
+              "feedback": "The equation has two square-root candidates before using the sign condition."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "Separate the two points; they do not share an angle.",
+        "For the rotation, add 4pi. For the reconstruction, subtract the known square from 1.",
+        "The rotation ends in quadrant IV. In the separate problem the missing square is 9/16, and quadrant III requires negative cosine."
+      ],
+      "explanation": [
+        "The representative is -13pi/6 + 4pi = 11pi/6, with reference angle pi/6 in quadrant IV.",
+        "The rotation point is (sqrt(3)/2, -1/2), with cosine first.",
+        "For the separate point, cosine squared is 1 - 7/16 = 9/16. Quadrant III selects cosine -3/4."
+      ],
+      "answerSummary": "Rotation: 11pi/6, quadrant IV, reference pi/6, point (sqrt(3)/2, -1/2). Separate point: cosine -3/4 because x is negative in quadrant III."
+    },
+    "after": "Rebuild both solutions on paper with the explanation hidden. For the first, change the input by a full turn. For the second, keep sine fixed but change the quadrant to IV and explain why cosine changes sign."
+  },
+  "interaction": {
+    "kind": "unit-circle-lab",
+    "prompt": "Predict the location and coordinate signs before calculating or revealing the point. After checking the exact pair, compare a full turn with reflection across the horizontal axis. Use the diagram or the exact table to explain the difference.",
+    "cases": [
+      {
+        "title": "Quadrant II",
+        "angle": "5pi/6",
+        "unit": "radians"
+      },
+      {
+        "title": "Negative diagonal",
+        "angle": "-pi/4",
+        "unit": "radians"
+      },
+      {
+        "title": "Several full turns",
+        "angle": "19pi/3",
+        "unit": "radians"
+      },
+      {
+        "title": "Clockwise axis",
+        "angle": "-450",
+        "unit": "degrees"
+      },
+      {
+        "title": "Opposite diagonal",
+        "angle": "5/8",
+        "unit": "turns"
+      },
+      {
+        "title": "Whole negative turns",
+        "angle": "-2",
+        "unit": "turns"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "first-quadrant"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "second-quadrant"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "third-quadrant"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "fourth-quadrant"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "reference"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "coordinate-order"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "derive-diagonal"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "derive-thirty"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "radius"
+    },
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "range"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "negative"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "positive-turns"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "negative-turns"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "reflection"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "half-turn"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "same-sine"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "same-cosine"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "coterminal"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "positive-x"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "positive-y"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "negative-x"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "negative-y"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "zero-sine"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "zero-cosine"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "from-sine"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "from-cosine"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "radical-given"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "two-points"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "impossible"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "sign-conflict"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "identity"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "normalize"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "checkpoint"
+    }
+  ],
+  "summary": [
+    "The unit-circle point is (cos(theta), sin(theta)): horizontal first, vertical second.",
+    "Derive the 30-, 45- and 60-degree magnitudes from special triangles; choose signs from the terminal location.",
+    "Use the four axis points directly. They have no acute reference angle and belong to no quadrant.",
+    "Full turns preserve both coordinates. Negating an angle preserves cosine and negates sine.",
+    "Equal sine alone or equal cosine alone does not prove coterminality.",
+    "The identity cos²(theta) + sin²(theta) = 1 verifies radius and supports reconstruction; it does not choose signs or identify the angle.",
+    "Keep both missing-coordinate roots when no sign condition selects one, and reject out-of-range or conflicting data.",
+    "Normalize physical coordinates by a positive radius, state angle units, and retain exact radicals."
+  ],
+  "retrieval": "Without notes, derive the three first-quadrant special points and all four axis points. Then find the point at -17pi/6, explain how a full turn and an x-axis reflection affect it, and recover cosine from sine -5/13 in quadrant III. Repeat the reconstruction without a quadrant and retain both possibilities. On a later day, use new angles and a new rational coordinate; justify every sign before checking the radius.",
+  "readings": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.3 Unit Circle",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-3-unit-circle",
+      "purpose": "Optional free reading on coordinate definitions, exact special angles, reference angles and the Pythagorean identity. The lesson and its practice are self-contained."
+    }
+  ]
+}
