@@ -1,4 +1,6 @@
 import { phs232HarmonicStateFamilyIds, phs232HarmonicStateQuestion } from "./families/phs-232-harmonic-state";
+import { phs232OscillatorEnergyFamilyIds, phs232OscillatorEnergyQuestion } from "./families/phs-232-oscillator-energy";
+import { phs232OscillatorModelFamilyIds, phs232OscillatorModelQuestion } from "./families/phs-232-oscillator-model";
 import { phs232HarmonicEventsFamilyIds, phs232HarmonicEventsQuestion } from "./families/phs-232-harmonic-events";
 import { phs231ValidationEvidenceFamilyIds,phs231ValidationEvidenceQuestion } from "./families/phs-231-validation-evidence";
 import { phs231ModelDiagnosisFamilyIds,phs231ModelDiagnosisQuestion } from "./families/phs-231-model-diagnosis";
@@ -115,6 +117,9 @@ for(const [ids,generate] of [[linearFamilyIds,linearQuestion],[inequalityFamilyI
   for(const id of ids){if(generators.has(id))throw new Error(`Duplicate family: ${id}`);generators.set(id,generate);}
 }
 for (const [ids, generate] of [[phs232HarmonicStateFamilyIds, phs232HarmonicStateQuestion], [phs232HarmonicEventsFamilyIds, phs232HarmonicEventsQuestion]] as const) {
+  for (const id of ids) { if (generators.has(id)) throw new Error(`Duplicate family: ${id}`); generators.set(id, generate); }
+}
+for (const [ids, generate] of [[phs232OscillatorEnergyFamilyIds, phs232OscillatorEnergyQuestion], [phs232OscillatorModelFamilyIds, phs232OscillatorModelQuestion]] as const) {
   for (const id of ids) { if (generators.has(id)) throw new Error(`Duplicate family: ${id}`); generators.set(id, generate); }
 }
 for (const id of refresherFamilyIds) {
