@@ -1,8 +1,8 @@
 {
   "courseId": "mth-215",
   "lessonId": "m06-l03",
-  "status": "planned",
-  "lessonAvailable": false,
+  "status": "implemented and verified",
+  "lessonAvailable": true,
   "objective": "Determine exact sine and cosine values using coordinates, symmetry, reference angles, and quadrant signs.",
   "sources": [
     {
@@ -34,26 +34,63 @@
   ],
   "families": {
     "mth-circle-pairs": [
-      "first-quadrant", "second-quadrant", "third-quadrant", "fourth-quadrant",
-      "reference", "coordinate-order", "derive-diagonal", "derive-thirty", "radius", "range"
+      "first-quadrant",
+      "second-quadrant",
+      "third-quadrant",
+      "fourth-quadrant",
+      "reference",
+      "coordinate-order",
+      "derive-diagonal",
+      "derive-thirty",
+      "radius",
+      "range"
     ],
     "mth-circle-rotations": [
-      "negative", "positive-turns", "negative-turns", "reflection",
-      "half-turn", "same-sine", "same-cosine", "coterminal"
+      "negative",
+      "positive-turns",
+      "negative-turns",
+      "reflection",
+      "half-turn",
+      "same-sine",
+      "same-cosine",
+      "coterminal"
     ],
     "mth-circle-axes": [
-      "positive-x", "positive-y", "negative-x", "negative-y", "zero-sine", "zero-cosine"
+      "positive-x",
+      "positive-y",
+      "negative-x",
+      "negative-y",
+      "zero-sine",
+      "zero-cosine"
     ],
     "mth-circle-recover": [
-      "from-sine", "from-cosine", "radical-given", "two-points",
-      "impossible", "sign-conflict", "identity", "normalize"
+      "from-sine",
+      "from-cosine",
+      "radical-given",
+      "two-points",
+      "impossible",
+      "sign-conflict",
+      "identity",
+      "normalize"
     ]
   },
   "checkpoint": [
-    { "familyId": "mth-circle-pairs", "variant": "checkpoint" },
-    { "familyId": "mth-circle-rotations", "variant": "checkpoint" },
-    { "familyId": "mth-circle-axes", "variant": "checkpoint" },
-    { "familyId": "mth-circle-recover", "variant": "checkpoint" }
+    {
+      "familyId": "mth-circle-pairs",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-circle-rotations",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-circle-axes",
+      "variant": "checkpoint"
+    },
+    {
+      "familyId": "mth-circle-recover",
+      "variant": "checkpoint"
+    }
   ],
   "checkpointPolicy": {
     "criticalQuestions": 4,
@@ -102,5 +139,26 @@
     "Browser journeys for guided errors, all six cases, typed equivalent units, invalid inputs, stale-state clearing, keyboard, desktop/mobile accessibility, notes, hints, reload and export/restore.",
     "Lint, TypeScript, production build and relevant shared storage/catalog regressions before activation."
   ],
-  "independentSubjectReview": "not yet performed"
+  "independentSubjectReview": "not yet performed",
+  "delivery": {
+    "checkedAt": "2026-09-25T04:01:37.852Z",
+    "instructionSections": 18,
+    "workedExamples": 33,
+    "guidedFields": 7,
+    "investigationCases": 6,
+    "practiceVariants": 32,
+    "checkpointFamilies": 4,
+    "verification": [
+      "All sixteen standard circle positions checked exactly across degree, radian and turn inputs, including signed full turns.",
+      "Reconstruction checked with rational and radical givens, both coordinate roles, all quadrants, ambiguity and inconsistent data.",
+      "All 32 practice variants checked across varied deterministic seeds, including equivalent radicals and deliberate sign, coordinate-order and rounding errors.",
+      "All instruction topics and worked examples mapped to practice, checkpoint sampling and retrieval; every authored formula renders.",
+      "2508 tests passed across 293 files in the full merged repository suite.",
+      "Full lint, TypeScript and the 195-page production build passed.",
+      "Four browser journeys passed, covering the guided exercise, all six cases, typed units, invalid inputs, stale results, keyboard and desktop/mobile accessibility.",
+      "Mobile diagram and coordinate-table screenshots visually inspected; the table remains scrollable and focus stays below the sticky header.",
+      "Notes and hinted practice survived reload without independent evidence. Critical 3/4 failed and independent 4/4 passed; question and response snapshots survived export and restore."
+    ],
+    "courseStatus": "building"
+  }
 }
