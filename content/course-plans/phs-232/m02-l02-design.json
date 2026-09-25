@@ -1,0 +1,103 @@
+{
+  "courseId": "phs-232",
+  "lessonId": "m02-l02",
+  "status": "Detailed implementation design; the lesson remains unavailable until its instruction, generators, investigations and checks are delivered.",
+  "basis": "This extends the complete proposed course coverage map, not NU's official teaching sequence or equipment requirements. Preserve the academic calculus and physics prerequisites.",
+  "preparation": {
+    "requiredLessons": ["m02-l01"],
+    "refresh": "Signed phase and partial derivatives, the local string energy and power formulas, harmonic initial conditions and energy conservation. Introduce the two normal coordinates by addition/subtraction of force equations before using eigenvalue terminology.",
+    "objective": "Construct superposed waves that satisfy boundary conditions and identify their nodes, allowed modes and energy behavior."
+  },
+  "sources": [
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/16-5-interference-of-waves","checkedAt":"2026-09-24","use":"Linear superposition and coherent interference. Independently distinguish a signed cosine coefficient from nonnegative resultant amplitude; cancellation has no defined resultant phase."},
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance","checkedAt":"2026-09-24","use":"Standing waves and endpoint-selected spectra. Check the boundary equations directly and distinguish displacement nodes from zeros in one frame."},
+    {"url":"https://farside.ph.utexas.edu/teaching/315/Waves/node45.html","checkedAt":"2026-09-24","use":"String impedance, displacement and power coefficients, fixed/free limits. Only the single string interface and ideal endpoint portions are used. Derive the coefficients from both displacement and transverse-force continuity; displacement continuity alone does not fix all phases."},
+    {"url":"https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/b4f512207b1e991ffdfa8df5f519b6eb_MIT8_03SCF16_Lec4.pdf","checkedAt":"2026-09-24","use":"The six-page typed notes were read for normal coordinates, force-equation substitution and the possibility of a zero-frequency translation mode. A real normal-mode shape may have positive, negative or zero components; equal signed phase at every point is not required."},
+    {"url":"https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/f64be9b621ec8951c14ad27b9ce43425_MIT8_03SCF16_Lec5.pdf","checkedAt":"2026-09-24","use":"The five-page typed notes were read for two coupled oscillators and exact sum/product identities. Adapt the derivation to two equal masses with wall springs. Distinguish the signed modulation factor's period from the magnitude beat period; no lecture viewing is claimed."}
+  ],
+  "conventions": {
+    "medium": "Use positive constant tension F_T, density mu and c=sqrt(F_T/mu). Small transverse slopes, linear response, no damping or dispersion and negligible junction mass/bending stiffness. Sound and electromagnetic boundary coefficients are not inferred by copying the string displacement signs.",
+    "superposition": "y=A*cos(k*x-omega*t)+B*cos(k*x-sigma*omega*t+delta), A,B>=0, sigma=+1 for the same direction or -1 for the second wave traveling left. Both share omega=c*k. The displacement and derivatives add; energy and power must be calculated from the summed derivatives.",
+    "coherent": "For same-direction waves, C=sqrt(A^2+B^2+2*A*B*cos(delta)) and alpha=atan2(B*sin(delta),A+B*cos(delta)), so y=C*cos(k*x-omega*t+alpha). Use C>=0; if C=0 the resultant phase is undefined. Mean power is Z*omega^2*C^2/2, Z=mu*c, including the interference term. Random-phase averaging is an additional statistical assumption, not a rule for coherent sources.",
+    "counter": "For equal counter-propagating amplitudes, y=2*A*cos(k*x+delta/2)*cos(omega*t+delta/2). Permanent nodes satisfy k*x+delta/2=pi/2+n*pi. Unequal nonzero amplitudes give spatial modulation bounded by |A-B| and A+B but no permanent displacement nodes. Signed mean power is Z*omega^2*(A^2-B^2)/2; a standing wave can have nonzero instantaneous internal power while its cycle mean is zero.",
+    "zero": "If both amplitudes vanish, every point remains at rest; do not call this a nontrivial standing mode or assign a phase. If one amplitude vanishes there is one traveling wave. Node classification must use the all-time field, not a small sampled y value."
+  },
+  "boundaries": {
+    "reference": "Put an ideal boundary or junction at x=0, with the incident wave A*cos(k1*x-omega*t) on x<=0. A reflected signed coefficient r multiplies A*cos(k1*x+omega*t). The incident reference phase is zero; other initial phases require a consistent reflected phase rather than blindly reusing its sign.",
+    "fixed": "y(0,t)=0 gives r=-1. The boundary velocity and boundary power vanish; a displacement pulse reflects with inversion. The reflected wave's positive amplitude is A with a pi phase change.",
+    "free": "A massless freely sliding ideal endpoint has y_x(0,t)=0 and r=+1. Its displacement amplitude is 2*A, not A; power vanishes because transverse force vanishes. A finite endpoint mass or impedance is a different boundary model.",
+    "junction": "Two semi-infinite strings share F_T>0 and have positive mu1,mu2. No incoming wave from the right. At the massless junction require y_left=y_right and F_T*y_x,left=F_T*y_x,right at all times. These give 1+r=t_a and Z1*(1-r)=Z2*t_a, hence r=(Z1-Z2)/(Z1+Z2), t_a=2*Z1/(Z1+Z2).",
+    "power": "R=r^2 and T_power=(Z2/Z1)*t_a^2, with R+T_power=1. Reflected signed power is negative, whereas R is nonnegative. The transmitted displacement can exceed the incident displacement when Z2<Z1 without generating energy. Frequency remains common; speed and wavelength change.",
+    "limits": "Treat fixed and free endpoints as distinct ideal models and as impedance limits. Never set a physical string density to zero or infinity in the finite-interface controls."
+  },
+  "modes": {
+    "finiteString": "For left-fixed length L, y=B*sin(k_n*x)*cos(omega_n*t), where B is the total antinode displacement amplitude, not one traveling constituent's amplitude. Fixed-fixed: k_n=n*pi/L, f_n=n*c/(2*L). Fixed-free: k_n=(2*n-1)*pi/(2*L), f_n=(2*n-1)*c/(4*L). The mode index is n>=1; the mixed-boundary harmonic number is 2*n-1.",
+    "nodes": "Fixed-fixed nodes j*L/n for j=0..n; fixed-free nodes 2*j*L/(2*n-1) for j=0..n-1. Internal nodes number n-1 in either case. At t=period/4 the entire string passes through y=0, but most points have nonzero velocity and are not nodes. Antinodes lie between adjacent nodes or at the free endpoint.",
+    "energy": "Integrate K=mu*y_t^2/2 and U=F_T*y_x^2/2 separately. For either supported finite-string spectrum, E=mu*L*B^2*omega_n^2/4 is constant, K=E*sin^2(omega_n*t), U=E*cos^2(omega_n*t). Instantaneous local power redistributes energy; both endpoint powers are zero. K=U pointwise for one traveling wave does not generalize to this standing field.",
+    "extension": "Explain that a free-free string has the positive integer oscillatory spectrum plus a zero-frequency rigid displacement/translation solution. The interactive finite-string panel supports fixed-fixed and fixed-free modes only; it does not silently omit a zero mode from a claimed free-free spectrum."
+  },
+  "coupledOscillators": {
+    "model": "Two equal masses m have wall springs k>0 and a coupling spring k_c>=0, with displacements measured from equilibrium. m*x1_tt=-(k+k_c)*x1+k_c*x2 and m*x2_tt=k_c*x1-(k+k_c)*x2. No damping, driving or large-deformation geometry is modeled.",
+    "coordinates": "q_plus=(x1+x2)/2 and q_minus=(x1-x2)/2. omega_plus=sqrt(k/m); omega_minus=sqrt((k+2*k_c)/m). Recover x1=q_plus+q_minus and x2=q_plus-q_minus. Each q uses its own initial displacement and velocity. In-phase motion leaves the coupling spring unstretched; opposite motion changes its extension by twice a mass displacement.",
+    "energy": "E1=m*v1^2/2+k*x1^2/2, E2=m*v2^2/2+k*x2^2/2 and U_c=k_c*(x2-x1)^2/2. Their sum is conserved. Modal energies m*q_plus_t^2+k*q_plus^2 and m*q_minus_t^2+(k+2*k_c)*q_minus^2 are separately conserved. Keep coupling energy explicit rather than assigning it arbitrarily to one mass.",
+    "transfer": "dE1/dt=k_c*(x2-x1)*v1 and dE2/dt=-k_c*(x2-x1)*v2; dU_c/dt is their negative sum. A vanishing displacement envelope at one instant does not prove complete transfer of physical energy.",
+    "beats": "For x1(0)=a and the other three initial values zero, x1=a*cos((omega_minus+omega_plus)*t/2)*cos((omega_minus-omega_plus)*t/2), x2=a*sin((omega_minus+omega_plus)*t/2)*sin((omega_minus-omega_plus)*t/2). The nonnegative envelopes have period 2*pi/Delta_omega, giving f_beat=|f_minus-f_plus|. The signed cosine modulation has twice that period. The product identity is exact; a slowly varying envelope interpretation requires nearby frequencies.",
+    "general": "For arbitrary initial states, construct modal phasor magnitudes and relative phase. The magnitude of their rotating sum bounds the displacement but is not a promise that every bound is attained at a turning point. Unequal modal magnitudes need not cancel.",
+    "degenerate": "k_c=0 gives equal frequencies and independent masses; report no beat cycle and no spring-mediated transfer. Compute Delta_omega by rationalizing the difference for small coupling, avoiding subtraction of nearly equal frequencies."
+  },
+  "investigation": {
+    "structure": "Four course-owned panels in one investigation: coherent/counter-propagating fields; fixed/free/finite-junction reflection; finite-string modes; two coupled masses. Each has a prediction gate, complete numeric evidence and explicit procedure. Use shared grading and storage rather than new persistence formats.",
+    "waveControls": "Tension 0.1 to 100 N, each active density 0.001 to 2 kg/m, frequency 0.1 to 20 Hz, amplitudes 0 to 0.1 m and relative phase -2 to 2 in multiples of pi. Reject a conservative maximum combined slope above 0.2. This is a disclosed pedagogical guard, not a universal physical threshold. Same-direction cancellation is evaluated from the resultant rather than imposing a false nonzero observed slope.",
+    "waveEvidence": "Keyboard position/time probes, separate constituent and summed displacement, local velocity/slope/energy/power and analytic time envelopes with complete paginated tables. Compare coherent power with the sum of isolated powers. Counter-propagating nodes are identified analytically. Show cycle-integrated power at multiple positions independently of its mean formula.",
+    "boundaryEvidence": "At a selected time show incident, reflected and transmitted profiles, signed and nonnegative coefficient meanings, wavelengths, instantaneous displacement/force/flux on both sides of the junction and independently integrated cycle powers. At fixed/free boundaries display the applicable residual and zero endpoint power without inventing a transmitted physical medium.",
+    "stringControls": "Length 0.25 to 10 m, mode index 1 to 8, fixed-fixed or fixed-free right endpoint and total amplitude 0 to 0.1 m; common positive tension/density ranges apply. Enforce B*k_n<=0.2. Position spans [0,L], time spans a full period. Plot local displacement/velocity and a separate kinetic/stretch energy exchange history; list exact nodes, antinodes and the first eight allowed frequencies.",
+    "stringEvidence": "Separate spatial quadrature of kinetic and stretch energy at every displayed time is compared with the independently derived constant total. Compare 128 and 256 spatial panels. Probe a permanent node and a moving point at the all-zero frame. Check both displacement and slope at both endpoints and explain which condition applies.",
+    "coupledControls": "m from 0.1 to 5 kg, k from 0.1 to 100 N/m, ratio k_c/k from 0 to 4, initial displacements from -0.1 to 0.1 m and velocities from -1 to 1 m/s. Choose a record of 1 to 24 periods of the lower-frequency mode. No claim is made that every weak-coupling beat fits the finite window.",
+    "coupledEvidence": "Use exact modal initial-value solutions. Resolve the highest frequency with at least 32 intervals per period and at least 256 total intervals; expose every sample in tables. Plot both masses with magnitude bounds, normal coordinates and a physical energy ledger retaining coupling energy. Show modal energy constants and instantaneous transfer rates. Provide symmetric, antisymmetric and one-mass-release presets plus arbitrary initial conditions.",
+    "predictions": "Predict the resultant amplitude or node existence, signed reflected amplitude and transmitted power fraction, a mode frequency/right-end condition, and both coupled frequencies with whether a beat exists. Wrong feedback targets phase-sign, amplitude-squared, boundary-type, coupling-factor and factor-of-two errors. Changed inputs clear stale predictions and results.",
+    "procedure": "Compare coherent reinforcement/cancellation and unequal counterwaves; compare fixed/free and both directions of impedance mismatch; change finite-string boundary and mode while probing nodes and zero frames; compare pure coupled modes, one-mass release, weak coupling and zero coupling. Record parameters, predictions, representative rows and limits in saved notes.",
+    "rubric": ["Reproducible parameters and units", "Boundary equations checked against measured model states", "Permanent nodes distinguished from momentary zeros", "Signed power and explicit physical/modal energy evidence", "Beat and model-limit claims supported by the recorded window"],
+    "accessibility": "No automatic motion. All probes support keyboard arrows/Home/End and step buttons; figures have equivalent text and complete paginated tables. Use visible focus, reduced-motion compatibility and intact numeric cells with labeled keyboard scroll regions. Controls reset on reload as disclosed; saved notes preserve investigation evidence. The rubric is self-assessment."
+  },
+  "instruction": [
+    "Derive superposition from linearity and explain why squared energy terms do not simply add.",
+    "Resolve unequal coherent amplitudes into cosine/sine coefficients, a nonnegative resultant and an explicit phase; handle exact cancellation.",
+    "Derive fixed and free reflection from all-time boundary equations, including pulses and doubled free-end displacement.",
+    "Derive finite-interface displacement coefficients from two matching equations, then verify power conservation independently.",
+    "Construct equal and unequal counterwaves; derive nodes, envelopes and signed cycle-mean power.",
+    "Impose two endpoints to obtain fixed-fixed and mixed spectra, mode indexes, nodes and antinodes.",
+    "Separate local and integrated standing-wave kinetic/stretch energy and explain an all-zero snapshot.",
+    "Derive the two-mass force equations, normal coordinates, frequencies and reconstruction from four initial values.",
+    "Track physical and modal energy without hiding coupling energy; test pure and mixed modes.",
+    "Derive exact beat products and magnitude periods; distinguish close-frequency interpretation, incomplete exchange and degenerate coupling."
+  ],
+  "workedExamples": [
+    "Unequal coherent quadrature waves with a 3-4-5 resultant and phase quadrant.",
+    "Equal opposite-phase waves with zero resultant and undefined phase, plus a phase outside the principal interval.",
+    "Fixed reflection of a pulse and a harmonic field checked at x=0 for all times.",
+    "Free reflection with doubled boundary displacement, zero slope and zero power.",
+    "High-impedance transmission with negative reflected displacement and positive reflected power fraction.",
+    "Low-impedance transmission with amplitude greater than one and conserved power.",
+    "Equal counterwaves with shifted permanent nodes, a non-node zero frame and internal energy transfer.",
+    "Unequal counterwaves with no permanent nodes and nonzero signed mean power.",
+    "Fixed-fixed and fixed-free strings of the same length, with distinct fundamental frequencies and harmonic indexes.",
+    "Standing-mode spatial energy integrals at peak-displacement and all-zero frames.",
+    "Two masses in symmetric and antisymmetric modes, verified directly in both force equations.",
+    "Reconstruct a general coupled state from four initial conditions and check physical versus modal energy.",
+    "A one-mass release with exact beat magnitude period and nonzero residual physical energy at an envelope zero.",
+    "Zero coupling and the separate free-free rigid translation mode as explicit degeneracies."
+  ],
+  "practice": [
+    {"id":"phs232-wave-superposition","variants":["phase-resultant","fixed-reflection","free-reflection","node-location","net-power","coherent-intensity","interface-amplitude","interface-power"],"change":"Two explicit interface variants extend the initial six-variant plan so finite transmission is assessed directly. The course's initial counts remain historical planning counts; delivered counts will reflect the extension.","checks":"At least fifty deterministic seeds for each of eight variants. Independently sample summed fields and integrate local power; solve the two junction equations separately. Include cancellation, phase quadrants, both impedance directions, equivalent answers, wrong signs, wrong power normalization and undefined phase."},
+    {"id":"phs232-wave-modes","variants":["fixed-spectrum","mixed-spectrum","mode-index","coupled-symmetric","coupled-antisymmetric","beat-envelope"],"checks":"At least fifty deterministic seeds for each of six variants. Independently substitute endpoint states, enumerate spectra/nodes, check the explicit stiffness determinant and integrate the two mass equations. Include invalid mode indexes, internal versus endpoint nodes, factor two, zero coupling and distinct signed/magnitude periods."}
+  ],
+  "verification": {
+    "waveModel": "Fifty varied cases compare constituent sums, finite partial derivatives, local continuity and cycle quadrature at multiple positions. Locate nodes by solving both time coefficients, not by reusing a node formula. Check all-time fixed/free boundary conditions and both junction conditions at independently chosen phases; verify incident/reflected/transmitted flux integrals.",
+    "modeModel": "Fifty cases for each supported boundary substitute spatial eigenfunctions and their derivatives at both ends, independently locate zeros and compare high-resolution midpoint energy integrals at multiple phases with numerical refinement. Include every mode index, zero amplitude, invalid boundaries and small-slope limits.",
+    "coupledModel": "Fifty varied four-component initial states compare the modal solution against an independent Runge-Kutta integration of the original two force equations. Verify both force residuals, physical energy and modal energy separately. Integrate coupling transfer power and compare each mass's energy change with coupling energy retained.",
+    "beats": "Check exact product identities, independently enumerate envelope maxima/minima, compare two successive magnitude beats, and demonstrate why an envelope zero need not imply complete physical-energy transfer. Include tiny and zero coupling and a record shorter than one beat.",
+    "answers": "Use existing rational, exact, numeric and pi-expression graders. Test alternate equivalent forms, invalid text, units, restrictions, sign errors and interpretations. Independently verify every authored numerical example and guided field.",
+    "browser": "Exercise all panels and prediction feedback, both directions of impedance mismatch, node and zero-frame probes, pure/mixed/uncoupled masses, numeric tables and invalid inputs. Independently answer checkpoints, reload, export/reset/import and retain earlier-course attempts. Inspect desktop/mobile, 320px reflow, 200-percent zoom equivalent, visible keyboard focus, reduced motion and math/table scrolling.",
+    "release": "Verify focused slices before small commits and immediate pushes; run appropriate full unit checks, lint, type checking, production build and actual browser learning tests. Record actual failures and fixes. No independent subject review or pilot validation is claimed."
+  }
+}
