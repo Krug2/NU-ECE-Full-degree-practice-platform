@@ -1,0 +1,106 @@
+{
+  "courseId": "mth-215",
+  "lessonId": "m06-l03",
+  "status": "planned",
+  "lessonAvailable": false,
+  "objective": "Determine exact sine and cosine values using coordinates, symmetry, reference angles, and quadrant signs.",
+  "sources": [
+    {
+      "title": "OpenStax Algebra and Trigonometry 2e, 7.3 Unit Circle",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/7-3-unit-circle",
+      "checkedAt": "2026-09-24",
+      "use": "Scope and optional reading. Explanations, examples, questions and diagrams are original."
+    }
+  ],
+  "instructionOutline": [
+    "Turn a right triangle into a coordinate definition",
+    "Read cosine first and sine second",
+    "Derive the diagonal point",
+    "Derive the thirty-degree and sixty-degree points",
+    "Use the axes as exact anchors",
+    "Choose signs from the terminal location",
+    "Find the reference angle before the magnitudes",
+    "Separate a negative rotation from a negative coordinate",
+    "Remove whole turns without changing the point",
+    "Reflect a point across the horizontal axis",
+    "Reflect across the vertical axis or through the origin",
+    "Distinguish a shared coordinate from a shared terminal point",
+    "Use the circle equation as an identity",
+    "Recover a coordinate and justify its sign",
+    "Keep both possibilities when a quadrant is missing",
+    "Reject impossible or contradictory data",
+    "Normalize a point on a larger circle",
+    "Distinguish exact values from numerical checks"
+  ],
+  "families": {
+    "mth-circle-pairs": [
+      "first-quadrant", "second-quadrant", "third-quadrant", "fourth-quadrant",
+      "reference", "coordinate-order", "derive-diagonal", "derive-thirty", "radius", "range"
+    ],
+    "mth-circle-rotations": [
+      "negative", "positive-turns", "negative-turns", "reflection",
+      "half-turn", "same-sine", "same-cosine", "coterminal"
+    ],
+    "mth-circle-axes": [
+      "positive-x", "positive-y", "negative-x", "negative-y", "zero-sine", "zero-cosine"
+    ],
+    "mth-circle-recover": [
+      "from-sine", "from-cosine", "radical-given", "two-points",
+      "impossible", "sign-conflict", "identity", "normalize"
+    ]
+  },
+  "checkpoint": [
+    { "familyId": "mth-circle-pairs", "variant": "checkpoint" },
+    { "familyId": "mth-circle-rotations", "variant": "checkpoint" },
+    { "familyId": "mth-circle-axes", "variant": "checkpoint" },
+    { "familyId": "mth-circle-recover", "variant": "checkpoint" }
+  ],
+  "checkpointPolicy": {
+    "criticalQuestions": 4,
+    "pass": "All four questions and all their parts must be correct without hints.",
+    "sampling": "Every form includes a non-axis exact pair with reference angle, a negative directed angle, an axis point, and a signed coordinate reconstruction. Other practice variants support these objectives but are not separately certified by a four-question form.",
+    "assistedWork": "Guided work, investigation and practice do not award independent evidence."
+  },
+  "generatorRules": [
+    "Grade rational numbers and radicals by exact equivalence. Never accept a nearby decimal in place of an irrational value.",
+    "Use exact angle reduction in degrees, radians and turns. Reject unsupported investigation angles with a clear scope message; do not round them to a special angle.",
+    "Reuse the existing standard-angle values and independently verify all sixteen positions, periodicity and the circle identity.",
+    "Make coordinate order explicit in every pair. Include non-diagonal angles so swapping coordinates fails.",
+    "Test every quadrant and all four axes. Axes belong to no quadrant and have no acute reference angle.",
+    "A negative input is a direction, not an instruction to negate both coordinates.",
+    "Reconstruction must check the given sign against the open quadrant, form 1 minus the given square, retain both square-root candidates and then choose the justified sign.",
+    "Include rational and radical givens, insufficient information, out-of-range data and contradictory quadrant data.",
+    "Shuffle choice options deterministically without changing their stable answer IDs.",
+    "Normalize non-unit coordinates before reading sine and cosine. Preserve the distinction between a coordinate, a side length and a dimensionless ratio."
+  ],
+  "investigation": {
+    "sequence": [
+      "Select one of six cases or type an exact supported angle in degrees, radians or turns.",
+      "Predict the location and both coordinate signs before displaying the terminal point.",
+      "Enter the exact ordered pair, then compare a labeled diagram, an accessible coordinate table, the reference angle and the identity.",
+      "Compare the same point after one turn with its reflection across the horizontal axis.",
+      "Explain which coordinate changes under reflection and why the identity alone does not select signs.",
+      "Clear all dependent feedback when the angle, units, case or a prediction changes."
+    ],
+    "cases": [
+      "Quadrant II: 5pi/6 radians",
+      "Negative quarter diagonal: -pi/4 radians",
+      "Several turns: 19pi/3 radians",
+      "Clockwise axis: -450 degrees",
+      "Opposite diagonal: 5/8 turn",
+      "Whole negative turns: -2 turns"
+    ],
+    "accessibility": "Labeled native controls; keyboard operation; non-color sign labels; exact text and table alternatives to the diagram; live feedback; focusable scroll region; mobile layout and sticky-header clearance.",
+    "limits": "The exact-angle investigation covers multiples of 30 or 45 degrees and the axes, with the existing rotation magnitude limit. This is a tool limit, not a restriction on the domains of sine and cosine."
+  },
+  "verificationPlan": [
+    "Independent exact table and trigonometric numerical cross-checks across signed full turns and all units.",
+    "Independent rational and radical reconstruction cases, invalid boundaries, signs, non-real data and unsupported nested radicals.",
+    "All 32 practice variants across varied deterministic seeds, equivalent answers and deliberate sign/order/rounding mistakes.",
+    "Checkpoint composition, every critical failure, hint independence and immutable attempt snapshots.",
+    "Lesson schema, rendered mathematics, topic-example-practice coverage and correct guided work.",
+    "Browser journeys for guided errors, all six cases, typed equivalent units, invalid inputs, stale-state clearing, keyboard, desktop/mobile accessibility, notes, hints, reload and export/restore.",
+    "Lint, TypeScript, production build and relevant shared storage/catalog regressions before activation."
+  ],
+  "independentSubjectReview": "not yet performed"
+}
