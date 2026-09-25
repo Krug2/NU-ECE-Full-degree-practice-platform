@@ -58,9 +58,9 @@
     "currentCourseProgress": {
       "phase": "implementation",
       "plannedLessons": 31,
-      "availableLessons": 2,
-      "nextLesson": "m01-l03",
-      "nextWork": "Build and independently verify free decay and damping regimes, including near-critical continuity, separate power integration, true peak timing and explicit settling criteria.",
+      "availableLessons": 3,
+      "nextLesson": "m01-l04",
+      "nextWork": "Build and independently verify driven response, resonance and power transfer, including initial transients, output-specific peaks, phase quadrants, half-power bandwidth and the undamped resonant limit.",
       "integrationRecord": "phs-232/integration.json",
       "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },

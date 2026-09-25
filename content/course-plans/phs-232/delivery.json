@@ -1,7 +1,7 @@
 {
   "courseId": "phs-232",
   "version": 1,
-  "status": "The complete proposed plan is verified and m01-l01 through m01-l02 are available. Continue with m01-l03; PHS 232 remains in development.",
+  "status": "The complete proposed plan is verified and m01-l01 through m01-l03 are available. Continue with m01-l04; PHS 232 remains in development.",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
   "workspace": "C:/School/Dev/NU-ECE-major-courses",
@@ -51,7 +51,11 @@
     },
     {
       "path": "m01-l03-design.json",
-      "purpose": "Numerical and instructional design for free decay before implementation; not a completed lesson."
+      "purpose": "Numerical and instructional design for the implemented free-decay lesson; actual verification is recorded separately in lesson-audits.json."
+    },
+    {
+      "path": "m01-l04-design.json",
+      "purpose": "Detailed driven-response implementation design, including output-specific resonance, startup behavior and power checks; not a completed lesson."
     }
   ],
   "slices": [
