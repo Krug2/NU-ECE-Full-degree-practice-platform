@@ -1,0 +1,86 @@
+{
+  "courseId": "phs-232",
+  "lessonId": "m02-l01",
+  "status": "Detailed implementation design; this lesson remains unavailable until instruction, practice, investigation and verification are delivered.",
+  "basis": "The full course coverage map remains authoritative. This is a proposed teaching sequence and numerical design, not an official NU lesson sequence, assessment policy or physical equipment requirement.",
+  "preparation": {
+    "requiredLessons": ["m01-l01", "m01-l02"],
+    "refresh": "Signed sinusoidal phase, radians versus cycles, differentiation and energy/work units. Explain partial derivatives by holding the other coordinate fixed before introducing the wave equation. Link to available prerequisite trigonometry and calculus refreshers; full academic calculus prerequisites remain in force.",
+    "objective": "Interpret a traveling wave's direction, local motion and energy transport using its derivatives and medium parameters."
+  },
+  "sources": [
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves","checkedAt":"2026-09-24","use":"Transverse/longitudinal disturbances and profile translation. Two periodic snapshots alone can be ambiguous: a displacement known only to be less than one wavelength need not fix its signed direction."},
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves","checkedAt":"2026-09-24","use":"Spatial and temporal wave parameters and derivatives. Use 2*pi*n for successive positive cosine crests, not pi*n. Derive direction from constant phase."},
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/16-3-wave-speed-on-a-stretched-string","checkedAt":"2026-09-24","use":"Constant tension, uniform linear density and the small-slope string equation. Independently derive the vertical force difference and check units."},
+    {"url":"https://openstax.org/books/university-physics-volume-1/pages/16-4-energy-and-power-of-a-wave","checkedAt":"2026-09-24","use":"Wavelength-integrated energy and mean power. The local isolated-oscillator potential argument is not used; derive local stretch energy from geometry instead. Keep fixed-medium assumptions when applying scaling."},
+    {"url":"https://farside.ph.utexas.edu/teaching/315/Waveshtml/node43.html","checkedAt":"2026-09-24","use":"University lecture derivation of local stretch energy, signed boundary power and energy conservation. Only the string section is used in this lesson; acoustic and electromagnetic models have their own later treatment."},
+    {"url":"https://oyc.yale.edu/sites/default/files/Erratum-Wave%20energy_0.pdf","checkedAt":"2026-09-24","use":"Primary correction clarifying that a string element exchanges energy with its neighbors. Local kinetic and stretch energy are in phase for a single traveling wave. The two-page derivation was read; no claim of viewing the full lecture is made."}
+  ],
+  "conventions": {
+    "coordinates": "x labels the equilibrium position of a material point; y is transverse displacement in meters. Positive x is right and positive y is up. A crest is a pattern location, not a material point moving along the string.",
+    "symbols": "Use tension F_T in N, linear density mu in kg/m, c>0 for speed, sigma=+1 or -1 for propagation direction, k>0 in rad/m, omega>0 in rad/s, f in Hz, lambda in m and period tau in s. Do not reuse T for both tension and period.",
+    "harmonic": "y=A*cos(theta), theta=k*x-sigma*omega*t+phi; k=2*pi/lambda, omega=2*pi*f, omega=c*k. A>=0 and phi is a specified reference phase. A=0 has no observable crest, phase or direction even though the medium's c is defined.",
+    "derivatives": "y_t=sigma*A*omega*sin(theta), y_x=-A*k*sin(theta), y_tt=-A*omega^2*cos(theta), y_xx=-A*k^2*cos(theta). Constant phase gives dx/dt=sigma*c. At a crest the tagged point has zero instantaneous transverse velocity and nonzero acceleration when A>0.",
+    "waveEquation": "mu*y_tt=F_T*y_xx, c=sqrt(F_T/mu). A sinusoidal function solves this equation only if omega^2=c^2*k^2 (or is identically zero). A matching value at one point is not proof of a solution everywhere.",
+    "domain": "An ideal uniform string with approximately constant positive tension, small slope, negligible bending stiffness/damping and no reflected contribution in the observed interval. A single traveling profile is not asserted to satisfy two fixed finite endpoints. Transverse string formulas are not universal formulas for fluid sound or surface water waves."
+  },
+  "energy": {
+    "local": "K per equilibrium length = mu*y_t^2/2 and U per equilibrium length = F_T*y_x^2/2. U follows from F_T*(sqrt(1+y_x^2)-1) expanded to quadratic order; the constant equilibrium stretch energy is the chosen zero.",
+    "flux": "P=-F_T*y_x*y_t is the signed power crossing a cut toward positive x, in W. For one pure traveling profile, y_t=-sigma*c*y_x, K=U and P=sigma*c*(K+U). These identities do not hold pointwise for arbitrary superpositions.",
+    "conservation": "u_t+P_x=0 and d/dt integral_a^b u dx=P(a,t)-P(b,t). At sigma=-1, both boundary powers may be negative; the difference still gives the stored-energy rate. Energy density is nonnegative even when signed power is negative.",
+    "mean": "For a harmonic wave, mean u=mu*A^2*omega^2/2 and mean P=sigma*mu*c*A^2*omega^2/2. Energy in one wavelength is mean u*lambda; its magnitude equals energy crossing a point during one period. The infinite harmonic wavetrain has infinite total energy, so report a finite interval or per-length value.",
+    "scaling": "At fixed medium and frequency, doubling amplitude multiplies mean power by four. At fixed source frequency, changing tension or density changes c and lambda, not f. At fixed tension, density also changes c, so mean power scales as sqrt(mu), not mu. State what is held fixed in every comparison.",
+    "pulse": "A translated Gaussian y=A*exp(-q^2/2), q=(x-sigma*c*t-x0)/w, provides finite energy without a wavelength or oscillation period. Its full-line energy is F_T*A^2*sqrt(pi)/(2*w). The pulse center has zero slope and instantaneous local energy, while its moving flanks carry the energy."
+  },
+  "investigation": {
+    "model": "Compare harmonic and Gaussian profiles on the ideal string. The pulse makes finite-region energy transport visible without assuming periodic steady behavior; harmonic mode connects to frequency, phase and aliasing.",
+    "controls": "Profile, direction, tension 0.1 to 100 N, density 0.001 to 2 kg/m, amplitude 0 to 0.1 m, harmonic frequency 0.1 to 20 Hz, phase from -2*pi to 2*pi, and pulse width 0.1 to 5 m. Reject combinations whose maximum absolute slope exceeds 0.2, a disclosed pedagogical model guard rather than a universal validity threshold. At slope 0.2 the quadratic stretch term differs from the exact fixed-tension geometric expression by less than 1 percent relative to that exact expression.",
+    "window": "Characteristic length is lambda for harmonic mode and w for the pulse. Show x from -2 to 2 wavelengths or -4 to 4 pulse widths. The fixed control region is symmetric about zero with width 0.25 to 3 characteristic lengths. Show its physical endpoints explicitly. A pulse starts 2.5 widths upstream of zero and is followed for up to eight width-transit times; harmonic duration is up to four periods. No physical endpoint is imposed at the plot edges.",
+    "probes": "Independent keyboard position and time probes with Arrow/Home/End and previous/next buttons. A selected material point keeps its x coordinate when time changes; mark its y separately from a tracked crest/pulse center. If the tracked crest leaves the view, report its actual position without wrapping or silently jumping to another crest. For zero amplitude, report no identifiable crest.",
+    "evidence": "Three plots: spatial profile with tagged point and tracked pattern marker; local transverse time history; finite-region energy change and independently integrated net boundary input. Complete paginated tables list displacement, both first and second derivatives, kinetic/stretch/total density and signed power, plus all time-account records. Separate boundary powers and signed cumulative transfers prevent left-travel sign confusion.",
+    "numerics": "Use analytic profile derivatives. Independently compute spatial energy integrals with composite Simpson panels and cumulative boundary work with separate midpoint Simpson integration in time. Run 64/128/256 base intervals and a doubled refinement in both directions; expose residuals and coarse/fine differences. Do not define boundary work from energy change or force the residual to zero.",
+    "sampling": "Harmonic-only recording panel compares two snapshots and a tagged-point stroboscopic record. Choose delta_t/tau among 1/8, 1/2, 3/4, 1 and 5/4 and spatial sample step among lambda/8, lambda/2, 3*lambda/4 and lambda. Display actual samples and principal signed shift, with half-wavelength ambiguity and zero-amplitude degeneracy explicit. Snapshot shift is only determined modulo lambda; a unique principal shift requires a justified bound |shift|<lambda/2, not merely |shift|<lambda. Model direction is known from the equation, not inferred uniquely from the sparse recording.",
+    "predictions": "Before revealing results, predict c, the sign of power and the selected material-point velocity at a stated initial coordinate. Correct misconception feedback distinguishes particle velocity, phase speed, energy sign and density units. Changed parameters clear stale predictions and results.",
+    "procedure": "Record one rightward harmonic run and its leftward comparison; double amplitude within the slope guard; change tension while keeping source f and A fixed; inspect a translated pulse entering/leaving the region; refine the energy account; compare a resolved and aliased recording. Preserve parameters and representative rows in saved lesson notes.",
+    "rubric": ["Reproducible parameters, units and slope restriction", "Correctly distinguished material and pattern motion", "Signed boundary ledger supported by independent energy and refinement evidence", "A controlled comparison with a quantitative prediction", "Sampling/model limitations supported by actual records"],
+    "limits": "Simulation only. No official physical equipment claim, animation requirement or automatic motion. Controls reset on reload as disclosed; saved notes retain the record. Self-scoring does not award objective evidence."
+  },
+  "instruction": [
+    "Start with a tagged string point and an arriving disturbance. Distinguish transverse/longitudinal displacement from propagation and distinguish a pulse from a harmonic wavetrain.",
+    "Construct y(x,t) from a profile and translate it. Introduce wavelength, period, k, omega and phase with dimensions and an explicit sign convention.",
+    "Differentiate at fixed x and fixed t, then follow constant phase. Contrast both paths at a crest and at equilibrium crossing.",
+    "Derive the small-slope force equation and c from tension and mass per equilibrium length. Convert g/m explicitly before substitution and test the PDE by substitution.",
+    "Derive local kinetic and stretch energy; explain why a moving string element is not an isolated oscillator despite sinusoidal motion.",
+    "Derive signed boundary power and the finite-region conservation equation. Check a leftward example without changing the sign of energy.",
+    "Average a harmonic cycle and wavelength; derive amplitude and medium scaling with fixed quantities stated. Distinguish finite stored energy from transported energy.",
+    "Translate a finite-energy pulse and identify its energy-bearing slopes. Explain why no harmonic frequency or period should be assigned to the pulse.",
+    "Compare resolved measurements with spatial/temporal aliases. Explain what cannot be inferred from one snapshot or a periodically repeating pair.",
+    "Complete a worked guided analysis, investigation, deterministic practice, independent checkpoint and retrieval comparison for later superposition and sound lessons."
+  ],
+  "workedExamples": [
+    "Rightward cosine wave: units, lambda, tau, crest motion and fixed-point derivative at a nontrivial phase.",
+    "Leftward wave: identical initial snapshot, reversed transverse velocity and signed flux.",
+    "Follow a specific positive crest indexed by 2*pi*n, including its exit from the chosen view.",
+    "Convert a measured string mass/length into kg/m and derive c and wavelength at fixed source frequency.",
+    "Check an incorrect candidate wave speed through the full wave-equation residual, including points where a misleading residual vanishes.",
+    "Use local slope and velocity to compute K, U and signed power; compare a crest with a zero crossing.",
+    "Integrate one wavelength and one period independently and reconcile the units and direction.",
+    "Use a non-integer-wavelength control interval to compare stored-energy change with both boundary works.",
+    "Double amplitude and independently change tension or density while preserving the stated controls.",
+    "Compute a finite Gaussian pulse's local derivatives and full-line energy, without inventing a period.",
+    "Exhibit two different signed shifts compatible with periodic snapshots and a same-value stroboscopic record.",
+    "Audit the small-slope approximation and distinguish model truncation from numerical quadrature differences."
+  ],
+  "practice": [
+    {"id":"phs232-traveling-wave","variants":["direction","phase-speed","local-velocity","local-acceleration","phase-delay","wave-equation"],"checks":"At least 50 deterministic seeds per variant. Independent shifted-profile identities and finite differences verify direction and derivatives; enumerate congruent phases and check the stated first-event/domain restriction. Include wrong signs, crest/particle confusion, cycles/radians, globally false PDE claims and all-zero degeneracy where appropriate."},
+    {"id":"phs232-wave-transport","variants":["string-speed","density-unit","average-power","energy-density","amplitude-scaling","medium-change"],"checks":"At least 50 deterministic seeds per variant. Independent dimensional conversions, finite-segment stretch geometry, numerical boundary power integrals and controlled-parameter substitutions verify values. Include both directions, zero local energy, amplitude squared, density-dependent speed, wrong units and fixed-source frequency."}
+  ],
+  "verification": {
+    "independentModel": "Fifty varied profiles in both directions compare translation and centered finite derivatives at off-grid positions/times. Independently sum polygonal string stretch and segment kinetic energy; refine to the small-slope limit. Check harmonic period averages and full-line Gaussian energy through separate high-resolution quadrature.",
+    "conservation": "Fifty non-integer spatial windows and time durations independently integrate energy and boundary flux. Compare coarse/fine residuals, use sign-reversed propagation and include pulse entering, contained and leaving cases. Check local conservation by finite differences, not just the global identity.",
+    "edges": "Zero amplitude, exact crest and crossing phases, limiting slope guard, smallest/largest supported scales, both directions, invalid/nonfinite/blank input, bounds and invalid interval options. Alias tests include full periods, half periods, reverse apparent motion, integer spatial spacing and phase-shifted zeros.",
+    "answers": "Use existing exact, rational, numeric and pi-expression graders. Test equivalent answers, all relevant restrictions, incorrect signs/interpretations, invalid text and disclosed tolerances. Authored worked numbers and guided fields receive independent fixtures.",
+    "browser": "Wrong/correct guided and prediction answers, keyboard probes, controlled comparisons, every table page, resolved/aliased records, invalid inputs, checkpoint answering independent of stored expected fields, reload and export/reset/import retaining earlier physics attempts. Inspect desktop/mobile, 320px reflow, 200-percent zoom equivalent, focus, reduced motion, math/table scrolling and accessibility checks.",
+    "release": "Focused tests per slice, full appropriate unit suite, lint, type check and production build before integrated browser verification. Actual results go in lesson-audits.json, including failures and fixes. No independent subject review or pilot validation is claimed."
+  }
+}
