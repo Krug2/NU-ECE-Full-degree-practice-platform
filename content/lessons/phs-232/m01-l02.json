@@ -1,0 +1,581 @@
+{
+  "id": "m01-l02",
+  "courseId": "phs-232",
+  "moduleId": "m01",
+  "version": 1,
+  "title": "Energy, physical oscillators and stable equilibrium",
+  "objective": "Derive a local oscillation model from force, torque or potential energy and assess its frequency and small-amplitude limits.",
+  "why": "The same harmonic equation can describe a spring, a swinging body or a twisting rotor, but each system needs its own inertia, restoring law and range of validity. Energy explains turning bounds and links those models without erasing their differences. This lesson develops the model before using a frequency formula, then tests when a nonlinear pendulum can reasonably be treated as harmonic.",
+  "estimatedMinutes": 240,
+  "prerequisites": [
+    {
+      "courseId": "phs-232",
+      "lessonId": "m01-l01",
+      "label": "Harmonic state and phase",
+      "note": "Use displacement from equilibrium, omega, amplitude and the two initial conditions."
+    },
+    {
+      "courseId": "phs-231",
+      "lessonId": "m05-l01",
+      "label": "Work and force integrals"
+    },
+    {
+      "courseId": "phs-231",
+      "lessonId": "m05-l02",
+      "label": "Potential energy and system boundaries",
+      "note": "Review F=-dU/dx, conservation conditions and the arbitrary zero of potential."
+    },
+    {
+      "courseId": "phs-231",
+      "lessonId": "m07-l01",
+      "label": "Torque and rotational inertia",
+      "note": "Review the chosen pivot axis, I=integral r² dm and the parallel-axis theorem."
+    },
+    {
+      "courseId": "mth-215",
+      "lessonId": "m06-l01",
+      "label": "Angles, radians and arc length"
+    },
+    {
+      "courseId": "f08",
+      "lessonId": "m01-l03",
+      "label": "Optional derivative refresher"
+    },
+    {
+      "courseId": "phs-104",
+      "label": "Introductory physics preparation",
+      "note": "This full academic prerequisite remains under construction here."
+    },
+    {
+      "courseId": "csc-208",
+      "label": "Calculus I preparation",
+      "note": "Differentiate potentials and use the chain rule; the full prerequisite remains under construction."
+    },
+    {
+      "courseId": "csc-209",
+      "label": "Calculus II preparation",
+      "note": "Use a definite integral and a local power-series approximation. The full prerequisite remains under construction. NU's listed MTH 220 and MTH 221 alternatives remain valid academic alternatives; these refreshers do not replace them."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Derive the energy account before solving for motion",
+      "paragraphs": [
+        "Choose a one-dimensional mass m>0 with displacement x from a stable spring equilibrium and net force $F=-kx$, k>0. With no damping, drive or changing parameters, multiply Newton's equation by velocity: $m\\dot{v}v=-kx\\dot{x}$. Each side is a time derivative, so $\\frac{d}{dt}(\\frac12mv^2+\\frac12kx^2)=0$. Thus $E=K+U=\\frac12mv^2+\\frac12kx^2$ is constant. This derivation identifies the conservation assumptions; a repeated-looking graph alone does not.",
+        "The spring potential comes from $U(x)-U(0)=-\\int_0^x F(s)\\,ds=kx^2/2$. It is positive for either sign of x under the chosen zero at equilibrium. Stiffness has units N/m, so kx² has units N·m=J. Kinetic energy uses speed squared and is never negative. A negative velocity describes direction, not negative kinetic energy.",
+        "For this particular zero, E≥0. An arbitrary constant can be added to U without changing force or motion, so negative total mechanical energy is not universally impossible. The invariant physical quantity for the quadratic well is energy above its minimum. Always carry the specified reference through an energy equation; do not silently replace it because a sign looks unfamiliar.",
+        "At nonzero amplitude A, a turning state has v=0 and $E=kA^2/2$. At equilibrium U=0 and $v_{\\max}=\\sqrt{2E/m}=\\omega A$. Energy fixes amplitude and speed magnitude but cannot fix the direction of velocity. The complete trajectory still needs initial conditions or an event direction. At E=0 under this reference, x=v=0 permanently: this is equilibrium, not a nonzero oscillation with two turning points."
+      ]
+    },
+    {
+      "heading": "Use energy to find admissible states and energy exchange",
+      "paragraphs": [
+        "Rearranging conservation gives $v^2=(2/m)(E-U(x))=\\omega^2(A^2-x^2)$. A physical state requires E−U≥0. Inside the turning bounds, the two signs of the square root describe opposite velocity directions. At a turning bound the speed is zero while restoring acceleration is nonzero. Outside the bounds, the negative formal value E−U diagnoses an inadmissible position; it is not a physical negative kinetic energy.",
+        "With $x=A\\cos(\\omega t+\\phi)$, the potential and kinetic fractions are $U/E=\\cos^2(\\omega t+\\phi)$ and $K/E=\\sin^2(\\omega t+\\phi)$. They exchange at twice the displacement frequency because squaring removes the displacement sign. Over a complete nonzero harmonic cycle their time averages are each E/2, but their instantaneous values usually differ. Equal energies occur at $|x|=A/\\sqrt{2}$, not at A/2.",
+        "Doubling A for separately prepared states at fixed k and m multiplies energy by four and maximum speed by two, while the ideal period is unchanged. For two separately prepared systems, $T\\propto\\sqrt{m/k}$, $v_{\\max}\\propto A\\sqrt{k/m}$ and $E\\propto kA^2$. State what remains fixed. Actually changing a spring stiffness or mass during an existing motion can exchange energy and change amplitude; that process requires its own system and work account.",
+        "Energy conservation is a powerful independent check on a computed trajectory, but it is not a complete timing test. A numerical solution can stay close to the correct energy contour while accumulating phase error. Check event times or the full state as well as energy, especially after many cycles."
+      ]
+    },
+    {
+      "heading": "Shift a vertical spring to its true equilibrium",
+      "paragraphs": [
+        "Let y increase downward from an ideal spring's unstretched position. In uniform gravity, $m\\ddot y=mg-ky$. The equilibrium is $y_{\\mathrm{eq}}=mg/k$. Define $q=y-y_{\\mathrm{eq}}$ while keeping the same time coordinate. Then $m\\ddot q=-kq$, so the natural frequency remains $\\sqrt{k/m}$. Gravity shifts this linear spring's equilibrium; it does not supply the pendulum frequency formula.",
+        "The combined potential is $U(y)=ky^2/2-mgy$. Completing the square gives $U(y)=k(y-y_{\\mathrm{eq}})^2/2-m^2g^2/(2k)$. The minimum may be negative, and the oscillation energy above that minimum is $E_{\\mathrm{osc}}=mv^2/2+kq^2/2$. The static extension mg/k and the oscillation amplitude are different distances. A release from rest at y0 has amplitude |y0−yeq|; with nonzero initial velocity, use $\\sqrt{(y_0-y_{\\mathrm{eq}})^2+(v_0/\\omega)^2}$.",
+        "This conclusion assumes constant gravity, one moving mass, a linear spring throughout the motion and an intact constraint. The ideal spring in these exercises can push or pull. A hanging element that goes slack, a spring that bottoms out or a material that leaves its linear range needs a different model. No numerical result here establishes an apparatus's safe travel or elastic limit."
+      ]
+    },
+    {
+      "heading": "Combine springs by force and displacement compatibility",
+      "paragraphs": [
+        "For two springs acting in parallel on one mass, their extensions from the common equilibrium are equal and their restoring forces add. Therefore $k_{\\mathrm{eff}}=k_1+k_2$. Their energies also add: $U=k_1q^2/2+k_2q^2/2=k_{\\mathrm{eff}}q^2/2$.",
+        "For springs in series with a massless intermediate connector, force balance on that connector gives equal force magnitudes. Their signed extensions add: $q=F/k_1+F/k_2$, so $1/k_{\\mathrm{eff}}=1/k_1+1/k_2$. The effective stiffness is smaller than either positive stiffness. Verify the result by adding the separate energies $F^2/(2k_1)+F^2/(2k_2)=Fq/2$.",
+        "Only after finding the effective stiffness should you combine it with the moving inertia: $\\omega=\\sqrt{k_{\\mathrm{eff}}/m}$. A connector or second mass with appreciable inertia creates additional dynamical coordinates and can support more than one normal mode. A static series or parallel rule does not by itself determine all the modes of such a system. Coupled oscillations return in the wave module."
+      ]
+    },
+    {
+      "heading": "Read a local oscillator from the curvature of a potential",
+      "paragraphs": [
+        "For a smooth potential U(x), equilibrium at xe requires $U'(x_e)=0$. Put q=x−xe and expand locally: $U(x_e+q)=U(x_e)+\\frac12U''(x_e)q^2+\\text{higher powers}$. The first-order term vanishes at equilibrium. Differentiating gives $F\\approx-U''(x_e)q$. For a constant positive mass and positive curvature, the local angular frequency is $\\omega_0=\\sqrt{U''(x_e)/m}$. Curvature has units J/m²=N/m.",
+        "Positive curvature gives a local minimum and a linear restoring response. Negative curvature gives a local maximum: the linearized force points away from equilibrium and solutions grow or decay exponentially rather than oscillating. Do not discard the sign inside omega squared to manufacture a real oscillation frequency. The value U(xe), including its sign, does not determine stability.",
+        "If U''(xe)=0, the quadratic test is inconclusive. A positive quartic potential beta q⁴ has a stable restoring force −4 beta q³ but no positive nonzero linear frequency; its finite-amplitude motion is nonlinear. A negative quartic has an unstable maximum despite the same zero curvature. A perfectly flat potential has no restoring force: a displaced mass released from rest stays at its new location, while any nonzero velocity causes drift.",
+        "A local approximation needs a scale check. For $U=U_0+kq^2/2+\\beta q^4$, k>0 and beta>0, the exact force is $-kq-4\\beta q^3$. The nonlinear-to-linear force ratio away from zero is $4\\beta q^2/k$. Requiring that ratio to stay below a stated tolerance over |q|≤A gives a usable amplitude restriction. It does not automatically give an identical tolerance for a full-cycle period."
+      ]
+    },
+    {
+      "heading": "Build angular models with torque and the correct inertia",
+      "paragraphs": [
+        "For a fixed-axis rigid rotor, replace linear inertia m with the moment of inertia I about that same axis. The rotational equation is $I\\ddot\\theta=\\tau$. If the net restoring torque is $\\tau=-\\kappa\\theta$ over the chosen range, then $\\omega_0=\\sqrt{\\kappa/I}$ and $T_0=2\\pi\\sqrt{I/\\kappa}$. Use radians for theta. The torsional coefficient is commonly labeled N·m/rad; radians are dimensionless in the unit balance but the label identifies differentiation with respect to angle.",
+        "The energy is $E=I\\dot\\theta^2/2+\\kappa\\theta^2/2$, relative to the stable angular equilibrium. A release from rest at theta0 has energy kappa theta0²/2 and maximum angular speed omega0|theta0|. Angular speed theta-dot and the oscillator's phase frequency omega0 have the same rad/s unit but different meanings: one varies during the motion, while the other sets the phase rate.",
+        "For a gravity-driven rigid body, let d be the distance from pivot to center of mass and theta the angular displacement from the downward equilibrium. The exact torque is $-mgd\\sin\\theta$. Its local coefficient is mgd, giving $\\omega_0^2=mgd/I_p$ with the pivot inertia Ip. When given a parallel center-of-mass inertia, use $I_p=I_{\\mathrm{cm}}+md^2$. A point-mass formula md² omits the body's extent; Icm alone uses the wrong axis.",
+        "The result assumes a fixed frictionless pivot, rigid body, uniform gravity and small angular displacement. If d=0, gravity supplies no restoring torque about that axis. Around the upward equilibrium the torque instead destabilizes a small angular displacement. Neither situation is the stable downward small-angle oscillator described by the positive-frequency formula."
+      ]
+    },
+    {
+      "heading": "Derive the pendulum approximation and its domain",
+      "paragraphs": [
+        "A point mass on a massless rigid rod of length L has I=mL² and gravity torque −mgL sin(theta). The exact equation is $\\ddot\\theta+(g/L)\\sin\\theta=0$. The rod constraint can push or pull. A flexible string requires nonnegative tension and can become slack at large releases, so it cannot silently replace the rigid rod used by this investigation.",
+        "Near the downward equilibrium, $\\sin\\theta\\approx\\theta$ in radians gives $\\omega_0=\\sqrt{g/L}$ and $T_0=2\\pi\\sqrt{L/g}$. Mass cancels between gravitational torque and rotational inertia. That cancellation holds in this ideal model; it is not a claim that mass never matters when drag, pivot friction or other forces are present.",
+        "For release from rest at 0<theta0<pi, the exact energy is $E=mgL(1-\\cos\\theta_0)$ and $K=I\\dot\\theta^2/2$. Separating the energy equation and integrating a quarter cycle gives\n$T=4\\sqrt{L/g}\\int_0^{\\pi/2}[1-\\sin^2(\\theta_0/2)\\sin^2u]^{-1/2}\\,du$.\nThe substitution removes the turning-point singularity from the original time integral. The integral exceeds pi/2 for every nonzero amplitude in this interval, so T>T0.",
+        "At exactly zero release angle and zero speed the state is stationary; it has no least positive trajectory period. T0 is the limiting period of nonzero small oscillations and remains a property of the system. As theta0 approaches pi from below, the nonlinear period grows without bound. Exactly at the top with zero speed the ideal state is an unstable equilibrium. Energies above the top barrier allow rotations rather than these bounded librations; the release-from-rest period formula is not a rotation formula."
+      ]
+    },
+    {
+      "heading": "Assign a tolerance to a quantity, not to the phrase small angle",
+      "paragraphs": [
+        "At release, define the force or torque discrepancy relative to the linear magnitude as $\\epsilon_F=100(1-\\sin\\theta_0/\\theta_0)$ percent for nonzero theta0 in radians. Using the exact sine magnitude as denominator would give a different percentage. State the denominator whenever reporting relative error. At zero angle both magnitudes vanish, so this relative expression is undefined even though its limit is zero.",
+        "Define the period increase relative to the small-angle result as $\\epsilon_T=100(T/T_0-1)$ percent. This is a property of the entire nonlinear trajectory, not just the initial force. At 15°, epsilonF is about 1.138407% while epsilonT is about 0.430058%. A 1% period criterion passes at that amplitude, but a 1% release-force criterion with the stated denominator fails. There is no contradiction because the tested quantities differ.",
+        "The small-amplitude expansion gives $T/T_0=1+\\theta_0^2/16+\\text{higher even powers}$. It explains the first positive period correction but does not replace a convergence check at large angles. The investigation evaluates the energy-integral reference independently of the time-step trajectory. Its period is a model reference, not a measured physical result or an official equipment specification.",
+        "The same release angle gives different initial energies in the two models: mgL(1−cos theta0) for the nonlinear model and mgL theta0²/2 for the linear model. Compare each trajectory's energy against its own initial value. Their initial difference is an approximation difference between potentials, not numerical drift or dissipation."
+      ]
+    },
+    {
+      "heading": "Separate numerical evidence from physical evidence",
+      "paragraphs": [
+        "The investigation integrates both the nonlinear and linear equations using a coarse step and a step half as large over exactly the same physical window. It displays each model's kinetic, potential and total energy, plus the nonlinear angle difference at aligned times. The linear trajectory can also be checked analytically against theta0 cos(sqrt(g/L)t). Agreement should improve when the step shrinks, until roundoff or display precision limits the comparison.",
+        "A period estimate uses successive zero crossings with negative angular velocity. Crossings with opposite directions are roughly half a cycle apart and must not be treated as full periods. The tool averages intervals between the first and last qualifying crossings and compares that estimate with the nonlinear energy-integral reference. If the selected window contains fewer than two qualifying crossings, extend it; the absence of an estimate does not prove absence of periodic motion.",
+        "Maximum absolute energy drift is the largest sampled |E(t)−E(0)|. Relative drift divides that quantity by the same model's initial energy and is undefined when that energy is zero. These measures concern numerical conservation within one model. They are different from the nonlinear-versus-linear force and period differences. In this ideal conservative system a small numerical energy decrease is not physical friction.",
+        "Before revealing a run, predict the small-angle period, nonlinear release energy and whether a nonlinear period exists and exceeds T0. Record contrasting amplitudes and step sizes, preserve incorrect predictions and explain revisions. Use the full state and crossing tables as an alternative to the plots. Save a concise record in lesson notes and export progress from Settings when you need a backup. The rubric supports self-assessment; an independent lesson checkpoint records objective evidence. No physical experiment, independent subject review or learner pilot is claimed."
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "title": "Recover the energy without losing velocity direction",
+      "prompt": "A horizontal oscillator has m=0.5 kg, k=8 N/m, x=0.03 m and v=−0.16 m/s. Use U=0 at equilibrium. Find K, U, E, amplitude and maximum speed.",
+      "steps": [
+        {
+          "math": "K=\\tfrac12(0.5)(-0.16)^2=0.0064\\,\\mathrm J,\\qquad U=\\tfrac12(8)(0.03)^2=0.0036\\,\\mathrm J",
+          "reason": "Both contributions are positive under this energy reference."
+        },
+        {
+          "math": "E=0.0100\\,\\mathrm J,\\qquad A=\\sqrt{2E/k}=0.0500\\,\\mathrm m",
+          "reason": "Add energies before converting the turning-point energy to amplitude."
+        },
+        {
+          "math": "v_{\\max}=\\sqrt{2E/m}=0.200\\,\\mathrm{m/s},\\qquad U/E=0.36",
+          "reason": "The largest speed occurs at the potential minimum, not at the supplied position."
+        }
+      ],
+      "conclusion": "The supplied state moves in the negative direction. Replacing v with +0.16 m/s leaves the energy unchanged but describes the opposite motion at that position."
+    },
+    {
+      "title": "Reject an unreachable position before taking a square root",
+      "prompt": "Use E=0.01 J, m=0.5 kg and k=8 N/m. Compare x=0.04 m, 0.05 m and 0.06 m.",
+      "steps": [
+        {
+          "math": "K(0.04)=0.01-4(0.04)^2=0.0036\\,\\mathrm J,\\qquad v=\\pm\\sqrt{2K/m}=\\pm0.12\\,\\mathrm{m/s}",
+          "reason": "The interior position has two admissible velocity directions."
+        },
+        {
+          "math": "K(0.05)=0,\\qquad a=-\\frac{k}{m}x=-0.8\\,\\mathrm{m/s^2}",
+          "reason": "This is a turning position, not static equilibrium."
+        },
+        {
+          "math": "E-U(0.06)=0.01-4(0.06)^2=-0.0044\\,\\mathrm J",
+          "reason": "The negative formal requirement rules out the proposed position at this energy."
+        }
+      ],
+      "conclusion": "Do not report a negative kinetic energy or an imaginary physical speed for x=0.06 m. The energy equation has no admissible state there."
+    },
+    {
+      "title": "Interpret negative total energy with its reference",
+      "prompt": "For k=8 N/m, compare E=−0.01 J with U=4x² J against E=−0.04 J with U=4x²−0.05 J, where x is in meters.",
+      "steps": [
+        {
+          "math": "K+4x^2=-0.01\\,\\mathrm J",
+          "reason": "The first account is impossible: its left side is nonnegative."
+        },
+        {
+          "math": "K+4x^2-0.05=-0.04\\quad\\Longrightarrow\\quad K+4x^2=0.01\\,\\mathrm J",
+          "reason": "Subtract the stated minimum potential in the second account."
+        },
+        {
+          "math": "A=\\sqrt{0.01/4}=0.05\\,\\mathrm m",
+          "reason": "The second energy is negative relative to its arbitrary zero but positive above the well minimum."
+        }
+      ],
+      "conclusion": "A sign without the potential reference cannot decide admissibility. The second account describes the same oscillation energy as the first worked oscillator."
+    },
+    {
+      "title": "Shift a hanging spring before assigning amplitude",
+      "prompt": "An ideal vertical spring has m=0.5 kg, k=8 N/m and g=10 m/s². The downward coordinate y starts at the unstretched position. Release from rest at y0=0.675 m.",
+      "steps": [
+        {
+          "math": "y_{\\mathrm{eq}}=\\frac{mg}{k}=0.625\\,\\mathrm m,\\qquad q_0=0.675-0.625=0.050\\,\\mathrm m",
+          "reason": "Separate static extension from displacement about equilibrium."
+        },
+        {
+          "math": "\\omega=4\\,\\mathrm{rad/s},\\qquad T=\\pi/2\\,\\mathrm s,\\qquad E_{\\mathrm{osc}}=\\tfrac12(8)(0.05)^2=0.01\\,\\mathrm J",
+          "reason": "Use the shifted harmonic equation."
+        },
+        {
+          "math": "U_{\\min}=-\\frac{m^2g^2}{2k}=-1.5625\\,\\mathrm J,\\qquad E_{\\mathrm{total}}=-1.5525\\,\\mathrm J",
+          "reason": "The combined gravity–spring potential has a negative minimum with this reference."
+        }
+      ],
+      "conclusion": "Gravity changes the offset but not this linear spring's frequency. Treating the total extension 0.675 m as the amplitude would greatly overstate the oscillation energy."
+    },
+    {
+      "title": "Check series stiffness through two separate energies",
+      "prompt": "Springs of 12 N/m and 4 N/m act in series through a massless junction on one 0.75 kg mass. Its total displacement from equilibrium is 0.08 m.",
+      "steps": [
+        {
+          "math": "k_{\\mathrm{eff}}=(1/12+1/4)^{-1}=3\\,\\mathrm{N/m},\\qquad F=3(0.08)=0.24\\,\\mathrm N",
+          "reason": "The same force passes through both springs."
+        },
+        {
+          "math": "q_1=0.24/12=0.02\\,\\mathrm m,\\qquad q_2=0.24/4=0.06\\,\\mathrm m",
+          "reason": "Their extensions add to 0.08 m."
+        },
+        {
+          "math": "U=\\tfrac12(12)(0.02)^2+\\tfrac12(4)(0.06)^2=0.0096\\,\\mathrm J=\\tfrac12(3)(0.08)^2",
+          "reason": "The separate-energy account independently matches the effective spring."
+        },
+        {
+          "math": "\\omega=\\sqrt{3/0.75}=2\\,\\mathrm{rad/s},\\qquad T=\\pi\\,\\mathrm s",
+          "reason": "Combine the effective stiffness with the only moving inertia."
+        }
+      ],
+      "conclusion": "The same springs in parallel have stiffness 16 N/m, because their displacements would then be equal and their forces would add. The series displacement split would no longer apply."
+    },
+    {
+      "title": "Test a local approximation quantitatively",
+      "prompt": "A 1 kg mass has U=3+8q²+2q⁴ J, with q in meters from equilibrium. Find its local frequency and compare the exact and linear forces at q=0.1 m and q=0.5 m.",
+      "steps": [
+        {
+          "math": "F=-16q-8q^3,\\qquad U''(0)=16\\,\\mathrm{N/m},\\qquad\\omega_0=4\\,\\mathrm{rad/s}",
+          "reason": "Differentiate first, then divide the restoring curvature by the mass."
+        },
+        {
+          "math": "F(0.1)=-1.608\\,\\mathrm N,\\qquad F_{\\mathrm{linear}}(0.1)=-1.6\\,\\mathrm N",
+          "reason": "The cubic correction is 0.008 N, or 0.5% of the linear magnitude."
+        },
+        {
+          "math": "F(0.5)=-9\\,\\mathrm N,\\qquad F_{\\mathrm{linear}}(0.5)=-8\\,\\mathrm N",
+          "reason": "The correction is now 12.5% of the linear magnitude."
+        },
+        {
+          "math": "\\frac{8A^2}{16}\\le0.01\\quad\\Longrightarrow\\quad A\\le\\sqrt{0.02}\\,\\mathrm m",
+          "reason": "A 1% force criterion produces an explicit amplitude limit, approximately 0.141421 m."
+        }
+      ],
+      "conclusion": "The 3 J energy offset changes none of these results. The force criterion does not promise a 1% period error without a separate period analysis."
+    },
+    {
+      "title": "Distinguish three zero-curvature equilibria",
+      "prompt": "Compare U=+beta q⁴, U=−beta q⁴ and a constant U, with beta>0 and a positive mass. At q=0 all have zero first and second derivatives.",
+      "steps": [
+        {
+          "math": "F_+=-4\\beta q^3,\\qquad F_-=+4\\beta q^3,\\qquad F_{\\mathrm{flat}}=0",
+          "reason": "Their leading nonzero forces have different signs or are absent."
+        },
+        {
+          "math": "U_+(q)>U_+(0),\\qquad U_-(q)<U_-(0)\\quad(q\\ne0)",
+          "reason": "The positive quartic is a minimum; the negative quartic is a maximum."
+        },
+        {
+          "math": "q=AQ,\\quad t=\\frac{\\sqrt{m/\\beta}}{A}\\tau\\quad\\Longrightarrow\\quad \\frac{d^2Q}{d\\tau^2}+4Q^3=0",
+          "reason": "For the positive quartic at nonzero amplitude, rescaling shows a period proportional to 1/A at fixed m and beta."
+        }
+      ],
+      "conclusion": "Zero curvature alone establishes no positive harmonic frequency and cannot classify stability. The positive quartic supports nonlinear bounded motion; the negative quartic drives departure; a flat potential permits stationary displaced states and uniform drift."
+    },
+    {
+      "title": "Keep angular speed distinct from oscillation frequency",
+      "prompt": "A rotor has I=0.4 kg·m² and torsion coefficient kappa=10 N·m/rad. Release it from rest at theta0=0.1 rad in its linear range.",
+      "steps": [
+        {
+          "math": "\\omega_0=\\sqrt{10/0.4}=5\\,\\mathrm{rad/s},\\qquad T=2\\pi/5\\,\\mathrm s",
+          "reason": "Torque coefficient divided by rotational inertia sets the phase frequency."
+        },
+        {
+          "math": "E=\\tfrac12(10)(0.1)^2=0.05\\,\\mathrm J",
+          "reason": "At release the energy is entirely torsional potential."
+        },
+        {
+          "math": "|\\dot\\theta|_{\\max}=\\sqrt{2(0.05)/0.4}=0.5\\,\\mathrm{rad/s}",
+          "reason": "At equilibrium the same energy is rotational kinetic."
+        }
+      ],
+      "conclusion": "The maximum rotor angular speed is 0.5 rad/s while its oscillation angular frequency is 5 rad/s. Shared units do not make these equal quantities."
+    },
+    {
+      "title": "Use the pivot inertia of an extended body",
+      "prompt": "A uniform 3 kg rod of length 0.6 m swings about one end in g=10 m/s². Find the small-angle period.",
+      "steps": [
+        {
+          "math": "d=0.3\\,\\mathrm m,\\qquad I_{\\mathrm{cm}}=\\frac{3(0.6)^2}{12}=0.09\\,\\mathrm{kg\\,m^2}",
+          "reason": "Locate the center of mass and its transverse inertia."
+        },
+        {
+          "math": "I_p=I_{\\mathrm{cm}}+md^2=0.09+3(0.3)^2=0.36\\,\\mathrm{kg\\,m^2}",
+          "reason": "Shift to the actual fixed pivot axis."
+        },
+        {
+          "math": "\\omega_0^2=\\frac{mgd}{I_p}=\\frac{3(10)(0.3)}{0.36}=25\\,\\mathrm{s^{-2}},\\qquad T_0=2\\pi/5\\,\\mathrm s",
+          "reason": "Linearize the gravity torque about the downward equilibrium."
+        }
+      ],
+      "conclusion": "A point mass 0.3 m from the pivot would omit the rod's 0.09 kg·m² center inertia. A rod pivoted through its center would have no gravitational restoring torque."
+    },
+    {
+      "title": "Check the same method for a disk",
+      "prompt": "A uniform disk of mass m and radius R=0.2 m swings in its own vertical plane about a rim pivot with axis perpendicular to the disk. Use g=10 m/s².",
+      "steps": [
+        {
+          "math": "d=R,\\qquad I_p=\\tfrac12mR^2+mR^2=\\tfrac32mR^2",
+          "reason": "Use the disk's center inertia and the same parallel-axis shift."
+        },
+        {
+          "math": "\\omega_0^2=\\frac{mgR}{(3/2)mR^2}=\\frac{2g}{3R}=\\frac{100}{3}\\,\\mathrm{s^{-2}}",
+          "reason": "The mass cancels, but the body's shape remains through its inertia."
+        },
+        {
+          "math": "T_0=\\frac{2\\pi}{10/\\sqrt3}=\\frac{\\pi\\sqrt3}{5}\\,\\mathrm s\\approx1.088280\\,\\mathrm s",
+          "reason": "Take the positive angular frequency and convert radians per second to a cycle period."
+        }
+      ],
+      "conclusion": "A disk and a point mass with the same center distance have different periods. The torque lever arm alone does not specify the motion."
+    },
+    {
+      "title": "Apply two different one-percent criteria",
+      "prompt": "A 0.5 kg point mass on a massless rigid rod of length 0.625 m is released from rest at 15° in g=10 m/s². Compare its linear and nonlinear models.",
+      "steps": [
+        {
+          "math": "\\theta_0=\\pi/12,\\qquad T_0=2\\pi\\sqrt{0.625/10}=\\pi/2\\,\\mathrm s",
+          "reason": "Convert the angle to radians before using small-angle expressions."
+        },
+        {
+          "math": "E=3.125(1-\\cos(\\pi/12))\\approx0.106481793\\,\\mathrm J,\\qquad E_{\\mathrm{linear}}=3.125(\\pi/12)^2/2\\approx0.107092062\\,\\mathrm J",
+          "reason": "The same initial angle produces different energies in the two potentials."
+        },
+        {
+          "math": "\\epsilon_F=100\\left(1-\\frac{\\sin(\\pi/12)}{\\pi/12}\\right)\\approx1.138407\\%",
+          "reason": "Use the stated linear-force denominator."
+        },
+        {
+          "math": "T\\approx1.577551661\\,\\mathrm s,\\qquad\\epsilon_T=100(T/T_0-1)\\approx0.430058\\%",
+          "reason": "Evaluate the nonlinear period from the energy integral rather than equating force error with period error."
+        }
+      ],
+      "conclusion": "The 1% period criterion passes while the 1% release-force criterion fails. Refining a numerical time step should not erase either physical model difference."
+    },
+    {
+      "title": "Interpret a short recording and a stationary release",
+      "prompt": "At 170° the nonlinear-to-small-angle period ratio is about 2.439363. The pendulum begins at its positive extreme. Consider a window of length T0, then a separate zero-angle release.",
+      "steps": [
+        {
+          "math": "t_{\\mathrm{first\\ downward}}=T/4\\approx0.609841T_0,\\qquad t_{\\mathrm{next\\ downward}}=5T/4\\approx3.049203T_0",
+          "reason": "Two crossings with the same velocity direction are one full period apart."
+        },
+        {
+          "math": "0.609841T_0<T_0<3.049203T_0",
+          "reason": "The short window contains only one qualifying crossing, so it cannot supply the displayed period estimate."
+        },
+        {
+          "math": "\\theta_0=0,\\quad\\dot\\theta_0=0\\quad\\Longrightarrow\\quad\\theta(t)=0,\\quad E=0",
+          "reason": "The separate zero-amplitude case is stationary, with no discrete crossing sequence or least positive trajectory period."
+        }
+      ],
+      "conclusion": "A missing crossing estimate in the 170° run is a window limitation. A missing trajectory period in the zero-angle run is a different mathematical situation. The system's T0 remains defined in both."
+    }
+  ],
+  "guided": {
+    "title": "Use energy and curvature in one consistent account",
+    "setup": "Work from the stated potential and reference. Separate exact state quantities from the local harmonic approximation.",
+    "before": [
+      "Differentiate U to get force and curvature, including the quartic term.",
+      "Locate the unique equilibrium before assigning a local frequency.",
+      "Use the energy equation to decide whether the requested position is reachable, then find both possible velocity signs."
+    ],
+    "question": {
+      "id": "phs232-energy-guided",
+      "familyId": "phs232-energy-guided",
+      "familyVersion": 1,
+      "courseId": "phs-232",
+      "objectiveId": "m01-l02",
+      "category": "application",
+      "critical": true,
+      "parameters": {
+        "mass": 1,
+        "quadraticCoefficient": 8,
+        "quarticCoefficient": 2,
+        "energy": 1.0078125
+      },
+      "prompt": "A 1 kg mass has U(q)=8q²+2q⁴ J with q in meters and U=0 at q=0. Its conserved energy is E=129/128 J. Find the equilibrium coordinate, local natural angular frequency, exact signed force at q=1/2 m, and all possible real velocities at q=1/4 m. Is q=1/2 m reachable at this energy?",
+      "fields": [
+        {
+          "id": "equilibrium",
+          "kind": "rational",
+          "label": "Equilibrium coordinate",
+          "expected": "0",
+          "unit": "m"
+        },
+        {
+          "id": "omega",
+          "kind": "rational",
+          "label": "Local natural angular frequency",
+          "expected": "4",
+          "unit": "rad/s"
+        },
+        {
+          "id": "force",
+          "kind": "rational",
+          "label": "Exact force at one-half meter",
+          "expected": "-9",
+          "unit": "N"
+        },
+        {
+          "id": "velocities",
+          "kind": "roots",
+          "numberSystem": "real",
+          "label": "All possible velocities at one-quarter meter",
+          "expected": [
+            "-1",
+            "1"
+          ],
+          "unit": "m/s",
+          "help": "Enter every distinct exact real velocity, separated by commas."
+        },
+        {
+          "id": "reachable",
+          "kind": "choice",
+          "label": "Is one-half meter reachable?",
+          "correct": "no",
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes: a negative formal kinetic energy is allowed",
+              "feedback": "Kinetic energy cannot be negative. At q=1/2, U=17/8 J exceeds the supplied total energy, so no real velocity satisfies the account."
+            },
+            {
+              "id": "no",
+              "label": "No: the potential there exceeds total energy",
+              "feedback": "The condition E-U≥0 fails at q=1/2. This position is excluded at the supplied energy even though the potential and force are defined there."
+            },
+            {
+              "id": "unknown",
+              "label": "Energy cannot decide reachability",
+              "feedback": "For this one-dimensional conservative model, the sign of E-U determines whether a real speed exists at a proposed coordinate."
+            }
+          ]
+        }
+      ],
+      "hints": [
+        "F=-16q-8q³=-q(16+8q²), so the only equilibrium is zero. U''(0)=16 N/m.",
+        "At q=1/4, U=8/16+2/256=65/128 J. Subtract it from E before using K=mv²/2.",
+        "The kinetic energy at q=1/4 is 1/2 J, giving two velocities. At q=1/2 the potential is 17/8 J, which is larger than E."
+      ],
+      "explanation": [
+        "Equilibrium requires -q(16+8q²)=0. The bracket is positive, so q_eq=0 m.",
+        "The curvature there is 16 N/m. The local natural frequency is sqrt(16/1)=4 rad/s; the quartic term still affects finite-amplitude motion.",
+        "At q=1/2, F=-16(1/2)-8(1/2)³=-9 N. Keeping only the linear force would give -8 N and miss the requested exact force.",
+        "At q=1/4, U=65/128 J, so K=129/128-65/128=1/2 J. Then v²=2K/m=1 m²/s², giving v=-1 and +1 m/s.",
+        "At q=1/2, E-U=129/128-17/8=-143/128 J. That negative formal requirement excludes the position; it is not physical negative kinetic energy."
+      ],
+      "answerSummary": "q_eq=0 m; omega0=4 rad/s; F(1/2)=-9 N; v(1/4)=±1 m/s; q=1/2 m is not reachable at this energy."
+    },
+    "after": "Explain why energy admits both velocity signs at the quarter-meter position and why the exact force remains meaningful at a position that this particular trajectory cannot reach."
+  },
+  "interaction": {
+    "kind": "phs232-oscillator-energy",
+    "prompt": "Compare a nonlinear pendulum with its local linear approximation. Predict energy and period, inspect both energy accounts, refine the numerical time step, and decide which discrepancy meets a stated tolerance.",
+    "initial": {
+      "mass": 0.5,
+      "length": 0.625,
+      "gravity": 10,
+      "amplitudeDegrees": 15,
+      "cycles": 4,
+      "stepsPerPeriod": 64
+    }
+  },
+  "practice": [
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "energy-partition"
+    },
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "turning-amplitude"
+    },
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "vertical-offset"
+    },
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "spring-combination"
+    },
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "speed-bound"
+    },
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "parameter-scaling"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "simple-pendulum"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "physical-pendulum"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "torsion"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "potential-curvature"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "unstable-equilibrium"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "small-angle-error"
+    }
+  ],
+  "checkpoint": [
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "speed-bound"
+    },
+    {
+      "familyId": "phs232-oscillator-energy",
+      "variant": "spring-combination"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "physical-pendulum"
+    },
+    {
+      "familyId": "phs232-oscillator-model",
+      "variant": "small-angle-error"
+    }
+  ],
+  "summary": [
+    "State the system and conservation assumptions. For a quadratic well, oscillation energy above its minimum is K+U=kA²/2; a negative formal E-U excludes a proposed position.",
+    "Energy gives speed magnitude and turning bounds, while direction requires more state information. Potential reference offsets change energy values but not force, curvature or motion.",
+    "Shift a vertical spring to its actual equilibrium. Combine series or parallel springs through their distinct force and displacement constraints before using the moving mass.",
+    "Positive potential curvature gives a local harmonic model; negative curvature is unstable, and zero curvature requires higher-order information. Check the size of neglected terms.",
+    "Use inertia about the actual pivot for physical pendula and torsional oscillators. A simple pendulum's T0=2*pi*sqrt(L/g) is a small-angle result.",
+    "Keep force approximation error, finite-amplitude period increase and numerical drift separate. State denominators, examine convergence and handle zero amplitude and insufficient recording windows explicitly."
+  ],
+  "retrieval": "Without notes, derive the energy conservation equation from the force law. Then derive the local frequency for a vertical spring, a torsion rotor and an extended-body pendulum, naming each inertia and restoring coefficient. Explain how a stable quartic minimum can have zero quadratic curvature, and design a comparison that distinguishes physical model error from numerical error.",
+  "readings": [
+    {
+      "title": "OpenStax University Physics, 15.2: Simple Harmonic Motion and Energy",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-2-energy-in-simple-harmonic-motion",
+      "purpose": "Free primary textbook treatment of oscillator energy and kinetic–potential exchange. Re-derive the formulas using the potential reference and admissibility checks in this lesson."
+    },
+    {
+      "title": "OpenStax University Physics, 15.4: Pendulums",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-4-pendulums",
+      "purpose": "Free primary textbook coverage of simple, physical and torsional pendula. Apply an explicit tolerance and denominator when assessing the small-angle approximation."
+    }
+  ]
+}
