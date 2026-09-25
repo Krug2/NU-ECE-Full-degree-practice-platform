@@ -1,7 +1,7 @@
 {
   "courseId": "phs-232",
   "version": 1,
-  "status": "Complete proposed plan verified; implementation starts with m01-l01.",
+  "status": "The complete proposed plan is verified and m01-l01 is available. Continue with m01-l02; PHS 232 remains in development.",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
   "workspace": "C:/School/Dev/NU-ECE-major-courses",
@@ -40,6 +40,10 @@
     {
       "path": "integration.json",
       "purpose": "Actual implementation status, checks, small commits, shared extensions and incoming prerequisite merges."
+    },
+    {
+      "path": "lesson-audits.json",
+      "purpose": "Actual teaching, independent fixtures, browser behavior and visual checks for each delivered lesson."
     },
     {
       "path": "cumulative-blueprints.json",

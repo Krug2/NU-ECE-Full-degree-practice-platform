@@ -1,8 +1,8 @@
 {
   "courseId":"phs-232",
   "version":1,
-  "status":"Complete proposed coverage map; none of these lessons is implemented yet.",
-  "use":"Every lesson requires original instruction, stated notation and domains, worked reasoning, guided feedback, an accessible investigation, deterministic practice and a checkpoint. The entries below specify subject-specific coverage and evidence; assessments.json and verification.json add the shared release conditions. Family names are planned identifiers, not registered implementations.",
+  "status":"Complete proposed coverage map; m01-l01 is implemented and technically verified. The remaining 30 lessons are still planned.",
+  "use":"Every lesson requires original instruction, stated notation and domains, worked reasoning, guided feedback, an accessible investigation, deterministic practice and a checkpoint. The entries below specify subject-specific coverage and evidence; assessments.json and verification.json add the shared release conditions. Family names describe intended coverage; integration.json and lesson-audits.json record actual availability and checks.",
   "modules":[
     {
       "id":"m01","title":"Oscillation, damping and driving","requires":[],
