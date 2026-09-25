@@ -70,7 +70,7 @@
           "investigation":"Move position and time probes independently on a wave; compare crest motion with a tagged medium point. A derivative table, energy account and controllable sample spacing are available without animation.",
           "families":[{"id":"phs232-traveling-wave","variants":["direction","phase-speed","local-velocity","local-acceleration","phase-delay","wave-equation"]},{"id":"phs232-wave-transport","variants":["string-speed","density-unit","average-power","energy-density","amplitude-scaling","medium-change"]}],
           "independentChecks":"Use shifted-profile transport and symbolic derivatives, not the displayed graph generator. Verify energy flux equals speed times mean energy density for the ideal string and test both travel directions.",
-          "readings":["v1-16.1","v1-16.2","v1-16.3","v1-16.4"]
+          "readings":["v1-16.1","v1-16.2","v1-16.3","v1-16.4","utx-string-energy","yale-string-energy"]
         },
         {
           "id":"m02-l02","title":"Superposition, reflection and normal modes",

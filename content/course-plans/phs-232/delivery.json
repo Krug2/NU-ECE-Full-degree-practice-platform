@@ -23,7 +23,7 @@
     },
     {
       "path": "resources.json",
-      "purpose": "92 verified public primary-source reading pages, their provider titles and lesson mappings."
+      "purpose": "94 verified public primary-source readings, their page titles or PDF heading, and lesson mappings."
     },
     {
       "path": "assessments.json",
@@ -56,6 +56,10 @@
     {
       "path": "m01-l04-design.json",
       "purpose": "Numerical and instructional design for the implemented driven-response lesson; actual verification is recorded separately in lesson-audits.json."
+    },
+    {
+      "path": "m02-l01-design.json",
+      "purpose": "Detailed traveling-wave implementation design, including local energy, signed flux, finite pulses and sampling ambiguity; actual delivery checks are recorded separately."
     }
   ],
   "slices": [

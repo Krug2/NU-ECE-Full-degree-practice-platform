@@ -3,7 +3,7 @@
   "version": 1,
   "checkedAt": "2026-09-24",
   "usage": "Outbound primary-source readings supplement original course instruction. No external assessment or paid account is required.",
-  "method": "Provider chapter indexes supply section URLs; each selected public page was retrieved with HTTP GET and its title checked. Topic relevance is mapped in modules.json. This is availability verification, not independent subject review.",
+  "method": "Provider chapter indexes supply section URLs; each selected public page was retrieved with HTTP GET and its title checked. Topic relevance is mapped in modules.json. This is availability verification, not independent subject review. The added string-energy lecture and correction were read in full for the relevant string derivation; the correction title is the PDF heading. Separate HEAD requests confirmed HTTP 200.",
   "resources": [
     {
       "id": "mit-coupled",
@@ -1303,6 +1303,34 @@
       "access": "Free public reading; no account needed to read this page.",
       "usedBy": [
         "m09-l02"
+      ]
+    },
+    {
+      "id": "utx-string-energy",
+      "title": "Energy Conservation",
+      "url": "https://farside.ph.utexas.edu/teaching/315/Waveshtml/node43.html",
+      "provider": "University of Texas at Austin",
+      "verifiedUrl": "https://farside.ph.utexas.edu/teaching/315/Waveshtml/node43.html",
+      "pageTitle": "Energy Conservation",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed. The document was read through the web reader and HTTP 200 separately verified.",
+      "usedBy": [
+        "m02-l01"
+      ]
+    },
+    {
+      "id": "yale-string-energy",
+      "title": "Correction to Lecture 19 on the energy in a vibrating string.",
+      "url": "https://oyc.yale.edu/sites/default/files/Erratum-Wave%20energy_0.pdf",
+      "provider": "Yale Open Courses",
+      "verifiedUrl": "https://oyc.yale.edu/sites/default/files/Erratum-Wave%20energy_0.pdf",
+      "pageTitle": "Correction to Lecture 19 on the energy in a vibrating string.",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed. The document was read through the web reader and HTTP 200 separately verified.",
+      "usedBy": [
+        "m02-l01"
       ]
     }
   ]
