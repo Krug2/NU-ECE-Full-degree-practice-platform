@@ -58,9 +58,9 @@
     "currentCourseProgress": {
       "phase": "implementation",
       "plannedLessons": 31,
-      "availableLessons": 4,
-      "nextLesson": "m02-l01",
-      "nextWork": "Build and independently verify traveling waves, local motion, string speed and signed energy transport. The latest right-triangle prerequisite work is integrated and verified.",
+      "availableLessons": 5,
+      "nextLesson": "m02-l02",
+      "nextWork": "Build and independently verify superposition, reflection, standing-wave boundary conditions, coupled normal modes and beats. The latest right-triangle prerequisite work is integrated and verified.",
       "integrationRecord": "phs-232/integration.json",
       "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },

@@ -3,7 +3,7 @@
   "updatedAt": "2026-09-24",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
-  "status": "The complete proposed course plan is verified. All four oscillation-module lessons m01-l01 through m01-l04 are available and technically checked; the other 27 lessons and course-level assessment/project workflows remain under construction.",
+  "status": "The complete proposed course plan is verified. All four oscillation lessons and traveling waves (m02-l01) are available and technically checked; the other 26 lessons and course-level assessment/project workflows remain under construction.",
   "planned": {
     "modules": 10,
     "lessons": 31,
@@ -12,10 +12,10 @@
     "courseAssessmentForms": 44
   },
   "delivered": {
-    "lessons": 4,
-    "families": 8,
-    "variants": 48,
-    "investigations": 4,
+    "lessons": 5,
+    "families": 10,
+    "variants": 60,
+    "investigations": 5,
     "courseAssessmentForms": 0,
     "project": false
   },
@@ -136,6 +136,22 @@
         "0df17bf"
       ],
       "integration": "Retain incoming prerequisite imports and interaction branches alongside these additions. Existing graders, saved question snapshots and backup schema version 2 remain unchanged; the receiving branch needs these family and component dependencies to present the new lesson."
+    },
+    {
+      "commit": "b087d37",
+      "files": [
+        "lib/learning/contracts.ts",
+        "lib/learning/generate.ts",
+        "components/learning/lesson-reader.tsx"
+      ],
+      "change": "Registers the traveling-wave investigation and two course-owned wave/transport families through additive schema, dispatch and generator entries.",
+      "requires": [
+        "e0e5544",
+        "3c14c98",
+        "2004609",
+        "816395f"
+      ],
+      "integration": "Preserve incoming prerequisite imports and interaction branches alongside these additions. Existing graders, saved question snapshots and backup schema version 2 remain unchanged; include the course-owned model, families and component dependencies."
     }
   ],
   "implementationCommits": [
@@ -294,24 +310,64 @@
     {
       "commit": "f39f8d1",
       "change": "Verified additive integration of the latest prerequisite right-triangle lesson at the oscillation-module boundary."
+    },
+    {
+      "commit": "589b661",
+      "change": "Detailed wave implementation design, physical conventions, independent checks and numerical limits."
+    },
+    {
+      "commit": "e0e5544",
+      "change": "Traveling harmonic/pulse model and independent finite-difference, quadrature, conservation and alias fixtures."
+    },
+    {
+      "commit": "3c14c98",
+      "change": "Six local-motion and wave-equation variants with at least fifty independently checked seeds each."
+    },
+    {
+      "commit": "2004609",
+      "change": "Six medium and energy-transport variants with independent unit, scaling and integral checks."
+    },
+    {
+      "commit": "816395f",
+      "change": "Three-plot wave investigation, full table alternatives, signed energy ledger, sampling comparisons and rubric."
+    },
+    {
+      "commit": "b087d37",
+      "change": "Focused compatible shared wave interaction and generator registration."
+    },
+    {
+      "commit": "c3ecaff",
+      "change": "Complete traveling-wave lesson, thirteen worked examples, seven guided fields and authored fixtures."
+    },
+    {
+      "commit": "d345924",
+      "change": "Course-owned availability and pack registration for the fifth lesson."
+    },
+    {
+      "commit": "14228fb",
+      "change": "Two verified primary-source string-energy readings and lesson resource mapping."
+    },
+    {
+      "commit": "aadcd7d",
+      "change": "Seven wave learning, pulse conservation, aliasing, recovery and accessibility browser checks."
     }
   ],
-  "lessonVerification": "See lesson-audits.json for actual delivery evidence. Fourth-lesson integration passed 2414 unit tests, full lint/type checks, a 194-page production build and all six new browser scenarios. Production reading and investigation captures were inspected at desktop/mobile sizes, 320px reflow and a 200-percent zoom equivalent. These are technical checks, not independent subject review.",
+  "lessonVerification": "See lesson-audits.json for actual delivery evidence. Fifth-lesson integration passed 2501 unit tests, full lint/type checks, a 196-page production build and all seven new browser scenarios. Desktop/mobile production reading, worked examples, plots and tables were inspected, including 320px reflow and a 200-percent zoom equivalent. These are technical checks, not independent subject review.",
   "nextImplementation": {
-    "lessonId": "m02-l01",
-    "status": "Latest prerequisite work is integrated. The detailed design in m02-l01-design.json is ready; model and family implementation is underway, but the next lesson remains unavailable.",
-    "focus": "Traveling-wave direction and local derivatives, string speed, signed energy flux, finite control-volume balance, sampling ambiguity and the limits of the small-slope ideal string model."
+    "lessonId": "m02-l02",
+    "status": "The complete coverage map specifies superposition, reflection and normal modes. Detailed numerical/interaction design and implementation are next.",
+    "focus": "Coherent phase and resultant amplitude, fixed/free and finite-interface reflection, standing-wave boundary conditions, signed power, coupled-oscillator modes and the distinction between signed modulation and beat magnitude."
   },
   "planningVerification": {
     "status": "passed",
     "counts": "10 modules, 31 lessons, 62 initially planned families with 372 variants, 44 course forms and 31 complementary cumulative-blueprint rows.",
     "coverage": "Every published subject area maps to explicit lesson evidence, and every planned lesson appears in the coverage crosswalk. Module and lesson dependencies have no forward or missing internal references.",
-    "links": "Every linked preparation lesson exists. All 92 reading IDs resolve to HTTP-200 provider pages and their expected titles; the MIT reading index title differs only in word order. Every referenced planning artifact exists.",
+    "links": "Every linked preparation lesson exists. The initial 92 reading IDs were checked for HTTP-200 provider pages and expected titles; the MIT index title differs only in word order. Two additional university string-energy readings were read and verified for m02-l01, bringing the resource map to 94. Every referenced planning artifact exists.",
     "assessment": "Each cumulative selection belongs to its original planned lesson and named family/variant; A and B use different families for every objective. Proposed thresholds, critical checks, six project criteria and ten notebook sections are explicit.",
     "scope": "The complete course plan was verified before implementation. Actual delivered features are listed separately. No independent subject review or pilot validation has occurred."
   },
   "independentSubjectReview": "not performed",
   "pilotValidation": "not performed",
-  "remaining": "Continue with m02-l01. Complete the remaining 27 lessons, all 44 course forms, the sustained project and full release audit before calling PHS 232 complete. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
+  "remaining": "Continue with m02-l02. Complete the remaining 26 lessons, all 44 course forms, the sustained project and full release audit before calling PHS 232 complete. PHS 231 remains a completed technical preview; 23 major courses including PHS 232 remain unfinished.",
   "previousCourseIntegration": "../phs-231/integration.json"
 }

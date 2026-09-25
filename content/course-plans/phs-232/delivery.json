@@ -1,7 +1,7 @@
 {
   "courseId": "phs-232",
   "version": 1,
-  "status": "The complete proposed plan is verified and all four oscillation lessons m01-l01 through m01-l04 are available. Continue with m02-l01; PHS 232 remains in development.",
+  "status": "The complete proposed plan is verified and the four oscillation lessons plus traveling waves are available. Continue with m02-l02; PHS 232 remains in development.",
   "branch": "major-courses",
   "pushTarget": "origin/major-courses",
   "workspace": "C:/School/Dev/NU-ECE-major-courses",
@@ -59,7 +59,7 @@
     },
     {
       "path": "m02-l01-design.json",
-      "purpose": "Detailed traveling-wave implementation design, including local energy, signed flux, finite pulses and sampling ambiguity; actual delivery checks are recorded separately."
+      "purpose": "Numerical and instructional design for the implemented traveling-wave lesson; actual verification is recorded separately in lesson-audits.json."
     }
   ],
   "slices": [
