@@ -20,17 +20,16 @@
     "project": false
   },
   "upstreamIntegration": {
-    "sourceCommit": "a790ebf5abded7d8cd0bfcfc45108511bc91ce27",
-    "mergeCommit": "073b528",
-    "previousSourceCommit": "ab290107e1decd829ac636d844c73b57b76c3ffd",
-    "previousMergeCommit": "d956279",
+    "sourceCommit": "19201fb018c96bbda328fe15977ed879f1885add",
+    "mergeCommit": "f39f8d1",
+    "previousSourceCommit": "a790ebf5abded7d8cd0bfcfc45108511bc91ce27",
+    "previousMergeCommit": "073b528",
     "resolvedFiles": [
-      "components/learning/lesson-reader.tsx",
-      "lib/learning/catalog.ts",
-      "lib/learning/contracts.ts"
+      "components/learning/lesson-reader.tsx"
     ],
-    "preserved": "Adds the incoming MTH 215 radians lesson and rotation investigation. Additive conflict resolutions retain every PHS 231 lesson, the PHS 232 harmonic lesson, all interaction dispatches and release-status/preparation behavior. Prerequisite lessons, course plans, learning pack and catalog match this exact source snapshot; the primary checkout was not changed.",
-    "checks": "2330 unit tests in 269 files passed with no skips in 249.30 seconds, with F10_PYTHON configured. Full lint, type checking and a 191-page production build passed. All 18 selected radians, shared learning, PHS 231 release and PHS 232 harmonic browser checks passed together in 3.8 minutes on 3101."
+    "preserved": "Incoming main includes the right-triangle lesson, investigation, four practice families and their checks. The only conflict was the lesson renderer; an exact branch comparison established that the right-triangle and driven-response dispatches were the only conflicting differences. Both are retained with their imports. Prerequisite lessons, plans, pack and content/catalog.json match the incoming source exactly; the primary checkout was untouched.",
+    "checks": "2473 unit tests in 290 files passed with no skips in 254.29 seconds, with F10_PYTHON configured. Full lint and type checking passed after resolving the conflict. The 195-page production build passed. All 38 selected browser checks passed together in 10.8 minutes on port 3101 with one worker: incoming right triangles, radians, shared learning/recovery, PHS 231 release and all four PHS 232 lessons.",
+    "process": "An early lint invocation encountered the unresolved renderer marker before resolution completed. The subsequent full lint/type check and production build passed on the resolved files. No product assertion was weakened."
   },
   "sharedChanges": [
     {
@@ -291,12 +290,16 @@
     {
       "commit": "2de8767",
       "change": "Six driven learning, singular-limit, recovery, accessibility and reflow browser checks."
+    },
+    {
+      "commit": "f39f8d1",
+      "change": "Verified additive integration of the latest prerequisite right-triangle lesson at the oscillation-module boundary."
     }
   ],
   "lessonVerification": "See lesson-audits.json for actual delivery evidence. Fourth-lesson integration passed 2414 unit tests, full lint/type checks, a 194-page production build and all six new browser scenarios. Production reading and investigation captures were inspected at desktop/mobile sizes, 320px reflow and a 200-percent zoom equivalent. These are technical checks, not independent subject review.",
   "nextImplementation": {
     "lessonId": "m02-l01",
-    "status": "The complete course coverage map specifies wave functions and energy transport. Detailed numerical/interaction design and implementation are next, after integrating the latest prerequisite work at this module boundary.",
+    "status": "Latest prerequisite work is integrated. The detailed design in m02-l01-design.json is ready; model and family implementation is underway, but the next lesson remains unavailable.",
     "focus": "Traveling-wave direction and local derivatives, string speed, signed energy flux, finite control-volume balance, sampling ambiguity and the limits of the small-slope ideal string model."
   },
   "planningVerification": {

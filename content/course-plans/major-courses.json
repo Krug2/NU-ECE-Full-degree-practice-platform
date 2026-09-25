@@ -60,7 +60,7 @@
       "plannedLessons": 31,
       "availableLessons": 4,
       "nextLesson": "m02-l01",
-      "nextWork": "Integrate the latest prerequisite work at the oscillation-module boundary, then build and independently verify traveling waves, local motion, string speed and signed energy transport.",
+      "nextWork": "Build and independently verify traveling waves, local motion, string speed and signed energy transport. The latest right-triangle prerequisite work is integrated and verified.",
       "integrationRecord": "phs-232/integration.json",
       "previousCourseReleaseRecord": "phs-231/release-audit.json"
     },
