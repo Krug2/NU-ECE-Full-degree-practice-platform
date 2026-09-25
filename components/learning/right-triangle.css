@@ -1,0 +1,8 @@
+.right-triangle-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.right-triangle-lab .field { min-width: 0; }
+.right-triangle-lab input, .right-triangle-lab select { width: 100%; min-width: 0; }
+.right-table-wrap { max-width: 100%; overflow-x: auto; padding: .25rem; margin-bottom: 1.5rem; }
+.right-table-wrap:focus-visible { outline: 2px solid var(--accent, #23574d); outline-offset: 2px; }
+.right-table-wrap table { min-width: 18rem; }
+.right-results h3 { margin-top: 1.5rem; }
+@media (max-width: 600px) { .right-triangle-controls { grid-template-columns: minmax(0, 1fr); } }
