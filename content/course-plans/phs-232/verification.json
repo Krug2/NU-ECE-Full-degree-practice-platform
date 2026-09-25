@@ -1,7 +1,7 @@
 {
   "courseId":"phs-232",
   "version":1,
-  "status":"Required checks before implementation and release; no PHS 232 technical verification is claimed yet.",
+  "status":"Required checks before implementation and release. Actual delivered-lesson results are recorded in lesson-audits.json; this planning document is not evidence of course completion.",
   "independence":"Reference calculations must be derived separately from the production generator or activity. Calling a generator's own solution helper is not an independent answer check. Source review, implementation verification, independent subject review and learner pilot validation are separate claims.",
   "coverageCrosswalk":[
     {"officialTopic":"Oscillatory behavior","lessons":["m01-l01","m01-l02","m01-l03","m01-l04","m08-l02"],"evidence":"Initial-value reconstruction, physical restoring models, all damping regimes, driven phase and power, free electrical oscillation and output-dependent resonance."},
@@ -18,6 +18,7 @@
   ],
   "questionFamilies":{
     "initialPlan":{"families":62,"variants":372,"minimumSeedsPerVariant":50,"minimumIndependentCases":18600},
+    "currentCoverage":{"families":62,"variants":374,"minimumIndependentCases":18700,"change":"m02-l02 adds interface-amplitude and interface-power to assess finite transmission directly. These are planned full-course counts, not delivered counts."},
     "flexibility":"These are initial subject-driven decompositions, not caps. Add or split families and variants if needed to teach and assess a topic well. Keep the plan, actual registry and independently checked coverage synchronized.",
     "fixtures":["At least 50 deterministic seeds for every variant; repeat seeds to establish identical immutable questions, inputs and answers.","Independently derived numeric, symbolic or analytic reference results, including geometry and physical invariants specified in modules.json.","Units and prefix powers; vector and phase signs; peak/RMS conventions; source/reference choices; domain and boundary cases.","Supported equivalent rational, radical, pi, interval or approximate answers; explicitly invalid/empty/nonfinite/malformed input; meaningful wrong answers for each misconception.","No accidental duplicate prompts within a form; stable original course/objective identities; complete useful hints and worked solutions.","Critical interpretation cannot be bypassed by a close number or a high total. Tolerances reflect stated approximations and never silently relax a physical admissibility boundary."]
   },

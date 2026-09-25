@@ -80,9 +80,9 @@
           "examples":["Derive allowed wavelengths on a fixed-fixed string and a mixed-boundary string.","Superpose equal counter-propagating waves and locate permanent nodes.","Check two coupled masses' in-phase and out-of-phase motions directly against their two force equations."],
           "misconceptions":["A standing wave transports the same net power as one traveling constituent","Every zero in one frame is a node","Intensity always adds for coherent sources","Every boundary has the same harmonic series"],
           "investigation":"Choose boundary conditions and excite modes; compare a node probe, snapshots and constituent powers. A two-mass panel connects mode shapes to the continuum pattern using numeric tables and keyboard steps.",
-          "families":[{"id":"phs232-wave-superposition","variants":["phase-resultant","fixed-reflection","free-reflection","node-location","net-power","coherent-intensity"]},{"id":"phs232-wave-modes","variants":["fixed-spectrum","mixed-spectrum","mode-index","coupled-symmetric","coupled-antisymmetric","beat-envelope"]}],
+          "families":[{"id":"phs232-wave-superposition","variants":["phase-resultant","fixed-reflection","free-reflection","node-location","net-power","coherent-intensity","interface-amplitude","interface-power"]},{"id":"phs232-wave-modes","variants":["fixed-spectrum","mixed-spectrum","mode-index","coupled-symmetric","coupled-antisymmetric","beat-envelope"]}],
           "independentChecks":"Substitute endpoint conditions, integrate flux over a cycle, and diagonalize only the explicit two-by-two coupled system in the test reference. Include cancellation, unequal amplitudes and prohibited mode numbers.",
-          "readings":["v1-16.5","v1-16.6","mit-coupled"]
+          "readings":["v1-16.5","v1-16.6","mit-coupled","utx-string-interface","mit-coupled-notes","mit-beats-notes"]
         },
         {
           "id":"m02-l03","title":"Sound, intensity and moving sources",

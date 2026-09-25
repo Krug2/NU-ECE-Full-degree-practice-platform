@@ -3,7 +3,7 @@
   "version": 1,
   "checkedAt": "2026-09-24",
   "usage": "Outbound primary-source readings supplement original course instruction. No external assessment or paid account is required.",
-  "method": "Provider chapter indexes supply section URLs; each selected public page was retrieved with HTTP GET and its title checked. Topic relevance is mapped in modules.json. This is availability verification, not independent subject review. The added string-energy lecture and correction were read in full for the relevant string derivation; the correction title is the PDF heading. Separate HEAD requests confirmed HTTP 200.",
+  "method": "Provider chapter indexes supply section URLs; each selected public page was retrieved with HTTP GET and its title checked. Topic relevance is mapped in modules.json. This is availability verification, not independent subject review. The added string-energy lecture and correction were read in full for the relevant string derivation; the correction title is the PDF heading. Separate HEAD requests confirmed HTTP 200. Three additional string-interface and coupled-mode references were read for m02-l02 and separately returned HTTP 200 to HEAD requests. PDF titles combine their printed lecture headings with MIT resource-page topic labels. The design records derivation and interpretation qualifications; no lecture video viewing is claimed.",
   "resources": [
     {
       "id": "mit-coupled",
@@ -1331,6 +1331,48 @@
       "access": "Free public reading; no account needed. The document was read through the web reader and HTTP 200 separately verified.",
       "usedBy": [
         "m02-l01"
+      ]
+    },
+    {
+      "id": "utx-string-interface",
+      "title": "Normal Reflection and Transmission at Interfaces",
+      "url": "https://farside.ph.utexas.edu/teaching/315/Waves/node45.html",
+      "provider": "University of Texas at Austin",
+      "verifiedUrl": "https://farside.ph.utexas.edu/teaching/315/Waves/node45.html",
+      "pageTitle": "Normal Reflection and Transmission at Interfaces",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed.",
+      "usedBy": [
+        "m02-l02"
+      ]
+    },
+    {
+      "id": "mit-coupled-notes",
+      "title": "8.03 Lecture 4: Coupled oscillators",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/b4f512207b1e991ffdfa8df5f519b6eb_MIT8_03SCF16_Lec4.pdf",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/b4f512207b1e991ffdfa8df5f519b6eb_MIT8_03SCF16_Lec4.pdf",
+      "pageTitle": "8.03 Lecture 4: Coupled oscillators",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed.",
+      "usedBy": [
+        "m02-l02"
+      ]
+    },
+    {
+      "id": "mit-beats-notes",
+      "title": "8.03 Lecture 5: Beat Phenomena",
+      "url": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/f64be9b621ec8951c14ad27b9ce43425_MIT8_03SCF16_Lec5.pdf",
+      "provider": "MIT OpenCourseWare",
+      "verifiedUrl": "https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/f64be9b621ec8951c14ad27b9ce43425_MIT8_03SCF16_Lec5.pdf",
+      "pageTitle": "8.03 Lecture 5: Beat Phenomena",
+      "checkedAt": "2026-09-24",
+      "httpStatus": 200,
+      "access": "Free public reading; no account needed.",
+      "usedBy": [
+        "m02-l02"
       ]
     }
   ]
