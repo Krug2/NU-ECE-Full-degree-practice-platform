@@ -1,0 +1,9 @@
+.circle-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.unit-circle-lab .field { min-width: 0; }
+.unit-circle-lab input, .unit-circle-lab select { width: 100%; min-width: 0; }
+.circle-diagram { display: block; width: 100%; max-width: 32rem; margin-inline: auto; }
+.circle-table-wrap { max-width: 100%; overflow-x: auto; padding: .25rem; margin-bottom: 1.5rem; }
+.circle-table-wrap table { min-width: 28rem; }
+.circle-table-wrap:focus-visible { outline: 2px solid var(--accent, #23574d); outline-offset: 2px; }
+.circle-results, .circle-table-wrap { scroll-margin-top: 7rem; }
+@media (max-width: 600px) { .circle-controls { grid-template-columns: minmax(0, 1fr); } }
