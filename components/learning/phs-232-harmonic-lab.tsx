@@ -38,7 +38,7 @@ function HarmonicPlots({ run }: { run: Run }) {
     <figure><svg viewBox="0 0 400 265" role="img" aria-labelledby={`${id}-phase`}>
       <title id={`${id}-phase`}>{`Position–velocity phase plane. Probe position ${display(probe.position)} m; velocity ${display(probe.velocity)} m/s. ${model.amplitude ? "The state traverses the ellipse clockwise." : "The equilibrium state stays at the origin."} Model table gives both coordinates.`}</title>
       <path d="M90 105H385 M232.5 35V184" fill="none" stroke="#a1aba7"/>
-      <text x="240" y="25">Velocity (m/s)</text><text x="240" y="46">{tick(model.maximumSpeed || 1)}</text><text x="240" y="176">{tick(-(model.maximumSpeed || 1))}</text>
+      <text x="90" y="25">Velocity (m/s)</text><text x="8" y="46">{tick(model.maximumSpeed || 1)}</text><text x="8" y="176">{tick(-(model.maximumSpeed || 1))}</text><text x="8" y="111">0</text>
       <text x="90" y="215">{tick(-(model.amplitude || 1))}</text><text x="375" y="215" textAnchor="end">{tick(model.amplitude || 1)}</text><text x="232" y="248" textAnchor="middle">Position (m)</text>
       <polyline points={trajectory.map(state => `${232.5 + 142.5 * state.position / (model.amplitude || 1)},${105 - 65 * state.velocity / (model.maximumSpeed || 1)}`).join(" ")} fill="none" stroke="#176582" strokeWidth="2.5"/>
       <circle cx={232.5 + 142.5 * probe.position / (model.amplitude || 1)} cy={105 - 65 * probe.velocity / (model.maximumSpeed || 1)} r="5" fill="#293f36"/>

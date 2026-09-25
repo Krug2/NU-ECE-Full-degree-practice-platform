@@ -42,6 +42,8 @@ test("harmonic lesson corrects lost direction and connects predicted states, eve
   await probe.press("End"); await expect(probe).toHaveValue("2");
   await expect(lab.locator(".phs232-probe")).toContainText("x=0.03 m; v=-0.16 m/s");
   await lab.getByText("Complete model table (129 states)", { exact: true }).click();
+  await lab.getByText("Investigation self-check rubric", { exact: true }).click();
+  await expect(lab).toContainText("it does not award objective evidence or an official grade");
   await expect(lab.getByRole("region", { name: "Complete model state table; scroll horizontally if needed", exact: true }).getByRole("row")).toHaveCount(130);
   await lab.getByText("Complete model table (129 states)", { exact: true }).click();
   for (const [name, viewport] of [["desktop", { width: 1440, height: 1000 }], ["mobile", { width: 390, height: 844 }]] as const) {
@@ -51,6 +53,7 @@ test("harmonic lesson corrects lost direction and connects predicted states, eve
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await lab.screenshot({ path: info.outputPath(`harmonic-${name}.png`) });
     await lab.getByRole("img").first().scrollIntoViewIfNeeded(); await page.screenshot({ path: info.outputPath(`harmonic-${name}-viewport.png`) });
+    await lab.getByRole("img").last().scrollIntoViewIfNeeded(); await page.screenshot({ path: info.outputPath(`harmonic-${name}-phase-plane.png`) });
   }
   expect(errors).toEqual([]);
 });
@@ -175,9 +178,13 @@ test("harmonic checkpoints resume exact answers and preserve mechanics work and 
   expect((await readStoredProgress(page)).learning.attempts.find(item => item.id === previous.id)).toEqual(previous);
 });
 
-for (const viewport of [{ width: 320, height: 800 }, { width: 720, height: 500 }]) test(`harmonic investigation reflows and keeps keyboard focus usable at ${viewport.width}px`, async ({ page }, info) => {
+for (const viewport of [{ width: 320, height: 800 }, { width: 720, height: 500 }]) test.describe(`harmonic layout ${viewport.width}px`, () => {
+  const scale = viewport.width === 720 ? 2 : 1;
+  test.use({ viewport, deviceScaleFactor: scale });
+  test("preserves reading and keyboard focus with reduced motion", async ({ page }, info) => {
   test.setTimeout(120_000);
   await page.setViewportSize(viewport); await page.emulateMedia({ reducedMotion: "reduce" }); await page.goto(route);
+  expect(await page.evaluate(() => ({ width: innerWidth, scale: devicePixelRatio, reduced: matchMedia("(prefers-reduced-motion: reduce)").matches }))).toEqual({ width: viewport.width, scale, reduced: true });
   const lab = page.locator("#investigate"); await predict(lab, ["-.04", "-.12", "4"]);
   await expect(lab.getByRole("status")).toContainText("predictions agree");
   const probe = lab.getByRole("slider", { name: /^Revealed time probe/ }); await probe.focus(); await probe.press("ArrowRight");
@@ -189,4 +196,5 @@ for (const viewport of [{ width: 320, height: 800 }, { width: 720, height: 500 }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const audit = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze(); expect(audit.violations).toEqual([]);
   await page.screenshot({ path: info.outputPath(`harmonic-reflow-${viewport.width}.png`) });
+  });
 });
